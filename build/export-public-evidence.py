@@ -56,9 +56,10 @@ returns={
  'snes-mvp-return-20261004T221027Z':'snes-mvp-1.2',
  'snes-mvp-return-20261004T222804Z':'snes-mvp-1.3',
  'snes-mvp-return-20261004T224312Z':'snes-mvp-1.4',
+ 'snes-mvp-return-20261004T232518Z':'snes-mvp-1.5',
 }
 for directory,label in returns.items():
-    names=('review.txt','snes-mvp/startup.log','snes-mvp/startup-processes.txt',
+    names=('review.txt','analysis.json','snes-mvp/startup.log','snes-mvp/startup-processes.txt',
            'snes-mvp/startup-platform.txt','snes-mvp/runtime-platform.txt',
            'snes-mvp/last-run.log','snes-mvp/saves/last-session.txt',
            'ReadJoystick.asm','ReadJoystickThread.asm','wdt.asm','power_key.asm',
@@ -86,7 +87,7 @@ shutil.copy2(ROOT/'build/snes-mvp/out/snes-mvp',release/'snes-mvp')
 shutil.copy2(ROOT/'build/snes-mvp/launch.sh',release/'launch.sh')
 checks=json.loads((ROOT/'build/snes-mvp/out/verification.json').read_text())
 assert sha256((release/'snes-mvp').read_bytes()).hexdigest()==checks['binary_sha256']
-manifest={'version':'1.5','hardware_status':'direction correction pending; 1.4 boot/game/state confirmed',
+manifest={'version':'1.5','hardware_status':'directions, launcher/game/state confirmed; occasional lag and rare random crackles; full rendering not qualified',
           'binary_sha256':checks['binary_sha256'],
           'wrapper_sha256':sha256((release/'launch.sh').read_bytes()).hexdigest(),
           'verification':checks,'dependencies':'owner-supplied matched driver/core/runtime; no ROM/save provided'}

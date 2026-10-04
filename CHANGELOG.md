@@ -1,8 +1,24 @@
 # Changelog
 
+## MVP 1.5 physical result and full-speed proposal — 2026-10-04
+
+Physically confirm all four directions in launcher and FF6. Archive/hash-verify
+returned logs and all private progress before any update; the card remains
+unarmed and unchanged. Returned 23,872 calls with 2,826 held drawings (11.838%),
+core-call mean wall14.591ms/CPU13.230ms, p95[19,20)ms and maximum40.844ms.
+User reports occasional lag and rare random normal-play crackles. Zero write
+errors and sampled nonempty queues do not establish zero playback underruns.
+
+Publish the return analysis and a proposal combining ordered display queuing,
+source release before scanout, audio delivery independent of video waits, one
+pacing owner, and exact Cortex-A7 NEON tile/color kernels in Plus. Record the
+recovered scaler fallback's unchecked sleeps and DSP arithmetic constraints.
+This entry adds evidence/docs/collection tooling; no runtime/core behavior is
+changed or new device test armed.
+
 ## SNES MVP 1.5 — 2026-10-04
 
-Correct the shared physical D-pad map to GPIO200 Up, GPIO201 Down, GPIO202 Left, GPIO203 Right. The previous interpretation of native 10/40/80/20 masks was wrong. Regression expectations now come from the pinned stock executable's actual libretro mask table, with an independent Down+Left check. All ARM checks pass; physical correction is pending. Original/private progress and production binaries remain unchanged during installation.
+Correct the shared physical D-pad map to GPIO200 Up, GPIO201 Down, GPIO202 Left, GPIO203 Right. The previous interpretation of native 10/40/80/20 masks was wrong. Regression expectations now come from the pinned stock executable's actual libretro mask table, with an independent Down+Left check. All ARM checks pass; the subsequent return physically confirms the correction. Original/private progress and production binaries remain unchanged during installation.
 
 ## SNES MVP 1.4 — 2026-10-04
 

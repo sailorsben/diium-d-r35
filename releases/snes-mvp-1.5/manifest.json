@@ -1,6 +1,6 @@
 {
   "version": "1.5",
-  "hardware_status": "direction correction pending; 1.4 boot/game/state confirmed",
+  "hardware_status": "directions, launcher/game/state confirmed; occasional lag and rare random crackles; full rendering not qualified",
   "binary_sha256": "ef37811cc7f1c0c408b13a060b4d22fae21d8561cdd8b5ef938be2615355c962",
   "wrapper_sha256": "7279ca9496f10004263ccf26e0c77006c99543ff4ee75ab44f3dc4396559c717",
   "verification": {

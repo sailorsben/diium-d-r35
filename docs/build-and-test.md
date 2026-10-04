@@ -80,6 +80,12 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
+`python3 build/collect-snes-mvp.py --card D:/` performs read-only collection into
+a new local archive with source/copy/source hashes. `build/analyze-snes-mvp.py`
+analyzes its session histogram and accounting with explicit evidence limits.
+These tools do not update or arm the card. `build/export-public-evidence.py`
+publishes only selected reports, never the collected private progress.
+
 For recovery, boot again after a consumed marker, or restore the unit's verified original init to remove the test hook. Do not overwrite core libraries or game saves to repair the launcher. A wedged kernel ioctl may require reboot; freeing DMA-owned memory early is not a recovery strategy.
 
 ## Historical tooling

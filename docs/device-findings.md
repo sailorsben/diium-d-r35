@@ -56,7 +56,7 @@ Normal heap RGB565 data passed to the vendor scaler produced corruption in earli
 
 Driver DWARF exposes `vfb.c` and `driver.c`, 37 recovered types and 32 functions. It identifies an SDK GCC 9.3 Cortex-A7/NEON/VFPv4 hard-float build. `gpPScalerPara_s` is 228 bytes; queue-related fields exist, but do not establish a usable continuous queue contract.
 
-`PScaleRun` performs open/configure/start/status/stop/close per job. The real asynchronous `ScaleDisplayThread` is already in driver.so. A same-named vrtemu function is a stub. Producer waits and `WaitDisp`/worker completion are genuine ownership boundaries. The next optimization requires pricing setup, hardware wait, producer wait and copy cost separately. A persistent fd or A/B queue is not yet an implemented or proven speed improvement.
+`PScaleRun` performs open/configure/start/status/stop/close per job. Its recovered not-done fallback sleeps ten times for 1ms without rechecking status; avoidable delay is a concrete lead, not the proven cause of a returned spike. The real asynchronous `ScaleDisplayThread` is already in driver.so. A same-named vrtemu function is a stub. Stock releases its source/pending flag after DrawVFB and before FlipVFB; MVP1.5 releases only after both. Separating source completion from scanout and using an ordered bounded queue is proposed. A persistent fd or A/B hardware queue is not yet an implemented or proven speed improvement.
 
 Compact `width*2` RGB565 pitch avoids a known row repack. Direct core drawing into uncached chunk memory may lose CPU efficiency; removing a copy is not automatically faster. Scaler/PPU IRQ counts are not panel refresh measurements.
 
@@ -71,6 +71,23 @@ FF6 map scenes clicked even with the same music that was clean in the party menu
 v9 normal core calls averaged 19.958 ms wall time versus 6.752 ms with internal rendering disabled. The native frame budget is about 16.688 ms. These are callback/preemption-inclusive wall measurements, not isolated PPU CPU attribution. v10's mixed listening test held about 5.012% of drawings and sounded clean; that percentage is not a 5% CPU deficit. Expensive scenes are disproportionate. v11/MVP retain adaptive internal drawing suppression while keeping emulation/audio running.
 
 The MVP 1.4 returned session ran 2,465 steps with 749 held drawings, 1,716 video submissions, two pauses and no write errors. It demonstrates function; it is not a controlled speed comparison.
+
+MVP1.5 physically confirms all four directions, game start and imported state
+loading. The [returned report](../evidence/2026-10-04/snes-mvp-1.5/last-session.txt)
+contains 23,872 calls, 2,826 held drawings (11.838%) and 21,046 video submissions.
+Mean core-call wall14.591ms/CPU13.230ms includes callbacks and held calls;
+p95[19,20)ms, p99[21,22)ms, maximum40.844ms. Video callbacks averaged1.893ms per
+submission and reached19.713ms. Zero write errors; software-ring peak2795/8192;
+sampled device queue1024–2048 frames. Brief starvation and physical frame
+presentation remain uncounted. The user heard occasional lag and rare random
+normal-play crackles in story/map. No assigned cause or full-render speed claim.
+
+Plus currently publishes video before completed audio, so a slow video callback
+also delays PCM delivery. The host polls GPIO twice per core call. The pinned
+tile/color implementation is predominantly scalar even though compiler flags
+permit NEON; some DSP paths already contain compiler-generated SIMD. A tailored
+renderer and corrected host ownership are proposed in the
+[full-speed plan](full-speed-snes-plan.md), with exact output retained.
 
 ## UART investigation and its negative result
 

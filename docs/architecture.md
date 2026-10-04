@@ -35,13 +35,24 @@ Plus and its known conversion/render-budget policy remain the baseline while hos
 
 The vendor already has asynchronous display work and CPU-specific emulator paths. Adding more threads on one CPU does not add compute. The design seeks correct ownership, bounded memory, useful overlap and measurable policy rather than assuming fewer layers alone are faster.
 
-## Next measurements and earned changes
+## Proposed full-speed path
 
-1. Confirm all physical directions, pause/state/save flow and sustained sound/video.
-2. Attribute `PScaleRun` open/configuration/trigger/status/stop/close and producer waits separately. Keep timing in memory during frames and flush bounded results after a session.
-3. Measure actual audio position/period/queue behavior before selecting an audio-led clock.
-4. Consider persistent scaler configuration/queueing only with supported ioctls and completion identity. Preserve DMA ownership and recovery.
-5. Compare plain2005/Plus/2010 on the same corrected host with compatible SRAM and per-core timing/state qualification. NEON presence alone does not pick a winner.
-6. Reproducible minimal userspace around the known kernel is the intended broader product. A new kernel/GPU/bare-metal port is not a prerequisite; it requires matching source/build/recovery and a priced bottleneck.
+MVP1.5's controls are physically confirmed. Occasional lag, rare crackles and
+11.838% held drawings remain. The chosen proposal is a tailored Plus renderer
+and a host pipeline that overlaps core work with peripheral operation; see the
+[full-speed plan](full-speed-snes-plan.md) for instruction choices, ownership,
+CPU allocations and acceptance. This is proposed behavior, not the current MVP.
+
+Release the chunk source after scaling rather than scanout, preserve an ordered
+bounded queue, publish audio before video, and service queued PCM independently.
+Keep one pacing owner and accurate Blargg behavior. Add exact A7 NEON tile/color
+kernels before asking the device to prove full rendering. Qualify audio cursor
+and scaler completion semantics; record timings in memory and flush after play.
+Persistent scaler ownership is a next backend extension with recovered ioctls,
+not permission to assume undocumented hardware queues work.
+
+Reproducible minimal userspace around the known kernel remains the broader
+product direction. A new kernel/GPU/bare-metal port requires matching
+source/build/recovery and an established useful acceleration path.
 
 The source prototypes the main plumbing. It does not yet provide a general core catalog, broad content support, final audio clock, GPU path, battery/suspend design or complete Buildroot image.

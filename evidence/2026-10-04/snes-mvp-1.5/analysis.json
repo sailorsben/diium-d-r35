@@ -1,0 +1,83 @@
+{
+  "report_sha256": "4f9df3b2f977a24a74a128c10557e828a6359d3de77f5a6e2dc2e0dca78aee14",
+  "raw_fields": {
+    "rom_crc32": "a27f1c7a",
+    "rom_bytes": "3145728",
+    "core_crc32": "5ba71d2a",
+    "core_bytes": "656816",
+    "fps": "59.922743404",
+    "native_rate": "32040",
+    "sink_rate": "44100",
+    "pacing": "native_fps_monotonic_control",
+    "mock_backend": "0",
+    "runs": "23872",
+    "held": "2826",
+    "video_submitted": "21046",
+    "video_dupes": "2826",
+    "native_audio_frames": "12764005",
+    "resampled_enqueued_frames": "17568430",
+    "output_accepted_frames_including_priming": "17573695",
+    "priming_silence_frames": "8192",
+    "write_calls": "74542",
+    "short_writes": "11184",
+    "eagain_or_zero": "41371",
+    "write_errors": "0",
+    "software_ring_high_frames": "2795",
+    "device_queue_min_frames": "1024",
+    "device_queue_max_frames": "2048",
+    "core_wall_ns": "348325563000",
+    "core_thread_cpu_ns": "315830358000",
+    "video_callback_ns": "39847175000",
+    "audio_callback_ns": "3936658000",
+    "max_run_ns": "40844000",
+    "max_video_ns": "19713000",
+    "pauses": "4",
+    "xrun_count": "unavailable_oss",
+    "present_count": "unavailable_vendor_driver",
+    "error": ""
+  },
+  "histogram_count": 23872,
+  "native_period_ms": 16.688154500170086,
+  "nominal_simulated_seconds_not_measured_elapsed": 398.3796242280603,
+  "held_percent": 11.83813672922252,
+  "mean_core_wall_ms_including_callbacks": 14.59138584953083,
+  "mean_core_thread_cpu_ms_including_callbacks": 13.23015909852547,
+  "mean_wall_minus_thread_cpu_ms_not_isolated_display_wait": 1.361226751005362,
+  "mean_video_callback_ms_per_submission": 1.8933372137223226,
+  "mean_audio_callback_ms_per_run": 0.16490692024128686,
+  "core_thread_cpu_fraction_of_nominal_time_not_actual_utilization": 0.7927874288550376,
+  "definitely_over_period_calls": 4905,
+  "definitely_over_period_percent": 20.547084450402146,
+  "period_straddling_bin_calls": 5078,
+  "core_wall_percentile_intervals": {
+    "p50": {
+      "lower_inclusive_ms": 15,
+      "upper_exclusive_ms": 16
+    },
+    "p95": {
+      "lower_inclusive_ms": 19,
+      "upper_exclusive_ms": 20
+    },
+    "p99": {
+      "lower_inclusive_ms": 21,
+      "upper_exclusive_ms": 22
+    }
+  },
+  "max_core_wall_ms": 40.844,
+  "max_video_callback_ms": 19.713,
+  "software_ring_high_percent_of_8192_capacity": 34.11865234375,
+  "sampled_device_queue_ms": {
+    "min": 23.219954648526077,
+    "max": 46.439909297052154
+  },
+  "produced_plus_priming_minus_accepted_frames_not_isolated_loss": 2927,
+  "limitations": [
+    "Adaptive internal drawing makes the mean a mixed workload, not full-render cost.",
+    "Core-call CPU includes callbacks; worker/kernel CPU is not included.",
+    "Nominal simulated time is not measured gameplay wall duration or achieved speed.",
+    "Device queue is sampled once per 60 calls; brief starvation can be missed.",
+    "OSS write success is not a hardware underrun count.",
+    "Transitions clear/reset audio; reports omit cleared and ending queued frames.",
+    "Video submission is not an optical panel presentation count."
+  ]
+}

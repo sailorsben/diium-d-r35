@@ -1,0 +1,50 @@
+D-R35 SNES MVP1.5 return, collected 2026-10-04T23:25:19Z
+
+Collection was read-only: 31 files copied and source/copy/source hash verified,
+including the MVP package, logs and all private progress. The one-shot armed
+marker was absent. No executable replacement, card write or re-arm was performed.
+Private snapshots/SRAM and collection paths remain local; only selected reports
+are exported for publication.
+
+Physical user observations:
+- All four directions worked correctly in the launcher and FF6.
+- Launcher/game/save-state flow worked; overall good, with occasional lag.
+- Rare random crackles during normal play: opening story and map. Not constant
+  and not limited to pause/load/resume.
+
+Returned counters:
+- 23,872 core calls; 2,826 held drawings (11.838%); 21,046 video submissions.
+- Mean core-call wall 14.591 ms; mean thread CPU 13.230 ms, including callbacks.
+- p50 [15,16) ms; p95 [19,20) ms; p99 [21,22) ms; maximum 40.844 ms.
+- 4,905 calls (20.547%) definitely above the native 16.688 ms period; another
+  5,078 calls lie in the ambiguous [16,17) ms histogram bin.
+- Mean video callback 1.893 ms/submission; maximum 19.713 ms.
+- Zero audio write errors; ring peak 2,795/8,192 frames. Sampled device queue
+  1,024-2,048 frames at 44.1 kHz, or 23.22-46.44 ms.
+- 74,542 write calls, 11,184 short writes, 41,371 EAGAIN/zero events; unsent
+  transport tails were retained by the current implementation.
+- Four pauses. XRUN and physical-presentation counts unavailable.
+
+These are mixed rendered/held calls, not full-render throughput or measured
+actual CPU utilization. No sampled ring exhaustion, write failure or steady swap
+thrash was established. Early snapshots are not an entire-session memory census.
+Sampled queue depth cannot rule out brief starvation. Successful OSS writes do
+not prove uninterrupted DAC playback. Produced+priming minus accepted is 2,927
+frames, but transition clears and ending queues are uncounted, so that difference
+is not an isolated loss count. No assigned root cause for the audible crackles.
+
+Startup retains the splash acknowledgment and direct-kernel-clock correction:
+kernel monotonic 8.254860000 s; libc monotonic 447.220811168 s; boottime
+8.254893000 s. Program entry 8.252 s, READY 8.425 s (~173 ms from entry, not
+whole boot). Library return and clean worker/display teardown were logged.
+
+Source review identifies concrete optimization targets, not measured savings:
+MVP releases the source only after FlipVFB, while stock releases after DrawVFB;
+Plus publishes video before audio; input is polled twice per core step; ordinary
+tile/color paths are scalar despite Cortex-A7/NEON compilation; recovered scaler
+fallback sleeps ten times without rechecking completion status.
+
+Next physical test is deferred pending the full-speed proposal. The proposal
+combines ordered completion-aware display queuing, independent audio delivery,
+one pacing owner and exact Cortex-A7 rendering kernels. Full rendering, bounded
+backlog and loss-accounted audio are the acceptance target, not held-frame speed.

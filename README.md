@@ -6,8 +6,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-04
 
-- **Hardware confirmed:** MVP 1.4 boots into its library, responds to input, starts Final Fantasy VI and loads the imported save state. A returned session completed 2,465 core frames with no reported failure or audio-write errors.
-- **MVP 1.5:** corrects D-pad translation in the shared launcher/game input path. ARM checks pass; physical confirmation of this particular correction is pending.
+- **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
+- **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
 
@@ -20,6 +20,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Source, dependencies, checks, installation and recovery | [Build and test](docs/build-and-test.md) |
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
+| Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |
 | Evidence preservation and future changes | [Maintenance](docs/maintenance.md) |
 

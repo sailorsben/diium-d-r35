@@ -35,9 +35,9 @@ The kcore recovery branch stopped at ENOENT. No MMIO/flash fallback occurred. Tr
 | 1.2 | Splash exited with acknowledgment; READY reached, controls failed/fallback reported | The recovered handoff worked; readiness did not prove polling/liveness |
 | 1.3 | No buttons; main thread in identical absolute sleep six seconds apart | A clock/timer seam stalled the UI. Heartbeat restoration was not shown to fix it. Native direction masks were also incorrectly relabeled |
 | 1.4 | Launcher worked, FF6 started, private state loaded; 2465 frames, two pauses, no write errors | Direct kernel clock/relative waits repair the input loop. Same probe showed kernel8.361s vs libc447.327s. Directions still incorrect |
-| 1.5 | Installed; physical mapping confirmation pending | Trace complete stock GPIO→native→libretro path; restore Up/Down/Left/Right and use executable-derived regression reference |
+| 1.5 | All four directions confirmed; launcher/game/state work; 23,872 calls, 11.838% held drawings; occasional lag and rare random crackles in story/map | Stock-derived input repair is physically validated. Performance/audio are not fully qualified; mixed held-frame means cannot establish full-render throughput |
 
-The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; next test should verify FF6 movement. Do not silently edit the report to fit a neat permutation.
+The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
 
 ## Corrections that must survive future work
 
@@ -52,4 +52,9 @@ The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated
 - A DT GPU node is not an operational GPU; a symbol/struct field is not a demonstrated queue contract.
 - The old timestamp regex parsed `[247]` source-line text as time. Corrected v3 analysis anchors at line start. Older v2 derived spans must not be trusted without reanalysis.
 
-Current priorities are qualifying the repaired physical controls, then measuring display lifecycle/producer waits and sustained audio/frame behavior before changing core, queueing or scaler lifecycle again.
+The user requested a concrete full-speed proposal before another run. Current
+direction is the [Cortex-A7 core/pipeline plan](full-speed-snes-plan.md): ordered
+completion-aware display queue, independent audio delivery, one production
+clock, and exact NEON tile/color kernels. Source review identifies coupling and
+scalar work worth changing; their speedups remain unmeasured. The consumed
+one-shot remains unarmed; the proposal does not deploy another experiment.
