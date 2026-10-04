@@ -1,0 +1,57 @@
+SNES MVP 1.2 return review - 2026-10-04
+
+Ben reports the UI controls did not work, then the unit returned to the stock
+launcher. The timing/button trigger and whether the unit rebooted are unknown.
+Returned files and all private saves were archived before the next update.
+
+Observed startup evidence:
+- Vendor showlogo PID 446 exited after the RAM marker handshake; release ack yes.
+- MVP PID 490 entered at 34.800 and reached READY at 34.974 seconds uptime.
+- Display initialized at 640x480, first DrawVFB and FlipVFB returned.
+- Three games scanned; initial input mask was zero.
+- No recorded startup timeout or process exit; no last-run.log or last-session.
+- /power_key and /wdt were running before child launch. Stock main was absent.
+READY proves first frame completion; it does not prove working physical input
+or explain the subsequent fallback. The old logger closed at READY, and the
+shell only copied RAM output after exit, leaving a gap if reset or cleanup hung.
+
+Confirmed source defect:
+Stock ReadJoystick at 0x1599c reads GPIO 0x200 UP, 0x201 LEFT, 0x202 RIGHT,
+0x203 DOWN (native masks 0x10,0x40,0x80,0x20). MVP had the final three assigned
+DOWN,LEFT,RIGHT respectively. Corrected against the actual stock executable;
+see ReadJoystick.asm. This defect alone does not explain every reported symptom.
+
+Verified stock compatibility contract:
+main/vrtemu ShareMemCreat uses shared-memory key 1234, size 460, IPC_CREAT|0666.
+vrtemu xintiao increments word 1 and sets word 0 to a 60-tick liveness budget.
+The MVP previously omitted that publication. v1.3 preserves it on the input
+polling path, throttled to 15 ms, without a separate worker or watchdog disable.
+Only words 0 and 1 are written; detach does not remove the shared segment.
+This contract is proven for stock main/vrtemu. /wdt's own implementation and
+whether any watchdog caused this fallback remain unconfirmed.
+
+v1.3 changes and verification:
+- Corrected D-pad mapping; actual board decoder tested under ARM/QEMU for
+  vendor D-pad/face/shoulder pins, MENU chord and GPIO read failure behavior.
+- Heartbeat layout/counter/rate and preservation of other fields/owners tested
+  in an isolated IPC_PRIVATE segment, never the production key on the test host.
+- Persistent bounded library/pause input, exit request and display cleanup logs.
+  No per-frame gameplay input logging.
+- Wrapper copies /wdt and /power_key read-only and records boot/IPC state.
+  Three runtime snapshots capture thread/process state and RAM output, then
+  monitoring ends. Monitor cancellation and stale-snapshot clearing are checked.
+- Existing 180-frame exact Plus core ZIP run, audio transport/accounting,
+  saves/snapshots/rollback, UI, scan and startup/splash checks all passed.
+Physical input/audio/display endurance remains pending; no speed claim.
+
+v1.3 installed and armed at 2026-10-04T22:24:35Z.
+Binary: c7a66b9abf7dc0b8f5d4ee270a3d0a93e5dcdf48029a50ab533ebbc251d401b8
+Wrapper: d2f29f14dc2621343aef2c6e659310c630d4d706a54bead32ac365e21607a34d
+Update backup: device-evidence/snes-mvp-update-20261004T222435Z/
+All 13 private/original save files, production binaries and existing init hook
+were hash-verified unchanged. Following reboot skips the consumed one-shot.
+
+Next test: safely eject, boot, press Down then Up, launch with A or Start.
+Use Final Fantasy VI (not Rev 1), MENU -> Load snapshot -> Resume. If it falls
+back, note the last button and whether the boot animation reappeared, shut down
+and reconnect. Archive new logs/helper copies/private progress before mutation.

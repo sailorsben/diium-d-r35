@@ -1,0 +1,1631 @@
+[
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\board_config.ko",
+    "bytes": 12576,
+    "sha256": "39d58f25ec96e45ec42f8dd2543578b5e5b8749552b814e215ae9e579fe945ee",
+    "functions": [
+      {
+        "name": "board_ioctl",
+        "bytes": 20
+      },
+      {
+        "name": "board_power_off",
+        "bytes": 28
+      },
+      {
+        "name": "gpiocfgInputPullDrv",
+        "bytes": 120
+      },
+      {
+        "name": "board_init",
+        "bytes": 2152
+      },
+      {
+        "name": "board_config_init",
+        "bytes": 212
+      },
+      {
+        "name": "board_config_exit",
+        "bytes": 40
+      },
+      {
+        "name": "usb_slave_detect_power",
+        "bytes": 100
+      },
+      {
+        "name": "pin_func_request",
+        "bytes": 232
+      },
+      {
+        "name": "sd0_function_get",
+        "bytes": 20
+      },
+      {
+        "name": "sd1_detect",
+        "bytes": 20
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 40
+      },
+      {
+        "name": "sd0_io_set",
+        "bytes": 20
+      },
+      {
+        "name": "sd0_is_write_protected",
+        "bytes": 20
+      },
+      {
+        "name": "spi1_set_cs",
+        "bytes": 20
+      },
+      {
+        "name": "gpiocfgDriving",
+        "bytes": 116
+      },
+      {
+        "name": "csi_pinmux_set",
+        "bytes": 144
+      },
+      {
+        "name": "sd0_set_power",
+        "bytes": 20
+      },
+      {
+        "name": "init_module",
+        "bytes": 212
+      },
+      {
+        "name": "panel_spi_sda",
+        "bytes": 20
+      },
+      {
+        "name": "usb_slave_get_vbus_config",
+        "bytes": 32
+      },
+      {
+        "name": "panel_set_power0",
+        "bytes": 20
+      },
+      {
+        "name": "panel_brightness_backlight",
+        "bytes": 20
+      },
+      {
+        "name": "cdsp_pinmux_set",
+        "bytes": 240
+      },
+      {
+        "name": "bus_priority_config",
+        "bytes": 100
+      },
+      {
+        "name": "panel_spi_scl",
+        "bytes": 20
+      },
+      {
+        "name": "sd1_is_write_protected",
+        "bytes": 20
+      },
+      {
+        "name": "sd0_detect",
+        "bytes": 20
+      },
+      {
+        "name": "panel_set_mirror",
+        "bytes": 20
+      },
+      {
+        "name": "panel_spi_cs",
+        "bytes": 20
+      },
+      {
+        "name": "pin_func_release",
+        "bytes": 60
+      },
+      {
+        "name": "panel_set_backlight",
+        "bytes": 20
+      },
+      {
+        "name": "sensor_clko_enalbe_set",
+        "bytes": 164
+      },
+      {
+        "name": "sd1_set_power",
+        "bytes": 20
+      },
+      {
+        "name": "sdio0_set_standby",
+        "bytes": 20
+      },
+      {
+        "name": "spi0_set_cs",
+        "bytes": 20
+      },
+      {
+        "name": "sd1_io_set",
+        "bytes": 20
+      },
+      {
+        "name": "sdio1_set_standby",
+        "bytes": 20
+      },
+      {
+        "name": "usb_slave_get_gpio_power_level",
+        "bytes": 20
+      },
+      {
+        "name": "sd1_function_get",
+        "bytes": 20
+      },
+      {
+        "name": "panel_set_power1",
+        "bytes": 20
+      },
+      {
+        "name": "csi_cdsp_clko_mux_set",
+        "bytes": 116
+      }
+    ],
+    "imports": [
+      "down_timeout",
+      "gp_bus_priority_set",
+      "__stack_chk_guard",
+      "gpHalGpioPinMuxSetFunPos0",
+      "gp_gpio_get_alloutput_value",
+      "up",
+      "gp_gpio_get_alldirection",
+      "gpHalGpioPinMuxSetGPIOCtrl",
+      "kfree",
+      "gp_gpio_get_allattribute",
+      "gpHalGpioPinMuxSetTFTIOCtrl",
+      "__stack_chk_fail",
+      "kmem_cache_alloc",
+      "gp_board_malloc_pin_conf_entry",
+      "gp_gpio_request",
+      "gp_gpio_set_driving_current",
+      "gp_board_register",
+      "gp_gpio_release",
+      "printk",
+      "__gp_board_get_config",
+      "down_trylock",
+      "gp_gpio_set_allattribute",
+      "memset",
+      "gpHalGpioPinMuxSetTimerPos",
+      "gp_board_free_pin_conf_entry",
+      "down_interruptible",
+      "gp_gpio_set_input",
+      "gp_gpio_set_alldirection",
+      "gpHalGpioPinMuxGetFunPos0",
+      "gp_gpio_get_output_value",
+      "gpHalGpioPinMuxSetFunPos1",
+      "gp_gpio_set_alloutput_value",
+      "kmalloc_caches"
+    ],
+    "strings": [
+      "license=GPL",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "__UNIQUE_ID_vermagic20",
+      "__UNIQUE_ID_license39",
+      "kmem_cache_alloc",
+      "sensor_clko_enalbe_set",
+      "csi_cdsp_clko_mux_set",
+      "kmalloc_caches"
+    ]
+  },
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\4.19.128\\kernel\\sound\\soc\\generalplus\\snd-soc-gpa7xxxa-playback-audio.ko",
+    "bytes": 7688,
+    "sha256": "fd55542d321fec15cc7839b9584c3a315fe84bfe6b1262d90495aab5e142d1ba",
+    "functions": [
+      {
+        "name": "gp_dac_remove",
+        "bytes": 20
+      },
+      {
+        "name": "evm_hw_startup",
+        "bytes": 108
+      },
+      {
+        "name": "gp_dac_probe",
+        "bytes": 76
+      },
+      {
+        "name": "gpa7xxxaevm_audio_init",
+        "bytes": 176
+      },
+      {
+        "name": "gpa7xxxaevm_audio_exit",
+        "bytes": 56
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 56
+      },
+      {
+        "name": "init_module",
+        "bytes": 176
+      }
+    ],
+    "imports": [
+      "platform_device_put",
+      "platform_driver_unregister",
+      "platform_device_register",
+      "_dev_err",
+      "platform_device_unregister",
+      "platform_get_resource",
+      "platform_device_add",
+      "platform_device_alloc",
+      "printk",
+      "gpHalDacRegBaseAddr",
+      "__platform_driver_register",
+      "devm_ioremap_resource"
+    ],
+    "strings": [
+      "evm_hw_startup audio_module 0x%x",
+      "soc-audio",
+      "gpa7xxxaevm_audio_init exit, %d",
+      "gpa7xxxaevm-playback-audio",
+      "gpa7xxxa-playback-pcm",
+      "license=GPL",
+      "name=snd_soc_gpa7xxxa_playback_audio",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "snd_soc_gpa7xxxa_playback_audio",
+      "snd-soc-gpa7xxxa-playback-audio.mod.c",
+      "__UNIQUE_ID_vermagic20",
+      "gpa7xxxa-playback-audio.c",
+      "gpa7xxxaevm_audio_init",
+      "gpa7xxxaevm_audio_exit",
+      "gpa7xxxa_audio_pcm_device",
+      "gpa7xxxa_audio_pcm_device_dmamask",
+      "gpa7xxxa_audio_codec_device",
+      "gpa7xxxa_audio_codec_device_dmamask",
+      "gpa7xxxa_audio_device",
+      "gpa7xxxa_audio_device_dmamask",
+      "gpa7xxxaevm_audio_machine",
+      "gpa7xxxaevm_audio_dai",
+      "gpa7xxxaevm_audio_ops",
+      "__UNIQUE_ID_license59"
+    ]
+  },
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\common\\lcd1_mipi_NV3051F.ko",
+    "bytes": 19652,
+    "sha256": "a23970b6dfeb295dd7f5a0f68500d47a6fde71cd05196bfe669bec1dec1623c2",
+    "functions": [
+      {
+        "name": "lcd_suspend",
+        "bytes": 20
+      },
+      {
+        "name": "lcd_get_size",
+        "bytes": 40
+      },
+      {
+        "name": "mipi_display_NV3051F_480p_init",
+        "bytes": 56
+      },
+      {
+        "name": "lcd_init",
+        "bytes": 24
+      },
+      {
+        "name": "lcd_resume",
+        "bytes": 24
+      },
+      {
+        "name": "panel_init",
+        "bytes": 44
+      },
+      {
+        "name": "panel_exit",
+        "bytes": 32
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 32
+      },
+      {
+        "name": "lcd_Ldo28_Sel",
+        "bytes": 68
+      },
+      {
+        "name": "init_module",
+        "bytes": 44
+      },
+      {
+        "name": "Panel_NV3051F_uninit",
+        "bytes": 96
+      },
+      {
+        "name": "Panel_NV3051F_Init",
+        "bytes": 88
+      }
+    ],
+    "imports": [
+      "gpHalMipiTxEnable",
+      "unregister_paneldev1",
+      "gpHalDisp1SetRes",
+      "register_paneldev1",
+      "gpHalDisp1_ScaFactor_Init",
+      "mipi_lcd_software_reset",
+      "gpHalGpioSetValue",
+      "gpHalMipiTxLaneSwapSet",
+      "printk",
+      "mipi_write_lcd_command",
+      "gpHalDisp1SetDevType",
+      "msleep"
+    ],
+    "strings": [
+      "LCD_MIPI_NV3051F",
+      "description=GP LCD_MIPI_NV3051F Driver",
+      "license=GPL",
+      "name=lcd1_mipi_NV3051F",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "lcd1_mipi_NV3051F",
+      "lcd1_mipi_NV3051F.mod.c",
+      "__UNIQUE_ID_vermagic20",
+      "lcd1_mipi_NV3051F.c",
+      "mipi_display_NV3051F_480p_init",
+      "NV3051F_initialization_setting",
+      "NV3051F_uninit_table",
+      "__UNIQUE_ID_license55",
+      "Panel_NV3051F_uninit",
+      "Panel_NV3051F_Init"
+    ]
+  },
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\4.19.128\\kernel\\arch\\arm\\mach-gpa7xxxa\\display\\gp_display1.ko",
+    "bytes": 22032,
+    "sha256": "5c4f6deffe7608792f969e55cf39f012255f45b3f9abf5db691ed326c23777c9",
+    "functions": [
+      {
+        "name": "disp1_mmap",
+        "bytes": 20
+      },
+      {
+        "name": "gp_disp1_remove",
+        "bytes": 128
+      },
+      {
+        "name": "gp_disp1_probe",
+        "bytes": 496
+      },
+      {
+        "name": "disp1_irq",
+        "bytes": 108
+      },
+      {
+        "name": "gp_disp1_module_clk_en",
+        "bytes": 144
+      },
+      {
+        "name": "gp_disp1_fb_clk_en",
+        "bytes": 108
+      },
+      {
+        "name": "disp1_release",
+        "bytes": 28
+      },
+      {
+        "name": "disp1_open",
+        "bytes": 40
+      },
+      {
+        "name": "disp1_init",
+        "bytes": 520
+      },
+      {
+        "name": "disp1_ioctl",
+        "bytes": 3524
+      },
+      {
+        "name": "disp1_module_init",
+        "bytes": 36
+      },
+      {
+        "name": "disp1_module_exit",
+        "bytes": 28
+      },
+      {
+        "name": "disp1_set_dither_type",
+        "bytes": 36
+      },
+      {
+        "name": "unregister_paneldev1",
+        "bytes": 160
+      },
+      {
+        "name": "disp1_set_pri_enable",
+        "bytes": 36
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 28
+      },
+      {
+        "name": "register_paneldev1",
+        "bytes": 160
+      },
+      {
+        "name": "disp1_wait_frame_end",
+        "bytes": 236
+      },
+      {
+        "name": "disp1_free_buffer",
+        "bytes": 112
+      },
+      {
+        "name": "init_module",
+        "bytes": 36
+      },
+      {
+        "name": "disp1_set_dither_enable",
+        "bytes": 36
+      },
+      {
+        "name": "disp1_allocate_buffer",
+        "bytes": 156
+      },
+      {
+        "name": "disp1_spi",
+        "bytes": 20
+      },
+      {
+        "name": "disp1_set_pri_bitmap",
+        "bytes": 588
+      },
+      {
+        "name": "disp1_set_gamma_enable",
+        "bytes": 36
+      },
+      {
+        "name": "disp1_get_panel_res",
+        "bytes": 24
+      },
+      {
+        "name": "disp1_set_dither_param",
+        "bytes": 316
+      },
+      {
+        "name": "disp1_set_pri_frame_addr",
+        "bytes": 36
+      },
+      {
+        "name": "disp1_update",
+        "bytes": 20
+      },
+      {
+        "name": "disp1_set_gamma_table",
+        "bytes": 68
+      }
+    ],
+    "imports": [
+      "free_irq",
+      "misc_deregister",
+      "gpHalDisp1SetDitherType",
+      "gp_user_va_to_pa",
+      "gp_chunk_malloc",
+      "platform_driver_unregister",
+      "gpHalDisp1SetPriFrameAddr",
+      "platform_get_irq",
+      "__stack_chk_guard",
+      "finish_wait",
+      "gpHalDisp1SetDitherEnable",
+      "gpHalPPUDisp1SetFbMono",
+      "up",
+      "devm_ioremap",
+      "memcpy",
+      "gpHalPPUDisp1ARGB",
+      "kfree",
+      "gpHalPPUDisp1FbLock",
+      "prepare_to_wait_event",
+      "__wake_up",
+      "gpHalDisp1SetGammaTable",
+      "gpHalDisp1GetEnable",
+      "gpHalDisp1SetEnable",
+      "gpHalGpioPinMuxSetTFTIOCtrl",
+      "schedule",
+      "__stack_chk_fail",
+      "gpHalDisp1UpdateParameter",
+      "kmem_cache_alloc",
+      "init_wait_entry",
+      "_dev_err",
+      "request_threaded_irq",
+      "platform_get_resource",
+      "gpHalDisp1ClearIntFlag",
+      "strncmp",
+      "strncpy",
+      "printk",
+      "gpHalDisp1GetIntStatus",
+      "gpHalDisp1Init",
+      "memset",
+      "gpHalDisp1SetGammaEnable",
+      "misc_register",
+      "gpHalPPUDisp1SetFbFormat",
+      "arm_copy_to_user",
+      "gp_enable_clock",
+      "__platform_driver_register",
+      "gpHalDisp1GetRes",
+      "gpHalDisp1SetIntDisable",
+      "arm_copy_from_user",
+      "gpHalDisp1RegBaseAddr",
+      "down_interruptible",
+      "gp_invalidate_dcache_range",
+      "gp_clean_dcache_range",
+      "gp_chunk_free",
+      "gpHalDisp1SetIntEnable",
+      "gpHalPPUDisp1SetYuvType",
+      "strlen",
+      "gpHalDisp1SetDitherMap",
+      "gp_hdmi_module_clk_en",
+      "kmalloc_caches"
+    ],
+    "strings": [
+      "gp_disp1_fb_clk_en = %d !!! ",
+      "disp1_allocate_buffer",
+      "disp1_free_buffer",
+      "license=GPL",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "disp1_free_buffer",
+      "disp1_allocate_buffer",
+      "gp_disp1_fb_clk_en",
+      "gp_disp1_module_clk_en",
+      "__UNIQUE_ID_vermagic20",
+      "disp1_module_clock_cnt",
+      "__UNIQUE_ID_license58",
+      "__ksymtab_disp1_allocate_buffer",
+      "__kstrtab_disp1_allocate_buffer",
+      "__ksymtab_disp1_free_buffer",
+      "__kstrtab_disp1_free_buffer",
+      "__ksymtab_gp_disp1_fb_clk_en",
+      "__kstrtab_gp_disp1_fb_clk_en",
+      "__ksymtab_gp_disp1_module_clk_en",
+      "__kstrtab_gp_disp1_module_clk_en",
+      "gp_chunk_malloc",
+      "kmem_cache_alloc",
+      "gp_enable_clock",
+      "gp_invalidate_dcache_range",
+      "gp_clean_dcache_range",
+      "gp_chunk_free",
+      "gp_hdmi_module_clk_en",
+      "kmalloc_caches"
+    ]
+  },
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\4.19.128\\kernel\\drivers\\video\\fbdev\\gpfb.ko",
+    "bytes": 9768,
+    "sha256": "fe55b0e7949146cae535006d27fd70e1cc319b733ae96b7e86034aee81b246ef",
+    "functions": [
+      {
+        "name": "gpfb_destroy",
+        "bytes": 56
+      },
+      {
+        "name": "gpfb_remove",
+        "bytes": 40
+      },
+      {
+        "name": "get_func",
+        "bytes": 80
+      },
+      {
+        "name": "gpfb_probe",
+        "bytes": 1400
+      },
+      {
+        "name": "gpfb_init",
+        "bytes": 124
+      },
+      {
+        "name": "gpfb_exit",
+        "bytes": 44
+      },
+      {
+        "name": "gpfb_copyarea",
+        "bytes": 16
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 44
+      },
+      {
+        "name": "init_module",
+        "bytes": 124
+      },
+      {
+        "name": "gpfb_fillrect",
+        "bytes": 16
+      },
+      {
+        "name": "gpfb_imageblit",
+        "bytes": 16
+      }
+    ],
+    "imports": [
+      "unregister_framebuffer",
+      "platform_device_put",
+      "platform_driver_unregister",
+      "__stack_chk_guard",
+      "cfb_copyarea",
+      "gp_chunk_pa",
+      "gp_clk_set_rate",
+      "memcpy",
+      "framebuffer_alloc",
+      "gp_clk_print",
+      "clk_get",
+      "__stack_chk_fail",
+      "_dev_info",
+      "_dev_err",
+      "platform_device_unregister",
+      "platform_device_add",
+      "register_framebuffer",
+      "platform_device_alloc",
+      "printk",
+      "fb_get_options",
+      "cfb_imageblit",
+      "gp_clk_set_parent",
+      "gp_enable_clock",
+      "__platform_driver_register",
+      "cfb_fillrect",
+      "gp_clk_get_rate",
+      "find_symbol",
+      "framebuffer_release",
+      "param_ops_int"
+    ],
+    "strings": [
+      "gpfb_probe: buffer_num=%d, display_id=%d",
+      "disp_allocate_buffer",
+      "disp_free_buffer",
+      "gp_disp_module_clk_en",
+      "disp1_allocate_buffer",
+      "disp1_free_buffer",
+      "gp_disp1_fb_clk_en",
+      "framebuffer at 0x%lx, 0x%x bytes, mapped to 0x%x",
+      "dsiclkx8",
+      "gpu_clk_fast",
+      "buffer_num",
+      "license=GPL",
+      "description=GP Framebuffer Driver",
+      "parmtype=buffer_num:int",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "__UNIQUE_ID_vermagic20",
+      "__param_str_buffer_num",
+      "__UNIQUE_ID_license69",
+      "__UNIQUE_ID_buffer_numtype65",
+      "__param_buffer_num",
+      "unregister_framebuffer",
+      "gp_chunk_pa",
+      "gp_clk_set_rate",
+      "framebuffer_alloc",
+      "gp_clk_print",
+      "clk_get",
+      "gp_clk_set_parent",
+      "gp_enable_clock",
+      "gp_clk_get_rate",
+      "framebuffer_release"
+    ]
+  },
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\4.19.128\\kernel\\arch\\arm\\mach-gpa7xxxa\\ppu\\gp_ppu_module.ko",
+    "bytes": 67272,
+    "sha256": "279f1f80c11ca308c70b33c28d764bc54b0407001b941f9d4caf55328c0bfdd4",
+    "functions": [
+      {
+        "name": "gp_ppu_poll",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_remove",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_release",
+        "bytes": 144
+      },
+      {
+        "name": "gp_ppu_open",
+        "bytes": 176
+      },
+      {
+        "name": "gp_ppu_probe",
+        "bytes": 480
+      },
+      {
+        "name": "gp_ppu_irq_handler",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_go.part.0",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_go_and_wait_done.part.0",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_lock.part.0",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_unlock.part.0",
+        "bytes": 60
+      },
+      {
+        "name": "gp_ppu_dma_go.part.0",
+        "bytes": 104
+      },
+      {
+        "name": "gp_ppu_ioctl",
+        "bytes": 7036
+      },
+      {
+        "name": "spriteV3D_Pos_Coordinate_Change.part.0",
+        "bytes": 236
+      },
+      {
+        "name": "gp_ppu_text_set_update_reg_flag",
+        "bytes": 104
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_2d_position_set",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_tftvtq_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_rgba_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_spriteram_init",
+        "bytes": 20
+      },
+      {
+        "name": "gp_ppu_text_window_select",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_init",
+        "bytes": 28
+      },
+      {
+        "name": "gp_ppu_sprite_init",
+        "bytes": 80
+      },
+      {
+        "name": "gp_ppu_paint_spriteram",
+        "bytes": 1360
+      },
+      {
+        "name": "gp_ppu_long_burst_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_tft_long_burst_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_group_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_charnum_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_argb888_enable_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_fifo_go_and_wait_done",
+        "bytes": 56
+      },
+      {
+        "name": "gp_ppu_sprite_set_free_size",
+        "bytes": 16
+      },
+      {
+        "name": "gp_ppu_fb_format_set",
+        "bytes": 104
+      },
+      {
+        "name": "gp_ppu_sprite_disable_set",
+        "bytes": 28
+      },
+      {
+        "name": "gp_ppu_delgo_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_resolution_set",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_text_calculate_number_array",
+        "bytes": 1744
+      },
+      {
+        "name": "gp_ppu_dual_blend_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_exsprite_number_set",
+        "bytes": 80
+      },
+      {
+        "name": "gp_ppu_text_vertical_compress_set",
+        "bytes": 104
+      },
+      {
+        "name": "gp_ppu_text_mode_set",
+        "bytes": 136
+      },
+      {
+        "name": "gp_ppu_palette_ram_ptr_set",
+        "bytes": 168
+      },
+      {
+        "name": "gp_ppu_text1_horizontal_compress_ptr_set",
+        "bytes": 48
+      },
+      {
+        "name": "gp_ppu_save_rom_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_frame_buffer_output_fifo_set",
+        "bytes": 88
+      },
+      {
+        "name": "gp_ppu_text_segment_set",
+        "bytes": 112
+      },
+      {
+        "name": "gp_ppu_sprite_special_effect_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_fblock_set",
+        "bytes": 24
+      },
+      {
+        "name": "SpriteV3D_set",
+        "bytes": 1296
+      },
+      {
+        "name": "gp_ppu_module_isr",
+        "bytes": 20
+      },
+      {
+        "name": "gp_ppu_text_number_array_update",
+        "bytes": 380
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 28
+      },
+      {
+        "name": "gp_ppu_text_rotate_zoom_set",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_depth_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_char0_set_transparent",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_palette_set",
+        "bytes": 120
+      },
+      {
+        "name": "gp_ppu_sprite_cdm_attribute_set",
+        "bytes": 164
+      },
+      {
+        "name": "gp_ppu_sprite_image_number_set",
+        "bytes": 36
+      },
+      {
+        "name": "gp_ppu_bottom_up_set_mode",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_blend_set",
+        "bytes": 136
+      },
+      {
+        "name": "spriteV3D_Pos_Coordinate_Change",
+        "bytes": 28
+      },
+      {
+        "name": "gp_ppu_exsprite_cdm_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_compress_disable_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_number_array_update_flag_clear",
+        "bytes": 16
+      },
+      {
+        "name": "gp_ppu_sprite_rotate_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_go_and_wait_done",
+        "bytes": 48
+      },
+      {
+        "name": "init_module",
+        "bytes": 36
+      },
+      {
+        "name": "gp_ppu_non_interlace_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_cdm_attribute_set_enable",
+        "bytes": 60
+      },
+      {
+        "name": "gp_ppu_text_attribute_source_select",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_text_palette_set",
+        "bytes": 120
+      },
+      {
+        "name": "gp_ppu_sprite_direct_set_mode",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_exsprite_large_size_attribute_set",
+        "bytes": 116
+      },
+      {
+        "name": "gp_ppu_text_bitmap_flip_enable_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_new_compression_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_large_sprite_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_offset_set",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_vga_set_mode",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_frame_buffer_add",
+        "bytes": 132
+      },
+      {
+        "name": "gp_ppu_go",
+        "bytes": 48
+      },
+      {
+        "name": "gp_ppu_yuv_type_set",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_rotate_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_interpolation_set",
+        "bytes": 148
+      },
+      {
+        "name": "gp_ppu_exsprite_large_size_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text25D_cossinebuf_set",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_module_init",
+        "bytes": 36
+      },
+      {
+        "name": "gp_ppu_rgb565_transparent_color_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_size_set",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_text3_25d_set",
+        "bytes": 60
+      },
+      {
+        "name": "gp_ppu_sp_addrx2_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_exsprite_interpolation_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_special_effect_set",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_sprite_segment_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_tv_long_burst_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_palette_type_set",
+        "bytes": 88
+      },
+      {
+        "name": "gp_ppu_set_isr",
+        "bytes": 20
+      },
+      {
+        "name": "gp_ppu_set_enable",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_window_enable_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_depth_set",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_sprite_interpolation_attribute_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_tft_flip_enable_set",
+        "bytes": 72
+      },
+      {
+        "name": "sp_interpolation_enable",
+        "bytes": 28
+      },
+      {
+        "name": "gp_ppu_free_size_set",
+        "bytes": 88
+      },
+      {
+        "name": "gp_ppu_sprite_number_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_deflicker_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_interpolation_set_mode",
+        "bytes": 100
+      },
+      {
+        "name": "exsp_interpolation_disable",
+        "bytes": 60
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_25d_position_set",
+        "bytes": 60
+      },
+      {
+        "name": "gp_ppu_text_rgba_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_large_size_attribute_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_number_array_set_ptr",
+        "bytes": 116
+      },
+      {
+        "name": "gp_ppu_fade_effect_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_dma_go",
+        "bytes": 48
+      },
+      {
+        "name": "gp_ppu_text_enable_set",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_module_exit",
+        "bytes": 28
+      },
+      {
+        "name": "gp_cpu_cpy_mem",
+        "bytes": 164
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_character_size_set",
+        "bytes": 80
+      },
+      {
+        "name": "gp_ppu_text_init",
+        "bytes": 80
+      },
+      {
+        "name": "Get_ppu_sprite_image_info",
+        "bytes": 80
+      },
+      {
+        "name": "gp_ppu_exsprite_start_address_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_window_set",
+        "bytes": 120
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_blend64_set",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_sprite_image_data_init",
+        "bytes": 36
+      },
+      {
+        "name": "gp_ppu_sprite_extend_attribute_ram_set_ptr",
+        "bytes": 64
+      },
+      {
+        "name": "gp_ppu_sprite_zoom_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "exsp_interpolation_enable",
+        "bytes": 60
+      },
+      {
+        "name": "gp_ppu_text_alpha_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_irq_state_get",
+        "bytes": 44
+      },
+      {
+        "name": "gp_ppu_sprite_blend_set_mode",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_attribute_array_set_ptr",
+        "bytes": 116
+      },
+      {
+        "name": "gp_ppu_blend4_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_horizontal_move_ptr_set",
+        "bytes": 48
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_window_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_position_set",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_text_color_set",
+        "bytes": 128
+      },
+      {
+        "name": "gp_ppu_release_frame_buffer",
+        "bytes": 24
+      },
+      {
+        "name": "gp_ppu_sprite_25d_set_mode",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_character_size_set",
+        "bytes": 120
+      },
+      {
+        "name": "gp_ppu_sprite_sfr_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_direct_set_mode",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_text_wallpaper_set_mode",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_exsprite_interpolation_attribute_set",
+        "bytes": 116
+      },
+      {
+        "name": "sp_interpolation_disable",
+        "bytes": 28
+      },
+      {
+        "name": "gp_ppu_go_without_wait",
+        "bytes": 116
+      },
+      {
+        "name": "gp_ppu_sprite_interpolation_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_ram_set_ptr",
+        "bytes": 64
+      },
+      {
+        "name": "exsp_group_set",
+        "bytes": 52
+      },
+      {
+        "name": "gp_ppu_exsprite_group_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_flip_set",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_frame_buffer_set_mode",
+        "bytes": 84
+      },
+      {
+        "name": "gp_ppu_sprite_color_dither_set_mode",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_color_mask_set_mode",
+        "bytes": 92
+      },
+      {
+        "name": "gp_ppu_sprite_group_attribute_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_zoom_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_exsprite_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_text_sine_cosine_set",
+        "bytes": 92
+      },
+      {
+        "name": "SetSpritePosition",
+        "bytes": 236
+      },
+      {
+        "name": "gp_ppu_sprite_mosaic_set_enable",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_blend16_set",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_color_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_get_frame_buffer",
+        "bytes": 20
+      },
+      {
+        "name": "gp_ppu_sprite_set_coordinate",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_color_mapping_set",
+        "bytes": 84
+      },
+      {
+        "name": "sp_group_set",
+        "bytes": 32
+      },
+      {
+        "name": "gp_ppu_text_horizontal_move_set_enable",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_text3_25d_y_compress_set",
+        "bytes": 76
+      },
+      {
+        "name": "gp_ppu_sprite_display_set_init",
+        "bytes": 48
+      },
+      {
+        "name": "gp_ppu_enable_set",
+        "bytes": 24
+      },
+      {
+        "name": "gp_ppu_sprite_color_mask_attribute_set",
+        "bytes": 132
+      },
+      {
+        "name": "gp_ppu_text_new_specialbmp_set",
+        "bytes": 72
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_mosaic_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_sprite_attribute_flip_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_set_mem",
+        "bytes": 164
+      },
+      {
+        "name": "gp_ppu_text_bitmap_set_mode",
+        "bytes": 100
+      },
+      {
+        "name": "gp_ppu_exsprite_fraction_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_exsprite_group_attribute_set",
+        "bytes": 116
+      },
+      {
+        "name": "gp_ppu_sprite_fraction_set",
+        "bytes": 68
+      },
+      {
+        "name": "gp_ppu_tv_flip_enable_set",
+        "bytes": 72
+      }
+    ],
+    "imports": [
+      "free_irq",
+      "gpHalPPUsprite25dPosconvert",
+      "misc_deregister",
+      "gp_user_va_to_pa",
+      "platform_driver_unregister",
+      "platform_get_irq",
+      "v7_flush_kern_cache_all",
+      "__stack_chk_guard",
+      "up",
+      "devm_ioremap",
+      "gp_chunk_va",
+      "gpHalPPUBaseAddr",
+      "kfree",
+      "__wake_up",
+      "__stack_chk_fail",
+      "kmem_cache_alloc",
+      "gpHalPPUFblock",
+      "__aeabi_idiv",
+      "_dev_err",
+      "request_threaded_irq",
+      "platform_get_resource",
+      "gpHalPPUEnset",
+      "gpHalPPUGetIrqStatus",
+      "printk",
+      "gpHalPPUEn",
+      "memset",
+      "gpHalPPUFifogowithdone",
+      "misc_register",
+      "__aeabi_uidiv",
+      "__init_waitqueue_head",
+      "arm_copy_to_user",
+      "__platform_driver_register",
+      "gpHalPPUframebufferRelease",
+      "gpHalPPUGo",
+      "arm_copy_from_user",
+      "gpHalPPUIsr",
+      "gpHalPPUFramebufferAdd",
+      "gpHalPPUClearIrqFlag",
+      "down_interruptible",
+      "__aeabi_uidivmod",
+      "gpHalPPUSimpleGo",
+      "gpHalPPUIrqCtrl",
+      "gpHalPPUframebufferGet",
+      "kmalloc_caches"
+    ],
+    "strings": [
+      "license=GPL",
+      "license=GPL",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "gp_ppu_release_frame_buffer",
+      "gp_ppu_get_frame_buffer",
+      "gp_ppu_frame_buffer_output_fifo_set",
+      "gp_ppu_frame_buffer_add",
+      "gp_ppu_frame_buffer_set_mode",
+      "__UNIQUE_ID_vermagic20",
+      "gp_ppu_dma_go.part.0",
+      "__UNIQUE_ID_license58",
+      "__ksymtab_gp_ppu_frame_buffer_add",
+      "__kstrtab_gp_ppu_frame_buffer_add",
+      "__ksymtab_gp_ppu_frame_buffer_output_fifo_set",
+      "__kstrtab_gp_ppu_frame_buffer_output_fifo_set",
+      "__ksymtab_gp_ppu_frame_buffer_set_mode",
+      "__kstrtab_gp_ppu_frame_buffer_set_mode",
+      "__ksymtab_gp_ppu_get_frame_buffer",
+      "__kstrtab_gp_ppu_get_frame_buffer",
+      "__ksymtab_gp_ppu_release_frame_buffer",
+      "__kstrtab_gp_ppu_release_frame_buffer",
+      "__UNIQUE_ID_license84",
+      "v7_flush_kern_cache_all",
+      "gp_chunk_va",
+      "kmem_cache_alloc",
+      "gp_ppu_dma_go",
+      "gpHalPPUframebufferRelease",
+      "gpHalPPUFramebufferAdd",
+      "gpHalPPUframebufferGet",
+      "kmalloc_caches"
+    ]
+  },
+  {
+    "file": "<card-export>\\retro\\Tests\\sysbin_copy\\lib\\modules\\4.19.128\\kernel\\arch\\arm\\mach-gpa7xxxa\\dla\\gp_dla_module.ko",
+    "bytes": 13028,
+    "sha256": "8311374e521f8701f1f3c8b420d503fd749d7b2b5a3065b78a59a23ed227f0ec",
+    "functions": [
+      {
+        "name": "gp_dla_close",
+        "bytes": 152
+      },
+      {
+        "name": "gp_dla_open",
+        "bytes": 136
+      },
+      {
+        "name": "gp_dla_remove",
+        "bytes": 92
+      },
+      {
+        "name": "gp_dla_probe",
+        "bytes": 464
+      },
+      {
+        "name": "gp_dla_irq",
+        "bytes": 68
+      },
+      {
+        "name": "__get_phy_addr",
+        "bytes": 92
+      },
+      {
+        "name": "gp_dla_ioctl",
+        "bytes": 824
+      },
+      {
+        "name": "gp_dla_exit",
+        "bytes": 64
+      },
+      {
+        "name": "gpHalDlaInit",
+        "bytes": 164
+      },
+      {
+        "name": "gpHalDlaAutoStartDcacheFlowEnable",
+        "bytes": 200
+      },
+      {
+        "name": "gp_dla_request",
+        "bytes": 80
+      },
+      {
+        "name": "cleanup_module",
+        "bytes": 64
+      },
+      {
+        "name": "init_module",
+        "bytes": 60
+      },
+      {
+        "name": "gp_dla_init",
+        "bytes": 60
+      },
+      {
+        "name": "gp_dla_release",
+        "bytes": 28
+      },
+      {
+        "name": "gpHalDlaIsrProcess",
+        "bytes": 204
+      },
+      {
+        "name": "gpHalDlaRegBaseAddr",
+        "bytes": 60
+      },
+      {
+        "name": "gp_dla_lock",
+        "bytes": 120
+      },
+      {
+        "name": "gp_dla_unlock",
+        "bytes": 92
+      }
+    ],
+    "imports": [
+      "free_irq",
+      "misc_deregister",
+      "gp_user_va_to_pa",
+      "platform_driver_unregister",
+      "platform_get_irq",
+      "__stack_chk_guard",
+      "gp_chunk_pa",
+      "finish_wait",
+      "up",
+      "kfree",
+      "prepare_to_wait_event",
+      "__wake_up",
+      "schedule_timeout",
+      "__stack_chk_fail",
+      "kmem_cache_alloc",
+      "init_wait_entry",
+      "request_threaded_irq",
+      "platform_get_resource",
+      "printk",
+      "memset",
+      "misc_register",
+      "__init_waitqueue_head",
+      "gp_enable_clock",
+      "__platform_driver_register",
+      "arm_copy_from_user",
+      "devm_ioremap_resource",
+      "down_interruptible",
+      "gp_invalidate_dcache_range",
+      "gp_clean_dcache_range",
+      "kmalloc_caches"
+    ],
+    "strings": [
+      "ScaleRequestFail",
+      "gpHalDlaAutoStartDcacheFlowEnable",
+      "license=GPL",
+      "vermagic=4.19.128 mod_unload ARMv7 p2v8 ",
+      "__UNIQUE_ID_vermagic20",
+      "__ksymtab_gpHalDlaAutoStartDcacheFlowEnable",
+      "__kstrtab_gpHalDlaAutoStartDcacheFlowEnable",
+      "__UNIQUE_ID_license57",
+      "gp_chunk_pa",
+      "kmem_cache_alloc",
+      "gp_enable_clock",
+      "gp_invalidate_dcache_range",
+      "gp_clean_dcache_range",
+      "kmalloc_caches"
+    ]
+  }
+]

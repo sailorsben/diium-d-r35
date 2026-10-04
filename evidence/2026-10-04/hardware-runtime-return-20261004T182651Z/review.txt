@@ -1,0 +1,122 @@
+D-R35 serial/kernel return: confirmed UART activity and next controlled test
+2026-10-04; archive created at 18:26:51 UTC
+
+Acquisition and cleanup
+The second passive probe completed all 45 samples in 105.335 seconds: 829 JSON
+records, no report cap, and zero bytes of stderr. Report, executable, init and
+marker were archived and hash checked. The original 1649-byte init was restored
+byte-for-byte and the v2 probe's five owned paths were removed. Emulator, core,
+frontend and driver hashes are unchanged. cleanup-verification.json records it.
+A subsequent one-boot console experiment has been installed separately; see
+Hardware-Console-v3/installation.json and init.diff for current card changes.
+
+UART identity is now directly confirmed
+Kernel boot output identifies c0070000.uart as ttyS0, Linux IRQ 19. The tty
+driver counter file ties serial port 0 to IRQ 19. Sysfs reports hwirq=69.
+ttyS0 is the active primary console. main and vrtemu stdout/stderr both point
+to /dev/console; their stdin points to /dev/null. This confirms the previous
+DT/GIC identification without relying only on an inferred alias.
+
+Sampled interval, approximately 89.8 seconds for IRQ endpoints:
+  UART IRQ count increased by 625739: 6968.24 interrupts/second.
+  Serial TX counter increased by 7668 across its 89.570-second interval:
+    85.61 reported transmitted bytes/second.
+  RX stayed at 70; break count stayed at 70 for the sampled game interval.
+The busy interrupt existed in the earlier v1 run, which did not repeatedly
+read tty counters; it is not first introduced by this probe's tty reads.
+
+This disproves an explanation based on thousands of reported receive bytes
+or an increasing break count during the sampled game window. It strongly
+motivates inspecting gp_uart_isr, startup/start_tx/stop_tx and interrupt-ack
+behavior. However UART console polling can bypass normal serial TX accounting.
+The counters alone do not prove a particular stuck TX interrupt or quantify
+CPU cost. (null) is the registered action label, not proof of no handler.
+
+Scaler debug messages are a separate finding
+The final bounded kernel-log snapshot has 234 scaler clock-enable messages
+within about 0.9704 seconds, roughly 240 messages/second. The messages alternate
+psca0 and psca0_sram and appear in repeated groups associated with scaler jobs.
+The driver already opens/configures/starts/stops/closes the scaler per job.
+Clock reconfiguration and repeated log formatting are concrete optimization
+targets. Neither message count nor symbols quantify the time they consume.
+
+The messages have priority 7 (debug). /proc/sys/kernel/printk is 7 4 1 7.
+In normal Linux 4.19 behavior, priority >= console_loglevel is suppressed at
+the console. Therefore these debug records are NOT established as serial
+traffic merely because they are present in the kernel ring. The runtime
+ignore_loglevel override was not collected in v2; v3 reads it. Logging still
+requires formatting/storage even when console printing is filtered.
+https://github.com/torvalds/linux/blob/v4.19/kernel/printk/printk.c
+
+Kernel log snapshots were limited to the latest 16 KiB. klogctl READ_ALL can
+discard older records to fit the caller's buffer and return slightly less
+than its capacity. Thus at_capacity=false does not prove the full boot log
+was captured. The overall JSON report is complete, but these are bounded
+log windows, not complete lifetime kernel logs.
+
+Kernel-side scaler and audio map
+Filtered /proc/kallsyms was readable, scanned 605751 bytes without its cap,
+and returned real kernel addresses, not zero placeholders. It identifies:
+  gp_pscaler_open        c035f86c
+  gp_pscaler_ioctl       c0360880
+  gp_pscaler_release     c0361428
+  pscaler_wait           c035fb38
+  pscaler_trigger        c035fd7c
+  pscaler_retrigger      c035ea88
+  gpHalPscalerGetStatus  c035dfcc
+  gpHalPscalerSetDropFrame c035e450
+  gp_uart_isr            c01177dc
+  gp_uart_start_tx       c011751c
+  gp_uart_stop_tx        c011755c
+  gp_uart_startup        c0117de8
+Output A/B buffers, FIFO restart, callback registration and DAC/audio DMA
+functions are present too. kernel_symbols-0.481.txt preserves the full filtered
+list. Function names/addresses do not recover implementations or prove that a
+continuous queue mode is available through the public ioctl API.
+
+modules.builtin confirms gp_pscaler_module and gp_scaler_module are built into
+this running kernel. Their names ending .ko in that list are build metadata,
+not downloadable module files. /dev/pscaler_a is misc device 10:48, also
+confirmed in kernel boot output. /proc/mtd contains only the header, with no
+registered partitions. No flash image extraction has happened. The export
+search found no kernel image. v3 stats /proc/kcore without reading kernel RAM;
+that will establish whether a standard read-only kernel-image interface exists.
+
+CPU/display observations
+main: approximately 0.21% kernel CPU, otherwise sleeping.
+vrtemu main thread: 84.46% user + 0.52% kernel CPU.
+Other workers: approximately 1.06%, and 0.15% user + 3.34% kernel CPU.
+One snapshot caught TID 484 in disp1_wait_frame_end, directly locating a display
+wait in that worker. Other snapshots put it in futex_wait_queue_me. This adds
+live evidence to the driver's static condition-variable and display paths.
+CPU accounting is sampled and combines core/adapter/frontend work. Global
+ticks account for 84.08 seconds over 89.570 wall seconds; IRQ CPU time cannot
+be reliably inferred from those counters. No sub-millisecond attribution or
+claimed performance gain follows from these averages.
+The newly captured DT is byte-identical to v1.
+
+Why a device issue could appear mainly on FF6 maps
+A constant background interrupt or driver overhead can consume enough time
+to miss audio deadlines only in expensive scenes. Cheaper menus/combat/games
+could remain within budget. This is a falsifiable hypothesis consistent with
+the observed map/menu difference, not a newly proven root cause. The established
+benefit of suppressing some internal drawing remains the working baseline.
+
+Installed controlled experiment
+Hardware-Console-v3 sends main stdout/stderr to /dev/null only on the next
+armed boot; vrtemu inherits those descriptors. Kernel console settings remain
+unchanged. The same passive observer collects serial counters, IRQs, CPU,
+FD targets and kernel snapshots, plus ignore_loglevel and kcore metadata.
+The core, adapter, driver, frame policy, audio format and clock settings are
+unchanged. This tests userspace console output specifically; it cannot by
+itself remove all UART activity or all kernel debug-message overhead.
+On a subsequent boot after the marker has been claimed, the original launch
+command is selected even before PC cleanup. Exact init rollback is preserved.
+ARM build/fixture checks and the exported BusyBox shell syntax check passed;
+hardware execution of this new experiment is not yet verified.
+
+Repeat the previous map/menu/map sequence, keep the device running at least
+two minutes from boot, then shut down normally and reconnect D:. We will
+archive the report, restore init and remove only this experiment's owned files.
+Judge any improvement from UART activity and appropriate comparable CPU/frame
+measurements; subjective clean audio alone cannot prove recovered render budget.

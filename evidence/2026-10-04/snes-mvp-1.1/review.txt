@@ -1,0 +1,48 @@
+SNES MVP 1.1 handheld return -- 2026-10-04
+
+Ben reports that the SNES UI appeared briefly, then the D-R35 loading animation
+replaced it. The arm marker was consumed. No stall, runtime-exit log or private
+last-session report was present. The failed test tree and init are archived here.
+
+startup.log proves:
+  441.818 program entered, PID 483
+  441.960 InitVFB returned, valid display pointer
+  441.962 display size 640x480
+  441.983 library scan complete, 3 games
+  442.010 first FlipVFB returned
+  442.013 input baseline held_mask=0x00000000
+  442.015 READY
+Startup completed in about 197 ms. This returned run did not encounter the
+unbounded initial input-release condition that v1.1 repaired. There is no
+recorded watchdog timeout or child exit before shutdown.
+
+The vendor splash executable was copied read-only as showlogo.returned.
+SHA256 436d8018808b150c926274575a195f664e61db646f44713371019e9ae10caf3b.
+Its joytest routine resolves /tmp/vrtemu.log at virtual address 0x3ce48 and
+/tmp/sderror.log at 0x3ce58. At 0x3a764-0x3a780 it repeatedly fopen()s the
+vrtemu marker; absent that marker it cycles 18 sprites and calls dispFlip
+(0x3a7d8-0x3a7f8). Marker presence branches to 0x3a8cc, closes the marker,
+clears a framebuffer and flips it, frees logo allocations and returns.
+main then calls dispDestroy at 0x1089c, and only afterward fopen()s
+/tmp/displogo.log (string at 0x3b0a4) at 0x108bc before exiting.
+
+Our direct MVP had no /tmp/vrtemu.log handshake. Therefore a still-running
+showlogo can keep overwriting an otherwise initialized MVP and later destroy
+its display state. This explains the brief visible UI and subsequent animation;
+the previous test did not capture process inventory to independently prove its
+PID. The next build captures the initial process list and splash PID/ack status.
+
+v1.2 changes only the one-shot shell wrapper and instructions. It creates the
+vendor RAM stop marker, waits up to 5 seconds for active showlogo processes to
+exit (zombies already released resources), records acknowledgment, and only
+then starts the existing verified ARM binary. If the splash remains active,
+it records the failure and refuses to start a second display owner. No stock
+binary is overwritten, no display refresh workaround is added, and no unrelated
+process is signaled/killed. SRAM and snapshot namespaces remain private.
+
+Focused wrapper checks passed: delayed graceful splash cleanup precedes child
+launch; stuck splash prevents launch; startup watchdog behavior; early errors;
+one-shot skip; ready gaming sessions outlive the startup deadline.
+The ARM executable is unchanged, SHA256
+cf46cf78f669c37a88c34912ad5420fa7b81f7f02cd9f44a488b268f22ec0ba6.
+The next handheld test must confirm sustained visible UI and input operation.

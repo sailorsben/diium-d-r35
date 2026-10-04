@@ -1,0 +1,51 @@
+Hardware-Console-v3 return review, 2026-10-04 America/Chicago
+
+COLLECTION AND CLEANUP
+846 JSON records, 45 samples, 105.328050 seconds. Complete, report uncapped,
+stderr empty. Collector hash-verified archive before cleanup. Exact original
+init restored (SHA256 6d65bf756183f37c19a542703c8d50193d5c137e7d0d45be4ac980fcdcb8efbd).
+All five owned probe paths absent. v11 adapter/core, vrtemu and driver hashes
+unchanged. See cleanup-verification.json for full hashes.
+
+RESULT
+main (PID476) and vrtemu (PID481) FD1/FD2 resolve to /dev/null in all four
+snapshots. The intended standard-output/error intervention actually ran.
+UART IRQ19: v2 6968.241809/sec; v3 6953.201616/sec, down 0.216%.
+Reported UART TX: v2 85.609342 B/sec; v3 85.752662 B/sec.
+RX/break remain flat within each run. Persistent ~7k UART IRQ/sec activity
+was not materially reduced by this standard-output/error intervention.
+
+Whole-run main-thread CPU (core + adapter + frontend): v2 84.981%, v3 84.055%.
+v3 has a longer lower-load phase (roughly 46-85s vs v2 44-67s), so the average
+reduction is not evidence of improved throughput. Similar high-load periods:
+early v2 86.844%, v3 86.768%; late v2 86.773%, v3 86.906%.
+These phases are inferred from the CPU series, not exact scene labels.
+Ben confirms same map -> party menu -> map sequence; perceived result same.
+Adaptive draw suppression remained enabled. No v3 per-frame timing or held-draw
+counts exist; this run does not prove identical frame delivery or rendering cost.
+
+CAVEATS AND NEW ACCESS RESULTS
+Both processes retain FD10/FD11 targeting /dev/console. We did not trace writes
+to these descriptors. This bounds stdout/stderr suppression, not all userspace
+console access or UART/kernel logging costs. No live IRQ status bit or cost
+has been identified.
+ignore_loglevel reads N; printk reads 7 4 1 7. This records the override state
+missing from v2. Level-7 scaler messages remain in the kernel ring buffer.
+Final bounded window: 234 psca0/psca0_sram clock messages across 0.978202 sec
+(~239.2 messages/sec). It does not measure panel refresh or messages per frame.
+/proc/kcore stat returned errno2 (ENOENT). No kcore parser/extractor is installed:
+the authorized conditional kernel-text route is unavailable. No fallback access
+through /dev/mem, flash, MMIO or firmware modification was attempted.
+
+ANALYZER CORRECTION
+Anchored kernel-log timestamps to the beginning of each message. The old regex
+mistook the gp_enable_clock source line [247] for a timestamp. v3 analysis.json
+and analysis-output.txt were regenerated. Raw returns are untouched. The true
+v3 final log timestamps are 111.422767..112.400969; historical v2 derived JSON
+still has its old last_timestamp=247 field and should not be used for that span.
+
+RESUME
+v3 is finished and cleaned up. Working v11 baseline restored; no new test armed.
+UART/scaler overhead remains a hypothesis. kcore recovery is unavailable on
+this boot. Select the next controlled attribution/optimization experiment from
+the preserved driver/frontend analysis; do not present v3 as a performance fix.

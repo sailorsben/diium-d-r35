@@ -1,0 +1,322 @@
+<7>[    0.344179] [gp_enable_clock][247] run, clock_name=[uart0]
+<7>[    0.344190] [gp_enable_clock][247] run, clock_name=[uart0_reg]
+<6>[    0.344472] c0070000.uart: ttyS0 at MMIO 0x0 (irq = 19, base_baud = 12656250) is a unknown
+<7>[    0.344507] [gp_enable_clock][247] run, clock_name=[uart1]
+<7>[    0.344526] [gp_enable_clock][247] run, clock_name=[uart1_reg]
+<6>[    0.713096] console [ttyS0] enabled
+<6>[    0.716861] c0080000.uart: ttyS2 at MMIO 0x0 (irq = 20, base_baud = 12656250) is a unknown
+<7>[    0.725102] [gp_enable_clock][247] run, clock_name=[uart2]
+<7>[    0.725129] [gp_enable_clock][247] run, clock_name=[uart2_reg]
+<7>[    0.725141] [gp_enable_clock][247] run, clock_name=[uart2]
+<7>[    0.725151] [gp_enable_clock][247] run, clock_name=[uart2_reg]
+<4>[    0.725818] [chunkmem] pbase=03000000 vbase=C4000000 size=01000000
+<4>[    0.732003] [chunkmem] addr:03001000  size:00FFE020  ---
+<4>[    0.737235] system bytes = 01000000 (16777216)
+<4>[    0.741672] in use bytes = 00001FE0 (8160)
+<4>[    0.745739] max chunk    = 00FFD000 (16764928)
+<4>[    0.745739] 
+<4>[    0.752154] gpioReg[0]=0xfc000000
+<4>[    0.755402] gpioReg->gpioInputData2=0x7000
+<4>[    0.759509] gpioReg->gpioOutputData1=0x300
+<4>[    0.763623] gpio dev minor : 60
+<4>[    0.767083] board dev minor : 58
+<4>[    0.770278] ModuleInit: timer
+<4>[    0.773248] get timer0
+<4>[    0.775689] get timer1
+<4>[    0.778102] get timer2
+<4>[    0.780578] get timer3
+<4>[    0.782989] get timer4
+<4>[    0.785396] get timer5
+<4>[    0.787794] get timer6
+<4>[    0.790244] get timer7
+<4>[    0.792807] ModuleInit: rtc
+<7>[    0.795527] [gp_enable_clock][247] run, clock_name=[gpio_rtc]
+<4>[    0.795729] rtc reliable code: 0x00
+<4>[    0.799140] reliable code not match, reset rtc
+<6>[    0.804204] gp-rtc c0050000.rtc: rtc core: registered gp-rtc as rtc0
+<4>[    0.810681] ModuleInit: i2c-sw-bus
+<4>[    0.814140] ModuleInit: i2c-sw-bus end
+<6>[    0.818983] workingset: timestamp_bits=14 max_order=14 bucket_order=0
+<6>[    0.831432] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+<6>[    0.838182] fuse init (API version 7.27)
+<6>[    0.860537] io scheduler noop registered
+<6>[    0.864408] io scheduler deadline registered (default)
+<6>[    0.869927] io scheduler cfq registered
+<6>[    0.874625] Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled
+<6>[    0.882793] brd: module loaded
+<6>[    0.887108] loop: module loaded
+<4>[    0.890669] pscaler_a dev minor : 48
+<4>[    0.894380] pscaler_b dev minor : 47
+<4>[    0.898067] pscaler_y dev minor : 46
+<4>[    0.902009] scale dev minor : 45
+<6>[    0.905637] mousedev: PS/2 mouse device common for all mice
+<6>[    0.911199] i2c /dev entries driver
+<4>[    0.914714] get i2c0
+<7>[    0.916897] [gp_enable_clock][247] run, clock_name=[i2c0]
+<4>[    0.917204] get i2c1
+<7>[    0.919439] [gp_enable_clock][247] run, clock_name=[i2c1]
+<4>[    0.919700] get i2c2
+<7>[    0.921865] [gp_enable_clock][247] run, clock_name=[i2c2]
+<6>[    0.933134] gp-rtc c0050000.rtc: setting system clock to 1970-01-01 00:00:04 UTC (4)
+<6>[    0.941138] ALSA device list:
+<6>[    0.944037]   No soundcards found.
+<7>[    0.947644] [gp_enable_clock][247] run, clock_name=[uart1]
+<7>[    0.947684] [gp_enable_clock][247] run, clock_name=[uart1_reg]
+<6>[    0.949675] Freeing unused kernel memory: 1024K
+<6>[    0.954322] Run /init as init process
+<5>[    1.011461] random: fast init done
+<5>[    1.092914] random: crng init done
+<4>[    1.212889] board_config: loading out-of-tree module taints kernel.
+<4>[    1.220049] [board_init:2305]
+<4>[    1.223023] mux7:0xd
+<4>[    1.225148] [0] bus num:17 wc:0x30 lowest:1 
+<4>[    1.229434] [1] bus num:26 wc:0x30 lowest:1 
+<4>[    1.233634] [2] bus num:28 wc:0x1 lowest:0 
+<4>[    1.237799] [3] bus num:54 wc:0x30 lowest:1 
+<4>[    1.242066] [4] bus num:56 wc:0x30 lowest:1 
+<7>[    1.284010] [gp_enable_clock][247] run, clock_name=[sd0_reg]
+<7>[    1.284063] [gp_enable_clock][247] run, clock_name=[sd0]
+<4>[    1.284082] 
+<4>[    1.284082] drivers/mmc/host/generalplus/gp_sdio_module.c,gp_sdio_init(),760.
+<7>[    1.284406] [gp_enable_clock][247] run, clock_name=[sd2_reg]
+<7>[    1.293068] [gp_enable_clock][247] run, clock_name=[sd2]
+<4>[    1.375028] hdmi dev minor : 40
+<4>[    1.444281] disp1 dev minor : 39
+<6>[    1.635978] usbcore: registered new interface driver usbfs
+<6>[    1.641603] usbcore: registered new interface driver hub
+<6>[    1.646932] usbcore: registered new device driver usb
+<6>[    1.763473] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+<4>[    1.770326] **** EHCI HCD gpa7xxxa probe ****
+<7>[    1.774683] [gp_enable_clock][247] run, clock_name=[usb20_host_a]
+<7>[    1.774725] [gp_enable_clock][247] run, clock_name=[usb20_dev_a]
+<7>[    1.780948] [gp_enable_clock][247] run, clock_name=[usb20_dev_a]
+<6>[    1.781973] gpa7xxxa-ehci d0c00100.ehci: GPA7XXXA EHCI
+<6>[    1.787101] gpa7xxxa-ehci d0c00100.ehci: new USB bus registered, assigned bus number 1
+<6>[    1.795184] gpa7xxxa-ehci d0c00100.ehci: irq 56, io mem 0xd0c00100
+<6>[    1.838178] gpa7xxxa-ehci d0c00100.ehci: USB 2.0 started, EHCI 1.10
+<6>[    1.845713] hub 1-0:1.0: USB hub found
+<6>[    1.945040] hub 1-0:1.0: 1 port detected
+<4>[    2.008707] Card insert = 4
+<4>[    2.150600] **** EHCI HCD gpa7xxxa probe ****
+<7>[    2.154996] [gp_enable_clock][247] run, clock_name=[usb20_host_b]
+<7>[    2.155051] [gp_enable_clock][247] run, clock_name=[usb20_dev_b]
+<7>[    2.161284] [gp_enable_clock][247] run, clock_name=[usb20_dev_b]
+<6>[    2.162311] gpa7xxxa-ehci d0e00100.ehci: GPA7XXXA EHCI
+<6>[    2.167421] gpa7xxxa-ehci d0e00100.ehci: new USB bus registered, assigned bus number 2
+<6>[    2.175473] gpa7xxxa-ehci d0e00100.ehci: irq 57, io mem 0xd0e00100
+<6>[    2.265202] gpa7xxxa-ehci d0e00100.ehci: USB 2.0 started, EHCI 1.10
+<6>[    2.272633] hub 2-0:1.0: USB hub found
+<7>[    2.278786] [gp_enable_clock][247] run, clock_name=[sd2]
+<7>[    2.278827] [gp_enable_clock][247] run, clock_name=[sd2_reg]
+<4>[    2.278838] 2 drvl2_sd_init drvl2_sd_flush done
+<6>[    2.290199] hub 2-0:1.0: 1 port detected
+<4>[    2.298783] CMD8 OK!
+<4>[    2.416917] STATE_READY success !
+<4>[    2.420165] sd pinmux support 1.8V. mux=0x100000, 0x40784000
+<4>[    2.425795] Support 1.8v!!
+<4>[    2.428509] CMD11 ok!
+<6>[    2.442964] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+<4>[    2.449420] **** OHCI HCD gpa7xxxa probe ****
+<6>[    2.453765] gpa7xxxa-ohci d0c00080.ohci: GPA7XXXA OHCI
+<6>[    2.458905] gpa7xxxa-ohci d0c00080.ohci: new USB bus registered, assigned bus number 3
+<6>[    2.466811] gpa7xxxa-ohci d0c00080.ohci: irq 54, io mem 0xd0c00080
+<4>[    2.472933] [ohci_gpa7xxxa_start][28]
+<4>[    2.476671] [ohci_gpa7xxxa_start]fminterval=0x9de2edf
+<6>[    2.597557] hub 3-0:1.0: USB hub found
+<6>[    2.615294] hub 3-0:1.0: 1 port detected
+<4>[    2.639376] **** OHCI HCD gpa7xxxa probe ****
+<6>[    2.643735] gpa7xxxa-ohci d0e00080.ohci: GPA7XXXA OHCI
+<6>[    2.648876] gpa7xxxa-ohci d0e00080.ohci: new USB bus registered, assigned bus number 4
+<6>[    2.656778] gpa7xxxa-ohci d0e00080.ohci: irq 55, io mem 0xd0e00080
+<4>[    2.662900] [ohci_gpa7xxxa_start][28]
+<4>[    2.666589] [ohci_gpa7xxxa_start]fminterval=0x9de2edf
+<4>[    2.733327] sd bus sta ok!
+<6>[    2.741592] hub 4-0:1.0: USB hub found
+<6>[    2.752910] hub 4-0:1.0: 1 port detected
+<4>[    2.798752] SD30 voltage switching OK!!
+<4>[    2.818796] success switch sd to 4 bit. try_count=0, response=0x00000920
+<4>[    2.825489] *-Support Hi-Speed SDR25-*
+<4>[    2.829219] 2Query sw func grp 1=0x1f80
+<4>[    2.832977] *-Support SDR50-*
+<4>[    2.835975] 1Query func can sw =0x2
+<5>[    2.844861] SCSI subsystem initialized
+<4>[    3.068803] SDHC_CARD. c_size=241159 total_sector=246947840
+<4>[    3.074329] max_speed=96000000
+<6>[    3.102482] usbcore: registered new interface driver usbhid
+<6>[    3.108007] usbhid: USB HID core driver
+<4>[    3.168935] sd clk delay=0x0
+<4>[    3.173964] 0 tune ok!
+<4>[    3.176237] sd clk delay=0x1
+<4>[    3.179153] 1 tune ok!
+<4>[    3.181446] sd clk delay=0x2
+<4>[    3.184326] 2 tune ok!
+<4>[    3.186654] sd clk delay=0x3
+<4>[    3.189547] 3 tune ok!
+<4>[    3.191863] sd clk delay=0x4
+<4>[    3.194743] 4 tune ok!
+<4>[    3.197072] sd clk delay=0x5
+<4>[    3.199962] 5 tune ok!
+<4>[    3.202281] sd clk delay=0x6
+<4>[    3.205161] 6 tune ok!
+<4>[    3.207489] sd clk delay=0x7
+<4>[    3.210379] 7 tune ok!
+<4>[    3.212699] sd clk delay=0x8
+<4>[    3.215579] 8 tune ok!
+<4>[    3.217907] sd clk delay=0x9
+<4>[    3.220802] 9 tune ok!
+<4>[    3.223116] sd clk delay=0xa
+<4>[    3.225997] 10 tune ok!
+<4>[    3.228412] sd clk delay=0xb
+<4>[    3.231301] 11 tune ok!
+<4>[    3.233708] sd clk delay=0xc
+<4>[    3.236588] 12 tune ok!
+<4>[    3.239012] sd clk delay=0xd
+<4>[    3.241884] 13 tune ok!
+<4>[    3.244299] sd clk delay=0xe
+<4>[    3.247180] 14 tune ok!
+<4>[    3.249603] sd clk delay=0xf
+<4>[    3.252476] 15 tune ok!
+<4>[    3.254890] sd clk delay=0x10
+<4>[    3.257858] 16 tune ok!
+<4>[    3.260281] sd clk delay=0x11
+<4>[    3.263241] 17 tune ok!
+<4>[    3.265655] sd clk delay=0x12
+<4>[    3.268626] 18 tune ok!
+<4>[    3.271038] sd clk delay=0x13
+<4>[    3.274006] 19 tune ok!
+<4>[    3.276420] sd clk delay=0x14
+<4>[    3.279396] 20 tune ok!
+<4>[    3.281803] sd clk delay=0x15
+<4>[    3.284771] 21 tune ok!
+<4>[    3.287185] sd clk delay=0x16
+<4>[    3.290161] 22 tune ok!
+<4>[    3.292568] sd clk delay=0x17
+<4>[    3.295535] 23 tune ok!
+<4>[    3.297950] sd clk delay=0x18
+<4>[    3.300926] 24 tune ok!
+<4>[    3.303333] sd clk delay=0x19
+<4>[    3.306301] 25 tune ok!
+<4>[    3.308723] sd clk delay=0x1a
+<4>[    3.311683] 26 tune ok!
+<4>[    3.314098] sd clk delay=0x1b
+<4>[    3.317066] 27 tune ok!
+<4>[    3.319489] sd clk delay=0x1c
+<4>[    3.322449] 28 tune ok!
+<4>[    3.324863] sd clk delay=0x1d
+<4>[    3.327830] 29 tune ok!
+<4>[    3.330253] sd clk delay=0x1e
+<4>[    3.333213] 30 tune ok!
+<4>[    3.335628] sd clk delay=0x1f
+<4>[    3.338595] 31 tune ok!
+<4>[    3.341019] sd clk delay=0x10
+<4>[    3.397735] get spi0
+<4>[    3.399966] spi_addr_base=0xfc090000
+<7>[    3.403482] [gp_enable_clock][247] run, clock_name=[spi0]
+<4>[    3.491943] spidev listed directly in DT
+<4>[    3.492171] get spi1
+<4>[    3.498222] spi_addr_base=0xfc0a0000
+<7>[    3.501831] [gp_enable_clock][247] run, clock_name=[spi1]
+<4>[    3.598306] sys_clk:202500000
+<4>[    3.601384] watchdog dev minor : 38
+<7>[    3.746028] [gp_aes_init_module:736] aes init module
+<7>[    3.746276] [gp_aes_probe:629] aes probe
+<7>[    3.746316] [gpHalAesRegBaseAddr:79] aes_addr_base=0xc39d8000
+<7>[    3.746321] [gpHalAesRegBaseAddr:80] aesReg_addr=0xc39d8100
+<4>[    3.746423] aes dev minor : 37
+<7>[    3.788910] [gp_hash_init_module:722] hash init module
+<7>[    3.789153] [gp_hash_probe:616] hash probe
+<7>[    3.789192] [gpHalHashRegBaseAddr:79] hash_addr_base=0xc39e0000
+<7>[    3.789197] [gpHalHashRegBaseAddr:80] hashReg_addr=0xc39e0118
+<4>[    3.789300] hash dev minor : 36
+<4>[    3.905026] gpa7xxxa_audio_codec_driver_probe enter. name is gpa7xxxa-playback-codec, dev_name is gpa7xxxa-playback-codec
+<4>[    3.916381] soc-audio soc-audio.0: ASoC: machine gpa7xxxaevm-playback-audio should use snd_soc_register_card()
+<6>[    3.927571] soc-audio soc-audio.0: gpa7xxxa-playback-codec <-> gpa7xxxa-playback-dai mapping ok
+<4>[    4.106864] dac_addr_base=0xfc0e0000
+<4>[    4.110747] gpa7xxxaevm_audio_init exit, 0
+<4>[    4.274010] adc_addr_base=0xfc0d0000
+<4>[    4.368247] drvdata=c82fd570,input=d3225ef1
+<6>[    4.372662] input: adc-keys as /devices/platform/adc-keys/input/input0
+<7>[    4.379280] [gp_enable_clock][247] run, clock_name=[sar_adc]
+<7>[    4.379321] [gp_enable_clock][247] run, clock_name=[i2s_rx_sram]
+<4>[    4.513526] gp_disp1_fb_clk_en = 1 !!! 
+<7>[    4.517316] [gp_enable_clock][247] run, clock_name=[hdmi]
+<7>[    4.517366] [gp_enable_clock][247] run, clock_name=[hdmi_audio]
+<7>[    4.517382] [gp_enable_clock][247] run, clock_name=[tft]
+<7>[    4.517391] [gp_enable_clock][247] run, clock_name=[ppu_reg]
+<7>[    4.517401] [gp_enable_clock][247] run, clock_name=[ppu_fb]
+<7>[    4.517410] [gp_enable_clock][247] run, clock_name=[ppu_fbahb]
+<4>[    4.517419] [gpHalDisp1Init:129]
+<4>[    4.520624] pdisp1Reg->disp1Ctrl = 0x38335 
+<4>[    4.543299] disp1 init 0
+<4>[    4.543308] device 1 init
+<4>[    4.545788] DSI test !!! 
+<4>[    4.551011] [gpHalDisp1SetEnable:1104], enable = 0 
+<4>[    4.555839] pdisp1Reg->disp1Ctrl = 0x38335 
+<4>[    4.563439] =>0xff:0xf:0xff:0x0:0xff:0xcc
+<4>[    4.567365] cp succ2, Tuning clk passed!!
+<4>[    4.571374] sd**div=0x2
+<4>[    4.573786] sd**rate=90000000
+<4>[    4.576741] sd[1] clock rate=90000000, root rate=270000000 divider=3
+<4>[    4.583130] sd_data_bus_width=4
+<4>[    4.586201] sd_secured_mode=0
+<4>[    4.589161] sd_sd_card_type=0
+<4>[    4.592104] sd_speed_class=10
+<4>[    4.595057] sd_flow_write_au_sectors=49152 erase_au=256
+<4>[    4.600277] sd_erase_size_au=256
+<4>[    4.603477] sd_uhs_speed_grade=3
+<4>[    4.606689] sd_uhs_au_sectors=16384
+<4>[    4.610172] sd[1]: init OK!
+<4>[    4.621492] >> read sector 0 ok!Tag1=0, Tag2=0, Tag3=aa550000
+<4>[    4.628970] [gpHalPPUDisp1SetFbFormat:540], enable = 0 
+<4>[    4.634139] pPPUFunreg->ppuEnable = 0x80 
+<4>[    4.638120] [gpHalDisp1SetEnable:1104], enable = 1 
+<4>[    4.643007] pdisp1Reg->disp1Ctrl = 0x38335 
+<6>[    4.648212]  sdcardb: sdcardb1
+<4>[    4.776705] FAT-fs (sdcardb1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+<6>[    7.060504] Adding 262140k swap on /usr/retro/swapfile.  Priority:-2 extents:1 across:262140k SS
+<7>[    7.179427] [gp_enable_clock][247] run, clock_name=[uart0]
+<7>[    7.179467] [gp_enable_clock][247] run, clock_name=[uart0_reg]
+<7>[    7.179479] [gp_enable_clock][247] run, clock_name=[uart0]
+<7>[    7.179490] [gp_enable_clock][247] run, clock_name=[uart0_reg]
+<7>[    7.179506] [gp_enable_clock][247] run, clock_name=[uart2]
+<7>[    7.179517] [gp_enable_clock][247] run, clock_name=[uart2_reg]
+<7>[    7.179527] [gp_enable_clock][247] run, clock_name=[uart2]
+<7>[    7.179536] [gp_enable_clock][247] run, clock_name=[uart2_reg]
+<4>[    7.346412] gp_disp1_fb_clk_en = 0 !!! 
+<7>[    7.350256] [gp_enable_clock][247] run, clock_name=[hdmi]
+<7>[    7.350313] [gp_enable_clock][247] run, clock_name=[hdmi_audio]
+<7>[    7.350327] [gp_enable_clock][247] run, clock_name=[tft]
+<7>[    7.350336] [gp_enable_clock][247] run, clock_name=[ppu_reg]
+<7>[    7.350346] [gp_enable_clock][247] run, clock_name=[ppu_fb]
+<7>[    7.350356] [gp_enable_clock][247] run, clock_name=[ppu_fbahb]
+<4>[    7.376717] gp_disp1_fb_clk_en = 1 !!! 
+<7>[    7.380582] [gp_enable_clock][247] run, clock_name=[hdmi]
+<7>[    7.380633] [gp_enable_clock][247] run, clock_name=[hdmi_audio]
+<7>[    7.380648] [gp_enable_clock][247] run, clock_name=[tft]
+<7>[    7.380658] [gp_enable_clock][247] run, clock_name=[ppu_reg]
+<7>[    7.380668] [gp_enable_clock][247] run, clock_name=[ppu_fb]
+<7>[    7.380678] [gp_enable_clock][247] run, clock_name=[ppu_fbahb]
+<4>[    7.380687] [gpHalDisp1Init:129]
+<4>[    7.383834] pdisp1Reg->disp1Ctrl = 0x38335 
+<4>[    7.398740] disp1 init 1
+<4>[    7.398747] device 1 init
+<4>[    7.401220] DSI test !!! 
+<4>[    7.406414] [gpHalDisp1SetEnable:1104], enable = 0 
+<4>[    7.411307] pdisp1Reg->disp1Ctrl = 0x38335 
+<4>[    7.438585] [gpHalPPUDisp1SetFbFormat:540], enable = 0 
+<4>[    7.443851] pPPUFunreg->ppuEnable = 0x80 
+<4>[    7.458712] [gpHalDisp1SetEnable:1104], enable = 1 
+<4>[    7.463525] pdisp1Reg->disp1Ctrl = 0x38335 
+<7>[    7.569718] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[    7.569764] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[    7.569829] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[    7.569844] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[    7.577193] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[    7.577241] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[    7.580701] [gp_enable_clock][247] run, clock_name=[apll]
+<7>[    7.580739] [gp_enable_clock][247] run, clock_name=[timer]
+<7>[    7.580754] [gp_enable_clock][247] run, clock_name=[timer_base]
+<4>[    7.580764] evm_hw_startup audio_module 0x0
+<7>[    7.604333] [gp_enable_clock][247] run, clock_name=[timer]
+<7>[    7.604371] [gp_enable_clock][247] run, clock_name=[timer_base]
+<4>[    7.604382] [gp_timer_open:328] timer0 open successfully !

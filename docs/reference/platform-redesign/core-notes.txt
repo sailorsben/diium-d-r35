@@ -1,0 +1,77 @@
+DIIUM D-R35 core strategy review - 2026-10-04
+Scope: read-only binary analysis and upstream primary-source review. Recommendations are engineering priors, NOT measured performance on this handheld. No card writes, emulator execution, installation, or firmware changes.
+
+1. ACTUAL PS1 CORE
+Installed D:/retro/libs/emu_pcsx.so was hashed with authorized read-only escalation. It matches preserved H:/DIIUM D-R35/retro/libs/emu_pcsx.so exactly:
+size 1,227,580 bytes
+SHA256 30879f1b5a652d0b6f60bd2ab0e71194c9790b779d94c4c8e5488eb56b07a339
+Embedded identities: PCSX-ReARMed; r22 44de3b6; Starting PCSX-ReARMed v2.1-rc3-113-g44de3b6.
+The short revision is an embedded claim, not proof of an unmodified upstream commit. Vendor private SetFrameSkip is present. Exact source/reproducible binary provenance is unavailable; attempts to fetch the short revision from public upstream did not resolve.
+
+Confirmed compiled paths from symbols/object names/disassembly:
+- ARM new_dynarec, ari64_init/execute/reset, new_dyna_start, psxRec, arm/linkage_arm.o.
+- NEON GTE: gteRTPS_neon / gteRTPT_neon.
+- NEON software PS1 GPU renderer: plugins/gpu_neon/psx_gpu/psx_gpu_arm_neon.o and initialize_psx_gpu.
+- This is CPU NEON software rasterization, not evidence of a functioning Vivante hardware GPU.
+- psxInit (0xa1610) selects psxRec unless Config.Cpu byte equals 1, when it selects psxInt. Actual live setting is unknown.
+- SetFrameSkip (0x9f0f0) stores into g_frame_skip.
+- retro_run executes psxCpu->Execute, then g_frame_skip can skip the video callback.
+- vout_flip checks g_frame_skip BEFORE scanline conversion from BGR555/BGR888 to RGB565. Therefore the private hook definitely avoids final color conversion and submission. This analysis has not proven that this flag skips GPU rasterization itself; separate decide_frameskip / GPU frameskip state also exists.
+- retro_get_system_av_info embeds 50.0/60.0 FPS, 44,100.0 Hz audio, base 320x240, maximum 1024x512. Do not substitute modern PCSX timing for this binary's reported timing.
+- Core exports retro_set_video_refresh and uses the registered video callback from retro_run with pitch width*2. It does not link driver.so, EGL, GLES, or galcore libraries. Shared vendor frontend route is strongly supported by common Load_Proc2/DrawFrame/DispFrame implementation; actual live path/cadence still needs a PS1 run trace.
+- vrtemu PlayFrame misleadingly names the AUDIO batch callback, not video. DrawFrame/DispFrame own video.
+
+Memory matters: .bss=26,858,304 bytes (~25.61MiB virtual zero-initialized space), including translation_cache=16,777,216 bytes, egpu=4,217,348, and three separate 1MiB objects (shadow/hash_table/invalid_code). This is NOT an RSS measurement: un-touched demand-zero pages need not occupy physical RAM. Nevertheless it makes unloading the launcher art/index/UI heap before emulation materially relevant. The 1.2MB disk binary does not imply a 1.2MB runtime. A bounded smaller JIT cache is a potential source-level RAM/performance tradeoff; prove RSS and cache churn before changing it.
+
+Artifacts in this directory:
+ps1-core-inventory.json; ps1-symbols.txt; ps1-strings.txt; ps1-annotated-paths.txt; ps1-binary-census.json.
+
+What PS1 teaches:
+The vendor already exploits CPU-specific tools: dynarec for CPU emulation, ARM/NEON GTE and rasterization, and a private rendering/presentation gate. That supports retaining specialization while replacing the host. PS1 also produces 44.1kHz already, avoiding SNES's 32.04->44.1 conversion. PS1 playing smoothly does not prove unused SNES headroom: unique image rate, GPU workload, timing accuracy, internal skips, actual emulated speed, and audio path differ. A 30-unique-frame PS1 scene with 60 emulated vblanks is not a 60-full-draw SNES control. Measure retro steps, unique rendered frames, frame duplication, internal raster suppression, submitted/presented frames, audio underruns, CPU/wall time, and live dynarec selection together. Existing PS1 CPU usage, live frame rate, live skip percentage, and audio underrun rate remain UNKNOWN.
+
+2. PRESERVED CORE INVENTORY (H export; only PS1 hash was checked against current D in this pass)
+emu_nes.so: FCEUmm family.
+emu_gba.so: gpSP v0.91 string; SetDoubleBuffer/SetFrameSkip.
+emu_mgba.so: TGB Dual v0.8.3 9be31d3, NOT mGBA despite filename.
+emu_md.so: PicoDrive 1.91 cbc93b6, Cyclone symbols.
+emu_mame.so: MAME 2000, Cyclone 68000 symbols.
+emu_fba.so and emu_neogeo.so: FB Alpha 2012 v0.2.97.29 621e371 strings.
+emu_extend.so: FB Alpha v0.2.97.42 621e371 strings.
+Installed filename alone cannot determine supported systems or correctness. FBA contains CPS/NeoGeo and many additional drivers; presence is not proof a game fits RAM or reaches playable speed.
+Local modern SNES builds: 2005/Plus commit a79dfe9047e7fec58808aefe48ad2bf499c7af11 (build/core-source-commit.txt); 2010 comparison fe690dd321fa5a46b5234a2bde089d2518c62b0e (build/comparison-2010/core-source-commit.txt). Both checked source trees consume GET_AUDIO_VIDEO_ENABLE. 2005 plain and Plus have conditional USE_BLARGG_APU and fractional sample accounting; 2010 includes explicit NEON pixel paths.
+
+3. RECOMMENDED CORE PORTFOLIO
+Default means first qualified candidate in the new common runner, not a guarantee of full speed. Ship pinned tested source revisions and per-game exceptions. Core build manifest records URL/revision, toolchain/sysroot, build flags, compiled CPU/renderer backend, hash, accepted formats, AV defaults/changes, memory ceiling, state compatibility id.
+
+NES: FCEUmm default, QuickNES fallback for measured expensive cases that its mappers support. FCEUmm brings wider mappers/expansion audio; use direct RGB565 where possible, normal emulated clocks/sprite limits, no NTSC shader/filter, no runahead. Current upstream adds HD texture packs and a lot of optional machinery: compile HAVE_HDPACK=0. These are small interpreted 6502 cores; do not promise a dynarec/NEON engine without evidence. QuickNES's tradeoff is narrower compatibility/timing fidelity. FCEUmm already present does not establish its modern build performance.
+Primary: https://github.com/libretro/libretro-fceumm ; https://raw.githubusercontent.com/libretro/libretro-fceumm/master/README.md ; https://docs.libretro.com/library/quicknes/
+
+SNES: Snes9x 2005 Plus is the initial runner reference because v11 has actual positive device evidence. Fresh plain 2005 is the performance profile; 2010 NEON is the quality/performance challenger. Same host/audio policy/video ownership, each core's actual timing, start from compatible battery SRAM. No forced winner until hardware results. Plain 2005 loses Blargg APU accuracy, 2010 changes total CPU/PPU workload; NEON presence alone predicts neither win nor loss. Snes9x 2002 only an explicit per-game last resort with visible accuracy compromise, not default. No plan to transplant PCSX ARM dynarec into SNES: different guest ISA/execution profile, entirely different project.
+Primary: https://github.com/libretro/snes9x2005 ; https://github.com/libretro/snes9x2010 ; local sources above.
+
+GB/GBC: Gambatte default, preserved TGB Dual only for measured performance/link-specific compatibility needs. Accurate test-based portable C++ core, no need for a dynarec. Disable LCD blending/color correction initially to isolate emulation; inexpensive color preferences can return after budget confirmation. Evaluate Gearboy only if Gambatte fails the target. SameBoy is an accuracy reference on a PC, not first candidate for 666MHz A7.
+Primary: https://github.com/libretro/gambatte-libretro ; https://raw.githubusercontent.com/libretro/gambatte-libretro/master/README.md
+
+GBA: current gpSP with ARMv7 dynarec first; mGBA optional per-game correctness fallback if it meets deadline. gpSP upstream documents renewed renderer/audio fixes and ARMv6/7 support, so fresh need not equal slower. Build native ARM hard-float and RGB565; no overclock-to-60 hack (GBA cadence approximately59.7275); JIT cache and ROM buffering explicitly bounded for RAM. A maximum-size32MiB GBA ROM plus duplicate decompressed RAM buffers and JIT is a real fit risk. Use path/fullpath and paging/mmap where supported; do not blindly retain a host-owned full ROM copy. Do not disable GBA audio effects to disguise timing bugs. mGBA is a correctness tradeoff requiring real test, not assured performance.
+Primary: https://raw.githubusercontent.com/libretro/gpsp/master/README.md ; https://raw.githubusercontent.com/libretro/gpsp/master/Makefile ; https://github.com/mgba-emu/mgba
+
+Genesis/Mega Drive: PicoDrive first. ARM Cyclone68000/assembly paths are a concrete CPU-specific advantage; guest CPU timing still needs correctness qualification. Genesis Plus GX for titles needing its more accurate behavior if budgets permit. No blur/shader, original clocks and sprite limits initially. Sega CD is plausible with bounded CD buffers; 32X via PicoDrive SH2 dynarec is experimental/per-game, not whole-platform promise.
+Primary: https://github.com/irixxxx/picodrive ; https://raw.githubusercontent.com/irixxxx/picodrive/master/Makefile ; https://github.com/libretro/picodrive ; https://docs.libretro.com/library/genesis_plus_gx/
+
+Master System/Game Gear: SMS Plus GX as lean shared default; Genesis Plus GX as accuracy/compatibility fallback. PicoDrive is useful for SMS but do not assume its documented libretro port covers GG; keep GG explicitly tested. Interpreter/scanline rendering, no JIT justification for this small workload. Preserve FM where a title requests it and measured headroom permits; no enhancement filters by default.
+Primary: https://github.com/libretro/smsplus-gx ; https://raw.githubusercontent.com/libretro/smsplus-gx/master/README.md ; https://docs.libretro.com/library/genesis_plus_gx/
+
+PC Engine: Beetle PCE FAST first, with CD support added after HuCard. No confirmed ARM dynarec; tuned interpreter and fast video implementation. A7-compatible build flags exist. Distinct Beetle SGX only if SuperGrafx is requested/tested; PCE FAST specifically removes SGX. Temper is a performance fallback worth evaluating only if first candidate fails, not a default based on age. CD decompression/ADPCM and System Card BIOS need separate tests; RAM preload disabled.
+Primary: https://docs.libretro.com/library/beetle_pce_fast/ ; https://raw.githubusercontent.com/libretro/beetle-pce-fast-libretro/master/Makefile
+
+Arcade: per-board qualified manifest, NOT one universal core. Initially FBA2012-derived CPS1/CPS2/NeoGeo family-specific builds and MAME2000 for older supported boards to preserve existing functionality while host changes. Compare MAME2003-Plus selective driver builds for additional/repair cases and targeted FBNeo subsets only when needed. Modern MAME/monolithic FBNeo is the wrong default size/risk for this budget. MAME2003-Plus current Makefile.common explicitly has USE_CYCLONE and USE_DRZ80 assembly choices; they are ARM assembly CPU interpreters, not dynarecs. Validate per-game correctness before selecting. Current FBA2012 Makefile inspected did not substantiate a Cyclone option, so do not claim all FBA builds have it. Large NeoGeo/PGM ROM sets may exceed practical RAM; either proven bounded ROM cache supported by selected port or mark unsupported. Unzipping everything into RAM cannot be the hidden policy. Keep arcade ZIP set names and DAT identity; show friendly titles separately. ROMset compatibility is tied to exact build, not .zip extension.
+Primary: https://github.com/libretro/fbalpha2012 ; https://docs.libretro.com/library/mame2003_plus/ ; https://raw.githubusercontent.com/libretro/mame2003-plus-libretro/master/Makefile.common ; https://docs.libretro.com/guides/arcade-getting-started/
+
+PS1: PCSX-ReARMed with explicit ARM ari64/new_dynarec and NEON software GPU; native resolution, enhanced resolution off, PGXP absent/off, original emulated clock first, SPU reverb/interpolation quality retained until budget evidence motivates change. Current upstream ARM/A7 build selects ari64/NEON, but modern Makefile defaults async GPU/SPU/CD plus NDRC thread to1. On this single core explicitly start async GPU/SPU and background dynarec OFF; CPU threads do not add compute. Bounded asynchronous CD reads are the one sensible independent I/O-overlap candidate. Compare retained vendor PCSX against a pinned modern build under common runner; do not assume latest wins. Interpreter is diagnostic fallback for dynarec-specific bugs, not likely full-speed default. CUE/BIN/M3U first; CHD/PBP optional after decode/jitter/memory comparison. Disc images remain streamed. Preserve PS1 memory cards; states strictly build-qualified.
+Primary: https://raw.githubusercontent.com/libretro/pcsx_rearmed/master/Makefile.libretro ; https://github.com/notaz/pcsx_rearmed ; https://docs.libretro.com/library/pcsx_rearmed/
+
+4. BUILD/PERF RULES
+Start compatible -mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard, core-specific ARM state where JIT requires it; use sysroot with glibc<=device2.30. Preserve source-specific aliasing semantics. Compare O2/O3/LTO under identical traces; excessive inlining/unrolling may hurt A7 instruction-cache pressure. Existing .lto_priv symbols show some vendor code already used LTO; do not claim simply turning LTO on is new free performance. Do not blindly copy -Ofast/fast-math/fwhole-program templates. PGO after representative replay exists, include different scenes to avoid training only the intro. Strip debug from shipped artifacts for load/storage size, retain symbols externally; this alone does not remove touched BSS.
+
+5. PROTOTYPE CORE CHOICE
+First runner uses exact working upstream Plus core, bypassing the compatibility adapter, with common standard callbacks and hardware backend. Add preserved PS1 as the second reference because it tests different audio rate, variable image production, dynarec memory, RGB565 conversion and disc I/O. No whole-library port before these two function. PS1 comparison must use real play state and cadence counts, not merely perceived smoothness. This maximizes architectural evidence without making UI rewrite or all-core compatibility a gate.

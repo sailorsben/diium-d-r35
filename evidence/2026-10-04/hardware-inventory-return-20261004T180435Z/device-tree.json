@@ -1,0 +1,2373 @@
+{
+  "/": {
+    "#address-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "#size-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "model": {
+      "hex": "47656e6572616c706c757320454d5520426f61726400",
+      "decoded": [
+        "Generalplus EMU Board"
+      ]
+    },
+    "compatible": {
+      "hex": "67656e6572616c706c75732c67706137787878612d656d750067656e6572616c706c75732c677061377878786100",
+      "decoded": [
+        "generalplus,gpa7xxxa-emu",
+        "generalplus,gpa7xxxa"
+      ]
+    }
+  },
+  "/chosen": {
+    "bootargs": {
+      "hex": "726f6f746673747970653d72616d6673206d656d3d34384d422067705f6368756e6b6d656d2e6d656d626173653d307830333030303030302067705f6368756e6b6d656d2e6d656d73697a653d3078303130303030303000",
+      "decoded": [
+        "rootfstype=ramfs mem=48MB gp_chunkmem.membase=0x03000000 gp_chunkmem.memsize=0x01000000"
+      ]
+    },
+    "stdout-path": {
+      "hex": "73657269616c303a3131353230306e3800",
+      "decoded": [
+        "serial0:115200n8"
+      ]
+    },
+    "linux,initrd-start": {
+      "hex": "00a00000",
+      "decoded": [
+        "0xa00000"
+      ]
+    },
+    "linux,initrd-end": {
+      "hex": "00d3fade",
+      "decoded": [
+        "0xd3fade"
+      ]
+    }
+  },
+  "/aliases": {
+    "serial0": {
+      "hex": "2f736f632f7561727440433030373030303000",
+      "decoded": [
+        "/soc/uart@C0070000"
+      ]
+    },
+    "serial1": {
+      "hex": "2f736f632f7561727440433030363030303000",
+      "decoded": [
+        "/soc/uart@C0060000"
+      ]
+    },
+    "serial2": {
+      "hex": "2f736f632f7561727440433030383030303000",
+      "decoded": [
+        "/soc/uart@C0080000"
+      ]
+    },
+    "sdhc0": {
+      "hex": "2f736f632f73646340433032353030303000",
+      "decoded": [
+        "/soc/sdc@C0250000"
+      ]
+    },
+    "sdhc1": {
+      "hex": "2f736f632f73646340443132303030303000",
+      "decoded": [
+        "/soc/sdc@D1200000"
+      ]
+    },
+    "i2c0": {
+      "hex": "2f736f632f69326340433030423030303000",
+      "decoded": [
+        "/soc/i2c@C00B0000"
+      ]
+    },
+    "i2c1": {
+      "hex": "2f736f632f69326340433030433030303000",
+      "decoded": [
+        "/soc/i2c@C00C0000"
+      ]
+    },
+    "i2c2": {
+      "hex": "2f736f632f69326340433031323030303000",
+      "decoded": [
+        "/soc/i2c@C0120000"
+      ]
+    },
+    "timer0": {
+      "hex": "2f736f632f74696d657240433030323030303000",
+      "decoded": [
+        "/soc/timer@C0020000"
+      ]
+    },
+    "timer1": {
+      "hex": "2f736f632f74696d657240433030323030323000",
+      "decoded": [
+        "/soc/timer@C0020020"
+      ]
+    },
+    "timer2": {
+      "hex": "2f736f632f74696d657240433030323030343000",
+      "decoded": [
+        "/soc/timer@C0020040"
+      ]
+    },
+    "timer3": {
+      "hex": "2f736f632f74696d657240433030323030363000",
+      "decoded": [
+        "/soc/timer@C0020060"
+      ]
+    },
+    "timer4": {
+      "hex": "2f736f632f74696d657240433030323030383000",
+      "decoded": [
+        "/soc/timer@C0020080"
+      ]
+    },
+    "timer5": {
+      "hex": "2f736f632f74696d657240433030323030413000",
+      "decoded": [
+        "/soc/timer@C00200A0"
+      ]
+    },
+    "timer6": {
+      "hex": "2f736f632f74696d657240433030323030433000",
+      "decoded": [
+        "/soc/timer@C00200C0"
+      ]
+    },
+    "timer7": {
+      "hex": "2f736f632f74696d657240433030323030453000",
+      "decoded": [
+        "/soc/timer@C00200E0"
+      ]
+    },
+    "timer8": {
+      "hex": "2f736f632f74696d657240433030323031303000",
+      "decoded": [
+        "/soc/timer@C0020100"
+      ]
+    },
+    "ohci0": {
+      "hex": "2f736f632f6f68636940443043303030383000",
+      "decoded": [
+        "/soc/ohci@D0C00080"
+      ]
+    },
+    "ohci1": {
+      "hex": "2f736f632f6f68636940443045303030383000",
+      "decoded": [
+        "/soc/ohci@D0E00080"
+      ]
+    },
+    "ehci0": {
+      "hex": "2f736f632f6568636940443043303031303000",
+      "decoded": [
+        "/soc/ehci@D0C00100"
+      ]
+    },
+    "ehci1": {
+      "hex": "2f736f632f6568636940443045303031303000",
+      "decoded": [
+        "/soc/ehci@D0E00100"
+      ]
+    },
+    "spi0": {
+      "hex": "2f736f632f73706940433030393030303000",
+      "decoded": [
+        "/soc/spi@C0090000"
+      ]
+    },
+    "spi1": {
+      "hex": "2f736f632f73706940433030413030303000",
+      "decoded": [
+        "/soc/spi@C00A0000"
+      ]
+    },
+    "gadget0": {
+      "hex": "2f736f632f7573626440443131303030303000",
+      "decoded": [
+        "/soc/usbd@D1100000"
+      ]
+    },
+    "gadget1": {
+      "hex": "2f736f632f7573626440443238303030303000",
+      "decoded": [
+        "/soc/usbd@D2800000"
+      ]
+    }
+  },
+  "/memory": {
+    "device_type": {
+      "hex": "6d656d6f727900",
+      "decoded": [
+        "memory"
+      ]
+    },
+    "reg": {
+      "hex": "0000000002000000",
+      "decoded": [
+        "0x0",
+        "0x2000000"
+      ]
+    }
+  },
+  "/cpus": {
+    "#address-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "#size-cells": {
+      "hex": "00000000",
+      "decoded": [
+        "0x0"
+      ]
+    },
+    "enable-method": {
+      "hex": "67656e6572616c706c75732c677061377878786100",
+      "decoded": [
+        "generalplus,gpa7xxxa"
+      ]
+    }
+  },
+  "/cpus/cpu@0": {
+    "device_type": {
+      "hex": "63707500",
+      "decoded": [
+        "cpu"
+      ]
+    },
+    "compatible": {
+      "hex": "61726d2c636f727465782d613700",
+      "decoded": [
+        "arm,cortex-a7"
+      ]
+    },
+    "clock-frequency": {
+      "hex": "27b25a80",
+      "decoded": [
+        "0x27b25a80"
+      ]
+    },
+    "reg": {
+      "hex": "00000000",
+      "decoded": [
+        "0x0"
+      ]
+    }
+  },
+  "/interrupt-controller@A2001000": {
+    "compatible": {
+      "hex": "61726d2c636f727465782d61372d67696300",
+      "decoded": [
+        "arm,cortex-a7-gic"
+      ]
+    },
+    "#interrupt-cells": {
+      "hex": "00000003",
+      "decoded": [
+        "0x3"
+      ]
+    },
+    "#address-cells": {
+      "hex": "00000000",
+      "decoded": [
+        "0x0"
+      ]
+    },
+    "interrupt-controller": {
+      "hex": "",
+      "decoded": ""
+    },
+    "reg": {
+      "hex": "a200100000001000a200200000002000",
+      "decoded": [
+        "0xa2001000",
+        "0x1000",
+        "0xa2002000",
+        "0x2000"
+      ]
+    },
+    "phandle": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    }
+  },
+  "/syscounter": {
+    "compatible": {
+      "hex": "61726d2c61726d76372d74696d657200",
+      "decoded": [
+        "arm,armv7-timer"
+      ]
+    },
+    "interrupt-parent": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000010000000d00000f08000000010000000e00000f08",
+      "decoded": [
+        "0x1",
+        "0xd",
+        "0xf08",
+        "0x1",
+        "0xe",
+        "0xf08"
+      ]
+    },
+    "clock-frequency": {
+      "hex": "000f4240",
+      "decoded": [
+        "0xf4240"
+      ]
+    }
+  },
+  "/soc": {
+    "#address-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "#size-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "compatible": {
+      "hex": "73696d706c652d62757300",
+      "decoded": [
+        "simple-bus"
+      ]
+    },
+    "interrupt-parent": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "ranges": {
+      "hex": "",
+      "decoded": ""
+    }
+  },
+  "/soc/uart@C0060000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7561727400",
+      "decoded": [
+        "gp,gpa7xxxa-uart"
+      ]
+    },
+    "reg": {
+      "hex": "c006000000000100",
+      "decoded": [
+        "0xc0060000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002400000004",
+      "decoded": [
+        "0x0",
+        "0x24",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/uart@C0070000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7561727400",
+      "decoded": [
+        "gp,gpa7xxxa-uart"
+      ]
+    },
+    "reg": {
+      "hex": "c007000000000100",
+      "decoded": [
+        "0xc0070000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002500000004",
+      "decoded": [
+        "0x0",
+        "0x25",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/uart@C0080000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7561727400",
+      "decoded": [
+        "gp,gpa7xxxa-uart"
+      ]
+    },
+    "reg": {
+      "hex": "c008000000000100",
+      "decoded": [
+        "0xc0080000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002600000004",
+      "decoded": [
+        "0x0",
+        "0x26",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2c@C00B0000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d69326300",
+      "decoded": [
+        "gp,gpa7xxxa-i2c"
+      ]
+    },
+    "reg": {
+      "hex": "c00b000000000100",
+      "decoded": [
+        "0xc00b0000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002700000004",
+      "decoded": [
+        "0x0",
+        "0x27",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2c@C00C0000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d69326300",
+      "decoded": [
+        "gp,gpa7xxxa-i2c"
+      ]
+    },
+    "reg": {
+      "hex": "c00c000000000100",
+      "decoded": [
+        "0xc00c0000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002800000004",
+      "decoded": [
+        "0x0",
+        "0x28",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2c@C0120000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d69326300",
+      "decoded": [
+        "gp,gpa7xxxa-i2c"
+      ]
+    },
+    "reg": {
+      "hex": "c012000000000100",
+      "decoded": [
+        "0xc0120000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002900000004",
+      "decoded": [
+        "0x0",
+        "0x29",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C0020000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000c00000004",
+      "decoded": [
+        "0x0",
+        "0xc",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c002000000000020",
+      "decoded": [
+        "0xc0020000",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C0020020": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000d00000004",
+      "decoded": [
+        "0x0",
+        "0xd",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c002002000000020",
+      "decoded": [
+        "0xc0020020",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C0020040": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000e00000004",
+      "decoded": [
+        "0x0",
+        "0xe",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c002004000000020",
+      "decoded": [
+        "0xc0020040",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C0020060": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000f00000004",
+      "decoded": [
+        "0x0",
+        "0xf",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c002006000000020",
+      "decoded": [
+        "0xc0020060",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C0020080": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000001000000004",
+      "decoded": [
+        "0x0",
+        "0x10",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c002008000000020",
+      "decoded": [
+        "0xc0020080",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C00200A0": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000001100000004",
+      "decoded": [
+        "0x0",
+        "0x11",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c00200a000000020",
+      "decoded": [
+        "0xc00200a0",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C00200C0": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000001200000004",
+      "decoded": [
+        "0x0",
+        "0x12",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c00200c000000020",
+      "decoded": [
+        "0xc00200c0",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C00200E0": {
+    "compatible": {
+      "hex": "67702c67706137787878612d74696d657200",
+      "decoded": [
+        "gp,gpa7xxxa-timer"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000001300000004",
+      "decoded": [
+        "0x0",
+        "0x13",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c00200e000000020",
+      "decoded": [
+        "0xc00200e0",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/timer@C0020100": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7379737400",
+      "decoded": [
+        "gp,gpa7xxxa-syst"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000001400000004",
+      "decoded": [
+        "0x0",
+        "0x14",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c002010000000020",
+      "decoded": [
+        "0xc0020100",
+        "0x20"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/dma@D0300000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d646d6100",
+      "decoded": [
+        "gp,gpa7xxxa-dma"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003500000004",
+      "decoded": [
+        "0x0",
+        "0x35",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "d0300000000002e0",
+      "decoded": [
+        "0xd0300000",
+        "0x2e0"
+      ]
+    }
+  },
+  "/soc/dla@D1C00000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d646c6100",
+      "decoded": [
+        "gp,gpa7xxxa-dla"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005b00000004",
+      "decoded": [
+        "0x0",
+        "0x5b",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "d1c00000000003ff",
+      "decoded": [
+        "0xd1c00000",
+        "0x3ff"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/disp0@D0500000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d646973703000",
+      "decoded": [
+        "gp,gpa7xxxa-disp0"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004c00000004",
+      "decoded": [
+        "0x0",
+        "0x4c",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "d050000000007c00",
+      "decoded": [
+        "0xd0500000",
+        "0x7c00"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/disp1@D0500000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d646973703100",
+      "decoded": [
+        "gp,gpa7xxxa-disp1"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004c00000004",
+      "decoded": [
+        "0x0",
+        "0x4c",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "d050000000007c00",
+      "decoded": [
+        "0xd0500000",
+        "0x7c00"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/hdmi@D0D00000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d68646d6900",
+      "decoded": [
+        "gp,gpa7xxxa-hdmi"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000006800000004",
+      "decoded": [
+        "0x0",
+        "0x68",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "d0d0000000000400",
+      "decoded": [
+        "0xd0d00000",
+        "0x400"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/mipitx@D2200000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6d697069747800",
+      "decoded": [
+        "gp,gpa7xxxa-mipitx"
+      ]
+    },
+    "reg": {
+      "hex": "d220000000000094",
+      "decoded": [
+        "0xd2200000",
+        "0x94"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/gpio@C0000000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6770696f00",
+      "decoded": [
+        "gp,gpa7xxxa-gpio"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000000000004",
+      "decoded": [
+        "0x0",
+        "0x0",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "c000000000000180",
+      "decoded": [
+        "0xc0000000",
+        "0x180"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/sdc@C0250000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d73646300",
+      "decoded": [
+        "gp,gpa7xxxa-sdc"
+      ]
+    },
+    "reg": {
+      "hex": "c025000000000100",
+      "decoded": [
+        "0xc0250000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004500000004",
+      "decoded": [
+        "0x0",
+        "0x45",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/sdc@D1200000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d73646300",
+      "decoded": [
+        "gp,gpa7xxxa-sdc"
+      ]
+    },
+    "reg": {
+      "hex": "d120000000000100",
+      "decoded": [
+        "0xd1200000",
+        "0x100"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004600000004",
+      "decoded": [
+        "0x0",
+        "0x46",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/gpu@D2400000": {
+    "compatible": {
+      "hex": "766976616e74652c676300",
+      "decoded": [
+        "vivante,gc"
+      ]
+    },
+    "reg": {
+      "hex": "d240000000000800",
+      "decoded": [
+        "0xd2400000",
+        "0x800"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000a00000004",
+      "decoded": [
+        "0x0",
+        "0xa",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/ppu@D0500000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d70707500",
+      "decoded": [
+        "gp,gpa7xxxa-ppu"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004c00000004",
+      "decoded": [
+        "0x0",
+        "0x4c",
+        "0x4"
+      ]
+    },
+    "reg": {
+      "hex": "d050000000007c00",
+      "decoded": [
+        "0xd0500000",
+        "0x7c00"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/adc@C00D0000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d61646300",
+      "decoded": [
+        "gp,gpa7xxxa-adc"
+      ]
+    },
+    "reg": {
+      "hex": "c00d000000000060",
+      "decoded": [
+        "0xc00d0000",
+        "0x60"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003200000004",
+      "decoded": [
+        "0x0",
+        "0x32",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/dac@C00E0000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d64616300",
+      "decoded": [
+        "gp,gpa7xxxa-dac"
+      ]
+    },
+    "reg": {
+      "hex": "c00e000000000040",
+      "decoded": [
+        "0xc00e0000",
+        "0x40"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003600000004000000000000003700000004",
+      "decoded": [
+        "0x0",
+        "0x36",
+        "0x4",
+        "0x0",
+        "0x37",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/adc_mic@C00D0080": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6d696300",
+      "decoded": [
+        "gp,gpa7xxxa-mic"
+      ]
+    },
+    "reg": {
+      "hex": "c00d008000000050",
+      "decoded": [
+        "0xc00d0080",
+        "0x50"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003400000004",
+      "decoded": [
+        "0x0",
+        "0x34",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_tx0@C0200000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d74783000",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-tx0"
+      ]
+    },
+    "reg": {
+      "hex": "c020000000000010",
+      "decoded": [
+        "0xc0200000",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003900000004",
+      "decoded": [
+        "0x0",
+        "0x39",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_tx1@C0210000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d74783100",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-tx1"
+      ]
+    },
+    "reg": {
+      "hex": "c021000000000010",
+      "decoded": [
+        "0xc0210000",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003a00000004",
+      "decoded": [
+        "0x0",
+        "0x3a",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_tx2@C0220000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d74783200",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-tx2"
+      ]
+    },
+    "reg": {
+      "hex": "c022000000000010",
+      "decoded": [
+        "0xc0220000",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003b00000004",
+      "decoded": [
+        "0x0",
+        "0x3b",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_tx3@C0230000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d74783300",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-tx3"
+      ]
+    },
+    "reg": {
+      "hex": "c023000000000010",
+      "decoded": [
+        "0xc0230000",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003c00000004",
+      "decoded": [
+        "0x0",
+        "0x3c",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_rx0@C0200010": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d72783000",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-rx0"
+      ]
+    },
+    "reg": {
+      "hex": "c020001000000010",
+      "decoded": [
+        "0xc0200010",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003d00000004",
+      "decoded": [
+        "0x0",
+        "0x3d",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_rx1@C0210010": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d72783100",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-rx1"
+      ]
+    },
+    "reg": {
+      "hex": "c021001000000010",
+      "decoded": [
+        "0xc0210010",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003e00000004",
+      "decoded": [
+        "0x0",
+        "0x3e",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_rx2@C0220010": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d72783200",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-rx2"
+      ]
+    },
+    "reg": {
+      "hex": "c022001000000010",
+      "decoded": [
+        "0xc0220010",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000003f00000004",
+      "decoded": [
+        "0x0",
+        "0x3f",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/i2s_rx3@C0230010": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6932732d72783300",
+      "decoded": [
+        "gp,gpa7xxxa-i2s-rx3"
+      ]
+    },
+    "reg": {
+      "hex": "c023001000000010",
+      "decoded": [
+        "0xc0230010",
+        "0x10"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004000000004",
+      "decoded": [
+        "0x0",
+        "0x40",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/scale@D0600000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7363616c6500",
+      "decoded": [
+        "gp,gpa7xxxa-scale"
+      ]
+    },
+    "reg": {
+      "hex": "d060000000000800",
+      "decoded": [
+        "0xd0600000",
+        "0x800"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004400000004",
+      "decoded": [
+        "0x0",
+        "0x44",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/ohci@D0C00080": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6f68636900",
+      "decoded": [
+        "gp,gpa7xxxa-ohci"
+      ]
+    },
+    "reg": {
+      "hex": "d0c0008000000068d0c0000000000018d110000000001000",
+      "decoded": [
+        "0xd0c00080",
+        "0x68",
+        "0xd0c00000",
+        "0x18",
+        "0xd1100000",
+        "0x1000"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004200000004",
+      "decoded": [
+        "0x0",
+        "0x42",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/ohci@D0E00080": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6f68636900",
+      "decoded": [
+        "gp,gpa7xxxa-ohci"
+      ]
+    },
+    "reg": {
+      "hex": "d0e0008000000068d0e0000000000018d280000000001000",
+      "decoded": [
+        "0xd0e00080",
+        "0x68",
+        "0xd0e00000",
+        "0x18",
+        "0xd2800000",
+        "0x1000"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000700000004",
+      "decoded": [
+        "0x0",
+        "0x7",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/ehci@D0C00100": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6568636900",
+      "decoded": [
+        "gp,gpa7xxxa-ehci"
+      ]
+    },
+    "reg": {
+      "hex": "d0c00100000000acd0c0000000000018d110000000001000",
+      "decoded": [
+        "0xd0c00100",
+        "0xac",
+        "0xd0c00000",
+        "0x18",
+        "0xd1100000",
+        "0x1000"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004300000004",
+      "decoded": [
+        "0x0",
+        "0x43",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/ehci@D0E00100": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6568636900",
+      "decoded": [
+        "gp,gpa7xxxa-ehci"
+      ]
+    },
+    "reg": {
+      "hex": "d0e00100000000acd0e0000000000018d280000000001000",
+      "decoded": [
+        "0xd0e00100",
+        "0xac",
+        "0xd0e00000",
+        "0x18",
+        "0xd2800000",
+        "0x1000"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000900000004",
+      "decoded": [
+        "0x0",
+        "0x9",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/spi@C0090000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d73706900",
+      "decoded": [
+        "gp,gpa7xxxa-spi"
+      ]
+    },
+    "reg": {
+      "hex": "c009000000000020",
+      "decoded": [
+        "0xc0090000",
+        "0x20"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002a00000004",
+      "decoded": [
+        "0x0",
+        "0x2a",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    },
+    "#address-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "#size-cells": {
+      "hex": "00000000",
+      "decoded": [
+        "0x0"
+      ]
+    }
+  },
+  "/soc/spi@C0090000/nor-flash@0": {
+    "compatible": {
+      "hex": "73706964657600",
+      "decoded": [
+        "spidev"
+      ]
+    },
+    "reg": {
+      "hex": "00000000",
+      "decoded": [
+        "0x0"
+      ]
+    },
+    "spi-max-frequency": {
+      "hex": "01312d00",
+      "decoded": [
+        "0x1312d00"
+      ]
+    },
+    "spi-rx-bus-width": {
+      "hex": "00000002",
+      "decoded": [
+        "0x2"
+      ]
+    },
+    "#address-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    },
+    "#size-cells": {
+      "hex": "00000001",
+      "decoded": [
+        "0x1"
+      ]
+    }
+  },
+  "/soc/spi@C00A0000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d73706900",
+      "decoded": [
+        "gp,gpa7xxxa-spi"
+      ]
+    },
+    "reg": {
+      "hex": "c00a000000000020",
+      "decoded": [
+        "0xc00a0000",
+        "0x20"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002b00000004",
+      "decoded": [
+        "0x0",
+        "0x2b",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/rotator@C0240000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d726f7461746f723000",
+      "decoded": [
+        "gp,gpa7xxxa-rotator0"
+      ]
+    },
+    "reg": {
+      "hex": "c024000000000020",
+      "decoded": [
+        "0xc0240000",
+        "0x20"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005c00000004",
+      "decoded": [
+        "0x0",
+        "0x5c",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/rotator@C0180000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d726f7461746f723100",
+      "decoded": [
+        "gp,gpa7xxxa-rotator1"
+      ]
+    },
+    "reg": {
+      "hex": "c018000000000060",
+      "decoded": [
+        "0xc0180000",
+        "0x60"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004a00000004",
+      "decoded": [
+        "0x0",
+        "0x4a",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/rotator@C01A0000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d726f7461746f723200",
+      "decoded": [
+        "gp,gpa7xxxa-rotator2"
+      ]
+    },
+    "reg": {
+      "hex": "c01a000000000030",
+      "decoded": [
+        "0xc01a0000",
+        "0x30"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000006b00000004",
+      "decoded": [
+        "0x0",
+        "0x6b",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/h264enc@D1500000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6832363400",
+      "decoded": [
+        "gp,gpa7xxxa-h264"
+      ]
+    },
+    "reg": {
+      "hex": "d1500000000000bcc017000000000024c019000000000020c016000000000080",
+      "decoded": [
+        "0xd1500000",
+        "0xbc",
+        "0xc0170000",
+        "0x24",
+        "0xc0190000",
+        "0x20",
+        "0xc0160000",
+        "0x80"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005f00000004000000000000004b00000004000000000000006000000004",
+      "decoded": [
+        "0x0",
+        "0x5f",
+        "0x4",
+        "0x0",
+        "0x4b",
+        "0x4",
+        "0x0",
+        "0x60",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/h264dec@D1500000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6832363400",
+      "decoded": [
+        "gp,gpa7xxxa-h264"
+      ]
+    },
+    "reg": {
+      "hex": "d1500000000000bcd170000000000084c027000000000018c016000000000080",
+      "decoded": [
+        "0xd1500000",
+        "0xbc",
+        "0xd1700000",
+        "0x84",
+        "0xc0270000",
+        "0x18",
+        "0xc0160000",
+        "0x80"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005f00000004000000000000000100000004",
+      "decoded": [
+        "0x0",
+        "0x5f",
+        "0x4",
+        "0x0",
+        "0x1",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/pscaler_a@D1300000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d707363616c657200",
+      "decoded": [
+        "gp,gpa7xxxa-pscaler"
+      ]
+    },
+    "reg": {
+      "hex": "d130000000000260",
+      "decoded": [
+        "0xd1300000",
+        "0x260"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005500000004",
+      "decoded": [
+        "0x0",
+        "0x55",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/pscaler_b@D1400000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d707363616c657200",
+      "decoded": [
+        "gp,gpa7xxxa-pscaler"
+      ]
+    },
+    "reg": {
+      "hex": "d140000000000260",
+      "decoded": [
+        "0xd1400000",
+        "0x260"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005600000004",
+      "decoded": [
+        "0x0",
+        "0x56",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/pscaler_y@D1E00000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d707363616c657200",
+      "decoded": [
+        "gp,gpa7xxxa-pscaler"
+      ]
+    },
+    "reg": {
+      "hex": "d1e0000000000260",
+      "decoded": [
+        "0xd1e00000",
+        "0x260"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002c00000004",
+      "decoded": [
+        "0x0",
+        "0x2c",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/rtc@C0050000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d72746300",
+      "decoded": [
+        "gp,gpa7xxxa-rtc"
+      ]
+    },
+    "reg": {
+      "hex": "c005000000000030",
+      "decoded": [
+        "0xc0050000",
+        "0x30"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000000000004",
+      "decoded": [
+        "0x0",
+        "0x0",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/eth@D1D00000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d65746800",
+      "decoded": [
+        "gp,gpa7xxxa-eth"
+      ]
+    },
+    "reg": {
+      "hex": "d1d00000000001a0",
+      "decoded": [
+        "0xd1d00000",
+        "0x1a0"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000b00000004",
+      "decoded": [
+        "0x0",
+        "0xb",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/aes@D2600000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d61657300",
+      "decoded": [
+        "gp,gpa7xxxa-aes"
+      ]
+    },
+    "reg": {
+      "hex": "d260000000000220",
+      "decoded": [
+        "0xd2600000",
+        "0x220"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000006400000004",
+      "decoded": [
+        "0x0",
+        "0x64",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/hash@D2600000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6861736800",
+      "decoded": [
+        "gp,gpa7xxxa-hash"
+      ]
+    },
+    "reg": {
+      "hex": "d260000000000220",
+      "decoded": [
+        "0xd2600000",
+        "0x220"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000006400000004",
+      "decoded": [
+        "0x0",
+        "0x64",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/jpeg_a@D0700000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6a70656700",
+      "decoded": [
+        "gp,gpa7xxxa-jpeg"
+      ]
+    },
+    "reg": {
+      "hex": "d070000000007200",
+      "decoded": [
+        "0xd0700000",
+        "0x7200"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005300000004",
+      "decoded": [
+        "0x0",
+        "0x53",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/jpeg_b@D1B00000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6a70656700",
+      "decoded": [
+        "gp,gpa7xxxa-jpeg"
+      ]
+    },
+    "reg": {
+      "hex": "d1b0000000007200",
+      "decoded": [
+        "0xd1b00000",
+        "0x7200"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000000800000004",
+      "decoded": [
+        "0x0",
+        "0x8",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/mipi0@D0F00000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6d69706900",
+      "decoded": [
+        "gp,gpa7xxxa-mipi"
+      ]
+    },
+    "reg": {
+      "hex": "d0f00000000000e0",
+      "decoded": [
+        "0xd0f00000",
+        "0xe0"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004d00000004",
+      "decoded": [
+        "0x0",
+        "0x4d",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/mipi1@D1000000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6d69706900",
+      "decoded": [
+        "gp,gpa7xxxa-mipi"
+      ]
+    },
+    "reg": {
+      "hex": "d1000000000000e0",
+      "decoded": [
+        "0xd1000000",
+        "0xe0"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004e00000004",
+      "decoded": [
+        "0x0",
+        "0x4e",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/csi@D050022C": {
+    "compatible": {
+      "hex": "67702c67706137787878612d63736900",
+      "decoded": [
+        "gp,gpa7xxxa-csi"
+      ]
+    },
+    "reg": {
+      "hex": "d050022c00000090",
+      "decoded": [
+        "0xd050022c",
+        "0x90"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005000000004",
+      "decoded": [
+        "0x0",
+        "0x50",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/csi1@D050022C": {
+    "compatible": {
+      "hex": "67702c67706137787878612d63736900",
+      "decoded": [
+        "gp,gpa7xxxa-csi"
+      ]
+    },
+    "reg": {
+      "hex": "d050022c00000090",
+      "decoded": [
+        "0xd050022c",
+        "0x90"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005100000004",
+      "decoded": [
+        "0x0",
+        "0x51",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "64697361626c656400",
+      "decoded": [
+        "disabled"
+      ]
+    }
+  },
+  "/soc/cdsp@D0800000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6364737000",
+      "decoded": [
+        "gp,gpa7xxxa-cdsp"
+      ]
+    },
+    "reg": {
+      "hex": "d080000000000804",
+      "decoded": [
+        "0xd0800000",
+        "0x804"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000005200000004",
+      "decoded": [
+        "0x0",
+        "0x52",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/usbd@D1100000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7573626400",
+      "decoded": [
+        "gp,gpa7xxxa-usbd"
+      ]
+    },
+    "reg": {
+      "hex": "d110000000001000",
+      "decoded": [
+        "0xd1100000",
+        "0x1000"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004100000004",
+      "decoded": [
+        "0x0",
+        "0x41",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  },
+  "/soc/usbd@D2800000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d7573626400",
+      "decoded": [
+        "gp,gpa7xxxa-usbd"
+      ]
+    },
+    "reg": {
+      "hex": "d280000000001000",
+      "decoded": [
+        "0xd2800000",
+        "0x1000"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000002d00000004",
+      "decoded": [
+        "0x0",
+        "0x2d",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "64697361626c656400",
+      "decoded": [
+        "disabled"
+      ]
+    }
+  },
+  "/soc/nand@D0900000": {
+    "compatible": {
+      "hex": "67702c67706137787878612d6e616e6400",
+      "decoded": [
+        "gp,gpa7xxxa-nand"
+      ]
+    },
+    "reg": {
+      "hex": "d090000000000200c010000000000100d000000000000200c000000000000180c001000000000040c009000000000020c00a000000000020",
+      "decoded": [
+        "0xd0900000",
+        "0x200",
+        "0xc0100000",
+        "0x100",
+        "0xd0000000",
+        "0x200",
+        "0xc0000000",
+        "0x180",
+        "0xc0010000",
+        "0x40",
+        "0xc0090000",
+        "0x20",
+        "0xc00a0000",
+        "0x20"
+      ]
+    },
+    "interrupts": {
+      "hex": "000000000000004700000004000000000000004800000004",
+      "decoded": [
+        "0x0",
+        "0x47",
+        "0x4",
+        "0x0",
+        "0x48",
+        "0x4"
+      ]
+    },
+    "status": {
+      "hex": "6f6b617900",
+      "decoded": [
+        "okay"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+from pathlib import Path
+from hashlib import sha256
+from datetime import datetime, timezone
+import shutil
+import json
+
+root=Path(__file__).resolve().parent.parent
+card=Path('D:/')
+retro=card/'retro'
+shim=root/'build/v3-diagnostic/emu_sfc.so'
+def digest(p): return sha256(p.read_bytes()).hexdigest()
+manifest=json.loads((root/'SNES-Plus-v3-diagnostic/manifest.json').read_text())
+assert card.exists() and (retro/'vrtemu').is_file()
+assert digest(shim)==manifest['adapter_sha256']
+assert digest(retro/'libs/emu_sfc.so')==manifest['rollback_v2_sha256'], 'Card adapter changed; re-inspect before installation'
+assert digest(retro/'libs/emu_sfc_plus.so')==manifest['core_sha256']
+before={str(p.relative_to(retro)).replace('\\','/'):digest(p) for p in retro.rglob('*') if p.is_file()}
+stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+backup=root/'device-evidence'/('card-D-before-v3-diagnostic-'+stamp)
+backup.mkdir(parents=True,exist_ok=False)
+shutil.copy2(retro/'libs/emu_sfc.so', backup/'emu_sfc.so')
+assert digest(backup/'emu_sfc.so')==manifest['rollback_v2_sha256']
+(backup/'retro-before-sha256.json').write_text(json.dumps(before,indent=2)+'\n')
+# Only the adapter is replaced. Required core has been verified in place.
+shutil.copy2(shim, retro/'libs/emu_sfc.so')
+after={str(p.relative_to(retro)).replace('\\','/'):digest(p) for p in retro.rglob('*') if p.is_file()}
+changed=[name for name in sorted(set(before)|set(after)) if before.get(name)!=after.get(name)]
+assert changed==['libs/emu_sfc.so'], changed
+assert after['libs/emu_sfc.so']==manifest['adapter_sha256']
+report={'card':'D:/','build':'v3 diagnostic','backup':str(backup),
+        'changed_contents':changed,'adapter_sha256':after['libs/emu_sfc.so'],
+        'core_sha256':after['libs/emu_sfc_plus.so'],
+        'other_retro_files_unchanged':True,'hardware_test':'pending'}
+(root/'SNES-Plus-v3-diagnostic/card-D-installation-verification.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report,indent=2))

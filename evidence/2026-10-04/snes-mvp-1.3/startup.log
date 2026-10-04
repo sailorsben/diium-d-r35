@@ -1,0 +1,52 @@
+SNES MVP 1.3 startup wrapper pid=476
+splash handoff begin active_pids=445  stop=/tmp/vrtemu.log ack=/tmp/displogo.log
+splash handoff complete active_pids=none release_ack=yes waited=1s
+child pid=492 startup deadline=20s
+35.022 program entered pid=492
+35.024 platform heartbeat attach enter
+35.025 platform heartbeat attached key=1234 bytes=460 budget=60 counter=1
+35.027 GPIO open enter
+35.028 GPIO input attribute pin=0x200
+35.029 GPIO input attribute pin=0x201
+35.031 GPIO input attribute pin=0x202
+35.032 GPIO input attribute pin=0x203
+35.034 GPIO input attribute pin=0x204
+35.035 GPIO input attribute pin=0x205
+35.036 GPIO input attribute pin=0x30b
+35.038 GPIO input attribute pin=0x30d
+35.039 GPIO input attribute pin=0x30f
+35.040 GPIO input attribute pin=0x30c
+35.042 GPIO input attribute pin=0x30a
+35.043 GPIO input attribute pin=0x208
+35.044 GPIO input attribute pin=0x207
+35.046 GPIO input attribute pin=0x30e
+35.047 GPIO input attribute pin=0x206
+35.048 GPIO vendor attribute pin=0x20f value=0
+35.050 GPIO vendor attribute pin=0x20b value=0
+35.051 GPIO vendor attribute pin=0x20e value=1
+35.053 GPIO vendor attribute pin=0x209 value=1
+35.054 GPIO vendor attribute pin=0x20a value=1
+35.055 chunkmem open enter
+35.057 chunk allocation enter bytes=1310720
+35.062 chunk allocation complete
+35.064 display driver load enter path=/usr/retro/driver.so
+35.070 display driver symbols resolved; HDMI detection enter
+35.071 HDMI detection complete output=0; InitVFB enter
+35.135 InitVFB returned display=0x2b650
+35.137 display size=640x480
+35.138 LCD backlight write enter value=1
+35.140 display worker create enter
+35.142 display worker created; mixer open enter
+35.143 mixer open complete
+35.145 board open complete
+35.146 library scan enter
+35.155 library scan complete games=3
+35.160 first library submit
+35.164 first DrawVFB enter size=640x480
+35.166 first library wait for display
+35.171 first DrawVFB returned; FlipVFB enter
+35.185 first FlipVFB returned
+35.187 first library display complete; input baseline enter
+35.188 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+35.190 input baseline held_mask=0x00000000
+35.191 READY: first library frame completed; controls initialized

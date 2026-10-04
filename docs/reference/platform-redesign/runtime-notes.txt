@@ -1,0 +1,216 @@
+D-R35 runtime architecture review -- 2026-10-04
+Read-only device/source analysis. No card writes or implementation.
+
+Local evidence corrections
+--------------------------
+1. build/emu_sfc_plus_production.c:176-184 invokes WaitDisp only in
+   video_release, before freeing the chunk allocation. video():190-213 copies
+   into alternating chunk slots and calls the frontend. It does NOT add a
+   WaitDisp call to every frame. The driver's pending-job wait remains.
+2. device-evidence/launcher-performance-review/annotated-paths.txt:1899-1948:
+   video_driver_disp_frame waits for pending bit 2. It does usleep(500) before
+   entering its mutex/condition wait. Frequency and cost require measurement.
+3. Same file:2699-2750: ScaleDisplayThread calls DrawVFB/PScaleRun, clears
+   pending and signals the producer, THEN calls FlipVFB. Source buffer finished
+   being read is a different event from display/scanout completion. Separate
+   these ownership events in the replacement HAL.
+4. Same file:2628-2693: PScaleRun opens, stops, supplies its 228-byte config,
+   triggers, waits via ioctl, checks status, stops and closes. If frame-done bit
+   is not set, its fallback does ten usleep(1000) calls without rechecking
+   status inside that loop. This can add about 10 ms when taken; no frequency
+   is established. Do not infer the wait ioctl's 0xbb8 argument units without
+   the kernel contract. Queue fields alone do not prove persistent operation.
+5. Same file:1604-1665: sound_driver_init checks open result against zero,
+   routes equality to '/dev/dsp open error', and does not test -1. Existing
+   positive descriptor runs work; this is a latent error-handling defect.
+   sound_driver_playframe tail-calls write; its documented public return is
+   void. Required new backend behavior: partial writes, EAGAIN, EINTR and
+   errors explicitly handled, negotiated format/rate verified.
+
+Historical audio queue evidence -- do not promote to current v11 facts
+--------------------------------------------------------------------
+device-evidence/card-D-v4-return/emu_sfc_plus_v4_timing.log:2:
+  44100 Hz, 2 channels, 16 bits, GETODELAY=1, GETOSPACE=1,
+  fragment=16384 bytes, capacity=524288 bytes.
+build/audio_diagnostics_v4.h:98-134 reads format and GETOSPACE once; capacity is
+fragstotal * fragsize. Each queue query prefers GETODELAY; fallback is capacity
+minus GETOSPACE bytes. Once GETODELAY fails its support flag stays -1. The final
+1 means successful recorded queue reads used GETODELAY. :142-169 records
+PRE-write min/max queue in BYTES; callback output counters are stereo FRAMES.
+No frame/byte conversion error is apparent. Under-10-ms threshold1764 is correct
+for 44100 stereo s16 (176400 bytes/sec).
+
+Derived logical durations:
+  16384 bytes =4096 stereo frames =92.88 ms.
+  524288 bytes =131072 frames =2.972 seconds of logical capacity.
+  Typical logged 32772-49156 byte delays =185.78-278.66 ms.
+  Later slow bins include16388 bytes =92.90 ms.
+device-evidence/card-D-v7-return/emu_sfc_plus_v7_timing.log:2 repeats the same
+fragment/capacity, with a different workload. This strengthens historical
+configuration evidence but does not establish native DMA period or v11 latency.
+
+v4 source explicitly retained v2 conversion/video, had no adaptive internal
+draw suppression, queried before/after batches, and had a nice19 report worker
+dumping every10 seconds. Its log says zero skipped measurements and worker
+error. Those observations are not a controlled comparison with v11.
+
+Linux4.19 upstream pcm_oss.c:600-614 translates native delay frames into OSS
+logical bytes. :2137-2157 GETODELAY performs PCM DELAY and hides EPIPE as zero.
+:1011-1022 configures silence fill ahead (period+16, bounded by buffer) unless
+disabled/mmap; :1220-1250 write may recover XRUN internally. These mechanisms
+explain why queue>0/full write is not proof of uninterrupted PCM. Vendor patches
+and pointer accuracy remain unverified. The large fragment/delay is a strong
+reason to inspect native period, actual accepted rates and timestamp quality,
+not a claim that button-to-sound latency was measured at279 ms.
+
+Recommended clock and queue contract
+-----------------------------------
+One runtime timing engine calls the core and owns its frame counter, render
+decisions, presentation timestamps and wake deadlines. Hardware has distinct
+audio/display clocks; 'one owner' cannot physically make them identical.
+
+Default target: audio-consumption-led runtime, using an unwrapped reliable PCM
+playback cursor/queued-frame accounting as long-term rate reference. Monotonic
+time interpolates cursor updates, measures durations and supplies absolute wake
+deadlines; it is not an independent60-Hz throttle. Reported native core FPS and
+sample rate establish the frame/sample relationship. Maintain fractional
+accumulators; do not round sample count or frame interval every call. The
+resampler ratio is fixed by native-core vs accepted device rate. Game cadence
+follows the physical audio oscillator's tiny drift. If a strict monotonic-speed
+mode is desired later, use a small bounded resampler-ratio servo INSTEAD of an
+independent audio-clock speed controller. Never let two feedback loops both
+adjust game pace and resampler ratio from the same queue error.
+
+In audio-master mode, measure produced-minus-consumed frames including both
+software and device queues. Pace production around a total target; do not fill
+every queue independently. Use low/high watermarks and predicted next draw
+cost; keep audio and emulated game advancement enabled. Suppress internal video
+only in cores for which this has been validated. Cap bursts of catch-up work,
+and yield for device/input service. Sustained no-draw overload is a hardware/core
+ceiling, not something any buffering or feeder thread can solve.
+
+If the device only provides unreliable/coarse playback position, prototype
+explicit monotonic core pacing plus bounded slow sample-ratio correction from
+verified queue trends. Label this fallback; never interpret a coarse OSS delay
+as a precise clock. Audio-disabled cores use the monotonic scheduler directly.
+Pause/state-load/region changes reset the epoch deliberately and re-prime the
+stream, rather than accumulating old frame debt or playing stale audio.
+
+Initial engineering targets, not measured capabilities:
+  Device period256-512 stereo frames (~5.8-11.6 ms at44.1kHz), subject to support.
+  Total queued audio target40-50 ms; reduce only after stress/underrun tests.
+  Audio staging capacity8192 frames=32 KiB at s16 stereo, not a185-ms fill target.
+  Hard backlog/latency ceiling and visible underrun accounting.
+  Video at most one in-flight scaler job plus one newest READY frame.
+  Three allocated buffers need not mean three queued frames.
+  No per-frame allocation, filesystem access, artwork, logging or compression.
+
+Have one small audio service worker own the PCM handle and accepted-byte
+accounting, with a preallocated single-producer/single-consumer ring. It can
+feed already-produced PCM while the game thread waits on a device, but on this
+single core it cannot generate missing PCM or create CPU capacity. Start with
+ordinary scheduling; introduce bounded priority only if runnable-latency
+evidence justifies it. Never use blanket FIFO or CPU-affinity theater. Publish
+queue counts without audio/core locks spanning hardware I/O. Pre-touch bounded
+buffers; don't mlock the entire system into its tiny available RAM.
+
+Video pipeline and ownership
+----------------------------
+Core normally renders to cached RGB565. Callback copies/compacts into a FREE
+hardware-compatible source buffer, then returns; a worker owns READY -> SCALER
+READING -> FREE. If no slot is free, drop/supersede a READY frame; never reclaim
+SCALER READING. The timing engine prevents repeated wasted draws when congestion
+persists. Output buffers separately move FREE -> SCALER WRITING -> PRESENTABLE
+-> SCANNING -> FREE, with release after actual display completion. Driver
+WaitDisp only proves its own documented pending-job condition, not a universal
+display fence. The existing closed driver may initially block submission; that
+limitation must be visible in telemetry and retained safely during migration.
+
+Panel cadence is measured separately. If it differs from core cadence, duplicate
+or discard presentations using timestamps while keeping the game/audio clock
+correct. A30-fps game can still require60-ish emulated VBlanks; don't halve
+retro_run calls based on distinct pictures. Track core steps, core-produced
+pictures, held internal draws, scaler submissions/completions, panel flips,
+duplicates and dropped READY pictures as different counters. FPS must name its
+counter. PScaler IRQ rate is not panel Hz.
+
+Geometry and AV updates are separate typed operations. SET_GEOMETRY changes
+dimensions/aspect inside the established allocation envelope; it does not
+change audio timing. SET_SYSTEM_AV_INFO may change maximum dimensions/timing and
+needs coherent transition/reallocation, returned true only once subsequent
+callbacks can honor it. RGB565 acceptance is not a promise to accept every core;
+initial selected software cores are explicit. Unsupported hardware-render
+contexts fail visibly. GET_AUDIO_VIDEO_ENABLE is a request the core may ignore;
+can_suppress_video is a tested per-core capability. Keep untested legacy/private
+ABI cores on their existing path until migrated deliberately.
+
+Budget arithmetic
+-----------------
+Current adapter source pool:2*512*512*2=1 MiB chunk memory.
+Two640x480 RGB565 scanout surfaces=1.172 MiB; three=1.758 MiB.
+One256x224 RGB565 copy moves112 KiB; about6.55 MiB/s of payload at59.923 Hz,
+plus reads/writes and subsequent DMA traffic. A640x480 output at60Hz is about
+35.16 MiB/s per full-surface memory pass. Removing a CPU copy is not necessarily
+the largest bandwidth win. Direct rendering to uncached chunk RAM can be worse.
+PS1/other modes must allocate from reported validated dimensions, not inherit
+the SNES512x512 cap.16 MiB reserved chunk memory already has vendor owners;
+inventory their allocations before assigning a budget. KeepGPU's suggested8MiB
+reservation away from this live region until ownership is proved.
+
+Linux exposes43120 KiB, and historical available memory was only~4.8-5MiB.
+Aim runtime overhead<=2MiB excluding core/ROM/HAL allocations, reserve6-8MiB
+Linux headroom if feasible, and unload/exec away the artwork/browser process
+during gaming. These are targets to test, not free memory already demonstrated.
+Bound metrics RAM<=256KiB and artwork cache<=1MiB; release artwork before play.
+Disc data streams through bounded caches; cartridge ROM/decompression peak
+must be budgeted separately. Swap is not a realtime capacity plan.
+
+Smallest useful prototype
+-------------------------
+One alternate SD-resident command-line runtime. Same Plus build/hash, known ROM
+and battery-save copy. NoUI rewrite. Thin typed HAL initially delegates verified
+video/input to driver.so, but audio accounting belongs to our backend. Correct
+libretro environment replaces shim; sole scheduler owns drawing/timing.
+Synthetic fixed PCM + test-pattern mode in the same binary establishes native
+audio cursor/period and buffer-release behavior cheaply before loading the
+emulator. Device is owned exclusively; vendor supervisor cannot respawn a rival
+frontend while this runs. Exit and timeout return to preserved v11 boot path.
+
+Run bounded, marked scenes with:
+ A. Native Plus, normal rendering under new runtime.
+ B. Same core, internal drawing suppressed (diagnostic control).
+ C. Same rendered frames copied but not submitted (presentation control).
+Then A/B vendor HAL vs replacement scaler backend when ready. Each comparison
+changes one boundary. This gives more architectural information than another
+binary clock patch, while leaving full browsing/other-core compatibility later.
+
+Release gates
+-------------
+1. Synthetic alternating patterns survive hundreds of submissions without
+   tearing/corruption/use-after-free; geometry switches, pause and exit clean.
+2. Known fixed PCM establishes accepted format/rate, actual queue behavior,
+   underrun recovery and native cursor accuracy. Audio-clock estimator agrees
+   with monotonic elapsed time over a long run within measured oscillator drift.
+3. FF6 marked map/menu/map: same emulated speed, zero observed underruns or
+   honest limitation if backend cannot expose them, bounded queue depth,
+   no regression in pixel/audio/state correctness. Subjective audio is secondary.
+4. Thread CPU and wall histograms separate core, copying/resampling, device
+   submission and waits. Display worker CPU is included separately. Instrument
+   overhead calibrated. Pure wall subtraction does not identify CPU hotspots.
+5. Improvement must be fewer held draws at equal speed and audio latency, lower
+   measured input/output latency, or lower resource cost--not just a higher FPS
+   label achieved by speeding emulation or buffering more sound.
+6. Saves roundtrip under same exact build; battery saves only migrate after
+   verification. Crash/abort leaves original card state recoverable. Test error
+   paths for PCM EPIPE/EAGAIN/partial write, lost scaler completion, queue-full,
+   failed chunk allocation and storage-full during safe save.
+
+Primary sources checked
+-----------------------
+https://www.kernel.org/doc/html/v4.19/sound/designs/oss-emulation.html
+https://github.com/torvalds/linux/blob/v4.19/sound/core/oss/pcm_oss.c
+https://www.alsa-project.org/alsa-doc/alsa-lib/pcm.html
+https://raw.githubusercontent.com/torvalds/linux/v4.19/include/uapi/sound/asound.h
+https://raw.githubusercontent.com/libretro/libretro-common/master/include/libretro.h
+Locally pinned libretro contract:
+build/snes9x2005/libretro-common/include/libretro.h:812,926,959,1044,1350,1359.

@@ -1,0 +1,158 @@
+D-R35 launcher, core and Cortex performance review
+2026-10-04 America/Chicago
+
+Scope
+Read-only inspection of D: binaries and existing handheld measurements.
+PC evidence scripts/artifacts were created; no card files were changed.
+No source recovered from decompilation is claimed to be original source.
+No optimization, new core or launcher replacement was installed in this pass.
+
+Concrete reverse-engineering result
+main is a 9176-byte supervisor. vrtemu is the actual 1660140-byte frontend.
+vrtemu retains 1939 named nonzero-size functions and 2611 named defined symbols,
+including bundled libraries; this count is not 1939 custom launcher routines.
+driver.so retains 41 named functions. Symbol names substantially reduce the
+effort needed to map the runtime, although types, original structures, comments
+and build source still require reconstruction.
+
+The emulation loop is Load_Proc2 at 0xa426c. It resolves retro_get_region,
+retro_run, SetDoubleBuffer and SetFrameSkip. It chooses 50 or 60 FPS by region
+and initializes a millisecond gettimeofday-based scheduler. Its state includes
+fps, initialTicks, FrameCount0, maxSkips, skipCounter and FrameSkip. It sets
+maxSkips to 3 on initial entry; pause/state transitions reinitialize scheduling.
+It supplies the computed skip request through optional SetFrameSkip before
+calling retro_run. When the skip limit is exhausted, it resets its timing base.
+
+Approximate reconstructed control flow, not recovered original C:
+    fps = region_is_pal ? 50 : 60;
+    initialize_clock_and_skip_limit(fps, 3);
+    while (game_active) {
+        process_keys_and_pause_state_operations();
+        elapsed_ms = now_ms() - initialTicks;
+        due = floor(elapsed_ms * fps / 1000);
+        increment_frame_count();
+        if (on_time_or_ahead) wait_until_previous_frame_deadline_and_clear_skip();
+        else if (skipCounter < maxSkips) request_omitted_drawing();
+        else reset_clock_base_and_clear_skip();
+        if (SetFrameSkip) SetFrameSkip(request);
+        process_turbo_and_watchdog();
+        retro_run();
+    }
+
+The original core implements SetFrameSkip at 0x13924: a nonzero argument clears
+IPPU.RenderThisFrame; zero enables drawing and toggles vendor double buffers.
+The installed upstream Plus core and adapter have no SetFrameSkip or
+SetDoubleBuffer export. The launcher guards the optional call, so this is a
+disconnected performance-control contract, not a null-pointer crash.
+The adaptive v10/v11 adapter instead reaches drawing suppression through
+RETRO_ENVIRONMENT_GET_AUDIO_VIDEO_ENABLE, keeping audio enabled every step.
+Providing the vendor extension is a concrete comparison candidate. Its old
+controller is not automatically preferable; avoid stacking two independent
+controllers or changing the proven drawing cap without evaluating the result.
+
+Confirmed frontend compatibility mismatches
+The vendor command-37 geometry handler writes audio rate beyond the geometry
+object. The adapter intercepts it. The frontend supplies ZIP/path game input
+which needs decoding/loading. The hardware video path requires chunk-backed
+memory and compact row stride, so the adapter packs native RGB565 frames into
+alternating chunk buffers. The vendor forces 44100 Hz; the core generates 32040
+Hz, so the continuous resampler bridges the actual contract. These are necessary
+functions in this integration, not just expensive DLL indirection.
+Core loading and symbol resolution happen once, not on every frame.
+
+Driver opportunities and limits
+DrawVFB (0x1ac4) calls PScaleRun (0x14ac). PScaleRun opens the scaler device,
+issues setup/start/status ioctls, may wait in a fallback, stops and closes it
+per job. A persistent device/queue implementation is worth testing, subject to
+the kernel driver's actual per-open/per-job semantics. Static assembly does
+not establish which branches are taken or the amount of time saved.
+ScaleDisplayThread consumes frame work separately from the emulation thread.
+Therefore synchronous video callback duration excludes some worker CPU cost
+and does not bound the total launcher/driver contribution.
+
+Handheld v9 mine measurements
+Normal core-call wall duration: 19.958 ms average, including callbacks and
+scheduling/preemption. Video callback duration: 1.175 ms average.
+With internal drawing disabled: 6.752 ms core-call duration average.
+The nominal core-step deadline at 59.922743404 Hz is 16.688 ms.
+Approximately 3.27 ms must be removed from the measured normal interval merely
+to fit that deadline, plus practical headroom. Removing the entire synchronous
+video callback alone leaves about 18.78 ms. This motivates measuring internal
+render work AND display-worker competition, not assigning all remaining wall
+time to the renderer without CPU-time profiling.
+The v10 user test was clean in the intro, Narshe and wind scenes with drawing
+held on 5.012 percent of 23604 steps overall. This remains a working baseline.
+
+Cortex/build assessment
+Saved cpuinfo identifies Cortex-A7 and NEON/VFPv4, but only processor 0 is shown.
+Clock/governor, active cores, cache configuration, thermal behavior, live memory
+pressure and active GPU availability remain unmeasured. BogoMIPS is not MHz.
+Both locally built cores already use -mcpu=cortex-a7, -mfpu=neon-vfpv4,
+-mfloat-abi=hard and ARM code. Plus uses the upstream O2 Unix recipe, including
+-fno-builtin and no LTO in our recipe. The Plus renderer/APU sources use mostly
+scalar C; enabling NEON instructions is not equivalent to vectorizing hot loops.
+The inspected 2010 source already contains explicit NEON tile-renderer paths.
+
+Worth comparing: O3 versus O2; LTO; selectively allowing compiler builtins for
+small copies; profile-guided optimization; focused SIMD tile/colour-math work.
+Do not copy an aggressive platform recipe blindly: some append O2 after Ofast,
+and whole-program/export assumptions may break a dynamically loaded core.
+Measure speed on the Cortex, verify equivalent pixels/audio/state behavior,
+and report core CPU time separately from elapsed time. QEMU timings cannot
+predict a Cortex speedup or validate the vendor device path.
+The core's Reduce Slowdown option changes emulated SNES cycle accounting; it
+does not raise the physical Cortex clock and can increase the host workload.
+
+Core choice and the unanswered counterfactual
+Upstream 2005 and 2005 Plus share the main CPU/PPU family. Plus is built with
+USE_BLARGG_APU=1 for the more accurate sound engine; plain builds use the legacy
+APU files. Fresh upstream plain 2005 has a fractional sample accumulator at
+libretro.c ~410, unlike the bundled core's observed fixed 735-frame batches.
+We changed sound engine, audio integration, video handling and scheduling over
+the investigation. The successful rendering fix does not prove that Plus was
+necessary, nor that going back would keep sound quality unchanged.
+
+Compare a fresh plain 2005 through the same corrected video/audio boundary and
+same adaptive policy, using identical ROM, scene and normal battery save.
+Potential gain: cheaper legacy sound emulation and fewer omitted drawings.
+Potential loss: less faithful instruments/effects/timing and possible return of
+the prior audible defects. Restoring the bundled vendor binary would mix old
+sample accounting and other integration differences back into the comparison.
+
+The 2010 test clicked badly on the handheld; it was not tested with the new
+adaptive controller or a replacement host. That result is not a final verdict
+on the core in a different integration. It should be measured rather than
+assumed to be faster/slower from its year label or newer renderer alone.
+Save states are core/build-specific. Preserve Plus state files separately when
+comparing plain/2010. Battery SRAM is the preferred migration route, verified
+for the actual ROM/core pair; do not blindly reuse state headers across cores.
+
+Recommended development sequence
+1. Measure frame CPU time versus wall time, render/APU/resampling components,
+   display-worker activity, host clock/governor and memory/queue behavior.
+2. Compare fresh 2005 versus Plus with the corrected boundary held constant.
+3. Build a small SNES-only libretro host using the recovered driver interfaces:
+   one frame/audio scheduling owner, bounded audio queue, correct environment
+   callbacks, stable video-buffer ownership, input and safe save handling.
+   Compare the same Plus build/scene through stock and new hosts. A feeder
+   thread can smooth delivery jitter but cannot solve sustained CPU overload.
+4. Optimize measured core hotspots and scaler setup; expand the new host into
+   a full launcher only once the prototype proves hardware benefit. Replacing
+   browsing artwork alone would not affect the game loop.
+
+CPU performance and native clock values must be measured on the handheld.
+A new host can eliminate redundant policy and unsupported callback contracts,
+but display memory requirements remain real and a single binary is not itself
+proof of less CPU work. Direct rendering into chunk memory also needs a cache
+and throughput comparison; zero-copy can lose if CPU rendering becomes slower.
+
+Sources and proving artifacts
+binary-census.json and annotated-paths.txt in this directory
+../v9-render-return-20261004T164007Z/analysis.json
+../v10-budget-return-20261004T170305Z/analysis.json
+../../build/build-plus.sh, build-2010.sh, emu_sfc_plus_production.c
+../../build/snes9x2005/{Makefile,Makefile.common,libretro.c,source/gfx.h}
+../../build/snes9x2010/{README.md,src/tile.c}
+https://docs.libretro.com/library/snes9x_2005_plus/
+https://github.com/libretro/snes9x2005/blob/a79dfe9047e7fec58808aefe48ad2bf499c7af11/Makefile.common
+https://github.com/libretro/snes9x2005/blob/a79dfe9047e7fec58808aefe48ad2bf499c7af11/libretro.c

@@ -1,0 +1,2090 @@
+{
+  "record_count": 829,
+  "complete": {
+    "kind": "complete",
+    "elapsed": 105.33463,
+    "report_capped": false
+  },
+  "global_cpu_percent": {
+    "user": 87.44053282588011,
+    "nice": 0.10704091341579448,
+    "system": 3.18744053282588,
+    "idle": 9.26498572787821,
+    "iowait": 0.0,
+    "irq": 0.0,
+    "softirq": 0.0,
+    "steal": 0.0,
+    "guest": 0.0,
+    "guest_nice": 0.0
+  },
+  "global_interval_seconds": 89.569903,
+  "threads": {
+    "/proc/476/task/476/stat": {
+      "first": {
+        "elapsed": 15.541202,
+        "tid": 476,
+        "name": "main",
+        "state": "S",
+        "utime": 0,
+        "stime": 2,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 709,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "last": {
+        "elapsed": 105.109565,
+        "tid": 476,
+        "name": "main",
+        "state": "S",
+        "utime": 0,
+        "stime": 21,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 709,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "seconds": 89.568363,
+      "user_cpu_percent": 0.0,
+      "kernel_cpu_percent": 0.21212847219279868,
+      "wchan": [
+        "hrtimer_nanosleep",
+        "hrtimer_nanosleep",
+        "hrtimer_nanosleep",
+        "hrtimer_nanosleep"
+      ],
+      "intervals": [
+        {
+          "end_elapsed": 17.804078,
+          "seconds": 2.2628760000000003,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 19.817384,
+          "seconds": 2.013306,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 21.827389,
+          "seconds": 2.0100049999999996,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 23.837329,
+          "seconds": 2.0099400000000003,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.497527289371822
+        },
+        {
+          "end_elapsed": 25.847486,
+          "seconds": 2.0101569999999995,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 27.858831,
+          "seconds": 2.0113449999999986,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4971797478801502
+        },
+        {
+          "end_elapsed": 29.867352,
+          "seconds": 2.0085210000000018,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 31.895403,
+          "seconds": 2.0280510000000014,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49308424689517144
+        },
+        {
+          "end_elapsed": 33.953512,
+          "seconds": 2.0581090000000017,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 35.967592,
+          "seconds": 2.01408,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4965046075627582
+        },
+        {
+          "end_elapsed": 37.991198,
+          "seconds": 2.023605999999994,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 40.047576,
+          "seconds": 2.0563780000000023,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4862919171475278
+        },
+        {
+          "end_elapsed": 42.05728,
+          "seconds": 2.0097039999999993,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 44.118057,
+          "seconds": 2.0607770000000016,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 46.149979,
+          "seconds": 2.0319220000000016,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.492144875639911
+        },
+        {
+          "end_elapsed": 48.277479,
+          "seconds": 2.1274999999999977,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 50.287702,
+          "seconds": 2.0102230000000034,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49745724728052476
+        },
+        {
+          "end_elapsed": 52.348553,
+          "seconds": 2.0608509999999995,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 54.35736,
+          "seconds": 2.0088069999999973,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4978079028995824
+        },
+        {
+          "end_elapsed": 56.367898,
+          "seconds": 2.010537999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 58.411007,
+          "seconds": 2.043109000000001,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.48945014681057125
+        },
+        {
+          "end_elapsed": 60.45721,
+          "seconds": 2.0462030000000055,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 62.559706,
+          "seconds": 2.102495999999995,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4756251617125561
+        },
+        {
+          "end_elapsed": 64.567494,
+          "seconds": 2.007787999999998,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 66.600078,
+          "seconds": 2.032584,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 68.616754,
+          "seconds": 2.016676000000004,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 70.627498,
+          "seconds": 2.0107440000000025,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 72.667791,
+          "seconds": 2.0402929999999913,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49012568292887554
+        },
+        {
+          "end_elapsed": 74.677385,
+          "seconds": 2.009594000000007,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 76.689493,
+          "seconds": 2.012107999999998,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.496991215183281
+        },
+        {
+          "end_elapsed": 78.807461,
+          "seconds": 2.1179680000000047,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 80.827153,
+          "seconds": 2.019691999999992,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49512499925731446
+        },
+        {
+          "end_elapsed": 82.837389,
+          "seconds": 2.010236000000006,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 84.847437,
+          "seconds": 2.0100479999999976,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49750055720062464
+        },
+        {
+          "end_elapsed": 86.857309,
+          "seconds": 2.0098720000000014,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 88.867505,
+          "seconds": 2.0101959999999934,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49746392889051777
+        },
+        {
+          "end_elapsed": 90.8961,
+          "seconds": 2.02859500000001,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 92.934617,
+          "seconds": 2.038516999999999,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4905526910003697
+        },
+        {
+          "end_elapsed": 94.9475,
+          "seconds": 2.012883000000002,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 96.994094,
+          "seconds": 2.046593999999999,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.48861669681431713
+        },
+        {
+          "end_elapsed": 99.00793,
+          "seconds": 2.0138359999999977,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 101.017369,
+          "seconds": 2.0094390000000004,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.49765133452670113
+        },
+        {
+          "end_elapsed": 103.096403,
+          "seconds": 2.079033999999993,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 105.109565,
+          "seconds": 2.0131620000000083,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.4967310132021148
+        }
+      ]
+    },
+    "/proc/481/task/481/stat": {
+      "first": {
+        "elapsed": 15.647989,
+        "tid": 481,
+        "name": "vrtemu",
+        "state": "R",
+        "utime": 784,
+        "stime": 64,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 713,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "last": {
+        "elapsed": 105.197966,
+        "tid": 481,
+        "name": "vrtemu",
+        "state": "S",
+        "utime": 8347,
+        "stime": 111,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 713,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "seconds": 89.549977,
+      "user_cpu_percent": 84.45563308184882,
+      "kernel_cpu_percent": 0.5248465892961648,
+      "wchan": [
+        "0",
+        "0",
+        "0",
+        "hrtimer_nanosleep"
+      ],
+      "intervals": [
+        {
+          "end_elapsed": 17.804659,
+          "seconds": 2.15667,
+          "user_cpu_percent": 86.70774851970862,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 19.817888,
+          "seconds": 2.013228999999999,
+          "user_cpu_percent": 86.42831987816591,
+          "kernel_cpu_percent": 0.4967144820584248
+        },
+        {
+          "end_elapsed": 21.827887,
+          "seconds": 2.0099990000000005,
+          "user_cpu_percent": 85.57218187670738,
+          "kernel_cpu_percent": 0.9950253706593881
+        },
+        {
+          "end_elapsed": 23.837823,
+          "seconds": 2.0099359999999997,
+          "user_cpu_percent": 86.56992063428886,
+          "kernel_cpu_percent": 0.49752827950740725
+        },
+        {
+          "end_elapsed": 25.848048,
+          "seconds": 2.0102249999999984,
+          "user_cpu_percent": 86.55747490952513,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 27.85933,
+          "seconds": 2.0112820000000013,
+          "user_cpu_percent": 85.51759524522164,
+          "kernel_cpu_percent": 0.9943906423862983
+        },
+        {
+          "end_elapsed": 29.867855,
+          "seconds": 2.008524999999999,
+          "user_cpu_percent": 87.12861428162462,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 31.895921,
+          "seconds": 2.0280660000000026,
+          "user_cpu_percent": 87.7683467895028,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 33.954033,
+          "seconds": 2.0581120000000013,
+          "user_cpu_percent": 84.54350394925052,
+          "kernel_cpu_percent": 1.9435288264195523
+        },
+        {
+          "end_elapsed": 35.9681,
+          "seconds": 2.014066999999997,
+          "user_cpu_percent": 87.3853749651825,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 37.991771,
+          "seconds": 2.023671,
+          "user_cpu_percent": 85.48820435732883,
+          "kernel_cpu_percent": 0.49415147027357703
+        },
+        {
+          "end_elapsed": 40.048077,
+          "seconds": 2.0563059999999993,
+          "user_cpu_percent": 86.07668313957167,
+          "kernel_cpu_percent": 0.9726178885827307
+        },
+        {
+          "end_elapsed": 42.057775,
+          "seconds": 2.009698,
+          "user_cpu_percent": 86.58017274237223,
+          "kernel_cpu_percent": 0.49758719966880594
+        },
+        {
+          "end_elapsed": 44.118627,
+          "seconds": 2.060851999999997,
+          "user_cpu_percent": 80.54920974431946,
+          "kernel_cpu_percent": 0.4852362032790329
+        },
+        {
+          "end_elapsed": 46.219174,
+          "seconds": 2.100547000000006,
+          "user_cpu_percent": 80.45523380338527,
+          "kernel_cpu_percent": 0.9521329444187606
+        },
+        {
+          "end_elapsed": 48.277982,
+          "seconds": 2.058807999999999,
+          "user_cpu_percent": 81.11489755237015,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 50.288203,
+          "seconds": 2.0102210000000014,
+          "user_cpu_percent": 81.58306972218472,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 52.349087,
+          "seconds": 2.0608839999999944,
+          "user_cpu_percent": 81.51841636889823,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 54.357866,
+          "seconds": 2.008779000000004,
+          "user_cpu_percent": 80.14818952209261,
+          "kernel_cpu_percent": 0.9956296835042561
+        },
+        {
+          "end_elapsed": 56.368405,
+          "seconds": 2.0105390000000014,
+          "user_cpu_percent": 81.57016601020915,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 58.411607,
+          "seconds": 2.0432019999999937,
+          "user_cpu_percent": 80.75559832067535,
+          "kernel_cpu_percent": 0.4894278686101536
+        },
+        {
+          "end_elapsed": 60.515812,
+          "seconds": 2.1042050000000003,
+          "user_cpu_percent": 76.03821870967894,
+          "kernel_cpu_percent": 3.3266720685484534
+        },
+        {
+          "end_elapsed": 62.560214,
+          "seconds": 2.044402000000005,
+          "user_cpu_percent": 85.11046261938678,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 64.56799,
+          "seconds": 2.0077759999999927,
+          "user_cpu_percent": 80.68629169787894,
+          "kernel_cpu_percent": 0.9961270579985054
+        },
+        {
+          "end_elapsed": 66.600591,
+          "seconds": 2.0326009999999997,
+          "user_cpu_percent": 79.208856042086,
+          "kernel_cpu_percent": 0.4919804723110931
+        },
+        {
+          "end_elapsed": 68.617258,
+          "seconds": 2.0166670000000124,
+          "user_cpu_percent": 70.41321150194808,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 70.628004,
+          "seconds": 2.0107459999999975,
+          "user_cpu_percent": 86.03771933401843,
+          "kernel_cpu_percent": 0.9946557148441437
+        },
+        {
+          "end_elapsed": 72.668301,
+          "seconds": 2.0402969999999954,
+          "user_cpu_percent": 86.2619510786912,
+          "kernel_cpu_percent": 0.9802494440760362
+        },
+        {
+          "end_elapsed": 74.677881,
+          "seconds": 2.0095799999999997,
+          "user_cpu_percent": 87.08287303814728,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 76.797086,
+          "seconds": 2.119204999999994,
+          "user_cpu_percent": 84.93751194433787,
+          "kernel_cpu_percent": 1.4156251990722977
+        },
+        {
+          "end_elapsed": 78.808028,
+          "seconds": 2.010942,
+          "user_cpu_percent": 86.52661290081961,
+          "kernel_cpu_percent": 0.49727938448746906
+        },
+        {
+          "end_elapsed": 80.82765,
+          "seconds": 2.0196220000000125,
+          "user_cpu_percent": 86.6498780464854,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 82.837885,
+          "seconds": 2.0102349999999944,
+          "user_cpu_percent": 86.55704432566365,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 84.847935,
+          "seconds": 2.0100500000000068,
+          "user_cpu_percent": 86.56501082062606,
+          "kernel_cpu_percent": 0.4975000621875061
+        },
+        {
+          "end_elapsed": 86.857813,
+          "seconds": 2.0098779999999863,
+          "user_cpu_percent": 85.57733354959912,
+          "kernel_cpu_percent": 1.9901705476650957
+        },
+        {
+          "end_elapsed": 88.868007,
+          "seconds": 2.0101940000000127,
+          "user_cpu_percent": 86.55880974672041,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 90.896608,
+          "seconds": 2.0286009999999948,
+          "user_cpu_percent": 85.77339752864188,
+          "kernel_cpu_percent": 0.9859011210188722
+        },
+        {
+          "end_elapsed": 92.93516,
+          "seconds": 2.0385519999999957,
+          "user_cpu_percent": 86.82633555582608,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 94.948006,
+          "seconds": 2.0128460000000103,
+          "user_cpu_percent": 86.94157426847315,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 96.994626,
+          "seconds": 2.04661999999999,
+          "user_cpu_percent": 86.97266712921835,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 99.008433,
+          "seconds": 2.013807,
+          "user_cpu_percent": 85.90694142983911,
+          "kernel_cpu_percent": 0.49657191577941684
+        },
+        {
+          "end_elapsed": 101.072548,
+          "seconds": 2.064115000000001,
+          "user_cpu_percent": 86.71997442002984,
+          "kernel_cpu_percent": 0.48446913083815557
+        },
+        {
+          "end_elapsed": 103.096909,
+          "seconds": 2.024360999999999,
+          "user_cpu_percent": 85.95304888801952,
+          "kernel_cpu_percent": 0.0
+        },
+        {
+          "end_elapsed": 105.197966,
+          "seconds": 2.1010569999999973,
+          "user_cpu_percent": 87.0990173041475,
+          "kernel_cpu_percent": 0.0
+        }
+      ]
+    },
+    "/proc/481/task/483/stat": {
+      "first": {
+        "elapsed": 15.649181,
+        "tid": 483,
+        "name": "vrtemu",
+        "state": "S",
+        "utime": 0,
+        "stime": 15,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 724,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "last": {
+        "elapsed": 105.199324,
+        "tid": 483,
+        "name": "vrtemu",
+        "state": "S",
+        "utime": 0,
+        "stime": 110,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 724,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "seconds": 89.550143,
+      "user_cpu_percent": 0.0,
+      "kernel_cpu_percent": 1.0608581607736796,
+      "wchan": [
+        "hrtimer_nanosleep",
+        "hrtimer_nanosleep",
+        "hrtimer_nanosleep",
+        "hrtimer_nanosleep"
+      ],
+      "intervals": [
+        {
+          "end_elapsed": 17.805002,
+          "seconds": 2.1558210000000013,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9277208079891599
+        },
+        {
+          "end_elapsed": 19.818224,
+          "seconds": 2.013221999999999,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9934324182827333
+        },
+        {
+          "end_elapsed": 21.828221,
+          "seconds": 2.0099969999999985,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9950263607358626
+        },
+        {
+          "end_elapsed": 23.838216,
+          "seconds": 2.009995,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9950273508143055
+        },
+        {
+          "end_elapsed": 25.848379,
+          "seconds": 2.010163000000002,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.4924162866394401
+        },
+        {
+          "end_elapsed": 27.859665,
+          "seconds": 2.0112859999999984,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9943886647647334
+        },
+        {
+          "end_elapsed": 29.868184,
+          "seconds": 2.0085189999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.995758566386477
+        },
+        {
+          "end_elapsed": 31.896254,
+          "seconds": 2.0280699999999996,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9861592548580672
+        },
+        {
+          "end_elapsed": 33.954363,
+          "seconds": 2.0581090000000017,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9717658297009528
+        },
+        {
+          "end_elapsed": 35.968434,
+          "seconds": 2.0140710000000013,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9930136524482001
+        },
+        {
+          "end_elapsed": 38.037723,
+          "seconds": 2.0692889999999977,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9665155519601187
+        },
+        {
+          "end_elapsed": 40.048408,
+          "seconds": 2.0106850000000023,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.4920288359439677
+        },
+        {
+          "end_elapsed": 42.058106,
+          "seconds": 2.009698,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9951743993376119
+        },
+        {
+          "end_elapsed": 44.119062,
+          "seconds": 2.0609559999999973,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9704234345614378
+        },
+        {
+          "end_elapsed": 46.220365,
+          "seconds": 2.1013030000000015,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9517903891061873
+        },
+        {
+          "end_elapsed": 48.278316,
+          "seconds": 2.0579509999999956,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9718404374059462
+        },
+        {
+          "end_elapsed": 50.288534,
+          "seconds": 2.010218000000002,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9949169692043341
+        },
+        {
+          "end_elapsed": 52.349426,
+          "seconds": 2.0608920000000026,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9704535705898211
+        },
+        {
+          "end_elapsed": 54.358195,
+          "seconds": 2.008769000000001,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.4934519598818972
+        },
+        {
+          "end_elapsed": 56.368737,
+          "seconds": 2.010542000000001,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9947566377623541
+        },
+        {
+          "end_elapsed": 58.411942,
+          "seconds": 2.0432050000000004,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9788542999845828
+        },
+        {
+          "end_elapsed": 60.516308,
+          "seconds": 2.104365999999999,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9504050150971842
+        },
+        {
+          "end_elapsed": 62.560546,
+          "seconds": 2.044238,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.978359662622454
+        },
+        {
+          "end_elapsed": 64.568379,
+          "seconds": 2.007832999999991,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9960987791315359
+        },
+        {
+          "end_elapsed": 66.600929,
+          "seconds": 2.0325500000000005,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.4759784507146192
+        },
+        {
+          "end_elapsed": 68.617589,
+          "seconds": 2.0166600000000017,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9917388156655055
+        },
+        {
+          "end_elapsed": 70.628343,
+          "seconds": 2.0107540000000057,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9946517574999201
+        },
+        {
+          "end_elapsed": 72.668634,
+          "seconds": 2.0402909999999963,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9802523267514308
+        },
+        {
+          "end_elapsed": 74.678212,
+          "seconds": 2.0095780000000047,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9952338252110619
+        },
+        {
+          "end_elapsed": 76.798327,
+          "seconds": 2.1201149999999984,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9433450543956349
+        },
+        {
+          "end_elapsed": 78.808366,
+          "seconds": 2.010039000000006,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.4925083543155087
+        },
+        {
+          "end_elapsed": 80.827981,
+          "seconds": 2.0196149999999875,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9902877528637946
+        },
+        {
+          "end_elapsed": 82.838215,
+          "seconds": 2.010234000000011,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9949090503891531
+        },
+        {
+          "end_elapsed": 84.848321,
+          "seconds": 2.0101059999999933,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9949724044403662
+        },
+        {
+          "end_elapsed": 86.858152,
+          "seconds": 2.0098310000000055,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9951085439522003
+        },
+        {
+          "end_elapsed": 88.868339,
+          "seconds": 2.010187000000002,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9949323122674647
+        },
+        {
+          "end_elapsed": 90.896997,
+          "seconds": 2.028657999999993,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9858734197681457
+        },
+        {
+          "end_elapsed": 92.935495,
+          "seconds": 2.038498000000004,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9811145264797885
+        },
+        {
+          "end_elapsed": 94.948336,
+          "seconds": 2.0128409999999946,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.490430689756423
+        },
+        {
+          "end_elapsed": 96.994959,
+          "seconds": 2.0466229999999968,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9772195465408153
+        },
+        {
+          "end_elapsed": 99.008764,
+          "seconds": 2.013805000000005,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9931448178944808
+        },
+        {
+          "end_elapsed": 101.07291,
+          "seconds": 2.064145999999994,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9689237098538601
+        },
+        {
+          "end_elapsed": 103.097243,
+          "seconds": 2.024333000000013,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 0.9879797444392733
+        },
+        {
+          "end_elapsed": 105.199324,
+          "seconds": 2.1020809999999983,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 1.4271571837621873
+        }
+      ]
+    },
+    "/proc/481/task/484/stat": {
+      "first": {
+        "elapsed": 15.650403,
+        "tid": 484,
+        "name": "vrtemu",
+        "state": "S",
+        "utime": 10,
+        "stime": 18,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 747,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "last": {
+        "elapsed": 105.200532,
+        "tid": 484,
+        "name": "vrtemu",
+        "state": "S",
+        "utime": 23,
+        "stime": 317,
+        "priority": 20,
+        "nice": 0,
+        "starttime": 747,
+        "processor": 0,
+        "rt_priority": 0,
+        "policy": 0
+      },
+      "seconds": 89.550129,
+      "user_cpu_percent": 0.14517008680132668,
+      "kernel_cpu_percent": 3.338911996430513,
+      "wchan": [
+        "futex_wait_queue_me",
+        "disp1_wait_frame_end",
+        "futex_wait_queue_me",
+        "futex_wait_queue_me"
+      ],
+      "intervals": [
+        {
+          "end_elapsed": 17.805312,
+          "seconds": 2.154909,
+          "user_cpu_percent": 0.464056718868407,
+          "kernel_cpu_percent": 2.320283594342035
+        },
+        {
+          "end_elapsed": 19.818536,
+          "seconds": 2.013224000000001,
+          "user_cpu_percent": 0.9934314313757431,
+          "kernel_cpu_percent": 1.9868628627514862
+        },
+        {
+          "end_elapsed": 21.828528,
+          "seconds": 2.009991999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.985086507807001
+        },
+        {
+          "end_elapsed": 23.838533,
+          "seconds": 2.010005000000003,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.985067201325365
+        },
+        {
+          "end_elapsed": 25.848682,
+          "seconds": 2.0101489999999984,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.482328921885893
+        },
+        {
+          "end_elapsed": 27.85997,
+          "seconds": 2.0112880000000004,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.983163027870697
+        },
+        {
+          "end_elapsed": 29.868551,
+          "seconds": 2.0085809999999995,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.987183489239419
+        },
+        {
+          "end_elapsed": 31.896559,
+          "seconds": 2.028008,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.4516629125723375
+        },
+        {
+          "end_elapsed": 33.954675,
+          "seconds": 2.058116000000002,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.915287573683891
+        },
+        {
+          "end_elapsed": 35.968735,
+          "seconds": 2.0140600000000006,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.979057227689343
+        },
+        {
+          "end_elapsed": 38.038058,
+          "seconds": 2.069322999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.3827488507110828
+        },
+        {
+          "end_elapsed": 40.048711,
+          "seconds": 2.010652999999998,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.984105163844784
+        },
+        {
+          "end_elapsed": 42.058412,
+          "seconds": 2.0097009999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.483105198235957
+        },
+        {
+          "end_elapsed": 44.134416,
+          "seconds": 2.0760040000000046,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.371862481960528
+        },
+        {
+          "end_elapsed": 46.221584,
+          "seconds": 2.0871679999999984,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.312063044278183
+        },
+        {
+          "end_elapsed": 48.278622,
+          "seconds": 2.0570379999999986,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.375223014839787
+        },
+        {
+          "end_elapsed": 50.288901,
+          "seconds": 2.010279000000004,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.979547117589142
+        },
+        {
+          "end_elapsed": 52.349736,
+          "seconds": 2.0608349999999973,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.367161854296929
+        },
+        {
+          "end_elapsed": 54.358505,
+          "seconds": 2.008769000000001,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.480355879645692
+        },
+        {
+          "end_elapsed": 56.36904,
+          "seconds": 2.0105349999999973,
+          "user_cpu_percent": 0.49738005058355184,
+          "kernel_cpu_percent": 3.9790404046684147
+        },
+        {
+          "end_elapsed": 58.44269,
+          "seconds": 2.0736500000000007,
+          "user_cpu_percent": 0.4822414582981697,
+          "kernel_cpu_percent": 4.340173124683528
+        },
+        {
+          "end_elapsed": 60.516643,
+          "seconds": 2.073953000000003,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.339539034876869
+        },
+        {
+          "end_elapsed": 62.560852,
+          "seconds": 2.044208999999995,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.891867710199898
+        },
+        {
+          "end_elapsed": 64.568687,
+          "seconds": 2.007835,
+          "user_cpu_percent": 0.9960977869197419,
+          "kernel_cpu_percent": 3.9843911476789677
+        },
+        {
+          "end_elapsed": 66.601241,
+          "seconds": 2.0325540000000046,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 4.427926638111449
+        },
+        {
+          "end_elapsed": 68.617895,
+          "seconds": 2.0166540000000026,
+          "user_cpu_percent": 0.4958708831559597,
+          "kernel_cpu_percent": 3.471096182091718
+        },
+        {
+          "end_elapsed": 70.628723,
+          "seconds": 2.0108279999999894,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.9838454606759166
+        },
+        {
+          "end_elapsed": 72.668943,
+          "seconds": 2.040220000000005,
+          "user_cpu_percent": 0.9802864396976773,
+          "kernel_cpu_percent": 2.450716099244193
+        },
+        {
+          "end_elapsed": 74.67852,
+          "seconds": 2.0095770000000073,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.9857029613694714
+        },
+        {
+          "end_elapsed": 76.799476,
+          "seconds": 2.1209559999999925,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.82891299960962
+        },
+        {
+          "end_elapsed": 78.808675,
+          "seconds": 2.0091989999999953,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.4839754548952175
+        },
+        {
+          "end_elapsed": 80.828289,
+          "seconds": 2.0196140000000042,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.9708647295968373
+        },
+        {
+          "end_elapsed": 82.838523,
+          "seconds": 2.010233999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.9847271511674807
+        },
+        {
+          "end_elapsed": 84.848632,
+          "seconds": 2.010109,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.4823982182060775
+        },
+        {
+          "end_elapsed": 86.85846,
+          "seconds": 2.009827999999999,
+          "user_cpu_percent": 0.49755501465797103,
+          "kernel_cpu_percent": 2.487775073289855
+        },
+        {
+          "end_elapsed": 88.868644,
+          "seconds": 2.0101840000000095,
+          "user_cpu_percent": 0.497466898552568,
+          "kernel_cpu_percent": 2.4873344927628396
+        },
+        {
+          "end_elapsed": 90.897319,
+          "seconds": 2.0286749999999927,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.957595474878934
+        },
+        {
+          "end_elapsed": 92.9358,
+          "seconds": 2.0384810000000044,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.433929479843072
+        },
+        {
+          "end_elapsed": 94.948644,
+          "seconds": 2.012844000000001,
+          "user_cpu_percent": 0.49680948945869596,
+          "kernel_cpu_percent": 2.48404744729348
+        },
+        {
+          "end_elapsed": 96.995328,
+          "seconds": 2.046683999999999,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.420166474160155
+        },
+        {
+          "end_elapsed": 99.009074,
+          "seconds": 2.0137459999999976,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.9795217470326483
+        },
+        {
+          "end_elapsed": 101.073222,
+          "seconds": 2.064148000000003,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.90676831312483
+        },
+        {
+          "end_elapsed": 103.09755,
+          "seconds": 2.024327999999997,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 2.9639465541157404
+        },
+        {
+          "end_elapsed": 105.200532,
+          "seconds": 2.1029819999999972,
+          "user_cpu_percent": 0.0,
+          "kernel_cpu_percent": 3.328606711802578
+        }
+      ]
+    }
+  },
+  "global_accounted_cpu_seconds": 84.08,
+  "global_cpu_accounting_note": "Percentages normalized to reported ticks. Ticks do not cover the entire wall interval; do not treat as an exact utilization or interrupt-time measurement.",
+  "interrupts": {
+    "16": {
+      "label": "GIC-0  29 Level     arch_timer",
+      "delta": 8964,
+      "per_second": 99.82328027673276
+    },
+    "17": {
+      "label": "GIC-0  30 Level     arch_timer",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "19": {
+      "label": "GIC-0  69 Level     (null)",
+      "delta": 625739,
+      "per_second": 6968.241809134592
+    },
+    "21": {
+      "label": "GIC-0  71 Level     gp_i2c0",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "22": {
+      "label": "GIC-0  72 Level     gp_i2c1",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "23": {
+      "label": "GIC-0  73 Level     gp_i2c2",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "33": {
+      "label": "GIC-0  85 Level     DMA_INT",
+      "delta": 968,
+      "per_second": 10.779667035684662
+    },
+    "35": {
+      "label": "GIC-0 108 Level     PPU_INT",
+      "delta": 4028,
+      "per_second": 44.85588721047295
+    },
+    "36": {
+      "label": "GIC-0 136 Level     HDMI_INT",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "37": {
+      "label": "GIC-0  32 Level     rtc_irq",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "39": {
+      "label": "GIC-0 102 Level     SDC1_IRQ",
+      "delta": 16,
+      "per_second": 0.1781763146394159
+    },
+    "41": {
+      "label": "GIC-0  82 Level     ADC_IRQ",
+      "delta": 3041,
+      "per_second": 33.86463580115399
+    },
+    "53": {
+      "label": "GIC-0 100 Level     SCALE_IRQ",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "54": {
+      "label": "GIC-0  98 Level     ohci_hcd:usb3",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "55": {
+      "label": "GIC-0  39 Level     ohci_hcd:usb4",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "56": {
+      "label": "GIC-0  99 Level     ehci_hcd:usb1",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "57": {
+      "label": "GIC-0  41 Level     ehci_hcd:usb2",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "67": {
+      "label": "GIC-0 117 Level     PSCA_IRQ",
+      "delta": 4028,
+      "per_second": 44.85588721047295
+    },
+    "68": {
+      "label": "GIC-0 118 Level     PSCA_B_IRQ",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "69": {
+      "label": "GIC-0  76 Level     PSCA_Y_IRQ",
+      "delta": 0,
+      "per_second": 0.0
+    },
+    "71": {
+      "label": "GIC-0 132 Level     AES_INT, HASH_INT",
+      "delta": 0,
+      "per_second": 0.0
+    }
+  },
+  "memory": [
+    {
+      "elapsed": 0.001133,
+      "MemAvailable": 23920,
+      "MemFree": 24144,
+      "SwapTotal": 262140,
+      "SwapFree": 262140
+    },
+    {
+      "elapsed": 15.533168,
+      "MemAvailable": 5104,
+      "MemFree": 2088,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 17.762863,
+      "MemAvailable": 5040,
+      "MemFree": 1988,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 19.812865,
+      "MemAvailable": 5036,
+      "MemFree": 1984,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 21.822937,
+      "MemAvailable": 5032,
+      "MemFree": 1980,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 23.832922,
+      "MemAvailable": 5024,
+      "MemFree": 1972,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 25.843043,
+      "MemAvailable": 5020,
+      "MemFree": 1968,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 27.854394,
+      "MemAvailable": 5016,
+      "MemFree": 1964,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 29.862969,
+      "MemAvailable": 5008,
+      "MemFree": 1956,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 31.872797,
+      "MemAvailable": 5004,
+      "MemFree": 1952,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 33.903028,
+      "MemAvailable": 5000,
+      "MemFree": 1948,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 35.96305,
+      "MemAvailable": 4996,
+      "MemFree": 1944,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 37.972964,
+      "MemAvailable": 4988,
+      "MemFree": 1936,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 40.043038,
+      "MemAvailable": 4984,
+      "MemFree": 1932,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 42.052816,
+      "MemAvailable": 4980,
+      "MemFree": 1928,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 44.063126,
+      "MemAvailable": 4916,
+      "MemFree": 1864,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 46.142808,
+      "MemAvailable": 4912,
+      "MemFree": 1860,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 48.273026,
+      "MemAvailable": 4892,
+      "MemFree": 1840,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 50.28334,
+      "MemAvailable": 4884,
+      "MemFree": 1832,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 52.29305,
+      "MemAvailable": 4880,
+      "MemFree": 1828,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 54.352906,
+      "MemAvailable": 4876,
+      "MemFree": 1824,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 56.363454,
+      "MemAvailable": 4872,
+      "MemFree": 1820,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 58.373047,
+      "MemAvailable": 4864,
+      "MemFree": 1812,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 60.452741,
+      "MemAvailable": 4860,
+      "MemFree": 1808,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 62.523049,
+      "MemAvailable": 4856,
+      "MemFree": 1804,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 64.563082,
+      "MemAvailable": 4848,
+      "MemFree": 1796,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 66.58078,
+      "MemAvailable": 4840,
+      "MemFree": 1788,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 68.612132,
+      "MemAvailable": 4828,
+      "MemFree": 1776,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 70.623078,
+      "MemAvailable": 4820,
+      "MemFree": 1768,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 72.632816,
+      "MemAvailable": 4816,
+      "MemFree": 1764,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 74.672887,
+      "MemAvailable": 4812,
+      "MemFree": 1760,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 76.682902,
+      "MemAvailable": 4808,
+      "MemFree": 1756,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 78.803084,
+      "MemAvailable": 4784,
+      "MemFree": 1732,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 80.82267,
+      "MemAvailable": 4780,
+      "MemFree": 1728,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 82.832879,
+      "MemAvailable": 4776,
+      "MemFree": 1724,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 84.843048,
+      "MemAvailable": 4768,
+      "MemFree": 1716,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 86.852854,
+      "MemAvailable": 4764,
+      "MemFree": 1712,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 88.863038,
+      "MemAvailable": 4760,
+      "MemFree": 1708,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 90.872859,
+      "MemAvailable": 4752,
+      "MemFree": 1700,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 92.903559,
+      "MemAvailable": 4748,
+      "MemFree": 1696,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 94.943046,
+      "MemAvailable": 4744,
+      "MemFree": 1692,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 96.953223,
+      "MemAvailable": 4736,
+      "MemFree": 1684,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 99.003477,
+      "MemAvailable": 4732,
+      "MemFree": 1680,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 101.012901,
+      "MemAvailable": 4728,
+      "MemFree": 1676,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 103.082782,
+      "MemAvailable": 4724,
+      "MemFree": 1672,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    },
+    {
+      "elapsed": 105.103054,
+      "MemAvailable": 4716,
+      "MemFree": 1664,
+      "SwapTotal": 262140,
+      "SwapFree": 261884
+    }
+  ],
+  "device_tree_clock_hz": 666000000,
+  "perf_capabilities": [
+    {
+      "kind": "perf_capability",
+      "event": "task_clock",
+      "errno": 0,
+      "read_bytes": 24,
+      "count": 70000,
+      "enabled_ns": 69000,
+      "running_ns": 69000,
+      "scope": "collector_only"
+    },
+    {
+      "kind": "perf_capability",
+      "event": "cycles",
+      "errno": 2,
+      "read_bytes": -1,
+      "count": 0,
+      "enabled_ns": 0,
+      "running_ns": 0,
+      "scope": "collector_only"
+    },
+    {
+      "kind": "perf_capability",
+      "event": "instructions",
+      "errno": 2,
+      "read_bytes": -1,
+      "count": 0,
+      "enabled_ns": 0,
+      "running_ns": 0,
+      "scope": "collector_only"
+    },
+    {
+      "kind": "perf_capability",
+      "event": "branch_misses",
+      "errno": 2,
+      "read_bytes": -1,
+      "count": 0,
+      "enabled_ns": 0,
+      "running_ns": 0,
+      "scope": "collector_only"
+    },
+    {
+      "kind": "perf_capability",
+      "event": "l1d_read_misses",
+      "errno": 2,
+      "read_bytes": -1,
+      "count": 0,
+      "enabled_ns": 0,
+      "running_ns": 0,
+      "scope": "collector_only"
+    },
+    {
+      "kind": "perf_capability",
+      "event": "l2_refill_raw_0x17",
+      "errno": 2,
+      "read_bytes": -1,
+      "count": 0,
+      "enabled_ns": 0,
+      "running_ns": 0,
+      "scope": "collector_only"
+    }
+  ],
+  "unavailable_paths": {
+    "/proc/asound/cards": 2,
+    "/proc/asound/pcm": 2,
+    "/proc/asound/version": 2,
+    "/proc/asound/oss/sndstat": 2,
+    "/proc/asound/card0/pcm0p/info": 2,
+    "/proc/asound/card0/pcm0p/oss": 2,
+    "/sys/kernel/debug/clk/clk_summary": 2,
+    "/proc/driver/galcore/version": 2,
+    "/proc/device-tree/cpus/cpu@0/clocks": 2,
+    "/proc/config.gz": 2,
+    "/sys/class/misc/pscaler_a/device/uevent": 2,
+    "/proc/476/io": 2,
+    "/proc/476/task/476/schedstat": 2,
+    "/proc/481/io": 2,
+    "/proc/481/task/481/schedstat": 2,
+    "/proc/481/task/483/schedstat": 2,
+    "/proc/481/task/484/schedstat": 2
+  },
+  "truncated_paths": [],
+  "uart0": {
+    "seconds": 89.56966399999999,
+    "first": {
+      "irq": 19,
+      "tx": 5051,
+      "rx": 70,
+      "brk": 70
+    },
+    "last": {
+      "irq": 19,
+      "tx": 12719,
+      "rx": 70,
+      "brk": 70
+    },
+    "per_second": {
+      "tx": 85.60934202008396,
+      "rx": 0.0,
+      "brk": 0.0
+    },
+    "note": "Reported serial counters need not include polling console output. They are not a UART hardware trace."
+  },
+  "kernel_symbol_records": [
+    {
+      "kind": "kernel_symbols",
+      "elapsed": 0.481416,
+      "errno": 0,
+      "limited": false,
+      "scanned_bytes": 605751
+    }
+  ],
+  "kernel_log_records": [
+    {
+      "kind": "kernel_log",
+      "elapsed": 0.491245,
+      "errno": 0,
+      "at_capacity": false,
+      "chars": 16383,
+      "lines": 322,
+      "first_timestamp": 0.344179,
+      "last_timestamp": 7.604382,
+      "message_counts": {
+        "[gp_enable_clock][247] run, clock_name=[uart0]": 3,
+        "[gp_enable_clock][247] run, clock_name=[uart0_reg]": 3,
+        "c0070000.uart: ttyS0 at MMIO 0x0 (irq = 19, base_baud = 12656250) is a unknown": 1,
+        "[gp_enable_clock][247] run, clock_name=[uart1]": 2,
+        "[gp_enable_clock][247] run, clock_name=[uart1_reg]": 2,
+        "console [ttyS0] enabled": 1,
+        "c0080000.uart: ttyS2 at MMIO 0x0 (irq = 20, base_baud = 12656250) is a unknown": 1,
+        "[gp_enable_clock][247] run, clock_name=[uart2]": 4,
+        "[gp_enable_clock][247] run, clock_name=[uart2_reg]": 4,
+        "[chunkmem] pbase=03000000 vbase=C4000000 size=01000000": 1,
+        "[chunkmem] addr:03001000  size:00FFE020  ---": 1,
+        "system bytes = 01000000 (16777216)": 1,
+        "in use bytes = 00001FE0 (8160)": 1,
+        "max chunk    = 00FFD000 (16764928)": 1,
+        "": 2,
+        "gpioReg[0]=0xfc000000": 1,
+        "gpioReg->gpioInputData2=0x7000": 1,
+        "gpioReg->gpioOutputData1=0x300": 1,
+        "gpio dev minor : 60": 1,
+        "board dev minor : 58": 1,
+        "ModuleInit: timer": 1,
+        "get timer0": 1,
+        "get timer1": 1,
+        "get timer2": 1,
+        "get timer3": 1,
+        "get timer4": 1,
+        "get timer5": 1,
+        "get timer6": 1,
+        "get timer7": 1,
+        "ModuleInit: rtc": 1,
+        "[gp_enable_clock][247] run, clock_name=[gpio_rtc]": 1,
+        "rtc reliable code: 0x00": 1,
+        "reliable code not match, reset rtc": 1,
+        "gp-rtc c0050000.rtc: rtc core: registered gp-rtc as rtc0": 1,
+        "ModuleInit: i2c-sw-bus": 1,
+        "ModuleInit: i2c-sw-bus end": 1,
+        "workingset: timestamp_bits=14 max_order=14 bucket_order=0": 1,
+        "jffs2: version 2.2. (NAND) \u00c2\u00a9 2001-2006 Red Hat, Inc.": 1,
+        "fuse init (API version 7.27)": 1,
+        "io scheduler noop registered": 1,
+        "io scheduler deadline registered (default)": 1,
+        "io scheduler cfq registered": 1,
+        "Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled": 1,
+        "brd: module loaded": 1,
+        "loop: module loaded": 1,
+        "pscaler_a dev minor : 48": 1,
+        "pscaler_b dev minor : 47": 1,
+        "pscaler_y dev minor : 46": 1,
+        "scale dev minor : 45": 1,
+        "mousedev: PS/2 mouse device common for all mice": 1,
+        "i2c /dev entries driver": 1,
+        "get i2c0": 1,
+        "[gp_enable_clock][247] run, clock_name=[i2c0]": 1,
+        "get i2c1": 1,
+        "[gp_enable_clock][247] run, clock_name=[i2c1]": 1,
+        "get i2c2": 1,
+        "[gp_enable_clock][247] run, clock_name=[i2c2]": 1,
+        "gp-rtc c0050000.rtc: setting system clock to 1970-01-01 00:00:04 UTC (4)": 1,
+        "ALSA device list:": 1,
+        "  No soundcards found.": 1,
+        "Freeing unused kernel memory: 1024K": 1,
+        "Run /init as init process": 1,
+        "random: fast init done": 1,
+        "random: crng init done": 1,
+        "board_config: loading out-of-tree module taints kernel.": 1,
+        "[board_init:2305]": 1,
+        "mux7:0xd": 1,
+        "[0] bus num:17 wc:0x30 lowest:1 ": 1,
+        "[1] bus num:26 wc:0x30 lowest:1 ": 1,
+        "[2] bus num:28 wc:0x1 lowest:0 ": 1,
+        "[3] bus num:54 wc:0x30 lowest:1 ": 1,
+        "[4] bus num:56 wc:0x30 lowest:1 ": 1,
+        "[gp_enable_clock][247] run, clock_name=[sd0_reg]": 1,
+        "[gp_enable_clock][247] run, clock_name=[sd0]": 1,
+        "drivers/mmc/host/generalplus/gp_sdio_module.c,gp_sdio_init(),760.": 1,
+        "[gp_enable_clock][247] run, clock_name=[sd2_reg]": 2,
+        "[gp_enable_clock][247] run, clock_name=[sd2]": 2,
+        "hdmi dev minor : 40": 1,
+        "disp1 dev minor : 39": 1,
+        "usbcore: registered new interface driver usbfs": 1,
+        "usbcore: registered new interface driver hub": 1,
+        "usbcore: registered new device driver usb": 1,
+        "ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver": 1,
+        "**** EHCI HCD gpa7xxxa probe ****": 2,
+        "[gp_enable_clock][247] run, clock_name=[usb20_host_a]": 1,
+        "[gp_enable_clock][247] run, clock_name=[usb20_dev_a]": 2,
+        "gpa7xxxa-ehci d0c00100.ehci: GPA7XXXA EHCI": 1,
+        "gpa7xxxa-ehci d0c00100.ehci: new USB bus registered, assigned bus number 1": 1,
+        "gpa7xxxa-ehci d0c00100.ehci: irq 56, io mem 0xd0c00100": 1,
+        "gpa7xxxa-ehci d0c00100.ehci: USB 2.0 started, EHCI 1.10": 1,
+        "hub 1-0:1.0: USB hub found": 1,
+        "hub 1-0:1.0: 1 port detected": 1,
+        "Card insert = 4": 1,
+        "[gp_enable_clock][247] run, clock_name=[usb20_host_b]": 1,
+        "[gp_enable_clock][247] run, clock_name=[usb20_dev_b]": 2,
+        "gpa7xxxa-ehci d0e00100.ehci: GPA7XXXA EHCI": 1,
+        "gpa7xxxa-ehci d0e00100.ehci: new USB bus registered, assigned bus number 2": 1,
+        "gpa7xxxa-ehci d0e00100.ehci: irq 57, io mem 0xd0e00100": 1,
+        "gpa7xxxa-ehci d0e00100.ehci: USB 2.0 started, EHCI 1.10": 1,
+        "hub 2-0:1.0: USB hub found": 1,
+        "2 drvl2_sd_init drvl2_sd_flush done": 1,
+        "hub 2-0:1.0: 1 port detected": 1,
+        "CMD8 OK!": 1,
+        "STATE_READY success !": 1,
+        "sd pinmux support 1.8V. mux=0x100000, 0x40784000": 1,
+        "Support 1.8v!!": 1,
+        "CMD11 ok!": 1,
+        "ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver": 1,
+        "**** OHCI HCD gpa7xxxa probe ****": 2,
+        "gpa7xxxa-ohci d0c00080.ohci: GPA7XXXA OHCI": 1,
+        "gpa7xxxa-ohci d0c00080.ohci: new USB bus registered, assigned bus number 3": 1,
+        "gpa7xxxa-ohci d0c00080.ohci: irq 54, io mem 0xd0c00080": 1,
+        "[ohci_gpa7xxxa_start][28]": 2,
+        "[ohci_gpa7xxxa_start]fminterval=0x9de2edf": 2,
+        "hub 3-0:1.0: USB hub found": 1,
+        "hub 3-0:1.0: 1 port detected": 1,
+        "gpa7xxxa-ohci d0e00080.ohci: GPA7XXXA OHCI": 1,
+        "gpa7xxxa-ohci d0e00080.ohci: new USB bus registered, assigned bus number 4": 1,
+        "gpa7xxxa-ohci d0e00080.ohci: irq 55, io mem 0xd0e00080": 1,
+        "sd bus sta ok!": 1,
+        "hub 4-0:1.0: USB hub found": 1,
+        "hub 4-0:1.0: 1 port detected": 1,
+        "SD30 voltage switching OK!!": 1,
+        "success switch sd to 4 bit. try_count=0, response=0x00000920": 1,
+        "*-Support Hi-Speed SDR25-*": 1,
+        "2Query sw func grp 1=0x1f80": 1,
+        "*-Support SDR50-*": 1,
+        "1Query func can sw =0x2": 1,
+        "SCSI subsystem initialized": 1,
+        "SDHC_CARD. c_size=241159 total_sector=246947840": 1,
+        "max_speed=96000000": 1,
+        "usbcore: registered new interface driver usbhid": 1,
+        "usbhid: USB HID core driver": 1,
+        "sd clk delay=0x0": 1,
+        "0 tune ok!": 1,
+        "sd clk delay=0x1": 1,
+        "1 tune ok!": 1,
+        "sd clk delay=0x2": 1,
+        "2 tune ok!": 1,
+        "sd clk delay=0x3": 1,
+        "3 tune ok!": 1,
+        "sd clk delay=0x4": 1,
+        "4 tune ok!": 1,
+        "sd clk delay=0x5": 1,
+        "5 tune ok!": 1,
+        "sd clk delay=0x6": 1,
+        "6 tune ok!": 1,
+        "sd clk delay=0x7": 1,
+        "7 tune ok!": 1,
+        "sd clk delay=0x8": 1,
+        "8 tune ok!": 1,
+        "sd clk delay=0x9": 1,
+        "9 tune ok!": 1,
+        "sd clk delay=0xa": 1,
+        "10 tune ok!": 1,
+        "sd clk delay=0xb": 1,
+        "11 tune ok!": 1,
+        "sd clk delay=0xc": 1,
+        "12 tune ok!": 1,
+        "sd clk delay=0xd": 1,
+        "13 tune ok!": 1,
+        "sd clk delay=0xe": 1,
+        "14 tune ok!": 1,
+        "sd clk delay=0xf": 1,
+        "15 tune ok!": 1,
+        "sd clk delay=0x10": 2,
+        "16 tune ok!": 1,
+        "sd clk delay=0x11": 1,
+        "17 tune ok!": 1,
+        "sd clk delay=0x12": 1,
+        "18 tune ok!": 1,
+        "sd clk delay=0x13": 1,
+        "19 tune ok!": 1,
+        "sd clk delay=0x14": 1,
+        "20 tune ok!": 1,
+        "sd clk delay=0x15": 1,
+        "21 tune ok!": 1,
+        "sd clk delay=0x16": 1,
+        "22 tune ok!": 1,
+        "sd clk delay=0x17": 1,
+        "23 tune ok!": 1,
+        "sd clk delay=0x18": 1,
+        "24 tune ok!": 1,
+        "sd clk delay=0x19": 1,
+        "25 tune ok!": 1,
+        "sd clk delay=0x1a": 1,
+        "26 tune ok!": 1,
+        "sd clk delay=0x1b": 1,
+        "27 tune ok!": 1,
+        "sd clk delay=0x1c": 1,
+        "28 tune ok!": 1,
+        "sd clk delay=0x1d": 1,
+        "29 tune ok!": 1,
+        "sd clk delay=0x1e": 1,
+        "30 tune ok!": 1,
+        "sd clk delay=0x1f": 1,
+        "31 tune ok!": 1,
+        "get spi0": 1,
+        "spi_addr_base=0xfc090000": 1,
+        "[gp_enable_clock][247] run, clock_name=[spi0]": 1,
+        "spidev listed directly in DT": 1,
+        "get spi1": 1,
+        "spi_addr_base=0xfc0a0000": 1,
+        "[gp_enable_clock][247] run, clock_name=[spi1]": 1,
+        "sys_clk:202500000": 1,
+        "watchdog dev minor : 38": 1,
+        "[gp_aes_init_module:736] aes init module": 1,
+        "[gp_aes_probe:629] aes probe": 1,
+        "[gpHalAesRegBaseAddr:79] aes_addr_base=0xc39d8000": 1,
+        "[gpHalAesRegBaseAddr:80] aesReg_addr=0xc39d8100": 1,
+        "aes dev minor : 37": 1,
+        "[gp_hash_init_module:722] hash init module": 1,
+        "[gp_hash_probe:616] hash probe": 1,
+        "[gpHalHashRegBaseAddr:79] hash_addr_base=0xc39e0000": 1,
+        "[gpHalHashRegBaseAddr:80] hashReg_addr=0xc39e0118": 1,
+        "hash dev minor : 36": 1,
+        "gpa7xxxa_audio_codec_driver_probe enter. name is gpa7xxxa-playback-codec, dev_name is gpa7xxxa-playback-codec": 1,
+        "soc-audio soc-audio.0: ASoC: machine gpa7xxxaevm-playback-audio should use snd_soc_register_card()": 1,
+        "soc-audio soc-audio.0: gpa7xxxa-playback-codec <-> gpa7xxxa-playback-dai mapping ok": 1,
+        "dac_addr_base=0xfc0e0000": 1,
+        "gpa7xxxaevm_audio_init exit, 0": 1,
+        "adc_addr_base=0xfc0d0000": 1,
+        "drvdata=c82fd570,input=d3225ef1": 1,
+        "input: adc-keys as /devices/platform/adc-keys/input/input0": 1,
+        "[gp_enable_clock][247] run, clock_name=[sar_adc]": 1,
+        "[gp_enable_clock][247] run, clock_name=[i2s_rx_sram]": 1,
+        "gp_disp1_fb_clk_en = 1 !!! ": 2,
+        "[gp_enable_clock][247] run, clock_name=[hdmi]": 3,
+        "[gp_enable_clock][247] run, clock_name=[hdmi_audio]": 3,
+        "[gp_enable_clock][247] run, clock_name=[tft]": 3,
+        "[gp_enable_clock][247] run, clock_name=[ppu_reg]": 3,
+        "[gp_enable_clock][247] run, clock_name=[ppu_fb]": 3,
+        "[gp_enable_clock][247] run, clock_name=[ppu_fbahb]": 3,
+        "[gpHalDisp1Init:129]": 2,
+        "pdisp1Reg->disp1Ctrl = 0x38335 ": 6,
+        "disp1 init 0": 1,
+        "device 1 init": 2,
+        "DSI test !!! ": 2,
+        "[gpHalDisp1SetEnable:1104], enable = 0 ": 2,
+        "=>0xff:0xf:0xff:0x0:0xff:0xcc": 1,
+        "cp succ2, Tuning clk passed!!": 1,
+        "sd**div=0x2": 1,
+        "sd**rate=90000000": 1,
+        "sd[1] clock rate=90000000, root rate=270000000 divider=3": 1,
+        "sd_data_bus_width=4": 1,
+        "sd_secured_mode=0": 1,
+        "sd_sd_card_type=0": 1,
+        "sd_speed_class=10": 1,
+        "sd_flow_write_au_sectors=49152 erase_au=256": 1,
+        "sd_erase_size_au=256": 1,
+        "sd_uhs_speed_grade=3": 1,
+        "sd_uhs_au_sectors=16384": 1,
+        "sd[1]: init OK!": 1,
+        ">> read sector 0 ok!Tag1=0, Tag2=0, Tag3=aa550000": 1,
+        "[gpHalPPUDisp1SetFbFormat:540], enable = 0 ": 2,
+        "pPPUFunreg->ppuEnable = 0x80 ": 2,
+        "[gpHalDisp1SetEnable:1104], enable = 1 ": 2,
+        " sdcardb: sdcardb1": 1,
+        "FAT-fs (sdcardb1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.": 1,
+        "Adding 262140k swap on /usr/retro/swapfile.  Priority:-2 extents:1 across:262140k SS": 1,
+        "gp_disp1_fb_clk_en = 0 !!! ": 1,
+        "disp1 init 1": 1,
+        "[gp_enable_clock][247] run, clock_name=[psca0]": 3,
+        "[gp_enable_clock][247] run, clock_name=[psca0_sram]": 3,
+        "[gp_enable_clock][247] run, clock_name=[apll]": 1,
+        "[gp_enable_clock][247] run, clock_name=[timer]": 2,
+        "[gp_enable_clock][247] run, clock_name=[timer_base]": 2,
+        "evm_hw_startup audio_module 0x0": 1,
+        "[gp_timer_open:328] timer0 open successfully !": 1
+      }
+    },
+    {
+      "kind": "kernel_log",
+      "elapsed": 105.222073,
+      "errno": 0,
+      "at_capacity": false,
+      "chars": 16331,
+      "lines": 242,
+      "first_timestamp": 111.353464,
+      "last_timestamp": 247.0,
+      "message_counts": {
+        "[gp_enable_clock][247] run, clock_name=[psca0]": 117,
+        "[gp_enable_clock][247] run, clock_name=[psca0_sram]": 117,
+        "[gp_enable_clock][247] run, clock_name=[uart0]": 2,
+        "[gp_enable_clock][247] run, clock_name=[uart0_reg]": 2,
+        "[gp_enable_clock][247] run, clock_name=[uart2]": 2,
+        "[gp_enable_clock][247] run, clock_name=[uart2_reg]": 2
+      }
+    }
+  ]
+}

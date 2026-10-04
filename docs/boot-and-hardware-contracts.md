@@ -1,0 +1,90 @@
+# Boot and hardware contracts
+
+These contracts were recovered from the exact shipped binaries and checked against returned runs. They are the prerequisites for a replacement userspace runtime, not a complete hardware SDK.
+
+## Splash handoff
+
+1. `showlogo` runs independently and repeatedly draws/flips its sprites.
+2. Its `joytest` checks for `/tmp/vrtemu.log`.
+3. Once signaled, it clears/flips, releases allocations and returns.
+4. Its main routine destroys its display, then creates `/tmp/displogo.log` and exits.
+5. Only after active `showlogo` processes have exited may our runtime call InitVFB.
+
+The wrapper creates the stop marker and waits up to five seconds, ignoring zombies that have already released resources. A marker acknowledgment alone does not justify racing a still-active display owner. A timeout refuses to start a competing owner. Returned v1.2+ logs show PID disappearance and acknowledgment. Do not substitute a blind sleep or unrelated-process kill for the recovered handoff.
+
+## One-shot execution and recovery
+
+The current hook runs `/bin/sh /usr/retro/snes-mvp/launch.sh` synchronously before starting stock main, only when `armed` exists. The wrapper atomically consumes it into `last-launch`. Thus a following reboot takes the stock path without depending on the failed runtime to clean up.
+
+First library draw/flip completes before initial held inputs are suppressed independently. A stuck pin cannot prevent first paint. Startup has a 20-second deadline (bounded configurable range); ready gameplay is not limited to 20 seconds. On a stall, capture thread state, retain logs, TERM/KILL only the owned child, and wait for it to exit before starting another hardware owner. A kernel-blocked process may require reboot.
+
+Bring-up/input/exit/cleanup logs are bounded and durable. Game callbacks do not perform per-frame SD logging. Three post-ready snapshots retain runtime/thread/IPC state, then monitoring ends; monitor cancellation reaps its owned sleeper.
+
+## GPIO ABI and complete direction translation
+
+The request has three 32-bit words: `pin`, `reserved`, `value` (12 bytes).
+
+| Operation | ioctl |
+|---|---|
+| Write | `0x400c4700` |
+| Read | `0x800c4701` |
+| Configure attribute | `0x400c4702` |
+
+Reads initialize reserved=0 and value=1. Successful value=0 is pressed. Failed reads behave released. The input attribute's third word is 1. Retain the known startup attributes; unknown GPIO roles do not authorize output experiments.
+
+| GPIO | Factory native mask | Final libretro meaning/ID |
+|---|---:|---|
+| `0x200` | `0x10` | Up / 4 |
+| `0x201` | `0x40` | Down / 5 |
+| `0x202` | `0x80` | Left / 6 |
+| `0x203` | `0x20` | Right / 7 |
+| `0x204` | `0x2000` | A / 8 |
+| `0x205` | `0x4000` | B / 0 |
+| `0x30b` | `0x8000` | Y / 1 |
+| `0x30d` | `0x1000` | X / 9 |
+| `0x30f` | `0x1` | Select / 2 |
+| `0x30c` | `0x8` | Start / 3 |
+| `0x30a` | `0x400` | L / 10 |
+| `0x208` | `0x800` | R / 11 |
+| `0x207` | `0x100` | L2 / 12 |
+| `0x30e` | `0x200` | R2 / 13 |
+| `0x206` | `0x9` | MENU; stock Select+Start combination |
+| `0x209` / `0x20a` | volume bits | Volume up / down |
+
+`ReadJoystick` at 0x1599c proves pin→native mask. `joystick_input` at 0xa2f0c and `joy_key_mask` at 0x16b254 prove libretro ID→native mask. The analog branch independently uses 0x10/0x40 for vertical and 0x80/0x20 for horizontal. **Native numeric masks alone were previously mislabeled; the v1.3 direction diagnosis was wrong.**
+
+`extract-vendor-input.py` verifies the stock ELF SHA256, maps the actual file-backed segment and extracts the callback mask fixture. The board check decodes raw GPIO fixtures against that independent table, including distinct Down+Left.
+
+The runtime's low 16 bits use libretro IDs; bit16 is its private MENU flag. Start+Select also becomes MENU. The game callback passes the same bits without another direction remap. In the vertical library, Left/Right page the list; check physical directions with actual in-game character movement rather than interpreting short-list page jumps.
+
+## Clocks
+
+The working timing layer uses the ARM32 `SYS_clock_gettime` syscall for scheduling time. Libc monotonic and kernel monotonic were directly observed disagreeing by hundreds of seconds in the same startup probe. Kernel boottime agreed closely with kernel monotonic.
+
+`timing_sleep_until` compares an owned kernel-clock deadline to a fresh owned kernel-clock read, sleeps only the relative remainder, and recalculates after EINTR. An expired deadline returns immediately. Initial game deadline, menu repeat timing, heartbeat and logger share the source. Display condition-variable timeout reads kernel realtime to match its wait clock.
+
+Do not reintroduce libc-clock absolute nanosleep or mix the retained adapter timing helper into MVP deadlines. The regression injects a 26-second libc/kernel offset; a real ARM wait loop and actual launcher menu test also run. Those tests complement, not replace, the successful device return.
+
+## Chunk/display ABI and ownership
+
+`/dev/chunkmem` allocate ioctl `0xc00c4301`, free `0x400c4303`, request `{physical,mapped,bytes}` as three 32-bit words. Explicit freeing is necessary. Ordinary heap pointers are not interchangeable with chunk-backed addresses consumed by the vendor scaler.
+
+Resolve the required vendor symbols rather than assuming generic framebuffer ABI: InitVFB, DrawVFB, FlipVFB, FreeVFB, video_driver_get_size, detect_hdmi, hDisp and USE_HDMI_OUT. Complete splash cleanup first; detect HDMI; initialize display; then enable handheld LCD backlight via GPIO0x108 (disable it for HDMI).
+
+The MVP owns one display worker and two compact source slots. Copy into the free slot while the previous job consumes its own slot, then publish at most one pending job. Reuse/free only after worker completion. Join before FreeVFB/chunk free. The stock driver worker loses its thread ID and deinit does not provide an adequate ownership join; our worker handles that boundary explicitly.
+
+Recovered scaler structure: 228 bytes; output_addr[2] offset64, frame_queue_enable72, bypass_addr[2]76, bypass_frame_queue_enable84, drop-frame fields98/99, FRAME_DONE enum2. `PScaleRun` at driver0x14ac performs per-job open/setup/trigger/status/stop/close. These interfaces are leads for future optimization, not a proven continuous queue implementation.
+
+## Audio, geometry and state
+
+Own OSS open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation. The tested baseline requires 44,100 Hz stereo S16_LE after continuous conversion from the core's 32,040 Hz stream. Standard fragment hints may be rounded/ignored; query actual queue data. Queue occupancy is not an underrun counter.
+
+Vendor environment command37 (`SET_GEOMETRY`) writes a double 44100 at offset32 beyond a 20-byte geometry object. The adapter intercepts it; the direct MVP implements its own validated environment handling. Do not forward this callback blindly.
+
+Private MVP SRAM/snapshots are qualified by ROM and exact core identity. Incompatible snapshots are rejected; failed loads roll back live state. v11 `D35PLUS1` states are not generally compatible with plain2005/2010. The importer requires the known Plus binary and explicit ROM selection because the old wrapper lacks ROM identity. Import a copy; preserve the original and newer progress.
+
+## Supervisor/watchdog
+
+Stock main/vrtemu use SysV key1234, 460 bytes, IPC_CREAT|0666. Word0 is a soft-watchdog tick budget; `xintiao` publishes 60 and increments word1. The MVP preserves this layout but does not remove the segment when detaching.
+
+Returned `/wdt` instead configures and autonomously feeds the hardware watchdog every 500 ms. It does not attach this shared heartbeat; the v1.3 IPC snapshot showed only the MVP attached. Omitted heartbeat was not demonstrated as the dead-input cause. Do not disable the hardware watchdog as a substitute for diagnosing a stalled runtime.

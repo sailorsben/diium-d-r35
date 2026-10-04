@@ -1,0 +1,164 @@
+D-R35: returned hardware probe and driver debug-data audit
+2026-10-04; report archived at 18:04:35 UTC
+
+Outcome and card state
+The handheld completed 45 samples across approximately 104 seconds, producing
+660 valid JSON records without a report cap or stderr output. The report was
+copied to the PC and checked by SHA-256 before cleanup. The original init was
+restored byte-for-byte, and only the v1 probe's five owned paths were removed.
+cleanup-verification.json records this restoration and the unchanged critical
+binary hashes. No saves or ROMs were changed.
+
+A separate one-boot v2 follow-up has since been installed. It adds console,
+TTY, kernel-log and filtered kernel-symbol evidence, plus MTD metadata. Its
+only existing-file change is a tracked init hook. It does not modify the
+working adapter, core, vrtemu or driver.so. Hardware-Runtime-v2 contains the
+original init, diff, binary, verification and installation manifest. Use
+build/collect-hardware-runtime-probe.py on return to archive and restore it.
+
+What this unit establishes
+One online, present and possible CPU: Cortex-A7 r0p5 with NEON and VFPv4.
+Linux 4.19.128 / Buildroot 2020.02 / GCC 9.3.0, ARMv7 hard-float runtime.
+The complete FDT is 10490 bytes and is saved as device-tree.dtb with a decoded
+property inventory in device-tree.json. Model: Generalplus EMU Board;
+compatible: generalplus,gpa7xxxa-emu and generalplus,gpa7xxxa.
+Its CPU clock-frequency property is 666000000 Hz. This is a firmware-declared
+clock, not a measured live operating clock. No cpufreq/cache/thermal glob
+entries were returned, and clk_summary was absent. Actual clock stability,
+cache dimensions and thermal state remain unmeasured.
+
+The tree contains three pscaler nodes, a general scale node, PPU/display,
+Vivante GPU, DMA, DAC, rotators and other multimedia devices. A generic tree
+entry marked okay is not proof the corresponding accelerator is usable.
+Iomem shows bound resource reservations for pscaler A/B/Y. PSCA A interrupts
+are active; B and Y showed no interrupts during this run. No galcore module,
+device node or version interface was available. Exact silicon SKU remains
+unconfirmed; do not treat this tree as proof of GPA7740A specifically.
+
+RAM and swap
+The active kernel map covers 48 MiB system RAM plus 16 MiB chunkmem reserved
+at 0x03000000. Usable Linux MemTotal is 43120 KiB. The tree's memory node
+instead declares a 32 MiB default, overridden by the mem=48MB boot argument.
+This mismatch is a reason not to use the generic tree as a physical RAM census.
+The 48+16 layout is consistent with a 64 MiB arrangement.
+During samples MemAvailable fell from 5120 to 4812 KiB. The report itself grows
+in the collector's RAM, so this decline is not evidence of an emulator leak.
+Swap used stayed constant at 256 KiB; vrtemu's four status snapshots reported
+VmSwap=0, with no growth in its 16 major faults. There is no evidence here of
+sustained game paging to SD. This does not rule out every memory stall.
+
+CPU and thread measurements
+Per-thread /proc stat deltas divided by CLK_TCK=100 and actual elapsed time:
+  main supervisor TID 475: 0.191% user, 0.000% kernel.
+  vrtemu main TID 480:    84.920% user, 0.617% kernel.
+  vrtemu worker TID 482:   1.065% user, 0.000% kernel.
+  vrtemu worker TID 483:   0.191% user, 3.196% kernel.
+All have nice=0, policy=0 (ordinary scheduling), RT priority=0, CPU=0.
+The supervisor and worker 482 were in hrtimer_nanosleep at every detail
+snapshot; worker 483 was in futex_wait_queue_me. This is consistent with a
+sleeping input/polling worker and the driver's condition-variable display
+worker. Kernel snapshots alone do not prove which function owns a TID.
+thread-creation-sites.txt retains direct pthread_create callers in the two
+vendor binaries. No claim of a separate dedicated audio feeder is established.
+The main thread's accounting combines core, adapter and host work; it cannot
+attribute 84.920% to SNES rendering alone. The worker's kernel time also cannot
+separate open/ioctl/close, scaling waits, cache work or display submission.
+The report lacks scene markers, so do not label individual intervals as map
+versus party menu solely from the requested test sequence.
+
+Important accounting limit: /proc stat contains 83.4 accounted CPU seconds
+over 89.229 seconds wall time. Its IRQ and softIRQ time counters are zero even
+though interrupts and context switches advanced. /proc uptime idle accounting
+also differs from the stat idle delta. Do not turn normalized global tick
+percentages into an exact idle headroom or interrupt CPU-cost claim.
+Proc schedstat returned empty data; scheduler runqueue timing is unavailable.
+Two-second snapshots and 10-ms accounting units cannot expose each brief stall.
+
+Unexpected interrupt load
+Between the first and last sampled IRQ snapshots, Linux IRQ 19 advanced by
+620160, or approximately 6955.4 interrupts/second. The reported hardware line
+is GIC-0 69 and its handler label is (null).
+The tree's uart@C0070000 specifies SPI 0x25 (37). Linux's primary GIC mapping
+adds 32 to an SPI number, producing hardware line 69. That same UART is the
+serial0 alias and chosen stdout-path is serial0:115200n8. This makes the serial
+console UART the strongly supported identity, rather than the DAC interrupt.
+The DAC node specifies SPIs 54/55, which correspond to hardware lines 86/87.
+IRQ labels and DT mapping alone cannot identify TX/RX activity or its cause.
+Possible causes include logging, receive-line activity or driver interrupt
+handling. Interrupt count is not byte count or CPU time. No causal connection
+to clicks or a quantified speedup from silencing output is yet established.
+The next probe reads /proc/tty/driver counters, console metadata, process FD
+symlink targets, and two non-consuming kernel log snapshots to resolve this.
+GIC mapping source:
+https://github.com/torvalds/linux/blob/v4.19/drivers/irqchip/irq-gic.c
+
+Hardware display activity
+PSCA A and PPU IRQ counters each advanced by exactly 3868 over the measured
+89.16-second IRQ interval, about 43.38 events/second. This supports an active
+scaler/display pipeline. It is not a measurement of panel refresh frequency,
+emulated game steps, completed distinct pictures, or a frameskip percentage.
+DMA_INT advanced 961 (10.78/second) but its endpoint is not identified here.
+
+PMU and audio limitations
+The software task-clock perf event worked. Cycles, instructions, branch misses,
+L1D misses and a raw L2 refill event returned ENOENT. Event-source sysfs showed
+software and breakpoint only; the FDT contains no PMU node. Hardware PMU access
+through the tested Linux interface is unavailable. This does not mean the A7
+physically lacks a PMU. Kernel support/description requires further recovery.
+Kernel config.gz was absent, so no configuration option is claimed confirmed.
+
+/dev/dsp and ALSA playback pcmC0D0p exist, and vendor ASoC playback modules are
+loaded. However /proc/asound is absent, so no active hardware rate, period or
+buffer size was captured. Disabled ALSA proc support is a plausible explanation,
+not a confirmed kernel configuration. Native ALSA metadata/ioctl inspection is
+a later isolated test; never reopen an active audio device blindly to query it.
+https://www.kernel.org/doc/html/v4.19/sound/designs/procfile.html
+
+Checking the new pasted driver analysis
+The preserved driver.so genuinely contains DWARF. extract-driver-dwarf.py
+recovered 37 structure/enum entries and 32 function descriptions from two
+compilation units, vfb.c and driver.c. Compiler metadata identifies GCC 9.3.0,
+cortex-a7, neon-vfpv4, hard-float and O2. This is debug metadata, not original
+source recovery. driver-dwarf.json retains the typed ABI evidence.
+gpPScalerPara_s is exactly 228 bytes. Verified byte offsets:
+  frame_queue_enable=72; bypass_frame_queue_enable=84;
+  drop_frame_div=98; drop_frame_fra=99.
+PIPELINE_SCALER_STATUS_FRAME_DONE has enum value 2.
+Those facts support the pasted account of the interface. They do not establish
+which queue modes the kernel implements, ownership rules, or a legal continuous
+operation sequence. Some SDK fields can be unused or conditional.
+
+The existing annotated assembly establishes a real ScaleDisplayThread in
+driver.so, a one-pending-job state, producer waiting, per-job PScaleRun device
+open/setup/start/status/stop/close, and clearing the pending bit before FlipVFB.
+Therefore core-call wall time can contain display backpressure and preemption.
+But the worker already operates concurrently with the emulator; the proposed
+improvement is deeper overlap and better buffer/queue ownership, not the first
+introduction of a display worker. Buffers still cannot be reused before the
+hardware is finished reading them. Any replacement must preserve that rule.
+
+Driver audio is a nonblocking OSS write path; its DWARF public playframe return
+type is void. Existing write-level audits observed accepted batches, which does
+not prove uninterrupted DAC consumption. A new host must deliberately handle
+queue depth and partial writes, rather than assume a callback return solves it.
+The installed Plus already contains NEON arithmetic in the DSP mixer. A flags-
+only SIMD theory is contradicted by its actual disassembly; hot-path profiling
+is still needed before selecting SIMD work.
+
+Kernel-side recovery next
+The existing export's built-in-module list includes the scaler implementations;
+their .ko binaries/source are not present. A built-in driver cannot be copied
+out as a .ko simply because it has a module name. The complete DT is available
+now, but no kernel image with symbols or scaler source has been recovered.
+The v2 probe adds bounded relevant /proc/kallsyms names, modules.builtin, scaler
+device identity and MTD partition metadata. Symbols can expose functions but
+do not supply their instructions/source. MTD metadata can guide a later image
+extraction; this probe never opens raw flash devices or loads kernel modules.
+
+Next handheld run
+Safely eject D:, boot normally, launch FF6 promptly, spend roughly 30 seconds
+on a map, 20 seconds in the party menu, then return to the map. Let the device
+remain running for at least two minutes after boot, then shut down normally
+and reconnect D:. Exact scene timing is optional; serial/kernel identification
+is the primary objective. The probe runs once; a missing marker prevents repeat
+execution. Its result and boot hook will be archived and cleaned on return.

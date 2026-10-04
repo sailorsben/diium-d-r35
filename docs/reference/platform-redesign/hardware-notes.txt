@@ -1,0 +1,238 @@
+D-R35 platform redesign: hardware and kernel review
+2026-10-04 America/Chicago. Research only; no device mutation or implementation.
+
+DECISION
+Start with option A (known vendor kernel, replacement userspace runtime). Deliver
+option C (reproducible minimal userspace built around that kernel) as the product.
+Option B is an earned extension when a measured driver bottleneck cannot be
+removed through supported userspace calls and matching source/build/recovery is
+available. Do not make a new kernel, GPU bring-up, or bare-metal port prerequisites.
+
+LOCAL SOURCE KEYS (relative to workspace)
+H1 device-evidence/hardware-inventory-return-20261004T180435Z/hardware_probe_v1.jsonl
+H2 device-evidence/hardware-inventory-return-20261004T180435Z/device-tree.json
+H3 device-evidence/hardware-inventory-return-20261004T180435Z/review.txt
+H4 device-evidence/hardware-runtime-return-20261004T182651Z/review.txt
+H5 device-evidence/hardware-runtime-return-20261004T182651Z/kernel_symbols-0.481.txt
+H6 device-evidence/hardware-architecture-review/driver-dwarf.json
+H7 device-evidence/hardware-architecture-review/neon-code-census.json
+H8 device-evidence/hardware-console-return-20261004T185838Z/review.txt
+
+HARDWARE TRUTH TABLE
+CONFIRMED: CPU identification 0x41/0xc07/variant0/revision5, one present/possible/
+online processor. Cortex-A7 r0p5, ARMv7, NEON, VFPv4 D32, integer divide (H1/H3).
+This is one CPU. Another thread can overlap a peripheral wait; it cannot provide
+another CPU's worth of emulation. No affinity optimization is meaningful here.
+
+CONFIRMED: Linux 4.19.128; Buildroot 2020.02 toolchain; GCC 9.3.0; ARM hard-float.
+glibc 2.30 is in existing architecture evidence. NOT Android (H1/H3).
+
+CONFIRMED: DT family generalplus,gpa7xxxa-emu / generalplus,gpa7xxxa, model
+Generalplus EMU Board. UNKNOWN: exact chip marking/SKU. GPA7740A is a plausible
+relative only (H2/H3). Generic DT includes demonstrably stale/default material.
+
+CONFIRMED DECLARATION: CPU clock-frequency=666000000 in DT. UNKNOWN: sustained
+live CPU/bus/DDR clock, thermal throttling, regulator margin. No cpufreq/cache/
+thermal entries or clk_summary were returned; gp-clock is bound (H1/H3).
+BogoMIPS is not a MHz measurement. Do not design around overclocking.
+
+CONFIRMED: boot maps 0x00000000-0x02ffffff as System RAM and
+0x03000000-0x03ffffff as chunkmem; Linux MemTotal=43120 KiB. STRONGLY INFERRED:
+64 MiB physical arrangement. UNKNOWN: definitive installed RAM census. DT memory
+node itself declares 32 MiB, overridden by mem=48MB bootargs (H1/H2/H3).
+
+CONFIRMED MEMORY PRESSURE: early boot MemAvailable=23940 KiB, collected gameplay
+about 5 MiB. ramfs root; initial Unevictable=9476 KiB. Swap configured 262140 KiB,
+but sampled game VmSwap=0 and no growing major faults; do not diagnose ongoing
+swap thrash. Existing RAM headroom is tight (H1/H3). These figures include the
+probe and vendor runtime; they are not the new runtime's required footprint.
+
+UNKNOWN: implemented L1/L2 capacities, DRAM bandwidth, chunk mmap cache policy,
+cache maintenance rules. The chip-family candidate's 32K/32K/128K sizes must not
+be promoted into this unit's truth table (H3 plus external references below).
+
+CONFIRMED: exported 640x480 display; loaded lcd1_mipi_NV3051F, gp_display1,
+gp_mipi_tx; active PPU IRQ and pscaler A IRQ. UNKNOWN: physical panel cadence,
+exact scanout format, queued/page-flip semantics, independent-vblank support.
+Scaler IRQ counts or six-message log batches do not measure refresh (H1/H3/H4).
+
+CONFIRMED: bound resources for PScaler A/B/Y; A active, B/Y inactive in sample;
+general scaler also reserved. A is /dev/pscaler_a misc 10:48. H6 recovers a
+228-byte gpPScalerPara_s including frame_queue_enable (offset72), bypass queue
+(84), drop_frame_div/fra (98/99). H5 has output A/B, callbacks, restart, poll,
+trigger, retrigger, status, start/stop symbols. PLAUSIBLE: reusable configuration,
+persistent fd and hardware queuing. NEEDS DEVICE TEST: public ioctl legality,
+completion identity and buffer ownership. Struct fields/symbol names are not an
+implemented queue contract. Existing driver already has asynchronous worker.
+
+CONFIRMED: normal heap buffers failed in earlier tests; owned chunk RGB565 fixed
+corruption. Compact pitch avoids known row repack. UNKNOWN: whether direct core
+render into chunk memory is faster than cached rendering plus one copy. CPU
+cache friendliness can outweigh nominal zero-copy; measure both.
+
+CONFIRMED: /dev/dsp and pcmC0D0p exist; loaded vendor ASoC playback module;
+/proc/asound absent. H5 includes gpa7xxxa_dma_pointer/mmap/trigger/hw_params/
+audio_dma_isr and gpHalDacSampleRateSet/HwUpSampleSet. These are leads for hardware
+position, periods and rate investigation, not proof every userspace interface
+works. UNKNOWN: supported/actual rate, period bounds, drain/underrun semantics.
+
+CONFIRMED: DT /soc/gpu@D2400000: vivante,gc, reg length0x800, IRQ SPI10, okay.
+No clocks/clock-names/power-domain/reset properties in that node. No GPU iomem
+reservation, galcore runtime/module/device established in collected inventory.
+UNKNOWN: GPU model/revision/fuses, usable kernel driver, userspace ABI, clock/
+reset/power control and importable memory. Treat activation as hardware bring-up.
+
+CONFIRMED: DT PPU/DMA/rotators, bound DMA region, active DMA IRQ, timers and ARM
+arch_timer IRQs; gp_adc_key/joydev loaded; SD controller resources and gp_sd used.
+UNKNOWN: CPU-accessible unallocated SRAM, battery sensing/scale, safe suspend,
+SD sustained random I/O/latency, exact timer clocksource precision. Existing
+drivers are operational knowledge worth keeping, not proof every block is useful.
+
+CONFIRMED: UART IRQ19 about6950-6970/s, low reported TX, ordinary console redirect
+no meaningful improvement (H8). UNKNOWN: handler CPU cost and source of storm.
+It is secondary to measured rendering load. Clock/log/IRQ fixes require a priced
+bottleneck; weird counts alone do not rank them above the frame pipeline.
+
+ARM PRIMARY DOCUMENTATION AND IMPLICATIONS
+ARM DDI0464F r0p5 TRM:
+https://documentation-service.arm.com/static/602cf701083323480d479d18
+The TRM confirms in-order execution with branch prediction; L1 capacities are
+configurable, L2 optional. Instruction lines are32 bytes, data and L2 lines64
+bytes. NEON and VFP share the32 D registers. This supports minimizing dependent
+loads, branch-heavy dispatch, hot code/data footprint and needless full-image
+passes. Align streaming buffers to64 bytes, but preserve hardware pitch rules.
+Tune for cortex-a7/neon-vfpv4/hard-float; compare O2/O3 and layout/PGO by scene,
+because more inlining/unrolling can hurt small caches. Keep vector kernels long
+enough to amortize setup; interleave independent operations to hide dependency
+latency. Do not extrapolate another SoC's cache sizes or invent per-instruction
+speedups. Software task-clock worked; hardware perf events returned ENOENT and
+no PMU node was present. That is an interface limitation, not proof of absent
+PMU silicon. Timing with monotonic and thread CPU clocks remains usable.
+Arm NEON intrinsics reference:
+https://arm-software.github.io/acle/neon_intrinsics/advsimd.html
+Use integer SIMD for exact packing/color/audio operations with scalar equivalence
+tests. Available instructions are not evidence a given loop is SIMD-friendly.
+H7 already finds NEON arithmetic in Plus's DSP mixer; a flags-only rescue story
+is contradicted by the existing binary.
+
+GENERALPLUS PUBLIC EVIDENCE (RELATIVE, NOT DEVICE SPECIFICATION)
+https://www.generalplus.com/GPA7740A-vvWbs-phLVYosfLN4957SVpnSNproduct_detail
+GPA7740A's public page describes single-A7 up to666MHz, 32K I/32K D/128K L2,
+64MB DDR2, up to470KB SRAM (128KB dedicated), PPU text/sprites, two color PScalers
+and one Y-only scaler, DMA, display scaling/rotation, DAC and 44.1/48k clock
+families. Matching features make it a useful research lead; none identify our
+chip. SRAM might be reserved/shared, not free emulator RAM. The advertised
+PLL range is not authorization or evidence of a safe faster CPU setting.
+The listed datasheet and getting-started download routes returned JavaScript/
+answer challenges; content was not recovered or bypassed. Bounded public search
+for GPA7XXXA, gp_pscaler and gpHalPscalerStart found no matching public kernel/
+driver source. This is a search result, not a claim none exists.
+Vendor HMI SDK page confirms Linux and FreeRTOS offerings for the candidate:
+https://www.generalplus.com/2LVlangLNt9SVn2SNgp_hmi_sdk
+An available SDK offering is not source access for this board.
+
+GPU / PPU REALITY
+Mesa officially lists Vivante GCxxx through Etnaviv:
+https://docs.mesa3d.org/systems.html
+An upstream Etnaviv DT binding requires device resources and clocks:
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/mchehab/linux-media/+/media/v4.7-2/Documentation/devicetree/bindings/display/etnaviv/etnaviv-drm.txt
+(This accessible reference is v4.7-era binding, not evidence of D-R35 support.
+Attempts to retrieve exact v4.19 Etnaviv source through web failed.)
+The architecture can leave a later GPU backend possible, but cannot budget its
+performance now. Even working GLES would need supported silicon, memory-sharing
+and a compatible renderer. GPU/PPU can plausibly handle final composition,
+rotation, scaling and overlays; they do not replace SNES priority/color math/
+mid-scanline behavior or PS1 blending simply by accepting a framebuffer.
+Using GPU to scale alone probably duplicates an already usable PScaler while
+adding driver/memory cost. A hardware PS1 renderer is a separate correctness
+project; a UI-only GPU port has poor first-prototype information value.
+
+DMA AND MEMORY OWNERSHIP
+Linux DMA guidance:
+https://www.kernel.org/doc/html/latest/core-api/dma-api-howto.html
+CPU virtual address, physical address and DMA address are distinct contracts;
+cache visibility and completion must be explicit. Do not send heap pointers to
+hardware or rely on a volatile flag for cache ownership. Keep driver-managed
+chunk allocation initially. For a later source driver, use Linux DMA APIs and
+proper synchronization rather than private userspace cache/MMIO tricks.
+Any cached chunk experiment must verify actual mapping/coherency behavior before
+claiming speed or correctness. Compare complete frame cost, not memcpy alone.
+
+CONCRETE HARDWARE OPPORTUNITIES (IN PRIORITY ORDER)
+1. Use the scaler already proven to work for final scale/format conversion;
+   avoid CPU-sized640x480 output renders where a256x224 source suffices.
+2. Stop recreating a scaler session for every image: first test persistent fd
+   while retaining legal per-job stop/config/trigger sequence; then configuration
+   reuse; then bounded A/B queue if supported. Those are separate hypotheses.
+3. Track completion of source DMA and displayed output separately. A source can
+   be recycled after scaling completes; an output remains owned until scanout
+   retires it. More buffers without ownership/freshness bounds means latency.
+4. Decouple emulation CPU from peripheral waits; short worker waits overlap
+   device progress. No worker busy-polling or multithreaded CPU-heavy pipeline
+   on this single core. Bounded queue depth with newest undisplayed frame wins.
+5. Benchmark cached core rendering+one compact copy against direct chunk render.
+   Batch conversion+packing if conversion is necessary; direct RGB565 where core
+   semantics permit. No per-frame allocations; reuse cached descriptors.
+6. Query supported audio rates/actual accepted rate and playback pointer through
+   validated device API with audio stopped. Native32040 is only a possibility;
+   even exact nominal-rate support still has physical clock drift. Hardware DAC
+   upsample symbol is not proof of arbitrary resampling quality/control.
+7. Match aligned SIMD tile/color/copy/audio work to measured hot loops. Preserve
+   exact integer semantics and saturations; don't enable unsafe fast math globally.
+8. Hardware rotation could benefit vertical arcade only if the exposed ioctl
+   pipeline works and is cheaper than CPU rotation. Validate format/pitch/latency.
+9. Possible display-controller scaling/direct scanout could remove an intermediate
+   frame store. Treat as later measured driver capability; current evidence does
+   not establish the route. Same for overlay/PPU UI composition.
+10. PScaler B is no free second renderer: it shares memory bandwidth and resources.
+    Y-only scaler is unsuitable for full-color SNES output. SPU, FFT, JPEG, AI,
+    crypto engines are not emulator speedup fairy dust; no first-phase role.
+11. SRAM is only a later candidate for a small demonstrably hot scratch/tile/audio
+    buffer once address, ownership and cache attributes are established. Never
+    assume all advertised470KB is general-purpose application memory.
+12. Suppress verified noisy debug formatting at its source if source-level driver
+    work becomes available and measurement warrants it. Lower console log level
+    does not remove formatting/storage. Do not change UART registers speculatively.
+
+SIMPLE TRAFFIC / BUFFER SIZING (CALCULATIONS, NOT MEASURED BANDWIDTH)
+256x224 RGB565 source=112KiB; double source=224KiB. A640x480 RGB565 output=600KiB;
+double output=1200KiB. Combined base pool=1424KiB before alignment/high-resolution
+cases. At60fps a source stream is6.88MB/s; one extra source copy reads+writes
+about13.76MB/s. Each full output write or scanout is36.86MB/s. Such traffic has
+cost, but is not proof of DRAM saturation; cache policy/setup costs may dominate.
+Bounded buffers fit the16MiB reserve in principle; actual free chunk capacity and
+other driver reservations must be measured. Do not reclaim the reserve by merely
+changing mem=; drivers may own it independently.
+
+KERNEL OPTIONS A-E
+A KEEP KERNEL, REPLACE USERSPACE: chosen prototype. Existing display init, audio,
+  SD, controls and shutdown have proven paths. Fastest test of architecture.
+B PATCH/AUGMENT DRIVERS: conditional later. Worth it for supported persistent
+  queue/fence API, measurable debug tax, robust PCM position/error reporting.
+  Need exact source/config/toolchain or credible independent interface, compatible
+  module/kernel ABI and recovery. Built-in scaler cannot be replaced by dropping
+  a similarly named .ko; modules.builtin is only metadata (H4).
+C CUSTOM MINIMAL BUILDROOT USERSPACE, VENDOR KERNEL: chosen product direction.
+  Reproducible image/app bundle, single-purpose init, bounded services, smaller
+  resident UI/resources; preserve glibc/ABI while depending on vendor binaries.
+  Buildroot itself does not imply flashing the kernel or replacing all services.
+D NEWER KERNEL PORT: defer until driver source, board boot/display/power knowledge
+  and a tested alternate boot/recovery route exist. Gain must be concrete (driver
+  maintenance, supported APIs, security), not assumed FPS. Proprietary panel/
+  board modules and built-in multimedia drivers are major porting dependencies.
+E RTOS/BARE METAL: reject as main path. It removes Linux scheduling, not console
+  emulation cost; creates new filesystem/USB/SD/display/audio/input/PM/recovery
+  work and loses mature userspace/core infrastructure. Consider only with a real
+  matching SDK and measured Linux cost that cannot be fixed. No evidence meets
+  that bar. Also reject global busy-loop/high-RT-priority recipes: audio feeder,
+  display completion, SD and essential kernel work must continue making progress.
+
+NEXT DISCOVERY THAT CHANGES DECISIONS
+Inside the replacement-runtime experiment capture per-thread CPU vs elapsed,
+video producer wait, scaler submission/completion/flip timing, accepted PCM
+rate/period/depth, and memory pool usage. Add a capability manifest from existing
+read-only paths (cache/clock source/input/power/tracefs). Query hardware only via
+known safe APIs; unopened active audio devices are not harmless metadata reads.
+No /dev/mem, flash extraction, MMIO writes, kernel patch or trace arming occurred
+in this research. A missing capability should choose a fallback, not stall the
+entire runtime prototype.

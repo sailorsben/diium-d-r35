@@ -1,0 +1,72 @@
+SNES MVP 1.3 return review - 2026-10-04
+
+Ben reports no buttons worked. The returned MVP folder and init were archived
+before any mutation, including private saves, helper copies and runtime state.
+This return establishes a stalled input loop, rather than another pin-map error.
+
+Observed:
+- showlogo exited with its acknowledgment before the MVP launched.
+- App PID 492 reached READY in 169 ms; first display submit/draw/flip completed.
+- GPIO baseline reads succeeded, with low bits, logical keys and error bits zero.
+- No subsequent changed-input line, game launch or normal exit was recorded.
+- Runtime snapshots at kernel uptimes 11.37 and 17.45 seconds show the main
+  thread asleep in hrtimer_nanosleep, with identical syscall arguments and
+  unchanged context-switch counts (106 voluntary, 12 involuntary).
+- The display worker is idle in its condition-variable wait, also unchanged.
+  The stock supervisor is absent. The MVP has not progressed or submitted work.
+- The app's libc CLOCK_MONOTONIC timestamps are around 35 seconds when kernel
+  uptime is around 9 seconds. This clock relationship is abnormal: monotonic
+  ordinarily excludes suspended time, whereas uptime includes it.
+
+Source connection:
+After the first frame and input baseline, the library polls then calls
+board_sleep_until(board_now_ns()+8,000,000). The old board clock used libc
+clock_gettime; the old sleep sent that timestamp directly to kernel
+clock_nanosleep(CLOCK_MONOTONIC,TIMER_ABSTIME). The captured flags are absolute.
+The intended 8 ms wait is the only main-thread timer wait in this library path.
+The long unchanged sleep and clock discrepancy identify the timing seam as
+the immediate failure mechanism. Exact libc/vDSO versus direct syscall clock
+readings were not captured in v1.3; v1.4 records them at startup to verify the
+underlying clock discrepancy. Do not claim a particular vDSO/kernel bug proven.
+
+Returned helper evidence:
+wdt.asm shows /wdt opens its watchdog device, configures it, then autonomously
+usleeps 500,000 microseconds and performs watchdog status/keepalive ioctls in a
+loop. It has no main/vrtemu shared-heartbeat attachment. The IPC snapshot shows
+the MVP is the only attacher to key 1234. Restoring the legacy heartbeat was
+not a demonstrated solution to these dead controls. power_key.asm is preserved
+for later use; no helper process or watchdog was disabled or changed.
+
+v1.4 repair:
+- New private timing module reads CLOCK_MONOTONIC through the ARM32 kernel
+  syscall, bypassing the libc/vDSO fast path for owned scheduling.
+- Sleeps use a relative remaining duration and recompute after interruptions,
+  never a userspace absolute timestamp. Past deadlines return immediately.
+- Menu repeats, heartbeat, gameplay deadlines and durable logging use the same
+  clock. The first gameplay deadline no longer uses the retained legacy helper.
+- Display-condition timeout reads CLOCK_REALTIME through the kernel syscall,
+  so its absolute deadline also matches the kernel wait's clock.
+- Startup records libc monotonic, direct kernel monotonic and kernel boottime.
+- The shared policy helper was made static inline because it is optional in
+  the MVP; adaptive policy behavior is unchanged. No stock binary changed.
+
+Checks passed:
+- A 26-second libc/kernel offset fixture cannot inflate 8 ms input waits;
+  interrupted and already-expired deadlines are checked.
+- Real ARM kernel-clock loop completes 25 waits in 208 ms under QEMU.
+- Actual main/menu runs through real waits, Down/Up/A, held-launch suppression
+  and the selected game launch without stalling.
+- Exact Plus core: 180-frame unpaced run and a bounded 30-frame paced run.
+- GPIO decoder, audio preservation/accounting, SRAM/snapshot/rollback,
+  library/UI, readiness, timeout, splash and wrapper lifecycle checks pass.
+These are local ARM/QEMU checks, not proof of physical controls or performance.
+
+Installed and re-armed at 2026-10-04T22:37:52Z.
+Binary: 9262a526c432f05ec8520685d403aa711ab5c0f5ca10938e2b74c1f1033ac3df
+Wrapper: 0c0b8b2d8b82f006b21bcfdcdebcf09f7e18af67ad5add9b3749107623a21ee7
+Update archive: device-evidence/snes-mvp-update-20261004T223752Z/
+All 13 original/private save files, stock binaries and existing init unchanged.
+
+Next: safely eject, boot and test Down/Up/A or Start before entering FF6.
+On return preserve startup.log clock/button lines, runtime thread snapshots,
+last-run.log, helper copies, marker state and any new private game progress.

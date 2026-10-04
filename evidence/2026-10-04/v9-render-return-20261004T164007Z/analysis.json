@@ -1,0 +1,26 @@
+{
+  "normal_before": {
+    "calls": 1800,
+    "wall_seconds": 35.965141,
+    "audio_seconds": 30.038639455782313,
+    "average_run_ms": 19.958124444444447,
+    "average_video_callback_ms": 1.1748772222222221,
+    "effective_runs_per_second": 50.048462203999144
+  },
+  "core_render_off": {
+    "calls": 1200,
+    "wall_seconds": 19.94828,
+    "audio_seconds": 20.02578231292517,
+    "average_run_ms": 6.7522408333333335,
+    "average_video_callback_ms": 0.004618333333333333,
+    "effective_runs_per_second": 60.1555622840666
+  },
+  "normal_after_without_menu_pause": {
+    "calls": 120,
+    "wall_seconds": 2.400542,
+    "audio_seconds": 2.002562358276644,
+    "average_run_ms": 19.97705,
+    "average_video_callback_ms": 1.2692833333333333,
+    "effective_runs_per_second": 49.9887108827923
+  }
+}

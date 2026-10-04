@@ -1,0 +1,47 @@
+SNES MVP 1.1 startup wrapper pid=477
+child pid=483 startup deadline=20s
+441.818 program entered pid=483
+441.820 GPIO open enter
+441.822 GPIO input attribute pin=0x200
+441.823 GPIO input attribute pin=0x201
+441.824 GPIO input attribute pin=0x202
+441.826 GPIO input attribute pin=0x203
+441.827 GPIO input attribute pin=0x204
+441.828 GPIO input attribute pin=0x205
+441.830 GPIO input attribute pin=0x30b
+441.831 GPIO input attribute pin=0x30d
+441.832 GPIO input attribute pin=0x30f
+441.834 GPIO input attribute pin=0x30c
+441.835 GPIO input attribute pin=0x30a
+441.840 GPIO input attribute pin=0x208
+441.841 GPIO input attribute pin=0x207
+441.843 GPIO input attribute pin=0x30e
+441.844 GPIO input attribute pin=0x206
+441.845 GPIO vendor attribute pin=0x20f value=0
+441.847 GPIO vendor attribute pin=0x20b value=0
+441.848 GPIO vendor attribute pin=0x20e value=1
+441.850 GPIO vendor attribute pin=0x209 value=1
+441.851 GPIO vendor attribute pin=0x20a value=1
+441.852 chunkmem open enter
+441.854 chunk allocation enter bytes=1310720
+441.858 chunk allocation complete
+441.859 display driver load enter path=/usr/retro/driver.so
+441.865 display driver symbols resolved; HDMI detection enter
+441.867 HDMI detection complete output=0; InitVFB enter
+441.960 InitVFB returned display=0x2b650
+441.962 display size=640x480
+441.964 LCD backlight write enter value=1
+441.965 display worker create enter
+441.967 display worker created; mixer open enter
+441.968 mixer open complete
+441.970 board open complete
+441.971 library scan enter
+441.983 library scan complete games=3
+441.988 first library submit
+441.993 first DrawVFB enter size=640x480
+441.995 first library wait for display
+441.999 first DrawVFB returned; FlipVFB enter
+442.010 first FlipVFB returned
+442.012 first library display complete; input baseline enter
+442.013 input baseline held_mask=0x00000000
+442.015 READY: first library frame completed; controls initialized

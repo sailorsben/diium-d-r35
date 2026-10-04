@@ -1,0 +1,3270 @@
+
+main main 000106d4 bytes=476
+000106d4 push      {r4, r5, r6, r7, r8, sb, sl, lr}
+000106d8 mov       r2, #0x100
+000106dc vpush     {d8, d9}
+000106e0 ldr       r5, [pc, #0x19c] ; literal=0x10908
+000106e4 sub       sp, sp, #0x300
+000106e8 add       r4, sp, #0x200
+000106ec add       r6, sp, #0x100
+000106f0 add       r5, pc, r5 ; base=0x21000
+000106f4 mov       r1, r6
+000106f8 mov       r0, r4
+000106fc mov       r8, sp
+00010700 bl        #0x10afc ; get_executable_path
+00010704 ldr       r0, [pc, #0x17c] ; literal=0x528
+00010708 mov       r2, r6
+0001070c mov       r1, r4
+00010710 add       r0, pc, r0 ; base=0x10c40
+00010714 bl        #0x105e4 ; printf@plt
+00010718 ldr       r1, [pc, #0x16c] ; literal=0x538
+0001071c mov       r2, r4
+00010720 mov       r0, r8
+00010724 add       r1, pc, r1 ; base=0x10c64
+00010728 bl        #0x106bc ; sprintf@plt
+0001072c bl        #0x109a0 ; ShareMemCreat
+00010730 ldr       r3, [pc, #0x158] ; literal=0x64
+00010734 mvn       r1, #0
+00010738 vmvn.i32  q4, #1
+0001073c ldr       r2, [r5, r3] ; GOT -> shm
+00010740 mvn       r3, #1
+00010744 ldr       r5, [r2]
+00010748 mov       r2, #0x64
+0001074c str       r1, [r5, #8]
+00010750 add       ip, r5, #0x124
+00010754 add       r0, r5, #0x134
+00010758 add       r1, r5, #0x144
+0001075c vst1.32   {d8, d9}, [ip]
+00010760 vst1.32   {d8, d9}, [r0]
+00010764 vst1.32   {d8, d9}, [r1]
+00010768 str       r3, [r5, #0x154]
+0001076c mov       r1, #0
+00010770 add       r0, r5, #0x158
+00010774 bl        #0x10680 ; memset@plt
+00010778 add       r3, r5, #0x1bc
+0001077c vst1.32   {d8, d9}, [r3]
+00010780 bl        #0x10698 ; fork@plt
+00010784 subs      r2, r0, #0
+00010788 blt       #0x107b0 ; branch
+0001078c bne       #0x107bc ; branch
+00010790 ldr       r1, [pc, #0xfc] ; literal=0x4f4
+00010794 mov       r0, r8
+00010798 add       r1, pc, r1 ; base=0x10c94
+0001079c bl        #0x106a4 ; execl@plt
+000107a0 mov       r0, #0
+000107a4 add       sp, sp, #0x300
+000107a8 vpop      {d8, d9}
+000107ac pop       {r4, r5, r6, r7, r8, sb, sl, pc}
+000107b0 ldr       r0, [pc, #0xe0] ; literal=0x4b4
+000107b4 add       r0, pc, r0 ; base=0x10c70
+000107b8 bl        #0x10614 ; perror@plt
+000107bc ldr       r6, [pc, #0xd8] ; literal=0x4a4
+000107c0 mov       r0, #6
+000107c4 ldr       r7, [pc, #0xd4] ; literal=0x4a8
+000107c8 bl        #0x105fc ; sleep@plt
+000107cc ldr       sb, [pc, #0xd0] ; literal=0x484
+000107d0 mov       r4, #0
+000107d4 add       r6, pc, r6 ; base=0x10c80
+000107d8 mov       r3, #0x3c
+000107dc add       r7, pc, r7 ; base=0x10c8c
+000107e0 mov       sl, r4
+000107e4 add       sb, pc, sb ; base=0x10c70
+000107e8 str       r3, [r5]
+000107ec b         #0x1083c ; branch
+000107f0 ldr       r3, [r5]
+000107f4 mov       r0, r6
+000107f8 cmp       r3, r4
+000107fc add       r4, r4, #1
+00010800 bge       #0x10834 ; branch
+00010804 bl        #0x10650 ; puts@plt
+00010808 mov       r0, r7
+0001080c bl        #0x10668 ; system@plt
+00010810 bl        #0x10698 ; fork@plt
+00010814 subs      r4, r0, #0
+00010818 blt       #0x10854 ; branch
+0001081c beq       #0x10860 ; branch
+00010820 mov       r4, #0
+00010824 mov       r0, #6
+00010828 str       r4, [r5, #4]
+0001082c mov       sl, r4
+00010830 bl        #0x105fc ; sleep@plt
+00010834 movw      r0, #0x411a
+00010838 bl        #0x1062c ; usleep@plt
+0001083c ldr       r3, [r5, #4]
+00010840 cmp       r3, sl
+00010844 beq       #0x107f0 ; branch
+00010848 mov       sl, r3
+0001084c mov       r4, #0
+00010850 b         #0x10834 ; branch
+00010854 mov       r0, sb
+00010858 bl        #0x10614 ; perror@plt
+0001085c b         #0x10820 ; branch
+00010860 ldr       r0, [pc, #0x40] ; literal=0x430
+00010864 add       r0, pc, r0 ; base=0x10c9c
+00010868 bl        #0x10650 ; puts@plt
+0001086c ldr       r1, [pc, #0x38] ; literal=0x414
+00010870 mov       r2, r4
+00010874 mov       r0, r8
+00010878 add       r1, pc, r1 ; base=0x10c94
+0001087c bl        #0x106a4 ; execl@plt
+00010880 b         #0x107a0 ; branch
+00010884 andeq     r0, r1, r8, lsl #18
+00010888 andeq     r0, r0, r8, lsr #10
+0001088c andeq     r0, r0, r8, lsr r5
+00010890 andeq     r0, r0, r4, rrx
+00010894 strdeq    r0, r1, [r0], -r4
+00010898 strheq    r0, [r0], -r4
+0001089c andeq     r0, r0, r4, lsr #9
+000108a0 andeq     r0, r0, r8, lsr #9
+000108a4 andeq     r0, r0, r4, lsl #9
+000108a8 andeq     r0, r0, r0, lsr r4
+000108ac andeq     r0, r0, r4, lsl r4
+
+vrtemu environment 000a2fc8 bytes=484
+000a2fc8 push      {r4, r5, r6, lr}
+000a2fcc cmp       r0, #0xa
+000a2fd0 ldr       r5, [pc, #0x19c] ; literal=0xf6020
+000a2fd4 mov       r4, r1
+000a2fd8 add       r5, pc, r5 ; base=0x199000
+000a2fdc beq       #0xa301c ; branch
+000a2fe0 cmp       r0, #0x1b
+000a2fe4 beq       #0xa3078 ; branch
+000a2fe8 cmp       r0, #1
+000a2fec beq       #0xa3090 ; branch
+000a2ff0 cmp       r0, #0x25
+000a2ff4 beq       #0xa3044 ; branch
+000a2ff8 cmp       r0, #9
+000a2ffc beq       #0xa3060 ; branch
+000a3000 cmp       r0, #0x1f
+000a3004 beq       #0xa3060 ; branch
+000a3008 cmp       r0, #0xf
+000a300c beq       #0xa30d8 ; branch
+000a3010 mov       r3, #0
+000a3014 mov       r0, r3
+000a3018 pop       {r4, r5, r6, pc}
+000a301c ldr       r0, [pc, #0x154] ; literal=0xc7bdc
+000a3020 ldr       r1, [r1]
+000a3024 add       r0, pc, r0 ; base=0x16ac08
+000a3028 bl        #0x11be4 ; printf@plt
+000a302c ldr       r3, [r4]
+000a3030 sub       r3, r3, #2
+000a3034 clz       r3, r3
+000a3038 lsr       r3, r3, #5
+000a303c mov       r0, r3
+000a3040 pop       {r4, r5, r6, pc}
+000a3044 movw      r1, #0x8880
+000a3048 mov       r0, #0
+000a304c movt      r1, #0x40e5
+000a3050 mov       r3, #1
+000a3054 strd      r0, r1, [r4, #0x20]
+000a3058 mov       r0, r3
+000a305c pop       {r4, r5, r6, pc}
+000a3060 ldr       r2, [pc, #0x114] ; literal=0x274
+000a3064 mov       r3, #1
+000a3068 mov       r0, r3
+000a306c ldr       r2, [r5, r2]
+000a3070 str       r2, [r4]
+000a3074 pop       {r4, r5, r6, pc}
+000a3078 ldr       r2, [pc, #0x100] ; literal=0xfffffc28
+000a307c mov       r3, #1
+000a3080 mov       r0, r3
+000a3084 add       r2, pc, r2 ; base=0xa2cb4
+000a3088 str       r2, [r1]
+000a308c pop       {r4, r5, r6, pc}
+000a3090 ldr       r3, [pc, #0xec] ; literal=0x518
+000a3094 ldr       r0, [pc, #0xec] ; literal=0xc7b88
+000a3098 ldr       r4, [r5, r3]
+000a309c ldr       r1, [r1]
+000a30a0 add       r0, pc, r0 ; base=0x16ac30
+000a30a4 str       r1, [r4]
+000a30a8 bl        #0x11be4 ; printf@plt
+000a30ac ldr       r3, [pc, #0xd8] ; literal=0x1e0
+000a30b0 ldr       r3, [r5, r3]
+000a30b4 ldr       r3, [r3]
+000a30b8 cmp       r3, #0
+000a30bc movne     r0, #0
+000a30c0 ldreq     r0, [r4]
+000a30c4 strne     r0, [r4]
+000a30c8 bl        #0xa668c ; video_driver_set_rotation
+000a30cc mov       r3, #0
+000a30d0 mov       r0, r3
+000a30d4 pop       {r4, r5, r6, pc}
+000a30d8 ldr       r0, [pc, #0xb0] ; literal=0xc7b64
+000a30dc ldr       r1, [r1]
+000a30e0 add       r0, pc, r0 ; base=0x16ac4c
+000a30e4 bl        #0x11be4 ; printf@plt
+000a30e8 ldr       r5, [r4]
+000a30ec ldr       r1, [pc, #0xa0] ; literal=0xc7b78
+000a30f0 mov       r0, r5
+000a30f4 add       r1, pc, r1 ; base=0x16ac74
+000a30f8 bl        #0x11f74 ; strcmp@plt
+000a30fc cmp       r0, #0
+000a3100 beq       #0xa3144 ; branch
+000a3104 ldr       r1, [pc, #0x8c] ; literal=0xc7b98
+000a3108 mov       r0, r5
+000a310c add       r1, pc, r1 ; base=0x16acac
+000a3110 bl        #0x11e3c ; strstr@plt
+000a3114 cmp       r0, #0
+000a3118 beq       #0xa3010 ; branch
+000a311c ldr       r1, [pc, #0x78] ; literal=0xc7b8c
+000a3120 mov       r3, #1
+000a3124 ldr       r2, [pc, #0x74] ; literal=0x114e5c
+000a3128 add       r1, pc, r1 ; base=0x16acbc
+000a312c add       r2, pc, r2 ; base=0x1b7f90
+000a3130 ldm       r1, {r0, r1}
+000a3134 str       r0, [r2]
+000a3138 strh      r1, [r2, #4]
+000a313c str       r2, [r4, #4]
+000a3140 b         #0xa303c ; branch
+000a3144 ldr       r1, [pc, #0x58] ; literal=0xc7b4c
+000a3148 mov       r3, #1
+000a314c ldr       r2, [pc, #0x54] ; literal=0x114e34
+000a3150 add       r1, pc, r1 ; base=0x16aca4
+000a3154 add       r2, pc, r2 ; base=0x1b7f90
+000a3158 ldm       r1, {r0, r1}
+000a315c lsr       ip, r1, #0x10
+000a3160 str       r0, [r2]
+000a3164 strh      r1, [r2, #4]
+000a3168 strb      ip, [r2, #6]
+000a316c str       r2, [r4, #4]
+000a3170 b         #0xa303c ; branch
+000a3174 andeq     r6, pc, r0, lsr #32
+000a3178 ldrdeq    r7, r8, [ip], -ip
+000a317c andeq     r0, r0, r4, ror r2
+
+vrtemu InitEmulateFrame.constprop.0 000a31ac bytes=200
+000a31ac vmov      s14, r0
+000a31b0 vmov      s15, r1
+000a31b4 push      {r4, lr}
+000a31b8 sub       sp, sp, #8
+000a31bc vcvt.f32.s32 s14, s14
+000a31c0 mov       r1, #0
+000a31c4 vcvt.f32.s32 s15, s15
+000a31c8 mov       r0, sp
+000a31cc ldr       r4, [pc, #0x84] ; literal=0xf5e24
+000a31d0 ldr       r3, [pc, #0x84] ; literal=0x4bc
+000a31d4 add       r4, pc, r4 ; base=0x199000
+000a31d8 vcvt.s32.f32 s14, s14
+000a31dc ldr       r2, [r4, r3] ; GOT -> fps
+000a31e0 vcvt.s32.f32 s15, s15
+000a31e4 ldr       r3, [pc, #0x74] ; literal=0x364
+000a31e8 vstr      s14, [r2]
+000a31ec ldr       r3, [r4, r3] ; GOT -> maxSkips
+000a31f0 vstr      s15, [r3]
+000a31f4 bl        #0x11b48 ; gettimeofday@plt
+000a31f8 ldr       r3, [sp, #4]
+000a31fc movw      r2, #0x4dd3
+000a3200 movt      r2, #0x1062
+000a3204 mov       lr, #0x3e8
+000a3208 smull     r1, r2, r2, r3
+000a320c ldr       r0, [sp]
+000a3210 mov       r1, #0
+000a3214 ldr       ip, [pc, #0x48] ; literal=0x2a8
+000a3218 asr       r3, r3, #0x1f
+000a321c rsb       r3, r3, r2, asr #6
+000a3220 mla       r2, lr, r0, r3
+000a3224 ldr       r0, [r4, ip] ; GOT -> initialTicks
+000a3228 ldr       r3, [pc, #0x38] ; literal=0x4ec
+000a322c str       r2, [r0]
+000a3230 ldr       r2, [pc, #0x34] ; literal=0x3e4
+000a3234 ldr       r0, [r4, r3] ; GOT -> FrameCount0
+000a3238 ldr       r3, [pc, #0x30] ; literal=0x3f0
+000a323c str       r1, [r0]
+000a3240 ldr       r2, [r4, r2] ; GOT -> skipCounter
+000a3244 str       r1, [r2]
+000a3248 ldr       r3, [r4, r3] ; GOT -> FrameCount
+000a324c str       r1, [r3]
+000a3250 add       sp, sp, #8
+000a3254 pop       {r4, pc}
+000a3258 andeq     r5, pc, r4, lsr #28
+000a325c strheq    r0, [r0], -ip
+000a3260 andeq     r0, r0, r4, ror #6
+000a3264 andeq     r0, r0, r8, lsr #5
+000a3268 andeq     r0, r0, ip, ror #9
+000a326c andeq     r0, r0, r4, ror #7
+000a3270 strdeq    r0, r1, [r0], -r0
+
+vrtemu Load_Proc2 000a426c bytes=1892
+000a426c push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+000a4270 sub       sp, sp, #0x12c
+000a4274 ldr       r4, [pc, #0x6a4] ; literal=0xf4d7c
+000a4278 ldr       r3, [pc, #0x6a4] ; literal=0x250
+000a427c add       r4, pc, r4 ; base=0x199000
+000a4280 ldr       r1, [pc, #0x6a0] ; literal=0xc6bfc
+000a4284 ldr       r3, [r4, r3] ; GOT -> handle
+000a4288 add       r1, pc, r1 ; base=0x16ae8c
+000a428c ldr       r0, [r3]
+000a4290 str       r3, [sp, #0x24]
+000a4294 bl        #0x12010 ; dlsym@plt
+000a4298 ldr       r3, [pc, #0x68c] ; literal=0x224
+000a429c cmp       r0, #0
+000a42a0 ldr       r3, [r4, r3] ; GOT -> _retro_get_region
+000a42a4 str       r0, [r3]
+000a42a8 beq       #0xa4908 ; branch
+000a42ac blx       r0
+000a42b0 ldr       r3, [pc, #0x678] ; literal=0x434
+000a42b4 mov       r1, r0
+000a42b8 ldr       r0, [pc, #0x674] ; literal=0xc6bd8
+000a42bc ldr       sl, [r4, r3] ; GOT -> pal_ntsc
+000a42c0 add       r0, pc, r0 ; base=0x16aea0
+000a42c4 str       r1, [sl]
+000a42c8 bl        #0x11be4 ; printf@plt
+000a42cc ldr       r5, [sp, #0x24]
+000a42d0 mov       r7, #0
+000a42d4 ldr       r1, [pc, #0x65c] ; literal=0xc6bec
+000a42d8 movw      r8, #0x4dd3
+000a42dc ldr       r0, [r5]
+000a42e0 add       r1, pc, r1 ; base=0x16aed4
+000a42e4 movt      r8, #0x1062
+000a42e8 bl        #0x12010 ; dlsym@plt
+000a42ec ldr       r3, [pc, #0x648] ; literal=0x2e4
+000a42f0 mov       r1, #1
+000a42f4 str       r1, [sp]
+000a42f8 mov       r2, r0
+000a42fc ldr       r1, [pc, #0x63c] ; literal=0xc6bd0
+000a4300 str       r7, [sp, #4]
+000a4304 ldr       r3, [r4, r3] ; GOT -> _retro_run
+000a4308 add       r1, pc, r1 ; base=0x16aee0
+000a430c ldr       r0, [r5]
+000a4310 str       r2, [r3]
+000a4314 str       r3, [sp, #0x18]
+000a4318 bl        #0x12010 ; dlsym@plt
+000a431c ldr       r3, [pc, #0x620] ; literal=0x4f8
+000a4320 mov       r2, r0
+000a4324 ldr       r1, [pc, #0x61c] ; literal=0xc6bbc
+000a4328 ldr       r3, [r4, r3] ; GOT -> _SetDoubleBuffer
+000a432c add       r1, pc, r1 ; base=0x16aef0
+000a4330 ldr       r0, [r5]
+000a4334 str       r2, [r3]
+000a4338 bl        #0x12010 ; dlsym@plt
+000a433c ldr       r1, [pc, #0x608] ; literal=0x514
+000a4340 movw      ip, #0xb7c
+000a4344 ldr       r2, [pc, #0x604] ; literal=0x2e8
+000a4348 movw      r3, #0xdc8
+000a434c ldr       r1, [r4, r1] ; GOT -> _SetFrameSkip
+000a4350 str       r1, [sp, #0x14]
+000a4354 mov       lr, r1
+000a4358 ldr       r1, [sl]
+000a435c str       r0, [lr]
+000a4360 cmp       r1, r7
+000a4364 ldr       r2, [r4, r2] ; GOT -> sound_len
+000a4368 moveq     r3, ip
+000a436c str       r3, [r2]
+000a4370 bl        #0xa3618 ; RetroInitSound
+000a4374 ldr       r2, [pc, #0x5d8] ; literal=0xc1d90
+000a4378 mov       r1, #3
+000a437c ldr       r3, [sl]
+000a4380 add       r2, pc, r2 ; base=0x166118
+000a4384 str       r2, [sp, #0x1c]
+000a4388 ldr       r2, [pc, #0x5c8] ; literal=0xc1d90
+000a438c cmp       r3, r7
+000a4390 add       r2, pc, r2 ; base=0x166128
+000a4394 movne     r0, #0x32
+000a4398 str       r2, [sp, #0x20]
+000a439c moveq     r0, #0x3c
+000a43a0 bl        #0xa31ac ; InitEmulateFrame.constprop.0
+000a43a4 ldr       r1, [pc, #0x5b0] ; literal=0x550
+000a43a8 ldr       r3, [pc, #0x5b0] ; literal=0x518
+000a43ac ldr       sb, [r4, r1] ; GOT -> ADC_LEVEL
+000a43b0 ldr       r3, [r4, r3] ; GOT -> rotation
+000a43b4 ldr       r2, [pc, #0x5a8] ; literal=0x244
+000a43b8 ldr       r5, [r4, r2] ; GOT -> joy_key
+000a43bc str       r3, [sp, #0x10]
+000a43c0 ldr       r3, [sb]
+000a43c4 cmp       r3, #0
+000a43c8 blt       #0xa45a4 ; branch
+000a43cc ldr       r3, [r5]
+000a43d0 sub       r2, r3, #9
+000a43d4 clz       r2, r2
+000a43d8 lsr       r2, r2, #5
+000a43dc orrs      r2, r2, r3, lsr #31
+000a43e0 bne       #0xa462c ; branch
+000a43e4 ldr       r2, [r5, #4]
+000a43e8 cmp       r2, #9
+000a43ec beq       #0xa4658 ; branch
+000a43f0 cmp       r2, #0
+000a43f4 blt       #0xa4640 ; branch
+000a43f8 ldr       r2, [r5, #8]
+000a43fc cmp       r2, #9
+000a4400 beq       #0xa4640 ; branch
+000a4404 cmp       r2, #0
+000a4408 blt       #0xa4640 ; branch
+000a440c ldr       r2, [r5, #0xc]
+000a4410 cmp       r2, #9
+000a4414 beq       #0xa4640 ; branch
+000a4418 cmp       r2, #0
+000a441c blt       #0xa4640 ; branch
+000a4420 cmp       r7, r3
+000a4424 beq       #0xa4448 ; branch
+000a4428 ldr       r2, [pc, #0x538] ; literal=0x350
+000a442c mov       r7, r3
+000a4430 ldr       r3, [r4, r2] ; GOT -> SaveDefaultStateKey
+000a4434 ldr       r3, [r3]
+000a4438 cmp       r3, r7
+000a443c beq       #0xa4724 ; branch
+000a4440 cmp       r7, #0x900
+000a4444 beq       #0xa4798 ; branch
+000a4448 ldr       r3, [sp, #4]
+000a444c cmp       r3, #0
+000a4450 bne       #0xa4730 ; branch
+000a4454 add       r2, sp, #0x28
+000a4458 mov       r1, #0
+000a445c str       r2, [sp, #8]
+000a4460 mov       r0, r2
+000a4464 mov       fp, #0x3e8
+000a4468 bl        #0x11b48 ; gettimeofday@plt
+000a446c ldr       r1, [sp, #0x2c]
+000a4470 ldr       ip, [pc, #0x4f4] ; literal=0x2a8
+000a4474 smull     r3, r0, r8, r1
+000a4478 ldr       r2, [r4, ip] ; GOT -> initialTicks
+000a447c ldr       r3, [pc, #0x4ec] ; literal=0x4bc
+000a4480 ldr       lr, [sp, #0x28]
+000a4484 asr       r1, r1, #0x1f
+000a4488 str       r2, [sp, #0xc]
+000a448c rsb       r1, r1, r0, asr #6
+000a4490 ldr       ip, [r4, r3] ; GOT -> fps
+000a4494 ldr       r0, [r2]
+000a4498 ldr       r3, [pc, #0x4d4] ; literal=0x4ec
+000a449c mla       r1, fp, lr, r1
+000a44a0 ldr       ip, [ip]
+000a44a4 ldr       r6, [r4, r3] ; GOT -> FrameCount0
+000a44a8 sub       lr, r1, r0
+000a44ac mul       lr, ip, lr
+000a44b0 ldr       r3, [r6]
+000a44b4 umull     r2, lr, r8, lr
+000a44b8 add       r3, r3, #1
+000a44bc cmp       r3, lr, lsr #6
+000a44c0 str       r3, [r6]
+000a44c4 bhs       #0xa46cc ; branch
+000a44c8 ldr       r1, [pc, #0x4a8] ; literal=0x364
+000a44cc ldr       r3, [pc, #0x4a8] ; literal=0x3e4
+000a44d0 ldr       r0, [r4, r1] ; GOT -> maxSkips
+000a44d4 ldr       r3, [r4, r3] ; GOT -> skipCounter
+000a44d8 ldr       r0, [r0]
+000a44dc ldr       r1, [r3]
+000a44e0 ldr       r2, [sp, #8]
+000a44e4 cmp       r1, r0
+000a44e8 bge       #0xa474c ; branch
+000a44ec add       r1, r1, #1
+000a44f0 str       r1, [r3]
+000a44f4 cmp       r1, #0
+000a44f8 movgt     r0, #1
+000a44fc movle     r0, #0
+000a4500 movle     r1, #1
+000a4504 movgt     r1, #0
+000a4508 ldr       r3, [pc, #0x470] ; literal=0x2fc
+000a450c ldr       r2, [pc, #0x470] ; literal=0x430
+000a4510 ldr       ip, [r4, r3] ; GOT -> FrameSkip
+000a4514 ldr       r3, [pc, #0x46c] ; literal=0x544
+000a4518 str       r0, [ip]
+000a451c ldr       r2, [r4, r2] ; GOT -> fps_ptr
+000a4520 ldr       ip, [r4, r3] ; GOT -> fpsbuf
+000a4524 ldr       r3, [r2]
+000a4528 str       r1, [ip, r3, lsl #2]
+000a452c cmp       r3, #0xf
+000a4530 add       r3, r3, #1
+000a4534 moveq     r3, #0
+000a4538 str       r3, [r2]
+000a453c ldr       r3, [sp, #0x14]
+000a4540 ldr       r3, [r3]
+000a4544 cmp       r3, #0
+000a4548 beq       #0xa4550 ; branch
+000a454c blx       r3
+000a4550 mov       fp, #0
+000a4554 bl        #0xa3654 ; TurboKeyProcess
+000a4558 mov       r0, #0xb4
+000a455c bl        #0x13bb8 ; set_softwdt
+000a4560 ldr       r3, [pc, #0x424] ; literal=0x4c0
+000a4564 ldr       r2, [sp, #0x18]
+000a4568 ldr       r6, [r4, r3] ; GOT -> softwdt
+000a456c ldr       r2, [r2]
+000a4570 str       fp, [r6]
+000a4574 blx       r2
+000a4578 mov       r3, #1
+000a457c str       r3, [r6]
+000a4580 bl        #0x13fd4 ; xintiao
+000a4584 ldr       r3, [sp]
+000a4588 cmp       r3, fp
+000a458c bne       #0xa47b4 ; branch
+000a4590 mov       r3, #0
+000a4594 str       r3, [sp]
+000a4598 ldr       r3, [sb]
+000a459c cmp       r3, #0
+000a45a0 bge       #0xa43cc ; branch
+000a45a4 mov       r0, #0x80
+000a45a8 add       r6, sp, #0x28
+000a45ac bl        #0xa673c ; video_driver_set_dbuffer
+000a45b0 bl        #0x80bec ; GetWorkPath
+000a45b4 ldr       r1, [sp, #0x1c]
+000a45b8 mov       r2, r0
+000a45bc mov       r0, r6
+000a45c0 bl        #0x11f38 ; sprintf@plt
+000a45c4 mov       r0, #0x96000
+000a45c8 bl        #0x164abc ; gpChunkMemAlloc
+000a45cc ldr       r2, [sp, #0x20]
+000a45d0 mov       r1, r6
+000a45d4 mov       r6, r0
+000a45d8 bl        #0xa41b4 ; get_warning_data
+000a45dc mov       r3, #0x500
+000a45e0 mov       r2, #0x1e0
+000a45e4 mov       r1, #0x280
+000a45e8 mov       r0, r6
+000a45ec bl        #0xa6658 ; DispFrame
+000a45f0 mov       r0, #5
+000a45f4 bl        #0x11e60 ; sleep@plt
+000a45f8 mov       r0, #0
+000a45fc bl        #0x15e04 ; LCM_LED
+000a4600 mov       r0, #0
+000a4604 bl        #0x14d74 ; SetLEDVol
+000a4608 ldr       r3, [pc, #0x380] ; literal=0x3f4
+000a460c ldr       r3, [r4, r3] ; GOT -> retro_version
+000a4610 ldr       r3, [r3]
+000a4614 cmp       r3, #0
+000a4618 bne       #0xa4810 ; branch
+000a461c ldr       r0, [pc, #0x370] ; literal=0xc1b10
+000a4620 add       r0, pc, r0 ; base=0x166138
+000a4624 bl        #0x11d4c ; system@plt
+000a4628 b         #0xa43cc ; branch
+000a462c cmp       r3, #9
+000a4630 beq       #0xa4658 ; branch
+000a4634 ldr       r3, [r5, #4]
+000a4638 cmp       r3, #9
+000a463c beq       #0xa4658 ; branch
+000a4640 ldr       r3, [r5, #8]
+000a4644 cmp       r3, #9
+000a4648 beq       #0xa4658 ; branch
+000a464c ldr       r3, [r5, #0xc]
+000a4650 cmp       r3, #9
+000a4654 bne       #0xa4820 ; branch
+000a4658 mov       r0, #0xff00
+000a465c bl        #0xa668c ; video_driver_set_rotation
+000a4660 bl        #0x9b9f4 ; mui_PauseMenu
+000a4664 subs      fp, r0, #0
+000a4668 bne       #0xa4820 ; branch
+000a466c ldr       r3, [sp, #0x10]
+000a4670 ldr       r0, [r3]
+000a4674 bl        #0xa668c ; video_driver_set_rotation
+000a4678 ldr       r3, [pc, #0x318] ; literal=0x334
+000a467c ldr       r2, [pc, #0x318] ; literal=0x264
+000a4680 ldr       r6, [r4, r3] ; GOT -> outTimeVal
+000a4684 ldr       r1, [r4, r2] ; GOT -> outTimeZone
+000a4688 mov       r0, r6
+000a468c bl        #0x11b48 ; gettimeofday@plt
+000a4690 ldr       r3, [pc, #0x308] ; literal=0x524
+000a4694 ldm       r6, {r0, r1}
+000a4698 ldr       ip, [r4, r3] ; GOT -> inTimeVal
+000a469c ldr       r2, [sl]
+000a46a0 ldr       r3, [pc, #0x2fc] ; literal=0x3a4
+000a46a4 stm       ip, {r0, r1}
+000a46a8 ldr       r3, [r4, r3] ; GOT -> diff_prev
+000a46ac cmp       r2, #0
+000a46b0 mov       r1, #3
+000a46b4 movne     r0, #0x32
+000a46b8 str       fp, [r3]
+000a46bc moveq     r0, #0x3c
+000a46c0 bl        #0xa31ac ; InitEmulateFrame.constprop.0
+000a46c4 ldr       r3, [r5]
+000a46c8 b         #0xa4420 ; branch
+000a46cc mul       r3, fp, r3
+000a46d0 ldr       r2, [pc, #0x2a4] ; literal=0x3e4
+000a46d4 sub       r3, r3, #0x3e8
+000a46d8 ldr       r6, [r4, r2] ; GOT -> skipCounter
+000a46dc udiv      ip, r3, ip
+000a46e0 add       r0, ip, r0
+000a46e4 mov       r3, #0
+000a46e8 sub       r0, r0, r1
+000a46ec cmp       r0, r3
+000a46f0 str       r3, [r6]
+000a46f4 movle     r0, r3
+000a46f8 movle     r1, #1
+000a46fc ble       #0xa4508 ; branch
+000a4700 mul       r0, fp, r0
+000a4704 bl        #0x11f08 ; usleep@plt
+000a4708 ldr       r3, [r6]
+000a470c cmp       r3, #0
+000a4710 movgt     r0, #1
+000a4714 movle     r0, #0
+000a4718 movle     r1, #1
+000a471c movgt     r1, #0
+000a4720 b         #0xa4508 ; branch
+000a4724 ldr       r3, [sp, #4]
+000a4728 cmp       r3, #0
+000a472c beq       #0xa473c ; branch
+000a4730 sub       r3, r3, #1
+000a4734 str       r3, [sp, #4]
+000a4738 b         #0xa4454 ; branch
+000a473c bl        #0x89244 ; SaveDefaultState
+000a4740 mov       r3, #0x18
+000a4744 str       r3, [sp, #4]
+000a4748 b         #0xa4454 ; branch
+000a474c str       r3, [sp, #8]
+000a4750 mov       r0, r2
+000a4754 mov       r1, #0
+000a4758 bl        #0x11b48 ; gettimeofday@plt
+000a475c ldr       r2, [sp, #0x2c]
+000a4760 mov       r1, #0
+000a4764 str       r1, [r6]
+000a4768 mov       r0, r1
+000a476c smull     r3, ip, r8, r2
+000a4770 asr       r2, r2, #0x1f
+000a4774 rsb       r2, r2, ip, asr #6
+000a4778 ldr       r3, [sp, #8]
+000a477c ldr       ip, [sp, #0x28]
+000a4780 str       r1, [r3]
+000a4784 mov       r1, #1
+000a4788 mla       fp, fp, ip, r2
+000a478c ldr       r3, [sp, #0xc]
+000a4790 str       fp, [r3]
+000a4794 b         #0xa4508 ; branch
+000a4798 ldr       r3, [sp, #4]
+000a479c cmp       r3, #0
+000a47a0 bne       #0xa4730 ; branch
+000a47a4 bl        #0x9c9c8 ; SaveDefaultSnap
+000a47a8 mov       r3, #0x18
+000a47ac str       r3, [sp, #4]
+000a47b0 b         #0xa4454 ; branch
+000a47b4 bl        #0x891b8 ; LoadDefaultState
+000a47b8 cmp       r0, #0
+000a47bc beq       #0xa4590 ; branch
+000a47c0 ldr       r3, [pc, #0x1d0] ; literal=0x334
+000a47c4 mov       r1, fp
+000a47c8 ldr       r6, [r4, r3] ; GOT -> outTimeVal
+000a47cc mov       r0, r6
+000a47d0 bl        #0x11b48 ; gettimeofday@plt
+000a47d4 ldr       r3, [pc, #0x1c4] ; literal=0x524
+000a47d8 ldm       r6, {r0, r1}
+000a47dc ldr       r2, [r4, r3] ; GOT -> inTimeVal
+000a47e0 ldr       ip, [sl]
+000a47e4 ldr       r3, [pc, #0x1b8] ; literal=0x3a4
+000a47e8 stm       r2, {r0, r1}
+000a47ec ldr       r3, [r4, r3] ; GOT -> diff_prev
+000a47f0 cmp       ip, #0
+000a47f4 mov       r1, #2
+000a47f8 movne     r0, #0x32
+000a47fc str       fp, [r3]
+000a4800 moveq     r0, #0x3c
+000a4804 bl        #0xa31ac ; InitEmulateFrame.constprop.0
+000a4808 bl        #0xa6988 ; StopSound
+000a480c b         #0xa4590 ; branch
+000a4810 mov       r1, #0
+000a4814 movw      r0, #0x40b
+000a4818 bl        #0x1587c ; gpio_write_io
+000a481c b         #0xa461c ; branch
+000a4820 ldr       r6, [pc, #0x180] ; literal=0xc69f0
+000a4824 movw      r0, #0x4e20
+000a4828 ldr       r5, [pc, #0x17c] ; literal=0xc20a0
+000a482c bl        #0x11f08 ; usleep@plt
+000a4830 ldr       r3, [pc, #0x178] ; literal=0x4c8
+000a4834 mov       r2, #0x64
+000a4838 add       r6, pc, r6 ; base=0x16b230
+000a483c mov       r0, #0x7d0
+000a4840 ldr       r7, [r4, r3] ; GOT -> ResetCountMAX
+000a4844 add       r5, pc, r5 ; base=0x1668ec
+000a4848 str       r2, [r7]
+000a484c bl        #0x11f08 ; usleep@plt
+000a4850 mov       r1, r6
+000a4854 movw      r2, #0x974
+000a4858 mov       r0, r5
+000a485c bl        #0x11be4 ; printf@plt
+000a4860 ldr       r0, [pc, #0x14c] ; literal=0xc6690
+000a4864 mov       r1, #0
+000a4868 add       r0, pc, r0 ; base=0x16af00
+000a486c bl        #0xa3724 ; run_process
+000a4870 mov       r1, r6
+000a4874 movw      r2, #0x976
+000a4878 mov       r0, r5
+000a487c bl        #0x11be4 ; printf@plt
+000a4880 ldr       r0, [pc, #0x130] ; literal=0xc6684
+000a4884 mov       r1, #0
+000a4888 add       r0, pc, r0 ; base=0x16af14
+000a488c bl        #0xa3724 ; run_process
+000a4890 mov       r1, r6
+000a4894 mov       r0, r5
+000a4898 movw      r2, #0x978
+000a489c bl        #0x11be4 ; printf@plt
+000a48a0 ldr       r3, [pc, #0x114] ; literal=0x328
+000a48a4 ldr       r6, [r4, r3] ; GOT -> SoundBuffer
+000a48a8 ldr       r0, [r6]
+000a48ac cmp       r0, #0
+000a48b0 beq       #0xa48b8 ; branch
+000a48b4 bl        #0x11b6c ; free@plt
+000a48b8 ldr       r3, [sp, #0x24]
+000a48bc mov       r5, #0
+000a48c0 str       r5, [r6]
+000a48c4 ldr       r0, [r3]
+000a48c8 bl        #0x11c14 ; dlclose@plt
+000a48cc ldr       r1, [pc, #0xec] ; literal=0xc6950
+000a48d0 movw      r2, #0x97d
+000a48d4 ldr       r0, [pc, #0xe8] ; literal=0xc2008
+000a48d8 add       r1, pc, r1 ; base=0x16b230
+000a48dc add       r0, pc, r0 ; base=0x1668ec
+000a48e0 bl        #0x11be4 ; printf@plt
+000a48e4 ldr       r1, [sp, #0x10]
+000a48e8 mov       r2, #0x14
+000a48ec ldr       r3, [pc, #0xd4] ; literal=0x2ac
+000a48f0 str       r5, [r1]
+000a48f4 str       r2, [r7]
+000a48f8 ldr       r3, [r4, r3] ; GOT -> SYS_ResetCount
+000a48fc str       r5, [r3]
+000a4900 add       sp, sp, #0x12c
+000a4904 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+000a4908 ldr       r0, [pc, #0xbc] ; literal=0xc659c
+000a490c add       r0, pc, r0 ; base=0x16aeb0
+000a4910 bl        #0x11c20 ; puts@plt
+000a4914 ldr       r3, [pc, #0x14] ; literal=0x434
+000a4918 ldr       sl, [r4, r3]
+000a491c b         #0xa42cc ; branch
+000a4920 andeq     r4, pc, ip, ror sp
+000a4924 andeq     r0, r0, r0, asr r2
+000a4928 strdeq    r6, r7, [ip], -ip
+000a492c andeq     r0, r0, r4, lsr #4
+000a4930 andeq     r0, r0, r4, lsr r4
+000a4934 ldrdeq    r6, r7, [ip], -r8
+000a4938 andeq     r6, ip, ip, ror #23
+000a493c andeq     r0, r0, r4, ror #5
+000a4940 ldrdeq    r6, r7, [ip], -r0
+000a4944 strdeq    r0, r1, [r0], -r8
+000a4948 strheq    r6, [ip], -ip
+000a494c andeq     r0, r0, r4, lsl r5
+000a4950 andeq     r0, r0, r8, ror #5
+000a4954 muleq     ip, r0, sp
+000a4958 muleq     ip, r0, sp
+000a495c andeq     r0, r0, r0, asr r5
+000a4960 andeq     r0, r0, r8, lsl r5
+000a4964 andeq     r0, r0, r4, asr #4
+000a4968 andeq     r0, r0, r0, asr r3
+000a496c andeq     r0, r0, r8, lsr #5
+000a4970 strheq    r0, [r0], -ip
+000a4974 andeq     r0, r0, ip, ror #9
+000a4978 andeq     r0, r0, r4, ror #6
+000a497c andeq     r0, r0, r4, ror #7
+000a4980 strdeq    r0, r1, [r0], -ip
+000a4984 andeq     r0, r0, r0, lsr r4
+000a4988 andeq     r0, r0, r4, asr #10
+000a498c andeq     r0, r0, r0, asr #9
+000a4990 strdeq    r0, r1, [r0], -r4
+000a4994 andeq     r1, ip, r0, lsl fp
+000a4998 andeq     r0, r0, r4, lsr r3
+000a499c andeq     r0, r0, r4, ror #4
+000a49a0 andeq     r0, r0, r4, lsr #10
+000a49a4 andeq     r0, r0, r4, lsr #7
+000a49a8 strdeq    r6, r7, [ip], -r0
+000a49ac andeq     r2, ip, r0, lsr #1
+000a49b0 andeq     r0, r0, r8, asr #9
+000a49b4 muleq     ip, r0, r6
+000a49b8 andeq     r6, ip, r4, lsl #13
+000a49bc andeq     r0, r0, r8, lsr #6
+000a49c0 andeq     r6, ip, r0, asr sb
+000a49c4 andeq     r2, ip, r8
+000a49c8 andeq     r0, r0, ip, lsr #5
+000a49cc muleq     ip, ip, r5
+
+vrtemu PlayFrame 000a2cc4 bytes=368
+000a2cc4 push      {r4, r5, r6, r7, lr}
+000a2cc8 sub       sp, sp, #0x24
+000a2ccc ldr       r5, [pc, #0x140] ; literal=0xf631c
+000a2cd0 mov       r6, r0
+000a2cd4 mov       r4, r1
+000a2cd8 mov       r0, sp
+000a2cdc add       r5, pc, r5 ; base=0x199000
+000a2ce0 add       r1, sp, #0x10
+000a2ce4 bl        #0x11b48 ; gettimeofday@plt
+000a2ce8 ldr       r3, [pc, #0x128] ; literal=0x1fc
+000a2cec ldr       r0, [r5, r3] ; GOT -> neogeo_mask
+000a2cf0 ldr       r2, [r0]
+000a2cf4 cmp       r2, #0
+000a2cf8 beq       #0xa2d38 ; branch
+000a2cfc lsls      r3, r4, #1
+000a2d00 add       r2, r2, #1
+000a2d04 str       r2, [r0]
+000a2d08 beq       #0xa2d38 ; branch
+000a2d0c mov       r3, r6
+000a2d10 mov       ip, #0
+000a2d14 add       r1, r6, r4, lsl #2
+000a2d18 ldrsh     lr, [r3], #2
+000a2d1c cmp       lr, #0
+000a2d20 movne     ip, #1
+000a2d24 movne     r2, #0
+000a2d28 cmp       r3, r1
+000a2d2c bne       #0xa2d18 ; branch
+000a2d30 cmp       ip, #0
+000a2d34 strne     r2, [r0]
+000a2d38 mov       r1, r4
+000a2d3c mov       r0, r6
+000a2d40 bl        #0xa695c ; PlaySound
+000a2d44 add       r1, sp, #0x18
+000a2d48 add       r0, sp, #8
+000a2d4c bl        #0x11b48 ; gettimeofday@plt
+000a2d50 ldr       r4, [sp, #8]
+000a2d54 movw      r3, #0x4240
+000a2d58 ldr       r0, [sp]
+000a2d5c movw      r2, #0x1388
+000a2d60 ldr       r1, [sp, #0xc]
+000a2d64 movt      r3, #0xf
+000a2d68 sub       r4, r4, r0
+000a2d6c mla       r4, r3, r4, r1
+000a2d70 ldr       r3, [sp, #4]
+000a2d74 sub       r4, r4, r3
+000a2d78 cmp       r4, r2
+000a2d7c bgt       #0xa2d8c ; branch
+000a2d80 mov       r0, #0
+000a2d84 add       sp, sp, #0x24
+000a2d88 pop       {r4, r5, r6, r7, pc}
+000a2d8c ldr       r2, [pc, #0x88] ; literal=0x4e0
+000a2d90 mov       r7, #0x3e8
+000a2d94 ldr       r3, [pc, #0x84] ; literal=0x524
+000a2d98 ldr       r1, [r5, r2]
+000a2d9c ldr       r0, [r5, r3]
+000a2da0 bl        #0x11b48 ; gettimeofday@plt
+000a2da4 ldr       r2, [sp, #0xc]
+000a2da8 movw      r1, #0x4dd3
+000a2dac movt      r1, #0x1062
+000a2db0 mov       r3, r4
+000a2db4 ldr       lr, [pc, #0x68] ; literal=0x48c
+000a2db8 smull     r1, r0, r1, r2
+000a2dbc ldr       r6, [r5, lr]
+000a2dc0 asr       ip, r2, #0x1f
+000a2dc4 ldr       r1, [sp, #8]
+000a2dc8 rsb       r0, ip, r0, asr #6
+000a2dcc ldr       r4, [pc, #0x54] ; literal=0x540
+000a2dd0 mla       ip, r7, r1, r0
+000a2dd4 ldr       lr, [r6]
+000a2dd8 ldr       r0, [pc, #0x4c] ; literal=0xc7dc4
+000a2ddc ldr       r4, [r5, r4]
+000a2de0 sub       lr, ip, lr
+000a2de4 add       r0, pc, r0 ; base=0x16abb0
+000a2de8 str       lr, [r4]
+000a2dec str       ip, [r6]
+000a2df0 bl        #0x11be4 ; printf@plt
+000a2df4 ldr       r3, [pc, #0x34] ; literal=0x3dc
+000a2df8 mov       r0, #0
+000a2dfc ldr       r2, [r5, r3]
+000a2e00 ldr       r3, [r2]
+000a2e04 add       r3, r3, #1
+000a2e08 str       r3, [r2]
+000a2e0c add       sp, sp, #0x24
+000a2e10 pop       {r4, r5, r6, r7, pc}
+000a2e14 andeq     r6, pc, ip, lsl r3
+000a2e18 strdeq    r0, r1, [r0], -ip
+000a2e1c andeq     r0, r0, r0, ror #9
+000a2e20 andeq     r0, r0, r4, lsr #10
+000a2e24 andeq     r0, r0, ip, lsl #9
+000a2e28 andeq     r0, r0, r0, asr #10
+000a2e2c andeq     r7, ip, r4, asr #27
+000a2e30 ldrdeq    r0, r1, [r0], -ip
+
+vrtemu PlaySound 000a695c bytes=44
+000a695c ldr       r3, [pc, #0x1c] ; literal=0xf2694
+000a6960 ldr       r2, [pc, #0x1c] ; literal=0x51c
+000a6964 add       r3, pc, r3 ; base=0x199000
+000a6968 ldr       r3, [r3, r2] ; GOT -> sound_driver_playframe
+000a696c ldr       r3, [r3]
+000a6970 cmp       r3, #0
+000a6974 bxeq      lr
+000a6978 lsl       r1, r1, #2
+000a697c bx        r3
+000a6980 muleq     pc, r4, r6
+000a6984 andeq     r0, r0, ip, lsl r5
+
+vrtemu DrawFrame 000a3438 bytes=136
+000a3438 push      {r4, r5, r6, r7, r8, lr}
+000a343c subs      r4, r0, #0
+000a3440 ldr       lr, [pc, #0x68] ; literal=0xf5bb4
+000a3444 add       lr, pc, lr ; base=0x199000
+000a3448 popeq     {r4, r5, r6, r7, r8, pc}
+000a344c ldr       ip, [pc, #0x60] ; literal=0x2a0
+000a3450 mov       r5, r1
+000a3454 ldr       r8, [pc, #0x5c] ; literal=0x298
+000a3458 mov       r6, r2
+000a345c ldr       ip, [lr, ip] ; GOT -> this_frame
+000a3460 mov       r7, r3
+000a3464 strd      r4, r5, [ip]
+000a3468 strd      r2, r3, [ip, #8]
+000a346c ldr       ip, [lr, r8] ; GOT -> displayfps
+000a3470 ldr       ip, [ip]
+000a3474 cmp       ip, #0
+000a3478 bne       #0xa3494 ; branch
+000a347c mov       r3, r7
+000a3480 mov       r2, r6
+000a3484 mov       r1, r5
+000a3488 mov       r0, r4
+000a348c pop       {r4, r5, r6, r7, r8, lr}
+000a3490 b         #0xa6658 ; DispFrame
+000a3494 ldr       ip, [pc, #0x20] ; literal=0x29c
+000a3498 ldr       lr, [lr, ip]
+000a349c ldr       ip, [lr]
+000a34a0 add       ip, ip, #1
+000a34a4 str       ip, [lr]
+000a34a8 bl        #0xa3274 ; UIDebug
+000a34ac b         #0xa347c ; branch
+000a34b0 strheq    r5, [pc], -r4
+000a34b4 andeq     r0, r0, r0, lsr #5
+000a34b8 muleq     r0, r8, r2
+000a34bc muleq     r0, ip, r2
+
+vrtemu DispFrame 000a6658 bytes=52
+000a6658 ldr       ip, [pc, #0x24] ; literal=0xf2998
+000a665c str       lr, [sp, #-4]!
+000a6660 add       ip, pc, ip ; base=0x199000
+000a6664 ldr       lr, [pc, #0x1c] ; literal=0x340
+000a6668 ldr       ip, [ip, lr] ; GOT -> video_driver_frame
+000a666c ldr       lr, [ip]
+000a6670 cmp       lr, #0
+000a6674 popeq     {pc}
+000a6678 mov       ip, lr
+000a667c pop       {lr}
+000a6680 bx        ip
+000a6684 muleq     pc, r8, sb
+000a6688 andeq     r0, r0, r0, asr #6
+
+vrtemu InitSound 000a6844 bytes=264
+000a6844 push      {r4, r5, r6, lr}
+000a6848 ldr       r5, [pc, #0xcc] ; literal=0x111950
+000a684c ldr       r4, [pc, #0xcc] ; literal=0xf27a4
+000a6850 add       r5, pc, r5 ; base=0x1b81a8
+000a6854 add       r4, pc, r4 ; base=0x199000
+000a6858 ldr       r0, [r5]
+000a685c cmp       r0, #0
+000a6860 popeq     {r4, r5, r6, pc}
+000a6864 ldr       r1, [pc, #0xb8] ; literal=0xc4c34
+000a6868 add       r1, pc, r1 ; base=0x16b4a4
+000a686c bl        #0x12010 ; dlsym@plt
+000a6870 ldr       r2, [pc, #0xb0] ; literal=0x548
+000a6874 cmp       r0, #0
+000a6878 mov       r3, r0
+000a687c ldr       r2, [r4, r2]
+000a6880 str       r0, [r2]
+000a6884 beq       #0xa68fc ; branch
+000a6888 ldr       r1, [pc, #0x9c] ; literal=0x374
+000a688c mov       r2, #2
+000a6890 ldr       r0, [r4, r1]
+000a6894 movw      r1, #0xac44
+000a6898 ldr       r0, [r0]
+000a689c blx       r3
+000a68a0 ldr       r5, [r5]
+000a68a4 ldr       r1, [pc, #0x84] ; literal=0xc4c28
+000a68a8 mov       r0, r5
+000a68ac add       r1, pc, r1 ; base=0x16b4dc
+000a68b0 bl        #0x12010 ; dlsym@plt
+000a68b4 ldr       r3, [pc, #0x78] ; literal=0x51c
+000a68b8 cmp       r0, #0
+000a68bc ldr       r3, [r4, r3]
+000a68c0 str       r0, [r3]
+000a68c4 beq       #0xa690c ; branch
+000a68c8 ldr       r1, [pc, #0x68] ; literal=0xc4c44
+000a68cc mov       r0, r5
+000a68d0 add       r1, pc, r1 ; base=0x16b51c
+000a68d4 bl        #0x12010 ; dlsym@plt
+000a68d8 ldr       r3, [pc, #0x5c] ; literal=0x2a4
+000a68dc cmp       r0, #0
+000a68e0 ldr       r3, [r4, r3]
+000a68e4 str       r0, [r3]
+000a68e8 popne     {r4, r5, r6, pc}
+000a68ec ldr       r0, [pc, #0x4c] ; literal=0xc4c38
+000a68f0 pop       {r4, r5, r6, lr}
+000a68f4 add       r0, pc, r0 ; base=0x16b534
+000a68f8 b         #0x11c20 ; puts@plt
+000a68fc ldr       r0, [pc, #0x40] ; literal=0xc4bac
+000a6900 pop       {r4, r5, r6, lr}
+000a6904 add       r0, pc, r0 ; base=0x16b4b8
+000a6908 b         #0x11c20 ; puts@plt
+000a690c ldr       r0, [pc, #0x34] ; literal=0xc4bd8
+000a6910 pop       {r4, r5, r6, lr}
+000a6914 add       r0, pc, r0 ; base=0x16b4f4
+000a6918 b         #0x11c20 ; puts@plt
+000a691c andseq    r1, r1, r0, asr sb
+000a6920 andeq     r2, pc, r4, lsr #15
+000a6924 andeq     r4, ip, r4, lsr ip
+000a6928 andeq     r0, r0, r8, asr #10
+000a692c andeq     r0, r0, r4, ror r3
+000a6930 andeq     r4, ip, r8, lsr #24
+000a6934 andeq     r0, r0, ip, lsl r5
+000a6938 andeq     r4, ip, r4, asr #24
+000a693c andeq     r0, r0, r4, lsr #5
+000a6940 andeq     r4, ip, r8, lsr ip
+000a6944 andeq     r4, ip, ip, lsr #23
+000a6948 ldrdeq    r4, r5, [ip], -r8
+
+vrtemu Snes_Load 000a4f54 bytes=260
+000a4f54 push      {r4, r5, r6, r7, r8, lr}
+000a4f58 mov       r4, r0
+000a4f5c ldr       r8, [pc, #0xcc] ; literal=0xf408c
+000a4f60 mov       r5, r1
+000a4f64 mov       r7, #0x140
+000a4f68 bl        #0x12638 ; InitFrameflash
+000a4f6c add       r8, pc, r8 ; base=0x199000
+000a4f70 mov       r6, #0xe0
+000a4f74 ldr       r2, [pc, #0xb8] ; literal=0x3fc
+000a4f78 mov       lr, #0x100
+000a4f7c ldr       r1, [pc, #0xb4] ; literal=0x2f0
+000a4f80 mov       ip, #0
+000a4f84 ldr       r0, [r8, r2] ; GOT -> n_input_width
+000a4f88 mov       r3, r8
+000a4f8c ldr       r2, [pc, #0xa8] ; literal=0x284
+000a4f90 str       r7, [r0]
+000a4f94 ldr       r0, [r8, r1] ; GOT -> n_input_height
+000a4f98 ldr       r1, [pc, #0xa0] ; literal=0x3c0
+000a4f9c str       r6, [r0]
+000a4fa0 ldr       r0, [r8, r2] ; GOT -> n_input_visible_width
+000a4fa4 ldr       r2, [pc, #0x98] ; literal=0x3d4
+000a4fa8 str       lr, [r0]
+000a4fac ldr       r1, [r8, r1] ; GOT -> n_input_visible_height
+000a4fb0 ldr       r0, [pc, #0x90] ; literal=0x254
+000a4fb4 str       r6, [r1]
+000a4fb8 ldr       r2, [r8, r2] ; GOT -> screen_w
+000a4fbc ldr       r1, [pc, #0x88] ; literal=0x274
+000a4fc0 str       lr, [r2]
+000a4fc4 ldr       r2, [pc, #0x84] ; literal=0x4b0
+000a4fc8 ldr       r0, [r8, r0] ; GOT -> screen_x
+000a4fcc str       ip, [r0]
+000a4fd0 ldr       r6, [r8, r2] ; GOT -> fileName
+000a4fd4 ldr       r1, [r8, r1] ; GOT -> SDCARD_PATH
+000a4fd8 mov       r0, r6
+000a4fdc bl        #0x11bfc ; stpcpy@plt
+000a4fe0 ldr       lr, [pc, #0x6c] ; literal=0xc5fbc
+000a4fe4 mov       ip, r0
+000a4fe8 add       lr, pc, lr ; base=0x16afac
+000a4fec ldm       lr!, {r0, r1, r2, r3}
+000a4ff0 ldrh      r7, [lr, #4]
+000a4ff4 str       r0, [ip]
+000a4ff8 ldr       r0, [lr]
+000a4ffc str       r1, [ip, #4]
+000a5000 str       r0, [ip, #0x10]
+000a5004 mov       r0, r6
+000a5008 str       r2, [ip, #8]
+000a500c str       r3, [ip, #0xc]
+000a5010 strh      r7, [ip, #0x14]
+000a5014 bl        #0xa3fb8 ; Load_Proc1
+000a5018 cmp       r0, #0
+000a501c popeq     {r4, r5, r6, r7, r8, pc}
+000a5020 mov       r1, r5
+000a5024 mov       r0, r4
+000a5028 pop       {r4, r5, r6, r7, r8, lr}
+000a502c b         #0xa49d0 ; Pico_Load.part.0
+000a5030 andeq     r4, pc, ip, lsl #1
+000a5034 strdeq    r0, r1, [r0], -ip
+000a5038 strdeq    r0, r1, [r0], -r0
+000a503c andeq     r0, r0, r4, lsl #5
+000a5040 andeq     r0, r0, r0, asr #7
+000a5044 ldrdeq    r0, r1, [r0], -r4
+000a5048 andeq     r0, r0, r4, asr r2
+000a504c andeq     r0, r0, r4, ror r2
+000a5050 strheq    r0, [r0], -r0
+000a5054 strheq    r5, [ip], -ip
+
+vrtemu mui_SoundplayThread 00089108 bytes=176
+00089108 push      {r4, r5, r6, r7, r8, lr}
+0008910c bl        #0x8327c ; GetTicks
+00089110 ldr       r4, [pc, #0x98] ; literal=0x10fee0
+00089114 ldr       r2, [pc, #0x98] ; literal=0x240
+00089118 add       r4, pc, r4 ; base=0x199000
+0008911c mov       r3, r4
+00089120 ldr       r5, [r4, r2] ; GOT -> Soundplayflag
+00089124 ldr       r3, [r5]
+00089128 tst       r3, #1
+0008912c beq       #0x8919c ; branch
+00089130 movw      r7, #0x8889
+00089134 mov       r6, r0
+00089138 movt      r7, #0x8888
+0008913c mov       r4, #0
+00089140 mov       r8, #0x3e8
+00089144 b         #0x8915c ; branch
+00089148 ldr       r3, [r5]
+0008914c tst       r3, #2
+00089150 bne       #0x8918c ; branch
+00089154 tst       r3, #1
+00089158 beq       #0x8919c ; branch
+0008915c bl        #0x8327c ; GetTicks
+00089160 umull     r3, r2, r7, r4
+00089164 sub       r3, r6, r0
+00089168 add       r4, r4, #0x3e8
+0008916c add       r3, r3, r2, lsr #5
+00089170 cmp       r3, #2
+00089174 ble       #0x89148 ; branch
+00089178 mul       r0, r8, r3
+0008917c bl        #0x11f08 ; usleep@plt
+00089180 ldr       r3, [r5]
+00089184 tst       r3, #2
+00089188 beq       #0x89154 ; branch
+0008918c bl        #0x88e60 ; AudioProcess
+00089190 ldr       r3, [r5]
+00089194 tst       r3, #1
+00089198 bne       #0x8915c ; branch
+0008919c bl        #0x11c98 ; pthread_self@plt
+000891a0 bl        #0x11b24 ; pthread_detach@plt
+000891a4 mov       r3, #0
+000891a8 str       r3, [r5]
+000891ac pop       {r4, r5, r6, r7, r8, pc}
+000891b0 andseq    pc, r0, r0, ror #29
+000891b4 andeq     r0, r0, r0, asr #4
+
+vrtemu mui_PauseMenu 0009b9f4 bytes=1440
+0009b9f4 ldr       r2, [pc, #0x554] ; literal=0xfded0
+0009b9f8 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+0009b9fc sub       sp, sp, #0x54
+0009ba00 add       r2, pc, r2 ; base=0x1998d8
+0009ba04 ldr       r5, [pc, #0x548] ; literal=0xfd5ec
+0009ba08 ldr       r3, [r2, #8]
+0009ba0c add       r5, pc, r5 ; base=0x199000
+0009ba10 cmp       r3, #8
+0009ba14 beq       #0x9be2c ; branch
+0009ba18 ldr       r0, [pc, #0x538] ; literal=0xfdea8
+0009ba1c mov       r1, #0
+0009ba20 ldr       r3, [pc, #0x534] ; literal=0x314
+0009ba24 mov       r4, r2
+0009ba28 add       r0, pc, r0 ; base=0x1998d8
+0009ba2c add       r7, sp, #0x20
+0009ba30 str       r2, [sp, #0xc]
+0009ba34 add       r6, sp, #0x38
+0009ba38 str       r0, [sp, #0x18]
+0009ba3c ldr       r3, [r5, r3] ; GOT -> ChangeSeting
+0009ba40 str       r1, [sp, #4]
+0009ba44 str       r1, [r3]
+0009ba48 str       r3, [sp, #0x14]
+0009ba4c bl        #0xa6988 ; StopSound
+0009ba50 add       r3, r4, #0x5c
+0009ba54 mov       r0, #0x80
+0009ba58 str       r3, [sp, #0x1c]
+0009ba5c bl        #0xa673c ; video_driver_set_dbuffer
+0009ba60 ldr       r2, [pc, #0x4f8] ; literal=0x518
+0009ba64 ldr       r1, [pc, #0x4f8] ; literal=0x39c
+0009ba68 ldr       r2, [r5, r2] ; GOT -> rotation
+0009ba6c ldr       r3, [pc, #0x4f4] ; literal=0x460
+0009ba70 ldr       r4, [r5, r1] ; GOT -> bimapFilebuffer
+0009ba74 str       r2, [sp, #8]
+0009ba78 ldr       r3, [r5, r3] ; GOT -> JoyThumbnail
+0009ba7c str       r3, [sp, #0x10]
+0009ba80 ldr       r3, [r4]
+0009ba84 cmp       r3, #0
+0009ba88 beq       #0x9bdbc ; branch
+0009ba8c ldr       r3, [sp, #0xc]
+0009ba90 ldr       r3, [r3, #0x5c]
+0009ba94 cmp       r3, #0
+0009ba98 beq       #0x9bde4 ; branch
+0009ba9c ldrh      r1, [r3, #4]
+0009baa0 ldrh      r2, [r3, #6]
+0009baa4 ldr       r8, [pc, #0x4c0] ; literal=0xfde24
+0009baa8 mul       r2, r2, r1
+0009baac add       r8, pc, r8 ; base=0x1998d8
+0009bab0 ldr       r1, [r3]
+0009bab4 lsl       r2, r2, #1
+0009bab8 add       r1, r3, r1
+0009babc ldr       r0, [r8, #0x38]
+0009bac0 bl        #0x11ecc ; memcpy@plt
+0009bac4 ldr       r1, [r8, #0x3c]
+0009bac8 mov       r3, #1
+0009bacc ldr       r2, [r8, #0x5c]
+0009bad0 lsl       r1, r1, r3
+0009bad4 ldr       r0, [r8, #0x38]
+0009bad8 bl        #0x803a8 ; mui_DispBlock
+0009badc ldr       r3, [sp, #4]
+0009bae0 cmp       r3, #0
+0009bae4 beq       #0x9bdac ; branch
+0009bae8 ldr       r1, [pc, #0x480] ; literal=0xfdddc
+0009baec mov       r3, #0
+0009baf0 ldr       r2, [sp, #8]
+0009baf4 add       r1, pc, r1 ; base=0x1998d8
+0009baf8 ldr       r0, [r2]
+0009bafc ldr       r2, [r1, #0x5e8]
+0009bb00 cmp       r0, r3
+0009bb04 str       r2, [sp, #0x44]
+0009bb08 lsl       r2, r2, #1
+0009bb0c ldr       r1, [r1, #0x5ec]
+0009bb10 str       r2, [sp, #0x4c]
+0009bb14 ldr       r2, [r4]
+0009bb18 str       r1, [sp, #0x48]
+0009bb1c strd      r2, r3, [sp, #0x38]
+0009bb20 str       r3, [sp, #0x40]
+0009bb24 str       r3, [sp, #0x24]
+0009bb28 str       r3, [sp, #0x28]
+0009bb2c bne       #0x9bcb8 ; branch
+0009bb30 ldr       r3, [pc, #0x43c] ; literal=0x2a0
+0009bb34 ldr       r2, [r5, r3] ; GOT -> this_frame
+0009bb38 ldm       r2, {r1, r3}
+0009bb3c ldr       r2, [r2, #8]
+0009bb40 str       r3, [sp, #0x2c]
+0009bb44 lsl       r3, r3, #1
+0009bb48 str       r3, [sp, #0x34]
+0009bb4c str       r1, [sp, #0x20]
+0009bb50 str       r2, [sp, #0x30]
+0009bb54 ldr       r8, [pc, #0x41c] ; literal=0xfdd6c
+0009bb58 mov       r1, r7
+0009bb5c ldr       sl, [pc, #0x418] ; literal=0xfff40
+0009bb60 mov       r0, r6
+0009bb64 add       r8, pc, r8 ; base=0x1998d8
+0009bb68 bl        #0x89850 ; blockadaptive
+0009bb6c add       sl, pc, sl ; base=0x19bab4
+0009bb70 mov       sb, #0
+0009bb74 ldr       r3, [r8, #0x5e8]
+0009bb78 mov       r1, r7
+0009bb7c ldr       ip, [r8, #0x5e0]
+0009bb80 mov       r0, r6
+0009bb84 str       r3, [sp, #0x2c]
+0009bb88 str       ip, [sp, #0x3c]
+0009bb8c add       ip, ip, r3
+0009bb90 lsl       r3, r3, #1
+0009bb94 ldr       r2, [r8, #0x5e4]
+0009bb98 str       ip, [sp, #0x44]
+0009bb9c str       r3, [sp, #0x34]
+0009bba0 ldr       ip, [r8, #0x5ec]
+0009bba4 ldr       r3, [r8, #0x3c]
+0009bba8 str       r2, [sp, #0x40]
+0009bbac lsl       r3, r3, #1
+0009bbb0 add       r2, r2, ip
+0009bbb4 str       r2, [sp, #0x48]
+0009bbb8 str       r3, [sp, #0x4c]
+0009bbbc ldr       r2, [r8, #0x38]
+0009bbc0 ldr       r3, [r4]
+0009bbc4 str       ip, [sp, #0x30]
+0009bbc8 str       r2, [sp, #0x38]
+0009bbcc str       r3, [sp, #0x20]
+0009bbd0 str       sb, [sp, #0x24]
+0009bbd4 str       sb, [sp, #0x28]
+0009bbd8 bl        #0x8f538 ; blockcopy
+0009bbdc ldr       r1, [r8, #0x3c]
+0009bbe0 ldr       r2, [r8, #0x40]
+0009bbe4 lsl       r3, r1, #1
+0009bbe8 ldr       r0, [r8, #0x38]
+0009bbec bl        #0xa6658 ; DispFrame
+0009bbf0 ldr       r3, [sp, #0x10]
+0009bbf4 str       sb, [r3]
+0009bbf8 bl        #0x86368 ; mui_ReadJoystick
+0009bbfc str       sb, [sl, #0x168]
+0009bc00 bl        #0x8327c ; GetTicks
+0009bc04 str       r0, [sl, #0x16c]
+0009bc08 bl        #0x86368 ; mui_ReadJoystick
+0009bc0c cmp       r0, #0x40
+0009bc10 beq       #0x9bc2c ; branch
+0009bc14 cmp       r0, #0x2000
+0009bc18 beq       #0x9bd40 ; branch
+0009bc1c bl        #0x836b4 ; mui_WaitNMI
+0009bc20 bl        #0x86368 ; mui_ReadJoystick
+0009bc24 cmp       r0, #0x40
+0009bc28 bne       #0x9bc14 ; branch
+0009bc2c bl        #0x92450 ; mui_game_exit
+0009bc30 cmp       r0, #0
+0009bc34 bne       #0x9ba80 ; branch
+0009bc38 mov       r8, r0
+0009bc3c ldr       r0, [r4]
+0009bc40 cmp       r0, #0
+0009bc44 bne       #0x9bf44 ; branch
+0009bc48 ldr       r3, [sp, #4]
+0009bc4c cmp       r3, #0
+0009bc50 bne       #0x9bf38 ; branch
+0009bc54 ldr       r4, [pc, #0x324] ; literal=0xfdc78
+0009bc58 add       r4, pc, r4 ; base=0x1998d8
+0009bc5c ldr       r0, [r4, #0x5c]
+0009bc60 cmp       r0, #0
+0009bc64 beq       #0x9bc74 ; branch
+0009bc68 bl        #0x11b6c ; free@plt
+0009bc6c mov       r3, #0
+0009bc70 str       r3, [r4, #0x5c]
+0009bc74 ldr       r3, [sp, #0x14]
+0009bc78 ldr       r3, [r3]
+0009bc7c cmp       r3, #0
+0009bc80 bne       #0x9bf28 ; branch
+0009bc84 ldr       r3, [pc, #0x2f8] ; literal=0x200
+0009bc88 ldr       r4, [r5, r3] ; GOT -> pause_ret
+0009bc8c ldr       r3, [r4]
+0009bc90 cmp       r3, #1
+0009bc94 beq       #0x9bf1c ; branch
+0009bc98 mov       r0, #0
+0009bc9c bl        #0xa673c ; video_driver_set_dbuffer
+0009bca0 ldr       r3, [sp, #8]
+0009bca4 ldr       r0, [r3]
+0009bca8 orr       r0, r0, #0xff00
+0009bcac bl        #0xa668c ; video_driver_set_rotation
+0009bcb0 ldr       r0, [r4]
+0009bcb4 b         #0x9bda4 ; branch
+0009bcb8 cmp       r0, #1
+0009bcbc beq       #0x9be38 ; branch
+0009bcc0 cmp       r0, #3
+0009bcc4 beq       #0x9bea8 ; branch
+0009bcc8 cmp       r0, #2
+0009bccc bne       #0x9bb54 ; branch
+0009bcd0 ldr       r3, [pc, #0x29c] ; literal=0x2a0
+0009bcd4 ldr       r3, [r5, r3] ; GOT -> this_frame
+0009bcd8 ldr       lr, [r3, #4]
+0009bcdc ldr       r8, [r3, #8]
+0009bce0 ldr       r2, [r3]
+0009bce4 mul       r0, r8, lr
+0009bce8 sub       r3, r0, #0x80000001
+0009bcec cmp       r0, #0
+0009bcf0 add       r2, r2, r3, lsl #1
+0009bcf4 beq       #0x9bd24 ; branch
+0009bcf8 mvn       r1, #1
+0009bcfc mov       r3, r2
+0009bd00 mla       r0, r1, r0, r2
+0009bd04 ldr       r2, [sp, #4]
+0009bd08 add       ip, r3, r2
+0009bd0c ldrh      r1, [r3]
+0009bd10 sub       r2, ip, r3
+0009bd14 sub       r3, r3, #2
+0009bd18 cmp       r3, r0
+0009bd1c strh      r1, [r2]
+0009bd20 bne       #0x9bd0c ; branch
+0009bd24 lsl       r3, lr, #1
+0009bd28 str       r3, [sp, #0x34]
+0009bd2c ldr       r3, [sp, #4]
+0009bd30 str       lr, [sp, #0x2c]
+0009bd34 str       r8, [sp, #0x30]
+0009bd38 str       r3, [sp, #0x20]
+0009bd3c b         #0x9bb54 ; branch
+0009bd40 ldr       r0, [r4]
+0009bd44 cmp       r0, #0
+0009bd48 bne       #0x9be1c ; branch
+0009bd4c ldr       r3, [sp, #4]
+0009bd50 cmp       r3, #0
+0009bd54 bne       #0x9be10 ; branch
+0009bd58 ldr       r4, [pc, #0x228] ; literal=0xfdb74
+0009bd5c add       r4, pc, r4 ; base=0x1998d8
+0009bd60 ldr       r0, [r4, #0x5c]
+0009bd64 cmp       r0, #0
+0009bd68 beq       #0x9bd78 ; branch
+0009bd6c bl        #0x11b6c ; free@plt
+0009bd70 mov       r3, #0
+0009bd74 str       r3, [r4, #0x5c]
+0009bd78 ldr       r3, [sp, #0x14]
+0009bd7c ldr       r3, [r3]
+0009bd80 cmp       r3, #0
+0009bd84 bne       #0x9be00 ; branch
+0009bd88 mov       r0, #0
+0009bd8c bl        #0xa673c ; video_driver_set_dbuffer
+0009bd90 ldr       r3, [sp, #8]
+0009bd94 ldr       r0, [r3]
+0009bd98 orr       r0, r0, #0xff00
+0009bd9c bl        #0xa668c ; video_driver_set_rotation
+0009bda0 mov       r0, #0
+0009bda4 add       sp, sp, #0x54
+0009bda8 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0009bdac mov       r0, #0x96000
+0009bdb0 bl        #0x11ed8 ; malloc@plt
+0009bdb4 str       r0, [sp, #4]
+0009bdb8 b         #0x9bae8 ; branch
+0009bdbc ldr       r3, [sp, #0x18]
+0009bdc0 ldr       r0, [r3, #0x5e8]
+0009bdc4 mul       r0, r0, r0
+0009bdc8 lsl       r0, r0, #1
+0009bdcc bl        #0x11ed8 ; malloc@plt
+0009bdd0 ldr       r3, [sp, #0xc]
+0009bdd4 str       r0, [r4]
+0009bdd8 ldr       r3, [r3, #0x5c]
+0009bddc cmp       r3, #0
+0009bde0 bne       #0x9ba9c ; branch
+0009bde4 ldr       r1, [pc, #0x1a0] ; literal=0xcad44
+0009bde8 ldr       r0, [sp, #0x1c]
+0009bdec add       r1, pc, r1 ; base=0x166b38
+0009bdf0 bl        #0x82aa8 ; mui_LoadUIResource
+0009bdf4 ldr       r3, [sp, #0xc]
+0009bdf8 ldr       r3, [r3, #0x5c]
+0009bdfc b         #0x9ba9c ; branch
+0009be00 ldr       r3, [pc, #0x188] ; literal=0x2b8
+0009be04 ldr       r0, [r5, r3]
+0009be08 bl        #0x896ac ; SaveKeyMappingConfigFile
+0009be0c b         #0x9bd88 ; branch
+0009be10 mov       r0, r3
+0009be14 bl        #0x11b6c ; free@plt
+0009be18 b         #0x9bd58 ; branch
+0009be1c bl        #0x11b6c ; free@plt
+0009be20 mov       r3, #0
+0009be24 str       r3, [r4]
+0009be28 b         #0x9bd4c ; branch
+0009be2c bl        #0x9b634 ; mui_IGSPausemenu
+0009be30 add       sp, sp, #0x54
+0009be34 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0009be38 ldr       r3, [pc, #0x134] ; literal=0x2a0
+0009be3c ldr       r3, [r5, r3]
+0009be40 ldmib     r3, {sl, lr}
+0009be44 cmp       sl, #0
+0009be48 beq       #0x9bf14 ; branch
+0009be4c ldr       r8, [r3]
+0009be50 lsl       fp, sl, #1
+0009be54 ldr       r3, [sp, #4]
+0009be58 sub       ip, fp, #2
+0009be5c add       ip, r8, ip
+0009be60 lsl       sb, lr, #1
+0009be64 cmp       lr, #0
+0009be68 mov       r2, ip
+0009be6c beq       #0x9be84 ; branch
+0009be70 add       r0, r3, sb
+0009be74 ldrh      r1, [r2], fp
+0009be78 strh      r1, [r3], #2
+0009be7c cmp       r3, r0
+0009be80 bne       #0x9be74 ; branch
+0009be84 cmp       r8, ip
+0009be88 sub       ip, ip, #2
+0009be8c bne       #0x9be64 ; branch
+0009be90 ldr       r3, [sp, #4]
+0009be94 str       lr, [sp, #0x2c]
+0009be98 str       sl, [sp, #0x30]
+0009be9c str       sb, [sp, #0x34]
+0009bea0 str       r3, [sp, #0x20]
+0009bea4 b         #0x9bb54 ; branch
+0009bea8 ldr       r3, [pc, #0xc4] ; literal=0x2a0
+0009beac ldr       r3, [r5, r3]
+0009beb0 ldmib     r3, {sl, lr}
+0009beb4 cmp       sl, #0
+0009beb8 beq       #0x9bf14 ; branch
+0009bebc ldr       r8, [r3]
+0009bec0 sub       ip, lr, #1
+0009bec4 mul       ip, sl, ip
+0009bec8 lsl       fp, sl, #1
+0009becc add       r2, ip, sl
+0009bed0 ldr       r3, [sp, #4]
+0009bed4 add       ip, r8, ip, lsl #1
+0009bed8 rsb       fp, fp, #0
+0009bedc add       r8, r8, r2, lsl #1
+0009bee0 lsl       sb, lr, #1
+0009bee4 cmp       lr, #0
+0009bee8 mov       r2, ip
+0009beec beq       #0x9bf04 ; branch
+0009bef0 add       r0, r3, sb
+0009bef4 ldrh      r1, [r2], fp
+0009bef8 strh      r1, [r3], #2
+0009befc cmp       r0, r3
+0009bf00 bne       #0x9bef4 ; branch
+0009bf04 add       ip, ip, #2
+0009bf08 cmp       r8, ip
+0009bf0c bne       #0x9bee4 ; branch
+0009bf10 b         #0x9be90 ; branch
+0009bf14 lsl       sb, lr, #1
+0009bf18 b         #0x9be90 ; branch
+0009bf1c mov       r0, #0x80
+0009bf20 bl        #0xa673c ; video_driver_set_dbuffer
+0009bf24 b         #0x9bcb0 ; branch
+0009bf28 ldr       r3, [pc, #0x60] ; literal=0x2b8
+0009bf2c ldr       r0, [r5, r3]
+0009bf30 bl        #0x896ac ; SaveKeyMappingConfigFile
+0009bf34 b         #0x9bc84 ; branch
+0009bf38 mov       r0, r3
+0009bf3c bl        #0x11b6c ; free@plt
+0009bf40 b         #0x9bc54 ; branch
+0009bf44 bl        #0x11b6c ; free@plt
+0009bf48 str       r8, [r4]
+0009bf4c b         #0x9bc48 ; branch
+0009bf50 ldrdeq    sp, lr, [pc], -r0
+0009bf54 andeq     sp, pc, ip, ror #11
+0009bf58 andeq     sp, pc, r8, lsr #29
+0009bf5c andeq     r0, r0, r4, lsl r3
+0009bf60 andeq     r0, r0, r8, lsl r5
+0009bf64 muleq     r0, ip, r3
+0009bf68 andeq     r0, r0, r0, ror #8
+0009bf6c andeq     sp, pc, r4, lsr #28
+0009bf70 ldrdeq    sp, lr, [pc], -ip
+0009bf74 andeq     r0, r0, r0, lsr #5
+0009bf78 andeq     sp, pc, ip, ror #26
+0009bf7c andeq     pc, pc, r0, asr #30
+0009bf80 andeq     sp, pc, r8, ror ip
+0009bf84 andeq     r0, r0, r0, lsl #4
+0009bf88 andeq     sp, pc, r4, ror fp
+0009bf8c andeq     sl, ip, r4, asr #26
+0009bf90 strheq    r0, [r0], -r8
+
+vrtemu SetSound 00012584 bytes=4
+00012584 bx        lr
+
+vrtemu SoundClose 000873f4 bytes=124
+000873f4 ldr       r3, [pc, #0x6c] ; literal=0x111bfc
+000873f8 ldr       r2, [pc, #0x6c] ; literal=0x3e0
+000873fc add       r3, pc, r3 ; base=0x199000
+00087400 push      {r4, r5, r6, lr}
+00087404 mov       r4, r0
+00087408 ldr       r5, [r3, r2] ; GOT -> SoundPlayer
+0008740c mov       r2, #0x24
+00087410 mul       r2, r2, r0
+00087414 add       r3, r5, r2
+00087418 ldr       r3, [r3, #4]
+0008741c cmp       r3, #1
+00087420 beq       #0x87438 ; branch
+00087424 mov       r0, #0x24
+00087428 mov       r3, #0
+0008742c mul       r4, r0, r4
+00087430 str       r3, [r5, r4]
+00087434 pop       {r4, r5, r6, pc}
+00087438 ldr       r6, [r5, r2]
+0008743c ldr       r0, [r6]
+00087440 cmp       r0, #0
+00087444 beq       #0x8744c ; branch
+00087448 bl        #0xa6a30 ; MP3FreeDecoder
+0008744c ldr       r0, [r6, #0xc]
+00087450 cmp       r0, #0
+00087454 beq       #0x8745c ; branch
+00087458 bl        #0x11b6c ; free@plt
+0008745c mov       r0, r6
+00087460 bl        #0x11b6c ; free@plt
+00087464 b         #0x87424 ; branch
+00087468 ldrsheq   r1, [r1], -ip
+0008746c andeq     r0, r0, r0, ror #7
+
+vrtemu SoundPlay 0008750c bytes=388
+0008750c ldr       r3, [r1, #4]
+00087510 push      {r4, r5, r6, r7, r8, lr}
+00087514 cmp       r3, #1
+00087518 ldr       r7, [pc, #0x164] ; literal=0x111ad4
+0008751c mov       r4, r1
+00087520 mov       r5, r0
+00087524 add       r7, pc, r7 ; base=0x199000
+00087528 beq       #0x8755c ; branch
+0008752c ldr       r3, [pc, #0x154] ; literal=0x3e0
+00087530 mov       ip, r1
+00087534 mov       r4, #0x24
+00087538 ldr       lr, [r7, r3] ; GOT -> SoundPlayer
+0008753c ldm       ip!, {r0, r1, r2, r3}
+00087540 mla       lr, r4, r5, lr
+00087544 stm       lr!, {r0, r1, r2, r3}
+00087548 ldm       ip!, {r0, r1, r2, r3}
+0008754c stm       lr!, {r0, r1, r2, r3}
+00087550 ldr       r3, [ip]
+00087554 str       r3, [lr]
+00087558 pop       {r4, r5, r6, r7, r8, pc}
+0008755c mov       r0, #0x28
+00087560 bl        #0x11ed8 ; malloc@plt
+00087564 ldr       r2, [r4, #0xc]
+00087568 mov       r6, r0
+0008756c ldr       r0, [r4, #8]
+00087570 mov       r3, #0
+00087574 strb      r3, [r6, #0x10]
+00087578 add       r2, r2, #1
+0008757c ldr       r1, [r4]
+00087580 add       r0, r0, #1
+00087584 mul       r2, r0, r2
+00087588 ldr       r0, [r4, #0x10]
+0008758c movw      r3, #0x8889
+00087590 movt      r3, #0x8888
+00087594 mul       r0, r0, r2
+00087598 str       r1, [r6, #4]
+0008759c smull     r2, r3, r3, r0
+000875a0 asr       r2, r0, #0x1f
+000875a4 add       r3, r3, r0
+000875a8 rsb       r3, r2, r3, asr #5
+000875ac str       r3, [r6, #8]
+000875b0 add       r0, r3, #0x900
+000875b4 bl        #0x11ed8 ; malloc@plt
+000875b8 str       r0, [r6, #0xc]
+000875bc bl        #0xa6a2c ; MP3InitDecoder
+000875c0 str       r0, [r6]
+000875c4 cmp       r0, #0
+000875c8 beq       #0x87674 ; branch
+000875cc ldr       r1, [r4, #0x1c]
+000875d0 mov       r3, #0
+000875d4 ldr       r2, [r4, #0x18]
+000875d8 mov       r8, r3
+000875dc str       r3, [r6, #0x14]
+000875e0 ldr       r3, [r6, #0xc]
+000875e4 sub       r1, r1, r2
+000875e8 str       r1, [r6, #0x18]
+000875ec str       r3, [r6, #0x24]
+000875f0 b         #0x875f8 ; branch
+000875f4 str       r8, [r6, #0x18]
+000875f8 ldr       r0, [r6, #4]
+000875fc bl        #0xa6a3c ; MP3FindSyncWord
+00087600 cmp       r0, #0
+00087604 mov       r1, #0
+00087608 blt       #0x875f4 ; branch
+0008760c ldr       r3, [r6, #0x18]
+00087610 mov       lr, #0x24
+00087614 ldr       r2, [r6, #4]
+00087618 mov       ip, r4
+0008761c ldr       r1, [pc, #0x64] ; literal=0x3e0
+00087620 mov       r4, #0
+00087624 add       r2, r2, r0
+00087628 sub       r0, r3, r0
+0008762c mul       lr, lr, r5
+00087630 str       r2, [r6, #4]
+00087634 str       r2, [r6, #0x1c]
+00087638 str       r0, [r6, #0x18]
+0008763c str       r0, [r6, #0x20]
+00087640 ldr       r8, [r7, r1]
+00087644 ldm       ip!, {r0, r1, r2, r3}
+00087648 add       r5, r8, lr
+0008764c mov       r7, r5
+00087650 stm       r7!, {r0, r1, r2, r3}
+00087654 ldm       ip!, {r0, r1, r2, r3}
+00087658 stm       r7!, {r0, r1, r2, r3}
+0008765c ldr       r3, [ip]
+00087660 str       r3, [r7]
+00087664 str       r6, [r8, lr]
+00087668 str       r4, [r5, #0x18]
+0008766c str       r4, [r5, #0x1c]
+00087670 pop       {r4, r5, r6, r7, r8, pc}
+00087674 ldr       r0, [pc, #0x10] ; literal=0xdf128
+00087678 add       r0, pc, r0 ; base=0x1667a8
+0008767c bl        #0x11c20 ; puts@plt
+00087680 b         #0x875cc ; branch
+00087684 ldrsbeq   r1, [r1], -r4
+00087688 andeq     r0, r0, r0, ror #7
+0008768c andeq     pc, sp, r8, lsr #2
+
+vrtemu StopSound 000a6988 bytes=16
+000a6988 ldr       r0, [pc, #4] ; literal=0xc4bdc
+000a698c add       r0, pc, r0 ; base=0x16b570
+000a6990 b         #0xa6378 ; run_process.constprop.0
+000a6994 ldrdeq    r4, r5, [ip], -ip
+
+driver.so sound_driver_init 00002d78 bytes=204
+00002d78 push      {r4, lr}
+00002d7c sub       sp, sp, #0x10
+00002d80 ldr       r0, [pc, #0xa8] ; literal=0x8a4
+00002d84 mov       r3, #0x10
+00002d88 str       r1, [sp, #4]
+00002d8c mov       r1, #1
+00002d90 add       r0, pc, r0 ; base=0x363c
+00002d94 str       r2, [sp]
+00002d98 str       r3, [sp, #0xc]
+00002d9c bl        #0x1294 ; open@plt
+00002da0 ldr       r3, [pc, #0x8c] ; literal=0x1124c
+00002da4 cmp       r0, #0
+00002da8 ldr       r2, [pc, #0x88] ; literal=0xb0
+00002dac add       r3, pc, r3 ; base=0x14000
+00002db0 ldr       r4, [r3, r2] ; GOT -> DSP
+00002db4 str       r0, [r4]
+00002db8 beq       #0x2e1c ; branch
+00002dbc ldr       r0, [pc, #0x78] ; literal=0x880
+00002dc0 add       r0, pc, r0 ; base=0x3648
+00002dc4 bl        #0x1264 ; puts@plt
+00002dc8 ldr       r0, [r4]
+00002dcc mov       r2, #0
+00002dd0 movw      r1, #0x500e
+00002dd4 bl        #0x1234 ; ioctl@plt
+00002dd8 ldr       r0, [r4]
+00002ddc movw      r1, #0x5005
+00002de0 movt      r1, #0xc004
+00002de4 add       r2, sp, #0xc
+00002de8 bl        #0x1234 ; ioctl@plt
+00002dec ldr       r0, [r4]
+00002df0 movw      r1, #0x5006
+00002df4 movt      r1, #0xc004
+00002df8 mov       r2, sp
+00002dfc bl        #0x1234 ; ioctl@plt
+00002e00 ldr       r0, [r4]
+00002e04 movw      r1, #0x5002
+00002e08 movt      r1, #0xc004
+00002e0c add       r2, sp, #4
+00002e10 bl        #0x1234 ; ioctl@plt
+00002e14 add       sp, sp, #0x10
+00002e18 pop       {r4, pc}
+00002e1c ldr       r0, [pc, #0x1c] ; literal=0x834
+00002e20 add       r0, pc, r0 ; base=0x365c
+00002e24 bl        #0x1264 ; puts@plt
+00002e28 add       sp, sp, #0x10
+00002e2c pop       {r4, pc}
+00002e30 andeq     r0, r0, r4, lsr #17
+00002e34 andeq     r1, r1, ip, asr #4
+00002e38 strheq    r0, [r0], -r0
+00002e3c andeq     r0, r0, r0, lsl #17
+00002e40 andeq     r0, r0, r4, lsr r8
+
+driver.so sound_driver_playframe 00002e44 bytes=44
+00002e44 ldr       r3, [pc, #0x1c] ; literal=0x111a4
+00002e48 mov       ip, r0
+00002e4c ldr       r0, [pc, #0x18] ; literal=0xb0
+00002e50 mov       r2, r1
+00002e54 add       r3, pc, r3 ; base=0x14000
+00002e58 mov       r1, ip
+00002e5c ldr       r0, [r3, r0] ; GOT -> DSP
+00002e60 ldr       r0, [r0]
+00002e64 b         #0x12d0 ; write@plt
+00002e68 andeq     r1, r1, r4, lsr #3
+00002e6c strheq    r0, [r0], -r0
+
+driver.so video_driver_disp_frame 00002518 bytes=2040
+00002518 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+0000251c sub       sp, sp, #0x24
+00002520 ldr       sl, [pc, #0x790] ; literal=0x11ac0
+00002524 mov       sb, r1
+00002528 cmp       r1, r3, lsr #1
+0000252c mov       fp, r0
+00002530 str       r3, [sp, #0x10]
+00002534 mov       r8, r2
+00002538 add       sl, pc, sl ; base=0x14000
+0000253c beq       #0x2738 ; branch
+00002540 cmp       r2, #0
+00002544 ble       #0x2738 ; branch
+00002548 lsr       r3, r3, #1
+0000254c and       r1, r1, #1
+00002550 str       fp, [sp, #0x14]
+00002554 mov       r2, r0
+00002558 lsl       r3, r3, #1
+0000255c mov       lr, #0
+00002560 lsl       r0, sb, #1
+00002564 str       r3, [sp, #4]
+00002568 asr       r3, sb, #1
+0000256c str       r3, [sp, #0xc]
+00002570 mov       r3, fp
+00002574 str       sl, [sp, #0x18]
+00002578 mov       fp, r0
+0000257c str       r1, [sp, #8]
+00002580 b         #0x26bc ; branch
+00002584 cmp       ip, #2
+00002588 blt       #0x2698 ; branch
+0000258c tst       r1, #2
+00002590 ldrhne    r4, [r0], #2
+00002594 strhne    r4, [r1], #2
+00002598 subne     ip, ip, #1
+0000259c tst       r0, #2
+000025a0 bne       #0x2600 ; branch
+000025a4 cmp       ip, #8
+000025a8 blt       #0x25e0 ; branch
+000025ac tst       r1, #4
+000025b0 ldrne     r4, [r0], #4
+000025b4 strne     r4, [r1], #4
+000025b8 subne     ip, ip, #2
+000025bc tst       r1, #8
+000025c0 ldmne     r0!, {r4, r5}
+000025c4 stmne     r1!, {r4, r5}
+000025c8 subne     ip, ip, #4
+000025cc subs      ip, ip, #8
+000025d0 ldmge     r0!, {r4, r5, r6, r7}
+000025d4 stmge     r1!, {r4, r5, r6, r7}
+000025d8 bge       #0x25cc ; branch
+000025dc add       ip, ip, #8
+000025e0 tst       ip, #4
+000025e4 ldmne     r0!, {r4, r5}
+000025e8 stmne     r1!, {r4, r5}
+000025ec tst       ip, #2
+000025f0 ldrne     r4, [r0], #4
+000025f4 strne     r4, [r1], #4
+000025f8 and       ip, ip, #1
+000025fc b         #0x2698 ; branch
+00002600 cmp       ip, #8
+00002604 blt       #0x267c ; branch
+00002608 tst       r1, #4
+0000260c ldrhne    r4, [r0], #2
+00002610 ldrhne    r5, [r0], #2
+00002614 orrne     r4, r4, r5, lsl #16
+00002618 strne     r4, [r1], #4
+0000261c subne     ip, ip, #2
+00002620 tst       r1, #8
+00002624 ldrhne    r4, [r0], #2
+00002628 ldrne     r5, [r0], #4
+0000262c ldrhne    r6, [r0], #2
+00002630 orrne     r4, r4, r5, lsl #16
+00002634 lsrne     r5, r5, #0x10
+00002638 orrne     r5, r5, r6, lsl #16
+0000263c stmne     r1!, {r4, r5}
+00002640 subne     ip, ip, #4
+00002644 subs      ip, ip, #8
+00002648 ldrhge    r4, [r0], #2
+0000264c ldmge     r0!, {r5, r6, r7}
+00002650 ldrhge    sl, [r0], #2
+00002654 orrge     r4, r4, r5, lsl #16
+00002658 lsrge     r5, r5, #0x10
+0000265c orrge     r5, r5, r6, lsl #16
+00002660 lsrge     r6, r6, #0x10
+00002664 orrge     r6, r6, r7, lsl #16
+00002668 lsrge     r7, r7, #0x10
+0000266c orrge     r7, r7, sl, lsl #16
+00002670 stmge     r1!, {r4, r5, r6, r7}
+00002674 bge       #0x2644 ; branch
+00002678 add       ip, ip, #8
+0000267c subs      ip, ip, #2
+00002680 ldrhge    r4, [r0], #2
+00002684 ldrhge    r5, [r0], #2
+00002688 orrge     r4, r4, r5, lsl #16
+0000268c strge     r4, [r1], #4
+00002690 bge       #0x267c ; branch
+00002694 add       ip, ip, #2
+00002698 subs      ip, ip, #1
+0000269c ldrhge    r4, [r0], #2
+000026a0 strhge    r4, [r1], #2
+000026a4 ldr       r1, [sp, #4]
+000026a8 add       lr, lr, #1
+000026ac cmp       r8, lr
+000026b0 add       r2, r2, fp
+000026b4 add       r3, r3, r1
+000026b8 beq       #0x2730 ; branch
+000026bc ldr       r1, [sp, #8]
+000026c0 mov       r0, r3
+000026c4 mov       ip, sb
+000026c8 cmp       r1, #0
+000026cc mov       r1, r2
+000026d0 bne       #0x2584 ; branch
+000026d4 ldr       ip, [sp, #0xc]
+000026d8 cmp       ip, #4
+000026dc blt       #0x2714 ; branch
+000026e0 tst       r1, #4
+000026e4 ldrne     r4, [r0], #4
+000026e8 strne     r4, [r1], #4
+000026ec subne     ip, ip, #1
+000026f0 tst       r1, #8
+000026f4 ldmne     r0!, {r4, r5}
+000026f8 stmne     r1!, {r4, r5}
+000026fc subne     ip, ip, #2
+00002700 subs      ip, ip, #4
+00002704 ldmge     r0!, {r4, r5, r6, r7}
+00002708 stmge     r1!, {r4, r5, r6, r7}
+0000270c bge       #0x2700 ; branch
+00002710 add       ip, ip, #4
+00002714 tst       ip, #2
+00002718 ldmne     r0!, {r4, r5}
+0000271c stmne     r1!, {r4, r5}
+00002720 tst       ip, #1
+00002724 ldrne     r4, [r0], #4
+00002728 strne     r4, [r1], #4
+0000272c b         #0x26a4 ; branch
+00002730 ldr       fp, [sp, #0x14]
+00002734 ldr       sl, [sp, #0x18]
+00002738 ldr       r3, [pc, #0x57c] ; literal=0x11a9c
+0000273c ldr       lr, [pc, r3]
+00002740 cmp       lr, #0
+00002744 beq       #0x291c ; branch
+00002748 cmp       lr, #4
+0000274c beq       #0x2978 ; branch
+00002750 str       sb, [sp, #8]
+00002754 ldr       r3, [pc, #0x564] ; literal=0xac
+00002758 ldr       r7, [sp, #8]
+0000275c ldr       r6, [sl, r3]
+00002760 mul       r4, r8, r7
+00002764 ldr       r5, [r6]
+00002768 lsl       r4, r4, #1
+0000276c str       r6, [sp, #4]
+00002770 cmp       r5, #0
+00002774 beq       #0x2a88 ; branch
+00002778 ldr       r3, [pc, #0x544] ; literal=0xbc
+0000277c ldr       r5, [sl, r3]
+00002780 ldr       r3, [r5]
+00002784 cmp       r3, r4
+00002788 beq       #0x27e4 ; branch
+0000278c bl        #0x11ec ; WaitDisp@plt
+00002790 ldr       r0, [r6]
+00002794 bl        #0x12b8 ; gpChunkMemFree@plt
+00002798 ldr       r0, [pc, #0x528] ; literal=0xe10
+0000279c mov       r2, r8
+000027a0 mov       r1, sb
+000027a4 add       r0, pc, r0 ; base=0x35bc
+000027a8 bl        #0x1204 ; printf@plt
+000027ac ldr       r0, [pc, #0x518] ; literal=0xe1c
+000027b0 mov       r2, r8
+000027b4 mov       r1, r7
+000027b8 add       r0, pc, r0 ; base=0x35dc
+000027bc bl        #0x1204 ; printf@plt
+000027c0 str       r4, [r5]
+000027c4 mov       r0, r4
+000027c8 bl        #0x1228 ; gpChunkMemAlloc@plt
+000027cc str       r0, [r6]
+000027d0 mov       r2, r4
+000027d4 mov       r1, #0
+000027d8 bl        #0x12c4 ; memset@plt
+000027dc ldr       r3, [pc, #0x4ec] ; literal=0x119f8
+000027e0 ldr       lr, [pc, r3]
+000027e4 and       r3, lr, #3
+000027e8 cmp       r3, #1
+000027ec bne       #0x29d8 ; branch
+000027f0 ldr       r3, [sp, #4]
+000027f4 cmp       sb, #0
+000027f8 ldr       r3, [r3]
+000027fc ble       #0x2cb0 ; branch
+00002800 lsl       r5, sb, #1
+00002804 mov       r2, r3
+00002808 lsl       r7, r8, #1
+0000280c sub       r4, r5, #2
+00002810 add       r4, fp, r4
+00002814 cmp       r8, #0
+00002818 mov       r1, r4
+0000281c ble       #0x2834 ; branch
+00002820 add       ip, r2, r7
+00002824 ldrh      r0, [r1], r5
+00002828 strh      r0, [r2], #2
+0000282c cmp       r2, ip
+00002830 bne       #0x2824 ; branch
+00002834 cmp       fp, r4
+00002838 sub       r4, r4, #2
+0000283c bne       #0x2814 ; branch
+00002840 str       r7, [sp, #0x10]
+00002844 mov       r2, sb
+00002848 mov       fp, r3
+0000284c mov       sb, r8
+00002850 mov       r8, r2
+00002854 tst       lr, #0x80
+00002858 beq       #0x2880 ; branch
+0000285c ldr       r3, [pc, #0x470] ; literal=0x98
+00002860 ldr       r3, [sl, r3]
+00002864 ldr       r3, [r3]
+00002868 cmp       r3, #0
+0000286c beq       #0x2880 ; branch
+00002870 mov       r2, r8
+00002874 mov       r1, sb
+00002878 mov       r0, fp
+0000287c blx       r3
+00002880 ldr       r3, [pc, #0x450] ; literal=0xcc
+00002884 ldr       r3, [sl, r3]
+00002888 ldr       r2, [r3]
+0000288c cmp       r2, sb
+00002890 beq       #0x2a58 ; branch
+00002894 ldr       r1, [pc, #0x440] ; literal=0xe4
+00002898 ldr       r2, [pc, #0x440] ; literal=0xd8
+0000289c ldr       r1, [sl, r1]
+000028a0 ldr       r2, [sl, r2]
+000028a4 str       sb, [r3]
+000028a8 ldr       r3, [sp, #0x10]
+000028ac str       r8, [r1]
+000028b0 str       r3, [r2]
+000028b4 ldr       r3, [pc, #0x428] ; literal=0xc4
+000028b8 ldr       r2, [pc, #0x428] ; literal=0x94
+000028bc ldr       r5, [sl, r3]
+000028c0 ldr       r4, [sl, r2]
+000028c4 ldr       r3, [r5]
+000028c8 tst       r3, #2
+000028cc ldr       r3, [pc, #0x418] ; literal=0xa4
+000028d0 ldr       r6, [sl, r3]
+000028d4 bne       #0x28f0 ; branch
+000028d8 b         #0x2928 ; branch
+000028dc mov       r0, r4
+000028e0 bl        #0x11e0 ; pthread_mutex_unlock@plt
+000028e4 ldr       r3, [r5]
+000028e8 tst       r3, #2
+000028ec beq       #0x2928 ; branch
+000028f0 mov       r0, #0x1f4
+000028f4 bl        #0x124c ; usleep@plt
+000028f8 mov       r0, r4
+000028fc bl        #0x121c ; pthread_mutex_lock@plt
+00002900 ldr       r3, [r5]
+00002904 tst       r3, #2
+00002908 beq       #0x28dc ; branch
+0000290c mov       r1, r4
+00002910 mov       r0, r6
+00002914 bl        #0x1318 ; pthread_cond_wait@plt
+00002918 b         #0x28dc ; branch
+0000291c cmp       sb, #0x500
+00002920 bne       #0x2880 ; branch
+00002924 b         #0x2750 ; branch
+00002928 ldr       r2, [pc, #0x3c0] ; literal=0xa8
+0000292c mov       r0, r4
+00002930 ldr       r3, [pc, #0x3bc] ; literal=0xc0
+00002934 ldr       r2, [sl, r2]
+00002938 str       fp, [r2]
+0000293c ldr       r2, [sl, r3]
+00002940 ldr       r3, [pc, #0x3b0] ; literal=0xd4
+00002944 str       sb, [r2]
+00002948 ldr       r3, [sl, r3]
+0000294c str       r8, [r3]
+00002950 bl        #0x121c ; pthread_mutex_lock@plt
+00002954 ldr       r3, [r5]
+00002958 mov       r0, r6
+0000295c orr       r3, r3, #2
+00002960 str       r3, [r5]
+00002964 bl        #0x1348 ; pthread_cond_signal@plt
+00002968 mov       r0, r4
+0000296c add       sp, sp, #0x24
+00002970 pop       {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+00002974 b         #0x11e0 ; pthread_mutex_unlock@plt
+00002978 mov       r3, #0x500
+0000297c movw      r1, #0x60b7
+00002980 mul       r3, r3, r8
+00002984 movt      r1, #0xb60b
+00002988 movw      r2, #0x5556
+0000298c smull     r1, r0, r1, r3
+00002990 movt      r2, #0x5555
+00002994 movw      r1, #0xfff0
+00002998 add       r0, r0, r3
+0000299c asr       r3, r3, #0x1f
+000029a0 rsb       r3, r3, r0, asr #9
+000029a4 lsl       r0, r8, #2
+000029a8 smull     ip, r2, r2, r0
+000029ac mul       r3, sb, r3
+000029b0 sub       r2, r2, r0, asr #31
+000029b4 sdiv      r3, r3, r2
+000029b8 add       r3, r3, #0xf
+000029bc and       r3, r3, r1
+000029c0 sub       ip, r3, sb
+000029c4 str       r3, [sp, #8]
+000029c8 add       ip, ip, ip, lsr #31
+000029cc asr       r3, ip, #1
+000029d0 str       r3, [sp, #0x1c]
+000029d4 b         #0x2754 ; branch
+000029d8 cmp       r3, #3
+000029dc bne       #0x2ae4 ; branch
+000029e0 ldr       r3, [sp, #4]
+000029e4 cmp       sb, #0
+000029e8 ldr       r5, [r3]
+000029ec ble       #0x2ca8 ; branch
+000029f0 sub       ip, r8, #1
+000029f4 mov       r2, r5
+000029f8 mul       ip, sb, ip
+000029fc lsl       r3, sb, #1
+00002a00 add       r4, sb, ip
+00002a04 rsb       r6, r3, #0
+00002a08 add       ip, fp, ip, lsl #1
+00002a0c add       r4, fp, r4, lsl #1
+00002a10 lsl       r7, r8, #1
+00002a14 cmp       r8, #0
+00002a18 mov       r3, ip
+00002a1c ble       #0x2a34 ; branch
+00002a20 add       r0, r2, r7
+00002a24 ldrh      r1, [r3], r6
+00002a28 strh      r1, [r2], #2
+00002a2c cmp       r0, r2
+00002a30 bne       #0x2a24 ; branch
+00002a34 add       ip, ip, #2
+00002a38 cmp       ip, r4
+00002a3c bne       #0x2a14 ; branch
+00002a40 str       r7, [sp, #0x10]
+00002a44 mov       r3, sb
+00002a48 mov       fp, r5
+00002a4c mov       sb, r8
+00002a50 mov       r8, r3
+00002a54 b         #0x2854 ; branch
+00002a58 ldr       r2, [pc, #0x27c] ; literal=0xe4
+00002a5c ldr       r1, [sl, r2]
+00002a60 ldr       r2, [r1]
+00002a64 cmp       r2, r8
+00002a68 ldr       r2, [pc, #0x270] ; literal=0xd8
+00002a6c ldr       r2, [sl, r2]
+00002a70 bne       #0x28a4 ; branch
+00002a74 ldr       r0, [r2]
+00002a78 ldr       ip, [sp, #0x10]
+00002a7c cmp       r0, ip
+00002a80 bne       #0x28a4 ; branch
+00002a84 b         #0x28b4 ; branch
+00002a88 ldr       r0, [pc, #0x26c] ; literal=0xb58
+00002a8c mov       r2, r8
+00002a90 mov       r1, sb
+00002a94 add       r0, pc, r0 ; base=0x35f4
+00002a98 bl        #0x1204 ; printf@plt
+00002a9c ldr       r0, [pc, #0x25c] ; literal=0xb64
+00002aa0 mov       r2, r8
+00002aa4 ldr       r1, [sp, #8]
+00002aa8 add       r0, pc, r0 ; base=0x3614
+00002aac bl        #0x1204 ; printf@plt
+00002ab0 ldr       r3, [pc, #0x20c] ; literal=0xbc
+00002ab4 mov       r0, r4
+00002ab8 ldr       r3, [sl, r3]
+00002abc str       r4, [r3]
+00002ac0 bl        #0x1228 ; gpChunkMemAlloc@plt
+00002ac4 ldr       r3, [sp, #4]
+00002ac8 mov       r2, r4
+00002acc mov       r1, r5
+00002ad0 str       r0, [r3]
+00002ad4 bl        #0x12c4 ; memset@plt
+00002ad8 ldr       r3, [pc, #0x224] ; literal=0x116fc
+00002adc ldr       lr, [pc, r3]
+00002ae0 b         #0x27e4 ; branch
+00002ae4 cmp       r3, #2
+00002ae8 bne       #0x2b3c ; branch
+00002aec mul       r0, r8, sb
+00002af0 ldr       r3, [sp, #4]
+00002af4 sub       r2, r0, #0x80000001
+00002af8 cmp       r0, #0
+00002afc add       r2, fp, r2, lsl #1
+00002b00 ldr       fp, [r3]
+00002b04 ble       #0x2b30 ; branch
+00002b08 add       ip, r2, fp
+00002b0c mvn       r1, #1
+00002b10 mov       r3, r2
+00002b14 mla       r0, r1, r0, r2
+00002b18 ldrh      r1, [r3]
+00002b1c sub       r2, ip, r3
+00002b20 sub       r3, r3, #2
+00002b24 cmp       r0, r3
+00002b28 strh      r1, [r2]
+00002b2c bne       #0x2b18 ; branch
+00002b30 lsl       r3, sb, #1
+00002b34 str       r3, [sp, #0x10]
+00002b38 b         #0x2854 ; branch
+00002b3c tst       lr, #4
+00002b40 beq       #0x2c20 ; branch
+00002b44 ldr       r3, [sp, #4]
+00002b48 cmp       r8, #0
+00002b4c ldr       r2, [r3]
+00002b50 ldr       r3, [sp, #0x1c]
+00002b54 add       ip, r2, r3, lsl #1
+00002b58 ldrle     r3, [sp, #8]
+00002b5c lslle     sb, r3, #1
+00002b60 ble       #0x2c04 ; branch
+00002b64 add       lr, sb, sb, lsr #31
+00002b68 mov       r0, #0
+00002b6c ldr       r2, [sp, #8]
+00002b70 lsl       r3, sb, #1
+00002b74 str       sl, [sp, #0xc]
+00002b78 mov       sl, r3
+00002b7c asr       lr, lr, #1
+00002b80 lsl       sb, r2, #1
+00002b84 mov       r3, ip
+00002b88 mov       r2, fp
+00002b8c mov       r1, lr
+00002b90 cmp       r1, #4
+00002b94 blt       #0x2bcc ; branch
+00002b98 tst       r3, #4
+00002b9c ldrne     r4, [r2], #4
+00002ba0 strne     r4, [r3], #4
+00002ba4 subne     r1, r1, #1
+00002ba8 tst       r3, #8
+00002bac ldmne     r2!, {r4, r5}
+00002bb0 stmne     r3!, {r4, r5}
+00002bb4 subne     r1, r1, #2
+00002bb8 subs      r1, r1, #4
+00002bbc ldmge     r2!, {r4, r5, r6, r7}
+00002bc0 stmge     r3!, {r4, r5, r6, r7}
+00002bc4 bge       #0x2bb8 ; branch
+00002bc8 add       r1, r1, #4
+00002bcc tst       r1, #2
+00002bd0 ldmne     r2!, {r4, r5}
+00002bd4 stmne     r3!, {r4, r5}
+00002bd8 tst       r1, #1
+00002bdc ldrne     r4, [r2], #4
+00002be0 strne     r4, [r3], #4
+00002be4 add       ip, ip, sb
+00002be8 add       r0, r0, #1
+00002bec cmp       r8, r0
+00002bf0 add       fp, fp, sl
+00002bf4 bne       #0x2b84 ; branch
+00002bf8 ldr       r3, [sp, #4]
+00002bfc ldr       sl, [sp, #0xc]
+00002c00 ldr       r2, [r3]
+00002c04 ldr       r3, [pc, #0xfc] ; literal=0x115c8
+00002c08 mov       fp, r2
+00002c0c str       sb, [sp, #0x10]
+00002c10 add       r3, pc, r3 ; base=0x141e0
+00002c14 ldr       sb, [sp, #8]
+00002c18 ldr       lr, [r3]
+00002c1c b         #0x2854 ; branch
+00002c20 tst       lr, #0x80
+00002c24 beq       #0x2880 ; branch
+00002c28 mul       r3, r8, sb
+00002c2c ldr       r1, [sp, #4]
+00002c30 mov       r0, fp
+00002c34 add       r3, r3, r3, lsr #31
+00002c38 ldr       r2, [r1]
+00002c3c asr       r3, r3, #1
+00002c40 cmp       r3, #4
+00002c44 blt       #0x2c7c ; branch
+00002c48 tst       r2, #4
+00002c4c ldrne     r4, [r0], #4
+00002c50 strne     r4, [r2], #4
+00002c54 subne     r3, r3, #1
+00002c58 tst       r2, #8
+00002c5c ldmne     r0!, {r4, r5}
+00002c60 stmne     r2!, {r4, r5}
+00002c64 subne     r3, r3, #2
+00002c68 subs      r3, r3, #4
+00002c6c ldmge     r0!, {r4, r5, r6, r7}
+00002c70 stmge     r2!, {r4, r5, r6, r7}
+00002c74 bge       #0x2c68 ; branch
+00002c78 add       r3, r3, #4
+00002c7c tst       r3, #2
+00002c80 ldmne     r0!, {r4, r5}
+00002c84 stmne     r2!, {r4, r5}
+00002c88 tst       r3, #1
+00002c8c ldrne     r4, [r0], #4
+00002c90 strne     r4, [r2], #4
+00002c94 ldr       r3, [pc, #0x70] ; literal=0x1153c
+00002c98 ldr       fp, [r1]
+00002c9c add       r3, pc, r3 ; base=0x141e0
+00002ca0 ldr       lr, [r3]
+00002ca4 b         #0x2854 ; branch
+00002ca8 lsl       r7, r8, #1
+00002cac b         #0x2a40 ; branch
+00002cb0 lsl       r7, r8, #1
+00002cb4 b         #0x2840 ; branch
+00002cb8 andeq     r1, r1, r0, asr #21
+00002cbc muleq     r1, ip, sl
+00002cc0 andeq     r0, r0, ip, lsr #1
+00002cc4 strheq    r0, [r0], -ip
+00002cc8 andeq     r0, r0, r0, lsl lr
+00002ccc andeq     r0, r0, ip, lsl lr
+00002cd0 strdeq    r1, r2, [r1], -r8
+00002cd4 muleq     r0, r8, r0
+00002cd8 andeq     r0, r0, ip, asr #1
+00002cdc andeq     r0, r0, r4, ror #1
+00002ce0 ldrdeq    r0, r1, [r0], -r8
+00002ce4 andeq     r0, r0, r4, asr #1
+00002ce8 muleq     r0, r4, r0
+00002cec andeq     r0, r0, r4, lsr #1
+00002cf0 andeq     r0, r0, r8, lsr #1
+00002cf4 andeq     r0, r0, r0, asr #1
+00002cf8 ldrdeq    r0, r1, [r0], -r4
+00002cfc andeq     r0, r0, r8, asr fp
+00002d00 andeq     r0, r0, r4, ror #22
+00002d04 strdeq    r1, r2, [r1], -ip
+00002d08 andeq     r1, r1, r8, asr #11
+00002d0c andeq     r1, r1, ip, lsr r5
+
+driver.so video_driver_disp_frame0 00001e98 bytes=1664
+00001e98 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+00001e9c sub       sp, sp, #0x1c
+00001ea0 ldr       sl, [pc, #0x630] ; literal=0x12140
+00001ea4 mov       r8, r1
+00001ea8 cmp       r1, r3, lsr #1
+00001eac mov       fp, r0
+00001eb0 str       r3, [sp, #0xc]
+00001eb4 mov       sb, r2
+00001eb8 add       sl, pc, sl ; base=0x14000
+00001ebc beq       #0x20b8 ; branch
+00001ec0 cmp       r2, #0
+00001ec4 ble       #0x20b8 ; branch
+00001ec8 lsr       r3, r3, #1
+00001ecc and       r1, r1, #1
+00001ed0 str       fp, [sp, #0x10]
+00001ed4 mov       r2, r0
+00001ed8 lsl       r3, r3, #1
+00001edc mov       lr, #0
+00001ee0 lsl       r0, r8, #1
+00001ee4 str       r3, [sp]
+00001ee8 asr       r3, r8, #1
+00001eec str       r3, [sp, #8]
+00001ef0 mov       r3, fp
+00001ef4 str       sl, [sp, #0x14]
+00001ef8 mov       fp, r0
+00001efc str       r1, [sp, #4]
+00001f00 b         #0x203c ; branch
+00001f04 cmp       ip, #2
+00001f08 blt       #0x2018 ; branch
+00001f0c tst       r1, #2
+00001f10 ldrhne    r4, [r0], #2
+00001f14 strhne    r4, [r1], #2
+00001f18 subne     ip, ip, #1
+00001f1c tst       r0, #2
+00001f20 bne       #0x1f80 ; branch
+00001f24 cmp       ip, #8
+00001f28 blt       #0x1f60 ; branch
+00001f2c tst       r1, #4
+00001f30 ldrne     r4, [r0], #4
+00001f34 strne     r4, [r1], #4
+00001f38 subne     ip, ip, #2
+00001f3c tst       r1, #8
+00001f40 ldmne     r0!, {r4, r5}
+00001f44 stmne     r1!, {r4, r5}
+00001f48 subne     ip, ip, #4
+00001f4c subs      ip, ip, #8
+00001f50 ldmge     r0!, {r4, r5, r6, r7}
+00001f54 stmge     r1!, {r4, r5, r6, r7}
+00001f58 bge       #0x1f4c ; branch
+00001f5c add       ip, ip, #8
+00001f60 tst       ip, #4
+00001f64 ldmne     r0!, {r4, r5}
+00001f68 stmne     r1!, {r4, r5}
+00001f6c tst       ip, #2
+00001f70 ldrne     r4, [r0], #4
+00001f74 strne     r4, [r1], #4
+00001f78 and       ip, ip, #1
+00001f7c b         #0x2018 ; branch
+00001f80 cmp       ip, #8
+00001f84 blt       #0x1ffc ; branch
+00001f88 tst       r1, #4
+00001f8c ldrhne    r4, [r0], #2
+00001f90 ldrhne    r5, [r0], #2
+00001f94 orrne     r4, r4, r5, lsl #16
+00001f98 strne     r4, [r1], #4
+00001f9c subne     ip, ip, #2
+00001fa0 tst       r1, #8
+00001fa4 ldrhne    r4, [r0], #2
+00001fa8 ldrne     r5, [r0], #4
+00001fac ldrhne    r6, [r0], #2
+00001fb0 orrne     r4, r4, r5, lsl #16
+00001fb4 lsrne     r5, r5, #0x10
+00001fb8 orrne     r5, r5, r6, lsl #16
+00001fbc stmne     r1!, {r4, r5}
+00001fc0 subne     ip, ip, #4
+00001fc4 subs      ip, ip, #8
+00001fc8 ldrhge    r4, [r0], #2
+00001fcc ldmge     r0!, {r5, r6, r7}
+00001fd0 ldrhge    sl, [r0], #2
+00001fd4 orrge     r4, r4, r5, lsl #16
+00001fd8 lsrge     r5, r5, #0x10
+00001fdc orrge     r5, r5, r6, lsl #16
+00001fe0 lsrge     r6, r6, #0x10
+00001fe4 orrge     r6, r6, r7, lsl #16
+00001fe8 lsrge     r7, r7, #0x10
+00001fec orrge     r7, r7, sl, lsl #16
+00001ff0 stmge     r1!, {r4, r5, r6, r7}
+00001ff4 bge       #0x1fc4 ; branch
+00001ff8 add       ip, ip, #8
+00001ffc subs      ip, ip, #2
+00002000 ldrhge    r4, [r0], #2
+00002004 ldrhge    r5, [r0], #2
+00002008 orrge     r4, r4, r5, lsl #16
+0000200c strge     r4, [r1], #4
+00002010 bge       #0x1ffc ; branch
+00002014 add       ip, ip, #2
+00002018 subs      ip, ip, #1
+0000201c ldrhge    r4, [r0], #2
+00002020 strhge    r4, [r1], #2
+00002024 ldr       r1, [sp]
+00002028 add       lr, lr, #1
+0000202c cmp       sb, lr
+00002030 add       r2, r2, fp
+00002034 add       r3, r3, r1
+00002038 beq       #0x20b0 ; branch
+0000203c ldr       r1, [sp, #4]
+00002040 mov       r0, r3
+00002044 mov       ip, r8
+00002048 cmp       r1, #0
+0000204c mov       r1, r2
+00002050 bne       #0x1f04 ; branch
+00002054 ldr       ip, [sp, #8]
+00002058 cmp       ip, #4
+0000205c blt       #0x2094 ; branch
+00002060 tst       r1, #4
+00002064 ldrne     r4, [r0], #4
+00002068 strne     r4, [r1], #4
+0000206c subne     ip, ip, #1
+00002070 tst       r1, #8
+00002074 ldmne     r0!, {r4, r5}
+00002078 stmne     r1!, {r4, r5}
+0000207c subne     ip, ip, #2
+00002080 subs      ip, ip, #4
+00002084 ldmge     r0!, {r4, r5, r6, r7}
+00002088 stmge     r1!, {r4, r5, r6, r7}
+0000208c bge       #0x2080 ; branch
+00002090 add       ip, ip, #4
+00002094 tst       ip, #2
+00002098 ldmne     r0!, {r4, r5}
+0000209c stmne     r1!, {r4, r5}
+000020a0 tst       ip, #1
+000020a4 ldrne     r4, [r0], #4
+000020a8 strne     r4, [r1], #4
+000020ac b         #0x2024 ; branch
+000020b0 ldr       fp, [sp, #0x10]
+000020b4 ldr       sl, [sp, #0x14]
+000020b8 ldr       r6, [pc, #0x41c] ; literal=0x1211c
+000020bc add       r6, pc, r6 ; base=0x141e0
+000020c0 ldr       r2, [r6]
+000020c4 subs      r3, r2, #0
+000020c8 movne     r3, #1
+000020cc cmp       r8, #0x500
+000020d0 orreq     r3, r3, #1
+000020d4 cmp       r3, #0
+000020d8 beq       #0x21a8 ; branch
+000020dc ldr       r3, [pc, #0x3fc] ; literal=0xac
+000020e0 mul       r5, sb, r8
+000020e4 ldr       r1, [sl, r3]
+000020e8 lsl       r7, r5, #1
+000020ec ldr       r4, [r1]
+000020f0 cmp       r4, #0
+000020f4 beq       #0x23a8 ; branch
+000020f8 ldr       r3, [pc, #0x3e4] ; literal=0xbc
+000020fc ldr       r3, [sl, r3]
+00002100 ldr       r0, [r3]
+00002104 str       r3, [sp]
+00002108 cmp       r0, r7
+0000210c bne       #0x22e8 ; branch
+00002110 cmp       r2, #1
+00002114 beq       #0x21f4 ; branch
+00002118 cmp       r2, #3
+0000211c beq       #0x23dc ; branch
+00002120 cmp       r2, #2
+00002124 beq       #0x2488 ; branch
+00002128 cmp       r4, #0
+0000212c beq       #0x2448 ; branch
+00002130 add       r3, r5, r5, lsr #31
+00002134 mov       r0, r4
+00002138 mov       r2, fp
+0000213c asr       r3, r3, #1
+00002140 cmp       r3, #4
+00002144 blt       #0x217c ; branch
+00002148 tst       r0, #4
+0000214c ldrne     r4, [r2], #4
+00002150 strne     r4, [r0], #4
+00002154 subne     r3, r3, #1
+00002158 tst       r0, #8
+0000215c ldmne     r2!, {r4, r5}
+00002160 stmne     r0!, {r4, r5}
+00002164 subne     r3, r3, #2
+00002168 subs      r3, r3, #4
+0000216c ldmge     r2!, {r4, r5, r6, r7}
+00002170 stmge     r0!, {r4, r5, r6, r7}
+00002174 bge       #0x2168 ; branch
+00002178 add       r3, r3, #4
+0000217c tst       r3, #2
+00002180 ldmne     r2!, {r4, r5}
+00002184 stmne     r0!, {r4, r5}
+00002188 tst       r3, #1
+0000218c ldrne     r4, [r2], #4
+00002190 strne     r4, [r0], #4
+00002194 ldr       r3, [pc, #0x34c] ; literal=0x1203c
+00002198 ldr       r4, [r1]
+0000219c add       r3, pc, r3 ; base=0x141e0
+000021a0 ldr       r2, [r3]
+000021a4 b         #0x244c ; branch
+000021a8 bl        #0x11ec ; WaitDisp@plt
+000021ac ldr       r3, [pc, #0x32c] ; literal=0xac
+000021b0 ldr       r1, [sl, r3]
+000021b4 ldr       r0, [r1]
+000021b8 cmp       r0, #0
+000021bc beq       #0x21cc ; branch
+000021c0 str       r1, [sp]
+000021c4 bl        #0x12b8 ; gpChunkMemFree@plt
+000021c8 ldr       r1, [sp]
+000021cc ldr       r2, [pc, #0x318] ; literal=0x12000
+000021d0 mov       r4, #0
+000021d4 ldr       r3, [pc, #0x308] ; literal=0xbc
+000021d8 add       r2, pc, r2 ; base=0x141e0
+000021dc str       r4, [r1]
+000021e0 ldr       r2, [r2]
+000021e4 ldr       r3, [sl, r3]
+000021e8 cmp       r2, #1
+000021ec str       r4, [r3]
+000021f0 bne       #0x2438 ; branch
+000021f4 cmp       r8, #0
+000021f8 ble       #0x247c ; branch
+000021fc lsl       r5, r8, #1
+00002200 mov       r2, r4
+00002204 lsl       r3, sb, #1
+00002208 sub       lr, r5, #2
+0000220c add       lr, fp, lr
+00002210 cmp       sb, #0
+00002214 mov       r1, lr
+00002218 ble       #0x2230 ; branch
+0000221c add       ip, r2, r3
+00002220 ldrh      r0, [r1], r5
+00002224 strh      r0, [r2], #2
+00002228 cmp       r2, ip
+0000222c bne       #0x2220 ; branch
+00002230 cmp       fp, lr
+00002234 sub       lr, lr, #2
+00002238 bne       #0x2210 ; branch
+0000223c str       r3, [sp, #0xc]
+00002240 mov       r3, r8
+00002244 mov       r8, sb
+00002248 mov       sb, r3
+0000224c ldr       r3, [pc, #0x29c] ; literal=0xcc
+00002250 ldr       r3, [sl, r3]
+00002254 ldr       r2, [r3]
+00002258 cmp       r2, r8
+0000225c beq       #0x2378 ; branch
+00002260 ldr       r1, [pc, #0x28c] ; literal=0xe4
+00002264 ldr       r2, [pc, #0x28c] ; literal=0xd8
+00002268 ldr       r1, [sl, r1]
+0000226c ldr       r2, [sl, r2]
+00002270 str       r8, [r3]
+00002274 ldr       r3, [sp, #0xc]
+00002278 str       sb, [r1]
+0000227c str       r3, [r2]
+00002280 ldr       r3, [pc, #0x274] ; literal=0xc4
+00002284 ldr       r2, [pc, #0x274] ; literal=0x94
+00002288 ldr       r6, [sl, r3]
+0000228c ldr       r5, [sl, r2]
+00002290 ldr       r3, [r6]
+00002294 tst       r3, #2
+00002298 ldr       r3, [pc, #0x264] ; literal=0xa4
+0000229c ldr       r7, [sl, r3]
+000022a0 bne       #0x22bc ; branch
+000022a4 b         #0x2328 ; branch
+000022a8 mov       r0, r5
+000022ac bl        #0x11e0 ; pthread_mutex_unlock@plt
+000022b0 ldr       r3, [r6]
+000022b4 tst       r3, #2
+000022b8 beq       #0x2328 ; branch
+000022bc mov       r0, #0x1f4
+000022c0 bl        #0x124c ; usleep@plt
+000022c4 mov       r0, r5
+000022c8 bl        #0x121c ; pthread_mutex_lock@plt
+000022cc ldr       r3, [r6]
+000022d0 tst       r3, #2
+000022d4 beq       #0x22a8 ; branch
+000022d8 mov       r1, r5
+000022dc mov       r0, r7
+000022e0 bl        #0x1318 ; pthread_cond_wait@plt
+000022e4 b         #0x22a8 ; branch
+000022e8 str       r1, [sp, #4]
+000022ec bl        #0x11ec ; WaitDisp@plt
+000022f0 ldr       r1, [sp, #4]
+000022f4 ldr       r0, [r1]
+000022f8 bl        #0x12b8 ; gpChunkMemFree@plt
+000022fc ldr       r3, [sp]
+00002300 mov       r0, r7
+00002304 str       r7, [r3]
+00002308 bl        #0x1228 ; gpChunkMemAlloc@plt
+0000230c ldr       r2, [r6]
+00002310 mov       r4, r0
+00002314 ldr       r1, [sp, #4]
+00002318 cmp       r2, #1
+0000231c str       r0, [r1]
+00002320 bne       #0x2118 ; branch
+00002324 b         #0x21f4 ; branch
+00002328 ldr       r2, [pc, #0x1d8] ; literal=0xa8
+0000232c mov       r0, r5
+00002330 ldr       r3, [pc, #0x1d4] ; literal=0xc0
+00002334 ldr       r2, [sl, r2]
+00002338 str       r4, [r2]
+0000233c ldr       r2, [sl, r3]
+00002340 ldr       r3, [pc, #0x1c8] ; literal=0xd4
+00002344 str       r8, [r2]
+00002348 ldr       r3, [sl, r3]
+0000234c str       sb, [r3]
+00002350 bl        #0x121c ; pthread_mutex_lock@plt
+00002354 ldr       r3, [r6]
+00002358 mov       r0, r7
+0000235c orr       r3, r3, #2
+00002360 str       r3, [r6]
+00002364 bl        #0x1348 ; pthread_cond_signal@plt
+00002368 mov       r0, r5
+0000236c add       sp, sp, #0x1c
+00002370 pop       {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+00002374 b         #0x11e0 ; pthread_mutex_unlock@plt
+00002378 ldr       r2, [pc, #0x174] ; literal=0xe4
+0000237c ldr       r1, [sl, r2]
+00002380 ldr       r2, [r1]
+00002384 cmp       r2, sb
+00002388 ldr       r2, [pc, #0x168] ; literal=0xd8
+0000238c ldr       r2, [sl, r2]
+00002390 bne       #0x2270 ; branch
+00002394 ldr       r0, [r2]
+00002398 ldr       ip, [sp, #0xc]
+0000239c cmp       r0, ip
+000023a0 bne       #0x2270 ; branch
+000023a4 b         #0x2280 ; branch
+000023a8 ldr       r3, [pc, #0x134] ; literal=0xbc
+000023ac mov       r0, r7
+000023b0 str       r1, [sp]
+000023b4 ldr       r3, [sl, r3]
+000023b8 str       r7, [r3]
+000023bc bl        #0x1228 ; gpChunkMemAlloc@plt
+000023c0 ldr       r2, [r6]
+000023c4 mov       r4, r0
+000023c8 ldr       r1, [sp]
+000023cc cmp       r2, #1
+000023d0 str       r0, [r1]
+000023d4 bne       #0x2118 ; branch
+000023d8 b         #0x21f4 ; branch
+000023dc cmp       r8, #0
+000023e0 ble       #0x247c ; branch
+000023e4 sub       lr, sb, #1
+000023e8 mov       r2, r4
+000023ec mul       lr, r8, lr
+000023f0 lsl       r3, r8, #1
+000023f4 add       r5, r8, lr
+000023f8 rsb       r6, r3, #0
+000023fc add       lr, fp, lr, lsl #1
+00002400 add       r5, fp, r5, lsl #1
+00002404 lsl       r3, sb, #1
+00002408 cmp       sb, #0
+0000240c mov       r1, lr
+00002410 ble       #0x2428 ; branch
+00002414 add       ip, r2, r3
+00002418 ldrh      r0, [r1], r6
+0000241c strh      r0, [r2], #2
+00002420 cmp       ip, r2
+00002424 bne       #0x2418 ; branch
+00002428 add       lr, lr, #2
+0000242c cmp       r5, lr
+00002430 bne       #0x2408 ; branch
+00002434 b         #0x223c ; branch
+00002438 cmp       r2, #3
+0000243c beq       #0x23dc ; branch
+00002440 cmp       r2, #2
+00002444 beq       #0x2484 ; branch
+00002448 mov       r4, fp
+0000244c tst       r2, #0x80
+00002450 beq       #0x224c ; branch
+00002454 ldr       r3, [pc, #0xb8] ; literal=0x98
+00002458 ldr       r3, [sl, r3]
+0000245c ldr       r3, [r3]
+00002460 cmp       r3, #0
+00002464 beq       #0x224c ; branch
+00002468 mov       r2, sb
+0000246c mov       r1, r8
+00002470 mov       r0, r4
+00002474 blx       r3
+00002478 b         #0x224c ; branch
+0000247c lsl       r3, sb, #1
+00002480 b         #0x223c ; branch
+00002484 mul       r5, sb, r8
+00002488 sub       r1, r5, #0x80000001
+0000248c cmp       r5, #0
+00002490 add       r1, fp, r1, lsl #1
+00002494 ble       #0x24c0 ; branch
+00002498 add       r0, r1, r4
+0000249c mvn       r2, #1
+000024a0 mov       r3, r1
+000024a4 mla       r5, r2, r5, r1
+000024a8 ldrh      r1, [r3]
+000024ac sub       r2, r0, r3
+000024b0 sub       r3, r3, #2
+000024b4 cmp       r5, r3
+000024b8 strh      r1, [r2]
+000024bc bne       #0x24a8 ; branch
+000024c0 lsl       r2, r8, #1
+000024c4 mov       r3, sb
+000024c8 str       r2, [sp, #0xc]
+000024cc mov       sb, r8
+000024d0 mov       r8, r3
+000024d4 b         #0x2240 ; branch
+000024d8 andeq     r2, r1, r0, asr #2
+000024dc andeq     r2, r1, ip, lsl r1
+000024e0 andeq     r0, r0, ip, lsr #1
+000024e4 strheq    r0, [r0], -ip
+000024e8 andeq     r2, r1, ip, lsr r0
+000024ec andeq     r2, r1, r0
+000024f0 andeq     r0, r0, ip, asr #1
+000024f4 andeq     r0, r0, r4, ror #1
+000024f8 ldrdeq    r0, r1, [r0], -r8
+000024fc andeq     r0, r0, r4, asr #1
+00002500 muleq     r0, r4, r0
+00002504 andeq     r0, r0, r4, lsr #1
+00002508 andeq     r0, r0, r8, lsr #1
+0000250c andeq     r0, r0, r0, asr #1
+00002510 ldrdeq    r0, r1, [r0], -r4
+00002514 muleq     r0, r8, r0
+
+driver.so DrawVFB 00001ac4 bytes=104
+00001ac4 ldr       ip, [pc, #0x58] ; literal=0x1252c
+00001ac8 ldr       r3, [pc, #0x58] ; literal=0xe0
+00001acc add       ip, pc, ip ; base=0x14000
+00001ad0 push      {r4, r5, r6, r7, lr}
+00001ad4 sub       sp, sp, #0x14
+00001ad8 ldr       r7, [ip, r3] ; GOT -> hDisp
+00001adc mov       r5, r2
+00001ae0 mov       r6, r0
+00001ae4 mov       r4, r1
+00001ae8 ldr       r0, [r7]
+00001aec add       r1, sp, #0xc
+00001af0 uxth      r5, r5
+00001af4 bl        #0x1240 ; dispGetResolution@plt
+00001af8 ldr       r0, [r7]
+00001afc uxth      r4, r4
+00001b00 bl        #0x12ac ; dispGetFramebuffer@plt
+00001b04 ldrh      r2, [sp, #0xe]
+00001b08 mov       r3, r6
+00001b0c ldrh      r1, [sp, #0xc]
+00001b10 str       r5, [sp, #4]
+00001b14 str       r4, [sp]
+00001b18 bl        #0x14ac ; PScaleRun
+00001b1c add       sp, sp, #0x14
+00001b20 pop       {r4, r5, r6, r7, pc}
+00001b24 andeq     r2, r1, ip, lsr #10
+00001b28 andeq     r0, r0, r0, ror #1
+
+driver.so PScaleRun 000014ac bytes=276
+000014ac push      {r4, r5, r6, lr}
+000014b0 sub       sp, sp, #8
+000014b4 ldr       r4, [pc, #0xf8] ; literal=0x12c2c
+000014b8 mov       r6, #0
+000014bc ldrh      lr, [sp, #0x18]
+000014c0 add       r4, pc, r4 ; base=0x140f4
+000014c4 ldrh      ip, [sp, #0x1c]
+000014c8 str       r0, [r4, #0x40]
+000014cc ldr       r0, [pc, #0xe4] ; literal=0x1f70
+000014d0 str       r1, [r4, #0x18]
+000014d4 mov       r1, #1
+000014d8 str       r3, [r4, #0x38]
+000014dc mov       r3, #4
+000014e0 strb      r1, [r4, #0x98]
+000014e4 mov       r1, #2
+000014e8 add       r0, pc, r0 ; base=0x3460
+000014ec str       r3, [r4, #0x3c]
+000014f0 str       lr, [r4, #4]
+000014f4 str       ip, [r4, #8]
+000014f8 str       r2, [r4, #0x1c]
+000014fc str       r6, [r4]
+00001500 str       r6, [r4, #0x14]
+00001504 str       r6, [r4, #0x44]
+00001508 bl        #0x1294 ; open@plt
+0000150c str       r0, [r4, #0xe4]
+00001510 movw      r1, #0x5003
+00001514 mov       r5, r0
+00001518 bl        #0x1234 ; ioctl@plt
+0000151c mov       r1, #0x5000
+00001520 mov       r2, r4
+00001524 movt      r1, #0x40e4
+00001528 mov       r0, r5
+0000152c bl        #0x1234 ; ioctl@plt
+00001530 movw      r1, #0x5001
+00001534 mov       r2, r6
+00001538 movt      r1, #0x8004
+0000153c mov       r0, r5
+00001540 bl        #0x1234 ; ioctl@plt
+00001544 movw      r1, #0x5004
+00001548 movw      r2, #0xbb8
+0000154c movt      r1, #0x8004
+00001550 mov       r0, r5
+00001554 bl        #0x1234 ; ioctl@plt
+00001558 movw      r1, #0x5005
+0000155c mov       r0, r5
+00001560 movt      r1, #0x8004
+00001564 add       r2, sp, #4
+00001568 bl        #0x1234 ; ioctl@plt
+0000156c ldr       r3, [sp, #4]
+00001570 tst       r3, #2
+00001574 bne       #0x1598 ; branch
+00001578 mov       r4, #0xa
+0000157c mov       r0, #0x3e8
+00001580 bl        #0x124c ; usleep@plt
+00001584 subs      r4, r4, #1
+00001588 bne       #0x157c ; branch
+0000158c ldr       r3, [pc, #0x28] ; literal=0x12b5c
+00001590 add       r3, pc, r3 ; base=0x140f4
+00001594 ldr       r5, [r3, #0xe4]
+00001598 movw      r1, #0x5003
+0000159c mov       r0, r5
+000015a0 bl        #0x1234 ; ioctl@plt
+000015a4 mov       r0, r5
+000015a8 bl        #0x1354 ; close@plt
+000015ac add       sp, sp, #8
+000015b0 pop       {r4, r5, r6, pc}
+000015b4 andeq     r2, r1, ip, lsr #24
+000015b8 andeq     r1, r0, r0, ror pc
+000015bc andeq     r2, r1, ip, asr fp
+
+driver.so ScaleDisplayThread 00001c18 bytes=240
+00001c18 push      {r4, r5, r6, r7, r8, lr}
+00001c1c ldr       r6, [pc, #0xc8] ; literal=0x123d4
+00001c20 ldr       r3, [pc, #0xc8] ; literal=0xc4
+00001c24 add       r6, pc, r6 ; base=0x14000
+00001c28 ldr       r5, [r6, r3] ; GOT -> DisplayThreadflag
+00001c2c ldr       r3, [r5]
+00001c30 tst       r3, #1
+00001c34 beq       #0x1ce4 ; branch
+00001c38 ldr       r2, [pc, #0xb4] ; literal=0x94
+00001c3c movw      r7, #0xfffd
+00001c40 ldr       r4, [r6, r2] ; GOT -> mutex
+00001c44 b         #0x1c70 ; branch
+00001c48 mov       r0, r4
+00001c4c bl        #0x121c ; pthread_mutex_lock@plt
+00001c50 ldr       r3, [r5]
+00001c54 tst       r3, #2
+00001c58 beq       #0x1cd0 ; branch
+00001c5c mov       r0, r4
+00001c60 bl        #0x11e0 ; pthread_mutex_unlock@plt
+00001c64 ldr       r3, [r5]
+00001c68 tst       r3, #1
+00001c6c beq       #0x1ce4 ; branch
+00001c70 tst       r3, #2
+00001c74 beq       #0x1c48 ; branch
+00001c78 ldr       r1, [pc, #0x78] ; literal=0xd4
+00001c7c ldr       r2, [pc, #0x78] ; literal=0xc0
+00001c80 ldr       r3, [pc, #0x78] ; literal=0xa8
+00001c84 ldr       r0, [r6, r1] ; GOT -> Frame_height
+00001c88 ldr       r3, [r6, r3] ; GOT -> Frame_data
+00001c8c ldr       r1, [r6, r2] ; GOT -> Frame_width
+00001c90 ldr       r2, [r0]
+00001c94 ldr       r1, [r1]
+00001c98 ldr       r0, [r3]
+00001c9c bl        #0x130c ; DrawVFB@plt
+00001ca0 mov       r0, r4
+00001ca4 bl        #0x121c ; pthread_mutex_lock@plt
+00001ca8 ldr       r2, [r5]
+00001cac ldr       r3, [pc, #0x50] ; literal=0xa4
+00001cb0 and       r2, r2, r7
+00001cb4 str       r2, [r5]
+00001cb8 ldr       r0, [r6, r3] ; GOT -> cond
+00001cbc bl        #0x1348 ; pthread_cond_signal@plt
+00001cc0 mov       r0, r4
+00001cc4 bl        #0x11e0 ; pthread_mutex_unlock@plt
+00001cc8 bl        #0x12e8 ; FlipVFB@plt
+00001ccc b         #0x1c48 ; branch
+00001cd0 ldr       r3, [pc, #0x2c] ; literal=0xa4
+00001cd4 mov       r1, r4
+00001cd8 ldr       r0, [r6, r3] ; GOT -> cond
+00001cdc bl        #0x1318 ; pthread_cond_wait@plt
+00001ce0 b         #0x1c5c ; branch
+00001ce4 mov       r0, #0
+00001ce8 pop       {r4, r5, r6, r7, r8, pc}
+00001cec ldrdeq    r2, r3, [r1], -r4
+00001cf0 andeq     r0, r0, r4, asr #1
+00001cf4 muleq     r0, r4, r0
+00001cf8 ldrdeq    r0, r1, [r0], -r4
+00001cfc andeq     r0, r0, r0, asr #1
+00001d00 andeq     r0, r0, r8, lsr #1
+00001d04 andeq     r0, r0, r4, lsr #1
+
+driver.so WaitDisp 00001e18 bytes=128
+00001e18 push      {r4, r5, r6, lr}
+00001e1c ldr       r6, [pc, #0x64] ; literal=0x121d4
+00001e20 ldr       r3, [pc, #0x64] ; literal=0xc4
+00001e24 add       r6, pc, r6 ; base=0x14000
+00001e28 ldr       r5, [r6, r3] ; GOT -> DisplayThreadflag
+00001e2c ldr       r3, [r5]
+00001e30 tst       r3, #2
+00001e34 popeq     {r4, r5, r6, pc}
+00001e38 ldr       r3, [pc, #0x50] ; literal=0x94
+00001e3c ldr       r4, [r6, r3]
+00001e40 b         #0x1e58 ; branch
+00001e44 mov       r0, r4
+00001e48 bl        #0x11e0 ; pthread_mutex_unlock@plt
+00001e4c ldr       r3, [r5]
+00001e50 tst       r3, #2
+00001e54 popeq     {r4, r5, r6, pc}
+00001e58 mov       r0, #0x1f4
+00001e5c bl        #0x124c ; usleep@plt
+00001e60 mov       r0, r4
+00001e64 bl        #0x121c ; pthread_mutex_lock@plt
+00001e68 ldr       r3, [r5]
+00001e6c tst       r3, #2
+00001e70 beq       #0x1e44 ; branch
+00001e74 ldr       r3, [pc, #0x18] ; literal=0xa4
+00001e78 mov       r1, r4
+00001e7c ldr       r0, [r6, r3]
+00001e80 bl        #0x1318 ; pthread_cond_wait@plt
+00001e84 b         #0x1e44 ; branch
+00001e88 ldrdeq    r2, r3, [r1], -r4
+00001e8c andeq     r0, r0, r4, asr #1
+00001e90 muleq     r0, r4, r0
+00001e94 andeq     r0, r0, r4, lsr #1
+
+libs/emu_sfc_orig.so SetFrameSkip 00013924 bytes=100
+00013924 ldr       r3, [pc, #0x50] ; literal=0x876cc
+00013928 cmp       r0, #0
+0001392c add       r3, pc, r3 ; base=0x9b000
+00013930 beq       #0x13948 ; branch
+00013934 ldr       r2, [pc, #0x44] ; literal=0x678
+00013938 mov       r1, #0
+0001393c ldr       r3, [r3, r2] ; GOT -> IPPU
+00013940 strb      r1, [r3, #3]
+00013944 bx        lr
+00013948 ldr       r1, [pc, #0x30] ; literal=0x678
+0001394c mov       r0, #1
+00013950 push      {r4, lr}
+00013954 ldr       r2, [pc, #0x28] ; literal=0x7f4
+00013958 ldr       r1, [r3, r1]
+0001395c strb      r0, [r1, #3]
+00013960 ldr       r4, [r3, r2]
+00013964 ldr       r0, [r4]
+00013968 bl        #0x1117c ; SetDoubleBuffer@plt
+0001396c ldr       r3, [r4]
+00013970 eor       r3, r3, #1
+00013974 str       r3, [r4]
+00013978 pop       {r4, pc}
+0001397c andeq     r7, r8, ip, asr #13
+00013980 andeq     r0, r0, r8, ror r6
+00013984 strdeq    r0, r1, [r0], -r4
+
+libs/emu_sfc_orig.so SetDoubleBuffer 000138c8 bytes=92
+000138c8 ldr       r3, [pc, #0x4c] ; literal=0x87720
+000138cc cmp       r0, #0
+000138d0 ldr       r2, [pc, #0x48] ; literal=0xa08
+000138d4 movne     r0, #0x3bc
+000138d8 add       r3, pc, r3 ; base=0x9b000
+000138dc ldr       r2, [r3, r2] ; GOT -> GFX
+000138e0 ldr       r3, [r2]
+000138e4 ldr       r1, [r2, #0x20]
+000138e8 addeq     r3, r3, #0x20
+000138ec mlane     r3, r0, r1, r3
+000138f0 movw      r0, #0x1de
+000138f4 addne     r3, r3, #0x60
+000138f8 mla       r1, r0, r1, r3
+000138fc str       r3, [r2, #0x10]
+00013900 add       r0, r1, #0x20
+00013904 str       r1, [r2, #4]
+00013908 sub       r3, r0, r3
+0001390c str       r0, [r2, #0x14]
+00013910 asr       r3, r3, #1
+00013914 str       r3, [r2, #0x24]
+00013918 bx        lr
+0001391c andeq     r7, r8, r0, lsr #14
+00013920 andeq     r0, r0, r8, lsl #20
+
+libs/emu_sfc_orig.so retro_run 00014dd8 bytes=208
+00014dd8 push      {r4, r5, lr}
+00014ddc sub       sp, sp, #0xc
+00014de0 ldr       r4, [pc, #0xa8] ; literal=0x8a494
+00014de4 bl        #0x10f90 ; S9xMainLoop@plt
+00014de8 add       r4, pc, r4 ; base=0x9f284
+00014dec ldr       r5, [pc, #0xa0] ; literal=0x86200
+00014df0 ldr       r1, [r4, #0x14]
+00014df4 ldr       r3, [r4, #0x10]
+00014df8 add       r5, pc, r5 ; base=0x9b000
+00014dfc add       r1, r1, r3
+00014e00 cmp       r1, #0x200
+00014e04 str       r1, [r4, #0x14]
+00014e08 bgt       #0x14e60 ; branch
+00014e0c ldr       r3, [pc, #0x84] ; literal=0x678
+00014e10 ldr       r4, [r5, r3] ; GOT -> IPPU
+00014e14 ldrb      r3, [r4, #3]
+00014e18 cmp       r3, #0
+00014e1c moveq     r3, #1
+00014e20 strbeq    r3, [r4, #3]
+00014e24 beq       #0x14e58 ; branch
+00014e28 ldr       r1, [pc, #0x6c] ; literal=0xa08
+00014e2c ldr       r3, [pc, #0x6c] ; literal=0x8a444
+00014e30 ldr       r2, [r4, #0x2c]
+00014e34 ldr       r0, [r5, r1] ; GOT -> GFX
+00014e38 add       r3, pc, r3 ; base=0x9f284
+00014e3c ldr       r1, [r4, #0x30]
+00014e40 ldr       r5, [r3, #8]
+00014e44 ldr       r3, [r0, #0x20]
+00014e48 ldr       r0, [r0, #0x10]
+00014e4c blx       r5
+00014e50 mov       r3, #0
+00014e54 strb      r3, [r4, #3]
+00014e58 add       sp, sp, #0xc
+00014e5c pop       {r4, r5, pc}
+00014e60 ldr       r0, [pc, #0x3c] ; literal=0x8b440
+00014e64 lsl       r1, r1, #1
+00014e68 add       r0, pc, r0 ; base=0xa02b0
+00014e6c str       r0, [sp, #4]
+00014e70 bl        #0x10f78 ; S9xMixSamples@plt
+00014e74 ldr       r3, [r4, #4]
+00014e78 ldr       r0, [sp, #4]
+00014e7c ldr       r1, [r4, #0x14]
+00014e80 blx       r3
+00014e84 mov       r3, #0
+00014e88 str       r3, [r4, #0x14]
+00014e8c b         #0x14e0c ; branch
+00014e90 muleq     r8, r4, r4
+00014e94 andeq     r6, r8, r0, lsl #4
+00014e98 andeq     r0, r0, r8, ror r6
+00014e9c andeq     r0, r0, r8, lsl #20
+00014ea0 andeq     sl, r8, r4, asr #8
+00014ea4 andeq     fp, r8, r0, asr #8
+
+libs/emu_sfc.so retro_run 000026bc bytes=832
+000026bc ldr       r3, [pc, #0x304] ; literal=0x29d0
+000026c0 add       r3, pc, r3 ; base=0x5098
+000026c4 ldrb      r2, [r3, #0x10d]
+000026c8 cmp       r2, #0
+000026cc bxeq      lr
+000026d0 ldr       r2, [r3, #0x110]
+000026d4 ldr       r3, [r3, #0x114]
+000026d8 cmp       r2, #3
+000026dc sbcs      r1, r3, #0
+000026e0 push      {r4, r5, r6, r7, r8, lr}
+000026e4 sub       sp, sp, #0x18
+000026e8 blo       #0x2878 ; branch
+000026ec ldr       r2, [pc, #0x2d8] ; literal=0x29a0
+000026f0 add       r2, pc, r2 ; base=0x5098
+000026f4 ldrb      r3, [r2, #0x58]
+000026f8 cmp       r3, #0
+000026fc bne       #0x2728 ; branch
+00002700 ldr       r3, [r2, #0x5c]
+00002704 ldr       r1, [pc, #0x2c4] ; literal=0x2984
+00002708 cmp       r3, #0
+0000270c add       r1, pc, r1 ; base=0x5098
+00002710 ldreq     r3, [r2, #0x60]
+00002714 ldr       r2, [r1, #0x64]
+00002718 add       r3, r3, r2
+0000271c cmp       r3, #0x400
+00002720 strlo     r3, [r1, #0x64]
+00002724 bhs       #0x2888 ; branch
+00002728 mov       r2, #0
+0000272c ldr       r3, [pc, #0x2a0] ; literal=0x2954
+00002730 add       r5, sp, #0x10
+00002734 mov       r1, r5
+00002738 mov       r0, #1
+0000273c add       r3, pc, r3 ; base=0x5098
+00002740 str       r2, [r3, #0x50]
+00002744 bl        #0xb54 ; clock_gettime@plt
+00002748 subs      r6, r0, #0
+0000274c bne       #0x286c ; branch
+00002750 ldr       r8, [sp, #0x14]
+00002754 movw      r3, #0x4dd3
+00002758 movt      r3, #0x1062
+0000275c umull     r3, r8, r3, r8
+00002760 ldr       r2, [sp, #0x10]
+00002764 movw      r3, #0x4240
+00002768 lsr       r8, r8, #6
+0000276c movt      r3, #0xf
+00002770 smlal     r8, r6, r2, r3
+00002774 ldr       r7, [pc, #0x25c] ; literal=0x2918
+00002778 add       r7, pc, r7 ; base=0x5098
+0000277c ldr       r3, [r7, #0xac]
+00002780 blx       r3
+00002784 ldr       r4, [r7, #0x110]
+00002788 mov       r1, r5
+0000278c ldr       r5, [r7, #0x114]
+00002790 mov       r0, #1
+00002794 adds      r4, r4, #1
+00002798 adc       r5, r5, #0
+0000279c str       r4, [r7, #0x110]
+000027a0 str       r5, [r7, #0x114]
+000027a4 bl        #0xb54 ; clock_gettime@plt
+000027a8 cmp       r0, #0
+000027ac bne       #0x27e0 ; branch
+000027b0 ldr       r2, [sp, #0x14]
+000027b4 movw      r3, #0x4dd3
+000027b8 movt      r3, #0x1062
+000027bc umull     r3, r2, r3, r2
+000027c0 ldr       r1, [sp, #0x10]
+000027c4 movw      r3, #0x4240
+000027c8 movt      r3, #0xf
+000027cc lsr       r2, r2, #6
+000027d0 smlal     r2, r0, r1, r3
+000027d4 cmp       r2, r8
+000027d8 sbcs      r3, r0, r6
+000027dc bhs       #0x2898 ; branch
+000027e0 cmp       r4, #4
+000027e4 sbcs      r3, r5, #0
+000027e8 blo       #0x2838 ; branch
+000027ec movw      r2, #0x62fc
+000027f0 movw      r3, #0xc963
+000027f4 movt      r2, #0x2fc9
+000027f8 movt      r3, #0x962f
+000027fc mul       r2, r2, r4
+00002800 mla       r2, r3, r5, r2
+00002804 umull     r3, r1, r4, r3
+00002808 add       r2, r2, r1
+0000280c lsr       r1, r3, #3
+00002810 orr       r1, r1, r2, lsl #29
+00002814 lsr       r2, r2, #3
+00002818 orr       r2, r2, r3, lsl #29
+0000281c movw      r3, #0x6d3a
+00002820 movt      r3, #0xd3a0
+00002824 cmp       r3, r1
+00002828 movw      r3, #0x3a06
+0000282c movt      r3, #0x6d
+00002830 sbcs      r3, r3, r2
+00002834 blo       #0x2864 ; branch
+00002838 ldr       r1, [pc, #0x19c] ; literal=0x2848
+0000283c mov       r2, r4
+00002840 ldr       r0, [pc, #0x198] ; literal=0xc18
+00002844 mov       r3, r5
+00002848 add       r1, pc, r1 ; base=0x5098
+0000284c add       r0, pc, r0 ; base=0x346c
+00002850 ldrd      r4, r5, [r1, #0x10]
+00002854 strd      r4, r5, [sp, #8]
+00002858 ldrd      r4, r5, [r1, #0xd8]
+0000285c strd      r4, r5, [sp]
+00002860 bl        #0x1074 ; message
+00002864 add       sp, sp, #0x18
+00002868 pop       {r4, r5, r6, r7, r8, pc}
+0000286c mov       r8, #0
+00002870 mov       r6, r8
+00002874 b         #0x2774 ; branch
+00002878 ldr       r0, [pc, #0x164] ; literal=0xbd8
+0000287c add       r0, pc, r0 ; base=0x345c
+00002880 bl        #0x1074 ; message
+00002884 b         #0x26ec ; branch
+00002888 sub       r3, r3, #0x400
+0000288c mov       r2, #1
+00002890 str       r3, [r1, #0x64]
+00002894 b         #0x272c ; branch
+00002898 subs      r2, r2, r8
+0000289c movw      r1, #0x86a0
+000028a0 sbc       r0, r0, r6
+000028a4 subs      ip, r2, #1
+000028a8 movt      r1, #1
+000028ac sbc       r3, r0, #0
+000028b0 cmp       ip, r1
+000028b4 sbcs      r3, r3, #0
+000028b8 ldr       r3, [r7, #0x50]
+000028bc bhs       #0x27e0 ; branch
+000028c0 cmp       r3, #0
+000028c4 mov       r3, r7
+000028c8 vldr      d17, [pc, #0xe0]
+000028cc ldrne     r1, [r3, #0x68]!
+000028d0 ldreq     r1, [r3, #0x6c]!
+000028d4 cmp       r1, #0
+000028d8 movne     ip, #7
+000028dc umlalne   r2, r0, r1, ip
+000028e0 ldr       r1, [pc, #0x100] ; literal=0x27a8
+000028e4 lsrne     r2, r2, #3
+000028e8 add       r1, pc, r1 ; base=0x5098
+000028ec orrne     r2, r2, r0, lsl #29
+000028f0 vldr      d16, [r1, #0x38]
+000028f4 str       r2, [r3]
+000028f8 vcmpe.f64 d16, d17
+000028fc vmrs      apsr_nzcv, fpscr
+00002900 ble       #0x2964 ; branch
+00002904 vldr      d17, [pc, #0xac]
+00002908 vcmpe.f64 d16, d17
+0000290c vmrs      apsr_nzcv, fpscr
+00002910 bpl       #0x2964 ; branch
+00002914 vldr      d17, [pc, #0xa4]
+00002918 vdiv.f64  d7, d17, d16
+0000291c vcvt.u32.f64 s15, d7
+00002920 vmov      r1, s15
+00002924 ldr       r2, [pc, #0xc0] ; literal=0x2768
+00002928 add       r2, pc, r2 ; base=0x5098
+0000292c ldr       r3, [r2, #0x68]
+00002930 ldr       r2, [r2, #0x6c]
+00002934 cmp       r3, #0
+00002938 lsreq     r3, r2, #1
+0000293c cmp       r1, r3
+00002940 movhs     r0, r1
+00002944 movlo     r0, r3
+00002948 cmp       r0, r2
+0000294c blo       #0x296c ; branch
+00002950 ldr       r3, [pc, #0x98] ; literal=0x2738
+00002954 mov       r2, #0
+00002958 add       r3, pc, r3 ; base=0x5098
+0000295c str       r2, [r3, #0x60]
+00002960 b         #0x27e0 ; branch
+00002964 movw      r1, #0x3be5
+00002968 b         #0x2924 ; branch
+0000296c sub       r1, r2, r1
+00002970 sub       r2, r2, r3
+00002974 mov       r3, #0
+00002978 lsl       r0, r1, #0xa
+0000297c lsr       r1, r1, #0x16
+00002980 bl        #0xc2c ; __aeabi_uldivmod@plt
+00002984 cmp       r0, #0x200
+00002988 ldrls     r3, [pc, #0x64]
+0000298c addls     r3, pc, r3
+00002990 strls     r0, [r3, #0x60]
+00002994 bls       #0x27e0 ; branch
+00002998 ldr       r3, [pc, #0x58] ; literal=0x26f0
+0000299c mov       r2, #0x200
+000029a0 add       r3, pc, r3 ; base=0x5098
+000029a4 str       r2, [r3, #0x60]
+000029a8 b         #0x27e0 ; branch
+000029ac nop       
+000029b0 andeq     r0, r0, r0
+000029b4 submi     r0, r4, r0
+000029b8 andeq     r0, r0, r0
+000029bc subsmi    r8, r1, r0
+000029c0 andeq     r0, r0, r0
+000029c4 smlawbmi  ip, r0, r3, r1
+000029c8 ldrdeq    r2, r3, [r0], -r0
+000029cc andeq     r2, r0, r0, lsr #19
+000029d0 andeq     r2, r0, r4, lsl #19
+000029d4 andeq     r2, r0, r4, asr sb
+000029d8 andeq     r2, r0, r8, lsl sb
+000029dc andeq     r2, r0, r8, asr #16
+000029e0 andeq     r0, r0, r8, lsl ip
+000029e4 ldrdeq    r0, r1, [r0], -r8
+000029e8 andeq     r2, r0, r8, lsr #15
+000029ec andeq     r2, r0, r8, ror #14
+000029f0 andeq     r2, r0, r8, lsr r7
+000029f4 andeq     r2, r0, r4, lsl #14
+000029f8 strdeq    r2, r3, [r0], -r0
+
+libs/emu_sfc_plus.so retro_run 00070b68 bytes=636
+00070b68 ldr       r3, [pc, #0x23c] ; literal=0xaa210
+00070b6c mov       r0, #0x11
+00070b70 push      {r4, r5, r6, r7, r8, lr}
+00070b74 sub       sp, sp, #8
+00070b78 add       r3, pc, r3 ; base=0x11ad90
+00070b7c mov       r4, #0
+00070b80 strb      r4, [sp, #3]
+00070b84 add       r1, sp, #3
+00070b88 ldr       r3, [r3, #0xc]
+00070b8c ldr       r5, [pc, #0x21c] ; literal=0xb460
+00070b90 blx       r3
+00070b94 cmp       r0, r4
+00070b98 add       r5, pc, r5 ; base=0x7c000
+00070b9c beq       #0x70bac ; branch
+00070ba0 ldrb      r3, [sp, #3]
+00070ba4 cmp       r3, r4
+00070ba8 bne       #0x70d80 ; branch
+00070bac ldr       r3, [pc, #0x200] ; literal=0xaa1cc
+00070bb0 mvn       r2, #0
+00070bb4 str       r2, [sp, #4]
+00070bb8 mov       r0, #0x2f
+00070bbc add       r3, pc, r3 ; base=0x11ad90
+00070bc0 add       r1, sp, #4
+00070bc4 movt      r0, #1
+00070bc8 ldr       r3, [r3, #0xc]
+00070bcc blx       r3
+00070bd0 subs      r4, r0, #0
+00070bd4 beq       #0x70d14 ; branch
+00070bd8 ldr       r3, [sp, #4]
+00070bdc ldr       r2, [pc, #0x1d4] ; literal=0x12c
+00070be0 ubfx      r4, r3, #3, #1
+00070be4 ldr       r6, [r5, r2] ; GOT -> IPPU
+00070be8 and       r2, r3, #1
+00070bec eor       r3, r3, #2
+00070bf0 ubfx      r0, r3, #1, #1
+00070bf4 orr       r0, r4, r0
+00070bf8 strb      r2, [r6, #3]
+00070bfc bl        #0x7734c ; S9xSetSoundMute
+00070c00 ldr       r3, [pc, #0x1b4] ; literal=0xaa180
+00070c04 ldr       r2, [pc, #0x1b4] ; literal=0x210
+00070c08 add       r3, pc, r3 ; base=0x11ad90
+00070c0c ldr       r2, [r5, r2] ; GOT -> Settings
+00070c10 strb      r4, [r2, #0x70]
+00070c14 ldr       r2, [r3, #0x10]
+00070c18 cmp       r2, #0
+00070c1c beq       #0x70c2c ; branch
+00070c20 ldrb      r1, [r3]
+00070c24 cmp       r1, #0
+00070c28 bne       #0x70d2c ; branch
+00070c2c ldr       r4, [pc, #0x190] ; literal=0xaa158
+00070c30 add       r4, pc, r4 ; base=0x11ad90
+00070c34 ldrb      r3, [r4, #0x1c]
+00070c38 cmp       r3, #0
+00070c3c beq       #0x70c58 ; branch
+00070c40 ldr       r3, [r4, #0xc]
+00070c44 add       r1, r4, #0x18
+00070c48 mov       r0, #0x3f
+00070c4c blx       r3
+00070c50 mov       r3, #0
+00070c54 strb      r3, [r4, #0x1c]
+00070c58 ldr       r4, [pc, #0x168] ; literal=0xaa128
+00070c5c ldr       r8, [pc, #0x168] ; literal=0xaa124
+00070c60 add       r4, pc, r4 ; base=0x11ad90
+00070c64 add       r8, pc, r8 ; base=0x11ad90
+00070c68 ldr       r3, [r4, #0x3c]
+00070c6c blx       r3
+00070c70 bl        #0xd82c ; S9xMainLoop
+00070c74 ldrb      r0, [r6, #3]
+00070c78 ldr       r3, [pc, #0x150] ; literal=0x590
+00070c7c ldr       r4, [r4, #0x34]
+00070c80 cmp       r0, #0
+00070c84 ldrne     r0, [r5, r3]
+00070c88 ldreq     r3, [r5, r3]
+00070c8c ldrne     r2, [r6, #0x2c]
+00070c90 ldrne     r1, [r6, #0x30]
+00070c94 ldrne     r3, [r0, #0x20]
+00070c98 ldreq     r2, [r6, #0x2c]
+00070c9c ldreq     r1, [r6, #0x30]
+00070ca0 ldrne     r0, [r0, #0x10]
+00070ca4 ldreq     r3, [r3, #0x20]
+00070ca8 blx       r4
+00070cac bl        #0x6fbec ; S9xAudioCallback
+00070cb0 ldr       r5, [r8, #0x24]
+00070cb4 ldr       r6, [r8, #0x28]
+00070cb8 lsrs      r5, r5, #1
+00070cbc beq       #0x70cfc ; branch
+00070cc0 ldr       r7, [pc, #0x10c] ; literal=0xffa8
+00070cc4 add       r7, pc, r7 ; base=0x80c74
+00070cc8 ldr       r4, [r7]
+00070ccc mov       r0, r6
+00070cd0 ldr       r3, [r8, #0x38]
+00070cd4 cmp       r5, r4
+00070cd8 movlo     r4, r5
+00070cdc mov       r1, r4
+00070ce0 add       r6, r6, r4, lsl #2
+00070ce4 blx       r3
+00070ce8 cmp       r0, #0
+00070cec cmpne     r4, r0
+00070cf0 strhi     r0, [r7]
+00070cf4 subs      r5, r5, r4
+00070cf8 bne       #0x70cc8 ; branch
+00070cfc ldr       r3, [pc, #0xd4] ; literal=0xaa084
+00070d00 mov       r2, #0
+00070d04 add       r3, pc, r3 ; base=0x11ad90
+00070d08 str       r2, [r3, #0x24]
+00070d0c add       sp, sp, #8
+00070d10 pop       {r4, r5, r6, r7, r8, pc}
+00070d14 ldr       r3, [pc, #0x9c] ; literal=0x12c
+00070d18 mov       r2, #1
+00070d1c ldr       r6, [r5, r3]
+00070d20 strb      r2, [r6, #3]
+00070d24 bl        #0x7734c ; S9xSetSoundMute
+00070d28 b         #0x70c00 ; branch
+00070d2c ldrb      r1, [r6, #3]
+00070d30 cmp       r1, #0
+00070d34 beq       #0x70c2c ; branch
+00070d38 cmp       r2, #1
+00070d3c beq       #0x70d8c ; branch
+00070d40 cmp       r2, #2
+00070d44 bne       #0x70d98 ; branch
+00070d48 ldr       r2, [r3, #4]
+00070d4c ldr       r3, [r3, #0x2c]
+00070d50 cmp       r2, r3
+00070d54 bhs       #0x70d98 ; branch
+00070d58 ldr       r2, [pc, #0x7c] ; literal=0xaa02c
+00070d5c add       r2, pc, r2 ; base=0x11ad90
+00070d60 ldrh      r3, [r2, #0x46]
+00070d64 cmp       r3, #0x1d
+00070d68 movls     r1, #0
+00070d6c addls     r3, r3, #1
+00070d70 strbls    r1, [r6, #3]
+00070d74 movhi     r3, #0
+00070d78 strh      r3, [r2, #0x46]
+00070d7c b         #0x70c2c ; branch
+00070d80 mov       r0, r4
+00070d84 bl        #0x6fcc8 ; check_variables
+00070d88 b         #0x70bac ; branch
+00070d8c ldrb      r3, [r3, #8]
+00070d90 cmp       r3, #0
+00070d94 bne       #0x70d58 ; branch
+00070d98 ldr       r3, [pc, #0x40] ; literal=0xa9fe8
+00070d9c mov       r2, #0
+00070da0 add       r3, pc, r3 ; base=0x11ad90
+00070da4 strh      r2, [r3, #0x46]
+00070da8 b         #0x70c2c ; branch
+00070dac andeq     sl, sl, r0, lsl r2
+00070db0 andeq     fp, r0, r0, ror #8
+00070db4 andeq     sl, sl, ip, asr #3
+00070db8 andeq     r0, r0, ip, lsr #2
+00070dbc andeq     sl, sl, r0, lsl #3
+00070dc0 andeq     r0, r0, r0, lsl r2
+00070dc4 andeq     sl, sl, r8, asr r1
+00070dc8 andeq     sl, sl, r8, lsr #2
+00070dcc andeq     sl, sl, r4, lsr #2
+00070dd0 muleq     r0, r0, r5
+00070dd4 andeq     pc, r0, r8, lsr #31
+00070dd8 andeq     sl, sl, r4, lsl #1
+00070ddc andeq     sl, sl, ip, lsr #32
+00070de0 andeq     sb, sl, r8, ror #31

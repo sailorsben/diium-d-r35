@@ -1,0 +1,1843 @@
+
+run_process.constprop.0 0xa6378
+000a6378 ldr       r3, [pc, #0x40]
+000a637c push      {r4, r5, r6, lr}
+000a6380 mov       r5, r0
+000a6384 add       r3, pc, r3
+000a6388 mov       r1, r5
+000a638c ldr       r0, [r3]
+000a6390 bl        #0x12010 ; dlsym@plt
+000a6394 subs      r4, r0, #0
+000a6398 beq       #0xa63a8
+000a639c blx       r4
+000a63a0 mov       r0, #1
+000a63a4 pop       {r4, r5, r6, pc}
+000a63a8 ldr       r0, [pc, #0x14]
+000a63ac mov       r1, r5
+000a63b0 add       r0, pc, r0
+000a63b4 bl        #0x11be4 ; printf@plt
+000a63b8 mov       r0, r4
+000a63bc pop       {r4, r5, r6, pc}
+000a63c0 andseq    r1, r1, ip, lsl lr
+000a63c4 andeq     r4, ip, r4, lsl sb
+
+EmuExtend_Load 0xa54c0
+000a54c0 push      {r4, r5, r6, r7, r8, lr}
+000a54c4 mov       r6, r1
+000a54c8 ldr       r4, [pc, #0x1cc]
+000a54cc mov       r7, r0
+000a54d0 bl        #0x12638 ; InitFrameflash
+000a54d4 add       r4, pc, r4
+000a54d8 mov       r3, #0x140
+000a54dc ldr       r2, [pc, #0x1bc]
+000a54e0 mov       ip, #0xf0
+000a54e4 ldr       r1, [pc, #0x1b8]
+000a54e8 mov       r0, #0
+000a54ec ldr       lr, [r4, r2]
+000a54f0 ldr       r2, [pc, #0x1b0]
+000a54f4 str       r3, [lr]
+000a54f8 ldr       lr, [r4, r1]
+000a54fc ldr       r1, [pc, #0x1a8]
+000a5500 str       ip, [lr]
+000a5504 ldr       lr, [r4, r2]
+000a5508 ldr       r2, [pc, #0x1a0]
+000a550c str       r3, [lr]
+000a5510 ldr       lr, [r4, r1]
+000a5514 ldr       r1, [pc, #0x198]
+000a5518 str       ip, [lr]
+000a551c ldr       ip, [r4, r2]
+000a5520 ldr       r2, [pc, #0x190]
+000a5524 str       r3, [ip]
+000a5528 ldr       r3, [pc, #0x18c]
+000a552c ldr       r1, [r4, r1]
+000a5530 str       r0, [r1]
+000a5534 ldr       r5, [r4, r3]
+000a5538 ldr       r1, [r4, r2]
+000a553c mov       r0, r5
+000a5540 bl        #0x11bfc ; stpcpy@plt
+000a5544 ldr       ip, [pc, #0x174]
+000a5548 mov       r3, r0
+000a554c add       ip, pc, ip string=retro/libs/
+000a5550 ldm       ip!, {r0, r1, r2}
+000a5554 str       r0, [r3]
+000a5558 add       r0, r3, #0xb
+000a555c str       r1, [r3, #4]
+000a5560 mov       r1, r6
+000a5564 str       r2, [r3, #8]
+000a5568 bl        #0x11d64 ; strcpy@plt
+000a556c mov       r0, r5
+000a5570 bl        #0xa3fb8 ; Load_Proc1
+000a5574 cmp       r0, #0
+000a5578 bne       #0xa5584
+000a557c mov       r0, #0
+000a5580 pop       {r4, r5, r6, r7, r8, pc}
+000a5584 mov       r1, r7
+000a5588 mov       r0, r5
+000a558c bl        #0x11d64 ; strcpy@plt
+000a5590 ldr       r3, [pc, #0x12c]
+000a5594 ldr       r3, [r4, r3]
+000a5598 ldr       r3, [r3]
+000a559c cmp       r3, #0
+000a55a0 beq       #0xa55dc
+000a55a4 ldr       r6, [pc, #0x11c]
+000a55a8 ldr       r3, [pc, #0x11c]
+000a55ac add       r6, pc, r6 string=retro_set_progress_callback
+000a55b0 ldr       r1, [r4, r3]
+000a55b4 mov       r0, r6
+000a55b8 bl        #0xa3724 ; run_process symbol=retro_set_progress_callback
+000a55bc cmp       r0, #0
+000a55c0 beq       #0xa557c
+000a55c4 ldr       r3, [pc, #0x104]
+000a55c8 mov       r0, r6
+000a55cc ldr       r1, [r4, r3]
+000a55d0 bl        #0xa3724 ; run_process symbol=retro_set_progress_callback
+000a55d4 cmp       r0, #0
+000a55d8 beq       #0xa557c
+000a55dc ldr       r3, [pc, #0xf0]
+000a55e0 mov       r1, r5
+000a55e4 ldr       r0, [pc, #0xec]
+000a55e8 mov       r7, #0
+000a55ec ldr       r6, [r4, r3]
+000a55f0 add       r0, pc, r0
+000a55f4 stm       r6, {r5, r7}
+000a55f8 str       r7, [r6, #8]
+000a55fc bl        #0x11be4 ; printf@plt
+000a5600 ldr       r3, [pc, #0xd4]
+000a5604 mov       r0, #0
+000a5608 mov       r1, #0
+000a560c ldr       r2, [r4, r3]
+000a5610 ldr       r3, [pc, #0xc8]
+000a5614 strd      r0, r1, [r2]
+000a5618 ldr       r1, [pc, #0xc4]
+000a561c ldr       r3, [r4, r3]
+000a5620 add       r1, pc, r1 string=retro_load_game
+000a5624 ldr       r0, [r3]
+000a5628 bl        #0x12010 ; dlsym@plt symbol=retro_load_game
+000a562c subs      r5, r0, #0
+000a5630 beq       #0xa5688
+000a5634 mov       r0, r6
+000a5638 blx       r5
+000a563c cmp       r0, #0
+000a5640 bne       #0xa564c
+000a5644 mov       r0, #1
+000a5648 pop       {r4, r5, r6, r7, r8, pc}
+000a564c ldr       r0, [pc, #0x94]
+000a5650 mov       r1, r7
+000a5654 add       r0, pc, r0 string=retro_set_progress_callback
+000a5658 bl        #0xa3724 ; run_process symbol=retro_set_progress_callback
+000a565c ldr       r3, [pc, #0x88]
+000a5660 ldr       r4, [r4, r3]
+000a5664 ldr       r0, [r4]
+000a5668 cmp       r0, #0
+000a566c bne       #0xa567c
+000a5670 bl        #0xa426c ; Load_Proc2
+000a5674 mov       r0, #0
+000a5678 pop       {r4, r5, r6, r7, r8, pc}
+000a567c bl        #0x164d58 ; gpChunkMemFree
+000a5680 str       r7, [r4]
+000a5684 b         #0xa5670 ; None
+000a5688 ldr       r0, [pc, #0x60]
+000a568c add       r0, pc, r0 string=find retro_load_game process fail 
+000a5690 bl        #0x11c20 ; puts@plt
+000a5694 mov       r0, r5
+000a5698 pop       {r4, r5, r6, r7, r8, pc}
+000a569c andeq     r3, pc, r4, lsr #22
+000a56a0 strdeq    r0, r1, [r0], -ip
+000a56a4 strdeq    r0, r1, [r0], -r0
+000a56a8 andeq     r0, r0, r4, lsl #5
+000a56ac andeq     r0, r0, r0, asr #7
+000a56b0 ldrdeq    r0, r1, [r0], -r4
+000a56b4 andeq     r0, r0, r4, asr r2
+000a56b8 andeq     r0, r0, r4, ror r2
+000a56bc strheq    r0, [r0], -r0
+000a56c0 andeq     r5, ip, ip, asr #16
+000a56c4 strdeq    r0, r1, [r0], -r0
+000a56c8 andeq     r5, ip, ip, asr #20
+000a56cc andeq     r0, r0, ip, ror #3
+000a56d0 andeq     r0, r0, r8, lsr #8
+000a56d4 muleq     r0, r8, r3
+000a56d8 andeq     r5, ip, r8, asr #20
+000a56dc andeq     r0, r0, r4, asr #6
+000a56e0 andeq     r0, r0, r0, asr r2
+000a56e4 andeq     r5, ip, r0, lsl sb
+000a56e8 andeq     r5, ip, r4, lsr #19
+000a56ec strheq    r0, [r0], -ip
+000a56f0 strheq    r5, [ip], -ip
+
+FBA_Load 0xa5200
+000a5200 ldr       ip, [pc, #0x258]
+000a5204 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+000a5208 mov       fp, r0
+000a520c add       ip, pc, ip
+000a5210 ldr       r8, [pc, #0x24c]
+000a5214 add       ip, ip, #0x4d0
+000a5218 vpush     {d8}
+000a521c ldm       ip!, {r0, r1, r2, r3}
+000a5220 add       r8, pc, r8
+000a5224 sub       sp, sp, #0x124
+000a5228 ldr       r4, [pc, #0x238]
+000a522c add       lr, sp, #8
+000a5230 ldr       r5, [pc, #0x234]
+000a5234 add       r6, sp, #0xc
+000a5238 stm       lr!, {r0, r1, r2, r3}
+000a523c ldm       ip, {r0, r1}
+000a5240 ldr       r3, [pc, #0x228]
+000a5244 stm       lr, {r0, r1}
+000a5248 ldr       r0, [r8, r4]
+000a524c mov       r1, fp
+000a5250 add       r3, pc, r3
+000a5254 add       r4, sp, #0x20
+000a5258 str       r3, [sp, #4]
+000a525c ldr       sl, [pc, #0x210]
+000a5260 str       r0, [sp]
+000a5264 bl        #0x11d64 ; strcpy@plt
+000a5268 ldr       r2, [pc, #0x208]
+000a526c ldr       r3, [pc, #0x208]
+000a5270 vmov.i64  d8, #0
+000a5274 add       r5, pc, r5 string=emu_neogeo.so
+000a5278 add       sl, pc, sl string=retro/libs/
+000a527c ldr       sb, [r8, r2]
+000a5280 ldr       r7, [r8, r3]
+000a5284 b         #0xa52e4 ; None
+000a5288 ldr       r1, [pc, #0x1f0]
+000a528c add       r1, pc, r1 string=retro_is_support
+000a5290 bl        #0x12010 ; dlsym@plt symbol=retro_is_support
+000a5294 ldr       r2, [pc, #0x1e8]
+000a5298 cmp       r0, #0
+000a529c mov       r3, r0
+000a52a0 ldr       r2, [r8, r2]
+000a52a4 str       r0, [r2]
+000a52a8 beq       #0xa52bc
+000a52ac mov       r0, fp
+000a52b0 blx       r3
+000a52b4 cmp       r0, #0
+000a52b8 bge       #0xa5360
+000a52bc ldr       r0, [pc, #0x1c4]
+000a52c0 mov       r1, r4
+000a52c4 add       r0, pc, r0
+000a52c8 bl        #0x11be4 ; printf@plt
+000a52cc ldr       r0, [r7]
+000a52d0 bl        #0x11c14 ; dlclose@plt
+000a52d4 ldr       r5, [r6], #4
+000a52d8 ldrb      r2, [r5]
+000a52dc cmp       r2, #0
+000a52e0 beq       #0xa5350
+000a52e4 mov       r1, sb
+000a52e8 mov       r0, r4
+000a52ec bl        #0x11bfc ; stpcpy@plt
+000a52f0 mov       lr, sl
+000a52f4 mov       ip, r0
+000a52f8 ldm       lr!, {r0, r1, r2}
+000a52fc str       r0, [ip]
+000a5300 add       r0, ip, #0xb
+000a5304 str       r1, [ip, #4]
+000a5308 mov       r1, r5
+000a530c str       r2, [ip, #8]
+000a5310 bl        #0x11d64 ; strcpy@plt
+000a5314 mov       r1, #2
+000a5318 mov       r0, r4
+000a531c bl        #0x11d34 ; dlopen@plt
+000a5320 str       r0, [r7]
+000a5324 cmp       r0, #0
+000a5328 bne       #0xa5288
+000a532c bl        #0x11b3c ; dlerror@plt
+000a5330 mov       r2, r0
+000a5334 mov       r1, r4
+000a5338 ldr       r0, [sp, #4]
+000a533c bl        #0x11be4 ; printf@plt
+000a5340 ldr       r5, [r6], #4
+000a5344 ldrb      r2, [r5]
+000a5348 cmp       r2, #0
+000a534c bne       #0xa52e4
+000a5350 mov       r0, #0
+000a5354 add       sp, sp, #0x124
+000a5358 vpop      {d8}
+000a535c pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+000a5360 ldr       r0, [pc, #0x124]
+000a5364 mov       r1, r4
+000a5368 ldr       r2, [sp]
+000a536c add       r0, pc, r0
+000a5370 bl        #0x11be4 ; printf@plt
+000a5374 ldr       r0, [pc, #0x114]
+000a5378 add       r0, pc, r0
+000a537c bl        #0xa3fb8 ; Load_Proc1
+000a5380 cmp       r0, #0
+000a5384 beq       #0xa52bc
+000a5388 ldr       r3, [pc, #0x104]
+000a538c ldr       r3, [r8, r3]
+000a5390 ldr       r3, [r3]
+000a5394 cmp       r3, #0
+000a5398 beq       #0xa5424
+000a539c ldr       r3, [pc, #0xf4]
+000a53a0 ldr       r0, [pc, #0xf4]
+000a53a4 ldr       r1, [r8, r3]
+000a53a8 add       r0, pc, r0 string=retro_set_progress_callback
+000a53ac bl        #0xa3724 ; run_process symbol=retro_set_progress_callback
+000a53b0 ldr       r3, [pc, #0xe8]
+000a53b4 mov       r0, #0
+000a53b8 ldr       r2, [pc, #0xe4]
+000a53bc ldr       r5, [r8, r3]
+000a53c0 ldr       r3, [sp]
+000a53c4 ldr       r1, [pc, #0xdc]
+000a53c8 str       r0, [r5, #4]
+000a53cc str       r0, [r5, #8]
+000a53d0 str       r3, [r5]
+000a53d4 ldr       r2, [r8, r2]
+000a53d8 add       r1, pc, r1 string=retro_load_game
+000a53dc ldr       r0, [r7]
+000a53e0 vstr      d8, [r2]
+000a53e4 bl        #0x12010 ; dlsym@plt symbol=retro_load_game
+000a53e8 subs      r2, r0, #0
+000a53ec beq       #0xa5400
+000a53f0 mov       r0, r5
+000a53f4 blx       r2
+000a53f8 cmp       r0, #0
+000a53fc bne       #0xa543c
+000a5400 ldr       r0, [pc, #0xa4]
+000a5404 mov       r1, #0
+000a5408 add       r0, pc, r0 string=retro_unload_game
+000a540c bl        #0xa3724 ; run_process symbol=retro_unload_game
+000a5410 ldr       r0, [pc, #0x98]
+000a5414 mov       r1, #0
+000a5418 add       r0, pc, r0 string=retro_deinit
+000a541c bl        #0xa3724 ; run_process symbol=retro_deinit
+000a5420 b         #0xa52bc ; None
+000a5424 ldr       r3, [pc, #0x88]
+000a5428 ldr       r0, [pc, #0x88]
+000a542c ldr       r1, [r8, r3]
+000a5430 add       r0, pc, r0 string=retro_set_progress_callback
+000a5434 bl        #0xa3724 ; run_process symbol=retro_set_progress_callback
+000a5438 b         #0xa53b0 ; None
+000a543c ldr       r0, [pc, #0x78]
+000a5440 mov       r1, r4
+000a5444 ldr       r2, [sp]
+000a5448 add       r0, pc, r0
+000a544c bl        #0x11be4 ; printf@plt
+000a5450 bl        #0xa426c ; Load_Proc2
+000a5454 mov       r0, #0xff00
+000a5458 bl        #0xa668c ; video_driver_set_rotation
+000a545c b         #0xa5350 ; None
+000a5460 ldrdeq    r5, r6, [pc], -r8
+000a5464 ldrdeq    r3, r4, [pc], -r8
+000a5468 strheq    r0, [r0], -r0
+000a546c andeq     r5, ip, ip, ror #17
+000a5470 andeq     r5, ip, r4, lsl #23
+000a5474 andeq     r5, ip, r0, lsr #22
+000a5478 andeq     r0, r0, r4, ror r2
+000a547c andeq     r0, r0, r0, asr r2
+000a5480 andeq     r5, ip, r4, lsr #22
+000a5484 andeq     r0, r0, r8, ror #9
+000a5488 andeq     r5, ip, r4, ror #26
+000a548c andeq     r5, ip, ip, ror ip
+000a5490 andeq     pc, fp, r0, lsl #28
+000a5494 strdeq    r0, r1, [r0], -r0
+000a5498 andeq     r0, r0, ip, ror #3
+000a549c andeq     r5, ip, r0, asr ip
+000a54a0 muleq     r0, r8, r3
+000a54a4 andeq     r0, r0, r4, asr #6
+000a54a8 andeq     r5, ip, r8, asr fp
+000a54ac strdeq    r5, r6, [ip], -r0
+000a54b0 strdeq    r5, r6, [ip], -r4
+000a54b4 andeq     r0, r0, r8, lsr #8
+000a54b8 andeq     r5, ip, r8, asr #23
+000a54bc andeq     r5, ip, ip, asr #23
+
+run_process 0xa3724
+000a3724 push      {r4, r5, r6, r7, r8, lr}
+000a3728 mov       r7, r0
+000a372c ldr       r5, [pc, #0x6c]
+000a3730 mov       r6, r1
+000a3734 ldr       r3, [pc, #0x68]
+000a3738 mov       r1, r7
+000a373c add       r5, pc, r5
+000a3740 ldr       r3, [r5, r3]
+000a3744 ldr       r0, [r3]
+000a3748 bl        #0x12010 ; dlsym@plt
+000a374c ldr       r3, [pc, #0x54]
+000a3750 cmp       r0, #0
+000a3754 mov       r4, r0
+000a3758 ldr       r3, [r5, r3]
+000a375c str       r0, [r3]
+000a3760 beq       #0xa3788
+000a3764 cmp       r6, #0
+000a3768 beq       #0xa377c
+000a376c mov       r0, r6
+000a3770 blx       r4
+000a3774 mov       r0, #1
+000a3778 pop       {r4, r5, r6, r7, r8, pc}
+000a377c blx       r0
+000a3780 mov       r0, #1
+000a3784 pop       {r4, r5, r6, r7, r8, pc}
+000a3788 ldr       r0, [pc, #0x1c]
+000a378c mov       r1, r7
+000a3790 add       r0, pc, r0
+000a3794 bl        #0x11be4 ; printf@plt
+000a3798 mov       r0, r4
+000a379c pop       {r4, r5, r6, r7, r8, pc}
+000a37a0 strheq    r5, [pc], -ip
+000a37a4 andeq     r0, r0, r0, asr r2
+000a37a8 andeq     r0, r0, r0, lsr r3
+000a37ac andeq     r7, ip, r4, lsr r5
+
+load_state 0xa3bb0
+000a3bb0 push      {r4, r5, r6, lr}
+000a3bb4 mov       r2, r0
+000a3bb8 ldr       r4, [pc, #0xc0]
+000a3bbc ldr       r3, [pc, #0xc0]
+000a3bc0 add       r4, pc, r4
+000a3bc4 ldr       r3, [r4, r3]
+000a3bc8 ldrh      r3, [r3]
+000a3bcc cmp       r3, #0x10
+000a3bd0 beq       #0xa3c08
+000a3bd4 cmp       r3, #4
+000a3bd8 beq       #0xa3c08
+000a3bdc cmp       r3, #8
+000a3be0 beq       #0xa3c14
+000a3be4 sub       r1, r3, #1
+000a3be8 cmp       r1, #1
+000a3bec bls       #0xa3c08
+000a3bf0 cmp       r3, #0x20
+000a3bf4 beq       #0xa3c08
+000a3bf8 cmp       r3, #0x80
+000a3bfc beq       #0xa3c08
+000a3c00 mov       r0, #0
+000a3c04 pop       {r4, r5, r6, pc}
+000a3c08 pop       {r4, r5, r6, lr}
+000a3c0c mov       r0, r2
+000a3c10 b         #0xa3944 ; retro_load_state
+000a3c14 ldr       r1, [pc, #0x6c]
+000a3c18 add       r1, pc, r1 string=rb
+000a3c1c bl        #0x11ce0 ; fopen@plt
+000a3c20 subs      r5, r0, #0
+000a3c24 beq       #0xa3c00
+000a3c28 ldr       r3, [pc, #0x5c]
+000a3c2c ldr       r1, [pc, #0x5c]
+000a3c30 ldr       r3, [r4, r3]
+000a3c34 add       r1, pc, r1 string=retro_unserialize
+000a3c38 ldr       r0, [r3]
+000a3c3c bl        #0x12010 ; dlsym@plt symbol=retro_unserialize
+000a3c40 ldr       r2, [pc, #0x4c]
+000a3c44 cmp       r0, #0
+000a3c48 mov       r3, r0
+000a3c4c ldr       r2, [r4, r2]
+000a3c50 str       r0, [r2]
+000a3c54 beq       #0xa3c70
+000a3c58 mov       r1, #0
+000a3c5c mov       r0, r5
+000a3c60 blx       r3
+000a3c64 mov       r0, r5
+000a3c68 bl        #0x11f20 ; fclose@plt
+000a3c6c b         #0xa3c00 ; None
+000a3c70 ldr       r0, [pc, #0x20]
+000a3c74 add       r0, pc, r0 string=find retro_unserialize process fail 
+000a3c78 bl        #0x11c20 ; puts@plt
+000a3c7c b         #0xa3c64 ; None
+000a3c80 andeq     r5, pc, r8, lsr r4
+000a3c84 andeq     r0, r0, r0, lsr #6
+000a3c88 andeq     r1, ip, ip, lsr #17
+000a3c8c andeq     r0, r0, r0, asr r2
+000a3c90 andeq     r7, ip, r8, lsr #2
+000a3c94 andeq     r0, r0, r8, ror #3
+000a3c98 strdeq    r7, r8, [ip], -ip
+
+InitDisplay 0xa63c8
+000a63c8 push      {r4, r5, r6, r7, r8, lr}
+000a63cc sub       sp, sp, #0x420
+000a63d0 ldr       r5, [pc, #0x218]
+000a63d4 add       r4, sp, #0x20
+000a63d8 ldr       r3, [pc, #0x214]
+000a63dc mov       r0, r4
+000a63e0 add       r5, pc, r5
+000a63e4 ldr       r1, [pc, #0x20c]
+000a63e8 ldr       r2, [r5, r3]
+000a63ec add       r1, pc, r1 string=%s/driver.so
+000a63f0 ldr       r6, [pc, #0x204]
+000a63f4 bl        #0x11f38 ; sprintf@plt
+000a63f8 mov       r0, r4
+000a63fc mov       r1, #2
+000a6400 add       r6, pc, r6
+000a6404 bl        #0x11d34 ; dlopen@plt
+000a6408 cmp       r0, #0
+000a640c str       r0, [r6]
+000a6410 beq       #0xa6578
+000a6414 ldr       r0, [pc, #0x1e4]
+000a6418 add       r0, pc, r0 string=open driver.so sucess
+000a641c bl        #0x11c20 ; puts@plt
+000a6420 ldr       r1, [pc, #0x1dc]
+000a6424 ldr       r0, [r6]
+000a6428 add       r1, pc, r1 string=video_driver_setting
+000a642c bl        #0x12010 ; dlsym@plt symbol=video_driver_setting
+000a6430 ldr       r2, [pc, #0x1d0]
+000a6434 cmp       r0, #0
+000a6438 mov       r3, r0
+000a643c ldr       r2, [r5, r2]
+000a6440 str       r0, [r2]
+000a6444 beq       #0xa659c
+000a6448 ldr       r2, [pc, #0x1bc]
+000a644c mov       r1, #1
+000a6450 str       r1, [sp, #8]
+000a6454 mov       ip, #0x500
+000a6458 str       r1, [sp, #0xc]
+000a645c mov       r0, #0x2d0
+000a6460 str       r1, [sp, #0x10]
+000a6464 add       r4, sp, #0x10
+000a6468 str       ip, [sp, #0x14]
+000a646c sub       r7, r4, #8
+000a6470 str       r0, [sp, #0x18]
+000a6474 mov       r0, r7
+000a6478 ldr       r2, [r5, r2]
+000a647c str       r2, [sp, #0x1c]
+000a6480 blx       r3
+000a6484 ldr       r0, [pc, #0x184]
+000a6488 add       r0, pc, r0 string=video_drivers_init
+000a648c bl        #0xa6378 ; run_process.constprop.0 symbol=video_drivers_init
+000a6490 cmp       r0, #0
+000a6494 bne       #0xa64a4
+000a6498 mov       r0, #0
+000a649c add       sp, sp, #0x420
+000a64a0 pop       {r4, r5, r6, r7, r8, pc}
+000a64a4 ldr       r8, [r6]
+000a64a8 ldr       r1, [pc, #0x164]
+000a64ac mov       r0, r8
+000a64b0 add       r1, pc, r1 string=video_driver_disp_frame
+000a64b4 bl        #0x12010 ; dlsym@plt symbol=video_driver_disp_frame
+000a64b8 ldr       r3, [pc, #0x158]
+000a64bc cmp       r0, #0
+000a64c0 ldr       r3, [r5, r3]
+000a64c4 str       r0, [r3]
+000a64c8 beq       #0xa65ac
+000a64cc ldr       r1, [pc, #0x148]
+000a64d0 mov       r0, r8
+000a64d4 add       r1, pc, r1 string=video_driver_getframe
+000a64d8 bl        #0x12010 ; dlsym@plt symbol=video_driver_getframe
+000a64dc ldr       r3, [pc, #0x13c]
+000a64e0 cmp       r0, #0
+000a64e4 ldr       r3, [r5, r3]
+000a64e8 str       r0, [r3]
+000a64ec beq       #0xa65cc
+000a64f0 ldr       r1, [pc, #0x12c]
+000a64f4 mov       r0, r8
+000a64f8 add       r1, pc, r1 string=video_driver_setmode
+000a64fc bl        #0x12010 ; dlsym@plt symbol=video_driver_setmode
+000a6500 ldr       r3, [pc, #0x120]
+000a6504 cmp       r0, #0
+000a6508 ldr       r3, [r5, r3]
+000a650c str       r0, [r3]
+000a6510 beq       #0xa65bc
+000a6514 ldr       r0, [pc, #0x110]
+000a6518 add       r0, pc, r0 string=find video_driver_setmode proc ok
+000a651c bl        #0x11c20 ; puts@plt
+000a6520 ldr       r3, [pc, #0x108]
+000a6524 ldr       r1, [pc, #0x108]
+000a6528 add       r3, pc, r3
+000a652c add       r1, pc, r1 string=video_driver_get_size
+000a6530 ldr       r0, [r3]
+000a6534 bl        #0x12010 ; dlsym@plt symbol=video_driver_get_size
+000a6538 ldr       r2, [pc, #0xf8]
+000a653c cmp       r0, #0
+000a6540 mov       r3, r0
+000a6544 ldr       r2, [r5, r2]
+000a6548 str       r0, [r2]
+000a654c beq       #0xa65e0
+000a6550 sub       r0, r4, #0xc
+000a6554 mov       r1, r7
+000a6558 blx       r3
+000a655c ldr       r3, [pc, #0xd8]
+000a6560 mov       r2, #1
+000a6564 mov       r0, r2
+000a6568 ldr       r3, [r5, r3]
+000a656c str       r2, [r3, #0x10]
+000a6570 add       sp, sp, #0x420
+000a6574 pop       {r4, r5, r6, r7, r8, pc}
+000a6578 mov       r4, r0
+000a657c bl        #0x11b3c ; dlerror@plt
+000a6580 mov       r1, r0
+000a6584 ldr       r0, [pc, #0xb4]
+000a6588 add       r0, pc, r0
+000a658c bl        #0x11be4 ; printf@plt
+000a6590 mov       r0, r4
+000a6594 add       sp, sp, #0x420
+000a6598 pop       {r4, r5, r6, r7, r8, pc}
+000a659c ldr       r0, [pc, #0xa0]
+000a65a0 add       r0, pc, r0 string=can't find video_driver_setting proc
+000a65a4 bl        #0x11c20 ; puts@plt
+000a65a8 b         #0xa6498 ; None
+000a65ac ldr       r0, [pc, #0x94]
+000a65b0 add       r0, pc, r0 string=can't find video_driver_disp_frame proc
+000a65b4 bl        #0x11c20 ; puts@plt
+000a65b8 b         #0xa6498 ; None
+000a65bc ldr       r0, [pc, #0x88]
+000a65c0 add       r0, pc, r0 string=can't find video_driver_setmode proc
+000a65c4 bl        #0x11c20 ; puts@plt
+000a65c8 b         #0xa6498 ; None
+000a65cc ldr       r0, [pc, #0x7c]
+000a65d0 add       r0, pc, r0 string=can't find video_driver_getframe proc
+000a65d4 bl        #0x11c20 ; puts@plt
+000a65d8 ldr       r8, [r6]
+000a65dc b         #0xa64f0 ; None
+000a65e0 ldr       r0, [pc, #0x6c]
+000a65e4 add       r0, pc, r0 string=can't find video_driver_get_size proc
+000a65e8 bl        #0x11c20 ; puts@plt
+000a65ec b         #0xa6498 ; None
+000a65f0 andeq     r2, pc, r8, lsl ip
+000a65f4 ldrdeq    r0, r1, [r0], -r0
+000a65f8 andeq     r4, ip, r0, lsr #29
+000a65fc andseq    r1, r1, r0, lsr #27
+000a6600 andeq     r4, ip, r4, lsl #29
+000a6604 andeq     r4, ip, ip, lsl #29
+000a6608 andeq     r0, r0, ip, lsr r4
+000a660c andeq     r0, r0, r8, lsr r2
+000a6610 andeq     r4, ip, ip, ror #28
+000a6614 andeq     r4, ip, r8, asr lr
+000a6618 andeq     r0, r0, r0, asr #6
+000a661c andeq     r4, ip, r4, ror lr
+000a6620 andeq     r0, r0, r8, lsl #10
+000a6624 muleq     ip, r0, lr
+000a6628 andeq     r0, r0, r0, ror r2
+000a662c strheq    r4, [ip], -r0
+000a6630 andseq    r1, r1, r8, ror ip
+000a6634 andeq     r4, ip, r0, asr #29
+000a6638 ldrdeq    r0, r1, [r0], -r8
+000a663c andeq     r0, r0, r0, lsr #5
+000a6640 andeq     r4, ip, r4, lsr #29
+000a6644 andeq     r4, ip, ip, lsr #26
+000a6648 andeq     r4, ip, r0, ror sp
+000a664c andeq     r4, ip, r0, ror #27
+000a6650 muleq     ip, r0, sp
+000a6654 andeq     r4, ip, r0, lsr #28
+
+Load_Proc0 0xa3d98
+000a3d98 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+000a3d9c mov       fp, r0
+000a3da0 ldr       r4, [pc, #0x1d8]
+000a3da4 sub       sp, sp, #0x22c
+000a3da8 ldr       r7, [pc, #0x1d4]
+000a3dac add       r8, sp, #0x10
+000a3db0 add       r4, pc, r4
+000a3db4 mov       r6, #0
+000a3db8 add       r7, pc, r7
+000a3dbc add       r4, r4, #0x4d0
+000a3dc0 ldr       sb, [pc, #0x1c0]
+000a3dc4 add       r5, sp, #0x14
+000a3dc8 ldm       r4!, {r0, r1, r2, r3}
+000a3dcc ldr       lr, [pc, #0x1b8]
+000a3dd0 stm       r8!, {r0, r1, r2, r3}
+000a3dd4 ldm       r4, {r0, r1}
+000a3dd8 ldr       r2, [pc, #0x1b0]
+000a3ddc add       r4, sp, #0x28
+000a3de0 stm       r8, {r0, r1}
+000a3de4 ldr       r3, [r7, sb]
+000a3de8 add       r2, pc, r2 string=retro/libs/
+000a3dec str       r3, [sp, #0xc]
+000a3df0 str       r6, [r3]
+000a3df4 ldr       r3, [pc, #0x198]
+000a3df8 str       r2, [sp, #4]
+000a3dfc ldr       ip, [pc, #0x194]
+000a3e00 ldr       r8, [r7, lr]
+000a3e04 ldr       sl, [pc, #0x190]
+000a3e08 add       r3, pc, r3
+000a3e0c ldr       sb, [pc, #0x18c]
+000a3e10 add       sl, pc, sl string=emu_neogeo.so
+000a3e14 ldr       r6, [r7, ip]
+000a3e18 str       r3, [sp, #8]
+000a3e1c mov       r3, r8
+000a3e20 add       sb, pc, sb
+000a3e24 mov       r8, sl
+000a3e28 mov       sl, r3
+000a3e2c b         #0xa3e74 ; None
+000a3e30 bl        #0x12010 ; dlsym@plt
+000a3e34 ldr       r2, [pc, #0x168]
+000a3e38 mov       r3, r0
+000a3e3c cmp       r3, #0
+000a3e40 mov       r0, fp
+000a3e44 ldr       r2, [r7, r2]
+000a3e48 str       r3, [r2]
+000a3e4c beq       #0xa3e5c
+000a3e50 blx       r3
+000a3e54 cmp       r0, #0
+000a3e58 bge       #0xa3f18
+000a3e5c ldr       r0, [r6]
+000a3e60 bl        #0x11c14 ; dlclose@plt
+000a3e64 ldr       r8, [r5], #4
+000a3e68 ldrb      r2, [r8]
+000a3e6c cmp       r2, #0
+000a3e70 beq       #0xa3ef4
+000a3e74 mov       r1, sl
+000a3e78 mov       r0, r4
+000a3e7c bl        #0x11bfc ; stpcpy@plt
+000a3e80 ldr       lr, [sp, #4]
+000a3e84 mov       ip, r0
+000a3e88 ldm       lr!, {r0, r1, r2}
+000a3e8c str       r0, [ip]
+000a3e90 add       r0, ip, #0xb
+000a3e94 str       r1, [ip, #4]
+000a3e98 mov       r1, r8
+000a3e9c str       r2, [ip, #8]
+000a3ea0 bl        #0x11d64 ; strcpy@plt
+000a3ea4 mov       r1, r4
+000a3ea8 mov       r0, sb
+000a3eac bl        #0x11be4 ; printf@plt
+000a3eb0 mov       r1, #2
+000a3eb4 mov       r0, r4
+000a3eb8 bl        #0x11d34 ; dlopen@plt
+000a3ebc ldr       r1, [pc, #0xe4]
+000a3ec0 cmp       r0, #0
+000a3ec4 str       r0, [r6]
+000a3ec8 add       r1, pc, r1 string=retro_is_support
+000a3ecc bne       #0xa3e30
+000a3ed0 bl        #0x11b3c ; dlerror@plt
+000a3ed4 mov       r2, r0
+000a3ed8 mov       r1, r4
+000a3edc ldr       r0, [sp, #8]
+000a3ee0 bl        #0x11be4 ; printf@plt
+000a3ee4 ldr       r8, [r5], #4
+000a3ee8 ldrb      r2, [r8]
+000a3eec cmp       r2, #0
+000a3ef0 bne       #0xa3e74
+000a3ef4 ldr       r0, [pc, #0xb0]
+000a3ef8 mvn       r3, #0
+000a3efc str       r3, [sp, #4]
+000a3f00 add       r0, pc, r0 string=no so support.
+000a3f04 bl        #0x11c20 ; puts@plt
+000a3f08 ldr       r3, [sp, #4]
+000a3f0c mov       r0, r3
+000a3f10 add       sp, sp, #0x22c
+000a3f14 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+000a3f18 str       r0, [sp, #4]
+000a3f1c add       r5, sp, #0x128
+000a3f20 mov       r1, fp
+000a3f24 mov       r0, r5
+000a3f28 mov       r2, #0x100
+000a3f2c bl        #0xa3c9c ; extract_basename
+000a3f30 ldr       r2, [pc, #0x78]
+000a3f34 mov       r1, #0
+000a3f38 mov       r0, r5
+000a3f3c ldr       r2, [r7, r2]
+000a3f40 str       r1, [r2]
+000a3f44 bl        #0xa3d1c ; IsNeoGeo
+000a3f48 ldr       r3, [sp, #4]
+000a3f4c cmp       r0, #0
+000a3f50 ldr       r0, [pc, #0x5c]
+000a3f54 movgt     r2, #1
+000a3f58 ldrgt     r1, [sp, #0xc]
+000a3f5c add       r0, pc, r0
+000a3f60 strgt     r2, [r1]
+000a3f64 mov       r1, r4
+000a3f68 str       r3, [sp, #4]
+000a3f6c bl        #0x11be4 ; printf@plt
+000a3f70 ldr       r3, [sp, #4]
+000a3f74 mov       r0, r3
+000a3f78 add       sp, sp, #0x22c
+000a3f7c pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+000a3f80 andeq     r6, pc, r4, lsr sl
+000a3f84 andeq     r5, pc, r0, asr #4
+000a3f88 strdeq    r0, r1, [r0], -ip
+000a3f8c andeq     r0, r0, r4, ror r2
+000a3f90 strheq    r6, [ip], -r0
+000a3f94 andeq     r6, ip, ip, asr #31
+000a3f98 andeq     r0, r0, r0, asr r2
+000a3f9c andeq     r6, ip, r0, asr sp
+000a3fa0 andeq     r6, ip, r4, lsl #31
+000a3fa4 andeq     r0, r0, r8, ror #9
+000a3fa8 andeq     r6, ip, r8, ror #29
+000a3fac andeq     r6, ip, r8, ror #29
+000a3fb0 andeq     r0, r0, r0, ror #3
+000a3fb4 andeq     r6, ip, r8, ror #28
+
+Load_Proc1 0xa3fb8
+000a3fb8 push      {r4, r5, r6, lr}
+000a3fbc mov       r6, r0
+000a3fc0 ldr       r4, [pc, #0x160]
+000a3fc4 bl        #0x892c4 ; InitKeyMapping0fEmuType
+000a3fc8 vmov.i32  q8, #0
+000a3fcc add       r4, pc, r4
+000a3fd0 mov       r3, #0
+000a3fd4 ldr       r2, [pc, #0x150]
+000a3fd8 ldr       r0, [pc, #0x150]
+000a3fdc ldr       r2, [r4, r2]
+000a3fe0 ldr       r1, [pc, #0x14c]
+000a3fe4 vst1.8    {d16, d17}, [r2]
+000a3fe8 ldr       r2, [pc, #0x148]
+000a3fec ldr       r0, [r4, r0]
+000a3ff0 str       r3, [r0]
+000a3ff4 ldr       r0, [r4, r1]
+000a3ff8 ldr       r1, [pc, #0x13c]
+000a3ffc str       r3, [r0]
+000a4000 ldr       r0, [r4, r2]
+000a4004 ldr       r2, [pc, #0x134]
+000a4008 str       r3, [r0]
+000a400c ldr       r1, [r4, r1]
+000a4010 str       r3, [r1]
+000a4014 ldr       r2, [r4, r2]
+000a4018 str       r3, [r2]
+000a401c ldrb      r3, [r6]
+000a4020 cmp       r3, #0
+000a4024 bne       #0xa40e4
+000a4028 ldr       r3, [pc, #0x114]
+000a402c ldr       r3, [r4, r3]
+000a4030 ldr       r5, [r3]
+000a4034 cmp       r5, #0
+000a4038 beq       #0xa4108
+000a403c ldr       r3, [pc, #0x104]
+000a4040 ldr       r0, [pc, #0x104]
+000a4044 ldr       r1, [r4, r3]
+000a4048 add       r0, pc, r0 string=retro_set_video_refresh
+000a404c bl        #0xa3724 ; run_process symbol=retro_set_video_refresh
+000a4050 cmp       r0, #0
+000a4054 bne       #0xa4060
+000a4058 mov       r0, #0
+000a405c pop       {r4, r5, r6, pc}
+000a4060 ldr       r3, [pc, #0xe8]
+000a4064 ldr       r0, [pc, #0xe8]
+000a4068 ldr       r1, [r4, r3]
+000a406c add       r0, pc, r0 string=retro_set_audio_sample_batch
+000a4070 bl        #0xa3724 ; run_process symbol=retro_set_audio_sample_batch
+000a4074 cmp       r0, #0
+000a4078 beq       #0xa4058
+000a407c ldr       r3, [pc, #0xd4]
+000a4080 ldr       r0, [pc, #0xd4]
+000a4084 ldr       r1, [r4, r3]
+000a4088 add       r0, pc, r0 string=retro_set_input_state
+000a408c bl        #0xa3724 ; run_process symbol=retro_set_input_state
+000a4090 cmp       r0, #0
+000a4094 beq       #0xa4058
+000a4098 ldr       r3, [pc, #0xc0]
+000a409c ldr       r0, [pc, #0xc0]
+000a40a0 ldr       r1, [r4, r3]
+000a40a4 add       r0, pc, r0 string=retro_set_environment
+000a40a8 bl        #0xa3724 ; run_process symbol=retro_set_environment
+000a40ac cmp       r0, #0
+000a40b0 beq       #0xa4058
+000a40b4 ldr       r3, [pc, #0xac]
+000a40b8 ldr       r0, [pc, #0xac]
+000a40bc ldr       r1, [r4, r3]
+000a40c0 add       r0, pc, r0 string=retro_set_input_poll
+000a40c4 bl        #0xa3724 ; run_process symbol=retro_set_input_poll
+000a40c8 ldr       r0, [pc, #0xa0]
+000a40cc mov       r1, #0
+000a40d0 add       r0, pc, r0 string=retro_init
+000a40d4 bl        #0xa3724 ; run_process symbol=retro_init
+000a40d8 subs      r0, r0, #0
+000a40dc movne     r0, #1
+000a40e0 pop       {r4, r5, r6, pc}
+000a40e4 mov       r1, #2
+000a40e8 mov       r0, r6
+000a40ec bl        #0x11d34 ; dlopen@plt
+000a40f0 ldr       r3, [pc, #0x4c]
+000a40f4 mov       r5, r0
+000a40f8 cmp       r5, #0
+000a40fc ldr       r3, [r4, r3]
+000a4100 str       r0, [r3]
+000a4104 bne       #0xa403c
+000a4108 bl        #0x11b3c ; dlerror@plt
+000a410c mov       r2, r0
+000a4110 mov       r1, r6
+000a4114 ldr       r0, [pc, #0x58]
+000a4118 add       r0, pc, r0
+000a411c bl        #0x11be4 ; printf@plt
+000a4120 mov       r0, r5
+000a4124 pop       {r4, r5, r6, pc}
+000a4128 andeq     r5, pc, ip, lsr #32
+000a412c andeq     r0, r0, r4, asr #10
+000a4130 andeq     r0, r0, r0, lsr r4
+000a4134 andeq     r0, r0, r0, asr #10
+000a4138 andeq     r0, r0, ip, lsl #9
+000a413c ldrdeq    r0, r1, [r0], -ip
+000a4140 ldrdeq    r0, r1, [r0], -r0
+000a4144 andeq     r0, r0, r0, asr r2
+000a4148 andeq     r0, r0, r4, lsr #9
+000a414c strheq    r6, [ip], -r0
+000a4150 strheq    r0, [r0], -r0
+000a4154 andeq     r6, ip, r4, lsr #27
+000a4158 andeq     r0, r0, r0, lsl #5
+000a415c andeq     r6, ip, r8, lsr #27
+000a4160 andeq     r0, r0, r8, lsl r3
+000a4164 andeq     r6, ip, r4, lsr #27
+000a4168 andeq     r0, r0, r0, asr #8
+000a416c andeq     r6, ip, r0, lsr #27
+000a4170 andeq     r6, ip, r8, lsr #27
+000a4174 strheq    r6, [ip], -ip
+
+environment 0xa2fc8
+000a2fc8 push      {r4, r5, r6, lr}
+000a2fcc cmp       r0, #0xa
+000a2fd0 ldr       r5, [pc, #0x19c]
+000a2fd4 mov       r4, r1
+000a2fd8 add       r5, pc, r5
+000a2fdc beq       #0xa301c
+000a2fe0 cmp       r0, #0x1b
+000a2fe4 beq       #0xa3078
+000a2fe8 cmp       r0, #1
+000a2fec beq       #0xa3090
+000a2ff0 cmp       r0, #0x25
+000a2ff4 beq       #0xa3044
+000a2ff8 cmp       r0, #9
+000a2ffc beq       #0xa3060
+000a3000 cmp       r0, #0x1f
+000a3004 beq       #0xa3060
+000a3008 cmp       r0, #0xf
+000a300c beq       #0xa30d8
+000a3010 mov       r3, #0
+000a3014 mov       r0, r3
+000a3018 pop       {r4, r5, r6, pc}
+000a301c ldr       r0, [pc, #0x154]
+000a3020 ldr       r1, [r1]
+000a3024 add       r0, pc, r0
+000a3028 bl        #0x11be4 ; printf@plt
+000a302c ldr       r3, [r4]
+000a3030 sub       r3, r3, #2
+000a3034 clz       r3, r3
+000a3038 lsr       r3, r3, #5
+000a303c mov       r0, r3
+000a3040 pop       {r4, r5, r6, pc}
+000a3044 movw      r1, #0x8880
+000a3048 mov       r0, #0
+000a304c movt      r1, #0x40e5
+000a3050 mov       r3, #1
+000a3054 strd      r0, r1, [r4, #0x20]
+000a3058 mov       r0, r3
+000a305c pop       {r4, r5, r6, pc}
+000a3060 ldr       r2, [pc, #0x114]
+000a3064 mov       r3, #1
+000a3068 mov       r0, r3
+000a306c ldr       r2, [r5, r2]
+000a3070 str       r2, [r4]
+000a3074 pop       {r4, r5, r6, pc}
+000a3078 ldr       r2, [pc, #0x100]
+000a307c mov       r3, #1
+000a3080 mov       r0, r3
+000a3084 add       r2, pc, r2
+000a3088 str       r2, [r1]
+000a308c pop       {r4, r5, r6, pc}
+000a3090 ldr       r3, [pc, #0xec]
+000a3094 ldr       r0, [pc, #0xec]
+000a3098 ldr       r4, [r5, r3]
+000a309c ldr       r1, [r1]
+000a30a0 add       r0, pc, r0
+000a30a4 str       r1, [r4]
+000a30a8 bl        #0x11be4 ; printf@plt
+000a30ac ldr       r3, [pc, #0xd8]
+000a30b0 ldr       r3, [r5, r3]
+000a30b4 ldr       r3, [r3]
+000a30b8 cmp       r3, #0
+000a30bc movne     r0, #0
+000a30c0 ldreq     r0, [r4]
+000a30c4 strne     r0, [r4]
+000a30c8 bl        #0xa668c ; video_driver_set_rotation
+000a30cc mov       r3, #0
+000a30d0 mov       r0, r3
+000a30d4 pop       {r4, r5, r6, pc}
+000a30d8 ldr       r0, [pc, #0xb0]
+000a30dc ldr       r1, [r1]
+000a30e0 add       r0, pc, r0
+000a30e4 bl        #0x11be4 ; printf@plt
+000a30e8 ldr       r5, [r4]
+000a30ec ldr       r1, [pc, #0xa0]
+000a30f0 mov       r0, r5
+000a30f4 add       r1, pc, r1 string=fbalpha2012_dipswitch_martmast_Region_(Fake)
+000a30f8 bl        #0x11f74 ; strcmp@plt
+000a30fc cmp       r0, #0
+000a3100 beq       #0xa3144
+000a3104 ldr       r1, [pc, #0x8c]
+000a3108 mov       r0, r5
+000a310c add       r1, pc, r1 string=Region_(Fake)
+000a3110 bl        #0x11e3c ; strstr@plt
+000a3114 cmp       r0, #0
+000a3118 beq       #0xa3010
+000a311c ldr       r1, [pc, #0x78]
+000a3120 mov       r3, #1
+000a3124 ldr       r2, [pc, #0x74]
+000a3128 add       r1, pc, r1 string=China
+000a312c add       r2, pc, r2
+000a3130 ldm       r1, {r0, r1}
+000a3134 str       r0, [r2]
+000a3138 strh      r1, [r2, #4]
+000a313c str       r2, [r4, #4]
+000a3140 b         #0xa303c ; None
+000a3144 ldr       r1, [pc, #0x58]
+000a3148 mov       r3, #1
+000a314c ldr       r2, [pc, #0x54]
+000a3150 add       r1, pc, r1 string=Taiwan
+000a3154 add       r2, pc, r2
+000a3158 ldm       r1, {r0, r1}
+000a315c lsr       ip, r1, #0x10
+000a3160 str       r0, [r2]
+000a3164 strh      r1, [r2, #4]
+000a3168 strb      ip, [r2, #6]
+000a316c str       r2, [r4, #4]
+000a3170 b         #0xa303c ; None
+000a3174 andeq     r6, pc, r0, lsr #32
+000a3178 ldrdeq    r7, r8, [ip], -ip
+000a317c andeq     r0, r0, r4, ror r2
+
+Load_Proc2 0xa426c
+000a426c push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+000a4270 sub       sp, sp, #0x12c
+000a4274 ldr       r4, [pc, #0x6a4]
+000a4278 ldr       r3, [pc, #0x6a4]
+000a427c add       r4, pc, r4
+000a4280 ldr       r1, [pc, #0x6a0]
+000a4284 ldr       r3, [r4, r3]
+000a4288 add       r1, pc, r1 string=retro_get_region
+000a428c ldr       r0, [r3]
+000a4290 str       r3, [sp, #0x24]
+000a4294 bl        #0x12010 ; dlsym@plt symbol=retro_get_region
+000a4298 ldr       r3, [pc, #0x68c]
+000a429c cmp       r0, #0
+000a42a0 ldr       r3, [r4, r3]
+000a42a4 str       r0, [r3]
+000a42a8 beq       #0xa4908
+000a42ac blx       r0
+000a42b0 ldr       r3, [pc, #0x678]
+000a42b4 mov       r1, r0
+000a42b8 ldr       r0, [pc, #0x674]
+000a42bc ldr       sl, [r4, r3]
+000a42c0 add       r0, pc, r0
+000a42c4 str       r1, [sl]
+000a42c8 bl        #0x11be4 ; printf@plt
+000a42cc ldr       r5, [sp, #0x24]
+000a42d0 mov       r7, #0
+000a42d4 ldr       r1, [pc, #0x65c]
+000a42d8 movw      r8, #0x4dd3
+000a42dc ldr       r0, [r5]
+000a42e0 add       r1, pc, r1 string=retro_run
+000a42e4 movt      r8, #0x1062
+000a42e8 bl        #0x12010 ; dlsym@plt symbol=retro_run
+000a42ec ldr       r3, [pc, #0x648]
+000a42f0 mov       r1, #1
+000a42f4 str       r1, [sp]
+000a42f8 mov       r2, r0
+000a42fc ldr       r1, [pc, #0x63c]
+000a4300 str       r7, [sp, #4]
+000a4304 ldr       r3, [r4, r3]
+000a4308 add       r1, pc, r1 string=SetDoubleBuffer
+000a430c ldr       r0, [r5]
+000a4310 str       r2, [r3]
+000a4314 str       r3, [sp, #0x18]
+000a4318 bl        #0x12010 ; dlsym@plt symbol=SetDoubleBuffer
+000a431c ldr       r3, [pc, #0x620]
+000a4320 mov       r2, r0
+000a4324 ldr       r1, [pc, #0x61c]
+000a4328 ldr       r3, [r4, r3]
+000a432c add       r1, pc, r1 string=SetFrameSkip
+000a4330 ldr       r0, [r5]
+000a4334 str       r2, [r3]
+000a4338 bl        #0x12010 ; dlsym@plt symbol=SetFrameSkip
+000a433c ldr       r1, [pc, #0x608]
+000a4340 movw      ip, #0xb7c
+000a4344 ldr       r2, [pc, #0x604]
+000a4348 movw      r3, #0xdc8
+000a434c ldr       r1, [r4, r1]
+000a4350 str       r1, [sp, #0x14]
+000a4354 mov       lr, r1
+000a4358 ldr       r1, [sl]
+000a435c str       r0, [lr]
+000a4360 cmp       r1, r7
+000a4364 ldr       r2, [r4, r2]
+000a4368 moveq     r3, ip
+000a436c str       r3, [r2]
+000a4370 bl        #0xa3618 ; RetroInitSound
+000a4374 ldr       r2, [pc, #0x5d8]
+000a4378 mov       r1, #3
+000a437c ldr       r3, [sl]
+000a4380 add       r2, pc, r2 string=%s/warning.zip
+000a4384 str       r2, [sp, #0x1c]
+000a4388 ldr       r2, [pc, #0x5c8]
+000a438c cmp       r3, r7
+000a4390 add       r2, pc, r2 string=poweroff.raw
+000a4394 movne     r0, #0x32
+000a4398 str       r2, [sp, #0x20]
+000a439c moveq     r0, #0x3c
+000a43a0 bl        #0xa31ac ; InitEmulateFrame.constprop.0
+000a43a4 ldr       r1, [pc, #0x5b0]
+000a43a8 ldr       r3, [pc, #0x5b0]
+000a43ac ldr       sb, [r4, r1]
+000a43b0 ldr       r3, [r4, r3]
+000a43b4 ldr       r2, [pc, #0x5a8]
+000a43b8 ldr       r5, [r4, r2]
+000a43bc str       r3, [sp, #0x10]
+000a43c0 ldr       r3, [sb]
+000a43c4 cmp       r3, #0
+000a43c8 blt       #0xa45a4
+000a43cc ldr       r3, [r5]
+000a43d0 sub       r2, r3, #9
+000a43d4 clz       r2, r2
+000a43d8 lsr       r2, r2, #5
+000a43dc orrs      r2, r2, r3, lsr #31
+000a43e0 bne       #0xa462c
+000a43e4 ldr       r2, [r5, #4]
+000a43e8 cmp       r2, #9
+000a43ec beq       #0xa4658
+000a43f0 cmp       r2, #0
+000a43f4 blt       #0xa4640
+000a43f8 ldr       r2, [r5, #8]
+000a43fc cmp       r2, #9
+000a4400 beq       #0xa4640
+000a4404 cmp       r2, #0
+000a4408 blt       #0xa4640
+000a440c ldr       r2, [r5, #0xc]
+000a4410 cmp       r2, #9
+000a4414 beq       #0xa4640
+000a4418 cmp       r2, #0
+000a441c blt       #0xa4640
+000a4420 cmp       r7, r3
+000a4424 beq       #0xa4448
+000a4428 ldr       r2, [pc, #0x538]
+000a442c mov       r7, r3
+000a4430 ldr       r3, [r4, r2]
+000a4434 ldr       r3, [r3]
+000a4438 cmp       r3, r7
+000a443c beq       #0xa4724
+000a4440 cmp       r7, #0x900
+000a4444 beq       #0xa4798
+000a4448 ldr       r3, [sp, #4]
+000a444c cmp       r3, #0
+000a4450 bne       #0xa4730
+000a4454 add       r2, sp, #0x28
+000a4458 mov       r1, #0
+000a445c str       r2, [sp, #8]
+000a4460 mov       r0, r2
+000a4464 mov       fp, #0x3e8
+000a4468 bl        #0x11b48 ; gettimeofday@plt
+000a446c ldr       r1, [sp, #0x2c]
+000a4470 ldr       ip, [pc, #0x4f4]
+000a4474 smull     r3, r0, r8, r1
+000a4478 ldr       r2, [r4, ip]
+000a447c ldr       r3, [pc, #0x4ec]
+000a4480 ldr       lr, [sp, #0x28]
+000a4484 asr       r1, r1, #0x1f
+000a4488 str       r2, [sp, #0xc]
+000a448c rsb       r1, r1, r0, asr #6
+000a4490 ldr       ip, [r4, r3]
+000a4494 ldr       r0, [r2]
+000a4498 ldr       r3, [pc, #0x4d4]
+000a449c mla       r1, fp, lr, r1
+000a44a0 ldr       ip, [ip]
+000a44a4 ldr       r6, [r4, r3]
+000a44a8 sub       lr, r1, r0
+000a44ac mul       lr, ip, lr
+000a44b0 ldr       r3, [r6]
+000a44b4 umull     r2, lr, r8, lr
+000a44b8 add       r3, r3, #1
+000a44bc cmp       r3, lr, lsr #6
+000a44c0 str       r3, [r6]
+000a44c4 bhs       #0xa46cc
+000a44c8 ldr       r1, [pc, #0x4a8]
+000a44cc ldr       r3, [pc, #0x4a8]
+000a44d0 ldr       r0, [r4, r1]
+000a44d4 ldr       r3, [r4, r3]
+000a44d8 ldr       r0, [r0]
+000a44dc ldr       r1, [r3]
+000a44e0 ldr       r2, [sp, #8]
+000a44e4 cmp       r1, r0
+000a44e8 bge       #0xa474c
+000a44ec add       r1, r1, #1
+000a44f0 str       r1, [r3]
+000a44f4 cmp       r1, #0
+000a44f8 movgt     r0, #1
+000a44fc movle     r0, #0
+000a4500 movle     r1, #1
+000a4504 movgt     r1, #0
+000a4508 ldr       r3, [pc, #0x470]
+000a450c ldr       r2, [pc, #0x470]
+000a4510 ldr       ip, [r4, r3]
+000a4514 ldr       r3, [pc, #0x46c]
+000a4518 str       r0, [ip]
+000a451c ldr       r2, [r4, r2]
+000a4520 ldr       ip, [r4, r3]
+000a4524 ldr       r3, [r2]
+000a4528 str       r1, [ip, r3, lsl #2]
+000a452c cmp       r3, #0xf
+000a4530 add       r3, r3, #1
+000a4534 moveq     r3, #0
+000a4538 str       r3, [r2]
+000a453c ldr       r3, [sp, #0x14]
+000a4540 ldr       r3, [r3]
+000a4544 cmp       r3, #0
+000a4548 beq       #0xa4550
+000a454c blx       r3
+000a4550 mov       fp, #0
+000a4554 bl        #0xa3654 ; TurboKeyProcess
+000a4558 mov       r0, #0xb4
+000a455c bl        #0x13bb8 ; set_softwdt
+000a4560 ldr       r3, [pc, #0x424]
+000a4564 ldr       r2, [sp, #0x18]
+000a4568 ldr       r6, [r4, r3]
+000a456c ldr       r2, [r2]
+000a4570 str       fp, [r6]
+000a4574 blx       r2
+000a4578 mov       r3, #1
+000a457c str       r3, [r6]
+000a4580 bl        #0x13fd4 ; xintiao
+000a4584 ldr       r3, [sp]
+000a4588 cmp       r3, fp
+000a458c bne       #0xa47b4
+000a4590 mov       r3, #0
+000a4594 str       r3, [sp]
+000a4598 ldr       r3, [sb]
+000a459c cmp       r3, #0
+000a45a0 bge       #0xa43cc
+000a45a4 mov       r0, #0x80
+000a45a8 add       r6, sp, #0x28
+000a45ac bl        #0xa673c ; video_driver_set_dbuffer
+000a45b0 bl        #0x80bec ; GetWorkPath
+000a45b4 ldr       r1, [sp, #0x1c]
+000a45b8 mov       r2, r0
+000a45bc mov       r0, r6
+000a45c0 bl        #0x11f38 ; sprintf@plt
+000a45c4 mov       r0, #0x96000
+000a45c8 bl        #0x164abc ; gpChunkMemAlloc
+000a45cc ldr       r2, [sp, #0x20]
+000a45d0 mov       r1, r6
+000a45d4 mov       r6, r0
+000a45d8 bl        #0xa41b4 ; get_warning_data
+000a45dc mov       r3, #0x500
+000a45e0 mov       r2, #0x1e0
+000a45e4 mov       r1, #0x280
+000a45e8 mov       r0, r6
+000a45ec bl        #0xa6658 ; DispFrame
+000a45f0 mov       r0, #5
+000a45f4 bl        #0x11e60 ; sleep@plt
+000a45f8 mov       r0, #0
+000a45fc bl        #0x15e04 ; LCM_LED
+000a4600 mov       r0, #0
+000a4604 bl        #0x14d74 ; SetLEDVol
+000a4608 ldr       r3, [pc, #0x380]
+000a460c ldr       r3, [r4, r3]
+000a4610 ldr       r3, [r3]
+000a4614 cmp       r3, #0
+000a4618 bne       #0xa4810
+000a461c ldr       r0, [pc, #0x370]
+000a4620 add       r0, pc, r0 string=poweroff
+000a4624 bl        #0x11d4c ; system@plt
+000a4628 b         #0xa43cc ; None
+000a462c cmp       r3, #9
+000a4630 beq       #0xa4658
+000a4634 ldr       r3, [r5, #4]
+000a4638 cmp       r3, #9
+000a463c beq       #0xa4658
+000a4640 ldr       r3, [r5, #8]
+000a4644 cmp       r3, #9
+000a4648 beq       #0xa4658
+000a464c ldr       r3, [r5, #0xc]
+000a4650 cmp       r3, #9
+000a4654 bne       #0xa4820
+000a4658 mov       r0, #0xff00
+000a465c bl        #0xa668c ; video_driver_set_rotation
+000a4660 bl        #0x9b9f4 ; mui_PauseMenu
+000a4664 subs      fp, r0, #0
+000a4668 bne       #0xa4820
+000a466c ldr       r3, [sp, #0x10]
+000a4670 ldr       r0, [r3]
+000a4674 bl        #0xa668c ; video_driver_set_rotation
+000a4678 ldr       r3, [pc, #0x318]
+000a467c ldr       r2, [pc, #0x318]
+000a4680 ldr       r6, [r4, r3]
+000a4684 ldr       r1, [r4, r2]
+000a4688 mov       r0, r6
+000a468c bl        #0x11b48 ; gettimeofday@plt
+000a4690 ldr       r3, [pc, #0x308]
+000a4694 ldm       r6, {r0, r1}
+000a4698 ldr       ip, [r4, r3]
+000a469c ldr       r2, [sl]
+000a46a0 ldr       r3, [pc, #0x2fc]
+000a46a4 stm       ip, {r0, r1}
+000a46a8 ldr       r3, [r4, r3]
+000a46ac cmp       r2, #0
+000a46b0 mov       r1, #3
+000a46b4 movne     r0, #0x32
+000a46b8 str       fp, [r3]
+000a46bc moveq     r0, #0x3c
+000a46c0 bl        #0xa31ac ; InitEmulateFrame.constprop.0
+000a46c4 ldr       r3, [r5]
+000a46c8 b         #0xa4420 ; None
+000a46cc mul       r3, fp, r3
+000a46d0 ldr       r2, [pc, #0x2a4]
+000a46d4 sub       r3, r3, #0x3e8
+000a46d8 ldr       r6, [r4, r2]
+000a46dc udiv      ip, r3, ip
+000a46e0 add       r0, ip, r0
+000a46e4 mov       r3, #0
+000a46e8 sub       r0, r0, r1
+000a46ec cmp       r0, r3
+000a46f0 str       r3, [r6]
+000a46f4 movle     r0, r3
+000a46f8 movle     r1, #1
+000a46fc ble       #0xa4508
+000a4700 mul       r0, fp, r0
+000a4704 bl        #0x11f08 ; usleep@plt
+000a4708 ldr       r3, [r6]
+000a470c cmp       r3, #0
+000a4710 movgt     r0, #1
+000a4714 movle     r0, #0
+000a4718 movle     r1, #1
+000a471c movgt     r1, #0
+000a4720 b         #0xa4508 ; None
+000a4724 ldr       r3, [sp, #4]
+000a4728 cmp       r3, #0
+000a472c beq       #0xa473c
+000a4730 sub       r3, r3, #1
+000a4734 str       r3, [sp, #4]
+000a4738 b         #0xa4454 ; None
+000a473c bl        #0x89244 ; SaveDefaultState
+000a4740 mov       r3, #0x18
+000a4744 str       r3, [sp, #4]
+000a4748 b         #0xa4454 ; None
+000a474c str       r3, [sp, #8]
+000a4750 mov       r0, r2
+000a4754 mov       r1, #0
+000a4758 bl        #0x11b48 ; gettimeofday@plt
+000a475c ldr       r2, [sp, #0x2c]
+000a4760 mov       r1, #0
+000a4764 str       r1, [r6]
+000a4768 mov       r0, r1
+000a476c smull     r3, ip, r8, r2
+000a4770 asr       r2, r2, #0x1f
+000a4774 rsb       r2, r2, ip, asr #6
+000a4778 ldr       r3, [sp, #8]
+000a477c ldr       ip, [sp, #0x28]
+000a4780 str       r1, [r3]
+000a4784 mov       r1, #1
+000a4788 mla       fp, fp, ip, r2
+000a478c ldr       r3, [sp, #0xc]
+000a4790 str       fp, [r3]
+000a4794 b         #0xa4508 ; None
+000a4798 ldr       r3, [sp, #4]
+000a479c cmp       r3, #0
+000a47a0 bne       #0xa4730
+000a47a4 bl        #0x9c9c8 ; SaveDefaultSnap
+000a47a8 mov       r3, #0x18
+000a47ac str       r3, [sp, #4]
+000a47b0 b         #0xa4454 ; None
+000a47b4 bl        #0x891b8 ; LoadDefaultState
+000a47b8 cmp       r0, #0
+000a47bc beq       #0xa4590
+000a47c0 ldr       r3, [pc, #0x1d0]
+000a47c4 mov       r1, fp
+000a47c8 ldr       r6, [r4, r3]
+000a47cc mov       r0, r6
+000a47d0 bl        #0x11b48 ; gettimeofday@plt
+000a47d4 ldr       r3, [pc, #0x1c4]
+000a47d8 ldm       r6, {r0, r1}
+000a47dc ldr       r2, [r4, r3]
+000a47e0 ldr       ip, [sl]
+000a47e4 ldr       r3, [pc, #0x1b8]
+000a47e8 stm       r2, {r0, r1}
+000a47ec ldr       r3, [r4, r3]
+000a47f0 cmp       ip, #0
+000a47f4 mov       r1, #2
+000a47f8 movne     r0, #0x32
+000a47fc str       fp, [r3]
+000a4800 moveq     r0, #0x3c
+000a4804 bl        #0xa31ac ; InitEmulateFrame.constprop.0
+000a4808 bl        #0xa6988 ; StopSound
+000a480c b         #0xa4590 ; None
+000a4810 mov       r1, #0
+000a4814 movw      r0, #0x40b
+000a4818 bl        #0x1587c ; gpio_write_io
+000a481c b         #0xa461c ; None
+000a4820 ldr       r6, [pc, #0x180]
+000a4824 movw      r0, #0x4e20
+000a4828 ldr       r5, [pc, #0x17c]
+000a482c bl        #0x11f08 ; usleep@plt
+000a4830 ldr       r3, [pc, #0x178]
+000a4834 mov       r2, #0x64
+000a4838 add       r6, pc, r6 string=Load_Proc2
+000a483c mov       r0, #0x7d0
+000a4840 ldr       r7, [r4, r3]
+000a4844 add       r5, pc, r5
+000a4848 str       r2, [r7]
+000a484c bl        #0x11f08 ; usleep@plt
+000a4850 mov       r1, r6
+000a4854 movw      r2, #0x974
+000a4858 mov       r0, r5
+000a485c bl        #0x11be4 ; printf@plt
+000a4860 ldr       r0, [pc, #0x14c]
+000a4864 mov       r1, #0
+000a4868 add       r0, pc, r0 string=retro_unload_game
+000a486c bl        #0xa3724 ; run_process symbol=retro_unload_game
+000a4870 mov       r1, r6
+000a4874 movw      r2, #0x976
+000a4878 mov       r0, r5
+000a487c bl        #0x11be4 ; printf@plt
+000a4880 ldr       r0, [pc, #0x130]
+000a4884 mov       r1, #0
+000a4888 add       r0, pc, r0 string=retro_deinit
+000a488c bl        #0xa3724 ; run_process symbol=retro_deinit
+000a4890 mov       r1, r6
+000a4894 mov       r0, r5
+000a4898 movw      r2, #0x978
+000a489c bl        #0x11be4 ; printf@plt
+000a48a0 ldr       r3, [pc, #0x114]
+000a48a4 ldr       r6, [r4, r3]
+000a48a8 ldr       r0, [r6]
+000a48ac cmp       r0, #0
+000a48b0 beq       #0xa48b8
+000a48b4 bl        #0x11b6c ; free@plt
+000a48b8 ldr       r3, [sp, #0x24]
+000a48bc mov       r5, #0
+000a48c0 str       r5, [r6]
+000a48c4 ldr       r0, [r3]
+000a48c8 bl        #0x11c14 ; dlclose@plt
+000a48cc ldr       r1, [pc, #0xec]
+000a48d0 movw      r2, #0x97d
+000a48d4 ldr       r0, [pc, #0xe8]
+000a48d8 add       r1, pc, r1 string=Load_Proc2
+000a48dc add       r0, pc, r0
+000a48e0 bl        #0x11be4 ; printf@plt
+000a48e4 ldr       r1, [sp, #0x10]
+000a48e8 mov       r2, #0x14
+000a48ec ldr       r3, [pc, #0xd4]
+000a48f0 str       r5, [r1]
+000a48f4 str       r2, [r7]
+000a48f8 ldr       r3, [r4, r3]
+000a48fc str       r5, [r3]
+000a4900 add       sp, sp, #0x12c
+000a4904 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+000a4908 ldr       r0, [pc, #0xbc]
+000a490c add       r0, pc, r0 string=find retro_get_region process fail 
+000a4910 bl        #0x11c20 ; puts@plt
+000a4914 ldr       r3, [pc, #0x14]
+000a4918 ldr       sl, [r4, r3]
+000a491c b         #0xa42cc ; None
+000a4920 andeq     r4, pc, ip, ror sp
+000a4924 andeq     r0, r0, r0, asr r2
+000a4928 strdeq    r6, r7, [ip], -ip
+000a492c andeq     r0, r0, r4, lsr #4
+000a4930 andeq     r0, r0, r4, lsr r4
+000a4934 ldrdeq    r6, r7, [ip], -r8
+000a4938 andeq     r6, ip, ip, ror #23
+000a493c andeq     r0, r0, r4, ror #5
+000a4940 ldrdeq    r6, r7, [ip], -r0
+000a4944 strdeq    r0, r1, [r0], -r8
+000a4948 strheq    r6, [ip], -ip
+000a494c andeq     r0, r0, r4, lsl r5
+000a4950 andeq     r0, r0, r8, ror #5
+000a4954 muleq     ip, r0, sp
+000a4958 muleq     ip, r0, sp
+000a495c andeq     r0, r0, r0, asr r5
+000a4960 andeq     r0, r0, r8, lsl r5
+000a4964 andeq     r0, r0, r4, asr #4
+000a4968 andeq     r0, r0, r0, asr r3
+000a496c andeq     r0, r0, r8, lsr #5
+000a4970 strheq    r0, [r0], -ip
+000a4974 andeq     r0, r0, ip, ror #9
+000a4978 andeq     r0, r0, r4, ror #6
+000a497c andeq     r0, r0, r4, ror #7
+000a4980 strdeq    r0, r1, [r0], -ip
+000a4984 andeq     r0, r0, r0, lsr r4
+000a4988 andeq     r0, r0, r4, asr #10
+000a498c andeq     r0, r0, r0, asr #9
+000a4990 strdeq    r0, r1, [r0], -r4
+000a4994 andeq     r1, ip, r0, lsl fp
+000a4998 andeq     r0, r0, r4, lsr r3
+000a499c andeq     r0, r0, r4, ror #4
+000a49a0 andeq     r0, r0, r4, lsr #10
+000a49a4 andeq     r0, r0, r4, lsr #7
+000a49a8 strdeq    r6, r7, [ip], -r0
+000a49ac andeq     r2, ip, r0, lsr #1
+000a49b0 andeq     r0, r0, r8, asr #9
+000a49b4 muleq     ip, r0, r6
+000a49b8 andeq     r6, ip, r4, lsl #13
+000a49bc andeq     r0, r0, r8, lsr #6
+000a49c0 andeq     r6, ip, r0, asr sb
+000a49c4 andeq     r2, ip, r8
+000a49c8 andeq     r0, r0, ip, lsr #5
+000a49cc muleq     ip, ip, r5
+
+retro_load_state 0xa3944
+000a3944 push      {r4, r5, r6, r7, r8, lr}
+000a3948 mov       r8, r0
+000a394c ldr       r6, [pc, #0x148]
+000a3950 sub       sp, sp, #8
+000a3954 ldr       r3, [pc, #0x144]
+000a3958 add       r6, pc, r6
+000a395c ldr       r1, [pc, #0x140]
+000a3960 ldr       r7, [r6, r3]
+000a3964 add       r1, pc, r1 string=retro_serialize_size
+000a3968 ldr       r0, [r7]
+000a396c bl        #0x12010 ; dlsym@plt symbol=retro_serialize_size
+000a3970 ldr       r3, [pc, #0x130]
+000a3974 cmp       r0, #0
+000a3978 mov       r4, r0
+000a397c ldr       r3, [r6, r3]
+000a3980 str       r0, [r3]
+000a3984 beq       #0xa3a74
+000a3988 blx       r0
+000a398c mov       r1, r0
+000a3990 ldr       r0, [pc, #0x114]
+000a3994 str       r1, [sp]
+000a3998 add       r0, pc, r0
+000a399c bl        #0x11be4 ; printf@plt
+000a39a0 ldr       r0, [sp]
+000a39a4 lsl       r0, r0, #1
+000a39a8 bl        #0x11ed8 ; malloc@plt
+000a39ac subs      r5, r0, #0
+000a39b0 beq       #0xa3a68
+000a39b4 ldr       r1, [pc, #0xf4]
+000a39b8 mov       r0, r8
+000a39bc add       r1, pc, r1 string=rb
+000a39c0 bl        #0x11ce0 ; fopen@plt
+000a39c4 subs      r4, r0, #0
+000a39c8 beq       #0xa3a2c
+000a39cc mov       r2, #0
+000a39d0 mov       r1, r2
+000a39d4 bl        #0x11b84 ; fseek@plt
+000a39d8 mov       r2, #4
+000a39dc mov       r3, r4
+000a39e0 add       r0, sp, r2
+000a39e4 mov       r1, #1
+000a39e8 bl        #0x11ddc ; fread@plt
+000a39ec ldr       r0, [sp, #4]
+000a39f0 bl        #0x11ed8 ; malloc@plt
+000a39f4 ldr       r2, [sp, #4]
+000a39f8 mov       r3, r4
+000a39fc mov       r1, #1
+000a3a00 mov       r8, r0
+000a3a04 bl        #0x11ddc ; fread@plt
+000a3a08 mov       r0, r4
+000a3a0c bl        #0x11f20 ; fclose@plt
+000a3a10 ldr       r3, [sp, #4]
+000a3a14 mov       r2, r8
+000a3a18 mov       r1, sp
+000a3a1c mov       r0, r5
+000a3a20 bl        #0x11bc0 ; uncompress@plt
+000a3a24 mov       r0, r8
+000a3a28 bl        #0x11b6c ; free@plt
+000a3a2c ldr       r1, [pc, #0x80]
+000a3a30 ldr       r0, [r7]
+000a3a34 add       r1, pc, r1 string=retro_unserialize
+000a3a38 bl        #0x12010 ; dlsym@plt symbol=retro_unserialize
+000a3a3c ldr       r3, [pc, #0x74]
+000a3a40 cmp       r0, #0
+000a3a44 mov       r4, r0
+000a3a48 ldr       r3, [r6, r3]
+000a3a4c str       r0, [r3]
+000a3a50 beq       #0xa3a88
+000a3a54 ldr       r1, [sp]
+000a3a58 mov       r0, r5
+000a3a5c blx       r4
+000a3a60 mov       r0, r5
+000a3a64 bl        #0x11b6c ; free@plt
+000a3a68 mov       r0, #1
+000a3a6c add       sp, sp, #8
+000a3a70 pop       {r4, r5, r6, r7, r8, pc}
+000a3a74 ldr       r0, [pc, #0x40]
+000a3a78 add       r0, pc, r0 string=find retro_serialize_size process fail 
+000a3a7c bl        #0x11c20 ; puts@plt
+000a3a80 mov       r0, r4
+000a3a84 b         #0xa3a6c ; None
+000a3a88 ldr       r0, [pc, #0x30]
+000a3a8c add       r0, pc, r0 string=find retro_unserialize process fail 
+000a3a90 bl        #0x11c20 ; puts@plt
+000a3a94 mov       r0, r4
+000a3a98 b         #0xa3a6c ; None
+000a3a9c andeq     r5, pc, r0, lsr #13
+000a3aa0 andeq     r0, r0, r0, asr r2
+000a3aa4 andeq     r7, ip, r8, ror r3
+000a3aa8 andeq     r0, r0, ip, ror #8
+000a3aac andeq     r7, ip, ip, asr r3
+000a3ab0 andeq     r1, ip, r8, lsl #22
+000a3ab4 andeq     r7, ip, r8, lsr #6
+000a3ab8 andeq     r0, r0, r8, ror #3
+000a3abc andeq     r7, ip, r8, lsl #5
+000a3ac0 andeq     r7, ip, r4, ror #5
+
+save_state 0xa3ac4
+000a3ac4 push      {r4, r5, r6, lr}
+000a3ac8 mov       r2, r0
+000a3acc ldr       r4, [pc, #0xc0]
+000a3ad0 ldr       r3, [pc, #0xc0]
+000a3ad4 add       r4, pc, r4
+000a3ad8 ldr       r3, [r4, r3]
+000a3adc ldrh      r3, [r3]
+000a3ae0 cmp       r3, #0x10
+000a3ae4 beq       #0xa3b1c
+000a3ae8 cmp       r3, #4
+000a3aec beq       #0xa3b1c
+000a3af0 cmp       r3, #8
+000a3af4 beq       #0xa3b28
+000a3af8 sub       r1, r3, #1
+000a3afc cmp       r1, #1
+000a3b00 bls       #0xa3b1c
+000a3b04 cmp       r3, #0x20
+000a3b08 beq       #0xa3b1c
+000a3b0c cmp       r3, #0x80
+000a3b10 beq       #0xa3b1c
+000a3b14 mov       r0, #0
+000a3b18 pop       {r4, r5, r6, pc}
+000a3b1c pop       {r4, r5, r6, lr}
+000a3b20 mov       r0, r2
+000a3b24 b         #0xa37b0 ; retro_save_state
+000a3b28 ldr       r1, [pc, #0x6c]
+000a3b2c add       r1, pc, r1 string=wb
+000a3b30 bl        #0x11ce0 ; fopen@plt
+000a3b34 subs      r5, r0, #0
+000a3b38 beq       #0xa3b14
+000a3b3c ldr       r3, [pc, #0x5c]
+000a3b40 ldr       r1, [pc, #0x5c]
+000a3b44 ldr       r3, [r4, r3]
+000a3b48 add       r1, pc, r1 string=retro_serialize
+000a3b4c ldr       r0, [r3]
+000a3b50 bl        #0x12010 ; dlsym@plt symbol=retro_serialize
+000a3b54 ldr       r2, [pc, #0x4c]
+000a3b58 cmp       r0, #0
+000a3b5c mov       r3, r0
+000a3b60 ldr       r2, [r4, r2]
+000a3b64 str       r0, [r2]
+000a3b68 beq       #0xa3b84
+000a3b6c mov       r1, #0
+000a3b70 mov       r0, r5
+000a3b74 blx       r3
+000a3b78 mov       r0, r5
+000a3b7c bl        #0x11f20 ; fclose@plt
+000a3b80 b         #0xa3b14 ; None
+000a3b84 ldr       r0, [pc, #0x20]
+000a3b88 add       r0, pc, r0 string=find retro_serialize process fail 
+000a3b8c bl        #0x11c20 ; puts@plt
+000a3b90 b         #0xa3b78 ; None
+000a3b94 andeq     r5, pc, r4, lsr #10
+000a3b98 andeq     r0, r0, r0, lsr #6
+000a3b9c andeq     r1, ip, r0, lsl #20
+000a3ba0 andeq     r0, r0, r0, asr r2
+000a3ba4 andeq     r7, ip, r0, ror #3
+000a3ba8 andeq     r0, r0, ip, asr #6
+000a3bac strheq    r7, [ip], -r0
+
+retro_save_state 0xa37b0
+000a37b0 push      {r4, r5, r6, r7, r8, lr}
+000a37b4 mov       r7, r0
+000a37b8 ldr       r6, [pc, #0x15c]
+000a37bc sub       sp, sp, #8
+000a37c0 ldr       r3, [pc, #0x158]
+000a37c4 add       r6, pc, r6
+000a37c8 ldr       r1, [pc, #0x154]
+000a37cc ldr       r8, [r6, r3]
+000a37d0 add       r1, pc, r1 string=retro_serialize_size
+000a37d4 ldr       r0, [r8]
+000a37d8 bl        #0x12010 ; dlsym@plt symbol=retro_serialize_size
+000a37dc ldr       r3, [pc, #0x144]
+000a37e0 cmp       r0, #0
+000a37e4 mov       r4, r0
+000a37e8 ldr       r3, [r6, r3]
+000a37ec str       r0, [r3]
+000a37f0 beq       #0xa38f4
+000a37f4 blx       r0
+000a37f8 mov       r1, r0
+000a37fc ldr       r0, [pc, #0x128]
+000a3800 str       r1, [sp]
+000a3804 add       r0, pc, r0
+000a3808 bl        #0x11be4 ; printf@plt
+000a380c ldr       r0, [sp]
+000a3810 lsl       r0, r0, #1
+000a3814 bl        #0x11ed8 ; malloc@plt
+000a3818 subs      r5, r0, #0
+000a381c beq       #0xa38e8
+000a3820 ldr       r1, [pc, #0x108]
+000a3824 ldr       r0, [r8]
+000a3828 add       r1, pc, r1 string=retro_serialize
+000a382c bl        #0x12010 ; dlsym@plt symbol=retro_serialize
+000a3830 ldr       r3, [pc, #0xfc]
+000a3834 cmp       r0, #0
+000a3838 mov       r4, r0
+000a383c ldr       r3, [r6, r3]
+000a3840 str       r0, [r3]
+000a3844 beq       #0xa3908
+000a3848 ldr       r1, [sp]
+000a384c mov       r0, r5
+000a3850 blx       r4
+000a3854 ldr       r1, [pc, #0xdc]
+000a3858 mov       r0, r7
+000a385c add       r1, pc, r1 string=wb
+000a3860 bl        #0x11ce0 ; fopen@plt
+000a3864 subs      r4, r0, #0
+000a3868 beq       #0xa38e0
+000a386c ldr       r0, [sp]
+000a3870 str       r0, [sp, #4]
+000a3874 bl        #0x11ed8 ; malloc@plt
+000a3878 ldr       r3, [sp]
+000a387c mov       r2, r5
+000a3880 add       r1, sp, #4
+000a3884 mov       r6, r0
+000a3888 bl        #0x11b54 ; compress@plt
+000a388c ldr       r2, [sp, #4]
+000a3890 mov       r3, r4
+000a3894 mov       r1, #1
+000a3898 mov       r0, sp
+000a389c str       r2, [sp]
+000a38a0 mov       r2, #4
+000a38a4 bl        #0x11eb4 ; fwrite@plt
+000a38a8 ldr       r2, [sp]
+000a38ac mov       r3, r4
+000a38b0 mov       r1, #1
+000a38b4 mov       r0, r6
+000a38b8 bl        #0x11eb4 ; fwrite@plt
+000a38bc mov       r0, r6
+000a38c0 bl        #0x11b6c ; free@plt
+000a38c4 mov       r0, r4
+000a38c8 bl        #0x11fb0 ; fflush@plt
+000a38cc mov       r0, r4
+000a38d0 bl        #0x11df4 ; fileno@plt
+000a38d4 bl        #0x11b18 ; fsync@plt
+000a38d8 mov       r0, r4
+000a38dc bl        #0x11f20 ; fclose@plt
+000a38e0 mov       r0, r5
+000a38e4 bl        #0x11b6c ; free@plt
+000a38e8 mov       r0, #1
+000a38ec add       sp, sp, #8
+000a38f0 pop       {r4, r5, r6, r7, r8, pc}
+000a38f4 ldr       r0, [pc, #0x40]
+000a38f8 add       r0, pc, r0 string=find retro_serialize_size process fail 
+000a38fc bl        #0x11c20 ; puts@plt
+000a3900 mov       r0, r4
+000a3904 b         #0xa38ec ; None
+000a3908 ldr       r0, [pc, #0x30]
+000a390c add       r0, pc, r0 string=find retro_serialize process fail 
+000a3910 bl        #0x11c20 ; puts@plt
+000a3914 mov       r0, r4
+000a3918 b         #0xa38ec ; None
+000a391c andeq     r5, pc, r4, lsr r8
+000a3920 andeq     r0, r0, r0, asr r2
+000a3924 andeq     r7, ip, ip, lsl #10
+000a3928 andeq     r0, r0, ip, ror #8
+000a392c strdeq    r7, r8, [ip], -r0
+000a3930 andeq     r7, ip, r0, lsl #10
+000a3934 andeq     r0, r0, ip, asr #6
+000a3938 ldrdeq    r1, r2, [ip], -r0
+000a393c andeq     r7, ip, r8, lsl #8
+000a3940 andeq     r7, ip, ip, lsr #8
+
+Snes_Load 0xa4f54
+000a4f54 push      {r4, r5, r6, r7, r8, lr}
+000a4f58 mov       r4, r0
+000a4f5c ldr       r8, [pc, #0xcc]
+000a4f60 mov       r5, r1
+000a4f64 mov       r7, #0x140
+000a4f68 bl        #0x12638 ; InitFrameflash
+000a4f6c add       r8, pc, r8
+000a4f70 mov       r6, #0xe0
+000a4f74 ldr       r2, [pc, #0xb8]
+000a4f78 mov       lr, #0x100
+000a4f7c ldr       r1, [pc, #0xb4]
+000a4f80 mov       ip, #0
+000a4f84 ldr       r0, [r8, r2]
+000a4f88 mov       r3, r8
+000a4f8c ldr       r2, [pc, #0xa8]
+000a4f90 str       r7, [r0]
+000a4f94 ldr       r0, [r8, r1]
+000a4f98 ldr       r1, [pc, #0xa0]
+000a4f9c str       r6, [r0]
+000a4fa0 ldr       r0, [r8, r2]
+000a4fa4 ldr       r2, [pc, #0x98]
+000a4fa8 str       lr, [r0]
+000a4fac ldr       r1, [r8, r1]
+000a4fb0 ldr       r0, [pc, #0x90]
+000a4fb4 str       r6, [r1]
+000a4fb8 ldr       r2, [r8, r2]
+000a4fbc ldr       r1, [pc, #0x88]
+000a4fc0 str       lr, [r2]
+000a4fc4 ldr       r2, [pc, #0x84]
+000a4fc8 ldr       r0, [r8, r0]
+000a4fcc str       ip, [r0]
+000a4fd0 ldr       r6, [r8, r2]
+000a4fd4 ldr       r1, [r8, r1]
+000a4fd8 mov       r0, r6
+000a4fdc bl        #0x11bfc ; stpcpy@plt
+000a4fe0 ldr       lr, [pc, #0x6c]
+000a4fe4 mov       ip, r0
+000a4fe8 add       lr, pc, lr string=retro/libs/emu_sfc.so
+000a4fec ldm       lr!, {r0, r1, r2, r3}
+000a4ff0 ldrh      r7, [lr, #4]
+000a4ff4 str       r0, [ip]
+000a4ff8 ldr       r0, [lr]
+000a4ffc str       r1, [ip, #4]
+000a5000 str       r0, [ip, #0x10]
+000a5004 mov       r0, r6
+000a5008 str       r2, [ip, #8]
+000a500c str       r3, [ip, #0xc]
+000a5010 strh      r7, [ip, #0x14]
+000a5014 bl        #0xa3fb8 ; Load_Proc1
+000a5018 cmp       r0, #0
+000a501c popeq     {r4, r5, r6, r7, r8, pc}
+000a5020 mov       r1, r5
+000a5024 mov       r0, r4
+000a5028 pop       {r4, r5, r6, r7, r8, lr}
+000a502c b         #0xa49d0 ; Pico_Load.part.0
+000a5030 andeq     r4, pc, ip, lsl #1
+000a5034 strdeq    r0, r1, [r0], -ip
+000a5038 strdeq    r0, r1, [r0], -r0
+000a503c andeq     r0, r0, r4, lsl #5
+000a5040 andeq     r0, r0, r0, asr #7
+000a5044 ldrdeq    r0, r1, [r0], -r4
+000a5048 andeq     r0, r0, r4, asr r2
+000a504c andeq     r0, r0, r4, ror r2
+000a5050 strheq    r0, [r0], -r0
+000a5054 strheq    r5, [ip], -ip
+
+InitSound 0xa6844
+000a6844 push      {r4, r5, r6, lr}
+000a6848 ldr       r5, [pc, #0xcc]
+000a684c ldr       r4, [pc, #0xcc]
+000a6850 add       r5, pc, r5
+000a6854 add       r4, pc, r4
+000a6858 ldr       r0, [r5]
+000a685c cmp       r0, #0
+000a6860 popeq     {r4, r5, r6, pc}
+000a6864 ldr       r1, [pc, #0xb8]
+000a6868 add       r1, pc, r1 string=sound_driver_init
+000a686c bl        #0x12010 ; dlsym@plt symbol=sound_driver_init
+000a6870 ldr       r2, [pc, #0xb0]
+000a6874 cmp       r0, #0
+000a6878 mov       r3, r0
+000a687c ldr       r2, [r4, r2]
+000a6880 str       r0, [r2]
+000a6884 beq       #0xa68fc
+000a6888 ldr       r1, [pc, #0x9c]
+000a688c mov       r2, #2
+000a6890 ldr       r0, [r4, r1]
+000a6894 movw      r1, #0xac44
+000a6898 ldr       r0, [r0]
+000a689c blx       r3
+000a68a0 ldr       r5, [r5]
+000a68a4 ldr       r1, [pc, #0x84]
+000a68a8 mov       r0, r5
+000a68ac add       r1, pc, r1 string=sound_driver_playframe
+000a68b0 bl        #0x12010 ; dlsym@plt symbol=sound_driver_playframe
+000a68b4 ldr       r3, [pc, #0x78]
+000a68b8 cmp       r0, #0
+000a68bc ldr       r3, [r4, r3]
+000a68c0 str       r0, [r3]
+000a68c4 beq       #0xa690c
+000a68c8 ldr       r1, [pc, #0x68]
+000a68cc mov       r0, r5
+000a68d0 add       r1, pc, r1 string=sound_driver_settrigger
+000a68d4 bl        #0x12010 ; dlsym@plt symbol=sound_driver_settrigger
+000a68d8 ldr       r3, [pc, #0x5c]
+000a68dc cmp       r0, #0
+000a68e0 ldr       r3, [r4, r3]
+000a68e4 str       r0, [r3]
+000a68e8 popne     {r4, r5, r6, pc}
+000a68ec ldr       r0, [pc, #0x4c]
+000a68f0 pop       {r4, r5, r6, lr}
+000a68f4 add       r0, pc, r0 string=can't find sound_driver_settrigger proc
+000a68f8 b         #0x11c20 ; puts@plt
+000a68fc ldr       r0, [pc, #0x40]
+000a6900 pop       {r4, r5, r6, lr}
+000a6904 add       r0, pc, r0 string=can't find sound_driver_init proc
+000a6908 b         #0x11c20 ; puts@plt
+000a690c ldr       r0, [pc, #0x34]
+000a6910 pop       {r4, r5, r6, lr}
+000a6914 add       r0, pc, r0 string=can't find sound_driver_playframe proc
+000a6918 b         #0x11c20 ; puts@plt
+000a691c andseq    r1, r1, r0, asr sb
+000a6920 andeq     r2, pc, r4, lsr #15
+000a6924 andeq     r4, ip, r4, lsr ip
+000a6928 andeq     r0, r0, r8, asr #10
+000a692c andeq     r0, r0, r4, ror r3
+000a6930 andeq     r4, ip, r8, lsr #24
+000a6934 andeq     r0, r0, ip, lsl r5
+000a6938 andeq     r4, ip, r4, asr #24
+000a693c andeq     r0, r0, r4, lsr #5
+000a6940 andeq     r4, ip, r8, lsr ip
+000a6944 andeq     r4, ip, ip, lsr #23
+000a6948 ldrdeq    r4, r5, [ip], -r8

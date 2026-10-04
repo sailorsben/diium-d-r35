@@ -1,0 +1,19 @@
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.txt text eol=lf
+*.asm text eol=lf
+*.log text eol=lf
+*.hex text eol=lf
+# Evidence hashes describe published bytes; preserve those bytes in Git.
+evidence/** -text -whitespace
+docs/reference/** -text -whitespace
+releases/**/snes-mvp binary
+*.png binary

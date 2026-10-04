@@ -1,0 +1,173 @@
+{
+  "v2_archive": "device-evidence\\hardware-runtime-return-20261004T182651Z",
+  "v3_archive": "device-evidence\\hardware-console-return-20261004T185838Z",
+  "uart_irq_per_second": {
+    "v2": 6968.241809134592,
+    "v3": 6953.201616172182
+  },
+  "uart_tx_reported_bytes_per_second": {
+    "v2": 85.60934202008396,
+    "v3": 85.7526616321918
+  },
+  "main_thread_total_cpu_percent": {
+    "v2": 84.98047967114498,
+    "v3": 84.0543518460292
+  },
+  "similar_high_load_windows": [
+    {
+      "interval_end_elapsed_range": [
+        17,
+        42
+      ],
+      "v2": {
+        "interval_count": 12,
+        "seconds": 24.400087999999997,
+        "main_cpu_percent": 86.84394908739675
+      },
+      "v3": {
+        "interval_count": 13,
+        "seconds": 26.311514999999996,
+        "main_cpu_percent": 86.76809374146644
+      },
+      "note": "Selected similar high-load periods; inferred workload correspondence, not scene-tagged measurements."
+    },
+    {
+      "interval_end_elapsed_range": [
+        90,
+        106
+      ],
+      "v2": {
+        "interval_count": 8,
+        "seconds": 16.329958999999988,
+        "main_cpu_percent": 86.77302864018219
+      },
+      "v3": {
+        "interval_count": 8,
+        "seconds": 16.304981999999995,
+        "main_cpu_percent": 86.90595303938393
+      },
+      "note": "Selected similar high-load periods; inferred workload correspondence, not scene-tagged measurements."
+    }
+  ],
+  "fd_targets": [
+    [
+      "476",
+      "0",
+      "/dev/null"
+    ],
+    [
+      "476",
+      "1",
+      "/dev/null"
+    ],
+    [
+      "476",
+      "10",
+      "/dev/console"
+    ],
+    [
+      "476",
+      "11",
+      "/dev/console"
+    ],
+    [
+      "476",
+      "2",
+      "/dev/null"
+    ],
+    [
+      "481",
+      "0",
+      "/dev/null"
+    ],
+    [
+      "481",
+      "1",
+      "/dev/null"
+    ],
+    [
+      "481",
+      "10",
+      "/dev/console"
+    ],
+    [
+      "481",
+      "11",
+      "/dev/console"
+    ],
+    [
+      "481",
+      "12",
+      "/dev/dsp"
+    ],
+    [
+      "481",
+      "13",
+      "/usr/retro/font.ttf"
+    ],
+    [
+      "481",
+      "14",
+      "/dev/chunkmem"
+    ],
+    [
+      "481",
+      "2",
+      "/dev/null"
+    ],
+    [
+      "481",
+      "3",
+      "/dev/chunkmem"
+    ],
+    [
+      "481",
+      "4",
+      "/dev/gpio"
+    ],
+    [
+      "481",
+      "5",
+      "/dev/disp1"
+    ],
+    [
+      "481",
+      "6",
+      "/dev/mem"
+    ],
+    [
+      "481",
+      "7",
+      "/dev/chunkmem"
+    ],
+    [
+      "481",
+      "8",
+      "/dev/spidev0.0"
+    ],
+    [
+      "481",
+      "9",
+      "/dev/timer0"
+    ]
+  ],
+  "kcore_stat": {
+    "kind": "node",
+    "path": "/proc/kcore",
+    "errno": 2,
+    "mode": 0,
+    "rdev": 0
+  },
+  "ignore_loglevel": {
+    "kind": "file",
+    "elapsed": 0.010894,
+    "path": "/sys/module/printk/parameters/ignore_loglevel",
+    "errno": 0,
+    "truncated": false,
+    "encoding": "text",
+    "data": "N\n"
+  },
+  "user_report": "Same map -> party menu -> map sequence; seemed the same.",
+  "performance_limit": "Adaptive internal draw suppression remained active; no per-step timing or draw-hold counts collected in v3.",
+  "uart_irq_change_percent": -0.21583913667710952
+}

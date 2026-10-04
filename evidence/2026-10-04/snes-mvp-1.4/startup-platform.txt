@@ -1,0 +1,4 @@
+Boot identity
+cfe7eac2-1497-49f1-9a30-b1b9b04f4393
+7.26 1.75
+       key      shmid perms       size  cpid  lpid nattch   uid   gid  cuid  cgid      atime      dtime      ctime        rss       swap

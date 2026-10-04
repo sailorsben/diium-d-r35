@@ -1,0 +1,86 @@
+{
+  "libs/emu_pcsx.so": {
+    "path": "<card-export>\\retro\\libs\\emu_pcsx.so",
+    "sha256": "30879f1b5a652d0b6f60bd2ab0e71194c9790b779d94c4c8e5488eb56b07a339",
+    "bytes": 1227580,
+    "named_functions": 1204,
+    "named_defined_symbols": 2006,
+    "executable_segment_bytes": 1041848,
+    "selected_functions": {
+      "SetFrameSkip": {
+        "address": "0x9f0f0",
+        "bytes": 32
+      },
+      "retro_run": {
+        "address": "0x516b0",
+        "bytes": 1084
+      },
+      "retro_get_system_info": {
+        "address": "0x4ffbc",
+        "bytes": 60
+      },
+      "retro_get_system_av_info": {
+        "address": "0x4ff38",
+        "bytes": 132
+      },
+      "psxInit": {
+        "address": "0xa1610",
+        "bytes": 180
+      },
+      "vout_flip.lto_priv.45": {
+        "address": "0x4f258",
+        "bytes": 412
+      },
+      "retro_init": {
+        "address": "0x51304",
+        "bytes": 940
+      },
+      "decide_frameskip": {
+        "address": "0x4e23c",
+        "bytes": 244
+      },
+      "GPUupdateLace": {
+        "address": "0x4dd3c",
+        "bytes": 208
+      },
+      "retro_set_video_refresh": {
+        "address": "0x50040",
+        "bytes": 20
+      }
+    },
+    "thread_related_functions": [
+      "CurThread.lto_priv.224",
+      "Thread.lto_priv.223",
+      "playthread",
+      "spu_worker_thread",
+      "threadid"
+    ],
+    "timing_globals": [
+      ".divsi3_skip_div0_test",
+      ".udivsi3_skip_div0_test",
+      "/home/vmuser/work/out/A10_gnueabihf/libemu_pcsx/obj/plugins/dfsound/arm_utils.o",
+      "SetFrameSkip",
+      "SetupSound",
+      "SoundOn",
+      "StartSoundMain",
+      "audio_batch_cb",
+      "decide_frameskip",
+      "decide_frameskip_allow",
+      "do_cmd_list_skip",
+      "do_samples_skip",
+      "dwFPS.7036",
+      "frame_counter",
+      "g_frame_skip",
+      "iFPSCnt.7037",
+      "retro_set_audio_sample",
+      "retro_set_audio_sample_batch",
+      "skip_block",
+      "snd_busy",
+      "snd_feed",
+      "snd_finish",
+      "snd_init",
+      "sndbuffer"
+    ],
+    "selected_callers": {}
+  }
+}

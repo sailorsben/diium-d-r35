@@ -1,0 +1,33 @@
+{
+  "archive": "<workspace>\\device-evidence\\hardware-console-return-20261004T185838Z",
+  "hardware_execution_verified": true,
+  "record_count": 846,
+  "sample_count": 45,
+  "complete": {
+    "kind": "complete",
+    "elapsed": 105.32805,
+    "report_capped": false
+  },
+  "archived_sha256": {
+    "init": "c5020d8bd23822998ed6252a79fb72c56d363c934d16152c93eb20145267a9d9",
+    "hardware_probe_v3": "1d120017e6ff536132f542ca10e44bb49455b6a9dbe994cdefa0858ae73116b2",
+    "hardware_probe_v3.once.started": "a605b03104447fe1e8ad581957a0277c468f75c2237aa945937b58792248e883",
+    "hardware_probe_v3.jsonl": "b7319e0e1af652159be5190a85e5005a8b5a89fef2dc5ba0ca7ea8b425af3392",
+    "hardware_probe_v3.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "restored_init_sha256": "6d65bf756183f37c19a542703c8d50193d5c137e7d0d45be4ac980fcdcb8efbd",
+  "critical_unchanged": {
+    "libs/emu_sfc.so": "3a0ceb3cfde5148cecec0fb7cf5cf4c57229f9c6040626f79de3a520ae38c00e",
+    "libs/emu_sfc_plus.so": "1812b19b50270c625b43126253f687edc46bb9ba3cf0c4ccaaf3e2c29bef6657",
+    "vrtemu": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+    "driver.so": "2c0134b3fc425f5b65c271c014e291824590c773190014f4e50c3ed33c2f13f9"
+  },
+  "removed_probe_paths": [
+    "hardware_probe_v3",
+    "hardware_probe_v3.once",
+    "hardware_probe_v3.once.started",
+    "hardware_probe_v3.jsonl",
+    "hardware_probe_v3.err"
+  ],
+  "probe_error_bytes": 0
+}

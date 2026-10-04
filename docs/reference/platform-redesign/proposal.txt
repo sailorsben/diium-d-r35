@@ -1,0 +1,864 @@
+DIIUM D-R35 — HARDWARE-UP PLATFORM REDESIGN
+Architecture review, 2026-10-04, America/Chicago
+
+Decision
+========
+Build a small, source-controlled C userspace platform for this board: a consumer
+launcher, a software-rendered libretro runner, and explicit board audio/video/input
+backends. Retain the working vendor kernel and board initialization initially.
+Use the current display driver as a bounded bring-up dependency, then replace
+specific operations where the kernel ABI and measurements justify it. Package
+the result reproducibly with Buildroot. Keep v11 as the playable reference and
+recovery option. Do not make permanent vrtemu binary surgery the new platform.
+
+This is a redesign proposal, not an implementation or a claim of recovered speed.
+Removing the adapter does not automatically remove its useful work. Native-rate
+conversion, hardware-visible buffer ownership and budget-aware rendering remain
+necessary wherever the hardware/core contracts demand them. Put each operation
+in its proper owner once, then remove it only when a validated path makes it
+unnecessary. Layer count alone is not a performance measurement.
+The interrupted clock-patch work produced only a local binary copy and address
+reference files. It did not produce or install a patched launcher. This review
+made no device changes.
+
+Evidence vocabulary
+-------------------
+CONFIRMED: observed on this unit or established directly from its inspected code.
+STRONGLY INFERRED: multiple observations support it, but a decisive check is absent.
+PLAUSIBLE: a useful hypothesis or candidate, not a device capability guarantee.
+UNKNOWN: not established. NEEDS DEVICE TEST identifies the proposed discriminator.
+Targets and architecture choices below are proposals, not measurements.
+
+1. HARDWARE TRUTH TABLE
+======================
+Component              Status / actual evidence                         Next useful check
+CPU                    CONFIRMED: one Cortex-A7 r0p5, ARMv7,            Sustained clock and
+                       NEON/VFPv4/D32, integer divide.                    workload behavior.
+Clock                  CONFIRMED DT declaration: 666 MHz.               Available clock APIs;
+                       UNKNOWN actual sustained operating rate.         no register guessing.
+Caches                 A7 TRM: 32-byte instruction lines,                Capacity/cache-policy
+                       64-byte data/L2 lines. Actual capacities          discovery and whole-
+                       and this SoC's cache integration UNKNOWN.        frame memory tests.
+SoC identity           CONFIRMED family: GPA7XXXA. Exact SKU UNKNOWN.    Board/firmware ID.
+                       GPA7740A is only a PLAUSIBLE relative.
+RAM                    CONFIRMED 48 MiB Linux boot map, 16 MiB           Allocator/map inventory;
+                       reserved chunk region, MemTotal 43,120 KiB.       resident peaks by core.
+                       ~64 MiB DRAM is STRONGLY INFERRED.
+Memory pressure        CONFIRMED v3 gameplay MemAvailable               Recover UI allocations;
+                       5,012 -> 4,624 KiB; vrtemu RSS about 23 MiB.       cap core/cache budgets.
+                       This includes host/core, not just launcher UI.
+Root filesystem        CONFIRMED ramfs; ~9,480 KiB Unevictable           Map backing/contents;
+                       during v3, not proof all is removable.           root image work later.
+Display                CONFIRMED 640x480 exported surface and            Actual scanout cadence,
+                       NV3051F-labelled path. Panel cadence UNKNOWN.    completion/latency.
+PScaler                CONFIRMED A active, A/B/Y resources and           Completion contract,
+                       queue-related ABI fields present. Continuous     persistent fd, then
+                       queue usability UNKNOWN.                         legal queue modes.
+Chunk/DMA memory       CONFIRMED suitable chunk buffers fix corruption. Cache attributes and
+                       Ordinary heap pointers are not interchangeable.  ownership visibility.
+Audio                  CONFIRMED OSS device, vendor ALSA infrastructure. Accepted rates, period,
+                       Native 32,040 Hz support UNKNOWN.                 effective queue/delay.
+GPU                    CONFIRMED DT node only. Usable Vivante stack      No dependency on it;
+                       UNKNOWN, no runtime established.                  bounded bring-up study.
+PPU/rotators/DMA        CONFIRMED DT/symbol/resource evidence.            Public API, formats,
+                       General-purpose offload contracts UNKNOWN.       completion and cost.
+SRAM                   CPU-usable capacity/location UNKNOWN.             Documented allocator or
+                       Candidate SoC marketing is insufficient.         explicit SDK contract.
+Storage                CONFIRMED FAT32 working card and vfat/UTF-8       Sequential/random reads,
+                       mount. Throughput and fsync tails UNKNOWN.        save-write latency.
+Controls/power         Vendor control, GPIO/ADC and power paths exist.   Map input events, battery,
+                       Safe suspend/wake behavior UNKNOWN.               shutdown and hotkeys.
+UART                   CONFIRMED ~6,953 IRQ/s in v3; stdout suppression  Cost only if cheap tracing
+                       had negligible effect. Cause/cost UNKNOWN.        exists; lower priority.
+Tracing/profiling      Software task-clock worked; tested PMU events     Short capability check;
+                       unavailable. /proc/kcore absent.                   no raw-memory fallback.
+
+Sources: local L1-L5; ARM P1; candidate Generalplus P3. DT declares a stale 32 MiB
+memory node while the live boot argument says mem=48MB: generic DT defaults must
+not be treated as a silicon census. UART and PScaler interrupt rates are not FPS.
+
+A7 engineering consequences
+--------------------------
+The A7 is an in-order CPU. Use compact hot loops, contiguous data, reduced pointer
+chasing, and fewer unpredictable branches. NEON is part of the same core and
+shares memory resources; it accelerates suitable work rather than acting as a
+second processor. Align hot data deliberately and measure optimized whole steps.
+Huge unrolled loops, giant lookup tables and blanket O3 can increase instruction
+or data-cache pressure. Actual cache capacity is an input to tuning, not a value
+to borrow from the candidate SoC page. Threads can overlap CPU work with devices;
+they cannot execute two CPU-heavy emulator jobs simultaneously on this machine.
+
+Illustrative traffic, not measured bandwidth: a 256x224 RGB565 frame is 112 KiB.
+Copying it once at 60 frames/s generates about 13.76 MB/s of reads plus writes.
+A 640x480 RGB565 surface is 600 KiB. Hardware scaling, output writes and scanout
+still consume memory bandwidth even when the CPU does not execute those copies.
+Zero-copy must beat cached rendering plus a compact copy in TOTAL elapsed and
+CPU cost; removing a memcpy is not sufficient evidence.
+
+2. WHAT THE VENDOR GOT RIGHT
+===========================
+- They use specialized display/scaler hardware instead of scaling everything
+  with the Cortex. RGB565 reduces storage and bandwidth versus 32-bit output.
+- Chunk memory gives devices usable backing and avoids pretending arbitrary
+  userspace pointers are DMA buffers.
+- A real display worker already overlaps work. Its ownership boundaries need
+  improvement, but concurrency was not entirely absent.
+- Their original private frameskip contract can omit drawing while retaining
+  emulation. That is a sensible policy for a constrained machine.
+- Core loading through an existing libretro-like boundary is valuable knowledge.
+- A small supervisor provides recovery from a failed application.
+- The platform runs without a desktop compositor or heavyweight OS shell.
+- The installed PS1 path contains serious ARM optimization: an ARM dynarec,
+  NEON GTE code, and a NEON software GPU. The vendor did not simply brute-force
+  all systems with generic C interpreters.
+
+Retain these ideas and the working hardware knowledge. Retention does not require
+keeping their original userspace implementation forever.
+
+3. WHAT THE VENDOR GOT WRONG — AND WHAT IS STILL ONLY SUSPECTED
+============================================================
+Correctness bugs confirmed in inspected code:
+- Environment command 37 writes a double at +32 into a geometry object whose
+  fields occupy 20 bytes. SET_GEOMETRY must not be treated as an AV-info object.
+- Audio open-error handling tests fd == 0 rather than fd < 0. A negative result
+  can fall through and a valid descriptor zero can be flagged. No observed click
+  is attributed to this latent error path.
+
+Timing/interface problems:
+- Region-derived integer 50/60 and millisecond gettimeofday scheduling conflate
+  console cadence, wall clock and scheduling. Actual core FPS must be validated
+  per core; the installed PS1 core itself reports 50/60, so blindly imposing the
+  SNES rate on every core would create a different bug.
+- Optional vendor SetFrameSkip stops controlling upstream cores. The null check
+  prevents a crash but does not preserve the intended performance behavior.
+- Audio is initialized at 44.1 kHz without demonstrating that this is the best
+  hardware/core contract; negotiated ioctl results need deliberate validation.
+- A void playframe wrapper hides actual write acceptance/error handling from the
+  host contract. Prior successful writes do not establish a robust general path.
+
+Architectural/performance candidates, with unmeasured upside:
+- PScaleRun opens, configures, starts, waits/status-checks, stops and closes per
+  job. Repeated lifecycle work is real; a persistent device is not yet proven safe.
+- The video producer has an explicit 500 us sleep in a pending-job path before
+  waiting on the condition variable. Its execution frequency/cost is unmeasured.
+- A scaler fallback contains ten 1 ms sleeps without re-reading status in that
+  loop. This could be a tail-latency problem if taken; no live frequency is known.
+- Scaler debug formatting remains active in kernel logs. It is not established
+  as the UART console stream, and no recoverable CPU percentage is claimed.
+- Current integration requires normal-RAM-to-chunk packing. Its cost must be
+  compared with the cache behavior of direct chunk rendering.
+
+Evidence correction: the production adapter's own WaitDisp is at video teardown,
+before freeing buffers. It is NOT called per frame by the adapter. Normal-frame
+backpressure comes through the frontend/driver. Do not optimize an imaginary
+per-frame adapter WaitDisp call.
+
+Historical audio clue: v4/v7 logs show 16,384-byte OSS fragments and 524,288-byte
+logical capacity. At 44.1 kHz stereo16 those are ~92.9 ms and ~2.97 s. Some v4
+GETODELAY samples correspond to ~186-279 ms. These are historical logical OSS
+values, not current v11 DAC/acoustic latency. They justify measuring actual period
+and consumption, and challenge the assumption that stock audio is barely buffered.
+
+UX findings must stay bounded: the user wants English-native wording, obvious ROM
+folders and straightforward saves. This review did not run a fresh visual audit of
+every vendor menu. No invented list of mistranslated screens or broken controls is
+needed to justify that product specification.
+
+4. TARGET ARCHITECTURE AND OS DECISION
+====================================
+Existing bootloader / board init / vendor Linux 4.19
+    |
+    +-- minimal boot selector + bounded supervisor + known-good fallback
+           |
+           +-- lightweight launcher shell
+           |     library index, favorites, recents, art, settings, save browser
+           |     releases art/index working sets when launching a game
+           |
+           +-- one game runner process
+                 core loader + validated core profile
+                 session/timing controller
+                 input snapshot -> retro_run -> audio/video callbacks
+                 audio queue + output owner
+                 frame ownership + display worker
+                 save manager + bounded metrics
+                       |
+                 board backends
+                 audio PCM | chunk/PScaler/display | input/power
+                       |
+                 vendor kernel drivers and hardware
+
+One runner per game gives clean core teardown and returns memory on exit. The
+launcher may exec the runner and be restarted afterward, or a tiny supervisor
+may retain only selection/resume metadata. A large resident UI beside the core
+is not the target. In-game pause is a minimal runner overlay, not another full UI.
+
+The board backend is a necessary hardware abstraction, not an emulator-specific
+compatibility shim. Core logic owns emulated state; the runner owns timing and
+queues; the board layer owns device handles and hardware-visible memory; the
+kernel owns IRQs and device mechanics. No core directly pokes platform registers.
+
+The runner implements a bounded, correct libretro surface: pixel-format negotiation,
+input descriptors/polling, geometry and timing changes, core options, save/system
+paths, serialization, disk control where needed, and explicit false for unsupported
+environment commands. A NULL video frame means duplicate the previous picture,
+not a failed framebuffer. Callback thread ownership must be checked per core;
+the initial SPSC audio contract requires a single producer. Do not silently enable
+an asynchronous core-audio path that violates it. Use reusable library code for
+these contracts where it is smaller and better tested than a fresh implementation.
+
+Kernel choices:
+A. Vendor kernel + replacement userspace: CHOOSE FIRST. Keeps proven panel,
+   audio, controls, storage and board startup while replacing the problematic host.
+B. Vendor kernel + specific driver changes: CONDITIONAL. Only for demonstrated
+   limits with source/ABI, build and recovery evidence. A module cannot casually
+   replace a built-in scaler implementation.
+C. Custom Buildroot userspace + vendor kernel: CHOOSE AS PACKAGING DESTINATION.
+   Use a br2-external board/project tree, pinned toolchain, manifests and exact
+   source revisions. Initially preserve glibc/hard-float compatibility with blobs.
+   Do not switch to musl while depending on glibc-linked vendor libraries.
+D. New kernel port: DEFER. Requires board support, display/audio/SD/input/power
+   drivers, a bootable image route and actual recovery. Version number is not a
+   performance argument.
+E. Bare metal / RTOS / radical replacement: REJECT FOR THIS ROADMAP. Rebuilding
+   the driver/storage ecosystem would dominate the work before showing benefit.
+
+An SD userspace package does not automatically reclaim the existing ramfs image.
+Replacing/reducing initramfs is a later memory/boot project after firmware recovery
+is established. No new flash access, MMIO writes, GPU enable or kernel patch is
+authorized by this review's measurements.
+
+Frontend alternatives:
+- Exact-version vrtemu patches: useful isolated experiments, poor long-term code
+  ownership. Address-dependent detours accumulate maintenance cost.
+- Runtime replacement while retaining vendor UI: valid transitional packaging if
+  its launch/exit seam is cheap; not a requirement that delays the first runner.
+- Reduced RetroArch + RGUI: credible comparator. RGUI is explicitly designed for
+  low-powered systems; do not dismiss it as inherently too heavy. It still needs
+  a suitable D-R35 backend and measured resident/latency costs.
+- Purpose-built C runner and shell: CHOSEN. One board and selected software cores
+  make the ownership/policy surface small. Reuse audited libretro-common/libpicofe
+  components where useful, preserving licenses; avoid desktop/GL dependencies.
+
+5. KEEP / PATCH / REWRITE / DELETE MATRIX
+=======================================
+Component              Decision                 Reason / exit condition
+Bootloader/board init  KEEP                     Known working hardware startup.
+Current kernel        KEEP initially           Proven device support; targeted fixes later.
+main supervisor       REPLACE eventually       Bounded restart/fallback and explicit child
+                                               lifecycle; preserve recovery concept.
+vrtemu runtime        REWRITE                  Correct host contracts from source.
+vrtemu UI             REPLACE after runner     Preserve as fallback and interim launcher.
+driver.so             KEEP bridge, then        Recovered ABI useful. Replace audio now in
+                      REPLACE selectively      runner prototype; video portions when proven.
+Audio path            REWRITE                  Negotiated sink, bounded queue, drift/error
+                                               handling, actual latency accounting.
+PScaler path          PATCH/REWRITE userspace  Separate ownership/completion; persistent fd
+                                               and queue changes each need validation.
+SNES adapter          DELETE from new path    Move reusable fixes into normal host/backend.
+                                               Retain exact v11 package for fallback.
+Emulator cores        KEEP selected baselines  Pin and compare upstream candidates; no forced
+                      / REPLACE by evidence    one-core-per-year or one-core-for-every-game rule.
+ROM filesystem        KEEP FAT32 initially     Direct Windows copy workflow; no repartition
+                      REPLACE layout/index     requirement to improve organization.
+Save handling         REWRITE                  Content/build identity, verified writes,
+                                               recovery generations and clear UX.
+Private core ABI      DELETE as assumption     Optional validated vendor profiles only.
+Production debug spam DELETE/disable where     Bounded counters replace per-frame printing;
+                      controlled               kernel changes only with build/recovery route.
+
+6. EMULATOR STRATEGY BY CONSOLE
+==============================
+These are selected starting candidates, not measured D-R35 winners. Use per-game
+exceptions after correctness/performance tests. Software renderers and low memory
+are the initial contract; GL-dependent cores are not promised.
+
+NES: FCEUmm default. Broad mapper support and an established lightweight path;
+     installed vendor binary identifies FCEUmm. QuickNES fallback for supported
+     titles if it buys real margin; its compatibility differences need coverage.
+GB/GBC: Gambatte default. Mature timing/compatibility with modest workloads.
+     TGB Dual only where its behavior/link features are wanted. The vendor export
+     named emu_mgba.so actually identifies TGB Dual v0.8.3 9be31d3: never choose a
+     core by filename alone.
+GBA: gpSP default candidate because its ARM dynamic recompiler suits this CPU.
+     Use a validated BIOS/configuration. mGBA is the compatibility fallback when
+     the game fits the budget. Do not promise all mGBA workloads at full speed.
+SNES: Plus remains the baseline because it is currently playable and sounds good.
+     Compare fresh 2005, Plus and 2010 under the runner. 2010's explicit NEON tile/
+     color paths justify a trial, not a speed claim. Heavy special-chip games may
+     need per-game choices or remain beyond practical limits. Plain 2005's legacy
+     APU is an accuracy/performance trade, not a blanket substitute for Plus.
+Genesis/Mega Drive: PicoDrive default candidate; ARM-oriented CPU/render code is
+     a good fit. Genesis Plus GX is the accuracy/compatibility fallback where it
+     fits. Sega CD is conditional on disc-I/O and memory tests; 32X is experimental.
+Master System/Game Gear: SMS Plus GX default candidate; Genesis Plus GX fallback.
+     PicoDrive is another SMS candidate, but do not assume its libretro port covers
+     Game Gear without validation. These need no invented dynarec claim.
+PC Engine: Beetle PCE FAST candidate; evaluate Temper as the low-resource fallback.
+     CD support requires BIOS/disc tests and bounded buffers; accuracy options are
+     explicit per-game choices, not silent global emulated-clock reductions.
+Arcade: use a board/game manifest. Retain the known FB Alpha 2012 and MAME2000
+     families as performance baselines; test a pruned FBNeo build for chosen CPS/
+     Neo Geo/other boards. Use MAME2003-Plus selectively for games needing it.
+     Match each core's ROM-set revision. Avoid promising arbitrary large arcade
+     libraries; ROM/RAM demand can exceed the board before CPU becomes the limit.
+PS1: PCSX-ReARMed with an ARM dynarec and NEON software GPU. Begin at native
+     resolution, no enhancement/upscaling/PGXP promises, validated BIOS and a
+     per-game conservative frameskip policy. Interpreter is a diagnostic/compat
+     fallback, not the default performance path.
+
+Core builds are part of the design, not interchangeable downloads. Start with
+-mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard and a compatible glibc sysroot;
+respect a core's ARM-state/JIT and aliasing requirements. Pin source, compiler,
+flags, CPU backend, renderer and save-state ABI in each manifest. Current upstream
+PCSX-ReARMed defaults enable several asynchronous compute paths: explicitly start
+GPU/SPU/background-dynarec threads disabled on this single core; separately test
+bounded asynchronous disc reads for I/O overlap. FCEUmm's optional HD-pack support
+should be compiled out. Cyclone and DrZ80 are ARM assembly interpreters, not
+dynarecs. MAME2003-Plus exposes these options; do not assume every FBA build does.
+PCE FAST is a HuCard/CD candidate, not SuperGrafx support; qualify SGX separately.
+Disable runahead, rewind, enhancement filters and full-disc RAM preload initially.
+See core-notes.txt for each system's upstream build references and tradeoffs.
+
+Other plausible small systems (Atari 2600/7800, WonderSwan, Neo Geo Pocket, Lynx)
+can be admitted by the same tests. N64, PSP, Saturn, Dreamcast and similarly heavy
+systems are outside the promised product scope. No usable 3D GPU is established.
+
+PS1 control-group findings (new static evidence)
+-----------------------------------------------
+The installed emu_pcsx.so is byte-identical to the preserved vendor export:
+1,227,580 bytes; SHA256
+30879f1b5a652d0b6f60bd2ab0e71194c9790b779d94c4c8e5488eb56b07a339.
+It identifies PCSX-ReARMed, r22 44de3b6 / v2.1-rc3-113-g44de3b6. Vendor changes
+are not fully reconstructed. ARM new_dynarec/ari64, ARM linkage, NEON GTE and
+gpu_neon code are compiled in. psxInit selects psxRec unless Config.Cpu selects
+the interpreter; the live selected mode is unmeasured.
+
+Its private SetFrameSkip affects final video conversion/submission; that alone
+does not prove all software rasterization is omitted. It reports 44,100 Hz and
+50/60 FPS, base 320x240, max 1024x512. Static BSS is ~25.6 MiB, including a 16 MiB
+translation cache and ~4 MiB egpu object; BSS size is not measured resident usage.
+This creates a concrete cache-size/performance trade to test, not a reason to
+strip symbols and expect RAM savings.
+
+The common host video callback/driver route is strongly supported statically;
+live PS1 path and cadence remain unmeasured. The inspected core has
+no GL/GPU-driver dependency demonstrating Vivante use. A good-looking PS1 game
+does not prove all frames are rendered at 60 Hz: record retro steps, unique
+pictures, submitted pictures and scanout separately. Compare CPU-heavy, GPU-heavy,
+ordinary 3D, 2D and menu scenes. The lessons to transfer are ARM dynarec, NEON
+software rendering, RGB565 conversion and honest frame-production accounting.
+
+7. EXPLICIT TIMING / AUDIO / VIDEO DESIGN
+========================================
+Clock ownership
+---------------
+There are three physical/logical rates: the core's emulated time, the audio
+device oscillator, and panel scanout. They cannot be made identical by naming
+one software clock. One session controller reconciles them.
+
+- CLOCK_MONOTONIC timestamps all host deadlines and measurements. Fixed-point or
+  rational accumulation retains fractional frame periods; no integer-ms drift.
+- Validate retro_get_system_av_info and dynamic SET_SYSTEM_AV_INFO changes.
+  Keep small, versioned profiles for known vendor cores that report inaccurate
+  timing. SET_GEOMETRY updates geometry only.
+- Use audio consumption/queue health as the primary continuous feedback when
+  reliable position/delay information exists. Use a fixed native-to-accepted-rate
+  resampling ratio in this audio-led mode. Monotonic time provides timestamps,
+  interpolation and absolute wake deadlines, not a competing pacing servo.
+- Panel presentation selects the latest appropriate completed picture. Duplicate
+  or drop presentation when core/panel cadences differ; do not force every core
+  to the panel frequency or confuse a 30-picture game with 30 emulation steps.
+- If audio position is too coarse/unreliable, select an explicit alternative:
+  monotonic-paced core execution plus a slow, clamped resampling-ratio correction
+  for device drift. Do not simultaneously vary core speed and sample ratio through
+  independent controllers reading the same queue error. Never use large pitch/
+  speed changes to hide CPU overload. Nominal rate equality does not establish
+  identical physical oscillators, so a no-resampler mode still needs drift tests.
+- Pause, load-state, reset and rate changes explicitly rebase deadlines and flush/
+  prime appropriate queues. Do not repay a pause as a burst of catch-up frames.
+- Cap catch-up work and accumulated frame debt. Short bursts can recover a finite
+  interruption, but persistent deficit triggers drawing suppression or an honest
+  performance shortfall. PAL cadence is preserved; presentation repeats/drops
+  absorb a panel mismatch unless an alternate display mode is actually proven.
+
+Per-step control
+----------------
+In audio-led mode, derive total backlog from both the userspace ring and kernel
+delay/consumption without counting the same samples twice. Map the output sample
+timeline to emulated time using the accepted sink rate and validated core AV rate.
+Predict with CLOCK_MONOTONIC when backlog reaches the next refill watermark, then
+wake on that absolute deadline or a relevant device/control event. Produce the
+next due emulation step, account its actual sample batch, and update the prediction.
+Use small watermarks/hysteresis around the latency target; never run a second
+independent 60 Hz loop. Rate/cursor validity failures select the explicit fallback
+clock policy after a controlled re-prime, not while the two clocks both run.
+
+Before retro_run: sample input as late as practical, examine buffered audio,
+recent drawn/undrawn cost, lateness and free video slots. Choose whether internal
+drawing is permitted. Run emulation and audio in either case. Use a validated
+GET_AUDIO_VIDEO_ENABLE implementation for the selected cores; support for that
+environment call is not proof that an arbitrary core honors video suppression.
+Unsupported cores may only drop presentation, which does not save rendering CPU.
+Use hysteresis and bounded runs of omitted drawings to prevent policy oscillation.
+Separate compatibility/accuracy options from scheduling policy.
+
+The host owns the initial drawing policy. Disable upstream automatic frameskip
+options and remove vendor scheduling from the active path. Otherwise two
+controllers can independently suppress work and invalidate the host's counts.
+
+Audio flow
+----------
+Core native PCM -> optional efficient resampler -> small bounded SPSC PCM ring
+-> audio owner -> kernel PCM buffer/DMA -> DAC.
+
+Only the audio owner opens/configures/writes the output endpoint. All successful
+negotiation values are checked. Prototype OSS directly because it is established;
+evaluate native ALSA where its functioning PCM interface exposes better periods,
+positions and XRUN behavior. Do not infer ALSA absence from /proc/asound absence.
+Do not query by opening a second competing playback stream during gameplay.
+
+Start with the proven 44.1 kHz sink and proven resampling math as a control. Then
+test native 32,040 and nearby accepted rates in an isolated owner. A returned
+requested number does not establish the real DAC rate or absence of hidden
+kernel conversion. Use consumption slope and a known tone/loopback if available.
+
+Use continuous phase across callback boundaries. Benchmark the existing linear
+converter against a short fixed-point polyphase filter for any required ratios;
+select the lowest cost meeting an explicit audio-quality test. Downsampling needs
+appropriate anti-alias filtering. NEON is a candidate for measured mixer/filter
+hot loops, not a requirement on every sample operation.
+
+Initial latency target: 2-3 core frames of TOTAL buffered audio (~33-50 ms at 60Hz),
+including userspace and kernel delay, tuned after actual period constraints. This
+is a design target, not a capability claim. Start safely higher if the driver
+requires it, then reduce with measured underrun/jitter distributions. A 32 KiB
+stereo16 ring is a reasonable capacity ceiling for the first prototype (~186 ms
+at 44.1k); its normal target occupancy is much lower. Do not fill every available
+kernel fragment simply because GETOSPACE permits it.
+
+Reserve space before retro_run for the selected core's maximum validated audio
+batch, including resampling expansion. Split large batches safely and count only
+samples actually accepted: never claim that discarded/unqueued PCM was consumed.
+Batch-callback backpressure is legal only for cores verified to handle partial
+acceptance. For sample callbacks or cores that cannot retry, capacity must cover
+the validated burst; an unexpected overflow is a visible fault and controlled
+re-prime, not silent success or unbounded allocation.
+
+The feeder waits for producer notification when the ring is empty, and device
+readiness when queued PCM cannot yet be written. Polling an already-writable
+device with an empty ring would spin. Handle partial writes, EINTR and EAGAIN
+exactly, retaining unaccepted samples. Count underruns and recover deliberately.
+An XRUN/restart invalidates playback-cursor unwrapping, queued-frame accounting,
+audio/video epoch mapping and estimator history; reset them before re-priming.
+Never turn a reset cursor into fictitious consumption and a catch-up burst.
+Bounded buffering absorbs finite video stalls;
+it cannot cure sustained emulation slower than real time. Use normal scheduling
+first. A bounded elevated feeder is an experiment only if measured wakeup latency
+requires it; unrestricted realtime threads can starve other necessary work.
+
+Video flow and owners
+---------------------
+Core cached framebuffer -> optional format/compact-pitch conversion -> source
+slot -> PScaler -> output slot -> display controller -> panel.
+
+Source: FREE -> CPU_WRITING -> READY -> SCALER_READING -> FREE.
+Output: FREE -> SCALER_WRITING -> READY_TO_PRESENT -> SCANOUT -> FREE.
+
+Scaler-source completion and display-output completion are separate fences.
+The current driver clears/signals pending work after PScaleRun but before FlipVFB;
+the new backend must preserve that distinction. No buffer is reused while a
+device still reads it. Coherent mappings still require ordering; cache maintenance
+for streaming mappings must follow a documented driver contract, not guessed
+userspace cache-flush symbols or arbitrary physical pointers.
+
+Begin with cached rendering plus compact RGB565 copy and the proven one-job
+driver. Add a bounded source pool (two initially, third only if useful) and a
+latest-ready mailbox. Replace an unsubmitted READY frame when necessary; never
+steal an in-flight or displayed buffer. If no source is free, preserve emulation/
+audio and omit the new presentation or suppress the next internal draw rather
+than making audio wait on a display fence. This policy has a measurable visual
+cost that belongs in counters.
+
+Do not advertise a direct software framebuffer unless the core actually honors
+that contract and whole-frame tests show cached/chunk mapping is beneficial.
+Treat persistent handle, configuration reuse, asynchronous wait, A/B output
+queueing, scaler-B use and direct chunk drawing as separate experiments.
+
+Memory plan
+-----------
+Avoid reserving all cores' maximum buffers simultaneously. Double 256x224 RGB565
+source plus double 640x480 output is about 1.39 MiB of pixel storage. PS1's max
+geometry changes that budget substantially. Chunk allocations are accounted
+separately from Linux heap/RSS and may already exist inside the vendor driver.
+Do not allocate duplicate output pools without auditing the backend.
+
+Initial targets: runner overhead excluding core/ROM/vendor-driver working sets
+<=3 MiB resident, telemetry <=256 KiB, audio ring <=32 KiB, artwork cache <=2 MiB
+and released during games. These are prototype budgets to verify, not measured
+implementation sizes. Keep 4-6 MiB Linux headroom where feasible and measure
+faults, PSS/RSS and touched dynarec cache. No production reliance on SD swap for
+steady-state emulation, no automatic full-ROM/thumbnail preload.
+
+8. ENGLISH-NATIVE CONSUMER EXPERIENCE
+====================================
+Boot to Continue, Recent, Favorites and Systems. Restore list position. Use a
+clear text-first list with one selected artwork preview; no continuous animation
+or background scanning during gameplay. Show a battery indicator only after the
+driver is calibrated; otherwise use honest available status rather than a fake
+percentage. Brightness and volume are immediate common controls.
+
+Use a restrained default theme with readable type and obvious focus contrast.
+Theme changes affect colors, fonts and bounded static art; no scripting engine or
+mandatory animated backgrounds. Screenshots are explicit user actions, encoded
+and written while paused or after a safely owned copy; PNG work must not run in
+the active frame callback. A hidden diagnostics page can expose frame/queue/core
+information, with a small optional overlay whose observer cost is measured.
+
+Adding games: copy files into /ROMs/NES, /ROMs/SNES, /ROMs/GB, /ROMs/GBC,
+/ROMs/GBA, /ROMs/Mega Drive, /ROMs/Master System, /ROMs/Game Gear, /ROMs/PC Engine,
+/ROMs/Arcade or /ROMs/PlayStation, eject, boot, play. The mounted card root must
+be resolved once; the vendor currently mounts it at /usr/retro as well as /media.
+Hide that implementation detail from users.
+
+Filesystem is the source of truth; the library database is disposable cache.
+Perform an incremental scan at boot and offer Library > Refresh games. Keep
+ambiguous extensions in their explicit system folders. ZIP support is bounded
+and core-aware, generally for cartridges; never inflate huge archives into RAM.
+Treat CUE/BIN and M3U as groups, hide component tracks from the main list, support
+disc switching through the core disk interface. CHD is optional only for a core
+build that supports it and passes CPU/I/O tests. No promise to play arbitrary ZIPs.
+
+Preserve UTF-8 filenames; use a bounded glyph cache and a readable fallback for
+missing glyphs. Do not rename ROMs to fit a database. Clean title display must
+retain a way to distinguish revisions/regions. Art/metadata are optional sidecars.
+Generate or resize thumbnails during import/menu idle, never during emulation.
+
+Default core selection comes from a tested system/game manifest. Advanced users
+can override per system or game, with visible core version and Restore defaults.
+Ordinary settings: volume, brightness, aspect/scale preference, controls, language,
+and a plain Quality/Balanced/Performance explanation where the profiles differ.
+Advanced settings: core options, native timing/rate experiments and diagnostics.
+Do not expose raw ioctls, queue counters or compiler flags in normal game flow.
+
+Saves: distinguish In-game saves from Snapshots in every screen. Stable content
+identity plus a readable label survives ROM renames. Store snapshots by core,
+build/state ABI and game ID; store original battery saves with provenance. Never
+silently load a Plus wrapper state into another core. Cross-core SRAM migration
+copies to a new generation and validates it; the original survives.
+
+Save writes use a temporary file, checksum/length verification, fsync, rename,
+directory sync when supported, and at least one previous validated generation.
+FAT32 and SD controllers can still lose data on sudden power failure: this is
+recovery engineering, not a promise of transactional power-loss immunity. Avoid
+rewriting full states continuously; schedule small dirty battery-save checkpoints
+and explicit exit saves, accounting for storage stalls. Rewind/runahead default off.
+
+Use the existing dedicated menu button if mapped; otherwise adopt one consistent
+non-game-breaking chord. Pause offers Resume, Save snapshot, Load snapshot,
+Controls, Game settings and Exit to library. Loading a snapshot indicates its
+age/core and protects against accidental destructive replacement. Search uses
+an on-screen keyboard with D-pad and alphabet jump; no hardware keyboard assumed.
+
+Shutdown: stop new emulation work, finish/cancel display work safely, persist dirty
+saves, flush storage, then request the existing board shutdown. Avoid a displayed
+"Saved" acknowledgment before the write is verified. Offer sleep only after suspend/
+wake/audio/storage behavior is proven; safe save-and-shutdown is the initial promise.
+
+9. RANKED PERFORMANCE OPPORTUNITIES
+==================================
+Opportunity                     Expected upside                 Confidence / effort / risk
+One coherent runtime + clocks   High correctness/pacing value;  High need; CPU gain unknown.
+                                removes mismatched policies.    Medium-high effort, medium risk.
+Audio period/queue ownership    Potentially high latency and    High priority from existing path;
+                                robustness improvement.         medium effort, medium risk.
+Recover menu/cache memory       Meaningful RAM headroom;        Pressure confirmed, exact gain
+                                fewer allocation failures.      unknown; medium effort, low risk.
+Fair core/renderer selection    Potentially largest compute     Medium confidence of differences;
+                                change for heavy games.         medium effort, correctness risk.
+Display completion/backpressure Potentially meaningful jitter  Known mechanisms, occurrence/cost
+                                and overlap improvement.        unknown; medium-high effort/risk.
+Persistent scaler lifecycle    Potential syscall/clock savings Magnitude unmeasured; medium
+                                and fewer long tails.           effort, kernel-semantic risk.
+Measured NEON/PGO/layout work   Local compute savings; no       Medium confidence after profile;
+                                promised percentage.            medium effort, pixel/audio risk.
+Native rate / resampler choice  Avoid conversion or improve     Accepted real rates unknown;
+                                fidelity at low cost.           low-medium effort/risk.
+Direct chunk framebuffer       May save copy or become slower. Low-medium confidence; cache and
+                                                               ownership risk.
+IRQ/kernel-log work            Unknown, bounded background tax. Low confidence of material gain;
+                                                               investigate only cheaply.
+GPU/SRAM/new-kernel bring-up    Speculative upside, large cost. Low confidence, high effort/risk;
+                                                               off critical path.
+
+The heavy FF6 drawing intervention (~19.96 -> ~6.75 ms wall time) prioritizes
+render-associated work. It does not allocate all ~13 ms to pure renderer CPU.
+The ~1.175 ms synchronous video callback cannot alone explain the full ~3.27 ms
+deadline deficit. No 5% aggregate draw count is converted into a 5% CPU deficit.
+
+The 60 versus 59.922743404 FPS mismatch is only about 0.129%, or ~21.5 us per
+frame. Correcting it repairs timing/drift; it cannot alone recover a ~3.27 ms
+heavy-frame deficit. A deliberately simple two-cost model using the measured
+19.958 ms drawn and 6.752 ms undrawn costs would need ~25% omitted draws if that
+same heavy workload persisted indefinitely. This is conditional arithmetic, not
+a measured requirement: queue behavior and wall costs change with scheduling.
+It explains why the mixed-run 5.012% statistic is not an optimization target.
+
+10. CREDIBLE HARDWARE EXPLOITATION
+=================================
+Each candidate needs an observable bottleneck, controlled comparison and rollback.
+
+- Keep PScaler doing supported scale/format work; test persistent-open first,
+  stable configuration second, legal hardware queue modes third. Measure syscall/
+  wait distributions and pixel correctness at each step.
+- Use source-release and scanout-release fences to overlap CPU emulation with
+  scaling. Keep only the latest pending presentation to cap latency.
+- Benchmark cached frame generation plus compact copying against frontend-provided
+  chunk buffers. Include cache maintenance and CPU render slowdown in the total.
+- Fuse format conversion, row packing and an unavoidable copy into one pass.
+  Skip the pass when a validated core/output format already matches the contract.
+- Use NEON for measured color math, tile rows, format conversion or resampling.
+  Preserve scalar references and test color boundaries, clipping, transparency,
+  audio saturation and overlap cases. Do not rewrite complex emulated PPU timing
+  as if the Generalplus PPU were the SNES PPU.
+- Compare O2/O3/LTO and profile-guided/function-layout builds on real scenes.
+  Smaller code can win on A7. Remove blanket no-builtin restrictions selectively
+  only after checking ABI and semantic assumptions. Avoid unsafe global fast-math.
+- Tune ARM dynarec code-cache size against compilation churn and memory headroom.
+  PS1's actual 16 MiB static translation cache supplies a specific experiment.
+- Use audio DMA consumption with event-driven writes and bounded batching; test
+  native PCM mmap only if the API works and total copy/wakeup cost improves.
+- Avoid per-frame allocations, symbol lookups, file writes and artwork decoding.
+  Prefault a small bounded working set; do not mlock the entire application under
+  this RAM pressure. Batch input reads only as latency permits.
+- Test supported rotator/PPU overlay paths only if rotation/composition is a
+  measured need. The UI can be idle/static and release its buffers in game mode.
+- B/Y scaler parallelism may not help one screen and could increase contention.
+  Test only after A is understood; more active hardware is not automatically faster.
+- SRAM is a candidate for hot tables only if an actual CPU-safe mapping/allocation
+  contract is recovered. The psca0_sram clock messages do not establish a
+  CPU-accessible general scratchpad.
+- GPU remains optional research. A DT node and Etnaviv's general Vivante support
+  do not provide clocks, power sequencing, matching model support, a kernel DRM
+  driver, userspace ABI or a safe memory reservation on this board.
+- Keep frontend display drops separate from internal renderer suppression. A
+  core that can cheaply identify unchanged content may save rendering, but any
+  tile/scanline reuse must preserve emulated side effects and be pixel-tested.
+- Reduce debug formatting/IRQ noise only when it has measurable relevance and
+  an owned change path. Do not build a UART research project into the critical path.
+
+11. FIRST PROTOTYPE: A SOURCE-BUILT RUNNER, NO UI REWRITE
+======================================================
+One alternate SD entry launches one FF6 ROM using the existing Plus core directly.
+It owns standard callbacks, actual AV timing, input, a bounded audio path, the
+proven resampler, safe chunk-backed video and save/exit. Use the current display
+driver and its proven one-job contract at first. Preserve the v11 adaptive policy
+as the control; moving it into the host does not require changing its math yet.
+No GPU, kernel replacement, scaler queue invention or all-console migration.
+
+The same runner also has a fixed-PCM/test-pattern mode before the core is loaded.
+Feed a known tone and known frame sequence through the identical board backends,
+with bounded optional CPU load. This isolates sink rate/period, clock drift,
+display completion and device errors from emulator behavior. It is one backend
+qualification mode, not a second standalone architecture. Compare observer-on
+and observer-off runs so telemetry does not become the timing problem.
+
+The old launcher is the comparison/recovery path. It must relinquish hardware
+while the new runner is active; do not leave its watchdog or display/audio workers
+competing. A one-shot boot selection can start the runner and return to the stock
+launcher on exit without assuming an undocumented menu/plugin seam exists.
+
+This prototype tests an architectural proposition: can we own the same core and
+hardware cleanly, expose its true costs, preserve controls/saves, and improve or
+at least match the playable baseline? A binary clock patch tests one timer; it
+does not answer that larger question. Keep it as an optional diagnostic, not the
+foundation for the new product.
+
+Initial acceptance:
+1. Same ROM/revision and copied SRAM start, same core hash, correct pictures/audio.
+2. Pause/resume, reset, snapshot round-trip, exit and relaunch work; originals safe.
+3. No repeated steady-state audio underruns in the representative run; record
+   effective queue constraints and actual device errors rather than hiding them.
+4. Memory remains bounded, no growing queue or sustained swap/page-fault dependence.
+5. Report drawn/held/submitted/presented-or-unavailable counts distinctly, plus
+   wall/CPU time, audio delay and source/display waits with their exact meanings.
+6. Reproducible launcher build and a tested SD rollback path.
+
+Success does not require an immediate speedup; equal performance with owned,
+observable interfaces can justify proceeding. A regression is located in this
+small runner before adding product features. Only FF6/SNES is required for this
+first proof. PS1 becomes the next high-information control, not a release gate
+for the initial playable version.
+
+12. PHASED ROADMAP AND BENCHMARK CONTRACT
+========================================
+Phase 0 — Resolve architecture-changing unknowns, not every unknown.
+Audio periods/accepted rates/position, panel cadence/completion, chunk cache and
+ownership, input/power interface, memory budget. Read-only tracing discovery can
+ride along. Live clock/cache facts are useful; no exhaustive GPU/UART excavation.
+
+Phase 1 — One playable runner.
+The FF6 prototype above, reproducible artifact and verified rollback. Ben tests
+the actual device immediately; no all-emulator compatibility requirement.
+
+Phase 2 — Own timing/audio/video fully.
+Queue/clock policy, latency tuning, display mailbox/fences, saved-state transitions.
+Persistent scaler operations only after their contract is validated.
+
+Phase 3 — Core strategy and controls.
+Fresh 2005/Plus/2010 comparison, PS1 control group, then lightweight systems.
+Measure resource budgets before admitting heavy arcade/disc combinations.
+
+Phase 4 — Optimize demonstrated bottlenecks.
+Whole-frame NEON/PGO/layout, format/copy work, driver lifecycle. Every accepted
+optimization has a semantic regression test and real-device benefit.
+
+Phase 5 — Consumer launcher.
+English UI, obvious ROM folders, scan/cache, favorites/recents/search, art, save
+browser, reliable hotkeys, per-game overrides and safe shutdown.
+
+Phase 6 — Migration and packaging.
+Buildroot project, source/build manifests, A/B SD releases selected by ordinary
+files (FAT32 has no Unix symlinks), known-good fallback, bounded restart policy,
+crash reports and migration tools. Firmware/rootfs changes are separate later work
+only when the boot/recovery route is proven. Do not overwrite the known-good slot.
+
+Benchmark record for every comparison:
+ROM and revision SHA256; BIOS where relevant; copied SRAM/input replay/start state;
+core/frontend/driver hashes; options and build flags; device clock evidence;
+scene duration and transition markers; monotonic wall time; validated thread CPU
+time/resolution; core steps; drawn and suppressed calls; submitted/dropped/repeated
+pictures; actual presentations when observable; audio frames accepted/consumed,
+queue depth, errors/XRUNs; copy and wait times; scaler submission/completion;
+RSS/PSS/chunk allocations/page faults; frame intervals/p50/p95/p99/max; pixels or
+screenshots, audio correctness, and save/load integrity. Unknown counters stay
+unknown rather than being replaced by a similarly named IRQ count.
+
+Use 3 repeated bounded runs with identical starts and deliberate map/menu scene
+markers where feasible. Separate cold/warm behavior and observer-on/off checks.
+Log aggregates/histograms in RAM and save afterward. QEMU validates ABI, parsing,
+state and numerical correctness, never handheld performance.
+
+SNES scenes: FF6 map/menu same music, Chrono Trigger, one Mode7 scene, one color-
+math/transparency-heavy and one sprite-heavy scene, with exact game/revision/start
+chosen from available ROMs. PS1: CPU-heavy, GPU-heavy, typical3D, 2D and light/menu
+with unique-picture rate recorded. Other cores: representative stress, accuracy
+edge case and ordinary play. Do not use incompatible cross-core states as starts.
+
+13. WHAT COULD MAKE THIS FAIL
+============================
+- Some games exceed a single A7's compute budget even with an excellent host.
+  No queue or controller turns insufficient sustained throughput into perfection.
+- Display cadence may be fixed and mismatched with console timing. Some judder
+  or a deliberate speed/audio trade may be unavoidable without a proven mode.
+- Kernel audio periods may impose a latency floor until driver work is possible.
+- Queue fields may not be implemented in public ioctls; retained per-job scaler
+  operation may be the only safe path with this kernel.
+- Cache/memory bandwidth can dominate despite low apparent CPU instruction cost.
+  A direct chunk framebuffer may slow the renderer.
+- GPU/PPU/SRAM may be inaccessible or too costly to bring up for the benefit.
+- ~42 MiB usable Linux memory and a resident ramfs constrain ROMs, dynarec caches,
+  artwork, rewind and disc caches. More accurate cores may not fit practically.
+- Save-state ABI and timing hacks differ across core versions; careless migration
+  can make a fast build an unacceptable product.
+- Broad frontend compatibility is real work. A small runner must explicitly
+  support core options, disk control, dynamic geometry/timing and persistence.
+- Permanent binary hooks inherit exact-address fragility; a clean runner inherits
+  source-maintenance work. The latter is the chosen manageable cost.
+- Driver source and recovery access may remain unavailable. This caps how far we
+  can improve kernel paths while preserving a usable device.
+- An elegant architecture may match rather than outperform v11. We still require
+  demonstrable correctness, latency/UX/resource advantages to justify migration.
+
+14. FINAL CALL
+==============
+Build a deliberate appliance around a tiny board-specific libretro runner and a
+lightweight English launcher. Keep the existing kernel and working hardware
+startup. Use PScaler and audio DMA through the interfaces we can prove, not through
+marketing specifications. Preserve cached CPU rendering until direct device memory
+wins a whole-frame test. Choose an audio-led bounded timing policy with monotonic
+deadlines and explicit presentation ownership. Make saves and ROM copying ordinary.
+
+Use v11 as the benchmark, not the permanent architecture. Use vendor code as
+evidence and as a temporary backend, not as the place every new feature must live.
+Build the FF6 runner first, with Ben testing it. Expand only after the runtime owns
+its clocks, queues and buffers well enough that a second core is an integration,
+not another emergency adapter.
+
+SOURCE REGISTER
+===============
+Local device evidence is authoritative for this unit:
+L1 device-evidence/hardware-inventory-return-20261004T180435Z/
+   hardware_probe_v1.jsonl, analysis.json, device-tree.json, review.txt.
+L2 device-evidence/hardware-runtime-return-20261004T182651Z/
+   hardware_probe_v2.jsonl, kernel_symbols-0.481.txt, review.txt.
+L3 device-evidence/hardware-console-return-20261004T185838Z/
+   hardware_probe_v3.jsonl, analysis.json, comparison-v2.json,
+   cleanup-verification.json, review.txt. Latest return; older review text saying
+   v2/v3 are still pending is historical, superseded by L3.
+L4 device-evidence/launcher-performance-review/
+   review.txt, annotated-paths.txt, binary-census.json.
+L5 device-evidence/hardware-architecture-review/
+   driver-dwarf.json, abi-resolution.json, abi-assembly.txt, neon-code-census.json.
+L6 device-evidence/v9-render-return-20261004T164007Z/analysis.json;
+   device-evidence/v10-budget-return-20261004T170305Z/analysis.json.
+L7 build/emu_sfc_plus_production.c, build/render_budget_production.h;
+   local snes9x2005 and snes9x2010 source trees.
+L8 device-evidence/card-D-v4-return/emu_sfc_plus_v4_timing.log;
+   build/audio_diagnostics_v4.h. Historical OSS interpretation only.
+L9 device-evidence/platform-redesign-review/ps1-core-inventory.json,
+   ps1-binary-census.json, ps1-annotated-paths.txt, ps1-disassembly.txt.
+   Only PS1's current card/export identity was freshly hash-compared here;
+   other vendor-family labels are from the preserved export.
+L10 hardware-notes.txt, runtime-notes.txt, core-notes.txt in this review directory
+    retain the specialist research and additional primary-source links.
+
+Primary public sources (architecture/source behavior, not proof of this board):
+P1 ARM Cortex-A7 r0p5 TRM:
+   https://documentation-service.arm.com/static/602cf701083323480d479d18
+P2 ARM NEON intrinsics:
+   https://arm-software.github.io/acle/neon_intrinsics/advsimd.html
+P3 Generalplus GPA7740A candidate/relative:
+   https://www.generalplus.com/GPA7740A-vvWbs-phLVYosfLN4957SVpnSNproduct_detail
+P4 Generalplus HMI SDK:
+   https://www.generalplus.com/2LVlangLNt9SVn2SNgp_hmi_sdk
+P5 Linux4.19 DMA guidance:
+   https://github.com/torvalds/linux/blob/v4.19/Documentation/DMA-API-HOWTO.txt
+P6 Linux4.19 OSS implementation:
+   https://github.com/torvalds/linux/blob/v4.19/sound/core/oss/pcm_oss.c
+P7 Libretro API source:
+   https://github.com/libretro/libretro-common/blob/master/include/libretro.h
+P8 Buildroot project integration:
+   https://buildroot.org/downloads/manual/manual.html
+P9 Frontend references/RGUI:
+   https://docs.libretro.com/development/frontends/
+   https://docs.libretro.com/guides/rgui/
+   https://github.com/notaz/libpicofe
+P10 Filesystem persistence semantics:
+   https://man7.org/linux/man-pages/man2/fsync.2.html
+P11 General Mesa driver support, not board support:
+   https://docs.mesa3d.org/systems.html
+P12 Core repositories and configuration references:
+   https://github.com/libretro/libretro-fceumm
+   https://docs.libretro.com/library/quicknes/
+   https://github.com/libretro/snes9x2005
+   https://github.com/libretro/snes9x2010
+   https://github.com/libretro/gambatte-libretro
+   https://github.com/libretro/gpsp
+   https://github.com/mgba-emu/mgba
+   https://github.com/irixxxx/picodrive
+   https://docs.libretro.com/library/genesis_plus_gx/
+   https://github.com/libretro/smsplus-gx
+   https://docs.libretro.com/library/beetle_pce_fast/
+   https://github.com/libretro/fbalpha2012
+   https://docs.libretro.com/library/mame2003_plus/
+   https://raw.githubusercontent.com/libretro/mame2003-plus-libretro/master/Makefile.common
+   https://docs.libretro.com/guides/arcade-getting-started/
+   https://raw.githubusercontent.com/libretro/pcsx_rearmed/master/Makefile.libretro
+   https://github.com/notaz/pcsx_rearmed
+   https://docs.libretro.com/library/pcsx_rearmed/
+   Build-specific findings and further references: core-notes.txt.
+
+Bounded public searches did not recover a matching GPA7XXXA kernel/PScaler source
+implementation. Generalplus full-download links stopped at a challenge/access
+page; it was not bypassed. That limits source recovery, not the feasibility of
+building a useful userspace platform around already functioning device APIs.

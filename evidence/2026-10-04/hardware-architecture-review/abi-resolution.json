@@ -1,0 +1,418 @@
+{
+  "sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "calls": [
+    {
+      "caller": "Mgba_Load.part.0",
+      "address": "0xa4a34",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Mgba_Load.part.0",
+      "address": "0xa4b08",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "VRT_Load.part.0",
+      "address": "0xa4a34",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "VRT_Load.part.0",
+      "address": "0xa4b08",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "NES_Load.part.0",
+      "address": "0xa4a34",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "NES_Load.part.0",
+      "address": "0xa4b08",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Snes_Load.part.0",
+      "address": "0xa4a34",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Snes_Load.part.0",
+      "address": "0xa4b08",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Pico_Load.part.0",
+      "address": "0xa4a34",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Pico_Load.part.0",
+      "address": "0xa4b08",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "run_process.constprop.0",
+      "address": "0xa6390",
+      "resolver": "dlsym@plt",
+      "requested_symbol": null,
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "EmuExtend_Load",
+      "address": "0xa55b8",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_progress_callback",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "EmuExtend_Load",
+      "address": "0xa55d0",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_progress_callback",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "EmuExtend_Load",
+      "address": "0xa5628",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "EmuExtend_Load",
+      "address": "0xa5658",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_progress_callback",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Gpsp_Load",
+      "address": "0xa4d9c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_unzip",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Gpsp_Load",
+      "address": "0xa4dc4",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Gpsp_Load",
+      "address": "0xa4df0",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_unzip",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "PCSX_Load",
+      "address": "0xa57f8",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "FBA_Load",
+      "address": "0xa5290",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_is_support",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "FBA_Load",
+      "address": "0xa53ac",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_progress_callback",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "FBA_Load",
+      "address": "0xa53e4",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "FBA_Load",
+      "address": "0xa540c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_unload_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "FBA_Load",
+      "address": "0xa541c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_deinit",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "FBA_Load",
+      "address": "0xa5434",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_progress_callback",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "run_process",
+      "address": "0xa3748",
+      "resolver": "dlsym@plt",
+      "requested_symbol": null,
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "load_state",
+      "address": "0xa3c3c",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_unserialize",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitDisplay",
+      "address": "0xa642c",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "video_driver_setting",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitDisplay",
+      "address": "0xa648c",
+      "resolver": "run_process.constprop.0",
+      "requested_symbol": "video_drivers_init",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitDisplay",
+      "address": "0xa64b4",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "video_driver_disp_frame",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitDisplay",
+      "address": "0xa64d8",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "video_driver_getframe",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitDisplay",
+      "address": "0xa64fc",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "video_driver_setmode",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitDisplay",
+      "address": "0xa6534",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "video_driver_get_size",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc0",
+      "address": "0xa3e30",
+      "resolver": "dlsym@plt",
+      "requested_symbol": null,
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc1",
+      "address": "0xa404c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_video_refresh",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc1",
+      "address": "0xa4070",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_audio_sample_batch",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc1",
+      "address": "0xa408c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_input_state",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc1",
+      "address": "0xa40a8",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_environment",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc1",
+      "address": "0xa40c4",
+      "resolver": "run_process",
+      "requested_symbol": "retro_set_input_poll",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc1",
+      "address": "0xa40d4",
+      "resolver": "run_process",
+      "requested_symbol": "retro_init",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc2",
+      "address": "0xa4294",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_get_region",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc2",
+      "address": "0xa42e8",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_run",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc2",
+      "address": "0xa4318",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "SetDoubleBuffer",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc2",
+      "address": "0xa4338",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "SetFrameSkip",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc2",
+      "address": "0xa486c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_unload_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Load_Proc2",
+      "address": "0xa488c",
+      "resolver": "run_process",
+      "requested_symbol": "retro_deinit",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Core_Load",
+      "address": "0xa5960",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "Core_Load",
+      "address": "0xa5a28",
+      "resolver": "run_process",
+      "requested_symbol": "retro_load_game",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "retro_load_state",
+      "address": "0xa396c",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_serialize_size",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "retro_load_state",
+      "address": "0xa3a38",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_unserialize",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "save_state",
+      "address": "0xa3b50",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_serialize",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "retro_save_state",
+      "address": "0xa37d8",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_serialize_size",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "retro_save_state",
+      "address": "0xa382c",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "retro_serialize",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "DeinitSound",
+      "address": "0xa6954",
+      "resolver": "run_process.constprop.0",
+      "requested_symbol": "sound_driver_deinit",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "StopSound",
+      "address": "0xa6990",
+      "resolver": "run_process.constprop.0",
+      "requested_symbol": "sound_driver_halt",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitSound",
+      "address": "0xa686c",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "sound_driver_init",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitSound",
+      "address": "0xa68b0",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "sound_driver_playframe",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "InitSound",
+      "address": "0xa68d4",
+      "resolver": "dlsym@plt",
+      "requested_symbol": "sound_driver_settrigger",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    },
+    {
+      "caller": "DeinitDisplay",
+      "address": "0xa6828",
+      "resolver": "run_process.constprop.0",
+      "requested_symbol": "video_driver_deinit",
+      "evidence": "PC-relative literal propagation; verify dynamic/conditional paths separately"
+    }
+  ]
+}

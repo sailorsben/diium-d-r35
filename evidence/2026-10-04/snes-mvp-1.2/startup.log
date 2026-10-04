@@ -1,0 +1,49 @@
+SNES MVP 1.2 startup wrapper pid=477
+splash handoff begin active_pids=446  stop=/tmp/vrtemu.log ack=/tmp/displogo.log
+splash handoff complete active_pids=none release_ack=yes waited=1s
+child pid=490 startup deadline=20s
+34.800 program entered pid=490
+34.802 GPIO open enter
+34.804 GPIO input attribute pin=0x200
+34.805 GPIO input attribute pin=0x201
+34.806 GPIO input attribute pin=0x202
+34.808 GPIO input attribute pin=0x203
+34.809 GPIO input attribute pin=0x204
+34.810 GPIO input attribute pin=0x205
+34.812 GPIO input attribute pin=0x30b
+34.813 GPIO input attribute pin=0x30d
+34.815 GPIO input attribute pin=0x30f
+34.816 GPIO input attribute pin=0x30c
+34.817 GPIO input attribute pin=0x30a
+34.819 GPIO input attribute pin=0x208
+34.820 GPIO input attribute pin=0x207
+34.821 GPIO input attribute pin=0x30e
+34.823 GPIO input attribute pin=0x206
+34.824 GPIO vendor attribute pin=0x20f value=0
+34.825 GPIO vendor attribute pin=0x20b value=0
+34.827 GPIO vendor attribute pin=0x20e value=1
+34.828 GPIO vendor attribute pin=0x209 value=1
+34.829 GPIO vendor attribute pin=0x20a value=1
+34.831 chunkmem open enter
+34.832 chunk allocation enter bytes=1310720
+34.836 chunk allocation complete
+34.837 display driver load enter path=/usr/retro/driver.so
+34.843 display driver symbols resolved; HDMI detection enter
+34.845 HDMI detection complete output=0; InitVFB enter
+34.920 InitVFB returned display=0x2b650
+34.922 display size=640x480
+34.923 LCD backlight write enter value=1
+34.924 display worker create enter
+34.926 display worker created; mixer open enter
+34.928 mixer open complete
+34.929 board open complete
+34.931 library scan enter
+34.939 library scan complete games=3
+34.944 first library submit
+34.949 first DrawVFB enter size=640x480
+34.951 first library wait for display
+34.955 first DrawVFB returned; FlipVFB enter
+34.970 first FlipVFB returned
+34.971 first library display complete; input baseline enter
+34.973 input baseline held_mask=0x00000000
+34.974 READY: first library frame completed; controls initialized

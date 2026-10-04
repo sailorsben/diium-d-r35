@@ -1,0 +1,49 @@
+SNES MVP 1.4 return review - 2026-10-04
+
+Ben confirms launcher operation, game start and save-state load. He reports
+Right -> Down, Left -> Right, Up -> Up, Down -> Right, in both launcher/game
+as far as he recalls, and explicitly repeats that both Left and Down seemed
+to produce Right. Do not silently rewrite that observation as Down -> Left.
+The full returned MVP tree/init/private progress was archived before updating.
+
+Working hardware evidence:
+- Splash handed off before display initialization; READY after 183 ms.
+- Input changes now arrive repeatedly with zero GPIO read errors.
+- FF6 a27f1c7a on exact Plus core 5ba71d2a runs 2465 frames, with 749 held
+  drawing frames, 1716 video submissions, 2 pauses and no reported failure.
+- Short/EAGAIN audio writes occurred but write_errors=0; accepted/enqueued/
+  priming counts balance. This is transport evidence, not acoustic assessment.
+- Main/worker/FreeVFB cleanup stages completed on termination.
+- Kernel monotonic and boottime both read 8.361 seconds at startup; libc
+  monotonic read 447.327 seconds in the same probe. The clock disagreement is
+  now directly observed, and the direct-kernel/relative-wait repair works.
+
+Direction diagnosis and correction of the prior review:
+The v1.3 review mislabeled the vendor native masks as cardinal directions.
+ReadJoystick alone proves GPIO 200/201/202/203 -> 10/40/80/20 hex, but not
+the direction names. The actual stock joystick_input callback and default
+joy_key_mask table establish libretro IDs 4/5/6/7 -> 10/40/80/20, respectively.
+Therefore physical GPIO order is UP/DOWN/LEFT/RIGHT. Its analog branch also
+uses 10/40 for negative/positive vertical and 80/20 for horizontal.
+See joystick_input.asm and joy_key_mask.hex, plus the earlier ReadJoystick.asm.
+
+v1.5 restores GPIO200 Up, GPIO201 Down, GPIO202 Left, GPIO203 Right in the
+single decoder used by both UI and core. No runner-side remap exists. This
+corrects the previously introduced direction permutation. The duplicate-Right
+report is preserved; the raw lines lack physical press labels, so they cannot
+independently prove which press generated each pin. The canonical stock path
+nevertheless establishes four distinct direction mappings. Confirm all four
+through actual FF6 character movement on the next test; launcher Left/Right
+page the list and can be visually ambiguous on a short three-game library.
+
+Regression reference is now extracted directly from pinned stock ELF table
+0x16b254 after verifying stock SHA256, rather than copying our interpreted
+labels into a test. Actual decoder checks cover all keys and Down+Left
+independence. Existing clock/menu/core/audio/save checks pass on the same build.
+
+v1.5 installed and armed at 2026-10-04T22:48:48Z.
+Binary: ef37811cc7f1c0c408b13a060b4d22fae21d8561cdd8b5ef938be2615355c962
+Wrapper: 7279ca9496f10004263ccf26e0c77006c99543ff4ee75ab44f3dc4396559c717
+Update archive: device-evidence/snes-mvp-update-20261004T224847Z/
+All 16 original/private save/report files and production binaries preserved;
+existing init unchanged. Next boot tests v1.5; following reboot automatically stock.

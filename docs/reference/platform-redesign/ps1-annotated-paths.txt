@@ -1,0 +1,817 @@
+
+libs/emu_pcsx.so SetFrameSkip 0009f0f0 bytes=32
+0009f0f0 ldr       r3, [pc, #0x10] ; literal=0x70570
+0009f0f4 ldr       r2, [pc, #0x10] ; literal=0xe00
+0009f0f8 add       r3, pc, r3 ; base=0x10f670
+0009f0fc ldr       r3, [r3, r2] ; GOT -> g_frame_skip
+0009f100 str       r0, [r3]
+0009f104 bx        lr
+0009f108 andeq     r0, r7, r0, ror r5
+0009f10c andeq     r0, r0, r0, lsl #28
+
+libs/emu_pcsx.so retro_run 000516b0 bytes=1084
+000516b0 ldr       r3, [pc, #0x3d8] ; literal=0x764928
+000516b4 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+000516b8 add       r3, pc, r3 ; base=0x7b5fe8
+000516bc ldr       fp, [pc, #0x3d0] ; literal=0xbdfa0
+000516c0 sub       sp, sp, #0x24
+000516c4 ldr       r2, [r3, #0xb44]
+000516c8 add       fp, pc, fp ; base=0x10f670
+000516cc cmp       r2, #0
+000516d0 bne       #0x51980 ; branch
+000516d4 ldr       r3, [pc, #0x3bc] ; literal=0x764908
+000516d8 add       r3, pc, r3 ; base=0x7b5fe8
+000516dc ldr       r3, [r3, #0xb50]
+000516e0 blx       r3
+000516e4 ldr       r3, [pc, #0x3b0] ; literal=0x7fceec
+000516e8 add       r1, sp, #0x20
+000516ec mov       r2, #0
+000516f0 add       r3, pc, r3 ; base=0x84e5e4
+000516f4 mov       r0, #0x11
+000516f8 strb      r2, [r1, #-1]!
+000516fc ldr       r3, [r3]
+00051700 blx       r3
+00051704 cmp       r0, #0
+00051708 beq       #0x51718 ; branch
+0005170c ldrb      r3, [sp, #0x1f]
+00051710 cmp       r3, #0
+00051714 bne       #0x51a84 ; branch
+00051718 movw      r3, #0x8081
+0005171c ldr       r6, [pc, #0x37c] ; literal=0x7648ac
+00051720 mov       r1, r3
+00051724 ldr       r3, [pc, #0x378] ; literal=0x9cc
+00051728 ldr       r2, [pc, #0x378] ; literal=0x7d0
+0005172c movt      r1, #0x8080
+00051730 str       r1, [sp, #8]
+00051734 add       r6, pc, r6 ; base=0x7b5fe8
+00051738 ldr       r7, [fp, r3] ; GOT -> in_type
+0005173c mov       sl, #4
+00051740 ldr       r3, [pc, #0x364] ; literal=0x764894
+00051744 mov       r4, #0
+00051748 ldr       r5, [fp, r2] ; GOT -> in_keystate
+0005174c add       r3, pc, r3 ; base=0x7b5fe8
+00051750 str       r3, [sp, #4]
+00051754 ldr       r3, [r7]
+00051758 mov       r8, #0
+0005175c strh      r8, [r5]
+00051760 cmp       r3, r8
+00051764 beq       #0x517b8 ; branch
+00051768 ldr       sb, [pc, #0x340] ; literal=0x71344
+0005176c add       sb, pc, sb ; base=0xc2ab8
+00051770 mov       r3, r8
+00051774 mov       r2, #0
+00051778 mov       r1, #1
+0005177c mov       r0, r4
+00051780 ldr       ip, [r6, #0xb4c]
+00051784 add       r8, r8, r1
+00051788 blx       ip
+0005178c add       sb, sb, #2
+00051790 cmp       r0, #0
+00051794 ldrhne    r3, [r5]
+00051798 ldrhne    r2, [sb, #-2]
+0005179c orrne     r3, r3, r2
+000517a0 strhne    r3, [r5]
+000517a4 cmp       r8, #0x10
+000517a8 bne       #0x51770 ; branch
+000517ac ldr       r3, [r7]
+000517b0 cmp       r3, #7
+000517b4 beq       #0x5186c ; branch
+000517b8 add       r4, r4, #1
+000517bc add       r5, r5, #2
+000517c0 cmp       r4, #8
+000517c4 add       r7, r7, #4
+000517c8 add       sl, sl, #8
+000517cc bne       #0x51754 ; branch
+000517d0 ldr       r3, [pc, #0x2dc] ; literal=0x7fce04
+000517d4 mov       r0, #0
+000517d8 ldr       r1, [pc, #0x2d8] ; literal=0x7fce04
+000517dc add       r3, pc, r3 ; base=0x84e5e8
+000517e0 ldr       r2, [pc, #0x2d4] ; literal=0x9b8
+000517e4 add       r1, pc, r1 ; base=0x84e5f0
+000517e8 ldr       ip, [r3]
+000517ec ldr       r3, [pc, #0x2cc] ; literal=0xbf8
+000517f0 str       ip, [r1]
+000517f4 ldr       r2, [fp, r2] ; GOT -> stop
+000517f8 str       r0, [r2]
+000517fc ldr       r3, [fp, r3] ; GOT -> psxCpu
+00051800 ldr       r3, [r3]
+00051804 ldr       r3, [r3, #8]
+00051808 blx       r3
+0005180c ldr       r3, [pc, #0x2b0] ; literal=0xe00
+00051810 ldr       r3, [fp, r3] ; GOT -> g_frame_skip
+00051814 ldr       r3, [r3]
+00051818 cmp       r3, #0
+0005181c bne       #0x51864 ; branch
+00051820 ldr       r2, [pc, #0x2a0] ; literal=0x7647bc
+00051824 add       r2, pc, r2 ; base=0x7b5fe8
+00051828 ldr       r3, [r2, #0xb28]
+0005182c ldr       r4, [r2, #0xb54]
+00051830 cmp       r3, #0
+00051834 beq       #0x51960 ; branch
+00051838 ldr       r3, [pc, #0x28c] ; literal=0x7fcdac
+0005183c ldr       r0, [pc, r3]
+00051840 ldr       r3, [pc, #0x288] ; literal=0x35f7b4
+00051844 add       r3, pc, r3 ; base=0x3b1000
+00051848 ldmib     r3, {r1, r2}
+0005184c lsl       r3, r1, #1
+00051850 blx       r4
+00051854 ldr       r3, [pc, #0x278] ; literal=0x764784
+00051858 mov       r2, #0
+0005185c add       r3, pc, r3 ; base=0x7b5fe8
+00051860 str       r2, [r3, #0xb28]
+00051864 add       sp, sp, #0x24
+00051868 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0005186c ldr       r2, [sp, #4]
+00051870 mov       r3, #0
+00051874 mov       r1, #5
+00051878 mov       r0, r4
+0005187c ldr       r8, [r2, #0xb4c]
+00051880 mov       r2, r3
+00051884 blx       r8
+00051888 movw      r3, #0x7e80
+0005188c cmp       r0, r3
+00051890 movgt     lr, #0xff
+00051894 ble       #0x519d0 ; branch
+00051898 ldr       ip, [pc, #0x238] ; literal=0xe18
+0005189c mov       r3, #1
+000518a0 ldr       r8, [pc, #0x234] ; literal=0x76472c
+000518a4 mov       r2, #0
+000518a8 mov       r1, #5
+000518ac mov       r0, r4
+000518b0 ldr       ip, [fp, ip]
+000518b4 add       r8, pc, r8 ; base=0x7b5fe8
+000518b8 lsl       sb, r4, #3
+000518bc str       ip, [sp, #0xc]
+000518c0 str       lr, [ip, r4, lsl #3]
+000518c4 ldr       ip, [r8, #0xb4c]
+000518c8 blx       ip
+000518cc movw      r3, #0x7e80
+000518d0 cmp       r0, r3
+000518d4 movgt     r2, #0xff
+000518d8 ble       #0x51a0c ; branch
+000518dc ldr       r8, [pc, #0x1fc] ; literal=0x7646f4
+000518e0 mov       r3, #0
+000518e4 ldr       r1, [sp, #0xc]
+000518e8 mov       r0, r4
+000518ec add       r8, pc, r8 ; base=0x7b5fe8
+000518f0 str       r2, [r1, sl]
+000518f4 mov       r2, #1
+000518f8 mov       r1, #5
+000518fc ldr       ip, [r8, #0xb4c]
+00051900 blx       ip
+00051904 movw      r3, #0x7e80
+00051908 cmp       r0, r3
+0005190c movgt     lr, #0xff
+00051910 ble       #0x51a4c ; branch
+00051914 ldr       ip, [pc, #0x1c8] ; literal=0xaec
+00051918 mov       r3, #1
+0005191c ldr       r8, [pc, #0x1c4] ; literal=0x7646b0
+00051920 mov       r2, r3
+00051924 mov       r1, #5
+00051928 mov       r0, r4
+0005192c ldr       ip, [fp, ip]
+00051930 add       r8, pc, r8 ; base=0x7b5fe8
+00051934 str       ip, [sp, #0xc]
+00051938 str       lr, [ip, sb]
+0005193c ldr       ip, [r8, #0xb4c]
+00051940 blx       ip
+00051944 movw      r3, #0x7e80
+00051948 cmp       r0, r3
+0005194c movgt     r3, #0xff
+00051950 ble       #0x51990 ; branch
+00051954 ldr       r2, [sp, #0xc]
+00051958 str       r3, [r2, sl]
+0005195c b         #0x517b8 ; branch
+00051960 ldrb      r1, [r2, #0xd9e]
+00051964 cmp       r1, #0
+00051968 beq       #0x51838 ; branch
+0005196c ldrb      r2, [r2, #0xd9c]
+00051970 cmp       r2, #0
+00051974 movne     r0, r3
+00051978 bne       #0x51840 ; branch
+0005197c b         #0x51838 ; branch
+00051980 mov       r2, #0
+00051984 str       r2, [r3, #0xb44]
+00051988 bl        #0x2c89c ; SysReset@plt
+0005198c b         #0x516d4 ; branch
+00051990 mov       r3, #1
+00051994 ldr       r8, [r8, #0xb4c]
+00051998 mov       r2, r3
+0005199c mov       r1, #5
+000519a0 mov       r0, r4
+000519a4 blx       r8
+000519a8 ldr       r3, [sp, #8]
+000519ac ldr       r2, [sp, #0xc]
+000519b0 smull     r8, sb, r0, r3
+000519b4 asr       r3, r0, #0x1f
+000519b8 add       r0, r0, sb
+000519bc rsb       r3, r3, r0, asr #7
+000519c0 sxth      r3, r3
+000519c4 add       r3, r3, #0x80
+000519c8 str       r3, [r2, sl]
+000519cc b         #0x517b8 ; branch
+000519d0 ldr       r2, [sp, #4]
+000519d4 mov       r3, #0
+000519d8 mov       r1, #5
+000519dc mov       r0, r4
+000519e0 ldr       r8, [r2, #0xb4c]
+000519e4 mov       r2, r3
+000519e8 blx       r8
+000519ec ldr       r3, [sp, #8]
+000519f0 smull     r2, r3, r0, r3
+000519f4 asr       lr, r0, #0x1f
+000519f8 add       r0, r0, r3
+000519fc rsb       lr, lr, r0, asr #7
+00051a00 sxth      lr, lr
+00051a04 add       lr, lr, #0x80
+00051a08 b         #0x51898 ; branch
+00051a0c mov       r3, #1
+00051a10 mov       r2, #0
+00051a14 ldr       r8, [r8, #0xb4c]
+00051a18 mov       r1, #5
+00051a1c mov       r0, r4
+00051a20 blx       r8
+00051a24 ldr       r3, [sp, #8]
+00051a28 smull     r2, r3, r0, r3
+00051a2c strd      r2, r3, [sp, #0x10]
+00051a30 asr       r2, r0, #0x1f
+00051a34 ldr       r3, [sp, #0x14]
+00051a38 add       r0, r0, r3
+00051a3c rsb       r2, r2, r0, asr #7
+00051a40 sxth      r2, r2
+00051a44 add       r2, r2, #0x80
+00051a48 b         #0x518dc ; branch
+00051a4c mov       r3, #0
+00051a50 mov       r2, #1
+00051a54 ldr       r8, [r8, #0xb4c]
+00051a58 mov       r1, #5
+00051a5c mov       r0, r4
+00051a60 blx       r8
+00051a64 ldr       r3, [sp, #8]
+00051a68 smull     r2, r3, r0, r3
+00051a6c asr       lr, r0, #0x1f
+00051a70 add       r0, r0, r3
+00051a74 rsb       lr, lr, r0, asr #7
+00051a78 sxth      lr, lr
+00051a7c add       lr, lr, #0x80
+00051a80 b         #0x51914 ; branch
+00051a84 mov       r0, #1
+00051a88 bl        #0x51080 ; update_variables
+00051a8c b         #0x51718 ; branch
+00051a90 rsbseq    r4, r6, r8, lsr #18
+00051a94 andeq     sp, fp, r0, lsr #31
+00051a98 rsbseq    r4, r6, r8, lsl #18
+00051a9c rsbseq    ip, pc, ip, ror #29
+00051aa0 rsbseq    r4, r6, ip, lsr #17
+00051aa4 andeq     r0, r0, ip, asr #19
+00051aa8 ldrdeq    r0, r1, [r0], -r0
+
+libs/emu_pcsx.so retro_get_system_info 0004ffbc bytes=60
+0004ffbc vmov.i32  q8, #0
+0004ffc0 ldr       r1, [pc, #0x24] ; literal=0x72e20
+0004ffc4 ldr       r2, [pc, #0x24] ; literal=0x72e28
+0004ffc8 mov       ip, #1
+0004ffcc ldr       r3, [pc, #0x20] ; literal=0x72e30
+0004ffd0 add       r1, pc, r1 ; base=0xc2df8
+0004ffd4 vst1.8    {d16, d17}, [r0]
+0004ffd8 add       r2, pc, r2 ; base=0xc2e08
+0004ffdc add       r3, pc, r3 ; base=0xc2e14
+0004ffe0 strb      ip, [r0, #0xc]
+0004ffe4 stm       r0, {r1, r2, r3}
+0004ffe8 bx        lr
+0004ffec andeq     r2, r7, r0, lsr #28
+0004fff0 andeq     r2, r7, r8, lsr #28
+0004fff4 andeq     r2, r7, r0, lsr lr
+
+libs/emu_pcsx.so retro_get_system_av_info 0004ff38 bytes=132
+0004ff38 ldr       r3, [pc, #0x78] ; literal=0x766098
+0004ff3c vmov.i32  q9, #0
+0004ff40 vldr      d16, [pc, #0x60]
+0004ff44 mov       ip, #0xf0
+0004ff48 add       r3, pc, r3 ; base=0x7b5fe8
+0004ff4c mov       r1, #0x400
+0004ff50 push      {r4, r5, r6, lr}
+0004ff54 add       r6, r0, #0x10
+0004ff58 ldr       r3, [r3, #0xb48]
+0004ff5c mov       lr, #0x140
+0004ff60 vldr      d17, [pc, #0x48]
+0004ff64 mov       r2, #0x200
+0004ff68 cmp       r3, #0
+0004ff6c mov       r4, #0
+0004ff70 movw      r5, #0x8880
+0004ff74 movw      r3, #0xaaab
+0004ff78 vst1.8    {d18, d19}, [r6]
+0004ff7c movt      r5, #0x40e5
+0004ff80 movt      r3, #0x3faa
+0004ff84 str       lr, [r0]
+0004ff88 vmoveq.f64 d16, d17
+0004ff8c str       ip, [r0, #4]
+0004ff90 str       r1, [r0, #8]
+0004ff94 strd      r4, r5, [r0, #0x20]
+0004ff98 str       r2, [r0, #0xc]
+0004ff9c vstr      d16, [r0, #0x18]
+0004ffa0 str       r3, [r0, #0x10]
+0004ffa4 pop       {r4, r5, r6, pc}
+0004ffa8 andeq     r0, r0, r0
+0004ffac submi     r0, sb, r0
+0004ffb0 andeq     r0, r0, r0
+0004ffb4 submi     r0, lr, r0
+
+libs/emu_pcsx.so psxInit 000a1610 bytes=180
+000a1610 ldr       r2, [pc, #0x88] ; literal=0x5caa8
+000a1614 ldr       r1, [pc, #0x88] ; literal=0x224cc
+000a1618 ldr       r0, [pc, #0x88] ; literal=0x5caa8
+000a161c add       r2, pc, r2 ; base=0xfe0cc
+000a1620 add       r1, pc, r1 ; base=0xc3af4
+000a1624 push      {r4, lr}
+000a1628 add       r0, pc, r0 ; base=0xfe0d8
+000a162c bl        #0x2c38c ; SysPrintf@plt
+000a1630 ldr       r3, [pc, #0x74] ; literal=0x6e030
+000a1634 ldr       r2, [pc, #0x74] ; literal=0xdec
+000a1638 add       r3, pc, r3 ; base=0x10f670
+000a163c ldr       r1, [pc, #0x70] ; literal=0xbf8
+000a1640 ldr       r2, [r3, r2] ; GOT -> Config
+000a1644 ldrb      r2, [r2, #0xd0c]
+000a1648 cmp       r2, #1
+000a164c beq       #0xa168c ; branch
+000a1650 ldr       r2, [pc, #0x60] ; literal=0xdb0
+000a1654 ldr       r4, [r3, r1] ; GOT -> psxCpu
+000a1658 ldr       r2, [r3, r2] ; GOT -> psxRec
+000a165c str       r2, [r4]
+000a1660 ldr       r2, [pc, #0x54] ; literal=0xcdc
+000a1664 mov       r1, #0
+000a1668 ldr       r3, [r3, r2] ; GOT -> Log
+000a166c str       r1, [r3]
+000a1670 bl        #0x2c014 ; psxMemInit@plt
+000a1674 cmn       r0, #1
+000a1678 popeq     {r4, pc}
+000a167c ldr       r3, [r4]
+000a1680 pop       {r4, lr}
+000a1684 ldr       r3, [r3]
+000a1688 bx        r3
+000a168c ldr       r2, [pc, #0x2c] ; literal=0xb80
+000a1690 ldr       r4, [r3, r1]
+000a1694 ldr       r2, [r3, r2]
+000a1698 str       r2, [r4]
+000a169c b         #0xa1660 ; branch
+000a16a0 andeq     ip, r5, r8, lsr #21
+000a16a4 andeq     r2, r2, ip, asr #9
+000a16a8 andeq     ip, r5, r8, lsr #21
+000a16ac andeq     lr, r6, r0, lsr r0
+000a16b0 andeq     r0, r0, ip, ror #27
+000a16b4 strdeq    r0, r1, [r0], -r8
+000a16b8 strheq    r0, [r0], -r0
+000a16bc ldrdeq    r0, r1, [r0], -ip
+000a16c0 andeq     r0, r0, r0, lsl #23
+
+libs/emu_pcsx.so vout_flip.lto_priv.45 0004f258 bytes=412
+0004f258 push      {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+0004f25c sub       sp, sp, #0xc
+0004f260 ldr       sb, [pc, #0x170] ; literal=0xc0400
+0004f264 ldr       ip, [pc, #0x170] ; literal=0xe00
+0004f268 add       sb, pc, sb ; base=0x10f670
+0004f26c ldr       ip, [sb, ip] ; GOT -> g_frame_skip
+0004f270 ldr       ip, [ip]
+0004f274 cmp       ip, #0
+0004f278 bne       #0x4f374 ; branch
+0004f27c mov       r6, r3
+0004f280 mov       r7, r1
+0004f284 ldr       r3, [pc, #0x154] ; literal=0x7ff354
+0004f288 cmp       r0, #0
+0004f28c ldr       r1, [pc, #0x150] ; literal=0x361d5c
+0004f290 mov       sl, r2
+0004f294 add       r3, pc, r3 ; base=0x84e5f0
+0004f298 mov       r5, r0
+0004f29c add       r1, pc, r1 ; base=0x3b1000
+0004f2a0 ldr       fp, [r3]
+0004f2a4 ldr       r8, [r1, #4]
+0004f2a8 beq       #0x4f3bc ; branch
+0004f2ac sub       r2, r8, r6
+0004f2b0 ldr       r4, [r1, #8]
+0004f2b4 ldr       r1, [sp, #0x30]
+0004f2b8 add       r2, r2, r2, lsr #31
+0004f2bc ldr       r3, [pc, #0x124] ; literal=0x766d18
+0004f2c0 sub       r4, r4, r1
+0004f2c4 asr       r2, r2, #1
+0004f2c8 add       r3, pc, r3 ; base=0x7b5fe8
+0004f2cc bic       r2, r2, #1
+0004f2d0 str       r3, [sp, #4]
+0004f2d4 ldr       r1, [r3, #0xb24]
+0004f2d8 mla       r4, r8, r4, r2
+0004f2dc cmp       r4, r1
+0004f2e0 beq       #0x4f304 ; branch
+0004f2e4 ldr       r3, [sp, #0x30]
+0004f2e8 mov       r1, ip
+0004f2ec mov       r0, fp
+0004f2f0 mul       r2, r3, r8
+0004f2f4 lsl       r2, r2, #1
+0004f2f8 bl        #0x2c2cc ; memset@plt
+0004f2fc ldr       r3, [sp, #4]
+0004f300 str       r4, [r3, #0xb24]
+0004f304 cmp       sl, #0
+0004f308 ldr       r3, [sp, #0x30]
+0004f30c add       r4, fp, r4, lsl #1
+0004f310 beq       #0x4f37c ; branch
+0004f314 cmp       r3, #0
+0004f318 sub       sl, r3, #1
+0004f31c ble       #0x4f350 ; branch
+0004f320 add       r6, r6, r6, lsl #1
+0004f324 lsl       r8, r8, #1
+0004f328 lsl       r7, r7, #1
+0004f32c mov       r1, r5
+0004f330 mov       r0, r4
+0004f334 sub       sl, sl, #1
+0004f338 mov       r2, r6
+0004f33c bl        #0x2c86c ; bgr888_to_rgb565@plt
+0004f340 cmn       sl, #1
+0004f344 add       r5, r5, r7
+0004f348 add       r4, r4, r8
+0004f34c bne       #0x4f32c ; branch
+0004f350 ldr       r2, [pc, #0x94] ; literal=0x766c84
+0004f354 mov       r1, #1
+0004f358 ldr       r3, [pc, #0x90] ; literal=0x83c
+0004f35c add       r2, pc, r2 ; base=0x7b5fe8
+0004f360 str       r1, [r2, #0xb28]
+0004f364 ldr       r2, [sb, r3] ; GOT -> pl_rearmed_cbs
+0004f368 ldr       r3, [r2, #0x50]
+0004f36c add       r3, r3, r1
+0004f370 str       r3, [r2, #0x50]
+0004f374 add       sp, sp, #0xc
+0004f378 pop       {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0004f37c cmp       r3, #0
+0004f380 sub       sl, r3, #1
+0004f384 lslgt     r8, r8, #1
+0004f388 lslgt     r7, r7, #1
+0004f38c lslgt     r6, r6, #1
+0004f390 ble       #0x4f350 ; branch
+0004f394 mov       r1, r5
+0004f398 mov       r0, r4
+0004f39c sub       sl, sl, #1
+0004f3a0 mov       r2, r6
+0004f3a4 bl        #0x2bd14 ; bgr555_to_rgb565@plt
+0004f3a8 cmn       sl, #1
+0004f3ac add       r5, r5, r7
+0004f3b0 add       r4, r4, r8
+0004f3b4 bne       #0x4f394 ; branch
+0004f3b8 b         #0x4f350 ; branch
+0004f3bc ldr       r3, [sp, #0x30]
+0004f3c0 mov       r1, r0
+0004f3c4 mov       r0, fp
+0004f3c8 mul       r2, r3, r8
+0004f3cc lsl       r2, r2, #1
+0004f3d0 bl        #0x2c2cc ; memset@plt
+0004f3d4 b         #0x4f350 ; branch
+0004f3d8 andeq     r0, ip, r0, lsl #8
+0004f3dc andeq     r0, r0, r0, lsl #28
+0004f3e0 rsbseq    pc, pc, r4, asr r3
+0004f3e4 eorseq    r1, r6, ip, asr sp
+0004f3e8 rsbseq    r6, r6, r8, lsl sp
+0004f3ec rsbseq    r6, r6, r4, lsl #25
+0004f3f0 andeq     r0, r0, ip, lsr r8
+
+libs/emu_pcsx.so retro_init 00051304 bytes=940
+00051304 ldr       r3, [pc, #0x31c] ; literal=0xc73c0
+00051308 mov       ip, #0
+0005130c push      {r4, r5, r6, r7, r8, sb, sl, lr}
+00051310 add       r3, pc, r3 ; base=0x1186d8
+00051314 ldr       r6, [pc, #0x310] ; literal=0x764cbc
+00051318 sub       sp, sp, #0x130
+0005131c ldm       r3, {r0, r1, r2, r3}
+00051320 add       r5, sp, #0x20
+00051324 add       r6, pc, r6 ; base=0x7b5fe8
+00051328 ldr       r4, [pc, #0x300] ; literal=0xbe338
+0005132c strb      ip, [r6, #0xd9d]
+00051330 add       r4, pc, r4 ; base=0x10f670
+00051334 stm       r5, {r0, r1, r2, r3}
+00051338 bl        #0x2bb58 ; emu_core_preinit@plt
+0005133c mov       r7, r0
+00051340 bl        #0x2bdbc ; emu_core_init@plt
+00051344 orrs      r3, r7, r0
+00051348 bne       #0x51614 ; branch
+0005134c mov       r0, #0x100000
+00051350 bl        #0x2ba2c ; _malloc@plt
+00051354 ldr       ip, [pc, #0x2d8] ; literal=0x813290
+00051358 ldr       lr, [pc, #0x2d8] ; literal=0x7fd280
+0005135c add       r1, sp, #0x14
+00051360 add       ip, pc, ip ; base=0x8645f8
+00051364 ldr       r3, [pc, #0x2d0] ; literal=0x7fd274
+00051368 add       lr, pc, lr ; base=0x84e5f0
+0005136c add       r3, pc, r3 ; base=0x84e5e8
+00051370 mov       r2, r0
+00051374 str       r2, [ip]
+00051378 ldr       ip, [pc, #0x2c0] ; literal=0x7fd258
+0005137c mov       r0, #9
+00051380 str       r2, [r3]
+00051384 add       ip, pc, ip ; base=0x84e5e4
+00051388 str       r2, [r3, #4]
+0005138c str       r2, [lr]
+00051390 ldr       r3, [ip]
+00051394 blx       r3
+00051398 ldr       r1, [sp, #0x14]
+0005139c cmp       r0, #0
+000513a0 beq       #0x514b0 ; branch
+000513a4 cmp       r1, #0
+000513a8 beq       #0x514b0 ; branch
+000513ac ldr       r0, [pc, #0x290] ; literal=0xdec
+000513b0 add       ip, sp, #0x30
+000513b4 ldr       r2, [pc, #0x28c] ; literal=0x71a24
+000513b8 mov       r3, r1
+000513bc str       ip, [sp, #0xc]
+000513c0 mov       r1, #0x100
+000513c4 ldr       r0, [r4, r0] ; GOT -> Config
+000513c8 add       r2, pc, r2 ; base=0xc2df4
+000513cc ldr       r8, [pc, #0x278] ; literal=0x71cc4
+000513d0 add       r0, r0, #0xa00
+000513d4 add       r8, pc, r8 ; base=0xc30a0
+000513d8 bl        #0x2c248 ; snprintf@plt
+000513dc ldr       ip, [r5], #4
+000513e0 mov       r2, r8
+000513e4 ldr       r3, [sp, #0x14]
+000513e8 mov       r1, #0x100
+000513ec ldr       r0, [sp, #0xc]
+000513f0 str       ip, [sp]
+000513f4 bl        #0x2c248 ; snprintf@plt
+000513f8 ldr       r0, [sp, #0xc]
+000513fc bl        #0x4efa4 ; try_use_bios
+00051400 cmp       r0, #0
+00051404 mov       r7, r0
+00051408 strb      r0, [r6, #0xd9d]
+0005140c bne       #0x5160c ; branch
+00051410 ldr       r3, [sp, #0xc]
+00051414 cmp       r5, r3
+00051418 bne       #0x513dc ; branch
+0005141c ldr       sb, [sp, #0x14]
+00051420 mov       r0, sb
+00051424 bl        #0x2bdec ; opendir@plt
+00051428 subs      r6, r0, #0
+0005142c beq       #0x514a0 ; branch
+00051430 ldr       r8, [pc, #0x218] ; literal=0x71c6c
+00051434 ldr       sl, [pc, #0x218] ; literal=0x71c70
+00051438 add       r8, pc, r8 ; base=0xc30ac
+0005143c add       sl, pc, sl ; base=0xc30b4
+00051440 mov       r0, r6
+00051444 bl        #0x2c590 ; readdir@plt
+00051448 cmp       r0, #0
+0005144c beq       #0x51498 ; branch
+00051450 add       r5, r0, #0xb
+00051454 mov       r2, #4
+00051458 mov       r1, r8
+0005145c mov       r0, r5
+00051460 bl        #0x2c23c ; strncasecmp@plt
+00051464 cmp       r0, #0
+00051468 bne       #0x51440 ; branch
+0005146c mov       r3, sb
+00051470 mov       r2, sl
+00051474 mov       r1, #0x100
+00051478 str       r5, [sp]
+0005147c ldr       r0, [sp, #0xc]
+00051480 bl        #0x2c248 ; snprintf@plt
+00051484 ldr       r0, [sp, #0xc]
+00051488 bl        #0x4efa4 ; try_use_bios
+0005148c cmp       r0, #0
+00051490 beq       #0x51440 ; branch
+00051494 mov       r7, r0
+00051498 mov       r0, r6
+0005149c bl        #0x2ca04 ; closedir@plt
+000514a0 ldr       r3, [pc, #0x1b0] ; literal=0x764b38
+000514a4 ldr       r1, [sp, #0x14]
+000514a8 add       r3, pc, r3 ; base=0x7b5fe8
+000514ac strb      r7, [r3, #0xd9d]
+000514b0 ldr       r0, [pc, #0x1a4] ; literal=0x71c00
+000514b4 add       r0, pc, r0 ; base=0xc30bc
+000514b8 bl        #0x2b5f4 ; printf@plt
+000514bc ldr       r3, [pc, #0x19c] ; literal=0x764b20
+000514c0 add       r3, pc, r3 ; base=0x7b5fe8
+000514c4 ldrb      r3, [r3, #0xd9d]
+000514c8 cmp       r3, #0
+000514cc bne       #0x515e8 ; branch
+000514d0 ldr       r0, [pc, #0x18c] ; literal=0x71c08
+000514d4 add       r3, sp, #0x18
+000514d8 str       r3, [sp, #0xc]
+000514dc add       r0, pc, r0 ; base=0xc30ec
+000514e0 bl        #0x2c38c ; SysPrintf@plt
+000514e4 ldr       r3, [pc, #0x17c] ; literal=0x7fd0ec
+000514e8 ldr       r2, [pc, #0x17c] ; literal=0x71c04
+000514ec mov       ip, #0xb4
+000514f0 add       r3, pc, r3 ; base=0x84e5e4
+000514f4 ldr       r1, [sp, #0xc]
+000514f8 add       r2, pc, r2 ; base=0xc3104
+000514fc mov       r0, #6
+00051500 str       r2, [sp, #0x18]
+00051504 ldr       r3, [r3]
+00051508 str       ip, [sp, #0x1c]
+0005150c blx       r3
+00051510 ldr       r0, [pc, #0x158] ; literal=0x764ac0
+00051514 mov       r3, #1
+00051518 ldr       r1, [pc, #0x154] ; literal=0xce0
+0005151c mov       lr, #0xaf
+00051520 add       r0, pc, r0 ; base=0x7b5fe8
+00051524 ldr       r2, [pc, #0x14c] ; literal=0x83c
+00051528 mov       r6, #0
+0005152c ldr       r5, [pc, #0x148] ; literal=0xffffd894
+00051530 strb      r3, [r0, #0xd9e]
+00051534 ldr       ip, [r4, r1] ; GOT -> cycle_multiplier
+00051538 add       r5, pc, r5 ; base=0x4edd4
+0005153c ldr       r0, [pc, #0x13c] ; literal=0xe60
+00051540 ldr       r1, [pc, #0x13c] ; literal=0xde0
+00051544 str       lr, [ip]
+00051548 ldr       ip, [r4, r2] ; GOT -> pl_rearmed_cbs
+0005154c ldr       r2, [pc, #0x134] ; literal=0x954
+00051550 str       r3, [ip, #0x68]
+00051554 ldr       r0, [r4, r0] ; GOT -> spu_config
+00051558 str       r3, [r0, #0x18]
+0005155c ldr       r1, [r4, r1] ; GOT -> McdDisable
+00051560 strb      r3, [r1, #1]
+00051564 strb      r6, [r1]
+00051568 ldr       r0, [r4, r2] ; GOT -> Mcd1Data
+0005156c bl        #0x4eec0 ; init_memcard
+00051570 ldr       r3, [pc, #0x114] ; literal=0xd68
+00051574 ldr       r0, [r4, r3] ; GOT -> Mcd2Data
+00051578 bl        #0x4eec0 ; init_memcard
+0005157c ldr       r3, [pc, #0x10c] ; literal=0x7a0
+00051580 ldr       lr, [pc, #0x10c] ; literal=0xffffd8a4
+00051584 mov       r0, r6
+00051588 ldr       ip, [pc, #0x108] ; literal=0xffffd8e0
+0005158c ldr       r3, [r4, r3] ; GOT -> SaveFuncs
+00051590 add       lr, pc, lr ; base=0x4ee3c
+00051594 ldr       r1, [pc, #0x100] ; literal=0xffffd600
+00051598 add       ip, pc, ip ; base=0x4ee80
+0005159c ldr       r2, [pc, #0xfc] ; literal=0xfffff95c
+000515a0 mov       r4, r5
+000515a4 str       ip, [r3, #8]
+000515a8 add       r1, pc, r1 ; base=0x4ebb0
+000515ac stm       r3, {r4, lr}
+000515b0 add       r2, pc, r2 ; base=0x50f14
+000515b4 str       r1, [r3, #0xc]
+000515b8 str       r2, [r3, #0x10]
+000515bc bl        #0x51080 ; update_variables
+000515c0 ldr       r3, [pc, #0xdc] ; literal=0x7fd00c
+000515c4 mov       r2, #6
+000515c8 ldr       r1, [sp, #0xc]
+000515cc mov       r0, #8
+000515d0 add       r3, pc, r3 ; base=0x84e5e4
+000515d4 str       r2, [sp, #0x18]
+000515d8 ldr       r3, [r3]
+000515dc blx       r3
+000515e0 add       sp, sp, #0x130
+000515e4 pop       {r4, r5, r6, r7, r8, sb, sl, pc}
+000515e8 ldr       r3, [pc, #0x54] ; literal=0xdec
+000515ec add       r2, sp, #0x18
+000515f0 ldr       r0, [pc, #0xb0] ; literal=0x71ad0
+000515f4 str       r2, [sp, #0xc]
+000515f8 ldr       r1, [r4, r3]
+000515fc add       r0, pc, r0 ; base=0xc30d4
+00051600 add       r1, r1, #0x900
+00051604 bl        #0x2c38c ; SysPrintf@plt
+00051608 b         #0x51510 ; branch
+0005160c ldr       r1, [sp, #0x14]
+00051610 b         #0x514b0 ; branch
+00051614 ldr       r0, [pc, #0x90] ; literal=0x71a6c
+00051618 add       r0, pc, r0 ; base=0xc308c
+0005161c bl        #0x2c38c ; SysPrintf@plt
+00051620 mov       r0, #1
+00051624 bl        #0x2bfd8 ; exit@plt
+00051628 andeq     r7, ip, r0, asr #7
+0005162c ldrhteq   r4, [r6], #-0xcc
+00051630 andeq     lr, fp, r8, lsr r3
+00051634 umulleq   r3, r1, r0, r2
+00051638 rsbseq    sp, pc, r0, lsl #5
+0005163c rsbseq    sp, pc, r4, ror r2
+00051640 rsbseq    sp, pc, r8, asr r2
+00051644 andeq     r0, r0, ip, ror #27
+00051648 andeq     r1, r7, r4, lsr #20
+0005164c andeq     r1, r7, r4, asr #25
+00051650 andeq     r1, r7, ip, ror #24
+00051654 andeq     r1, r7, r0, ror ip
+00051658 rsbseq    r4, r6, r8, lsr fp
+0005165c andeq     r1, r7, r0, lsl #24
+00051660 rsbseq    r4, r6, r0, lsr #22
+00051664 andeq     r1, r7, r8, lsl #24
+00051668 rsbseq    sp, pc, ip, ror #1
+0005166c andeq     r1, r7, r4, lsl #24
+00051670 rsbseq    r4, r6, r0, asr #21
+00051674 andeq     r0, r0, r0, ror #25
+00051678 andeq     r0, r0, ip, lsr r8
+
+libs/emu_pcsx.so decide_frameskip 0004e23c bytes=244
+0004e23c ldr       r3, [pc, #0xe4] ; literal=0xc1424
+0004e240 ldr       r2, [pc, #0xe4] ; literal=0x93c
+0004e244 add       r3, pc, r3 ; base=0x10f670
+0004e248 push      {r4, r5, lr}
+0004e24c sub       sp, sp, #0xc
+0004e250 ldr       r3, [r3, r2] ; GOT -> gpu
+0004e254 add       r1, r3, #0x1000
+0004e258 ldrb      r2, [r1, #0xe4]
+0004e25c ands      ip, r2, #0x40
+0004e260 ubfxne    r0, r2, #3, #3
+0004e264 bfieq     r2, ip, #3, #3
+0004e268 ldrbeq    r0, [r1, #0xe5]
+0004e26c addne     r0, r0, #1
+0004e270 strbeq    r2, [r1, #0xe4]
+0004e274 bfine     r2, r0, #3, #3
+0004e278 orreq     r2, r0, #1
+0004e27c strbne    r2, [r1, #0xe4]
+0004e280 strbeq    r2, [r1, #0xe5]
+0004e284 add       r2, r3, #0x1000
+0004e288 ldrb      r1, [r2, #0xe4]
+0004e28c tst       r1, #0x40
+0004e290 bne       #0x4e2d8 ; branch
+0004e294 ldr       r2, [r2, #0xe8]
+0004e298 ldr       r2, [r2]
+0004e29c cmp       r2, #0
+0004e2a0 beq       #0x4e2d8 ; branch
+0004e2a4 add       r1, r3, #0x1000
+0004e2a8 ldrb      r2, [r1, #0xe4]
+0004e2ac orr       r2, r2, #0x40
+0004e2b0 strb      r2, [r1, #0xe4]
+0004e2b4 add       r4, r3, #0x1000
+0004e2b8 ldrb      r3, [r4, #0xe4]
+0004e2bc ands      r5, r3, #0x40
+0004e2c0 bne       #0x4e2d0 ; branch
+0004e2c4 ldr       r3, [r4, #0xf0]
+0004e2c8 cmp       r3, #0
+0004e2cc bne       #0x4e30c ; branch
+0004e2d0 add       sp, sp, #0xc
+0004e2d4 pop       {r4, r5, pc}
+0004e2d8 add       r2, r3, #0x1000
+0004e2dc ldrb      r2, [r2, #0xe4]
+0004e2e0 sbfx      r1, r2, #0, #3
+0004e2e4 cmp       r1, #0
+0004e2e8 ble       #0x4e2f8 ; branch
+0004e2ec sbfx      r2, r2, #3, #3
+0004e2f0 cmp       r2, r1
+0004e2f4 blt       #0x4e2a4 ; branch
+0004e2f8 add       r2, r3, #0x1000
+0004e2fc ldrb      r1, [r2, #0xe4]
+0004e300 bfc       r1, #6, #1
+0004e304 strb      r1, [r2, #0xe4]
+0004e308 b         #0x4e2b4 ; branch
+0004e30c add       r2, sp, #4
+0004e310 mov       r1, #3
+0004e314 add       r0, r4, #0xf0
+0004e318 bl        #0x2bf48 ; do_cmd_list@plt
+0004e31c str       r5, [r4, #0xf0]
+0004e320 add       sp, sp, #0xc
+0004e324 pop       {r4, r5, pc}
+0004e328 andeq     r1, ip, r4, lsr #8
+0004e32c andeq     r0, r0, ip, lsr sb
+
+libs/emu_pcsx.so GPUupdateLace 0004dd3c bytes=208
+0004dd3c ldr       r3, [pc, #0xc0] ; literal=0xc1924
+0004dd40 ldr       r2, [pc, #0xc0] ; literal=0x93c
+0004dd44 add       r3, pc, r3 ; base=0x10f670
+0004dd48 push      {r4, r5, r6, lr}
+0004dd4c ldr       r4, [r3, r2] ; GOT -> gpu
+0004dd50 add       r3, r4, #0x1000
+0004dd54 ldr       r3, [r3, #0xbc]
+0004dd58 cmp       r3, #0
+0004dd5c ble       #0x4dd64 ; branch
+0004dd60 bl        #0x4dc24 ; flush_cmd_buffer
+0004dd64 add       r5, r4, #0x1000
+0004dd68 bl        #0x2c044 ; renderer_flush_queues@plt
+0004dd6c ldrsb     r3, [r5, #0x46]
+0004dd70 cmp       r3, #0
+0004dd74 ldrb      r3, [r5, #0xc4]
+0004dd78 blt       #0x4dde8 ; branch
+0004dd7c tst       r3, #1
+0004dd80 popeq     {r4, r5, r6, pc}
+0004dd84 ldrb      r2, [r5, #0xe4]
+0004dd88 tst       r2, #7
+0004dd8c beq       #0x4ddcc ; branch
+0004dd90 ldrb      r3, [r5, #0xe5]
+0004dd94 ands      r3, r3, #1
+0004dd98 bne       #0x4ddbc ; branch
+0004dd9c ldr       r1, [r5, #0xc8]
+0004dda0 ldr       r0, [r5, #0xec]
+0004dda4 ldr       r1, [r1]
+0004dda8 sub       r1, r1, r0
+0004ddac cmp       r1, #8
+0004ddb0 popls     {r4, r5, r6, pc}
+0004ddb4 bfi       r2, r3, #6, #1
+0004ddb8 strb      r2, [r5, #0xe4]
+0004ddbc add       r3, r4, #0x1000
+0004ddc0 ldrb      r2, [r3, #0xe5]
+0004ddc4 bfc       r2, #0, #1
+0004ddc8 strb      r2, [r3, #0xe5]
+0004ddcc add       r4, r4, #0x1000
+0004ddd0 bl        #0x2bce4 ; vout_update@plt
+0004ddd4 ldrb      r3, [r4, #0xc4]
+0004ddd8 and       r3, r3, #0xfe
+0004dddc bfc       r3, #4, #1
+0004dde0 strb      r3, [r4, #0xc4]
+0004dde4 pop       {r4, r5, r6, pc}
+0004dde8 tst       r3, #0x10
+0004ddec popne     {r4, r5, r6, pc}
+0004ddf0 bl        #0x2b714 ; vout_blank@plt
+0004ddf4 ldrb      r3, [r5, #0xc4]
+0004ddf8 orr       r3, r3, #0x11
+0004ddfc strb      r3, [r5, #0xc4]
+0004de00 pop       {r4, r5, r6, pc}
+0004de04 andeq     r1, ip, r4, lsr #18
+0004de08 andeq     r0, r0, ip, lsr sb
+
+libs/emu_pcsx.so retro_set_video_refresh 00050040 bytes=20
+00050040 ldr       r3, [pc, #8] ; literal=0x765f9c
+00050044 add       r3, pc, r3 ; base=0x7b5fe8
+00050048 str       r0, [r3, #0xb54]
+0005004c bx        lr

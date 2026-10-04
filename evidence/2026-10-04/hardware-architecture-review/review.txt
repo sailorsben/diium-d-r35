@@ -1,0 +1,187 @@
+D-R35 architecture investigation and next handheld inventory
+2026-10-04 America/Chicago
+
+Chronology and evidence boundary
+The move to Plus was an attempt to fix the original vendor-core warbling.
+Integrating Plus exposed the vendor display/scaler memory contract, and then
+audio clicking under drawing load. User listening tests found the adaptive
+rendering build clean. This does not isolate every contributing change.
+The current working Plus, adapter, vrtemu and driver binaries were preserved.
+This pass installed only a reversible, one-boot inventory helper and init hook.
+Its report has NOT yet been collected from the handheld.
+
+Confirmed from this unit's preserved export
+CPU: implementer 0x41, part 0xc07, variant 0, revision 5: Cortex-A7 r0p5.
+ARMv7, NEON, VFPv4, VFP D32 and hardware integer divide are reported.
+Only processor 0 appears in the saved cpuinfo. Hardware: GPA7XXXA Device Tree.
+Device-tree model: Generalplus EMU Board. Exact silicon SKU is unconfirmed.
+Kernel: Linux 4.19.128; Buildroot 2020.02; device glibc 2.30, ARM hard-float.
+Boot memory: mem=48MB; 16 MiB chunk reservation at 0x03000000.
+Usable Linux memory in the snapshot: 43120 KiB. The 48+16 MiB arrangement is
+consistent with 64 MiB physical memory, but a boot limit is not a RAM census.
+The swapfile is not additional physical RAM or realtime working memory.
+Display module: lcd1_mipi_NV3051F, with a named 480p initialization routine.
+Saved display diagnostics: 640x480 surface. Physical timing remains unmeasured.
+Audio nodes: ALSA pcmC0D0p and controlC0; loaded vendor ALSA SoC playback module.
+Kernel built-in list includes snd-pcm-oss and snd-mixer-oss as well as two
+different vendor scaler paths, gp_pscaler_module and gp_scaler_module.
+An absent loaded-module entry cannot exclude a built-in driver.
+
+Public silicon candidate, not confirmed identification
+Generalplus GPA7740A's public product description specifies single-core A7
+up to 666 MHz, 32 KiB instruction/data L1, 128 KiB L2, 64 MB DDR2, NEON,
+scalers, LCD controllers, DMA, PPU, GPU and a PCM/ADPCM sound engine. Those
+features make it a strong candidate for this GPA7XXXA board. We have not
+verified this unit's clock, cache geometry, physical RAM or every accelerator.
+The pasted community 666 MHz result belongs to another report until measured.
+The vendor's datasheet/getting-started download link did not yield a readable
+technical manual in this research; the public product specification is usable.
+https://www.generalplus.com/GPA7740A-vvWbs-phLVYosfLN4957SVpnSNproduct_detail
+
+Cortex-A7 / NEON study and implications
+Arm documents an in-order pipeline, branch prediction, separate L1 caches,
+64-byte data-cache lines, optional L2, NEON/VFP and a PMUv2 with four event
+counters plus a cycle counter. Cache misses and dependency chains warrant
+measurement. CPU-control registers are privileged; this probe does not touch
+them or assume their settings. See chapters 1, 6, 7 and 11:
+https://documentation-service.arm.com/static/602cf701083323480d479d18?token=
+NEON provides 16 Q registers, integer SIMD and single-precision floating SIMD;
+its register bank is shared with scalar VFP. It is appropriate for regular
+pixel/sample work. It is not an independent CPU running the emulator for us.
+https://documentation-service.arm.com/static/5fa6919ab1a7c5445f2929ec?token=
+For coding, use the Armv7-compatible intrinsics rather than newer AArch64,
+SVE, dot-product or FP16-arithmetic features unavailable on A7:
+https://arm-software.github.io/acle/neon_intrinsics/
+
+The installed Plus binary DOES use NEON already. Its dsp_run.part.0 contains
+vld1, vdup, vmul.i32, vshr.s32, vadd.i32 and vst1: compiler-generated vector
+arithmetic. Thus scalar C source does not mean scalar machine code.
+The 2010 comparison binary has NEON tile/color-math routines too.
+neon-code-census.json includes hashes, instruction examples and conservative
+static counts. Counts are neither executed-instruction counts nor benchmarks;
+large totals include initialization and non-FF6 chip paths.
+Both builds already target cortex-a7 / neon-vfpv4 / ARM hard-float.
+Compiler O3/LTO/PGO trials must measure code size, cache effects and actual
+Cortex performance. More unrolling can hurt this small cache. Broad unsafe
+floating-point flags are not an acceptable substitute for pixel/audio checks.
+GCC optimization behavior is version-dependent; our cross-compiler is 13.3.
+https://gcc.gnu.org/onlinedocs/gcc-13.4.0/gcc/Optimize-Options.html
+
+Hardware memory and display investigation
+gp_display1 imports gp_clean_dcache_range and gp_invalidate_dcache_range;
+gp_dla also imports these; gp_ppu imports v7_flush_kern_cache_all.
+These imports show explicit cache-management code exists in the SDK, not
+which operations execute on every game frame. kernel-module-map.json records
+the named functions, imports and hashes for the exported modules.
+Memory ownership, CPU visibility, row pitch and when DMA finishes are part of
+the real contract. Direct CPU rendering into chunk memory could lose speed
+if its mapping/cache policy is worse than ordinary RAM plus a compact copy.
+The existing GPU setup script refers to an 8 MiB reservation at 0x03800000,
+inside the 16 MiB chunk range. Loading it blindly could create competing
+ownership of memory. GPU usability, library support and memory partitioning
+remain unknown; this investigation does not load GPU/PPU modules.
+PScaleRun's per-job open/configure/start/status/stop/close is established in
+driver.so. Whether persistent opens, asynchronous jobs or TFT scaling can
+replace it requires the specific kernel driver implementation and tests.
+The two scaler drivers are listed built-in; their .ko implementations are not
+present in the export. Recovering the kernel/source remains necessary.
+The chip's PPU is not a drop-in SNES PPU: scanline register changes, clipping,
+priority, blending and other game-visible behavior still need exact emulation.
+Likewise generic PCM/ADPCM hardware is not a replacement for the SNES DSP.
+
+Audio investigation
+The launcher writes to /dev/dsp. This firmware includes ALSA and OSS emulation,
+so the pipeline may include an OSS-to-ALSA conversion layer. Linux documents
+that this layer can convert unsupported rates/formats/channels. Actual native
+rate, buffer and period must be read while the game is playing; a successful
+44100-Hz OSS request alone does not prove the DAC uses 44100 Hz natively.
+https://www.kernel.org/doc/html/v4.19/sound/designs/oss-emulation.html
+We now collect hw_params, status and OSS proc configuration. These establish
+current playback settings when available, not the complete accepted-rate set.
+Capability/rate testing belongs in an isolated later experiment so it does
+not seize/reset the active audio device. This probe opens no /dev/dsp or PCM
+device and changes no ALSA/OSS configuration.
+The specific clean-PCM/clicking-output result remains compatible with late
+delivery: a concatenated capture omits the wall-clock gaps between batches.
+
+Launcher/core ABI investigation
+dlsym-sites.json inventories 24 direct dlsym call sites in named functions.
+abi-resolution.json follows literal arguments through direct dlsym and
+run_process wrappers. abi-assembly.txt retains the loader/environment proof.
+Linear literal propagation is a convenience, not a complete control-flow
+analysis; unresolved arguments are explicitly null rather than invented.
+Load_Proc0's backward loop is manually resolved: retro_is_support(path)
+selects among fallback cores. The guarded optional extension is not proof that
+the same fallback is used by category-specific SNES launching.
+
+Nonstandard extensions found:
+SetDoubleBuffer: vendor framebuffer-selection contract in the game loop.
+SetFrameSkip: vendor drawing-suppression control, disconnected with our core.
+retro_is_support: core selection/support query in generic/arcade load paths.
+retro_set_progress_callback: extension/arcade loader progress callbacks.
+retro_set_unzip: Gpsp loader ZIP-service callback, not established SNES use.
+Other retro_version/save/load names occur as local functions/strings; string
+presence alone does not make them an extra dlsym contract.
+The old category-specific state paths can pass FILE* to functions named like
+standard memory serialization functions. This needs a per-core routing audit
+before sharing one save implementation across the entire launcher.
+Standard callback setup, load/unload/init/run and serialization paths were
+also mapped; a full typed contract and dynamic traces remain future work.
+The separate driver API includes video_driver_setting, video_drivers_init,
+disp_frame, getframe, setmode, get_size and sound init/playframe/settrigger/
+halt/deinit. These are hardware host services, not libretro core extensions.
+
+All branches of this vrtemu environment function:
+command 1 SET_ROTATION: stores/applies rotation but returns false.
+command 9 GET_SYSTEM_DIRECTORY: returns a frontend directory pointer.
+command 10 SET_PIXEL_FORMAT: accepts enum value 2, RGB565.
+command 15 GET_VARIABLE: only special-cases the FBA fake-region setting;
+  returns Taiwan for the exact martmast key or China for Region_(Fake) keys.
+command 27 GET_LOG_INTERFACE: returns its logging callback.
+command 31 GET_SAVE_DIRECTORY: shares the directory-return path with 9.
+command 37 SET_GEOMETRY: erroneously writes 44100.0 at +32 into the object.
+All other commands return false. This is a very small libretro environment.
+The adapter handles the unsafe geometry, core defaults, logging and adaptive
+audio/video enable request. Accurate timings, buffer-status callbacks and
+usable options require deliberate host implementation, not permissive stubs.
+
+One-boot probe installed on D:
+Hardware-Inventory-v1/installation.json records exact hashes and additions.
+Only retro/init changes; its original bytes are preserved as init.before.
+retro/hardware_probe_v1 and hardware_probe_v1.once are added. The helper
+renames its marker to .once.started before collecting, preventing repeat runs.
+It lowers only its own scheduling priority. Initial inventory is followed by
+15 seconds' delay and 45 snapshots spaced two seconds: about 103 seconds
+plus collection overhead. Output is buffered in RAM and written once at end,
+with a 512 KiB hard report cap and explicit file/report truncation markers.
+Emulator, adapter and driver hashes are verified unchanged.
+ARM binary needs at most GLIBC_2.27, compatible with device glibc 2.30.
+ARM/QEMU tests verify JSON escaping, missing paths, stat64, report capping and
+the unarmed no-run path. Host sh and the exported BusyBox validate init syntax.
+These checks do not prove handheld execution or performance.
+The collector opens its own perf counters one at a time through Linux's
+perf_event_open API, reads and closes them; it never attaches to the game.
+It records errors when PMU/kernel access is unavailable. The tiny counts only
+test availability, not FF6 performance. It uses no MMIO/device ioctls, no
+sampling interrupts, no clock changes and no module loading.
+Game thread stat/schedstat, occasional status/wchan/maps, proc CPU accounting,
+memory, thermal, clocks, ALSA parameters/status and IRQ endpoints are captured.
+Proc accounting has finite resolution; it cannot explain a sub-millisecond
+stall or reconstruct every wakeup. Some sysfs interfaces may not be supported.
+
+Next hardware run
+Safely eject the card, boot the handheld, launch FF6 promptly and play the
+intro/Narshe/map for at least two minutes. Returning D: lets us archive the
+probe report, compare actual ALSA/clock/thread evidence, restore init.before
+after checking its expected hash, and remove only this package's temporary
+files. Existing saves and the successful adaptive Plus build are preserved.
+
+Priorities after inventory
+1. Attribute CPU time versus wall time and display-worker competition.
+2. Compare fresh plain 2005 and Plus through the same corrected integration.
+3. Measure one scheduling owner in a minimal SNES host using verified hardware
+   interfaces; explore native ALSA timing and stable scaler/buffer ownership.
+4. Optimize proven renderer/mixer hotspots with matching pixels/audio/state.
+   A feeder thread can smooth jitter but cannot cure sustained producer load.
+5. Explore GPU/PPU/SRAM only after availability and cache/ownership contracts
+   are recovered. Available silicon is a candidate, not a measured speedup.
