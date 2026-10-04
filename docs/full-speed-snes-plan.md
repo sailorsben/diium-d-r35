@@ -67,13 +67,18 @@ flowchart LR
 
 ### 1. Remove scanout waits from the core callback
 
-Reserve a FREE source slot before entering the core. Render into normal cached
+Reserve both a FREE source slot and FIFO publication capacity before entering
+the core. Render into normal cached
 memory; the video callback performs one compact copy into that reserved chunk
 slot and publishes an immutable job. It performs no FlipVFB or previous-frame
-condition wait. Allocate three source slots: at most one SCALER_READING, one
-READY, and one reserved/FILLING. This is an ordered bounded queue; do not replace
-or discard a READY image. If no slot is available, wait outside retro_run with
-audio service still active and record congestion.
+condition wait. Allocate three source slots, with at most one SCALER_READING
+and up to two READY jobs; remaining slots are FREE or reserved/FILLING. Reserve
+queue credit along with a buffer: a free source while the worker is flipping
+does not guarantee room to publish another job. This is an ordered bounded
+queue; do not replace or discard a READY image. If either resource is unavailable,
+wait outside retro_run with audio service still active and record congestion.
+Two READY jobs are a backlog ceiling, not a target to keep full; track video
+latency and pace production rather than routinely running two frames ahead.
 
 The worker releases the **source** after the recovered scaling-completion
 boundary, before waiting on display scanout. It remains the sole caller of
