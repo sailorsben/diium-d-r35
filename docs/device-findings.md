@@ -103,6 +103,12 @@ See the [failure review](snes-mvp-1.6-failure.md). Do not re-arm it unchanged.
 Mode7/clipped/backdrop paths, persistent scaler and audio-cursor timing remain
 unchanged/unqualified as documented; no speedup is inferred from QEMU.
 
+Stock boot was subsequently confirmed by the user. The authorized
+[MVP1.7 logging retry](snes-mvp-1.7.md) is installed and armed with the exact
+same core and pipeline. It adds fresh session/phase progress and bounded
+persisted thread/kernel/memory/helper data plus instrumentation-duration
+accounting. Its physical result is pending; it is not a performance repair.
+
 ## UART investigation and its negative result
 
 The kernel identifies `c0070000.uart`, ttyS0, IRQ19 (GIC hwirq69), primary console. Runtime v2 saw about 6,968 IRQ/s and 85.61 reported TX bytes/s. v3 redirected both host/supervisor stdout/stderr to `/dev/null`, but still saw about 6,953 IRQ/s, similar comparable high-load CPU phases, and unchanged perceived behavior.

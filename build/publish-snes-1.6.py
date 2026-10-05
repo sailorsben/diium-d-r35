@@ -3,6 +3,7 @@ from pathlib import Path
 from hashlib import sha256
 import json,shutil
 ROOT=Path(__file__).resolve().parent.parent
+assert json.loads((ROOT/'build/snes-mvp/out/verification.json').read_text())['version']=='1.6', 'Historical publisher: use the current version publisher'
 manifest_path=ROOT/'evidence/manifest.json';manifest=json.loads(manifest_path.read_text())
 entries=[e for e in manifest['entries'] if not e['published'].startswith('evidence/verification/snes-mvp-1.6/')]
 for entry in entries:

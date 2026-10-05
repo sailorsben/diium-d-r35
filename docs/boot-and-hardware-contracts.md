@@ -18,7 +18,7 @@ The current hook runs `/bin/sh /usr/retro/snes-mvp/launch.sh` synchronously befo
 
 First library draw/flip completes before initial held inputs are suppressed independently. A stuck pin cannot prevent first paint. Startup has a 20-second deadline (bounded configurable range); ready gameplay is not limited to 20 seconds. On a stall, capture thread state, retain logs, TERM/KILL only the owned child, and wait for it to exit before starting another hardware owner. A kernel-blocked process may require reboot.
 
-Bring-up/input/exit/cleanup logs are bounded and durable. Game callbacks do not perform per-frame SD logging. Three post-ready snapshots retain runtime/thread/IPC state, then monitoring ends; monitor cancellation reaps its owned sleeper.
+Bring-up/input/exit/cleanup logs are bounded and durable. Game callbacks do not perform per-frame SD logging. Through 1.6, three post-ready snapshots retained runtime/thread/IPC state, then monitoring ended. [1.7](snes-mvp-1.7.md) adds atomic RAM progress outside core callbacks and persists the latest two records, three early snapshots and a bounded latest platform/kernel view. Its monitor captures after two seconds, then five-second waits for at most 63 iterations; capture time extends the nominal window. Capture/sync duration is logged. Cancellation reaps the owned sleeper. Verify current build/session/boot identity before treating a retained report as this run; normal-exit totals may remain stale after power-off.
 
 ## GPIO ABI and complete direction translation
 

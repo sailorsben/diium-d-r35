@@ -23,6 +23,17 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     for path in (stop,ack,started):
         if path.exists(): path.unlink()
     worker=None
+    observed=[]
+    if name=='ready-session':
+        def observe_before_exit():
+            deadline=time.monotonic()+4
+            while time.monotonic()<deadline:
+                progress=base/'last-progress.txt'
+                if progress.exists() and 'fixture-running-37' in progress.read_text():
+                    observed.append(True);return
+                time.sleep(.03)
+        observer=threading.Thread(target=observe_before_exit)
+        observer.start()
     if splash:
         entry=proc/'321'; entry.mkdir(exist_ok=True)
         (entry/'comm').write_text('showlogo\n')
@@ -72,16 +83,22 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'STARTUP TIMEOUT' not in log
     if name=='ready-session':
         elapsed=time.monotonic()-start
-        assert 4<=elapsed<7, f'Cancelled monitor left a sleeper or limited ready session: {elapsed}'
+        observer.join(timeout=1)
+        assert observed,'Progress was not persisted while the child was still alive'
+        assert 5<=elapsed<9, f'Cancelled monitor left a sleeper or limited ready session: {elapsed}'
         runtime=(base/'runtime-platform.txt').read_text()
         assert 'Runtime snapshot child=' in runtime and 'Task ' in runtime,runtime
         assert 'stale previous snapshot' not in runtime
         assert 'fixture ready runtime' in (base/'last-run.log').read_text()
+        assert 'fixture-running-37' in (base/'last-progress.txt').read_text()
+        assert (base/'runtime-platform-latest.txt').stat().st_size>0
+        assert 'end_after_sync_uptime=' in (base/'diagnostic-flush.log').read_text()
+        print('PASS: diagnostic progress persisted before child exit; bounded live/kernel snapshots and flush timing retained')
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 
 run('early-error','printf "fixture early error\\n"; exit 7',7)
 run('stalled','printf "fixture stall\\n"; exec sleep 60',143)
-run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; sleep 4; exit 0',0,ready=True)
+run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; sleep 5; exit 0',0,ready=True)
 run('unarmed','exit 99',0,armed=False)
 run('splash-handoff',': > "$D35_MVP_READY_FILE"; exit 0',0,ready=True,splash='exits')
 run('splash-stalled','exit 99',1,splash='stuck')

@@ -37,6 +37,7 @@ The kcore recovery branch stopped at ENOENT. No MMIO/flash fallback occurred. Tr
 | 1.4 | Launcher worked, FF6 started, private state loaded; 2465 frames, two pauses, no write errors | Direct kernel clock/relative waits repair the input loop. Same probe showed kernel8.361s vs libc447.327s. Directions still incorrect |
 | 1.5 | All four directions confirmed; launcher/game/state work; 23,872 calls, 11.838% held drawings; occasional lag and rare random crackles in story/map | Stock-derived input repair is physically validated. Performance/audio are not fully qualified; mixed held-frame means cannot establish full-render throughput |
 | 1.6 | Very choppy sound, slow movement, clean-looking graphics, then whole-device power-off | Output equivalence did not prove faster A7 execution or physical stability. Startup worked; no fresh session report/exit record survived. Do not attribute stale 1.5 totals to this run or re-arm unchanged |
+| 1.7 | Logging retry installed/armed; physical result pending | User confirms stock boot and requests retry. Same core/pipeline; add fresh session counters and bounded persisted diagnostics, including their own duration |
 
 The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
 
@@ -64,3 +65,10 @@ The isolated core and separate qualified state copy were installed for the
 physical test, which failed. The return is archived and unarmed; stock and all
 original progress are intact. Read the [failure review](snes-mvp-1.6-failure.md)
 for the surviving evidence, telemetry gap and controlled qualification needed.
+
+After stock boot was confirmed, the user requested logging and another run.
+[MVP1.7](snes-mvp-1.7.md) therefore retains the exact failing core and pipeline
+while adding crash-surviving progress and bounded platform evidence. Real ARM
+SIGKILL and wrapper live-persistence checks pass. Installation preserves stock,
+hook and 19 pre-install private files; the one-shot is armed for this retry.
+This updates the test sequence without claiming speed or a shutdown cause.

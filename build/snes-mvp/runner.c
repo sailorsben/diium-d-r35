@@ -68,6 +68,9 @@ static struct {
     bool have_previous, av_changed;
     int16_t previous[2], output[2048*2];
     char save_dir[1024], sram_path[1200], state_path[1200], report_path[1200];
+    char progress_path[1200];
+    uint64_t session_ns, next_progress, diagnostic_ns, diagnostic_max_ns;
+    unsigned progress_writes, progress_errors;
     uint64_t runs, held, videos, video_dupes, generated, enqueued, accepted, primed;
     uint64_t write_calls, partial_writes, again, write_errors, pauses;
     uint64_t wall_ns, cpu_ns, video_ns, audio_ns, max_run_ns, max_video_ns;
@@ -76,7 +79,9 @@ static struct {
     int queue_min, queue_max;
     uint64_t audio_cleared, audio_remaining, audio_worker_cpu_ns, audio_max_gap_ns;
     uint64_t device_cleared_estimate, pacing_wait_ns, active_ns, late_calls, max_lateness_ns;
+    uint64_t audio_space_wait_ns, audio_lead_wait_ns;
 } s;
+static void progress(const char *phase,int force);
 
 static void fail(const char *fmt, ...)
 {
@@ -439,7 +444,7 @@ static bool load_state(void)
 static bool pause_menu(void)
 {
     int action;
-    ++s.pauses; board_wait_display();
+    ++s.pauses; progress("pause_draining",1); board_wait_display();
     audio_reset();
     { int queued=board_audio_queued_frames(); if(queued>0) s.device_cleared_estimate+=(unsigned)queued; }
     if(board_audio_reset()<0) { fail("Could not pause audio: %s",board_last_error()); return false; }
@@ -463,7 +468,7 @@ static uint64_t thread_cpu_ns(void)
     if(syscall(SYS_clock_gettime,CLOCK_THREAD_CPUTIME_ID,&t)) return 0;
     return (uint64_t)t.tv_sec*1000000000u+(uint64_t)t.tv_nsec;
 }
-static void report(void)
+static void report_to(const char *path,const char *phase,int ram)
 {
     char text[6144]; int n; unsigned i;
     struct board_video_metrics display;
@@ -490,6 +495,17 @@ static void report(void)
       (unsigned long long)s.pauses,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
+      "build_version=1.7\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
+      "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
+      "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
+      (long)getpid(),(unsigned long long)s.session_ns,phase,
+      (unsigned long long)board_now_ns(),(unsigned long long)(board_now_ns()-s.session_ns),
+      (unsigned long long)s.audio_space_wait_ns,(unsigned long long)s.audio_lead_wait_ns,
+      (unsigned long long)s.diagnostic_ns,(unsigned long long)s.diagnostic_max_ns,
+      s.progress_writes,s.progress_errors);
+    if(n<=0||(size_t)n>=sizeof(text)) return;
+    n+=snprintf(text+n,sizeof(text)-(size_t)n,
       "audio_cleared_frames=%llu\naudio_remaining_frames=%llu\naudio_worker_cpu_ns=%llu\n"
       "audio_max_write_gap_ns=%llu\ndevice_cleared_frames_estimate=%llu\n"
       "display_scaled=%llu\ndisplay_flipped=%llu\ndisplay_queue_high=%u\n"
@@ -506,13 +522,38 @@ static void report(void)
       (unsigned long long)display.max_flip_ns,(unsigned long long)s.active_ns,
       (unsigned long long)s.pacing_wait_ns,(unsigned long long)s.late_calls,
       (unsigned long long)s.max_lateness_ns);
+    if(n<=0||(size_t)n>=sizeof(text)) return;
     for(i=0;i<ARRAY_SIZE(s.run_hist);i++) if(s.run_hist[i]) {
         int add=snprintf(text+n,sizeof(text)-(size_t)n,"core_wall_bin_%ums=%u\n",i,s.run_hist[i]);
         if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
         n+=add;
     }
-    (void)save_file(s.report_path,text,(size_t)n);
+    if(ram) {
+        char temporary[1280]; int fd; size_t off=0;
+        if(snprintf(temporary,sizeof(temporary),"%s.tmp",path)>=(int)sizeof(temporary)) return;
+        fd=open(temporary,O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC,0600);
+        if(fd<0) { ++s.progress_errors; return; }
+        while(off<(size_t)n) {
+            ssize_t wrote=write(fd,text+off,(size_t)n-off);
+            if(wrote<0 && errno==EINTR) continue;
+            if(wrote<=0) break;
+            off+=(size_t)wrote;
+        }
+        if(close(fd) || off!=(size_t)n || rename(temporary,path)) ++s.progress_errors;
+        else ++s.progress_writes;
+    } else (void)save_file(path,text,(size_t)n);
 }
+static void progress(const char *phase,int force)
+{
+    uint64_t began=board_now_ns(),duration;
+    if(!s.progress_path[0] || (!force && began<s.next_progress)) return;
+    s.next_progress=began+1000000000u;
+    pump_audio(); s.audio_worker_cpu_ns=audio_pipe_live_cpu();
+    report_to(s.progress_path,phase,1);
+    duration=board_now_ns()-began; s.diagnostic_ns+=duration;
+    if(duration>s.diagnostic_max_ns) s.diagnostic_max_ns=duration;
+}
+static void report(void) { report_to(s.report_path,"finished",0); }
 
 int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
 {
@@ -522,6 +563,10 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     uint32_t old_buttons=0; bool no_pacing=false,save_ready=false;
     const char *value; int actual_rate;
     memset(&s,0,sizeof(s)); memset(&native_av,0,sizeof(native_av));
+    s.session_ns=board_now_ns();
+    value=getenv("D35_MVP_PROGRESS_FILE");
+    if(value && *value && strlen(value)<sizeof(s.progress_path))
+        strcpy(s.progress_path,value);
     audio_pipe_init(); board_video_metrics(NULL,1);
     error_text[0]=status_text[0]=0; stop_requested=0; s.queue_min=-1;s.queue_max=-1;
     if(!rom_path||!core_path||!save_dir||strlen(save_dir)>=sizeof(s.save_dir)) {
@@ -543,6 +588,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     snprintf(s.sram_path,sizeof(s.sram_path),"%s/game-%08x-%u.srm",save_dir,s.rom_crc,s.rom_bytes);
     snprintf(s.state_path,sizeof(s.state_path),"%s/game-%08x-%u-core-%08x-%u.state",save_dir,s.rom_crc,s.rom_bytes,s.core_crc,s.core_bytes);
     snprintf(s.report_path,sizeof(s.report_path),"%s/last-session.txt",save_dir);
+    progress("core_loading",1);
     s.core=dlopen(core_path,RTLD_NOW|RTLD_LOCAL);
     if(!s.core) { fail("Could not load core: %s",dlerror()); goto done; }
 #define LOAD(type,name,args) do { *(void **)(&p_##name)=dlsym(s.core,#name); if(!p_##name) { fail("Core lacks " #name); goto done; } } while(0);
@@ -586,6 +632,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     }
     fraction=1000000000.0/native_av.timing.fps; period=(uint64_t)fraction; fraction-=period;
     deadline=board_now_ns(); s.start_ns=deadline;
+    progress("running",1);
     while(!s.failed&&!stop_requested&&(!limit||s.runs<limit)) {
         uint64_t began,elapsed,cpu_start,cpu_end,step_start=board_now_ns();
         unsigned bin; uint32_t buttons=board_poll_input();
@@ -597,18 +644,25 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         pump_audio();
         /* Reserve at least2048 output frames before entering the core. Never
          * let a full sink silently discard a callback the core won't replay. */
-        if(audio_pipe_space(2048)<0) fail("Audio sink stalled: %s",strerror(errno));
+        { uint64_t wait=board_now_ns();
+          if(audio_pipe_space(2048)<0) fail("Audio sink stalled: %s",strerror(errno));
+          s.audio_space_wait_ns+=board_now_ns()-wait; }
         if(!no_pacing) {
             uint64_t waiting=board_now_ns();
             unsigned next=(unsigned)ceil(OUT_RATE/native_av.timing.fps);
             for(;;) {
                 int queued=board_audio_queued_frames();
+                if(queued>=0) {
+                    if(s.queue_min<0 || queued<s.queue_min) s.queue_min=queued;
+                    if(queued>s.queue_max) s.queue_max=queued;
+                }
                 pump_audio();
                 if(s.failed || stop_requested || queued<0 ||
                    s.ring_count+(unsigned)queued+next<=OUT_RATE*70u/1000u) break;
                 if(board_now_ns()-waiting>500000000u) { fail("Audio queue lead did not drain"); break; }
                 board_sleep_until(board_now_ns()+1000000u);
             }
+            s.audio_lead_wait_ns+=board_now_ns()-waiting;
         }
         if(s.failed||stop_requested) break;
         if(!no_pacing) {
@@ -628,6 +682,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         if(s.max_run_ns<elapsed) s.max_run_ns=elapsed;
         bin=(unsigned)(elapsed/1000000u); if(bin>=ARRAY_SIZE(s.run_hist)) bin=ARRAY_SIZE(s.run_hist)-1;
         ++s.run_hist[bin]; pump_audio();
+        progress(s.failed?"failed":"running",0);
         s.active_ns+=board_now_ns()-step_start;
         if(!(s.runs%60)) {
             int q=board_audio_queued_frames();
@@ -640,6 +695,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         if(board_now_ns()>deadline+250000000u) deadline=board_now_ns();
     }
 done:
+    if(s.report_path[0]) progress(s.failed?"failed_before_cleanup":"cleanup",1);
     audio_pipe_stop(!s.failed); pump_audio();
     if(s.audio_open) {
         uint64_t until=board_now_ns()+150000000u;
@@ -660,7 +716,7 @@ done:
     if(s.loaded) p_retro_unload_game();
     if(s.initialized) p_retro_deinit();
     if(s.core) dlclose(s.core);
-    if(s.report_path[0]) report();
+    if(s.report_path[0]) { progress("finished",1); report(); }
     if(rom_data!=file_data) free(rom_data);
     free(file_data);
     return s.failed?-1:0;

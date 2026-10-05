@@ -5,6 +5,10 @@ rendering with a tailored A7 core and corrected peripheral ownership; its
 physical run failed with severe lag/choppy sound and whole-device power-off;
 see the [failure review](snes-mvp-1.6-failure.md). The longer [platform review](reference/platform-redesign/proposal.txt) is a design proposal, not a completed multi-emulator product or a speed claim.
 
+[MVP1.7](snes-mvp-1.7.md) retains that exact core and pipeline for the user's
+requested logging retry. Fresh RAM progress and bounded wrapper persistence
+repair the lost-final-report gap; physical performance remains unqualified.
+
 ## Implemented owners
 
 ```text
@@ -65,7 +69,9 @@ Kernel-monotonic pacing and accurate Blargg behavior remain. A hardware audio
 cursor, audio-led production control, and persistent scaler ownership require
 device qualification before replacing the known transport/backend. The first
 full-render test records core, scaler, flip, queue and audio-worker measurements
-in memory and flushes reports after play. These measurements decide which
+in memory. From 1.7, it publishes coherent checkpoints outside callbacks and
+the wrapper persists them periodically during a bounded diagnostic window,
+as well as retaining final reports after play. These measurements decide which
 remaining extension is justified; undocumented hardware queues are not assumed.
 
 Reproducible minimal userspace around the known kernel remains the broader

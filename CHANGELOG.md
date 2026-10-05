@@ -1,5 +1,29 @@
 # Changelog
 
+## SNES MVP1.7 logging retry — 2026-10-04
+
+After the failed 1.6 run, the user confirms stock boot and requests logging plus
+another physical test. Retain the exact A7 core, full-render policy, UI and
+audio/display pipeline. Add build/core/session identity, phases and coherent
+progress checkpoints in RAM about once a second, outside core callbacks.
+Include live audio-worker CPU, producer audio waits and existing core/display
+metrics. Measure checkpoint duration and errors.
+
+The wrapper persists the latest two progress records, three early thread
+snapshots and a bounded latest thread/CPU/memory/interrupt/helper/kernel view.
+Capture after two seconds, then five-second waits for 63 iterations; record
+capture/sync duration and cancel/reap on child exit. This closes the end-only
+report gap; sudden power loss may still lose the latest interval. Logging is
+not a speed fix and may perturb timing.
+
+Pass the full ARM/QEMU contract suite, a real-runner SIGKILL checkpoint check
+and wrapper persistence while its child is alive. Archive/hash-verify the
+returned card before updating. Install only owned runner/wrapper/test notes;
+retain all 19 pre-install private progress files, core, boot hook and stock
+binaries by hashes. Arm the one-shot last. Publish owned release and selected
+verification without game/save/vendor files; retain historical 1.5/1.6 releases.
+Physical result pending. See [test and evidence boundaries](docs/snes-mvp-1.7.md).
+
 ## MVP1.6 physical failure — 2026-10-04
 
 The user reports very choppy sound, slow movement, good-looking graphics and

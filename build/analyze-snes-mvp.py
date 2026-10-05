@@ -48,6 +48,23 @@ def analyze(path, core_path=None):
     definitely_over = sum(count for lower, count in bins.items() if lower > period_ms)
     ambiguous = sum(count for lower, count in bins.items()
                     if lower <= period_ms < lower + 1)
+    limitations = [
+        'Core-call CPU includes callbacks; worker/kernel CPU is not included.',
+        'Nominal simulated time is not measured gameplay wall duration or achieved speed.',
+        'OSS write success is not a hardware underrun count.',
+        'Video submission is not an optical panel presentation count.',
+    ]
+    if integer('held'):
+        limitations.append('Adaptive internal drawing makes the mean a mixed workload, not full-render cost.')
+    if fields.get('build_version') == '1.7':
+        limitations.append('Device queue is sampled during producer lead checks; brief starvation can be missed.')
+        limitations.append('In-progress checkpoints omit later work; verify session/boot identity and phase before attribution.')
+    else:
+        limitations.append('Device queue is sampled once per 60 calls; brief starvation can be missed.')
+    if 'audio_cleared_frames' not in fields:
+        limitations.append('Transitions clear/reset audio; reports omit cleared and ending queued frames.')
+    else:
+        limitations.append('Transition clears and remaining PCM are separate counters; produced-minus-accepted is not isolated loss.')
     result = {
         'report_sha256': sha256(raw).hexdigest(),
         'raw_fields': fields,
@@ -79,15 +96,7 @@ def analyze(path, core_path=None):
         'produced_plus_priming_minus_accepted_frames_not_isolated_loss':
             integer('resampled_enqueued_frames') + integer('priming_silence_frames')
             - integer('output_accepted_frames_including_priming'),
-        'limitations': [
-            'Adaptive internal drawing makes the mean a mixed workload, not full-render cost.',
-            'Core-call CPU includes callbacks; worker/kernel CPU is not included.',
-            'Nominal simulated time is not measured gameplay wall duration or achieved speed.',
-            'Device queue is sampled once per 60 calls; brief starvation can be missed.',
-            'OSS write success is not a hardware underrun count.',
-            'Transitions clear/reset audio; reports omit cleared and ending queued frames.',
-            'Video submission is not an optical panel presentation count.',
-        ],
+        'limitations': limitations,
     }
     return result
 

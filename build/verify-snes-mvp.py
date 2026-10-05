@@ -17,6 +17,9 @@ paced=dict(line.split('=',1) for line in (out/'paced-smoke/last-session.txt').re
 assert paced['runs']=='30' and paced['error']=='' and paced['write_errors']=='0'
 assert paced['held']=='0' and paced['video_submitted']=='30'
 assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text()
+assert report['build_version']=='1.7' and report['phase']=='finished' and report['session_id']
+assert 'PASS: real ARM runner killed before cleanup' in (out/'diagnostic-crash.log').read_text()
+assert 'PASS: diagnostic progress persisted before child exit' in (out/'wrapper-contract.log').read_text()
 assert 'PASS: 8388608 scalar/vector color comparisons' in (root/'build/plus-a7-out/kernel-check.log').read_text()
 assert 'PASS: 1200 frames exact visible pixels' in (root/'build/plus-a7-out/equivalence.log').read_text()
 assert 'submitted=120 held=0' in (root/'build/plus-a7-out/runner-integration.log').read_text()
@@ -43,10 +46,11 @@ assert all((out/'preview'/name).stat().st_size>900000 for name in ('library.ppm'
 versions=[tuple(map(int,m)) for m in re.findall(r'GLIBC_(\d+)\.(\d+)',(out/'abi-versions.txt').read_text())]
 assert max(versions)<=(2,30)
 data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
-      'version':'1.6','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
+      'version':'1.7','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
       'qualified_snapshot_sha256':digest(root/'build/plus-a7-out/returned.state'),
       'a7_header_sha256':digest(root/'build/plus-a7-render.h'),
       'binary_sha256':digest(out/'snes-mvp'),'binary_bytes':(out/'snes-mvp').stat().st_size,
+      'wrapper_sha256':digest(root/'build/snes-mvp/launch.sh'),
       'glibc_max':'.'.join(map(str,max(versions))),'real_core_frames':180,
       'audio_transport_and_save_contracts':(out/'contracts.log').read_text().strip(),
       'checks':['exact core ZIP run','PCM accounting','UI rendering','library scanning','invalid ROM rejection',
@@ -60,7 +64,8 @@ data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
       'kernel_tile_rows':280000,'display_queue_contract':(out/'display-queue-contract.log').read_text().strip(),
       'snapshot_runner_integration':'120 frames, migrated snapshot loaded via pause menu, zero held drawings',
       'core_equivalence':(root/'build/plus-a7-out/equivalence.log').read_text().strip(),
-      'hardware_audio_display_controls':'1.5 controls confirmed; 1.6 full-speed changes await physical qualification',
+      'diagnostic_crash_contract':(out/'diagnostic-crash.log').read_text().strip(),
+      'hardware_audio_display_controls':'1.6 failed; 1.7 adds bounded diagnostic logging for the authorized retry',
       'performance':'QEMU timings are not device performance evidence'}
 (out/'verification.json').write_text(json.dumps(data,indent=2)+'\n')
 print(json.dumps(data,indent=2))

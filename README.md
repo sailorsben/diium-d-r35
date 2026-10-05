@@ -9,6 +9,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 - **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
 - **MVP1.6 failed its physical run:** very choppy sound, slow movement, clean-looking graphics, then the whole device powered off. The returned build hashes match; originals are intact and the one-shot is consumed. No fresh session totals survived. Do not re-arm this release unchanged. [Failure review](docs/snes-mvp-1.6-failure.md).
+- **MVP1.7 is installed and armed for a logging retry:** same A7 core, full rendering, UI and audio/display pipeline. Fresh session counters are published to RAM about once a second; bounded diagnostics are persisted about every five seconds. Stock boot was subsequently confirmed. This is an observability repair; physical performance and shutdown cause remain unresolved. [Retry and test](docs/snes-mvp-1.7.md).
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
 
@@ -22,7 +23,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
-| Implemented A7 full-render build and next test | [MVP1.6](docs/snes-mvp-1.6.md) |
+| Current logging retry and next test | [MVP1.7](docs/snes-mvp-1.7.md) |
+| A7 full-render implementation and failed test | [MVP1.6](docs/snes-mvp-1.6.md), [failure review](docs/snes-mvp-1.6-failure.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |
 | Evidence preservation and future changes | [Maintenance](docs/maintenance.md) |
 

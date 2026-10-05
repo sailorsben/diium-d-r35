@@ -12,6 +12,8 @@ static struct {
     int16_t pcm[AUDIO_CAPACITY*2];
     unsigned read,count;
     int started,stop;
+    int running;
+    uint64_t cpu_base;
     pthread_t thread;
     struct audio_pipe_stats stats;
 } pipe_state;
@@ -29,6 +31,7 @@ static void *audio_service(void *unused)
     uint64_t began=audio_cpu(),last_write=0,end;
     (void)unused;
     pthread_mutex_lock(&pipe_lock);
+    pipe_state.running=1; pipe_state.cpu_base=began;
     for(;;) {
         unsigned count,read;
         ssize_t accepted;
@@ -76,6 +79,7 @@ static void *audio_service(void *unused)
     }
     end=audio_cpu();
     if(end>=began) pipe_state.stats.worker_cpu_ns+=end-began;
+    pipe_state.running=0;
     pthread_mutex_unlock(&pipe_lock);
     return NULL;
 }
@@ -150,4 +154,19 @@ void audio_pipe_stats(struct audio_pipe_stats *out)
 {
     pthread_mutex_lock(&pipe_lock); *out=pipe_state.stats;
     out->remaining=pipe_state.count; pthread_mutex_unlock(&pipe_lock);
+}
+uint64_t audio_pipe_live_cpu(void)
+{
+    uint64_t result;
+    clockid_t clock;
+    struct timespec now;
+    pthread_mutex_lock(&pipe_lock);
+    result=pipe_state.stats.worker_cpu_ns;
+    if(pipe_state.running && !pthread_getcpuclockid(pipe_state.thread,&clock) &&
+       !syscall(SYS_clock_gettime,clock,&now)) {
+        uint64_t value=(uint64_t)now.tv_sec*1000000000u+now.tv_nsec;
+        if(value>=pipe_state.cpu_base) result+=value-pipe_state.cpu_base;
+    }
+    pthread_mutex_unlock(&pipe_lock);
+    return result;
 }

@@ -15,4 +15,5 @@ int audio_pipe_push(const int16_t *pcm,size_t frames);
 void audio_pipe_stop(int drain);
 void audio_pipe_clear(void);
 void audio_pipe_stats(struct audio_pipe_stats *out);
+uint64_t audio_pipe_live_cpu(void);
 #endif

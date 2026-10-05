@@ -81,3 +81,5 @@ arm-linux-gnueabihf-gcc $flags -std=gnu99 -O2 -Wall -Wextra -Werror -no-pie -nos
 timeout 10 qemu-arm -cpu cortex-a7 -L "$base/build/sysroot" -E LD_LIBRARY_PATH="$base/build/sysroot/lib" \
  "$out/display-queue-check-arm" > "$out/display-queue-contract.log"
 cat "$out/display-queue-contract.log"
+python3 "$base/build/snes-mvp/check-diagnostic-crash.py" "$out/abrupt-check" > "$out/diagnostic-crash.log"
+cat "$out/diagnostic-crash.log"

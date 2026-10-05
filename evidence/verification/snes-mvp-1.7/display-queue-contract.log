@@ -1,0 +1,1 @@
+PASS: real display FIFO releases source before scanout, reserves queue credit, preserves pixels/order and joins before teardown

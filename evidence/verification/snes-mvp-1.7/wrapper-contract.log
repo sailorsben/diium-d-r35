@@ -1,0 +1,7 @@
+PASS: startup wrapper early-error, exit=7, ready=False
+PASS: startup wrapper stalled, exit=143, ready=False
+PASS: diagnostic progress persisted before child exit; bounded live/kernel snapshots and flush timing retained
+PASS: startup wrapper ready-session, exit=0, ready=True
+PASS: startup wrapper splash-handoff, exit=0, ready=True
+PASS: splash timeout refuses to start competing MVP display owner
+PASS: unarmed boot skips MVP; startup deadline does not limit a ready session

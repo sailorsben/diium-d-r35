@@ -69,3 +69,12 @@ an explicit identity and in-progress marker.
 No replacement runtime or new one-shot is installed by this failure review.
 The original full-speed goal stands. This run establishes that the first bundle
 did not meet it, rather than proving full rendering impossible on the device.
+
+## Subsequent authorized retry
+
+The user subsequently confirms that stock boot works and requests logging plus
+another test. [MVP1.7](snes-mvp-1.7.md) is now installed and armed: same exact core
+and pipeline, fresh session/phase counters in RAM, bounded persisted progress,
+thread/kernel/helper/memory snapshots and diagnostic-duration accounting.
+This supersedes the earlier hold on retesting. It does not supply the missing
+physical speed comparison or identify the shutdown mechanism.
