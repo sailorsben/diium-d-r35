@@ -14,7 +14,13 @@ save/exit, but only ~54.63 emulation calls/sec of active-loop time. FF6 party
 menu relief and the expensive-call distribution point toward workload-dependent
 cost. Producer display blocking and audio-lead control are separately priced;
 overlapping scaler/flip wall must not be mistaken for additional CPU. The
-source diagnostic command correction is tested but not installed on the card.
+source diagnostic command correction is incorporated in1.8.
+
+[MVP1.8](snes-mvp-1.8.md) moves forward on A7 at the user's direction: emitted
+tile-mode specialization, cheaper palettes, vector backdrop/window passes and
+less shell logging during play. Exactness/lifetime checks pass; physical speed
+and sound acceptance remain pending. The existing producer, audio worker and
+display queue retain their timing/ownership contracts.
 
 ## Implemented owners
 

@@ -49,50 +49,107 @@ static inline uint16x8_t d35_mask16(uint8x8_t mask)
     uint8x8x2_t zip=vzip_u8(mask,mask);
     return vreinterpretq_u16_u8(vcombine_u8(zip.val[0],zip.val[1]));
 }
-static inline uint8x8x4_t d35_palette(const uint16_t *colors,unsigned bits)
+typedef struct { uint8x8x2_t low,high; } d35_palette_t;
+static inline d35_palette_t d35_palette(const uint16_t *colors,unsigned bits)
 {
-    uint8x8x4_t table;
+    d35_palette_t table;
     const uint8_t *p=(const uint8_t *)colors;
-    table.val[0]=vld1_u8(p);
-    table.val[1]=bits==4?vld1_u8(p+8):vdup_n_u8(0);
-    table.val[2]=bits==4?vld1_u8(p+16):vdup_n_u8(0);
-    table.val[3]=bits==4?vld1_u8(p+24):vdup_n_u8(0);
+    if(bits==4) {
+        uint8x8x2_t first=vld2_u8(p),second=vld2_u8(p+16);
+        table.low.val[0]=first.val[0]; table.low.val[1]=second.val[0];
+        table.high.val[0]=first.val[1]; table.high.val[1]=second.val[1];
+    } else {
+        /* Exactly four colors: never read beyond the final 2bpp palette. */
+        uint8x8_t four=vld1_u8(p);
+        uint8x8x2_t split=vuzp_u8(four,four);
+        table.low.val[0]=split.val[0]; table.high.val[0]=split.val[1];
+        table.low.val[1]=table.high.val[1]=vdup_n_u8(0);
+    }
     return table;
+}
+static inline uint16x8_t d35_blend(uint16x8_t color,uint8x8_t sd,
+    const uint16_t *sub,uint16_t fixed,unsigned mode,uint8x8_t active)
+{
+    uint8x8_t fixed_mask=vceq_u8(sd,vdup_n_u8(1));
+    uint8x8_t enabled=vand_u8(active,mode>=5?fixed_mask:
+                                                    vcgt_u8(sd,vdup_n_u8(0)));
+    uint16x8_t fixed_color,result,is_fixed;
+    uint64_t enabled_bits=vget_lane_u64(vreinterpret_u64_u8(enabled),0);
+    uint64_t active_bits=vget_lane_u64(vreinterpret_u64_u8(active),0);
+    uint64_t fixed_bits=vget_lane_u64(vreinterpret_u64_u8(vand_u8(active,fixed_mask)),0);
+    if(!enabled_bits) return color;
+    fixed_color=vdupq_n_u16(fixed);
+    is_fixed=d35_mask16(fixed_mask);
+    if(mode>=5) {
+        result=mode==5?d35_add_half(color,fixed_color):d35_sub_half(color,fixed_color);
+    } else if(fixed_bits==active_bits) {
+        /* Fixed-only active lanes need neither a subscreen read nor half math. */
+        result=(mode<=2)?d35_add(color,fixed_color):d35_sub(color,fixed_color);
+    } else {
+        uint16x8_t other=vbslq_u16(is_fixed,fixed_color,vld1q_u16(sub));
+        if(mode==1) result=d35_add(color,other);
+        else if(mode==3) result=d35_sub(color,other);
+        else if(mode==2) {
+            result=d35_add_half(color,other);
+            if(fixed_bits) result=vbslq_u16(is_fixed,d35_add(color,other),result);
+        } else {
+            result=d35_sub_half(color,other);
+            if(fixed_bits) result=vbslq_u16(is_fixed,d35_sub(color,other),result);
+        }
+    }
+    return vbslq_u16(d35_mask16(enabled),result,color);
+}
+static inline void d35_store(uint16_t *screen,uint16x8_t color,uint8x8_t mask)
+{
+    if(vget_lane_u64(vreinterpret_u64_u8(mask),0)==UINT64_MAX) vst1q_u16(screen,color);
+    else vst1q_u16(screen,vbslq_u16(d35_mask16(mask),color,vld1q_u16(screen)));
 }
 /* Modes: 0 plain, 1 add, 2 add-half, 3 sub, 4 sub-half,
  * 5 fixed-add-half, 6 fixed-sub-half. Caller guarantees eight valid pixels. */
-static inline void d35_row(const uint8_t *pixels,uint8x8x4_t table,int flip,
+static inline void d35_row(const uint8_t *pixels,d35_palette_t table,int flip,
                           uint16_t *screen,uint8_t *depth,const uint8_t *subdepth,
                           const uint16_t *sub,uint8_t z1,uint8_t z2,
                           uint16_t fixed,unsigned mode)
 {
     uint8x8_t idx=vld1_u8(pixels),old_depth=vld1_u8(depth),mask;
-    uint16x8_t color,old,mask16;
+    uint16x8_t color;
     uint8x8x2_t zip;
     if(flip) idx=vrev64_u8(idx);
     mask=vand_u8(vcgt_u8(vdup_n_u8(z1),old_depth),vmvn_u8(vceq_u8(idx,vdup_n_u8(0))));
     if(!vget_lane_u64(vreinterpret_u64_u8(mask),0)) return;
-    idx=vshl_n_u8(idx,1);
-    zip=vzip_u8(vtbl4_u8(table,idx),vtbl4_u8(table,vadd_u8(idx,vdup_n_u8(1))));
+    zip=vzip_u8(vtbl2_u8(table.low,idx),vtbl2_u8(table.high,idx));
     color=vreinterpretq_u16_u8(vcombine_u8(zip.val[0],zip.val[1]));
-    if(mode) {
-        uint8x8_t sd=vld1_u8(subdepth);
-        uint16x8_t is_fixed=d35_mask16(vceq_u8(sd,vdup_n_u8(1)));
-        uint16x8_t fixed_color=vdupq_n_u16(fixed),result;
-        if(mode>=5) {
-            result=mode==5?d35_add_half(color,fixed_color):d35_sub_half(color,fixed_color);
-            color=vbslq_u16(is_fixed,result,color);
-        } else {
-            uint16x8_t other=vbslq_u16(is_fixed,fixed_color,vld1q_u16(sub));
-            if(mode==1) result=d35_add(color,other);
-            else if(mode==3) result=d35_sub(color,other);
-            else if(mode==2) result=vbslq_u16(is_fixed,d35_add(color,other),d35_add_half(color,other));
-            else result=vbslq_u16(is_fixed,d35_sub(color,other),d35_sub_half(color,other));
-            color=vbslq_u16(d35_mask16(vceq_u8(sd,vdup_n_u8(0))),color,result);
-        }
-    }
-    old=vld1q_u16(screen); mask16=d35_mask16(mask);
-    vst1q_u16(screen,vbslq_u16(mask16,color,old));
+    if(mode) color=d35_blend(color,vld1_u8(subdepth),sub,fixed,mode,mask);
+    d35_store(screen,color,mask);
     vst1_u8(depth,vbsl_u8(mask,vdup_n_u8(z2),old_depth));
+}
+/* Process complete eight-pixel spans only; upstream handles the clipped tail.
+ * Modes 1..4 are backdrop math, 0 copies sub/fixed, 7 is plain backdrop fill. */
+static inline unsigned d35_backdrop(uint16_t *screen,const uint8_t *depth,
+    const uint8_t *sd,const uint16_t *sub,unsigned count,uint16_t back,
+    uint16_t fixed,unsigned mode)
+{
+    unsigned used=count&~7u,i;
+    uint16x8_t backdrop=vdupq_n_u16(back);
+    for(i=0;i<used;i+=8) {
+        uint8x8_t mask=vceq_u8(vld1_u8(depth+i),vdup_n_u8(0));
+        uint16x8_t color=backdrop;
+        if(!vget_lane_u64(vreinterpret_u64_u8(mask),0)) continue;
+        if(mode==0) {
+            uint8x8_t subdepth=vld1_u8(sd+i);
+            color=vbslq_u16(d35_mask16(vcgt_u8(subdepth,vdup_n_u8(1))),vld1q_u16(sub+i),color);
+            color=vbslq_u16(d35_mask16(vceq_u8(subdepth,vdup_n_u8(1))),vdupq_n_u16(fixed),color);
+        } else if(mode!=7) color=d35_blend(color,vld1_u8(sd+i),sub+i,fixed,mode,mask);
+        d35_store(screen+i,color,mask);
+    }
+    return used;
+}
+static inline unsigned d35_window(uint16_t *screen,const uint8_t *sd,
+    const uint16_t *sub,unsigned count,uint16_t black)
+{
+    unsigned used=count&~7u,i;
+    for(i=0;i<used;i+=8) vst1q_u16(screen+i,vbslq_u16(
+        d35_mask16(vcgt_u8(vld1_u8(sd+i),vdup_n_u8(1))),vld1q_u16(sub+i),vdupq_n_u16(black)));
+    return used;
 }
 #endif

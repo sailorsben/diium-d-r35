@@ -273,6 +273,14 @@ renderer speedup and sustained full-frame panel throughput require hardware
 qualification. Do not reinstall the same renderer with holding disabled and
 call that the proposed optimization.
 
+## Forward A7 implementation
+
+The subsequent [MVP1.8](snes-mvp-1.8.md) implementation specializes emitted A7
+tile code, reduces palette/math work, vectorizes backdrop/window passes and
+trims gameplay diagnostics. It proceeds at the user's direction without a
+paired physical comparison. Exact-output qualification passes; sustained
+native speed and uninterrupted sound remain physical acceptance criteria.
+
 ## Sources
 
 - [MVP board](../build/snes-mvp/board.c), [runner](../build/snes-mvp/runner.c),

@@ -1,6 +1,6 @@
 """Kill the real ARM runner before cleanup; retain fresh RAM progress and old report."""
 from pathlib import Path
-import os,subprocess,sys,time
+import os,subprocess,sys,time,zlib
 root=Path(__file__).resolve().parents[2]
 out=Path(sys.argv[1]).resolve();out.mkdir(parents=True,exist_ok=True)
 saves=out/'saves';saves.mkdir(exist_ok=True)
@@ -25,7 +25,7 @@ with (out/'runtime.log').open('wb') as log:
                 if int(fields.get('runs','0'))>=30:break
             time.sleep(.03)
         assert int(fields.get('runs','0'))>=30,'No fresh running checkpoint'
-        assert fields['build_version']=='1.7' and fields['core_crc32']=='90fbcc4e'
+        assert fields['build_version']=='1.8' and fields['core_crc32']==f'{zlib.crc32((root/"build/plus-a7-out/plus-a7.so").read_bytes())&0xffffffff:08x}'
         assert fields['session_id'] and fields['phase']=='running'
         assert fields['held']=='0' and int(fields['video_submitted'])==int(fields['runs'])
         assert int(fields['audio_worker_cpu_ns'])>0,'Live audio CPU unavailable'
@@ -33,4 +33,4 @@ with (out/'runtime.log').open('wb') as log:
     finally:
         proc.kill();proc.wait(timeout=5)
 assert report.read_bytes()==old and progress.read_text().find('session_id=')>=0
-print('PASS: real ARM runner killed before cleanup retains fresh 1.7/core/session checkpoint and live worker CPU; old 1.5 report stays historical')
+print('PASS: real ARM runner killed before cleanup retains fresh 1.8/core/session checkpoint and live worker CPU; old 1.5 report stays historical')

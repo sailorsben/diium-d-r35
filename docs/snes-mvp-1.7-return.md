@@ -101,6 +101,10 @@ refuses to overwrite that historical release with different checked bytes.
 
 ## Next engineering decision
 
+**Subsequent user direction:** Ben rejects the paired device comparison below
+and requests a smarter forward A7 build. [MVP1.8](snes-mvp-1.8.md) is the active
+implementation/test sequence; the following proposal remains historical.
+
 The full-render path works functionally, but it has not met full-speed audio/
 video acceptance. The 1.6 power-off cause remains unexplained; one clean exit
 does not settle it. Party-menu relief and the expensive-call distribution

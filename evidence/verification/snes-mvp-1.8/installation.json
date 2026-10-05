@@ -1,0 +1,13 @@
+{
+  "version": "1.8",
+  "one_shot_armed": true,
+  "stock_binaries_unchanged": true,
+  "boot_hook_unchanged": true,
+  "original_private_files_unchanged": 19,
+  "new_save_point_sram_preserved": true,
+  "snapshot_migration": "separate qualified older FF6 copy; Continue recommended",
+  "binary_sha256": "46c65c39f7a5a1ec354367dcf94e4af997c4c4f6783fa7393813393f4ba89a19",
+  "wrapper_sha256": "339cc5c4131f66a97869b9ef933ca889d2552a8f8dce0c1b5c6e7429339a3351",
+  "core_sha256": "e9292029ea75c7b4bee2c05fbebf77c18cf6e0ec9d369c8d2dbb89fdf381bb43",
+  "hardware_result": "pending"
+}

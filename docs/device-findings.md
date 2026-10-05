@@ -117,6 +117,17 @@ progress are preserved, card unarmed. Missing head prevented system CPU/memory/
 IRQ collection; source uses sed with a restricted-PATH regression. Display
 worker waits overlap producer work and do not establish a scaler-only deficit.
 
+## Forward A7 renderer build
+
+[MVP1.8](snes-mvp-1.8.md) is the forward A7 build requested after that return.
+Source/disassembly establish specialized tile modes, deinterleaved palettes and
+vector backdrop/window spans. Exact pixels/PCM/state and clipping checks pass;
+device speedup is not established. A reversed backdrop interval caught by the
+real intro must be clamped before unsigned vector counts. Gameplay shell work
+is reduced to one platform capture plus small30-second checkpoints without
+global sync. Continue uses the new preserved Save Point SRAM; the separately
+migrated snapshot remains older progress. The1.6 shutdown cause remains open.
+
 ## UART investigation and its negative result
 
 The kernel identifies `c0070000.uart`, ttyS0, IRQ19 (GIC hwirq69), primary console. Runtime v2 saw about 6,968 IRQ/s and 85.61 reported TX bytes/s. v3 redirected both host/supervisor stdout/stderr to `/dev/null`, but still saw about 6,953 IRQ/s, similar comparable high-load CPU phases, and unchanged perceived behavior.

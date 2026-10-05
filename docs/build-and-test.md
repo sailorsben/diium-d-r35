@@ -39,14 +39,16 @@ The real-core fixture uses a user-supplied FF3/VI ZIP at `build/ff3.zip`, whose 
 
 ## Build and checks
 
-The current 1.7 workflow retains the isolated A7 core and supplies owner-only
-equivalence inputs first; follow [the 1.6 reproduction sequence](snes-mvp-1.6.md#reproduce-locally).
-The pinned original core above remains the comparison oracle. Old 1.5 binaries
-and evidence stay versioned and are not overwritten by the new publisher.
-The 1.6 release is also retained unchanged. See [1.7 diagnostics](snes-mvp-1.7.md).
+The current1.8 workflow builds the forward A7 renderer and supplies owner-only
+output-equivalence inputs first; see [1.8](snes-mvp-1.8.md#verification-and-deployment).
+The pinned original remains an exact-output oracle. Historical releases and
+evidence remain unchanged; no paired device performance experiment is required.
 
 ```sh
+sh build/build-plus-a7.sh
+python3 build/prepare-plus-inputs.py --rom build/ff3.zip --snapshot YOUR_ORIGINAL_5ba71d2a_STATE
 sh build/build-snes-mvp.sh
+sh build/check-plus-a7.sh
 sh build/check-snes-mvp.sh
 python3 build/verify-snes-mvp.py
 ```
@@ -79,14 +81,14 @@ re-arm it unchanged.** Read the [failure review](snes-mvp-1.6-failure.md).
 The user subsequently requested a logging retry and confirmed stock boot.
 [MVP1.7](snes-mvp-1.7.md) ran with the same core/pipeline, fresh checkpoints and
 bounded persisted diagnostics. Its [return](snes-mvp-1.7-return.md) saved/exited
-without a crash but remained laggy. Card archived/unarmed; source contains an
-unreleased sed-based correction for the missing-head diagnostic command.
-The released wrapper remains unchanged; publish changed builds under a new
-version rather than overwriting historical1.7 evidence/release.
+without a crash but remained laggy. That return was archived read-only with new
+SRAM preserved. [1.8](snes-mvp-1.8.md) incorporates the sed correction, trims
+gameplay diagnostics and optimizes the A7 renderer. Physical speed/audio still
+await acceptance. Historical1.7 bytes/evidence remain unchanged.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
-[MVP1.7](../releases/snes-mvp-1.7/) contains our executable and wrapper, without
+[MVP1.8](../releases/snes-mvp-1.8/) contains our executable and wrapper, without
 a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
 from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains
 `/usr/retro/driver.so` and existing `002`/`ROMs/SNES` scanning. The historical
@@ -101,12 +103,18 @@ That installer describes historical 1.5. Historical 1.6 uses
 by hashes, an isolated core and a separately migrated, hash-qualified FF6 state.
 It preserves every original private file and arms after verification.
 
-Current `build/package-snes-1.7.py --card D:/` requires the exact unarmed 1.6
+Historical `build/package-snes-1.7.py --card D:/` requires the exact unarmed 1.6
 card, verified 1.7 runner/wrapper and unchanged A7 core. It archives first,
 updates only owned runner/wrapper/test notes, verifies stock/hook/private
 progress and arms last. It deliberately rejects an already-updated/armed card.
 `build/publish-snes-1.7.py` publishes selected verification and owned release;
 historical publishers reject a mismatched version rather than overwrite releases.
+
+Current `build/package-snes-1.8.py --card D:/` requires exact returned/unarmed1.7
+and qualified1.8 runner/core/wrapper bytes. It archives every private file,
+preserves the newly earned SRAM and creates only a separate qualified older
+snapshot before arming. Use FF6's **Continue** to play from the new Save Point.
+`build/publish-snes-1.8.py` publishes selected checks and the owned release.
 
 Before any deployment, retain a complete card backup, original init and original/private game progress. Preserve the supplied device's own backups rather than restoring another owner's files. These userspace tests have not changed internal flash/kernel.
 
@@ -116,7 +124,7 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
-For the 1.7 retry, use the [bounded test sequence](snes-mvp-1.7.md#physical-test).
+For1.8, use the [current test sequence](snes-mvp-1.8.md#physical-test).
 After power-off, prefer fresh `last-progress.txt`/`last-progress.previous`
 identity-qualified checkpoints over an older normal-exit report. Retain
 `runtime-platform-latest.txt`, `kernel-tail.txt` and `diagnostic-flush.log` too.

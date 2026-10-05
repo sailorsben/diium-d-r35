@@ -1,5 +1,25 @@
 # Changelog
 
+## SNES MVP1.8 forward A7 build — 2026-10-04
+
+User directs a smarter A7 build instead of another device comparison. Specialize
+seven NEON tile modes in emitted code, deinterleave palettes once per tile,
+skip disabled/fixed-only color work and unused full math in half-blend rows,
+and directly store fully covered spans. Add NEON backdrop/color-window passes
+with original scalar tails. Catch/fix reversed-clip unsigned underflow at FF6
+intro frame87 before deployment; exact pixels, native PCM and state now pass.
+
+Retain O2, accurate Blargg sound, full drawing and queue ownership. Replace
+repeated process/kernel discovery and global sync during play with one capture
+and small30-second checkpoints. Test actual sync calls and sparse firmware
+PATH. Add60k span/canary cases, palette guard page and emitted-code checks to
+the existing8.4M color/280k row/1200-frame output qualification. Version fresh
+checkpoints1.8. Guard installation over unarmed1.7, archive first, preserve new
+Save Point SRAM and add a separate older qualified snapshot. Publish owned
+release/evidence with history intact. Installed/armed after preserving all19
+existing private files plus stock/hook hashes. Physical speed/audio pending.
+See [1.8](docs/snes-mvp-1.8.md).
+
 ## MVP1.7 physical return — 2026-10-04
 
 No crash; user reached a Save Point, saved and exited normally. Lag remains;

@@ -17,6 +17,10 @@ for command in ('sh','mv','mkdir','sync','ps','cp','cat','sed','sleep','tail','d
     target=tools/command
     if not target.exists():target.symlink_to(executable)
 assert not (tools/'head').exists()
+# Observe the real wrapper's sync calls without flushing the host filesystem.
+(tools/'sync').unlink()
+(tools/'sync').write_text('#!/bin/sh\nprintf "sync\\n" >> "$D35_FIXTURE_SYNC"\n')
+(tools/'sync').chmod(0o755)
 def run(name, body, expected, ready=False, armed=True, splash=None):
     base=root/name
     base.mkdir(exist_ok=True)
@@ -24,7 +28,10 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     (base/'snes-mvp').chmod(0o755)
     if armed: (base/'armed').write_text('fixture\n')
     # A returned run must not be mixed into the new diagnostic window.
-    if name=='ready-session': (base/'runtime-platform.txt').write_text('stale previous snapshot\n')
+    if name=='ready-session':
+        (base/'runtime-platform.txt').write_text('stale previous snapshot\n')
+        # Observe this invocation, never a previous fixture checkpoint.
+        (base/'last-progress.txt').unlink(missing_ok=True)
     proc=base/'proc'; proc.mkdir(exist_ok=True)
     stop=base/'splash.stop'; ack=base/'splash.ack'; started=base/'child-started'
     for path in (stop,ack,started):
@@ -37,7 +44,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
             while time.monotonic()<deadline:
                 progress=base/'last-progress.txt'
                 if progress.exists() and 'fixture-running-37' in progress.read_text():
-                    observed.append(True);return
+                    observed.append((base/'sync-calls').read_text().splitlines());return
                 time.sleep(.03)
         observer=threading.Thread(target=observe_before_exit)
         observer.start()
@@ -58,7 +65,9 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
             worker=threading.Thread(target=vendor_splash)
             worker.start()
     env=dict(os.environ,PATH=str(tools),D35_MVP_BASE=str(base),D35_MVP_STARTUP_SECONDS='2',
-             D35_MVP_PROC_ROOT=str(proc),D35_MVP_SPLASH_STOP=str(stop),D35_MVP_SPLASH_ACK=str(ack))
+             D35_MVP_PROC_ROOT=str(proc),D35_MVP_SPLASH_STOP=str(stop),D35_MVP_SPLASH_ACK=str(ack),
+             D35_FIXTURE_SYNC=str(base/'sync-calls'))
+    if (base/'sync-calls').exists():(base/'sync-calls').unlink()
     (base/'snes-mvp').write_text('#!/bin/sh\n: > "'+str(started)+'"\n'+body+'\n')
     start=time.monotonic()
     result=subprocess.run(['sh',str(source)],env=env,timeout=12,capture_output=True,text=True)
@@ -92,6 +101,8 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         elapsed=time.monotonic()-start
         observer.join(timeout=1)
         assert observed,'Progress was not persisted while the child was still alive'
+        assert observed==[['sync','sync']], 'A global sync occurred during gameplay'
+        assert (base/'sync-calls').read_text().splitlines()==['sync','sync','sync']
         assert 5<=elapsed<9, f'Cancelled monitor left a sleeper or limited ready session: {elapsed}'
         runtime=(base/'runtime-platform.txt').read_text()
         assert 'Runtime snapshot child=' in runtime and 'Task ' in runtime,runtime
@@ -101,8 +112,9 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'fixture ready runtime' in (base/'last-run.log').read_text()
         assert 'fixture-running-37' in (base/'last-progress.txt').read_text()
         assert (base/'runtime-platform-latest.txt').stat().st_size>0
-        assert 'end_after_sync_uptime=' in (base/'diagnostic-flush.log').read_text()
-        print('PASS: diagnostic progress persisted before child exit; bounded live/kernel snapshots and flush timing retained')
+        assert 'end_after_copy_uptime=' in (base/'diagnostic-flush.log').read_text()
+        assert 'global_sync=0' in (base/'diagnostic-flush.log').read_text()
+        print('PASS: diagnostic progress persisted before child exit; one platform capture and no gameplay global sync')
         print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head')
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 

@@ -43,6 +43,10 @@ The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated
 
 ## Corrections that must survive future work
 
+- MVP1.8 proceeds with a forward A7 renderer build at Ben's direction, replacing
+  the proposed paired device comparison. Mode specialization must be verified
+  in emitted code. Clamp empty/reversed clipping before unsigned vector counts;
+  the actual FF6 intro exposed this seam before release. See [1.8](snes-mvp-1.8.md).
 - Native0x40/0x80/0x20 mean Down/Left/Right in the **final stock callback**, not the names assigned in the earlier review.
 - A green first-frame/QEMU check did not prove sustained physical UI input.
 - A ~85% host thread includes core, adapter and frontend; it is not Snes9x-only CPU.

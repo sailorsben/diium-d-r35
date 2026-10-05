@@ -2,6 +2,7 @@
 set -eu
 cd "$(dirname "$0")"
 flags='-mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard -marm -fno-stack-protector -U_TIME_BITS -D_TIME_BITS=32 -U_FILE_OFFSET_BITS -D_FILE_OFFSET_BITS=32'
+python3 check-plus-a7-codegen.py
 sha256sum plus-a7-out/plus-a7.so plus-a7-render.h plus-a7-out/returned.state > plus-a7-out/checked-inputs.sha256
 arm-linux-gnueabihf-gcc $flags -O2 -std=gnu99 -Wall -Wextra -Werror -no-pie -nostdlib \
  -I./snes9x2005/libretro-common/include /usr/arm-linux-gnueabihf/lib/crt1.o plus-a7-check.c \

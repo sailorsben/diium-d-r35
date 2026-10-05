@@ -1,6 +1,7 @@
 """Apply guarded D-R35 kernels to the pinned core; keep upstream sources local."""
 from pathlib import Path
 import subprocess
+from hashlib import sha256
 ROOT=Path(__file__).resolve().parent
 CORE=ROOT/'snes9x2005'
 PIN='a79dfe9047e7fec58808aefe48ad2bf499c7af11'
@@ -11,16 +12,20 @@ def change(name,transform):
     base=subprocess.check_output(['git','show',PIN+':'+name],cwd=CORE).decode()
     modified=transform(base)
     current=path.read_text()
-    assert current in (base,modified), 'Unrelated core change: '+name
+    # Permit exact shipped1.6/1.7 and authored transitional1.8 patches only.
+    prior={'source/tile.c':{'77ebe2b06c18148973997ae973f6a0016d18230ed77e19043de9f41ab7355317',
+                           '3b435476c9c70e00bc0f4ff5d07282702b6e60b437e51af447bc77eaf50b5bb5'},
+           'source/gfx.c':{'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'}}
+    assert current in (base,modified) or sha256(path.read_bytes()).hexdigest() in prior.get(name,set()), 'Unrelated core change: '+name
     path.write_text(modified,newline='\n')
 
 helper='''
 #ifdef D35_PLUS_A7
 #include "a7_tile.h"
-static INLINE bool d35_render_tile(uint32_t tile,int32_t offset,uint32_t line,
+static INLINE __attribute__((always_inline)) bool d35_render_tile(uint32_t tile,int32_t offset,uint32_t line,
     uint32_t count,uint8_t *cache,uint16_t *colors,unsigned mode)
 {
-    uint8x8x4_t table;
+    d35_palette_t table;
     uint8_t *bp;
     int step;
     if(BG.DirectColourMode || (BG.BitShift!=2 && BG.BitShift!=4)) return false;
@@ -59,7 +64,33 @@ def libretro(text):
     assert text.count(anchor)==1
     return text.replace(anchor,'#ifndef D35_PLUS_A7\n   audio_upload_samples();\n#endif\n}\n\nbool S9xReadMousePosition')
 
+def graphics(text):
+    anchor='#include "gfx.h"'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,anchor+'\n#ifdef D35_PLUS_A7\n#include "a7_tile.h"\n#endif')
+    start=text.index('      if (IPPU.Clip [0].Count [5])',text.index('void S9xUpdateScreen'))
+    end=text.index('   } /* force blanking */',start)
+    region=text[start:end]
+    # Eight scalar loops in pinned order: color window, five math/copy backdrop
+    # loops, two plain backdrop loops. Leave upstream tails and clipping intact.
+    modes=['window',4,3,2,1,0,7,7]
+    import re
+    anchors=list(re.finditer(r'(?m)^( +)while \(d < e\)',region))
+    assert len(anchors)==len(modes), 'Pinned backdrop topology changed'
+    for match,mode in reversed(list(zip(anchors,modes))):
+        indent=match.group(1)
+        if mode=='window':
+            call='d35_window(p,d,p+GFX.Delta,d<e?(unsigned)(e-d):0,BLACK)'
+            advance='p+=used; d+=used;'
+        else:
+            call=f'd35_backdrop(p,d,{"NULL" if mode==7 else "s"},p+GFX.Delta,d<e?(unsigned)(e-d):0,(uint16_t)back,GFX.FixedColour,{mode})'
+            advance='p+=used; d+=used;'+(' s+=used;' if mode!=7 else '')
+        patch=f'#ifdef D35_PLUS_A7\n{indent}{{ unsigned used={call}; {advance} }}\n#endif\n'
+        region=region[:match.start()]+patch+region[match.start():]
+    return text[:start]+region+text[end:]
+
 change('source/tile.c',tiles)
+change('source/gfx.c',graphics)
 change('libretro.c',libretro)
 (CORE/'source/a7_tile.h').write_bytes((ROOT/'plus-a7-render.h').read_bytes())
-print('Applied pinned A7 tile/color kernels and audio-first delivery')
+print('Applied pinned A7 palette/tile/backdrop/window kernels and audio-first delivery')

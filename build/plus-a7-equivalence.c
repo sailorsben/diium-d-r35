@@ -5,6 +5,8 @@
 #include <dlfcn.h>
 #include <assert.h>
 #include <stdio.h>
+#include <signal.h>
+#include <ucontext.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -27,6 +29,14 @@ struct core {
 };
 static struct core *active;
 static unsigned frame;
+static void fault(int sig,siginfo_t *info,void *context)
+{
+    ucontext_t *state=context;
+    fprintf(stderr,"ARM check fault frame=%u address=%p pc=%08lx lr=%08lx r0=%08lx r1=%08lx r2=%08lx r3=%08lx\n",
+        frame,info->si_addr,state->uc_mcontext.arm_pc,state->uc_mcontext.arm_lr,
+        state->uc_mcontext.arm_r0,state->uc_mcontext.arm_r1,state->uc_mcontext.arm_r2,state->uc_mcontext.arm_r3);
+    _Exit(128+sig);
+}
 static void normalize_pointers(unsigned char *bytes)
 {
     SCPUState *cpu=(SCPUState *)bytes;
@@ -98,6 +108,8 @@ static void open_core(struct core *c,const char *path,const unsigned char *rom,s
 }
 int main(int argc,char **argv)
 {
+    struct sigaction handler={0}; handler.sa_sigaction=fault; handler.sa_flags=SA_SIGINFO;
+    assert(!sigaction(SIGSEGV,&handler,NULL));
     struct core old={0},candidate={0}; unsigned phase,f;
     unsigned char *rom,*state,*a,*b; size_t n,state_n,size;
     assert(argc==5); rom=read_all(argv[3],&n); state=read_all(argv[4],&state_n);

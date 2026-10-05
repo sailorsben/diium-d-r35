@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/mman.h>
+#include <unistd.h>
 SGFX GFX;
 static uint32_t seed=0x31415926;
 static uint32_t random_word(void) { seed^=seed<<13; seed^=seed>>17; seed^=seed<<5; return seed; }
@@ -59,7 +61,39 @@ int main(void)
         d35_row(pixels,d35_palette(palette,bits),flip,screen,depth,sd,sub,z1,z2,fixed,mode);
         assert(!memcmp(screen,expect,sizeof(screen)) && !memcmp(depth,expected_depth,sizeof(depth)));
     }
+    /* Span lengths/offsets expose clipping tails; canaries cover both sides. */
+    for(mode=0;mode<=7;mode++) if(mode!=5 && mode!=6)
+    for(i=0;i<10000;i++) {
+        uint16_t screen[48],expect[48],sub[48],back=random_word(),fixed=random_word();
+        uint8_t depth[48],sd[48]; unsigned start=random_word()%8,count=random_word()%34,used;
+        for(j=0;j<48;j++) { screen[j]=expect[j]=random_word(); sub[j]=random_word(); depth[j]=random_word()%3; sd[j]=random_word()%4; }
+        used=count&~7u;
+        for(j=start;j<start+used;j++) if(!depth[j]) {
+            uint16_t c=back;
+            if(mode==0 && sd[j]) c=sd[j]==1?fixed:sub[j];
+            else if(mode!=7 && sd[j]) c=scalar(sd[j]==1&&(mode==2||mode==4)?mode-1:mode,c,sd[j]==1?fixed:sub[j]);
+            expect[j]=c;
+        }
+        assert(d35_backdrop(screen+start,depth+start,sd+start,sub+start,count,back,fixed,mode)==used);
+        assert(!memcmp(screen,expect,sizeof(screen)));
+        for(j=start;j<start+used;j++) expect[j]=sd[j]>1?sub[j]:back;
+        assert(d35_window(screen+start,sd+start,sub+start,count,back)==used);
+        assert(!memcmp(screen,expect,sizeof(screen)));
+    }
+    /* Real inaccessible page, not a padded array: the final 2bpp palette is 8 bytes. */
+    {
+        size_t page=(size_t)sysconf(_SC_PAGESIZE);
+        uint8_t *memory=mmap(NULL,page*2,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);
+        uint16_t *last; uint8_t pixels[8]={1,2,3,1,2,3,1,2},depth[8]={0};
+        assert(memory!=MAP_FAILED && !mprotect(memory+page,page,PROT_NONE));
+        last=(uint16_t *)(memory+page-8);
+        for(j=0;j<4;j++) last[j]=j*123;
+        d35_row(pixels,d35_palette(last,2),0,result,depth,NULL,NULL,1,1,0,0);
+        for(j=0;j<8;j++) assert(result[j]==last[pixels[j]]);
+        assert(!munmap(memory,page*2));
+    }
     free(GFX.ZERO);
     puts("PASS: 8388608 scalar/vector color comparisons; 280000 tile rows, 2/4bpp, all math modes, flips/transparency/depth");
+    puts("PASS: 60000 backdrop/window spans match scalar arithmetic; clipped tails/canaries and palette guard page intact");
     return 0;
 }
