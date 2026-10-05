@@ -1,5 +1,30 @@
 # Changelog
 
+## MVP1.7 physical return — 2026-10-04
+
+No crash; user reached a Save Point, saved and exited normally. Lag remains;
+FF6's party menu helps partially. Archive/hash-verify 38 files with zero card
+writes, preserving newly changed SRAM and backup. Marker consumed; card stays
+unarmed. Exact release/core and stock hashes match. Fresh final/checkpoint
+identities agree; main rc=0, display join and cleanup survive.
+
+Record 7,068 rendered calls with zero holds, 129.381 seconds active loop,
+54.629 calls/sec (91.17% native), mean core wall15.384ms/CPU13.986ms,
+p95[21,22)ms, p99[35,36)ms and 31.084% definitely over budget. All generated
+PCM plus priming accepted, but sampled empty device queue and71.280ms maximum
+write gap leave starvation risk. Price producer display wait0.736ms and
+audio-lead wait1.876ms per call without double-counting overlapping worker wall
+or treating all throttling as recoverable cost. Add observed-loop analysis
+with explicit timing limits.
+
+Capture/sync windows average234.4ms; system CPU/meminfo/IRQ collection failed
+because the firmware has no head command. Replace it with qualified sed in
+source; test the actual wrapper with a restricted PATH lacking head and verify
+CPU/memory contents. Keep released/installed1.7 bytes unchanged and guard its
+exporter against replacement. Publish selected return evidence; private
+SRAM/states remain local. No new runtime installed or test armed. See the
+[return review](docs/snes-mvp-1.7-return.md) for remaining evidence gaps and next work.
+
 ## SNES MVP1.7 logging retry — 2026-10-04
 
 After the failed 1.6 run, the user confirms stock boot and requests logging plus

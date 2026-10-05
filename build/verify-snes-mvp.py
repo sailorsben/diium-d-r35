@@ -20,6 +20,7 @@ assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text
 assert report['build_version']=='1.7' and report['phase']=='finished' and report['session_id']
 assert 'PASS: real ARM runner killed before cleanup' in (out/'diagnostic-crash.log').read_text()
 assert 'PASS: diagnostic progress persisted before child exit' in (out/'wrapper-contract.log').read_text()
+assert 'PASS: wrapper captures CPU/memory with firmware-style PATH lacking head' in (out/'wrapper-contract.log').read_text()
 assert 'PASS: 8388608 scalar/vector color comparisons' in (root/'build/plus-a7-out/kernel-check.log').read_text()
 assert 'PASS: 1200 frames exact visible pixels' in (root/'build/plus-a7-out/equivalence.log').read_text()
 assert 'submitted=120 held=0' in (root/'build/plus-a7-out/runner-integration.log').read_text()

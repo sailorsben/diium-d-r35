@@ -9,6 +9,13 @@ see the [failure review](snes-mvp-1.6-failure.md). The longer [platform review](
 requested logging retry. Fresh RAM progress and bounded wrapper persistence
 repair the lost-final-report gap; physical performance remains unqualified.
 
+The [1.7 physical return](snes-mvp-1.7-return.md) confirms zero holds and normal
+save/exit, but only ~54.63 emulation calls/sec of active-loop time. FF6 party
+menu relief and the expensive-call distribution point toward workload-dependent
+cost. Producer display blocking and audio-lead control are separately priced;
+overlapping scaler/flip wall must not be mistaken for additional CPU. The
+source diagnostic command correction is tested but not installed on the card.
+
 ## Implemented owners
 
 ```text

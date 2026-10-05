@@ -104,10 +104,18 @@ Mode7/clipped/backdrop paths, persistent scaler and audio-cursor timing remain
 unchanged/unqualified as documented; no speedup is inferred from QEMU.
 
 Stock boot was subsequently confirmed by the user. The authorized
-[MVP1.7 logging retry](snes-mvp-1.7.md) is installed and armed with the exact
+[MVP1.7 logging retry](snes-mvp-1.7.md) was installed and armed with the exact
 same core and pipeline. It adds fresh session/phase progress and bounded
 persisted thread/kernel/memory/helper data plus instrumentation-duration
-accounting. Its physical result is pending; it is not a performance repair.
+accounting. The [physical return](snes-mvp-1.7-return.md) reaches a Save Point
+and normal save/exit without a crash, but remains laggy; FF6's party menu helps
+partially. Fresh 7,068 calls have zero holds and roughly54.63 calls/sec active
+loop throughput, mean core wall15.384ms/CPU13.986ms, p95[21,22)ms and
+31.08% definitely over budget. PCM accounting is complete, while sampled empty
+device queue and71.280ms write gap leave starvation risk. Stock/new private
+progress are preserved, card unarmed. Missing head prevented system CPU/memory/
+IRQ collection; source uses sed with a restricted-PATH regression. Display
+worker waits overlap producer work and do not establish a scaler-only deficit.
 
 ## UART investigation and its negative result
 

@@ -10,6 +10,13 @@ import shutil
 source=Path(__file__).with_name('launch.sh')
 root=Path(sys.argv[1]).resolve()
 root.mkdir(parents=True,exist_ok=True)
+# Reproduce the returned firmware seam: host PATH previously hid missing head.
+tools=root/'minimal-tools'; tools.mkdir(exist_ok=True)
+for command in ('sh','mv','mkdir','sync','ps','cp','cat','sed','sleep','tail','dmesg','rm'):
+    executable=shutil.which(command); assert executable,command
+    target=tools/command
+    if not target.exists():target.symlink_to(executable)
+assert not (tools/'head').exists()
 def run(name, body, expected, ready=False, armed=True, splash=None):
     base=root/name
     base.mkdir(exist_ok=True)
@@ -50,7 +57,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
                 shutil.rmtree(entry)
             worker=threading.Thread(target=vendor_splash)
             worker.start()
-    env=dict(os.environ,D35_MVP_BASE=str(base),D35_MVP_STARTUP_SECONDS='2',
+    env=dict(os.environ,PATH=str(tools),D35_MVP_BASE=str(base),D35_MVP_STARTUP_SECONDS='2',
              D35_MVP_PROC_ROOT=str(proc),D35_MVP_SPLASH_STOP=str(stop),D35_MVP_SPLASH_ACK=str(ack))
     (base/'snes-mvp').write_text('#!/bin/sh\n: > "'+str(started)+'"\n'+body+'\n')
     start=time.monotonic()
@@ -89,11 +96,14 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         runtime=(base/'runtime-platform.txt').read_text()
         assert 'Runtime snapshot child=' in runtime and 'Task ' in runtime,runtime
         assert 'stale previous snapshot' not in runtime
+        assert '\ncpu ' in runtime and 'MemTotal:' in runtime,runtime
+        assert 'head: not found' not in runtime
         assert 'fixture ready runtime' in (base/'last-run.log').read_text()
         assert 'fixture-running-37' in (base/'last-progress.txt').read_text()
         assert (base/'runtime-platform-latest.txt').stat().st_size>0
         assert 'end_after_sync_uptime=' in (base/'diagnostic-flush.log').read_text()
         print('PASS: diagnostic progress persisted before child exit; bounded live/kernel snapshots and flush timing retained')
+        print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head')
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 
 run('early-error','printf "fixture early error\\n"; exit 7',7)

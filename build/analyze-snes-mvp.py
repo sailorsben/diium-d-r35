@@ -98,6 +98,26 @@ def analyze(path, core_path=None):
             - integer('output_accepted_frames_including_priming'),
         'limitations': limitations,
     }
+    if int(fields.get('active_wall_ns', '0')) > 0:
+        active_seconds = int(fields['active_wall_ns']) / 1e9
+        result['observed_active_loop'] = {
+            'seconds_excluding_pause_menu_load_and_cleanup': active_seconds,
+            'core_calls_per_second_not_optical_fps': runs / active_seconds,
+            'native_speed_fraction': runs / active_seconds / fps,
+            'mean_step_wall_ms': active_seconds * 1000 / runs,
+        }
+        result['per_core_call_ms'] = {
+            key: int(fields[key]) / runs / 1e6
+            for key in ('display_reserve_wait_ns', 'audio_space_wait_ns',
+                        'audio_lead_wait_ns', 'pacing_wait_ns',
+                        'diagnostic_ram_write_ns', 'display_worker_cpu_ns',
+                        'audio_worker_cpu_ns') if key in fields
+        }
+        limitations.extend([
+            'Active-loop timing omits some loop bookkeeping; it is approximate emulation throughput, not optical FPS.',
+            'Display worker scaler/flip wall overlaps the producer; do not sum it as serial frame cost or CPU.',
+            'Audio-lead waits can be legitimate throttling in light scenes; their total is not automatically recoverable overhead.',
+        ])
     return result
 
 

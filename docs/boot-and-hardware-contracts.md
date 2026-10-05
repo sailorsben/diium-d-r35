@@ -20,6 +20,14 @@ First library draw/flip completes before initial held inputs are suppressed inde
 
 Bring-up/input/exit/cleanup logs are bounded and durable. Game callbacks do not perform per-frame SD logging. Through 1.6, three post-ready snapshots retained runtime/thread/IPC state, then monitoring ended. [1.7](snes-mvp-1.7.md) adds atomic RAM progress outside core callbacks and persists the latest two records, three early snapshots and a bounded latest platform/kernel view. Its monitor captures after two seconds, then five-second waits for at most 63 iterations; capture time extends the nominal window. Capture/sync duration is logged. Cancellation reaps the owned sleeper. Verify current build/session/boot identity before treating a retained report as this run; normal-exit totals may remain stale after power-off.
 
+The 1.7 physical return establishes that `head` is absent; its system CPU/memory/
+IRQ capture failed despite passing host wrapper checks. Source now uses the
+already-working `sed` and verifies actual CPU/memory contents with a restricted
+PATH that omits `head`. Do not assume host utilities exist on the firmware.
+The shipped 1.7 kernel/stderr tails are empty and its final wrapper exit line
+is missing, despite fresh final runner totals and completed display cleanup.
+Preserve these collection limits; see the [return review](snes-mvp-1.7-return.md).
+
 ## GPIO ABI and complete direction translation
 
 The request has three 32-bit words: `pin`, `reserved`, `value` (12 bytes).

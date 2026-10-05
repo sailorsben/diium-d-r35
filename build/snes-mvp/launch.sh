@@ -137,9 +137,10 @@ fi
         cat "$TASK/status" "$TASK/wchan" "$TASK/syscall" "$TASK/stat" 2>&1
       done
       printf '\nKernel CPU/memory/interrupt samples\n'
-      head -n 16 /proc/stat 2>&1
-      head -n 24 /proc/meminfo 2>&1
-      head -n 32 /proc/interrupts 2>&1
+      # This firmware has sed (used by the splash handoff), but no head.
+      sed -n '1,16p' /proc/stat 2>&1
+      sed -n '1,24p' /proc/meminfo 2>&1
+      sed -n '1,32p' /proc/interrupts 2>&1
       for ENTRY in "$PROC_ROOT"/[0-9]*; do
         [ -r "$ENTRY/comm" ] || continue
         IFS= read -r COMM < "$ENTRY/comm" || continue
@@ -148,7 +149,7 @@ fi
           cat "$ENTRY/stat" "$ENTRY/wchan" "$ENTRY/syscall" 2>&1;;
         esac
       done
-      ps 2>&1 | head -n 80
+      ps 2>&1 | sed -n '1,80p'
     } > "$BASE/runtime-platform-latest.txt.tmp"
     mv "$BASE/runtime-platform-latest.txt.tmp" "$BASE/runtime-platform-latest.txt"
     if [ "$INDEX" -lt 3 ]; then cat "$BASE/runtime-platform-latest.txt" >> "$BASE/runtime-platform.txt"; fi

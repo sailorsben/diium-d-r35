@@ -37,7 +37,7 @@ The kcore recovery branch stopped at ENOENT. No MMIO/flash fallback occurred. Tr
 | 1.4 | Launcher worked, FF6 started, private state loaded; 2465 frames, two pauses, no write errors | Direct kernel clock/relative waits repair the input loop. Same probe showed kernel8.361s vs libc447.327s. Directions still incorrect |
 | 1.5 | All four directions confirmed; launcher/game/state work; 23,872 calls, 11.838% held drawings; occasional lag and rare random crackles in story/map | Stock-derived input repair is physically validated. Performance/audio are not fully qualified; mixed held-frame means cannot establish full-render throughput |
 | 1.6 | Very choppy sound, slow movement, clean-looking graphics, then whole-device power-off | Output equivalence did not prove faster A7 execution or physical stability. Startup worked; no fresh session report/exit record survived. Do not attribute stale 1.5 totals to this run or re-arm unchanged |
-| 1.7 | Logging retry installed/armed; physical result pending | User confirms stock boot and requests retry. Same core/pipeline; add fresh session counters and bounded persisted diagnostics, including their own duration |
+| 1.7 | No crash; Save Point/save/normal exit; lag remains, partly relieved in FF6 party menu | Fresh 7,068 calls, zero holds, ~54.63 calls/sec active loop; 31.08% definitely over budget. Audio queue sampled empty despite complete PCM acceptance. Missing head leaves system diagnostic gaps; source regression now reproduces sparse firmware PATH. New progress archived; card unarmed |
 
 The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
 
@@ -70,5 +70,14 @@ After stock boot was confirmed, the user requested logging and another run.
 [MVP1.7](snes-mvp-1.7.md) therefore retains the exact failing core and pipeline
 while adding crash-surviving progress and bounded platform evidence. Real ARM
 SIGKILL and wrapper live-persistence checks pass. Installation preserves stock,
-hook and 19 pre-install private files; the one-shot is armed for this retry.
+hook and 19 pre-install private files; the one-shot was armed for this retry.
 This updates the test sequence without claiming speed or a shutdown cause.
+
+The [1.7 return](snes-mvp-1.7-return.md) supplies fresh final totals and completed
+main/display cleanup. Archive 38 files read-only, including new SRAM/backup;
+the card remains consumed/unarmed. Party-menu relief is game workload evidence,
+not a host-pause reset. Active-loop throughput is below native speed; worker
+wall overlaps and legitimate audio throttling must not be added/subtracted as
+automatic performance gains. Correct missing-head diagnostics in source,
+test the actual wrapper with a sparse PATH, retain the shipped release and
+record empty kernel/stderr and missing final wrapper line as evidence gaps.

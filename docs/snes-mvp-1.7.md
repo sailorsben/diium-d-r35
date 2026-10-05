@@ -1,10 +1,16 @@
 # MVP1.7: logging retry
 
-2026-10-04, America/Chicago. Installed and one-shot armed on the tested card.
+2026-10-04, America/Chicago. Originally installed and one-shot armed on the tested card.
 The user confirmed that stock boot still works after the 1.6 power-off and
 requested logging and another test. This supersedes the earlier hold on
 retesting; a controlled original/A7 comparison remains necessary before
 claiming an A7 speedup.
+
+The test has now returned: no crash, normal save/exit, remaining lag and partial
+relief in FF6's party menu. The card is archived and unarmed. Read the
+[physical return](snes-mvp-1.7-return.md) for fresh timings and diagnostic gaps;
+the capabilities below describe the intended logging, not a claim that every
+command was available on this firmware.
 
 ## What this build changes
 

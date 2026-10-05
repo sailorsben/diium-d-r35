@@ -5,6 +5,13 @@ import json,shutil
 ROOT=Path(__file__).resolve().parent.parent
 checks=json.loads((ROOT/'build/snes-mvp/out/verification.json').read_text())
 assert checks['passed'] and checks['version']=='1.7'
+# The shipped logging retry is historical once returned. Later source fixes
+# require a new release name/version, not replacement of those qualified bytes.
+existing_release=ROOT/'releases/snes-mvp-1.7/manifest.json'
+if existing_release.exists():
+    existing=json.loads(existing_release.read_text())
+    for key in ('binary_sha256','wrapper_sha256','core_sha256'):
+        assert checks[key]==existing[key], 'Historical1.7 release: publish changed bytes under a new version'
 manifest_path=ROOT/'evidence/manifest.json';manifest=json.loads(manifest_path.read_text())
 prefix='evidence/verification/snes-mvp-1.7/'
 entries=[e for e in manifest['entries'] if not e['published'].startswith(prefix)]

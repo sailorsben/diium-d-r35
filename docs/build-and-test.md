@@ -77,8 +77,12 @@ The checks exercise:
 **The 1.6 physical run failed and its returned one-shot is consumed. Do not
 re-arm it unchanged.** Read the [failure review](snes-mvp-1.6-failure.md).
 The user subsequently requested a logging retry and confirmed stock boot.
-[MVP1.7](snes-mvp-1.7.md) is installed and armed with the same core/pipeline,
-fresh checkpoints and bounded persisted diagnostics; its physical test is pending.
+[MVP1.7](snes-mvp-1.7.md) ran with the same core/pipeline, fresh checkpoints and
+bounded persisted diagnostics. Its [return](snes-mvp-1.7-return.md) saved/exited
+without a crash but remained laggy. Card archived/unarmed; source contains an
+unreleased sed-based correction for the missing-head diagnostic command.
+The released wrapper remains unchanged; publish changed builds under a new
+version rather than overwriting historical1.7 evidence/release.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
