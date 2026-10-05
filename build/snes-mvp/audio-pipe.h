@@ -9,8 +9,12 @@ struct audio_pipe_stats {
     unsigned playable,period,buffer,prime,rate,state;
     uint64_t xruns,observed_ns,wakes,poll_timeouts;
     unsigned playable_min,playable_max;
+    uint64_t admissions;
+    unsigned admission_min,admission_max;
     unsigned avail,appl_ptr,hw_ptr,start_threshold,prime_transferred,start_calls,start_races;
-    char error_detail[192];
+    unsigned boundary,epoch;
+    uint64_t epoch_transferred;
+    char error_detail[256];
     int error;
 };
 void audio_pipe_init(void);

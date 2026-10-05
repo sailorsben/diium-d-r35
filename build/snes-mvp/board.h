@@ -32,6 +32,8 @@ void board_audio_close(void);
 struct board_audio_state {
     unsigned rate,period,buffer,prime,queued,state;
     unsigned avail,appl_ptr,hw_ptr,start_threshold,prime_transferred,start_calls,start_races;
+    unsigned boundary,epoch;
+    uint64_t epoch_transferred;
     uint64_t observed_ns;
     int started;
 };

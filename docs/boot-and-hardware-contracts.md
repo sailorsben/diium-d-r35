@@ -189,3 +189,23 @@ poll0xd0000068 bit0x08 every200ms; eleven consecutive asserted samples lead to
 GPIO0x108 backlight-off and `poweroff`. The1.8 user confirms whole-device
 power-off, but no retained late sample or shutdown message establishes that
 this path fired. Recovered MMIO code is not a qualified live probing contract.
+
+## PCM observation and resume correction in 1.11
+
+Do not pace the next core call before its requested worker observation is
+acknowledged. 1.10 can admit on cached lead; the changed-device fixture rejects
+the exact shipped code. Linux 4.19 STATUS copies state before updating hw_ptr.
+Use SYNC_PTR with HWSYNC and APPL|AVAIL_MIN GET flags for post-update state and
+control. Never write application pointers or reset readiness during observation.
+Derive queued frames with the returned boundary; test wrap. Read post-fault
+state without another HWSYNC and preserve the original errno. EBADFD must not
+be mislabeled as queue overflow or treated as successful consumption.
+
+DRAIN sets full-buffer readiness; restore period readiness after PREPARE before
+re-priming a resumed stream. Join/drain failures stop pause handling before
+snapshot changes. Count successful/rejected snapshot loads and report native
+epochs separately. The real-core/native-client fixture now consumes audio and
+exercises failure/retry plus two snapshot/resume cycles. It complements actual
+device qualification. The 1.10 return also proves dmesg is absent, so its kernel
+snapshot contains no kernel-ring evidence. See [return](snes-mvp-1.10-return.md)
+and [repair](snes-mvp-1.11.md).

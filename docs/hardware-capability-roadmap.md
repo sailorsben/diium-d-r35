@@ -32,3 +32,12 @@ software target. That choice may be core specialization, PCM service cost or
 display lifecycle. A custom scaler owner, cache-aware renderer or smaller
 runtime remains in scope if its contract and payoff justify it. No current
 result establishes the maximum attainable device performance.
+
+The 1.10 return now proves native startup and some real consumption, then
+WRITEI fails. Literal queue overflow is ruled out; stale source admission is
+reproduced independently. 1.11 uses fresh worker admission and post-HWSYNC state/
+pointers and exercises native retry/snapshot/resume with a consuming provider.
+The short second interval's 59.70 calls/sec and 9.93ms mean main-thread core CPU
+are evidence of remaining timing/controller questions, not hardware exhaustion
+or sustained acceptance. Keep vendor pointer/state-transition and actual
+playable reserve separate from the initial silence target.

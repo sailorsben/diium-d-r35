@@ -13,7 +13,7 @@ Evidence collected on one DIIUM D-R35 through 2026-10-05. **Observed** means ret
 | Memory | 48 MiB boot RAM plus 16 MiB chunk reservation; Linux MemTotal 43,120 KiB | Consistent with 64 MiB arrangement, not physical RAM census |
 | Reserved region | Chunk memory at physical 0x03000000–0x03ffffff | CPU cache policy and maintenance contract not established |
 | Display | Exported 640×480, lcd1_mipi_NV3051F | Physical panel cadence not measured |
-| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | 1.9 accepts44100Hz/128-period/3712-buffer and2823 frames, then startup fails before emulation; native playback/consumption unqualified; `/proc/asound` absent |
+| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | 1.10 starts 44100Hz/128-period/3712-buffer PCM in two attempts, then WRITEI fails; sustained native continuity unqualified; `/proc/asound` absent |
 | GPU | `vivante,gc` DT node exists | No working galcore/runtime/device established |
 
 One CPU means display/I/O threads can overlap peripheral waits, but cannot add emulation compute capacity. The vendor runtime's gameplay memory headroom was tight. Configured 256 MiB swap is not physical RAM; sampled vrtemu VmSwap was zero and swap use was stable, so ongoing swap thrash was not demonstrated.
@@ -219,3 +219,22 @@ in view; no current evidence establishes maximum attainable performance.
 Readable kallsyms supplied real addresses. Built-in-module entries are not exported loadable `.ko` files. `/proc/mtd` had no registered partitions; `/proc/kcore` returned ENOENT. No kernel-text recovery, flash rewrite, MMIO experiment or `/dev/mem` fallback was performed.
 
 Open questions include actual clocks/cache/DRAM behavior, scaler completion/release identity, native PCM consumption/positions and alternate configurations, physical panel cadence, IRQ19 handler duration/source, battery/suspend behavior, and sustained per-game performance. Lab2's two probed tracefs paths, clk_summary and proc/config.gz return ENOENT; no IRQ duration was measured. Source research should establish standard contracts before physical tests qualify remaining vendor behavior and real game timing.
+
+## Native PCM 1.10 return and 1.11 software correction
+
+Both 1.10 attempts start playback with 44100Hz/128-period/3712-buffer, then WRITEI
+returns EBADFD after 72/605 calls. Software high 2823/8192 and 705 remaining frames
+rule out the UI's literal queue-overflow diagnosis. The second short interval
+has 59.70 active-loop calls/sec, 10.61ms mean core wall, 9.93ms main-thread CPU,
+one pause and re-priming. No intentional holds occur; audio failure prevents
+the final video callback. This does not qualify sustained full rendering/sound.
+Sampled playable minimum 134 frames is only 3.04ms, not the 64ms initial reserve.
+
+Cached admission is reproduced in shipped source. 1.11 waits for a new worker
+observation, reads post-HWSYNC state/pointers using preserved GET controls,
+restores drain readiness and reports worker errors accurately. Independent
+ARM and real-core consuming-native retry/snapshot/resume fixtures pass. Vendor
+state transition and long-game audio/stability remain unproved. Nineteen prior
+progress files/snapshots match; updated FF6 SRAM is archived. dmesg is absent,
+and stock return follows a recorded B exit/cleanup, with no new poweroff
+record. See [return](snes-mvp-1.10-return.md) and [repair](snes-mvp-1.11.md).

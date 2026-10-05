@@ -15,6 +15,8 @@
 #include "board.h"
 static unsigned buffer,queued,starts,writes,accepted,minimum,prepares;
 static int stream_state,start_error,manual_start,start_race,early_start,bad_sw;
+static int write_error,hwsync_fault,pointer_override;
+static unsigned boundary,pointer_appl,pointer_hw;
 static int16_t expected[4096*2];
 static int provider_open(const char *name,int flags,...)
 { assert(!strcmp(name,"/dev/snd/pcmC0D0p") && flags&O_NONBLOCK); return 42; }
@@ -48,6 +50,7 @@ static int provider_ioctl(int fd,unsigned long command,...)
         assert(s->avail_min==128 && s->start_threshold==2823 && s->stop_threshold==buffer);
         assert(s->tstamp_type==SNDRV_PCM_TSTAMP_TYPE_MONOTONIC && !s->silence_size);
         if(bad_sw) s->start_threshold=1;
+        boundary=(unsigned)s->boundary;
         return 0;
     }
     case SNDRV_PCM_IOCTL_PREPARE: queued=accepted=0; ++prepares; stream_state=SNDRV_PCM_STATE_PREPARED; return 0;
@@ -60,6 +63,7 @@ static int provider_ioctl(int fd,unsigned long command,...)
         stream_state=SNDRV_PCM_STATE_RUNNING; return 0;
     case SNDRV_PCM_IOCTL_WRITEI_FRAMES: {
         struct snd_xferi *x=arg; unsigned n=(unsigned)x->frames;
+        if(write_error) { stream_state=SNDRV_PCM_STATE_SETUP; errno=write_error; return -1; }
         if(!(++writes%7)) { errno=EAGAIN; return -1; }
         if(n>137) n=137;
         assert(accepted+n<=4096 && !memcmp(x->buf,expected+accepted*2,n*4));
@@ -74,8 +78,16 @@ static int provider_ioctl(int fd,unsigned long command,...)
     }
     case SNDRV_PCM_IOCTL_SYNC_PTR: {
         struct snd_pcm_sync_ptr *s=arg;
-        assert(s->flags==(SNDRV_PCM_SYNC_PTR_HWSYNC|SNDRV_PCM_SYNC_PTR_APPL));
-        minimum=s->c.control.avail_min; return 0;
+        assert(s->flags&SNDRV_PCM_SYNC_PTR_APPL); /* never overwrite the writer's application pointer */
+        if(s->flags&SNDRV_PCM_SYNC_PTR_HWSYNC) {
+            if(hwsync_fault) { stream_state=SNDRV_PCM_STATE_XRUN; errno=EPIPE; return -1; }
+            if(stream_state==SNDRV_PCM_STATE_SETUP) { errno=EBADFD; return -1; }
+        }
+        if(s->flags&SNDRV_PCM_SYNC_PTR_AVAIL_MIN) s->c.control.avail_min=minimum;
+        else minimum=(unsigned)s->c.control.avail_min;
+        s->c.control.appl_ptr=pointer_override?pointer_appl:accepted;
+        s->s.status.hw_ptr=pointer_override?pointer_hw:accepted-queued;
+        s->s.status.state=stream_state; return 0;
     }
     case SNDRV_PCM_IOCTL_DRAIN: stream_state=SNDRV_PCM_STATE_DRAINING; errno=EAGAIN; return -1;
     case SNDRV_PCM_IOCTL_DROP: queued=0; stream_state=SNDRV_PCM_STATE_SETUP; return 0;
@@ -112,6 +124,26 @@ int main(void)
     assert(accepted==3500 && starts==0 && !pcm_observe(&state) && state.started);
     assert(state.prime_transferred>=2823 && state.state==SNDRV_PCM_STATE_RUNNING);
     assert(!pcm_avail_min(1273) && minimum==1273);
+    assert(!pcm_observe(&state) && minimum==1273); /* a GET cannot reset the poll threshold */
+    pointer_override=1; pointer_appl=40; pointer_hw=boundary-90;
+    assert(!pcm_observe(&state) && state.queued==130 && state.avail==3582);
+    pointer_override=0;
+    hwsync_fault=1;
+    assert(pcm_observe(&state)<0 && errno==EPIPE && state.state==SNDRV_PCM_STATE_XRUN);
+    hwsync_fault=0; assert(!pcm_reset() && minimum==128); offset=0;
+    while(offset<2823) {
+        ssize_t n=pcm_write(expected+offset*2,2823-offset);
+        if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
+    }
+    write_error=EBADFD;
+    assert(pcm_write(expected+offset*2,16)<0 && errno==EBADFD);
+    assert(pcm_observe(&state)<0 && state.state==SNDRV_PCM_STATE_SETUP);
+    assert(strstr(pcm_error(),"WRITEI_FRAMES errno=77 state=1"));
+    write_error=0; assert(!pcm_reset()); offset=0;
+    while(offset<2823) {
+        ssize_t n=pcm_write(expected+offset*2,2823-offset);
+        if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
+    }
     assert(!pcm_finish() && !queued && !pcm_observe(&state) && !state.queued);
     assert(!pcm_reset()); manual_start=1; start_error=EIO; offset=0;
     while(offset<2823) {
@@ -150,6 +182,6 @@ int main(void)
     pcm_close();
     bad_sw=1;
     assert(pcm_open(32040)<0 && errno==EPROTO && strstr(pcm_error(),"SW_PARAMS_READBACK"));
-    puts("PASS: actual ARM32 PCM ABI, device-shaped 44100/128/3712 fallback, exact partial/EAGAIN frames, kernel WRITEI auto-start without duplicate START, prepared-only explicit START, verified EBADFD race, rejected early start/nonrunning EBADFD/software-threshold mismatch, SYNC_PTR, asynchronous DRAIN, accepted START-failure state/pointer accounting and visible XRUN without restart");
+    puts("PASS: actual ARM32 PCM ABI, device-shaped 44100/128/3712 fallback, exact partial/EAGAIN frames, kernel WRITEI auto-start without duplicate START, prepared-only explicit START, verified EBADFD race, rejected early start/nonrunning EBADFD/software-threshold mismatch, post-HWSYNC state/pointers, boundary wrap, GET flags preserve control, fresh WRITEI fault state, DRAIN threshold reset, asynchronous DRAIN, accepted START-failure state/pointer accounting and visible XRUN without restart");
     return 0;
 }

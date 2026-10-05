@@ -228,3 +228,36 @@ verifies the exact 1.10 payload, all 22 current private files, 49 lab files and
 unchanged core/stock/hook/original-wrapper hashes. No snapshot migration or core
 replacement occurs. Game one-shot is armed; lab remains unarmed. Physical
 startup, playback, speed and stability are pending.
+
+## 2026-10-05: native playback fails during play/resume
+
+The 1.10 return preserves two controlled fatal reports: 72 and 605 calls, one
+WRITEI/EBADFD per attempt, software high 2823/8192 and 705 frames remaining. The
+UI's overflow label incorrectly hides worker errors. Second report proves one
+pause/re-priming, but lacks explicit snapshot success. No intentional holds;
+fatal callback omits one final drawing. Short second interval reaches 59.70
+active calls/sec. Do not promote that interval to sustained speed/audio proof.
+Archive 43 MVP/49 lab files read-only; 19 prior progress files/snapshots unchanged,
+updated FF6 SRAM retained, exact payload and stock hashes verified. dmesg is
+absent. Stock fallback follows recorded library B exit and joined cleanup.
+
+The source's requested admission refresh is not awaited. A deterministic
+actual-device-lead change reproduces stale admission against the immutable
+shipped owner and passes the repair. 1.11 reads post-HWSYNC state/control with
+GET flags, uses negotiated-boundary pointers, restores period readiness after
+DRAIN and retains fresh post-write-fault state. Pause drain failure stops before
+snapshot work; error labels distinguish transport from capacity. Count loads,
+rejections and native epochs with fresh phase checkpoints.
+
+The real FF6/native-client/owner consuming fixture passes injected WRITEI
+failure, clean retry, two snapshot loads/re-primes, 25ms producer stalls, 120
+full drawings and complete successful PCM accounting. Existing ARM contracts
+remain. Core and PCM candidates are unchanged. Exact vendor failure cause,
+sustained physical continuity and earlier poweroffs remain open. See
+[return](snes-mvp-1.10-return.md) and [repair](snes-mvp-1.11.md).
+
+Installation completes at 19:09 UTC after a fresh 43-MVP/49-lab archive.
+Independent readback verifies the qualified 1.11 payload, all 22 current private
+files including updated FF6 SRAM, all 49 lab files, original snapshots and
+unchanged core/stock/hook/older-wrapper hashes. Game one-shot is armed; lab is
+unarmed. Physical playback, snapshot resume, speed and stability are pending.

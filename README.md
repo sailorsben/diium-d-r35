@@ -6,7 +6,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-05
 
-- **MVP1.10 installed and armed for the PCM startup repair:** the 1.9 return accepted 44,100Hz, a 128-frame period, a 3,712-frame buffer and all 2,823 priming frames, then failed with EBADFD before emulation. The client now acknowledges write-driven startup and issues explicit START only from PREPARED, with a fresh state check. Independent ARM fixtures cover both startup paths and reject invalid states. Independent card readback preserves all 22 current private files, 49 lab files and unchanged core/stock/hook/original-wrapper hashes. The A7 core and full drawing are retained; physical startup, sound, speed and stability remain pending. [Repair](docs/snes-mvp-1.10.md), [1.9 return](docs/snes-mvp-1.9-return.md), [hardware capability roadmap](docs/hardware-capability-roadmap.md).
+- **MVP1.11 is installed and armed:** the 1.10 return starts both attempts, then fails on WRITEI after 72/605 calls. Its queue-overflow label was wrong: the software queue reached only 2,823/8,192 frames. Fresh admission, post-HWSYNC state/pointers, restored drain readiness and truthful faults pass independent ARM checks; the exact shipped owner fails the new stale-admission counterexample. A real-core/native-client consuming fixture passes failure/retry and two snapshot loads/resumes with 120 full drawings and complete PCM accounting. Independent card readback verifies the payload, all 22 current private files, 49 lab files and unchanged core/stock/hook. Physical continuity/stability are pending. [Repair](docs/snes-mvp-1.11.md), [1.10 return](docs/snes-mvp-1.10-return.md).
 - **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
 - **MVP1.6 failed its physical run:** very choppy sound, slow movement, clean-looking graphics, then the whole device powered off. The returned build hashes match; originals are intact and the one-shot is consumed. No fresh session totals survived. Do not re-arm this release unchanged. [Failure review](docs/snes-mvp-1.6-failure.md).
@@ -27,12 +27,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Source, dependencies, checks, installation and recovery | [Build and test](docs/build-and-test.md) |
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
-| Current native PCM build and physical acceptance | [MVP1.10](docs/snes-mvp-1.10.md) |
+| Current native PCM build and physical acceptance | [MVP1.11](docs/snes-mvp-1.11.md) |
 | Hardware resources, measured costs and remaining opportunities | [Capability roadmap](docs/hardware-capability-roadmap.md) |
 | Latest infrastructure result and researched audio contracts | [Lab2 return](docs/platform-lab-2-return.md), [interface research](docs/platform-interface-research.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
 | Forward A7 renderer implementation | [MVP1.8](docs/snes-mvp-1.8.md) |
-| Latest game startup failure and evidence limits | [MVP1.9 return](docs/snes-mvp-1.9-return.md) |
+| Latest game failures and evidence limits | [MVP1.10 return](docs/snes-mvp-1.10-return.md) |
 | Logging retry implementation | [MVP1.7](docs/snes-mvp-1.7.md) |
 | A7 full-render implementation and failed test | [MVP1.6](docs/snes-mvp-1.6.md), [failure review](docs/snes-mvp-1.6-failure.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |

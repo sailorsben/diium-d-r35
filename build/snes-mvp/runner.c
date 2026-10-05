@@ -73,6 +73,7 @@ static struct {
     unsigned progress_writes, progress_errors;
     uint64_t runs, held, videos, video_dupes, generated, enqueued, accepted, primed;
     uint64_t write_calls, partial_writes, again, write_errors, pauses;
+    uint64_t snapshot_loads,snapshot_rejections;
     uint64_t wall_ns, cpu_ns, video_ns, audio_ns, max_run_ns, max_video_ns;
     uint64_t start_ns, last_queue_sample;
     uint32_t run_hist[128], ring_high;
@@ -266,7 +267,9 @@ static bool audio_flush(void)
 {
     if(!s.output_count) return !s.failed;
     if(audio_pipe_push(s.output,s.output_count)<0) {
-        fail("Audio queue overflow; playback stopped without silently discarding PCM");
+        int saved=errno;
+        if(saved==ENOBUFS) fail("Audio software queue full; playback stopped");
+        else fail("Audio publication failed: %s",strerror(saved));
         s.output_count=0; return false;
     }
     s.enqueued+=s.output_count;
@@ -445,6 +448,7 @@ static bool load_state(void)
     }
     free(backup);
     free(p); status(ok?"Snapshot loaded":"Snapshot missing, damaged or from a different core/ROM");
+    if(ok) ++s.snapshot_loads; else ++s.snapshot_rejections;
     if(ok) audio_reset();
     return ok;
 }
@@ -453,7 +457,9 @@ static bool pause_menu(void)
 {
     int action;
     ++s.pauses; progress("pause_draining",1); board_wait_display();
-    audio_pipe_stop(1); pump_audio(); audio_reset();
+    audio_pipe_stop(1); pump_audio();
+    if(s.failed) return false;
+    audio_reset();
     { int queued=board_audio_queued_frames(); if(queued>0) s.device_cleared_estimate+=(unsigned)queued; }
     if(board_audio_reset()<0) { fail("Could not pause audio: %s",board_last_error()); return false; }
     if(!save_sram()) { /* Show the error; don't claim the save succeeded. */ }
@@ -462,7 +468,9 @@ static bool pause_menu(void)
     do {
         action=menu_cb(menu_userdata,status_text);
         if(action==RUNNER_SAVE_STATE) (void)save_state();
-        else if(action==RUNNER_LOAD_STATE) (void)load_state();
+        else if(action==RUNNER_LOAD_STATE) {
+            progress("snapshot_loading",1); (void)load_state(); progress("snapshot_loaded_or_rejected",1);
+        }
         else if(action==RUNNER_RESET) { p_retro_reset(); audio_reset(); status("Game reset"); }
     } while(action!=RUNNER_RESUME&&action!=RUNNER_EXIT&&!stop_requested&&!s.failed);
     if(action==RUNNER_EXIT||stop_requested||s.failed) return false;
@@ -490,7 +498,7 @@ static void report_to(const char *path,const char *phase,int ram)
       "write_calls=%llu\nshort_writes=%llu\neagain_or_zero=%llu\nwrite_errors=%llu\n"
       "software_ring_high_frames=%u\ndevice_queue_min_frames=%d\ndevice_queue_max_frames=%d\n"
       "core_wall_ns=%llu\ncore_thread_cpu_ns=%llu\nvideo_callback_ns=%llu\naudio_callback_ns=%llu\n"
-      "max_run_ns=%llu\nmax_video_ns=%llu\npauses=%llu\n"
+      "max_run_ns=%llu\nmax_video_ns=%llu\npauses=%llu\nsnapshot_load_successes=%llu\nsnapshot_load_rejections=%llu\n"
       "present_count=unavailable_vendor_driver\nerror=%s\n",
       s.rom_crc,s.rom_bytes,s.core_crc,s.core_bytes,native_av.timing.fps,s.input_rate,OUT_RATE,
       board_is_null(),(unsigned long long)s.runs,(unsigned long long)s.held,
@@ -500,10 +508,11 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.write_errors,s.ring_high,s.queue_min,s.queue_max,
       (unsigned long long)s.wall_ns,(unsigned long long)s.cpu_ns,(unsigned long long)s.video_ns,
       (unsigned long long)s.audio_ns,(unsigned long long)s.max_run_ns,(unsigned long long)s.max_video_ns,
-      (unsigned long long)s.pauses,error_text);
+      (unsigned long long)s.pauses,(unsigned long long)s.snapshot_loads,
+      (unsigned long long)s.snapshot_rejections,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
-      "build_version=1.10\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "build_version=1.11\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
@@ -539,12 +548,16 @@ static void report_to(const char *path,const char *phase,int ram)
           "pcm_playable_frames=%u\npcm_state=%u\nxrun_count=%llu\npcm_observed_kernel_ns=%llu\n"
           "pcm_event_wakes=%llu\npcm_fault_poll_timeouts=%llu\n"
           "pcm_playable_min_running_frames=%d\npcm_playable_max_running_frames=%u\n"
+          "pcm_admissions=%llu\npcm_admission_min_lead_frames=%d\npcm_admission_max_lead_frames=%u\n"
+          "pcm_boundary_frames=%u\npcm_epoch=%u\npcm_epoch_transferred_frames=%llu\n"
           "pcm_avail_frames=%u\npcm_appl_ptr=%u\npcm_hw_ptr=%u\npcm_start_threshold=%u\n"
           "pcm_prime_transferred_frames=%u\npcm_start_calls=%u\npcm_start_races=%u\npcm_error_detail=%s\n",
           board_is_null()?"mock":"native_alsa",pcm.period,pcm.buffer,pcm.prime,pcm.playable,pcm.state,
           (unsigned long long)pcm.xruns,(unsigned long long)pcm.observed_ns,
           (unsigned long long)pcm.wakes,(unsigned long long)pcm.poll_timeouts,
           pcm.playable_min==UINT_MAX?-1:(int)pcm.playable_min,pcm.playable_max,
+          (unsigned long long)pcm.admissions,pcm.admission_min==UINT_MAX?-1:(int)pcm.admission_min,pcm.admission_max,
+          pcm.boundary,pcm.epoch,(unsigned long long)pcm.epoch_transferred,
           pcm.avail,pcm.appl_ptr,pcm.hw_ptr,pcm.start_threshold,pcm.prime_transferred,
           pcm.start_calls,pcm.start_races,pcm.error_detail);
     }

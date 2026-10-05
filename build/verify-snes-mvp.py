@@ -17,10 +17,14 @@ paced=dict(line.split('=',1) for line in (out/'paced-smoke/last-session.txt').re
 assert paced['runs']=='30' and paced['error']=='' and paced['write_errors']=='0'
 assert paced['held']=='0' and paced['video_submitted']=='30'
 assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text()
-assert report['build_version']=='1.10' and report['phase']=='finished' and report['session_id']
+assert report['build_version']=='1.11' and report['phase']=='finished' and report['session_id']
 assert report['sink_rate']=='32040' and report['native_audio_frames']==report['resampled_enqueued_frames']
 assert 'kernel WRITEI auto-start without duplicate START' in (out/'native-pcm-check.log').read_text()
 assert 'runtime errors and kernel snapshot captured with tail absent' in (out/'wrapper-contract.log').read_text()
+assert 'post-HWSYNC state/pointers' in (out/'native-pcm-check.log').read_text()
+assert 'fresh observation required before paced admission' in (out/'audio-owner-check.log').read_text()
+assert 'two snapshot loads and re-primed resumes' in (out/'native-runner-check.log').read_text()
+assert 'PASS: shipped1.10' in (out/'old-owner-regression.log').read_text()
 assert 'PASS: actual ARM32 PCM ABI' in (out/'native-pcm-check.log').read_text()
 assert 'bounded blocked flush without silent recovery' in (out/'audio-owner-check.log').read_text()
 assert 'PASS: real ARM runner killed before cleanup' in (out/'diagnostic-crash.log').read_text()
@@ -55,7 +59,7 @@ assert all((out/'preview'/name).stat().st_size>900000 for name in ('library.ppm'
 versions=[tuple(map(int,m)) for m in re.findall(r'GLIBC_(\d+)\.(\d+)',(out/'abi-versions.txt').read_text())]
 assert max(versions)<=(2,30)
 data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
-      'version':'1.10','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
+      'version':'1.11','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
       'qualified_snapshot_sha256':digest(root/'build/plus-a7-out/returned.state'),
       'a7_header_sha256':digest(root/'build/plus-a7-render.h'),
       'binary_sha256':digest(out/'snes-mvp'),'binary_bytes':(out/'snes-mvp').stat().st_size,
@@ -76,21 +80,22 @@ data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
       'snapshot_runner_integration':'120 frames, migrated snapshot loaded via pause menu, zero held drawings',
       'core_equivalence':(root/'build/plus-a7-out/equivalence.log').read_text().strip(),
       'diagnostic_crash_contract':(out/'diagnostic-crash.log').read_text().strip(),
+      'native_lifecycle_contract':(out/'native-runner-check.log').read_text().strip(),
       'native_pcm_contract':(out/'native-pcm-check.log').read_text().strip(),
       'audio_owner_contract':(out/'audio-owner-check.log').read_text().strip(),
-      'hardware_audio_display_controls':'Earlier boot/input/state/save confirmed; 1.10 native PCM settings, audible continuity, sustained full rendering and stability pending physical test',
+      'hardware_audio_display_controls':'Earlier boot/input/state/save confirmed; 1.11 native PCM settings, audible continuity, sustained full rendering and stability pending physical test',
       'hardware_qualified':False,
       'performance':'QEMU timings are not device performance evidence'}
 sources=list((root/'build/snes-mvp').glob('*.c'))+list((root/'build/snes-mvp').glob('*.h'))
 sources+=list((root/'build/snes-mvp').glob('*.py'))+list((root/'build/snes-mvp').glob('*.sh'))
 sources += [root/'build'/name for name in ('build-snes-mvp.sh','check-snes-mvp.sh','check-native-pcm.sh',
-    'apply-plus-a7.py','build-plus-a7.sh','check-plus-a7.sh','plus-a7-render.h','plus-a7-check.c',
+    'check-native-runner.sh','check-old-audio-admission.py','apply-plus-a7.py','build-plus-a7.sh','check-plus-a7.sh','plus-a7-render.h','plus-a7-check.c',
     'plus-a7-equivalence.c','prepare-plus-inputs.py','check-plus-a7-codegen.py','glibc230-stat-compat.c','verify-snes-mvp.py')]
 data['source_hashes']={p.relative_to(root).as_posix():digest(p) for p in sorted(set(sources))}
 logs=[out/name for name in ('contracts.log','display-queue-contract.log','startup-contract.log',
     'wrapper-contract.log','board-input-contract.log','vendor-input-reference.log','timing-contract.log',
     'platform-contract.log','abi-versions.txt','dependencies.txt','diagnostic-crash.log',
-    'native-pcm-check.log','audio-owner-check.log')]
+    'native-pcm-check.log','audio-owner-check.log','native-runner-check.log','old-owner-regression.log')]
 logs += [out/'smoke-final/last-session.txt',out/'paced-smoke/last-session.txt']
 logs += [root/'build/plus-a7-out'/name for name in ('kernel-check.log','codegen-check.log',
     'equivalence.log','runner-integration.log')]

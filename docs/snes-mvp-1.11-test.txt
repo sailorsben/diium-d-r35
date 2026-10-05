@@ -1,0 +1,15 @@
+SNES MVP 1.11: coherent PCM observations and pause/resume
+
+Launch FF6 (not Rev1), use Continue for the latest Save Point.
+Play briefly, open our pause menu, load the existing snapshot and resume.
+Then map -> FF6 party menu -> map, save and exit normally.
+Report sound/movement, any error text and whether snapshot resume works.
+
+This build waits for a fresh audio-owner observation before pacing the core,
+reads post-HWSYNC state/pointers, restores the refill threshold after drain,
+and reports driver failures separately from a truly full software queue.
+The exact emulator core, full drawing and existing private progress remain.
+Native driver stability and full-speed sound still need physical qualification.
+
+If it fails, reconnect D:; no need to keep retrying.
+The one-shot is consumed before launch; the following reboot takes stock.

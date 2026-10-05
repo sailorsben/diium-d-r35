@@ -15,9 +15,10 @@
 static struct {
     int16_t pcm[AUDIO_CAPACITY*2];
     unsigned read,count;
-    int started,stop,drain,running,wake,refresh,admitting;
+    int started,stop,drain,running,wake,admitting;
     pthread_t thread;
     uint64_t cpu_base,drain_deadline;
+    uint64_t refresh_request,refresh_done;
     struct board_audio_state device;
     struct audio_pipe_stats stats;
 } pipe_state;
@@ -61,8 +62,11 @@ static int observe(void)
     pipe_state.stats.avail=d->avail; pipe_state.stats.appl_ptr=d->appl_ptr; pipe_state.stats.hw_ptr=d->hw_ptr;
     pipe_state.stats.start_threshold=d->start_threshold; pipe_state.stats.prime_transferred=d->prime_transferred;
     pipe_state.stats.start_calls=d->start_calls; pipe_state.stats.start_races=d->start_races;
+    pipe_state.stats.boundary=d->boundary; pipe_state.stats.epoch=d->epoch;
+    pipe_state.stats.epoch_transferred=d->epoch_transferred;
     pipe_state.stats.observed_ns=d->observed_ns;
     if(rc<0) { error(saved); return -1; }
+    pipe_state.refresh_done=pipe_state.refresh_request;
     if(d->started) {
         if(d->queued<pipe_state.stats.playable_min) pipe_state.stats.playable_min=d->queued;
         if(d->queued>pipe_state.stats.playable_max) pipe_state.stats.playable_max=d->queued;
@@ -83,7 +87,6 @@ static void *audio_service(void *unused)
             error(ETIMEDOUT); break;
         }
         if(observe()<0) break;
-        pipe_state.refresh=0;
         if(pipe_state.count) {
             unsigned count=pipe_state.count;
             ssize_t accepted;
@@ -145,7 +148,8 @@ static void *audio_service(void *unused)
     pthread_mutex_unlock(&pipe_lock); return NULL;
 }
 void audio_pipe_init(void)
-{ memset(&pipe_state,0,sizeof(pipe_state)); pipe_state.wake=-1; pipe_state.stats.playable_min=UINT_MAX; }
+{ memset(&pipe_state,0,sizeof(pipe_state)); pipe_state.wake=-1;
+  pipe_state.stats.playable_min=pipe_state.stats.admission_min=UINT_MAX; }
 unsigned audio_pipe_prime_frames(void)
 { struct board_audio_state d; return board_audio_observe(&d)<0?0:d.prime; }
 int audio_pipe_start(void)
@@ -165,17 +169,29 @@ int audio_pipe_start(void)
 int audio_pipe_admit(unsigned frames,int paced)
 {
     int rc=0;
+    uint64_t request=0;
     struct timespec until;
     if(frames>AUDIO_CAPACITY) { errno=EINVAL; return -1; }
     if(condition_deadline(&until)<0) return -1;
     pthread_mutex_lock(&pipe_lock);
-    pipe_state.admitting=paced; pipe_state.refresh=1; notify();
-    while(!pipe_state.stats.error && !pipe_state.stop && (pipe_state.count>AUDIO_CAPACITY-frames ||
+    pipe_state.admitting=paced;
+    if(paced) request=++pipe_state.refresh_request;
+    notify();
+    /* A control wake is a request, not a fresh observation. Do not price the
+     * next core call from a snapshot taken before intervening transfers. */
+    while(!pipe_state.stats.error && !pipe_state.stop && ((paced && pipe_state.refresh_done<request) ||
+          pipe_state.count>AUDIO_CAPACITY-frames ||
           (paced && pipe_state.count+pipe_state.device.queued>pipe_state.device.prime))) {
         if(changed(&until)<0) { rc=-1; break; }
     }
     if(pipe_state.stats.error) { errno=pipe_state.stats.error; rc=-1; }
     else if(pipe_state.stop) { errno=ECANCELED; rc=-1; }
+    if(!rc && paced) {
+        unsigned lead=pipe_state.count+pipe_state.device.queued;
+        ++pipe_state.stats.admissions;
+        if(lead<pipe_state.stats.admission_min) pipe_state.stats.admission_min=lead;
+        if(lead>pipe_state.stats.admission_max) pipe_state.stats.admission_max=lead;
+    }
     pipe_state.admitting=0;
     pthread_mutex_unlock(&pipe_lock); return rc;
 }

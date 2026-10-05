@@ -8,6 +8,13 @@ static unsigned queued,minimum,blocked,started,draining,done,fault,stop_consumer
 static int ready_fd;
 static int16_t expected[4096*2];
 static unsigned accepted,attempts;
+static int admission_done;
+static void *fresh_admission(void *unused)
+{
+    (void)unused; assert(!audio_pipe_admit(16,1));
+    pthread_mutex_lock(&device_lock); admission_done=1; pthread_mutex_unlock(&device_lock);
+    return NULL;
+}
 uint64_t board_now_ns(void)
 { struct timespec t; assert(!syscall(SYS_clock_gettime,CLOCK_MONOTONIC,&t)); return (uint64_t)t.tv_sec*1000000000u+t.tv_nsec; }
 static void readiness(void)
@@ -115,6 +122,21 @@ int main(void)
     assert(!audio_pipe_start() && !audio_pipe_push(expected,16)); audio_pipe_stop(1);
     audio_pipe_stats(&stats); assert(stats.error==EPROTO && stats.writes<=34 && !stats.accepted);
     close(ready_fd);
+    /* A low cached sample cannot admit against a newly high actual lead.
+     * No consumer runs until after we establish that admission is blocked. */
+    setup(); queued=32; started=1; admission_done=0;
+    assert(!audio_pipe_start());
+    pthread_mutex_lock(&pipe_lock);
+    while(!pipe_state.stats.observed_ns) pthread_cond_wait(&pipe_condition,&pipe_lock);
+    pthread_mutex_unlock(&pipe_lock);
+    pthread_mutex_lock(&device_lock); queued=128; pthread_mutex_unlock(&device_lock);
+    assert(!pthread_create(&consumer,NULL,fresh_admission,NULL));
+    usleep(50000);
+    pthread_mutex_lock(&device_lock); assert(!admission_done);
+    queued=64; readiness(); pthread_mutex_unlock(&device_lock);
+    pthread_join(consumer,NULL); audio_pipe_stop(0); audio_pipe_stats(&stats);
+    assert(stats.admissions==1 && stats.admission_min==64 && stats.admission_max==64);
+    close(ready_fd);
     setup(); queued=256; started=1; assert(!audio_pipe_start()); began=board_now_ns();
     assert(audio_pipe_admit(16,1)<0 && errno==ETIMEDOUT);
     assert(board_now_ns()-began>=1500000000u && board_now_ns()-began<3500000000u);
@@ -125,6 +147,6 @@ int main(void)
     assert(stats.error==ETIMEDOUT && stats.remaining==16 && !stats.accepted);
     assert(board_now_ns()-began>=1500000000u && board_now_ns()-began<3500000000u);
     close(ready_fd);
-    puts("PASS: actual audio owner preserves independent PCM under partial/EAGAIN writes; consumption admission tolerates 30ms bursts; playable priming/drain; event cancellation of blocked device; visible fatal XRUN; bounded false readiness, fixed admission deadline and bounded blocked flush without silent recovery");
+    puts("PASS: actual audio owner preserves independent PCM under partial/EAGAIN writes; consumption admission tolerates 30ms bursts; fresh observation required before paced admission; playable priming/drain; event cancellation of blocked device; visible fatal XRUN; bounded false readiness, fixed admission deadline and bounded blocked flush without silent recovery");
     return 0;
 }

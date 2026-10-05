@@ -12,7 +12,7 @@
 #include <time.h>
 #include <sound/asound.h>
 
-static struct { int fd,started,error; char failure[192]; struct board_audio_state config; } pcm={.fd=-1};
+static struct { int fd,started,error; char failure[256]; struct board_audio_state config; } pcm={.fd=-1};
 #if defined(__arm__)
 typedef char pcm_time32[(sizeof(struct timespec)==8)?1:-1];
 typedef char pcm_hw_abi[(sizeof(struct snd_pcm_hw_params)==604)?1:-1];
@@ -22,9 +22,10 @@ typedef char pcm_sync_abi[(sizeof(struct snd_pcm_sync_ptr)==132)?1:-1];
 #endif
 static int pcm_fail(const char *operation,int value)
 {
-    snprintf(pcm.failure,sizeof(pcm.failure),"%s errno=%d state=%u queued=%u avail=%u appl=%u hw=%u prime_written=%u start_calls=%u",
+    snprintf(pcm.failure,sizeof(pcm.failure),"%s errno=%d state=%u queued=%u avail=%u appl=%u hw=%u prime_written=%u start_calls=%u epoch=%u xfer=%llu",
              operation,value,pcm.config.state,pcm.config.queued,pcm.config.avail,
-             pcm.config.appl_ptr,pcm.config.hw_ptr,pcm.config.prime_transferred,pcm.config.start_calls);
+             pcm.config.appl_ptr,pcm.config.hw_ptr,pcm.config.prime_transferred,pcm.config.start_calls,
+             pcm.config.epoch,(unsigned long long)pcm.config.epoch_transferred);
     fprintf(stderr,"native PCM failure: %s\n",pcm.failure);
     pcm.error=value; errno=value; return -1;
 }
@@ -102,13 +103,15 @@ int pcm_open(unsigned requested)
             sw.proto=(unsigned)version;
             operation="SW_PARAMS";
             if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SW_PARAMS,&sw)<0) goto failed;
-            if(sw.start_threshold!=prime || sw.stop_threshold!=size || sw.avail_min!=periods[p]) {
+            if(sw.start_threshold!=prime || sw.stop_threshold!=size || sw.avail_min!=periods[p] ||
+               sw.boundary<=size || sw.boundary>LONG_MAX) {
                 operation="SW_PARAMS_READBACK"; errno=EPROTO; goto failed;
             }
             operation="PREPARE";
             if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0)<0) goto failed;
             pcm.config.rate=rates[r]; pcm.config.period=periods[p];
             pcm.config.buffer=size; pcm.config.prime=prime; pcm.started=0;
+            pcm.config.boundary=(unsigned)sw.boundary; pcm.config.epoch=1;
             pcm.config.start_threshold=(unsigned)sw.start_threshold;
             fprintf(stderr,"native PCM rate=%u period=%u buffer=%u prime=%u access=RW_INTERLEAVED start_threshold=%lu boundary=%lu\n",
                     rates[r],periods[p],size,prime,(unsigned long)sw.start_threshold,(unsigned long)sw.boundary);
@@ -117,27 +120,45 @@ int pcm_open(unsigned requested)
     }
     operation="HW_REFINE/HW_PARAMS"; errno=last;
 failed:
-    { char failure[192];
+    { char failure[256];
       last=errno; pcm_fail(operation,last); memcpy(failure,pcm.failure,sizeof(failure));
       pcm_close(); memcpy(pcm.failure,failure,sizeof(failure)); errno=last; return -1; }
 }
+static int pcm_snapshot(struct board_audio_state *out,unsigned flags)
+{
+    struct snd_pcm_sync_ptr sync;
+    uint64_t queued;
+    memset(&sync,0,sizeof(sync)); sync.flags=flags|SNDRV_PCM_SYNC_PTR_APPL|SNDRV_PCM_SYNC_PTR_AVAIL_MIN;
+    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SYNC_PTR,&sync)<0) return -1;
+    *out=pcm.config; out->started=pcm.started;
+    out->state=sync.s.status.state; out->observed_ns=board_now_ns();
+    out->appl_ptr=(unsigned)sync.c.control.appl_ptr; out->hw_ptr=(unsigned)sync.s.status.hw_ptr;
+    queued=((uint64_t)out->appl_ptr+pcm.config.boundary-out->hw_ptr)%pcm.config.boundary;
+    out->queued=out->state==SNDRV_PCM_STATE_SETUP || out->state==SNDRV_PCM_STATE_XRUN || queued>out->buffer?0:(unsigned)queued;
+    out->avail=out->buffer-out->queued;
+    pcm.config=*out;
+    if(out->appl_ptr>=out->boundary || out->hw_ptr>=out->boundary ||
+       (queued>out->buffer && out->state!=SNDRV_PCM_STATE_SETUP && out->state!=SNDRV_PCM_STATE_XRUN)) {
+        errno=EPROTO; return -1;
+    }
+    return 0;
+}
 int pcm_observe(struct board_audio_state *out)
 {
-    struct snd_pcm_status status;
-    memset(&status,0,sizeof(status));
     *out=pcm.config; out->started=pcm.started;
     if(pcm.fd<0) { errno=EBADF; return -1; }
     if(pcm.error) { errno=pcm.error; return -1; }
-    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_STATUS,&status)<0) return pcm_fail("STATUS",errno);
-    out->state=status.state;
-    out->observed_ns=board_now_ns();
-    out->avail=(unsigned)status.avail; out->appl_ptr=(unsigned)status.appl_ptr; out->hw_ptr=(unsigned)status.hw_ptr;
-    out->queued=status.state==SNDRV_PCM_STATE_SETUP || status.avail>pcm.config.buffer?0:
-        pcm.config.buffer-(unsigned)status.avail;
-    pcm.config=*out;
-    if(status.state==SNDRV_PCM_STATE_XRUN) return pcm_fail("STATUS_XRUN",EPIPE);
-    if(status.state==SNDRV_PCM_STATE_SUSPENDED) return pcm_fail("STATUS_SUSPENDED",ESTRPIPE);
-    if(status.avail>pcm.config.buffer) { out->queued=pcm.config.queued=0; return pcm_fail("STATUS_AVAIL",EPROTO); }
+    /* STATUS copies state before updating hw_ptr in Linux4.19. SYNC_PTR reads
+     * state/control after HWSYNC, under the kernel stream lock. Both GET flags
+     * preserve appl_ptr and avail_min; an observation must never commit either. */
+    if(pcm_snapshot(out,pcm.started?SNDRV_PCM_SYNC_PTR_HWSYNC:0)<0) {
+        int saved=errno;
+        (void)pcm_snapshot(out,0); /* retain the post-fault state without another HWSYNC */
+        return pcm_fail("SYNC_OBSERVE",saved);
+    }
+    if(out->state==SNDRV_PCM_STATE_XRUN) return pcm_fail("SYNC_XRUN",EPIPE);
+    if(out->state==SNDRV_PCM_STATE_SUSPENDED) return pcm_fail("SYNC_SUSPENDED",ESTRPIPE);
+    if(pcm.started && out->state!=SNDRV_PCM_STATE_RUNNING) return pcm_fail("STREAM_STATE",EBADFD);
     return 0;
 }
 ssize_t pcm_write(const int16_t *data,size_t frames)
@@ -148,10 +169,17 @@ ssize_t pcm_write(const int16_t *data,size_t frames)
     memset(&x,0,sizeof(x)); x.buf=(void *)data; x.frames=frames;
     if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_WRITEI_FRAMES,&x)<0) {
         if(errno==EAGAIN || errno==EINTR) return -1;
-        return pcm_fail("WRITEI_FRAMES",errno);
+        int saved=errno;
+        (void)pcm_snapshot(&state,0);
+        return pcm_fail("WRITEI_FRAMES",saved);
     }
-    if(x.result<0) { errno=(int)-x.result; return -1; }
+    if(x.result<0) {
+        int saved=(int)-x.result;
+        if(saved==EAGAIN || saved==EINTR) { errno=saved; return -1; }
+        (void)pcm_snapshot(&state,0); return pcm_fail("WRITEI_RESULT",saved);
+    }
     if((size_t)x.result>frames) return pcm_fail("WRITEI_RESULT",EPROTO);
+    pcm.config.epoch_transferred+=(unsigned)x.result;
     if(!pcm.started) {
         pcm.config.prime_transferred+=(unsigned)x.result;
         if(pcm_observe(&state)<0) { /* accepted frames are still returned below */ }
@@ -181,16 +209,21 @@ int pcm_avail_min(unsigned frames)
     memset(&sync,0,sizeof(sync));
     sync.flags=SNDRV_PCM_SYNC_PTR_HWSYNC|SNDRV_PCM_SYNC_PTR_APPL;
     sync.c.control.avail_min=frames?frames:1;
-    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SYNC_PTR,&sync)<0) return pcm_fail("SYNC_PTR",errno);
+    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SYNC_PTR,&sync)<0) {
+        int saved=errno; struct board_audio_state state;
+        (void)pcm_snapshot(&state,0); return pcm_fail("SYNC_AVAIL_MIN",saved);
+    }
     return 0;
 }
 int pcm_reset(void)
 {
     if(pcm.fd<0) return 0;
-    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_DROP,0)<0) return -1;
+    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_DROP,0)<0) return pcm_fail("DROP",errno);
     pcm.started=pcm.error=0; pcm.failure[0]=0;
     pcm.config.prime_transferred=pcm.config.start_calls=pcm.config.start_races=0;
-    return ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0);
+    pcm.config.epoch_transferred=0; ++pcm.config.epoch;
+    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0)<0) return pcm_fail("PREPARE",errno);
+    return pcm_avail_min(pcm.config.period); /* DRAIN's buffer threshold must not survive resume */
 }
 int pcm_finish(void)
 {

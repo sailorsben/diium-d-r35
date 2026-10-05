@@ -1,12 +1,16 @@
 # Userspace platform architecture
 
-The current [MVP1.10](snes-mvp-1.10.md) retains the native PCM owner,
+The current [MVP1.11](snes-mvp-1.11.md) retains the native PCM owner,
 consumption-driven producer admission, earlier mixed core audio and every
 drawing. The [1.9 return](snes-mvp-1.9-return.md) qualifies44100Hz/128-period/
 3712-buffer settings and one priming transfer, then fails before emulation.
 Startup now uses observed state: acknowledge write-driven RUNNING after full
 priming, START only from PREPARED and verify afterward. Precise operation/state/
-pointer diagnostics survive failures. Native consumption, audible continuity
+pointer diagnostics survive failures. The 1.10 return starts playback but later
+fails on WRITEI. 1.11 waits for fresh worker admission, reads post-HWSYNC pointers/
+state, restores drain readiness and distinguishes transport errors from queue
+capacity. A consuming real-core/native-client fixture exercises retry and two
+snapshot resumes. Sustained native consumption, audible continuity
 and sustained full speed remain physically unqualified. The
 [hardware roadmap](hardware-capability-roadmap.md) preserves the broader
 platform goal and remaining opportunities beyond smooth FF6.

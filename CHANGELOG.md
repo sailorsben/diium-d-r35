@@ -1,5 +1,38 @@
 # Changelog
 
+## SNES MVP1.11 coherent PCM observations and resume — 2026-10-05
+
+Archive the consumed 1.10 return: 43 MVP/49 lab files, exact release bytes,
+19 unchanged prior game-progress files and updated FF6 SRAM retained. Both
+attempts start native playback, then WRITEI fails with EBADFD after 72/605 calls.
+The queue-overflow label was false; software high is 2823/8192. One pause and
+re-priming survive; snapshot success was not explicitly logged. Stock fallback
+follows library B exit/cleanup. dmesg is absent; vendor state-transition cause
+and earlier whole-device poweroffs remain unproved.
+
+Paced admission now waits for the worker's fresh generation. The exact shipped
+owner fails a deterministic changed-device counterexample; the repair passes.
+Read post-HWSYNC state/control using SYNC_PTR GET flags and negotiated-boundary
+arithmetic. Retain fresh post-WRITEI-fault state and accepted counts per epoch.
+Restore period readiness after drain/reset. Stop failed drains before snapshot
+work; distinguish worker errors from true queue capacity faults. Add snapshot
+load/rejection counters and RAM phase markers. Keep the same core, full drawing,
+64ms priming and rate/period/buffer candidates; no silent stream recovery.
+
+Actual ARM client/owner checks and the real FF6 native lifecycle fixture pass:
+injected WRITEI failure, clean retry, two snapshot loads/re-primes, 25ms producer
+stalls, 120 full drawings and exact successful PCM accounting. Existing
+input/splash/display/save/final-runtime checks remain. QEMU is not handheld
+performance evidence. Guard consumed 1.10 installation, archive before writes,
+retain all returned progress and independently read back before publication.
+See [repair](docs/snes-mvp-1.11.md) and [return](docs/snes-mvp-1.10-return.md).
+
+Installation completes after another verified 43-MVP/49-lab archive. Independent
+readback verifies the exact 1.11 payload, all 22 current private files including
+the returned updated SRAM, all 49 lab files, original snapshots and unchanged
+core/stock/hook/older-wrapper hashes. Game one-shot is armed; lab remains
+unarmed. Physical playback, snapshot resume, speed and stability are pending.
+
 ## SNES MVP1.10 PCM startup repair — 2026-10-05
 
 Archive the consumed 1.9 return before updates: 43 MVP and 49 lab files,
