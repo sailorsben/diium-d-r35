@@ -1,7 +1,7 @@
 from pathlib import Path
 from hashlib import sha256
 from datetime import datetime, timezone
-import json, re
+import json, re, zlib
 root=Path(__file__).resolve().parent.parent
 out=root/'build/snes-mvp/out'
 def digest(p): return sha256(p.read_bytes()).hexdigest()
@@ -9,9 +9,20 @@ report=dict(line.split('=',1) for line in (out/'smoke-final/last-session.txt').r
 assert report['runs']=='180' and report['mock_backend']=='1'
 assert report['error']=='' and report['write_errors']=='0'
 assert int(report['output_accepted_frames_including_priming']) == int(report['resampled_enqueued_frames'])+int(report['priming_silence_frames'])
-assert report['rom_crc32']=='a27f1c7a' and report['core_crc32']=='5ba71d2a'
+core=root/'build/plus-a7-out/plus-a7.so'
+assert report['rom_crc32']=='a27f1c7a' and report['core_crc32']==f'{zlib.crc32(core.read_bytes())&0xffffffff:08x}'
+assert report['held']=='0' and report['video_dupes']=='0' and report['video_submitted']=='180'
+assert int(report['audio_cleared_frames'])==0 and int(report['audio_remaining_frames'])==0
 paced=dict(line.split('=',1) for line in (out/'paced-smoke/last-session.txt').read_text().splitlines() if '=' in line)
 assert paced['runs']=='30' and paced['error']=='' and paced['write_errors']=='0'
+assert paced['held']=='0' and paced['video_submitted']=='30'
+assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text()
+assert 'PASS: 8388608 scalar/vector color comparisons' in (root/'build/plus-a7-out/kernel-check.log').read_text()
+assert 'PASS: 1200 frames exact visible pixels' in (root/'build/plus-a7-out/equivalence.log').read_text()
+assert 'submitted=120 held=0' in (root/'build/plus-a7-out/runner-integration.log').read_text()
+for line in (root/'build/plus-a7-out/checked-inputs.sha256').read_text().splitlines():
+    wanted,name=line.split(maxsplit=1)
+    assert digest(root/'build'/name.strip())==wanted, 'Core check input changed: '+name
 assert 'PASS:' in (out/'contracts.log').read_text()
 assert 'PASS: real launcher first frame completes' in (out/'startup-contract.log').read_text()
 assert 'PASS: real launcher menu keeps polling through kernel-clock waits' in (out/'startup-contract.log').read_text()
@@ -32,6 +43,9 @@ assert all((out/'preview'/name).stat().st_size>900000 for name in ('library.ppm'
 versions=[tuple(map(int,m)) for m in re.findall(r'GLIBC_(\d+)\.(\d+)',(out/'abi-versions.txt').read_text())]
 assert max(versions)<=(2,30)
 data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
+      'version':'1.6','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
+      'qualified_snapshot_sha256':digest(root/'build/plus-a7-out/returned.state'),
+      'a7_header_sha256':digest(root/'build/plus-a7-render.h'),
       'binary_sha256':digest(out/'snes-mvp'),'binary_bytes':(out/'snes-mvp').stat().st_size,
       'glibc_max':'.'.join(map(str,max(versions))),'real_core_frames':180,
       'audio_transport_and_save_contracts':(out/'contracts.log').read_text().strip(),
@@ -42,7 +56,11 @@ data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
                 'actual GPIO backend against extracted stock callback table','shared heartbeat preserves other control fields',
                 'clock-skew input-sleep regression and real ARM polling loop',
                 'real launcher Down/Up/A through real waits','30-frame real core run with kernel-clock pacing'],
-      'hardware_audio_display_controls':'unverified; repaired startup device test required',
+      'full_render':True,'equivalence_frames':1200,'kernel_color_comparisons':8388608,
+      'kernel_tile_rows':280000,'display_queue_contract':(out/'display-queue-contract.log').read_text().strip(),
+      'snapshot_runner_integration':'120 frames, migrated snapshot loaded via pause menu, zero held drawings',
+      'core_equivalence':(root/'build/plus-a7-out/equivalence.log').read_text().strip(),
+      'hardware_audio_display_controls':'1.5 controls confirmed; 1.6 full-speed changes await physical qualification',
       'performance':'QEMU timings are not device performance evidence'}
 (out/'verification.json').write_text(json.dumps(data,indent=2)+'\n')
 print(json.dumps(data,indent=2))

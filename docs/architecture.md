@@ -1,6 +1,8 @@
 # Userspace platform architecture
 
-The implemented MVP is SNES-only. The longer [platform review](reference/platform-redesign/proposal.txt) is a design proposal, not a completed multi-emulator product or a speed claim.
+The implemented MVP is SNES-only. [MVP1.6](snes-mvp-1.6.md) implements full
+rendering with a tailored A7 core and corrected peripheral ownership; its
+physical performance is pending. The longer [platform review](reference/platform-redesign/proposal.txt) is a design proposal, not a completed multi-emulator product or a speed claim.
 
 ## Implemented owners
 
@@ -15,7 +17,7 @@ main/UI
 runner
   bounded ROM/ZIP loading -> exact core -> environment/input callbacks
   continuous resampler -> bounded PCM queue -> OSS transport
-  native-FPS scheduling + adaptive internal drawing -> board video submit
+  native-FPS scheduling + every drawing -> reserved board video submit
   ROM/core-qualified SRAM/snapshot -> explicit unload
 
 board + timing
@@ -25,31 +27,44 @@ board + timing
 
 This is one executable with separated C modules. Menu/library allocations are released during gameplay; the core's synchronous load-from-memory ownership permits reclaiming duplicate ROM input after load. The existing vendor kernel, board initialization and driver remain bring-up dependencies.
 
-The display producer owns compact source copies; the worker owns a submitted slot until draw/flip completes. One pending job and alternating slots permit overlap without retaining core-owned pointers. Shutdown joins the worker before tearing down display/chunk allocations.
+The producer reserves one of three source slots plus FIFO credit before the
+core. The worker releases a source after scaling, holds output through flip,
+and completes jobs in order. No core-owned pointer is retained or READY image
+superseded. Shutdown drains/joins before display/chunk teardown.
 
-Audio callbacks enqueue every converted frame. Nonblocking transport preserves unsent frames and partial stereo-frame tails. The runner reserves capacity before entering the core, so it cannot silently discard a callback the core will not replay. Startup/resume priming is accounted separately. Snapshot operations qualify the core/ROM and roll back on failed load.
+Audio callbacks enqueue every converted frame. One audio worker owns nonblocking
+transport, preserving unsent frames and partial stereo-frame tails. Reserve
+capacity before the core; stop/join before transitions reset/clear the stream.
+Priming, clears and remainder are accounted separately. Snapshot operations
+qualify core/ROM and roll back on failed load.
 
 ## What is retained deliberately
 
-Plus and its known conversion/render-budget policy remain the baseline while host piping is qualified. Adaptive suppression applies to internal drawing, while audio/emulation continue. The initial clock is native-FPS monotonic control; an audio-led production controller is not yet implemented.
+Plus's accurate sound and continuous conversion remain. 1.6 removes adaptive
+suppression and publishes audio before video. Kernel-monotonic native timing
+remains the clock; a qualified audio-led production controller is not yet
+implemented. The stock driver/kernel remain dependencies; lifecycle/queue
+semantics beyond the known backend need qualification.
 
 The vendor already has asynchronous display work and CPU-specific emulator paths. Adding more threads on one CPU does not add compute. The design seeks correct ownership, bounded memory, useful overlap and measurable policy rather than assuming fewer layers alone are faster.
 
-## Proposed full-speed path
+## Full-speed implementation and remaining qualification
 
-MVP1.5's controls are physically confirmed. Occasional lag, rare crackles and
-11.838% held drawings remain. The chosen proposal is a tailored Plus renderer
-and a host pipeline that overlaps core work with peripheral operation; see the
-[full-speed plan](full-speed-snes-plan.md) for instruction choices, ownership,
-CPU allocations and acceptance. This is proposed behavior, not the current MVP.
+MVP1.5's controls were physically confirmed; its run recorded 11.838% held
+drawings alongside reported occasional lag and rare crackles. MVP1.6 removes
+that suppression, implements exact A7 NEON tile/color kernels, releases source
+buffers after scaling, queues display jobs in order, and services PCM through
+an independent worker. Source reservation happens before the core runs. The
+[implementation record](snes-mvp-1.6.md) documents exactness and ownership checks;
+the [full-speed plan](full-speed-snes-plan.md) retains the proposed acceptance
+criteria and remaining backend work. Physical full-speed acceptance is pending.
 
-Release the chunk source after scaling rather than scanout, preserve an ordered
-bounded queue, publish audio before video, and service queued PCM independently.
-Keep one pacing owner and accurate Blargg behavior. Add exact A7 NEON tile/color
-kernels before asking the device to prove full rendering. Qualify audio cursor
-and scaler completion semantics; record timings in memory and flush after play.
-Persistent scaler ownership is a next backend extension with recovered ioctls,
-not permission to assume undocumented hardware queues work.
+Kernel-monotonic pacing and accurate Blargg behavior remain. A hardware audio
+cursor, audio-led production control, and persistent scaler ownership require
+device qualification before replacing the known transport/backend. The first
+full-render test records core, scaler, flip, queue and audio-worker measurements
+in memory and flushes reports after play. These measurements decide which
+remaining extension is justified; undocumented hardware queues are not assumed.
 
 Reproducible minimal userspace around the known kernel remains the broader
 product direction. A new kernel/GPU/bare-metal port requires matching

@@ -1,0 +1,1 @@
+PASS: actual board GPIO decoder matches vendor D-pad/face pins, menu chord and failed-read behavior

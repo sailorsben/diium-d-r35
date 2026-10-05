@@ -1,0 +1,3 @@
+PASS: runner menu validated and loaded converted v11 snapshot
+PASS: real Plus runner120 frames, imported snapshot resume, private SRAM8192 bytes, clean exit
+ROM=a27f1c7a core=90fbcc4e submitted=120 held=0 native_audio=64086

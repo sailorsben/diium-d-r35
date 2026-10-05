@@ -52,9 +52,12 @@ The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated
 - A DT GPU node is not an operational GPU; a symbol/struct field is not a demonstrated queue contract.
 - The old timestamp regex parsed `[247]` source-line text as time. Corrected v3 analysis anchors at line start. Older v2 derived spans must not be trusted without reanalysis.
 
-The user requested a concrete full-speed proposal before another run. Current
-direction is the [Cortex-A7 core/pipeline plan](full-speed-snes-plan.md): ordered
-completion-aware display queue, independent audio delivery, one production
-clock, and exact NEON tile/color kernels. Source review identifies coupling and
-scalar work worth changing; their speedups remain unmeasured. The consumed
-one-shot remains unarmed; the proposal does not deploy another experiment.
+The user requested a concrete full-speed proposal before another run, then
+authorized implementation. [MVP1.6](snes-mvp-1.6.md) implements ordinary NEON
+tile/color kernels, completion-aware display queuing, independent audio-first
+delivery and full rendering with one kernel-monotonic clock.8.4million color
+checks,280k rows,1200 real-core equivalence frames and migrated-state runner
+resume pass locally. Raw snapshots were found to embed host pointers; the state
+oracle normalizes only named pointer fields and compares resumed output too.
+The isolated core and separate qualified state copy are installed/armed for the
+next physical test. Speedups and sound continuity remain unmeasured on-device.

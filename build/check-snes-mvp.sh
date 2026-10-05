@@ -9,17 +9,17 @@ arm-linux-gnueabihf-gcc $flags -std=gnu99 -O2 -Wall -Wextra -Werror -no-pie -nos
  -I"$base/build/snes9x2005/libretro-common/include" /usr/arm-linux-gnueabihf/lib/crt1.o \
  "$base/build/snes-mvp/runner-check.c" "$base/build/glibc230-stat-compat.c" \
  -L"$base/build/sysroot/lib" -Wl,--no-as-needed -l:libdl-2.30.so -l:libz.so.1 \
- -l:libm-2.30.so -l:libc-2.30.so -l:libgcc_s.so.1 \
+ -l:libpthread-2.30.so -l:libm-2.30.so -l:libc-2.30.so -l:libgcc_s.so.1 -l:ld-2.30.so \
  -o "$out/runner-check-arm"
 qemu-arm -cpu cortex-a7 -L "$base/build/sysroot" -E LD_LIBRARY_PATH="$base/build/sysroot/lib" \
  "$out/runner-check-arm" "$out/contracts" > "$out/contracts.log"
 D35_MVP_FRAMES=180 D35_MVP_NO_PACING=1 \
  qemu-arm -cpu cortex-a7 -L "$base/build/sysroot" -E LD_LIBRARY_PATH="$base/build/sysroot/lib" \
- "$out/snes-mvp" --mock --rom "$base/build/ff3.zip" --core "$base/build/clean/emu_sfc_plus.so" \
+ "$out/snes-mvp" --mock --rom "$base/build/ff3.zip" --core "$base/build/plus-a7-out/plus-a7.so" \
  --saves "$out/smoke-final" > "$out/smoke.log" 2>&1
 D35_MVP_FRAMES=30 timeout 8 \
  qemu-arm -cpu cortex-a7 -L "$base/build/sysroot" -E LD_LIBRARY_PATH="$base/build/sysroot/lib" \
- "$out/snes-mvp" --mock --rom "$base/build/ff3.zip" --core "$base/build/clean/emu_sfc_plus.so" \
+ "$out/snes-mvp" --mock --rom "$base/build/ff3.zip" --core "$base/build/plus-a7-out/plus-a7.so" \
  --saves "$out/paced-smoke" > "$out/paced-smoke.log" 2>&1
 qemu-arm -cpu cortex-a7 -L "$base/build/sysroot" -E LD_LIBRARY_PATH="$base/build/sysroot/lib" \
  "$out/snes-mvp" --preview "$out/preview"
@@ -74,3 +74,10 @@ cat "$out/timing-contract.log"
 python3 "$base/build/snes-mvp/check-startup-wrapper.py" "$out/wrapper-contract" > "$out/wrapper-contract.log"
 cat "$out/wrapper-contract.log"
 printf 'PASS: final ARM binary, exact core ZIP smoke, UI preview, library scan and invalid ROM rejection\n'
+arm-linux-gnueabihf-gcc $flags -std=gnu99 -O2 -Wall -Wextra -Werror -no-pie -nostdlib \
+ /usr/arm-linux-gnueabihf/lib/crt1.o "$base/build/snes-mvp/display-queue-check.c" "$base/build/snes-mvp/timing.c" \
+ -L"$base/build/sysroot/lib" -Wl,--no-as-needed -l:libdl-2.30.so -l:libpthread-2.30.so \
+ -l:libc-2.30.so -l:libgcc_s.so.1 -l:ld-2.30.so -o "$out/display-queue-check-arm"
+timeout 10 qemu-arm -cpu cortex-a7 -L "$base/build/sysroot" -E LD_LIBRARY_PATH="$base/build/sysroot/lib" \
+ "$out/display-queue-check-arm" > "$out/display-queue-contract.log"
+cat "$out/display-queue-contract.log"

@@ -1,5 +1,22 @@
 # Changelog
 
+## SNES MVP1.6 — 2026-10-04
+
+Implement A7 NEON 2/4bpp tile/color kernels and audio-first delivery in pinned
+Plus. Remove adaptive drawing holds. Add a three-source ordered display FIFO
+with buffer/publication reservation before the core and source release before
+scanout. Add independent joined PCM service, partial/EAGAIN preservation,
+transition-clear accounting, bounded lead and worker/device timing. Retain
+accurate Blargg, the validated splash/GPIO/clock path and the known scaler backend.
+
+Verify 8.4 million color comparisons, 280k rows, 1,200 exact pixel/native-PCM frames
+and normalized emulated state; actual migrated-state runner resume for 120 frames;
+full-render smoke for 180 frames and paced smoke for 30; real FIFO backpressure/teardown and legacy
+contracts. Raw snapshots contain process pointers, now explicitly accounted
+for in comparison. Install isolated core and separate FF6 snapshot copy; stock,
+boot hook and 18 original progress files hash-protected. One-shot armed.
+Physical 60 FPS/audio result remains pending. See [implementation](docs/snes-mvp-1.6.md).
+
 ## MVP 1.5 physical result and full-speed proposal — 2026-10-04
 
 Physically confirm all four directions in launcher and FF6. Archive/hash-verify

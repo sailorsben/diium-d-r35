@@ -71,7 +71,14 @@ Do not reintroduce libc-clock absolute nanosleep or mix the retained adapter tim
 
 Resolve the required vendor symbols rather than assuming generic framebuffer ABI: InitVFB, DrawVFB, FlipVFB, FreeVFB, video_driver_get_size, detect_hdmi, hDisp and USE_HDMI_OUT. Complete splash cleanup first; detect HDMI; initialize display; then enable handheld LCD backlight via GPIO0x108 (disable it for HDMI).
 
-The MVP owns one display worker and two compact source slots. Copy into the free slot while the previous job consumes its own slot, then publish at most one pending job. Reuse/free only after worker completion. Join before FreeVFB/chunk free. The stock driver worker loses its thread ID and deinit does not provide an adequate ownership join; our worker handles that boundary explicitly.
+MVP1.6 owns one display worker, three compact source slots and a two-job ordered
+FIFO. Reserve both a free slot and publication credit before entering the core;
+copy/publish without waiting inside its callback. Release the source after
+DrawVFB's stopped/completed scaler boundary, before FlipVFB, matching stock's
+source release. The worker retains output ownership through flip and is the
+sole draw/flip caller. A free source during flip does not imply FIFO credit.
+Never replace READY jobs. Drain/join before FreeVFB/chunk free. The stock driver
+worker loses its thread ID and lacks an adequate teardown join; ours owns it.
 
 Recovered scaler structure: 228 bytes; output_addr[2] offset64, frame_queue_enable72, bypass_addr[2]76, bypass_frame_queue_enable84, drop-frame fields98/99, FRAME_DONE enum2. `PScaleRun` at driver0x14ac performs per-job open/setup/trigger/status/stop/close. These interfaces are leads for future optimization, not a proven continuous queue implementation.
 
@@ -79,9 +86,22 @@ Recovered scaler structure: 228 bytes; output_addr[2] offset64, frame_queue_enab
 
 Own OSS open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation. The tested baseline requires 44,100 Hz stereo S16_LE after continuous conversion from the core's 32,040 Hz stream. Standard fragment hints may be rounded/ignored; query actual queue data. Queue occupancy is not an underrun counter.
 
+MVP1.6's producer converts/enqueues while one audio worker owns writes and their
+partial-byte tails. Stop/join before any pause/reset/close; only then clear the
+software queue and reset OSS. Restart after priming a new stream. Do not share
+writer-tail state with an unsynchronized queue observer. Full rendering uses
+kernel-monotonic native timing and bounded total PCM lead; a reliable audio
+cursor/physical full-speed result remains unqualified.
+
 Vendor environment command37 (`SET_GEOMETRY`) writes a double 44100 at offset32 beyond a 20-byte geometry object. The adapter intercepts it; the direct MVP implements its own validated environment handling. Do not forward this callback blindly.
 
 Private MVP SRAM/snapshots are qualified by ROM and exact core identity. Incompatible snapshots are rejected; failed loads roll back live state. v11 `D35PLUS1` states are not generally compatible with plain2005/2010. The importer requires the known Plus binary and explicit ROM selection because the old wrapper lacks ROM identity. Import a copy; preserve the original and newer progress.
+
+Pinned Plus snapshots contain raw CPU/ICPU/SA1 process pointers; its loader
+rebuilds active pointers. Cross-library comparison must normalize only named
+host fields while retaining logical registers/memory/APU state checks and
+resume/output validation.1.6 adds a separate FF6 snapshot with the new exact core
+identity only after those checks; it never retags the original in place.
 
 ## Supervisor/watchdog
 

@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <pthread.h>
+#include <poll.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,6 +28,9 @@
 #define GPIO_WRITE 0x400c4700u
 #define GPIO_ATTRIBUTE 0x400c4702u
 #define SLOT_BYTES (640u * 512u * 2u)
+#define SOURCE_SLOTS 3u
+#define READY_LIMIT 2u
+enum slot_owner { FREE, RESERVED, READY, SCALER };
 struct chunk_block { uint32_t physical, mapped, bytes; };
 struct gpio_request { uint32_t pin, reserved, value; };
 struct button_pin { uint32_t pin, mask; };
@@ -53,7 +57,7 @@ static struct {
     unsigned input_trace_count;
     uint32_t last_input_pins,last_input_errors;
     unsigned volume_keys;
-    unsigned audio_rate, next_slot;
+    unsigned audio_rate;
     unsigned char audio_tail[4];
     size_t audio_tail_bytes;
     struct chunk_block chunk;
@@ -69,8 +73,10 @@ static struct {
     int *hdmi_output;
     pthread_t worker;
     int worker_started, stopping, busy, first_frame;
-    uint16_t *job_pixels;
-    unsigned job_width, job_height;
+    int reserved;
+    struct { enum slot_owner owner; unsigned width, height; } slots[SOURCE_SLOTS];
+    unsigned queue[READY_LIMIT], queue_head, queue_count;
+    struct board_video_metrics metrics;
 } b = {.gpio_fd=-1, .chunk_fd=-1, .audio_fd=-1, .mixer_fd=-1};
 static pthread_mutex_t display_lock = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t display_condition = PTHREAD_COND_INITIALIZER;
@@ -103,17 +109,45 @@ static void *display_worker(void *unused)
     (void)unused;
     pthread_mutex_lock(&display_lock);
     for (;;) {
-        while (!b.busy && !b.stopping)
+        unsigned slot, width, height;
+        uint64_t start, duration, cpu_start, cpu_end;
+        struct timespec cpu;
+        while (!b.queue_count && !b.stopping)
             pthread_cond_wait(&display_condition,&display_lock);
-        if (!b.busy && b.stopping) break;
+        if (!b.queue_count && b.stopping) break;
+        slot=b.queue[b.queue_head]; b.queue_head=(b.queue_head+1)%READY_LIMIT;
+        --b.queue_count; b.slots[slot].owner=SCALER; b.busy=1;
+        width=b.slots[slot].width; height=b.slots[slot].height;
+        pthread_cond_broadcast(&display_condition);
         pthread_mutex_unlock(&display_lock);
-        if(b.first_frame) startup_note("first DrawVFB enter size=%ux%u",b.job_width,b.job_height);
-        b.draw_vfb(b.job_pixels,(int)b.job_width,(int)b.job_height);
+        cpu_start=0;
+        if(!syscall(SYS_clock_gettime,CLOCK_THREAD_CPUTIME_ID,&cpu))
+            cpu_start=(uint64_t)cpu.tv_sec*1000000000u+cpu.tv_nsec;
+        start=board_now_ns();
+        if(b.first_frame) startup_note("first DrawVFB enter size=%ux%u",width,height);
+        b.draw_vfb((uint16_t *)(b.pixels+slot*SLOT_BYTES),(int)width,(int)height);
+        duration=board_now_ns()-start;
+        pthread_mutex_lock(&display_lock);
+        b.slots[slot].owner=FREE; ++b.metrics.scaled;
+        b.metrics.scale_ns+=duration;
+        if(duration>b.metrics.max_scale_ns) b.metrics.max_scale_ns=duration;
+        /* DrawVFB has stopped/completed the scaler's source read. Stock also
+         * releases at this boundary; scanout still owns its output buffer. */
+        pthread_cond_broadcast(&display_condition);
+        pthread_mutex_unlock(&display_lock);
         if(b.first_frame) startup_note("first DrawVFB returned; FlipVFB enter");
+        start=board_now_ns();
         b.flip_vfb();
+        duration=board_now_ns()-start;
+        cpu_end=cpu_start;
+        if(!syscall(SYS_clock_gettime,CLOCK_THREAD_CPUTIME_ID,&cpu))
+            cpu_end=(uint64_t)cpu.tv_sec*1000000000u+cpu.tv_nsec;
         if(b.first_frame) { startup_note("first FlipVFB returned"); b.first_frame=0; }
         pthread_mutex_lock(&display_lock);
         b.busy=0;
+        ++b.metrics.flipped; b.metrics.flip_ns+=duration;
+        if(duration>b.metrics.max_flip_ns) b.metrics.max_flip_ns=duration;
+        if(cpu_end>=cpu_start) b.metrics.worker_cpu_ns+=cpu_end-cpu_start;
         pthread_cond_broadcast(&display_condition);
     }
     pthread_mutex_unlock(&display_lock);
@@ -123,7 +157,7 @@ static void *display_worker(void *unused)
 void board_wait_display(void)
 {
     pthread_mutex_lock(&display_lock);
-    while (b.busy) pthread_cond_wait(&display_condition,&display_lock);
+    while (b.busy || b.queue_count) pthread_cond_wait(&display_condition,&display_lock);
     pthread_mutex_unlock(&display_lock);
 }
 
@@ -178,7 +212,8 @@ int board_open(int null_backend)
     b.null_backend=!!null_backend;
     b.stopping=b.busy=0;
     b.first_frame=1;
-    b.next_slot=0;
+    b.reserved=-1; b.queue_head=b.queue_count=0;
+    memset(b.slots,0,sizeof(b.slots)); memset(&b.metrics,0,sizeof(b.metrics));
     if (b.null_backend) { b.opened=1; return 0; }
     if (sizeof(void *)!=4) return failure("Device backend requires a 32-bit ARM executable; use explicit --null for host tests");
     if(timing_prepare()<0) { failure("Read kernel monotonic clock: %s",strerror(errno)); goto fail; }
@@ -206,13 +241,13 @@ int board_open(int null_backend)
     b.chunk_fd=open("/dev/chunkmem",O_RDWR|O_CLOEXEC);
     if (b.chunk_fd<0) { failure("Open /dev/chunkmem: %s",strerror(errno)); goto fail; }
     memset(&b.chunk,0,sizeof(b.chunk));
-    b.chunk.bytes=SLOT_BYTES*2u;
+    b.chunk.bytes=SLOT_BYTES*SOURCE_SLOTS;
     startup_note("chunk allocation enter bytes=%u",b.chunk.bytes);
     if(ioctl(b.chunk_fd,CHUNK_ALLOC,&b.chunk)<0 || !b.chunk.mapped) {
         failure("Allocate display chunk buffers: %s",strerror(errno)); goto fail;
     }
     b.pixels=(uint8_t *)(uintptr_t)b.chunk.mapped;
-    memset(b.pixels,0,SLOT_BYTES*2u);
+    memset(b.pixels,0,SLOT_BYTES*SOURCE_SLOTS);
     startup_note("chunk allocation complete");
     driver_path=getenv("D35_MVP_DRIVER");
     if(!driver_path || !*driver_path) driver_path="/usr/retro/driver.so";
@@ -270,36 +305,74 @@ fail:
     return -1;
 }
 
-int board_video_submit(const void *rgb565,unsigned width,unsigned height,size_t pitch)
+int board_video_reserve(void)
 {
-    unsigned y;
-    uint8_t *target;
+    unsigned slot;
+    uint64_t began=board_now_ns();
     struct timespec timeout;
     int rc=0;
     if(!b.opened) return failure("Board is closed");
-    if(!rgb565) return 0; /* Libretro duplicate frame. */
-    if(!width || !height || width>640 || height>512 || pitch<(size_t)width*2u)
-        return failure("Unsupported RGB565 frame %ux%u pitch %zu",width,height,pitch);
     if(b.null_backend) return 0;
-    target=b.pixels+b.next_slot*SLOT_BYTES;
-    /* Single producer; alternate slots allow this copy to overlap hardware
-     * consumption of the previous frame. No core-owned pointer is retained. */
-    for(y=0;y<height;++y)
-        memcpy(target+(size_t)y*width*2u,(const uint8_t *)rgb565+(size_t)y*pitch,(size_t)width*2u);
     if(syscall(SYS_clock_gettime,CLOCK_REALTIME,&timeout)<0)
         return failure("Read kernel display timeout clock: %s",strerror(errno));
     timeout.tv_sec+=5;
     pthread_mutex_lock(&display_lock);
-    while(b.busy && !rc) rc=pthread_cond_timedwait(&display_condition,&display_lock,&timeout);
+    if(b.reserved>=0) { pthread_mutex_unlock(&display_lock); return 0; }
+    for(;;) {
+        for(slot=0;slot<SOURCE_SLOTS;++slot) if(b.slots[slot].owner==FREE) break;
+        if(rc || b.stopping || (slot<SOURCE_SLOTS && b.queue_count<READY_LIMIT)) break;
+        rc=pthread_cond_timedwait(&display_condition,&display_lock,&timeout);
+    }
     if(rc || b.stopping) {
         pthread_mutex_unlock(&display_lock);
         return failure("Display worker unavailable: %s",rc?strerror(rc):"stopping");
     }
-    b.job_pixels=(uint16_t *)target;
-    b.job_width=width;
-    b.job_height=height;
-    b.busy=1;
-    b.next_slot^=1u;
+    b.reserved=(int)slot; b.slots[slot].owner=RESERVED;
+    b.metrics.reserve_wait_ns+=board_now_ns()-began;
+    pthread_mutex_unlock(&display_lock);
+    return 0;
+}
+
+void board_video_cancel(void)
+{
+    pthread_mutex_lock(&display_lock);
+    if(b.reserved>=0) b.slots[b.reserved].owner=FREE;
+    b.reserved=-1;
+    pthread_cond_broadcast(&display_condition);
+    pthread_mutex_unlock(&display_lock);
+}
+
+void board_video_metrics(struct board_video_metrics *out,int reset)
+{
+    if(reset) board_wait_display();
+    pthread_mutex_lock(&display_lock);
+    if(out) *out=b.metrics;
+    if(reset) memset(&b.metrics,0,sizeof(b.metrics));
+    pthread_mutex_unlock(&display_lock);
+}
+
+int board_video_submit(const void *rgb565,unsigned width,unsigned height,size_t pitch)
+{
+    unsigned y,slot;
+    uint8_t *target;
+    uint64_t start;
+    if(!rgb565) { board_video_cancel(); return 0; }
+    if(!width || !height || width>640 || height>512 || pitch<(size_t)width*2u)
+        return failure("Unsupported RGB565 frame %ux%u pitch %zu",width,height,pitch);
+    if(board_video_reserve()<0) return -1;
+    if(b.null_backend) return 0;
+    slot=(unsigned)b.reserved; target=b.pixels+slot*SLOT_BYTES;
+    start=board_now_ns();
+    for(y=0;y<height;++y)
+        memcpy(target+(size_t)y*width*2u,(const uint8_t *)rgb565+(size_t)y*pitch,(size_t)width*2u);
+    pthread_mutex_lock(&display_lock);
+    b.metrics.copy_ns+=board_now_ns()-start;
+    b.slots[slot].width=width; b.slots[slot].height=height;
+    b.slots[slot].owner=READY;
+    b.queue[(b.queue_head+b.queue_count)%READY_LIMIT]=slot;
+    ++b.queue_count; ++b.metrics.submitted;
+    if(b.queue_count>b.metrics.queue_high) b.metrics.queue_high=b.queue_count;
+    b.reserved=-1;
     pthread_cond_broadcast(&display_condition);
     pthread_mutex_unlock(&display_lock);
     return 0;
@@ -409,7 +482,9 @@ int board_audio_queued_frames(void)
         queued=info.fragstotal*info.fragsize-info.bytes;
     }
     if(queued<0) queued=0;
-    return (queued+(int)b.audio_tail_bytes+3)/4;
+    /* Main may query while the sole writer retains a partial-byte tail.
+     * This is kernel occupancy only, avoiding a race on writer-owned state. */
+    return (queued+3)/4;
 }
 
 int board_audio_reset(void)
@@ -419,6 +494,16 @@ int board_audio_reset(void)
     if(ioctl(b.audio_fd,SNDCTL_DSP_RESET,0)<0)
         return failure("Reset OSS audio: %s",strerror(errno));
     return 0;
+}
+
+int board_audio_wait(unsigned milliseconds)
+{
+    struct pollfd fd={b.audio_fd,POLLOUT,0};
+    int rc;
+    if(b.null_backend) return 1;
+    do { rc=poll(&fd,1,(int)milliseconds); } while(rc<0 && errno==EINTR);
+    if(rc>0 && (fd.revents&(POLLERR|POLLHUP|POLLNVAL))) { errno=EIO; return -1; }
+    return rc;
 }
 
 void board_audio_close(void)

@@ -5,6 +5,9 @@ import json
 import shutil
 
 ROOT=Path(__file__).resolve().parent.parent
+# This exporter preserves the historical1.5 build. Refuse before writing any
+# outputs if the live build has advanced; publish1.6 through its own exporter.
+assert json.loads((ROOT/'build/snes-mvp/out/verification.json').read_text()).get('version','1.5')=='1.5', 'Historical1.5 exporter: use publish-snes-1.6.py for the current build'
 OUT=ROOT/'evidence'
 OUT.mkdir(exist_ok=True)
 entries=[]

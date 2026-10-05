@@ -39,6 +39,11 @@ The real-core fixture uses a user-supplied FF3/VI ZIP at `build/ff3.zip`, whose 
 
 ## Build and checks
 
+The current 1.6 workflow builds the isolated A7 core and supplies owner-only
+equivalence inputs first; follow [the 1.6 reproduction sequence](snes-mvp-1.6.md#reproduce-locally).
+The pinned original core above remains the comparison oracle. Old 1.5 binaries
+and evidence stay versioned and are not overwritten by the new publisher.
+
 ```sh
 sh build/build-snes-mvp.sh
 sh build/check-snes-mvp.sh
@@ -66,11 +71,20 @@ The checks exercise:
 
 ## Current release and deployment boundary
 
-[MVP1.5](../releases/snes-mvp-1.5/) contains our executable and wrapper, without a ROM, snapshot, core, driver or libc. It expects `/usr/retro/driver.so` and the tested Plus core `/usr/retro/libs/emu_sfc_plus.so` from your qualified baseline. The library scans existing `002` and `ROMs/SNES` folders.
+[MVP1.6](../releases/snes-mvp-1.6/) contains our executable and wrapper, without
+a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
+from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains
+`/usr/retro/driver.so` and existing `002`/`ROMs/SNES` scanning. The historical
+[MVP1.5](../releases/snes-mvp-1.5/) uses the original tested Plus library.
 
 The experiment puts files under `retro/snes-mvp` and runs its wrapper synchronously before stock main. It does not replace stock main, vrtemu, showlogo or driver. A `retro/snes-mvp/armed` marker requests one boot; it is consumed before execution. The following reboot takes stock automatically.
 
 `build/package-snes-mvp.py` prepares a package only after exact-build verification. Its initial installer expects the known original init and current v11 binaries; its updater archives the existing MVP/private progress, writes only owned files atomically, verifies saves/stock/init, then arms. It intentionally targets D: and will reject unknown software. To use it in the original layout, supply your verified original init as `Hardware-Console-v3/init.before`; an already-hooked init is not the original.
+
+That installer describes historical 1.5. Current 1.6 uses
+`build/package-snes-1.6.py`, with the existing hook and original binaries guarded
+by hashes, an isolated core and a separately migrated, hash-qualified FF6 state.
+It preserves every original private file and arms after verification.
 
 Before any deployment, retain a complete card backup, original init and original/private game progress. Preserve the supplied device's own backups rather than restoring another owner's files. These userspace tests have not changed internal flash/kernel.
 

@@ -68,7 +68,7 @@ Stock `sound_driver_playframe` has **void** return type in DWARF. A tailcalled w
 
 FF6 map scenes clicked even with the same music that was clean in the party menu. Speakers/headphones/ground-loop-isolator tests did not identify an analog-only issue. ROM/APU comparisons and write audits did not establish corruption or simple lost partial writes as the cause.
 
-v9 normal core calls averaged 19.958 ms wall time versus 6.752 ms with internal rendering disabled. The native frame budget is about 16.688 ms. These are callback/preemption-inclusive wall measurements, not isolated PPU CPU attribution. v10's mixed listening test held about 5.012% of drawings and sounded clean; that percentage is not a 5% CPU deficit. Expensive scenes are disproportionate. v11/MVP retain adaptive internal drawing suppression while keeping emulation/audio running.
+v9 normal core calls averaged 19.958 ms wall time versus 6.752 ms with internal rendering disabled. The native frame budget is about 16.688 ms. These are callback/preemption-inclusive wall measurements, not isolated PPU CPU attribution. v10's mixed listening test held about 5.012% of drawings and sounded clean; that percentage is not a 5% CPU deficit. Expensive scenes are disproportionate. v11/MVP through1.5 retain adaptive internal drawing suppression while keeping emulation/audio running.
 
 The MVP 1.4 returned session ran 2,465 steps with 749 held drawings, 1,716 video submissions, two pauses and no write errors. It demonstrates function; it is not a controlled speed comparison.
 
@@ -88,6 +88,15 @@ tile/color implementation is predominantly scalar even though compiler flags
 permit NEON; some DSP paths already contain compiler-generated SIMD. A tailored
 renderer and corrected host ownership are proposed in the
 [full-speed plan](full-speed-snes-plan.md), with exact output retained.
+
+[MVP1.6](snes-mvp-1.6.md) implements A7 ordinary2/4bpp tile/color kernels,
+audio-first independent delivery, three-source ordered display queuing and
+full rendering without adaptive holds. Local exact pixel/native-PCM comparisons
+pass1200 frames, including the latest private snapshot; independent scalar color
+checks and actual FIFO/transport seams pass. It is installed/armed with stock,
+hook and original progress preserved. Physical speed/sound results are pending.
+Mode7/clipped/backdrop paths, persistent scaler and audio-cursor timing remain
+unchanged/unqualified as documented; no speedup is inferred from QEMU.
 
 ## UART investigation and its negative result
 

@@ -1,5 +1,6 @@
 /* Local ARM/QEMU contract checks; no hardware evidence. */
 #include "runner.c"
+#include "audio-pipe.c"
 #include <assert.h>
 
 static uLong sink_crc;
@@ -15,6 +16,10 @@ const char *board_last_error(void) { return "fixture"; }
 int board_video_submit(const void *p,unsigned w,unsigned h,size_t pitch)
 { (void)p; (void)w; (void)h; (void)pitch; return 0; }
 void board_wait_display(void) {}
+int board_video_reserve(void) { return 0; }
+void board_video_cancel(void) {}
+void board_video_metrics(struct board_video_metrics *out,int reset)
+{ (void)reset; if(out) memset(out,0,sizeof(*out)); }
 #ifndef RUNNER_CHECK_CUSTOM_POLL
 uint32_t board_poll_input(void) { return 0; }
 #endif
@@ -29,13 +34,20 @@ ssize_t board_audio_write(const int16_t *p,size_t frames)
 }
 int board_audio_queued_frames(void) { return 0; }
 int board_audio_reset(void) { return 0; }
+int board_audio_wait(unsigned ms) { (void)ms; return 1; }
 void board_audio_close(void) {}
 uint64_t board_now_ns(void)
 {
     struct timespec t; clock_gettime(CLOCK_MONOTONIC,&t);
     return (uint64_t)t.tv_sec*1000000000u+t.tv_nsec;
 }
-void board_sleep_until(uint64_t ns) { (void)ns; }
+void board_sleep_until(uint64_t ns)
+{
+    uint64_t now=board_now_ns(); struct timespec t;
+    if(now>=ns) return;
+    t.tv_sec=(ns-now)/1000000000u; t.tv_nsec=(ns-now)%1000000000u;
+    (void)nanosleep(&t,NULL);
+}
 static size_t fake_state_size(void) { return sizeof(machine); }
 static bool fake_serialize(void *p,size_t n)
 { if(n!=sizeof(machine)) return false; memcpy(p,machine,n); return true; }
@@ -55,16 +67,15 @@ static void transport_test(int mode,uLong *crc,uint64_t *frames)
 {
     int16_t samples[535*2]; unsigned i,j;
     memset(&s,0,sizeof(s)); s.audio_ready=true; s.input_rate=32040;
+    audio_pipe_init(); assert(!audio_pipe_start());
     fragmented=mode; sink_calls=0; sink_frames=0; sink_crc=crc32(0,NULL,0);
     for(i=0;i<80;i++) {
-        unsigned waits=0;
-        while(s.ring_count>RING_FRAMES-2048&&waits++<10000) pump_audio();
-        assert(s.ring_count<=RING_FRAMES-2048);
+        assert(!audio_pipe_space(2048));
         for(j=0;j<ARRAY_SIZE(samples);j++) samples[j]=(int16_t)((i*37+j*97)%65536-32768);
         assert(audio_batch(samples,535)==535);
         pump_audio(); assert(!s.failed);
     }
-    for(i=0;s.ring_count&&i<10000;i++) pump_audio();
+    audio_pipe_stop(1);pump_audio();
     assert(!s.ring_count&&!s.failed);
     assert(s.enqueued==s.accepted&&s.accepted==sink_frames);
     if(mode) assert(s.partial_writes&&s.again);
@@ -82,6 +93,7 @@ int main(int argc,char **argv)
         uint8_t silence[2048*4]={0}; unsigned phase=s.phase;
         uLong expected_crc=crc32(sink_crc,silence,sizeof(silence));
         fragmented=0; assert(prime_audio());
+        audio_pipe_stop(1);pump_audio();
         assert(s.primed==2048&&s.phase==phase&&s.enqueued==baseline_frames);
         assert(s.accepted==baseline_frames+2048&&sink_crc==expected_crc);
     }

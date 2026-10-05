@@ -8,6 +8,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 - **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
+- **MVP1.6 installed for testing:** A7 NEON tile/color kernels, audio-first independent PCM service, ordered display queuing and zero adaptive holds. Equivalence/ownership checks pass; physical full-speed result is pending. [Details and test](docs/snes-mvp-1.6.md).
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
 
@@ -21,6 +22,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
+| Implemented A7 full-render build and next test | [MVP1.6](docs/snes-mvp-1.6.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |
 | Evidence preservation and future changes | [Maintenance](docs/maintenance.md) |
 
@@ -36,7 +38,7 @@ Rendered UI preview; this is not a handheld photograph.
 - `build/`: current and historical adapter/probe source, analyzers, builders and guarded installers. Historical installers are not generic deployment tools.
 - `evidence/`: selected returned logs, analysis, recovered ABI data and verification, with a provenance/hash manifest.
 - `docs/reference/`: dated deeper hardware/runtime/core reviews. These are proposals or historical reviews where marked; current corrections in the guides take precedence.
-- `releases/snes-mvp-1.5/`: our ARM executable, wrapper and verification. Games, private saves, vendor driver/core/runtime libraries and full firmware backups are not included.
+- `releases/`: owned versioned ARM executables, wrappers and verification. Games, private saves, vendor driver/core/runtime libraries and full firmware backups are not included.
 
 Only one hardware unit has been tested. Confirm the identity and software hashes of another unit before applying recovered private ABIs. A filename or identical product label does not establish matching firmware.
 

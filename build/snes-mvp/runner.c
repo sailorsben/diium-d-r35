@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 #include "runner.h"
 #include "board.h"
+#include "audio-pipe.h"
 #include <libretro.h>
 #include <dlfcn.h>
 #include <errno.h>
@@ -15,6 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/syscall.h>
 #include <time.h>
 #include <unistd.h>
 #include <zlib.h>
@@ -27,15 +29,13 @@
 #define STATE_HEADER 40u
 #define ARRAY_SIZE(a) (sizeof(a)/sizeof((a)[0]))
 
-/* This first runner deliberately preserves the proven conversion and adaptive
- * draw policy. Native-FPS monotonic pacing is the bring-up control, not the
- * unqualified final audio-clock controller. All metrics stay in RAM until exit. */
+/* Every native frame is rendered. One kernel-monotonic production clock;
+ * independent PCM service and bounded device queues absorb brief jitter. */
 static char error_text[256], status_text[256], initial_sram[1024];
 static runner_menu_callback menu_cb;
 static void *menu_userdata;
 static volatile sig_atomic_t stop_requested;
 static struct retro_system_av_info native_av;
-#include "../render_budget_production.h"
 
 #define CORE_FUNCTIONS(X) \
  X(void,retro_set_environment,(retro_environment_t)) \
@@ -64,9 +64,9 @@ static struct {
     void *core;
     bool initialized, loaded, failed, audio_open, audio_ready, pixel_format, state_unsafe;
     uint32_t buttons, rom_crc, core_crc, rom_bytes, core_bytes;
-    unsigned input_rate, phase, output_count, ring_read, ring_count;
+    unsigned input_rate, phase, output_count, ring_count;
     bool have_previous, av_changed;
-    int16_t previous[2], output[2048*2], ring[RING_FRAMES*2];
+    int16_t previous[2], output[2048*2];
     char save_dir[1024], sram_path[1200], state_path[1200], report_path[1200];
     uint64_t runs, held, videos, video_dupes, generated, enqueued, accepted, primed;
     uint64_t write_calls, partial_writes, again, write_errors, pauses;
@@ -74,6 +74,8 @@ static struct {
     uint64_t start_ns, last_queue_sample;
     uint32_t run_hist[128], ring_high;
     int queue_min, queue_max;
+    uint64_t audio_cleared, audio_remaining, audio_worker_cpu_ns, audio_max_gap_ns;
+    uint64_t device_cleared_estimate, pacing_wait_ns, active_ns, late_calls, max_lateness_ns;
 } s;
 
 static void fail(const char *fmt, ...)
@@ -224,55 +226,42 @@ static void *unzip(const uint8_t *zip,size_t bytes,size_t *rom_bytes)
 
 static void audio_reset(void)
 {
-    s.phase=s.output_count=s.ring_read=s.ring_count=0; s.have_previous=false;
+    audio_pipe_clear();
+    s.phase=s.output_count=s.ring_count=0; s.have_previous=false;
 }
 static void pump_audio(void)
 {
-    unsigned attempts=0;
-    while(s.ring_count&&!s.failed&&attempts++<16) {
-        size_t count=RING_FRAMES-s.ring_read;
-        ssize_t n;
-        if(count>s.ring_count) count=s.ring_count;
-        ++s.write_calls; n=board_audio_write(s.ring+s.ring_read*2,count);
-        if(n<0) {
-            if(errno==EINTR) continue;
-            if(errno==EAGAIN||errno==EWOULDBLOCK) { ++s.again; break; }
-            ++s.write_errors; fail("Audio output failed: %s",board_last_error()); break;
-        }
-        if(n==0) { ++s.again; break; }
-        if((size_t)n>count) { fail("Audio backend returned an invalid frame count"); break; }
-        if((size_t)n<count) ++s.partial_writes;
-        s.accepted+=(uint64_t)n;
-        s.ring_read=(s.ring_read+(unsigned)n)%RING_FRAMES; s.ring_count-=(unsigned)n;
-    }
+    struct audio_pipe_stats stats;
+    audio_pipe_stats(&stats);
+    s.accepted=stats.accepted; s.write_calls=stats.writes; s.partial_writes=stats.partial;
+    s.again=stats.again; s.write_errors=stats.errors; s.ring_high=stats.high;
+    s.ring_count=stats.remaining; s.audio_remaining=stats.remaining;
+    s.audio_cleared=stats.cleared; s.audio_worker_cpu_ns=stats.worker_cpu_ns;
+    s.audio_max_gap_ns=stats.max_write_gap_ns;
+    if(stats.error) fail("Audio service failed: %s",strerror(stats.error));
 }
 static bool prime_audio(void)
 {
     /* A bounded startup/resume cushion for one expensive first frame. This is
      * 46.44 ms of logical silence at44100Hz, not a measured DAC latency claim.
      * It is independent of the resampler's phase/numerical output. */
-    if(s.ring_count||s.output_count) { fail("Audio priming requires an empty queue"); return false; }
-    memset(s.ring,0,2048u*2u*sizeof(s.ring[0]));
-    s.ring_read=0; s.ring_count=2048; s.primed+=2048;
-    if(s.ring_high<s.ring_count) s.ring_high=s.ring_count;
+    static const int16_t silence[2048*2]={0};
+    if(s.output_count) { fail("Audio priming requires an empty queue"); return false; }
+    if(audio_pipe_start()<0 || audio_pipe_push(silence,2048)<0) {
+        fail("Audio service startup failed: %s",strerror(errno)); return false;
+    }
+    s.primed+=2048;
     pump_audio(); return !s.failed;
 }
 static bool audio_flush(void)
 {
-    unsigned i;
     if(!s.output_count) return !s.failed;
-    pump_audio();
-    if(s.output_count>RING_FRAMES-s.ring_count) {
+    if(audio_pipe_push(s.output,s.output_count)<0) {
         fail("Audio queue overflow; playback stopped without silently discarding PCM");
         s.output_count=0; return false;
     }
-    for(i=0;i<s.output_count;i++) {
-        unsigned slot=(s.ring_read+s.ring_count+i)%RING_FRAMES;
-        s.ring[slot*2]=s.output[i*2]; s.ring[slot*2+1]=s.output[i*2+1];
-    }
-    s.ring_count+=s.output_count; s.enqueued+=s.output_count;
-    if(s.ring_high<s.ring_count) s.ring_high=s.ring_count;
-    s.output_count=0; pump_audio(); return !s.failed;
+    s.enqueued+=s.output_count;
+    s.output_count=0; return !s.failed;
 }
 static size_t audio_batch(const int16_t *data,size_t frames)
 {
@@ -304,7 +293,7 @@ static void video(const void *data,unsigned w,unsigned h,size_t pitch)
 {
     uint64_t began,end;
     if(s.failed) return;
-    if(!data) { ++s.video_dupes; return; }
+    if(!data) { ++s.video_dupes; board_video_cancel(); fail("Core omitted a drawing in full-render mode"); return; }
     if(!w||!h||w>512||h>512||pitch<(size_t)w*2) {
         fail("Unsupported SNES video geometry %ux%u",w,h); return;
     }
@@ -314,7 +303,7 @@ static void video(const void *data,unsigned w,unsigned h,size_t pitch)
     end=board_now_ns()-began; s.video_ns+=end;
     if(s.max_video_ns<end) s.max_video_ns=end;
 }
-static void input_poll(void) { s.buttons=board_poll_input(); }
+static void input_poll(void) { /* Runner already captured one fresh GPIO snapshot. */ }
 static int16_t input_state(unsigned port,unsigned device,unsigned index,unsigned id)
 {
     (void)index;
@@ -357,7 +346,7 @@ static bool environment(unsigned cmd,void *data)
         if(!data) return false;
         *(bool *)data=false; return true;
     case RETRO_ENVIRONMENT_GET_AUDIO_VIDEO_ENABLE:
-        if(data) *(int *)data=rt9_mode?2:3;
+        if(data) *(int *)data=3;
         return true;
     case RETRO_ENVIRONMENT_GET_SYSTEM_DIRECTORY:
     case RETRO_ENVIRONMENT_GET_SAVE_DIRECTORY:
@@ -443,7 +432,7 @@ static bool load_state(void)
     }
     free(backup);
     free(p); status(ok?"Snapshot loaded":"Snapshot missing, damaged or from a different core/ROM");
-    if(ok) { audio_reset(); rt9_reset(); }
+    if(ok) audio_reset();
     return ok;
 }
 
@@ -451,8 +440,9 @@ static bool pause_menu(void)
 {
     int action;
     ++s.pauses; board_wait_display();
-    if(board_audio_reset()<0) { fail("Could not pause audio: %s",board_last_error()); return false; }
     audio_reset();
+    { int queued=board_audio_queued_frames(); if(queued>0) s.device_cleared_estimate+=(unsigned)queued; }
+    if(board_audio_reset()<0) { fail("Could not pause audio: %s",board_last_error()); return false; }
     if(!save_sram()) { /* Show the error; don't claim the save succeeded. */ }
     else status("Paused");
     if(!menu_cb) return false;
@@ -460,25 +450,27 @@ static bool pause_menu(void)
         action=menu_cb(menu_userdata,status_text);
         if(action==RUNNER_SAVE_STATE) (void)save_state();
         else if(action==RUNNER_LOAD_STATE) (void)load_state();
-        else if(action==RUNNER_RESET) { p_retro_reset(); audio_reset(); rt9_reset(); status("Game reset"); }
+        else if(action==RUNNER_RESET) { p_retro_reset(); audio_reset(); status("Game reset"); }
     } while(action!=RUNNER_RESUME&&action!=RUNNER_EXIT&&!stop_requested&&!s.failed);
     if(action==RUNNER_EXIT||stop_requested||s.failed) return false;
-    audio_reset(); rt9_reset();
+    audio_reset();
     return prime_audio();
 }
 
 static uint64_t thread_cpu_ns(void)
 {
     struct timespec t;
-    if(clock_gettime(CLOCK_THREAD_CPUTIME_ID,&t)) return 0;
+    if(syscall(SYS_clock_gettime,CLOCK_THREAD_CPUTIME_ID,&t)) return 0;
     return (uint64_t)t.tv_sec*1000000000u+(uint64_t)t.tv_nsec;
 }
 static void report(void)
 {
-    char text[4096]; int n; unsigned i;
+    char text[6144]; int n; unsigned i;
+    struct board_video_metrics display;
+    board_video_metrics(&display,0);
     n=snprintf(text,sizeof(text),
       "D35 SNES MVP\nrom_crc32=%08x\nrom_bytes=%u\ncore_crc32=%08x\ncore_bytes=%u\n"
-      "fps=%.9f\nnative_rate=%u\nsink_rate=%u\npacing=native_fps_monotonic_control\n"
+      "fps=%.9f\nnative_rate=%u\nsink_rate=%u\npacing=kernel_monotonic_full_render\n"
       "mock_backend=%d\nruns=%llu\nheld=%llu\nvideo_submitted=%llu\nvideo_dupes=%llu\n"
       "native_audio_frames=%llu\nresampled_enqueued_frames=%llu\noutput_accepted_frames_including_priming=%llu\n"
       "priming_silence_frames=%llu\n"
@@ -497,6 +489,23 @@ static void report(void)
       (unsigned long long)s.audio_ns,(unsigned long long)s.max_run_ns,(unsigned long long)s.max_video_ns,
       (unsigned long long)s.pauses,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
+    n+=snprintf(text+n,sizeof(text)-(size_t)n,
+      "audio_cleared_frames=%llu\naudio_remaining_frames=%llu\naudio_worker_cpu_ns=%llu\n"
+      "audio_max_write_gap_ns=%llu\ndevice_cleared_frames_estimate=%llu\n"
+      "display_scaled=%llu\ndisplay_flipped=%llu\ndisplay_queue_high=%u\n"
+      "display_reserve_wait_ns=%llu\ndisplay_copy_ns=%llu\nscaler_wall_ns=%llu\nflip_wall_ns=%llu\n"
+      "display_worker_cpu_ns=%llu\nmax_scaler_ns=%llu\nmax_flip_ns=%llu\n"
+      "active_wall_ns=%llu\npacing_wait_ns=%llu\nlate_calls=%llu\nmax_lateness_ns=%llu\n",
+      (unsigned long long)s.audio_cleared,(unsigned long long)s.audio_remaining,
+      (unsigned long long)s.audio_worker_cpu_ns,(unsigned long long)s.audio_max_gap_ns,
+      (unsigned long long)s.device_cleared_estimate,
+      (unsigned long long)display.scaled,(unsigned long long)display.flipped,display.queue_high,
+      (unsigned long long)display.reserve_wait_ns,(unsigned long long)display.copy_ns,
+      (unsigned long long)display.scale_ns,(unsigned long long)display.flip_ns,
+      (unsigned long long)display.worker_cpu_ns,(unsigned long long)display.max_scale_ns,
+      (unsigned long long)display.max_flip_ns,(unsigned long long)s.active_ns,
+      (unsigned long long)s.pacing_wait_ns,(unsigned long long)s.late_calls,
+      (unsigned long long)s.max_lateness_ns);
     for(i=0;i<ARRAY_SIZE(s.run_hist);i++) if(s.run_hist[i]) {
         int add=snprintf(text+n,sizeof(text)-(size_t)n,"core_wall_bin_%ums=%u\n",i,s.run_hist[i]);
         if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
@@ -513,6 +522,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     uint32_t old_buttons=0; bool no_pacing=false,save_ready=false;
     const char *value; int actual_rate;
     memset(&s,0,sizeof(s)); memset(&native_av,0,sizeof(native_av));
+    audio_pipe_init(); board_video_metrics(NULL,1);
     error_text[0]=status_text[0]=0; stop_requested=0; s.queue_min=-1;s.queue_max=-1;
     if(!rom_path||!core_path||!save_dir||strlen(save_dir)>=sizeof(s.save_dir)) {
         fail("Invalid game/core/save path"); goto done;
@@ -564,7 +574,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     if(actual_rate<0) { fail("Audio open failed: %s",board_last_error()); goto done; }
     s.audio_open=true;
     if(actual_rate!=(int)OUT_RATE) { fail("Audio negotiated %d Hz; baseline requires44100",actual_rate); goto done; }
-    s.audio_ready=true; audio_reset(); rt9_reset();
+    s.audio_ready=true; audio_reset();
     if(!prime_audio()) goto done;
     if(board_is_null()) {
         value=getenv("D35_MVP_FRAMES");
@@ -577,7 +587,8 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     fraction=1000000000.0/native_av.timing.fps; period=(uint64_t)fraction; fraction-=period;
     deadline=board_now_ns(); s.start_ns=deadline;
     while(!s.failed&&!stop_requested&&(!limit||s.runs<limit)) {
-        uint64_t began,elapsed,cpu_start,cpu_end; unsigned bin; uint32_t buttons=board_poll_input();
+        uint64_t began,elapsed,cpu_start,cpu_end,step_start=board_now_ns();
+        unsigned bin; uint32_t buttons=board_poll_input();
         if((buttons&BOARD_MENU)&&!(old_buttons&BOARD_MENU)) {
             if(!pause_menu()) break;
             deadline=board_now_ns(); remainder=0; old_buttons=board_poll_input(); continue;
@@ -586,23 +597,38 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         pump_audio();
         /* Reserve at least2048 output frames before entering the core. Never
          * let a full sink silently discard a callback the core won't replay. */
-        if(s.ring_count>RING_FRAMES-2048) {
-            uint64_t stalled=board_now_ns();
-            while(s.ring_count>RING_FRAMES-2048&&!s.failed&&!stop_requested) {
-                pump_audio(); board_sleep_until(board_now_ns()+1000000u);
-                if(board_now_ns()-stalled>500000000u) fail("Audio sink stalled for500ms");
+        if(audio_pipe_space(2048)<0) fail("Audio sink stalled: %s",strerror(errno));
+        if(!no_pacing) {
+            uint64_t waiting=board_now_ns();
+            unsigned next=(unsigned)ceil(OUT_RATE/native_av.timing.fps);
+            for(;;) {
+                int queued=board_audio_queued_frames();
+                pump_audio();
+                if(s.failed || stop_requested || queued<0 ||
+                   s.ring_count+(unsigned)queued+next<=OUT_RATE*70u/1000u) break;
+                if(board_now_ns()-waiting>500000000u) { fail("Audio queue lead did not drain"); break; }
+                board_sleep_until(board_now_ns()+1000000u);
             }
         }
         if(s.failed||stop_requested) break;
-        if(!no_pacing) board_sleep_until(deadline);
-        rt9_mode=rt9_select_mode(); if(rt9_mode) ++s.held;
+        if(!no_pacing) {
+            uint64_t before=board_now_ns(); board_sleep_until(deadline);
+            s.pacing_wait_ns+=board_now_ns()-before;
+        }
+        if(board_video_reserve()<0) { fail("Display queue stalled: %s",board_last_error()); break; }
+        if(board_now_ns()>deadline+period) {
+            uint64_t late=board_now_ns()-deadline; ++s.late_calls;
+            if(late>s.max_lateness_ns) s.max_lateness_ns=late;
+        }
         cpu_start=thread_cpu_ns(); began=board_now_ns();
         p_retro_run();
+        board_video_cancel();
         elapsed=board_now_ns()-began; cpu_end=thread_cpu_ns(); ++s.runs;
         s.wall_ns+=elapsed; if(cpu_end>=cpu_start) s.cpu_ns+=cpu_end-cpu_start;
         if(s.max_run_ns<elapsed) s.max_run_ns=elapsed;
         bin=(unsigned)(elapsed/1000000u); if(bin>=ARRAY_SIZE(s.run_hist)) bin=ARRAY_SIZE(s.run_hist)-1;
-        ++s.run_hist[bin]; rb10_observe(rt9_mode,elapsed/1000u); pump_audio();
+        ++s.run_hist[bin]; pump_audio();
+        s.active_ns+=board_now_ns()-step_start;
         if(!(s.runs%60)) {
             int q=board_audio_queued_frames();
             if(q>=0) { if(s.queue_min<0||q<s.queue_min) s.queue_min=q; if(q>s.queue_max) s.queue_max=q; }
@@ -614,7 +640,16 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         if(board_now_ns()>deadline+250000000u) deadline=board_now_ns();
     }
 done:
-    if(s.audio_open) { (void)board_audio_reset(); board_audio_close(); s.audio_ready=false; }
+    audio_pipe_stop(!s.failed); pump_audio();
+    if(s.audio_open) {
+        uint64_t until=board_now_ns()+150000000u;
+        int queued;
+        while((queued=board_audio_queued_frames())>0 && board_now_ns()<until)
+            board_sleep_until(board_now_ns()+1000000u);
+        if(queued>0) s.device_cleared_estimate+=(unsigned)queued;
+        (void)board_audio_reset(); board_audio_close(); s.audio_ready=false;
+    }
+    board_video_cancel();
     board_wait_display();
     if(s.loaded&&save_ready&&!s.state_unsafe) {
         bool stored=save_sram();
