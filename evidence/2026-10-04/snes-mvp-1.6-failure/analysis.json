@@ -1,0 +1,103 @@
+{
+  "version": "1.6",
+  "physical_result": "FAILED: severe lag/choppy sound, then whole-device power-off",
+  "user_observation": "Sound was VERY choppy, movement was slow, graphics were actually great, then the whole device shut off.",
+  "archive": "snes-mvp-return-20261005T005751Z",
+  "copied_and_hash_verified_files": 33,
+  "card_writes": 0,
+  "armed_present": false,
+  "returned_build_hashes_match_install": true,
+  "binary_sha256": "330cf1a544b6a2b499f96ec6c0c01afbb229ea9ef80003e9857f7776d39ef278",
+  "core_sha256": "2e88db49c18c9aa2c96f6806882e78acf9feb3da5e235109f13d1699a8e12766",
+  "wrapper_sha256": "46ca120709e30935716a2e892eff922430bfc28189f8c75c07191fdb0d31a707",
+  "stock_hashes_match_prior_collection": true,
+  "original_progress_files_unchanged": 18,
+  "splash_completed": true,
+  "ready_kernel_uptime_seconds": 8.459,
+  "game_launch_kernel_uptime_seconds": 9.592,
+  "child_exit_record_survived": false,
+  "stderr_bytes": 0,
+  "fresh_session_report": false,
+  "retained_report_byte_identical_to_1_5": true,
+  "retained_report_core_crc32": "5ba71d2a",
+  "actual_core_crc32": "90fbcc4e",
+  "early_runtime_samples": [
+    {
+      "kernel_uptime_seconds": 11.29,
+      "VmRSS_kib": 11988,
+      "VmHWM_kib": 14520,
+      "VmSwap_kib": 0,
+      "threads": [
+        {
+          "tid": 493,
+          "state": "R (running)",
+          "sampled_wait": "running"
+        },
+        {
+          "tid": 495,
+          "state": "S (sleeping)",
+          "sampled_wait": "futex_wait_queue_me"
+        },
+        {
+          "tid": 498,
+          "state": "S (sleeping)",
+          "sampled_wait": "futex_wait_queue_me"
+        }
+      ]
+    },
+    {
+      "kernel_uptime_seconds": 17.43,
+      "VmRSS_kib": 12160,
+      "VmHWM_kib": 14520,
+      "VmSwap_kib": 0,
+      "threads": [
+        {
+          "tid": 493,
+          "state": "R (running)",
+          "sampled_wait": "running"
+        },
+        {
+          "tid": 495,
+          "state": "S (sleeping)",
+          "sampled_wait": "disp1_wait_frame_end"
+        },
+        {
+          "tid": 498,
+          "state": "S (sleeping)",
+          "sampled_wait": "futex_wait_queue_me"
+        }
+      ]
+    },
+    {
+      "kernel_uptime_seconds": 29.55,
+      "VmRSS_kib": 12492,
+      "VmHWM_kib": 14520,
+      "VmSwap_kib": 0,
+      "threads": [
+        {
+          "tid": 493,
+          "state": "R (running)",
+          "sampled_wait": "running"
+        },
+        {
+          "tid": 495,
+          "state": "S (sleeping)",
+          "sampled_wait": "disp1_wait_frame_end"
+        },
+        {
+          "tid": 517,
+          "state": "S (sleeping)",
+          "sampled_wait": "futex_wait_queue_me"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No fresh core/worker/queue totals survived; do not use 1.5 counts for this run.",
+    "Early process snapshots are not sustained CPU, queue or memory measurements.",
+    "No retained final kernel log or power-helper output identifies the shutdown cause.",
+    "Output equivalence does not establish faster execution on this Cortex-A7.",
+    "Core, workers and full-render policy changed together; causal isolation remains outstanding."
+  ],
+  "next_step": "Keep unarmed; add durable session identity and bounded diagnostic telemetry; compare original/A7 execution on-device before another gameplay performance claim."
+}

@@ -5,9 +5,10 @@ import argparse
 import json
 import math
 import re
+import zlib
 
 
-def analyze(path):
+def analyze(path, core_path=None):
     raw = path.read_bytes()
     fields = {}
     bins = {}
@@ -20,6 +21,12 @@ def analyze(path):
             bins[int(match[1])] = int(value)
         else:
             fields[key] = value
+    if core_path is not None:
+        core = core_path.read_bytes()
+        if (fields.get('core_crc32') != f'{zlib.crc32(core) & 0xffffffff:08x}'
+                or fields.get('core_bytes') != str(len(core))):
+            raise ValueError('Session report does not match the supplied core; '
+                             'preserve it as historical evidence, not this run')
     integer = lambda key: int(fields[key])
     runs = integer('runs')
     assert runs > 0 and sum(bins.values()) == runs, 'Incomplete histogram'
@@ -89,8 +96,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('report', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--core', type=Path,
+                        help='Actual returned core; reject stale session reports')
     args = parser.parse_args()
-    result = analyze(args.report)
+    try:
+        result = analyze(args.report, args.core)
+    except ValueError as error:
+        parser.error(str(error))
     args.output.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({key: result[key] for key in (
         'histogram_count', 'held_percent', 'mean_core_wall_ms_including_callbacks',

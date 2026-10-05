@@ -8,7 +8,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 - **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
-- **MVP1.6 installed for testing:** A7 NEON tile/color kernels, audio-first independent PCM service, ordered display queuing and zero adaptive holds. Equivalence/ownership checks pass; physical full-speed result is pending. [Details and test](docs/snes-mvp-1.6.md).
+- **MVP1.6 failed its physical run:** very choppy sound, slow movement, clean-looking graphics, then the whole device powered off. The returned build hashes match; originals are intact and the one-shot is consumed. No fresh session totals survived. Do not re-arm this release unchanged. [Failure review](docs/snes-mvp-1.6-failure.md).
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
 

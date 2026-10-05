@@ -744,6 +744,38 @@
       "published_sha256": "987bc80ea2bf903deb5658c26c89df7f4f8584930d01c699acdd7f780b97a11d",
       "bytes": 224,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T005751Z/analysis.json",
+      "published": "evidence/2026-10-04/snes-mvp-1.6-failure/analysis.json",
+      "source_sha256": "9c2b825f0c17fcfe1ef491a12b0f570de02410bcec54e7898afa76de76de65e6",
+      "published_sha256": "5b6a612d8b70caf28fb2908717757f7672f6eab3afddacb4acecf306586b4b24",
+      "bytes": 3333,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T005751Z/snes-mvp/startup.log",
+      "published": "evidence/2026-10-04/snes-mvp-1.6-failure/startup.log",
+      "source_sha256": "ddeef146c86fea3c8bf1ca7728a1541b4dcf6f061e40751b27862412b9289f71",
+      "published_sha256": "ddeef146c86fea3c8bf1ca7728a1541b4dcf6f061e40751b27862412b9289f71",
+      "bytes": 3580,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T005751Z/snes-mvp/runtime-platform.txt",
+      "published": "evidence/2026-10-04/snes-mvp-1.6-failure/runtime-platform.txt",
+      "source_sha256": "05434df1bf4a4f69e7eef4efc5d3c3e0173518437eb5534ce9641010740faf15",
+      "published_sha256": "05434df1bf4a4f69e7eef4efc5d3c3e0173518437eb5534ce9641010740faf15",
+      "bytes": 17337,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T005751Z/snes-mvp/last-run.log",
+      "published": "evidence/2026-10-04/snes-mvp-1.6-failure/last-run.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "normalized": false
     }
   ]
 }

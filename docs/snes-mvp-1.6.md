@@ -1,8 +1,11 @@
 # SNES MVP1.6: full rendering on Cortex-A7
 
 Implemented and installed as a one-shot on the tested card, 2026-10-04 local.
-**Physical performance is pending.** This changes real rendering and host
-ownership; it does not establish 60 FPS from QEMU timing.
+**Physical run failed:** very choppy sound, slow movement, clean-looking graphics,
+then whole-device power-off. The returned one-shot is consumed. Do not re-arm
+this build unchanged; read the [failure review](snes-mvp-1.6-failure.md).
+The checks below establish bounded equivalence and ownership, not device speed
+or whole-device stability.
 
 ## What changed
 
@@ -62,7 +65,7 @@ tail mechanism. Device queue/reset-clear numbers are estimates, not XRUN counts.
 Maximum write gap excludes deliberate paused-worker intervals. Active wall time
 excludes pause UI; kernel/preemption and queue waits are included during play.
 
-## Isolated deployment and next test
+## Isolated deployment and the failed physical test
 
 The new core lives at `retro/snes-mvp/plus-a7.so`; stock libraries, init and all 18
 pre-existing private progress files were hash-verified unchanged. The latest FF6
@@ -75,12 +78,14 @@ Core SHA256: `2e88db49c18c9aa2c96f6806882e78acf9feb3da5e235109f13d1699a8e12766`;
 CRC32 `90fbcc4e`, 660,912 bytes. Wrapper SHA256:
 `46ca120709e30935716a2e892eff922430bfc28189f8c75c07191fdb0d31a707`.
 
-Play FF6: load the migrated snapshot, map→party menu→map and normal story/gameplay
-for about five minutes; Save/Load and Exit. Report lag, crackles, corruption or
-freeze. On return collect all progress first. Success needs native speed, zero
-omitted drawings, bounded FIFO/audio queues and uninterrupted physical sound.
-The current logs can distinguish core CPU, worker CPU and device waits; no
-fallback silently restores adaptive holding.
+The requested physical test was FF6 snapshot resume, map→party menu→map and
+normal play, followed by Save/Load and Exit. It failed before a final session
+report survived. That exposes a telemetry defect: the new phase totals were
+only persisted on normal session exit. The old report remained in place and
+cannot describe this run. The next diagnostic must preserve session identity,
+bounded progress/phase counters and kernel/helper state before shutdown, then
+isolate core and host changes. Native speed, zero omitted drawings and clean
+physical sound remain acceptance criteria; none was established by this run.
 
 ## Reproduce locally
 

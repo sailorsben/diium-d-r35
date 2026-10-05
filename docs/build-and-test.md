@@ -71,6 +71,11 @@ The checks exercise:
 
 ## Current release and deployment boundary
 
+**The 1.6 physical run failed and its returned one-shot is consumed. Do not
+re-arm it unchanged.** Read the [failure review](snes-mvp-1.6-failure.md).
+When analyzing a returned session, supply its actual core via
+`analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
+
 [MVP1.6](../releases/snes-mvp-1.6/) contains our executable and wrapper, without
 a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
 from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains

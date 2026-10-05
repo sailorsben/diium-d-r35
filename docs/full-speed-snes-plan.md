@@ -3,9 +3,10 @@
 Original proposal, 2026-10-04: no device run, executable replacement or re-arm
 was performed in that proposal turn.
 Subsequently authorized: [MVP1.6](snes-mvp-1.6.md) implements the first core and
-pipeline bundle and is installed/armed; the proposal below retains its original
+pipeline bundle and was installed/armed for its first physical test; the proposal below retains its original
 design targets. Physical performance and the conditional later backends remain
-pending.
+pending. Its first physical run subsequently failed; the current
+[failure review](snes-mvp-1.6-failure.md) supersedes any expectation of a speedup.
 Target the current FF6 workload first, preserving Plus/Blargg sound and complete
 rendering. Native NTSC cadence here is 59.922743404 emulated frames/s, with a
 16.6881545 ms period. “60 FPS” means that native speed, not a forced 60.000 clock.

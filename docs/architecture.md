@@ -2,7 +2,8 @@
 
 The implemented MVP is SNES-only. [MVP1.6](snes-mvp-1.6.md) implements full
 rendering with a tailored A7 core and corrected peripheral ownership; its
-physical performance is pending. The longer [platform review](reference/platform-redesign/proposal.txt) is a design proposal, not a completed multi-emulator product or a speed claim.
+physical run failed with severe lag/choppy sound and whole-device power-off;
+see the [failure review](snes-mvp-1.6-failure.md). The longer [platform review](reference/platform-redesign/proposal.txt) is a design proposal, not a completed multi-emulator product or a speed claim.
 
 ## Implemented owners
 
@@ -57,7 +58,8 @@ buffers after scaling, queues display jobs in order, and services PCM through
 an independent worker. Source reservation happens before the core runs. The
 [implementation record](snes-mvp-1.6.md) documents exactness and ownership checks;
 the [full-speed plan](full-speed-snes-plan.md) retains the proposed acceptance
-criteria and remaining backend work. Physical full-speed acceptance is pending.
+criteria and remaining backend work. Physical full-speed acceptance failed;
+the return lacks fresh phase totals, so no individual change is exonerated.
 
 Kernel-monotonic pacing and accurate Blargg behavior remain. A hardware audio
 cursor, audio-led production control, and persistent scaler ownership require

@@ -1,5 +1,24 @@
 # Changelog
 
+## MVP1.6 physical failure — 2026-10-04
+
+The user reports very choppy sound, slow movement, good-looking graphics and
+then whole-device power-off. Archive and hash-verify 33 returned files before
+mutation. Launcher/core/wrapper match the installed release; stock binaries and
+all 18 original progress files match the protected originals. The one-shot is
+consumed; this return performs no card writes or re-arm.
+
+Startup/splash/input and early runtime snapshots survive, but no child-exit
+record or fresh 1.6 session report does. The retained last-session file is
+byte-identical to 1.5 and must not be analyzed as this run. Early RSS is about
+12 MiB with zero reported process swap; these samples do not identify the
+shutdown mechanism or establish full-session memory/performance. Withdraw 1.6
+from unchanged retesting, record the failed expectation, and require durable
+session telemetry plus a controlled original/A7 hardware comparison before
+another performance claim. Add actual-core validation to the report analyzer;
+API/CLI checks preserve analysis for the original core and reject this stale
+report for A7 without writing output. See [failure review](docs/snes-mvp-1.6-failure.md).
+
 ## SNES MVP1.6 — 2026-10-04
 
 Implement A7 NEON 2/4bpp tile/color kernels and audio-first delivery in pinned

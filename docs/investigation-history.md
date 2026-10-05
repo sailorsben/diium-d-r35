@@ -36,6 +36,7 @@ The kcore recovery branch stopped at ENOENT. No MMIO/flash fallback occurred. Tr
 | 1.3 | No buttons; main thread in identical absolute sleep six seconds apart | A clock/timer seam stalled the UI. Heartbeat restoration was not shown to fix it. Native direction masks were also incorrectly relabeled |
 | 1.4 | Launcher worked, FF6 started, private state loaded; 2465 frames, two pauses, no write errors | Direct kernel clock/relative waits repair the input loop. Same probe showed kernel8.361s vs libc447.327s. Directions still incorrect |
 | 1.5 | All four directions confirmed; launcher/game/state work; 23,872 calls, 11.838% held drawings; occasional lag and rare random crackles in story/map | Stock-derived input repair is physically validated. Performance/audio are not fully qualified; mixed held-frame means cannot establish full-render throughput |
+| 1.6 | Very choppy sound, slow movement, clean-looking graphics, then whole-device power-off | Output equivalence did not prove faster A7 execution or physical stability. Startup worked; no fresh session report/exit record survived. Do not attribute stale 1.5 totals to this run or re-arm unchanged |
 
 The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
 
@@ -59,5 +60,7 @@ delivery and full rendering with one kernel-monotonic clock.8.4million color
 checks,280k rows,1200 real-core equivalence frames and migrated-state runner
 resume pass locally. Raw snapshots were found to embed host pointers; the state
 oracle normalizes only named pointer fields and compares resumed output too.
-The isolated core and separate qualified state copy are installed/armed for the
-next physical test. Speedups and sound continuity remain unmeasured on-device.
+The isolated core and separate qualified state copy were installed for the
+physical test, which failed. The return is archived and unarmed; stock and all
+original progress are intact. Read the [failure review](snes-mvp-1.6-failure.md)
+for the surviving evidence, telemetry gap and controlled qualification needed.

@@ -94,7 +94,12 @@ audio-first independent delivery, three-source ordered display queuing and
 full rendering without adaptive holds. Local exact pixel/native-PCM comparisons
 pass1200 frames, including the latest private snapshot; independent scalar color
 checks and actual FIFO/transport seams pass. It is installed/armed with stock,
-hook and original progress preserved. Physical speed/sound results are pending.
+hook and original progress preserved. Its physical run failed: very choppy
+sound, slow movement, clean-looking graphics and whole-device power-off. The
+returned one-shot is consumed; startup and early thread snapshots survive, but
+the final report is stale 1.5 data. Early process RSS is about 12 MiB with zero
+swap; neither OOM, watchdog expiry nor a particular shutdown cause is proven.
+See the [failure review](snes-mvp-1.6-failure.md). Do not re-arm it unchanged.
 Mode7/clipped/backdrop paths, persistent scaler and audio-cursor timing remain
 unchanged/unqualified as documented; no speedup is inferred from QEMU.
 
