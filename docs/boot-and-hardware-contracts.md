@@ -25,7 +25,7 @@ establishes that `sed` is absent. The prior claim that sed already worked was
 an unsupported assumption. Both releases have system CPU/memory/IRQ capture
 gaps despite passing host checks. Current source uses shell builtins for line
 limits and splash zombie parsing; test the actual wrapper with both utilities
-absent and verify CPU/memory contents. This repair is not installed. Do not
+absent and verify CPU/memory contents. This repair shipped in1.9. Do not
 assume host utilities exist on the firmware.
 The shipped 1.7 kernel/stderr tails are empty and its final wrapper exit line
 is missing, despite fresh final runner totals and completed display cleanup.
@@ -150,10 +150,23 @@ the usual mapped status/control pages; audio-data mapping is a separate contract
 One owner must account for its software queue and playable PCM
 without sampling them through separate producer/worker gates. Reserve sufficient
 playable sound for long core calls plus service margin.1.9 uses64ms explicit
-playable priming and one consumption admission policy; its source/ARM fixtures
-pass, while actual settings and clean-audio acceptance remain pending. Preserve
+playable priming and one consumption admission policy. Its return accepts
+44100Hz/128-period/3712-buffer and2823 priming frames, then EBADFD before any
+emulation. Those settings and one transfer are established; START, consumption
+and audible continuity are not. Preserve
 bounded flush/drain failure and visible XRUN instead of automatically dropping
 and restarting the stream. See [1.9](snes-mvp-1.9.md).
+
+WRITEI can start native playback when the priming threshold is reached. In1.10,
+observe state after priming writes, acknowledge RUNNING only after the target
+transfer, and issue START only from PREPARED with enough queued sound. Verify
+RUNNING afterward; EBADFD is acceptable only with a fresh RUNNING observation.
+Never infer state from transfer count alone. Preserve failure operation, errno,
+state and pointers before cleanup. The1.9 logs do not prove the exact vendor
+operation that failed. See [return](snes-mvp-1.9-return.md) and
+[repair](snes-mvp-1.10.md). Runtime errors now use first192-line shell-builtin
+capture; the compatible kernel-tail filename holds a labelled first128-line
+snapshot. Fixtures exercise capture with tail/head/sed absent.
 
 Vendor environment command37 (`SET_GEOMETRY`) writes a double 44100 at offset32 beyond a 20-byte geometry object. The adapter intercepts it; the direct MVP implements its own validated environment handling. Do not forward this callback blindly.
 

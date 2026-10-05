@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <pthread.h>
 #include <poll.h>
+#include <stdio.h>
 #include <string.h>
 #include <sys/eventfd.h>
 #include <sys/syscall.h>
@@ -47,6 +48,7 @@ static void error(int value)
 {
     if(!pipe_state.stats.error) {
         pipe_state.stats.error=value?value:EIO; ++pipe_state.stats.errors;
+        snprintf(pipe_state.stats.error_detail,sizeof(pipe_state.stats.error_detail),"%s",board_audio_error());
         if(value==EPIPE) ++pipe_state.stats.xruns;
     }
     pthread_cond_broadcast(&pipe_condition);
@@ -54,9 +56,13 @@ static void error(int value)
 static int observe(void)
 {
     struct board_audio_state *d=&pipe_state.device;
-    if(board_audio_observe(d)<0) { error(errno); return -1; }
+    int rc=board_audio_observe(d),saved=errno;
     pipe_state.stats.playable=d->queued; pipe_state.stats.state=d->state;
+    pipe_state.stats.avail=d->avail; pipe_state.stats.appl_ptr=d->appl_ptr; pipe_state.stats.hw_ptr=d->hw_ptr;
+    pipe_state.stats.start_threshold=d->start_threshold; pipe_state.stats.prime_transferred=d->prime_transferred;
+    pipe_state.stats.start_calls=d->start_calls; pipe_state.stats.start_races=d->start_races;
     pipe_state.stats.observed_ns=d->observed_ns;
+    if(rc<0) { error(saved); return -1; }
     if(d->started) {
         if(d->queued<pipe_state.stats.playable_min) pipe_state.stats.playable_min=d->queued;
         if(d->queued>pipe_state.stats.playable_max) pipe_state.stats.playable_max=d->queued;

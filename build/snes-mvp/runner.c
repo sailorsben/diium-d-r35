@@ -503,7 +503,7 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.pauses,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
-      "build_version=1.9\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "build_version=1.10\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
@@ -537,10 +537,16 @@ static void report_to(const char *path,const char *phase,int ram)
         n+=snprintf(text+n,sizeof(text)-(size_t)n,
           "audio_backend=%s\npcm_period_frames=%u\npcm_buffer_frames=%u\npcm_prime_frames=%u\n"
           "pcm_playable_frames=%u\npcm_state=%u\nxrun_count=%llu\npcm_observed_kernel_ns=%llu\n"
-          "pcm_event_wakes=%llu\npcm_fault_poll_timeouts=%llu\n",
+          "pcm_event_wakes=%llu\npcm_fault_poll_timeouts=%llu\n"
+          "pcm_playable_min_running_frames=%d\npcm_playable_max_running_frames=%u\n"
+          "pcm_avail_frames=%u\npcm_appl_ptr=%u\npcm_hw_ptr=%u\npcm_start_threshold=%u\n"
+          "pcm_prime_transferred_frames=%u\npcm_start_calls=%u\npcm_start_races=%u\npcm_error_detail=%s\n",
           board_is_null()?"mock":"native_alsa",pcm.period,pcm.buffer,pcm.prime,pcm.playable,pcm.state,
           (unsigned long long)pcm.xruns,(unsigned long long)pcm.observed_ns,
-          (unsigned long long)pcm.wakes,(unsigned long long)pcm.poll_timeouts);
+          (unsigned long long)pcm.wakes,(unsigned long long)pcm.poll_timeouts,
+          pcm.playable_min==UINT_MAX?-1:(int)pcm.playable_min,pcm.playable_max,
+          pcm.avail,pcm.appl_ptr,pcm.hw_ptr,pcm.start_threshold,pcm.prime_transferred,
+          pcm.start_calls,pcm.start_races,pcm.error_detail);
     }
     if(n<=0||(size_t)n>=sizeof(text)) return;
     for(i=0;i<ARRAY_SIZE(s.run_hist);i++) if(s.run_hist[i]) {

@@ -1,0 +1,1 @@
+PASS: actual audio owner preserves independent PCM under partial/EAGAIN writes; consumption admission tolerates 30ms bursts; playable priming/drain; event cancellation of blocked device; visible fatal XRUN; bounded false readiness, fixed admission deadline and bounded blocked flush without silent recovery

@@ -12,11 +12,11 @@ root=Path(sys.argv[1]).resolve()
 root.mkdir(parents=True,exist_ok=True)
 # Reproduce returned firmware: both head and sed are absent.
 tools=root/'minimal-tools'; tools.mkdir(exist_ok=True)
-for command in ('sh','mv','mkdir','sync','ps','cp','cat','sleep','tail','dmesg','rm'):
+for command in ('sh','mv','mkdir','sync','ps','cp','cat','sleep','dmesg','rm'):
     executable=shutil.which(command); assert executable,command
     target=tools/command
     if not target.exists():target.symlink_to(executable)
-for absent in ('head','sed'):
+for absent in ('head','sed','tail'):
     (tools/absent).unlink(missing_ok=True)
     assert not (tools/absent).exists()
 # Observe the real wrapper's sync calls without flushing the host filesystem.
@@ -122,6 +122,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'global_sync=0' in (base/'diagnostic-flush.log').read_text()
         print('PASS: diagnostic progress persisted before child exit; one platform capture and no gameplay global sync')
         print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head and sed')
+        print('PASS: runtime errors and kernel snapshot captured with tail absent')
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 
 run('early-error','printf "fixture early error\\n"; exit 7',7)

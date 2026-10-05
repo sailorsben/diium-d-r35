@@ -1,8 +1,8 @@
 # Build, test and recover
 
 The source is published; device libraries, factory binaries, ROMs and personal
-saves are supplied separately. The current1.9 installer requires the exact
-consumed Lab2/1.8 Windows D: card. Historical installers have different guarded
+saves are supplied separately. The current1.10 installer requires the exact
+consumed1.9 Windows D: card. Historical installers have different guarded
 baselines; none is a universal factory-card installer.
 
 ## Dependencies and pinned inputs
@@ -42,8 +42,9 @@ The real-core fixture uses a user-supplied FF3/VI ZIP at `build/ff3.zip`, whose 
 
 ## Build and checks
 
-The current1.9 workflow builds the A7 renderer/early PCM core and supplies
-owner-only output-equivalence inputs first; see [1.9](snes-mvp-1.9.md).
+The current1.10 workflow retains the exact1.9 A7 renderer/early PCM core and
+repairs native startup; see [1.10](snes-mvp-1.10.md). Supply owner-only
+output-equivalence inputs first. Do not migrate snapshots for this repair.
 The pinned original remains an exact-output oracle. Historical releases and
 evidence remain unchanged; no paired device performance experiment is required.
 
@@ -66,7 +67,9 @@ The checks exercise:
 - Exact Plus ZIP load, 180 unpaced frames and a bounded 30-frame paced run.
 - PCM accounting, partial/EAGAIN preservation and independent startup priming.
 - Independent ARM32 native PCM ioctl/provider contracts, constrained settings,
-  accepted START-failure accounting, asynchronous drain and visible XRUN.
+  write-driven and explicit startup, verified EBADFD/RUNNING races, rejected
+  early/nonrunning starts and parameter mismatch, accepted START-failure
+  accounting, asynchronous drain and visible XRUN.
 - Actual consumption owner under30ms bursts, partial writes, false readiness,
   event cancellation, fixed admission deadlines and bounded blocked flush.
 - SRAM/snapshot roundtrips, incompatible-state rejection and failed-load rollback.
@@ -84,17 +87,21 @@ The checks exercise:
 
 ## Current release and deployment boundary
 
-[MVP1.9](snes-mvp-1.9.md) replaces the OSS game path with the native PCM owner
-and consumption admission. The early-audio core retains exact1200-frame output;
-physical settings/sound/full-speed/stability remain pending. Run
-`package-snes-1.9.py --card D:/` only on its exact consumed Lab2/1.8 baseline.
-It archives every returned/private file before writes, updates four owned
-payloads, preserves original progress and creates a separate qualified snapshot
-before arming. `verify-snes-1.9-card.py --card D:/ --archive LOCAL_INSTALL_ARCHIVE`
-independently checks payload, all retained/archive files and the one-shot.
-`publish-snes-1.9.py` rejects stale source/check inputs and exports an immutable
-owned release plus selected evidence, without core/vendor/private dependencies.
-The1.9 physical test instructions supersede older test sequences.
+[MVP1.10](snes-mvp-1.10.md) repairs startup after the1.9 native PCM return.
+The exact1.9 core remains; native transfer settings are established, but playback,
+full-speed sound and stability are pending. Run
+`package-snes-1.10.py --card D:/` only on its exact consumed1.9 baseline.
+It archives every returned/private file before writes, updates only runner,
+wrapper and test notes, preserves all progress/core/lab/stock/hook files and
+arms last. `verify-snes-1.10-card.py --card D:/ --archive LOCAL_INSTALL_ARCHIVE`
+independently checks payload, every retained/archive file and the one-shot.
+`publish-snes-1.10.py` rejects stale source/check inputs and exports immutable
+owned release bytes plus selected evidence, without core/vendor/private
+progress. Follow [1.10 test notes](snes-mvp-1.10-test.txt).
+
+The historical1.9 updater requires the consumed Lab2/1.8 baseline, updates four
+payloads and creates a separate qualified snapshot. Its publisher/readback
+remain version-specific; do not run that updater on a returned1.9 card.
 
 **The 1.6 physical run failed and its returned one-shot is consumed. Do not
 re-arm it unchanged.** Read the [failure review](snes-mvp-1.6-failure.md).
@@ -112,7 +119,7 @@ qualified and published under a new version; do not re-arm unchanged1.8.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
-[MVP1.9](../releases/snes-mvp-1.9/) contains our executable and wrapper, without
+[MVP1.10](../releases/snes-mvp-1.10/) contains our executable and wrapper, without
 a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
 from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains
 `/usr/retro/driver.so` and existing `002`/`ROMs/SNES` scanning. The historical
@@ -153,7 +160,7 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
 The [1.8 test sequence](snes-mvp-1.8.md#physical-test) is historical; its returned
-card was unarmed. Current testing uses [1.9](snes-mvp-1.9.md#physical-test).
+card was unarmed. Current testing uses [1.10](snes-mvp-1.10-test.txt).
 After power-off, prefer fresh `last-progress.txt`/`last-progress.previous`
 identity-qualified checkpoints over an older normal-exit report. Retain
 `runtime-platform-latest.txt`, `kernel-tail.txt` and `diagnostic-flush.log` too.

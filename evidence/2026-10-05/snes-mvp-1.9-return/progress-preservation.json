@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "previously_protected_game_progress_files_unchanged": 18,
+  "scope": "MVP SRAM, snapshots/import metadata and stock save slots present in the prior protection map",
+  "excluded": "diagnostic text reports and their backups",
+  "private_filenames_or_progress_published": false,
+  "card_writes": 0
+}

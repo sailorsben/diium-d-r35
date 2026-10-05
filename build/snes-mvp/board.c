@@ -586,6 +586,15 @@ int board_audio_finish(void)
 #endif
 }
 
+const char *board_audio_error(void)
+{
+#ifdef D35_NATIVE_PCM
+    return b.null_backend?"mock":pcm_error();
+#else
+    return "OSS";
+#endif
+}
+
 void board_close(void)
 {
     startup_note("board close enter");

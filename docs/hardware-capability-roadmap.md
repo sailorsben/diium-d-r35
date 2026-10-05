@@ -11,7 +11,7 @@ unknowns are separated in [interface research](platform-interface-research.md).
 |---|---|---|---|
 | Cortex-A7 | One ARMv7 core, NEON/VFPv4; declared 666MHz, sustained clocks unknown | Specialized vector tile/color/backdrop/window paths with exact-output checks | Profile remaining scalar PPU/APU and memory traffic by meaningful workload; optimize a demonstrated cost while retaining exact output. Extra threads cannot add CPU capacity. |
 | Timers/device events | Short timeout methods average ~10ms; audio poll can wake ~2.77ms in one OSS transport | 1.9 removes short-sleep gameplay gates in favor of PCM consumption/events | Qualify native periods/readiness and CPU spent on observations. Fine timestamps are not proof of fine scheduling. |
-| PCM/DMA | Native ALSA playback node exists; standard negotiation/state/drain contract researched | One nonblocking interleaved owner, explicit playable priming, direct native-rate path when accepted | Establish actual settings and long-game starvation/latency. Compare mmap only after DMA mapping/pointer ownership is known; do not presume copying 128KiB/s is the bottleneck. |
+| PCM/DMA | Native PCM accepts44100Hz/128-period/3712-buffer and2823 priming frames; startup then fails before emulation | One nonblocking interleaved owner, explicit playable priming, direct native-rate path when accepted | Qualify1.10 state-aware startup, consumption and long-game starvation/latency; alternate rates remain bounded candidates. Compare mmap only after DMA mapping/pointer ownership is known; do not presume copying 128KiB/s is the bottleneck. |
 | Hardware scaler | 960 matched 256×224 jobs average 2.26–2.29ms lifecycle, ~1.88ms wait, ~0.37ms other syscall brackets | Existing asynchronous worker, owned chunk input, ordered source/output release | Recover completion/release contract for persistent fd and A/B operation. Price CPU/syscall savings and producer stalls; lifecycle wall is not all CPU. Every observed status includes FRAME_DONE, so fallback removal has no demonstrated benefit here. |
 | Display/scanout | Two output-A addresses alternate; worker display waits average 10.46–11.82ms | Producer overlaps peripheral waits; three source slots release after scaling, output retained through flip | Establish panel cadence and actual presentation/backpressure. Queue/status names alone do not qualify continuous hardware queuing. Direct compatible scanout is a candidate only after geometry/ownership are known. |
 | Chunk/cache/DRAM | Reserved 16MiB region and working chunk-backed scaler inputs; normal heap inputs previously corrupt | Compact RGB565 pitch avoids known repacking; core renders in its normal memory then copies | Recover cache-maintenance/coherency contract, measure CPU read/write/copy cost and working set. Direct rendering into chunk memory may lose more cache efficiency than its copy saves. |
@@ -24,7 +24,9 @@ physical qualification where vendor behavior or sustained timing remains
 unknown. Tests should answer a specific contract/cost question, not rediscover
 standard commands. Negative findings remain part of the map.
 
-After the native game return, use its core CPU, audio-owner CPU, playable
+The1.9 startup failure provides no emulation cost data.1.10 repairs that seam
+and preserves precise startup diagnostics with the same core. After successful
+startup, use core CPU, audio-owner CPU, playable
 minimum/tails, producer display wait and negotiated settings to choose the next
 software target. That choice may be core specialization, PCM service cost or
 display lifecycle. A custom scaler owner, cache-aware renderer or smaller

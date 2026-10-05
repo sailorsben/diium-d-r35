@@ -1,0 +1,18 @@
+SNES MVP 1.10: PCM startup-state repair
+
+Launch FF6 (not Rev1). Use Continue for your latest Save Point.
+If it opens, play story/map -> FF6 party menu -> map, save and exit normally.
+Report sound, movement or any shutdown, then reconnect D:.
+
+1.9 accepted 44100Hz PCM and all priming frames, then failed before emulation.
+This build acknowledges playback started inside a write; it issues explicit
+START only from PREPARED and confirms RUNNING. A bad-state result is accepted
+only when a fresh observation proves playback is running after full priming.
+Underruns, early starts and nonrunning errors still fail visibly.
+
+The renderer/core and all existing snapshots/SRAM are unchanged. Every drawing
+remains enabled. Prior whole-device poweroffs remain unexplained.
+
+If startup still fails, return the card: fresh logs now name the operation,
+state, accepted priming and PCM pointers, with capture independent of tail.
+The one-shot is consumed before launch; the following reboot takes stock.

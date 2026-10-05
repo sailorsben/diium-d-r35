@@ -31,6 +31,7 @@ int board_audio_wait(unsigned milliseconds);
 void board_audio_close(void);
 struct board_audio_state {
     unsigned rate,period,buffer,prime,queued,state;
+    unsigned avail,appl_ptr,hw_ptr,start_threshold,prime_transferred,start_calls,start_races;
     uint64_t observed_ns;
     int started;
 };
@@ -38,6 +39,7 @@ int board_audio_observe(struct board_audio_state *out);
 int board_audio_avail_min(unsigned frames);
 int board_audio_fd(void);
 int board_audio_finish(void);
+const char *board_audio_error(void);
 uint64_t board_now_ns(void);
 void board_sleep_until(uint64_t deadline_ns);
 #endif

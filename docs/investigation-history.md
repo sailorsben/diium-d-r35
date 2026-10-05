@@ -196,3 +196,35 @@ Installation archives41 MVP/49 lab files before writes, retains20 existing
 private entries and49 lab files, verifies stock/hook/original game-wrapper
 hashes and creates only the separate qualified snapshot. Independent readback
 passes; game one-shot armed, lab unarmed. Physical results remain pending.
+
+## 2026-10-05: native startup failure and state-aware repair
+
+Ben returns1.9 with Audio Failure before the game launches. Read-only collection
+archives43 MVP/49 lab files; exact released payload and18 previously protected
+game-progress files are unchanged. Both final and first-attempt reports record
+zero emulation,44100Hz/128-period/3712-buffer and2823 accepted priming frames,
+then EBADFD. State2/queue0 is prewrite, not the failed after-write state.
+Runtime/kernel byte tails are empty; exact failure operation is missing.
+See [return](snes-mvp-1.9-return.md).
+
+Linux4.19 WRITEI can start playback at the software threshold; START requires
+PREPARED.1.9 calls START on queued count alone, a concrete client defect. The
+retained logs do not establish the exact vendor cause.1.10 uses the priming
+threshold, observes write-driven RUNNING, STARTs only from PREPARED and checks
+RUNNING afterward. EBADFD succeeds only with fresh RUNNING evidence. Preserve
+operation/errno/state/pointers on failures and running-stream minima. Bounded
+runtime/kernel capture now works without tail/head/sed.
+
+Independent actual ARM fixtures exercise the observed fallback, automatic and
+healthy explicit start, verified EBADFD race, rejected early/nonrunning states
+and parameter mismatch. Owner/runtime/input/splash/display/save checks and
+1200 exact core-output frames pass. The exact early-audio A7 core is unchanged;
+this is not another performance/core experiment. See [repair](snes-mvp-1.10.md).
+Physical startup, consumption, sound/full speed and prior poweroffs remain
+unqualified; the next test first needs successful FF6 startup.
+
+Installation completes after a fresh 43-MVP/49-lab archive. Independent readback
+verifies the exact 1.10 payload, all 22 current private files, 49 lab files and
+unchanged core/stock/hook/original-wrapper hashes. No snapshot migration or core
+replacement occurs. Game one-shot is armed; lab remains unarmed. Physical
+startup, playback, speed and stability are pending.

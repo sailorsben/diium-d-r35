@@ -14,7 +14,7 @@
 #include <sound/asound.h>
 #include "board.h"
 static unsigned buffer,queued,starts,writes,accepted,minimum,prepares;
-static int stream_state,start_error;
+static int stream_state,start_error,manual_start,start_race,early_start,bad_sw;
 static int16_t expected[4096*2];
 static int provider_open(const char *name,int flags,...)
 { assert(!strcmp(name,"/dev/snd/pcmC0D0p") && flags&O_NONBLOCK); return 42; }
@@ -39,31 +39,38 @@ static int provider_ioctl(int fd,unsigned long command,...)
         assert(h->masks[SNDRV_PCM_HW_PARAM_ACCESS].bits[0]==1u<<SNDRV_PCM_ACCESS_RW_INTERLEAVED);
         assert(h->masks[SNDRV_PCM_HW_PARAM_FORMAT].bits[0]==1u<<SNDRV_PCM_FORMAT_S16_LE);
         assert(h->flags&SNDRV_PCM_HW_PARAMS_NORESAMPLE);
-        if(rate!=44100 || period!=512) { errno=EINVAL; return -1; }
+        if(rate!=44100 || period!=128) { errno=EINVAL; return -1; }
         buffer=h->intervals[SNDRV_PCM_HW_PARAM_BUFFER_SIZE-SNDRV_PCM_HW_PARAM_FIRST_INTERVAL].min;
-        assert(buffer==4096); return 0;
+        assert(buffer==3712); return 0;
     }
     case SNDRV_PCM_IOCTL_SW_PARAMS: {
         struct snd_pcm_sw_params *s=arg;
-        assert(s->avail_min==512 && s->start_threshold>buffer && s->stop_threshold==buffer);
+        assert(s->avail_min==128 && s->start_threshold==2823 && s->stop_threshold==buffer);
         assert(s->tstamp_type==SNDRV_PCM_TSTAMP_TYPE_MONOTONIC && !s->silence_size);
+        if(bad_sw) s->start_threshold=1;
         return 0;
     }
     case SNDRV_PCM_IOCTL_PREPARE: queued=accepted=0; ++prepares; stream_state=SNDRV_PCM_STATE_PREPARED; return 0;
     case SNDRV_PCM_IOCTL_START:
-        assert(queued>=2823); ++starts;
-        if(start_error) { errno=EIO; return -1; }
+        ++starts;
+        if(stream_state!=SNDRV_PCM_STATE_PREPARED) { errno=EBADFD; return -1; }
+        assert(queued>=2823);
+        if(start_race) { stream_state=SNDRV_PCM_STATE_RUNNING; errno=EBADFD; return -1; }
+        if(start_error) { errno=start_error; return -1; }
         stream_state=SNDRV_PCM_STATE_RUNNING; return 0;
     case SNDRV_PCM_IOCTL_WRITEI_FRAMES: {
         struct snd_xferi *x=arg; unsigned n=(unsigned)x->frames;
         if(!(++writes%7)) { errno=EAGAIN; return -1; }
         if(n>137) n=137;
         assert(accepted+n<=4096 && !memcmp(x->buf,expected+accepted*2,n*4));
-        queued+=n; accepted+=n; x->result=n; return 0;
+        queued+=n; accepted+=n; x->result=n;
+        /* Linux can START inside WRITEI; a second START is EBADFD. */
+        if((!manual_start && queued>=2823) || early_start) stream_state=SNDRV_PCM_STATE_RUNNING;
+        return 0;
     }
     case SNDRV_PCM_IOCTL_STATUS: {
         struct snd_pcm_status *s=arg; memset(s,0,sizeof(*s));
-        s->state=stream_state; s->avail=buffer-queued; return 0;
+        s->state=stream_state; s->avail=buffer-queued; s->appl_ptr=accepted; return 0;
     }
     case SNDRV_PCM_IOCTL_SYNC_PTR: {
         struct snd_pcm_sync_ptr *s=arg;
@@ -97,25 +104,52 @@ int main(void)
     assert(SNDRV_PCM_IOCTL_WRITEI_FRAMES==0x400c4150u);
     for(i=0;i<8192;i++) expected[i]=(int16_t)(i*97u+13u);
     assert(pcm_open(32040)==44100); assert(!pcm_observe(&state));
-    assert(state.period==512 && state.buffer==4096 && state.prime==2823 && !state.started);
+    assert(state.period==128 && state.buffer==3712 && state.prime==2823 && !state.started);
     while(offset<3500) {
         ssize_t n=pcm_write(expected+offset*2,3500-offset);
         if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
     }
-    assert(accepted==3500 && starts==1 && !pcm_observe(&state) && state.started);
+    assert(accepted==3500 && starts==0 && !pcm_observe(&state) && state.started);
+    assert(state.prime_transferred>=2823 && state.state==SNDRV_PCM_STATE_RUNNING);
     assert(!pcm_avail_min(1273) && minimum==1273);
     assert(!pcm_finish() && !queued && !pcm_observe(&state) && !state.queued);
-    assert(!pcm_reset()); start_error=1; offset=0;
+    assert(!pcm_reset()); manual_start=1; start_error=EIO; offset=0;
     while(offset<2823) {
         ssize_t n=pcm_write(expected+offset*2,2823-offset);
         if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
     }
     assert(accepted==2823 && pcm_observe(&state)<0 && errno==EIO);
-    start_error=0; assert(!pcm_reset());
+    assert(state.state==SNDRV_PCM_STATE_PREPARED && state.prime_transferred==2823 && state.start_calls==1);
+    assert(strstr(pcm_error(),"START errno=5") && strstr(pcm_error(),"prime_written=2823"));
+    start_error=EBADFD; assert(!pcm_reset()); offset=0;
+    while(offset<2823) {
+        ssize_t n=pcm_write(expected+offset*2,2823-offset);
+        if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
+    }
+    assert(pcm_observe(&state)<0 && errno==EBADFD && !state.started);
+    start_error=0; assert(!pcm_reset()); offset=0;
+    while(offset<2823) {
+        ssize_t n=pcm_write(expected+offset*2,2823-offset);
+        if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
+    }
+    assert(!pcm_observe(&state) && state.started && state.start_calls==1 && !state.start_races);
+    start_race=1; assert(!pcm_reset()); offset=0;
+    while(offset<2823) {
+        ssize_t n=pcm_write(expected+offset*2,2823-offset);
+        if(n<0) assert(errno==EAGAIN); else offset+=(unsigned)n;
+    }
+    assert(!pcm_observe(&state) && state.started && state.start_races==1);
+    start_race=0; manual_start=0; early_start=1; assert(!pcm_reset());
+    while(pcm_write(expected,137)<0) assert(errno==EAGAIN);
+    assert(pcm_observe(&state)<0 && errno==EPROTO && !state.started && accepted==137);
+    early_start=0; assert(!pcm_reset());
+    i=prepares;
     stream_state=SNDRV_PCM_STATE_XRUN;
     assert(pcm_observe(&state)<0 && errno==EPIPE);
-    assert(prepares==3); /* no automatic recovery discarding samples */
+    assert(prepares==i); /* no automatic recovery discarding samples */
     pcm_close();
-    puts("PASS: actual ARM32 PCM ABI, constrained rate/period fallback, exact partial/EAGAIN frames, real priming before START, SYNC_PTR, asynchronous DRAIN, accepted START-failure accounting and visible XRUN without restart");
+    bad_sw=1;
+    assert(pcm_open(32040)<0 && errno==EPROTO && strstr(pcm_error(),"SW_PARAMS_READBACK"));
+    puts("PASS: actual ARM32 PCM ABI, device-shaped 44100/128/3712 fallback, exact partial/EAGAIN frames, kernel WRITEI auto-start without duplicate START, prepared-only explicit START, verified EBADFD race, rejected early start/nonrunning EBADFD/software-threshold mismatch, SYNC_PTR, asynchronous DRAIN, accepted START-failure state/pointer accounting and visible XRUN without restart");
     return 0;
 }

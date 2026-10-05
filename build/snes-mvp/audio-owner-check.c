@@ -29,6 +29,7 @@ int board_audio_observe(struct board_audio_state *out)
     if(failed) { errno=EPIPE; return -1; } return 0;
 }
 int board_audio_fd(void) { return ready_fd; }
+const char *board_audio_error(void) { return "independent fixture"; }
 int board_audio_avail_min(unsigned frames)
 {
     uint64_t value; ssize_t rc;

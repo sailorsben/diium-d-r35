@@ -1,5 +1,35 @@
 # Changelog
 
+## SNES MVP1.10 PCM startup repair — 2026-10-05
+
+Archive the consumed 1.9 return before updates: 43 MVP and 49 lab files,
+exact released payload and 18 unchanged previously protected game-progress
+files. Native PCM accepts 44,100Hz/128-period/3,712-buffer and all 2,823 priming
+frames, then EBADFD prevents emulation. The failed operation and after-write
+state were not retained; no game performance or hardware limit is measured.
+
+Repair the client assumption that an accepted priming write leaves PREPARED.
+Use the priming threshold, acknowledge RUNNING after full priming, START only
+from PREPARED, and verify RUNNING afterward. Accept EBADFD only with a fresh
+RUNNING observation. Retain operation, errno, state, availability and pointers
+even on failure, plus running-stream playable minima. Preserve accepted-frame
+accounting, visible XRUN and the exact 1.9 core. Replace byte-tail logging with
+bounded shell-builtin runtime/kernel capture and test with tail/head/sed absent.
+
+Independent ARM fixtures cover write-driven startup, healthy explicit START,
+verified EBADFD race, rejected early/nonrunning starts and SW_PARAMS mismatch.
+Final runner/owner/ownership checks and 1,200 exact core-output frames pass.
+Source/check hashes gate the guarded consumed-1.9 update and independent
+readback. Physical startup/audio/full-speed/stability and prior whole-device
+poweroffs remain unqualified. See [repair](docs/snes-mvp-1.10.md) and
+[return](docs/snes-mvp-1.9-return.md).
+
+Installation completes after a fresh 43-MVP/49-lab archive. Independent readback
+verifies the exact 1.10 payload, all 22 current private files, 49 lab files and
+unchanged core/stock/hook/original-wrapper hashes. No snapshot migration or core
+replacement occurs. Game one-shot is armed; lab remains unarmed. Physical
+startup, playback, speed and stability are pending.
+
 ## SNES MVP1.9 native PCM owner — 2026-10-05
 
 Implement documented ARM32 native PCM negotiation/readback, explicit playable

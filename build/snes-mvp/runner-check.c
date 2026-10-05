@@ -1,6 +1,7 @@
 /* Local ARM/QEMU contract checks; no hardware evidence. */
 #include "runner.c"
 #include "audio-owner.c"
+const char *board_audio_error(void) { return "independent fixture"; }
 #include <assert.h>
 
 static uLong sink_crc;

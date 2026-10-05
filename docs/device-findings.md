@@ -13,7 +13,7 @@ Evidence collected on one DIIUM D-R35 through 2026-10-05. **Observed** means ret
 | Memory | 48 MiB boot RAM plus 16 MiB chunk reservation; Linux MemTotal 43,120 KiB | Consistent with 64 MiB arrangement, not physical RAM census |
 | Reserved region | Chunk memory at physical 0x03000000–0x03ffffff | CPU cache policy and maintenance contract not established |
 | Display | Exported 640×480, lcd1_mipi_NV3051F | Physical panel cadence not measured |
-| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | Native client implemented in1.9; settings/driver behavior not yet physically qualified; `/proc/asound` absent |
+| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | 1.9 accepts44100Hz/128-period/3712-buffer and2823 frames, then startup fails before emulation; native playback/consumption unqualified; `/proc/asound` absent |
 | GPU | `vivante,gc` DT node exists | No working galcore/runtime/device established |
 
 One CPU means display/I/O threads can overlap peripheral waits, but cannot add emulation compute capacity. The vendor runtime's gameplay memory headroom was tight. Configured 256 MiB swap is not physical RAM; sampled vrtemu VmSwap was zero and swap use was stable, so ongoing swap thrash was not demonstrated.
@@ -205,10 +205,17 @@ drain/faults and native-rate bypass replace split OSS/timer gates. Already-mixed
 PCM publishes at existing in-frame APU synchronization points;1200 exact-output
 frames pass,1196 with multiple earlier batches. Independent ARM32 and actual
 owner fixtures qualify software contracts, not vendor settings or handheld
-speed. Physical native audio/full-render/stability acceptance is pending. The
+speed. The1.9 return accepts44100Hz/128-period/3712-buffer and2823 priming
+frames, then EBADFD before emulation. No performance inference follows. The
+reported PREPARED state is a prewrite sample; exact failure operation/state is
+missing.1.10 fixes state-aware startup and retains precise failure diagnostics.
+Its independent ARM fixtures cover automatic and explicit START, invalid
+states and parameter mismatch. Native audible playback/consumption and
+full-render/stability acceptance remain pending. See [return](snes-mvp-1.9-return.md)
+and [repair](snes-mvp-1.10.md). The
 [capability roadmap](hardware-capability-roadmap.md) keeps wider opportunities
 in view; no current evidence establishes maximum attainable performance.
 
 Readable kallsyms supplied real addresses. Built-in-module entries are not exported loadable `.ko` files. `/proc/mtd` had no registered partitions; `/proc/kcore` returned ENOENT. No kernel-text recovery, flash rewrite, MMIO experiment or `/dev/mem` fallback was performed.
 
-Open questions include actual clocks/cache/DRAM behavior, scaler completion/release identity, native PCM periods/positions, physical panel cadence, IRQ19 handler duration/source, battery/suspend behavior, and sustained per-game performance. Lab2's two probed tracefs paths, clk_summary and proc/config.gz return ENOENT; no IRQ duration was measured. Source research should establish standard contracts before physical tests qualify remaining vendor behavior and real game timing.
+Open questions include actual clocks/cache/DRAM behavior, scaler completion/release identity, native PCM consumption/positions and alternate configurations, physical panel cadence, IRQ19 handler duration/source, battery/suspend behavior, and sustained per-game performance. Lab2's two probed tracefs paths, clk_summary and proc/config.gz return ENOENT; no IRQ duration was measured. Source research should establish standard contracts before physical tests qualify remaining vendor behavior and real game timing.

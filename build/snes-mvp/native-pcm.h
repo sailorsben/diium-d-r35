@@ -9,4 +9,5 @@ int pcm_reset(void);
 int pcm_finish(void);
 int pcm_fd(void);
 void pcm_close(void);
+const char *pcm_error(void);
 #endif

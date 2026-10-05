@@ -1,11 +1,15 @@
 # Userspace platform architecture
 
-The current [MVP1.9](snes-mvp-1.9.md) implements one native PCM owner and
-consumption-driven producer admission. It publishes already-mixed core audio
-earlier, primes playable PCM explicitly and retains every drawing. Native
-device settings, audible continuity and sustained full speed remain physically
-unqualified. [The hardware roadmap](hardware-capability-roadmap.md) preserves
-the broader platform goal and remaining opportunities beyond smooth FF6.
+The current [MVP1.10](snes-mvp-1.10.md) retains the native PCM owner,
+consumption-driven producer admission, earlier mixed core audio and every
+drawing. The [1.9 return](snes-mvp-1.9-return.md) qualifies44100Hz/128-period/
+3712-buffer settings and one priming transfer, then fails before emulation.
+Startup now uses observed state: acknowledge write-driven RUNNING after full
+priming, START only from PREPARED and verify afterward. Precise operation/state/
+pointer diagnostics survive failures. Native consumption, audible continuity
+and sustained full speed remain physically unqualified. The
+[hardware roadmap](hardware-capability-roadmap.md) preserves the broader
+platform goal and remaining opportunities beyond smooth FF6.
 
 The implemented MVP is SNES-only. [MVP1.6](snes-mvp-1.6.md) implements full
 rendering with a tailored A7 core and corrected peripheral ownership; its
@@ -31,7 +35,7 @@ holds and ~57.93 calls/sec. Mean core wall13.33ms plus3.00ms producer audio-lead
 wait makes production control a concrete next target. Some wait is legitimate
 throttling; a bounded audio-headroom controller must preserve native average
 speed and ordered full drawing. Crash cause remains unknown. Current source
-fixes capture without head/sed but is not installed; shipped1.8 is unchanged.
+fixes capture without head/sed in1.9 and without tail in1.10; shipped1.8 is unchanged.
 
 ## Implemented owners
 
@@ -84,8 +88,10 @@ superseded. Shutdown drains/joins before display/chunk teardown.
 Audio callbacks enqueue every generated/converted frame. One worker owns
 nonblocking native frame transfers and the software/playable observation under
 one lock. Producer admission reserves capacity and bounds observed lead; PCM
-readiness/eventfd notifications replace short polling gates. Explicit priming
-precedes START. Flush/DRAIN/join precede normal reset/close; failure cancellation
+readiness/eventfd notifications replace short polling gates. Priming precedes
+playback; kernel WRITEI may start it at the threshold. Explicit START is valid
+only from PREPARED, followed by a RUNNING check. Flush/DRAIN/join precede normal
+reset/close; failure cancellation
 and clears remain counted. Snapshot operations qualify core/ROM and roll back
 on failed load. Historical `audio-pipe.c` retains the1.8 OSS implementation;
 current gameplay builds `audio-owner.c` and `native-pcm.c`.
@@ -131,10 +137,10 @@ for jitter tolerance. Keep input sampling late and preserve bounded ordered
 display ownership and every drawing. This proposal does not guarantee 60FPS or
 resolve the previous whole-device poweroffs.
 
-The1.9 physical acceptance should exercise this repaired game path and its
-reported PCM state under real FF6 tails. Tests should qualify vendor behavior
-and sustained output, after source research supplies the standard interface.
-No new payload is installed or armed by the lab2 return/research commit.
+The1.9 return fails before emulation;1.10 repairs startup state handling. The
+next acceptance should first establish RUNNING, then exercise FF6 tails and
+reported consumption/playable state. Source research supplies the standard
+interface; the device qualifies vendor behavior and sustained output.
 
 ## Full-speed implementation and remaining qualification
 

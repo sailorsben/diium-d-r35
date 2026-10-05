@@ -1,0 +1,2 @@
+PASS: partial/EAGAIN transport preserves all PCM; priming independent; snapshot roundtrip; mismatched state rejection; live-state rollback; SRAM roundtrip
+audio_frames=58909 crc32=081c5568

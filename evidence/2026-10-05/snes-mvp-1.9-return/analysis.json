@@ -1,0 +1,22 @@
+{
+  "version": "1.9",
+  "archive_verified": true,
+  "one_shot_consumed": true,
+  "copied_mvp_files": 43,
+  "copied_lab_files": 49,
+  "previous_progress_files_unchanged": 6,
+  "exact_released_payload": true,
+  "emulation_runs": 0,
+  "accepted_rate": 44100,
+  "period_frames": 128,
+  "buffer_frames": 3712,
+  "accepted_priming_frames": 2823,
+  "successful_priming_frames": 0,
+  "startup_errno": 77,
+  "failure_seam": "priming transfer/status/START; exact operation not retained",
+  "reported_state_boundary": "state2/queued0 is prewrite; failed after-write state unavailable",
+  "source_defect": "1.9 issues START on queued frames without checking observed state",
+  "vendor_autostart_cause": "not proven by retained device logs",
+  "runtime_and_kernel_byte_tails": "empty; utility diagnosis not established",
+  "speed_audio_stability": "no emulation performance or audible PCM qualification"
+}
