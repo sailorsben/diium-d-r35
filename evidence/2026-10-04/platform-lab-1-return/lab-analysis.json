@@ -1,0 +1,278 @@
+{
+  "version": "lab1",
+  "simulated": false,
+  "complete": true,
+  "wake": {
+    "nominal_deadline_spacing_ns": 5000000,
+    "samples": 200,
+    "mean_deadline_lateness_ms": 5.482195,
+    "maximum_deadline_lateness_ms": 9.568,
+    "method": "Advancing nominal deadlines; expired waits return immediately. Not individual5ms sleep durations."
+  },
+  "kernels": [
+    {
+      "mode": "scalar",
+      "scenario": 0,
+      "draws": 118273,
+      "cpu_ns_per_draw": 1676.4265724214317,
+      "wall_ns_per_draw": 1694.2159241754246,
+      "cache_hit_fraction": null,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "neon",
+      "scenario": 0,
+      "draws": 297729,
+      "cpu_ns_per_draw": 665.5414823547588,
+      "wall_ns_per_draw": 671.8660258154227,
+      "cache_hit_fraction": null,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "color_cache",
+      "scenario": 0,
+      "draws": 207873,
+      "cpu_ns_per_draw": 953.9334112655323,
+      "wall_ns_per_draw": 963.073607443006,
+      "cache_hit_fraction": 0.6248045681738369,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "scalar",
+      "scenario": 1,
+      "draws": 118017,
+      "cpu_ns_per_draw": 1680.3511358533092,
+      "wall_ns_per_draw": 1698.1197624071108,
+      "cache_hit_fraction": null,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "neon",
+      "scenario": 1,
+      "draws": 290305,
+      "cpu_ns_per_draw": 682.237646613045,
+      "wall_ns_per_draw": 689.1510652589518,
+      "cache_hit_fraction": null,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "color_cache",
+      "scenario": 1,
+      "draws": 128001,
+      "cpu_ns_per_draw": 1547.7691580534527,
+      "wall_ns_per_draw": 1564.003406223389,
+      "cache_hit_fraction": 0.0,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "scalar",
+      "scenario": 2,
+      "draws": 118017,
+      "cpu_ns_per_draw": 1681.5543523390697,
+      "wall_ns_per_draw": 1697.6028877195658,
+      "cache_hit_fraction": null,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "neon",
+      "scenario": 2,
+      "draws": 293889,
+      "cpu_ns_per_draw": 674.7615596364614,
+      "wall_ns_per_draw": 681.0564532867852,
+      "cache_hit_fraction": null,
+      "cache_bytes": 27152
+    },
+    {
+      "mode": "color_cache",
+      "scenario": 2,
+      "draws": 178433,
+      "cpu_ns_per_draw": 1110.8090992137104,
+      "wall_ns_per_draw": 1121.5694406303767,
+      "cache_hit_fraction": 0.4685792426288859,
+      "cache_bytes": 27152
+    }
+  ],
+  "pipelines": [
+    {
+      "name": "DISPLAY ONLY",
+      "submitted_jobs": 240,
+      "completed_vendor_flips": 240,
+      "producer_iterations_per_second": 59.7966465542307,
+      "producer_cpu_ms_per_iteration": 0.59,
+      "scaler_mean_ms": 2.2395166666666664,
+      "flip_mean_ms": 13.553541666666666,
+      "display_worker_cpu_ms": 148.649,
+      "reserve_wait_ms": 1.339,
+      "max_start_lateness_ms": 11.452435
+    },
+    {
+      "name": "AUDIO ONLY",
+      "submitted_jobs": 0,
+      "completed_vendor_flips": 0,
+      "producer_iterations_per_second": 59.89095354633052,
+      "producer_cpu_ms_per_iteration": 0.053191666666666665,
+      "scaler_mean_ms": 0.0,
+      "flip_mean_ms": 0.0,
+      "display_worker_cpu_ms": 0.0,
+      "reserve_wait_ms": 0.0,
+      "max_start_lateness_ms": 10.01479,
+      "audio": {
+        "accepted_bytes": 714752,
+        "worker_cpu_ns": 37238000,
+        "short_writes": 0,
+        "eagain": 635,
+        "zero_delay_samples": 0,
+        "error": 0,
+        "max_write_gap_ms": 22.913,
+        "sample_count": 406,
+        "negative_free_space_samples": 193,
+        "query_errors": {
+          "delay": 0,
+          "space": 0,
+          "ptr": 0
+        },
+        "pointer_supported_samples": 406,
+        "pointer_backward_samples": 0,
+        "pointer_qualified_as_scheduling_clock": false,
+        "steady_delay_min_bytes": 6144,
+        "steady_delay_max_bytes": 8192,
+        "steady_delay_min_ms_at_negotiated_rate": 34.82993197278912,
+        "sample_interval_mean_ms": 9.894464197530864,
+        "sample_interval_max_ms": 12.532,
+        "raw_pointer_first_bytes": 0,
+        "raw_pointer_last_bytes": 706556,
+        "raw_pointer_delta_no_wrap_bytes": 706556,
+        "pointer_sample_interval_ns": 4007258000
+      }
+    },
+    {
+      "name": "AUDIO AND DISPLAY",
+      "submitted_jobs": 240,
+      "completed_vendor_flips": 240,
+      "producer_iterations_per_second": 59.912198672844944,
+      "producer_cpu_ms_per_iteration": 0.6156,
+      "scaler_mean_ms": 2.2556041666666666,
+      "flip_mean_ms": 10.3009125,
+      "display_worker_cpu_ms": 150.469,
+      "reserve_wait_ms": 1.39,
+      "max_start_lateness_ms": 10.01202,
+      "audio": {
+        "accepted_bytes": 714752,
+        "worker_cpu_ns": 68158000,
+        "short_writes": 0,
+        "eagain": 626,
+        "zero_delay_samples": 0,
+        "error": 0,
+        "max_write_gap_ms": 22.903,
+        "sample_count": 413,
+        "negative_free_space_samples": 212,
+        "query_errors": {
+          "delay": 0,
+          "space": 0,
+          "ptr": 0
+        },
+        "pointer_supported_samples": 413,
+        "pointer_backward_samples": 0,
+        "pointer_qualified_as_scheduling_clock": false,
+        "steady_delay_min_bytes": 6144,
+        "steady_delay_max_bytes": 8192,
+        "steady_delay_min_ms_at_negotiated_rate": 34.82993197278912,
+        "sample_interval_mean_ms": 9.720429611650486,
+        "sample_interval_max_ms": 14.744,
+        "raw_pointer_first_bytes": 0,
+        "raw_pointer_last_bytes": 706556,
+        "raw_pointer_delta_no_wrap_bytes": 706556,
+        "pointer_sample_interval_ns": 4004817000
+      }
+    },
+    {
+      "name": "CPU BURST",
+      "submitted_jobs": 240,
+      "completed_vendor_flips": 240,
+      "producer_iterations_per_second": 59.9134101439894,
+      "producer_cpu_ms_per_iteration": 12.608691666666665,
+      "scaler_mean_ms": 2.2446958333333336,
+      "flip_mean_ms": 14.1965625,
+      "display_worker_cpu_ms": 150.477,
+      "reserve_wait_ms": 1.459,
+      "max_start_lateness_ms": 10.12288,
+      "audio": {
+        "accepted_bytes": 716800,
+        "worker_cpu_ns": 69478000,
+        "short_writes": 0,
+        "eagain": 637,
+        "zero_delay_samples": 0,
+        "error": 0,
+        "max_write_gap_ms": 22.915,
+        "sample_count": 405,
+        "negative_free_space_samples": 200,
+        "query_errors": {
+          "delay": 0,
+          "space": 0,
+          "ptr": 0
+        },
+        "pointer_supported_samples": 405,
+        "pointer_backward_samples": 0,
+        "pointer_qualified_as_scheduling_clock": false,
+        "steady_delay_min_bytes": 6144,
+        "steady_delay_max_bytes": 8192,
+        "steady_delay_min_ms_at_negotiated_rate": 34.82993197278912,
+        "sample_interval_mean_ms": 9.95035891089109,
+        "sample_interval_max_ms": 11.893,
+        "raw_pointer_first_bytes": 0,
+        "raw_pointer_last_bytes": 708604,
+        "raw_pointer_delta_no_wrap_bytes": 708604,
+        "pointer_sample_interval_ns": 4019945000
+      }
+    },
+    {
+      "name": "CPU SLICES",
+      "submitted_jobs": 240,
+      "completed_vendor_flips": 240,
+      "producer_iterations_per_second": 59.836392344232785,
+      "producer_cpu_ms_per_iteration": 12.618491666666666,
+      "scaler_mean_ms": 2.2537291666666666,
+      "flip_mean_ms": 12.096445833333334,
+      "display_worker_cpu_ms": 152.568,
+      "reserve_wait_ms": 1.375,
+      "max_start_lateness_ms": 11.72994,
+      "audio": {
+        "accepted_bytes": 716800,
+        "worker_cpu_ns": 66737000,
+        "short_writes": 0,
+        "eagain": 634,
+        "zero_delay_samples": 0,
+        "error": 0,
+        "max_write_gap_ms": 22.93,
+        "sample_count": 407,
+        "negative_free_space_samples": 192,
+        "query_errors": {
+          "delay": 0,
+          "space": 0,
+          "ptr": 0
+        },
+        "pointer_supported_samples": 407,
+        "pointer_backward_samples": 0,
+        "pointer_qualified_as_scheduling_clock": false,
+        "steady_delay_min_bytes": 6144,
+        "steady_delay_max_bytes": 8192,
+        "steady_delay_min_ms_at_negotiated_rate": 34.82993197278912,
+        "sample_interval_mean_ms": 9.915049261083745,
+        "sample_interval_max_ms": 11.954,
+        "raw_pointer_first_bytes": 0,
+        "raw_pointer_last_bytes": 710652,
+        "raw_pointer_delta_no_wrap_bytes": 710652,
+        "pointer_sample_interval_ns": 4025510000
+      }
+    }
+  ],
+  "limits": [
+    "Synthetic CPU/tiles do not establish whole-game speed.",
+    "Vendor flip completion is not optical panel cadence.",
+    "GETODELAY zero and write gaps are not measured xruns.",
+    "GETOPTR is unqualified raw data, not yet a scheduling clock.",
+    "Negative GETOSPACE and OSS staging must not be clamped into a fabricated physical queue.",
+    "All CPU threads share one Cortex-A7; worker wall times overlap.",
+    "Null/QEMU times are not physical performance evidence."
+  ]
+}

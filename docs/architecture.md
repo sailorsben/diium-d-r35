@@ -34,6 +34,10 @@ wrapper byte-for-byte and does not change the game runner/core. This lab's
 whole-run deadline and raw single-owner OSS observations are not yet changes
 to gameplay scheduling or supervision. Full rendering at native cadence remains
 the game runtime's acceptance target.
+The [physical lab return](platform-lab-1-return.md) demonstrates peripheral
+service under substantial synthetic CPU load, while exposing wake lateness
+and OSS staging. Coherent consumption-based admission and in-frame PCM
+publication remain proposals for gameplay, not changes already installed.
 
 ```text
 boot wrapper

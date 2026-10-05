@@ -5,6 +5,39 @@ import csv
 import json
 import shlex
 
+def audio_observations(samples, rate):
+    successful = [s for s in samples if s['delay_rc'] == '0' and int(s['accepted_bytes']) > 0]
+    delays = [int(s['delay_bytes']) for s in successful]
+    intervals = [int(b['begin_ns']) - int(a['begin_ns']) for a, b in zip(samples, samples[1:])]
+    usable = [s for s in samples if s['ptr_rc'] == '0']
+    result = {
+        'sample_count': len(samples),
+        'negative_free_space_samples': sum(s['space_rc'] == '0' and int(s['free_bytes']) < 0 for s in samples),
+        'query_errors': {name: sum(s[name + '_rc'] != '0' for s in samples)
+                         for name in ('delay', 'space', 'ptr')},
+        'pointer_supported_samples': len(usable),
+        'pointer_backward_samples': sum(int(b['ptr_bytes']) < int(a['ptr_bytes']) for a, b in zip(usable, usable[1:])),
+        'pointer_qualified_as_scheduling_clock': False,
+    }
+    if delays:
+        result['steady_delay_min_bytes'] = min(delays)
+        result['steady_delay_max_bytes'] = max(delays)
+        result['steady_delay_min_ms_at_negotiated_rate'] = min(delays) * 1000 / (rate * 4)
+    if intervals:
+        result['sample_interval_mean_ms'] = sum(intervals) / len(intervals) / 1e6
+        result['sample_interval_max_ms'] = max(intervals) / 1e6
+    if len(usable) > 1:
+        first, last = usable[0], usable[-1]
+        result['raw_pointer_first_bytes'] = int(first['ptr_bytes'])
+        result['raw_pointer_last_bytes'] = int(last['ptr_bytes'])
+        # Non-mmap upstream4.19 masks the byte count with INT_MAX, not UINT_MAX.
+        # Unknown vendor changes/resets mean neither wrap modulus is qualified.
+        result['raw_pointer_delta_no_wrap_bytes'] = (
+            int(last['ptr_bytes']) - int(first['ptr_bytes'])
+            if result['pointer_backward_samples'] == 0 else None)
+        result['pointer_sample_interval_ns'] = int(last['begin_ns']) - int(first['begin_ns'])
+    return result
+
 def analyze(folder):
     records = [dict(p.split('=', 1) for p in shlex.split(line) if '=' in p)
                for line in (folder / 'results.log').read_text().splitlines()]
@@ -41,24 +74,27 @@ def analyze(folder):
                               'eagain', 'zero_delay_samples', 'error')}
             item['audio']['max_write_gap_ms'] = int(audio['max_write_gap_ns']) / 1e6
             sample_file = folder / ('audio-' + r['name'] + '.csv')
-            samples = list(csv.DictReader(sample_file.open(newline='')))
-            usable = [s for s in samples if s['ptr_rc'] == '0']
-            item['audio']['pointer_supported_samples'] = len(usable)
-            # Preserve raw unsigned counter movement. Resets/wraps/jumps must be
-            # qualified against acceptance, queue and driver semantics by a human.
-            if len(usable) > 1:
-                first, last = usable[0], usable[-1]
-                item['audio']['raw_pointer_delta_bytes_mod_2_32'] = (
-                    int(last['ptr_bytes']) - int(first['ptr_bytes'])) & 0xffffffff
-                item['audio']['pointer_sample_interval_ns'] = int(last['begin_ns']) - int(first['begin_ns'])
+            with sample_file.open(newline='') as f:
+                samples = list(csv.DictReader(f))
+            phase_index = records.index(r)
+            configs = [c for c in records[:phase_index] if c['event'] == 'audio_config']
+            rate = int(configs[-1]['accepted_rate'])
+            item['audio'].update(audio_observations(samples, rate))
         pipelines.append(item)
+    wake = next((r for r in records if r['event'] == 'wake'), None)
     return {'version': 'lab1', 'simulated': simulated,
             'complete': any(r['event'] == 'run_end' and r['status'] == 'complete' for r in records),
+            'wake': {'nominal_deadline_spacing_ns': int(wake['requested_ns']),
+                     'samples': int(wake['samples']),
+                     'mean_deadline_lateness_ms': int(wake['sum_late_ns']) / int(wake['samples']) / 1e6 if int(wake['samples']) else None,
+                     'maximum_deadline_lateness_ms': int(wake['max_late_ns']) / 1e6,
+                     'method': 'Advancing nominal deadlines; expired waits return immediately. Not individual5ms sleep durations.'} if wake else None,
             'kernels': kernels, 'pipelines': pipelines,
             'limits': ['Synthetic CPU/tiles do not establish whole-game speed.',
                        'Vendor flip completion is not optical panel cadence.',
                        'GETODELAY zero and write gaps are not measured xruns.',
                        'GETOPTR is unqualified raw data, not yet a scheduling clock.',
+                       'Negative GETOSPACE and OSS staging must not be clamped into a fabricated physical queue.',
                        'All CPU threads share one Cortex-A7; worker wall times overlap.',
                        'Null/QEMU times are not physical performance evidence.']}
 

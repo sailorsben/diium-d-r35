@@ -1,0 +1,16 @@
+{
+  "version": "lab1",
+  "physical_run_complete": true,
+  "archive": "snes-mvp-return-20261005T042642Z",
+  "card_writes": 0,
+  "markers_consumed": true,
+  "copied_mvp_files": 41,
+  "copied_lab_files": 17,
+  "protected_private_count": 20,
+  "all_private_progress_unchanged": true,
+  "stock_hook_game_runner_core_original_wrapper_unchanged": true,
+  "exact_returned_lab_sha256": "4deb0571b4500c727c036a50a2e64f01cb9ee23874a3d19df7e6d59b7f919cee",
+  "user_report": "Completed; clicks between tests; text hard to read; returned to regular launcher.",
+  "new_build_installed": false,
+  "test_rearmed": false
+}

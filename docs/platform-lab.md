@@ -2,14 +2,16 @@
 
 Ben authorized a bounded test program to discover useful hardware behavior,
 rather than repeatedly asking FF6 to reveal it. Lab1 is an isolated native ARM
-executable; it does not start an emulator or access game progress. Physical
-results are pending. It uses the existing qualified board/display implementation,
+executable; it does not start an emulator or access game progress. Its physical
+run completed and returned to stock; see the [return findings](platform-lab-1-return.md).
+It uses the existing qualified board/display implementation,
 kernel clock and UI, not a newly invented private driver contract.
 
-Installed and armed on the inspected D: card after a fresh39-file read-only
+Initially installed and armed on the inspected D: card after a fresh39-file read-only
 archive. All20 protected private progress/report entries, stock binaries,
 boot hook, game runner and core hashes are preserved. Lab executable SHA256:
 `4deb0571b4500c727c036a50a2e64f01cb9ee23874a3d19df7e6d59b7f919cee`.
+Returned markers are consumed; current card is archived and unarmed.
 
 ## Engineering judgment
 
@@ -147,6 +149,12 @@ build/analyze-platform-lab.py on one archived results/run-* directory.
 Games, saves, vendor libraries, sysroot and raw private archives stay local.
 
 ## Next decision
+
+The physical result selects NEON over this color-cache implementation and
+demotes blanket CPU slicing. Coarse-looking wake latency and OSS staging make
+timer/consumption qualification and coherent event-driven production control
+the next targets. Keep the original proposal below as rationale, not a claim
+that the returned cache should now enter the core.
 
 Choose the cache or a compact register-resident row kernel from actual A7
 costs, then qualify its real-core invalidation and output. Production cache

@@ -1232,6 +1232,78 @@
       "published_sha256": "dffa600684615479ed41b474833820cbecb37cd36088a17c960912610bc144a7",
       "bytes": 409,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/results.log",
+      "published": "evidence/2026-10-04/platform-lab-1-return/results.log",
+      "source_sha256": "c6ad235f1721926273ba830d43f803b058b30283b42b4d2d3f6f4ebb878864b9",
+      "published_sha256": "c6ad235f1721926273ba830d43f803b058b30283b42b4d2d3f6f4ebb878864b9",
+      "bytes": 6645,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/startup.log",
+      "published": "evidence/2026-10-04/platform-lab-1-return/startup.log",
+      "source_sha256": "a379fed1f1d602b3f3ede2ea41dbee2c98dd59f74c054395c46df226e802ebf9",
+      "published_sha256": "a379fed1f1d602b3f3ede2ea41dbee2c98dd59f74c054395c46df226e802ebf9",
+      "bytes": 1864,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/wrapper.log",
+      "published": "evidence/2026-10-04/platform-lab-1-return/wrapper.log",
+      "source_sha256": "335d3b3a06bed6d47bc93b76784170c00c4cbeab12feea292b8283361863a361",
+      "published_sha256": "335d3b3a06bed6d47bc93b76784170c00c4cbeab12feea292b8283361863a361",
+      "bytes": 65,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/audio-AUDIO AND DISPLAY.csv",
+      "published": "evidence/2026-10-04/platform-lab-1-return/audio-AUDIO AND DISPLAY.csv",
+      "source_sha256": "6dd233ec16540e73f09f43ad9a8f2973e45ba4e885c793c02657867e6fffef30",
+      "published_sha256": "6dd233ec16540e73f09f43ad9a8f2973e45ba4e885c793c02657867e6fffef30",
+      "bytes": 27283,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/audio-AUDIO ONLY.csv",
+      "published": "evidence/2026-10-04/platform-lab-1-return/audio-AUDIO ONLY.csv",
+      "source_sha256": "f7b724f0ba77d49a61f518b7135bdc0e1b821e24aa715d747abdc4c8c96321f8",
+      "published_sha256": "f7b724f0ba77d49a61f518b7135bdc0e1b821e24aa715d747abdc4c8c96321f8",
+      "bytes": 26755,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/audio-CPU BURST.csv",
+      "published": "evidence/2026-10-04/platform-lab-1-return/audio-CPU BURST.csv",
+      "source_sha256": "0e81c24dfc2f01b74d1d0233382283c94111d1faac3cb24cce102bf2f019feb8",
+      "published_sha256": "0e81c24dfc2f01b74d1d0233382283c94111d1faac3cb24cce102bf2f019feb8",
+      "bytes": 26722,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/platform-lab/results/run-fcd0029d-dd66-4272-a435-a9c98432dde1-475/audio-CPU SLICES.csv",
+      "published": "evidence/2026-10-04/platform-lab-1-return/audio-CPU SLICES.csv",
+      "source_sha256": "84ac66824708a8aff93ba364cd1f7d291d320a1d1713f8292c8ebb692ed70b22",
+      "published_sha256": "84ac66824708a8aff93ba364cd1f7d291d320a1d1713f8292c8ebb692ed70b22",
+      "bytes": 26813,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/lab-analysis.json",
+      "published": "evidence/2026-10-04/platform-lab-1-return/lab-analysis.json",
+      "source_sha256": "d93bc70657a111b387a6df06a791e9a2d63c987f1194ba8fee1e8a590df4dd7f",
+      "published_sha256": "d93bc70657a111b387a6df06a791e9a2d63c987f1194ba8fee1e8a590df4dd7f",
+      "bytes": 9202,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261005T042642Z/lab-verification.json",
+      "published": "evidence/2026-10-04/platform-lab-1-return/lab-verification.json",
+      "source_sha256": "2a9ced7b92d434e678f56d7e26f3fb64717e3ccd276167b0fd833d6081f0b993",
+      "published_sha256": "2a9ced7b92d434e678f56d7e26f3fb64717e3ccd276167b0fd833d6081f0b993",
+      "bytes": 621,
+      "normalized": false
     }
   ]
 }

@@ -152,11 +152,12 @@ This rules down ordinary stdout/stderr redirection as a useful performance fix f
 
 ## Access and remaining unknowns
 
-[Hardware lab1](platform-lab.md) is now installed/armed for one automatic native
-run. It measures the qualified display path, OSS negotiation/raw counters and
-A7 tile/color-cache work under isolated/combined load. ARM correctness and
-supervision checks pass; physical results are pending. Its synthetic kernels
-do not establish a full-game speedup or a hardware limit.
+[Hardware lab1 returned](platform-lab-1-return.md) with normal stock handoff,
+240/240 completions per display phase and buffered sound under12ms CPU load.
+NEON beats its scalar tile fixture; this color cache loses.5ms deadline lateness
+averages5.48ms. Negative GETOSPACE and non-mmap OSS staging require care before
+using counters as a clock. Timer precision/slack remain unqualified. This short
+synthetic run proves neither full-game speed nor a shutdown fix. Card unarmed.
 
 Readable kallsyms supplied real addresses. Built-in-module entries are not exported loadable `.ko` files. `/proc/mtd` had no registered partitions; `/proc/kcore` returned ENOENT. No kernel-text recovery, flash rewrite, MMIO experiment or `/dev/mem` fallback was performed.
 

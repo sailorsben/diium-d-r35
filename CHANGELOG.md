@@ -1,5 +1,26 @@
 # Changelog
 
+## Hardware lab1 physical return — 2026-10-04
+
+Completes and returns to stock; user reports clicks between tests and poor text
+readability. Archive41 MVP plus17 lab files read-only, preserving20 private
+entries and exact stock/hook/game/core/original-wrapper hashes. Markers consumed;
+no card writes, replacement build or re-arm. Publish selected raw/derived data.
+
+All four display phases complete240/240 jobs, including12ms CPU load at59.91
+producer calls/sec. Audio samples retain34.83–46.44ms of negotiated-rate lead,
+with zero write/query errors and~22.9ms maximum write gaps. This synthetic load
+does not prove full-speed FF6 or resolve prior shutdowns. NEON beats scalar~2.5x
+in the fixture; this color cache loses43–127% against NEON. CPU slicing gives
+no clear benefit.5ms deadline lateness averages5.482ms, making intended1ms
+poll sleeps suspect; timer quantum/config/slack remain unqualified.
+
+Retain negative GETOSPACE; correct unqualified modulo-2^32 cursor analysis.
+Add independently calculated staging/error/reset fixtures and returned-bundle/
+private-preservation verification. Explain OSS non-mmap staging/block semantics,
+UI downsampling and tone-reset boundaries; name the timer/consumption probe and
+controller/PCM-publication/compact-kernel work next. See [return](docs/platform-lab-1-return.md).
+
 ## Hardware lab1 and custom-code investigation — 2026-10-04
 
 Ben authorizes a bounded native test program to discover useful system behavior.

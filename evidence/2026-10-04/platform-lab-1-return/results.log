@@ -1,0 +1,57 @@
+event=supervisor_begin deadline_ns=60000000000
+event=run_begin version=lab1 pid=488 null=0 kernel_ns=8327527000
+event=selftest status=passed cases=12300 transport_bytes=4096
+event=phase_begin name=kernels
+event=kernel mode=scalar scenario=0 draws=118273 wall_ns=200380000 cpu_ns=198276000 hits=0 misses=0 cache_bytes=27152 checksum=3974615568
+event=kernel mode=neon scenario=0 draws=297729 wall_ns=200034000 cpu_ns=198151000 hits=0 misses=0 cache_bytes=27152 checksum=1415428840
+event=kernel mode=color_cache scenario=0 draws=207873 wall_ns=200197000 cpu_ns=198297000 hits=129880 misses=77993 cache_bytes=27152 checksum=2690720672
+event=kernel mode=scalar scenario=1 draws=118017 wall_ns=200407000 cpu_ns=198310000 hits=0 misses=0 cache_bytes=27152 checksum=3966012504
+event=kernel mode=neon scenario=1 draws=290305 wall_ns=200064000 cpu_ns=198057000 hits=0 misses=0 cache_bytes=27152 checksum=1165939984
+event=kernel mode=color_cache scenario=1 draws=128001 wall_ns=200194000 cpu_ns=198116000 hits=0 misses=128001 cache_bytes=27152 checksum=6564704
+event=kernel mode=scalar scenario=2 draws=118017 wall_ns=200346000 cpu_ns=198452000 hits=0 misses=0 cache_bytes=27152 checksum=4004462412
+event=kernel mode=neon scenario=2 draws=293889 wall_ns=200155000 cpu_ns=198305000 hits=0 misses=0 cache_bytes=27152 checksum=1382236288
+event=kernel mode=color_cache scenario=2 draws=178433 wall_ns=200125000 cpu_ns=198205000 hits=83610 misses=94823 cache_bytes=27152 checksum=1759523276
+event=phase_end name=kernels
+event=wake requested_ns=5000000 samples=200 sum_late_ns=1096439000 max_late_ns=9568000
+event=audio_hint requested=32000 rc=0 errno=0
+event=audio_config requested=32000 accepted_rate=32000 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="rate_probe" accepted_bytes=0 worker_cpu_ns=0 max_write_gap_ns=0 short_writes=0 eagain=0 zero_delay_samples=0 error=0 samples=0
+event=audio_hint requested=32040 rc=0 errno=0
+event=audio_config requested=32040 accepted_rate=32040 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="rate_probe" accepted_bytes=0 worker_cpu_ns=0 max_write_gap_ns=0 short_writes=0 eagain=0 zero_delay_samples=0 error=0 samples=0
+event=audio_hint requested=44100 rc=0 errno=0
+event=audio_config requested=44100 accepted_rate=44100 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="rate_probe" accepted_bytes=0 worker_cpu_ns=0 max_write_gap_ns=0 short_writes=0 eagain=0 zero_delay_samples=0 error=0 samples=0
+event=audio_hint requested=48000 rc=0 errno=0
+event=audio_config requested=48000 accepted_rate=48000 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="rate_probe" accepted_bytes=0 worker_cpu_ns=0 max_write_gap_ns=0 short_writes=0 eagain=0 zero_delay_samples=0 error=0 samples=0
+event=phase_begin name="DISPLAY ONLY" kernel_ns=11584736000
+event=pipeline name="DISPLAY ONLY" frames=240 active_ns=4013603000 producer_cpu_ns=141600000 frame_wall_max_ns=999000 late_samples=240 max_late_ns=11452435 submitted=240 scaled=240 flipped=240 reserve_ns=1339000 copy_ns=111656000 scale_ns=537484000 flip_ns=3252850000 worker_cpu_ns=148649000 max_scale_ns=2396000 max_flip_ns=16556000 queue_high=1 drain_ns=8000
+event=phase_end name="DISPLAY ONLY" kernel_ns=15612802000
+event=phase_begin name="AUDIO ONLY" kernel_ns=15632420000
+event=audio_hint requested=44100 rc=0 errno=0
+event=audio_config requested=44100 accepted_rate=44100 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="AUDIO ONLY" accepted_bytes=714752 worker_cpu_ns=37238000 max_write_gap_ns=22913000 short_writes=0 eagain=635 zero_delay_samples=0 error=0 samples=406
+event=pipeline name="AUDIO ONLY" frames=240 active_ns=4007283000 producer_cpu_ns=12766000 frame_wall_max_ns=49000 late_samples=240 max_late_ns=10014790 submitted=0 scaled=0 flipped=0 reserve_ns=0 copy_ns=0 scale_ns=0 flip_ns=0 worker_cpu_ns=0 max_scale_ns=0 max_flip_ns=0 queue_high=0 drain_ns=14000
+event=phase_end name="AUDIO ONLY" kernel_ns=19702958000
+event=phase_begin name="AUDIO AND DISPLAY" kernel_ns=19713388000
+event=audio_hint requested=44100 rc=0 errno=0
+event=audio_config requested=44100 accepted_rate=44100 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="AUDIO AND DISPLAY" accepted_bytes=714752 worker_cpu_ns=68158000 max_write_gap_ns=22903000 short_writes=0 eagain=626 zero_delay_samples=0 error=0 samples=413
+event=pipeline name="AUDIO AND DISPLAY" frames=240 active_ns=4005862000 producer_cpu_ns=147744000 frame_wall_max_ns=1013000 late_samples=240 max_late_ns=10012020 submitted=240 scaled=240 flipped=240 reserve_ns=1390000 copy_ns=115246000 scale_ns=541345000 flip_ns=2472219000 worker_cpu_ns=150469000 max_scale_ns=2320000 max_flip_ns=15039000 queue_high=1 drain_ns=9000
+event=phase_end name="AUDIO AND DISPLAY" kernel_ns=23783172000
+event=phase_begin name="CPU BURST" kernel_ns=23794369000
+event=audio_hint requested=44100 rc=0 errno=0
+event=audio_config requested=44100 accepted_rate=44100 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="CPU BURST" accepted_bytes=716800 worker_cpu_ns=69478000 max_write_gap_ns=22915000 short_writes=0 eagain=637 zero_delay_samples=0 error=0 samples=405
+event=pipeline name="CPU BURST" frames=240 active_ns=4005781000 producer_cpu_ns=3026086000 frame_wall_max_ns=15465000 late_samples=240 max_late_ns=10122880 submitted=240 scaled=240 flipped=240 reserve_ns=1459000 copy_ns=118520000 scale_ns=538727000 flip_ns=3407175000 worker_cpu_ns=150477000 max_scale_ns=2977000 max_flip_ns=16115000 queue_high=1 drain_ns=15112000
+event=phase_end name="CPU BURST" kernel_ns=27883284000
+event=phase_begin name="CPU SLICES" kernel_ns=27892004000
+event=audio_hint requested=44100 rc=0 errno=0
+event=audio_config requested=44100 accepted_rate=44100 space_rc=0 errno=0 fragment_bytes=2048 capacity_bytes=8192
+event=audio_end name="CPU SLICES" accepted_bytes=716800 worker_cpu_ns=66737000 max_write_gap_ns=22930000 short_writes=0 eagain=634 zero_delay_samples=0 error=0 samples=407
+event=pipeline name="CPU SLICES" frames=240 active_ns=4010937000 producer_cpu_ns=3028438000 frame_wall_max_ns=15268000 late_samples=240 max_late_ns=11729940 submitted=240 scaled=240 flipped=240 reserve_ns=1375000 copy_ns=118595000 scale_ns=540895000 flip_ns=2903147000 worker_cpu_ns=152568000 max_scale_ns=2442000 max_flip_ns=16221000 queue_high=1 drain_ns=9792000
+event=phase_end name="CPU SLICES" kernel_ns=31989395000
+event=cleanup_begin cancelled=0
+event=run_end status=complete kernel_ns=32038608000
+event=supervisor_end child=488 status=0 term=0 killed=0

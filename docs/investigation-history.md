@@ -46,9 +46,11 @@ The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated
 
 Ben next authorizes a standalone hardware lab and custom software exploration.
 [Lab1](platform-lab.md) isolates A7 tile-work reuse, OSS negotiation/service and
-display/CPU overlap in bounded phases. Local correctness/supervision checks
-pass; physical results are pending. It does not establish a hardware ceiling,
-emulator speedup, continuous scaler queue contract or an audio scheduling clock.
+display/CPU overlap in bounded phases. Its [physical return](platform-lab-1-return.md)
+completes all phases and stock handoff. NEON wins, this cache loses, CPU slicing
+gives no clear benefit, and5ms deadlines average5.48ms late. Negative free-space
+reports are retained; an audio scheduling clock/timer quantum remains unqualified.
+The card is archived/unarmed. No hardware ceiling or whole-game speedup is inferred.
 
 - The1.8 return disproves the claimed firmware sed availability. Test actual
   capture with both head and sed absent. Current shell-builtin repair is source
