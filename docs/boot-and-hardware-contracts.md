@@ -20,13 +20,21 @@ First library draw/flip completes before initial held inputs are suppressed inde
 
 Bring-up/input/exit/cleanup logs are bounded and durable. Game callbacks do not perform per-frame SD logging. Through 1.6, three post-ready snapshots retained runtime/thread/IPC state, then monitoring ended. [1.7](snes-mvp-1.7.md) adds atomic RAM progress outside core callbacks and persists the latest two records, three early snapshots and a bounded latest platform/kernel view. Its monitor captures after two seconds, then five-second waits for at most 63 iterations; capture time extends the nominal window. Capture/sync duration is logged. Cancellation reaps the owned sleeper. Verify current build/session/boot identity before treating a retained report as this run; normal-exit totals may remain stale after power-off.
 
-The 1.7 physical return establishes that `head` is absent; its system CPU/memory/
-IRQ capture failed despite passing host wrapper checks. Source now uses the
-already-working `sed` and verifies actual CPU/memory contents with a restricted
-PATH that omits `head`. Do not assume host utilities exist on the firmware.
+The 1.7 physical return establishes that `head` is absent; the1.8 return also
+establishes that `sed` is absent. The prior claim that sed already worked was
+an unsupported assumption. Both releases have system CPU/memory/IRQ capture
+gaps despite passing host checks. Current source uses shell builtins for line
+limits and splash zombie parsing; test the actual wrapper with both utilities
+absent and verify CPU/memory contents. This repair is not installed. Do not
+assume host utilities exist on the firmware.
 The shipped 1.7 kernel/stderr tails are empty and its final wrapper exit line
 is missing, despite fresh final runner totals and completed display cleanup.
 Preserve these collection limits; see the [return review](snes-mvp-1.7-return.md).
+
+The [1.8 return](snes-mvp-1.8-return.md) has an empty latest checkpoint and tails,
+a fresh previous running checkpoint and a stale1.7 final report. Unfsynced
+copies can lose writeback on power loss; the previous timestamp is not the
+shutdown time. Preserve identities and archive private progress before updates.
 
 ## GPIO ABI and complete direction translation
 
@@ -116,3 +124,9 @@ identity only after those checks; it never retags the original in place.
 Stock main/vrtemu use SysV key1234, 460 bytes, IPC_CREAT|0666. Word0 is a soft-watchdog tick budget; `xintiao` publishes 60 and increments word1. The MVP preserves this layout but does not remove the segment when detaching.
 
 Returned `/wdt` instead configures and autonomously feeds the hardware watchdog every 500 ms. It does not attach this shared heartbeat; the v1.3 IPC snapshot showed only the MVP attached. Omitted heartbeat was not demonstrated as the dead-input cause. Do not disable the hardware watchdog as a substitute for diagnosing a stalled runtime.
+
+Read-only factory `power_key` disassembly identifies another shutdown path:
+poll0xd0000068 bit0x08 every200ms; eleven consecutive asserted samples lead to
+GPIO0x108 backlight-off and `poweroff`. The1.8 user confirms whole-device
+power-off, but no retained late sample or shutdown message establishes that
+this path fired. Recovered MMIO code is not a qualified live probing contract.

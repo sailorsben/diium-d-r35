@@ -110,9 +110,20 @@ int main(int argc,char **argv)
 {
     struct sigaction handler={0}; handler.sa_sigaction=fault; handler.sa_flags=SA_SIGINFO;
     assert(!sigaction(SIGSEGV,&handler,NULL));
-    struct core old={0},candidate={0}; unsigned phase,f;
+    struct core old={0},candidate={0}; unsigned phase,f,iterations=600;
     unsigned char *rom,*state,*a,*b; size_t n,state_n,size;
-    assert(argc==5); rom=read_all(argv[3],&n); state=read_all(argv[4],&state_n);
+    assert(argc==5 || argc==6);
+    if(argc==6) {
+        const char *digit=argv[5]; unsigned requested=0;
+        assert(*digit);
+        while(*digit) {
+            assert(*digit>='0' && *digit<='9' && requested<=10000);
+            requested=requested*10u+(unsigned)(*digit++-'0');
+        }
+        assert(requested>=600 && requested<=10000);
+        iterations=requested;
+    }
+    rom=read_all(argv[3],&n); state=read_all(argv[4],&state_n);
     assert(state_n>40 && !memcmp(state,"D35MVP01",8));
     open_core(&old,argv[1],rom,n);open_core(&candidate,argv[2],rom,n);
     size=old.serialize_size(); assert(size==candidate.serialize_size() && state_n==size+40);
@@ -122,7 +133,7 @@ int main(int argc,char **argv)
             active=&old;assert(old.unserialize(state+40,size));
             active=&candidate;assert(candidate.unserialize(state+40,size));
         }
-        for(f=0;f<600;f++) {
+        for(f=0;f<iterations;f++) {
             frame=f;
             old.pixels=old.pcm=old.samples=old.videos=0;
             candidate.pixels=candidate.pcm=candidate.samples=candidate.videos=0;
@@ -148,6 +159,6 @@ int main(int argc,char **argv)
     }
     active=&old;old.unload_game();old.deinit();active=&candidate;candidate.unload_game();candidate.deinit();
     dlclose(old.handle);dlclose(candidate.handle);free(rom);free(state);free(a);free(b);
-    puts("PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; intro and returned private snapshot");
+    printf("PASS: %u frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; intro and returned private snapshot\n",iterations*2);
     return 0;
 }

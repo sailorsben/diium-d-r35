@@ -5,6 +5,13 @@ import json,shutil
 ROOT=Path(__file__).resolve().parent.parent
 checks=json.loads((ROOT/'build/snes-mvp/out/verification.json').read_text())
 assert checks['passed'] and checks['version']=='1.8'
+# Verify actual inputs before touching any historical artifact. A stale
+# verification.json must never authorize exporting changed source bytes.
+for source,key in ((ROOT/'build/snes-mvp/out/snes-mvp','binary_sha256'),
+                   (ROOT/'build/snes-mvp/launch.sh','wrapper_sha256'),
+                   (ROOT/'build/plus-a7-out/plus-a7.so','core_sha256'),
+                   (ROOT/'build/plus-a7-render.h','a7_header_sha256')):
+    assert sha256(source.read_bytes()).hexdigest()==checks[key], 'Qualified input changed: '+source.name
 existing_release=ROOT/'releases/snes-mvp-1.8/manifest.json'
 if existing_release.exists():
     existing=json.loads(existing_release.read_text())

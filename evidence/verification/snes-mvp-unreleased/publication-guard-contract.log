@@ -1,0 +1,1 @@
+PASS: historical1.8 publisher rejects changed wrapper before any evidence/release/manifest writes

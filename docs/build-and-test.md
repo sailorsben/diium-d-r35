@@ -82,9 +82,13 @@ The user subsequently requested a logging retry and confirmed stock boot.
 [MVP1.7](snes-mvp-1.7.md) ran with the same core/pipeline, fresh checkpoints and
 bounded persisted diagnostics. Its [return](snes-mvp-1.7-return.md) saved/exited
 without a crash but remained laggy. That return was archived read-only with new
-SRAM preserved. [1.8](snes-mvp-1.8.md) incorporates the sed correction, trims
-gameplay diagnostics and optimizes the A7 renderer. Physical speed/audio still
-await acceptance. Historical1.7 bytes/evidence remain unchanged.
+SRAM preserved. [1.8](snes-mvp-1.8.md) trims gameplay diagnostics and optimizes
+the A7 renderer. Its [physical return](snes-mvp-1.8-return.md) has clicking and
+whole-device power-off; card unarmed, shutdown cause unknown. Its sed-based
+capture also failed because firmware lacks sed. Current source uses shell
+builtins and passes with both head/sed absent; this repair is not installed.
+Historical1.7/1.8 bytes and evidence remain unchanged. A new runtime must be
+qualified and published under a new version; do not re-arm unchanged1.8.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
@@ -110,11 +114,15 @@ progress and arms last. It deliberately rejects an already-updated/armed card.
 `build/publish-snes-1.7.py` publishes selected verification and owned release;
 historical publishers reject a mismatched version rather than overwrite releases.
 
-Current `build/package-snes-1.8.py --card D:/` requires exact returned/unarmed1.7
+Historical `build/package-snes-1.8.py --card D:/` requires exact returned/unarmed1.7
 and qualified1.8 runner/core/wrapper bytes. It archives every private file,
 preserves the newly earned SRAM and creates only a separate qualified older
 snapshot before arming. Use FF6's **Continue** to play from the new Save Point.
-`build/publish-snes-1.8.py` publishes selected checks and the owned release.
+`build/publish-snes-1.8.py` verifies actual qualified input bytes before writing
+selected checks and the owned release. Changed source with stale verification
+is rejected. `build/publish-snes-1.8-return.py` exports selected read-only return
+evidence and source-fix checks while preserving historical hashes; no private
+progress or core dependency is exported.
 
 Before any deployment, retain a complete card backup, original init and original/private game progress. Preserve the supplied device's own backups rather than restoring another owner's files. These userspace tests have not changed internal flash/kernel.
 
@@ -124,7 +132,8 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
-For1.8, use the [current test sequence](snes-mvp-1.8.md#physical-test).
+The [1.8 test sequence](snes-mvp-1.8.md#physical-test) is historical; its returned
+card is unarmed. Read the latest return before preparing another version.
 After power-off, prefer fresh `last-progress.txt`/`last-progress.previous`
 identity-qualified checkpoints over an older normal-exit report. Retain
 `runtime-platform-latest.txt`, `kernel-tail.txt` and `diagnostic-flush.log` too.

@@ -1,0 +1,10 @@
+{
+  "version": "1.8",
+  "source": "Direct user clarification after read-only return collection",
+  "user_report": "The whole device powered off",
+  "shutdown_observation": "whole device powered off",
+  "supersedes": "analysis.json physical_result exact crash appearance pending clarification",
+  "game_location": "not supplied",
+  "shutdown_cause": "not established",
+  "crash_timestamp": "not established"
+}

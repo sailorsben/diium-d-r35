@@ -17,13 +17,28 @@ sync
 PROC_ROOT=${D35_MVP_PROC_ROOT:-/proc}
 SPLASH_STOP=${D35_MVP_SPLASH_STOP:-/tmp/vrtemu.log}
 SPLASH_ACK=${D35_MVP_SPLASH_ACK:-/tmp/displogo.log}
+first_lines() {
+  CAPTURE_LEFT=$1
+  while [ "$CAPTURE_LEFT" -gt 0 ] && IFS= read -r CAPTURE_LINE; do
+    printf '%s\n' "$CAPTURE_LINE"
+    CAPTURE_LEFT=$((CAPTURE_LEFT - 1))
+  done
+}
 splash_pids() {
   for ENTRY in "$PROC_ROOT"/[0-9]*; do
     [ -r "$ENTRY/comm" ] || continue
     IFS= read -r COMM < "$ENTRY/comm" || continue
     if [ "$COMM" = showlogo ]; then
       # Zombies have already closed their display; do not wait for parent reap.
-      STATE=$(sed -n 's/^State:[[:space:]]*\([A-Z]\).*/\1/p' "$ENTRY/status" 2>/dev/null)
+      STATE=
+      if [ -r "$ENTRY/status" ]; then
+        while IFS= read -r SPLASH_LINE; do
+          case "$SPLASH_LINE" in State:*)
+            case "$SPLASH_LINE" in *Z*) STATE=Z;; esac
+            break;;
+          esac
+        done < "$ENTRY/status"
+      fi
       [ "$STATE" = Z ] || printf '%s ' "${ENTRY##*/}"
     fi
   done
@@ -138,10 +153,10 @@ fi
         cat "$TASK/status" "$TASK/wchan" "$TASK/syscall" "$TASK/stat" 2>&1
       done
       printf '\nKernel CPU/memory/interrupt samples\n'
-      # This firmware has sed (used by the splash handoff), but no head.
-      sed -n '1,16p' /proc/stat 2>&1
-      sed -n '1,24p' /proc/meminfo 2>&1
-      sed -n '1,32p' /proc/interrupts 2>&1
+      # Returned firmware lacks both head and sed. Use shell builtins only.
+      first_lines 16 < /proc/stat
+      first_lines 24 < /proc/meminfo
+      first_lines 32 < /proc/interrupts
       for ENTRY in "$PROC_ROOT"/[0-9]*; do
         [ -r "$ENTRY/comm" ] || continue
         IFS= read -r COMM < "$ENTRY/comm" || continue
@@ -150,7 +165,7 @@ fi
           cat "$ENTRY/stat" "$ENTRY/wchan" "$ENTRY/syscall" 2>&1;;
         esac
       done
-      ps 2>&1 | sed -n '1,80p'
+      ps 2>&1 | first_lines 80
     } > "$BASE/runtime-platform-latest.txt.tmp"
     mv "$BASE/runtime-platform-latest.txt.tmp" "$BASE/runtime-platform-latest.txt"
     cat "$BASE/runtime-platform-latest.txt" >> "$BASE/runtime-platform.txt"

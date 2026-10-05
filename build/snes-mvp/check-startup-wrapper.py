@@ -10,13 +10,15 @@ import shutil
 source=Path(__file__).with_name('launch.sh')
 root=Path(sys.argv[1]).resolve()
 root.mkdir(parents=True,exist_ok=True)
-# Reproduce the returned firmware seam: host PATH previously hid missing head.
+# Reproduce returned firmware: both head and sed are absent.
 tools=root/'minimal-tools'; tools.mkdir(exist_ok=True)
-for command in ('sh','mv','mkdir','sync','ps','cp','cat','sed','sleep','tail','dmesg','rm'):
+for command in ('sh','mv','mkdir','sync','ps','cp','cat','sleep','tail','dmesg','rm'):
     executable=shutil.which(command); assert executable,command
     target=tools/command
     if not target.exists():target.symlink_to(executable)
-assert not (tools/'head').exists()
+for absent in ('head','sed'):
+    (tools/absent).unlink(missing_ok=True)
+    assert not (tools/absent).exists()
 # Observe the real wrapper's sync calls without flushing the host filesystem.
 (tools/'sync').unlink()
 (tools/'sync').write_text('#!/bin/sh\nprintf "sync\\n" >> "$D35_FIXTURE_SYNC"\n')
@@ -51,7 +53,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     if splash:
         entry=proc/'321'; entry.mkdir(exist_ok=True)
         (entry/'comm').write_text('showlogo\n')
-        (entry/'status').write_text('State:\tS (sleeping)\n')
+        (entry/'status').write_text('State:\tZ (zombie)\n' if splash=='zombie' else 'State:\tS (sleeping)\n')
         if splash=='exits':
             def vendor_splash():
                 deadline=time.monotonic()+6
@@ -89,6 +91,10 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     if splash=='exits':
         assert ack.exists() and started.exists()
         assert log.index('splash handoff complete')<log.index('child pid='),log
+    if splash=='zombie':
+        assert started.exists() and 'waited=0s' in log
+        shutil.rmtree(proc/'321')
+        print('PASS: shell-only splash parser ignores released zombie without sed')
     assert f'ready={"yes" if ready else "no"}' in log,log
     if name=='stalled':
         assert 'STARTUP TIMEOUT' in log
@@ -108,14 +114,14 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'Runtime snapshot child=' in runtime and 'Task ' in runtime,runtime
         assert 'stale previous snapshot' not in runtime
         assert '\ncpu ' in runtime and 'MemTotal:' in runtime,runtime
-        assert 'head: not found' not in runtime
+        assert 'head: not found' not in runtime and 'sed: not found' not in runtime
         assert 'fixture ready runtime' in (base/'last-run.log').read_text()
         assert 'fixture-running-37' in (base/'last-progress.txt').read_text()
         assert (base/'runtime-platform-latest.txt').stat().st_size>0
         assert 'end_after_copy_uptime=' in (base/'diagnostic-flush.log').read_text()
         assert 'global_sync=0' in (base/'diagnostic-flush.log').read_text()
         print('PASS: diagnostic progress persisted before child exit; one platform capture and no gameplay global sync')
-        print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head')
+        print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head and sed')
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 
 run('early-error','printf "fixture early error\\n"; exit 7',7)
@@ -124,4 +130,5 @@ run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n
 run('unarmed','exit 99',0,armed=False)
 run('splash-handoff',': > "$D35_MVP_READY_FILE"; exit 0',0,ready=True,splash='exits')
 run('splash-stalled','exit 99',1,splash='stuck')
+run('splash-zombie',': > "$D35_MVP_READY_FILE"; exit 0',0,ready=True,splash='zombie')
 print('PASS: unarmed boot skips MVP; startup deadline does not limit a ready session')

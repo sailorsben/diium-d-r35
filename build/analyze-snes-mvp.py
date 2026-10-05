@@ -56,7 +56,7 @@ def analyze(path, core_path=None):
     ]
     if integer('held'):
         limitations.append('Adaptive internal drawing makes the mean a mixed workload, not full-render cost.')
-    if fields.get('build_version') == '1.7':
+    if fields.get('build_version') in ('1.7','1.8'):
         limitations.append('Device queue is sampled during producer lead checks; brief starvation can be missed.')
         limitations.append('In-progress checkpoints omit later work; verify session/boot identity and phase before attribution.')
     else:

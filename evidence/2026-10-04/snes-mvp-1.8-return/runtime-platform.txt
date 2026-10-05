@@ -1,0 +1,180 @@
+
+Runtime snapshot child=492 delay=2s
+11.28 4.80
+       key      shmid perms       size  cpid  lpid nattch   uid   gid  cuid  cgid      atime      dtime      ctime        rss       swap
+      1234          0   666        460   492   492      1     0     0     0     0         11          0         11       4096          0
+
+Task /proc/492/task/492
+Name:	snes-mvp
+Umask:	0022
+State:	R (running)
+Tgid:	492
+Ngid:	0
+Pid:	492
+PPid:	475
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	32
+Groups:	 
+NStgid:	492
+NSpid:	492
+NSpgid:	39
+NSsid:	39
+VmPeak:	   35384 kB
+VmSize:	   35384 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	   14432 kB
+VmRSS:	   11708 kB
+RssAnon:	    9656 kB
+RssFile:	    2048 kB
+RssShmem:	       4 kB
+VmData:	   28936 kB
+VmStk:	     132 kB
+VmExe:	      60 kB
+VmLib:	    2592 kB
+VmPTE:	      30 kB
+VmSwap:	       0 kB
+CoreDumping:	0
+Threads:	3
+SigQ:	0/302
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000004
+SigCgt:	0000000180004002
+CapInh:	0000000000000000
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Speculation_Store_Bypass:	unknown
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+voluntary_ctxt_switches:	347
+nonvoluntary_ctxt_switches:	200
+0running
+492 (snes-mvp) R 475 39 39 0 -1 4210688 4756 0 3 0 63 12 0 0 20 0 3 0 824 36233216 2927 4294967295 65536 123296 3199360320 0 0 0 0 4 16386 0 0 0 17 0 0 0 0 0 0 130816 131720 184320 3199360579 3199360673 3199360673 3199360991 0
+
+Task /proc/492/task/494
+Name:	snes-mvp
+Umask:	0022
+State:	S (sleeping)
+Tgid:	492
+Ngid:	0
+Pid:	494
+PPid:	475
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	32
+Groups:	 
+NStgid:	492
+NSpid:	494
+NSpgid:	39
+NSsid:	39
+VmPeak:	   35384 kB
+VmSize:	   35384 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	   14432 kB
+VmRSS:	   11708 kB
+RssAnon:	    9656 kB
+RssFile:	    2048 kB
+RssShmem:	       4 kB
+VmData:	   28936 kB
+VmStk:	     132 kB
+VmExe:	      60 kB
+VmLib:	    2592 kB
+VmPTE:	      30 kB
+VmSwap:	       0 kB
+CoreDumping:	0
+Threads:	3
+SigQ:	0/302
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000004
+SigCgt:	0000000180004002
+CapInh:	0000000000000000
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Speculation_Store_Bypass:	unknown
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+voluntary_ctxt_switches:	81
+nonvoluntary_ctxt_switches:	1
+futex_wait_queue_me0 0x203e4 0x80 0x0 0x0 0x203e4 0x203b8 0xb6989da8 0xb6eae998
+494 (snes-mvp) S 475 39 39 0 -1 4194368 0 0 0 0 0 1 0 0 20 0 3 0 840 36233216 2927 4294967295 65536 123296 3199360320 0 0 0 0 4 16386 1 0 0 -1 0 0 0 0 0 0 130816 131720 184320 3199360579 3199360673 3199360673 3199360991 0
+
+Task /proc/492/task/497
+Name:	snes-mvp
+Umask:	0022
+State:	S (sleeping)
+Tgid:	492
+Ngid:	0
+Pid:	497
+PPid:	475
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	32
+Groups:	 
+NStgid:	492
+NSpid:	497
+NSpgid:	39
+NSsid:	39
+VmPeak:	   35384 kB
+VmSize:	   35384 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	   14432 kB
+VmRSS:	   11708 kB
+RssAnon:	    9656 kB
+RssFile:	    2048 kB
+RssShmem:	       4 kB
+VmData:	   28936 kB
+VmStk:	     132 kB
+VmExe:	      60 kB
+VmLib:	    2592 kB
+VmPTE:	      30 kB
+VmSwap:	       0 kB
+CoreDumping:	0
+Threads:	3
+SigQ:	0/302
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000004
+SigCgt:	0000000180004002
+CapInh:	0000000000000000
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Speculation_Store_Bypass:	unknown
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+voluntary_ctxt_switches:	51
+nonvoluntary_ctxt_switches:	0
+futex_wait_queue_me0 0x245a8 0x80 0x2 0x0 0x245a8 0x0 0xb52e8d90 0xb6eb2a48
+497 (snes-mvp) S 475 39 39 0 -1 4194368 0 0 0 0 0 0 0 0 20 0 3 0 1100 36233216 2927 4294967295 65536 123296 3199360320 0 0 0 0 4 16386 1 0 0 -1 0 0 0 0 0 0 130816 131720 184320 3199360579 3199360673 3199360673 3199360991 0
+
+Kernel CPU/memory/interrupt samples
+/usr/retro/snes-mvp/launch.sh: line 166: sed: not found
+/usr/retro/snes-mvp/launch.sh: line 166: sed: not found
+/usr/retro/snes-mvp/launch.sh: line 166: sed: not found
+
+Helper power_key /proc/444
+444 (power_key) S 1 39 39 0 -1 4194560 71 0 0 0 0 6 0 0 20 0 1 0 453 1765376 286 4294967295 65536 68372 3200487008 0 0 0 0 6 0 1 0 0 17 0 0 0 0 0 0 134920 135244 139264 3200487240 3200487251 3200487251 3200487409 0
+hrtimer_nanosleep0 0xbec38ce8 0x0 0xbebc200 0x0 0x3 0x0 0xbec38cd0 0xb6e3bb20
+
+Helper wdt /proc/467
+467 (wdt) S 1 39 39 0 -1 4194304 66 0 0 0 0 0 0 0 20 0 1 0 655 1765376 239 4294967295 65536 67132 3198959216 0 0 0 0 6 0 1 0 0 17 0 0 0 0 0 0 134920 135220 139264 3198959444 3198959449 3198959449 3198959607 0
+hrtimer_nanosleep0 0xbeac3cf8 0x0 0x1dcd6500 0x0 0x3 0x80045705 0xbeac3ce0 0xb6f09b20

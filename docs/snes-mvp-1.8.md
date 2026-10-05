@@ -1,5 +1,11 @@
 # MVP1.8: smarter Cortex-A7 renderer
 
+**Returned result:** clicking and confirmed whole-device power-off. The card is
+unarmed; see the [return review](snes-mvp-1.8-return.md) for fresh measurements,
+preserved progress and next work. This implementation record describes shipped
+1.8. Its firmware-supported-sed assumption below proved false; current source
+uses shell builtins, passes without head/sed and has not been installed.
+
 Ben requested a forward optimized A7 build instead of another paired device
 comparison. This release changes the actual renderer and reduces gameplay
 observer work. It retains the SNES library/pause UI, full drawing, accurate

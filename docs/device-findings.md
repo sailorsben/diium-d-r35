@@ -114,7 +114,9 @@ loop throughput, mean core wall15.384ms/CPU13.986ms, p95[21,22)ms and
 31.08% definitely over budget. PCM accounting is complete, while sampled empty
 device queue and71.280ms write gap leave starvation risk. Stock/new private
 progress are preserved, card unarmed. Missing head prevented system CPU/memory/
-IRQ collection; source uses sed with a restricted-PATH regression. Display
+IRQ collection; the attempted sed replacement also fails on firmware, as the
+1.8 return later establishes. Current source uses shell builtins and tests
+with both commands absent. Display
 worker waits overlap producer work and do not establish a scaler-only deficit.
 
 ## Forward A7 renderer build
@@ -127,6 +129,18 @@ real intro must be clamped before unsigned vector counts. Gameplay shell work
 is reduced to one platform capture plus small30-second checkpoints without
 global sync. Continue uses the new preserved Save Point SRAM; the separately
 migrated snapshot remains older progress. The1.6 shutdown cause remains open.
+
+The [1.8 return](snes-mvp-1.8-return.md) records clicking and confirmed whole-device
+power-off. A fresh previous checkpoint has1,648 calls, zero holds and about
+57.93 calls/sec of active-loop time, mean core wall13.33ms and audio-lead wait
+3.00ms/call. PCM accounting balances, but a sampled empty device queue and40.004ms
+maximum accepted-write gap leave starvation risk. Latest checkpoint/tails are
+empty and the final report is stale1.7; neither crash time nor shutdown cause
+is established. All19 existing private files and stock/hook hashes are intact;
+card unarmed. Firmware lacks sed as well as head. Source capture is repaired
+but not installed. The exact returned core passes10,000 output-equivalence
+frames; this does not prove physical speed or system stability. Next work is
+bounded audio-headroom production and durable targeted crash records.
 
 ## UART investigation and its negative result
 

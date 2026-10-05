@@ -38,11 +38,16 @@ The kcore recovery branch stopped at ENOENT. No MMIO/flash fallback occurred. Tr
 | 1.5 | All four directions confirmed; launcher/game/state work; 23,872 calls, 11.838% held drawings; occasional lag and rare random crackles in story/map | Stock-derived input repair is physically validated. Performance/audio are not fully qualified; mixed held-frame means cannot establish full-render throughput |
 | 1.6 | Very choppy sound, slow movement, clean-looking graphics, then whole-device power-off | Output equivalence did not prove faster A7 execution or physical stability. Startup worked; no fresh session report/exit record survived. Do not attribute stale 1.5 totals to this run or re-arm unchanged |
 | 1.7 | No crash; Save Point/save/normal exit; lag remains, partly relieved in FF6 party menu | Fresh 7,068 calls, zero holds, ~54.63 calls/sec active loop; 31.08% definitely over budget. Audio queue sampled empty despite complete PCM acceptance. Missing head leaves system diagnostic gaps; source regression now reproduces sparse firmware PATH. New progress archived; card unarmed |
+| 1.8 | Played okay, clicking returned, whole device powered off | Fresh previous checkpoint:1,648 calls, zero holds, ~57.93 calls/sec;13.33ms mean core wall plus3.00ms lead wait. Latest/tails empty, final report stale1.7. Both head and sed absent; source fix now tests both missing. Shutdown cause unknown; progress intact, card unarmed. Exact returned core passes10,000 output frames |
 
 The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
 
 ## Corrections that must survive future work
 
+- The1.8 return disproves the claimed firmware sed availability. Test actual
+  capture with both head and sed absent. Current shell-builtin repair is source
+  only; retain historical releases. Empty latest/tails and a previous running
+  checkpoint do not identify shutdown time or cause. See [return review](snes-mvp-1.8-return.md).
 - MVP1.8 proceeds with a forward A7 renderer build at Ben's direction, replacing
   the proposed paired device comparison. Mode specialization must be verified
   in emitted code. Clamp empty/reversed clipping before unsigned vector counts;

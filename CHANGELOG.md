@@ -1,5 +1,27 @@
 # Changelog
 
+## MVP1.8 physical return and diagnostic repair — 2026-10-04
+
+Played okay but clicking returned, followed by confirmed whole-device power-off.
+Archive and verify39 files read-only; all19 pre-existing private files and
+stock/hook hashes are intact. Exact returned release matches. Card unarmed.
+Fresh previous checkpoint has1,648 calls, zero holds, ~57.93 active-loop calls/sec,
+13.33ms mean core wall and3.00ms audio-lead wait per call. PCM accounting balances,
+but device queue sampled empty and maximum accepted-write gap is40.004ms.
+Shutdown cause and uninterrupted sound remain unproven; empty latest/tails and
+stale1.7 final totals are explicit collection limits.
+
+Correct the unsupported sed assumption: firmware lacks both head and sed.
+Use shell builtins for line limits and splash zombie parsing; the actual wrapper
+passes with both absent and no gameplay global sync. Source only, not installed.
+Exact returned core passes10,000 visible-pixel/native-PCM/state equivalence
+frames. Extend the harness without breaking device glibc2.30 compatibility.
+Guard historical1.8 publication against changed qualified input bytes before
+any writes; publish curated return and checks, retaining all historical hashes.
+Document recovered factory poweroff path without claiming it fired. Next work
+is bounded audio-headroom production and durable targeted crash records, with
+full drawing retained. See [return review](docs/snes-mvp-1.8-return.md).
+
 ## SNES MVP1.8 forward A7 build — 2026-10-04
 
 User directs a smarter A7 build instead of another device comparison. Specialize

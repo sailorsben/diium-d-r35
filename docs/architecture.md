@@ -18,9 +18,13 @@ source diagnostic command correction is incorporated in1.8.
 
 [MVP1.8](snes-mvp-1.8.md) moves forward on A7 at the user's direction: emitted
 tile-mode specialization, cheaper palettes, vector backdrop/window passes and
-less shell logging during play. Exactness/lifetime checks pass; physical speed
-and sound acceptance remain pending. The existing producer, audio worker and
-display queue retain their timing/ownership contracts.
+less shell logging during play. Its [physical return](snes-mvp-1.8-return.md)
+records clicking and whole-device power-off; the retained interval has zero
+holds and ~57.93 calls/sec. Mean core wall13.33ms plus3.00ms producer audio-lead
+wait makes production control a concrete next target. Some wait is legitimate
+throttling; a bounded audio-headroom controller must preserve native average
+speed and ordered full drawing. Crash cause remains unknown. Current source
+fixes capture without head/sed but is not installed; shipped1.8 is unchanged.
 
 ## Implemented owners
 

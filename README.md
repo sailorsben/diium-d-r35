@@ -10,7 +10,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
 - **MVP1.6 failed its physical run:** very choppy sound, slow movement, clean-looking graphics, then the whole device powered off. The returned build hashes match; originals are intact and the one-shot is consumed. No fresh session totals survived. Do not re-arm this release unchanged. [Failure review](docs/snes-mvp-1.6-failure.md).
 - **MVP1.7 returned without a crash:** reached a Save Point, saved and exited normally, but remained laggy; FF6's party menu helped partially. Fresh counters show 7,068 calls, zero holds, about 54.63 emulation calls/sec of active-loop time and 31.08% of calls definitely over budget. That return was archived read-only before updating; new SRAM is preserved. Missing `head` left diagnostic gaps, corrected and tested for1.8. [Return review](docs/snes-mvp-1.7-return.md).
-- **MVP1.8 installed and armed:** specialize seven A7 tile modes, reduce palette/color work, vectorize backdrop/window passes and trim gameplay logging. Exact-output, clipping, ownership and startup checks pass; physical speed/audio acceptance is pending. All19 existing private files and stock/hook hashes are preserved. Use FF6 **Continue** for the new Save Point. [Implementation and test](docs/snes-mvp-1.8.md).
+- **MVP1.8 returned with clicking and whole-device power-off:** fresh checkpoint records1,648 calls, zero held drawings and about57.93 calls/sec of active-loop time. Saved progress and stock/hook hashes are intact; card is unarmed. Shutdown cause remains unknown. Firmware also lacks `sed`; the source capture fix now passes without `head` or `sed` and is not installed. The exact returned core passes10,000 output-equivalence frames. [Return review](docs/snes-mvp-1.8-return.md), [implementation](docs/snes-mvp-1.8.md).
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
 
@@ -24,8 +24,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
-| Forward A7 renderer build and next physical test | [MVP1.8](docs/snes-mvp-1.8.md) |
-| Latest physical result and next engineering decision | [MVP1.7 return](docs/snes-mvp-1.7-return.md) |
+| Forward A7 renderer implementation | [MVP1.8](docs/snes-mvp-1.8.md) |
+| Latest physical result and next engineering decision | [MVP1.8 return](docs/snes-mvp-1.8-return.md) |
 | Logging retry implementation | [MVP1.7](docs/snes-mvp-1.7.md) |
 | A7 full-render implementation and failed test | [MVP1.6](docs/snes-mvp-1.6.md), [failure review](docs/snes-mvp-1.6-failure.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |
