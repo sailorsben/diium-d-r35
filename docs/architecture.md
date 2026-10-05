@@ -39,6 +39,12 @@ service under substantial synthetic CPU load, while exposing wake lateness
 and OSS staging. Coherent consumption-based admission and in-frame PCM
 publication remain proposals for gameplay, not changes already installed.
 
+[Lab2](platform-lab2.md) exercises timer/device wakeups and coherent single-owner
+audio admission in an isolated synthetic workload. Exported ARM32 observers
+price the vendor scaler/display calls and retain actual arguments/status without
+changing their sequence. Neither its controller nor scaler lifecycle changes
+are installed in the game runtime. Physical lab2 qualification is pending.
+
 ```text
 boot wrapper
   consume one-shot -> archive/log -> finish showlogo -> start one child

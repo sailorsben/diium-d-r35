@@ -1,0 +1,12 @@
+{
+  "version": "lab2",
+  "installed_utc": "2026-10-05T05:50:49.701584+00:00",
+  "archive": "snes-mvp-return-20261005T055049Z",
+  "armed": true,
+  "protected_private_count": 20,
+  "stock_and_private_unchanged": true,
+  "hook_dispatcher_game_runner_core_original_wrapper_unchanged": true,
+  "previous_lab_archived": true,
+  "lab_sha256": "3840bc09a319c4dd5eb5697924830a57691cc5d72d5f86833d404729596f404c",
+  "card_payload_verified": true
+}

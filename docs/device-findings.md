@@ -22,6 +22,13 @@ cpufreq, thermal/cache inventory and clock summary were absent in tested locatio
 
 ## Runtime and storage
 
+The2026-10-05 [lab2 contract review](platform-lab2.md) identifies the exact
+scaler/flip command values and argument shapes. In particular,0x80045004 gets
+scalar3000, not a pointer justified by ioctl direction bits. Status is a bitmask;
+FRAME_DONE=2, A_DONE=4 and B_DONE=8 are recovered names, not a qualified hardware
+queue. The next physical probe records actual configuration/output addresses,
+status, readiness and per-call timing. No lab2 physical result is established yet.
+
 Observed route:
 
 ```text

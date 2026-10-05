@@ -1,0 +1,19 @@
+D-R35 LAB 2 / INFRASTRUCTURE CONTRACTS
+
+One automatic run, about 60-90 seconds; supervised deadline 120 seconds.
+No game loads. Your game runner, ROMs, saves and stock software are preserved.
+
+1. Safely eject D:, put the card back in the handheld and boot normally.
+2. Let LAB 2 finish. It tests idle/loaded timers, memory, five audio transports,
+   then timer/device pacing with steady and occasional longer CPU work.
+3. Tones should fade at their ends. Labels are now drawn at their real resolution.
+   The moving pacing screens identify the rate and steady/burst work.
+4. Normal completion saves logs and returns to the regular launcher.
+5. Power off normally, reconnect D: and tell us about sound, labels and handoff.
+
+MENU can cancel between timer groups and audio profiles, or between paced calls.
+If the supervisor has to force termination, it waits for the child to exit and
+holds for reboot. The next reboot is stock because both one-shot markers were
+consumed. A kernel-blocked child requires reboot; no competing display starts.
+
+This tests infrastructure behavior, not FF6's full-speed acceptance.

@@ -1304,6 +1304,56 @@
       "published_sha256": "2a9ced7b92d434e678f56d7e26f3fb64717e3ccd276167b0fd833d6081f0b993",
       "bytes": 621,
       "normalized": false
+    },
+    {
+      "source": "build/platform-lab2-out/verification.json",
+      "published": "evidence/verification/platform-lab2/verification.json",
+      "source_sha256": "2e655bacbdacf61b651a66f17967593476f9ac13591f3626b6b14841739e16ed",
+      "published_sha256": "2e655bacbdacf61b651a66f17967593476f9ac13591f3626b6b14841739e16ed",
+      "bytes": 3124,
+      "normalized": false
+    },
+    {
+      "source": "build/platform-lab2-out/selftest.log",
+      "published": "evidence/verification/platform-lab2/selftest.log",
+      "source_sha256": "d272205475582b9cdf01e3754747ddcba21d022d7b558e4841b77674eda4041c",
+      "published_sha256": "d272205475582b9cdf01e3754747ddcba21d022d7b558e4841b77674eda4041c",
+      "bytes": 76,
+      "normalized": false
+    },
+    {
+      "source": "build/platform-lab2-out/driver-trace-check.log",
+      "published": "evidence/verification/platform-lab2/driver-trace-check.log",
+      "source_sha256": "a3a7192401cf0ca0e0fc82a65fd04199bbe3f7de858efbdfde5f80773c639d52",
+      "published_sha256": "a3a7192401cf0ca0e0fc82a65fd04199bbe3f7de858efbdfde5f80773c639d52",
+      "bytes": 80,
+      "normalized": false
+    },
+    {
+      "source": "build/platform-lab2-out/installation.json",
+      "published": "evidence/verification/platform-lab2/installation.json",
+      "source_sha256": "99a9855ef198e8102a5c7945ac7dd4d539920eaeb7098924496c9cb2b5e7620c",
+      "published_sha256": "99a9855ef198e8102a5c7945ac7dd4d539920eaeb7098924496c9cb2b5e7620c",
+      "bytes": 450,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/hardware-architecture-review/driver.so",
+      "published": "evidence/2026-10-05/lab2-driver-contract/contract.json",
+      "source_sha256": "2c0134b3fc425f5b65c271c014e291824590c773190014f4e50c3ed33c2f13f9",
+      "published_sha256": "4f9a0aa9e8185d291f0ba45b7286641ba46e8ece54e7c21bbc0294cf80aa66e3",
+      "bytes": 7936,
+      "normalized": true,
+      "transformation": "Named-function ELF disassembly and DWARF type extraction from hash-pinned binary; see build/extract-lab2-driver.py."
+    },
+    {
+      "source": "device-evidence/hardware-architecture-review/driver.so",
+      "published": "evidence/2026-10-05/lab2-driver-contract/disassembly.txt",
+      "source_sha256": "2c0134b3fc425f5b65c271c014e291824590c773190014f4e50c3ed33c2f13f9",
+      "published_sha256": "abe38fbf8cdbf1ca9ac950e399b8b20b75880d0d30058957593f774f5565ea0d",
+      "bytes": 15492,
+      "normalized": true,
+      "transformation": "Named-function ELF disassembly and DWARF type extraction from hash-pinned binary; see build/extract-lab2-driver.py."
     }
   ]
 }

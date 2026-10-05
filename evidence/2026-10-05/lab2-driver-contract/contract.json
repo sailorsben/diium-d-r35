@@ -1,0 +1,291 @@
+{
+  "driver_sha256": "2c0134b3fc425f5b65c271c014e291824590c773190014f4e50c3ed33c2f13f9",
+  "scaler_type": {
+    "name": "gpPScalerPara_s",
+    "die_offset": 2389,
+    "tag": "DW_TAG_structure_type",
+    "byte_size": 228,
+    "members": [
+      {
+        "name": "input_format",
+        "offset": 0,
+        "type": "unsigned int"
+      },
+      {
+        "name": "input_width",
+        "offset": 4,
+        "type": "unsigned int"
+      },
+      {
+        "name": "input_height",
+        "offset": 8,
+        "type": "unsigned int"
+      },
+      {
+        "name": "input_start_x",
+        "offset": 12,
+        "type": "unsigned int"
+      },
+      {
+        "name": "input_start_y",
+        "offset": 16,
+        "type": "unsigned int"
+      },
+      {
+        "name": "output_format",
+        "offset": 20,
+        "type": "unsigned int"
+      },
+      {
+        "name": "output_width",
+        "offset": 24,
+        "type": "unsigned int"
+      },
+      {
+        "name": "output_height",
+        "offset": 28,
+        "type": "unsigned int"
+      },
+      {
+        "name": "output_x_offset",
+        "offset": 32,
+        "type": "unsigned int"
+      },
+      {
+        "name": "factor_w",
+        "offset": 36,
+        "type": "unsigned int"
+      },
+      {
+        "name": "factor_h",
+        "offset": 40,
+        "type": "unsigned int"
+      },
+      {
+        "name": "input_fifo_line",
+        "offset": 44,
+        "type": "short unsigned int"
+      },
+      {
+        "name": "input_fifo_addr_continue",
+        "offset": 46,
+        "type": "unsigned char"
+      },
+      {
+        "name": "output_fifo_line",
+        "offset": 48,
+        "type": "unsigned int"
+      },
+      {
+        "name": "out_stop_enable",
+        "offset": 52,
+        "type": "unsigned char"
+      },
+      {
+        "name": "sysfifo_idx",
+        "offset": 53,
+        "type": "unsigned char"
+      },
+      {
+        "name": "input_addr",
+        "offset": 56,
+        "type": "unsigned int"
+      },
+      {
+        "name": "input_source",
+        "offset": 60,
+        "type": "unsigned int"
+      },
+      {
+        "name": "output_addr",
+        "offset": 64,
+        "type": "unsigned int[2]"
+      },
+      {
+        "name": "frame_queue_enable",
+        "offset": 72,
+        "type": "unsigned char"
+      },
+      {
+        "name": "bypass_enable",
+        "offset": 73,
+        "type": "unsigned char"
+      },
+      {
+        "name": "bypass_output_addr",
+        "offset": 76,
+        "type": "unsigned int[2]"
+      },
+      {
+        "name": "bypass_frame_queue_enable",
+        "offset": 84,
+        "type": "unsigned char"
+      },
+      {
+        "name": "bypass_output_fifo_line",
+        "offset": 88,
+        "type": "unsigned int"
+      },
+      {
+        "name": "bypass_output_x_offset",
+        "offset": 92,
+        "type": "unsigned int"
+      },
+      {
+        "name": "bypass_out_stop_enable",
+        "offset": 96,
+        "type": "unsigned char"
+      },
+      {
+        "name": "bypass_sysfifo_idx",
+        "offset": 97,
+        "type": "unsigned char"
+      },
+      {
+        "name": "drop_frame_div",
+        "offset": 98,
+        "type": "unsigned char"
+      },
+      {
+        "name": "drop_frame_fra",
+        "offset": 99,
+        "type": "unsigned char"
+      },
+      {
+        "name": "update_flag",
+        "offset": 100,
+        "type": "unsigned int"
+      },
+      {
+        "name": "out_crop_enable",
+        "offset": 104,
+        "type": "unsigned char"
+      },
+      {
+        "name": "out_crop",
+        "offset": 106,
+        "type": "gp_rect_t"
+      },
+      {
+        "name": "out_fill_enable",
+        "offset": 114,
+        "type": "unsigned char"
+      },
+      {
+        "name": "out_fill",
+        "offset": 116,
+        "type": "gp_rect_t"
+      },
+      {
+        "name": "boxfilter_enable",
+        "offset": 124,
+        "type": "unsigned char"
+      },
+      {
+        "name": "out_boundary_enable",
+        "offset": 125,
+        "type": "unsigned char"
+      },
+      {
+        "name": "out_boundary_color",
+        "offset": 128,
+        "type": "unsigned int"
+      },
+      {
+        "name": "out_edge_disable",
+        "offset": 132,
+        "type": "unsigned char"
+      },
+      {
+        "name": "out_edge",
+        "offset": 136,
+        "type": "gpPScalerEdge_t"
+      },
+      {
+        "name": "h_first",
+        "offset": 152,
+        "type": "unsigned char"
+      },
+      {
+        "name": "text_stamp",
+        "offset": 156,
+        "type": "gpTextStampPara_t[2]"
+      }
+    ]
+  },
+  "ioctl_sites": [
+    {
+      "function": "PScaleRun",
+      "call_address": "0x00001518",
+      "last_constant_r1": "0x00005003",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "PScaleRun",
+      "call_address": "0x0000152c",
+      "last_constant_r1": "0x40e45000",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "PScaleRun",
+      "call_address": "0x00001540",
+      "last_constant_r1": "0x80045001",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "PScaleRun",
+      "call_address": "0x00001554",
+      "last_constant_r1": "0x80045004",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "PScaleRun",
+      "call_address": "0x00001568",
+      "last_constant_r1": "0x80045005",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "PScaleRun",
+      "call_address": "0x000015a0",
+      "last_constant_r1": "0x00005003",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "dispFlip",
+      "call_address": "0x000019e4",
+      "last_constant_r1": "0x402c6413",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "dispFlip",
+      "call_address": "0x000019f4",
+      "last_constant_r1": "0x00006402",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "dispFlip",
+      "call_address": "0x00001a04",
+      "last_constant_r1": "0x00006407",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "gpChunkMemAlloc",
+      "call_address": "0x00002fbc",
+      "last_constant_r1": "0xc00c4301",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "gpChunkMemFree",
+      "call_address": "0x0000320c",
+      "last_constant_r1": "0x400c4303",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    },
+    {
+      "function": "gpChunkMemVA2PA",
+      "call_address": "0x000032f4",
+      "last_constant_r1": "0xc00c4305",
+      "qualification": "Local straight-line constant recovery; inspect control flow and argument type before live use."
+    }
+  ],
+  "boundary": "Exact userspace binary and DWARF. No kernel implementation, cache policy, continuous queue or output completion contract inferred from field names."
+}

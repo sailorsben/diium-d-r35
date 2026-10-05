@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "qualified_source_count": 21,
+  "release_payload_hashes_exact": 8,
+  "published_evidence_hashes_exact": 6,
+  "qualified_sources": [
+    {
+      "path": "build/platform-lab2.c",
+      "qualified_sha256": "e93c32b6535bc0fd8e4ebdbca29959014a400cf49a45ec452fe283cd146cf940",
+      "repository_sha256": "e93c32b6535bc0fd8e4ebdbca29959014a400cf49a45ec452fe283cd146cf940",
+      "transformation": "none"
+    },
+    {
+      "path": "build/platform-lab2-font.h",
+      "qualified_sha256": "6172177d751e248c62f9fd6c4f04d6a4b57804dc25df3dda1228fb6b7b864688",
+      "repository_sha256": "6172177d751e248c62f9fd6c4f04d6a4b57804dc25df3dda1228fb6b7b864688",
+      "transformation": "none"
+    },
+    {
+      "path": "build/platform-lab2-driver-trace.c",
+      "qualified_sha256": "d7eff3c648be7875236a19d7578a357de571334f713af5b2445807adb0f26b35",
+      "repository_sha256": "d7eff3c648be7875236a19d7578a357de571334f713af5b2445807adb0f26b35",
+      "transformation": "none"
+    },
+    {
+      "path": "build/platform-lab2-fixture.c",
+      "qualified_sha256": "f5d4b88e976e0b81c5c0cbb38841d0bc7f6101abd5682767c6b086020de5af4b",
+      "repository_sha256": "f5d4b88e976e0b81c5c0cbb38841d0bc7f6101abd5682767c6b086020de5af4b",
+      "transformation": "none"
+    },
+    {
+      "path": "build/platform-lab2-trace-fixture.c",
+      "qualified_sha256": "e4b9e4ca9d4da3fbfdb28e16dab3a52e8896760c2a07bada359397f258efe158",
+      "repository_sha256": "e4b9e4ca9d4da3fbfdb28e16dab3a52e8896760c2a07bada359397f258efe158",
+      "transformation": "none"
+    },
+    {
+      "path": "build/platform-lab2-trace-driver.c",
+      "qualified_sha256": "c1eeef64d48f3fb89029cb988cc47a51c410e5bb7dd3b0f72335ff405aaee7f5",
+      "repository_sha256": "c1eeef64d48f3fb89029cb988cc47a51c410e5bb7dd3b0f72335ff405aaee7f5",
+      "transformation": "none"
+    },
+    {
+      "path": "build/build-platform-lab2.sh",
+      "qualified_sha256": "799766cb3b464dfedbf6cdf13a112205030d615d703f8958c24bfdff5b4f4466",
+      "repository_sha256": "799766cb3b464dfedbf6cdf13a112205030d615d703f8958c24bfdff5b4f4466",
+      "transformation": "none"
+    },
+    {
+      "path": "build/launch-platform-lab2.sh",
+      "qualified_sha256": "2013263e724bc3303e7b15d90888879e1246500245e6b6bbe70c3ca60aaeff5c",
+      "repository_sha256": "2013263e724bc3303e7b15d90888879e1246500245e6b6bbe70c3ca60aaeff5c",
+      "transformation": "none"
+    },
+    {
+      "path": "build/dispatch-platform-lab.sh",
+      "qualified_sha256": "923183525310f22de3baae412723de009ba0892f673d1b71d5228f12c9e2d82a",
+      "repository_sha256": "923183525310f22de3baae412723de009ba0892f673d1b71d5228f12c9e2d82a",
+      "transformation": "none"
+    },
+    {
+      "path": "build/check-platform-lab2.py",
+      "qualified_sha256": "7755017ebaef8bfab2b0779abc1f832bd5df14ae493113be52ce501bae82d94c",
+      "repository_sha256": "7755017ebaef8bfab2b0779abc1f832bd5df14ae493113be52ce501bae82d94c",
+      "transformation": "none"
+    },
+    {
+      "path": "build/lab2-wrapper-check.py",
+      "qualified_sha256": "eb3d43fb312108b464bb20d08d014b9222f34e350714f8de0c44851c43f5c3f1",
+      "repository_sha256": "eb3d43fb312108b464bb20d08d014b9222f34e350714f8de0c44851c43f5c3f1",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/board.c",
+      "qualified_sha256": "a1d584f2075c7a5a9d4b5480185e5f82cff33f58ea852b0585195f23b613a56f",
+      "repository_sha256": "a1d584f2075c7a5a9d4b5480185e5f82cff33f58ea852b0585195f23b613a56f",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/board.h",
+      "qualified_sha256": "7a6ec4677710228bb34ecde7cdfb5c0f133ad246c858e4335690800329276fa8",
+      "repository_sha256": "7a6ec4677710228bb34ecde7cdfb5c0f133ad246c858e4335690800329276fa8",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/timing.c",
+      "qualified_sha256": "48fc5caff836f7717ee8221da38d7c2cbd3bf7ceef02619c69b0a566745ab220",
+      "repository_sha256": "48fc5caff836f7717ee8221da38d7c2cbd3bf7ceef02619c69b0a566745ab220",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/timing.h",
+      "qualified_sha256": "c59ea5c243702917f120ff14bbeb552bb7276e5639b036bf1840ed18e9847f13",
+      "repository_sha256": "c59ea5c243702917f120ff14bbeb552bb7276e5639b036bf1840ed18e9847f13",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/startup.c",
+      "qualified_sha256": "1809cd84ccc874a46e3d42d10ef4e830a3b87b7efb943ce302b294e046a84cb2",
+      "repository_sha256": "1809cd84ccc874a46e3d42d10ef4e830a3b87b7efb943ce302b294e046a84cb2",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/startup.h",
+      "qualified_sha256": "aeb2217abd9ead418cbb956588cdde064a63751236ad4893261fd4bcdf35d6ec",
+      "repository_sha256": "aeb2217abd9ead418cbb956588cdde064a63751236ad4893261fd4bcdf35d6ec",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/platform.c",
+      "qualified_sha256": "f6efdec4897767d0ba02acb0812f608ee85ad562f5bee0910f1ed132b604dccd",
+      "repository_sha256": "f6efdec4897767d0ba02acb0812f608ee85ad562f5bee0910f1ed132b604dccd",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/platform.h",
+      "qualified_sha256": "2b7205dc07633b40df48108ffaccb98bc8f67b5a77e915c426f5884445fdd2f1",
+      "repository_sha256": "2b7205dc07633b40df48108ffaccb98bc8f67b5a77e915c426f5884445fdd2f1",
+      "transformation": "none"
+    },
+    {
+      "path": "build/snes-mvp/ui.c",
+      "qualified_sha256": "e1bc4a77deb8a4ed7d34225bacbe35e09eccfa5b968fb787dadd758868e9b8e4",
+      "repository_sha256": "7a0e4dfd00afc76d14e0adcc14af67d64a79671265c6f64cd386364772c5210a",
+      "transformation": "CRLF to LF only"
+    },
+    {
+      "path": "build/snes-mvp/ui.h",
+      "qualified_sha256": "e5bca8eb281375a43db760b332da18434876fd4646af634d6539684c8cf38d9b",
+      "repository_sha256": "420e47e3204f00bfda680d48adff54cdadf8073486bd45931f683deeafdedcf8",
+      "transformation": "CRLF to LF only"
+    }
+  ],
+  "private_or_vendor_artifacts_staged": false
+}

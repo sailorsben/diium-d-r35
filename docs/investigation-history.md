@@ -98,3 +98,32 @@ wall overlaps and legitimate audio throttling must not be added/subtracted as
 automatic performance gains. Correct missing-head diagnostics in source,
 test the actual wrapper with a sparse PATH, retain the shipped release and
 record empty kernel/stderr and missing final wrapper line as evidence gaps.
+
+## 2026-10-05: infrastructure contracts before the next game build
+
+Ben asks for an aggressive investigation of the infrastructure rather than
+another emulator guess. [Lab2](platform-lab2.md) prices independent waits and
+slack, actual native-rate OSS transport, readiness/drain/reset, chunk/heap costs
+and coherent production with occasional28ms CPU bursts. It retains every
+synthetic drawing and PCM byte. Readable labels and ramped tones address lab1's
+physical feedback. This test has no physical result yet.
+
+Offline extraction recovers exact scaler/display calls. Read-direction
+0x80045004 receives scalar3000; its units remain unknown. Status tests bit2, with
+ten fallback sleeps and no further status query. dispFlip submits a44-byte bitmap,
+calls update/wait candidates and then toggles its index. A/B status names and
+queue fields remain leads, not established continuous ownership. The lab observes
+the existing calls and their real arguments in RAM; it adds no hardware command.
+
+Actual ARM checks execute the concurrent owner against odd-byte shorts/EAGAIN/
+misleading readiness and compare all nine accepted streams against independent
+Python bytes. A RTLD_LOCAL shared-driver fixture verifies pointer/scalar/status
+and metadata interception. Timer restoration, sparse shell handoff and whole-run
+TERM/KILL/reap pass. Distinguish these exactness/lifecycle checks from device speed.
+The guarded updater archives every old lab/private file before changing owned
+payload and arms last; the game runner/core and stock paths remain unchanged.
+
+Lab2 is now installed and armed after a fresh41-MVP/17-lab archive. Independent
+readback confirms released bytes, both markers,13 retained lab files and20
+protected private entries. Stock, hook, dispatcher and original game paths match
+their prior hashes. Physical results remain pending.

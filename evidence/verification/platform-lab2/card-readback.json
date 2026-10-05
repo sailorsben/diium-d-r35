@@ -1,0 +1,16 @@
+{
+  "version": "lab2",
+  "verified_utc": "2026-10-05T05:57:30.330918+00:00",
+  "passed": true,
+  "card_writes": 0,
+  "both_one_shot_markers_present": true,
+  "release_manifest_matches": true,
+  "installed_payload_matches": true,
+  "archived_mvp_files_unchanged": 41,
+  "archived_lab_files_verified": 17,
+  "retained_lab_files_unchanged": 13,
+  "protected_private_files_unchanged": 20,
+  "stock_hook_dispatcher_runner_original_wrapper_unchanged": true,
+  "binary_sha256": "3840bc09a319c4dd5eb5697924830a57691cc5d72d5f86833d404729596f404c",
+  "hardware_qualified": false
+}

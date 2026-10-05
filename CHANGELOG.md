@@ -1,5 +1,32 @@
 # Changelog
 
+## Lab2 infrastructure contracts — 2026-10-05
+
+Build the authorized next native probe around independently timed waits,
+inherited/reduced/restored thread timer slack, OSS capability/readiness/drain/
+reset behavior, actual32040/44100Hz streams, heap/chunk memory costs and coherent
+audio admission under12ms steady/28ms occasional CPU work. Preserve every
+synthetic drawing and PCM byte; native game performance is still unqualified.
+
+Recover exact scaler/display ioctl sites and argument shapes from the pinned
+driver. Command0x80045004 receives scalar3000 despite read-direction encoding;
+status tests bit2 and its not-done path performs ten sleeps without rechecking.
+Record real config addresses/queue flags, bitmap addresses, status and per-call
+cost through exported syscall observers. No additional scaler command, hardware
+queue, frequency, MMIO, scheduler-priority or watchdog change.
+
+Actual ARM tests cover independent PCM bytes under odd shorts/EAGAIN/misleading
+readiness, RTLD_LOCAL driver interception, timer slack restoration, sparse shell
+splash/one-shot recovery and supervised TERM/KILL/reap. Draw readable labels at
+their real resolution and ramp/drain tones. Bounded RAM traces persist as separate
+phase batches. Add guarded lab1-to-lab2 updater, analyzer and hand-calculated
+analysis fixtures. See [scope and boundaries](docs/platform-lab2.md).
+
+Install and arm the isolated lab2 after a fresh41-MVP/17-lab archive. Independent
+readback verifies both one-shots, exact released payload,13 retained lab files,
+20 protected private entries and unchanged stock/hook/dispatcher/game/original
+wrapper hashes. Physical test remains pending; no game performance claim.
+
 ## Hardware lab1 physical return — 2026-10-04
 
 Completes and returns to stock; user reports clicks between tests and poor text

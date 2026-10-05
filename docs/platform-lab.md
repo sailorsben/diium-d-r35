@@ -11,7 +11,8 @@ Initially installed and armed on the inspected D: card after a fresh39-file read
 archive. All20 protected private progress/report entries, stock binaries,
 boot hook, game runner and core hashes are preserved. Lab executable SHA256:
 `4deb0571b4500c727c036a50a2e64f01cb9ee23874a3d19df7e6d59b7f919cee`.
-Returned markers are consumed; current card is archived and unarmed.
+Returned lab1 markers were consumed and its card archived unarmed. The next
+[lab2 infrastructure test](platform-lab2.md) has its own guarded update and run.
 
 ## Engineering judgment
 

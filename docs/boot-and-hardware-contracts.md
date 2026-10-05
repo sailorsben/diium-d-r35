@@ -98,6 +98,14 @@ worker loses its thread ID and lacks an adequate teardown join; ours owns it.
 
 Recovered scaler structure: 228 bytes; output_addr[2] offset64, frame_queue_enable72, bypass_addr[2]76, bypass_frame_queue_enable84, drop-frame fields98/99, FRAME_DONE enum2. `PScaleRun` at driver0x14ac performs per-job open/setup/trigger/status/stop/close. These interfaces are leads for future optimization, not a proven continuous queue implementation.
 
+[Lab2's exact command review](platform-lab2.md#exact-vendor-calling-contract-recovered-offline)
+corrects the abstraction: the status caller tests bit2, and command0x80045004
+receives scalar3000 despite its read-direction encoding. No units or kernel wait
+semantics are recovered. The not-done fallback sleeps ten times without another
+status query. dispFlip submits a44-byte bitmap, invokes0x6402 then0x6407, and only
+then toggles its buffer index. Do not infer completion ownership from the presence
+of two addresses. Lab2 observes these exact calls without enabling extra modes.
+
 ## Audio, geometry and state
 
 Own OSS open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation. The tested baseline requires 44,100 Hz stereo S16_LE after continuous conversion from the core's 32,040 Hz stream. Standard fragment hints may be rounded/ignored; query actual queue data. Queue occupancy is not an underrun counter.

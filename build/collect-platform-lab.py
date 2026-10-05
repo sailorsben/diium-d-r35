@@ -31,6 +31,7 @@ def collect(card):
               'lab_armed': (lab / 'armed').exists(), 'copied': entries}
     (archive / 'lab-collection.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps({'archive': str(archive), 'copied_lab_files': len(entries), 'card_writes': 0}, indent=2))
+    return archive
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
