@@ -1,0 +1,22 @@
+D-R35 hardware lab 1 -- one automatic run, roughly 30 seconds
+
+Boot normally. The lab should replace the D-R35 loading animation, show its
+current phase, and play a quiet 400-Hz test tone during audio phases.
+The last two phases add the same 12-ms CPU workload, first in a burst and then
+with voluntary yields. Sound/animation may change; that is the experiment.
+Brief transitions between audio phases are not gameplay-crackle measurements.
+
+No game needs to be selected. MENU cancels between operations. After success
+or normal cancellation, it returns to the stock launcher. If its 60-second
+deadline fires, it records the owned child, TERM/KILLs and reaps it, then asks
+for a reboot instead of starting a new display owner on unqualified state.
+A kernel-blocked owned child can require reboot. The following boot is stock.
+
+After the lab returns to stock, shut down normally and reconnect D:.
+Report whether the lab completed, which phase changed the sound, and whether
+the device powered off. Results live in retro/platform-lab/results/run-*.
+The test does not read or write ROMs, snapshots or SRAM. All existing files
+were archived before installation; stock and private-progress hashes checked.
+
+This is a measurement build. It does not promise full-speed FF6 yet.
+Exact ARM checks pass; physical audio/display/throughput are still pending.

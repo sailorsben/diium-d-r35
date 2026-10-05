@@ -1,5 +1,24 @@
 # Changelog
 
+## Hardware lab1 and custom-code investigation — 2026-10-04
+
+Ben authorizes a bounded native test program to discover useful system behavior.
+Build a separate A7/OSS/display lab with the qualified splash/GPIO/kernel-clock/
+chunk ownership seams. Price scalar/NEON/generation-tagged tile color caching
+under reuse/churn/thrashing; retain every draw's current compositing semantics.
+Record raw OSS negotiation/queue/pointer/errors and service gaps with one writer/
+observer, then exercise audio/display with equal12ms burst/sliced CPU budgets.
+Buffer samples in RAM and fsync identified phase results outside timing.
+
+Add whole-run60s supervision, TERM/KILL/reap, blocked-owner exclusion and reboot
+hold after forced termination. Pass12,300 exact kernel cases, byte-granular
+hostile transport, actual ARM null smoke/stuck-child checks, old-glibc ABI and
+sparse-PATH wrapper/splash/one-shot cases. Add guarded archive-first installer,
+read-only collector, analyzer and custom-code proposals. No full-speed or
+physical stability claim; hardware test is pending. Install/arm only the
+isolated lab after a39-file read-only archive; preserve20 private entries plus
+stock, boot hook, game runner/core and original wrapper hashes. See [lab1](docs/platform-lab.md).
+
 ## MVP1.8 physical return and diagnostic repair — 2026-10-04
 
 Played okay but clicking returned, followed by confirmed whole-device power-off.

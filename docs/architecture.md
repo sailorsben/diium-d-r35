@@ -28,6 +28,13 @@ fixes capture without head/sed but is not installed; shipped1.8 is unchanged.
 
 ## Implemented owners
 
+[Hardware lab1](platform-lab.md) is a separate supervised executable, dispatched
+through the existing one-shot /bin/sh entry. It preserves the original1.8 game
+wrapper byte-for-byte and does not change the game runner/core. This lab's
+whole-run deadline and raw single-owner OSS observations are not yet changes
+to gameplay scheduling or supervision. Full rendering at native cadence remains
+the game runtime's acceptance target.
+
 ```text
 boot wrapper
   consume one-shot -> archive/log -> finish showlogo -> start one child

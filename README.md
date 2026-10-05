@@ -13,6 +13,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 - **MVP1.8 returned with clicking and whole-device power-off:** fresh checkpoint records1,648 calls, zero held drawings and about57.93 calls/sec of active-loop time. Saved progress and stock/hook hashes are intact; card is unarmed. Shutdown cause remains unknown. Firmware also lacks `sed`; the source capture fix now passes without `head` or `sed` and is not installed. The exact returned core passes10,000 output-equivalence frames. [Return review](docs/snes-mvp-1.8-return.md), [implementation](docs/snes-mvp-1.8.md).
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
+- **Hardware lab1:** a bounded standalone A7/OSS/display suite and experimental color cache are built for the next physical run. Exact ARM/cache/transport and supervised timeout checks pass; hardware results remain pending. [Scope and custom-code route](docs/platform-lab.md), [test instructions](docs/platform-lab-test.txt).
 
 ## Start here
 

@@ -44,6 +44,12 @@ The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated
 
 ## Corrections that must survive future work
 
+Ben next authorizes a standalone hardware lab and custom software exploration.
+[Lab1](platform-lab.md) isolates A7 tile-work reuse, OSS negotiation/service and
+display/CPU overlap in bounded phases. Local correctness/supervision checks
+pass; physical results are pending. It does not establish a hardware ceiling,
+emulator speedup, continuous scaler queue contract or an audio scheduling clock.
+
 - The1.8 return disproves the claimed firmware sed availability. Test actual
   capture with both head and sed absent. Current shell-builtin repair is source
   only; retain historical releases. Empty latest/tails and a previous running

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "hardware_qualified": false,
+  "binary_sha256": "4deb0571b4500c727c036a50a2e64f01cb9ee23874a3d19df7e6d59b7f919cee",
+  "source_hashes": {
+    "build/platform-lab.c": "1d1758048a03e6da33630bccdcaa158ee7648e3a8435f7eb5cb5c63038272504",
+    "build/platform-lab-kernels.h": "612979d7dd8b1adc4b838aff8499dbbb426ce3497c85a56bd3bdea50a2550f16",
+    "build/plus-a7-render.h": "609067f53006be1367d374d6f3b3ea423352ac342dc3d2bea8c214b02b3ddb63",
+    "build/launch-platform-lab.sh": "8865de18bf4177cc683c9079e691b0e5b762e5a6756b9efec43d1d740a8a3fff",
+    "build/dispatch-platform-lab.sh": "923183525310f22de3baae412723de009ba0892f673d1b71d5228f12c9e2d82a",
+    "build/build-platform-lab.sh": "37859383e7526cef69970800c39d785e20aa038d62d42f61ff4b38408bb8db23",
+    "build/snes-mvp/board.c": "a1d584f2075c7a5a9d4b5480185e5f82cff33f58ea852b0585195f23b613a56f",
+    "build/snes-mvp/board.h": "7a6ec4677710228bb34ecde7cdfb5c0f133ad246c858e4335690800329276fa8",
+    "build/snes-mvp/timing.c": "48fc5caff836f7717ee8221da38d7c2cbd3bf7ceef02619c69b0a566745ab220",
+    "build/snes-mvp/timing.h": "c59ea5c243702917f120ff14bbeb552bb7276e5639b036bf1840ed18e9847f13",
+    "build/snes-mvp/startup.c": "1809cd84ccc874a46e3d42d10ef4e830a3b87b7efb943ce302b294e046a84cb2",
+    "build/snes-mvp/startup.h": "aeb2217abd9ead418cbb956588cdde064a63751236ad4893261fd4bcdf35d6ec",
+    "build/snes-mvp/platform.c": "f6efdec4897767d0ba02acb0812f608ee85ad562f5bee0910f1ed132b604dccd",
+    "build/snes-mvp/platform.h": "2b7205dc07633b40df48108ffaccb98bc8f67b5a77e915c426f5884445fdd2f1",
+    "build/snes-mvp/ui.c": "e1bc4a77deb8a4ed7d34225bacbe35e09eccfa5b968fb787dadd758868e9b8e4",
+    "build/snes-mvp/ui.h": "e5bca8eb281375a43db760b332da18434876fd4646af634d6539684c8cf38d9b"
+  },
+  "checks": [
+    "12300 exact color/depth/flip/invalidation cases",
+    "4096-byte transport with arbitrary shorts/EAGAIN/EINTR",
+    "actual ARM null-backend five-phase supervisor smoke",
+    "actual stalled ARM child TERM/KILL and reap",
+    "GLIBC <= 2.30",
+    "emitted ARMv7 NEON lookup/load instructions",
+    "sparse PATH wrapper unarmed",
+    "sparse PATH wrapper normal",
+    "sparse PATH wrapper zombie",
+    "sparse PATH wrapper splash_exit",
+    "sparse PATH wrapper splash_stall",
+    "sparse PATH wrapper deadline"
+  ]
+}

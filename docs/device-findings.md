@@ -152,6 +152,12 @@ This rules down ordinary stdout/stderr redirection as a useful performance fix f
 
 ## Access and remaining unknowns
 
+[Hardware lab1](platform-lab.md) is now installed/armed for one automatic native
+run. It measures the qualified display path, OSS negotiation/raw counters and
+A7 tile/color-cache work under isolated/combined load. ARM correctness and
+supervision checks pass; physical results are pending. Its synthetic kernels
+do not establish a full-game speedup or a hardware limit.
+
 Readable kallsyms supplied real addresses. Built-in-module entries are not exported loadable `.ko` files. `/proc/mtd` had no registered partitions; `/proc/kcore` returned ENOENT. No kernel-text recovery, flash rewrite, MMIO experiment or `/dev/mem` fallback was performed.
 
 Open questions include actual clocks/cache/DRAM behavior, scaler lifecycle cost and completion identity, supported audio periods/positions, physical panel cadence, IRQ19 handler duration/source, battery/suspend behavior, and sustained per-game performance. Tracefs availability was proposed for IRQ pricing, not established by the collected returns.
