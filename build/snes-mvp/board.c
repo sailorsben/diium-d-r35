@@ -3,6 +3,9 @@
 #include "startup.h"
 #include "platform.h"
 #include "timing.h"
+#ifdef D35_NATIVE_PCM
+#include "native-pcm.h"
+#endif
 #include <dlfcn.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -409,6 +412,7 @@ void board_set_input_trace(int enabled)
     b.last_input_pins=b.last_input_errors=UINT32_MAX;
 }
 
+#ifndef D35_NATIVE_PCM
 int board_audio_open(unsigned requested_rate)
 {
     int format=AFMT_S16_LE, channels=2, rate, fragments=(4<<16)|11;
@@ -515,6 +519,71 @@ void board_audio_close(void)
     b.audio_fd=-1;
     b.audio_rate=0;
     b.audio_tail_bytes=0;
+}
+
+#else
+int board_audio_open(unsigned requested_rate)
+{
+    int rate;
+    if(!b.opened) return failure("Board is not open");
+    board_audio_close();
+    if(b.null_backend) { b.audio_rate=requested_rate; return (int)requested_rate; }
+    rate=pcm_open(requested_rate);
+    if(rate<0) return failure("Native PCM configuration: %s",strerror(errno));
+    b.audio_rate=(unsigned)rate; return rate;
+}
+ssize_t board_audio_write(const int16_t *p,size_t frames)
+{ return b.null_backend?(ssize_t)frames:pcm_write(p,frames); }
+int board_audio_queued_frames(void)
+{ struct board_audio_state state; return board_audio_observe(&state)<0?-1:(int)state.queued; }
+int board_audio_reset(void) { return b.null_backend?0:pcm_reset(); }
+int board_audio_wait(unsigned ms)
+{ struct pollfd fd={pcm_fd(),POLLOUT,0}; return b.null_backend?1:poll(&fd,1,(int)ms); }
+void board_audio_close(void) { pcm_close(); b.audio_rate=0; }
+#endif
+
+int board_audio_observe(struct board_audio_state *out)
+{
+    memset(out,0,sizeof(*out));
+    if(b.null_backend) {
+        out->rate=b.audio_rate?b.audio_rate:44100; out->period=128;
+        out->buffer=8192; out->prime=2048; out->started=1;
+        out->observed_ns=board_now_ns(); return 0;
+    }
+#ifdef D35_NATIVE_PCM
+    return pcm_observe(out);
+#else
+    { int q=board_audio_queued_frames(); if(q<0) return -1;
+      out->rate=b.audio_rate; out->period=512; out->buffer=8192;
+      out->prime=2048; out->queued=(unsigned)q; out->started=1;
+      out->observed_ns=board_now_ns(); return 0; }
+#endif
+}
+int board_audio_fd(void)
+{
+#ifdef D35_NATIVE_PCM
+    return b.null_backend?-1:pcm_fd();
+#else
+    return b.null_backend?-1:b.audio_fd;
+#endif
+}
+int board_audio_avail_min(unsigned frames)
+{
+    if(b.null_backend) return 0;
+#ifdef D35_NATIVE_PCM
+    return pcm_avail_min(frames);
+#else
+    (void)frames; return 0;
+#endif
+}
+int board_audio_finish(void)
+{
+    if(b.null_backend) return 0;
+#ifdef D35_NATIVE_PCM
+    return pcm_finish();
+#else
+    return ioctl(b.audio_fd,SNDCTL_DSP_SYNC,0);
+#endif
 }
 
 void board_close(void)

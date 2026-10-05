@@ -1,5 +1,38 @@
 # Changelog
 
+## SNES MVP1.9 native PCM owner — 2026-10-05
+
+Implement documented ARM32 native PCM negotiation/readback, explicit playable
+priming/START, STATUS/XRUN observation, SYNC_PTR readiness thresholds and bounded
+DRAIN. One owner holds software/transfer/device accounting; device consumption
+and eventfd notifications replace the game's intended1ms polling and separate
+deadline gate. Prefer native32040Hz and bypass userspace conversion when accepted;
+retain continuous conversion for a negotiated rate mismatch. Preserve every
+drawing, the A7 renderer and proven UI/input/splash/display contracts.
+
+Publish already-finalized/mixed Plus PCM at existing in-frame APU callback points
+without changing emulation order. Exact1200-frame pixels/nativePCM/geometry/state
+checks pass;1196 frames split identical PCM into earlier batches. Final runtime
+passes180/30-frame mock runs, snapshot/SRAM and actual ownership/lifecycle seams.
+Independent ARM fixtures cover constrained settings, partial/EAGAIN, START
+failure after acceptance, XRUN, consumption-driven admission,30ms bursts, false
+readiness, fixed admission deadlines, blocked cancellation and bounded flush.
+Visible failure replaces silent stream recovery; physical sound/speed/stability
+and the prior poweroff cause remain unqualified.
+
+Add exact Lab2-return updater, archive-first/save-preserving deployment,
+independent card readback and immutable selected publication with source/check
+hashes. Keep vendor/core dependencies and all private progress local. Record
+the wider hardware goal in a capability/cost/ownership roadmap; smooth FF6 is
+not proof that the hardware is exhausted. See [1.9](docs/snes-mvp-1.9.md) and
+[hardware roadmap](docs/hardware-capability-roadmap.md).
+
+Install and arm after a fresh41-MVP/49-lab archive. Independent readback verifies
+exact1.9 payload,20 original private entries,49 retained lab files, a separate
+qualified snapshot and unchanged stock/hook/older-wrapper hashes. Lab remains
+unarmed; following reboot takes stock after the consumed game one-shot.
+Physical acceptance is pending.
+
 ## Lab2 physical return and source-first interface review — 2026-10-05
 
 Archive and independently verify 41 MVP/49 lab files, the exact lab2 payload,

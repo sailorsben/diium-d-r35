@@ -118,7 +118,14 @@ an implementation on removing its sleeps.
 
 ## Audio, geometry and state
 
-Own open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation. The game baseline uses 44,100 Hz stereo S16_LE after continuous conversion from the core's 32,040 Hz stream. Lab2 also establishes a working 32,040 Hz OSS client path; neither its returned rate nor client counters establish the physical DAC rate or absence of kernel conversion. Standard fragment hints may be rounded/ignored; query actual queue data. Queue occupancy is not an underrun counter.
+Own open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation.
+Through1.8 the game uses44,100Hz stereo S16_LE after continuous conversion from
+the core's32,040Hz stream.1.9 negotiates native ALSA, preferring32040Hz/direct
+PCM and retaining conversion for accepted44100/48000Hz. Lab2 establishes a
+working32040Hz OSS client path; no requested/returned rate alone establishes
+the physical DAC rate or absence of kernel conversion. Standard fragment hints
+may be rounded/ignored; query actual queue data. Queue occupancy is not an
+underrun counter.
 
 MVP1.6's producer converts/enqueues while one audio worker owns writes and their
 partial-byte tails. Stop/join before any pause/reset/close; only then clear the
@@ -134,7 +141,7 @@ discards it. Lab2's POST/zero-delay/RESET stop does not establish that the faded
 tail played. Upstream behavior guides interpretation, not a claim to possess
 the vendor kernel text. See [the source review](platform-interface-research.md).
 
-The device exposes native `/dev/snd/pcmC0D0p`. The proposed replacement uses
+The device exposes native `/dev/snd/pcmC0D0p`. The1.9 replacement implements
 documented ALSA parameter negotiation/readback, explicit priming, meaningful
 device/event wakeups, state/XRUN observation and separate drain/drop paths.
 Use ARM32-compatible structures; negotiate transfer mode and do not assume
@@ -142,8 +149,11 @@ mmap support. Upstream 4.19 on ARM requires a SYNC_PTR/HWSYNC path instead of
 the usual mapped status/control pages; audio-data mapping is a separate contract.
 One owner must account for its software queue and playable PCM
 without sampling them through separate producer/worker gates. Reserve sufficient
-playable sound for long core calls plus service margin. This is researched next
-work, not the currently installed game path or clean-audio acceptance.
+playable sound for long core calls plus service margin.1.9 uses64ms explicit
+playable priming and one consumption admission policy; its source/ARM fixtures
+pass, while actual settings and clean-audio acceptance remain pending. Preserve
+bounded flush/drain failure and visible XRUN instead of automatically dropping
+and restarting the stream. See [1.9](snes-mvp-1.9.md).
 
 Vendor environment command37 (`SET_GEOMETRY`) writes a double 44100 at offset32 beyond a 20-byte geometry object. The adapter intercepts it; the direct MVP implements its own validated environment handling. Do not forward this callback blindly.
 

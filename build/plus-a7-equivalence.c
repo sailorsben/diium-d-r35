@@ -25,7 +25,7 @@ struct core {
     bool (*load_game)(const struct retro_game_info *);
     size_t (*serialize_size)(void);
     bool (*serialize)(void *,size_t),(*unserialize)(const void *,size_t);
-    uint32_t pixels,pcm; size_t samples; unsigned videos,w,h;
+    uint32_t pixels,pcm; size_t samples; unsigned videos,w,h,batches;
 };
 static struct core *active;
 static unsigned frame;
@@ -73,7 +73,7 @@ static void video_cb(const void *p,unsigned w,unsigned h,size_t pitch)
     for(y=0;y<h;y++) active->pixels=crc32(active->pixels,(const unsigned char *)p+y*pitch,w*2);
 }
 static size_t audio_cb(const int16_t *p,size_t n)
-{ active->pcm=crc32(active->pcm,(const unsigned char *)p,n*4); active->samples+=n; return n; }
+{ active->pcm=crc32(active->pcm,(const unsigned char *)p,n*4); active->samples+=n; ++active->batches; return n; }
 static void sample_cb(int16_t l,int16_t r) { int16_t p[2]={l,r}; (void)audio_cb(p,1); }
 static void poll_cb(void) {}
 static int16_t input_cb(unsigned port,unsigned device,unsigned index,unsigned id)
@@ -110,7 +110,7 @@ int main(int argc,char **argv)
 {
     struct sigaction handler={0}; handler.sa_sigaction=fault; handler.sa_flags=SA_SIGINFO;
     assert(!sigaction(SIGSEGV,&handler,NULL));
-    struct core old={0},candidate={0}; unsigned phase,f,iterations=600;
+    struct core old={0},candidate={0}; unsigned phase,f,iterations=600,split_frames=0;
     unsigned char *rom,*state,*a,*b; size_t n,state_n,size;
     assert(argc==5 || argc==6);
     if(argc==6) {
@@ -137,7 +137,9 @@ int main(int argc,char **argv)
             frame=f;
             old.pixels=old.pcm=old.samples=old.videos=0;
             candidate.pixels=candidate.pcm=candidate.samples=candidate.videos=0;
+            old.batches=candidate.batches=0;
             active=&old;old.run();active=&candidate;candidate.run();
+            if(candidate.batches>old.batches) ++split_frames;
             if(old.pixels!=candidate.pixels || old.pcm!=candidate.pcm || old.samples!=candidate.samples ||
                old.videos!=1 || candidate.videos!=1 || old.w!=candidate.w || old.h!=candidate.h) {
                 printf("FAIL phase%u frame%u pixels%08x/%08x pcm%08x/%08x samples%u/%u\n",
@@ -160,5 +162,7 @@ int main(int argc,char **argv)
     active=&old;old.unload_game();old.deinit();active=&candidate;candidate.unload_game();candidate.deinit();
     dlclose(old.handle);dlclose(candidate.handle);free(rom);free(state);free(a);free(b);
     printf("PASS: %u frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; intro and returned private snapshot\n",iterations*2);
+    assert(split_frames>iterations);
+    printf("PASS: earlier PCM publication splits %u frames into multiple byte-equivalent batches\n",split_frames);
     return 0;
 }

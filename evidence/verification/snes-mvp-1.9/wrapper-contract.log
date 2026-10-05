@@ -1,0 +1,10 @@
+PASS: startup wrapper early-error, exit=7, ready=False
+PASS: startup wrapper stalled, exit=143, ready=False
+PASS: diagnostic progress persisted before child exit; one platform capture and no gameplay global sync
+PASS: wrapper captures CPU/memory with firmware-style PATH lacking head and sed
+PASS: startup wrapper ready-session, exit=0, ready=True
+PASS: startup wrapper splash-handoff, exit=0, ready=True
+PASS: splash timeout refuses to start competing MVP display owner
+PASS: shell-only splash parser ignores released zombie without sed
+PASS: startup wrapper splash-zombie, exit=0, ready=True
+PASS: unarmed boot skips MVP; startup deadline does not limit a ready session

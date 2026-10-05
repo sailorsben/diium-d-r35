@@ -6,6 +6,9 @@ struct audio_pipe_stats {
     uint64_t enqueued, accepted, cleared, writes, partial, again, errors;
     uint64_t worker_cpu_ns, max_write_gap_ns;
     unsigned remaining, high;
+    unsigned playable,period,buffer,prime,rate,state;
+    uint64_t xruns,observed_ns,wakes,poll_timeouts;
+    unsigned playable_min,playable_max;
     int error;
 };
 void audio_pipe_init(void);
@@ -16,4 +19,7 @@ void audio_pipe_stop(int drain);
 void audio_pipe_clear(void);
 void audio_pipe_stats(struct audio_pipe_stats *out);
 uint64_t audio_pipe_live_cpu(void);
+int audio_pipe_admit(unsigned frames,int paced);
+int audio_pipe_primed(void);
+unsigned audio_pipe_prime_frames(void);
 #endif

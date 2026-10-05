@@ -1,6 +1,6 @@
 /* Local ARM/QEMU contract checks; no hardware evidence. */
 #include "runner.c"
-#include "audio-pipe.c"
+#include "audio-owner.c"
 #include <assert.h>
 
 static uLong sink_crc;
@@ -36,6 +36,12 @@ int board_audio_queued_frames(void) { return 0; }
 int board_audio_reset(void) { return 0; }
 int board_audio_wait(unsigned ms) { (void)ms; return 1; }
 void board_audio_close(void) {}
+int board_audio_observe(struct board_audio_state *out)
+{ memset(out,0,sizeof(*out)); out->rate=44100; out->period=128; out->buffer=8192;
+  out->prime=2048; out->started=1; out->observed_ns=board_now_ns(); return 0; }
+int board_audio_avail_min(unsigned frames) { (void)frames; return 0; }
+int board_audio_fd(void) { static int fd=-1; if(fd<0) fd=eventfd(0,EFD_NONBLOCK); return fd; }
+int board_audio_finish(void) { return 0; }
 uint64_t board_now_ns(void)
 {
     struct timespec t; clock_gettime(CLOCK_MONOTONIC,&t);

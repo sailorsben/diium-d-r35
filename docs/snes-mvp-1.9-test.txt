@@ -1,0 +1,21 @@
+SNES MVP 1.9: native PCM ownership and earlier audio
+
+The next boot opens our SNES library. D-pad selects; A/Start launches.
+Launch FF6 (not Rev1). Use the game's Continue for your latest Save Point.
+All existing SRAM/snapshots are preserved. MENU -> Load snapshot uses a
+separate qualified older snapshot for this core, not your newest progress.
+
+Play story/map -> FF6 party menu -> map. Listen for random clicks, slow
+movement, long pauses or a shutdown. Save in-game and exit normally.
+Reconnect D: so the returned logs and all progress can be archived.
+
+This build draws every frame. It negotiates native ALSA settings, primes
+64ms of playable sound, uses consumption-driven admission and publishes
+already-mixed audio earlier. If 32040Hz is accepted, conversion is bypassed.
+An underrun or broken device contract produces a visible error, not a silent
+reset. Actual settings and stream state are logged. Physical full speed and
+uninterrupted sound still need this test; prior poweroffs remain unexplained.
+
+Library/pause UI, controls and saves work as before. The one-shot is consumed
+before launch; the following reboot uses stock. If audio initialization fails,
+retain the logs and return the card; the installed stock files are intact.

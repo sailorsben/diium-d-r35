@@ -1,5 +1,12 @@
 # Userspace platform architecture
 
+The current [MVP1.9](snes-mvp-1.9.md) implements one native PCM owner and
+consumption-driven producer admission. It publishes already-mixed core audio
+earlier, primes playable PCM explicitly and retains every drawing. Native
+device settings, audible continuity and sustained full speed remain physically
+unqualified. [The hardware roadmap](hardware-capability-roadmap.md) preserves
+the broader platform goal and remaining opportunities beyond smooth FF6.
+
 The implemented MVP is SNES-only. [MVP1.6](snes-mvp-1.6.md) implements full
 rendering with a tailored A7 core and corrected peripheral ownership; its
 physical run failed with severe lag/choppy sound and whole-device power-off;
@@ -58,8 +65,8 @@ main/UI
 
 runner
   bounded ROM/ZIP loading -> exact core -> environment/input callbacks
-  continuous resampler -> bounded PCM queue -> OSS transport
-  native-FPS scheduling + every drawing -> reserved board video submit
+  earlier mixed PCM -> native-rate bypass/continuous conversion -> PCM owner
+  consumption admission + every drawing -> reserved board video submit
   ROM/core-qualified SRAM/snapshot -> explicit unload
 
 board + timing
@@ -74,23 +81,27 @@ core. The worker releases a source after scaling, holds output through flip,
 and completes jobs in order. No core-owned pointer is retained or READY image
 superseded. Shutdown drains/joins before display/chunk teardown.
 
-Audio callbacks enqueue every converted frame. One audio worker owns nonblocking
-transport, preserving unsent frames and partial stereo-frame tails. Reserve
-capacity before the core; stop/join before transitions reset/clear the stream.
-Priming, clears and remainder are accounted separately. Snapshot operations
-qualify core/ROM and roll back on failed load.
+Audio callbacks enqueue every generated/converted frame. One worker owns
+nonblocking native frame transfers and the software/playable observation under
+one lock. Producer admission reserves capacity and bounds observed lead; PCM
+readiness/eventfd notifications replace short polling gates. Explicit priming
+precedes START. Flush/DRAIN/join precede normal reset/close; failure cancellation
+and clears remain counted. Snapshot operations qualify core/ROM and roll back
+on failed load. Historical `audio-pipe.c` retains the1.8 OSS implementation;
+current gameplay builds `audio-owner.c` and `native-pcm.c`.
 
 ## What is retained deliberately
 
-Plus's accurate sound and continuous conversion remain. 1.6 removes adaptive
-suppression and publishes audio before video. Kernel-monotonic native timing
-remains the clock; a qualified audio-led production controller is not yet
-implemented. The stock driver/kernel remain dependencies; lifecycle/queue
-semantics beyond the known backend need qualification.
+Plus's accurate sound remains.1.6 removes adaptive suppression;1.9 additionally
+publishes already-mixed PCM within the core call. The physical production clock
+is native PCM consumption; direct kernel clocks serve timing telemetry/input
+waits. A negotiated rate mismatch retains continuous conversion. The stock
+driver/kernel remain dependencies; lifecycle/queue semantics beyond the known
+backend need qualification.
 
 The vendor already has asynchronous display work and CPU-specific emulator paths. Adding more threads on one CPU does not add compute. The design seeks correct ownership, bounded memory, useful overlap and measurable policy rather than assuming fewer layers alone are faster.
 
-## Next audio owner: researched contract, not another guessed gate
+## Research basis for the1.9 owner
 
 [Interface research](platform-interface-research.md) establishes upstream Linux
 4.19 OSS/native PCM behavior and identifies defects in current source. The game
@@ -100,7 +111,7 @@ coherent snapshot, and GETODELAY excludes OSS partial-fragment staging. Intended
 1ms polling/backoff sleeps and a separate frame deadline can then gate useful
 work. Lab2 independently establishes about 10ms wakes for those short timeouts.
 
-Replace this with one native PCM owner using the existing playback node. Query
+MVP1.9 replaces this with one native PCM owner using the playback node. Query
 and read back constrained rate/format/period/buffer settings; prime before START;
 refill on device readiness or meaningful control/new-data events; expose coherent
 generated/queued/transferred/playable/consumed accounting and stream state.
@@ -120,7 +131,7 @@ for jitter tolerance. Keep input sampling late and preserve bounded ordered
 display ownership and every drawing. This proposal does not guarantee 60FPS or
 resolve the previous whole-device poweroffs.
 
-The next physical acceptance should exercise this repaired game path and its
+The1.9 physical acceptance should exercise this repaired game path and its
 reported PCM state under real FF6 tails. Tests should qualify vendor behavior
 and sustained output, after source research supplies the standard interface.
 No new payload is installed or armed by the lab2 return/research commit.
@@ -137,9 +148,10 @@ the [full-speed plan](full-speed-snes-plan.md) retains the proposed acceptance
 criteria and remaining backend work. Physical full-speed acceptance failed;
 the return lacks fresh phase totals, so no individual change is exonerated.
 
-Kernel-monotonic pacing and accurate Blargg behavior remain. A hardware audio
-cursor, audio-led production control, and persistent scaler ownership require
-device qualification before replacing the known transport/backend. The first
+Accurate Blargg behavior remains.1.9 implements audio-led production using
+native PCM state/availability rather than an assumed raw hardware cursor.
+Native settings and persistent scaler ownership still require device
+qualification. The first
 full-render test records core, scaler, flip, queue and audio-worker measurements
 in memory. From 1.7, it publishes coherent checkpoints outside callbacks and
 the wrapper persists them periodically during a bounded diagnostic window,
@@ -150,4 +162,6 @@ Reproducible minimal userspace around the known kernel remains the broader
 product direction. A new kernel/GPU/bare-metal port requires matching
 source/build/recovery and an established useful acceleration path.
 
-The source prototypes the main plumbing. It does not yet provide a general core catalog, broad content support, final audio clock, GPU path, battery/suspend design or complete Buildroot image.
+The source prototypes the main plumbing. It does not yet provide a general core
+catalog, broad content support, physically qualified native audio clock, GPU
+path, battery/suspend design or complete Buildroot image.

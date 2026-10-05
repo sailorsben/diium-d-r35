@@ -15,7 +15,8 @@ def change(name,transform):
     # Permit exact shipped1.6/1.7 and authored transitional1.8 patches only.
     prior={'source/tile.c':{'77ebe2b06c18148973997ae973f6a0016d18230ed77e19043de9f41ab7355317',
                            '3b435476c9c70e00bc0f4ff5d07282702b6e60b437e51af447bc77eaf50b5bb5'},
-           'source/gfx.c':{'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'}}
+           'source/gfx.c':{'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'},
+           'libretro.c':{'9cff29a5de7a805f1d5dc4f5989074b7feb39799b7a22e98d50d0db5d95a3324'}}
     assert current in (base,modified) or sha256(path.read_bytes()).hexdigest() in prior.get(name,set()), 'Unrelated core change: '+name
     path.write_text(modified,newline='\n')
 
@@ -57,6 +58,29 @@ def tiles(text):
     return text
 
 def libretro(text):
+    anchor='static void S9xAudioCallback(void)'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,'#ifdef D35_PLUS_A7\nstatic bool d35_audio_in_run;\n#endif\n'+anchor)
+    anchor='   audio_out_buffer_pos += available_samples;'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,anchor+'''
+#ifdef D35_PLUS_A7
+   /* These samples were already mixed at the existing APU sync point.
+    * Publish without moving emulated CPU/APU time or finalization. */
+   if (d35_audio_in_run && audio_out_buffer_pos)
+   {
+      size_t offered = audio_out_buffer_pos >> 1;
+      size_t accepted = audio_batch_cb(audio_out_buffer, offered);
+      if (accepted > offered) accepted = offered;
+      audio_out_buffer_pos -= accepted << 1;
+      if (audio_out_buffer_pos && accepted)
+         memmove(audio_out_buffer, audio_out_buffer + (accepted << 1),
+               audio_out_buffer_pos * sizeof(int16_t));
+   }
+#endif''')
+    anchor='   S9xMainLoop();'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,'#ifdef D35_PLUS_A7\n   d35_audio_in_run = true;\n#endif\n'+anchor+'\n#ifdef D35_PLUS_A7\n   d35_audio_in_run = false;\n#endif')
     anchor='   if (IPPU.RenderThisFrame)\n   {\n#ifdef PSP'
     assert text.count(anchor)==1
     text=text.replace(anchor,'#ifdef D35_PLUS_A7\n   audio_upload_samples();\n#endif\n\n'+anchor)

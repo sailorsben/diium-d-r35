@@ -13,7 +13,7 @@ Evidence collected on one DIIUM D-R35 through 2026-10-05. **Observed** means ret
 | Memory | 48 MiB boot RAM plus 16 MiB chunk reservation; Linux MemTotal 43,120 KiB | Consistent with 64 MiB arrangement, not physical RAM census |
 | Reserved region | Chunk memory at physical 0x03000000–0x03ffffff | CPU cache policy and maintenance contract not established |
 | Display | Exported 640×480, lcd1_mipi_NV3051F | Physical panel cadence not measured |
-| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | Native PCM settings/driver behavior not yet qualified; `/proc/asound` absent |
+| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | Native client implemented in1.9; settings/driver behavior not yet physically qualified; `/proc/asound` absent |
 | GPU | `vivante,gc` DT node exists | No working galcore/runtime/device established |
 
 One CPU means display/I/O threads can overlap peripheral waits, but cannot add emulation compute capacity. The vendor runtime's gameplay memory headroom was tight. Configured 256 MiB swap is not physical RAM; sampled vrtemu VmSwap was zero and swap use was stable, so ongoing swap thrash was not demonstrated.
@@ -85,7 +85,11 @@ drop flags stay zero. Continuous A/B operation and panel cadence remain unknown.
 
 ## Audio and SNES frame budget
 
-Tested Plus reports 32,040 Hz native audio and 59.922743404 FPS. The host uses 44,100 Hz stereo S16_LE. Keep fractional resampling continuous across callbacks. A fixed 735-sample/44.1-kHz policy is not the core's native timing contract.
+Tested Plus reports 32,040 Hz native audio and 59.922743404 FPS. Stock and MVP
+through1.8 use 44,100 Hz stereo S16_LE.1.9 prefers negotiated native32040Hz and
+bypasses conversion when accepted; other accepted rates retain continuous
+fractional resampling. A fixed735-sample/44.1-kHz policy is not the core's timing
+contract. Native settings remain physically unqualified.
 
 Stock `sound_driver_playframe` has **void** return type in DWARF. A tailcalled write register is not a supported integer-return API. Our runtime owns nonblocking OSS writes and preserves all unaccepted frames across partial/EAGAIN writes. Concatenated PCM sounding clean on a PC does not preserve wall-clock submission gaps or prove absence of device underruns.
 
@@ -113,7 +117,7 @@ sampled device queue1024–2048 frames. Brief starvation and physical frame
 presentation remain uncounted. The user heard occasional lag and rare random
 normal-play crackles in story/map. No assigned cause or full-render speed claim.
 
-Plus currently publishes video before completed audio, so a slow video callback
+The original Plus publishes video before completed audio, so a slow video callback
 also delays PCM delivery. The host polls GPIO twice per core call. The pinned
 tile/color implementation is predominantly scalar even though compiler flags
 permit NEON; some DSP paths already contain compiler-generated SIMD. A tailored
@@ -194,6 +198,16 @@ bursts overrun nominal queue lead. A 23.22ms queue at 44100Hz cannot bridge a
 roughly 30ms production blackout. One coherent PCM owner, a playable reserve
 and earlier correctly synchronized audio publication are the next source-based
 runtime work. Card unarmed; no new game build installed.
+
+[MVP1.9](snes-mvp-1.9.md) now implements the researched native PCM path and one
+coherent production owner. Explicit64ms priming, device/event admission, bounded
+drain/faults and native-rate bypass replace split OSS/timer gates. Already-mixed
+PCM publishes at existing in-frame APU synchronization points;1200 exact-output
+frames pass,1196 with multiple earlier batches. Independent ARM32 and actual
+owner fixtures qualify software contracts, not vendor settings or handheld
+speed. Physical native audio/full-render/stability acceptance is pending. The
+[capability roadmap](hardware-capability-roadmap.md) keeps wider opportunities
+in view; no current evidence establishes maximum attainable performance.
 
 Readable kallsyms supplied real addresses. Built-in-module entries are not exported loadable `.ko` files. `/proc/mtd` had no registered partitions; `/proc/kcore` returned ENOENT. No kernel-text recovery, flash rewrite, MMIO experiment or `/dev/mem` fallback was performed.
 

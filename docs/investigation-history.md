@@ -171,3 +171,28 @@ metadata does not supply the matching display/audio implementations. Remaining
 physical work should qualify vendor behavior and the repaired real game path.
 The analyzer's drain/reserve/scaler extensions pass independent calculated
 fixtures. No new executable is installed by this return/research work.
+
+## 2026-10-05: implement the researched native game path
+
+Ben authorizes building and explicitly retains the wider goal: understand and
+exploit the hardware, not stop at a smooth emulator. [MVP1.9](snes-mvp-1.9.md)
+implements native PCM, one coherent owner,64ms playable priming, event-driven
+consumption admission and earlier already-mixed core audio. Native rate avoids
+conversion when accepted. Full drawing and prior UI/display/input contracts
+remain. The [capability roadmap](hardware-capability-roadmap.md) records measured
+costs, useful concurrency and remaining interface/ownership opportunities.
+
+1200 exact-output frames pass;1196 publish identical PCM in earlier batches.
+Independent actual ARM client/owner fixtures cover constrained settings,
+partial/EAGAIN, START failure after acceptance, asynchronous drain, visible XRUN,
+30ms bursts, false readiness, fixed deadlines and blocked cancellation/flush.
+Final runtime checks pass180/30 mock frames and snapshot/SRAM/menu/splash/display
+ownership. Neither QEMU nor those fixtures qualifies vendor PCM settings,
+physical sound/full speed or fixes prior poweroffs. The exact-baseline updater
+archives all returned logs/private progress before changing owned files and
+arming; independent readback and source/check hashes gate selected publication.
+
+Installation archives41 MVP/49 lab files before writes, retains20 existing
+private entries and49 lab files, verifies stock/hook/original game-wrapper
+hashes and creates only the separate qualified snapshot. Independent readback
+passes; game one-shot armed, lab unarmed. Physical results remain pending.

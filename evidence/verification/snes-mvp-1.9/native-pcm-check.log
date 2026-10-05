@@ -1,0 +1,3 @@
+native PCM protocol=2000e card=0 device=0 subdevice=0 id=
+native PCM rate=44100 period=512 buffer=4096 prime=2823 access=RW_INTERLEAVED explicit_start=1
+PASS: actual ARM32 PCM ABI, constrained rate/period fallback, exact partial/EAGAIN frames, real priming before START, SYNC_PTR, asynchronous DRAIN, accepted START-failure accounting and visible XRUN without restart

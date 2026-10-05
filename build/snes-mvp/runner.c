@@ -21,7 +21,7 @@
 #include <unistd.h>
 #include <zlib.h>
 
-#define OUT_RATE 44100u
+#define OUT_RATE (s.output_rate?s.output_rate:44100u)
 #define RING_FRAMES 8192u
 #define ROM_LIMIT (8u * 1024u * 1024u)
 #define ZIP_LIMIT (16u * 1024u * 1024u)
@@ -64,7 +64,7 @@ static struct {
     void *core;
     bool initialized, loaded, failed, audio_open, audio_ready, pixel_format, state_unsafe;
     uint32_t buttons, rom_crc, core_crc, rom_bytes, core_bytes;
-    unsigned input_rate, phase, output_count, ring_count;
+    unsigned input_rate, output_rate, phase, output_count, ring_count;
     bool have_previous, av_changed;
     int16_t previous[2], output[2048*2];
     char save_dir[1024], sram_path[1200], state_path[1200], report_path[1200];
@@ -243,19 +243,23 @@ static void pump_audio(void)
     s.ring_count=stats.remaining; s.audio_remaining=stats.remaining;
     s.audio_cleared=stats.cleared; s.audio_worker_cpu_ns=stats.worker_cpu_ns;
     s.audio_max_gap_ns=stats.max_write_gap_ns;
+    if(stats.observed_ns) {
+        if(s.queue_min<0 || (int)stats.playable<s.queue_min) s.queue_min=(int)stats.playable;
+        if((int)stats.playable>s.queue_max) s.queue_max=(int)stats.playable;
+    }
     if(stats.error) fail("Audio service failed: %s",strerror(stats.error));
 }
 static bool prime_audio(void)
 {
-    /* A bounded startup/resume cushion for one expensive first frame. This is
-     * 46.44 ms of logical silence at44100Hz, not a measured DAC latency claim.
-     * It is independent of the resampler's phase/numerical output. */
-    static const int16_t silence[2048*2]={0};
+    /* Wait for actual PCM transfer and successful START before emulation. */
+    static const int16_t silence[4096*2]={0};
+    unsigned frames=audio_pipe_prime_frames();
     if(s.output_count) { fail("Audio priming requires an empty queue"); return false; }
-    if(audio_pipe_start()<0 || audio_pipe_push(silence,2048)<0) {
+    if(!frames || frames>4096 || audio_pipe_start()<0 ||
+       audio_pipe_push(silence,frames)<0 || audio_pipe_primed()<0) {
         fail("Audio service startup failed: %s",strerror(errno)); return false;
     }
-    s.primed+=2048;
+    s.primed+=frames;
     pump_audio(); return !s.failed;
 }
 static bool audio_flush(void)
@@ -273,6 +277,10 @@ static size_t audio_batch(const int16_t *data,size_t frames)
     size_t i; uint64_t began=board_now_ns();
     if(!data||s.failed||!s.audio_ready) return 0;
     s.generated+=frames;
+    if(s.input_rate==OUT_RATE) {
+        if(audio_pipe_push(data,frames)<0) { fail("Native PCM publication: %s",strerror(errno)); return 0; }
+        s.enqueued+=frames; s.audio_ns+=board_now_ns()-began; return frames;
+    }
     for(i=0;i<frames&&!s.failed;i++) {
         const int16_t *now=data+i*2;
         if(!s.have_previous) {
@@ -445,7 +453,7 @@ static bool pause_menu(void)
 {
     int action;
     ++s.pauses; progress("pause_draining",1); board_wait_display();
-    audio_reset();
+    audio_pipe_stop(1); pump_audio(); audio_reset();
     { int queued=board_audio_queued_frames(); if(queued>0) s.device_cleared_estimate+=(unsigned)queued; }
     if(board_audio_reset()<0) { fail("Could not pause audio: %s",board_last_error()); return false; }
     if(!save_sram()) { /* Show the error; don't claim the save succeeded. */ }
@@ -475,7 +483,7 @@ static void report_to(const char *path,const char *phase,int ram)
     board_video_metrics(&display,0);
     n=snprintf(text,sizeof(text),
       "D35 SNES MVP\nrom_crc32=%08x\nrom_bytes=%u\ncore_crc32=%08x\ncore_bytes=%u\n"
-      "fps=%.9f\nnative_rate=%u\nsink_rate=%u\npacing=kernel_monotonic_full_render\n"
+      "fps=%.9f\nnative_rate=%u\nsink_rate=%u\npacing=native_pcm_consumption_full_render\n"
       "mock_backend=%d\nruns=%llu\nheld=%llu\nvideo_submitted=%llu\nvideo_dupes=%llu\n"
       "native_audio_frames=%llu\nresampled_enqueued_frames=%llu\noutput_accepted_frames_including_priming=%llu\n"
       "priming_silence_frames=%llu\n"
@@ -483,7 +491,7 @@ static void report_to(const char *path,const char *phase,int ram)
       "software_ring_high_frames=%u\ndevice_queue_min_frames=%d\ndevice_queue_max_frames=%d\n"
       "core_wall_ns=%llu\ncore_thread_cpu_ns=%llu\nvideo_callback_ns=%llu\naudio_callback_ns=%llu\n"
       "max_run_ns=%llu\nmax_video_ns=%llu\npauses=%llu\n"
-      "xrun_count=unavailable_oss\npresent_count=unavailable_vendor_driver\nerror=%s\n",
+      "present_count=unavailable_vendor_driver\nerror=%s\n",
       s.rom_crc,s.rom_bytes,s.core_crc,s.core_bytes,native_av.timing.fps,s.input_rate,OUT_RATE,
       board_is_null(),(unsigned long long)s.runs,(unsigned long long)s.held,
       (unsigned long long)s.videos,(unsigned long long)s.video_dupes,
@@ -495,7 +503,7 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.pauses,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
-      "build_version=1.8\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "build_version=1.9\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
@@ -522,6 +530,18 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)display.max_flip_ns,(unsigned long long)s.active_ns,
       (unsigned long long)s.pacing_wait_ns,(unsigned long long)s.late_calls,
       (unsigned long long)s.max_lateness_ns);
+    if(n<=0||(size_t)n>=sizeof(text)) return;
+    {
+        struct audio_pipe_stats pcm;
+        audio_pipe_stats(&pcm);
+        n+=snprintf(text+n,sizeof(text)-(size_t)n,
+          "audio_backend=%s\npcm_period_frames=%u\npcm_buffer_frames=%u\npcm_prime_frames=%u\n"
+          "pcm_playable_frames=%u\npcm_state=%u\nxrun_count=%llu\npcm_observed_kernel_ns=%llu\n"
+          "pcm_event_wakes=%llu\npcm_fault_poll_timeouts=%llu\n",
+          board_is_null()?"mock":"native_alsa",pcm.period,pcm.buffer,pcm.prime,pcm.playable,pcm.state,
+          (unsigned long long)pcm.xruns,(unsigned long long)pcm.observed_ns,
+          (unsigned long long)pcm.wakes,(unsigned long long)pcm.poll_timeouts);
+    }
     if(n<=0||(size_t)n>=sizeof(text)) return;
     for(i=0;i<ARRAY_SIZE(s.run_hist);i++) if(s.run_hist[i]) {
         int add=snprintf(text+n,sizeof(text)-(size_t)n,"core_wall_bin_%ums=%u\n",i,s.run_hist[i]);
@@ -616,10 +636,11 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     if(!load_sram()) goto done;
     save_ready=true;
     p_retro_set_controller_port_device(0,RETRO_DEVICE_JOYPAD);
-    actual_rate=board_audio_open(OUT_RATE);
+    actual_rate=board_audio_open(s.input_rate);
     if(actual_rate<0) { fail("Audio open failed: %s",board_last_error()); goto done; }
     s.audio_open=true;
-    if(actual_rate!=(int)OUT_RATE) { fail("Audio negotiated %d Hz; baseline requires44100",actual_rate); goto done; }
+    if(actual_rate<8000 || actual_rate>48000) { fail("Unsupported negotiated PCM rate: %d",actual_rate); goto done; }
+    s.output_rate=(unsigned)actual_rate;
     s.audio_ready=true; audio_reset();
     if(!prime_audio()) goto done;
     if(board_is_null()) {
@@ -640,36 +661,20 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
             if(!pause_menu()) break;
             deadline=board_now_ns(); remainder=0; old_buttons=board_poll_input(); continue;
         }
-        old_buttons=buttons; s.buttons=buttons;
+        old_buttons=buttons;
         pump_audio();
         /* Reserve at least2048 output frames before entering the core. Never
          * let a full sink silently discard a callback the core won't replay. */
         { uint64_t wait=board_now_ns();
-          if(audio_pipe_space(2048)<0) fail("Audio sink stalled: %s",strerror(errno));
+          if(audio_pipe_admit(2048,!no_pacing && !board_is_null())<0) fail("Audio admission failed: %s",strerror(errno));
           s.audio_space_wait_ns+=board_now_ns()-wait; }
-        if(!no_pacing) {
-            uint64_t waiting=board_now_ns();
-            unsigned next=(unsigned)ceil(OUT_RATE/native_av.timing.fps);
-            for(;;) {
-                int queued=board_audio_queued_frames();
-                if(queued>=0) {
-                    if(s.queue_min<0 || queued<s.queue_min) s.queue_min=queued;
-                    if(queued>s.queue_max) s.queue_max=queued;
-                }
-                pump_audio();
-                if(s.failed || stop_requested || queued<0 ||
-                   s.ring_count+(unsigned)queued+next<=OUT_RATE*70u/1000u) break;
-                if(board_now_ns()-waiting>500000000u) { fail("Audio queue lead did not drain"); break; }
-                board_sleep_until(board_now_ns()+1000000u);
-            }
-            s.audio_lead_wait_ns+=board_now_ns()-waiting;
-        }
         if(s.failed||stop_requested) break;
-        if(!no_pacing) {
+        if(!no_pacing && board_is_null()) {
             uint64_t before=board_now_ns(); board_sleep_until(deadline);
             s.pacing_wait_ns+=board_now_ns()-before;
         }
         if(board_video_reserve()<0) { fail("Display queue stalled: %s",board_last_error()); break; }
+        s.buttons=board_poll_input(); /* fresh input after admission */
         if(board_now_ns()>deadline+period) {
             uint64_t late=board_now_ns()-deadline; ++s.late_calls;
             if(late>s.max_lateness_ns) s.max_lateness_ns=late;
@@ -684,10 +689,6 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         ++s.run_hist[bin]; pump_audio();
         progress(s.failed?"failed":"running",0);
         s.active_ns+=board_now_ns()-step_start;
-        if(!(s.runs%60)) {
-            int q=board_audio_queued_frames();
-            if(q>=0) { if(s.queue_min<0||q<s.queue_min) s.queue_min=q; if(q>s.queue_max) s.queue_max=q; }
-        }
         deadline+=period; remainder+=fraction;
         if(remainder>=1.0) { ++deadline; remainder-=1.0; }
         /* A long OS/device stall is a reported discontinuity, not minutes of
@@ -698,11 +699,6 @@ done:
     if(s.report_path[0]) progress(s.failed?"failed_before_cleanup":"cleanup",1);
     audio_pipe_stop(!s.failed); pump_audio();
     if(s.audio_open) {
-        uint64_t until=board_now_ns()+150000000u;
-        int queued;
-        while((queued=board_audio_queued_frames())>0 && board_now_ns()<until)
-            board_sleep_until(board_now_ns()+1000000u);
-        if(queued>0) s.device_cleared_estimate+=(unsigned)queued;
         (void)board_audio_reset(); board_audio_close(); s.audio_ready=false;
     }
     board_video_cancel();
