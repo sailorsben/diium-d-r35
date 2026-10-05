@@ -16,4 +16,7 @@
 evidence/** -text -whitespace
 docs/reference/** -text -whitespace
 releases/**/snes-mvp binary
+# Lab manifest hashes cover exact release bytes, including raw readelf output.
+releases/platform-lab-1/** -text -whitespace
+releases/**/platform-lab binary
 *.png binary
