@@ -1,0 +1,119 @@
+event=supervisor_begin deadline_ns=120000000000
+event=run_begin version=lab2 simulated=0 pid=486 kernel_ns=7288445000
+event=kernel_config available=0 errno=2
+event=timer_capability getres_rc=0 errno=0 resolution_ns=10000000 original_slack_ns=50000 timerfd_fd=10
+event=timer_slack reduced=0 set_rc=0 measured_ns=50000
+event=timer_context reduced=0 load=0 worker_cpu_ns=0
+event=timer_context reduced=0 load=1 worker_cpu_ns=2847573000
+event=timer_slack reduced=1 set_rc=0 measured_ns=1
+event=timer_context reduced=1 load=0 worker_cpu_ns=0
+event=timer_context reduced=1 load=1 worker_cpu_ns=2847604000
+event=timer_restore rc=0 original_ns=50000 current_ns=50000
+event=timer_end samples=1152 failed=0
+event=memory_mapping physical=53538816 mapped=3047538688 bytes=114688
+event=memory mode=0 bytes=114688 loops=80 cpu_ns=11013000 wall_ns=11022000
+event=memory mode=1 bytes=114688 loops=80 cpu_ns=11480000 wall_ns=11487000
+event=memory mode=2 bytes=114688 loops=80 cpu_ns=29581000 wall_ns=29749000
+event=memory mode=3 bytes=114688 loops=80 cpu_ns=41423000 wall_ns=41512000
+event=memory_end exact=1 free_rc=0
+event=transport_begin index=0 rate=32040 log2=11 quantum_frames=128
+event=fragment_hint log2_bytes=11 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=2048
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=32040 accepted_rate=32040 requested_log2=11 space_rc=0 errno=0 fragment_bytes=2048 fragments=4 capacity_bytes=8192
+event=transport_end index=0 generated_frames=64080 accepted_bytes=256320 target_bytes=256320 active_ns=1952819000 cpu_ns=48682000 complete=1 final_errno=0
+event=drain observed_empty=1 elapsed_ns=100162000
+event=audio_reset rc=0
+event=trace_saved file=transport-0.csv samples=757 dropped=0
+event=transport_begin index=1 rate=44100 log2=11 quantum_frames=128
+event=fragment_hint log2_bytes=11 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=2048
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=44100 accepted_rate=44100 requested_log2=11 space_rc=0 errno=0 fragment_bytes=2048 fragments=4 capacity_bytes=8192
+event=transport_end index=1 generated_frames=88200 accepted_bytes=352800 target_bytes=352800 active_ns=1961384000 cpu_ns=64718000 complete=1 final_errno=0
+event=drain observed_empty=1 elapsed_ns=72161000
+event=audio_reset rc=0
+event=trace_saved file=transport-1.csv samples=1037 dropped=0
+event=transport_begin index=2 rate=32040 log2=10 quantum_frames=256
+event=fragment_hint log2_bytes=10 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=1024
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=32040 accepted_rate=32040 requested_log2=10 space_rc=0 errno=0 fragment_bytes=1024 fragments=4 capacity_bytes=4096
+event=transport_end index=2 generated_frames=64080 accepted_bytes=256320 target_bytes=256320 active_ns=1968489000 cpu_ns=53544000 complete=1 final_errno=0
+event=drain observed_empty=1 elapsed_ns=54258000
+event=audio_reset rc=0
+event=trace_saved file=transport-2.csv samples=995 dropped=0
+event=transport_begin index=3 rate=44100 log2=10 quantum_frames=256
+event=fragment_hint log2_bytes=10 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=1024
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=44100 accepted_rate=44100 requested_log2=10 space_rc=0 errno=0 fragment_bytes=1024 fragments=4 capacity_bytes=4096
+event=transport_end index=3 generated_frames=88200 accepted_bytes=352800 target_bytes=352800 active_ns=1972781000 cpu_ns=73004000 complete=1 final_errno=0
+event=drain observed_empty=1 elapsed_ns=45823000
+event=audio_reset rc=0
+event=trace_saved file=transport-3.csv samples=1371 dropped=0
+event=transport_begin index=4 rate=44100 log2=9 quantum_frames=64
+event=fragment_hint log2_bytes=9 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=512
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=44100 accepted_rate=44100 requested_log2=9 space_rc=0 errno=0 fragment_bytes=512 fragments=4 capacity_bytes=2048
+event=transport_end index=4 generated_frames=88200 accepted_bytes=352800 target_bytes=352800 active_ns=1989833000 cpu_ns=101126000 complete=1 final_errno=0
+event=drain observed_empty=1 elapsed_ns=15737000
+event=audio_reset rc=0
+event=trace_saved file=transport-4.csv samples=2755 dropped=0
+event=controller_begin index=0 rate=32040 event_wait=0 burst=0 lead_limit_ms=45
+event=fragment_hint log2_bytes=10 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=1024
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=32040 accepted_rate=32040 requested_log2=10 space_rc=0 errno=0 fragment_bytes=1024 fragments=4 capacity_bytes=4096
+event=controller_end index=0 frames=240 generated_frames=128160 accepted_bytes=512640 ring_bytes=0 active_ns=3996099000 elapsed_ns=4016612000 producer_cpu_ns=3137320000 owner_cpu_ns=48568000 producer_wait_ns=666736000 max_frame_cpu_ns=12013000 polls=351 poll_timeouts=0 immediate_wakes=1 fallback_sleeps=0 submitted=240 flipped=240 error=0 complete=1
+event=drain observed_empty=1 elapsed_ns=28147000
+event=audio_reset rc=0
+event=trace_saved file=controller-0.csv samples=970 dropped=0
+event=controller_begin index=1 rate=32040 event_wait=1 burst=0 lead_limit_ms=45
+event=fragment_hint log2_bytes=10 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=1024
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=32040 accepted_rate=32040 requested_log2=10 space_rc=0 errno=0 fragment_bytes=1024 fragments=4 capacity_bytes=4096
+event=controller_end index=1 frames=240 generated_frames=128160 accepted_bytes=512640 ring_bytes=0 active_ns=3992364000 elapsed_ns=3999792000 producer_cpu_ns=3144839000 owner_cpu_ns=60264000 producer_wait_ns=696828000 max_frame_cpu_ns=12011000 polls=478 poll_timeouts=0 immediate_wakes=13 fallback_sleeps=13 submitted=240 flipped=240 error=0 complete=1
+event=drain observed_empty=1 elapsed_ns=42199000
+event=audio_reset rc=0
+event=trace_saved file=controller-1.csv samples=1235 dropped=0
+event=controller_begin index=2 rate=32040 event_wait=1 burst=1 lead_limit_ms=45
+event=fragment_hint log2_bytes=10 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=1024
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=32040 accepted_rate=32040 requested_log2=10 space_rc=0 errno=0 fragment_bytes=1024 fragments=4 capacity_bytes=4096
+event=controller_end index=2 frames=240 generated_frames=128160 accepted_bytes=512640 ring_bytes=0 active_ns=4090091000 elapsed_ns=4098363000 producer_cpu_ns=3269155000 owner_cpu_ns=60784000 producer_wait_ns=648067000 max_frame_cpu_ns=28014000 polls=480 poll_timeouts=0 immediate_wakes=9 fallback_sleeps=9 submitted=240 flipped=240 error=0 complete=1
+event=drain observed_empty=1 elapsed_ns=14667000
+event=audio_reset rc=0
+event=trace_saved file=controller-2.csv samples=1240 dropped=0
+event=controller_begin index=3 rate=44100 event_wait=1 burst=1 lead_limit_ms=45
+event=fragment_hint log2_bytes=10 rc=0 errno=0
+event=audio_capability name=GETCAPS command=2147766287 rc=0 errno=0 value=12801
+event=audio_capability name=GETFMTS command=2147766283 rc=0 errno=0 value=373241
+event=audio_capability name=GETBLKSIZE command=3221508100 rc=0 errno=0 value=1024
+event=audio_capability name=GETTRIGGER command=2147766288 rc=0 errno=0 value=2
+event=audio_config requested_rate=44100 accepted_rate=44100 requested_log2=10 space_rc=0 errno=0 fragment_bytes=1024 fragments=4 capacity_bytes=4096
+event=controller_end index=3 frames=240 generated_frames=176400 accepted_bytes=705600 ring_bytes=0 active_ns=4090862000 elapsed_ns=4098622000 producer_cpu_ns=3293043000 owner_cpu_ns=63989000 producer_wait_ns=614494000 max_frame_cpu_ns=28014000 polls=441 poll_timeouts=0 immediate_wakes=14 fallback_sleeps=14 submitted=240 flipped=240 error=0 complete=1
+event=drain observed_empty=1 elapsed_ns=20410000
+event=audio_reset rc=0
+event=trace_saved file=controller-3.csv samples=1327 dropped=0
+event=run_end status=complete issues=0 kernel_ns=46952873000
+event=supervisor_end child=486 status=0 term=0 killed=0

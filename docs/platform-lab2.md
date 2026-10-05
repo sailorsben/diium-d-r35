@@ -6,6 +6,12 @@ core, original wrapper, stock software and private progress. It does not run a
 ROM. Its physical behavior remains unqualified until the returned logs and
 user observations establish it. Host/QEMU success is never a speed claim.
 
+**Returned:** the [physical review](platform-lab-2-return.md) supersedes the
+pending-test status in the original deployment record. All phases complete;
+the user hears clicks between and during tests. Card archived and unarmed,
+zero return-time card writes. The [interface research](platform-interface-research.md)
+records source-discoverable staging/drain defects and the proposed native PCM path.
+
 ## What this test decides
 
 1. Which waits actually deliver useful wake precision on this kernel?
@@ -133,6 +139,11 @@ directly at256×224, never a downsampled notice. Tone endpoints are ramped and t
 normal path observes drain before reset. Transition artifacts can still arise
 from the physical driver; the test does not promise silence at every boundary.
 
+**Return correction:** this observed drain is insufficient. Upstream POST does
+not flush partial-fragment staging, and zero GETODELAY omits that staging. Lab2
+then resets, so acceptance of its ramped tail does not prove playback. Preserve
+the released test bytes and correct the contract in the next implementation.
+
 ![Rendered pacing screen](assets/lab2-preview.png)
 
 Rendered at panel geometry for review; not a handheld photograph.
@@ -181,7 +192,8 @@ hook, dispatcher, game runner/core and original wrapper. Installed executable
 SHA256 is `3840bc09a319c4dd5eb5697924830a57691cc5d72d5f86833d404729596f404c`.
 See [installation proof](../evidence/verification/platform-lab2/installation.json)
 and [card readback](../evidence/verification/platform-lab2/card-readback.json).
-The next physical run is pending.
+The physical run subsequently returned complete; see the [return review](platform-lab-2-return.md).
+Both markers are now consumed. The next reboot takes the stock path.
 
 The released payload is immutable and contains no ROM, state, vendor library or
 sysroot. [Git byte verification](../evidence/verification/platform-lab2/git-byte-verification.json)
@@ -192,7 +204,10 @@ differences are verified to be only newline normalization and recorded explicitl
 `build/collect-platform-lab.py`, then analyze the **new lab2 run** with
 `build/analyze-platform-lab2.py`; retain raw data and identify any missing batches.
 
-The next game changes depend on this result: select the wake mechanism and
-coherent lead policy, qualify native-rate playback, then integrate in-frame PCM
-publication and compact NEON kernels. Persistent scaler/A+B operation remains
-a separate implementation requiring completion and ownership qualification.
+The returned result and source research select audio-device wakeups over short
+timeout polling, one coherent native PCM owner, proper priming/drain and reserve
+for long calls. Integrate already-emulated in-frame PCM publication at valid
+synchronization points. Native PCM settings and sustained full-speed game output
+still need physical acceptance. Persistent scaler/A+B operation remains a
+separate implementation requiring completion and ownership qualification;
+its suspected ten-sleep fallback did not run here.

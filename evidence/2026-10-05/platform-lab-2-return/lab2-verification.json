@@ -1,0 +1,11 @@
+{
+  "archive": "snes-mvp-return-20261005T060423Z",
+  "read_only_card_writes": 0,
+  "mvp_files_copied_and_hash_verified": 41,
+  "lab_files_copied_and_hash_verified": 49,
+  "protected_private_files_unchanged": 20,
+  "stock_hook_dispatcher_runner_core_original_wrapper_unchanged": true,
+  "exact_lab2_payload_returned": true,
+  "both_one_shots_consumed": true,
+  "lab2_binary_sha256": "3840bc09a319c4dd5eb5697924830a57691cc5d72d5f86833d404729596f404c"
+}

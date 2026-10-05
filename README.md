@@ -14,7 +14,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 - **Working reference:** v11 SNES Plus adapter in the vendor launcher. Intro/Narshe/wind listening tests were clean with adaptive internal drawing suppression.
 - **Not established:** full rendering at all times, a measured speedup over v11, broad emulator compatibility, usable hardware GPU acceleration, or factory-card compatibility of the current installer.
 - **Hardware lab1 returned successfully:** stock launcher resumed; all four display phases complete240/240 jobs, including a12ms CPU load, while audio remains buffered in samples. NEON wins the tile fixture; the experimental color cache loses.5ms deadlines average5.48ms late, making timer-polled pacing a concrete next target. Text readability and transition clicks are recorded. Its return was archived and its one-shot consumed. [Physical findings](docs/platform-lab-1-return.md), [scope](docs/platform-lab.md).
-- **Lab2 installed and armed:** independent timer/slack tests, actual native-rate audio transports, coherent owner/pacing under CPU bursts, heap/chunk costs and observation of the exact vendor scaler/flip syscalls. ARM correctness/lifecycle checks pass; physical results are pending. Fresh archive and independent card readback verify41 MVP files,17 old lab files and20 protected private entries; stock and game paths are unchanged. [Contracts and test](docs/platform-lab2.md).
+- **Lab2 returned complete, with clicks:** all nine PCM byte targets and all four 240-drawing phases complete, but the user hears clicks between and during tests. All short timeout methods average about 10ms despite timer-slack reduction; audio readiness wakes around 2.77ms in the smallest-fragment transport. Burst production exceeds the available playable reserve. All 973 scaler statuses contain FRAME_DONE; the ten-sleep fallback never runs. Archive verifies 41 MVP/49 lab files and 20 protected private entries. Card unarmed, zero writes. [Physical findings](docs/platform-lab-2-return.md).
+- **Source research now leads the next runtime:** Linux 4.19 OSS source exposes partial-fragment staging and explains why POST/zero-delay/RESET does not qualify complete tail playback. Native ALSA defines negotiation, priming, device-driven refill, stream-state observation and drain; its playback node exists on this device. The proposed replacement uses one coherent PCM owner. Exact vendor behavior and full-speed FF6 remain unqualified. [Interface research](docs/platform-interface-research.md).
 
 ## Start here
 
@@ -25,9 +26,10 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Source, dependencies, checks, installation and recovery | [Build and test](docs/build-and-test.md) |
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
+| Latest infrastructure result and researched audio contracts | [Lab2 return](docs/platform-lab-2-return.md), [interface research](docs/platform-interface-research.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
 | Forward A7 renderer implementation | [MVP1.8](docs/snes-mvp-1.8.md) |
-| Latest physical result and next engineering decision | [MVP1.8 return](docs/snes-mvp-1.8-return.md) |
+| Latest game result and remaining performance/stability limits | [MVP1.8 return](docs/snes-mvp-1.8-return.md) |
 | Logging retry implementation | [MVP1.7](docs/snes-mvp-1.7.md) |
 | A7 full-render implementation and failed test | [MVP1.6](docs/snes-mvp-1.6.md), [failure review](docs/snes-mvp-1.6-failure.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |

@@ -15,10 +15,23 @@ def distribution(values):
     s=sorted(values)
     return {'n':len(s),'mean':sum(s)/len(s),'p50':s[math.ceil(len(s)*.50)-1],
             'p95':s[math.ceil(len(s)*.95)-1],'p99':s[math.ceil(len(s)*.99)-1],'maximum':s[-1]}
-def audio(p):
+def audio(p,rate=None):
     data=rows(p); writes=[s for s in data if s['operation']==1]; polls=[s for s in data if s['operation'] in (2,7)]
     success=[s for s in data if s['accepted_bytes']>0 and s['delay_rc']==0]
     pointers=[s for s in data if s['ptr_rc']==0]
+    active=[s for s in data if s['operation'] in (0,1,2,6,7)]
+    active_writes=[s for s in writes if s['rc']>0]
+    gap_pairs=list(zip(active_writes,active_writes[1:]))
+    residues=[s['accepted_bytes']-s['ptr_bytes']-s['delay_bytes'] for s in active
+              if s['delay_rc']==0 and s['ptr_rc']==0 and s['ptr_bytes']>=0]
+    zero_drain=[s['accepted_bytes']-s['ptr_bytes'] for s in data
+                if s['operation']==3 and s['delay_rc']==0 and s['delay_bytes']==0 and s['ptr_rc']==0 and s['ptr_bytes']>=0]
+    # Only post-start pairs. A nominal client-rate comparison is a risk signal,
+    # not a hardware xrun count or proof of the physical DAC clock.
+    gaps_over_lead=[{'previous_query_ns':a['query_begin_ns'],'next_write_ns':b['begin_ns'],
+                     'gap_ns':b['begin_ns']-a['query_begin_ns'],'previous_delay_bytes':a['delay_bytes']}
+                    for a,b in gap_pairs if rate and a['delay_rc']==0 and a['ptr_rc']==0 and a['ptr_bytes']>0
+                    and a['delay_bytes']>=0 and (b['begin_ns']-a['query_begin_ns'])*rate*4>a['delay_bytes']*1000000000]
     pairs=[]
     for i,s in enumerate(data):
         if s['operation']==2 and s['rc']>0 and s['revents']&4:
@@ -37,7 +50,36 @@ def audio(p):
             'successful_delay_bytes':distribution([s['delay_bytes'] for s in success]),
             'pointer_backward_samples':sum(b['ptr_bytes']<a['ptr_bytes'] for a,b in zip(pointers,pointers[1:])),
             'query_errors':{k:sum(s[k+'_rc']<0 for s in data) for k in ('delay','space','ptr')},
+            'client_rate':rate,
+            'accepted_write_gap_ns':distribution([b['begin_ns']-a['query_begin_ns'] for a,b in gap_pairs]),
+            'active_zero_delay_after_cursor_started':sum(s['delay_rc']==0 and s['delay_bytes']==0 and s['ptr_rc']==0 and s['ptr_bytes']>0 for s in active),
+            'accepted_minus_pointer_minus_delay_bytes':distribution(residues),
+            'zero_delay_drain_accepted_minus_pointer_bytes':distribution(zero_drain),
+            'nominal_rate_gap_exceedances':gaps_over_lead,
+            'zero_delay_proves_all_accepted_played':False,
             'physical_xruns_measured':False,'pointer_clock_qualified':False}
+
+def scaler_jobs(drivers):
+    opened={}; groups=defaultdict(list)
+    for s in drivers:
+        if s['kind']!=1: continue
+        fd=s['fd']
+        if s['operation']==0 and s['rc']>=0: opened[fd]=[s]
+        elif fd in opened:
+            opened[fd].append(s)
+            if s['operation']==2:
+                job=opened.pop(fd)
+                config=next((r for r in job if r['command']==0x40e45000),None)
+                if not config: continue
+                groups[(config['phase'],config['input_wh'])].append(job)
+    result=[]
+    for (phase,geometry),jobs in sorted(groups.items()):
+        result.append({'phase':phase,'input_width':geometry>>16,'input_height':geometry&65535,
+                       'jobs':len(jobs),'errors':sum(s['rc']<0 for job in jobs for s in job),
+                       'open_through_close_ns':distribution([job[-1]['end_ns']-job[0]['begin_ns'] for job in jobs]),
+                       'wait_command_ns':distribution([sum(s['end_ns']-s['begin_ns'] for s in job if s['command']==0x80045004) for job in jobs]),
+                       'nonwait_syscall_ns':distribution([sum(s['end_ns']-s['begin_ns'] for s in job if s['command']!=0x80045004) for job in jobs])})
+    return {'groups':result,'unclosed_jobs':len(opened)}
 def analyze(folder):
     events=[dict(v.split('=',1) for v in shlex.split(s) if '=' in v) for s in (folder/'results.log').read_text().splitlines()]
     begin=next(r for r in events if r['event']=='run_begin')
@@ -70,6 +112,8 @@ def analyze(folder):
             following=next((r for r in drivers[i+1:] if r['fd']==s['fd'] and r['kind']==1),None)
             if following and following['command']==0x5003: fallback.append(following['begin_ns']-s['end_ns'])
     configs=[s for s in drivers if s['kind']==1 and s['command']==0x40e45000]
+    rates={('transport-' if r['event']=='transport_begin' else 'controller-')+r['index']+'.csv':int(r['rate'])
+           for r in events if r['event'] in ('transport_begin','controller_begin')}
     producers=[]
     for p in sorted(folder.glob('producer-*.csv')):
         samples=rows(p)
@@ -83,9 +127,11 @@ def analyze(folder):
                           'observation_age_ns':distribution([s['admitted_ns']-s['observation_ns'] for s in samples if s['observation_ns']])})
     return {'version':'lab2','simulated':begin['simulated']=='1',
             'complete':any(r['event']=='run_end' and r['status']=='complete' for r in events),
-            'events':events,'timers':timers,'producers':producers,'audio':[audio(p) for p in sorted(folder.glob('*.csv')) if p.name.startswith(('transport-','controller-'))],
+            'events':events,'timers':timers,'producers':producers,'audio':[audio(p,rates.get(p.name)) for p in sorted(folder.glob('*.csv')) if p.name.startswith(('transport-','controller-'))],
             'driver':{'calls':len(drivers),'dropped':driver_dropped,'costs':costs,'successful_status_values':sorted(set(s['status'] for s in statuses)),
-                      'not_frame_done_statuses':len(fallback),'status_to_stop_fallback_gap_ns':distribution(fallback),
+                      'successful_status_count':len(statuses),
+                      'not_frame_done_statuses':sum(not s['status']&2 for s in statuses),
+                      'status_to_stop_fallback_gap_ns':distribution(fallback),'scaler_jobs':scaler_jobs(drivers),
                       'observed_scaler_output_a':sorted(set(s['output_a'] for s in configs)),
                       'observed_scaler_output_b':sorted(set(s['output_b'] for s in configs)),
                       'observed_queue_drop_flags':sorted(set(s['queue_drop_flags'] for s in configs)),

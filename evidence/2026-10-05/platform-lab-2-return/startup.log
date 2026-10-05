@@ -1,0 +1,46 @@
+7.285 program entered pid=486
+7.476 clock sources kernel_monotonic_ns=7476612000 libc_monotonic_ns=34126241752 kernel_boottime_ns=7476672000; using kernel clock and relative waits
+7.477 platform heartbeat attach enter
+7.479 platform heartbeat attached key=1234 bytes=460 budget=60 counter=1
+7.480 GPIO open enter
+7.481 GPIO input attribute pin=0x200
+7.483 GPIO input attribute pin=0x201
+7.484 GPIO input attribute pin=0x202
+7.485 GPIO input attribute pin=0x203
+7.486 GPIO input attribute pin=0x204
+7.487 GPIO input attribute pin=0x205
+7.489 GPIO input attribute pin=0x30b
+7.490 GPIO input attribute pin=0x30d
+7.491 GPIO input attribute pin=0x30f
+7.492 GPIO input attribute pin=0x30c
+7.493 GPIO input attribute pin=0x30a
+7.494 GPIO input attribute pin=0x208
+7.496 GPIO input attribute pin=0x207
+7.497 GPIO input attribute pin=0x30e
+7.498 GPIO input attribute pin=0x206
+7.499 GPIO vendor attribute pin=0x20f value=0
+7.500 GPIO vendor attribute pin=0x20b value=0
+7.502 GPIO vendor attribute pin=0x20e value=1
+7.503 GPIO vendor attribute pin=0x209 value=1
+7.504 GPIO vendor attribute pin=0x20a value=1
+7.505 chunkmem open enter
+7.507 chunk allocation enter bytes=1966080
+7.511 chunk allocation complete
+7.513 display driver load enter path=/usr/retro/driver.so
+7.519 display driver symbols resolved; HDMI detection enter
+7.521 HDMI detection complete output=0; InitVFB enter
+7.586 InitVFB returned display=0x2b2bf0
+7.588 display size=640x480
+7.591 LCD backlight write enter value=1
+7.593 display worker create enter
+7.594 display worker created; mixer open enter
+7.596 mixer open complete
+7.604 first DrawVFB enter size=640x480
+7.610 first DrawVFB returned; FlipVFB enter
+7.620 first FlipVFB returned
+46.914 board close enter
+46.916 display worker join enter busy=0
+46.917 display worker joined
+46.919 FreeVFB enter
+46.934 FreeVFB returned
+46.936 board close complete

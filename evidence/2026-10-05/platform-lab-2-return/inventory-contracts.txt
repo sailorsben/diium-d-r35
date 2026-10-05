@@ -1,0 +1,361 @@
+--- /proc/sys/kernel/random/boot_id ---
+17c56ad5-6d04-492d-b4c3-3e235942527e
+--- /proc/devices ---
+Character devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  7 vcs
+ 10 misc
+ 13 input
+ 14 sound/mixer
+ 14 sound/dsp
+ 14 sound/audio
+ 29 fb
+ 89 i2c
+ 90 mtd
+116 alsa
+153 spi
+180 usb
+189 usb_device
+253 watchdog
+254 rtc
+
+Block devices:
+  1 ramdisk
+  7 loop
+  8 sd
+ 31 mtdblock
+ 65 sd
+ 66 sd
+ 67 sd
+ 68 sd
+ 69 sd
+ 70 sd
+ 71 sd
+128 sd
+129 sd
+130 sd
+131 sd
+132 sd
+133 sd
+134 sd
+135 sd
+254 sdcard
+259 blkext
+--- /proc/self/timerslack_ns ---
+50000
+--- /proc/timer_list ---
+Timer List Version: v0.8
+HRTIMER_MAX_CLOCK_BASES: 8
+now at 7292464000 nsecs
+
+cpu: 0
+ clock 0:
+  .base:       751e3416
+  .index:      0
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get
+active timers:
+ #0: <b86f039a>, hrtimer_wakeup, S:01
+ # expires at 7291951000-7292001000 nsecs [in -513000 to -463000 nsecs]
+ #1: <7e4692c6>, hrtimer_wakeup, S:01
+ # expires at 7371741000-7371791000 nsecs [in 79277000 to 79327000 nsecs]
+ #2: <86322b01>, hrtimer_wakeup, S:01
+ # expires at 7383750000-7383800000 nsecs [in 91286000 to 91336000 nsecs]
+ #3: <1bdaa822>, hrtimer_wakeup, S:01
+ # expires at 7640198000-7640248000 nsecs [in 347734000 to 347784000 nsecs]
+ #4: <e554e745>, hrtimer_wakeup, S:01
+ # expires at 7650210000-7650260000 nsecs [in 357746000 to 357796000 nsecs]
+ #5: <291417c2>, sched_clock_poll, S:01
+ # expires at 2199023255500-2199023255500 nsecs [in 2191730791500 to 2191730791500 nsecs]
+ clock 1:
+  .base:       6ac1b32e
+  .index:      1
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_real
+active timers:
+ clock 2:
+  .base:       c3fbc525
+  .index:      2
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_boottime
+active timers:
+ clock 3:
+  .base:       05d97cf6
+  .index:      3
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_clocktai
+active timers:
+ clock 4:
+  .base:       f8e11dd2
+  .index:      4
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get
+active timers:
+ clock 5:
+  .base:       876581d3
+  .index:      5
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_real
+active timers:
+ clock 6:
+  .base:       c5836f56
+  .index:      6
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_boottime
+active timers:
+ clock 7:
+  .base:       477338f4
+  .index:      7
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_clocktai
+active timers:
+  .nohz_mode      : 1
+  .last_tick      : 7280000000 nsecs
+  .tick_stopped   : 0
+  .idle_jiffies   : 4294938023
+  .idle_calls     : 368
+  .idle_sleeps    : 45
+  .idle_entrytime : 7289768000 nsecs
+  .idle_waketime  : 7275998000 nsecs
+  .idle_exittime  : 7276002000 nsecs
+  .idle_sleeptime : 1573514000 nsecs
+  .iowait_sleeptime: 36541000 nsecs
+  .last_jiffies   : 4294938024
+  .next_timer     : 7290000000
+  .idle_expires   : 7290000000 nsecs
+jiffies: 4294938025
+
+Tick Device: mode:     1
+Per CPU device: 0
+Clock Event Device: arch_sys_timer
+ max_delta_ns:   2147483795001
+ min_delta_ns:   15001
+ mult:           4294967
+ shift:          32
+ mode:           3
+ next_event:     7300000000 nsecs
+ set_next_event: arch_timer_set_next_event_phys
+ shutdown: arch_timer_shutdown_phys
+ oneshot stopped: arch_timer_shutdown_phys
+ event_handler:  tick_nohz_handler
+ retries:        9
+
+--- /proc/asound/cards ---
+unavailable errno=2
+--- /sys/devices/system/clocksource/clocksource0/current_clocksource ---
+arch_sys_counter
+--- /sys/devices/system/clocksource/clocksource0/available_clocksource ---
+arch_sys_counter 
+--- /sys/kernel/tracing/trace_clock ---
+unavailable errno=2
+--- /sys/kernel/tracing/available_events ---
+unavailable errno=2
+--- /sys/kernel/debug/tracing/trace_clock ---
+unavailable errno=2
+--- /sys/kernel/debug/tracing/available_events ---
+unavailable errno=2
+--- /sys/kernel/debug/clk/clk_summary ---
+unavailable errno=2
+--- /sys/class/misc/pscaler_a/dev ---
+10:48
+--- /sys/class/misc/chunkmem/dev ---
+10:62
+--- directory /dev/snd cap=32 ---
+node=/dev/snd/pcmC0D0p mode=20660 major=116 minor=16 inode=2705
+driver_link=/sys/dev/char/116:16/device/driver errno=2
+node=/dev/snd/controlC0 mode=20660 major=116 minor=0 inode=2704
+driver_link=/sys/dev/char/116:0/device/driver errno=2
+node=/dev/snd/timer mode=20660 major=116 minor=33 inode=2401
+driver_link=/sys/dev/char/116:33/device/driver errno=2
+entries=3 capped=0
+--- directory /sys/class/sound cap=32 ---
+node=/sys/class/sound/audio mode=40755 major=0 minor=0 inode=7020
+node=/sys/class/sound/mixer mode=40755 major=0 minor=0 inode=7034
+node=/sys/class/sound/controlC0 mode=40755 major=0 minor=0 inode=7027
+node=/sys/class/sound/timer mode=40755 major=0 minor=0 inode=5543
+node=/sys/class/sound/dsp mode=40755 major=0 minor=0 inode=7013
+node=/sys/class/sound/card0 mode=40755 major=0 minor=0 inode=6998
+node=/sys/class/sound/pcmC0D0p mode=40755 major=0 minor=0 inode=7005
+entries=7 capped=0
+--- directory /sys/class/misc cap=64 ---
+node=/sys/class/misc/timer6 mode=40755 major=0 minor=0 inode=2781
+node=/sys/class/misc/pscaler_a mode=40755 major=0 minor=0 inode=5420
+node=/sys/class/misc/timer4 mode=40755 major=0 minor=0 inode=2765
+node=/sys/class/misc/gpio mode=40755 major=0 minor=0 inode=2697
+node=/sys/class/misc/timer2 mode=40755 major=0 minor=0 inode=2749
+node=/sys/class/misc/dma mode=40755 major=0 minor=0 inode=2685
+node=/sys/class/misc/network_latency mode=40755 major=0 minor=0 inode=5587
+node=/sys/class/misc/adc mode=40755 major=0 minor=0 inode=7080
+node=/sys/class/misc/pscaler_y mode=40755 major=0 minor=0 inode=5436
+node=/sys/class/misc/timer0 mode=40755 major=0 minor=0 inode=2733
+node=/sys/class/misc/memory_bandwidth mode=40755 major=0 minor=0 inode=5599
+node=/sys/class/misc/clock-mgr mode=40755 major=0 minor=0 inode=2718
+node=/sys/class/misc/i2c-sw mode=40755 major=0 minor=0 inode=2812
+node=/sys/class/misc/cpu_dma_latency mode=40755 major=0 minor=0 inode=5581
+node=/sys/class/misc/timer7 mode=40755 major=0 minor=0 inode=2789
+node=/sys/class/misc/pscaler_b mode=40755 major=0 minor=0 inode=5428
+node=/sys/class/misc/chunkmem mode=40755 major=0 minor=0 inode=2676
+node=/sys/class/misc/timer5 mode=40755 major=0 minor=0 inode=2773
+node=/sys/class/misc/hash mode=40755 major=0 minor=0 inode=6924
+node=/sys/class/misc/disp1 mode=40755 major=0 minor=0 inode=5785
+node=/sys/class/misc/scale mode=40755 major=0 minor=0 inode=5448
+node=/sys/class/misc/cache mode=40755 major=0 minor=0 inode=2670
+node=/sys/class/misc/fuse mode=40755 major=0 minor=0 inode=4920
+node=/sys/class/misc/watchdog mode=40755 major=0 minor=0 inode=6842
+node=/sys/class/misc/cuse mode=40755 major=0 minor=0 inode=4929
+node=/sys/class/misc/timer3 mode=40755 major=0 minor=0 inode=2757
+node=/sys/class/misc/timer1 mode=40755 major=0 minor=0 inode=2741
+node=/sys/class/misc/network_throughput mode=40755 major=0 minor=0 inode=5593
+node=/sys/class/misc/loop-control mode=40755 major=0 minor=0 inode=5273
+node=/sys/class/misc/hdmi mode=40755 major=0 minor=0 inode=5710
+node=/sys/class/misc/aes mode=40755 major=0 minor=0 inode=6883
+node=/sys/class/misc/board mode=40755 major=0 minor=0 inode=2724
+entries=32 capped=0
+--- selected kernel interfaces ---
+c0121058 t chunkmem_open
+c01211cc t chunkmem_mmap
+c0121458 t chunkmem_release
+c0121548 t chunkmem_ioctl
+c0130a84 T tasklet_hrtimer_init
+c0130ad8 t __tasklet_hrtimer_trampoline
+c01310bc t __hrtimer_tasklet_trampoline
+c016b170 T __hrtimer_get_remaining
+c016b1a4 T hrtimer_init_sleeper
+c016b1c4 T hrtimer_active
+c016b300 T hrtimer_forward
+c016b510 t __hrtimer_init
+c016b5bc T hrtimer_init
+c016b5d0 t hrtimer_wakeup
+c016b600 t hrtimer_reprogram.constprop.0
+c016b6f8 t __hrtimer_next_event_base.constprop.0
+c016b7d0 t __hrtimer_get_next_event
+c016b868 t __remove_hrtimer
+c016b934 T hrtimer_try_to_cancel
+c016b9b4 T hrtimer_cancel
+c016b9d8 T hrtimer_start_range_ns
+c016bbf0 t __hrtimer_run_queues.constprop.0
+c016bdb4 t hrtimer_run_softirq
+c016be64 T hrtimers_resume
+c016be74 T hrtimer_get_next_event
+c016bea0 T hrtimer_next_event_without
+c016bec4 T hrtimer_run_queues
+c016bfc0 T hrtimer_nanosleep
+c016c278 T hrtimers_prepare_cpu
+c0173828 t posix_get_hrtimer_res
+c017391c t common_hrtimer_remaining
+c01739a0 t common_hrtimer_forward
+c0173ab0 t common_hrtimer_arm
+c0173b8c t common_hrtimer_rearm
+c0173c1c t common_hrtimer_try_to_cancel
+c01783e0 t clockevents_program_min_delta
+c017848c T clockevents_unbind_device
+c0178520 T clockevents_register_device
+c01787ec t clockevents_config.part.0
+c0178868 T clockevents_config_and_register
+c017889c t __clockevents_unbind
+c0178994 T clockevents_switch_state
+c0178ad0 T clockevents_shutdown
+c0178af8 T clockevents_tick_resume
+c0178b20 T clockevents_program_event
+c0178c98 T __clockevents_update_freq
+c0178d30 T clockevents_update_freq
+c0178d50 T clockevents_handle_noop
+c0178d60 T clockevents_exchange_device
+c0178df4 T clockevents_suspend
+c0178e50 T clockevents_resume
+c0198c5c t perf_mux_hrtimer_restart
+c035e814 t gp_pscaler_poll
+c035ea88 T pscaler_retrigger
+c035ed74 t gp_pscaler_remove
+c035ee40 t pscaler_irq_handler
+c035f604 t gp_pscaler_probe
+c035f86c t gp_pscaler_open
+c035f97c t pscaler_wait.part.0
+c035fb38 T pscaler_wait
+c035fd7c T pscaler_trigger
+c0360880 t gp_pscaler_ioctl
+c0361428 t gp_pscaler_release
+c03c73a4 t snd_pcm_oss_format_from
+c03c753c t snd_pcm_oss_capture_position_fixup
+c03c7604 t snd_pcm_oss_prepare
+c03c76d0 t snd_pcm_oss_bytes
+c03c78b0 t snd_pcm_oss_release_substream
+c03c7914 t snd_pcm_oss_look_for_setup
+c03c7b7c t snd_pcm_oss_disconnect_minor.part.0
+c03c7bec t snd_pcm_oss_disconnect_minor
+c03c7c10 t snd_pcm_oss_unregister_minor
+c03c7c98 t snd_pcm_oss_register_minor
+c03c7dd0 t snd_pcm_oss_release_file.part.0
+c03c7e0c t snd_pcm_oss_open
+c03c870c t snd_pcm_oss_change_params_locked
+c03c93fc t snd_pcm_oss_change_params
+c03c946c t snd_pcm_oss_make_ready
+c03c94f0 t snd_pcm_oss_set_trigger
+c03c96f0 t snd_pcm_oss_poll
+c03c9944 t snd_pcm_oss_mmap
+c03c9a5c t snd_pcm_oss_get_active_substream
+c03c9ad4 t snd_pcm_oss_set_channels
+c03c9bc8 t snd_pcm_oss_get_formats
+c03c9cdc t snd_pcm_oss_make_ready_locked
+c03c9d6c T snd_pcm_oss_write3
+c03c9e08 t snd_pcm_oss_write2
+c03c9f78 t snd_pcm_oss_sync1
+c03ca110 t snd_pcm_oss_sync
+c03ca39c t snd_pcm_oss_release
+c03ca448 t snd_pcm_oss_ioctl
+c03cb4f0 t snd_pcm_oss_write
+c03cb7fc T snd_pcm_oss_read3
+c03cb914 t snd_pcm_oss_read2
+c03cba84 t snd_pcm_oss_read
+c0608080 t chunkmem_init
+c060b7bc t clockevents_init_sysfs
+c06188d0 t gp_pscaler_module_init
+bf036000 t $a	[gp_display1]
+bf036014 t disp1_mmap	[gp_display1]
+bf036104 t $d	[gp_display1]
+bf03617c t $a	[gp_display1]
+bf03656c t $d	[gp_display1]
+bf036570 t $a	[gp_display1]
+bf036570 t gp_disp1_remove	[gp_display1]
+bf0365f0 t gp_disp1_probe	[gp_display1]
+bf0378d0 t disp1_irq	[gp_display1]
+bf0367dc t $d	[gp_display1]
+bf0367e0 t $a	[gp_display1]
+bf0367e0 T gp_disp1_module_clk_en	[gp_display1]
+bf03793c t $a	[gp_display1]
+bf03793c T gp_disp1_fb_clk_en	[gp_display1]
+bf0379a8 t disp1_release	[gp_display1]
+bf0379c4 t disp1_open	[gp_display1]
+bf036958 t $d	[gp_display1]
+bf0379ec T disp1_init	[gp_display1]
+bf037bf0 t $d	[gp_display1]
+bf03695c t $a	[gp_display1]
+bf0369c8 t $d	[gp_display1]
+bf0369cc t $a	[gp_display1]
+bf0369cc t disp1_ioctl	[gp_display1]
+bf036b94 t $d	[gp_display1]
+bf036bb8 t $a	[gp_display1]
+bf036bf0 t $d	[gp_display1]
+bf036cec t $a	[gp_display1]
+bf03782c t $d	[gp_display1]
+bf037830 t $a	[gp_display1]
+bf0378cc t $d	[gp_display1]
+bf0378d0 t $a	[gp_display1]
+bf037938 t $d	[gp_display1]
+selected=130 scanned_lines=19847 per_class_cap=32 scan_capped=0
+
+--- selected character nodes ---
+node=/dev/dsp mode=20660 major=14 minor=3 inode=2715
+node=/dev/disp1 mode=20660 major=10 minor=39 inode=2499
+node=/dev/pscaler_y mode=20660 major=10 minor=46 inode=2424
+node=/dev/pscaler_a mode=20660 major=10 minor=48 inode=2413
+node=/dev/pscaler_b mode=20660 major=10 minor=47 inode=2362
+node=/dev/chunkmem mode=20660 major=10 minor=62 inode=2322
+node=/dev/snd/pcmC0D0p mode=20660 major=116 minor=16 inode=2705
+node=/dev/snd/controlC0 mode=20660 major=116 minor=0 inode=2704
+node=/dev/snd/timer mode=20660 major=116 minor=33 inode=2401

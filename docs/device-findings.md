@@ -1,6 +1,6 @@
 # Device findings
 
-Evidence collected on one DIIUM D-R35 through 2026-10-04. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json).
+Evidence collected on one DIIUM D-R35 through 2026-10-05. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json).
 
 ## Platform identity
 
@@ -13,7 +13,7 @@ Evidence collected on one DIIUM D-R35 through 2026-10-04. **Observed** means ret
 | Memory | 48 MiB boot RAM plus 16 MiB chunk reservation; Linux MemTotal 43,120 KiB | Consistent with 64 MiB arrangement, not physical RAM census |
 | Reserved region | Chunk memory at physical 0x03000000–0x03ffffff | CPU cache policy and maintenance contract not established |
 | Display | Exported 640×480, lcd1_mipi_NV3051F | Physical panel cadence not measured |
-| Sound | `/dev/dsp`, vendor playback/ALSA nodes | `/proc/asound` absent; period/underrun semantics not fully known |
+| Sound | `/dev/dsp` (14:3), `/dev/snd/pcmC0D0p` (116:16), controlC0 and ALSA timer nodes | Native PCM settings/driver behavior not yet qualified; `/proc/asound` absent |
 | GPU | `vivante,gc` DT node exists | No working galcore/runtime/device established |
 
 One CPU means display/I/O threads can overlap peripheral waits, but cannot add emulation compute capacity. The vendor runtime's gameplay memory headroom was tight. Configured 256 MiB swap is not physical RAM; sampled vrtemu VmSwap was zero and swap use was stable, so ongoing swap thrash was not demonstrated.
@@ -26,8 +26,9 @@ The2026-10-05 [lab2 contract review](platform-lab2.md) identifies the exact
 scaler/flip command values and argument shapes. In particular,0x80045004 gets
 scalar3000, not a pointer justified by ioctl direction bits. Status is a bitmask;
 FRAME_DONE=2, A_DONE=4 and B_DONE=8 are recovered names, not a qualified hardware
-queue. The next physical probe records actual configuration/output addresses,
-status, readiness and per-call timing. No lab2 physical result is established yet.
+queue. The [lab2 return](platform-lab-2-return.md) records actual configuration/
+output addresses, status, readiness and per-call timing. All 973 successful
+statuses are 6; the ten-sleep fallback never runs in this workload.
 
 Observed route:
 
@@ -57,6 +58,14 @@ direct kernel CLOCK_BOOTTIME:     8.361507000 s
 
 Earlier input-loop snapshots showed the main thread stuck in the same absolute `clock_nanosleep` six seconds apart. The intended 8 ms delay was based on a disagreeing libc timestamp. Our timing layer bypasses the libc/vDSO fast path for scheduling, calculates a relative remaining duration, and recomputes after interruption. Launcher/game/state loading then worked on-device. This proves the discrepancy and a working userspace repair; the exact kernel/vDSO clocksource defect has not been recovered. Other firmware users of libc clocks need their own validation.
 
+Lab2 separately establishes coarse **wake timing**: 1/2/5ms requests through
+libc nanosleep, direct kernel clock_nanosleep, timeout-only poll and timerfd have
+cell means 9.844–10.003ms, idle/loaded and with 50us/1ns slack. Kernel getres and
+timer-list bases report 10ms. Direct syscalls/timerfd/slack reduction do not repair
+these short waits. Audio readiness wakes around 2.77ms in one transport; use
+device progress events for refill/admission. Exact CONFIG_HZ/HIGH_RES_TIMERS are
+unknown; fine timestamp hardware does not establish high-resolution user waits.
+
 ## Display and scaler
 
 Normal heap RGB565 data passed to the vendor scaler produced corruption in earlier tests. Owned chunk-memory buffers, compact pitch and completion-aware reuse fixed it. An apparently clean pause-menu preview was not proof live frame ownership was correct.
@@ -67,11 +76,26 @@ Driver DWARF exposes `vfb.c` and `driver.c`, 37 recovered types and 32 functions
 
 Compact `width*2` RGB565 pitch avoids a known row repack. Direct core drawing into uncached chunk memory may lose CPU efficiency; removing a copy is not automatically faster. Scaler/PPU IRQ counts are not panel refresh measurements.
 
+Lab2's 960 matched 256×224 scaler jobs average 2.261–2.287ms open-through-close,
+including 1.874–1.891ms in the scalar3000 wait and 0.361–0.372ms in other syscall
+brackets. All statuses include FRAME_DONE. Display wait averages 10.46–11.82ms,
+including native notice jobs; the worker overlaps production, so these are not
+additive core CPU costs. Output-A alternates two addresses; output-B and queue/
+drop flags stay zero. Continuous A/B operation and panel cadence remain unknown.
+
 ## Audio and SNES frame budget
 
 Tested Plus reports 32,040 Hz native audio and 59.922743404 FPS. The host uses 44,100 Hz stereo S16_LE. Keep fractional resampling continuous across callbacks. A fixed 735-sample/44.1-kHz policy is not the core's native timing contract.
 
 Stock `sound_driver_playframe` has **void** return type in DWARF. A tailcalled write register is not a supported integer-return API. Our runtime owns nonblocking OSS writes and preserves all unaccepted frames across partial/EAGAIN writes. Concatenated PCM sounding clean on a PC does not preserve wall-clock submission gaps or prove absence of device underruns.
+
+Upstream Linux 4.19 OSS source already describes accepted partial-fragment
+staging outside GETODELAY. POST starts without flushing that tail; SYNC flushes/
+drains and RESET discards. Lab2 accepts every target byte but still has accounting
+residue at zero-delay shutdown, so its fade/drain cannot qualify silent endings.
+The user also hears clicks during tests. Native ALSA supplies a documented
+alternative with explicit parameters, priming, readiness and stream state;
+matching vendor behavior remains to be qualified. See [interface research](platform-interface-research.md).
 
 FF6 map scenes clicked even with the same music that was clean in the party menu. Speakers/headphones/ground-loop-isolator tests did not identify an analog-only issue. ROM/APU comparisons and write audits did not establish corruption or simple lost partial writes as the cause.
 
@@ -163,9 +187,14 @@ This rules down ordinary stdout/stderr redirection as a useful performance fix f
 240/240 completions per display phase and buffered sound under12ms CPU load.
 NEON beats its scalar tile fixture; this color cache loses.5ms deadline lateness
 averages5.48ms. Negative GETOSPACE and non-mmap OSS staging require care before
-using counters as a clock. Timer precision/slack remain unqualified. This short
-synthetic run proves neither full-game speed nor a shutdown fix. Card unarmed.
+using counters as a clock. Lab2 resolves the short-wait/slack question above.
+Both short synthetic runs prove neither full-game speed nor a shutdown fix.
+Lab2's four controllers complete 240/240 drawings each, but occasional 28ms CPU
+bursts overrun nominal queue lead. A 23.22ms queue at 44100Hz cannot bridge a
+roughly 30ms production blackout. One coherent PCM owner, a playable reserve
+and earlier correctly synchronized audio publication are the next source-based
+runtime work. Card unarmed; no new game build installed.
 
 Readable kallsyms supplied real addresses. Built-in-module entries are not exported loadable `.ko` files. `/proc/mtd` had no registered partitions; `/proc/kcore` returned ENOENT. No kernel-text recovery, flash rewrite, MMIO experiment or `/dev/mem` fallback was performed.
 
-Open questions include actual clocks/cache/DRAM behavior, scaler lifecycle cost and completion identity, supported audio periods/positions, physical panel cadence, IRQ19 handler duration/source, battery/suspend behavior, and sustained per-game performance. Tracefs availability was proposed for IRQ pricing, not established by the collected returns.
+Open questions include actual clocks/cache/DRAM behavior, scaler completion/release identity, native PCM periods/positions, physical panel cadence, IRQ19 handler duration/source, battery/suspend behavior, and sustained per-game performance. Lab2's two probed tracefs paths, clk_summary and proc/config.gz return ENOENT; no IRQ duration was measured. Source research should establish standard contracts before physical tests qualify remaining vendor behavior and real game timing.

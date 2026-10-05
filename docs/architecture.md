@@ -43,7 +43,10 @@ publication remain proposals for gameplay, not changes already installed.
 audio admission in an isolated synthetic workload. Exported ARM32 observers
 price the vendor scaler/display calls and retain actual arguments/status without
 changing their sequence. Neither its controller nor scaler lifecycle changes
-are installed in the game runtime. Physical lab2 qualification is pending.
+are installed in the game runtime. Its [physical return](platform-lab-2-return.md)
+completes all phases but retains audible clicks. Coarse short timer wakes,
+insufficient burst reserve and OSS staging/drain semantics identify concrete
+audio-controller work. The suspected scaler fallback never fires.
 
 ```text
 boot wrapper
@@ -86,6 +89,41 @@ implemented. The stock driver/kernel remain dependencies; lifecycle/queue
 semantics beyond the known backend need qualification.
 
 The vendor already has asynchronous display work and CPU-specific emulator paths. Adding more threads on one CPU does not add compute. The design seeks correct ownership, bounded memory, useful overlap and measurable policy rather than assuming fewer layers alone are faster.
+
+## Next audio owner: researched contract, not another guessed gate
+
+[Interface research](platform-interface-research.md) establishes upstream Linux
+4.19 OSS/native PCM behavior and identifies defects in current source. The game
+producer's ring count does include the audio worker queue through `pump_audio`;
+it combines that count with separately sampled board delay rather than one
+coherent snapshot, and GETODELAY excludes OSS partial-fragment staging. Intended
+1ms polling/backoff sleeps and a separate frame deadline can then gate useful
+work. Lab2 independently establishes about 10ms wakes for those short timeouts.
+
+Replace this with one native PCM owner using the existing playback node. Query
+and read back constrained rate/format/period/buffer settings; prime before START;
+refill on device readiness or meaningful control/new-data events; expose coherent
+generated/queued/transferred/playable/consumed accounting and stream state.
+Ordinary interleaved writes are the initial transfer mode. Negotiated mmap is
+optional and requires correct pointer commits and vendor qualification. A rate
+mismatch retains continuous conversion. Explicit DRAIN and DROP serve different
+transition policies; zero reported delay is not the complete drain contract.
+Upstream ARM does not provide the usual mapped PCM status/control pages; support
+SYNC_PTR/HWSYNC independently of any negotiated audio-data mapping.
+
+Use one admission policy with playable reserve sized against long core calls,
+refill and scheduling margin. Lab2's 23.22ms queue cannot bridge roughly 30ms of
+bursty production. Capacity in an empty software ring cannot supply sound.
+Publish already-emulated PCM at valid in-frame synchronization points to shorten
+the blackout; keep CPU/APU logical ordering intact. More reserve trades latency
+for jitter tolerance. Keep input sampling late and preserve bounded ordered
+display ownership and every drawing. This proposal does not guarantee 60FPS or
+resolve the previous whole-device poweroffs.
+
+The next physical acceptance should exercise this repaired game path and its
+reported PCM state under real FF6 tails. Tests should qualify vendor behavior
+and sustained output, after source research supplies the standard interface.
+No new payload is installed or armed by the lab2 return/research commit.
 
 ## Full-speed implementation and remaining qualification
 

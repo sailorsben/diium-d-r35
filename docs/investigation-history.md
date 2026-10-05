@@ -106,7 +106,8 @@ another emulator guess. [Lab2](platform-lab2.md) prices independent waits and
 slack, actual native-rate OSS transport, readiness/drain/reset, chunk/heap costs
 and coherent production with occasional28ms CPU bursts. It retains every
 synthetic drawing and PCM byte. Readable labels and ramped tones address lab1's
-physical feedback. This test has no physical result yet.
+physical feedback. Physical results were pending at installation; the subsequent
+return is recorded below.
 
 Offline extraction recovers exact scaler/display calls. Read-direction
 0x80045004 receives scalar3000; its units remain unknown. Status tests bit2, with
@@ -126,4 +127,47 @@ payload and arms last; the game runner/core and stock paths remain unchanged.
 Lab2 is now installed and armed after a fresh41-MVP/17-lab archive. Independent
 readback confirms released bytes, both markers,13 retained lab files and20
 protected private entries. Stock, hook, dispatcher and original game paths match
-their prior hashes. Physical results remain pending.
+their prior hashes. Physical results were pending at that checkpoint.
+
+## 2026-10-05: lab2 return and researched interface correction
+
+Ben returns the card and reports clicks between tests and some clicking during
+tests. Wrapper status0 permits stock handoff; the final stock screen is not
+separately confirmed. Archive 41 MVP/49 lab files read-only, verify all 20
+protected private entries and exact payload/stock/game hashes. Both one-shots
+are consumed. No update or re-arm occurs. The [return review](platform-lab-2-return.md)
+retains raw batches and qualified analysis.
+
+All 1152 timer observations survive. Libc/direct syscall/poll timeout/timerfd
+1/2/5ms requests average about 10ms under both load and slack settings. Neither
+direct syscall nor reduced slack repairs coarse wakeups. Device-driven audio
+readiness can wake around 2.77ms in a transport. All nine PCM targets are
+accepted and all four 240-drawing phases complete, but occasional 28ms CPU
+bursts exceed nominal playable lead and take longer than four logical seconds.
+These are concrete scheduling/reserve findings, not hardware limits or clean
+sound/full-speed acceptance. All 973 scaler statuses include FRAME_DONE; its
+ten-sleep fallback never runs. Nonwait syscall brackets total about 0.37ms per
+256×224 job; worker wait wall overlaps core work rather than adding serial CPU.
+
+Ben challenges using physical runs to rediscover documented interfaces. The
+[source review](platform-interface-research.md) reads Linux 4.19 OSS/native PCM
+and a pinned TinyALSA client. OSS accepts partial fragments into staging outside
+GETODELAY; POST starts without flushing, SYNC flushes/drains, RESET discards.
+Lab2's zero-delay reset leaves accepted/pointer accounting residue, so its
+claimed faded drain was not qualified. This was discoverable from source before
+the test. Boundary clicks have a software candidate; during-test clicks remain
+unresolved. Do not promote nominal queue-gap indicators to exact xruns.
+
+Native ALSA playback/control/timer nodes exist and its source defines constrained
+parameter negotiation, priming, meaningful poll wakes, stream state and drain.
+Current game source splits lead accounting across queues and several gates.
+Its `ring_count` includes the worker queue through `pump_audio`; the defect is
+separately sampled queue/device delay plus uncounted OSS staging, not omission
+of the entire worker queue. Preserve that correction to the initial review.
+The next implementation should use one coherent native PCM owner, a playable
+reserve for long calls and valid in-frame publication of already-emulated PCM.
+Matching Generalplus kernel/SDK sources remain unlocated; current module-map
+metadata does not supply the matching display/audio implementations. Remaining
+physical work should qualify vendor behavior and the repaired real game path.
+The analyzer's drain/reserve/scaler extensions pass independent calculated
+fixtures. No new executable is installed by this return/research work.

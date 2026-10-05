@@ -81,6 +81,13 @@ The working timing layer uses the ARM32 `SYS_clock_gettime` syscall for scheduli
 
 Do not reintroduce libc-clock absolute nanosleep or mix the retained adapter timing helper into MVP deadlines. The regression injects a 26-second libc/kernel offset; a real ARM wait loop and actual launcher menu test also run. Those tests complement, not replace, the successful device return.
 
+The [lab2 return](platform-lab-2-return.md) establishes another clock boundary:
+correct timestamps do not imply precise timeout wakes. All four tested short
+wait mechanisms average about 10ms for 1/2/5ms requests, even after timer-slack
+reduction. The original slack is restored exactly. Intended 1ms polling/backoff
+sleeps must not remain in a timing-sensitive controller; device readiness can
+wake sooner. Kernel timer configuration remains unrecovered.
+
 ## Chunk/display ABI and ownership
 
 `/dev/chunkmem` allocate ioctl `0xc00c4301`, free `0x400c4303`, request `{physical,mapped,bytes}` as three 32-bit words. Explicit freeing is necessary. Ordinary heap pointers are not interchangeable with chunk-backed addresses consumed by the vendor scaler.
@@ -105,10 +112,13 @@ semantics are recovered. The not-done fallback sleeps ten times without another
 status query. dispFlip submits a44-byte bitmap, invokes0x6402 then0x6407, and only
 then toggles its buffer index. Do not infer completion ownership from the presence
 of two addresses. Lab2 observes these exact calls without enabling extra modes.
+All 973 returned successful scaler statuses include FRAME_DONE, so the fallback
+never executes in this workload. Preserve that negative result before spending
+an implementation on removing its sleeps.
 
 ## Audio, geometry and state
 
-Own OSS open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation. The tested baseline requires 44,100 Hz stereo S16_LE after continuous conversion from the core's 32,040 Hz stream. Standard fragment hints may be rounded/ignored; query actual queue data. Queue occupancy is not an underrun counter.
+Own open/configuration, negotiated rate, PCM queue and partial/EAGAIN preservation. The game baseline uses 44,100 Hz stereo S16_LE after continuous conversion from the core's 32,040 Hz stream. Lab2 also establishes a working 32,040 Hz OSS client path; neither its returned rate nor client counters establish the physical DAC rate or absence of kernel conversion. Standard fragment hints may be rounded/ignored; query actual queue data. Queue occupancy is not an underrun counter.
 
 MVP1.6's producer converts/enqueues while one audio worker owns writes and their
 partial-byte tails. Stop/join before any pause/reset/close; only then clear the
@@ -116,6 +126,24 @@ software queue and reset OSS. Restart after priming a new stream. Do not share
 writer-tail state with an unsynchronized queue observer. Full rendering uses
 kernel-monotonic native timing and bounded total PCM lead; a reliable audio
 cursor/physical full-speed result remains unqualified.
+
+[Linux 4.19 OSS source](https://raw.githubusercontent.com/torvalds/linux/v4.19/sound/core/oss/pcm_oss.c)
+accepts partial fragments into staging that GETODELAY does not include. POST
+starts playback without flushing that tail; SYNC flushes/drains, while RESET
+discards it. Lab2's POST/zero-delay/RESET stop does not establish that the faded
+tail played. Upstream behavior guides interpretation, not a claim to possess
+the vendor kernel text. See [the source review](platform-interface-research.md).
+
+The device exposes native `/dev/snd/pcmC0D0p`. The proposed replacement uses
+documented ALSA parameter negotiation/readback, explicit priming, meaningful
+device/event wakeups, state/XRUN observation and separate drain/drop paths.
+Use ARM32-compatible structures; negotiate transfer mode and do not assume
+mmap support. Upstream 4.19 on ARM requires a SYNC_PTR/HWSYNC path instead of
+the usual mapped status/control pages; audio-data mapping is a separate contract.
+One owner must account for its software queue and playable PCM
+without sampling them through separate producer/worker gates. Reserve sufficient
+playable sound for long core calls plus service margin. This is researched next
+work, not the currently installed game path or clean-audio acceptance.
 
 Vendor environment command37 (`SET_GEOMETRY`) writes a double 44100 at offset32 beyond a 20-byte geometry object. The adapter intercepts it; the direct MVP implements its own validated environment handling. Do not forward this callback blindly.
 

@@ -1,5 +1,35 @@
 # Changelog
 
+## Lab2 physical return and source-first interface review — 2026-10-05
+
+Archive and independently verify 41 MVP/49 lab files, the exact lab2 payload,
+20 protected private entries and unchanged stock/hook/dispatcher/game paths.
+Both one-shots consumed; zero card writes, no new build or re-arm. User reports
+clicks between tests and some clicking during tests. Wrapper exits normally.
+
+Retain all 1152 timer observations, nine audio traces, four 240-drawing producer
+traces and 10712 driver calls with zero trace drops. Every short timeout method
+averages about 10ms across load/slack settings; audio readiness can wake sooner.
+All PCM targets are accepted, but accepted bytes and zero GETODELAY do not prove
+complete playback. Bursty production exceeds nominal playable reserve; preserve
+gap indicators as risks rather than measured xruns. All 973 scaler statuses are
+FRAME_DONE|BUF_A_DONE: the suspected ten-sleep fallback never fires. Scaler
+lifecycle means 2.26–2.29ms, with about 0.36–0.37ms in nonwait syscall brackets;
+worker waits overlap production and are not serial core CPU costs.
+
+Research Linux 4.19 OSS/native PCM and a pinned TinyALSA client. Document partial
+fragment staging, POST versus SYNC/RESET, native parameter negotiation, priming,
+device-driven refill, stream state and graceful drain. Identify split accounting
+and multiple timing gates in current game source. ARM clients need the standard
+SYNC_PTR path rather than assuming x86-style mapped status/control records.
+Distinguish this source fact from vendor qualification. Matching Generalplus
+sources remain unlocated; distinguish that search limit from hardware capability.
+Propose one native PCM owner and publication of already-emulated audio during
+long core calls before the next actual game acceptance. Extend the analyzer with
+drain residues, nominal lead gaps and matched scaler lifecycles; independent
+hand-calculated fixtures pass. Publish curated data with hash provenance.
+See [return](docs/platform-lab-2-return.md) and [research](docs/platform-interface-research.md).
+
 ## Lab2 infrastructure contracts — 2026-10-05
 
 Build the authorized next native probe around independently timed waits,
