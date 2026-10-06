@@ -4,7 +4,7 @@ cd "$(dirname "$0")/.."
 flags='-mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard -marm -fno-stack-protector -U_TIME_BITS -D_TIME_BITS=32 -U_FILE_OFFSET_BITS -D_FILE_OFFSET_BITS=32'
 out=build/snes-mvp/out
 mkdir -p "$out/native-lifecycle-saves"
-cp build/plus-a7-out/integration-saves/game-a27f1c7a-3145728-core-42df1bbe-665040.state "$out/native-lifecycle-saves/"
+python3 -c 'from pathlib import Path; import json,shutil,zlib; core=Path("build/plus-a7-out/plus-a7.so").read_bytes(); name="game-a27f1c7a-3145728-core-%08x-%d.state"%(zlib.crc32(core)&0xffffffff,len(core)); shutil.copy2(Path("build/plus-a7-out/integration-saves")/name,Path("build/snes-mvp/out/native-lifecycle-saves")/name)'
 arm-linux-gnueabihf-gcc $flags -std=gnu99 -O2 -Wall -Wextra -Werror -no-pie -nostdlib \
  -Ibuild/snes9x2005/libretro-common/include /usr/arm-linux-gnueabihf/lib/crt1.o \
  build/snes-mvp/native-runner-check.c build/glibc230-stat-compat.c \

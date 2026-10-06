@@ -1,0 +1,37 @@
+
+Version symbols section '.gnu.version' contains 81 entries:
+ Addr: 0x0000000000010ce0  Offset: 0x00000ce0  Link: 5 (.dynsym)
+  000:   0 (*local*)       4 (GCC_3.5)       3 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  004:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  008:   3 (GLIBC_2.4)     6 (GLIBC_2.4)     3 (GLIBC_2.4)     2 (GLIBC_2.4)  
+  00c:   3 (GLIBC_2.4)     1 (*global*)      2 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  010:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     2 (GLIBC_2.4)     2 (GLIBC_2.4)  
+  014:   2 (GLIBC_2.4)     3 (GLIBC_2.4)     2 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  018:   5 (GLIBC_2.17)    3 (GLIBC_2.4)     3 (GLIBC_2.4)     2 (GLIBC_2.4)  
+  01c:   2 (GLIBC_2.4)     2 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  020:   3 (GLIBC_2.4)     2 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  024:   6 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     4 (GCC_3.5)    
+  028:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     1 (*global*)   
+  02c:   2 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  030:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     1 (*global*)      7 (GLIBC_2.7)  
+  034:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     6 (GLIBC_2.4)  
+  038:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     1 (*global*)      2 (GLIBC_2.4)  
+  03c:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     7 (GLIBC_2.7)  
+  040:   6 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)     3 (GLIBC_2.4)  
+  044:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     4 (GCC_3.5)       3 (GLIBC_2.4)  
+  048:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     2 (GLIBC_2.4)     4 (GCC_3.5)    
+  04c:   3 (GLIBC_2.4)     3 (GLIBC_2.4)     2 (GLIBC_2.4)     2 (GLIBC_2.4)  
+  050:   3 (GLIBC_2.4)  
+
+Version needs section '.gnu.version_r' contains 4 entries:
+ Addr: 0x0000000000010d84  Offset: 0x00000d84  Link: 6 (.dynstr)
+  000000: Version: 1  File: libdl.so.2  Cnt: 1
+  0x0010:   Name: GLIBC_2.4  Flags: none  Version: 6
+  0x0020: Version: 1  File: libgcc_s.so.1  Cnt: 1
+  0x0030:   Name: GCC_3.5  Flags: none  Version: 4
+  0x0040: Version: 1  File: libc.so.6  Cnt: 3
+  0x0050:   Name: GLIBC_2.7  Flags: none  Version: 7
+  0x0060:   Name: GLIBC_2.17  Flags: none  Version: 5
+  0x0070:   Name: GLIBC_2.4  Flags: none  Version: 3
+  0x0080: Version: 1  File: libpthread.so.0  Cnt: 1
+  0x0090:   Name: GLIBC_2.4  Flags: none  Version: 2

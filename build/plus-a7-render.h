@@ -5,6 +5,27 @@
 #define D35_PLUS_A7_RENDER_H
 #include <arm_neon.h>
 
+/* SNES planar bytes -> eight packed palette indices per row. The existing
+ * VRAM tile-cache invalidation still owns reuse. Read exactly bits*8 bytes;
+ * there is no palette dependency and no speculative read past VRAM. */
+static inline unsigned d35_decode_tile(uint8_t *cache,const uint8_t *planes,unsigned bits)
+{
+    static const int8_t shifts[8]={-7,-6,-5,-4,-3,-2,-1,0};
+    int8x8_t shift=vld1_s8(shifts);
+    uint8x8_t any=vdup_n_u8(0),one=vdup_n_u8(1);
+    unsigned row,plane;
+    for(row=0;row<8;row++) {
+        uint8x8_t index=vdup_n_u8(0);
+        for(plane=0;plane<bits;plane++) {
+            uint8x8_t byte=vdup_n_u8(planes[(plane>>1)*16+row*2+(plane&1)]);
+            uint8x8_t bit=vand_u8(vshl_u8(byte,shift),one);
+            index=vorr_u8(index,vshl_u8(bit,vdup_n_s8((int8_t)plane)));
+        }
+        vst1_u8(cache+row*8,index); any=vorr_u8(any,index);
+    }
+    return vget_lane_u64(vreinterpret_u64_u8(any),0)!=0;
+}
+
 static inline uint16x8_t d35_add(uint16x8_t a,uint16x8_t b)
 {
     uint16x8_t max=vdupq_n_u16(31);

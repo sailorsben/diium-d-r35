@@ -317,3 +317,19 @@ of further small diagnostic retries: attribute the expensive phase, qualify a
 whole-program A7 build and optimize the actual core/frontend work. More initial
 silence or automatic restart cannot repair sustained underproduction. Existing
 fixtures establish lifecycle/correctness, not the device's repeated slow phase.
+
+## 1.14 follows the execution-budget review
+
+[1.14](snes-mvp-1.14.md) owns the whole-program A7 compilation, adds custom
+NEON planar decoding, exact reduced-ratio frontend conversion and removes a
+duplicate locked PCM observation. Clean-core output equivalence and independent
+oracles pass. Sampled APU/PPU regions and24 recent per-call costs travel with the
+same gameplay build. A sustained19.8805ms provider fixture now proves the
+controller exposes starvation rather than masking it with an initial buffer.
+This is not proof of native device speed or a complete vendor-driver diagnosis.
+
+Before delivery,1.14's marker was archived and retired unconsumed.1.15 keeps
+the exact core and retains eight sampled calls separately so phase costs
+cannot immediately age out of the recent24-call history. The complete runtime
+qualification is rerun; no extra physical experiment is requested. Both
+intermediate and final release/evidence bytes remain immutable.

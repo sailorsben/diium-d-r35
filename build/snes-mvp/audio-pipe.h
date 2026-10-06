@@ -7,7 +7,7 @@ struct audio_pipe_stats {
     uint64_t worker_cpu_ns, max_write_gap_ns;
     unsigned remaining, high;
     unsigned playable,period,buffer,prime,rate,state;
-    uint64_t xruns,observed_ns,wakes,poll_timeouts;
+    uint64_t xruns,observed_ns,wakes,poll_timeouts,observations;
     unsigned playable_min,playable_max;
     uint64_t admissions;
     unsigned admission_min,admission_max;

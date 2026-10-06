@@ -98,3 +98,12 @@ a sustained production deficit and sets a concrete path to determine whether
 software can close it. Compiler changes, custom rendering and tighter ownership
 are still real engineering possibilities; none has yet been measured as the
 required gain on this workload.
+
+## Engineering follow-through
+
+[MVP1.14](snes-mvp-1.14.md) implements a whole-program A7 core/runtime candidate,
+custom planar decoder, exact reduced-ratio frontend conversion and less
+duplicate PCM servicing. Output/lifecycle checks pass; sampled inclusive
+APU/PPU and recent per-call costs accompany its physical gameplay test.
+This is the first bundle following this review, not a claim that compiler
+flags or a cache-miss decoder already close the measured device deficit.

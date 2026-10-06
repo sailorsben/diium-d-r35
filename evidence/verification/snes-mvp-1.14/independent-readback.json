@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "version": "1.14",
+  "card_writes": 0,
+  "one_shot_armed": true,
+  "lab_unarmed": true,
+  "payload_matches_qualified_build": true,
+  "original_private_files_unchanged": 22,
+  "retained_lab_files_verified": 49,
+  "all_original_nonpayload_files_and_archives_verified": true,
+  "stock_and_hook_unchanged": true,
+  "older_game_wrapper_unchanged": true,
+  "separate_snapshot_payload_and_crc_verified": true,
+  "hardware_audio_and_speed": "pending physical qualification"
+}

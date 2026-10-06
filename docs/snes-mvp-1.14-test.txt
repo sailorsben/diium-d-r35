@@ -1,0 +1,15 @@
+SNES MVP 1.14: Cortex-A7 core and audio production rewrite
+
+Launch FF6 (not Rev1), use Continue, and play normally for a few minutes.
+Visit the FF6 party menu and return to the map. Try our pause/resume too.
+The old snapshot has a separate qualified copy for this core. Loading it
+returns to older progress; Continue uses your latest preserved in-game save.
+If running well, save at a Save Point and exit normally.
+If audio fails, exit our library with B and reconnect D: after one failure.
+
+This build changes core compilation, planar tile decoding, exact audio
+conversion and PCM servicing. Every frame remains fully rendered. There
+is no frame skipping or automatic stream restart. Physical speed and sound
+remain to be qualified. Sampled phase costs and recent frame costs stay in
+RAM during play; PCM fault history is persisted directly if playback fails.
+The one-shot is consumed before launch; the following reboot takes stock.

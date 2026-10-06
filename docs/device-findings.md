@@ -18,6 +18,12 @@ Evidence collected on one DIIUM D-R35 through 2026-10-06. **Observed** means ret
 
 One CPU means display/I/O threads can overlap peripheral waits, but cannot add emulation compute capacity. The vendor runtime's gameplay memory headroom was tight. Configured 256 MiB swap is not physical RAM; sampled vrtemu VmSwap was zero and swap use was stable, so ongoing swap thrash was not demonstrated.
 
+The current [1.15 software candidate](snes-mvp-1.15.md) rewrites A7 compilation,
+planar decoding and frontend conversion/service. Local exact-output checks
+pass; this adds no physical speed, frequency, audio-continuity or stability
+finding until its gameplay return. Its sampled regions are inclusive, and
+ordinary per-call CPU/wall costs remain available alongside them.
+
 cpufreq, thermal/cache inventory and clock summary were absent in tested locations. Software perf task-clock worked; hardware cycles/instructions/branch/L1/L2 counters returned ENOENT and no PMU DT node was established. Cache sizes from a related chip specification must not be promoted to this device's measured properties.
 
 ## Runtime and storage

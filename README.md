@@ -6,7 +6,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-06
 
-- **MVP1.13 returned with two audio failures; card unarmed:** 26/230 calls, successful snapshot on retry, exact payload and all 20 private progress files unchanged. Fault history and kernel READ_ALL survive. The retained expensive phase produces about 37k accepted frames/sec against a negotiated 44.1k sink, before three 128-frame application-pointer advances and SETUP. Starvation is the leading trigger; exact vendor stop behavior remains unresolved. No new build or re-arm: the next work addresses the whole execution budget. [Return](docs/snes-mvp-1.13-return.md), [budget review](docs/execution-budget-review.md).
+- **MVP1.15 installed, independently verified and armed:** whole-program O3/LTO core, custom NEON planar decoding, exact rational audio conversion and fewer duplicate PCM observations. Every drawing and native sound stream match the clean core across1,200 replayed frames. Recent per-frame costs and eight retained sampled APU/PPU calls accompany gameplay.1.14 was retired unconsumed before delivery to correct sample retention. All23 private files and stock/hook are preserved; lab remains unarmed. Physical native speed, sound and stability remain pending. [Execution changes](docs/snes-mvp-1.14.md), [final candidate](docs/snes-mvp-1.15.md).
+- **MVP1.13 return established sustained underproduction:** 26/230 calls, successful snapshot on retry, exact payload and all 20 private progress files unchanged. Fault history and kernel READ_ALL survive. The retained expensive phase produces about 37k accepted frames/sec against a negotiated 44.1k sink, before three 128-frame application-pointer advances and SETUP. Starvation is the leading trigger; exact vendor stop behavior remains unresolved. [Return](docs/snes-mvp-1.13-return.md), [budget review](docs/execution-budget-review.md).
 - **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
 - **MVP1.6 failed its physical run:** very choppy sound, slow movement, clean-looking graphics, then the whole device powered off. The returned build hashes match; originals are intact and the one-shot is consumed. No fresh session totals survived. Do not re-arm this release unchanged. [Failure review](docs/snes-mvp-1.6-failure.md).
@@ -27,7 +28,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Source, dependencies, checks, installation and recovery | [Build and test](docs/build-and-test.md) |
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
-| Current native PCM build and physical acceptance | [MVP1.13](docs/snes-mvp-1.13.md) |
+| Current A7 core/runtime build and physical acceptance | [MVP1.15](docs/snes-mvp-1.15.md), [execution changes](docs/snes-mvp-1.14.md) |
 | Hardware resources, measured costs and remaining opportunities | [Capability roadmap](docs/hardware-capability-roadmap.md) |
 | Latest infrastructure result and researched audio contracts | [Lab2 return](docs/platform-lab-2-return.md), [interface research](docs/platform-interface-research.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |

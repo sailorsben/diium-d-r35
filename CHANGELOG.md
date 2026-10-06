@@ -1,5 +1,43 @@
 # Changelog
 
+## SNES MVP1.15 final candidate retains sampled phase history — 2026-10-06
+
+Retain eight sampled call records separately from the last24 ordinary calls,
+so APU/PPU measurements survive a long unsampled stretch. No additional
+sampling or healthy card writes. Exact optimized1.14 core remains unchanged;
+runner/native lifecycle/starvation and production-path qualification rerun.
+Retire1.14's exact unconsumed marker only after archiving all files. Preserve
+its release/evidence bytes.1.14 had no physical test;1.15 is the delivery
+candidate for the same coherent execution-budget rewrite. [Details](docs/snes-mvp-1.15.md).
+
+Final install archives45 MVP/49 lab files before writes; independent readback
+verifies exact payload, all23 original private files, archived/nonpayload
+files, stock/hook/older wrapper and separate qualified snapshot. Game one-shot
+armed, lab unarmed. Curated24 checks and owned release published; device
+native speed, sound and stability remain pending physical qualification.
+
+## SNES MVP1.14 A7 execution-budget rewrite — 2026-10-06
+
+Build the pinned Plus core with O3/LTO, hidden internals and explicit API
+exports; permit builtin memory optimization and apply O3/LTO to the runner.
+Replace planar tile decoding with NEON2/4/8bpp expansion into the existing
+VRAM-invalidated cache. Reduce32040/44100 frontend arithmetic to178/245 with
+exact signed truncation and preserved batch state. Reuse locked post-write
+PCM observations while requiring freshness after each unlocked wait/request.
+
+Retain24 recent per-call costs in RAM and sample inclusive APU/PPU thread CPU
+on one call in64 after reset/resume. Include sampled status, frontend costs,
+epoch and admission waits; do not mistake inclusive regions or observer costs
+for an exclusive CPU census. Core equivalence passes1,200 frames with exact
+pixels/PCM/geometry/logical state, plus independent planar/converter oracles.
+Native runner checks now replay sustained19.8805ms production and expose
+starvation without hidden re-priming, frame suppression or accounting loss.
+
+Provide a guarded consumed1.13 installer, separate qualified old-snapshot
+copy, independent readback and immutable publication. Full-speed/full-sound
+device acceptance remains pending; core code growth and cache-miss-dependent
+decode benefit are explicit limitations. [Implementation](docs/snes-mvp-1.14.md).
+
 ## MVP1.13 return and execution-budget review — 2026-10-06
 
 Archive 44 MVP/49 lab files read-only, exact release, consumed markers and

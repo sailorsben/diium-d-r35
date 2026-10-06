@@ -58,6 +58,7 @@ static int observe(void)
 {
     struct board_audio_state *d=&pipe_state.device;
     int rc=board_audio_observe(d),saved=errno;
+    ++pipe_state.stats.observations;
     pipe_state.stats.playable=d->queued; pipe_state.stats.state=d->state;
     pipe_state.stats.avail=d->avail; pipe_state.stats.appl_ptr=d->appl_ptr; pipe_state.stats.hw_ptr=d->hw_ptr;
     pipe_state.stats.start_threshold=d->start_threshold; pipe_state.stats.prime_transferred=d->prime_transferred;
@@ -76,7 +77,7 @@ static int observe(void)
 static void *audio_service(void *unused)
 {
     uint64_t began=audio_cpu(),last_write=0;
-    unsigned stalled_ready=0;
+    unsigned stalled_ready=0,fresh=0;
     (void)unused;
     pthread_mutex_lock(&pipe_lock);
     pipe_state.running=1; pipe_state.cpu_base=began;
@@ -86,7 +87,10 @@ static void *audio_service(void *unused)
         if(pipe_state.stop && pipe_state.drain && board_now_ns()>=pipe_state.drain_deadline) {
             error(ETIMEDOUT); break;
         }
-        if(observe()<0) break;
+        /* A successful post-write observation is already current while we
+         * retain ownership of this mutex. Every unlocked wait invalidates it. */
+        if(!fresh && observe()<0) break;
+        fresh=0;
         if(pipe_state.count) {
             unsigned count=pipe_state.count;
             ssize_t accepted;
@@ -106,6 +110,7 @@ static void *audio_service(void *unused)
                 pipe_state.count-=(unsigned)accepted;
                 pipe_state.stats.accepted+=(unsigned)accepted;
                 if(observe()<0) break;
+                fresh=1;
                 continue;
             }
             if(accepted<0 && errno!=EAGAIN && errno!=EINTR) { error(errno); break; }

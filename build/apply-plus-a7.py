@@ -13,10 +13,13 @@ def change(name,transform):
     modified=transform(base)
     current=path.read_text()
     # Permit exact shipped1.6/1.7 and authored transitional1.8 patches only.
-    prior={'source/tile.c':{'77ebe2b06c18148973997ae973f6a0016d18230ed77e19043de9f41ab7355317',
+    prior={'source/tile.c':{'b75fd5e0e454838f0b7a466e0ac55c066abe984f20cb706ac210c8e368bf6f68',
+                           '77ebe2b06c18148973997ae973f6a0016d18230ed77e19043de9f41ab7355317',
                            '3b435476c9c70e00bc0f4ff5d07282702b6e60b437e51af447bc77eaf50b5bb5'},
-           'source/gfx.c':{'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'},
-           'libretro.c':{'9cff29a5de7a805f1d5dc4f5989074b7feb39799b7a22e98d50d0db5d95a3324'}}
+           'source/gfx.c':{'6c5e6390ac5c4ce3c60f5fb72ba7350db335ff206348655e5eb5bbdbd37136d1',
+                           'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'},
+           'libretro.c':{'3cc3a0ffeebc27e2195ba38a3fdf873beab4dc9747f65b11c780a1b396e0ec2a',
+                         '9cff29a5de7a805f1d5dc4f5989074b7feb39799b7a22e98d50d0db5d95a3324'}}
     assert current in (base,modified) or sha256(path.read_bytes()).hexdigest() in prior.get(name,set()), 'Unrelated core change: '+name
     path.write_text(modified,newline='\n')
 
@@ -48,6 +51,14 @@ names=['DrawTile16','DrawTile16Add','DrawTile16Add1_2','DrawTile16Sub',
 def tiles(text):
     assert text.count('#include "tile.h"')==1
     text=text.replace('#include "tile.h"','#include "tile.h"\n'+helper)
+    anchor='static uint8_t ConvertTile(uint8_t* pCache, uint32_t TileAddr)\n{'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,anchor+'''
+#ifdef D35_PLUS_A7
+   if ((BG.BitShift==2 || BG.BitShift==4 || BG.BitShift==8) &&
+       TileAddr <= 65536u-BG.BitShift*8u)
+      return d35_decode_tile(pCache,Memory.VRAM+TileAddr,BG.BitShift)?1:BLANK_TILE;
+#endif''')
     for mode,name in enumerate(names):
         start=text.index('void '+name+'(')
         end=text.index('   TILE_PREAMBLE_CODE();',start)+len('   TILE_PREAMBLE_CODE();')
@@ -58,6 +69,7 @@ def tiles(text):
     return text
 
 def libretro(text):
+    text='#ifdef D35_PLUS_A7\n#include "source/a7_profile_core.h"\nunsigned d35_profile_active;\n#define D35_PROFILE_CORE\n#include "source/a7_profile.h"\n#endif\n'+text
     anchor='static void S9xAudioCallback(void)'
     assert text.count(anchor)==1
     text=text.replace(anchor,'#ifdef D35_PLUS_A7\nstatic bool d35_audio_in_run;\n#endif\n'+anchor)
@@ -91,7 +103,12 @@ def libretro(text):
 def graphics(text):
     anchor='#include "gfx.h"'
     assert text.count(anchor)==1
-    text=text.replace(anchor,anchor+'\n#ifdef D35_PLUS_A7\n#include "a7_tile.h"\n#endif')
+    text=text.replace(anchor,anchor+'\n#ifdef D35_PLUS_A7\n#include "a7_tile.h"\n#include "a7_profile_core.h"\n#endif')
+    anchor='void S9xUpdateScreen(void)\n{'
+    text=text.replace(anchor,anchor+'\n#ifdef D35_PLUS_A7\n   uint64_t d35_began=d35_profile_active?d35_profile_enter():0;\n#endif')
+    anchor='   IPPU.PreviousLine = IPPU.CurrentLine;\n}'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,'   IPPU.PreviousLine = IPPU.CurrentLine;\n#ifdef D35_PLUS_A7\n   if(d35_profile_active) d35_profile_leave(0,d35_began);\n#endif\n}')
     start=text.index('      if (IPPU.Clip [0].Count [5])',text.index('void S9xUpdateScreen'))
     end=text.index('   } /* force blanking */',start)
     region=text[start:end]
@@ -116,5 +133,24 @@ def graphics(text):
 change('source/tile.c',tiles)
 change('source/gfx.c',graphics)
 change('libretro.c',libretro)
+def apu(text):
+    text='#ifdef D35_PLUS_A7\n#include "a7_profile_core.h"\n#endif\n'+text
+    anchor='void S9xAPUExecute()\n{'
+    assert text.count(anchor)==1
+    text=text.replace(anchor,anchor+'\n#ifdef D35_PLUS_A7\n   uint64_t d35_began=d35_profile_active?d35_profile_enter():0;\n#endif')
+    anchor='   if (SPC_SAMPLE_COUNT() >= APU_MINIMUM_SAMPLE_BLOCK || !sound_in_sync)\n      sa_callback();\n}'
+    assert text.count(anchor)==1
+    return text.replace(anchor,anchor[:-1]+'#ifdef D35_PLUS_A7\n   if(d35_profile_active) d35_profile_leave(1,d35_began);\n#endif\n}')
+
+def makefile(text):
+    assert text.count('FLAGS += -O2 -DNDEBUG')==1
+    return text.replace('FLAGS += -O2 -DNDEBUG',
+        'FLAGS += -O3 -DNDEBUG -flto=4 -fno-semantic-interposition -fvisibility=hidden').replace('-fno-builtin','')
+
+change('source/apu_blargg.c',apu)
+change('Makefile',makefile)
+change('link.T',lambda text:text.replace('global: retro_*;','global: retro_*; d35_profile_begin; d35_profile_end;'))
 (CORE/'source/a7_tile.h').write_bytes((ROOT/'plus-a7-render.h').read_bytes())
-print('Applied pinned A7 palette/tile/backdrop/window kernels and audio-first delivery')
+(CORE/'source/a7_profile.h').write_bytes((ROOT/'plus-a7-profile.h').read_bytes())
+(CORE/'source/a7_profile_core.h').write_bytes((ROOT/'plus-a7-profile-core.h').read_bytes())
+print('Applied guarded A7 whole-program build, planar decode, rendering and sampled phase ABI')

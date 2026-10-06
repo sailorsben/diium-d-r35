@@ -88,11 +88,49 @@ static void transport_test(int mode,uLong *crc,uint64_t *frames)
     if(mode) assert(s.partial_writes&&s.again);
     *crc=sink_crc; *frames=sink_frames;
 }
+static void conversion_oracle(void)
+{
+    int16_t input[2048*2],expected[4096*2],previous[2]={0};
+    unsigned rate,pass,i,count,phase,have,generated,position;
+    uint32_t random=0x1729; unsigned cases=0;
+    for(rate=32040;rate<=32041;rate++) for(pass=0;pass<4;pass++) {
+        phase=have=generated=0;
+        for(i=0;i<ARRAY_SIZE(input);i++) {
+            random^=random<<13;random^=random>>17;random^=random<<5; input[i]=(int16_t)random;
+        }
+        input[0]=INT16_MIN;input[1]=INT16_MAX;input[2]=INT16_MAX;input[3]=INT16_MIN;
+        for(i=0;i<2048;i++) {
+            const int16_t *now=input+i*2;
+            if(!have) { previous[0]=now[0];previous[1]=now[1];have=1;continue; }
+            while(phase<44100) {
+                unsigned ch;
+                for(ch=0;ch<2;ch++) expected[generated*2+ch]=(int16_t)
+                    (((int64_t)previous[ch]*(44100-phase)+(int64_t)now[ch]*phase)/44100);
+                ++generated;phase+=rate;
+            }
+            phase-=44100;previous[0]=now[0];previous[1]=now[1];
+        }
+        memset(&s,0,sizeof(s));s.input_rate=rate;s.output_rate=44100;s.audio_ready=true;
+        error_text[0]=0; audio_pipe_init();assert(!audio_pipe_start());
+        sink_calls=0;sink_frames=0;sink_crc=crc32(0,NULL,0);fragmented=pass&1;
+        position=0;
+        while(position<2048) {
+            count=pass<2?2048:1+(position*71)%149;
+            if(count>2048-position) count=2048-position;
+            assert(!audio_pipe_space(4096));assert(audio_batch(input+position*2,count)==count);position+=count;
+        }
+        audio_pipe_stop(1);pump_audio();assert(!s.failed);
+        assert(sink_frames==generated && sink_crc==crc32(0,(uint8_t *)expected,generated*4));
+        assert(s.phase==(rate==32040?phase/180:phase)); ++cases;
+    }
+    printf("PASS: %u actual callback conversions equal original 64-bit oracle; extrema, rational/generic rates, batch splits and short writes\n",cases);
+}
 int main(int argc,char **argv)
 {
     uLong baseline,fragmented_crc; uint64_t baseline_frames,fragmented_frames;
     uint8_t expected[64],*file; size_t n; unsigned i;
     assert(argc==2);
+    conversion_oracle();
     transport_test(0,&baseline,&baseline_frames);
     transport_test(1,&fragmented_crc,&fragmented_frames);
     assert(baseline==fragmented_crc&&baseline_frames==fragmented_frames);

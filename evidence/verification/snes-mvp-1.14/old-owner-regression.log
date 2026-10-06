@@ -1,0 +1,4 @@
+old-owner-regression: build/snes-mvp/out/old-owner-regression.c:135: main: Assertion `!admission_done' failed.
+qemu: uncaught target signal 6 (Aborted) - core dumped
+timeout: the monitored command dumped core
+PASS: shipped1.10 admits on cached32 despite actual128 frames; repaired owner waits for a fresh sample

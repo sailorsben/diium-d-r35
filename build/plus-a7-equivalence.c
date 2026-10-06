@@ -13,6 +13,7 @@
 #include <zlib.h>
 #include "snes9x2005/source/sa1.h"
 #include "snes9x2005/source/apu_blargg.h"
+#include "plus-a7-profile.h"
 struct core {
     void *handle;
     void (*set_environment)(retro_environment_t);
@@ -126,6 +127,11 @@ int main(int argc,char **argv)
     rom=read_all(argv[3],&n); state=read_all(argv[4],&state_n);
     assert(state_n>40 && !memcmp(state,"D35MVP01",8));
     open_core(&old,argv[1],rom,n);open_core(&candidate,argv[2],rom,n);
+    void (*profile_begin)(unsigned); void (*profile_end)(struct d35_core_profile *);
+    *(void **)(&profile_begin)=dlsym(candidate.handle,"d35_profile_begin");
+    *(void **)(&profile_end)=dlsym(candidate.handle,"d35_profile_end");
+    assert(profile_begin && profile_end);
+    unsigned samples=0;
     size=old.serialize_size(); assert(size==candidate.serialize_size() && state_n==size+40);
     a=calloc(1,size);b=calloc(1,size); assert(a&&b);
     for(phase=0;phase<2;phase++) {
@@ -138,7 +144,12 @@ int main(int argc,char **argv)
             old.pixels=old.pcm=old.samples=old.videos=0;
             candidate.pixels=candidate.pcm=candidate.samples=candidate.videos=0;
             old.batches=candidate.batches=0;
-            active=&old;old.run();active=&candidate;candidate.run();
+            active=&old;old.run();active=&candidate;
+            struct d35_core_profile costs;
+            profile_begin(f%64==3); candidate.run(); profile_end(&costs);
+            assert(costs.abi==1 && costs.bytes==sizeof(costs) && costs.sampled==(f%64==3));
+            if(costs.sampled) { assert(costs.apu_cpu_ns>0 && costs.ppu_cpu_ns>0); ++samples; }
+            else assert(!costs.apu_cpu_ns && !costs.ppu_cpu_ns);
             if(candidate.batches>old.batches) ++split_frames;
             if(old.pixels!=candidate.pixels || old.pcm!=candidate.pcm || old.samples!=candidate.samples ||
                old.videos!=1 || candidate.videos!=1 || old.w!=candidate.w || old.h!=candidate.h) {
@@ -164,5 +175,6 @@ int main(int argc,char **argv)
     printf("PASS: %u frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; intro and returned private snapshot\n",iterations*2);
     assert(split_frames>iterations);
     printf("PASS: earlier PCM publication splits %u frames into multiple byte-equivalent batches\n",split_frames);
+    printf("PASS: owned sampled phase ABI measures APU/PPU in %u frames and stays inactive between samples\n",samples);
     return 0;
 }

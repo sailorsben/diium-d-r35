@@ -2,6 +2,7 @@
 #include "runner.h"
 #include "board.h"
 #include "audio-pipe.h"
+#include "../plus-a7-profile.h"
 #include <libretro.h>
 #include <dlfcn.h>
 #include <errno.h>
@@ -59,6 +60,13 @@ static struct retro_system_av_info native_av;
  X(size_t,retro_get_memory_size,(unsigned))
 #define DECLARE(type,name,args) static type (*p_##name) args;
 CORE_FUNCTIONS(DECLARE)
+static void (*p_profile_begin)(unsigned);
+static void (*p_profile_end)(struct d35_core_profile *);
+
+struct frame_cost {
+    uint64_t run,wall,cpu,apu,ppu,audio,video,admission;
+    unsigned sampled,epoch;
+};
 
 static struct {
     void *core;
@@ -81,6 +89,10 @@ static struct {
     uint64_t audio_cleared, audio_remaining, audio_worker_cpu_ns, audio_max_gap_ns;
     uint64_t device_cleared_estimate, pacing_wait_ns, active_ns, late_calls, max_lateness_ns;
     uint64_t audio_space_wait_ns, audio_lead_wait_ns;
+    unsigned profile_sequence,profile_samples,frame_cost_count,frame_cost_next,pcm_epoch;
+    struct frame_cost frame_costs[24];
+    unsigned sample_cost_count,sample_cost_next;
+    struct frame_cost sample_costs[8];
 } s;
 static void progress(const char *phase,int force);
 
@@ -234,6 +246,7 @@ static void audio_reset(void)
 {
     audio_pipe_clear();
     s.phase=s.output_count=s.ring_count=0; s.have_previous=false;
+    s.profile_sequence=0;
 }
 static void pump_audio(void)
 {
@@ -244,6 +257,7 @@ static void pump_audio(void)
     s.ring_count=stats.remaining; s.audio_remaining=stats.remaining;
     s.audio_cleared=stats.cleared; s.audio_worker_cpu_ns=stats.worker_cpu_ns;
     s.audio_max_gap_ns=stats.max_write_gap_ns;
+    s.pcm_epoch=stats.epoch;
     if(stats.observed_ns) {
         if(s.queue_min<0 || (int)stats.playable<s.queue_min) s.queue_min=(int)stats.playable;
         if((int)stats.playable>s.queue_max) s.queue_max=(int)stats.playable;
@@ -289,6 +303,21 @@ static size_t audio_batch(const int16_t *data,size_t frames)
         if(!s.have_previous) {
             s.previous[0]=now[0]; s.previous[1]=now[1]; s.have_previous=true; continue;
         }
+        /* 32040/44100 reduces to 178/245. Preserve the original signed
+         * truncation exactly, but expose a constant divisor and smaller
+         * products to the A7 compiler. Phase survives every batch boundary. */
+        if(s.input_rate==32040u && OUT_RATE==44100u) {
+            while(s.phase<245u) {
+                unsigned ch;
+                for(ch=0;ch<2;ch++) s.output[s.output_count*2+ch]=
+                    ((int32_t)s.previous[ch]*(int32_t)(245u-s.phase)+
+                     (int32_t)now[ch]*(int32_t)s.phase)/245;
+                ++s.output_count; s.phase+=178u;
+                if(s.output_count==2048&&!audio_flush()) break;
+            }
+            if(s.failed) break;
+            s.phase-=245u;
+        } else {
         while(s.phase<OUT_RATE) {
             unsigned ch;
             for(ch=0;ch<2;ch++) s.output[s.output_count*2+ch]=
@@ -298,7 +327,9 @@ static size_t audio_batch(const int16_t *data,size_t frames)
             if(s.output_count==2048&&!audio_flush()) break;
         }
         if(s.failed) break;
-        s.phase-=OUT_RATE; s.previous[0]=now[0]; s.previous[1]=now[1];
+        s.phase-=OUT_RATE;
+        }
+        s.previous[0]=now[0]; s.previous[1]=now[1];
     }
     (void)audio_flush(); s.audio_ns+=board_now_ns()-began;
     return s.failed?i:frames;
@@ -486,7 +517,7 @@ static uint64_t thread_cpu_ns(void)
 }
 static void report_to(const char *path,const char *phase,int ram)
 {
-    char text[6144]; int n; unsigned i;
+    char text[16384]; int n; unsigned i;
     struct board_video_metrics display;
     board_video_metrics(&display,0);
     n=snprintf(text,sizeof(text),
@@ -512,7 +543,7 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.snapshot_rejections,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
-      "build_version=1.13\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "build_version=1.15\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
@@ -546,7 +577,7 @@ static void report_to(const char *path,const char *phase,int ram)
         n+=snprintf(text+n,sizeof(text)-(size_t)n,
           "audio_backend=%s\npcm_period_frames=%u\npcm_buffer_frames=%u\npcm_prime_frames=%u\n"
           "pcm_playable_frames=%u\npcm_state=%u\nxrun_count=%llu\npcm_observed_kernel_ns=%llu\n"
-          "pcm_event_wakes=%llu\npcm_fault_poll_timeouts=%llu\n"
+          "pcm_event_wakes=%llu\npcm_fault_poll_timeouts=%llu\npcm_observations=%llu\n"
           "pcm_playable_min_running_frames=%d\npcm_playable_max_running_frames=%u\n"
           "pcm_admissions=%llu\npcm_admission_min_lead_frames=%d\npcm_admission_max_lead_frames=%u\n"
           "pcm_boundary_frames=%u\npcm_epoch=%u\npcm_epoch_transferred_frames=%llu\n"
@@ -554,7 +585,7 @@ static void report_to(const char *path,const char *phase,int ram)
           "pcm_prime_transferred_frames=%u\npcm_start_calls=%u\npcm_start_races=%u\npcm_error_detail=%s\n",
           board_is_null()?"mock":"native_alsa",pcm.period,pcm.buffer,pcm.prime,pcm.playable,pcm.state,
           (unsigned long long)pcm.xruns,(unsigned long long)pcm.observed_ns,
-          (unsigned long long)pcm.wakes,(unsigned long long)pcm.poll_timeouts,
+          (unsigned long long)pcm.wakes,(unsigned long long)pcm.poll_timeouts,(unsigned long long)pcm.observations,
           pcm.playable_min==UINT_MAX?-1:(int)pcm.playable_min,pcm.playable_max,
           (unsigned long long)pcm.admissions,pcm.admission_min==UINT_MAX?-1:(int)pcm.admission_min,pcm.admission_max,
           pcm.boundary,pcm.epoch,(unsigned long long)pcm.epoch_transferred,
@@ -562,6 +593,33 @@ static void report_to(const char *path,const char *phase,int ram)
           pcm.start_calls,pcm.start_races,pcm.error_detail);
     }
     if(n<=0||(size_t)n>=sizeof(text)) return;
+    n+=snprintf(text+n,sizeof(text)-(size_t)n,
+        "phase_profile_available=%d\nphase_profile_samples=%u\n"
+        "frame_cost_columns=run,epoch,sampled,wall_ns,cpu_ns,apu_inclusive_cpu_ns,ppu_cpu_ns,audio_wall_ns,video_wall_ns,admission_wall_ns\n",
+        p_profile_begin!=NULL && p_profile_end!=NULL,s.profile_samples);
+    if(n<=0||(size_t)n>=sizeof(text)) return;
+    for(i=0;i<s.frame_cost_count;i++) {
+        unsigned at=(s.frame_cost_next+ARRAY_SIZE(s.frame_costs)-s.frame_cost_count+i)%ARRAY_SIZE(s.frame_costs);
+        const struct frame_cost *f=&s.frame_costs[at];
+        int add=snprintf(text+n,sizeof(text)-(size_t)n,
+            "frame_cost_%u=%llu,%u,%u,%llu,%llu,%llu,%llu,%llu,%llu,%llu\n",i,
+            (unsigned long long)f->run,f->epoch,f->sampled,(unsigned long long)f->wall,
+            (unsigned long long)f->cpu,(unsigned long long)f->apu,(unsigned long long)f->ppu,
+            (unsigned long long)f->audio,(unsigned long long)f->video,(unsigned long long)f->admission);
+        if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
+        n+=add;
+    }
+    for(i=0;i<s.sample_cost_count;i++) {
+        unsigned at=(s.sample_cost_next+ARRAY_SIZE(s.sample_costs)-s.sample_cost_count+i)%ARRAY_SIZE(s.sample_costs);
+        const struct frame_cost *f=&s.sample_costs[at];
+        int add=snprintf(text+n,sizeof(text)-(size_t)n,
+            "sample_cost_%u=%llu,%u,%u,%llu,%llu,%llu,%llu,%llu,%llu,%llu\n",i,
+            (unsigned long long)f->run,f->epoch,f->sampled,(unsigned long long)f->wall,
+            (unsigned long long)f->cpu,(unsigned long long)f->apu,(unsigned long long)f->ppu,
+            (unsigned long long)f->audio,(unsigned long long)f->video,(unsigned long long)f->admission);
+        if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
+        n+=add;
+    }
     for(i=0;i<ARRAY_SIZE(s.run_hist);i++) if(s.run_hist[i]) {
         int add=snprintf(text+n,sizeof(text)-(size_t)n,"core_wall_bin_%ums=%u\n",i,s.run_hist[i]);
         if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
@@ -602,6 +660,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     uint32_t old_buttons=0; bool no_pacing=false,save_ready=false;
     const char *value; int actual_rate;
     memset(&s,0,sizeof(s)); memset(&native_av,0,sizeof(native_av));
+    p_profile_begin=NULL; p_profile_end=NULL;
     s.session_ns=board_now_ns();
     value=getenv("D35_MVP_PROGRESS_FILE");
     if(value && *value && strlen(value)<sizeof(s.progress_path))
@@ -633,6 +692,9 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
 #define LOAD(type,name,args) do { *(void **)(&p_##name)=dlsym(s.core,#name); if(!p_##name) { fail("Core lacks " #name); goto done; } } while(0);
     CORE_FUNCTIONS(LOAD)
 #undef LOAD
+    *(void **)(&p_profile_begin)=dlsym(s.core,"d35_profile_begin");
+    *(void **)(&p_profile_end)=dlsym(s.core,"d35_profile_end");
+    if(!p_profile_begin || !p_profile_end) p_profile_begin=NULL,p_profile_end=NULL;
     if(p_retro_api_version()!=RETRO_API_VERSION) { fail("Unsupported libretro API version"); goto done; }
     memset(&info,0,sizeof(info)); p_retro_get_system_info(&info);
     if(info.need_fullpath) { fail("MVP requires the known memory-loading Plus core"); goto done; }
@@ -674,7 +736,10 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     deadline=board_now_ns(); s.start_ns=deadline;
     progress("running",1);
     while(!s.failed&&!stop_requested&&(!limit||s.runs<limit)) {
-        uint64_t began,elapsed,cpu_start,cpu_end,step_start=board_now_ns();
+        uint64_t began,elapsed,cpu_start,cpu_end,step_start=board_now_ns(),admission;
+        uint64_t audio_before=s.audio_ns,video_before=s.video_ns;
+        struct d35_core_profile profile={0};
+        unsigned sample=p_profile_begin && s.profile_sequence++%64u==3u;
         unsigned bin; uint32_t buttons=board_poll_input();
         if((buttons&BOARD_MENU)&&!(old_buttons&BOARD_MENU)) {
             if(!pause_menu()) break;
@@ -686,7 +751,7 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
          * let a full sink silently discard a callback the core won't replay. */
         { uint64_t wait=board_now_ns();
           if(audio_pipe_admit(2048,!no_pacing && !board_is_null())<0) fail("Audio admission failed: %s",strerror(errno));
-          s.audio_space_wait_ns+=board_now_ns()-wait; }
+          admission=board_now_ns()-wait; s.audio_space_wait_ns+=admission; }
         if(s.failed||stop_requested) break;
         if(!no_pacing && board_is_null()) {
             uint64_t before=board_now_ns(); board_sleep_until(deadline);
@@ -698,14 +763,32 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
             uint64_t late=board_now_ns()-deadline; ++s.late_calls;
             if(late>s.max_lateness_ns) s.max_lateness_ns=late;
         }
+        if(p_profile_begin) p_profile_begin(sample);
         cpu_start=thread_cpu_ns(); began=board_now_ns();
         p_retro_run();
-        board_video_cancel();
         elapsed=board_now_ns()-began; cpu_end=thread_cpu_ns(); ++s.runs;
+        if(p_profile_end) p_profile_end(&profile);
+        if(p_profile_end && (profile.abi!=1 || profile.bytes!=sizeof(profile))) fail("Core phase ABI mismatch");
+        board_video_cancel();
+        pump_audio();
+        {
+            struct frame_cost *f=&s.frame_costs[s.frame_cost_next];
+            *f=(struct frame_cost){s.runs,elapsed,cpu_end>=cpu_start?cpu_end-cpu_start:0,
+                profile.apu_cpu_ns,profile.ppu_cpu_ns,s.audio_ns-audio_before,s.video_ns-video_before,
+                admission,profile.sampled,s.pcm_epoch};
+            if(profile.sampled) {
+                ++s.profile_samples;
+                s.sample_costs[s.sample_cost_next]=*f;
+                s.sample_cost_next=(s.sample_cost_next+1)%ARRAY_SIZE(s.sample_costs);
+                if(s.sample_cost_count<ARRAY_SIZE(s.sample_costs)) ++s.sample_cost_count;
+            }
+            s.frame_cost_next=(s.frame_cost_next+1)%ARRAY_SIZE(s.frame_costs);
+            if(s.frame_cost_count<ARRAY_SIZE(s.frame_costs)) ++s.frame_cost_count;
+        }
         s.wall_ns+=elapsed; if(cpu_end>=cpu_start) s.cpu_ns+=cpu_end-cpu_start;
         if(s.max_run_ns<elapsed) s.max_run_ns=elapsed;
         bin=(unsigned)(elapsed/1000000u); if(bin>=ARRAY_SIZE(s.run_hist)) bin=ARRAY_SIZE(s.run_hist)-1;
-        ++s.run_hist[bin]; pump_audio();
+        ++s.run_hist[bin];
         progress(s.failed?"failed":"running",0);
         s.active_ns+=board_now_ns()-step_start;
         deadline+=period; remainder+=fraction;

@@ -1,8 +1,8 @@
 # Build, test and recover
 
 The source is published; device libraries, factory binaries, ROMs and personal
-saves are supplied separately. The current1.12 installer requires the exact
-consumed1.11 Windows D: card. Historical installers have different guarded
+saves are supplied separately. The current1.15 installer requires the exact
+unarmed1.14 Windows D: card. Historical installers have different guarded
 baselines; none is a universal factory-card installer.
 
 ## Dependencies and pinned inputs
@@ -42,9 +42,9 @@ The real-core fixture uses a user-supplied FF3/VI ZIP at `build/ff3.zip`, whose 
 
 ## Build and checks
 
-The current1.12 workflow retains the exact1.9 A7 renderer/early PCM core and
-records PCM faults before cleanup; see [1.12](snes-mvp-1.12.md). Supply owner-only
-output-equivalence inputs first. Do not migrate snapshots for this repair.
+The current1.15 workflow retains the A7 core build, planar decode and frontend
+rewrite from [1.14](snes-mvp-1.14.md), with [retained sampled costs](snes-mvp-1.15.md). Supply owner-only output-equivalence
+inputs first. Prepare a separate snapshot copy with the new core identity.
 The pinned original remains an exact-output oracle. Historical releases and
 evidence remain unchanged; no paired device performance experiment is required.
 
@@ -61,6 +61,14 @@ python3 build/verify-snes-mvp.py
 ```
 
 Build flags target Cortex-A7, NEON-VFPv4, ARM hard float, ARM instruction mode, 32-bit time/file offsets and no dependency on a newer stack-protector runtime. Link against the copied device libraries and inspect `out/abi-versions.txt`; current maximum required GLIBC is 2.17, below device2.30.
+
+1.14 adds O3/LTO to the core and runner, hides internal core symbols and
+retains only explicit libretro and owned phase API exports. Emitted code,
+exports and actual flag order are checked. The rewritten decoder has an
+independent bitplane oracle; the rational converter is checked through its
+actual callback against original64-bit arithmetic. Sustained underproduction
+is expected to fail visibly in its consuming-provider fixture. QEMU timing
+does not qualify hardware performance.
 
 `glibc230-stat-compat.c` bridges new header function names to ARM32 glibc2.30 versioned stat entry points (version3). NTFS large inode values under QEMU require `readdir64`; otherwise enumeration can silently fail with EOVERFLOW. These are cross-development issues, not proof the device uses NTFS.
 
@@ -89,7 +97,16 @@ The checks exercise:
 
 ## Current release and deployment boundary
 
-[MVP1.12](snes-mvp-1.12.md) captures native transaction/kernel history after the
+The final [MVP1.15](snes-mvp-1.15.md) installer requires exact unarmed1.14
+payload hashes, qualified source/check inputs, intact stock/hook and private
+progress. It archives before updating, verifies every retained file, preserves
+the qualified new-core snapshot and arms last. Its independent verifier and
+publisher gate delivery.1.14 was retired unconsumed during final review to
+retain sampled phase costs; that retirement archives the marker and all files
+before removing it. Historical1.13-to1.14 and1.14-to1.15 guards are deliberately
+different; none is a general update/factory-card command.
+
+Historical [MVP1.12](snes-mvp-1.12.md) captures native transaction/kernel history after the
 1.11 stopped-stream failures. No driver fix is claimed. The exact 1.9 core and
 PCM candidates remain. Run
 `package-snes-1.12.py --card D:/` only on its exact consumed1.11 baseline.
@@ -122,7 +139,7 @@ qualified and published under a new version; do not re-arm unchanged1.8.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
-[MVP1.13](../releases/snes-mvp-1.13/) contains our executable and wrapper, without
+[MVP1.15](../releases/snes-mvp-1.15/) contains our executable and wrapper, without
 a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
 from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains
 `/usr/retro/driver.so` and existing `002`/`ROMs/SNES` scanning. The historical

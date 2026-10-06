@@ -42,6 +42,20 @@ int main(void)
             }
         }
     }
+    /* Independent SNES bitplane definition, not the SIMD implementation. */
+    for(bits=2;bits<=8;bits*=2) for(i=0;i<20000;i++) {
+        uint8_t planes[64],cache[66],expect[64]; unsigned row,x,plane,any=0;
+        for(j=0;j<bits*8;j++) planes[j]=i?random_word():0;
+        memset(cache,0xa5,sizeof(cache));
+        for(row=0;row<8;row++) for(x=0;x<8;x++) {
+            unsigned pixel=0;
+            for(plane=0;plane<bits;plane++)
+                pixel|=((planes[(plane/2)*16+row*2+plane%2]>>(7-x))&1u)<<plane;
+            expect[row*8+x]=(uint8_t)pixel; any|=pixel;
+        }
+        assert(d35_decode_tile(cache+1,planes,bits)==(any!=0));
+        assert(cache[0]==0xa5 && cache[65]==0xa5 && !memcmp(cache+1,expect,64));
+    }
     for(bits=2;bits<=4;bits+=2) for(mode=0;mode<=6;mode++) for(flip=0;flip<=1;flip++)
     for(i=0;i<10000;i++) {
         uint16_t palette[16],screen[8],expect[8],sub[8],fixed=(uint16_t)random_word();
@@ -92,8 +106,20 @@ int main(void)
         for(j=0;j<8;j++) assert(result[j]==last[pixels[j]]);
         assert(!munmap(memory,page*2));
     }
+    {
+        size_t page=(size_t)sysconf(_SC_PAGESIZE);
+        uint8_t *memory=mmap(NULL,page*2,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0),cache[64];
+        assert(memory!=MAP_FAILED && !mprotect(memory+page,page,PROT_NONE));
+        for(bits=2;bits<=8;bits*=2) {
+            memset(memory+page-bits*8,0xff,bits*8);
+            assert(d35_decode_tile(cache,memory+page-bits*8,bits));
+            for(j=0;j<64;j++) assert(cache[j]==(1u<<bits)-1);
+        }
+        assert(!munmap(memory,page*2));
+    }
     free(GFX.ZERO);
     puts("PASS: 8388608 scalar/vector color comparisons; 280000 tile rows, 2/4bpp, all math modes, flips/transparency/depth");
     puts("PASS: 60000 backdrop/window spans match scalar arithmetic; clipped tails/canaries and palette guard page intact");
+    puts("PASS: 60000 planar tiles match independent 2/4/8bpp oracle; blank classification, destination canaries and exact source guard pages");
     return 0;
 }

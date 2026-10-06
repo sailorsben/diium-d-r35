@@ -147,7 +147,8 @@ static int provider_ioctl(int fd,unsigned long command,...)
 #undef ioctl
 #include "runner.c"
 #include "audio-owner.c"
-static unsigned menu_visits,menu_action,next_menu;
+static unsigned menu_visits,menu_action,next_menu,deficit_mode;
+static uint64_t production_deadline;
 int board_is_null(void) { return 0; }
 const char *board_last_error(void) { return pcm_error(); }
 const char *board_audio_error(void) { return pcm_error(); }
@@ -160,13 +161,23 @@ int board_audio_queued_frames(void) { struct board_audio_state out; return pcm_o
 int board_audio_avail_min(unsigned frames) { return pcm_avail_min(frames); }
 int board_audio_fd(void) { return pcm_fd(); }
 void board_audio_close(void) { pcm_close(); }
-int board_video_reserve(void) { return 0; }
+int board_video_reserve(void) { production_deadline=board_now_ns()+19880500u; return 0; }
 void board_video_cancel(void) { }
 void board_wait_display(void) { }
 void board_video_metrics(struct board_video_metrics *out,int reset)
 { (void)reset; if(out) memset(out,0,sizeof(*out)); }
 int board_video_submit(const void *data,unsigned w,unsigned h,size_t pitch)
-{ assert(data && w && h && pitch>=w*2); if(!(s.runs%40)) usleep(25000); return 0; }
+{
+    assert(data && w && h && pitch>=w*2);
+    if(deficit_mode) {
+        while(board_now_ns()<production_deadline) {
+            uint64_t remaining=production_deadline-board_now_ns();
+            if(remaining>19880500u) break;
+            struct timespec delay={0,(long)remaining}; nanosleep(&delay,NULL);
+        }
+    } else if(!(s.runs%40)) usleep(25000);
+    return 0;
+}
 uint32_t board_poll_input(void)
 {
     if(!inject_write && s.runs>=120) runner_request_stop();
@@ -207,7 +218,16 @@ int main(int argc,char **argv)
     assert(s.primed==8469 && out.epoch==3 && !out.errors && !out.remaining && !out.cleared);
     assert(out.accepted==out.enqueued && out.accepted==device_accepted-before);
     assert(out.admissions>=120 && out.admissions<=121 && out.admission_max<=2823 && device_opens==2 && device_fd<0);
+    /* Replay the measured sustained rate deficit, not just isolated jitter.
+     * A consuming 44.1k provider must starve when full frames repeat at 19.88ms;
+     * the controller must expose it without secretly re-priming or retrying. */
+    deficit_mode=1; next_menu=UINT_MAX;
+    assert(runner_run(argv[1],argv[2],argv[3])<0);
+    audio_pipe_stats(&out);
+    assert(out.error==EPIPE && out.xruns==1 && out.epoch==1 && s.primed==2823);
+    assert(s.runs<120 && !s.held && !s.pauses && out.accepted+out.remaining==out.enqueued);
     pthread_mutex_lock(&kernel_lock); consumer_stop=1; pthread_mutex_unlock(&kernel_lock); pthread_join(consumer,NULL);
     puts("PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full drawings, zero lost/cleared PCM");
+    puts("PASS: sustained 19.8805ms production against 44100Hz consumption exposes starvation without hidden re-prime, frame suppression or accounting loss");
     return 0;
 }

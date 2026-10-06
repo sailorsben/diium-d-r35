@@ -1,0 +1,19 @@
+{
+  "version": "1.14",
+  "installed_utc": "2026-10-06T05:44:57.387792+00:00",
+  "one_shot_armed": true,
+  "lab_unarmed": true,
+  "archive_before_writes": "snes-mvp-return-20261006T054456Z",
+  "stock_binaries_unchanged": true,
+  "boot_hook_unchanged": true,
+  "original_private_files_unchanged": 22,
+  "retained_lab_files": 49,
+  "original_game_wrapper_unchanged": true,
+  "new_save_point_sram_preserved": true,
+  "snapshot_migration": "separate exact-output-qualified older snapshot copy; all original states retained",
+  "new_snapshot": "game-a27f1c7a-3145728-core-5f68b738-785504.state",
+  "binary_sha256": "ca496a11266b30812a0186258e92a37573df90d1f568d2b550289270ee7bb2ad",
+  "wrapper_sha256": "05f9420bba62c5e3dc2207f6205f1c5d6aadf02fa0ed89e704c58ccb15a86b04",
+  "core_sha256": "c33f6a7cb6967bb9e8f5c1079944f62faad13e43fa992e418dd6dce56beb6683",
+  "hardware_result": "pending"
+}

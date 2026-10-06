@@ -1,0 +1,1 @@
+PASS: real ARM runner killed before cleanup retains fresh 1.15/core/session checkpoint and live worker CPU; old 1.5 report stays historical

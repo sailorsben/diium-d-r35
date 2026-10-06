@@ -3,7 +3,7 @@ set -eu
 cd "$(dirname "$0")"
 mkdir -p snes-mvp/out
 flags='-mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard -marm -fno-stack-protector -U_TIME_BITS -D_TIME_BITS=32 -U_FILE_OFFSET_BITS -D_FILE_OFFSET_BITS=32'
-arm-linux-gnueabihf-gcc $flags -DD35_NATIVE_PCM -std=gnu99 -O2 -Wall -Wextra -Werror -no-pie -nostdlib \
+arm-linux-gnueabihf-gcc $flags -DD35_NATIVE_PCM -std=gnu99 -O3 -flto=4 -Wall -Wextra -Werror -no-pie -nostdlib \
  -I./snes9x2005/libretro-common/include /usr/arm-linux-gnueabihf/lib/crt1.o \
  snes-mvp/main.c snes-mvp/board.c snes-mvp/runner.c snes-mvp/audio-owner.c snes-mvp/native-pcm.c snes-mvp/ui.c snes-mvp/startup.c snes-mvp/platform.c snes-mvp/timing.c glibc230-stat-compat.c \
  -L./sysroot/lib -Wl,--no-as-needed -l:libdl-2.30.so -l:libz.so.1 \
