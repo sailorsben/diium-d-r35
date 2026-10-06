@@ -355,3 +355,21 @@ all23 original private files and49 lab files exact; game armed, lab unarmed.
 Next physical acceptance is sustained saved-scene play, party menu, pause/resume
 and save/exit with full sound and rendering. First-launch stability remains
 unresolved until that run.
+
+## 1.16 provides sustained margin;1.17 removes an observer workload
+
+[1.16 return](snes-mvp-1.16-return.md): successful retry runs31,601 complete
+video callbacks near59.99 calls/sec, zero intentional holds, duplicates or
+audio-write errors. Snapshot load, game save, combat and menu work. The exact
+first70-call failure now survives retries. It shows9ms CPU stretching to
+18–39ms wall time during the wrapper11.27–11.57s discovery/card-copy window.
+This separates a short scheduling stall from the earlier sustained core deficit.
+
+[1.17](snes-mvp-1.17.md) removes live routine diagnostics rather than shifting
+the same workload to another arbitrary gameplay time. Old wrapper fails the
+actual lifetime/write fixture; repaired wrapper, ARM runtime contracts and
+12,000-frame output equivalence pass. Core remains byte-identical. Independent
+install/readback preserves all26 private and49 lab files; game armed, lab
+unarmed. Physical cold-start reliability is pending; whole poweroff can lose
+RAM-only progress. Wind/snow reported missing in outdoor Narshe remains a
+separate effect/phase/baseline correctness question.

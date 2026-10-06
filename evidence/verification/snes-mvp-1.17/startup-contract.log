@@ -1,0 +1,3 @@
+PASS: real launcher first frame completes with permanently held input; no release wait
+PASS: initial held buttons suppressed independently; new presses and navigation repeat work
+PASS: real launcher menu keeps polling through kernel-clock waits; Down/Up/A launch selected game

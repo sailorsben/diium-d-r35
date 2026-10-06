@@ -1,0 +1,21 @@
+SNES MVP1.17 - quiet gameplay, cold first-launch qualification
+
+The1.16 renderer and core are retained. Routine platform discovery/card log
+copies now run before the launcher starts or after it exits. Fault records
+still persist. The previous successful session delivered31,601 complete frames
+at about59.99 core calls/sec; this test targets the first-attempt audio error.
+
+1. Safely eject D:, return the card and cold boot. The one-shot opens our UI.
+2. Start FF6 on the FIRST attempt. Note any audio error before gameplay.
+3. Load the existing snapshot, play at least five minutes, use party menu,
+   map, combat and launcher pause/resume. Save at a Save Point if convenient.
+4. Exit the game and launcher normally, then reconnect D: for archive.
+
+If first launch fails, one retry is fine; the first failure stays separately
+recorded. Report whether wind sound and blowing snow seem absent in outdoor
+Narshe, and whether the observation was during controllable town gameplay or
+the story/march. This build does not claim a weather-effect fix.
+
+Stock binaries, game progress and prior snapshots are preserved. Next reboot
+after the consumed one-shot returns to stock. Routine live progress stays in
+RAM; whole-device power loss can lose it, while persisted fault traces survive.

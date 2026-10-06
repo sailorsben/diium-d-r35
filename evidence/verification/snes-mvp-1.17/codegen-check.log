@@ -1,0 +1,2 @@
+PASS: seven A7 tile modes specialized; deinterleaved palette NEON lookup and vector backdrop/window stores emitted
+PASS: planar decoder NEON emitted; O3/LTO and internal visibility applied; only libretro and two owned phase exports

@@ -1,0 +1,167 @@
+{
+  "version": "1.16",
+  "mvp_files": 48,
+  "lab_files": 49,
+  "read_only_archive_verified": true,
+  "one_shots_consumed": true,
+  "exact_release_verified": true,
+  "prior_game_progress_files_unchanged": 19,
+  "updated_sram_files_archived": 2,
+  "snapshots_unchanged": true,
+  "stock_hook_core_unchanged": true,
+  "successful_session": {
+    "runs": 31601,
+    "active_seconds": 526.811614,
+    "calls_per_active_second": 59.98538976781176,
+    "held_drawings": 0,
+    "duplicate_video_callbacks": 0,
+    "audio_write_errors": 0,
+    "snapshot_load_successes": 1,
+    "pauses": 4,
+    "mean_core_wall_ms": 12.178652732508466,
+    "mean_core_thread_cpu_ms": 11.28663127749122,
+    "display_reservation_mean_ms": 0.03489101610708522,
+    "minimum_running_playable_frames": 1068
+  },
+  "first_failure": {
+    "runs": 70,
+    "session_id": "493-9622671000",
+    "error": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=53881 hw=53759 prime_written=2823 start_calls=0 epoch=1 xfer=53497 trace_errno=0 trace_synced=1 trace_bytes=27131",
+    "selected_calls": [
+      {
+        "run": 63,
+        "wall_ms": 18.086,
+        "cpu_ms": 9.255,
+        "audio_callback_ms": 3.692,
+        "video_callback_ms": 1.128
+      },
+      {
+        "run": 64,
+        "wall_ms": 38.72,
+        "cpu_ms": 9.519,
+        "audio_callback_ms": 18.208,
+        "video_callback_ms": 1.092
+      },
+      {
+        "run": 65,
+        "wall_ms": 19.644,
+        "cpu_ms": 9.14,
+        "audio_callback_ms": 9.95,
+        "video_callback_ms": 1.099
+      },
+      {
+        "run": 66,
+        "wall_ms": 17.952,
+        "cpu_ms": 9.086,
+        "audio_callback_ms": 8.294,
+        "video_callback_ms": 1.068
+      },
+      {
+        "run": 67,
+        "wall_ms": 12.458,
+        "cpu_ms": 9.068,
+        "audio_callback_ms": 3.208,
+        "video_callback_ms": 0.71
+      },
+      {
+        "run": 68,
+        "wall_ms": 27.711,
+        "cpu_ms": 10.169,
+        "audio_callback_ms": 5.666,
+        "video_callback_ms": 7.565
+      },
+      {
+        "run": 69,
+        "wall_ms": 26.601,
+        "cpu_ms": 9.45,
+        "audio_callback_ms": 7.71,
+        "video_callback_ms": 1.13
+      },
+      {
+        "run": 70,
+        "wall_ms": 47.917,
+        "cpu_ms": 8.595,
+        "audio_callback_ms": 20.071,
+        "video_callback_ms": 0.0
+      }
+    ],
+    "diagnostic_checkpoint_begin_uptime_s": 11.27,
+    "diagnostic_checkpoint_end_uptime_s": 11.57,
+    "last_successful_pcm_observation_uptime_s": 11.43764,
+    "fault_uptime_s": 11.470791,
+    "flight_analysis": {
+      "trace_version": "D35 PCM fault history 1.13",
+      "retained_operations": 96,
+      "epoch": 1,
+      "accepted_pointer_difference_first_sample": 0,
+      "application_pointer_difference_changes": [
+        {
+          "seq": 622,
+          "kernel_ns": 11470804000,
+          "delta_change": 384,
+          "appl_minus_accepted": 384,
+          "state": 1,
+          "reported_queued": 0,
+          "accepted_minus_reported_hw": -262
+        }
+      ],
+      "matched_large_batch_interval": {
+        "first_seq": 535,
+        "last_seq": 615,
+        "anchor_count": 10,
+        "elapsed_ms": 219.916,
+        "accepted_frames": 7360,
+        "accepted_frames_per_second": 33467.323887302424,
+        "negotiated_frames_per_second": 44100,
+        "production_shortfall_fraction": 0.24110376672783618,
+        "mean_large_batch_interval_ms": 24.435111111111112,
+        "min_large_batch_interval_ms": 14.544,
+        "max_large_batch_interval_ms": 49.53,
+        "reported_hw_advance": 9728,
+        "accepted_minus_hw_change": -2368,
+        "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+      },
+      "last_successful_observation": {
+        "seq": 620,
+        "ns": 11437640000,
+        "op": "SYNC_OK",
+        "arg": 7,
+        "result": 0,
+        "state": 3,
+        "queued": 762,
+        "appl": 53497,
+        "hw": 52735,
+        "epoch": 1,
+        "xfer": 53497
+      },
+      "final_observation": {
+        "seq": 622,
+        "ns": 11470804000,
+        "op": "SYNC_OK",
+        "arg": 6,
+        "result": 0,
+        "state": 1,
+        "queued": 0,
+        "appl": 53881,
+        "hw": 53759,
+        "epoch": 1,
+        "xfer": 53497
+      },
+      "kernel_read_result": {
+        "bytes": 16335,
+        "errno": 0
+      },
+      "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+    }
+  },
+  "long_equivalence": {
+    "frames": 12000,
+    "checks": "visible pixels, native PCM, geometry and periodic logical state match clean core",
+    "coverage": "6000 boot/intro frames plus6000 returned-snapshot frames; scripted movement and menus",
+    "limit": "Does not prove correctness of effects in the clean core or prove exact user scene was reached."
+  },
+  "user_result": "Very playable; combat, party menu, game save and snapshot load succeeded. Wind sound and blowing snow both reported missing in opening outdoor Narshe gameplay. First launch failed with audio error; second worked.",
+  "inference": "First-launch scheduling stalls overlap the wrapper first platform discovery/card-copy window exactly. Strong suspect, not proven causal. Core CPU remains around9ms while call64 wall time reaches38.7ms. Eliminate live diagnostics, preserving renderer/core/audio transport.",
+  "limits": "Generated/submitted frames and accepted PCM do not prove physical scanout cadence or audible effect fidelity. The final physical scene is not a controlled replay of the earlier1.15 scene. Rare long core calls remain. Whole-device poweroff loses RAM-only progress.",
+  "next_action": "1.17 moves routine discovery and card copies outside child lifetime; native fault/session reports remain durable. Continue separate effects investigation with private offline scene inspection."
+}

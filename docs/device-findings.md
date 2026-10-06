@@ -27,8 +27,8 @@ lost across retries, so its specific cause remains unknown.
 Exact local replay finds214 pending fixed-color `$2132` flushes per frame with
 no effective color change. The [1.16 repair](snes-mvp-1.16.md) reduces PPU update
 jobs217–223 to4–10 while preserving tile rows and exact output. This is a work
-census and correctness result, not measured handheld acceleration.1.16 is
-installed/armed with private progress preserved; physical acceptance pending.
+census and correctness result. Its physical return now establishes one sustained
+near60-call/sec session; cold-start reliability and effect fidelity remain pending.
 
 cpufreq, thermal/cache inventory and clock summary were absent in tested locations. Software perf task-clock worked; hardware cycles/instructions/branch/L1/L2 counters returned ENOENT and no PMU DT node was established. Cache sizes from a related chip specification must not be promoted to this device's measured properties.
 
@@ -301,3 +301,25 @@ of further small diagnostic retries: attribute the expensive phase, qualify a
 whole-program A7 build and optimize the actual core/frontend work. More initial
 silence or automatic restart cannot repair sustained underproduction. Existing
 fixtures establish lifecycle/correctness, not the device's repeated slow phase.
+
+## 1.16 sustained gameplay and1.17 diagnostic isolation
+
+The [1.16 return](snes-mvp-1.16-return.md) records31,601 core calls/video
+submissions over526.812 active seconds (59.985 calls/sec), zero holds/duplicates
+and audio-write errors, one snapshot load and clean save/exit. User reports
+combat/menu/playability substantially improved. All generated PCM is accounted
+for; this is not panel scanout or effect-fidelity evidence. Two changed SRAM
+files are archived;19 prior game-progress files and all original snapshots match.
+
+The retained first70-call failure has roughly9ms main CPU but18–39ms wall
+stalls, overlapping wrapper discovery/card copies at11.27–11.57s uptime. This
+is a strong observer-workload hypothesis, not confirmed causality or the old
+sustained18ms CPU deficit. [1.17](snes-mvp-1.17.md) removes routine diagnostics
+from child lifetime, preserving durable faults and the exact1.16 core.
+Installed/read back13:21 UTC, all26 private/49 lab files preserved and armed.
+
+Both wind and blowing snow are reported missing in opening outdoor Narshe.
+12,000 local frames match clean-core pixels/PCM/state; a private no-input capture
+shows the outdoor mine entrance without visible blowing snow in inspected
+frames. Baseline accuracy, expected effect/phase and audible wind remain
+unresolved. No speculative weather/DSP change ships.

@@ -180,7 +180,7 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
 The [1.8 test sequence](snes-mvp-1.8.md#physical-test) is historical; its returned
-card was unarmed. Current testing uses [1.13](snes-mvp-1.13-test.txt).
+card was unarmed. Current testing uses [1.17](snes-mvp-1.17-test.txt).
 After power-off, prefer fresh `last-progress.txt`/`last-progress.previous`
 identity-qualified checkpoints over an older normal-exit report. Retain
 `runtime-platform-latest.txt`, `kernel-tail.txt` and `diagnostic-flush.log` too.
@@ -198,7 +198,7 @@ For recovery, boot again after a consumed marker, or restore the unit's verified
 
 Older `install-*`, `prepare-*` and comparison scripts preserve exact experiments and old hash/path guards. Read them as reproducible history first. Re-running an obsolete installer against a progressed card is not supported by their historical success. The maintained MVP sources are `build/snes-mvp/`, its build/check/verify/package scripts and the shared production rendering policy.
 
-## Current 1.13 exact-baseline update
+## Historical1.13 exact-baseline update
 
 `build/package-snes-1.13.py --card D:/` requires the exact consumed 1.12 payload
 and qualified 1.13 build. Archive all returned logs/private files first; change
@@ -214,7 +214,7 @@ claim a successful capture from a missing file or a wrapper fixture. The 1.12
 physical return disproved that release's RAM-plus-periodic-copy persistence
 assumption. Firmware-side kernel access/durability still require the return.
 
-## 1.13 returned; current card is unarmed
+## Historical1.13 return; that test consumed its marker
 
 The [1.13 return](snes-mvp-1.13-return.md) is archived read-only with all20
 progress files retained. Do not re-arm unchanged1.13 as a playback fix. Its
@@ -223,3 +223,31 @@ production shortfall and the next proposal. `build/analyze-pcm-flight.py <trace>
 reads an archived history without device access or mutations. Its rates use
 matched batch anchors; it does not infer certified playable sound from divergent
 pointers or promote batch cadence to a per-call CPU profile.
+
+## Current1.17 exact-baseline update
+
+The current source is1.17. `build/package-snes-1.17.py --card D:/` accepts only
+consumed exact1.16 on the inspected card and checks qualified source/payload
+hashes. It archives all logs/private progress first, retains the exact core
+and snapshot payload, updates owned runner/wrapper/test notes, then arms last.
+Use `build/verify-snes-1.17-card.py --card D:/ --archive <installation-archive>`
+for independent readback before `build/publish-snes-1.17.py`. The installed
+13:21 UTC build preserves all26 private/49 lab files. Older installers above
+are historical; they are not generic card update commands.
+
+Follow [1.17's single cold-start/gameplay test](snes-mvp-1.17-test.txt). Routine
+progress stays in `/tmp` while the launcher is alive; wrapper card checkpoints
+now represent wrapper start or completed exit, not fresh live gameplay after
+whole-device poweroff. Native PCM faults and unique failed-session pairs remain
+durable. `runtime-platform.txt` contains pre/post-child static snapshots rather
+than live child thread wait samples. Firmware dmesg remains unavailable; its
+wrapper file is an availability/error record, not kernel-ring evidence.
+
+The wrapper regression fixture can select an existing historical shell using
+`D35_WRAPPER_UNDER_TEST`; old1.16 must fail for diagnostic card writes through a
+ready child's lifetime. Extended local replay uses the equivalence executable
+with final argument6000 (12,000 total frames across boot/snapshot phases).
+`sh build/capture-snes-scene.sh <core> <ROM> <state> <existing-private-directory>
+600` exports local full-frame PPMs every30 frames and native stereo s16le PCM.
+Use owner-supplied inputs. Never publish these captures, ROM or private state;
+the checked-in harness and checksum-only logs are portable evidence.

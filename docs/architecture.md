@@ -198,3 +198,17 @@ of further small diagnostic retries: attribute the expensive phase, qualify a
 whole-program A7 build and optimize the actual core/frontend work. More initial
 silence or automatic restart cannot repair sustained underproduction. Existing
 fixtures establish lifecycle/correctness, not the device's repeated slow phase.
+
+## Current boundary after1.16
+
+The renderer correction delivers31,601 complete calls near60/sec on one
+successful physical session. The remaining first-launch fault coincides with
+wrapper diagnostic discovery/card writes, with9ms main CPU and38.7ms wall.
+[1.17](snes-mvp-1.17.md) moves static discovery/sync before child creation and
+final RAM log/progress copies after child exit. No routine live diagnostic
+monitor remains. Durable native faults and explicit game-save/state operations
+stay at their lifecycle boundaries. Abrupt power loss can lose RAM progress.
+
+Treat sustained production, cold startup reliability, scanout cadence and
+weather-effect fidelity as separate evidence boundaries. The exact1.16 core is
+retained; baseline equivalence alone does not certify baseline emulation.

@@ -23,3 +23,9 @@ Root source contains historical guarded installers. Stable guides identify the c
 Check the hardware contracts for splash cleanup, GPIO→native→callback translation, libc/kernel clock disagreement, chunk/DMA ownership, void audio return ABI, geometry callback corruption and supervisor/watchdog distinctions. Check history for the UART-redirection negative result, map/menu workload control, render-disabled experiment and corrected timestamp parser.
 
 Maintain confidence boundaries: observed on-device, exact binary analysis, local fixture/QEMU, supported inference, and unknown are different. The latest observation does not erase a working baseline; a successful build does not finish a physical test.
+
+Routine observation shares the single CPU and storage scheduling budget. The
+1.16 cold fault overlaps a300ms diagnostic checkpoint despite no global sync.
+Current1.17 keeps routine inventory and SD copies outside child lifetime; native
+fault persistence remains. Preserve RAM-only progress loss as an explicit
+poweroff limit rather than silently calling an old report current.

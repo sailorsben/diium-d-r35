@@ -271,3 +271,19 @@ and last-written byte. Do not collapse changing raster colors. The1.16 guarded
 patch and extracted stock-code fixture qualify this distinction; physical CPU
 gain remains separate from the217–223 to4–10 raster-job census. See
 [snes-mvp-1.16](snes-mvp-1.16.md).
+
+## Diagnostics share the scheduling budget
+
+The1.16 cold failure overlaps the wrapper first platform/card checkpoint,
+11.27–11.57s uptime, while main CPU stays near9ms and wall stretches to38.7ms.
+The retry runs31,601 complete frames near60 calls/sec. A removed global sync
+does not make SD copies or repeated `/proc`/helper discovery free. The overlap
+is a strong scheduling suspect, not an independently proved causal chain.
+
+1.17 captures/flushes static inventory before the child and copies final RAM
+progress after its exit. No routine live wrapper monitor exists. Actual shell
+fixtures must watch writes through the child's lifetime and reject old behavior.
+Keep native fault persistence and explicit state/SRAM save points. Whole-device
+poweroff may lose routine RAM progress; do not read a wrapper-start marker as a
+fresh gameplay checkpoint. See [return](snes-mvp-1.16-return.md) and
+[implementation](snes-mvp-1.17.md).

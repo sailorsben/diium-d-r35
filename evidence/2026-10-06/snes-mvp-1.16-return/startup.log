@@ -1,0 +1,131 @@
+SNES MVP 1.16 native PCM startup wrapper pid=477
+splash handoff begin active_pids=446  stop=/tmp/vrtemu.log ack=/tmp/displogo.log
+splash handoff complete active_pids=none release_ack=yes waited=1s
+child pid=493 startup deadline=20s
+8.280 program entered pid=493
+8.283 clock sources kernel_monotonic_ns=8283792000 libc_monotonic_ns=34867860752 kernel_boottime_ns=8283826000; using kernel clock and relative waits
+8.285 platform heartbeat attach enter
+8.286 platform heartbeat attached key=1234 bytes=460 budget=60 counter=1
+8.288 GPIO open enter
+8.289 GPIO input attribute pin=0x200
+8.291 GPIO input attribute pin=0x201
+8.292 GPIO input attribute pin=0x202
+8.293 GPIO input attribute pin=0x203
+8.295 GPIO input attribute pin=0x204
+8.296 GPIO input attribute pin=0x205
+8.297 GPIO input attribute pin=0x30b
+8.299 GPIO input attribute pin=0x30d
+8.300 GPIO input attribute pin=0x30f
+8.301 GPIO input attribute pin=0x30c
+8.303 GPIO input attribute pin=0x30a
+8.304 GPIO input attribute pin=0x208
+8.305 GPIO input attribute pin=0x207
+8.307 GPIO input attribute pin=0x30e
+8.308 GPIO input attribute pin=0x206
+8.310 GPIO vendor attribute pin=0x20f value=0
+8.311 GPIO vendor attribute pin=0x20b value=0
+8.312 GPIO vendor attribute pin=0x20e value=1
+8.314 GPIO vendor attribute pin=0x209 value=1
+8.315 GPIO vendor attribute pin=0x20a value=1
+8.316 chunkmem open enter
+8.318 chunk allocation enter bytes=1966080
+8.323 chunk allocation complete
+8.324 display driver load enter path=/usr/retro/driver.so
+8.330 display driver symbols resolved; HDMI detection enter
+8.332 HDMI detection complete output=0; InitVFB enter
+8.403 InitVFB returned display=0x39650
+8.405 display size=640x480
+8.406 LCD backlight write enter value=1
+8.408 display worker create enter
+8.409 display worker created; mixer open enter
+8.411 mixer open complete
+8.413 board open complete
+8.414 library scan enter
+8.423 library scan complete games=3
+8.427 first library submit
+8.432 first DrawVFB enter size=640x480
+8.434 first library wait for display
+8.438 first DrawVFB returned; FlipVFB enter
+8.453 first FlipVFB returned
+8.454 first library display complete; input baseline enter
+8.456 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+8.457 input baseline held_mask=0x00000000
+8.459 READY: first library frame completed; controls initialized
+9.160 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+9.320 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+9.590 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+9.592 library game launch requested keys=0x00100 selected=1
+9.619 input baseline held_mask=0x00000100
+11.566 library scan enter
+11.568 library scan complete games=3
+11.572 first library submit
+11.584 first library wait for display
+11.601 first library display complete; input baseline enter
+11.603 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+11.604 input baseline held_mask=0x00000000
+11.606 READY: first library frame completed; controls initialized
+15.820 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+15.822 library game launch requested keys=0x00100 selected=1
+15.849 input baseline held_mask=0x00000100
+20.603 input GPIO low_index_bits=0x4000 keys=0x10000 read_error_bits=0x0000
+20.605 input baseline held_mask=0x00010000
+20.650 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+21.190 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+21.310 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+21.420 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+21.530 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+21.630 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+21.632 input baseline held_mask=0x00000100
+21.684 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+21.686 input baseline held_mask=0x00000100
+21.720 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+22.090 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+22.092 input baseline held_mask=0x00000100
+536.045 input GPIO low_index_bits=0x4000 keys=0x10000 read_error_bits=0x0000
+536.046 input baseline held_mask=0x00010000
+536.150 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+536.860 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+536.970 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+537.090 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+537.210 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+538.810 input GPIO low_index_bits=0x0001 keys=0x00010 read_error_bits=0x0000
+538.890 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+539.060 input GPIO low_index_bits=0x0001 keys=0x00010 read_error_bits=0x0000
+539.150 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+539.350 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+539.352 input baseline held_mask=0x00000100
+540.256 input GPIO low_index_bits=0x4000 keys=0x10000 read_error_bits=0x0000
+540.257 input baseline held_mask=0x00010000
+540.330 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+541.020 input GPIO low_index_bits=0x4000 keys=0x10000 read_error_bits=0x0000
+541.022 input baseline held_mask=0x00010000
+549.179 input GPIO low_index_bits=0x4000 keys=0x10000 read_error_bits=0x0000
+549.181 input baseline held_mask=0x00010000
+549.240 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+549.870 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+550.010 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+550.120 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+550.210 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+550.310 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+550.410 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+550.560 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+550.562 input baseline held_mask=0x00000100
+550.611 library scan enter
+550.613 library scan complete games=3
+550.616 first library submit
+550.621 first library wait for display
+550.640 first library display complete; input baseline enter
+550.642 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+550.643 input baseline held_mask=0x00000100
+550.645 READY: first library frame completed; controls initialized
+550.690 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+553.680 input GPIO low_index_bits=0x0020 keys=0x00001 read_error_bits=0x0000
+553.682 library exit requested by B keys=0x00001
+553.683 main exit requested rc=0 quitting=1
+553.685 board close enter
+553.686 display worker join enter busy=0
+553.688 display worker joined
+553.689 FreeVFB enter
+553.704 FreeVFB returned
+553.706 board close complete
+process exited status=0 ready=yes

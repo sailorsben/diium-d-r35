@@ -7,7 +7,7 @@ import time
 import threading
 import shutil
 
-source=Path(__file__).with_name('launch.sh')
+source=Path(os.environ.get('D35_WRAPPER_UNDER_TEST',str(Path(__file__).with_name('launch.sh')))).resolve()
 root=Path(sys.argv[1]).resolve()
 root.mkdir(parents=True,exist_ok=True)
 # Reproduce returned firmware: both head and sed are absent.
@@ -37,17 +37,33 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         (base/'last-progress.txt').unlink(missing_ok=True)
     proc=base/'proc'; proc.mkdir(exist_ok=True)
     stop=base/'splash.stop'; ack=base/'splash.ack'; started=base/'child-started'
+    (base/'child-exited').unlink(missing_ok=True)
     for path in (stop,ack,started):
         if path.exists(): path.unlink()
     worker=None
     observed=[]
+    violations=[]
     if name=='ready-session':
         def observe_before_exit():
-            deadline=time.monotonic()+4
+            deadline=time.monotonic()+8
+            files=['startup.log','runtime-platform.txt','runtime-platform-latest.txt',
+                   'kernel-tail.txt','diagnostic-flush.log','last-progress.txt',
+                   'last-progress.previous','last-run.log']
+            def fingerprint():
+                return {n:((base/n).stat().st_mtime_ns,(base/n).read_bytes())
+                        if (base/n).exists() else None for n in files}
+            initial=None
             while time.monotonic()<deadline:
-                progress=base/'last-progress.txt'
-                if progress.exists() and 'fixture-running-37' in progress.read_text():
-                    observed.append((base/'sync-calls').read_text().splitlines());return
+                if (base/'child-exited').exists():return
+                if started.exists():
+                    if initial is None:
+                        initial=fingerprint()
+                        observed.append((base/'sync-calls').read_text().splitlines())
+                    elif fingerprint()!=initial:
+                        violations.append('wrapper diagnostic card write during ready child')
+                        return
+                    if (base/'sync-calls').read_text().splitlines()!=observed[0]:
+                        violations.append('global sync during ready child');return
                 time.sleep(.03)
         observer=threading.Thread(target=observe_before_exit)
         observer.start()
@@ -111,12 +127,14 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     if name=='ready-session':
         elapsed=time.monotonic()-start
         observer.join(timeout=1)
-        assert observed,'Progress was not persisted while the child was still alive'
-        assert observed==[['sync','sync']], 'A global sync occurred during gameplay'
-        assert (base/'sync-calls').read_text().splitlines()==['sync','sync','sync']
-        assert 5<=elapsed<9, f'Cancelled monitor left a sleeper or limited ready session: {elapsed}'
+        assert observed,'Ready child lifetime was not observed'
+        assert not violations,violations
+        assert observed==[['sync','sync','sync']], 'Pre-child diagnostics were not flushed before launch'
+        assert (base/'sync-calls').read_text().splitlines()==['sync','sync','sync','sync']
+        assert 5<=elapsed<9, f'Wrapper limited ready session: {elapsed}'
         runtime=(base/'runtime-platform.txt').read_text()
-        assert 'Runtime snapshot child=' in runtime and 'Task ' in runtime,runtime
+        assert 'phase=pre_child live_child=no' in runtime and 'phase=post_child live_child=no' in runtime,runtime
+        assert 'Runtime snapshot child=' not in runtime,runtime
         assert 'stale previous snapshot' not in runtime
         assert '\ncpu ' in runtime and 'MemTotal:' in runtime,runtime
         assert 'head: not found' not in runtime and 'sed: not found' not in runtime
@@ -124,9 +142,9 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'fixture-running-37' in (base/'last-progress.txt').read_text()
         assert (base/'last-pcm-fault.txt').read_text()=='fixture fresh PCM fault\n'
         assert (base/'runtime-platform-latest.txt').stat().st_size>0
-        assert 'end_after_copy_uptime=' in (base/'diagnostic-flush.log').read_text()
-        assert 'global_sync=0' in (base/'diagnostic-flush.log').read_text()
-        print('PASS: diagnostic progress persisted before child exit; one platform capture and no gameplay global sync')
+        assert 'background_monitor=none' in (base/'diagnostic-flush.log').read_text()
+        assert 'final_copies=after_child_exit' in (base/'diagnostic-flush.log').read_text()
+        print('PASS: actual wrapper performs zero diagnostic card writes or global sync during ready child; final RAM progress persists after exit')
         print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head and sed')
         print('PASS: runtime errors and kernel snapshot captured with tail absent')
         print('PASS: fresh PCM fault history persisted before exit; stale history removed')
@@ -135,7 +153,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
 run('early-error','printf "fixture early error\\n"; exit 7',7)
 run('immediate-pcm-fault','test "$D35_MVP_PCM_TRACE_FILE" = "$D35_MVP_BASE/last-pcm-fault.txt" || exit 99; : > "$D35_MVP_READY_FILE"; printf "immediate fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; printf "failed persistence evidence\\n" > "$D35_MVP_PCM_TRACE_FILE.tmp"; exit 7',7,ready=True)
 run('stalled','printf "fixture stall\\n"; exec sleep 60',143)
-run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; printf "fixture fresh PCM fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; sleep 5; exit 0',0,ready=True)
+run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; printf "fixture fresh PCM fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; sleep 5; : > "$D35_MVP_BASE/child-exited"; exit 0',0,ready=True)
 run('unarmed','exit 99',0,armed=False)
 run('splash-handoff',': > "$D35_MVP_READY_FILE"; exit 0',0,ready=True,splash='exits')
 run('splash-stalled','exit 99',1,splash='stuck')

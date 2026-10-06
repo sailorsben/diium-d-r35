@@ -1,5 +1,36 @@
 # Changelog
 
+## SNES MVP1.17 isolates diagnostics after sustained1.16 result — 2026-10-06
+
+Archive the1.16 return read-only: exact release,48 MVP/49 lab files,19 prior
+game-progress files unchanged and two updated SRAM files safely archived.
+Successful retry delivers31,601 full video callbacks over526.812 active seconds
+(59.985 calls/sec), zero held drawings/duplicate callbacks/audio-write errors,
+one successful snapshot load, four pauses and clean save/exit. User reports
+significant improvement. Both wind sound and blowing snow seem missing in
+opening outdoor Narshe gameplay; correctness remains unresolved.
+[Return and limits](docs/snes-mvp-1.16-return.md).
+
+First-attempt70-call failure survives under its unique1.16 failure bundle.
+Main CPU stays roughly9ms while wall cost reaches18–39ms. Wrapper discovery
+and SD copies run11.27–11.57s uptime, overlapping reserve collapse and11.470791s
+fault. Strong scheduling-interference hypothesis, not yet proven causal.
+Move routine inventory/sync before child launch and final log copies after
+child exit; remove the live background monitor entirely. Fault traces and
+failed-session reports remain durable, while abrupt poweroff can lose RAM-only
+routine progress. Keep the1.16 core and sound/render/admission policies exact.
+
+Actual wrapper fixture rejects old live diagnostic writes and qualifies new
+isolation, final progress, fault persistence and splash/ready/watchdog contracts.
+ARM runner audio/state/save/display contracts pass.12,000 full-core frames
+match clean pixels, native PCM, geometry and periodic state. Add private offline
+scene-capture source; game pixels/PCM and all private inputs remain local.
+
+Installed and independently read back at13:21 UTC: all26 original private and49
+lab files, stock/hook, original wrapper and snapshots preserved. Game one-shot
+armed; lab unarmed. Owned release and curated qualification are immutable.
+[Implementation](docs/snes-mvp-1.17.md), [next test](docs/snes-mvp-1.17-test.txt).
+
 ## SNES MVP1.16 fixes redundant fixed-color raster invalidation — 2026-10-06
 
 Archive the1.15 return read-only: exact payload,45 MVP/49 lab files, all21

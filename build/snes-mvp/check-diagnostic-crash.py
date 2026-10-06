@@ -25,7 +25,7 @@ with (out/'runtime.log').open('wb') as log:
                 if int(fields.get('runs','0'))>=30:break
             time.sleep(.03)
         assert int(fields.get('runs','0'))>=30,'No fresh running checkpoint'
-        assert fields['build_version']=='1.16' and fields['core_crc32']==f'{zlib.crc32((root/"build/plus-a7-out/plus-a7.so").read_bytes())&0xffffffff:08x}'
+        assert fields['build_version']=='1.17' and fields['core_crc32']==f'{zlib.crc32((root/"build/plus-a7-out/plus-a7.so").read_bytes())&0xffffffff:08x}'
         assert fields['session_id'] and fields['phase']=='running'
         assert fields['held']=='0' and int(fields['video_submitted'])==int(fields['runs'])
         assert int(fields['audio_worker_cpu_ns'])>0,'Live audio CPU unavailable'
@@ -33,4 +33,4 @@ with (out/'runtime.log').open('wb') as log:
     finally:
         proc.kill();proc.wait(timeout=5)
 assert report.read_bytes()==old and progress.read_text().find('session_id=')>=0
-print('PASS: real ARM runner killed before cleanup retains fresh 1.16/core/session checkpoint and live worker CPU; old 1.5 report stays historical')
+print('PASS: real ARM runner killed before cleanup retains fresh 1.17/core/session checkpoint and live worker CPU; old 1.5 report stays historical')
