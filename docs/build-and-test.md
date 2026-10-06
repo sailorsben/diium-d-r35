@@ -196,3 +196,13 @@ the error, and records `trace_errno`, `trace_synced` and `trace_bytes`. Do not
 claim a successful capture from a missing file or a wrapper fixture. The 1.12
 physical return disproved that release's RAM-plus-periodic-copy persistence
 assumption. Firmware-side kernel access/durability still require the return.
+
+## 1.13 returned; current card is unarmed
+
+The [1.13 return](snes-mvp-1.13-return.md) is archived read-only with all20
+progress files retained. Do not re-arm unchanged1.13 as a playback fix. Its
+capture works; the [budget review](execution-budget-review.md) records sustained
+production shortfall and the next proposal. `build/analyze-pcm-flight.py <trace>`
+reads an archived history without device access or mutations. Its rates use
+matched batch anchors; it does not infer certified playable sound from divergent
+pointers or promote batch cadence to a per-call CPU profile.

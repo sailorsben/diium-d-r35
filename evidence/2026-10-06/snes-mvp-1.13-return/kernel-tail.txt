@@ -1,0 +1,2 @@
+Bounded first 128 kernel lines (no tail dependency)
+/usr/retro/snes-mvp/launch.sh: line 190: dmesg: not found

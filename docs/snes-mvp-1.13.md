@@ -56,3 +56,10 @@ Installation and independent readback complete at 2026-10-06 04:42 UTC
 All 22 current private files, original snapshots, current SRAM and backup,
 49 lab files and stock/hook/core/older wrapper match their protected hashes.
 Game one-shot is armed; lab remains unarmed. Physical result is pending.
+
+## Physical return
+
+The [1.13 return](snes-mvp-1.13-return.md) proves durable PCM capture and kernel
+READ_ALL, but still fails audio. Reserve erosion precedes period-sized pointer
+increments and SETUP. The card is consumed/unarmed. No new build is installed;
+the [budget review](execution-budget-review.md) defines the next proposal.

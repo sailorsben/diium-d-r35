@@ -181,3 +181,20 @@ flight history. 1.13 writes that first-fault transaction/kernel capture directly
 to the card with file/directory sync before error return and explicit capture
 status. Core, settings and admission remain unchanged; no driver fix is claimed.
 See [latest return](snes-mvp-1.12-return.md) and [capture](snes-mvp-1.13.md).
+
+## 1.13 return changes the working failure model
+
+[1.13](snes-mvp-1.13-return.md) preserves the fault history and kernel READ_ALL.
+It fails after 26/230 calls; the second attempt loads/resumes a snapshot. The
+retained phase produces about 37k accepted frames/sec against negotiated44.1k,
+then application pointer diverges by three128-frame increments and SETUP.
+Reserve erosion precedes that divergence: starvation is the leading trigger,
+but the exact vendor response and audio contents during it remain unknown.
+Display reservation is only1.066ms over230 calls. All20 private progress files
+and stock/hook/core hashes match. Card unarmed, zero writes or new build.
+
+The [execution-budget review](execution-budget-review.md) supersedes a sequence
+of further small diagnostic retries: attribute the expensive phase, qualify a
+whole-program A7 build and optimize the actual core/frontend work. More initial
+silence or automatic restart cannot repair sustained underproduction. Existing
+fixtures establish lifecycle/correctness, not the device's repeated slow phase.

@@ -1,0 +1,130 @@
+{
+  "version": "1.13",
+  "mvp_files": 44,
+  "lab_files": 49,
+  "read_only_archive_verified": true,
+  "one_shots_consumed": true,
+  "exact_release_verified": true,
+  "prior_game_progress_files_unchanged": 20,
+  "updated_sram_files_archived": 0,
+  "updated_game_progress_paths": [],
+  "snapshots_unchanged": true,
+  "stock_hook_core_unchanged": true,
+  "reports": [
+    {
+      "runs": 26,
+      "active_calls_per_second": 51.76096785046654,
+      "mean_core_wall_ms": 14.941538461538462,
+      "mean_core_cpu_ms": 9.235846153846154,
+      "max_core_wall_ms": 43.33,
+      "snapshot_load_successes": 0,
+      "pauses": 0,
+      "display_reserve_wait_ms": 0.114,
+      "software_high": 2823,
+      "partial_writes": 0,
+      "again": 0,
+      "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=21500 hw=21375 prime_written=2823 start_calls=0 epoch=1 xfer=21116 trace_errno=0 trace_synced=1 trace_bytes=27103"
+    },
+    {
+      "runs": 230,
+      "active_calls_per_second": 59.02569619525495,
+      "mean_core_wall_ms": 10.199,
+      "mean_core_cpu_ms": 9.620182608695652,
+      "max_core_wall_ms": 30.669,
+      "snapshot_load_successes": 1,
+      "pauses": 1,
+      "display_reserve_wait_ms": 1.066,
+      "software_high": 2823,
+      "partial_writes": 0,
+      "again": 0,
+      "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=15716 hw=15615 prime_written=2823 start_calls=0 epoch=2 xfer=15332 trace_errno=0 trace_synced=1 trace_bytes=27073"
+    }
+  ],
+  "flight_analysis": {
+    "trace_version": "D35 PCM fault history 1.13",
+    "retained_operations": 96,
+    "epoch": 2,
+    "accepted_pointer_difference_first_sample": 0,
+    "application_pointer_difference_changes": [
+      {
+        "seq": 2530,
+        "kernel_ns": 18562026000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 198,
+        "accepted_minus_reported_hw": 70
+      },
+      {
+        "seq": 2539,
+        "kernel_ns": 18581545000,
+        "delta_change": 128,
+        "appl_minus_accepted": 256,
+        "state": 3,
+        "reported_queued": 166,
+        "accepted_minus_reported_hw": -90
+      },
+      {
+        "seq": 2558,
+        "kernel_ns": 18621031000,
+        "delta_change": 128,
+        "appl_minus_accepted": 384,
+        "state": 1,
+        "reported_queued": 0,
+        "accepted_minus_reported_hw": -283
+      }
+    ],
+    "matched_large_batch_interval": {
+      "first_seq": 2477,
+      "last_seq": 2549,
+      "anchor_count": 9,
+      "elapsed_ms": 159.04399999999998,
+      "accepted_frames": 5888,
+      "accepted_frames_per_second": 37021.20168003823,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.16051696870661614,
+      "mean_large_batch_interval_ms": 19.880499999999998,
+      "min_large_batch_interval_ms": 19.516,
+      "max_large_batch_interval_ms": 21.503,
+      "reported_hw_advance": 6912,
+      "accepted_minus_hw_change": -1024,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+    },
+    "last_successful_observation": {
+      "seq": 2556,
+      "ns": 18603356000,
+      "op": "SYNC_OK",
+      "arg": 7,
+      "result": 0,
+      "state": 3,
+      "queued": 741,
+      "appl": 15588,
+      "hw": 14847,
+      "epoch": 2,
+      "xfer": 15332
+    },
+    "final_observation": {
+      "seq": 2558,
+      "ns": 18621031000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 15716,
+      "hw": 15615,
+      "epoch": 2,
+      "xfer": 15332
+    },
+    "kernel_read_result": {
+      "bytes": 16335,
+      "errno": 0
+    },
+    "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+  },
+  "capture_result": "Both final errors report file/directory sync success. Retained trace is the second fault; retry replaced first history.",
+  "inference": "Repeated production shortfall drains reserve before period-sized application-pointer changes and SETUP; starvation is the leading trigger.",
+  "unresolved": "Exact vendor pointer mutation/stop path, sound contents during divergence, per-subsystem and per-phase CPU costs, previous whole-device poweroffs.",
+  "physical_crash_boundary": "Logs show two controlled audio failures, retry, successful snapshot and library cleanup; user says crashed again; no new poweroff independently established.",
+  "next_action": "Review and correct whole execution budget; no new executable installation, card writes or re-arm in this review."
+}

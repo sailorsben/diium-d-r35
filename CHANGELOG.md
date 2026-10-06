@@ -1,5 +1,29 @@
 # Changelog
 
+## MVP1.13 return and execution-budget review — 2026-10-06
+
+Archive 44 MVP/49 lab files read-only, exact release, consumed markers and
+unchanged stock/hook/core plus all 20 private progress files. Two fresh reports
+fail after 26/230 calls; retry loads the snapshot successfully. Both report
+successful synchronized capture. The second 96-operation history survives,
+including 16,335 kernel READ_ALL bytes; retry replaced the first history.
+
+The retained interval accepts 5,888 frames in 159.044ms (37,021/sec), while
+reported hardware advances 6,912. Nine large batches average 19.8805ms apart.
+Reserve erodes before application pointer diverges by 128, then 256, then 384
+frames and SETUP. Starvation is the leading trigger; exact vendor mutation/
+stop path remains unknown. No full software queue, partial transfers or EAGAIN
+occur. Whole-session averages do not qualify the expensive phase. Display
+reservation totals 1.066ms across 230 calls, so queue admission is not the
+observed multi-ms loss per frame.
+
+Add a read-only flight-history analyzer and [execution-budget proposal](docs/execution-budget-review.md):
+phase attribution on the expensive state, whole-program A7 compilation,
+targeted custom core paths and cheaper frontend servicing. Buffering/isolated
+stall fixtures cannot prove sustained production. No new executable, card
+writes or re-arm; prior whole-device poweroffs remain unexplained. See
+[return](docs/snes-mvp-1.13-return.md).
+
 ## SNES MVP1.13 durable PCM fault capture — 2026-10-05
 
 Archive the consumed 1.12 return: exact payload, 43 MVP/49 lab files, stock/hook/

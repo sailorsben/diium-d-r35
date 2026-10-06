@@ -1,0 +1,344 @@
+D35 PCM fault history 1.13
+child_pid=493
+failure=SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=15716 hw=15615 prime_written=2823 start_calls=0 epoch=2 xfer=15332
+entries_total=2560
+Each sample is after the named operation; WRITE_OK retains the preceding pointer observation.
+seq=2464 ns=18422510000 op=SYNC_OK arg=7 result=0 state=3 queued=1062 appl=7973 hw=6911 epoch=2 xfer=7973
+seq=2465 ns=18422536000 op=WRITE_OK arg=219 result=219 state=3 queued=1062 appl=7973 hw=6911 epoch=2 xfer=8192
+seq=2466 ns=18422546000 op=SYNC_OK arg=7 result=0 state=3 queued=1281 appl=8192 hw=6911 epoch=2 xfer=8192
+seq=2467 ns=18422554000 op=SYNC_OK arg=7 result=0 state=3 queued=1281 appl=8192 hw=6911 epoch=2 xfer=8192
+seq=2468 ns=18422567000 op=WRITE_OK arg=487 result=487 state=3 queued=1281 appl=8192 hw=6911 epoch=2 xfer=8679
+seq=2469 ns=18422574000 op=SYNC_OK arg=7 result=0 state=3 queued=1768 appl=8679 hw=6911 epoch=2 xfer=8679
+seq=2470 ns=18422581000 op=SYNC_OK arg=7 result=0 state=3 queued=1768 appl=8679 hw=6911 epoch=2 xfer=8679
+seq=2471 ns=18423225000 op=SYNC_OK arg=7 result=0 state=3 queued=1768 appl=8679 hw=6911 epoch=2 xfer=8679
+seq=2472 ns=18423242000 op=WRITE_OK arg=30 result=30 state=3 queued=1768 appl=8679 hw=6911 epoch=2 xfer=8709
+seq=2473 ns=18423252000 op=SYNC_OK arg=7 result=0 state=3 queued=1798 appl=8709 hw=6911 epoch=2 xfer=8709
+seq=2474 ns=18423260000 op=SYNC_OK arg=7 result=0 state=3 queued=1798 appl=8709 hw=6911 epoch=2 xfer=8709
+seq=2475 ns=18424707000 op=SYNC_OK arg=7 result=0 state=3 queued=1670 appl=8709 hw=7039 epoch=2 xfer=8709
+seq=2476 ns=18442145000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=8709 hw=7807 epoch=2 xfer=8709
+seq=2477 ns=18442178000 op=WRITE_OK arg=705 result=705 state=3 queued=902 appl=8709 hw=7807 epoch=2 xfer=9414
+seq=2478 ns=18442188000 op=SYNC_OK arg=7 result=0 state=3 queued=1607 appl=9414 hw=7807 epoch=2 xfer=9414
+seq=2479 ns=18442196000 op=SYNC_OK arg=7 result=0 state=3 queued=1607 appl=9414 hw=7807 epoch=2 xfer=9414
+seq=2480 ns=18442864000 op=SYNC_OK arg=7 result=0 state=3 queued=1607 appl=9414 hw=7807 epoch=2 xfer=9414
+seq=2481 ns=18442881000 op=WRITE_OK arg=31 result=31 state=3 queued=1607 appl=9414 hw=7807 epoch=2 xfer=9445
+seq=2482 ns=18442891000 op=SYNC_OK arg=7 result=0 state=3 queued=1638 appl=9445 hw=7807 epoch=2 xfer=9445
+seq=2483 ns=18442898000 op=SYNC_OK arg=7 result=0 state=3 queued=1638 appl=9445 hw=7807 epoch=2 xfer=9445
+seq=2484 ns=18444298000 op=SYNC_OK arg=7 result=0 state=3 queued=1638 appl=9445 hw=7807 epoch=2 xfer=9445
+seq=2485 ns=18461792000 op=SYNC_OK arg=7 result=0 state=3 queued=870 appl=9445 hw=8575 epoch=2 xfer=9445
+seq=2486 ns=18461828000 op=WRITE_OK arg=705 result=705 state=3 queued=870 appl=9445 hw=8575 epoch=2 xfer=10150
+seq=2487 ns=18461839000 op=SYNC_OK arg=7 result=0 state=3 queued=1575 appl=10150 hw=8575 epoch=2 xfer=10150
+seq=2488 ns=18461846000 op=SYNC_OK arg=7 result=0 state=3 queued=1575 appl=10150 hw=8575 epoch=2 xfer=10150
+seq=2489 ns=18462510000 op=SYNC_OK arg=7 result=0 state=3 queued=1447 appl=10150 hw=8703 epoch=2 xfer=10150
+seq=2490 ns=18462526000 op=WRITE_OK arg=30 result=30 state=3 queued=1447 appl=10150 hw=8703 epoch=2 xfer=10180
+seq=2491 ns=18462536000 op=SYNC_OK arg=7 result=0 state=3 queued=1477 appl=10180 hw=8703 epoch=2 xfer=10180
+seq=2492 ns=18462543000 op=SYNC_OK arg=7 result=0 state=3 queued=1477 appl=10180 hw=8703 epoch=2 xfer=10180
+seq=2493 ns=18463925000 op=SYNC_OK arg=7 result=0 state=3 queued=1477 appl=10180 hw=8703 epoch=2 xfer=10180
+seq=2494 ns=18481423000 op=SYNC_OK arg=7 result=0 state=3 queued=709 appl=10180 hw=9471 epoch=2 xfer=10180
+seq=2495 ns=18481453000 op=WRITE_OK arg=706 result=706 state=3 queued=709 appl=10180 hw=9471 epoch=2 xfer=10886
+seq=2496 ns=18481463000 op=SYNC_OK arg=7 result=0 state=3 queued=1415 appl=10886 hw=9471 epoch=2 xfer=10886
+seq=2497 ns=18481471000 op=SYNC_OK arg=7 result=0 state=3 queued=1415 appl=10886 hw=9471 epoch=2 xfer=10886
+seq=2498 ns=18482108000 op=SYNC_OK arg=7 result=0 state=3 queued=1415 appl=10886 hw=9471 epoch=2 xfer=10886
+seq=2499 ns=18482125000 op=WRITE_OK arg=31 result=31 state=3 queued=1415 appl=10886 hw=9471 epoch=2 xfer=10917
+seq=2500 ns=18482134000 op=SYNC_OK arg=7 result=0 state=3 queued=1446 appl=10917 hw=9471 epoch=2 xfer=10917
+seq=2501 ns=18482141000 op=SYNC_OK arg=7 result=0 state=3 queued=1446 appl=10917 hw=9471 epoch=2 xfer=10917
+seq=2502 ns=18483569000 op=SYNC_OK arg=7 result=0 state=3 queued=1318 appl=10917 hw=9599 epoch=2 xfer=10917
+seq=2503 ns=18502923000 op=SYNC_OK arg=7 result=0 state=3 queued=422 appl=10917 hw=10495 epoch=2 xfer=10917
+seq=2504 ns=18502956000 op=WRITE_OK arg=704 result=704 state=3 queued=422 appl=10917 hw=10495 epoch=2 xfer=11621
+seq=2505 ns=18502967000 op=SYNC_OK arg=7 result=0 state=3 queued=1126 appl=11621 hw=10495 epoch=2 xfer=11621
+seq=2506 ns=18502975000 op=SYNC_OK arg=7 result=0 state=3 queued=1126 appl=11621 hw=10495 epoch=2 xfer=11621
+seq=2507 ns=18503614000 op=SYNC_OK arg=7 result=0 state=3 queued=1126 appl=11621 hw=10495 epoch=2 xfer=11621
+seq=2508 ns=18503630000 op=WRITE_OK arg=32 result=32 state=3 queued=1126 appl=11621 hw=10495 epoch=2 xfer=11653
+seq=2509 ns=18503639000 op=SYNC_OK arg=7 result=0 state=3 queued=1158 appl=11653 hw=10495 epoch=2 xfer=11653
+seq=2510 ns=18503647000 op=SYNC_OK arg=7 result=0 state=3 queued=1158 appl=11653 hw=10495 epoch=2 xfer=11653
+seq=2511 ns=18505035000 op=SYNC_OK arg=7 result=0 state=3 queued=1158 appl=11653 hw=10495 epoch=2 xfer=11653
+seq=2512 ns=18522461000 op=SYNC_OK arg=7 result=0 state=3 queued=390 appl=11653 hw=11263 epoch=2 xfer=11653
+seq=2513 ns=18522496000 op=WRITE_OK arg=705 result=705 state=3 queued=390 appl=11653 hw=11263 epoch=2 xfer=12358
+seq=2514 ns=18522507000 op=SYNC_OK arg=7 result=0 state=3 queued=1095 appl=12358 hw=11263 epoch=2 xfer=12358
+seq=2515 ns=18522515000 op=SYNC_OK arg=7 result=0 state=3 queued=1095 appl=12358 hw=11263 epoch=2 xfer=12358
+seq=2516 ns=18523215000 op=SYNC_OK arg=7 result=0 state=3 queued=967 appl=12358 hw=11391 epoch=2 xfer=12358
+seq=2517 ns=18523233000 op=WRITE_OK arg=30 result=30 state=3 queued=967 appl=12358 hw=11391 epoch=2 xfer=12388
+seq=2518 ns=18523242000 op=SYNC_OK arg=7 result=0 state=3 queued=997 appl=12388 hw=11391 epoch=2 xfer=12388
+seq=2519 ns=18523249000 op=SYNC_OK arg=7 result=0 state=3 queued=997 appl=12388 hw=11391 epoch=2 xfer=12388
+seq=2520 ns=18524648000 op=SYNC_OK arg=7 result=0 state=3 queued=997 appl=12388 hw=11391 epoch=2 xfer=12388
+seq=2521 ns=18542214000 op=SYNC_OK arg=7 result=0 state=3 queued=229 appl=12388 hw=12159 epoch=2 xfer=12388
+seq=2522 ns=18542245000 op=WRITE_OK arg=706 result=706 state=3 queued=229 appl=12388 hw=12159 epoch=2 xfer=13094
+seq=2523 ns=18542256000 op=SYNC_OK arg=7 result=0 state=3 queued=935 appl=13094 hw=12159 epoch=2 xfer=13094
+seq=2524 ns=18542263000 op=SYNC_OK arg=7 result=0 state=3 queued=935 appl=13094 hw=12159 epoch=2 xfer=13094
+seq=2525 ns=18542909000 op=SYNC_OK arg=7 result=0 state=3 queued=935 appl=13094 hw=12159 epoch=2 xfer=13094
+seq=2526 ns=18542928000 op=WRITE_OK arg=31 result=31 state=3 queued=935 appl=13094 hw=12159 epoch=2 xfer=13125
+seq=2527 ns=18542938000 op=SYNC_OK arg=7 result=0 state=3 queued=966 appl=13125 hw=12159 epoch=2 xfer=13125
+seq=2528 ns=18542945000 op=SYNC_OK arg=7 result=0 state=3 queued=966 appl=13125 hw=12159 epoch=2 xfer=13125
+seq=2529 ns=18544379000 op=SYNC_OK arg=7 result=0 state=3 queued=838 appl=13125 hw=12287 epoch=2 xfer=13125
+seq=2530 ns=18562026000 op=SYNC_OK arg=7 result=0 state=3 queued=198 appl=13253 hw=13055 epoch=2 xfer=13125
+seq=2531 ns=18562059000 op=WRITE_OK arg=704 result=704 state=3 queued=198 appl=13253 hw=13055 epoch=2 xfer=13829
+seq=2532 ns=18562071000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=13957 hw=13055 epoch=2 xfer=13829
+seq=2533 ns=18562078000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=13957 hw=13055 epoch=2 xfer=13829
+seq=2534 ns=18562712000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=13957 hw=13055 epoch=2 xfer=13829
+seq=2535 ns=18562728000 op=WRITE_OK arg=32 result=32 state=3 queued=902 appl=13957 hw=13055 epoch=2 xfer=13861
+seq=2536 ns=18562738000 op=SYNC_OK arg=7 result=0 state=3 queued=934 appl=13989 hw=13055 epoch=2 xfer=13861
+seq=2537 ns=18562745000 op=SYNC_OK arg=7 result=0 state=3 queued=934 appl=13989 hw=13055 epoch=2 xfer=13861
+seq=2538 ns=18564193000 op=SYNC_OK arg=7 result=0 state=3 queued=806 appl=13989 hw=13183 epoch=2 xfer=13861
+seq=2539 ns=18581545000 op=SYNC_OK arg=7 result=0 state=3 queued=166 appl=14117 hw=13951 epoch=2 xfer=13861
+seq=2540 ns=18581575000 op=WRITE_OK arg=705 result=705 state=3 queued=166 appl=14117 hw=13951 epoch=2 xfer=14566
+seq=2541 ns=18581586000 op=SYNC_OK arg=7 result=0 state=3 queued=871 appl=14822 hw=13951 epoch=2 xfer=14566
+seq=2542 ns=18581593000 op=SYNC_OK arg=7 result=0 state=3 queued=871 appl=14822 hw=13951 epoch=2 xfer=14566
+seq=2543 ns=18582206000 op=SYNC_OK arg=7 result=0 state=3 queued=871 appl=14822 hw=13951 epoch=2 xfer=14566
+seq=2544 ns=18582222000 op=WRITE_OK arg=31 result=31 state=3 queued=871 appl=14822 hw=13951 epoch=2 xfer=14597
+seq=2545 ns=18582231000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=14853 hw=13951 epoch=2 xfer=14597
+seq=2546 ns=18582239000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=14853 hw=13951 epoch=2 xfer=14597
+seq=2547 ns=18583638000 op=SYNC_OK arg=7 result=0 state=3 queued=902 appl=14853 hw=13951 epoch=2 xfer=14597
+seq=2548 ns=18601190000 op=SYNC_OK arg=7 result=0 state=3 queued=134 appl=14853 hw=14719 epoch=2 xfer=14597
+seq=2549 ns=18601222000 op=WRITE_OK arg=705 result=705 state=3 queued=134 appl=14853 hw=14719 epoch=2 xfer=15302
+seq=2550 ns=18601233000 op=SYNC_OK arg=7 result=0 state=3 queued=839 appl=15558 hw=14719 epoch=2 xfer=15302
+seq=2551 ns=18601241000 op=SYNC_OK arg=7 result=0 state=3 queued=839 appl=15558 hw=14719 epoch=2 xfer=15302
+seq=2552 ns=18601928000 op=SYNC_OK arg=7 result=0 state=3 queued=711 appl=15558 hw=14847 epoch=2 xfer=15302
+seq=2553 ns=18601946000 op=WRITE_OK arg=30 result=30 state=3 queued=711 appl=15558 hw=14847 epoch=2 xfer=15332
+seq=2554 ns=18601955000 op=SYNC_OK arg=7 result=0 state=3 queued=741 appl=15588 hw=14847 epoch=2 xfer=15332
+seq=2555 ns=18601963000 op=SYNC_OK arg=7 result=0 state=3 queued=741 appl=15588 hw=14847 epoch=2 xfer=15332
+seq=2556 ns=18603356000 op=SYNC_OK arg=7 result=0 state=3 queued=741 appl=15588 hw=14847 epoch=2 xfer=15332
+seq=2557 ns=18621021000 op=SYNC_FAIL arg=7 result=-77 state=3 queued=741 appl=15588 hw=14847 epoch=2 xfer=15332
+seq=2558 ns=18621031000 op=SYNC_OK arg=6 result=0 state=1 queued=0 appl=15716 hw=15615 epoch=2 xfer=15332
+seq=2559 ns=18621069000 op=SYNC_OBSERVE arg=0 result=-77 state=1 queued=0 appl=15716 hw=15615 epoch=2 xfer=15332
+kernel_read_all_bytes=16335 errno=0
+<7>[   16.743708] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.743737] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.757151] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.757195] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.757256] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.757269] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.759238] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.759256] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.773824] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.773867] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.773929] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.773942] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.775888] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.775907] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.790865] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.790912] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.790977] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.790992] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.792946] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.792972] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.808258] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.808306] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.808376] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.808393] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.810354] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.810383] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.824421] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.824466] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.824530] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.824545] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.826499] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.826527] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.840450] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.840494] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.840553] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.840567] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.842514] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.842533] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.857491] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.857536] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.857602] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.857615] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.859577] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.859608] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.874879] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.874929] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.875000] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.875013] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.876977] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.877006] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.890408] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.890450] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.890510] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.890524] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.892472] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.892489] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.907081] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.907125] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.907187] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.907200] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.909163] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.909183] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.924286] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.924330] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.924394] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.924408] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.926369] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.926396] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.941588] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.941636] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.941705] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.941720] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.943676] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.943704] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.957038] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.957083] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.957144] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.957158] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.959124] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.959143] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.973706] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.973751] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.973811] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.973825] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.975769] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.975788] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.990946] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.990993] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.991056] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.991069] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   16.993029] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   16.993056] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.008283] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.008331] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.008398] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.008413] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.010376] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.010406] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.023661] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.023704] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.023763] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.023776] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.025719] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.025736] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.041257] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.041306] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.041375] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.041390] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.043366] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.043394] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.057559] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.057605] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.057669] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.057684] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.059670] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.059708] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.148832] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.148882] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.148954] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.148969] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.153366] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.153402] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.593611] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.593665] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.593739] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.593755] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.598168] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.598187] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.833625] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.833676] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.833750] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.833766] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   17.838176] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   17.838198] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.022750] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.022802] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.022877] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.022892] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.027289] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.027324] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.294942] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.294991] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.295063] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.295076] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.297076] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.297120] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.314752] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.314804] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.314877] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.314892] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.316900] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.316942] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.334513] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.334563] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.334631] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.334645] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.336652] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.336695] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.354038] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.354087] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.354158] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.354172] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.356172] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.356211] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.373642] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.373689] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.373753] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.373767] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.375765] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.375808] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.393260] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.393310] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.393380] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.393395] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.395405] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.395449] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.413072] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.413122] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.413192] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.413205] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.415212] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.415253] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.432713] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.432763] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.432835] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.432850] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.434856] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.434898] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.452359] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.452409] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.452481] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.452496] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.454494] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.454533] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.471992] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.472041] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.472109] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.472124] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.474125] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.474168] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.491635] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.491683] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.491751] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.491766] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.493776] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.493820] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.513092] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.513142] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.513212] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.513226] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.515225] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.515268] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.532705] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.532756] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.532824] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.532838] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.534834] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.534878] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.552448] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.552498] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.552567] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.552581] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.554588] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.554631] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.572253] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.572303] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.572371] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.572386] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.574391] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.574432] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.591698] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.591747] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.591819] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.591833] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.593840] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.593883] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.611420] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.611470] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.611540] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.611555] [gp_enable_clock][247] run, clock_name=[psca0_sram]
+<7>[   18.613551] [gp_enable_clock][247] run, clock_name=[psca0]
+<7>[   18.613594] [gp_enable_clock][247] run, clock_name=[psca0_sram]
