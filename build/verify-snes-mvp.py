@@ -17,10 +17,11 @@ paced=dict(line.split('=',1) for line in (out/'paced-smoke/last-session.txt').re
 assert paced['runs']=='30' and paced['error']=='' and paced['write_errors']=='0'
 assert paced['held']=='0' and paced['video_submitted']=='30'
 assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text()
-assert report['build_version']=='1.12' and report['phase']=='finished' and report['session_id']
+assert report['build_version']=='1.13' and report['phase']=='finished' and report['session_id']
 assert report['sink_rate']=='32040' and report['native_audio_frames']==report['resampled_enqueued_frames']
 assert 'kernel WRITEI auto-start without duplicate START' in (out/'native-pcm-check.log').read_text()
 assert 'runtime errors and kernel snapshot captured with tail absent' in (out/'wrapper-contract.log').read_text()
+assert 'PCM fault capture fsyncs file and directory before error return' in (out/'native-pcm-check.log').read_text()
 assert 'bounded PCM flight history writes only on fault' in (out/'native-pcm-check.log').read_text()
 assert 'fresh PCM fault history persisted before exit' in (out/'wrapper-contract.log').read_text()
 assert 'post-HWSYNC state/pointers' in (out/'native-pcm-check.log').read_text()
@@ -61,7 +62,7 @@ assert all((out/'preview'/name).stat().st_size>900000 for name in ('library.ppm'
 versions=[tuple(map(int,m)) for m in re.findall(r'GLIBC_(\d+)\.(\d+)',(out/'abi-versions.txt').read_text())]
 assert max(versions)<=(2,30)
 data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
-      'version':'1.12','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
+      'version':'1.13','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
       'qualified_snapshot_sha256':digest(root/'build/plus-a7-out/returned.state'),
       'a7_header_sha256':digest(root/'build/plus-a7-render.h'),
       'binary_sha256':digest(out/'snes-mvp'),'binary_bytes':(out/'snes-mvp').stat().st_size,
@@ -85,8 +86,8 @@ data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
       'native_lifecycle_contract':(out/'native-runner-check.log').read_text().strip(),
       'native_pcm_contract':(out/'native-pcm-check.log').read_text().strip(),
       'audio_owner_contract':(out/'audio-owner-check.log').read_text().strip(),
-      'hardware_audio_display_controls':'Earlier boot/input/state/save confirmed; 1.12 native PCM settings, audible continuity, sustained full rendering and stability pending physical test',
-      'hardware_qualified':False,'purpose':'diagnose SETUP transition and 384-frame pointer/count discrepancy; no claimed driver fix',
+      'hardware_audio_display_controls':'Earlier boot/input/state/save confirmed; 1.13 native PCM settings, audible continuity, sustained full rendering and stability pending physical test',
+      'hardware_qualified':False,'purpose':'persist fault history directly before library return; diagnose SETUP/pointer discrepancy; no claimed driver fix',
       'performance':'QEMU timings are not device performance evidence'}
 sources=list((root/'build/snes-mvp').glob('*.c'))+list((root/'build/snes-mvp').glob('*.h'))
 sources+=list((root/'build/snes-mvp').glob('*.py'))+list((root/'build/snes-mvp').glob('*.sh'))

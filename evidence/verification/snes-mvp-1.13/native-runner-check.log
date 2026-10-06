@@ -1,0 +1,6 @@
+native PCM protocol=2000e card=0 device=0 subdevice=0 id=
+native PCM rate=44100 period=128 buffer=3712 prime=2823 access=RW_INTERLEAVED start_threshold=2823 boundary=1946157056
+native PCM failure: WRITEI_FRAMES errno=77 state=1 queued=0 avail=3712 appl=11225 hw=8167 prime_written=2823 start_calls=0 epoch=1 xfer=11225 trace_errno=0 trace_synced=1 trace_bytes=26994
+native PCM protocol=2000e card=0 device=0 subdevice=0 id=
+native PCM rate=44100 period=128 buffer=3712 prime=2823 access=RW_INTERLEAVED start_threshold=2823 boundary=1946157056
+PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full drawings, zero lost/cleared PCM

@@ -1,0 +1,237 @@
+
+Runtime snapshot child=492 delay=2s
+11.38 5.15
+       key      shmid perms       size  cpid  lpid nattch   uid   gid  cuid  cgid      atime      dtime      ctime        rss       swap
+      1234          0   666        460   492   492      1     0     0     0     0         11          0         11       4096          0
+
+Task /proc/492/task/492
+Name:	snes-mvp
+Umask:	0022
+State:	R (running)
+Tgid:	492
+Ngid:	0
+Pid:	492
+PPid:	475
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	32
+Groups:	 
+NStgid:	492
+NSpid:	492
+NSpgid:	39
+NSsid:	39
+VmPeak:	   19680 kB
+VmSize:	   19680 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    7012 kB
+VmRSS:	    7012 kB
+RssAnon:	    5412 kB
+RssFile:	    1596 kB
+RssShmem:	       4 kB
+VmData:	   13724 kB
+VmStk:	     132 kB
+VmExe:	      76 kB
+VmLib:	    2092 kB
+VmPTE:	      20 kB
+VmSwap:	       0 kB
+CoreDumping:	0
+Threads:	2
+SigQ:	0/302
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000004
+SigCgt:	0000000180004002
+CapInh:	0000000000000000
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Speculation_Store_Bypass:	unknown
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+voluntary_ctxt_switches:	372
+nonvoluntary_ctxt_switches:	96
+0running
+492 (snes-mvp) R 475 39 39 0 -1 4194304 2362 0 3 0 32 11 0 0 20 0 2 0 835 20152320 1753 4294967295 65536 139432 3202014464 0 0 0 0 4 16386 0 0 0 17 0 0 0 0 0 0 147200 148464 204800 3202014736 3202014830 3202014830 3202015199 0
+
+Task /proc/492/task/494
+Name:	snes-mvp
+Umask:	0022
+State:	S (sleeping)
+Tgid:	492
+Ngid:	0
+Pid:	494
+PPid:	475
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	32
+Groups:	 
+NStgid:	492
+NSpid:	494
+NSpgid:	39
+NSsid:	39
+VmPeak:	   19680 kB
+VmSize:	   19680 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    7076 kB
+VmRSS:	    7076 kB
+RssAnon:	    5476 kB
+RssFile:	    1596 kB
+RssShmem:	       4 kB
+VmData:	   13724 kB
+VmStk:	     132 kB
+VmExe:	      76 kB
+VmLib:	    2092 kB
+VmPTE:	      20 kB
+VmSwap:	       0 kB
+CoreDumping:	0
+Threads:	2
+SigQ:	0/302
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000004
+SigCgt:	0000000180004002
+CapInh:	0000000000000000
+CapPrm:	0000003fffffffff
+CapEff:	0000003fffffffff
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Speculation_Store_Bypass:	unknown
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+voluntary_ctxt_switches:	19
+nonvoluntary_ctxt_switches:	0
+futex_wait_queue_me0 0x2454c 0x80 0x0 0x0 0x2454c 0x24520 0xb699cda8 0xb6ec1998
+494 (snes-mvp) S 475 39 39 0 -1 4194368 0 0 0 0 0 0 0 0 20 0 2 0 850 20152320 1769 4294967295 65536 139432 3202014464 0 0 0 0 4 16386 1 0 0 -1 0 0 0 0 0 0 147200 148464 204800 3202014736 3202014830 3202014830 3202015199 0
+
+Kernel CPU/memory/interrupt samples
+cpu  184 0 418 494 19 0 3 0 0 0
+cpu0 184 0 418 494 19 0 3 0 0 0
+intr 174528 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1076 0 0 172728 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 56 0 0 0 468 0 197 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0
+ctxt 6426
+btime 3
+processes 499
+procs_running 3
+procs_blocked 0
+softirq 2687 0 1065 0 0 0 0 54 0 0 1568
+MemTotal:          43120 kB
+MemFree:           17556 kB
+MemAvailable:      19208 kB
+Buffers:             292 kB
+Cached:            12052 kB
+SwapCached:            0 kB
+Active:             6264 kB
+Inactive:           2556 kB
+Active(anon):       5956 kB
+Inactive(anon):        4 kB
+Active(file):        308 kB
+Inactive(file):     2552 kB
+Unevictable:        9480 kB
+Mlocked:               0 kB
+SwapTotal:        262140 kB
+SwapFree:         262140 kB
+Dirty:                16 kB
+Writeback:             0 kB
+AnonPages:          5956 kB
+Mapped:             2076 kB
+Shmem:                 4 kB
+Slab:               4188 kB
+SReclaimable:       1892 kB
+SUnreclaim:         2296 kB
+           CPU0       
+ 16:       1078     GIC-0  29 Level     arch_timer
+ 17:          0     GIC-0  30 Level     arch_timer
+ 19:     172728     GIC-0  69 Level     (null)
+ 21:          0     GIC-0  71 Level     gp_i2c0
+ 22:          0     GIC-0  72 Level     gp_i2c1
+ 23:          0     GIC-0  73 Level     gp_i2c2
+ 33:          0     GIC-0  85 Level     DMA_INT
+ 35:         56     GIC-0 108 Level     PPU_INT
+ 36:          0     GIC-0 136 Level     HDMI_INT
+ 37:          0     GIC-0  32 Level     rtc_irq
+ 39:        468     GIC-0 102 Level     SDC1_IRQ
+ 41:        198     GIC-0  82 Level     ADC_IRQ
+ 53:          0     GIC-0 100 Level     SCALE_IRQ
+ 54:          0     GIC-0  98 Level     ohci_hcd:usb3
+ 55:          0     GIC-0  39 Level     ohci_hcd:usb4
+ 56:          0     GIC-0  99 Level     ehci_hcd:usb1
+ 57:          0     GIC-0  41 Level     ehci_hcd:usb2
+ 67:          3     GIC-0 117 Level     PSCA_IRQ
+ 68:          0     GIC-0 118 Level     PSCA_B_IRQ
+ 69:          0     GIC-0  76 Level     PSCA_Y_IRQ
+ 71:          0     GIC-0 132 Level     AES_INT, HASH_INT
+Err:          0
+
+Helper power_key /proc/444
+444 (power_key) S 1 39 39 0 -1 4194560 71 0 0 0 3 3 0 0 20 0 1 0 459 1765376 271 4294967295 65536 68372 3202637408 0 0 0 0 6 0 1 0 0 17 0 0 0 0 0 0 134920 135244 139264 3202637640 3202637651 3202637651 3202637809 0
+hrtimer_nanosleep0 0xbee45ce8 0x0 0xbebc200 0x0 0x3 0x0 0xbee45cd0 0xb6e2ab20
+
+Helper wdt /proc/467
+467 (wdt) S 1 39 39 0 -1 4194304 66 0 0 0 0 0 0 0 20 0 1 0 665 1765376 239 4294967295 65536 67132 3200585328 0 0 0 0 6 0 1 0 0 17 0 0 0 0 0 0 134920 135220 139264 3200585556 3200585561 3200585561 3200585719 0
+hrtimer_nanosleep0 0xbec50cf8 0x0 0x1dcd6500 0x0 0x3 0x80045705 0xbec50ce0 0xb6e99b20
+  PID USER       VSZ STAT COMMAND
+    1 0         1944 S    init
+    2 0            0 SW   [kthreadd]
+    3 0            0 IW   [kworker/0:0-eve]
+    4 0            0 IW<  [kworker/0:0H-kb]
+    5 0            0 IW   [kworker/u2:0-ev]
+    6 0            0 IW<  [mm_percpu_wq]
+    7 0            0 RW   [ksoftirqd/0]
+    8 0            0 IW<  [netns]
+    9 0            0 SW   [khungtaskd]
+   10 0            0 SW   [oom_reaper]
+   11 0            0 IW<  [writeback]
+   12 0            0 SW   [kcompactd0]
+   13 0            0 IW<  [crypto]
+   14 0            0 IW<  [kblockd]
+   15 0            0 SW   [watchdogd]
+   16 0            0 IW   [kworker/0:1-eve]
+   17 0            0 SW   [kswapd0]
+   29 0            0 IW   [kworker/u2:1-ev]
+   57 0         1944 S    -/bin/sh
+   73 0            0 IW   [kworker/u2:2-ev]
+   80 0            0 IW   [kworker/u2:3-ev]
+   82 0            0 IW   [kworker/u2:4-ev]
+   84 0            0 IW   [kworker/u2:5-ev]
+   86 0            0 IW   [kworker/u2:6-ev]
+   88 0            0 IW   [kworker/u2:7-ev]
+   94 0            0 IW   [kworker/u2:8-ev]
+   96 0            0 IW   [kworker/u2:9-ev]
+   98 0            0 IW   [kworker/u2:10-e]
+  100 0            0 IW   [kworker/u2:11-e]
+  105 0            0 IW   [kworker/u2:12-e]
+  107 0            0 IW   [kworker/u2:13-e]
+  113 0            0 IW   [kworker/u2:14-e]
+  115 0            0 IW   [kworker/u2:15-e]
+  117 0            0 IW   [kworker/u2:16-e]
+  119 0            0 IW   [kworker/u2:17-e]
+  121 0            0 IW   [kworker/u2:18-e]
+  124 0            0 IW   [kworker/u2:19-e]
+  127 0            0 IW   [kworker/u2:20-e]
+  130 0            0 IW   [kworker/u2:21-e]
+  137 0            0 IW   [kworker/u2:22-e]
+  139 0            0 IW   [kworker/u2:23-e]
+  141 0            0 IW   [kworker/u2:24-e]
+  143 0            0 IW   [kworker/u2:25-e]
+  145 0            0 IW   [kworker/u2:26-e]
+  179 0            0 IW   [kworker/0:2]
+  292 0            0 SW   [spi0]
+  302 0            0 SW   [spi1]
+  444 0         1724 S    /power_key
+  447 0            0 SW   [sd-qd]
+  467 0         1724 S    /wdt
+  468 0         1944 S    {init} /bin/sh /usr/retro/init
+  475 0         1944 S    /bin/sh /usr/retro/snes-mvp/launch.sh
+  480 0            0 IW<  [kworker/0:1H-kb]
+  492 0        17484 R    /usr/retro/snes-mvp/snes-mvp --base /usr/retro/snes-
+  495 0         1944 S    /bin/sh /usr/retro/snes-mvp/launch.sh
+  502 0         1944 R    ps
+  503 0         1944 S    /bin/sh /usr/retro/snes-mvp/launch.sh

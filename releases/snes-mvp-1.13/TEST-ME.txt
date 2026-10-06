@@ -1,0 +1,13 @@
+SNES MVP 1.13: preserve the PCM failure on the card
+
+Launch FF6 (not Rev1), use Continue and play normally.
+If it lasts, load the existing snapshot through our pause menu and resume.
+After one audio error, exit our library with B if it responds and reconnect D:.
+No need to retry the game. Save and exit normally if it stays running.
+
+This build repairs missing diagnostic persistence; audio behavior is unchanged.
+The first PCM fault writes its history directly to the card and synchronizes
+the file and directory before returning to the library. The error screen may
+take longer to appear. The final report records capture success or errno.
+Healthy playback writes no PCM history to the card. All progress is retained.
+The one-shot is consumed before launch; the following reboot takes stock.

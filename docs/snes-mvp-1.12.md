@@ -51,3 +51,11 @@ All 22 current private files, including SRAM and its changed backup, original
 snapshots, all 49 lab files and stock/hook/core/older wrapper match the protected
 hashes. The game one-shot is armed and lab is unarmed. Physical capture and
 stream behavior are pending; no new driver fix is claimed.
+
+## Physical result supersedes pending capture
+
+The [1.12 return](snes-mvp-1.12-return.md) fails during playback after a
+successful snapshot load. Its final report survives, but the PCM history and
+READ_ALL result are missing. The persistence contract above did not hold on
+the device. [1.13](snes-mvp-1.13.md) repairs capture durability while retaining
+playback behavior; neither release has resolved the native stop.

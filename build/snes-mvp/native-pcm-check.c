@@ -17,6 +17,10 @@ static unsigned buffer,queued,starts,writes,accepted,minimum,prepares;
 static int stream_state,start_error,manual_start,start_race,early_start,bad_sw;
 static int write_error,hwsync_fault,pointer_override;
 static unsigned boundary,pointer_appl,pointer_hw;
+static unsigned capture_syncs;
+static int capture_sync_error;
+static int provider_fsync(int fd)
+{ ++capture_syncs; if(capture_sync_error) { errno=capture_sync_error; return -1; } return fsync(fd); }
 static int16_t expected[4096*2];
 static int provider_open(const char *name,int flags,...)
 { assert(!strcmp(name,"/dev/snd/pcmC0D0p") && flags&O_NONBLOCK); return 42; }
@@ -99,11 +103,13 @@ static int provider_ioctl(int fd,unsigned long command,...)
 #define close provider_close
 #define ioctl provider_ioctl
 #define poll provider_poll
+#define fsync provider_fsync
 #include "native-pcm.c"
 #undef open
 #undef close
 #undef ioctl
 #undef poll
+#undef fsync
 uint64_t board_now_ns(void) { static uint64_t now; return now+=10000; }
 int main(void)
 {
@@ -179,19 +185,26 @@ int main(void)
     {
         const char *trace_path="build/snes-mvp/out/native-pcm-fault-fixture.txt";
         char history[32768]; FILE *trace; unsigned j; size_t bytes;
-        unlink(trace_path); assert(!setenv("D35_MVP_PCM_TRACE_FILE",trace_path,1));
+        unlink(trace_path); capture_syncs=0; assert(!setenv("D35_MVP_PCM_TRACE_FILE",trace_path,1));
         for(j=0;j<200;j++) assert(!pcm_observe(&state));
         assert(access(trace_path,F_OK)<0); /* RAM records never print/write healthy transfers */
         stream_state=SNDRV_PCM_STATE_XRUN;
         assert(pcm_observe(&state)<0 && errno==EPIPE);
         trace=fopen(trace_path,"r"); assert(trace);
         bytes=fread(history,1,sizeof(history)-1,trace); history[bytes]=0; fclose(trace);
-        assert(strstr(history,"D35 PCM fault history 1.12") && strstr(history,"op=SYNC_XRUN"));
+        assert(strstr(history,"D35 PCM fault history 1.13") && strstr(history,"op=SYNC_XRUN"));
         assert(strstr(history,"kernel_read_all_bytes=") && strstr(history,"epoch="));
         assert(!strstr(history,"seq=0 ") && !strstr(history,"RESET_DROP"));
+        assert(capture_syncs==2 && strstr(pcm_error(),"trace_errno=0 trace_synced=1 trace_bytes="));
+        assert(!pcm_reset()); stream_state=SNDRV_PCM_STATE_XRUN; capture_sync_error=EIO;
+        assert(pcm_observe(&state)<0 && errno==EPIPE);
+        assert(strstr(pcm_error(),"trace_errno=5 trace_synced=0"));
+        capture_sync_error=0;
         unsetenv("D35_MVP_PCM_TRACE_FILE");
         puts("PASS: bounded PCM flight history writes only on fault before cleanup; kernel read result is explicit");
+        puts("PASS: PCM fault capture fsyncs file and directory before error return; injected persistence failure reported without changing PCM errno");
     }
+    i=prepares; /* explicit reset above is allowed; fault handling must not prepare */
     stream_state=SNDRV_PCM_STATE_XRUN;
     assert(pcm_observe(&state)<0 && errno==EPIPE);
     assert(prepares==i); /* no automatic recovery discarding samples */

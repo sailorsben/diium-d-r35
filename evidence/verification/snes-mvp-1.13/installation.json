@@ -1,0 +1,18 @@
+{
+  "version": "1.13",
+  "installed_utc": "2026-10-06T04:42:39.151126+00:00",
+  "one_shot_armed": true,
+  "lab_unarmed": true,
+  "archive_before_writes": "snes-mvp-return-20261006T044238Z",
+  "stock_binaries_unchanged": true,
+  "boot_hook_unchanged": true,
+  "original_private_files_unchanged": 22,
+  "retained_lab_files": 49,
+  "original_game_wrapper_unchanged": true,
+  "new_save_point_sram_preserved": true,
+  "snapshot_migration": "unchanged qualified core; all existing snapshots retained",
+  "binary_sha256": "0ca0df740b9f0fc99d1aaed028a357499e604eca6250b37f8518b9f269b46c8d",
+  "wrapper_sha256": "154d2dc8c0c1f6e72027d2e68b3f94be10259028cd42295b19a1f479747101e7",
+  "core_sha256": "f41ab21a1e04a2e5992eb8738a197283ea8f674da5ceaa555aba7ea9c3d18ace",
+  "hardware_result": "pending"
+}

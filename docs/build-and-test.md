@@ -122,7 +122,7 @@ qualified and published under a new version; do not re-arm unchanged1.8.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
-[MVP1.12](../releases/snes-mvp-1.12/) contains our executable and wrapper, without
+[MVP1.13](../releases/snes-mvp-1.13/) contains our executable and wrapper, without
 a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
 from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains
 `/usr/retro/driver.so` and existing `002`/`ROMs/SNES` scanning. The historical
@@ -163,7 +163,7 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
 The [1.8 test sequence](snes-mvp-1.8.md#physical-test) is historical; its returned
-card was unarmed. Current testing uses [1.12](snes-mvp-1.12-test.txt).
+card was unarmed. Current testing uses [1.13](snes-mvp-1.13-test.txt).
 After power-off, prefer fresh `last-progress.txt`/`last-progress.previous`
 identity-qualified checkpoints over an older normal-exit report. Retain
 `runtime-platform-latest.txt`, `kernel-tail.txt` and `diagnostic-flush.log` too.
@@ -180,3 +180,19 @@ For recovery, boot again after a consumed marker, or restore the unit's verified
 ## Historical tooling
 
 Older `install-*`, `prepare-*` and comparison scripts preserve exact experiments and old hash/path guards. Read them as reproducible history first. Re-running an obsolete installer against a progressed card is not supported by their historical success. The maintained MVP sources are `build/snes-mvp/`, its build/check/verify/package scripts and the shared production rendering policy.
+
+## Current 1.13 exact-baseline update
+
+`build/package-snes-1.13.py --card D:/` requires the exact consumed 1.12 payload
+and qualified 1.13 build. Archive all returned logs/private files first; change
+only runner/wrapper/test notes and arm last. Independently verify with
+`build/verify-snes-1.13-card.py --card D:/ --archive <installation-archive>`
+before `build/publish-snes-1.13.py`. All retained progress, core, stock/hook and
+lab hashes must match. These scripts reject an already-updated or unknown card.
+
+Collect `last-pcm-fault.txt` and any `.tmp` along with final reports. 1.13 sends
+the fault path directly to the card, fsyncs file and directory before returning
+the error, and records `trace_errno`, `trace_synced` and `trace_bytes`. Do not
+claim a successful capture from a missing file or a wrapper fixture. The 1.12
+physical return disproved that release's RAM-plus-periodic-copy persistence
+assumption. Firmware-side kernel access/durability still require the return.

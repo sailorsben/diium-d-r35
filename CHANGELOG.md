@@ -1,5 +1,33 @@
 # Changelog
 
+## SNES MVP1.13 durable PCM fault capture — 2026-10-05
+
+Archive the consumed 1.12 return: exact payload, 43 MVP/49 lab files, stock/hook/
+core and 19 prior progress files unchanged; retain the changed SRAM backup.
+One fresh final report has 1,106 calls, a successful snapshot load and the same
+SYNC_OBSERVE/SETUP/384-frame discrepancy. Its aggregate rate is 59.819 active
+calls/sec, with no intentional holds. The PCM history is absent and stderr is
+empty; later periodic/final copies do not survive. Exact diagnostic loss and
+native stop causes remain unknown. The backup session belongs to 1.11.
+See [return](docs/snes-mvp-1.12-return.md).
+
+Capture the first fault directly to the card, flush and fsync the file, rename
+and fsync its directory before returning the PCM error. Preserve failed temp
+evidence and append capture errno/sync status/bytes to error detail. Read the
+kernel ring before card I/O; a refused read does not discard PCM history.
+Retain unchanged core, PCM settings, admission and full drawing. No new healthy
+file I/O; this is an observability repair, not a claimed playback fix.
+
+Actual ARM client tests pass file/directory sync and injected sync failure
+without hiding PCM errno. Real FF6 runner fault capture completes before return;
+clean retry/two snapshot resumes pass. Wrapper immediate-error/direct-path and
+existing runtime/core checks pass. Physical capture durability remains pending.
+
+Install/readback complete at 2026-10-06 04:42 UTC (October 5 locally), after a
+fresh 43-MVP/49-lab archive. All 22 current private files, snapshots, current
+SRAM/backup, 49 lab files and stock/hook/core/older wrapper match their hashes.
+Game one-shot armed; lab unarmed. [Capture contract](docs/snes-mvp-1.13.md).
+
 ## SNES MVP1.12 PCM fault history — 2026-10-05
 
 Archive the consumed 1.11 return: 43 MVP/49 lab files, exact release and unchanged

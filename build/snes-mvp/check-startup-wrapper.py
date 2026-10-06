@@ -104,6 +104,10 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'fixture stall' in (base/'last-run.log').read_text()
     else:
         assert 'STARTUP TIMEOUT' not in log
+    if name=='immediate-pcm-fault':
+        assert (base/'last-pcm-fault.txt').read_text()=='immediate fault\n'
+        assert (base/'last-pcm-fault.txt.tmp').read_text()=='failed persistence evidence\n'
+        print('PASS: direct card fault path survives immediate error exit and wrapper cleanup; failed temporary capture retained')
     if name=='ready-session':
         elapsed=time.monotonic()-start
         observer.join(timeout=1)
@@ -129,6 +133,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 
 run('early-error','printf "fixture early error\\n"; exit 7',7)
+run('immediate-pcm-fault','test "$D35_MVP_PCM_TRACE_FILE" = "$D35_MVP_BASE/last-pcm-fault.txt" || exit 99; : > "$D35_MVP_READY_FILE"; printf "immediate fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; printf "failed persistence evidence\\n" > "$D35_MVP_PCM_TRACE_FILE.tmp"; exit 7',7,ready=True)
 run('stalled','printf "fixture stall\\n"; exec sleep 60',143)
 run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; printf "fixture fresh PCM fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; sleep 5; exit 0',0,ready=True)
 run('unarmed','exit 99',0,armed=False)

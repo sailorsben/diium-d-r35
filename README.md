@@ -6,7 +6,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-05
 
-- **MVP1.12 diagnostic is installed and armed:** 1.11 fails on SYNC_OBSERVE with SETUP after 2,195/253 calls; the final snapshot load succeeds before the audio error. All three captured faults have a 384-frame application-pointer/accepted-count discrepancy. 1.12 adds bounded PCM history and direct kernel-ring capture on fault, with unchanged core/settings/controller. Independent readback verifies the payload, 22 current private files and 49 lab files. This is a diagnostic build; driver cause, sustained sound and stability remain unresolved. [1.11 return](docs/snes-mvp-1.11-return.md), [1.12 capture](docs/snes-mvp-1.12.md).
+- **MVP1.13 durable diagnostic is installed and armed:** 1.12 fails after 1,106 calls and a successful snapshot load, again with SETUP and a 384-frame pointer/count discrepancy. Its final report survives but PCM history does not. 1.13 writes fault history directly to the card and synchronizes file/directory before error return, with explicit capture status. Playback remains unchanged. Independent readback verifies all 22 current private files, 49 lab files and stock/hook/core. Native failure cause, sustained sound and stability remain unresolved. [1.12 return](docs/snes-mvp-1.12-return.md), [1.13 capture](docs/snes-mvp-1.13.md).
 - **Hardware confirmed:** MVP 1.5 boots into its library, starts Final Fantasy VI and loads the imported save state. All four directions work in the launcher and game.
 - **Returned MVP 1.5:** 23,872 core calls, 2,826 held drawings (11.838%), no reported audio-write errors. The user heard rare random crackles in normal play and occasional lag. Full rendering and uninterrupted playback remain the target.
 - **MVP1.6 failed its physical run:** very choppy sound, slow movement, clean-looking graphics, then the whole device powered off. The returned build hashes match; originals are intact and the one-shot is consumed. No fresh session totals survived. Do not re-arm this release unchanged. [Failure review](docs/snes-mvp-1.6-failure.md).
@@ -27,12 +27,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Source, dependencies, checks, installation and recovery | [Build and test](docs/build-and-test.md) |
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
-| Current native PCM build and physical acceptance | [MVP1.12](docs/snes-mvp-1.12.md) |
+| Current native PCM build and physical acceptance | [MVP1.13](docs/snes-mvp-1.13.md) |
 | Hardware resources, measured costs and remaining opportunities | [Capability roadmap](docs/hardware-capability-roadmap.md) |
 | Latest infrastructure result and researched audio contracts | [Lab2 return](docs/platform-lab-2-return.md), [interface research](docs/platform-interface-research.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
 | Forward A7 renderer implementation | [MVP1.8](docs/snes-mvp-1.8.md) |
-| Latest game failures and evidence limits | [MVP1.11 return](docs/snes-mvp-1.11-return.md) |
+| Latest game failures and evidence limits | [MVP1.12 return](docs/snes-mvp-1.12-return.md) |
 | Logging retry implementation | [MVP1.7](docs/snes-mvp-1.7.md) |
 | A7 full-render implementation and failed test | [MVP1.6](docs/snes-mvp-1.6.md), [failure review](docs/snes-mvp-1.6-failure.md) |
 | Actual shipped emulator identities and limitations | [Core inventory](docs/core-inventory.md) |

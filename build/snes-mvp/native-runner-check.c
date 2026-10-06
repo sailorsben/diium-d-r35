@@ -185,12 +185,20 @@ static int native_menu(void *unused,const char *text)
 int main(int argc,char **argv)
 {
     pthread_t consumer; struct audio_pipe_stats out; uint64_t before; int rc;
+    const char *trace_path="build/snes-mvp/out/native-runner-fault-fixture.txt";
+    char history[32768]; FILE *trace; size_t bytes;
     assert(argc==4); assert(!pthread_create(&consumer,NULL,consume_pcm,NULL));
+    unlink(trace_path); assert(!setenv("D35_MVP_PCM_TRACE_FILE",trace_path,1));
     runner_set_menu_callback(native_menu,NULL); inject_write=1;
     assert(runner_run(argv[1],argv[2],argv[3])<0);
     assert(strstr(runner_last_error(),"Audio publication failed") && !strstr(runner_last_error(),"queue"));
     audio_pipe_stats(&out); assert(out.error==EBADFD && out.epoch==1 && out.high<8192);
     assert(strstr(out.error_detail,"WRITEI_FRAMES errno=77 state=1"));
+    assert(strstr(out.error_detail,"trace_errno=0 trace_synced=1"));
+    trace=fopen(trace_path,"r"); assert(trace);
+    bytes=fread(history,1,sizeof(history)-1,trace); history[bytes]=0; fclose(trace);
+    assert(strstr(history,"D35 PCM fault history 1.13") && strstr(history,"WRITEI_FRAMES errno=77"));
+    unsetenv("D35_MVP_PCM_TRACE_FILE");
     assert(device_opens==1 && device_fd<0); inject_write=0; next_menu=8; before=device_accepted;
     rc=runner_run(argv[1],argv[2],argv[3]);
     if(rc) fprintf(stderr,"native runner: %s\n",runner_last_error());

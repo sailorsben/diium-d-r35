@@ -14,7 +14,7 @@ struct audio_pipe_stats {
     unsigned avail,appl_ptr,hw_ptr,start_threshold,prime_transferred,start_calls,start_races;
     unsigned boundary,epoch;
     uint64_t epoch_transferred;
-    char error_detail[256];
+    char error_detail[512];
     int error;
 };
 void audio_pipe_init(void);

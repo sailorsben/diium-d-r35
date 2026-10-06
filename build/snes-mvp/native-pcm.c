@@ -14,7 +14,7 @@
 #include <time.h>
 #include <sound/asound.h>
 
-static struct { int fd,started,error; char failure[256]; struct board_audio_state config; } pcm={.fd=-1};
+static struct { int fd,started,error; char failure[512]; struct board_audio_state config; } pcm={.fd=-1};
 /* No per-transfer printing or SD writes. Preserve the last transactions only
  * when a stream fails, before DROP/close can erase the causal state. */
 #define PCM_TRACE_COUNT 96u
@@ -33,16 +33,20 @@ static void pcm_record(const char *op,unsigned argument,int result)
     t->appl=pcm.config.appl_ptr; t->hw=pcm.config.hw_ptr;
     t->epoch=pcm.config.epoch; t->argument=argument; t->result=result;
 }
-static void pcm_dump_fault(void)
+static unsigned pcm_capture_bytes,pcm_capture_synced;
+static int pcm_dump_fault(void)
 {
     const char *path=getenv("D35_MVP_PCM_TRACE_FILE");
-    char temporary[512],kernel[16384]; FILE *f;
+    char temporary[512],directory[512],kernel[16384],*slash; FILE *f;
     uint64_t first=pcm_trace_count>PCM_TRACE_COUNT?pcm_trace_count-PCM_TRACE_COUNT:0,i;
-    int bytes,saved;
-    if(!path || !*path) return;
-    if(snprintf(temporary,sizeof(temporary),"%s.tmp",path)>=(int)sizeof(temporary)) return;
-    f=fopen(temporary,"w"); if(!f) return;
-    fprintf(f,"D35 PCM fault history 1.12\nfailure=%s\nentries_total=%llu\n",pcm.failure,(unsigned long long)pcm_trace_count);
+    int bytes,saved,fd; long position;
+    pcm_capture_bytes=pcm_capture_synced=0;
+    if(!path || !*path) return ENOENT;
+    if(snprintf(temporary,sizeof(temporary),"%s.tmp",path)>=(int)sizeof(temporary)) return ENAMETOOLONG;
+    /* Snapshot the ring before any card I/O can delay or add kernel messages. */
+    bytes=(int)syscall(SYS_syslog,3,kernel,sizeof(kernel)); saved=errno;
+    f=fopen(temporary,"w"); if(!f) return errno;
+    fprintf(f,"D35 PCM fault history 1.13\nchild_pid=%ld\nfailure=%s\nentries_total=%llu\n",(long)getpid(),pcm.failure,(unsigned long long)pcm_trace_count);
     fprintf(f,"Each sample is after the named operation; WRITE_OK retains the preceding pointer observation.\n");
     for(i=first;i<pcm_trace_count;i++) {
         const struct pcm_trace_entry *t=&pcm_trace[i%PCM_TRACE_COUNT];
@@ -52,10 +56,22 @@ static void pcm_dump_fault(void)
     }
     /* READ_ALL does not clear the kernel ring and needs no firmware dmesg tool.
      * Permission/unsupported errors remain evidence, never fake an empty ring. */
-    bytes=(int)syscall(SYS_syslog,3,kernel,sizeof(kernel)); saved=errno;
     fprintf(f,"kernel_read_all_bytes=%d errno=%d\n",bytes,bytes<0?saved:0);
     if(bytes>0 && bytes<=(int)sizeof(kernel)) fwrite(kernel,1,(size_t)bytes,f);
-    if(fclose(f)==0) (void)rename(temporary,path);
+    if(ferror(f) || fflush(f)<0) { saved=errno?errno:EIO; fclose(f); return saved; }
+    position=ftell(f);
+    if(position<0) { saved=errno?errno:EIO; fclose(f); return saved; }
+    pcm_capture_bytes=(unsigned)position;
+    if(fsync(fileno(f))<0) { saved=errno; fclose(f); return saved; }
+    if(fclose(f)<0) return errno;
+    if(rename(temporary,path)<0) return errno;
+    snprintf(directory,sizeof(directory),"%s",path); slash=strrchr(directory,'/');
+    if(!slash) strcpy(directory,"."); else if(slash==directory) slash[1]=0; else *slash=0;
+    fd=openat(AT_FDCWD,directory,O_RDONLY|O_DIRECTORY|O_CLOEXEC);
+    if(fd<0) return errno;
+    saved=fsync(fd)<0?errno:0; (void)syscall(SYS_close,fd);
+    if(saved) return saved;
+    pcm_capture_synced=1; return 0;
 }
 #if defined(__arm__)
 typedef char pcm_time32[(sizeof(struct timespec)==8)?1:-1];
@@ -70,8 +86,13 @@ static int pcm_fail(const char *operation,int value)
              operation,value,pcm.config.state,pcm.config.queued,pcm.config.avail,
              pcm.config.appl_ptr,pcm.config.hw_ptr,pcm.config.prime_transferred,pcm.config.start_calls,
              pcm.config.epoch,(unsigned long long)pcm.config.epoch_transferred);
+    if(!pcm.error && pcm.fd>=0) {
+        int capture; size_t used;
+        pcm_record(operation,0,-value); capture=pcm_dump_fault(); used=strlen(pcm.failure);
+        snprintf(pcm.failure+used,sizeof(pcm.failure)-used," trace_errno=%d trace_synced=%u trace_bytes=%u",
+                 capture,pcm_capture_synced,pcm_capture_bytes);
+    }
     fprintf(stderr,"native PCM failure: %s\n",pcm.failure);
-    if(!pcm.error && pcm.fd>=0) { pcm_record(operation,0,-value); pcm_dump_fault(); }
     pcm.error=value; errno=value; return -1;
 }
 const char *pcm_error(void) { return pcm.failure; }
@@ -167,7 +188,7 @@ int pcm_open(unsigned requested)
     }
     operation="HW_REFINE/HW_PARAMS"; errno=last;
 failed:
-    { char failure[256];
+    { char failure[512];
       last=errno; pcm_fail(operation,last); memcpy(failure,pcm.failure,sizeof(failure));
       pcm_close(); memcpy(pcm.failure,failure,sizeof(failure)); errno=last; return -1; }
 }

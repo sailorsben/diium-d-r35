@@ -254,3 +254,21 @@ wrapper persists fresh history and clears stale files. Software checks qualify
 bounded capture; device kernel access and timing remain pending. This is not a
 claimed stop/underrun fix, or proof of a hardware limit. See
 [capture contract](snes-mvp-1.12.md).
+
+## 1.12 return and 1.13 durable fault capture
+
+The [1.12 return](snes-mvp-1.12-return.md) fails after 1,106 calls and one
+successful snapshot load, with post-fault SETUP and the same 384-frame
+pointer/count discrepancy. No intentional holds or full software queue occur.
+The fresh final report survives; PCM history is absent, stderr empty and later
+periodic/final diagnostic copies missing. Their exact loss mechanism and the
+native stop cause remain unresolved; the backup report is historical 1.11.
+
+[1.13](snes-mvp-1.13.md) writes fault history directly to the card and fsyncs
+file and directory before returning the error. Capture errno/sync status/bytes
+are explicit; failed temporary evidence survives cleanup. Actual client,
+runner and immediate-exit wrapper fixtures pass, including injected sync
+failure without changing PCM errno. Core/settings/admission remain unchanged.
+Independent install readback retains all 22 private and 49 lab files and
+stock/hook/core hashes. Physical capture, native continuity and full speed
+remain pending; this is not a hardware-limit conclusion or a playback fix.
