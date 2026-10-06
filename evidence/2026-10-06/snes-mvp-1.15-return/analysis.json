@@ -1,0 +1,213 @@
+{
+  "version": "1.15",
+  "mvp_files": 45,
+  "lab_files": 49,
+  "read_only_archive_verified": true,
+  "one_shots_consumed": true,
+  "exact_release_verified": true,
+  "prior_game_progress_files_unchanged": 21,
+  "updated_sram_files_archived": 0,
+  "snapshots_unchanged": true,
+  "stock_hook_core_unchanged": true,
+  "exact_replay_payload_verified": true,
+  "reports": [
+    {
+      "runs": 819,
+      "post_load_runs": 19,
+      "snapshot_load_successes": 1,
+      "snapshot_load_rejections": 0,
+      "ordinary_post_load": {
+        "core_wall_ms": {
+          "count": 16,
+          "mean": 19.3116875,
+          "median": 19.2275,
+          "min": 19.035,
+          "max": 20.917
+        },
+        "core_cpu_ms": {
+          "count": 16,
+          "mean": 17.995874999999998,
+          "median": 18.005,
+          "min": 17.881,
+          "max": 18.148
+        },
+        "audio_callback_wall_ms": {
+          "count": 16,
+          "mean": 0.4920625,
+          "median": 0.4905,
+          "min": 0.453,
+          "max": 0.537
+        },
+        "video_callback_wall_ms": {
+          "count": 16,
+          "mean": 1.1608749999999999,
+          "median": 1.1575,
+          "min": 1.127,
+          "max": 1.194
+        },
+        "admission_wait_ms": {
+          "count": 16,
+          "mean": 0.1809375,
+          "median": 0.181,
+          "min": 0.16,
+          "max": 0.228
+        }
+      },
+      "sampled_loaded_frames": [
+        {
+          "run": 804,
+          "wall_ms": 21.33,
+          "cpu_ms": 20.153,
+          "apu_inclusive_cpu_ms": 4.211,
+          "ppu_inclusive_cpu_ms": 10.028
+        }
+      ],
+      "display_reservation_total_ms": 3.416,
+      "display_queue_high": 1,
+      "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=16453 hw=16383 prime_written=2823 start_calls=0 epoch=2 xfer=16069 trace_errno=0 trace_synced=1 trace_bytes=27081"
+    },
+    {
+      "runs": 196,
+      "post_load_runs": 18,
+      "snapshot_load_successes": 1,
+      "snapshot_load_rejections": 0,
+      "ordinary_post_load": {
+        "core_wall_ms": {
+          "count": 15,
+          "mean": 19.497,
+          "median": 19.293,
+          "min": 18.994,
+          "max": 21.094
+        },
+        "core_cpu_ms": {
+          "count": 15,
+          "mean": 18.0596,
+          "median": 18.064,
+          "min": 17.912,
+          "max": 18.254
+        },
+        "audio_callback_wall_ms": {
+          "count": 15,
+          "mean": 0.6047333333333333,
+          "median": 0.488,
+          "min": 0.465,
+          "max": 2.258
+        },
+        "video_callback_wall_ms": {
+          "count": 15,
+          "mean": 1.1567333333333334,
+          "median": 1.152,
+          "min": 1.102,
+          "max": 1.2
+        },
+        "admission_wait_ms": {
+          "count": 15,
+          "mean": 0.19,
+          "median": 0.185,
+          "min": 0.16,
+          "max": 0.234
+        }
+      },
+      "sampled_loaded_frames": [
+        {
+          "run": 182,
+          "wall_ms": 21.342,
+          "cpu_ms": 20.211,
+          "apu_inclusive_cpu_ms": 4.258,
+          "ppu_inclusive_cpu_ms": 10.131
+        }
+      ],
+      "display_reservation_total_ms": 0.835,
+      "display_queue_high": 1,
+      "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=15716 hw=15615 prime_written=2823 start_calls=0 epoch=2 xfer=15332 trace_errno=0 trace_synced=1 trace_bytes=27060"
+    }
+  ],
+  "flight_analysis": {
+    "trace_version": "D35 PCM fault history 1.13",
+    "retained_operations": 96,
+    "epoch": 2,
+    "accepted_pointer_difference_first_sample": 0,
+    "application_pointer_difference_changes": [
+      {
+        "seq": 1746,
+        "kernel_ns": 38441234000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 198,
+        "accepted_minus_reported_hw": 70
+      },
+      {
+        "seq": 1753,
+        "kernel_ns": 38460689000,
+        "delta_change": 128,
+        "appl_minus_accepted": 256,
+        "state": 3,
+        "reported_queued": 166,
+        "accepted_minus_reported_hw": -90
+      },
+      {
+        "seq": 1760,
+        "kernel_ns": 38481861000,
+        "delta_change": 128,
+        "appl_minus_accepted": 384,
+        "state": 3,
+        "reported_queued": 134,
+        "accepted_minus_reported_hw": -250
+      }
+    ],
+    "matched_large_batch_interval": {
+      "first_seq": 1675,
+      "last_seq": 1761,
+      "anchor_count": 12,
+      "elapsed_ms": 238.35600000000002,
+      "accepted_frames": 8831,
+      "accepted_frames_per_second": 37049.62325261373,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.15987248860286318,
+      "mean_large_batch_interval_ms": 21.668727272727274,
+      "min_large_batch_interval_ms": 19.24,
+      "max_large_batch_interval_ms": 38.999,
+      "reported_hw_advance": 10496,
+      "accepted_minus_hw_change": -1665,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement. A batch split at the 8192-frame software-ring boundary is omitted from these large anchors; the long anchor gap is not one slow core call. Endpoint accepted production rate remains valid."
+    },
+    "last_successful_observation": {
+      "seq": 1766,
+      "ns": 38484049000,
+      "op": "SYNC_OK",
+      "arg": 7,
+      "result": 0,
+      "state": 3,
+      "queued": 741,
+      "appl": 15716,
+      "hw": 14975,
+      "epoch": 2,
+      "xfer": 15332
+    },
+    "final_observation": {
+      "seq": 1768,
+      "ns": 38501501000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 15716,
+      "hw": 15615,
+      "epoch": 2,
+      "xfer": 15332
+    },
+    "kernel_read_result": {
+      "bytes": 16335,
+      "errno": 0
+    },
+    "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+  },
+  "attempts": 3,
+  "capture_limit": "Only the second and third final reports survive; each retry rotates the final report and replaces the PCM history. First-attempt SYNC_OBSERVE metadata remains in stderr, but its individual frame history is lost.",
+  "physical_failure_boundary": "Successful snapshot loads followed by 19/18 core calls and controlled audio failure, library return and clean display teardown. No new whole-device poweroff or snapshot rejection independently established.",
+  "inference": "The expensive scene consumes approximately 18ms of ordinary main-thread CPU and 19.3ms wall time before loop/platform work. About 0.18ms admission waits cannot explain the deficit. Sampled PPU cost is about 10ms; raster work census follows.",
+  "limits": "Two sampled expensive calls are attribution clues, not a latency distribution. Kernel CPU-clock sampling itself adds about 2ms on sampled calls; APU time includes callback work. First-launch cause and exact vendor pointer/stop mechanism remain unresolved.",
+  "next_action": "Use exact local state replay to identify repeated raster/tile work, then correct the actual renderer budget. No blind re-arm of 1.15."
+}

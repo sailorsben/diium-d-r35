@@ -1,5 +1,34 @@
 # Changelog
 
+## SNES MVP1.16 fixes redundant fixed-color raster invalidation — 2026-10-06
+
+Archive the1.15 return read-only: exact payload,45 MVP/49 lab files, all21
+game-progress files and stock/hook unchanged. Three audio-failed attempts,
+two retained final reports; both snapshot loads succeed before19/18 calls
+and controlled audio failure. Ordinary restored-scene main CPU about18ms,
+wall19.3–19.5ms and sampled PPU about10ms. First detailed fault history was
+overwritten by retries. [Return](docs/snes-mvp-1.15-return.md).
+
+Replay the exact private state locally. All214 pending `$2132` flushes per
+frame leave effective fixed color unchanged; raw component-tag changes force
+unnecessary scanline render jobs. Flush on actual selected-component changes,
+preserving original assignments and byte latch. PPU updates drop217–223 to4–10,
+with identical31,520 requested tile rows and full output.16,777,216 extracted
+stock/patched register cases and1,200 exact-core frames pass. This is removed
+work, not a measured physical speedup. [Repair](docs/snes-mvp-1.16.md).
+
+Retain up to eight failed-session report/PCM pairs per process after failed
+worker cleanup, with kernel-time/PID attribution to reject stale trace copies.
+Real native failure/retry/later-failure fixture proves preservation. Correct
+host-header C23 scanf redirection to the device's existing legacy ABI. All
+runtime/core/boot/input/display/snapshot/lifecycle qualifications pass.
+
+Install at2026-10-06 06:23 UTC, after another45-MVP/49-lab archive. Independent
+readback verifies exact new payload, all23 original private files, stock/hook,
+older wrapper, lab files and separate new-core state. Game armed, lab unarmed.
+Immutable owned release and25 qualification artifacts published. Full native
+speed, complete sound and first-launch stability remain physical acceptance.
+
 ## SNES MVP1.15 final candidate retains sampled phase history — 2026-10-06
 
 Retain eight sampled call records separately from the last24 ordinary calls,

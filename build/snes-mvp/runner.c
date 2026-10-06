@@ -543,7 +543,7 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.snapshot_rejections,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
-      "build_version=1.15\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "build_version=1.16\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
@@ -650,7 +650,42 @@ static void progress(const char *phase,int force)
     duration=board_now_ns()-began; s.diagnostic_ns+=duration;
     if(duration>s.diagnostic_max_ns) s.diagnostic_max_ns=duration;
 }
-static void report(void) { report_to(s.report_path,"finished",0); }
+/* New host headers redirect scanf to a C23 symbol absent from device glibc2.30.
+ * This named legacy ABI is present in the device sysroot. */
+extern int d35_legacy_sscanf(const char *,const char *,...) __asm__("__isoc99_sscanf");
+static void report(void)
+{
+    static unsigned retained_failures;
+    char path[1024]; const char *trace; void *bytes,*terminated; size_t count;
+    unsigned long long sequence,when; long pid; char *row;
+    report_to(s.report_path,"finished",0);
+    /* A library retry must not destroy the cold-launch fault. All extra I/O
+     * happens after a failed session has stopped both workers. Bounded per boot. */
+    if(!s.failed || retained_failures>=8) return;
+    ++retained_failures;
+    if(snprintf(path,sizeof(path),"%s/failure-%ld-%llu-session.txt",s.save_dir,
+                (long)getpid(),(unsigned long long)s.session_ns)>=(int)sizeof(path)) return;
+    if(access(path,F_OK)==0) return; /* Preserve a pre-existing record. */
+    report_to(path,"finished",0);
+    trace=getenv("D35_MVP_PCM_TRACE_FILE");
+    if(!trace || !*trace) return;
+    bytes=read_file(trace,65536,&count);
+    if(!bytes) return;
+    terminated=realloc(bytes,count+1);
+    if(!terminated) { free(bytes); return; }
+    bytes=terminated; ((char *)bytes)[count]=0;
+    /* A failure before opening PCM might leave an older latest trace. */
+    row=strstr(bytes,"\nchild_pid=");
+    if(!row || d35_legacy_sscanf(row,"\nchild_pid=%ld",&pid)!=1 || pid!=(long)getpid() ||
+       !(row=strstr(bytes,"\nseq=")) ||
+       d35_legacy_sscanf(row,"\nseq=%llu ns=%llu",&sequence,&when)!=2 || when<s.session_ns) {
+        free(bytes); return;
+    }
+    if(snprintf(path,sizeof(path),"%s/failure-%ld-%llu-pcm.txt",s.save_dir,
+                (long)getpid(),(unsigned long long)s.session_ns)<(int)sizeof(path) &&
+       access(path,F_OK)!=0) (void)save_file(path,bytes,count);
+    free(bytes);
+}
 
 int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
 {

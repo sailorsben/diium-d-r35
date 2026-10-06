@@ -1,0 +1,3 @@
+PASS: 8 actual callback conversions equal original 64-bit oracle; extrema, rational/generic rates, batch splits and short writes
+PASS: partial/EAGAIN transport preserves all PCM; priming independent; snapshot roundtrip; mismatched state rejection; live-state rollback; SRAM roundtrip
+audio_frames=58909 crc32=081c5568

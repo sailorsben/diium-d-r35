@@ -1,0 +1,14 @@
+SNES MVP 1.16 -- fixed-color raster invalidation repair
+
+This build removes redundant PPU work found in the exact saved scene.
+Full native speed and complete sound still need your physical run.
+
+Boot, launch FF6 and load the older snapshot through our pause menu.
+Play that scene for a few minutes, including map -> party menu -> map.
+Pause/resume, save in-game and exit normally if it remains stable.
+If audio fails, a retry is okay; each of the first eight failed sessions
+keeps its own report and current PCM trace. Note what happened, then
+return the card. Don't spend a long session repeatedly fighting an error.
+
+Original SRAM, stock files and all old snapshots are preserved.
+The game one-shot is consumed: the following boot goes back to stock.

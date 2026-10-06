@@ -107,3 +107,11 @@ duplicate PCM servicing. Output/lifecycle checks pass; sampled inclusive
 APU/PPU and recent per-call costs accompany its physical gameplay test.
 This is the first bundle following this review, not a claim that compiler
 flags or a cache-miss decoder already close the measured device deficit.
+
+The [1.15 physical return](snes-mvp-1.15-return.md) does not close that budget.
+It supplies ordinary18ms CPU costs and sampled10ms PPU attribution for the
+restored scene. Exact-state work census then exposes214 redundant fixed-color
+register flushes per frame. [1.16](snes-mvp-1.16.md) corrects effective-state
+invalidation:217–223 raster jobs become4–10 with every tile row, frame and
+native sample retained. This is a concrete upstream work-amplification defect.
+Its physical duration gain and sustainable native playback remain unmeasured.

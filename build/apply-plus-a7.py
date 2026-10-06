@@ -148,9 +148,27 @@ def makefile(text):
         'FLAGS += -O3 -DNDEBUG -flto=4 -fno-semantic-interposition -fvisibility=hidden').replace('-fno-builtin','')
 
 change('source/apu_blargg.c',apu)
+
+def ppu(text):
+    text='#ifdef D35_PLUS_A7\n#include "a7_raster.h"\n#endif\n'+text
+    start=text.index('      case 0x2132:\n')
+    end=text.index('      case 0x2133:',start)
+    region=text[start:end]
+    assert region.count('            FLUSH_REDRAW();')==1
+    region=region.replace('            FLUSH_REDRAW();','''#ifdef D35_PLUS_A7
+            /* Byte channel tags can alternate without changing the color.
+             * Keep the old raster state only until its effective color changes. */
+            if(d35_fixed_color_changes(Byte,PPU.FixedColourRed,
+                                       PPU.FixedColourGreen,PPU.FixedColourBlue))
+#endif
+               FLUSH_REDRAW();''')
+    return text[:start]+region+text[end:]
+
+change('source/ppu.c',ppu)
 change('Makefile',makefile)
 change('link.T',lambda text:text.replace('global: retro_*;','global: retro_*; d35_profile_begin; d35_profile_end;'))
 (CORE/'source/a7_tile.h').write_bytes((ROOT/'plus-a7-render.h').read_bytes())
 (CORE/'source/a7_profile.h').write_bytes((ROOT/'plus-a7-profile.h').read_bytes())
 (CORE/'source/a7_profile_core.h').write_bytes((ROOT/'plus-a7-profile-core.h').read_bytes())
+(CORE/'source/a7_raster.h').write_bytes((ROOT/'plus-a7-raster.h').read_bytes())
 print('Applied guarded A7 whole-program build, planar decode, rendering and sampled phase ABI')

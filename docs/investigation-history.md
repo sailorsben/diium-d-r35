@@ -40,7 +40,7 @@ The kcore recovery branch stopped at ENOENT. No MMIO/flash fallback occurred. Tr
 | 1.7 | No crash; Save Point/save/normal exit; lag remains, partly relieved in FF6 party menu | Fresh 7,068 calls, zero holds, ~54.63 calls/sec active loop; 31.08% definitely over budget. Audio queue sampled empty despite complete PCM acceptance. Missing head leaves system diagnostic gaps; source regression now reproduces sparse firmware PATH. New progress archived; card unarmed |
 | 1.8 | Played okay, clicking returned, whole device powered off | Fresh previous checkpoint:1,648 calls, zero holds, ~57.93 calls/sec;13.33ms mean core wall plus3.00ms lead wait. Latest/tails empty, final report stale1.7. Both head and sed absent; source fix now tests both missing. Shutdown cause unknown; progress intact, card unarmed. Exact returned core passes10,000 output frames |
 
-The user reported Right→Down, Left→Right, Up→Up, Down→Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
+The user reported Rightâ†’Down, Leftâ†’Right, Upâ†’Up, Downâ†’Right and repeated the duplicate-Right observation before1.5. The unlabelled raw traces cannot attribute each physical press independently. The stock callback establishes four distinct canonical directions; the1.5 physical return confirms all four. Do not silently edit the historical report to fit a neat permutation.
 
 ## Corrections that must survive future work
 
@@ -147,7 +147,7 @@ bursts exceed nominal playable lead and take longer than four logical seconds.
 These are concrete scheduling/reserve findings, not hardware limits or clean
 sound/full-speed acceptance. All 973 scaler statuses include FRAME_DONE; its
 ten-sleep fallback never runs. Nonwait syscall brackets total about 0.37ms per
-256×224 job; worker wait wall overlaps core work rather than adding serial CPU.
+256Ã—224 job; worker wait wall overlaps core work rather than adding serial CPU.
 
 Ben challenges using physical runs to rediscover documented interfaces. The
 [source review](platform-interface-research.md) reads Linux 4.19 OSS/native PCM
@@ -333,3 +333,25 @@ the exact core and retains eight sampled calls separately so phase costs
 cannot immediately age out of the recent24-call history. The complete runtime
 qualification is rerun; no extra physical experiment is requested. Both
 intermediate and final release/evidence bytes remain immutable.
+
+## 1.15 return exposes redundant raster invalidation;1.16 repairs it
+
+[1.15](snes-mvp-1.15-return.md) has three audio-failed attempts. Two retained
+reports show successful snapshot loads followed by19/18 calls; ordinary main
+CPU about18ms, wall19.3–19.5ms, sampled PPU about10ms. Exact payload and21
+game-progress files match. No new poweroff independently established. The
+first detailed history is lost across retries.
+
+Exact-state local census finds214 pending $2132 flushes per frame with no
+effective fixed-color change. Raw channel-tag changes fragment render work.
+[1.16](snes-mvp-1.16.md) flushes only on changed selected components, preserving
+assignments/latch and flush-before-change.217–223 PPU jobs become4–10; every
+tile row/frame/native sample remains.16.8million extracted register cases and
+1200 exact-core frames pass. Removed jobs do not prove physical cycle savings.
+
+Failed-session report/trace pairs now survive retries; native lifecycle fixture
+verifies first-failure preservation. Final install/readback at06:23 UTC keeps
+all23 original private files and49 lab files exact; game armed, lab unarmed.
+Next physical acceptance is sustained saved-scene play, party menu, pause/resume
+and save/exit with full sound and rendering. First-launch stability remains
+unresolved until that run.

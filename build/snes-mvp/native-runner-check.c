@@ -197,7 +197,8 @@ int main(int argc,char **argv)
 {
     pthread_t consumer; struct audio_pipe_stats out; uint64_t before; int rc;
     const char *trace_path="build/snes-mvp/out/native-runner-fault-fixture.txt";
-    char history[32768]; FILE *trace; size_t bytes;
+    char history[32768],first_session[1024],first_pcm[1024]; FILE *trace; size_t bytes,retained_bytes;
+    void *retained; uint32_t retained_crc;
     assert(argc==4); assert(!pthread_create(&consumer,NULL,consume_pcm,NULL));
     unlink(trace_path); assert(!setenv("D35_MVP_PCM_TRACE_FILE",trace_path,1));
     runner_set_menu_callback(native_menu,NULL); inject_write=1;
@@ -209,6 +210,11 @@ int main(int argc,char **argv)
     trace=fopen(trace_path,"r"); assert(trace);
     bytes=fread(history,1,sizeof(history)-1,trace); history[bytes]=0; fclose(trace);
     assert(strstr(history,"D35 PCM fault history 1.13") && strstr(history,"WRITEI_FRAMES errno=77"));
+    snprintf(first_session,sizeof(first_session),"%s/failure-%ld-%llu-session.txt",argv[3],(long)getpid(),(unsigned long long)s.session_ns);
+    snprintf(first_pcm,sizeof(first_pcm),"%s/failure-%ld-%llu-pcm.txt",argv[3],(long)getpid(),(unsigned long long)s.session_ns);
+    assert(access(first_session,F_OK)==0);
+    retained=read_file(first_pcm,65536,&retained_bytes); assert(retained && retained_bytes==bytes);
+    assert(!memcmp(retained,history,bytes)); retained_crc=crc32(0,retained,(uInt)retained_bytes);free(retained);
     unsetenv("D35_MVP_PCM_TRACE_FILE");
     assert(device_opens==1 && device_fd<0); inject_write=0; next_menu=8; before=device_accepted;
     rc=runner_run(argv[1],argv[2],argv[3]);
@@ -218,6 +224,7 @@ int main(int argc,char **argv)
     assert(s.primed==8469 && out.epoch==3 && !out.errors && !out.remaining && !out.cleared);
     assert(out.accepted==out.enqueued && out.accepted==device_accepted-before);
     assert(out.admissions>=120 && out.admissions<=121 && out.admission_max<=2823 && device_opens==2 && device_fd<0);
+    retained=read_file(first_pcm,65536,&retained_bytes); assert(retained && retained_crc==crc32(0,retained,(uInt)retained_bytes));free(retained);
     /* Replay the measured sustained rate deficit, not just isolated jitter.
      * A consuming 44.1k provider must starve when full frames repeat at 19.88ms;
      * the controller must expose it without secretly re-priming or retrying. */
@@ -226,8 +233,10 @@ int main(int argc,char **argv)
     audio_pipe_stats(&out);
     assert(out.error==EPIPE && out.xruns==1 && out.epoch==1 && s.primed==2823);
     assert(s.runs<120 && !s.held && !s.pauses && out.accepted+out.remaining==out.enqueued);
+    retained=read_file(first_pcm,65536,&retained_bytes); assert(retained && retained_crc==crc32(0,retained,(uInt)retained_bytes));free(retained);
     pthread_mutex_lock(&kernel_lock); consumer_stop=1; pthread_mutex_unlock(&kernel_lock); pthread_join(consumer,NULL);
     puts("PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full drawings, zero lost/cleared PCM");
     puts("PASS: sustained 19.8805ms production against 44100Hz consumption exposes starvation without hidden re-prime, frame suppression or accounting loss");
+    puts("PASS: failed-session report and exact PCM history survive library retry and a later failure under unique kernel-clock session names");
     return 0;
 }

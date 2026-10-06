@@ -18,11 +18,17 @@ Evidence collected on one DIIUM D-R35 through 2026-10-06. **Observed** means ret
 
 One CPU means display/I/O threads can overlap peripheral waits, but cannot add emulation compute capacity. The vendor runtime's gameplay memory headroom was tight. Configured 256 MiB swap is not physical RAM; sampled vrtemu VmSwap was zero and swap use was stable, so ongoing swap thrash was not demonstrated.
 
-The current [1.15 software candidate](snes-mvp-1.15.md) rewrites A7 compilation,
-planar decoding and frontend conversion/service. Local exact-output checks
-pass; this adds no physical speed, frequency, audio-continuity or stability
-finding until its gameplay return. Its sampled regions are inclusive, and
-ordinary per-call CPU/wall costs remain available alongside them.
+The [1.15 return](snes-mvp-1.15-return.md) measures ordinary main-thread CPU
+about18ms and wall19.3–19.5ms in the restored scene, before loop/platform work.
+Sampled inclusive PPU cost is about10ms; admission waits about0.18ms. Snapshot
+loads succeed, then production falls behind. First-launch detailed history is
+lost across retries, so its specific cause remains unknown.
+
+Exact local replay finds214 pending fixed-color `$2132` flushes per frame with
+no effective color change. The [1.16 repair](snes-mvp-1.16.md) reduces PPU update
+jobs217–223 to4–10 while preserving tile rows and exact output. This is a work
+census and correctness result, not measured handheld acceleration.1.16 is
+installed/armed with private progress preserved; physical acceptance pending.
 
 cpufreq, thermal/cache inventory and clock summary were absent in tested locations. Software perf task-clock worked; hardware cycles/instructions/branch/L1/L2 counters returned ENOENT and no PMU DT node was established. Cache sizes from a related chip specification must not be promoted to this device's measured properties.
 

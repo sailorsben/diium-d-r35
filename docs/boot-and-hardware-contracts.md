@@ -67,7 +67,7 @@ Reads initialize reserved=0 and value=1. Successful value=0 is pressed. Failed r
 | `0x206` | `0x9` | MENU; stock Select+Start combination |
 | `0x209` / `0x20a` | volume bits | Volume up / down |
 
-`ReadJoystick` at 0x1599c proves pin→native mask. `joystick_input` at 0xa2f0c and `joy_key_mask` at 0x16b254 prove libretro ID→native mask. The analog branch independently uses 0x10/0x40 for vertical and 0x80/0x20 for horizontal. **Native numeric masks alone were previously mislabeled; the v1.3 direction diagnosis was wrong.**
+`ReadJoystick` at 0x1599c proves pinâ†’native mask. `joystick_input` at 0xa2f0c and `joy_key_mask` at 0x16b254 prove libretro IDâ†’native mask. The analog branch independently uses 0x10/0x40 for vertical and 0x80/0x20 for horizontal. **Native numeric masks alone were previously mislabeled; the v1.3 direction diagnosis was wrong.**
 
 `extract-vendor-input.py` verifies the stock ELF SHA256, maps the actual file-backed segment and extracts the callback mask fixture. The board check decodes raw GPIO fixtures against that independent table, including distinct Down+Left.
 
@@ -260,3 +260,14 @@ of further small diagnostic retries: attribute the expensive phase, qualify a
 whole-program A7 build and optimize the actual core/frontend work. More initial
 silence or automatic restart cannot repair sustained underproduction. Existing
 fixtures establish lifecycle/correctness, not the device's repeated slow phase.
+
+## Fixed-color raster invalidation
+
+The pinned Plus $2132 register byte selects R/G/B components with bits5–7 and
+a five-bit value. A changed raw channel tag can leave effective color unchanged.
+The exact FF6 state replay has214 such redundant pending flushes per frame.
+Flush before selected component values change; preserve component assignments
+and last-written byte. Do not collapse changing raster colors. The1.16 guarded
+patch and extracted stock-code fixture qualify this distinction; physical CPU
+gain remains separate from the217–223 to4–10 raster-job census. See
+[snes-mvp-1.16](snes-mvp-1.16.md).

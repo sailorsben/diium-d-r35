@@ -25,9 +25,13 @@ Continue, expensive scene/party menu/map, pause/resume, optionally load the olde
 snapshot, then save and exit. Native cadence, complete sound and stability
 remain pending physical qualification.
 
-Installed and independently read back at2026-10-06 05:48 UTC (October5
+Installed and independently read back at2026-10-06 05:48 UTC (October6
 America/Chicago). Archive45 MVP/49 lab files before final writes. All23
 existing private files remain byte exact, including the separate new-core
 snapshot, and stock/hook/older wrapper match. Game one-shot armed; lab
 unarmed. Curated qualification/install/readback evidence is in
 `evidence/verification/snes-mvp-1.15/`; owner-only archives remain local.
+
+The consumed [physical return](snes-mvp-1.15-return.md) fails audio on first
+launch and after successful snapshot loads. It exposes the renderer deficit
+used to build [1.16](snes-mvp-1.16.md). Do not re-arm1.15 unchanged.

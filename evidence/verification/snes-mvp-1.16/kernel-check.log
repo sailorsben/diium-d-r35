@@ -1,0 +1,3 @@
+PASS: 8388608 scalar/vector color comparisons; 280000 tile rows, 2/4bpp, all math modes, flips/transparency/depth
+PASS: 60000 backdrop/window spans match scalar arithmetic; clipped tails/canaries and palette guard page intact
+PASS: 60000 planar tiles match independent 2/4/8bpp oracle; blank classification, destination canaries and exact source guard pages
