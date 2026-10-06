@@ -1,0 +1,2 @@
+PASS: 26-second libc/kernel clock skew cannot stall 8 ms input waits; signals retain deadline
+PASS: real ARM kernel-clock/relative-sleep loop completed 25 polls in 207 ms

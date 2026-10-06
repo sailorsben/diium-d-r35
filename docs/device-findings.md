@@ -238,3 +238,19 @@ state transition and long-game audio/stability remain unproved. Nineteen prior
 progress files/snapshots match; updated FF6 SRAM is archived. dmesg is absent,
 and stock return follows a recorded B exit/cleanup, with no new poweroff
 record. See [return](snes-mvp-1.10-return.md) and [repair](snes-mvp-1.11.md).
+
+## 1.11 physical failure and 1.12 diagnostic boundary
+
+The 1.11 return reaches playback and explicitly succeeds at one snapshot load,
+then stops in post-fault SETUP. Two final reports contain 2,195/253 calls, with
+no intentional holds and no full software queue. An earlier stderr fault and
+both reports have a 384-frame pointer/count difference; its origin is unproved.
+Current SRAM/snapshots match; the changed SRAM backup is archived. User confirms
+audio error/our library. See [return](snes-mvp-1.11-return.md).
+
+1.12 keeps the core/settings/controller and adds a bounded RAM transaction
+history plus nonclearing kernel READ_ALL on fault, before audio cleanup. Its
+wrapper persists fresh history and clears stale files. Software checks qualify
+bounded capture; device kernel access and timing remain pending. This is not a
+claimed stop/underrun fix, or proof of a hardware limit. See
+[capture contract](snes-mvp-1.12.md).

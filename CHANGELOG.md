@@ -1,5 +1,36 @@
 # Changelog
 
+## SNES MVP1.12 PCM fault history — 2026-10-05
+
+Archive the consumed 1.11 return: 43 MVP/49 lab files, exact release and unchanged
+stock/core/hook. Nineteen prior progress files and every snapshot/current SRAM
+match; retain the changed SRAM backup. User confirms audio error/our library.
+Two final reports contain 2,195/253 calls; the latter explicitly loads a
+snapshot successfully. Both fail on SYNC_OBSERVE with post-fault SETUP. An
+earlier stderr fault and both reports have appl_ptr minus accepted epoch count
+of 384 frames. Cause remains unknown; the 59.897-calls/sec interval is not
+sustained clean-play acceptance. See [return](docs/snes-mvp-1.11-return.md).
+
+Add a 96-entry in-memory native PCM transaction history and capture it before
+cleanup on the first sticky fault. Read the kernel ring through read-only
+SYS_syslog READ_ALL, with explicit unsupported/permission errors. The wrapper
+clears stale history and preserves the fresh file before child exit. No healthy
+transfer formatting, kernel-log reads or SD writes; timestamp/memory overhead
+is not physically measured. Keep the exact core, parameters, reserve and
+controller. This is a diagnostic build, not a claimed fix.
+
+ARM recorder/owner/native lifecycle, wrapper persistence and existing runtime
+checks pass; unchanged core exact-output checks pass. Guard consumed-1.11
+installation, archive first and independently read back all protected files.
+Physical capture, stream stability and full-speed sound remain pending.
+See [capture contract](docs/snes-mvp-1.12.md).
+
+Installation completes at 2026-10-06 04:13 UTC (October 5 in America/Chicago)
+after a fresh 43-MVP/49-lab archive. Independent readback verifies the qualified
+1.12 payload, all 22 current private files including the changed SRAM backup,
+all 49 lab files and unchanged core/stock/hook/original snapshots/older wrapper.
+Game one-shot is armed; lab remains unarmed. Physical capture is pending.
+
 ## SNES MVP1.11 coherent PCM observations and resume — 2026-10-05
 
 Archive the consumed 1.10 return: 43 MVP/49 lab files, exact release bytes,

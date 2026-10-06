@@ -1,0 +1,64 @@
+{
+  "version": "1.11",
+  "archive_verified": true,
+  "exact_released_payload": true,
+  "one_shot_consumed": true,
+  "mvp_files": 43,
+  "lab_files": 49,
+  "prior_game_progress_files_unchanged": 19,
+  "updated_sram_files_archived": 1,
+  "updated_game_progress_paths": [
+    "retro/snes-mvp/saves/game-a27f1c7a-3145728.srm.bak"
+  ],
+  "prior_snapshots_unchanged": true,
+  "stock_binaries_unchanged": true,
+  "final_reports": [
+    {
+      "runs": 2195,
+      "active_calls_per_second": 59.897192404381094,
+      "mean_core_wall_ms": 10.783506150341687,
+      "mean_core_cpu_ms": 10.034264692482918,
+      "max_core_wall_ms": 26.573,
+      "pauses": 0,
+      "snapshot_load_successes": 0,
+      "admission_min_frames": 747,
+      "playable_min_frames": 140,
+      "accepted_frames": 1617386,
+      "remaining_frames": 706,
+      "epoch": 1,
+      "appl_minus_epoch_transferred": 384,
+      "raw_pointer_difference": 107,
+      "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=1617770 hw=1617663 prime_written=2823 start_calls=0 epoch=1 xfer=1617386"
+    },
+    {
+      "runs": 253,
+      "active_calls_per_second": 59.29043642916902,
+      "mean_core_wall_ms": 10.30304743083004,
+      "mean_core_cpu_ms": 9.708703557312253,
+      "max_core_wall_ms": 21.089,
+      "pauses": 1,
+      "snapshot_load_successes": 1,
+      "admission_min_frames": 741,
+      "playable_min_frames": 134,
+      "accepted_frames": 190997,
+      "remaining_frames": 705,
+      "epoch": 2,
+      "appl_minus_epoch_transferred": 384,
+      "raw_pointer_difference": 101,
+      "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=15716 hw=15615 prime_written=2823 start_calls=0 epoch=2 xfer=15332"
+    }
+  ],
+  "earlier_stderr_fault": {
+    "operation": "SYNC_OBSERVE",
+    "errno": 77,
+    "state": 1,
+    "appl_minus_epoch_transferred": 384,
+    "raw_pointer_difference": 92
+  },
+  "snapshot_result": "final report explicitly proves one successful snapshot load and re-primed resume before failure",
+  "observation_limit": "SETUP has no playable PCM; raw pointer gaps 92/107/101 are not valid queued sound in SETUP",
+  "drawing_limit": "zero intentional holds; each final fatal report lacks one final video callback",
+  "shutdown_limit": "user confirms audio error/our library; application records display join/FreeVFB; final wrapper status absent; no whole-device poweroff reported",
+  "root_cause_limit": "stream stops and pointer/count discrepancy observed; no transaction history or kernel ring explains why",
+  "next_build": "1.12 adds bounded RAM PCM history and read-only SYS_syslog READ_ALL on fault; no claimed driver fix"
+}

@@ -1,8 +1,8 @@
 # Build, test and recover
 
 The source is published; device libraries, factory binaries, ROMs and personal
-saves are supplied separately. The current1.11 installer requires the exact
-consumed1.10 Windows D: card. Historical installers have different guarded
+saves are supplied separately. The current1.12 installer requires the exact
+consumed1.11 Windows D: card. Historical installers have different guarded
 baselines; none is a universal factory-card installer.
 
 ## Dependencies and pinned inputs
@@ -42,8 +42,8 @@ The real-core fixture uses a user-supplied FF3/VI ZIP at `build/ff3.zip`, whose 
 
 ## Build and checks
 
-The current1.11 workflow retains the exact1.9 A7 renderer/early PCM core and
-repairs native observations/resume; see [1.11](snes-mvp-1.11.md). Supply owner-only
+The current1.12 workflow retains the exact1.9 A7 renderer/early PCM core and
+records PCM faults before cleanup; see [1.12](snes-mvp-1.12.md). Supply owner-only
 output-equivalence inputs first. Do not migrate snapshots for this repair.
 The pinned original remains an exact-output oracle. Historical releases and
 evidence remain unchanged; no paired device performance experiment is required.
@@ -89,16 +89,17 @@ The checks exercise:
 
 ## Current release and deployment boundary
 
-[MVP1.11](snes-mvp-1.11.md) repairs fresh observations and drain/resume after the
-1.10 WRITEI failures. The exact1.9 core and PCM candidates remain. Run
-`package-snes-1.11.py --card D:/` only on its exact consumed1.10 baseline.
+[MVP1.12](snes-mvp-1.12.md) captures native transaction/kernel history after the
+1.11 stopped-stream failures. No driver fix is claimed. The exact 1.9 core and
+PCM candidates remain. Run
+`package-snes-1.12.py --card D:/` only on its exact consumed1.11 baseline.
 Archive all returned logs/private progress before updating runner/wrapper/test
 notes; retain newly updated SRAM and every existing snapshot/core/lab/stock/hook
-file. Arm last. `verify-snes-1.11-card.py --card D:/ --archive LOCAL_INSTALL_ARCHIVE`
+file. Arm last. `verify-snes-1.12-card.py --card D:/ --archive LOCAL_INSTALL_ARCHIVE`
 checks exact payload, all retained/archive files and one-shot read-only.
-`publish-snes-1.11.py` gates immutable publication on matching source/check hashes
+`publish-snes-1.12.py` gates immutable publication on matching source/check hashes
 and independent readback, excluding all dependency binaries/private progress.
-Use [1.11 test notes](snes-mvp-1.11-test.txt), including our snapshot load/resume.
+Use [1.12 test notes](snes-mvp-1.12-test.txt), including our snapshot load/resume.
 The historical1.10 updater remains guarded to consumed1.9.
 
 The historical1.9 updater requires the consumed Lab2/1.8 baseline, updates four
@@ -121,7 +122,7 @@ qualified and published under a new version; do not re-arm unchanged1.8.
 When analyzing a returned session, supply its actual core via
 `analyze-snes-mvp.py --core ...`; stale reports from an earlier core are rejected.
 
-[MVP1.11](../releases/snes-mvp-1.11/) contains our executable and wrapper, without
+[MVP1.12](../releases/snes-mvp-1.12/) contains our executable and wrapper, without
 a ROM, snapshot, core dependency, driver or libc. Build its isolated A7 core
 from pinned source; the wrapper selects `retro/snes-mvp/plus-a7.so`. It retains
 `/usr/retro/driver.so` and existing `002`/`ROMs/SNES` scanning. The historical
@@ -162,7 +163,7 @@ Boot the one-shot library. Check Up/Down selection, A/Start launch and B return.
 On reconnect, archive startup/runtime logs, marker state, helper copies, session report and all private saves before updating. Keep new progress. `startup.log` now contains direct kernel/libc/boottime readings and bounded raw pin/error masks. `runtime-platform.txt` locates thread waits. `last-session.txt` reports actual run/audio accounting; it is not a sound recording or presentation counter.
 
 The [1.8 test sequence](snes-mvp-1.8.md#physical-test) is historical; its returned
-card was unarmed. Current testing uses [1.11](snes-mvp-1.11-test.txt).
+card was unarmed. Current testing uses [1.12](snes-mvp-1.12-test.txt).
 After power-off, prefer fresh `last-progress.txt`/`last-progress.previous`
 identity-qualified checkpoints over an older normal-exit report. Retain
 `runtime-platform-latest.txt`, `kernel-tail.txt` and `diagnostic-flush.log` too.

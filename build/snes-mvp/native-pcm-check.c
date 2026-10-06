@@ -176,6 +176,22 @@ int main(void)
     assert(pcm_observe(&state)<0 && errno==EPROTO && !state.started && accepted==137);
     early_start=0; assert(!pcm_reset());
     i=prepares;
+    {
+        const char *trace_path="build/snes-mvp/out/native-pcm-fault-fixture.txt";
+        char history[32768]; FILE *trace; unsigned j; size_t bytes;
+        unlink(trace_path); assert(!setenv("D35_MVP_PCM_TRACE_FILE",trace_path,1));
+        for(j=0;j<200;j++) assert(!pcm_observe(&state));
+        assert(access(trace_path,F_OK)<0); /* RAM records never print/write healthy transfers */
+        stream_state=SNDRV_PCM_STATE_XRUN;
+        assert(pcm_observe(&state)<0 && errno==EPIPE);
+        trace=fopen(trace_path,"r"); assert(trace);
+        bytes=fread(history,1,sizeof(history)-1,trace); history[bytes]=0; fclose(trace);
+        assert(strstr(history,"D35 PCM fault history 1.12") && strstr(history,"op=SYNC_XRUN"));
+        assert(strstr(history,"kernel_read_all_bytes=") && strstr(history,"epoch="));
+        assert(!strstr(history,"seq=0 ") && !strstr(history,"RESET_DROP"));
+        unsetenv("D35_MVP_PCM_TRACE_FILE");
+        puts("PASS: bounded PCM flight history writes only on fault before cleanup; kernel read result is explicit");
+    }
     stream_state=SNDRV_PCM_STATE_XRUN;
     assert(pcm_observe(&state)<0 && errno==EPIPE);
     assert(prepares==i); /* no automatic recovery discarding samples */

@@ -2299,6 +2299,286 @@
       "published_sha256": "4dd76fe124061f6f60e242f2d2a0dd8eb4008f04b3f4a0e8f781aed648c2a529",
       "bytes": 490,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/analysis.json",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/analysis.json",
+      "source_sha256": "b41b3a41a50483bc8777ed6fb1ad030e937a4b0831050530d345ed464bd068f3",
+      "published_sha256": "5e91f11fa7d144a28f89cf5d76ffde0daea86969c355c0322587e99205517a34",
+      "bytes": 2648,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/saves/last-session.txt.bak",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/session-previous.txt",
+      "source_sha256": "620a898272b30b75fd3dc003994509566048b267419eeafc5e5db9e3314a41c5",
+      "published_sha256": "620a898272b30b75fd3dc003994509566048b267419eeafc5e5db9e3314a41c5",
+      "bytes": 2721,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/saves/last-session.txt",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/session-final.txt",
+      "source_sha256": "01d6b2f6688af083c4939f16abef301ad055b2303f918dc2662a2da047c971a2",
+      "published_sha256": "01d6b2f6688af083c4939f16abef301ad055b2303f918dc2662a2da047c971a2",
+      "bytes": 2549,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/startup.log",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/startup.log",
+      "source_sha256": "a2870ff2294a3deb8ef668224307e7dfba07cadbdaebc155e4167767a6f72356",
+      "published_sha256": "a2870ff2294a3deb8ef668224307e7dfba07cadbdaebc155e4167767a6f72356",
+      "bytes": 5576,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/last-run.log",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/last-run.log",
+      "source_sha256": "7a7a3a453009594387957c9cfc4dfe45f512f8f9984c7307b3a43b2d18c598f9",
+      "published_sha256": "7a7a3a453009594387957c9cfc4dfe45f512f8f9984c7307b3a43b2d18c598f9",
+      "bytes": 646,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/last-progress.txt",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/last-progress.txt",
+      "source_sha256": "a17751f140306cd5d1ae5e330a1181d1eb919b90c0d7f282f1b187e686bccce6",
+      "published_sha256": "a17751f140306cd5d1ae5e330a1181d1eb919b90c0d7f282f1b187e686bccce6",
+      "bytes": 2357,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/last-progress.previous",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/last-progress.previous",
+      "source_sha256": "89dcfb9063e95687ed54fca2e8078a030151a51a6bbdf74c65895baf670a4867",
+      "published_sha256": "89dcfb9063e95687ed54fca2e8078a030151a51a6bbdf74c65895baf670a4867",
+      "bytes": 2012,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/runtime-platform.txt",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/runtime-platform.txt",
+      "source_sha256": "a134ba9bf6f4b370a21771bdec84eadfd6daf2ed21dfb4ae1e3531bcf6409405",
+      "published_sha256": "a134ba9bf6f4b370a21771bdec84eadfd6daf2ed21dfb4ae1e3531bcf6409405",
+      "bytes": 9378,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/runtime-platform-latest.txt",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/runtime-platform-latest.txt",
+      "source_sha256": "a134ba9bf6f4b370a21771bdec84eadfd6daf2ed21dfb4ae1e3531bcf6409405",
+      "published_sha256": "a134ba9bf6f4b370a21771bdec84eadfd6daf2ed21dfb4ae1e3531bcf6409405",
+      "bytes": 9378,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/kernel-tail.txt",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/kernel-tail.txt",
+      "source_sha256": "be98c7d268c61b2698561e446ae12529d566da68980dd9a046da1ef76f22af7e",
+      "published_sha256": "be98c7d268c61b2698561e446ae12529d566da68980dd9a046da1ef76f22af7e",
+      "bytes": 110,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261006T040033Z/snes-mvp/diagnostic-flush.log",
+      "published": "evidence/2026-10-05/snes-mvp-1.11-return/diagnostic-flush.log",
+      "source_sha256": "fa4ac79a0ba4d8c2d2a26ad372e8dba038d8f0d875f0efb8b501aeac81b3c3c9",
+      "published_sha256": "fa4ac79a0ba4d8c2d2a26ad372e8dba038d8f0d875f0efb8b501aeac81b3c3c9",
+      "bytes": 148,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/contracts.log",
+      "published": "evidence/verification/snes-mvp-1.12/contracts.log",
+      "source_sha256": "c65d940c2fd9ba464418fd573f197bf093305b49f3f7d875ada56315cb5d7e19",
+      "published_sha256": "c65d940c2fd9ba464418fd573f197bf093305b49f3f7d875ada56315cb5d7e19",
+      "bytes": 189,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/display-queue-contract.log",
+      "published": "evidence/verification/snes-mvp-1.12/display-queue-contract.log",
+      "source_sha256": "d688984e5f4fdae223c56541dfd5b9145278b9abe6dbd7d48af066adeb582353",
+      "published_sha256": "d688984e5f4fdae223c56541dfd5b9145278b9abe6dbd7d48af066adeb582353",
+      "bytes": 128,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/startup-contract.log",
+      "published": "evidence/verification/snes-mvp-1.12/startup-contract.log",
+      "source_sha256": "daa92df8441ee8d74eb0bd0fbc790cbf8add90015d68bff1a1ae2f8b49b4cdc2",
+      "published_sha256": "daa92df8441ee8d74eb0bd0fbc790cbf8add90015d68bff1a1ae2f8b49b4cdc2",
+      "bytes": 277,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/wrapper-contract.log",
+      "published": "evidence/verification/snes-mvp-1.12/wrapper-contract.log",
+      "source_sha256": "67fb4fc87eca8c2d13d1b09c7be26211469e1df9a379fc747d56c4b44bef1233",
+      "published_sha256": "67fb4fc87eca8c2d13d1b09c7be26211469e1df9a379fc747d56c4b44bef1233",
+      "bytes": 814,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/board-input-contract.log",
+      "published": "evidence/verification/snes-mvp-1.12/board-input-contract.log",
+      "source_sha256": "4c8db9a5bf14cee6af9c86d5cdb3888d0202ccc516d11847be7c553bcdc54759",
+      "published_sha256": "4c8db9a5bf14cee6af9c86d5cdb3888d0202ccc516d11847be7c553bcdc54759",
+      "bytes": 100,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/vendor-input-reference.log",
+      "published": "evidence/verification/snes-mvp-1.12/vendor-input-reference.log",
+      "source_sha256": "b6c69393113b59fd7950bdb80eb1503a3acc889d66b5ab4707357bd1db2c7711",
+      "published_sha256": "b6c69393113b59fd7950bdb80eb1503a3acc889d66b5ab4707357bd1db2c7711",
+      "bytes": 101,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/timing-contract.log",
+      "published": "evidence/verification/snes-mvp-1.12/timing-contract.log",
+      "source_sha256": "0f2ce323fe8ff2c3e20952611e5af4d38a7aa39155eec6703c431fe2615230e4",
+      "published_sha256": "0f2ce323fe8ff2c3e20952611e5af4d38a7aa39155eec6703c431fe2615230e4",
+      "bytes": 171,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/platform-contract.log",
+      "published": "evidence/verification/snes-mvp-1.12/platform-contract.log",
+      "source_sha256": "7ceeb434dd9f385f1a2e2471c974471e19569f630c8096e62a5208491671d817",
+      "published_sha256": "7ceeb434dd9f385f1a2e2471c974471e19569f630c8096e62a5208491671d817",
+      "bytes": 93,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/abi-versions.txt",
+      "published": "evidence/verification/snes-mvp-1.12/abi-versions.txt",
+      "source_sha256": "25b3d3ffdf889e86851ff3b1b21c18986d121a6805b695c369294f97847a3d2e",
+      "published_sha256": "25b3d3ffdf889e86851ff3b1b21c18986d121a6805b695c369294f97847a3d2e",
+      "bytes": 2404,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/dependencies.txt",
+      "published": "evidence/verification/snes-mvp-1.12/dependencies.txt",
+      "source_sha256": "f2003adf174c8adf15ad4d996372d68d649b88615003bc65ee9c342b3c5e069e",
+      "published_sha256": "f2003adf174c8adf15ad4d996372d68d649b88615003bc65ee9c342b3c5e069e",
+      "bytes": 1513,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/diagnostic-crash.log",
+      "published": "evidence/verification/snes-mvp-1.12/diagnostic-crash.log",
+      "source_sha256": "cbd4a710b1bf3d16f06493e637cf7d905805dd4a08eb4e413cfd8e0e6dddb1ac",
+      "published_sha256": "cbd4a710b1bf3d16f06493e637cf7d905805dd4a08eb4e413cfd8e0e6dddb1ac",
+      "bytes": 140,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/native-pcm-check.log",
+      "published": "evidence/verification/snes-mvp-1.12/native-pcm-check.log",
+      "source_sha256": "9bc7f24bdd2e6481c957088007418c4f1dada8ad941740eaafcc69a2c7096609",
+      "published_sha256": "9bc7f24bdd2e6481c957088007418c4f1dada8ad941740eaafcc69a2c7096609",
+      "bytes": 1750,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/audio-owner-check.log",
+      "published": "evidence/verification/snes-mvp-1.12/audio-owner-check.log",
+      "source_sha256": "53200c94b556a79129e5244d2fa28b56e8f1858a3c11bdf78f12d54ef7272c25",
+      "published_sha256": "53200c94b556a79129e5244d2fa28b56e8f1858a3c11bdf78f12d54ef7272c25",
+      "bytes": 358,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/native-runner-check.log",
+      "published": "evidence/verification/snes-mvp-1.12/native-runner-check.log",
+      "source_sha256": "47e433cd35e99a21728647708ed0271a19d690ed72ea75c13832214199e435f2",
+      "published_sha256": "47e433cd35e99a21728647708ed0271a19d690ed72ea75c13832214199e435f2",
+      "bytes": 768,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/old-owner-regression.log",
+      "published": "evidence/verification/snes-mvp-1.12/old-owner-regression.log",
+      "source_sha256": "6b6565b6b1e0cf5ed85337abee28db929a2dc0ae24ebc4e695568acc1206b0f8",
+      "published_sha256": "6b6565b6b1e0cf5ed85337abee28db929a2dc0ae24ebc4e695568acc1206b0f8",
+      "bytes": 312,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/smoke-final/last-session.txt",
+      "published": "evidence/verification/snes-mvp-1.12/smoke-session.txt",
+      "source_sha256": "dd12409e6204de86ed9a785da2f5f1a26ca8401ed8fbf95dce8971afc8979fc5",
+      "published_sha256": "dd12409e6204de86ed9a785da2f5f1a26ca8401ed8fbf95dce8971afc8979fc5",
+      "bytes": 2135,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/paced-smoke/last-session.txt",
+      "published": "evidence/verification/snes-mvp-1.12/paced-session.txt",
+      "source_sha256": "9fea7159b38a51a89a07b67b9a67efc804006703e2b6311b90c5ebba8b8ca3fc",
+      "published_sha256": "9fea7159b38a51a89a07b67b9a67efc804006703e2b6311b90c5ebba8b8ca3fc",
+      "bytes": 2114,
+      "normalized": false
+    },
+    {
+      "source": "build/plus-a7-out/kernel-check.log",
+      "published": "evidence/verification/snes-mvp-1.12/kernel-check.log",
+      "source_sha256": "0865a9aa7f5b6c043cd9761ceb7d3c6e4a56240986601a7debd93e39dcf4ea59",
+      "published_sha256": "0865a9aa7f5b6c043cd9761ceb7d3c6e4a56240986601a7debd93e39dcf4ea59",
+      "bytes": 226,
+      "normalized": false
+    },
+    {
+      "source": "build/plus-a7-out/codegen-check.log",
+      "published": "evidence/verification/snes-mvp-1.12/codegen-check.log",
+      "source_sha256": "ff2b02d67549864205cc8fa82f0cb6502736d394846219212670cab354b8774a",
+      "published_sha256": "ff2b02d67549864205cc8fa82f0cb6502736d394846219212670cab354b8774a",
+      "bytes": 115,
+      "normalized": false
+    },
+    {
+      "source": "build/plus-a7-out/equivalence.log",
+      "published": "evidence/verification/snes-mvp-1.12/equivalence.log",
+      "source_sha256": "467c1e4932020fc50e4d5b29c119d187064a2c7cd6219af1023ec980e235973f",
+      "published_sha256": "467c1e4932020fc50e4d5b29c119d187064a2c7cd6219af1023ec980e235973f",
+      "bytes": 240,
+      "normalized": false
+    },
+    {
+      "source": "build/plus-a7-out/runner-integration.log",
+      "published": "evidence/verification/snes-mvp-1.12/runner-integration.log",
+      "source_sha256": "ab93399b783c93a2fba61dfbdd777c0cd14f08e832324175acd6303dc6ad4208",
+      "published_sha256": "ab93399b783c93a2fba61dfbdd777c0cd14f08e832324175acd6303dc6ad4208",
+      "bytes": 224,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-mvp/out/verification.json",
+      "published": "evidence/verification/snes-mvp-1.12/verification.json",
+      "source_sha256": "91f7f3eba03ab9c401d3d4be39803031a47ae19202a3d70a056d770a31632b10",
+      "published_sha256": "f797ba6247ba07003ce58877ffeb536da3547d1f1e53fe2b914f2c296cafb9d7",
+      "bytes": 13580,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-1.12-install-20261006T041355Z/installation.json",
+      "published": "evidence/verification/snes-mvp-1.12/installation.json",
+      "source_sha256": "11f4b06420b0c3e03073b4f64f198d3bcefcf86054e7e2569364bc62433ad41f",
+      "published_sha256": "eb1f9c324123d2fcda755a9445e93f7ab08ddfbf4a6ff3c89ff8d76ea44a7777",
+      "bytes": 789,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-1.12-install-20261006T041355Z/independent-readback.json",
+      "published": "evidence/verification/snes-mvp-1.12/independent-readback.json",
+      "source_sha256": "6dd8fabd8d3ee0801a6b83ff2ff34015e01de68c9d8f5c76e3e13eb8defe22cd",
+      "published_sha256": "9dfa62c7c1e9cba56d9be785e14d25ac3b6741120052a916c0c63c4a252267cd",
+      "bytes": 490,
+      "normalized": true
     }
   ]
 }

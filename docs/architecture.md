@@ -1,6 +1,6 @@
 # Userspace platform architecture
 
-The current [MVP1.11](snes-mvp-1.11.md) retains the native PCM owner,
+The current [MVP1.12](snes-mvp-1.12.md) retains the native PCM owner,
 consumption-driven producer admission, earlier mixed core audio and every
 drawing. The [1.9 return](snes-mvp-1.9-return.md) qualifies44100Hz/128-period/
 3712-buffer settings and one priming transfer, then fails before emulation.
@@ -175,3 +175,8 @@ source/build/recovery and an established useful acceleration path.
 The source prototypes the main plumbing. It does not yet provide a general core
 catalog, broad content support, physically qualified native audio clock, GPU
 path, battery/suspend design or complete Buildroot image.
+
+The 1.11 physical return still fails with a stopped native stream despite the
+fresh-observation corrections. 1.12 adds fault-only bounded transaction/kernel
+capture and retains behavior; no driver fix is claimed. See
+[latest return](snes-mvp-1.11-return.md).

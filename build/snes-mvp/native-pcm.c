@@ -6,13 +6,57 @@
 #include <limits.h>
 #include <poll.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <sys/syscall.h>
 #include <unistd.h>
 #include <time.h>
 #include <sound/asound.h>
 
 static struct { int fd,started,error; char failure[256]; struct board_audio_state config; } pcm={.fd=-1};
+/* No per-transfer printing or SD writes. Preserve the last transactions only
+ * when a stream fails, before DROP/close can erase the causal state. */
+#define PCM_TRACE_COUNT 96u
+static struct pcm_trace_entry {
+    uint64_t ns,xfer;
+    const char *op;
+    unsigned state,queued,appl,hw,epoch,argument;
+    int result;
+} pcm_trace[PCM_TRACE_COUNT];
+static uint64_t pcm_trace_count;
+static void pcm_record(const char *op,unsigned argument,int result)
+{
+    struct pcm_trace_entry *t=&pcm_trace[pcm_trace_count++%PCM_TRACE_COUNT];
+    t->ns=board_now_ns(); t->xfer=pcm.config.epoch_transferred; t->op=op;
+    t->state=pcm.config.state; t->queued=pcm.config.queued;
+    t->appl=pcm.config.appl_ptr; t->hw=pcm.config.hw_ptr;
+    t->epoch=pcm.config.epoch; t->argument=argument; t->result=result;
+}
+static void pcm_dump_fault(void)
+{
+    const char *path=getenv("D35_MVP_PCM_TRACE_FILE");
+    char temporary[512],kernel[16384]; FILE *f;
+    uint64_t first=pcm_trace_count>PCM_TRACE_COUNT?pcm_trace_count-PCM_TRACE_COUNT:0,i;
+    int bytes,saved;
+    if(!path || !*path) return;
+    if(snprintf(temporary,sizeof(temporary),"%s.tmp",path)>=(int)sizeof(temporary)) return;
+    f=fopen(temporary,"w"); if(!f) return;
+    fprintf(f,"D35 PCM fault history 1.12\nfailure=%s\nentries_total=%llu\n",pcm.failure,(unsigned long long)pcm_trace_count);
+    fprintf(f,"Each sample is after the named operation; WRITE_OK retains the preceding pointer observation.\n");
+    for(i=first;i<pcm_trace_count;i++) {
+        const struct pcm_trace_entry *t=&pcm_trace[i%PCM_TRACE_COUNT];
+        fprintf(f,"seq=%llu ns=%llu op=%s arg=%u result=%d state=%u queued=%u appl=%u hw=%u epoch=%u xfer=%llu\n",
+            (unsigned long long)i,(unsigned long long)t->ns,t->op,t->argument,t->result,
+            t->state,t->queued,t->appl,t->hw,t->epoch,(unsigned long long)t->xfer);
+    }
+    /* READ_ALL does not clear the kernel ring and needs no firmware dmesg tool.
+     * Permission/unsupported errors remain evidence, never fake an empty ring. */
+    bytes=(int)syscall(SYS_syslog,3,kernel,sizeof(kernel)); saved=errno;
+    fprintf(f,"kernel_read_all_bytes=%d errno=%d\n",bytes,bytes<0?saved:0);
+    if(bytes>0 && bytes<=(int)sizeof(kernel)) fwrite(kernel,1,(size_t)bytes,f);
+    if(fclose(f)==0) (void)rename(temporary,path);
+}
 #if defined(__arm__)
 typedef char pcm_time32[(sizeof(struct timespec)==8)?1:-1];
 typedef char pcm_hw_abi[(sizeof(struct snd_pcm_hw_params)==604)?1:-1];
@@ -27,6 +71,7 @@ static int pcm_fail(const char *operation,int value)
              pcm.config.appl_ptr,pcm.config.hw_ptr,pcm.config.prime_transferred,pcm.config.start_calls,
              pcm.config.epoch,(unsigned long long)pcm.config.epoch_transferred);
     fprintf(stderr,"native PCM failure: %s\n",pcm.failure);
+    if(!pcm.error && pcm.fd>=0) { pcm_record(operation,0,-value); pcm_dump_fault(); }
     pcm.error=value; errno=value; return -1;
 }
 const char *pcm_error(void) { return pcm.failure; }
@@ -65,6 +110,7 @@ int pcm_open(unsigned requested)
     const char *operation="OPEN";
     struct snd_pcm_info info;
     pcm_close();
+    pcm_trace_count=0;
     pcm.fd=open("/dev/snd/pcmC0D0p",O_WRONLY|O_NONBLOCK|O_CLOEXEC);
     if(pcm.fd<0) return pcm_fail(operation,errno);
     memset(&info,0,sizeof(info));
@@ -113,6 +159,7 @@ int pcm_open(unsigned requested)
             pcm.config.buffer=size; pcm.config.prime=prime; pcm.started=0;
             pcm.config.boundary=(unsigned)sw.boundary; pcm.config.epoch=1;
             pcm.config.start_threshold=(unsigned)sw.start_threshold;
+            pcm_record("OPEN_READY",0,0);
             fprintf(stderr,"native PCM rate=%u period=%u buffer=%u prime=%u access=RW_INTERLEAVED start_threshold=%lu boundary=%lu\n",
                     rates[r],periods[p],size,prime,(unsigned long)sw.start_threshold,(unsigned long)sw.boundary);
             return (int)rates[r];
@@ -129,7 +176,9 @@ static int pcm_snapshot(struct board_audio_state *out,unsigned flags)
     struct snd_pcm_sync_ptr sync;
     uint64_t queued;
     memset(&sync,0,sizeof(sync)); sync.flags=flags|SNDRV_PCM_SYNC_PTR_APPL|SNDRV_PCM_SYNC_PTR_AVAIL_MIN;
-    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SYNC_PTR,&sync)<0) return -1;
+    if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SYNC_PTR,&sync)<0) {
+        int saved=errno; pcm_record("SYNC_FAIL",sync.flags,-saved); errno=saved; return -1;
+    }
     *out=pcm.config; out->started=pcm.started;
     out->state=sync.s.status.state; out->observed_ns=board_now_ns();
     out->appl_ptr=(unsigned)sync.c.control.appl_ptr; out->hw_ptr=(unsigned)sync.s.status.hw_ptr;
@@ -137,6 +186,7 @@ static int pcm_snapshot(struct board_audio_state *out,unsigned flags)
     out->queued=out->state==SNDRV_PCM_STATE_SETUP || out->state==SNDRV_PCM_STATE_XRUN || queued>out->buffer?0:(unsigned)queued;
     out->avail=out->buffer-out->queued;
     pcm.config=*out;
+    pcm_record("SYNC_OK",sync.flags,0);
     if(out->appl_ptr>=out->boundary || out->hw_ptr>=out->boundary ||
        (queued>out->buffer && out->state!=SNDRV_PCM_STATE_SETUP && out->state!=SNDRV_PCM_STATE_XRUN)) {
         errno=EPROTO; return -1;
@@ -168,8 +218,9 @@ ssize_t pcm_write(const int16_t *data,size_t frames)
     if(pcm.error) { errno=pcm.error; return -1; }
     memset(&x,0,sizeof(x)); x.buf=(void *)data; x.frames=frames;
     if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_WRITEI_FRAMES,&x)<0) {
-        if(errno==EAGAIN || errno==EINTR) return -1;
         int saved=errno;
+        pcm_record("WRITE_FAIL",(unsigned)frames,-saved);
+        if(saved==EAGAIN || saved==EINTR) { errno=saved; return -1; }
         (void)pcm_snapshot(&state,0);
         return pcm_fail("WRITEI_FRAMES",saved);
     }
@@ -180,6 +231,7 @@ ssize_t pcm_write(const int16_t *data,size_t frames)
     }
     if((size_t)x.result>frames) return pcm_fail("WRITEI_RESULT",EPROTO);
     pcm.config.epoch_transferred+=(unsigned)x.result;
+    pcm_record("WRITE_OK",(unsigned)frames,(int)x.result);
     if(!pcm.started) {
         pcm.config.prime_transferred+=(unsigned)x.result;
         if(pcm_observe(&state)<0) { /* accepted frames are still returned below */ }
@@ -213,16 +265,19 @@ int pcm_avail_min(unsigned frames)
         int saved=errno; struct board_audio_state state;
         (void)pcm_snapshot(&state,0); return pcm_fail("SYNC_AVAIL_MIN",saved);
     }
+    pcm_record("AVAIL_MIN",frames,0);
     return 0;
 }
 int pcm_reset(void)
 {
     if(pcm.fd<0) return 0;
+    pcm_record("RESET_DROP",0,0);
     if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_DROP,0)<0) return pcm_fail("DROP",errno);
     pcm.started=pcm.error=0; pcm.failure[0]=0;
     pcm.config.prime_transferred=pcm.config.start_calls=pcm.config.start_races=0;
     pcm.config.epoch_transferred=0; ++pcm.config.epoch;
     if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0)<0) return pcm_fail("PREPARE",errno);
+    pcm_record("RESET_PREPARE",0,0);
     return pcm_avail_min(pcm.config.period); /* DRAIN's buffer threshold must not survive resume */
 }
 int pcm_finish(void)
@@ -232,6 +287,7 @@ int pcm_finish(void)
     int rc;
     /* Ordinary write readiness must not turn draining into a busy loop. */
     if(pcm_avail_min(pcm.config.buffer)<0) return -1;
+    pcm_record("DRAIN_REQUEST",0,0);
     rc=ioctl(pcm.fd,SNDRV_PCM_IOCTL_DRAIN,0);
     if(rc<0 && errno!=EAGAIN) return -1;
     while(rc<0) {

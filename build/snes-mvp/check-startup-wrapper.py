@@ -32,6 +32,7 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
     # A returned run must not be mixed into the new diagnostic window.
     if name=='ready-session':
         (base/'runtime-platform.txt').write_text('stale previous snapshot\n')
+        (base/'last-pcm-fault.txt').write_text('stale PCM fault\n')
         # Observe this invocation, never a previous fixture checkpoint.
         (base/'last-progress.txt').unlink(missing_ok=True)
     proc=base/'proc'; proc.mkdir(exist_ok=True)
@@ -117,17 +118,19 @@ def run(name, body, expected, ready=False, armed=True, splash=None):
         assert 'head: not found' not in runtime and 'sed: not found' not in runtime
         assert 'fixture ready runtime' in (base/'last-run.log').read_text()
         assert 'fixture-running-37' in (base/'last-progress.txt').read_text()
+        assert (base/'last-pcm-fault.txt').read_text()=='fixture fresh PCM fault\n'
         assert (base/'runtime-platform-latest.txt').stat().st_size>0
         assert 'end_after_copy_uptime=' in (base/'diagnostic-flush.log').read_text()
         assert 'global_sync=0' in (base/'diagnostic-flush.log').read_text()
         print('PASS: diagnostic progress persisted before child exit; one platform capture and no gameplay global sync')
         print('PASS: wrapper captures CPU/memory with firmware-style PATH lacking head and sed')
         print('PASS: runtime errors and kernel snapshot captured with tail absent')
+        print('PASS: fresh PCM fault history persisted before exit; stale history removed')
     print(f'PASS: startup wrapper {name}, exit={result.returncode}, ready={ready}')
 
 run('early-error','printf "fixture early error\\n"; exit 7',7)
 run('stalled','printf "fixture stall\\n"; exec sleep 60',143)
-run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; sleep 5; exit 0',0,ready=True)
+run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; printf "fixture fresh PCM fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; sleep 5; exit 0',0,ready=True)
 run('unarmed','exit 99',0,armed=False)
 run('splash-handoff',': > "$D35_MVP_READY_FILE"; exit 0',0,ready=True,splash='exits')
 run('splash-stalled','exit 99',1,splash='stuck')

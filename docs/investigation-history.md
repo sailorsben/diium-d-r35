@@ -261,3 +261,24 @@ Independent readback verifies the qualified 1.11 payload, all 22 current private
 files including updated FF6 SRAM, all 49 lab files, original snapshots and
 unchanged core/stock/hook/older-wrapper hashes. Game one-shot is armed; lab is
 unarmed. Physical playback, snapshot resume, speed and stability are pending.
+
+## 1.11 physical failure and 1.12 diagnostic boundary
+
+The 1.11 return reaches playback and explicitly succeeds at one snapshot load,
+then stops in post-fault SETUP. Two final reports contain 2,195/253 calls, with
+no intentional holds and no full software queue. An earlier stderr fault and
+both reports have a 384-frame pointer/count difference; its origin is unproved.
+Current SRAM/snapshots match; the changed SRAM backup is archived. User confirms
+audio error/our library. See [return](snes-mvp-1.11-return.md).
+
+1.12 keeps the core/settings/controller and adds a bounded RAM transaction
+history plus nonclearing kernel READ_ALL on fault, before audio cleanup. Its
+wrapper persists fresh history and clears stale files. Software checks qualify
+bounded capture; device kernel access and timing remain pending. This is not a
+claimed stop/underrun fix, or proof of a hardware limit. See
+[capture contract](snes-mvp-1.12.md).
+
+Installation/readback complete at 2026-10-06 04:13 UTC (October 5 locally).
+Archive 43 MVP/49 lab files before writes; retain and verify all 22 current
+private files, 49 lab files, original snapshots and core/stock/hook/older
+wrapper. Game one-shot is armed; lab remains unarmed. Physical capture pending.

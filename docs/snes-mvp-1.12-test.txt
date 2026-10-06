@@ -1,0 +1,13 @@
+SNES MVP 1.12: capture the native PCM failure
+
+Launch FF6 (not Rev1), use Continue and play normally.
+If it lasts, load the existing snapshot through our pause menu and resume.
+Save and exit normally if it stays running; reconnect D: after any failure.
+One reproduced audio failure is enough; no need to keep retrying.
+
+This is a diagnostic build, not a claimed fix or new audio configuration.
+It retains 96 PCM operations in RAM, then captures them and the kernel ring
+on failure before resetting audio. Healthy transfers do not write logs to SD.
+The wrapper archives the failure history; unsupported kernel reads say so.
+The same core, audio settings, full drawing and existing progress remain.
+The one-shot is consumed before launch; the following reboot takes stock.
