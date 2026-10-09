@@ -6,10 +6,24 @@ uses that reference: black background, full feathered cyan V, small spaced
 `VESPER` lettering and three quiet loading dots inside the heart. The earlier
 thin geometric V/green/tagline draft is discarded.
 
-The authored screen and compatible sprites are ready. **Not installed yet:**
-the [approved FAT recovery](fat-recovery-2026-10-09.md) is complete and fresh
-health/strict archive checks pass. Installation can now use the guarded workflow
-below. The SNES runner/core/wrapper remain1.18 and unarmed.
+**Installed 2026-10-09 at10:54 America/Chicago** after the
+[approved FAT recovery](fat-recovery-2026-10-09.md). The cyan feathered V/heart,
+VESPER lettering and18-frame loading-dot animation replace stock showlogo art.
+Physical appearance/handoff acceptance is pending. SNES runner/core/wrapper
+remain1.18; game and lab one-shots remain unarmed.
+
+Private original and pre-install baseline:
+`device-evidence/snes-mvp-return-20261009T155414Z/`. Guarded installation and
+independent readback verify patched SHA256
+`ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe`,
+exact stock bytes outside the ZIP,51 unchanged MVP/progress files,49 unchanged
+lab files, intact recovered chains and a clean post-install CHKDSK. An older
+whole-card comparison differs in volatile `retro/swapfile`; no immediate
+pre-install swapfile hash exists, so whole-card before/after immutability is
+not claimed. Preserve its current bytes privately without restoring old swap.
+[Installation receipt](../evidence/2026-10-09/vesper-boot-install/boot-installation.json),
+[independent readback](../evidence/2026-10-09/vesper-boot-install/independent-boot-readback.json),
+[healthy filesystem](../evidence/2026-10-09/vesper-boot-install/chkdsk-postinstall.txt).
 
 ## Recovered stock calling contract
 

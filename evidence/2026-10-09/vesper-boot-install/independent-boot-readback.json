@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "showlogo_sha256": "ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe",
+  "stock_code_and_bytes_outside_artwork_unchanged": true,
+  "card_files_checked_against_historical_archive": 426,
+  "comparison_baseline": "Complete post-FAT-repair archive plus verified SRAM restoration",
+  "installer_write_scope": "retro/showlogo embedded artwork",
+  "historical_baseline_differences": [
+    "retro/swapfile"
+  ],
+  "historical_difference_limit": "Swapfile differs from older repair archive; no immediate preinstall swapfile hash exists, so no whole-card before/after immutability claim. Fresh protected preinstall files verify unchanged. Current swapfile preserved privately, not restored.",
+  "mvp_progress_files_unchanged": 51,
+  "lab_files_unchanged": 49,
+  "recovered_chains_unchanged": 14,
+  "postinstall_chkdsk_exit": 0,
+  "snes_and_lab_unarmed": true,
+  "physical_boot_acceptance": "pending"
+}

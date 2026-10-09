@@ -1,5 +1,16 @@
 # Changelog
 
+## Animated Vesper loading screen installed — 2026-10-09
+
+On the repaired healthy card, install qualified cyan feathered V/heart artwork
+and18-frame loading dots over stock showlogo. Archive original first; exact
+patched hash and all stock bytes outside the artwork verify. Fresh51-MVP and
+49-lab protected files plus recovered chains remain unchanged. Post-install
+read-only FAT check passes; game/lab remain unarmed. Older whole-card archive
+differs in volatile swapfile; preserve its current bytes privately and report
+the historical comparison limit. Physical boot/handoff appearance remains
+pending. [Receipt, preview and guarded rollback](docs/vesper-boot.md).
+
 ## Approved FAT recovery preserves files and retrieves1.18 fault — 2026-10-09
 
 Rehash all412 private backups and compare the card before approved administrator

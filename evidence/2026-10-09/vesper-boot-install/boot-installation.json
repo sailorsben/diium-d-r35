@@ -1,0 +1,14 @@
+{
+  "version": "vesper-boot-1",
+  "restored": false,
+  "installed_utc": "2026-10-09T15:54:15.616028+00:00",
+  "showlogo_sha256": "ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe",
+  "stock_outside_zip_unchanged": true,
+  "protected_mvp_and_progress_files": 51,
+  "lab_files_unchanged": 49,
+  "snes_armed": false,
+  "lab_armed": false,
+  "stock_init_and_other_binaries_unchanged": true,
+  "physical_appearance": "pending",
+  "archive": "snes-mvp-return-20261009T155414Z"
+}

@@ -4387,6 +4387,30 @@
       "published_sha256": "e07adebb2078302fc99ef13a9009c9c1b8240c499bbb29d427b1a1f6a2404e08",
       "bytes": 27866,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T155414Z/boot-installation.json",
+      "published": "evidence/2026-10-09/vesper-boot-install/boot-installation.json",
+      "source_sha256": "7e011735feb8fda72a9a3bae024ad1233b98bdcf499b5da84d3436edcda6e06e",
+      "published_sha256": "c4283fc97880049c1279ced313c28ecbc9cddb270af591aad6a04e33ecb935be",
+      "bytes": 489,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T155414Z/independent-boot-readback.json",
+      "published": "evidence/2026-10-09/vesper-boot-install/independent-boot-readback.json",
+      "source_sha256": "779964a9e1078faa0fef7986e50c13211e4017589392b95922e04d8c8a5182b1",
+      "published_sha256": "96d1ddd9352b8c1edbb7b0ae02bbe373b755460cac10e3e83973b28da892529f",
+      "bytes": 930,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T155414Z/chkdsk-postinstall.txt",
+      "published": "evidence/2026-10-09/vesper-boot-install/chkdsk-postinstall.txt",
+      "source_sha256": "5f70fa4dd8e04cdce493c58ad77bac5df2c4e0193602bbe0e91630b784c4394a",
+      "published_sha256": "e6c3af20448aa4caf3d9be19773d7f526c730ee20ca5c345f111df99c52e8fbb",
+      "bytes": 1819,
+      "normalized": true
     }
   ]
 }

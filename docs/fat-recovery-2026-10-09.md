@@ -1,5 +1,9 @@
 # FAT recovery completed — 2026-10-09
 
+Later continuation: [animated Vesper boot artwork installed](vesper-boot.md)
+at10:54, with clean health and protected-file readback. This document retains
+the recovery-completion checkpoint before that installation.
+
 Ben explicitly approved the repair after asking whether it would wipe the
 card. At 10:29 America/Chicago, administrator `chkdsk D: /F` repaired serial
 `11EB-1465`, label `DIIUM D-R35`, FAT32. The lost-chain prompt was answered
@@ -61,6 +65,15 @@ controlled1.17/1.18 cache-speed comparison.
 Resume: inspect the recovered actual audio seam before another runtime change.
 Splash installation now has a healthy filesystem and complete strict baseline;
 use the guarded installer when continuing that task. No SNES test is armed.
+
+Subsequent user clarification: Ben powered down directly from our library after
+the audio failure, rather than pressingB to exit to stock. The wrapper's final
+card-wide sync waits for process exit; the returned startup record has no normal
+library-exit marker. This makes the shutdown/persistence boundary a leading
+investigation target, not proven causality: native capture reports checked file
+and directory synchronization, and vendor shutdown behavior is not qualified.
+The general save helper ignores directory-open/fsync failures. No persistence
+fix is implemented, and no blame or physical card-defect conclusion follows.
 
 [Verified analysis](../evidence/2026-10-09/fat-recovery/analysis.json),
 [repair log](../evidence/2026-10-09/fat-recovery/chkdsk-repair.txt),

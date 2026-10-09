@@ -2,6 +2,16 @@
 
 This history preserves what changed, what was observed, and the inference boundary. It does not retroactively turn proposals into device results. Deeper dated reviews and selected raw returns are published under `docs/reference` and `evidence`.
 
+## 2026-10-09: install animated Vesper stock-splash replacement
+
+After approved FAT recovery and fresh healthy checks, install the qualified
+feathered cyan V/heart with loading dots. Exact patched hash and stock code
+outside the ZIP verify; fresh protected save/runtime/lab files and recovered
+chains match. Both tests stay unarmed and post-install CHKDSK passes. Older
+swapfile differs without an immediate pre-install baseline; record the limit
+and preserve its current contents privately. Physical appearance/stock handoff
+acceptance remains pending. [Installation evidence](vesper-boot.md).
+
 ## 2026-10-09: verify whether FAT repair is warranted
 
 Subsequently approved repair/recovery succeeds:14 chains preserved, fresh checks
