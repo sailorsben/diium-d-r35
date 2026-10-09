@@ -1,0 +1,12 @@
+{
+  "physical_report": "stock static, stock animation, then Vesper animation",
+  "vesper_seen": true,
+  "stock_screens_replaced": false,
+  "child_exit": 0,
+  "display_owner_reaped": true,
+  "animation_marker_consumed": true,
+  "snes_armed": false,
+  "internal_animation_path": "/showlogo",
+  "startup_source": "/init.project.rc",
+  "static_owner": "unknown"
+}

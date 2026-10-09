@@ -410,3 +410,23 @@ pass; physical display remains pending. Early solid firmware logo remains stock.
 Installer checks healthy FAT, exact init/splash, archives progress and arms last.
 No SNES/lab arming or audio change. This is a userspace animation handoff test,
 not replacement of the earlier internal boot interval.
+
+## Physical success is an added SD-stage animation — 2026-10-09
+
+Ben observed: static D-R35, animated D-R35, then Vesper. Vesper is physically
+accepted as an added SD-stage animation, not a replacement of either stock screen.
+Returned startup log reports stock_released=1, owned child484 exit0 and reaped
+before launcher. Strict51-MVP/49-lab archive plus complete animation files are
+preserved in device-evidence/snes-mvp-return-20261009T163638Z. Marker consumed;
+no rearming. The next boot follows stock. Audio remains unresolved.
+
+Captured /init.project.rc starts internal /showlogo before sleep2 and SD init.
+The internal executable matches the qualified stock ZIP owner. Replacing that
+original animation requires an earlier boot hook or modifying the embedded root
+filesystem image; SD init alone cannot change already displayed frames. Rootfs
+is RAM-backed at runtime; editing its live copy would not establish persistence.
+The static screen asset/owner remains unknown: bootloader or kernel is a hypothesis.
+Prior investigation found no registered /proc/mtd partitions. No verified firmware
+image/repack/flashing/recovery route is established. Do not flash or claim both
+screens can be replaced yet. Next engineering scope is read-only firmware/boot
+image inventory and recovery-method verification, not another SD display test.
