@@ -12,14 +12,24 @@ exec > "$OUT/probe.log" 2>&1
 printf 'probe_version=1 display_calls=none executable_launches=none\n'
 for NAME in init.rc init.project.rc etc/inittab etc/sdmount.sh; do
   if [ -r "$ROOT/$NAME" ]; then
-    TARGET=$(printf '%s' "$NAME" | tr '/' '_')
+    case "$NAME" in
+      init.rc) TARGET=init.rc;; init.project.rc) TARGET=init.project.rc;;
+      etc/inittab) TARGET=etc_inittab;; etc/sdmount.sh) TARGET=etc_sdmount.sh;;
+      mounts) TARGET=mounts;; self/mountinfo) TARGET=self_mountinfo;;
+      1/mountinfo) TARGET=1_mountinfo;; uptime) TARGET=uptime;;
+    esac
     cat "$ROOT/$NAME" > "$OUT/$TARGET"
     printf 'boot_source=%s read_status=%s\n' "$NAME" "$?"
   fi
 done
 for NAME in mounts self/mountinfo 1/mountinfo uptime; do
   if [ -r "$PROC/$NAME" ]; then
-    TARGET=$(printf '%s' "$NAME" | tr '/' '_')
+    case "$NAME" in
+      init.rc) TARGET=init.rc;; init.project.rc) TARGET=init.project.rc;;
+      etc/inittab) TARGET=etc_inittab;; etc/sdmount.sh) TARGET=etc_sdmount.sh;;
+      mounts) TARGET=mounts;; self/mountinfo) TARGET=self_mountinfo;;
+      1/mountinfo) TARGET=1_mountinfo;; uptime) TARGET=uptime;;
+    esac
     cat "$PROC/$NAME" > "$OUT/proc-$TARGET"
   fi
 done
