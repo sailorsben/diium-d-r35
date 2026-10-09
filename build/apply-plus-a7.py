@@ -14,10 +14,12 @@ def change(name,transform):
     current=path.read_text()
     # Permit exact shipped1.6/1.7 and authored transitional1.8 patches only.
     prior={'source/tile.c':{'b75fd5e0e454838f0b7a466e0ac55c066abe984f20cb706ac210c8e368bf6f68',
+                           'abde1189131d6010118f791cd8b1953c57e99382e8f73078ed547b739bdd1d12',
                            '77ebe2b06c18148973997ae973f6a0016d18230ed77e19043de9f41ab7355317',
                            '3b435476c9c70e00bc0f4ff5d07282702b6e60b437e51af447bc77eaf50b5bb5'},
            'source/gfx.c':{'6c5e6390ac5c4ce3c60f5fb72ba7350db335ff206348655e5eb5bbdbd37136d1',
                            'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'},
+           'source/ppu.c':{'225df7337f9214c89aa4b42ee56670d421e8dbc7a75cea3aae84d3489e8681fe'},
            'libretro.c':{'3cc3a0ffeebc27e2195ba38a3fdf873beab4dc9747f65b11c780a1b396e0ec2a',
                          '9cff29a5de7a805f1d5dc4f5989074b7feb39799b7a22e98d50d0db5d95a3324'}}
     assert current in (base,modified) or sha256(path.read_bytes()).hexdigest() in prior.get(name,set()), 'Unrelated core change: '+name
@@ -26,19 +28,20 @@ def change(name,transform):
 helper='''
 #ifdef D35_PLUS_A7
 #include "a7_tile.h"
+#include "a7_color_cache.h"
 static INLINE __attribute__((always_inline)) bool d35_render_tile(uint32_t tile,int32_t offset,uint32_t line,
     uint32_t count,uint8_t *cache,uint16_t *colors,unsigned mode)
 {
-    d35_palette_t table;
+    const uint16_t *rgb;
     uint8_t *bp;
     int step;
     if(BG.DirectColourMode || (BG.BitShift!=2 && BG.BitShift!=4)) return false;
-    table=d35_palette(colors,BG.BitShift);
+    rgb=d35_color_tile(cache,colors,BG.BitShift);
     bp=cache+((tile&V_FLIP)?56-line:line); step=(tile&V_FLIP)?-8:8;
     while(count--) {
         uint16_t *screen=(uint16_t *)GFX.S+offset;
         uint8_t *depth=(mode?GFX.ZBuffer:GFX.DB)+offset;
-        d35_row(bp,table,!!(tile&H_FLIP),screen,depth,
+        d35_row_colored(bp,rgb+(bp-cache),!!(tile&H_FLIP),screen,depth,
                 GFX.SubZBuffer+offset,screen+GFX.Delta,GFX.Z1,GFX.Z2,GFX.FixedColour,mode);
         bp+=step; offset+=GFX.PPL;
     }
@@ -55,6 +58,9 @@ def tiles(text):
     assert text.count(anchor)==1
     text=text.replace(anchor,anchor+'''
 #ifdef D35_PLUS_A7
+   /* Upstream called ConvertTile only after its indexed VRAM cache was
+    * invalidated. Discard the corresponding RGB bucket before any return. */
+   d35_color_tile_changed(pCache);
    if ((BG.BitShift==2 || BG.BitShift==4 || BG.BitShift==8) &&
        TileAddr <= 65536u-BG.BitShift*8u)
       return d35_decode_tile(pCache,Memory.VRAM+TileAddr,BG.BitShift)?1:BLANK_TILE;
@@ -162,13 +168,29 @@ def ppu(text):
                                        PPU.FixedColourGreen,PPU.FixedColourBlue))
 #endif
                FLUSH_REDRAW();''')
-    return text[:start]+region+text[end:]
+    text=text[:start]+region+text[end:]
+    anchor='void S9xFixColourBrightness()\n{'
+    assert text.count(anchor)==1
+    return text.replace(anchor,anchor+'\n#ifdef D35_PLUS_A7\n   d35_color_palette_changed();\n#endif')
+
+def ppu_header(text):
+    text='#ifdef D35_PLUS_A7\nvoid d35_color_palette_changed(void);\n#endif\n'+text
+    # These are both actual CGRAM half-write paths. Flush consumes the old
+    # palette before ScreenColors mutates; invalidate immediately afterward.
+    import re
+    pattern=r'(?m)^( +IPPU.ScreenColors \[PPU.CGADD\] = [^\n]+;)$'
+    matches=list(re.finditer(pattern,text));assert len(matches)==2
+    for match in reversed(matches):
+        text=text[:match.end()]+'\n#ifdef D35_PLUS_A7\n         d35_color_palette_changed();\n#endif'+text[match.end():]
+    return text
 
 change('source/ppu.c',ppu)
+change('source/ppu.h',ppu_header)
 change('Makefile',makefile)
 change('link.T',lambda text:text.replace('global: retro_*;','global: retro_*; d35_profile_begin; d35_profile_end;'))
 (CORE/'source/a7_tile.h').write_bytes((ROOT/'plus-a7-render.h').read_bytes())
 (CORE/'source/a7_profile.h').write_bytes((ROOT/'plus-a7-profile.h').read_bytes())
 (CORE/'source/a7_profile_core.h').write_bytes((ROOT/'plus-a7-profile-core.h').read_bytes())
 (CORE/'source/a7_raster.h').write_bytes((ROOT/'plus-a7-raster.h').read_bytes())
+(CORE/'source/a7_color_cache.h').write_bytes((ROOT/'plus-a7-color-cache.h').read_bytes())
 print('Applied guarded A7 whole-program build, planar decode, rendering and sampled phase ABI')

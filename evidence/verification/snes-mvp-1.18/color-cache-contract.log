@@ -1,0 +1,1 @@
+PASS: 131072 actual CGRAM half-write cases flush old palette before mutation and invalidate cached RGB; brightness/load rebuild invalidation retained

@@ -1,0 +1,16 @@
+SNES MVP 1.18 - Magitek Bio Blast renderer test
+
+1. Safely eject D:, return the card to the handheld, then cold boot normally.
+2. Start FF6 once. Confirm whether it starts on the FIRST attempt.
+3. Load your Narshe snapshot if useful. In a battle with Terra in Magitek armor,
+   choose MagiTek -> Bio Blast. This is the armor ability, not Edgar's Tools.
+4. Use it several times if possible. Watch the full cloud effect and listen for
+   slowing/clicks or an audio error. Continue normal play and save/exit normally.
+5. Reconnect D:. Say whether Bio Blast completed, sound/movement were steady,
+   and whether any failure returned to our library, stock, or powered off.
+
+1.18 reuses already-decoded tile colors across the effect's many raster updates.
+It passed exact original-core pixels/audio/state checks across the whole effect.
+The hardware test determines whether it saves enough CPU to prevent starvation.
+Your saves and old snapshots are preserved. One-shot consumed means the next
+unarmed boot returns to stock.

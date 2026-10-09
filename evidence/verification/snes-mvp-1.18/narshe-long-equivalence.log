@@ -1,0 +1,3 @@
+PASS: 12000 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; intro and returned private snapshot
+PASS: earlier PCM publication splits 11967 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 188 frames and stays inactive between samples

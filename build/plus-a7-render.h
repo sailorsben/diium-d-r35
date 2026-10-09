@@ -144,6 +144,26 @@ static inline void d35_row(const uint8_t *pixels,d35_palette_t table,int flip,
     d35_store(screen,color,mask);
     vst1_u8(depth,vbsl_u8(mask,vdup_n_u8(z2),old_depth));
 }
+/* Cached color is pre-math and pre-depth. Index zero remains transparent even
+ * when palette color zero is nonzero; flip both index and RGB lanes together. */
+static inline void d35_row_colored(const uint8_t *pixels,const uint16_t *colors,int flip,
+                          uint16_t *screen,uint8_t *depth,const uint8_t *subdepth,
+                          const uint16_t *sub,uint8_t z1,uint8_t z2,
+                          uint16_t fixed,unsigned mode)
+{
+    uint8x8_t idx=vld1_u8(pixels),old_depth=vld1_u8(depth),mask;
+    if(flip)idx=vrev64_u8(idx);
+    mask=vand_u8(vcgt_u8(vdup_n_u8(z1),old_depth),vmvn_u8(vceq_u8(idx,vdup_n_u8(0))));
+    if(!vget_lane_u64(vreinterpret_u64_u8(mask),0))return;
+    uint16x8_t color=vld1q_u16(colors);
+    if(flip) {
+        uint16x8_t reversed=vrev64q_u16(color);
+        color=vcombine_u16(vget_high_u16(reversed),vget_low_u16(reversed));
+    }
+    if(mode)color=d35_blend(color,vld1_u8(subdepth),sub,fixed,mode,mask);
+    d35_store(screen,color,mask);
+    vst1_u8(depth,vbsl_u8(mask,vdup_n_u8(z2),old_depth));
+}
 /* Process complete eight-pixel spans only; upstream handles the clipped tail.
  * Modes 1..4 are backdrop math, 0 copies sub/fixed, 7 is plain backdrop fill. */
 static inline unsigned d35_backdrop(uint16_t *screen,const uint8_t *depth,

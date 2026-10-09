@@ -1,0 +1,30 @@
+{
+  "frames": 1200,
+  "effect_frames_with_at_least_80_raster_updates": 162,
+  "effect_frame_indices": [
+    277,
+    438
+  ],
+  "color_tile_materializations": 125491,
+  "color_tile_reuses": 1764038,
+  "reuse_fraction": 0.933586094735778,
+  "original_active_palette_lookup_rows": 1957367,
+  "candidate_materialized_palette_lookup_rows": 1003928,
+  "palette_lookup_row_reduction_fraction": 0.48710282742071365,
+  "peak": {
+    "frame_index": 323,
+    "raster_updates": 157,
+    "neon_tile_rows": 15579,
+    "color_tile_materializations": 769,
+    "color_tile_reuses": 12310
+  },
+  "all_prior_126_work_counters_identical": true,
+  "cache_bytes_including_tags": 36864,
+  "primary_game_reference": {
+    "repository": "https://github.com/everything8215/ff6",
+    "commit": "813013276c952fdd27edcf7b8b86f17291542cbf",
+    "script": "src/btlgfx/attack_anim_script.asm BIO_BLAST_BG1; attack134 in src/data/attack_anim_prop.asm"
+  },
+  "private_fixture": "Owner Narshe snapshot, private forced formation0/grass battle, real Terra Magitek menu and Bio Blast targeting. No attack script/ROM/core timing edits; not the exact physical battle background.",
+  "limits": "Dynamic work counts and exact output equality, not Cortex-A7 runtime timings or physical audio/scanout proof."
+}

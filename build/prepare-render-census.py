@@ -41,7 +41,25 @@ s=s.replace(anchor,'''    ++d35_census[40];
     if(!vget_lane_u64(vreinterpret_u64_u8(vcgt_u8(vdup_n_u8(z1),old_depth)),0)) ++d35_census[43];
     if(!vget_lane_u64(vreinterpret_u64_u8(mask),0)) { ++d35_census[41]; return; }
     if(vget_lane_u64(vreinterpret_u64_u8(mask),0)==UINT64_MAX) ++d35_census[42];''')
+# The colored-row candidate keeps the original row kernel as an oracle.
+colored='    if(!vget_lane_u64(vreinterpret_u64_u8(mask),0))return;'
+if colored in s:
+    assert s.count(colored)==1
+    s=s.replace(colored,'''    ++d35_census[40];
+    if(!vget_lane_u64(vreinterpret_u64_u8(vcgt_u8(vdup_n_u8(z1),old_depth)),0)) ++d35_census[43];
+    if(!vget_lane_u64(vreinterpret_u64_u8(mask),0)) { ++d35_census[41]; return; }
+    if(vget_lane_u64(vreinterpret_u64_u8(mask),0)==UINT64_MAX) ++d35_census[42];''')
 p.write_text(s,newline='\n')
+p=CORE/'source/a7_color_cache.h'
+if p.exists():
+    s=p.read_text(encoding='utf-8')
+    anchor='        d35_palette_t table=d35_palette(palette,bits);'
+    assert s.count(anchor)==1
+    s=s.replace(anchor,'        ++d35_census[46];\n'+anchor)
+    anchor='    }\n    return entry->pixels;'
+    assert s.count(anchor)==1
+    s=s.replace(anchor,'    } else ++d35_census[47];\n    return entry->pixels;')
+    p.write_text(s,encoding='utf-8',newline='\n')
 p=CORE/'source/ppu.c';s='#include "census.h"\n'+p.read_text()
 start=s.index('void S9xSetPPU(');end=s.index('uint8_t S9xGetPPU(',start)
 region=s[start:end].replace('FLUSH_REDRAW();','{ if(IPPU.PreviousLine!=IPPU.CurrentLine && Address>=0x2100 && Address<0x2140) ++d35_census[64+Address-0x2100];\n            FLUSH_REDRAW(); }')
@@ -65,7 +83,9 @@ s='unsigned long long d35_census[128];\n__attribute__((visibility("default"))) v
 p.write_text(s,encoding='utf-8',newline='\n')
 p=CORE/'link.T';s=p.read_text().replace('d35_profile_end;','d35_profile_end; d35_census_read;');p.write_text(s,newline='\n')
 s=(ROOT/'plus-a7-equivalence.c').read_text()
-s=s.replace('assert(argc==5 || argc==6);','assert(argc==5); iterations=20;')
+anchor='assert(argc==5 || argc==6 || argc==7);'
+assert s.count(anchor)==1
+s=s.replace(anchor,'assert(argc==5); iterations=20;')
 s=s.replace('    unsigned samples=0;', '    unsigned samples=0;\n    void (*census_read)(unsigned long long *);\n    *(void **)(&census_read)=dlsym(candidate.handle,"d35_census_read"); assert(census_read);')
 s=s.replace('            if(candidate.batches>old.batches)',
     '            { unsigned long long counts[128]; census_read(counts); printf("CENSUS phase=%u frame=%u",phase,f); for(unsigned i=0;i<128;i++) printf(" %llu",counts[i]); puts(""); }\n            if(candidate.batches>old.batches)')
@@ -77,6 +97,7 @@ names={0:'ppu_updates',**{1+i:f'mode_{i}_screen_lines' for i in range(8)},
     **{32+i:f'clipped_{n}_rows' for i,n in enumerate(['plain','add','add_half','sub','sub_half','fixed_add_half','fixed_sub_half'])},
     40:'neon_row_calls',41:'neon_row_empty',42:'neon_row_all_active',43:'neon_row_depth_rejected',
     44:'fixed_color_effective_change_flushes',45:'fixed_color_redundant_flushes',
+    46:'color_tile_materializations',47:'color_tile_reuses',
     **{64+i:f'flush_before_{0x2100+i:04x}' for i in range(64)}}
 (OUT/'fields.json').write_text(json.dumps(names,indent=2)+'\n',encoding='utf-8')
 print('Prepared local-only renderer work census; source and production payload unchanged')

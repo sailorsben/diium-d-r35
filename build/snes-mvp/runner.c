@@ -543,7 +543,7 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.snapshot_rejections,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
-      "build_version=1.17\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+      "build_version=1.18\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",

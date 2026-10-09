@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include "plus-a7-color-cache.h"
 SGFX GFX;
 static uint32_t seed=0x31415926;
 static uint32_t random_word(void) { seed^=seed<<13; seed^=seed>>17; seed^=seed<<5; return seed; }
@@ -58,7 +59,8 @@ int main(void)
     }
     for(bits=2;bits<=4;bits+=2) for(mode=0;mode<=6;mode++) for(flip=0;flip<=1;flip++)
     for(i=0;i<10000;i++) {
-        uint16_t palette[16],screen[8],expect[8],sub[8],fixed=(uint16_t)random_word();
+        uint16_t palette[16],screen[8],expect[8],sub[8],original_screen[8],fixed=(uint16_t)random_word();
+        uint8_t original_depth[8];
         uint8_t pixels[8],depth[8],expected_depth[8],sd[8],z1=random_word(),z2=random_word();
         for(j=0;j<(1u<<bits);j++) palette[j]=(uint16_t)random_word();
         for(j=0;j<8;j++) {
@@ -66,6 +68,7 @@ int main(void)
             sub[j]=(uint16_t)random_word(); depth[j]=random_word(); sd[j]=random_word()%4;
         }
         memcpy(expect,screen,sizeof(screen)); memcpy(expected_depth,depth,sizeof(depth));
+        memcpy(original_screen,screen,sizeof(screen));memcpy(original_depth,depth,sizeof(depth));
         for(j=0;j<8;j++) if(pixels[flip?7-j:j] && z1>depth[j]) {
             uint16_t c=palette[pixels[flip?7-j:j]];
             if(mode>=5) { if(sd[j]==1) c=scalar(mode==5?2:4,c,fixed); }
@@ -73,6 +76,11 @@ int main(void)
             expect[j]=c; expected_depth[j]=z2;
         }
         d35_row(pixels,d35_palette(palette,bits),flip,screen,depth,sd,sub,z1,z2,fixed,mode);
+        assert(!memcmp(screen,expect,sizeof(screen)) && !memcmp(depth,expected_depth,sizeof(depth)));
+        uint16_t colored[8];
+        for(j=0;j<8;j++)colored[j]=palette[pixels[j]];
+        memcpy(screen,original_screen,sizeof(screen));memcpy(depth,original_depth,sizeof(depth));
+        d35_row_colored(pixels,colored,flip,screen,depth,sd,sub,z1,z2,fixed,mode);
         assert(!memcmp(screen,expect,sizeof(screen)) && !memcmp(depth,expected_depth,sizeof(depth)));
     }
     /* Span lengths/offsets expose clipping tails; canaries cover both sides. */
@@ -117,9 +125,31 @@ int main(void)
         }
         assert(!munmap(memory,page*2));
     }
+    /* Cache keys, colliding VRAM tiles, color writes and epoch wrap. The
+     * expected RGB data uses ordinary independent palette indexing. */
+    {
+        uint8_t tiles[(D35_COLOR_CACHE_ENTRIES+1)*64];uint16_t palettes[2][16];
+        for(bits=2;bits<=4;bits+=2)for(i=0;i<20000;i++) {
+            uint8_t *tile=tiles+(i%2?D35_COLOR_CACHE_ENTRIES:0)*64;
+            for(j=0;j<64;j++)tile[j]=random_word()&((1u<<bits)-1);
+            for(j=0;j<16;j++){palettes[0][j]=random_word();palettes[1][j]=random_word();}
+            d35_color_tile_changed(tile);d35_color_palette_changed();
+            for(unsigned bank=0;bank<2;bank++) {
+                const uint16_t *rgb=d35_color_tile(tile,palettes[bank],bits);
+                for(j=0;j<64;j++)assert(rgb[j]==palettes[bank][tile[j]]);
+                assert(d35_color_tile(tile,palettes[bank],bits)==rgb);
+                palettes[bank][tile[0]]^=0xffff;d35_color_palette_changed();
+                rgb=d35_color_tile(tile,palettes[bank],bits);
+                for(j=0;j<64;j++)assert(rgb[j]==palettes[bank][tile[j]]);
+            }
+        }
+        d35_color_epoch=UINT32_MAX;d35_color_palette_changed();assert(d35_color_epoch==1);
+        for(i=0;i<D35_COLOR_CACHE_ENTRIES;i++)assert(!d35_color_entries[i].tile);
+    }
     free(GFX.ZERO);
     puts("PASS: 8388608 scalar/vector color comparisons; 280000 tile rows, 2/4bpp, all math modes, flips/transparency/depth");
     puts("PASS: 60000 backdrop/window spans match scalar arithmetic; clipped tails/canaries and palette guard page intact");
     puts("PASS: 60000 planar tiles match independent 2/4/8bpp oracle; blank classification, destination canaries and exact source guard pages");
+    puts("PASS: 280000 cached-color rows preserve independent pixel/depth/math/flip oracle; 40000 color-cache cases cover palette changes, tile changes, hash collisions and epoch wrap");
     return 0;
 }

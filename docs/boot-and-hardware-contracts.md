@@ -287,3 +287,14 @@ Keep native fault persistence and explicit state/SRAM save points. Whole-device
 poweroff may lose routine RAM progress; do not read a wrapper-start marker as a
 fresh gameplay checkpoint. See [return](snes-mvp-1.16-return.md) and
 [implementation](snes-mvp-1.17.md).
+
+## Derived renderer state contract (1.18)
+
+RGB tile cache contents never own emulated VRAM/CGRAM, depth or blend state.
+Invalidate the RGB bucket at the actual indexed ConvertTile seam; flush old
+raster state before CGRAM mutation, then invalidate colors. Brightness and
+state load's color rebuild invalidate too. Palette epoch wrap clears tags.
+Keep direct-color/clipped fallback and serialization ABI intact. Cache entries
+are bounded36KiB derived data; full effect/core equivalence is required before
+installation. A cache hit count is not A7 speed proof; Lab1's rejected cache
+remains a negative result. Exact Magitek Bio Blast scene coverage matters.

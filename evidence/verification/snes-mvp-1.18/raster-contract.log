@@ -1,0 +1,1 @@
+PASS: 16777216 extracted stock/patched register cases preserve color, byte latch and flush-before-change; 1149984 redundant invalidations suppressed; 7238624 real changes retained

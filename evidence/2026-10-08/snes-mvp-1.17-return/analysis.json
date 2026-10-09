@@ -1,0 +1,127 @@
+{
+  "version": "1.17",
+  "archive_utc": "2026-10-09T02:01:04Z",
+  "local_date": "2026-10-08 America/Chicago",
+  "mvp_files_verified": 50,
+  "lab_files_verified": 49,
+  "card_writes": 0,
+  "stock_and_installed_release_verified": true,
+  "snapshots_unchanged": true,
+  "unchanged_game_progress_files": 21,
+  "updated_sram_files_archived": 1,
+  "user_result": {
+    "first_launch": "succeeded on first attempt",
+    "crash": "audio error and return to our library",
+    "specific_move": "Terra Magitek armor Bio Blast; not Edgar Tools Bio Blaster",
+    "snow_correction": "User checked playthroughs and retracted expected driving snow in that outdoor Narshe section; no demonstrated snow regression"
+  },
+  "session": {
+    "id": "502-19082405000",
+    "runs": 35763,
+    "active_seconds": 596.266202,
+    "calls_per_active_second": 59.978244415067486,
+    "submitted_videos": 35762,
+    "held": 0,
+    "duplicates": 0,
+    "snapshot_loads": 1,
+    "audio_write_errors": 1,
+    "remaining_frames": 705,
+    "display_reservation_mean_ms": 0.004687022900763359,
+    "mean_core_cpu_ms": 12.424710874367364,
+    "mean_core_wall_ms": 13.350028632944664
+  },
+  "final_effect_window": {
+    "ordinary_calls": 22,
+    "ordinary_wall_mean_ms": 17.980863636363637,
+    "ordinary_cpu_mean_ms": 16.638318181818182,
+    "sampled_run": 35747,
+    "sampled_ppu_inclusive_ms": 8.15,
+    "sampled_apu_inclusive_ms": 4.616,
+    "sampling_limit": "Inclusive sampled regions include their instrumentation; one sample is not a duration distribution."
+  },
+  "pcm_flight": {
+    "trace_version": "D35 PCM fault history 1.13",
+    "retained_operations": 96,
+    "epoch": 2,
+    "accepted_pointer_difference_first_sample": 0,
+    "application_pointer_difference_changes": [
+      {
+        "seq": 326411,
+        "kernel_ns": 618997309000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 248,
+        "accepted_minus_reported_hw": 120
+      },
+      {
+        "seq": 326425,
+        "kernel_ns": 619035292000,
+        "delta_change": 128,
+        "appl_minus_accepted": 256,
+        "state": 3,
+        "reported_queued": 185,
+        "accepted_minus_reported_hw": -71
+      },
+      {
+        "seq": 326442,
+        "kernel_ns": 619072072000,
+        "delta_change": 128,
+        "appl_minus_accepted": 384,
+        "state": 1,
+        "reported_queued": 0,
+        "accepted_minus_reported_hw": -264
+      }
+    ],
+    "matched_large_batch_interval": {
+      "first_seq": 326356,
+      "last_seq": 326426,
+      "anchor_count": 11,
+      "elapsed_ms": 183.671,
+      "accepted_frames": 7359,
+      "accepted_frames_per_second": 40066.20533453838,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.0914692667905127,
+      "mean_large_batch_interval_ms": 18.3671,
+      "min_large_batch_interval_ms": 17.887,
+      "max_large_batch_interval_ms": 19.739,
+      "reported_hw_advance": 8064,
+      "accepted_minus_hw_change": -705,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+    },
+    "last_successful_observation": {
+      "seq": 326440,
+      "ns": 619056455000,
+      "op": "SYNC_OK",
+      "arg": 7,
+      "result": 0,
+      "state": 3,
+      "queued": 760,
+      "appl": 25781111,
+      "hw": 25780351,
+      "epoch": 2,
+      "xfer": 25780855
+    },
+    "final_observation": {
+      "seq": 326442,
+      "ns": 619072072000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 25781239,
+      "hw": 25781119,
+      "epoch": 2,
+      "xfer": 25780855
+    },
+    "kernel_read_result": {
+      "bytes": 16335,
+      "errno": 0
+    },
+    "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+  },
+  "inference": "Effect increases renderer work; native PCM reserve erodes before application pointer diverges in 128-frame steps and SETUP/EBADFD. Transient production deficit, not a core segfault, display FIFO overflow, or evidence all gameplay is too slow.",
+  "capture_limits": "Fresh unique native session/fault and startup logs identify 1.17. last-run.log and last-session.txt.bak are historical 1.16. No completed wrapper-exit diagnostic copy; its absence does not prove a power-off mechanism.",
+  "next_build": "1.18 bounded pre-math RGB tile cache; exact output checks and offline work counts required before device test."
+}

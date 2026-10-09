@@ -323,3 +323,20 @@ Both wind and blowing snow are reported missing in opening outdoor Narshe.
 shows the outdoor mine entrance without visible blowing snow in inspected
 frames. Baseline accuracy, expected effect/phase and audible wind remain
 unresolved. No speculative weather/DSP change ships.
+
+## 1.17 first launch and Magitek effect deficit;1.18 derived-color reuse
+
+First FF6 attempt succeeded.35,763 calls average59.978/sec active, zero holds or
+duplicates; snapshot load works. Terra Magitek Bio Blast (not Edgar Tools) leads
+to audio error/our library. Final ordinary wall17.981ms/CPU16.638ms and sampled
+inclusive PPU8.150ms identify transient effect cost; PCM production falls to
+about40,066 frames/sec before reserve erosion and128-frame pointer steps.
+Fresh native reports outrank stale1.16 wrapper run/backup logs. No new power-off
+or core segfault established. Snow expectation was withdrawn by the user.
+
+1.18 uses a bounded36KiB pre-math RGB tile cache with actual decode/CGRAM/
+brightness/load invalidation. Complete Magitek replay equals clean output;
+93.36% tile reuse and48.71% fewer lookup rows are work counts, not measured A7
+speed. The earlier Lab1 cache lost; its result remains applicable evidence that
+cache overhead/memory can exceed savings. [Details](snes-mvp-1.18.md),
+[returned evidence](snes-mvp-1.17-return.md). Physical effect/audio test pending.

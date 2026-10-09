@@ -1,0 +1,93 @@
+SNES MVP 1.17 native PCM startup wrapper pid=475
+splash handoff begin active_pids=445  stop=/tmp/vrtemu.log ack=/tmp/displogo.log
+splash handoff complete active_pids=none release_ack=yes waited=1s
+starting child startup deadline=20s
+8.411 program entered pid=502
+8.412 clock sources kernel_monotonic_ns=8412952000 libc_monotonic_ns=447379416168 kernel_boottime_ns=8412987000; using kernel clock and relative waits
+8.414 platform heartbeat attach enter
+8.415 platform heartbeat attached key=1234 bytes=460 budget=60 counter=1
+8.417 GPIO open enter
+8.418 GPIO input attribute pin=0x200
+8.420 GPIO input attribute pin=0x201
+8.421 GPIO input attribute pin=0x202
+8.423 GPIO input attribute pin=0x203
+8.424 GPIO input attribute pin=0x204
+8.425 GPIO input attribute pin=0x205
+8.427 GPIO input attribute pin=0x30b
+8.428 GPIO input attribute pin=0x30d
+8.429 GPIO input attribute pin=0x30f
+8.431 GPIO input attribute pin=0x30c
+8.432 GPIO input attribute pin=0x30a
+8.433 GPIO input attribute pin=0x208
+8.435 GPIO input attribute pin=0x207
+8.436 GPIO input attribute pin=0x30e
+8.438 GPIO input attribute pin=0x206
+8.439 GPIO vendor attribute pin=0x20f value=0
+8.440 GPIO vendor attribute pin=0x20b value=0
+8.442 GPIO vendor attribute pin=0x20e value=1
+8.443 GPIO vendor attribute pin=0x209 value=1
+8.445 GPIO vendor attribute pin=0x20a value=1
+8.446 chunkmem open enter
+8.447 chunk allocation enter bytes=1966080
+8.452 chunk allocation complete
+8.454 display driver load enter path=/usr/retro/driver.so
+8.460 display driver symbols resolved; HDMI detection enter
+8.462 HDMI detection complete output=0; InitVFB enter
+8.536 InitVFB returned display=0x39650
+8.538 display size=640x480
+8.539 LCD backlight write enter value=1
+8.541 display worker create enter
+8.542 display worker created; mixer open enter
+8.544 mixer open complete
+8.545 board open complete
+8.547 library scan enter
+8.558 library scan complete games=3
+8.562 first library submit
+8.567 first DrawVFB enter size=640x480
+8.569 first library wait for display
+8.573 first DrawVFB returned; FlipVFB enter
+8.586 first FlipVFB returned
+8.587 first library display complete; input baseline enter
+8.589 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+8.590 input baseline held_mask=0x00000000
+8.592 READY: first library frame completed; controls initialized
+17.200 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+17.340 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+17.581 input GPIO low_index_bits=0x0001 keys=0x00010 read_error_bits=0x0000
+17.630 input GPIO low_index_bits=0x0005 keys=0x00050 read_error_bits=0x0000
+17.654 input GPIO low_index_bits=0x0001 keys=0x00010 read_error_bits=0x0000
+17.670 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+18.260 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+18.390 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+19.060 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+19.062 library game launch requested keys=0x00100 selected=1
+19.080 input baseline held_mask=0x00000100
+32.042 input GPIO low_index_bits=0x4000 keys=0x10000 read_error_bits=0x0000
+32.044 input baseline held_mask=0x00010000
+32.160 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+32.500 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+32.610 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+32.710 input GPIO low_index_bits=0x0002 keys=0x00020 read_error_bits=0x0000
+32.820 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+33.980 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+33.982 input baseline held_mask=0x00000100
+34.034 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+34.036 input baseline held_mask=0x00000100
+34.080 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+34.950 input GPIO low_index_bits=0x0010 keys=0x00100 read_error_bits=0x0000
+34.952 input baseline held_mask=0x00000100
+619.150 library scan enter
+619.152 library scan complete games=3
+619.156 first library submit
+619.161 first library wait for display
+619.167 first library display complete; input baseline enter
+619.169 input GPIO low_index_bits=0x0000 keys=0x00000 read_error_bits=0x0000
+619.170 input baseline held_mask=0x00000000
+619.172 READY: first library frame completed; controls initialized
+625.172 main exit requested rc=-1 quitting=1
+625.174 board close enter
+625.183 display worker join enter busy=0
+625.185 display worker joined
+625.186 FreeVFB enter
+625.201 FreeVFB returned
+625.203 board close complete

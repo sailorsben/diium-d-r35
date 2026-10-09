@@ -1,0 +1,14 @@
+native PCM protocol=2000e card=0 device=0 subdevice=0 id=
+native PCM rate=44100 period=128 buffer=3712 prime=2823 access=RW_INTERLEAVED start_threshold=2823 boundary=1946157056
+native PCM failure: SYNC_OBSERVE errno=32 state=4 queued=0 avail=3712 appl=3500 hw=0 prime_written=2877 start_calls=0 epoch=1 xfer=3500 trace_errno=2 trace_synced=0 trace_bytes=0
+native PCM failure: WRITEI_FRAMES errno=77 state=1 queued=0 avail=3712 appl=2823 hw=0 prime_written=2823 start_calls=0 epoch=2 xfer=2823 trace_errno=2 trace_synced=0 trace_bytes=0
+native PCM failure: START errno=5 state=2 queued=2823 avail=889 appl=2823 hw=0 prime_written=2823 start_calls=1 epoch=4 xfer=2823 trace_errno=2 trace_synced=0 trace_bytes=0
+native PCM failure: START errno=77 state=2 queued=2823 avail=889 appl=2823 hw=0 prime_written=2823 start_calls=1 epoch=5 xfer=2823 trace_errno=2 trace_synced=0 trace_bytes=0
+native PCM failure: EARLY_AUTO_START errno=71 state=3 queued=137 avail=3575 appl=137 hw=0 prime_written=137 start_calls=0 epoch=8 xfer=137 trace_errno=2 trace_synced=0 trace_bytes=0
+native PCM failure: SYNC_XRUN errno=32 state=4 queued=0 avail=3712 appl=0 hw=0 prime_written=0 start_calls=0 epoch=9 xfer=0 trace_errno=0 trace_synced=1 trace_bytes=25199
+native PCM failure: SYNC_XRUN errno=32 state=4 queued=0 avail=3712 appl=0 hw=0 prime_written=0 start_calls=0 epoch=10 xfer=0 trace_errno=5 trace_synced=0 trace_bytes=25221
+native PCM protocol=2000e card=0 device=0 subdevice=0 id=
+native PCM failure: SW_PARAMS_READBACK errno=71 state=0 queued=0 avail=0 appl=0 hw=0 prime_written=0 start_calls=0 epoch=0 xfer=0 trace_errno=2 trace_synced=0 trace_bytes=0
+PASS: bounded PCM flight history writes only on fault before cleanup; kernel read result is explicit
+PASS: PCM fault capture fsyncs file and directory before error return; injected persistence failure reported without changing PCM errno
+PASS: actual ARM32 PCM ABI, device-shaped 44100/128/3712 fallback, exact partial/EAGAIN frames, kernel WRITEI auto-start without duplicate START, prepared-only explicit START, verified EBADFD race, rejected early start/nonrunning EBADFD/software-threshold mismatch, post-HWSYNC state/pointers, boundary wrap, GET flags preserve control, fresh WRITEI fault state, DRAIN threshold reset, asynchronous DRAIN, accepted START-failure state/pointer accounting and visible XRUN without restart

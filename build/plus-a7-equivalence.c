@@ -30,6 +30,7 @@ struct core {
 };
 static struct core *active;
 static unsigned frame;
+static bool magitek_bio_replay;
 static void fault(int sig,siginfo_t *info,void *context)
 {
     ucontext_t *state=context;
@@ -81,6 +82,13 @@ static int16_t input_cb(unsigned port,unsigned device,unsigned index,unsigned id
 {
     uint16_t buttons=0; (void)index;
     if(port || device!=RETRO_DEVICE_JOYPAD) return 0;
+    if(magitek_bio_replay) {
+        /* Private derived state has Terra's Magitek cursor on Bio Blast.
+         * Confirm the ability, release, confirm its target, then let the
+         * actual game execute the complete effect. No game memory edits. */
+        if(frame<8 || (frame>=28 && frame<36))buttons=1u<<RETRO_DEVICE_ID_JOYPAD_A;
+        return id==RETRO_DEVICE_ID_JOYPAD_MASK?(int16_t)buttons:id<16?(buttons>>id)&1:0;
+    }
     /* Map movement and short menu open/close impulses, deterministic per core. */
     if(frame%240<20) buttons=1u<<RETRO_DEVICE_ID_JOYPAD_RIGHT;
     if(frame%240==60) buttons=1u<<RETRO_DEVICE_ID_JOYPAD_X;
@@ -113,8 +121,9 @@ int main(int argc,char **argv)
     assert(!sigaction(SIGSEGV,&handler,NULL));
     struct core old={0},candidate={0}; unsigned phase,f,iterations=600,split_frames=0;
     unsigned char *rom,*state,*a,*b; size_t n,state_n,size;
-    assert(argc==5 || argc==6);
-    if(argc==6) {
+    assert(argc==5 || argc==6 || argc==7);
+    if(argc==7) { assert(!strcmp(argv[6],"magitek-bio"));magitek_bio_replay=true; }
+    if(argc>=6) {
         const char *digit=argv[5]; unsigned requested=0;
         assert(*digit);
         while(*digit) {
@@ -134,7 +143,7 @@ int main(int argc,char **argv)
     unsigned samples=0;
     size=old.serialize_size(); assert(size==candidate.serialize_size() && state_n==size+40);
     a=calloc(1,size);b=calloc(1,size); assert(a&&b);
-    for(phase=0;phase<2;phase++) {
+    for(phase=magitek_bio_replay?1:0;phase<2;phase++) {
         if(phase) {
             active=&old;assert(old.unserialize(state+40,size));
             active=&candidate;assert(candidate.unserialize(state+40,size));
@@ -172,8 +181,9 @@ int main(int argc,char **argv)
     }
     active=&old;old.unload_game();old.deinit();active=&candidate;candidate.unload_game();candidate.deinit();
     dlclose(old.handle);dlclose(candidate.handle);free(rom);free(state);free(a);free(b);
-    printf("PASS: %u frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; intro and returned private snapshot\n",iterations*2);
-    assert(split_frames>iterations);
+    printf("PASS: %u frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; %s\n",
+        iterations*(magitek_bio_replay?1:2),magitek_bio_replay?"complete Magitek Bio Blast scene replay":"intro and returned private snapshot");
+    assert(magitek_bio_replay?split_frames>iterations-10:split_frames>iterations);
     printf("PASS: earlier PCM publication splits %u frames into multiple byte-equivalent batches\n",split_frames);
     printf("PASS: owned sampled phase ABI measures APU/PPU in %u frames and stays inactive between samples\n",samples);
     return 0;

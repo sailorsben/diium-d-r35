@@ -17,7 +17,7 @@ paced=dict(line.split('=',1) for line in (out/'paced-smoke/last-session.txt').re
 assert paced['runs']=='30' and paced['error']=='' and paced['write_errors']=='0'
 assert paced['held']=='0' and paced['video_submitted']=='30'
 assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text()
-assert report['build_version']=='1.17' and report['phase']=='finished' and report['session_id']
+assert report['build_version']=='1.18' and report['phase']=='finished' and report['session_id']
 assert report['phase_profile_available']=='1' and int(report['phase_profile_samples'])==3
 costs=[list(map(int,v.split(','))) for k,v in report.items() if k.startswith('frame_cost_') and k[len('frame_cost_'):].isdigit()]
 assert len(costs)==24 and [f[0] for f in costs]==list(range(157,181))
@@ -51,6 +51,8 @@ assert 'O3/LTO and internal visibility applied' in (root/'build/plus-a7-out/code
 assert 'owned sampled phase ABI measures APU/PPU' in (root/'build/plus-a7-out/equivalence.log').read_text()
 assert 'PASS: 12000 frames exact visible pixels' in (root/'build/plus-a7-out/narshe-long-equivalence.log').read_text()
 assert 'PASS: expected old-wrapper rejection' in (out/'wrapper-regression.log').read_text()
+assert 'PASS: 131072 actual CGRAM half-write cases' in (root/'build/plus-a7-out/color-cache-contract.log').read_text()
+assert 'complete Magitek Bio Blast scene replay' in (root/'build/plus-a7-out/magitek-bio-equivalence.log').read_text()
 assert 'PASS: 1200 frames exact visible pixels' in (root/'build/plus-a7-out/equivalence.log').read_text()
 assert 'splits 1196 frames into multiple byte-equivalent batches' in (root/'build/plus-a7-out/equivalence.log').read_text()
 assert 'submitted=120 held=0' in (root/'build/plus-a7-out/runner-integration.log').read_text()
@@ -77,7 +79,7 @@ assert all((out/'preview'/name).stat().st_size>900000 for name in ('library.ppm'
 versions=[tuple(map(int,m)) for m in re.findall(r'GLIBC_(\d+)\.(\d+)',(out/'abi-versions.txt').read_text())]
 assert max(versions)<=(2,30)
 data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
-      'version':'1.17','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
+      'version':'1.18','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
       'qualified_snapshot_sha256':digest(root/'build/plus-a7-out/returned.state'),
       'a7_header_sha256':digest(root/'build/plus-a7-render.h'),
       'binary_sha256':digest(out/'snes-mvp'),'binary_bytes':(out/'snes-mvp').stat().st_size,
@@ -105,14 +107,15 @@ data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
       'native_lifecycle_contract':(out/'native-runner-check.log').read_text().strip(),
       'native_pcm_contract':(out/'native-pcm-check.log').read_text().strip(),
       'audio_owner_contract':(out/'audio-owner-check.log').read_text().strip(),
-      'hardware_audio_display_controls':'1.16 physical 31601 frames at about59.99 calls/sec without held drawings; 1.17 cold first-launch reliability pending; reported wind/snow remains unresolved',
-      'hardware_qualified':False,'purpose':'retain proven renderer and remove live wrapper discovery/card checkpoints after first-launch scheduling stall; preserve fault evidence',
+      'hardware_audio_display_controls':'1.17 first launch physically succeeded; one 35763-call session ended with Magitek Bio Blast audio starvation; 1.18 speed and audio remain pending',
+      'color_cache_bytes':36864,'magitek_bio_equivalence_frames':1200,'hardware_qualified':False,'purpose':'reuse bounded pre-math RGB565 tile colors across fragmented raster updates; preserve full effect and native audio exactly; retain 1.17 diagnostic isolation',
       'performance':'QEMU timings are not device performance evidence'}
 sources=list((root/'build/snes-mvp').glob('*.c'))+list((root/'build/snes-mvp').glob('*.h'))
 sources+=list((root/'build/snes-mvp').glob('*.py'))+list((root/'build/snes-mvp').glob('*.sh'))
 sources += [root/'build'/name for name in ('build-snes-mvp.sh','check-snes-mvp.sh','check-native-pcm.sh',
     'check-native-runner.sh','check-old-audio-admission.py','apply-plus-a7.py','build-plus-a7.sh','check-plus-a7.sh','plus-a7-render.h','plus-a7-check.c',
     'plus-a7-equivalence.c','plus-a7-profile.h','plus-a7-profile-core.h','plus-a7-raster.h','check-raster-contract.py',
+    'plus-a7-color-cache.h','check-color-cache-contract.py','check-magitek-bio.sh','replay-snes-scene.c','replay-snes-scene.sh','prepare-render-census.py',
     'capture-snes-scene.c','capture-snes-scene.sh','prepare-plus-inputs.py','check-plus-a7-codegen.py','glibc230-stat-compat.c','verify-snes-mvp.py')]
 data['source_hashes']={p.relative_to(root).as_posix():digest(p) for p in sorted(set(sources))}
 logs=[out/name for name in ('contracts.log','display-queue-contract.log','startup-contract.log',
@@ -121,7 +124,7 @@ logs=[out/name for name in ('contracts.log','display-queue-contract.log','startu
     'native-pcm-check.log','audio-owner-check.log','native-runner-check.log','old-owner-regression.log')]
 logs += [out/'smoke-final/last-session.txt',out/'paced-smoke/last-session.txt']
 logs += [root/'build/plus-a7-out'/name for name in ('kernel-check.log','codegen-check.log',
-    'equivalence.log','narshe-long-equivalence.log','narshe-capture.log','runner-integration.log','raster-contract.log')]
+    'equivalence.log','narshe-long-equivalence.log','narshe-capture.log','runner-integration.log','raster-contract.log','color-cache-contract.log','magitek-bio-equivalence.log')]
 data['check_artifact_hashes']={p.relative_to(root).as_posix():digest(p) for p in logs}
 (out/'verification.json').write_text(json.dumps(data,indent=2)+'\n')
 print(json.dumps(data,indent=2))

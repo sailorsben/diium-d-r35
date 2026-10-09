@@ -1,5 +1,35 @@
 # Changelog
 
+## SNES MVP1.18 caches colors for Magitek Bio Blast — 2026-10-08
+
+1.17 starts FF6 on the first attempt and sustains35,763 calls overall before
+Terra's Magitek armor Bio Blast drains audio reserve and returns to our library.
+The move is not Edgar's Tools Bio Blaster. Final ordinary calls average17.981ms
+wall /16.638ms main CPU; sampled inclusive PPU rises from3–4ms to8.150ms.
+Fresh native failure records verify; wrapper run log/session backup are stale1.16.
+The user withdrew expected driving snow after checking playthroughs.
+
+Reproduce the actual Magitek effect offline from a private Narshe snapshot,
+forcing only battle entry, then using real menu inputs. Add a bounded36KiB RGB
+color cache keyed by indexed tile, palette, bit depth and color epoch. Actual
+VRAM decode, both CGRAM half-writes, brightness and load rebuilds invalidate it.
+Transparency/depth/flips/math remain dynamic. All original renderer work counts
+are identical;93.36% tile reuse removes48.71% of palette-lookup row work in the
+matched effect window. The earlier losing Lab1 cache remains a negative result;
+this candidate still needs A7 performance proof.
+
+Independent pixel/depth/math/cache/collision/wrap tests and131,072 extracted
+CGRAM seam cases pass.1,200 full Magitek frames plus12,000 intro/Narshe frames
+match original pixels/native PCM/geometry/periodic state. Native PCM, snapshots,
+input, splash, display ownership and diagnostic isolation pass. Preserve saves,
+stock/hook and lab; create a separate core-matched snapshot header.
+Installed02:45 UTC (October8 Chicago): all28 prior private and49 lab files,
+stock and hook independently verify; game armed, lab unarmed. Hardware pending.
+
+
+[1.17 return](docs/snes-mvp-1.17-return.md), [implementation](docs/snes-mvp-1.18.md),
+[physical test](docs/snes-mvp-1.18-test.txt).
+
 ## SNES MVP1.17 isolates diagnostics after sustained1.16 result — 2026-10-06
 
 Archive the1.16 return read-only: exact release,48 MVP/49 lab files,19 prior

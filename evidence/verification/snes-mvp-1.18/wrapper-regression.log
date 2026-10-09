@@ -1,0 +1,13 @@
+PASS: startup wrapper early-error, exit=7, ready=False
+PASS: direct card fault path survives immediate error exit and wrapper cleanup; failed temporary capture retained
+PASS: startup wrapper immediate-pcm-fault, exit=7, ready=True
+PASS: startup wrapper stalled, exit=143, ready=False
+Traceback (most recent call last):
+  File "<workspace>/build/snes-mvp/check-startup-wrapper.py", line 156, in <module>
+    run('ready-session',': > "$D35_MVP_READY_FILE"; printf "fixture ready runtime\\n"; printf "fixture-running-37\\n" > "$D35_MVP_PROGRESS_FILE"; printf "fixture fresh PCM fault\\n" > "$D35_MVP_PCM_TRACE_FILE"; sleep 5; : > "$D35_MVP_BASE/child-exited"; exit 0',0,ready=True)
+  File "<workspace>/build/snes-mvp/check-startup-wrapper.py", line 131, in run
+    assert not violations,violations
+           ^^^^^^^^^^^^^^
+AssertionError: ['wrapper diagnostic card write during ready child']
+
+PASS: expected old-wrapper rejection for diagnostic card writes during ready child

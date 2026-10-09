@@ -373,3 +373,20 @@ install/readback preserves all26 private and49 lab files; game armed, lab
 unarmed. Physical cold-start reliability is pending; whole poweroff can lose
 RAM-only progress. Wind/snow reported missing in outdoor Narshe remains a
 separate effect/phase/baseline correctness question.
+
+## 2026-10-08: first-launch success and Magitek Bio Blast
+
+Archive1.17 before writes:50 MVP/49 lab files verify, stock/release match,
+all snapshots intact, changed SRAM retained. User confirms first attempt worked
+and identifies the failure as Terra's armor Bio Blast -> audio error/library.
+Native report retains35,763 calls; effect calls overrun, reserve erodes before
+vendor pointer steps/SETUP. Wrapper run log/backup remain1.16 historical data.
+User corrects expected driving snow; no demonstrated snow regression remains.
+
+Derive an offline private Magitek replay, distinct from Edgar's Tools attack.
+157 renderer updates/frame expose repeated tile-color work.1.18 adds bounded
+NEON materialization with explicit mutation/load invalidation.1,200 effect and
+12,000 intro/Narshe frames match clean output; matched work counts show93.36%
+reuse/48.71% fewer lookup rows. Prior losing Lab1 cache is explicitly retained;
+physical benefit remains pending. [Return](snes-mvp-1.17-return.md),
+[implementation](snes-mvp-1.18.md).
