@@ -4,6 +4,11 @@ This history preserves what changed, what was observed, and the inference bounda
 
 ## 2026-10-09: verify whether FAT repair is warranted
 
+Subsequently approved repair/recovery succeeds:14 chains preserved, fresh checks
+healthy and all412 readable files unchanged. Recover actual1.18 session/PCM text;
+restore only known pre-test SRAM into its empty path. No audio fix, splash install
+or re-arm. [Recovery evidence](fat-recovery-2026-10-09.md).
+
 Fresh read-only CHKDSK repeats both invalid backup entries and 1,472 KB in14
 lost-chain files on serial11EB-1465. Separate byte reads fail with Windows1392
 on both paths. Although unlocked CHKDSK can have false positives, the matching

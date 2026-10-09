@@ -37,8 +37,11 @@ cpufreq, thermal/cache inventory and clock summary were absent in tested locatio
 The October9 [read-only FAT re-verification](fat-verification-2026-10-09.md)
 corroborates the latest return's damage: CHKDSK repeats invalid backup clusters
 and lost chains, while independent reads fail with Windows1392 on the same
-entries. Repair/recovery is warranted before updates, but remains unapproved.
-Neither audio causality nor defective flash hardware is established.
+entries. Ben subsequently approved [repair/recovery](fat-recovery-2026-10-09.md):
+healthy checks now pass,14 chains survive privately and the actual1.18 fault
+records are recovered. All412 readable files survived repair; verified pre-test
+SRAM replaces the empty current file. Neither audio causality nor defective flash
+hardware is established. Splash is not installed and both tests remain unarmed.
 
 The2026-10-05 [lab2 contract review](platform-lab2.md) identifies the exact
 scaler/flip command values and argument shapes. In particular,0x80045004 gets

@@ -4339,6 +4339,54 @@
       "published_sha256": "aab8822187d2c39dc4871fd3966e46414e2db47c1ca4aafe76de2886372761f8",
       "bytes": 2265,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/fat-recovery-20261009T152900Z/analysis.json",
+      "published": "evidence/2026-10-09/fat-recovery/analysis.json",
+      "source_sha256": "093e2039323ba8f43b2cf3eb451b6b5fdf59d8fd52ad497a5a9387c4a35fb040",
+      "published_sha256": "bf83404fc43889ff8b88e874dee6326d490ca7dcc05085744c6ac966e41d0e85",
+      "bytes": 4162,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/fat-recovery-20261009T152900Z/chkdsk-repair.txt",
+      "published": "evidence/2026-10-09/fat-recovery/chkdsk-repair.txt",
+      "source_sha256": "7fb6e30c6b3a889b80561645e30c65a0e360a663bdf968f20448e0c3bed71822",
+      "published_sha256": "a9b60fdfb658d009e6d925d2b3c6ab09d0a4d7ce02f425707a81a0b423da9cf1",
+      "bytes": 2086,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/fat-recovery-20261009T152900Z/chkdsk-final.txt",
+      "published": "evidence/2026-10-09/fat-recovery/chkdsk-final.txt",
+      "source_sha256": "8a750f937001c4ed1b4301587b0fc5d66b0d361bd661cff5096f5b744bf450c2",
+      "published_sha256": "4e304ed1642d63157fd3e18c41e7e99a703ff9a018d73b1670c1f25759dcfbad",
+      "bytes": 1819,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/fat-recovery-20261009T152900Z/recovered-text/FILE0011.CHK.txt",
+      "published": "evidence/2026-10-09/fat-recovery/recovered-1.18-session.txt",
+      "source_sha256": "80d468c317d55401b5e7c0a6340f91c2b9271afa1be2db149d31dc92c90e6e10",
+      "published_sha256": "521ec77f69ffd11bf3b30807c89c06e58a6e8cc24dd0ecb2ce5a98f17881bdf4",
+      "bytes": 5250,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/fat-recovery-20261009T152900Z/recovered-text/FILE0012.CHK.txt",
+      "published": "evidence/2026-10-09/fat-recovery/recovered-1.18-final-session.txt",
+      "source_sha256": "4aba459aebb72785a82cba182dce0e3bf4109cac49c3fb7579a9c4024513e5cc",
+      "published_sha256": "9d31b585b3568cf34bffea80bc9d8f833c93892d6d86d17f4d949d2b256d9e31",
+      "bytes": 5250,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/fat-recovery-20261009T152900Z/recovered-text/FILE0009.CHK.txt",
+      "published": "evidence/2026-10-09/fat-recovery/recovered-1.18-pcm.txt",
+      "source_sha256": "53a1dd40344c6e21cd6a6fafd76dc27191330046a7638c3b9f7380252f9b17d1",
+      "published_sha256": "e07adebb2078302fc99ef13a9009c9c1b8240c499bbb29d427b1a1f6a2404e08",
+      "bytes": 27866,
+      "normalized": true
     }
   ]
 }

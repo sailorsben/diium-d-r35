@@ -1,5 +1,21 @@
 # Changelog
 
+## Approved FAT recovery preserves files and retrieves1.18 fault — 2026-10-09
+
+Rehash all412 private backups and compare the card before approved administrator
+CHKDSK/F. AnswerY to save lost chains:14 files/1472KB recovered, filesystem
+corrected. Fresh read-only checks pass. Complete426-file private archive shows
+all412 previously readable files unchanged. Recover actual1.18 session/PCM
+text and two SRAM prefixes matching verified pre-test progress. Preserve the
+empty current SRAM, then restore that known8192-byte copy with atomic/readback
+verification; no newer save identified. Final strict51-MVP/49-lab archive passes.
+
+Recovered2238-call session and96-operation PCM history show the prior reserve
+erosion/pointer divergence/EBADFD pattern; no audio fix or controlled cache-speed
+claim. Preserve all raw chains privately and publish identified text/metadata
+with source hashes. Stock/snapshots/exact1.18 remain intact; splash uninstalled,
+both one-shots unarmed. [Recovery and resume](docs/fat-recovery-2026-10-09.md).
+
 ## FAT repair need re-verified — 2026-10-09
 
 Fresh read-only CHKDSK on the known card repeats both invalid backup allocation

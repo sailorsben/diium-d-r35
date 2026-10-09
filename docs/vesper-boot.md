@@ -7,8 +7,9 @@ uses that reference: black background, full feathered cyan V, small spaced
 thin geometric V/green/tagline draft is discarded.
 
 The authored screen and compatible sprites are ready. **Not installed yet:**
-the returned card has [FAT corruption](snes-mvp-1.18-return.md); backed-up repair
-consent is pending. The SNES runner/core/wrapper remain1.18 and unarmed.
+the [approved FAT recovery](fat-recovery-2026-10-09.md) is complete and fresh
+health/strict archive checks pass. Installation can now use the guarded workflow
+below. The SNES runner/core/wrapper remain1.18 and unarmed.
 
 ## Recovered stock calling contract
 

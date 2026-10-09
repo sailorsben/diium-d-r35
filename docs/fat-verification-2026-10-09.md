@@ -1,5 +1,8 @@
 # FAT repair need verified — 2026-10-09
 
+Subsequently approved and completed: [FAT recovery](fat-recovery-2026-10-09.md).
+This document preserves the read-only pre-repair verification.
+
 At 10:22 America/Chicago, a new read-only check of the connected D: confirms
 label `DIIUM D-R35`, serial `11EB-1465`, and FAT32. **Filesystem repair/recovery
 is needed before further installation or re-arming.** Approval remains pending.

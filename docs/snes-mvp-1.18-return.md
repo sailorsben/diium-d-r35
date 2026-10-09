@@ -1,5 +1,11 @@
 # MVP1.18 return: Magitek audio exit, damaged filesystem
 
+**Update after approved repair:** filesystem checks are now healthy, and lost
+chains recover the actual1.18 session and PCM reports. All412 previously readable
+files survive unchanged; verified pre-test SRAM is restored into the empty path.
+Audio remains unresolved. The initial missing-data account below is historical;
+use the [recovery evidence and current resume](fat-recovery-2026-10-09.md).
+
 Returned 2026-10-09 America/Chicago. Archive:
 `device-evidence/snes-mvp-return-20261009T144358Z`.
 

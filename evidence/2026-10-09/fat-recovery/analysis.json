@@ -1,0 +1,123 @@
+{
+  "repair_exit": 1,
+  "final_read_only_health_exit": 0,
+  "volume_serial": "11EB-1465",
+  "recovered_chains": 14,
+  "recovered_allocation_bytes": 1507328,
+  "post_repair_full_archive_files": 426,
+  "post_repair_full_archive_bytes": 648433785,
+  "preexisting_readable_files_unchanged_by_repair": 412,
+  "only_later_content_change": "Restore empty current FF6 SRAM to verified pre-test 8192-byte save",
+  "newer_sram_identified": false,
+  "all_recovered_originals_preserved_privately": true,
+  "strict_mvp_files": 51,
+  "strict_lab_files": 49,
+  "strict_collection_complete": true,
+  "snapshots_stock_hook_and_1_18_payload_preserved": true,
+  "game_and_lab_unarmed": true,
+  "vesper_splash_installed": false,
+  "recovered_session": {
+    "id": "503-14018869000",
+    "build": "1.18",
+    "runs": 2238,
+    "video_submitted": 2237,
+    "held": 0,
+    "duplicates": 0,
+    "snapshot_load_successes": 1,
+    "active_calls_per_second": 59.88412341844906,
+    "ordinary_final_call_count": 23,
+    "ordinary_final_mean_wall_ms": 18.328478260869566,
+    "ordinary_final_mean_main_cpu_ms": 17.000608695652176,
+    "error_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=1460382 hw=1460351 prime_written=2823 start_calls=0 epoch=2 xfer=1459998 trace_errno=0 trace_synced=1 trace_bytes=27866",
+    "session_text_bytes": 5250,
+    "pcm_text_bytes": 27866,
+    "two_finished_reports_differ_only_in": [
+      "checkpoint_kernel_ns",
+      "session_elapsed_ns"
+    ],
+    "fatal_call_video_omission": "Final fatal audio callback prevents one last drawing; no intentional hold."
+  },
+  "pcm": {
+    "trace_version": "D35 PCM fault history 1.13",
+    "retained_operations": 96,
+    "epoch": 2,
+    "accepted_pointer_difference_first_sample": 0,
+    "application_pointer_difference_changes": [
+      {
+        "seq": 20207,
+        "kernel_ns": 53353109000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 255,
+        "accepted_minus_reported_hw": 127
+      },
+      {
+        "seq": 20216,
+        "kernel_ns": 53373184000,
+        "delta_change": 128,
+        "appl_minus_accepted": 256,
+        "state": 3,
+        "reported_queued": 222,
+        "accepted_minus_reported_hw": -34
+      },
+      {
+        "seq": 20223,
+        "kernel_ns": 53392694000,
+        "delta_change": 128,
+        "appl_minus_accepted": 384,
+        "state": 3,
+        "reported_queued": 191,
+        "accepted_minus_reported_hw": -193
+      }
+    ],
+    "matched_large_batch_interval": {
+      "first_seq": 20138,
+      "last_seq": 20224,
+      "anchor_count": 12,
+      "elapsed_ms": 229.329,
+      "accepted_frames": 8832,
+      "accepted_frames_per_second": 38512.35561137056,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.12670395439069015,
+      "mean_large_batch_interval_ms": 20.84809090909091,
+      "min_large_batch_interval_ms": 18.305,
+      "max_large_batch_interval_ms": 39.594,
+      "reported_hw_advance": 10112,
+      "accepted_minus_hw_change": -1280,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+    },
+    "last_successful_observation": {
+      "seq": 20229,
+      "ns": 53394770000,
+      "op": "SYNC_OK",
+      "arg": 7,
+      "result": 0,
+      "state": 3,
+      "queued": 799,
+      "appl": 1460382,
+      "hw": 1459583,
+      "epoch": 2,
+      "xfer": 1459998
+    },
+    "final_observation": {
+      "seq": 20231,
+      "ns": 53411616000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 1460382,
+      "hw": 1460351,
+      "epoch": 2,
+      "xfer": 1459998
+    },
+    "kernel_read_result": {
+      "bytes": 16335,
+      "errno": 0
+    },
+    "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+  },
+  "limits": "Repair restores filesystem health, not an audio fix or physical card-health proof. Recovered PCM shows production deficit before pointer divergence; no controlled cache-speed comparison."
+}
