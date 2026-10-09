@@ -65,12 +65,12 @@ sparse device shell and unhealthy restoration checks pass:21 software checks.
 These checks do not establish that this FAT/media/driver fault is fixed physically.
 
 After repair, prior results and all521 recovered files were archived before
-rearm. Survey2 run ID `8fc1bcb371894ef0a4b7e75bdc52909d` is armed on D:;
+rearm. Survey2 run ID `8fc1bcb371894ef0a4b7e75bdc52909d` was armed on D:;
 baseline `device-evidence/snes-mvp-return-20261009T182253Z`. Independent readback
 verifies release/init/marker and972 unrelated card files, including recovered
 chains. Postinstall CHKDSK passes. No other test is armed.
 
-Next: safely eject; cold boot stock launcher; leave it for at least45 seconds;
-use the physical power button, then reconnect D:. Archive and check FAT **before any card mutation**.
-Analyze both bundle integrity and filesystem health. SPI transactions, internal
-splash replacement and the audio fix remain pending.
+That [physical return](device-survey-2-return.md) now verifies all905 ranges and
+clean FAT; exact init was restored after a fresh health check. The next separate
+[SPI identification probe](spi-identify.md) is armed. Internal splash replacement
+and the audio fix remain pending. Archive and check FAT **before any card mutation**.

@@ -1,5 +1,20 @@
 # Changelog
 
+## Survey2 physical return and read-only SPI identification — 2026-10-09
+
+Archive all905 capture ranges; verify CRCs/lengths/completion, matching run and
+wrapper exit0. No failed/truncated reads or caps; returned FAT is clean. Preserve
+51 MVP/progress and49 lab files, then restore exact init after fresh health check.
+This is one successful storage return, not general shutdown/media qualification.
+
+Discover stock vrtemu PID521 owns SPI0.0 on FD8. Build a synchronous early-init
+chip-ID probe with fixed05/9f commands, ownership/configuration/busy/response
+guards and owned-child deadline/reap.11 software checks pass. Install with
+independent protected readback and healthy postinstall FAT; only this probe is
+armed. Physical identification remains pending; no flash/configuration writes,
+internal splash replacement or audio fix. [Return](docs/device-survey-2-return.md),
+[probe and exact next run](docs/spi-identify.md).
+
 ## Survey1 return, FAT repair, indexed survey2 and updater recovery — 2026-10-09
 
 Preserve329 returned captures and all private progress; reject completeness despite

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "run_id": "42401fa0056c4cfda90da165e2ad851f",
+  "archive": "snes-mvp-return-20261009T234340Z",
+  "init_before_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "init_probe_sha256": "4e8e1c1bbeb9ea987abe69afdc31de439072b33adc1d136fac4183456576d252",
+  "binary_sha256": "c461aceae2706f58e9571d27744141605d7f7be63c88330fab6de16a5fefaaa6",
+  "wrapper_sha256": "996cd6c3c6848520e8280290429864676e1ca24c38045815fb60df31fc9e1976",
+  "hook": "synchronous before stock main",
+  "fixed_commands": [
+    "05",
+    "9f"
+  ],
+  "flash_writes": false,
+  "global_config_writes": false,
+  "physical_execution": "pending"
+}

@@ -494,3 +494,19 @@ controller declaration. Exact vrtemu main calls the Code.bkp updater; WQW/ZIP/CR
 checks precede flash programming. SPI_ROM.bin is a string, not a proven trigger.
 No raw SPI transaction or recovery path qualified. See device-survey-1-return.md
 and firmware-update-contract.md for evidence and next test.
+
+## Survey2 intact return and SPI owner — 2026-10-09
+
+All905 indexed captures verify on return:1,989 jobs,4,046,126 bytes, no failed or
+truncated reads/caps, matching consumed run identity and wrapper exit0. Returned
+FAT is clean;51 MVP/progress and49 lab files are preserved. Exact init was
+restored after a fresh health check. This is one successful physical storage
+return, not general media/driver/shutdown qualification.
+
+The census finds stock vrtemu PID521, executable `/usr/retro/vrtemu`, FD8 owning
+`/dev/spidev0.0`, character major153/minor0. The separately armed ID probe runs
+synchronously before stock main, refuses another owner and sends only05/9f.
+Eleven software checks pass; physical SPI identification remains pending. No
+flash/configuration writes, full dump, recovery, original-splash replacement or
+audio fix is qualified. See [return](device-survey-2-return.md) and
+[probe](spi-identify.md).

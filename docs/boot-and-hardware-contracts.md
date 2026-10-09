@@ -17,8 +17,9 @@ The wrapper creates the stop marker and waits up to five seconds, ignoring zombi
 The [survey1 return](device-survey-1-return.md) loses later capture directory
 entries despite successful file fsyncs and wrapper completion. Count/allocation
 match the recovered chains exactly. Keep evidence completeness and FAT health
-separate. Survey2 uses one indexed CRC32 bundle plus report; its physical return
-is pending. Archive before checking health, but require healthy FAT before any
+separate. Survey2 uses one indexed CRC32 bundle plus report; its first physical
+return verifies all905 ranges and clean FAT. This is not general media/shutdown
+qualification. Archive before checking health, but require healthy FAT before any
 restoration write. A consumed hook already selects stock on the next reboot.
 
 The [1.18 return](snes-mvp-1.18-return.md) adds a storage boundary: two FAT backup

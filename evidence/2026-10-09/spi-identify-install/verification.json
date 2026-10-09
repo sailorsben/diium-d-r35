@@ -1,0 +1,7 @@
+{
+  "release_init_and_marker_readback": true,
+  "mvp_progress_files_unchanged": 51,
+  "lab_files_unchanged": 49,
+  "survey2_archive_and_card_hashes_match": true,
+  "only_spi_identification_armed": true
+}

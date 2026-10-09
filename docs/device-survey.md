@@ -152,13 +152,15 @@ screens; replacing internal `/showlogo` needs an earlier persistent image path.
 This suite supplies the next evidence for that path. The static logo is separate
 and its owner remains unknown.
 
-## Installed second physical run
+## Completed second physical run
 
 Private baseline: `device-evidence/snes-mvp-return-20261009T182253Z`.
 51 MVP/progress files,49 lab files, stock binaries and splash are hash-preserved.
 Independent readback and post-install read-only CHKDSK pass. Passive survey is
-armed; SNES, hardware lab and Vesper markers are unarmed. See the public
+now consumed and unarmed; SNES, hardware lab and Vesper markers are unarmed. See the public
 [installation receipt](../evidence/2026-10-09/device-survey-return/installation-2.json).
-Physical execution is pending. Return collection/restore is the next step.
-Use `collect` and inspect filesystem health first; restoration now refuses writes
-on a damaged card. Full private survey1/repair archives preserve recovered chains.
+The [physical return](device-survey-2-return.md) verifies all905 ranges, matching
+run identity and clean FAT. Exact init was restored after a fresh health check.
+Full private survey1/repair archives preserve recovered chains. The next separate
+[SPI identification](spi-identify.md) profile is armed synchronously before the
+newly observed stock SPI owner. It is not part of the passive survey.

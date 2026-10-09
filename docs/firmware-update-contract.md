@@ -35,8 +35,9 @@ SPI_IOC_MESSAGE preserves chip select across its transfers. That documentation
 also warns that a nonexistent SPI slave need not produce an I/O error. A positive
 ioctl alone cannot establish chip identity or successful flash readback.
 
-The survey independently finds the DT NOR-flash node on SPI0.0. The next flash
-experiment should identify the chip through a bounded read-only transaction,
+The survey independently finds the DT NOR-flash node on SPI0.0 and stock vrtemu
+holding that node. The [installed read-only identification](spi-identify.md)
+finishes synchronously before stock starts. It should identify the chip,
 then use its datasheet for capacity/addressing and two independently matching
 full readbacks. No SPI transaction has run yet. Do not infer capacity or a valid
 firmware layout from a sibling's specification.

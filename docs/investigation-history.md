@@ -546,3 +546,19 @@ controller declaration. Exact vrtemu main calls the Code.bkp updater; WQW/ZIP/CR
 checks precede flash programming. SPI_ROM.bin is a string, not a proven trigger.
 No raw SPI transaction or recovery path qualified. See device-survey-1-return.md
 and firmware-update-contract.md for evidence and next test.
+
+## Survey2 intact return and SPI owner — 2026-10-09
+
+Survey2 returns all905 capture ranges with verified CRC/length/completion and
+matching run identity; wrapper exit0, no failed/truncated reads or caps. Fresh
+CHKDSK is clean. Strict51-MVP/49-lab archives match baseline except the intended
+hook, then exact init is restored after another fresh health check. One clean
+return qualifies this run, not every storage workload or shutdown sequence.
+
+Process metadata proves stock vrtemu PID521 owns SPI0.0 through FD8. Prepare a
+synchronous early-init identification profile rather than a background hardware
+probe beside that owner. Fixed05/9f transactions, ownership/response/settings
+guards and child deadline/reap pass11 software checks. Only identification is
+armed, independently read back with healthy postinstall FAT. Physical chip ID,
+full readback, recovery and persistent second-splash replacement remain pending;
+audio is unresolved. [Return](device-survey-2-return.md), [profile](spi-identify.md).

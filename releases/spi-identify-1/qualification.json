@@ -1,0 +1,17 @@
+{
+  "software_checks_passed": true,
+  "checks": [
+    "native: fixed 05/9f two-transfer ABI; stable repeated ID; busy/empty/floating/unchanged/inconsistent/short/error/config-change refusals; write-enable denied",
+    "native: real supervisor refuses wrong device type before open/transactions",
+    "native: active owner refuses transactions without killing it",
+    "native: actual owned-child deadline, SIGKILL and reap",
+    "arm: fixed 05/9f two-transfer ABI; stable repeated ID; busy/empty/floating/unchanged/inconsistent/short/error/config-change refusals; write-enable denied",
+    "arm: real supervisor refuses wrong device type before open/transactions",
+    "arm: active owner refuses transactions without killing it",
+    "arm: actual owned-child deadline, SIGKILL and reap",
+    "exact release ARM binary rejects pre-existing SPI owner without hardware access",
+    "actual firmware BusyBox consume-first synchronous wrapper; next boot no-op",
+    "exact ARM GLIBC dependencies <= 2.30"
+  ],
+  "physical_execution": "pending"
+}

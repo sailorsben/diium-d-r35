@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "physical_execution": "pending",
+  "software_checks_passed": true,
+  "fixed_commands": [
+    "05",
+    "9f"
+  ],
+  "flash_writes": false,
+  "global_config_writes": false,
+  "source_hashes": {
+    "build/spi-identify.c": "8244a4bfc902eaf636bd459b1cfef08e70f065c09e4437a9388941f177e9dddb",
+    "build/build-spi-identify.sh": "dd294c667bb6db6da0d9150712b770abca241a9d99afad2834ba7267d6795f26",
+    "build/launch-spi-identify.sh": "996cd6c3c6848520e8280290429864676e1ca24c38045815fb60df31fc9e1976",
+    "build/check-spi-identify.py": "fdc86a9fb123edfb4ef340dec029ea9918a42e5e779c15a9efca642a4cb13fa8",
+    "build/manage-spi-identify.py": "ac186f56a9df176bb9aa2359b1e2c210fcef6768fcdac5d5746bb74c34a1c365"
+  },
+  "release_hashes": {
+    "spi-identify": "c461aceae2706f58e9571d27744141605d7f7be63c88330fab6de16a5fefaaa6",
+    "abi.txt": "e95edf0acd19381aff6c38d1f5e5ef5ba722d464cfb4368024dfb4a2aa8c33b3",
+    "qualification.json": "42486849684e76a1c587e9116479abd7caae99a1f377f37e88ed75552dca1100",
+    "launch.sh": "996cd6c3c6848520e8280290429864676e1ca24c38045815fb60df31fc9e1976"
+  }
+}

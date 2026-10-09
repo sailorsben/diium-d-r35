@@ -21,6 +21,7 @@ releases/platform-lab-1/** -text -whitespace
 releases/platform-lab-2/** -text -whitespace
 releases/device-survey-1/** -text -whitespace
 releases/device-survey-2/** -text -whitespace
+releases/spi-identify-1/** -text -whitespace
 # Preserve the trailing blank line in lab2's hash-qualified wrapper fixture.
 build/lab2-wrapper-check.py whitespace=-blank-at-eof
 releases/**/platform-lab binary
