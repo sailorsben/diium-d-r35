@@ -393,3 +393,20 @@ passes. Strict51-MVP/49-lab archive and all probe files preserved privately in
 before corrected capture installation. No firmware mutation or audio changes.
 Next capture must recover init.rc/init.project.rc and mountinfo to identify a
 reversible startup seam. Internal solid-logo owner remains unproven.
+
+## Captured boot route and SD-stage animation test — 2026-10-09
+
+Corrected capture succeeds: init.project.rc launches /showlogo before sleep2,
+mounts card /retro at /usr/retro, then launches SD init. Internal rootfs is RAM
+rootfs; no firmware replacement is attempted. Captured stock owner and boot
+scripts are archived privately in snes-mvp-return-20261009T162604Z. Diagnostic
+init was restored exactly. New one-shot launch-vesper-boot.sh signals stock via
+/tmp/vrtemu.log, waits for all non-zombie showlogo owners to exit, removes only
+the RAM stop marker, launches qualified SD showlogo for3 seconds, signals it,
+then waits/reaps its owned child before stock launcher. A release timeout refuses
+replacement; an owned-child stall waits rather than starting a competing display.
+Device BusyBox syntax and independent dummy-executable one-shot/reap/no-op checks
+pass; physical display remains pending. Early solid firmware logo remains stock.
+Installer checks healthy FAT, exact init/splash, archives progress and arms last.
+No SNES/lab arming or audio change. This is a userspace animation handoff test,
+not replacement of the earlier internal boot interval.
