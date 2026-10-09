@@ -82,7 +82,7 @@ def make(stock, output, private_output, source):
             'artwork_sha256':sha256(source.read_bytes()).hexdigest(),
             'patched_showlogo_sha256':sha256(patched).hexdigest(),
             'physical_boot_appearance':'pending','stock_loader_and_sprite_check':'pending'}
-    (output/'manifest.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+    (output/'manifest.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(result,indent=2))
 
 if __name__=='__main__':

@@ -16,13 +16,13 @@ def qualify(stock, output, private):
                           cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     assert result.returncode==0,result.stdout
     assert result.stdout.startswith('PASS exact stock OpenZipU/UnzipItem decode, 18 ShowSprite frames,')
-    (output/'stock-seam-check.log').write_text(result.stdout,encoding='utf-8')
+    (output/'stock-seam-check.log').write_text(result.stdout,encoding='utf-8',newline='\n')
     manifest=json.loads((output/'manifest.json').read_text(encoding='utf-8'))
     manifest['stock_loader_and_sprite_check']='passed exact original ARM routines under QEMU; not hardware appearance'
     manifest['verification_sources']={name:sha256((ROOT/name).read_bytes()).hexdigest() for name in
         ('build/make-vesper-boot.py','build/check-stock-boot.c','build/check-stock-boot.sh','build/qualify-vesper-boot.py')}
     manifest['check_sha256']=sha256((output/'stock-seam-check.log').read_bytes()).hexdigest()
-    (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+    (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(result.stdout,end='')
 
 if __name__=='__main__':

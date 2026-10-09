@@ -18,10 +18,10 @@
   "physical_boot_appearance": "pending",
   "stock_loader_and_sprite_check": "passed exact original ARM routines under QEMU; not hardware appearance",
   "verification_sources": {
-    "build/make-vesper-boot.py": "90e0ce6ffc69a4ab8a0ce3c9e8029f5fb8520629da4eb660434faf4477b6ae24",
+    "build/make-vesper-boot.py": "c8032edeaf213e5c0b8b181f20f54d24c4be5a5353897eb3041075834f719b9f",
     "build/check-stock-boot.c": "607523430b90a9ee11d410608c6ebc80ee16425b7bd83651982c1d75f5a32d11",
     "build/check-stock-boot.sh": "cfb4132fcdfbfa63fe2706d2b811e53ad975208751e5507eec230a2b3d294181",
-    "build/qualify-vesper-boot.py": "b59ff6c63457735f8d504dd45bda6ba0e9606fa1a4fc35e88d4eafb4e1f61c20"
+    "build/qualify-vesper-boot.py": "92bf1dbb4801b6b44ffdc0faf16c7feb8f314d515d5a1d5bb917a4741a93f6fa"
   },
-  "check_sha256": "c4700455fb5ffab55334770b29e374bc48890f0958f93486de1713ddcee8d05f"
+  "check_sha256": "99d93284217b8ff8ed332395fcc9a147cc740a9a03ae83b5475b328183f15234"
 }
