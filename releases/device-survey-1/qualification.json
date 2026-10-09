@@ -1,0 +1,22 @@
+{
+  "software_checks_passed": true,
+  "checks": [
+    "native: exact tool/module/DT bytes; passive device metadata; missing interfaces retained",
+    "native: bounded/denied /proc/limit.bin",
+    "native: bounded/denied /proc/symlink",
+    "native: bounded/denied /dev/fake-device",
+    "native: bounded/denied /proc/kcore",
+    "arm: exact tool/module/DT bytes; passive device metadata; missing interfaces retained",
+    "arm: bounded/denied /proc/limit.bin",
+    "arm: bounded/denied /proc/symlink",
+    "arm: bounded/denied /dev/fake-device",
+    "arm: bounded/denied /proc/kcore",
+    "real FIFO rejected before open",
+    "stalled read: deadline, SIGKILL and owned child reap",
+    "actual firmware BusyBox wrapper: consume first; next boot no-op",
+    "hook removal restores independent init byte-for-byte",
+    "analyzer rejects stale identities, truncated census and failed wrapper; missing interfaces remain explicit",
+    "exact ARM dependencies are GLIBC <= 2.30"
+  ],
+  "physical_execution": "pending"
+}

@@ -514,3 +514,19 @@ gadget support; earlier suggestion overstated it. No button recovery sequence
 found in this dispatch. This does not rule out boot-ROM/bootloader recovery.
 Next work: inspect vendor NAND tools and identify SPI peripheral/boot storage
 without raw writes; a persistent splash replacement remains unimplemented.
+
+## Reusable passive device survey and test catalog — 2026-10-09
+
+Build native Cortex-A7 inventory collector, exact firmware BusyBox one-shot
+wrapper, guarded install/rearm/collect/restore commands, SHA-mapped analyzer and
+private offline ELF review. Prioritize NAND helpers/module candidates, SPI/USB
+identity and device tree; also capture platform/process/memory/power/input/audio
+metadata and runtime/module inventories. Bound reads, bytes/jobs and scheduling;
+explicitly retain errors, missing paths, truncation, caps and stale-run rejection.
+16 independent native/ARM/timeout/sparse-shell/analyzer checks pass; physical
+capture pending. Archive progress and restore exact init before repeats. No raw
+hardware reads, vendor utility execution, flash writes or active lab rearming.
+Catalog19 investigation questions and reuse existing active labs with their
+ownership/contracts. NAND tools already preserved privately contain driver-load
+and storage-operation code; inspect copies before invoking anything on-device.
+[Suite coverage and next run](docs/device-survey.md).

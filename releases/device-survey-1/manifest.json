@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "software_checks_passed": true,
+  "physical_execution": "pending",
+  "source_hashes": {
+    "build/device-survey.c": "87c7665878cec89f16814791eb7b98c9c30133d3b3ffd41d43f020027af4ac9d",
+    "build/build-device-survey.sh": "45e02cc5e592fbae62225201e2353982df71b6ca7cc3cdc38c41cbb92537b02d",
+    "build/launch-device-survey.sh": "a507e1ae23ea3c686dec799a5764ab4c9b6199b35e6d5a9c19ed28136aa1cd44",
+    "build/check-device-survey.py": "2bc7cdc71eb14601b9c97bb856c497aec2c6cc0b7d7be6756239b371bd3863da",
+    "build/manage-device-survey.py": "bdf505d8c82de4ee1aec534102f9a685774c4089f5a071c53ce9b2a67ea93351",
+    "build/analyze-device-survey.py": "5b3d96c15a30d430c361c6c8b9d026ce4f6eedff05988282ae80f249675c7332",
+    "build/review-device-survey.py": "58a8030762ac7e0a4b20b6f8a8d3cae66b115d85b24a11a22ea72f2e008baa22",
+    "build/device-test-catalog.py": "152e49c577eafbd1a8c0fe00653a757a4d6b984d1bbe31feb389d36c013ac065"
+  },
+  "release_hashes": {
+    "device-survey": "ad687284fbf4d1a155923f729645381a2d8c637ca2a7796189416fe9bfbdbdd4",
+    "abi.txt": "bc602d7f307a21643d69da619d0085170a44e6e25235457cb1e2e6f4819759ae",
+    "qualification.json": "baaa4b0b53211d20e4e89f6482edbcfb47add5de2a4c4b7f4ef11ce1cddf5575",
+    "launch.sh": "a507e1ae23ea3c686dec799a5764ab4c9b6199b35e6d5a9c19ed28136aa1cd44"
+  },
+  "budget_seconds": 30,
+  "capture_bytes_limit": 50331648,
+  "file_bytes_limit": 8388608,
+  "jobs_limit": 2500,
+  "per_read_seconds": 2,
+  "raw_device_reads": false,
+  "hardware_controls": false
+}
