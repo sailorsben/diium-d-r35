@@ -1,5 +1,15 @@
 # Changelog
 
+## FAT repair need re-verified — 2026-10-09
+
+Fresh read-only CHKDSK on the known card repeats both invalid backup allocation
+units and 1,472 KB in 14 lost-chain files. Independent byte reads fail with
+Windows1392 on the same entries; current SRAM remains empty and stock splash
+hash matches. Record the active-volume false-positive caveat and corroborating
+evidence. Repair/recovery remains approval-gated; no card repair, splash install
+or re-arm. Audio cause and card hardware health remain unresolved.
+[Verification and exact resume point](docs/fat-verification-2026-10-09.md).
+
 ## MVP1.18 return and Vesper boot artwork — 2026-10-09
 
 Magitek Bio Blast again produces an audio descriptor error and returns to our

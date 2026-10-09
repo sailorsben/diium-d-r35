@@ -2,6 +2,16 @@
 
 This history preserves what changed, what was observed, and the inference boundary. It does not retroactively turn proposals into device results. Deeper dated reviews and selected raw returns are published under `docs/reference` and `evidence`.
 
+## 2026-10-09: verify whether FAT repair is warranted
+
+Fresh read-only CHKDSK repeats both invalid backup entries and 1,472 KB in14
+lost-chain files on serial11EB-1465. Separate byte reads fail with Windows1392
+on both paths. Although unlocked CHKDSK can have false positives, the matching
+read failures corroborate actual filesystem damage. Repair/recovery is needed
+before card updates; approval remains pending. No repair, installation or
+re-arm occurs, and no audio-cause or physical card-health conclusion follows.
+[Evidence and resume gate](fat-verification-2026-10-09.md).
+
 ## SNES host/adapter investigation
 
 | Stage | Observation and resulting decision |

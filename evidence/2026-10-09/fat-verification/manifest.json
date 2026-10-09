@@ -1,0 +1,21 @@
+{
+  "archive": "device-evidence/fat-verification-20261009T152254Z",
+  "command": "chkdsk.exe D:",
+  "chkdsk_exit": 3,
+  "repair_performed": false,
+  "intentional_card_writes": 0,
+  "files": [
+    {
+      "path": "chkdsk-read-only.txt",
+      "sha256": "314fe240d8e601e5b691811c7a1a38ffc692a1b251f90f6a81948c65c6dc20fa"
+    },
+    {
+      "path": "file-read-results.json",
+      "sha256": "e958e5a7cc32d8abbc1210af25672ae00ef3525abae4110248a3f9698c508587"
+    },
+    {
+      "path": "markers.json",
+      "sha256": "a6d4e8b52ae0176c197329dffd4dcfaa1aabcc3d59d73d1f1dd4b17f427c7683"
+    }
+  ]
+}
