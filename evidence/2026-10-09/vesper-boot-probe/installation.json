@@ -1,0 +1,12 @@
+{
+  "archive": "snes-mvp-return-20261009T161446Z",
+  "init_before_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "init_probe_sha256": "a2795c8a8437792cd57a21e1c07c51c6bea939751cc8adc839b0c8d861827e88",
+  "showlogo_sha256": "ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe",
+  "probe_sha256": "72fae7037d6e0394edf58929aea5e361e975158b3995ecba9ab92004767d742e",
+  "snes_armed": false,
+  "lab_armed": false,
+  "probe_armed": true,
+  "display_operations": false,
+  "restore_init_from": "device-evidence\\snes-mvp-return-20261009T161446Z\\init.before-probe"
+}
