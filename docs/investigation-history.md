@@ -390,3 +390,21 @@ NEON materialization with explicit mutation/load invalidation.1,200 effect and
 reuse/48.71% fewer lookup rows. Prior losing Lab1 cache is explicitly retained;
 physical benefit remains pending. [Return](snes-mvp-1.17-return.md),
 [implementation](snes-mvp-1.18.md).
+
+## 2026-10-09: repeated Magitek exit, filesystem damage, Vesper loading art
+
+1.18 again returns to our library with an audio descriptor failure reported
+at Magitek Bio Blast. Archive51 readable MVP/progress files and49 lab files
+before writes, explicitly recording two unreadable backup entries. Preserve
+412 readable card files in a private full backup. Exact release and stock
+hashes match; snapshots survive. Fresh fault/session files and current SRAM
+are zero bytes, while wrapper stderr is stale1.16. No new timing/PCM attribution
+is possible. Read-only FAT32 check confirms invalid allocation units/lost
+chains; repair/recovery consent is pending. [Return](snes-mvp-1.18-return.md).
+
+Build the requested feathered cyan wing-V/heart boot screen from the user's
+preferred reference. Recover the stock embedded ZIP/sprite contract, alter
+only artwork data, and qualify decoding plus all18 draws through the exact
+original ARM functions. Publish owned artwork/source; preserve vendor ELF
+privately. Installation waits for a healthy card; SNES remains unchanged and
+unarmed. [Boot workflow](vesper-boot.md).

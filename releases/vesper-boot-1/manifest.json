@@ -1,0 +1,27 @@
+{
+  "version": "1",
+  "stock_sha256": "436d8018808b150c926274575a195f664e61db646f44713371019e9ae10caf3b",
+  "zip_start": 29056,
+  "zip_end": 170996,
+  "bytes": 198408,
+  "stock_code_and_all_outside_zip_unchanged": true,
+  "sprite_geometry": "640x480 background; eighteen 28x10 loading-dot crops",
+  "frames": 18,
+  "width": 640,
+  "height": 480,
+  "uncompressed_bytes": 624784,
+  "stock_allocation_bytes": 2808092,
+  "logo_zip_sha256": "daaf0b11372392136684d2dcd1573197e838704a8d265d1aaf3f0b17ca0cdc9f",
+  "ui_raw_sha256": "a4b4a573f9120cc91a113a692489f6ad7a51f8f6c36831535cbb2428b4dfb874",
+  "artwork_sha256": "8b2460b58b9d9080e0fa4a9f78215be0c17fbb0786a4bc9e1b4cd3c6c9e52d7f",
+  "patched_showlogo_sha256": "ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe",
+  "physical_boot_appearance": "pending",
+  "stock_loader_and_sprite_check": "passed exact original ARM routines under QEMU; not hardware appearance",
+  "verification_sources": {
+    "build/make-vesper-boot.py": "90e0ce6ffc69a4ab8a0ce3c9e8029f5fb8520629da4eb660434faf4477b6ae24",
+    "build/check-stock-boot.c": "607523430b90a9ee11d410608c6ebc80ee16425b7bd83651982c1d75f5a32d11",
+    "build/check-stock-boot.sh": "cfb4132fcdfbfa63fe2706d2b811e53ad975208751e5507eec230a2b3d294181",
+    "build/qualify-vesper-boot.py": "b59ff6c63457735f8d504dd45bda6ba0e9606fa1a4fc35e88d4eafb4e1f61c20"
+  },
+  "check_sha256": "c4700455fb5ffab55334770b29e374bc48890f0958f93486de1713ddcee8d05f"
+}

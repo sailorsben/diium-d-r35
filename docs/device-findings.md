@@ -339,4 +339,21 @@ brightness/load invalidation. Complete Magitek replay equals clean output;
 93.36% tile reuse and48.71% fewer lookup rows are work counts, not measured A7
 speed. The earlier Lab1 cache lost; its result remains applicable evidence that
 cache overhead/memory can exceed savings. [Details](snes-mvp-1.18.md),
-[returned evidence](snes-mvp-1.17-return.md). Physical effect/audio test pending.
+[returned evidence](snes-mvp-1.17-return.md).
+
+## 1.18 return: audio exit and FAT evidence loss
+
+Magitek Bio Blast again returns to the library with a user-reported audio
+descriptor error. Exact1.18 payloads verify; the candidate has not fixed that
+failure. Two FAT backup entries are unreadable, and fresh fault/session files
+plus current SRAM are zero bytes. A read-only check confirms invalid allocation
+units and lost chains. Full readable card contents are privately hash-backed
+up; snapshots and earlier SRAM survive. Repair/recovery consent is pending;
+no card updates or re-arm. Stale1.16 stderr cannot price1.18 cache speed or the
+latest stop. Filesystem damage is established; its cause and relationship to
+audio remain unknown. [Return](snes-mvp-1.18-return.md).
+
+Requested [Vesper boot art](vesper-boot.md) is qualified through original ARM
+ZIP/sprite routines; stock code/handoff stays exact. Its guarded installation
+waits for a healthy filesystem. No new core or audio policy ships from this
+incomplete return.

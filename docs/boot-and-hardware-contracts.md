@@ -14,6 +14,19 @@ The wrapper creates the stop marker and waits up to five seconds, ignoring zombi
 
 ## One-shot execution and recovery
 
+The [1.18 return](snes-mvp-1.18-return.md) adds a storage boundary: two FAT backup
+entries are unreadable and fresh fault/current SRAM files are zero bytes.
+Preserve readable files and report incomplete collection explicitly. A partial
+salvage archive is never a healthy install baseline; keep strict collection as
+the default. Back up before repair and inspect recovered chains before restoring
+prior progress. Fsync/rename tests are not proof against physical FAT corruption.
+
+The requested [Vesper artwork](vesper-boot.md) replaces the known embedded ZIP
+only. Stock code and every byte outside that span stay exact; original ARM ZIP
+decoding and all18 drawing cases qualify it offline. Install only on a healthy
+card, retain the archived original for rollback, and still wait for showlogo's
+actual exit before InitVFB. New art does not relax the ownership contract.
+
 The current hook runs `/bin/sh /usr/retro/snes-mvp/launch.sh` synchronously before starting stock main, only when `armed` exists. The wrapper atomically consumes it into `last-launch`. Thus a following reboot takes the stock path without depending on the failed runtime to clean up.
 
 First library draw/flip completes before initial held inputs are suppressed independently. A stuck pin cannot prevent first paint. Startup has a 20-second deadline (bounded configurable range); ready gameplay is not limited to 20 seconds. On a stall, capture thread state, retain logs, TERM/KILL only the owned child, and wait for it to exit before starting another hardware owner. A kernel-blocked process may require reboot.

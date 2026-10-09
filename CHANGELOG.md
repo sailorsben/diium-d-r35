@@ -1,5 +1,25 @@
 # Changelog
 
+## MVP1.18 return and Vesper boot artwork — 2026-10-09
+
+Magitek Bio Blast again produces an audio descriptor error and returns to our
+library. Exact1.18 payloads match. Fresh failure/session/PCM files and current
+SRAM are zero bytes; two backup entries are unreadable. Read-only FAT32 check
+confirms invalid first allocation units and lost chains. Preserve51 readable
+MVP/progress files,49 lab files and a private hash-verified412-file full-card
+backup. Snapshots and earlier SRAM copies survive. Stale1.16 stderr is not new
+1.18 evidence; cache performance and the current PCM stop cannot be priced.
+Backed-up repair/recovery consent is pending; no card writes or re-arm.
+
+Build the requested black/cyan feathered V/heart loading screen from the user's
+preferred reference. Recover the embedded ZIP/sprite ABI and replace only its
+artwork span, keeping all stock code/handoff bytes exact. The actual stock ARM
+decoder and all18 sprite draws pass pixel/canary checks. Publish authored art,
+packer, original-code checker and guarded install/rollback source; vendor ELF
+stays private. Installation and physical appearance wait for a healthy card.
+
+[1.18 return](docs/snes-mvp-1.18-return.md), [boot artwork](docs/vesper-boot.md).
+
 ## SNES MVP1.18 caches colors for Magitek Bio Blast — 2026-10-08
 
 1.17 starts FF6 on the first attempt and sustains35,763 calls overall before

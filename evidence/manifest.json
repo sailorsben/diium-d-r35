@@ -4307,6 +4307,38 @@
       "published_sha256": "ef1d715428a52c66fde642a32fed34fcdcacdc25caca68645e1c707890f81c14",
       "bytes": 490,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T144358Z/analysis.json",
+      "published": "evidence/2026-10-09/snes-mvp-1.18-return/analysis.json",
+      "source_sha256": "24b63e1f2278e690b53968a9e624b6bb2af6d6b824a3b26efa1afbb29e988531",
+      "published_sha256": "b76c0a9cd481e8af4d222ca45f2449cc903c89c66b00e89f9523dae0068d4ccf",
+      "bytes": 2219,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T144358Z/snes-mvp/startup.log",
+      "published": "evidence/2026-10-09/snes-mvp-1.18-return/startup.log",
+      "source_sha256": "2033c24f2930ce9222185783ac11291ddd8968cb53ba812309444530b8dafba8",
+      "published_sha256": "2033c24f2930ce9222185783ac11291ddd8968cb53ba812309444530b8dafba8",
+      "bytes": 3960,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T144358Z/snes-mvp/last-progress.txt",
+      "published": "evidence/2026-10-09/snes-mvp-1.18-return/last-progress.txt",
+      "source_sha256": "64e48d1d35e3e0a98d49adf4e44bee00bab95740fb2c988917ac56f956f73e27",
+      "published_sha256": "64e48d1d35e3e0a98d49adf4e44bee00bab95740fb2c988917ac56f956f73e27",
+      "bytes": 55,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T144358Z/chkdsk-before-repair.txt",
+      "published": "evidence/2026-10-09/snes-mvp-1.18-return/chkdsk-before-repair.txt",
+      "source_sha256": "18897826af16e1319d23716eb00b2d10f159d75953d65566c3c517aa6fd82a04",
+      "published_sha256": "aab8822187d2c39dc4871fd3966e46414e2db47c1ca4aafe76de2886372761f8",
+      "bytes": 2265,
+      "normalized": true
     }
   ]
 }

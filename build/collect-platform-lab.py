@@ -10,12 +10,12 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def digest(p): return sha256(p.read_bytes()).hexdigest()
 
-def collect(card):
+def collect(card, allow_read_errors=False):
     card = card.resolve(); lab = card / 'retro/platform-lab'
     assert lab.is_dir() and (lab / 'platform-lab').is_file()
     spec = importlib.util.spec_from_file_location('collect_mvp', ROOT / 'build/collect-snes-mvp.py')
     module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
-    archive = module.collect(card)
+    archive = module.collect(card, allow_read_errors)
     entries = []
     for source in sorted(lab.rglob('*')):
         if not source.is_file(): continue
@@ -36,4 +36,6 @@ def collect(card):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--card', type=Path, default=Path('D:/'))
-    collect(parser.parse_args().card)
+    parser.add_argument('--allow-read-errors', action='store_true')
+    args = parser.parse_args()
+    collect(args.card, args.allow_read_errors)

@@ -1,5 +1,12 @@
 # MVP1.18: reuse tile colors during fragmented raster effects
 
+**Physical return2026-10-09:** Magitek Bio Blast still causes an audio error
+and library return. FAT damage leaves fresh failure reports/current SRAM zero
+bytes, so no new cache timing or PCM attribution is available. Readable card
+contents, snapshots and earlier SRAM are preserved. Repair/recovery consent
+is pending; the card is unarmed. See the [return](snes-mvp-1.18-return.md).
+The following describes the installed candidate and its offline qualification.
+
 [The 1.17 return](snes-mvp-1.17-return.md) isolates a failure during Terra's
 Magitek Bio Blast after otherwise sustained gameplay. The game's
 [Bio Blast script](https://github.com/everything8215/ff6/blob/813013276c952fdd27edcf7b8b86f17291542cbf/src/btlgfx/attack_anim_script.asm)

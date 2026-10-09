@@ -4,9 +4,10 @@ Source, hardware investigation and a working SNES-only launcher/runtime prototyp
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.
 
-## Current status — 2026-10-08
+## Current status — 2026-10-09
 
-- **MVP1.18 installed, independently verified and armed:** bounded NEON RGB tile reuse addresses fragmented raster work. Complete1,200-frame Magitek effect and12,000 intro/Narshe frames match clean pixels, native PCM and logical state; physical speed/audio are pending. [Implementation](docs/snes-mvp-1.18.md), [test](docs/snes-mvp-1.18-test.txt).
+- **MVP1.18 returned with another Magitek audio exit:** the exact release matches, but FAT corruption leaves fresh failure reports and current SRAM zero bytes, with two unreadable backup entries. All readable card contents are privately hash-backed up; snapshots and previous SRAM copies survive. Filesystem repair consent is pending; no update/re-arm or unproved audio tweak. [Return](docs/snes-mvp-1.18-return.md).
+- **Vesper boot artwork ready:** full cyan feathered wing-V/heart on black, matching the user reference. Exact stock ARM ZIP decode and all 18 sprite draws pass; code/handoff bytes stay identical. Installation waits for a healthy card. [Artwork and guarded workflow](docs/vesper-boot.md).
 - **MVP1.17 first launch succeeded:**35,763 calls at59.978/sec overall, zero held drawings/duplicate callbacks, snapshot load worked. Terra's Magitek armor Bio Blast ended with an audio error/our library after a transient renderer/production deficit. First-launch isolation worked in this run; repeated cold-boot reliability is not established. User withdrew expected driving snow after checking playthroughs. [Return](docs/snes-mvp-1.17-return.md), [diagnostic isolation](docs/snes-mvp-1.17.md).
 - **MVP1.16 returned very playable:** successful retry sustained31,601 calls at59.985/sec, combat/party menu/game save/snapshot load worked. Its first launch failed during live wrapper diagnostic activity, removed in1.17. [Return](docs/snes-mvp-1.16-return.md), [renderer repair](docs/snes-mvp-1.16.md).
 - **MVP1.15 returned with audio failures:** both retained snapshot loads succeed, then19/18 calls exhaust production margin. Ordinary expensive-scene main CPU is about18ms, wall19.3–19.5ms; sampled PPU about10ms. Exact payload and21 game-progress files match; no new whole-device poweroff established. First-attempt detailed history was overwritten by retries. [Return](docs/snes-mvp-1.15-return.md), [raster census](evidence/2026-10-06/raster-work-census/analysis.json).
@@ -36,7 +37,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Latest infrastructure result and researched audio contracts | [Lab2 return](docs/platform-lab-2-return.md), [interface research](docs/platform-interface-research.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |
 | Forward A7 renderer implementation | [MVP1.8](docs/snes-mvp-1.8.md) |
-| Latest sustained gameplay and remaining failure/effect limits | [MVP1.17 return](docs/snes-mvp-1.17-return.md) |
+| Latest sustained gameplay and remaining failure/effect limits | [MVP1.18 return](docs/snes-mvp-1.18-return.md) |
 | Current failure model and proposed engineering direction | [Execution-budget review](docs/execution-budget-review.md) |
 | Logging retry implementation | [MVP1.7](docs/snes-mvp-1.7.md) |
 | A7 full-render implementation and failed test | [MVP1.6](docs/snes-mvp-1.6.md), [failure review](docs/snes-mvp-1.6-failure.md) |

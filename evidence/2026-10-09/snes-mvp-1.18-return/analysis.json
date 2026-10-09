@@ -1,0 +1,47 @@
+{
+  "version": "1.18",
+  "archive_utc": "2026-10-09T14:43:58Z",
+  "local_date": "2026-10-09 America/Chicago",
+  "mvp_files_hash_verified": 51,
+  "lab_files_hash_verified": 49,
+  "card_writes": 0,
+  "game_and_lab_unarmed": true,
+  "installed_release_matches": {
+    "snes-mvp": true,
+    "plus-a7.so": true,
+    "launch.sh": true
+  },
+  "stock_and_hook_hashes_match": true,
+  "all_retained_snapshots_match": true,
+  "read_errors": [
+    {
+      "card_path": "retro/snes-mvp/saves/game-a27f1c7a-3145728.srm.bak",
+      "operation": "stat",
+      "winerror": 1392
+    },
+    {
+      "card_path": "retro/snes-mvp/saves/last-session.txt.bak",
+      "operation": "stat",
+      "winerror": 1392
+    }
+  ],
+  "zero_byte_files": [
+    "retro/snes-mvp/kernel-tail.txt",
+    "retro/snes-mvp/last-pcm-fault.txt",
+    "retro/snes-mvp/saves/failure-503-14018869000-pcm.txt",
+    "retro/snes-mvp/saves/failure-503-14018869000-session.txt",
+    "retro/snes-mvp/saves/game-a27f1c7a-3145728.srm",
+    "retro/snes-mvp/saves/last-session.txt"
+  ],
+  "private_full_card_backup": {
+    "files": 412,
+    "bytes": 646926457,
+    "unreadable_entries": 2,
+    "all_readable_files_hash_verified": true
+  },
+  "user_result": "Terra Magitek armor Bio Blast again returns to our launcher; audio descriptor failed message reported",
+  "fresh_startup": "1.18 child503, launch request at14.002s, library returns at53.490s; successful splash handoff",
+  "capture_limits": "Fresh unique PCM/session records, latest PCM trace, current SRAM and latest session are zero bytes. last-run.log is stale 1.16, byte-identical to prior archive. There are no fresh effect timings or PCM transactions to price the color cache or identify this audio stop.",
+  "filesystem": "Read-only Windows FAT32 check reports two invalid first allocation units, about1472KB of lost chains. No repair was performed. This establishes metadata corruption, not a defective physical card or the cause of EBADFD.",
+  "next_action": "Backed-up FAT repair with lost-chain recovery requires consent. Recover any fresh reports/SRAM; restore only a verified prior SRAM if recovery cannot supply it. Require a clean filesystem before installation/re-arm. No unsupported core/audio tweak."
+}
