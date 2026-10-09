@@ -433,3 +433,17 @@ only artwork data, and qualify decoding plus all18 draws through the exact
 original ARM functions. Publish owned artwork/source; preserve vendor ELF
 privately. Installation waits for a healthy card; SNES remains unchanged and
 unarmed. [Boot workflow](vesper-boot.md).
+
+## Physical boot return: Vesper unchanged — 2026-10-09
+
+Ben saw unchanged solid boot and stock animation, then stock launcher. Returned
+patched showlogo still has SHA ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe.
+FAT is healthy; strict archive snes-mvp-return-20261009T160157Z preserves51 MVP
+and49 lab files. SD init does not launch showlogo. Actual early-boot owner is
+unverified; offline sprite qualification did not establish executable ownership.
+A passive consumed-once probe captures startup scripts, mountinfo and any active
+showlogo executable privately. It never launches a splash, signals processes,
+controls display or writes firmware. Offline capture fixture and archived device
+BusyBox syntax checks pass. SNES/lab remain unarmed; audio remains unresolved.
+On next return archive retro/vesper-boot-probe/results first, then restore exact
+init.before-probe from the installation receipt. Physical acceptance has failed.
