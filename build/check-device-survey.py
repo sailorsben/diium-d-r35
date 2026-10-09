@@ -4,7 +4,7 @@ Fixtures are independent files/device metadata. No physical device is touched.
 """
 from pathlib import Path
 from hashlib import sha256
-import importlib.util, json, os, re, shutil, subprocess, tempfile, time
+import importlib.util, json, os, re, shutil, subprocess, tempfile, time, zlib
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'build/device-survey-out'
 def linux(p):
@@ -21,10 +21,10 @@ def files(root):
         if p.is_file():result[p.relative_to(root).as_posix()]=sha256(p.read_bytes()).hexdigest()
     return result
 def run():
+    checks=[];analysis=mod('analyze-device-survey.py')
     wsl(['sh',linux(ROOT/'build/build-device-survey.sh')])
     wsl(['gcc','-std=gnu99','-O2','-Wall','-Wextra','-Werror','-Wno-format-truncation',
          linux(ROOT/'build/device-survey.c'),'-o',linux(OUT/'native-survey')])
-    checks=[]
     with tempfile.TemporaryDirectory(prefix='survey-check-',dir=OUT) as name:
         temp=Path(name);root=temp/'root';root.mkdir()
         fixture={
@@ -42,6 +42,11 @@ def run():
         }
         for p,data in fixture.items():
             target=root/p;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
+        # More than the physical return's surviving directory entries. These
+        # independently generated properties must occupy just one bundle file.
+        for i in range(600):
+            p=f'sys/firmware/devicetree/base/property-{i:04d}'
+            data=i.to_bytes(4,'big')+bytes(range(80));fixture[p]=data;(root/p).write_bytes(data)
         (root/'dev').mkdir();(root/'dev/fake-device').write_bytes(b'DEVICE MUST NOT BE OPENED')
         wsl(['ln','-s',linux(root/'proc/cpuinfo'),linux(root/'proc/symlink')])
         before=files(root)
@@ -56,11 +61,17 @@ def run():
             for source in ['/bin/nand_part_info','/bin/nandsync','/sys/bus/spi/devices/spi0.0/modalias',
                            '/sys/firmware/devicetree/base/compatible','/system/lib/modules/common/spi-gp.ko']:
                 assert source in captures,(label,source,[r for r in rs if r.get('group') in ['device-tree','module-runtime-inventory']])
-                assert (result/captures[source]['output']).read_bytes()==fixture[source[1:]],source
+                assert analysis.capture_bytes(result,captures[source])==fixture[source[1:]],source
             assert '/proc/kcore' not in captures
             assert '/dev/fake-device' not in captures
             assert any(r['kind']=='metadata' and r['source']=='/dev/fake-device' for r in rs)
             checks.append(label+': exact tool/module/DT bytes; passive device metadata; missing interfaces retained')
+            assert {p.name for p in result.iterdir()}=={'report.jsonl','captures.bin'}
+            for i in range(600):
+                source=f'/sys/firmware/devicetree/base/property-{i:04d}'
+                assert analysis.capture_bytes(result,captures[source])==fixture[source[1:]]
+            assert rs[-1]['bytes']==(result/'captures.bin').stat().st_size
+            checks.append(label+': 600 independent DT properties share two result files; every range and CRC matches')
             for path,wanted in [('/proc/limit.bin',0),('/proc/symlink',1),('/dev/fake-device',1),('/proc/kcore',1)]:
                 result=temp/(label+'-'+str(len(checks)))
                 wsl(exe+[linux(root),linux(result),'4',path,'64'])
@@ -139,13 +150,37 @@ ssize_t read(int fd,void *buf,size_t n) {
         rs[-1]['failures']=0
         rs[-1]['truncated']=0;emit();(a/'startup.log').write_text('survey_exit=1\n');assert not analysis.analyze(a)['complete']
         checks.append('analyzer rejects stale identities, truncated census and failed wrapper; missing interfaces remain explicit')
+        (a/'startup.log').write_text('survey_exit=0\n')
+        (a/'results/capture-0001.bin').unlink();assert not analysis.analyze(a)['complete']
+        checks.append('v1 missing returned capture remains an incomplete result')
+        rs.insert(0,{'kind':'start','version':2})
+        rs[1].update(output='captures.bin',offset=0,crc32=f'{zlib.crc32(b"proof"):08x}')
+        rs[-1]['bytes']=5;(a/'results/captures.bin').write_bytes(b'proof');emit()
+        assert analysis.analyze(a)['complete']
+        for data in [b'proo',b'proox',b'proof-extra']:
+            (a/'results/captures.bin').write_bytes(data);assert not analysis.analyze(a)['complete']
+        (a/'results/captures.bin').write_bytes(b'proof')
+        rs[1]['offset']=1;emit();assert not analysis.analyze(a)['complete']
+        checks.append('v2 analyzer rejects torn ranges, corrupt bytes, trailing bytes and invalid offsets')
+        # Restore must archive readable evidence but never change FAT after a
+        # health failure, even when the one-shot has already been consumed.
+        fake=temp/'card';(fake/'retro/device-survey').mkdir(parents=True)
+        target=fake/'retro/init';target.write_bytes(b'independent current init')
+        manager.baseline=lambda card: temp
+        manager.healthy=lambda: (_ for _ in ()).throw(RuntimeError('independent dirty-volume result'))
+        (temp/'device-survey').mkdir();shutil.copytree(a,temp/'device-survey',dirs_exist_ok=True)
+        try: manager.collect(fake,restore=True)
+        except RuntimeError as e: assert 'dirty-volume' in str(e)
+        else: raise AssertionError('Unhealthy restoration was allowed')
+        assert target.read_bytes()==b'independent current init'
+        checks.append('restoration archives first and refuses init writes on unhealthy FAT')
     abi=(OUT/'abi.txt').read_text()
     versions=re.findall(r'Name: GLIBC_([0-9.]+)',abi)
     assert versions and all(tuple(map(int,v.split('.'))) <= (2,30) for v in versions),versions
     checks.append('exact ARM dependencies are GLIBC <= 2.30')
     (OUT/'qualification.json').write_text(json.dumps({'software_checks_passed':True,'checks':checks,
         'physical_execution':'pending'},indent=2)+'\n',encoding='utf-8',newline='\n')
-    release=ROOT/'releases/device-survey-1';release.mkdir(exist_ok=True)
+    release=ROOT/'releases/device-survey-2';release.mkdir(exist_ok=True)
     for source,dest in [(OUT/'device-survey','device-survey'),(OUT/'abi.txt','abi.txt'),
                         (OUT/'qualification.json','qualification.json'),(ROOT/'build/launch-device-survey.sh','launch.sh')]:
         shutil.copyfile(source,release/dest)
@@ -153,7 +188,7 @@ ssize_t read(int fd,void *buf,size_t n) {
                   'build/check-device-survey.py','build/manage-device-survey.py','build/analyze-device-survey.py',
                   'build/review-device-survey.py','build/device-test-catalog.py']
     digest=lambda p:sha256(p.read_bytes()).hexdigest()
-    manifest={'version':1,'software_checks_passed':True,'physical_execution':'pending',
+    manifest={'version':2,'software_checks_passed':True,'physical_execution':'pending',
         'source_hashes':{n:digest(ROOT/n) for n in source_names},
         'release_hashes':{n:digest(release/n) for n in ['device-survey','abi.txt','qualification.json','launch.sh']},
         'budget_seconds':30,'capture_bytes_limit':48*1024*1024,'file_bytes_limit':8*1024*1024,

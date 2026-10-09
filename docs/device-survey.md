@@ -1,4 +1,13 @@
-# Device survey suite 1
+# Device survey suite 2
+
+Survey1 returned partial captures and new FAT directory damage. Its521 missing
+nonempty files match all521 recovered chains and17,856 KB of lost allocation.
+All789 readable files survived the approved repair unchanged. Do not rearm the
+old release. [Return and exact next test](device-survey-1-return.md).
+
+Survey2 replaces hundreds of capture files with one indexed CRC32 bundle and
+one report. It checks returned range integrity and refuses init restoration on
+unhealthy FAT.21 software checks pass; its physical durability remains pending.
 
 Ben requested a broad reusable device investigation suite. The first deployed
 profile is passive inventory, using the proven SD `/usr/retro/init` route. It
@@ -45,12 +54,14 @@ python build/check-device-survey.py
 ```
 
 This builds against the exact device glibc 2.30 ABI and publishes owned release
-files under `releases/device-survey-1`. The current16 checks cover native and
+files under `releases/device-survey-2`. The current21 checks cover native and
 actual ARM capture of independent NAND/module/device-tree fixtures, byte and
 source preservation, bounded truncation, denied raw-device/symlink/kcore/FIFO
 reads, stalled-read deadline/reaping, exact firmware BusyBox with a sparse PATH,
 marker consumption/second-boot no-op, byte-exact hook removal, stale/truncated/
 failed-run analysis, and ELF version requirements no newer than glibc2.30.
+Native/ARM600-property fixtures verify the two-file output layout; the analyzer
+rejects missing old captures, corrupt/torn bundle ranges and extra bytes.
 
 The fixtures exposed32-bit stat/readdir inode overflow under ARM/QEMU on NTFS;
 the collector now uses explicit stat64/readdir64 and the device's exported
@@ -68,7 +79,7 @@ restores exact init; partial owned files remain for inspection.
 ```powershell
 python build/manage-device-survey.py install
 # Safely eject, cold boot, leave the stock launcher alone for at least45 seconds,
-# then power down normally and return the card to Windows.
+# then use the physical power button and return the card to Windows.
 python build/manage-device-survey.py collect
 python build/manage-device-survey.py restore
 ```
@@ -76,7 +87,7 @@ python build/manage-device-survey.py restore
 The hook starts the survey in the background; stock launcher startup continues.
 The marker consumes before work and syncs. A subsequent reboot is stock even
 when the previous run was incomplete. `collect` is read-only and always preserves
-partial evidence. `restore` archives again, requires consumed/unarmed state and
+partial evidence. `restore` archives again, requires healthy FAT, consumed/unarmed state and
 the exact installed init hash, restores the saved original, and preserves results.
 The installation receipt and each private return archive contain exact hashes.
 Wait for completion before return; powering off during SD capture is not a
@@ -141,11 +152,13 @@ screens; replacing internal `/showlogo` needs an earlier persistent image path.
 This suite supplies the next evidence for that path. The static logo is separate
 and its owner remains unknown.
 
-## Installed first physical run
+## Installed second physical run
 
-Private baseline: `device-evidence/snes-mvp-return-20261009T172206Z`.
+Private baseline: `device-evidence/snes-mvp-return-20261009T182253Z`.
 51 MVP/progress files,49 lab files, stock binaries and splash are hash-preserved.
 Independent readback and post-install read-only CHKDSK pass. Passive survey is
 armed; SNES, hardware lab and Vesper markers are unarmed. See the public
-[installation receipt](../evidence/2026-10-09/device-survey-install/installation.json).
+[installation receipt](../evidence/2026-10-09/device-survey-return/installation-2.json).
 Physical execution is pending. Return collection/restore is the next step.
+Use `collect` and inspect filesystem health first; restoration now refuses writes
+on a damaged card. Full private survey1/repair archives preserve recovered chains.

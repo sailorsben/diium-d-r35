@@ -38,12 +38,19 @@ extern int __fxstat64(int,int,struct stat64 *);
 #define MAX_JOBS 2500u
 static char root[PATH_MAX], output[PATH_MAX];
 static FILE *report;
+static int bundle=-1;
+static uint32_t crc_table[256];
 static uint64_t start_ns, deadline_ns;
 static unsigned jobs, missing, failures, truncations;
 static size_t total_bytes;
 static int capped, stuck;
 static const char *group="identity";
-typedef struct { int error, truncated; size_t bytes; } Result;
+typedef struct { int error, truncated; size_t bytes; uint32_t crc; } Result;
+
+static uint32_t checksum(uint32_t crc,const char *data,size_t bytes) {
+    for(size_t i=0;i<bytes;i++) crc=crc_table[(crc^(unsigned char)data[i])&255]^(crc>>8);
+    return crc;
+}
 
 static unsigned number(const char *s) {
     unsigned n=0;
@@ -83,17 +90,17 @@ static int room(void) {
     return 1;
 }
 static void capture(const char *path,size_t limit) {
-    char source[PATH_MAX],dest[PATH_MAX],name[40];int pipes[2],status=0;
-    Result r={0,0,0};struct stat64 s;
+    char source[PATH_MAX];int pipes[2],status=0,crc_valid=0;
+    Result r={0,0,0,0};struct stat64 s;
     if(!room()) return;
     jobs++;
-    snprintf(name,sizeof(name),"capture-%04u.bin",jobs);
+    off_t offset=lseek(bundle,0,SEEK_END);
+    if(offset<0) { failures++;stuck=1;return; }
     if(!allowed(path)||!resolve(source,sizeof(source),path)) r.error=EPERM;
     else if(lstat(source,&s)) r.error=errno;
     else if(!S_ISREG(s.st_mode)) r.error=EPERM; /* no FIFOs, links, or raw devices */
     if(limit>MAX_CAPTURE) limit=MAX_CAPTURE;
     if(limit>TOTAL_CAPTURE-total_bytes) limit=TOTAL_CAPTURE-total_bytes;
-    snprintf(dest,sizeof(dest),"%s/%s",output,name);
     uint64_t begin=now_ns();
     if(!r.error&&pipe(pipes)) r.error=errno;
     else if(!r.error) {
@@ -103,12 +110,10 @@ static void capture(const char *path,size_t limit) {
         else if(!pid) {
             close(pipes[0]);
             int in=open(source,O_RDONLY|O_NONBLOCK|O_NOFOLLOW|O_CLOEXEC);
-            int out=-1;
             if(in<0) r.error=errno;
             else {
                 if(fstat(in,&s)||!S_ISREG(s.st_mode)) r.error=EPERM;
-                else out=open(dest,O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC,0600);
-                if(out<0&&!r.error) r.error=errno;
+                r.crc=0xffffffffu;
                 char buf[8192];
                 while(!r.error&&r.bytes<limit) {
                     size_t n=limit-r.bytes;if(n>sizeof(buf)) n=sizeof(buf);
@@ -117,8 +122,9 @@ static void capture(const char *path,size_t limit) {
                     if(!got) break;
                     ssize_t off=0;
                     while(off<got) {
-                        ssize_t written=write(out,buf+off,(size_t)(got-off));
+                        ssize_t written=write(bundle,buf+off,(size_t)(got-off));
                         if(written<=0) { if(written<0&&errno==EINTR) continue;r.error=written<0?errno:EIO;break; }
+                        r.crc=checksum(r.crc,buf+off,(size_t)written);
                         off+=written;
                     }
                     r.bytes+=(size_t)off;
@@ -127,7 +133,8 @@ static void capture(const char *path,size_t limit) {
                     char extra;ssize_t n=read(in,&extra,1);
                     if(n>0) r.truncated=1;else if(n<0) r.error=errno;
                 }
-                if(out>=0) { if(fsync(out)&&!r.error) r.error=errno;close(out); }
+                r.crc^=0xffffffffu;
+                if(fsync(bundle)&&!r.error) r.error=errno;
                 close(in);
             }
             (void)!write(pipes[1],&r,sizeof(r));close(pipes[1]);_exit(0);
@@ -147,6 +154,7 @@ static void capture(const char *path,size_t limit) {
                 if(!done) stuck=1;
             } else if(done<0||!WIFEXITED(status)||WEXITSTATUS(status)) r.error=EIO;
             else if(read(pipes[0],&r,sizeof(r))!=(ssize_t)sizeof(r)) r.error=EIO;
+            else crc_valid=1;
             close(pipes[0]);
         }
     }
@@ -154,11 +162,15 @@ static void capture(const char *path,size_t limit) {
     else if(r.error) failures++;
     if(r.truncated) truncations++;
     /* Include partial bytes left by killed readers in the budget. */
-    if(!stat(dest,&s)&&S_ISREG(s.st_mode)) r.bytes=(size_t)s.st_size;
+    off_t end_offset=lseek(bundle,0,SEEK_END);
+    if(end_offset<offset) { r.error=EIO;failures++;stuck=1; }
+    else r.bytes=(size_t)(end_offset-offset);
     total_bytes+=r.bytes;
     fprintf(report,"{\"kind\":\"capture\",\"group\":");quote(group);
     fprintf(report,",\"source\":");quote(path);fprintf(report,",\"output\":");
-    if(r.bytes||!r.error) quote(name);else fputs("null",report);
+    if(r.bytes||!r.error) quote("captures.bin");else fputs("null",report);
+    fprintf(report,",\"offset\":%llu,\"crc32\":",(unsigned long long)offset);
+    if(crc_valid) fprintf(report,"\"%08x\"",r.crc);else fputs("null",report);
     fprintf(report,",\"errno\":%d,\"bytes\":%zu,\"truncated\":%s,\"elapsed_ns\":%llu}\n",
         r.error,r.bytes,r.truncated?"true":"false",(unsigned long long)(now_ns()-begin));
     fflush(report);
@@ -224,7 +236,7 @@ static void patterns(const char *pattern,size_t limit,int copies) {
 static void phase(const char *name) {
     group=name;fprintf(report,"{\"kind\":\"phase\",\"name\":");quote(name);
     fprintf(report,",\"elapsed_ns\":%llu}\n",(unsigned long long)(now_ns()-start_ns));
-    fflush(report);fsync(fileno(report));
+    fflush(report);if(fsync(bundle)||fsync(fileno(report))||ferror(report)) { failures++;stuck=1; }
 }
 static void files(const char *const *paths,size_t limit) {
     for(;*paths&&room();paths++) capture(*paths,limit);
@@ -238,12 +250,23 @@ int main(int argc,char **argv) {
     if(mkdir(output,0700)) { perror("fresh output directory required");return 2; }
     char path[PATH_MAX];snprintf(path,sizeof(path),"%s/report.jsonl",output);
     report=fopen(path,"wx");if(!report) return 2;
+    snprintf(path,sizeof(path),"%s/captures.bin",output);
+    bundle=open(path,O_RDWR|O_CREAT|O_EXCL|O_CLOEXEC,0600);if(bundle<0) return 2;
+    /* Commit the two directory entries before growing either file. Capture
+     * bytes use one indexed stream, avoiding hundreds of FAT long-name entries. */
+    int directory=open(output,O_RDONLY|O_DIRECTORY);
+    if(directory<0||fsync(bundle)||fsync(fileno(report))||fsync(directory)) return 2;
+    close(directory);
+    for(unsigned i=0;i<256;i++) {
+        uint32_t crc=i;for(unsigned j=0;j<8;j++) crc=(crc>>1)^((crc&1)?0xedb88320u:0);
+        crc_table[i]=crc;
+    }
     start_ns=now_ns();deadline_ns=start_ns+(uint64_t)seconds*1000000000ull;
-    fputs("{\"kind\":\"start\",\"version\":1,\"raw_device_reads\":false,\"hardware_controls\":false}\n",report);
+    fputs("{\"kind\":\"start\",\"version\":2,\"capture_format\":\"indexed-bundle-crc32\",\"raw_device_reads\":false,\"hardware_controls\":false}\n",report);
     if(argc==6) capture(argv[4],number(argv[5]));
     else {
         const char *identity[]={"/proc/sys/kernel/random/boot_id","/proc/version","/proc/cpuinfo","/proc/cmdline",
-            "/proc/uptime","/proc/meminfo","/proc/stat","/proc/interrupts","/proc/mounts","/proc/1/mountinfo",
+            "/proc/uptime","/proc/meminfo","/proc/stat","/proc/interrupts","/proc/1/mounts","/proc/1/mountinfo",
             "/proc/partitions","/proc/mtd","/proc/modules","/proc/devices","/proc/filesystems","/proc/iomem",
             "/proc/ioports","/proc/swaps","/proc/loadavg","/proc/buddyinfo","/proc/slabinfo",
             "/proc/kallsyms","/proc/config.gz","/sys/kernel/notes",NULL};
@@ -308,7 +331,10 @@ int main(int argc,char **argv) {
     fprintf(report,"{\"kind\":\"complete\",\"jobs\":%u,\"bytes\":%zu,\"missing\":%u,\"failures\":%u,"
         "\"truncated\":%u,\"capped\":%s,\"stuck_child\":%s,\"elapsed_ns\":%llu}\n",jobs,total_bytes,
         missing,failures,truncations,capped?"true":"false",stuck?"true":"false",(unsigned long long)(now_ns()-start_ns));
-    fflush(report);int failed=fsync(fileno(report));fclose(report);
-    int directory=open(output,O_RDONLY|O_DIRECTORY);if(directory>=0) { if(fsync(directory)) failed=1;close(directory); }
+    fflush(report);int failed=ferror(report)||fsync(fileno(report))||fsync(bundle);
+    if(fclose(report)) failed=1;
+    if(close(bundle)) failed=1;
+    directory=open(output,O_RDONLY|O_DIRECTORY);
+    if(directory<0) failed=1;else { if(fsync(directory)) failed=1;close(directory); }
     return failed||stuck?1:0;
 }

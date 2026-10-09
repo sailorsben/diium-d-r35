@@ -1,0 +1,32 @@
+{
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "vendor_bytes": 1660140,
+  "vendor_execution": false,
+  "main_update_call": "0x1231c -> UpdateROM 0x133fc",
+  "staging_path": "Executable directory + update/Code.bkp",
+  "update_file_open_mode": "r+b",
+  "update_file_prefix": "WQW",
+  "alternate_path_string": "/media/sdcarda1/SPI_ROM.bin",
+  "alternate_path_string_is_not_a_proven_trigger": true,
+  "spi_device": "/dev/spidev0.0",
+  "single_transfer_ioctl": "0x40206b00",
+  "two_transfer_ioctl": "0x40406b00",
+  "transfer_struct_bytes": 32,
+  "commands": {
+    "read": "03 + 24-bit address",
+    "read_status": "05",
+    "write_enable": "06",
+    "page_program": "02 + 24-bit address",
+    "block_erase": "d8 + 24-bit address"
+  },
+  "read_contract": "4-byte command transfer then receive transfer, same ioctl",
+  "update_validation_observed": [
+    "WQW prefix",
+    "OpenZipU and first item",
+    "first-item CRC32 compared with _ucrc32",
+    "internal/image compatibility comparison"
+  ],
+  "update_proc": "0x130a0: 64 KiB reads/compare, erase on difference, 256-byte programs, reread/retry",
+  "successful_update": "sync then reboot",
+  "limits": "No chip ID, capacity, full image format, physical read/write or recovery mechanism qualified. A dump is a backup, not a proven unbrick path."
+}

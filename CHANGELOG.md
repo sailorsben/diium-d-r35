@@ -1,5 +1,20 @@
 # Changelog
 
+## Survey1 return, FAT repair, indexed survey2 and updater recovery — 2026-10-09
+
+Preserve329 returned captures and all private progress; reject completeness despite
+the successful wrapper tail.521 nonempty missing files require exactly17,856 KB,
+matching recovered chains. Approved repair leaves all789 readable files unchanged;
+archive1,310 repaired files. Replace many FAT capture entries with an indexed CRC32
+bundle/report, retain v1 analysis, reject corrupt/torn ranges and gate restoration
+on fresh filesystem health.21 software checks pass; survey2 armed with protected
+readback and healthy postinstall FAT. Physical durability pending.
+
+Recover exact vrtemu SD-to-SPI updater from machine code: executable-dir
+update/Code.bkp, WQW/ZIP/CRC/compatibility checks and03 reads/D8 erase/02 program.
+SPI NOR DT candidate found; no physical flash access or recovery qualified.
+[Return](docs/device-survey-1-return.md), [updater](docs/firmware-update-contract.md).
+
 ## Reusable passive device survey and test catalog — 2026-10-09
 
 Build native Cortex-A7 inventory collector, exact firmware BusyBox one-shot

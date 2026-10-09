@@ -478,3 +478,19 @@ Catalog19 investigation questions and reuse existing active labs with their
 ownership/contracts. NAND tools already preserved privately contain driver-load
 and storage-operation code; inspect copies before invoking anything on-device.
 [Suite coverage and next run](docs/device-survey.md).
+
+## Survey1 storage failure and exact updater recovery - 2026-10-09
+
+Survey1 returned329 of901 captures.521 missing nonempty captures occupy exactly
+17,856 KB at32 KiB allocation granularity, matching521 recovered chains. All789
+readable files survive approved repair; saves/runtime/lab hashes match baseline.
+Old ROM deletion preceded the clean install check. Directory-growth/persistence
+is plausible; exact media/driver/shutdown cause remains unproved. Survey2 uses
+one indexed CRC32 bundle/report and a fresh-health restoration gate.21 software
+checks pass; healthy-card rearm completed, physical return pending.
+
+SPI0.0 DT node names NOR flash; UDC/gadget paths absent despite an enabled USB
+controller declaration. Exact vrtemu main calls the Code.bkp updater; WQW/ZIP/CRC
+checks precede flash programming. SPI_ROM.bin is a string, not a proven trigger.
+No raw SPI transaction or recovery path qualified. See device-survey-1-return.md
+and firmware-update-contract.md for evidence and next test.

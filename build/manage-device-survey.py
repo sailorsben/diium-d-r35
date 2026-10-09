@@ -9,7 +9,7 @@ from hashlib import sha256
 import argparse, importlib.util, json, os, shutil, subprocess, uuid
 
 ROOT=Path(__file__).resolve().parent.parent
-RELEASE=ROOT/'releases/device-survey-1'
+RELEASE=ROOT/'releases/device-survey-2'
 INIT='b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7'
 SPLASH='ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe'
 HOOK=b'# D35 passive device survey: one boot, background, no hardware controls.\nif [ -f /usr/retro/device-survey/armed ]; then\n  /bin/sh /usr/retro/device-survey/launch.sh &\nfi\n'
@@ -97,7 +97,7 @@ def install(card,rearm=False):
         for source,name in [('device-survey','device-survey'),('launch.sh','launch.sh'),('manifest.json','manifest.json')]:
             write_new(base/name,(RELEASE/source).read_bytes())
         write_new(base/'init.before',original)
-        receipt={'version':1,'mode':'passive','run_id':uuid.uuid4().hex,'archive':archive.name,
+        receipt={'version':2,'mode':'passive','run_id':uuid.uuid4().hex,'archive':archive.name,
             'init_before_sha256':INIT,'init_survey_sha256':sha256(candidate).hexdigest(),
             'binary_sha256':digest(base/'device-survey'),'wrapper_sha256':digest(base/'launch.sh'),
             'snes_armed':False,'lab_armed':False,'survey_armed':True,
@@ -118,6 +118,10 @@ def collect(card,restore=False):
     result=module('survey_analysis','analyze-device-survey.py').analyze(archive/'device-survey')
     (archive/'survey-analysis.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     if restore:
+        # Preserve first, but never mutate an unhealthy volume just to remove
+        # an already consumed hook. The next boot is stock without restoration.
+        health=healthy()
+        (archive/'chkdsk-prerestore.txt').write_text(health,encoding='utf-8')
         assert not (base/'armed').exists(),'Survey still armed: has it run? Collect only until identity is resolved'
         r=json.loads((base/'installation.json').read_text());target=card/'retro/init'
         assert digest(target)==r['init_survey_sha256'],'Init changed; preserve and inspect it'
@@ -125,7 +129,9 @@ def collect(card,restore=False):
         atomic_replace(target,(base/'init.before').read_bytes())
         verify_protected(card,archive,INIT)
         (archive/'survey-restoration.json').write_text(json.dumps({'init_restored':True,'init_sha256':INIT},indent=2)+'\n')
-    print(json.dumps({'archive':archive.name,'analysis':result,'init_restored':restore},indent=2));return archive
+    print(json.dumps({'archive':archive.name,'complete':result['complete'],'end':result.get('end'),
+        'capture_files_verified':len(result.get('captured',[])),
+        'capture_failures':len(result.get('failed_captures',[])),'init_restored':restore},indent=2));return archive
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('action',choices=['install','rearm','collect','restore']);p.add_argument('--card',type=Path,default=Path('D:/'))

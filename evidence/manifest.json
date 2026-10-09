@@ -4427,6 +4427,62 @@
       "published_sha256": "3a17c7afa5b22271f05058d2b6b96defab6d6d2a303195cd690bfa46de4ed877",
       "bytes": 1958,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/survey-return-20261009T180632Z/public-analysis.json",
+      "published": "evidence/2026-10-09/device-survey-return/analysis.json",
+      "source_sha256": "2d518a048a1f26c6a91fcc88711ddac7fbc042863b0a722575d8f5319205239a",
+      "published_sha256": "2d518a048a1f26c6a91fcc88711ddac7fbc042863b0a722575d8f5319205239a",
+      "bytes": 2327,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/survey-return-20261009T180632Z/updater-contract.json",
+      "published": "evidence/2026-10-09/device-survey-return/updater-contract.json",
+      "source_sha256": "6476d7c1e9beb652800e25ecd5a585498bf87a5285cd5f1dadb303eb2bb6ad62",
+      "published_sha256": "6476d7c1e9beb652800e25ecd5a585498bf87a5285cd5f1dadb303eb2bb6ad62",
+      "bytes": 1338,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T180632Z/chkdsk-return.txt",
+      "published": "evidence/2026-10-09/device-survey-return/chkdsk-return.txt",
+      "source_sha256": "3ec01c7b6e64da0a519644e3456348698d34c114193a6e67be1b7e6dc42f247c",
+      "published_sha256": "21436fce81f2c73d4ead2e4ea956a3936ad97587612189c28144c63f1df85d19",
+      "bytes": 2226,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/survey-return-20261009T180632Z/chkdsk-repair.txt",
+      "published": "evidence/2026-10-09/device-survey-return/chkdsk-repair.txt",
+      "source_sha256": "1537efcfdf11561c0cdd8f53815e35f39af10d880a1733e4dee3684668c6db0a",
+      "published_sha256": "97fc09a420b495086061a1c94865640b95fd34eb5c1657feadb0e6019677ba83",
+      "bytes": 2050,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/survey-return-20261009T180632Z/chkdsk-final.txt",
+      "published": "evidence/2026-10-09/device-survey-return/chkdsk-final.txt",
+      "source_sha256": "0e3abd83ffb1a8aebced9dff205774c6edd3c6a484a3a59a49d4bd36056b3bb3",
+      "published_sha256": "9406a41a533eef258152030c68c175de70b0f5e24d6f5b666e65a7337ee8bedb",
+      "bytes": 2021,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/survey-return-20261009T180632Z/chkdsk-after-survey-2.txt",
+      "published": "evidence/2026-10-09/device-survey-return/chkdsk-postinstall-2.txt",
+      "source_sha256": "1f97420d89109023bf6845018561dd4d04e3b09505c68c0cfa244c02da8bfbda",
+      "published_sha256": "362b4250dd46c9621bbca53f11cd7aec518be1a2034f76395d96f8b7e0e50c23",
+      "bytes": 1939,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261009T182253Z/survey-installation.json",
+      "published": "evidence/2026-10-09/device-survey-return/installation-2.json",
+      "source_sha256": "423b00589060b5b866123dec83ea4ededd3b7a9a568598f93ec4b11e239bd80a",
+      "published_sha256": "87ebde022b9b8e895eb3593722023cdd5c4eb972f7c2ec62a6441ece57ab8b27",
+      "bytes": 657,
+      "normalized": true
     }
   ]
 }

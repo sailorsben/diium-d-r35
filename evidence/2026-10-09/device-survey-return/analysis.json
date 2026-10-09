@@ -1,0 +1,60 @@
+{
+  "physical_survey_complete": false,
+  "report_ended": true,
+  "wrapper_exit": 0,
+  "marker_identity": {
+    "expected_run_id": "72424b01c78a47bd9e26822607e7117d",
+    "marker_matches": true
+  },
+  "collector_totals": {
+    "kind": "complete",
+    "jobs": 1984,
+    "bytes": 4045023,
+    "missing": 6,
+    "failures": 1,
+    "truncated": 0,
+    "capped": false,
+    "stuck_child": false,
+    "elapsed_ns": 11065348000
+  },
+  "present_captures": 329,
+  "missing_captures": 572,
+  "missing_nonempty_captures": 521,
+  "missing_empty_captures": 51,
+  "missing_capture_allocation_bytes": 18284544,
+  "recovered_chains": 521,
+  "repair_exit": 1,
+  "pre_repair_readable_files_unchanged": 789,
+  "post_repair_archived_files": 1310,
+  "stock_rom_deletion": "Before survey installation and clean FAT check",
+  "shutdown_method": "Physical power switch/button, the device only shutdown control; no launcher shutdown option. Orderly filesystem shutdown is unverified.",
+  "causal_limit": "New lost allocation matches survey output exactly; directory persistence is plausible, exact driver/media/shutdown cause unproved",
+  "restore_ordering_correction": "Return restoration preceded health check; manager now refuses restoration writes on unhealthy FAT",
+  "spi_declaration": {
+    "path": "/soc/spi@C0090000/nor-flash@0",
+    "driver": "spidev",
+    "chip_select": 0,
+    "max_hz": 20000000,
+    "rx_bus_width": 2
+  },
+  "usb": {
+    "udc_directory_present": false,
+    "gadget_config_directory_present": false,
+    "enabled_dt_controller": "gp,gpa7xxxa-usbd at D1100000"
+  },
+  "survey_2": {
+    "software_checks": 21,
+    "physical_execution": "pending",
+    "format": "One indexed CRC32 capture bundle and one report",
+    "protected_card_files_unchanged_after_rearm": 972,
+    "release_init_and_marker_readback": true,
+    "recovered_chains_unchanged": 521,
+    "only_survey_armed": true
+  },
+  "limits": "No SPI transaction, chip ID, dump, physical flashing, recovery mechanism, internal splash replacement or audio fix qualified.",
+  "stock_shutdown_helper": {
+    "sha256": "a754c50d9843eb94e163424988b86a313a642899441a7847aa3e60b393ac12eb",
+    "call": "system(poweroff) at 0x10664, after GPIO operations",
+    "limit": "Software shutdown request observed in code; actual flushing/unmount/power-removal order unverified."
+  }
+}
