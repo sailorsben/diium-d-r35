@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "mode": "passive",
+  "run_id": "72424b01c78a47bd9e26822607e7117d",
+  "archive": "snes-mvp-return-20261009T172206Z",
+  "init_before_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "init_survey_sha256": "bbc24d21c400044e2dd9bd979b53940db06f354980ddb324f893ba53ac4d3751",
+  "binary_sha256": "ad687284fbf4d1a155923f729645381a2d8c637ca2a7796189416fe9bfbdbdd4",
+  "wrapper_sha256": "a507e1ae23ea3c686dec799a5764ab4c9b6199b35e6d5a9c19ed28136aa1cd44",
+  "snes_armed": false,
+  "lab_armed": false,
+  "survey_armed": true,
+  "raw_device_reads": false,
+  "firmware_writes": false,
+  "physical_execution": "pending"
+}

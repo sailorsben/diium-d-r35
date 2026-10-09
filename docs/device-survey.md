@@ -140,3 +140,12 @@ The qualified Vesper SD animation already works physically after both stock
 screens; replacing internal `/showlogo` needs an earlier persistent image path.
 This suite supplies the next evidence for that path. The static logo is separate
 and its owner remains unknown.
+
+## Installed first physical run
+
+Private baseline: `device-evidence/snes-mvp-return-20261009T172206Z`.
+51 MVP/progress files,49 lab files, stock binaries and splash are hash-preserved.
+Independent readback and post-install read-only CHKDSK pass. Passive survey is
+armed; SNES, hardware lab and Vesper markers are unarmed. See the public
+[installation receipt](../evidence/2026-10-09/device-survey-install/installation.json).
+Physical execution is pending. Return collection/restore is the next step.
