@@ -1,0 +1,16 @@
+{
+  "sysinit_sha256": "03d5c5f7d2df2987dbf836ddc7b8ef4f12a8e3c291b6d2ec02d697e434c7d251",
+  "capture_complete": true,
+  "mtd_partitions": 0,
+  "internal_block_device_exposed": false,
+  "spi_node": "/dev/spidev0.0",
+  "nand_utilities": [
+    "/bin/nand_part_info",
+    "/bin/nandsync"
+  ],
+  "main_argument_dispatch": "only core; usb_gadget argument ignored",
+  "usb_gadget_init": "unreached helper loads usb-common only",
+  "usb_key_mode_proven": false,
+  "init_restored": true,
+  "tests_armed": false
+}

@@ -697,3 +697,20 @@ Initial SNES library, direct Plus runner, chunk-backed display worker, OSS audio
 ## Earlier adapter and hardware work
 
 v11 retained adaptive internal drawing suppression and removed automatic diagnostic overhead. A v10 physical listening test was clean. v9 showed heavy full-render core calls missing the frame budget; rendering-disabled calls were much cheaper. Hardware v1/v2 established platform/ABI/runtime details. Hardware v3 showed stdout/stderr suppression did not materially reduce the UART interrupt storm or comparable CPU load. See [investigation history](docs/investigation-history.md).
+
+## Firmware route return and USB dispatch correction — 2026-10-09
+
+Complete passive capture archived privately in snes-mvp-return-20261009T165057Z
+with strict51-MVP/49-lab progress preservation. Original init restored exactly;
+no test armed. Only SD and RAM block devices; empty /proc/mtd and sys/class/mtd.
+Vendor /bin/nand_part_info and /bin/nandsync exist; /dev/spidev0.0 exists but
+its attached peripheral is unidentified. This does not establish flash access.
+
+Offline exact sysinit disassembly: main at0x11540 dispatches only argument core;
+other arguments, including usb_gadget, are ignored. sysInit at0x1151c initializes
+PPU/DLA/audio/ADC only. Unreached usb_gadget_init at0x11260 loads usb-common only.
+The script command /sysinit usb_gadget is therefore not evidence of active USB
+gadget support; earlier suggestion overstated it. No button recovery sequence
+found in this dispatch. This does not rule out boot-ROM/bootloader recovery.
+Next work: inspect vendor NAND tools and identify SPI peripheral/boot storage
+without raw writes; a persistent splash replacement remains unimplemented.

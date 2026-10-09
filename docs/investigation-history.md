@@ -497,3 +497,20 @@ Prior investigation found no registered /proc/mtd partitions. No verified firmwa
 image/repack/flashing/recovery route is established. Do not flash or claim both
 screens can be replaced yet. Next engineering scope is read-only firmware/boot
 image inventory and recovery-method verification, not another SD display test.
+
+## Firmware route return and USB dispatch correction — 2026-10-09
+
+Complete passive capture archived privately in snes-mvp-return-20261009T165057Z
+with strict51-MVP/49-lab progress preservation. Original init restored exactly;
+no test armed. Only SD and RAM block devices; empty /proc/mtd and sys/class/mtd.
+Vendor /bin/nand_part_info and /bin/nandsync exist; /dev/spidev0.0 exists but
+its attached peripheral is unidentified. This does not establish flash access.
+
+Offline exact sysinit disassembly: main at0x11540 dispatches only argument core;
+other arguments, including usb_gadget, are ignored. sysInit at0x1151c initializes
+PPU/DLA/audio/ADC only. Unreached usb_gadget_init at0x11260 loads usb-common only.
+The script command /sysinit usb_gadget is therefore not evidence of active USB
+gadget support; earlier suggestion overstated it. No button recovery sequence
+found in this dispatch. This does not rule out boot-ROM/bootloader recovery.
+Next work: inspect vendor NAND tools and identify SPI peripheral/boot storage
+without raw writes; a persistent splash replacement remains unimplemented.
