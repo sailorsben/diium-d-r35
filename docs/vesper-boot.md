@@ -171,3 +171,18 @@ Prior investigation found no registered /proc/mtd partitions. No verified firmwa
 image/repack/flashing/recovery route is established. Do not flash or claim both
 screens can be replaced yet. Next engineering scope is read-only firmware/boot
 image inventory and recovery-method verification, not another SD display test.
+
+## Persistent second-splash replacement requested — 2026-10-09
+
+Ben explicitly authorizes discarding/replacing the original second animation.
+Preserving its appearance is not a requirement. Current obstacle is persistent
+boot-image access: kernel cmdline rootfstype=ramfs; internal init starts /showlogo
+before SD init; no registered MTD partitions or verified flash updater/image or
+recovery route established. Online D-R35 Plus card-restoration reports do not
+establish internal firmware flashing for this unit. No raw-device or flash writes.
+Original SD init restored after archived successful animation test. A passive
+firmware-route probe inventories proc partitions/mtd/cmdline and device/tool
+names, and captures sysinit/BusyBox privately for offline updater inspection.
+Device BusyBox syntax passes. It does not open raw devices or touch displays.
+Next return: archive probe results, restore exact init, inspect storage/update
+owner before deciding whether persistent replacement is achievable.
