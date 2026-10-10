@@ -584,3 +584,21 @@ Offline exact `/wdt` main sleeps500ms and loops watchdog ioctls independently,
 with no userspace stock-main check; init starts it before the SD hook. This
 supports the delayed placement but does not qualify extended startup physically.
 [ID return](spi-identify-return.md), [reader](spi-readback.md).
+
+## Full SPI backup and original animation located — 2026-10-09
+
+Two physical8MiB passes match byte-for-byte, CRC32/SHA256, complete4,111
+messages in103.771059s and matching consumed/wrapper identity. FAT is clean;
+51-MVP/49-lab/43-prior-profile preservation passes. Exact normal init restored
+after fresh health; postrestore readback/FAT healthy and nothing armed.
+
+Exact image section table yields kernel, gzip-cpio rootfs and device tree.
+Rootfs original showlogo/init/power/watchdog hashes match prior runtime captures;
+the second animation's persistent location is established. Private rootfs-only
+Vesper replacement changes just the qualified ZIP span and fits with108,732
+compressed bytes spare. Six checks pass including independent libarchive/GNU
+gzip. Duplicate directory records are preserved in order; repeated file bodies
+are refused. Matching static bitmap located visually; its code reference unknown.
+Kernel built-in cpio has no rescue init. No full flash candidate/update staged;
+boot validation, recovery, original-screen replacement and audio unresolved.
+[Return/layout/candidate and next work](spi-readback-return.md).

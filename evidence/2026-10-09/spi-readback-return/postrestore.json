@@ -1,0 +1,9 @@
+{
+  "init_restored": true,
+  "init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "protected_files_preserved": true,
+  "prior_profiles_and_complete_readback_preserved": true,
+  "armed_profiles": [],
+  "postrestore_fat_clean": true,
+  "flash_writes": false
+}

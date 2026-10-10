@@ -1,6 +1,8 @@
 # Device findings
 
-Evidence collected on one DIIUM D-R35 through 2026-10-06. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json).
+Evidence collected on one DIIUM D-R35 through 2026-10-09. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
+
+**Current boot/storage result:** [two independent full8MiB SPI reads match](spi-readback-return.md), and the exact flash rootfs contains the original second-animation executable. A private offline Vesper rootfs replacement fits and passes six checks; persistent writes and recovery remain unqualified. FAT is clean, protected progress/results preserved and normal init restored; nothing armed. A matching static-screen bitmap is also located visually, but its boot-code reference is not yet verified. Audio remains unresolved.
 
 ## Platform identity
 

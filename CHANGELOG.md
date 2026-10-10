@@ -1,5 +1,23 @@
 # Changelog
 
+## Full SPI backup, boot layout and private Vesper rootfs candidate — 2026-10-09
+
+Archive the complete16MiB return, independently verify two identical8MiB passes,
+CRCs/SHA256, run/wrapper/completion and4,111 messages in103.771059s. FAT is clean;
+51 MVP/progress,49 lab and43 prior-profile files preserved. Restore exact normal
+init after fresh health; independent protected/result readback and postrestore
+FAT pass, nothing armed. No repair or flash/configuration write.
+
+Locate kernel/gzip-cpio rootfs/device-tree sections in the exact image. Extract
+the same original `/showlogo`, init, power-key and watchdog as runtime captures.
+Prepare only a private rootfs candidate with the qualified Vesper ZIP; all other
+cpio bytes stay exact, compressed payload fits with108,732 bytes spare. Six
+checks pass including independent libarchive extraction and GNU gzip. Locate a
+matching first-screen raw bitmap visually; boot-code reference remains unknown.
+No full flash image/update package staged. Built-in kernel cpio has no rescue
+init. Boot validation, recovery and persistent replacement remain unqualified;
+audio unresolved. [Return and exact next work](docs/spi-readback-return.md).
+
 ## Physical SPI ID and qualified two-pass reader — 2026-10-09
 
 Archive successful ID run: three c84017c84017 replies, status00, no competing

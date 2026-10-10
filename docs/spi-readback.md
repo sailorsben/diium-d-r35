@@ -1,5 +1,10 @@
 # Two-pass SPI readback — 2026-10-09
 
+**Returned successfully:** two complete8MiB reads match in103.771059 seconds;
+FAT clean, protected progress/results preserved and normal init restored.
+Nothing is armed. [Physical return and boot-image inspection](spi-readback-return.md)
+supersede the historical install/pending procedure below.
+
 The [physical identification](spi-identify-return.md) repeatedly reads
 `C8 40 17`. Primary manufacturer/kernel references establish the nominal8MiB
 family range and ordinary03 read with a three-byte address. This separate
@@ -73,6 +78,7 @@ Software qualification covers independent native and ARM packets/address order,
 the actual supervised capture, mismatch/blank/busy/wrong-ID/short/error/settings
 refusals, timeout/reap, altered/torn/stale returns, unhealthy restoration, exact
 release owner refusal, firmware BusyBox one-shot behavior and glibc2.30 ABI.
-Physical full-range readback remains pending. Matching copies will allow offline
-boot-image/layout inspection; writes, recovery and original splash replacement
-still need separate qualification.
+Physical full-range readback now passes for this run. Offline boot-image/layout
+inspection locates the original showlogo in the SPI rootfs; a private replacement
+fits and passes archive checks. Writes, recovery and original splash replacement
+still need separate qualification. See the return linked above.

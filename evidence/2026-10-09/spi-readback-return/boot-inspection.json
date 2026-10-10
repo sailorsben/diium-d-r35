@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "flash_sha256": "5c4ea86ca5c497a26136ee9a59d8a31085e15c8d1dc5f063b874a20c400d9e2b",
+  "flash_bytes": 8388608,
+  "section_table_offset": 786432,
+  "sections": [
+    {
+      "name": "kernel",
+      "offset": 786552,
+      "bytes": 2366616,
+      "load_address": 32768,
+      "sha256": "c26d37e792948ea8a0de2e06b0bd6fcfc54e20f4d1e6cb643690276c97f271f3"
+    },
+    {
+      "name": "initrd",
+      "offset": 3153168,
+      "bytes": 3406558,
+      "load_address": 10485760,
+      "sha256": "3093e61a4a48b9c91950e59d62a78210eafcbecfa85e34caead6d6fc0fe68c49"
+    },
+    {
+      "name": "cmdline",
+      "offset": 6559726,
+      "bytes": 10490,
+      "load_address": 256,
+      "sha256": "1e3a096341dc94240665fd5a372eaf6941517bb5fdfaef3644fac032971c7ed8"
+    }
+  ],
+  "rootfs": {
+    "compression": "gzip",
+    "format": "cpio newc",
+    "bytes": 8455680,
+    "sha256": "b6bc6ac7f5ae5fccd76219218d25a8bab2cbc2be92cf9887fac47b3b7bf04b70",
+    "records_including_trailer": 559,
+    "selected_entries": {
+      "init": {
+        "name": "init",
+        "mode": 41471,
+        "bytes": 11,
+        "header_offset": 112,
+        "data_offset": 228,
+        "sha256": "c98e51923f832db7766318700fc13af6b0adb9dca27074d01b115868243f6316"
+      },
+      "power_key": {
+        "name": "power_key",
+        "mode": 33279,
+        "bytes": 8776,
+        "header_offset": 241512,
+        "data_offset": 241632,
+        "sha256": "a754c50d9843eb94e163424988b86a313a642899441a7847aa3e60b393ac12eb"
+      },
+      "sysinit": {
+        "name": "sysinit",
+        "mode": 33277,
+        "bytes": 23212,
+        "header_offset": 289172,
+        "data_offset": 289292,
+        "sha256": "03d5c5f7d2df2987dbf836ddc7b8ef4f12a8e3c291b6d2ec02d697e434c7d251"
+      },
+      "showlogo": {
+        "name": "showlogo",
+        "mode": 33225,
+        "bytes": 198408,
+        "header_offset": 312504,
+        "data_offset": 312624,
+        "sha256": "436d8018808b150c926274575a195f664e61db646f44713371019e9ae10caf3b"
+      },
+      "init.project.rc": {
+        "name": "init.project.rc",
+        "mode": 33261,
+        "bytes": 1068,
+        "header_offset": 5760172,
+        "data_offset": 5760300,
+        "sha256": "4762ce033f6ddc4a5736c637070c5a5d5e38d3c18fabbf7e6345fe5b288ae1de"
+      },
+      "wdt": {
+        "name": "wdt",
+        "mode": 33277,
+        "bytes": 8376,
+        "header_offset": 5762564,
+        "data_offset": 5762680,
+        "sha256": "6a8d50aae684876074b54dc1b43acdc456a964d913aae6997b2f54fa5d97094a"
+      }
+    }
+  },
+  "candidate": {
+    "stage": "offline rootfs only; not an installable firmware package",
+    "changed_files": [
+      "showlogo"
+    ],
+    "all_other_cpio_bytes_unchanged": true,
+    "showlogo_sha256": "ab56a67ae629e816a5752b1ad7cec2c335b46c82df84856f8a41376d2f919ebe",
+    "rootfs_sha256": "0be2ef40010501966e4729abe13ae5341b78802f8055d6b9b87afe4b52b1b9ea",
+    "compressed_sha256": "c21e859f68d04a600ad168b30d28d145c75139ac66580608a4a401e2f163ba94",
+    "compressed_bytes": 3297826,
+    "current_slot_bytes": 3406558,
+    "fits_current_slot": true,
+    "full_flash_image_created": false,
+    "staged_to_card": false,
+    "boot_image_validation_qualified": false,
+    "recovery_qualified": false
+  },
+  "flash_writes": false,
+  "vendor_code_executed": false,
+  "limits": "Exact table/payload extraction and offline rootfs replacement; bootloader checks, updater container, physical writes and recovery remain unqualified."
+}

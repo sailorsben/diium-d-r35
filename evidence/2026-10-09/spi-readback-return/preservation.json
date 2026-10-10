@@ -1,0 +1,10 @@
+{
+  "mvp_progress_files_preserved": 51,
+  "only_mvp_exception": "owned readback init hook",
+  "lab_files_preserved": 49,
+  "prior_profiles_preserved": 43,
+  "production_hashes_unchanged": true,
+  "reader_release_hashes_match": true,
+  "fat_clean": true,
+  "card_writes": 0
+}

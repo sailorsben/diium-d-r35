@@ -1,0 +1,17 @@
+{
+  "software_checks_passed": true,
+  "checks": [
+    "Independent tar lists both archives and extracts exact original/replacement showlogo",
+    "Independent GNU gzip verifies trailer and expands the exact candidate cpio",
+    "All cpio bytes outside the qualified showlogo ZIP span stay exact, including duplicate directories",
+    "Physical-archive truncation, oversized name, unsafe path and trailing-junk refusals",
+    "Truncated/bad-CRC/over-budget compressed-stream refusals",
+    "Vendor output outside ignored private evidence refuses before creating a directory"
+  ],
+  "physical_firmware_write": false,
+  "recovery_qualified": false,
+  "source_hashes": {
+    "build/inspect-spi-boot.py": "ceafe31aacfc4684c4dba1328a7b0e8b201a448159984ce0d5048883b3259fd9",
+    "build/check-spi-boot.py": "4a2a1ab54cf8ec2cd0f52bda54c3977d0b2c7089c2f3f952192d0234b23c6414"
+  }
+}
