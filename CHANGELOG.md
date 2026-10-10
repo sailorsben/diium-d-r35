@@ -1,5 +1,19 @@
 # Changelog
 
+## Authorized SD firmware staging before external recovery — 2026-10-09
+
+User explicitly chooses SD update now with programmer purchase if boot fails.
+Stage only the exact privately qualified WQW package as retro/update/Code.bkp.
+Archive current logs/progress and original SPI backup first; fresh pre/post FAT,
+997 original card-file hashes and independent package/init/updater readback pass.
+Normal init exact, no other test armed.6 host checks cover staging, wrong-card/
+existing-update/competing-runtime refusal and health-failure rollback. Preserve
+the expected full-image hash including vendor CRC/time mutation. Physical flash,
+second-animation acceptance and recovery remain pending; first static screen
+preserved and audio unresolved. Update execution gate, return/unstage/readback
+instructions and exact handoff. No vendor-containing files published.
+[Result and next physical step](docs/vesper-sd-firmware-update.md).
+
 ## Physical board photographs and recovery equipment selection — 2026-10-09
 
 Preserve/hash-verify five supplied photographs privately. Confirm this unit's

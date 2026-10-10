@@ -4691,6 +4691,14 @@
       "published_sha256": "6a93d02ac88800913f9854380b8ecfa3e82e5cec3cc56e274483876fb6a6880b",
       "bytes": 5037,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T044231Z/firmware-staging.json",
+      "published": "evidence/2026-10-09/firmware-sd-staging/staging.json",
+      "source_sha256": "555e9510623765a00dfcbc9d45cc423c2841e87550228bb48f5fdf9630154742",
+      "published_sha256": "61ddbd2ee57858fdcbc7f3ea9f60e6925788ea187c440b003c3da8cc01198629",
+      "bytes": 1818,
+      "normalized": true
     }
   ]
 }

@@ -1,5 +1,10 @@
 # Internal firmware update evidence — 2026-10-09
 
+Later current state: [exact Vesper package staged on D:](vesper-sd-firmware-update.md)
+after explicit user acceptance of proceeding before external recovery hardware.
+Physical flashing and original-animation replacement still await the boot test.
+Historical pending statements below describe their original investigation stage.
+
 Exact privately preserved SD `vrtemu`: SHA256
 `8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72`,
 1,660,140 bytes. `build/extract-vendor-update.py` rejects another binary and

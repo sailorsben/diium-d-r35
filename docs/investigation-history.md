@@ -1,5 +1,20 @@
 # Investigation history and negative results
 
+## Current authorization and SD firmware staging — 2026-10-09
+
+The user explicitly chooses the SD update now, accepting programmer purchase
+if boot fails. That supersedes waiting for external recovery equipment; it does
+not establish recovery or remove the vendor's boot-code-block erase. The exact
+previously qualified package is staged as retro/update/Code.bkp after archiving
+current logs/private progress and another full original SPI backup. Fresh pre/
+post FAT checks,997 unchanged readable card-file hashes and independent package/
+init/updater readback pass. Normal init remains exact; other tests stay unarmed.
+6 host staging/refusal/rollback checks pass. Expected full programmed image
+includes the vendor metadata, and has its own SHA distinct from the candidate.
+Physical update, Vesper replacement/cold boot and full flash readback await the
+next device run. First static screen stays; audio remains unresolved.
+[Staging evidence and exact physical/return instructions](vesper-sd-firmware-update.md).
+
 This history preserves what changed, what was observed, and the inference boundary. It does not retroactively turn proposals into device results. Deeper dated reviews and selected raw returns are published under `docs/reference` and `evidence`.
 
 ## 2026-10-09: install animated Vesper stock-splash replacement

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "run_id": "c157689a17174f2c8e433c9ce58c0c68",
+  "stage_utc": "2026-10-10T04:42:48.581766+00:00",
+  "card_path": "retro/update/Code.bkp",
+  "package_sha256": "5263abf58bdfd161e90811e6cc0ecd233657ac8328a924185234c98af2ad8499",
+  "package_bytes": 5683533,
+  "baseline_sha256": "5c4ea86ca5c497a26136ee9a59d8a31085e15c8d1dc5f063b874a20c400d9e2b",
+  "candidate_sha256": "246a46afa5cda655b47db787dff94e430bbf7f8a897b751cfca28ddc79f68ff7",
+  "expected_after_vendor_sha256": "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "external_recovery_available": false,
+  "recovery_qualified": false,
+  "physical_update": "pending",
+  "physical_animation": "pending",
+  "first_static_screen": "preserved",
+  "second_animation": "Vesper replacement",
+  "card_inventory_exclusions": [
+    "System Volume Information"
+  ],
+  "protected_card_files": 997,
+  "status": "staged-and-verified",
+  "explicit_user_authorization": "Proceed via SD before obtaining external recovery equipment; obtain equipment if boot fails.",
+  "prestage_fat_clean": true,
+  "poststage_fat_clean": true,
+  "independent_card_package_init_updater_hashes_match": true,
+  "all_original_readable_card_files_unchanged": true,
+  "other_tests_armed": false,
+  "staging_host_checks_passed": 6,
+  "physical_flash_verification": "pending; compare two full readbacks with the vendor-mutated expected image",
+  "source_sha256": {
+    "build/manage-vesper-firmware.py": "0e6ca5156bea69b1bcdad6b2c11fa7f269b9a20d84f08f4c552642f351682610",
+    "build/check-vesper-firmware-staging.py": "9cb73a961796f19a141b5e1d8e6b5166496f95c62d8ea165ab0b2f6caeae7afb"
+  }
+}

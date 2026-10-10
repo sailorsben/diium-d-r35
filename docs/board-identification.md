@@ -54,6 +54,12 @@ The actual external transaction/probing path must be checked before use.
 
 ## Resume with hardware present
 
+The later [SD update decision](vesper-sd-firmware-update.md) authorizes proceeding
+without this equipment first. These external-access steps remain the recovery
+route if boot fails; they have not been physically qualified. After a successful
+SD update, compare external reads with the recorded expected programmed image,
+not the now-superseded original baseline, before deciding whether to restore.
+
 The case may be reassembled now, with battery/USB disconnected while closing,
 speaker wires and ribbons unpinched, and screws snug. Reopen for external access.
 No more identification photographs are required for equipment selection.

@@ -341,8 +341,10 @@ Vendor UpdateROM changes CRC/time metadata and erases boot-code block0 even
 for this animation change. Table/rootfs erase blocks share preserved kernel
 bytes; retain whole-block contents, not just desired payload spans. Never stage
 dummy or malformed Code.bkp files: a malformed ZIP fixture faults in the exact
-offline updater. All physical program/erase activity remains pending until the
-concrete recovery equipment/path is available and checked. Returned flash,
+offline updater. The user subsequently explicitly authorized the [SD update
+before obtaining recovery equipment](vesper-sd-firmware-update.md); its exact
+package is staged and physical execution remains pending. That changes the
+execution decision, not the boot-block risk or unqualified recovery. Returned flash,
 vendor executables, full candidates and packages remain private. Keep the
 actual on-device readback, cold-boot animation/launcher and restore results
 distinct from offline format/algorithm acceptance.
