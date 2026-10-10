@@ -1,0 +1,31 @@
+{
+  "baseline_version": "1.18",
+  "candidate_version": "1.19",
+  "frames": 1200,
+  "effect_frames": 162,
+  "effect_indices": [
+    277,
+    438
+  ],
+  "baseline_palette_lookup_rows": 1003928,
+  "candidate_palette_lookup_rows": 667001,
+  "lookup_row_reduction_fraction": 0.33560872891283045,
+  "baseline_tile_color_requests": 1889529,
+  "candidate_visible_row_color_requests": 1957367,
+  "empty_rows_without_color_request": 532405,
+  "cache_bytes": 36864,
+  "all_other_126_counters_identical": true,
+  "baseline_reproduces_prior_1200_frame_census": true,
+  "command_boundary_pixels_pcm_identical": true,
+  "baseline_commands_sha256": "e701a04f865808849ec0ca1849517963958196e4c8bab35f1bbae726d4faffa6",
+  "source_hashes": {
+    "apply-plus-a7.py": "4d12c58fd0e0737fb960056ac3cfe4a592f275e92958f1815e379b2bf4523b79",
+    "plus-a7-render.h": "5dcaf8def5b5ef53140c0302fe78b1b0d33bab99dea47ef5338b3f37575b5b54",
+    "plus-a7-color-cache.h": "fd6297a06cb7e80368a659bd55d2f26fd7992ffeda3803670742d5e3fce6adbe",
+    "prepare-render-census.py": "eb697e243a619efc4a7d19a5b4ae57a7902a90ece2b8a58e9a707c61c2eecc1f",
+    "check-color-row-census.sh": "92543d1ed481e26123ffef86c48a05d2816fc40f448f507b5f1df5c9a7bd8195",
+    "analyze-color-row-census.py": "50aac28b4b29f1a33b5238001cfcb403dc3ed0f5c3bc8b496ae8ba793d63d69f"
+  },
+  "private_fixture": "Same owner Narshe-derived Magitek battle entry and real menu inputs as 1.18; not the exact physical battle background.",
+  "limits": "Work counts and CRC equality do not establish Cortex-A7 cycle savings or sustained physical sound. Shipping-core full-frame/native-PCM/logical-state equivalence is a separate check."
+}

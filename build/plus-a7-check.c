@@ -146,10 +146,39 @@ int main(void)
         d35_color_epoch=UINT32_MAX;d35_color_palette_changed();assert(d35_color_epoch==1);
         for(i=0;i<D35_COLOR_CACHE_ENTRIES;i++)assert(!d35_color_entries[i].tile);
     }
+    /* Row demand must not initialize seven unused rows or trust valid bits
+     * from a colliding tile, a different palette, bit depth or color epoch. */
+    {
+        uint8_t tiles[(D35_COLOR_CACHE_ENTRIES+1)*64];uint16_t palettes[2][16];
+        assert(sizeof(d35_color_entries)==36864);
+        for(bits=2;bits<=4;bits+=2)for(i=0;i<10000;i++) {
+            uint8_t *tile=tiles+(i%2?D35_COLOR_CACHE_ENTRIES:0)*64;
+            for(j=0;j<64;j++)tile[j]=random_word()&((1u<<bits)-1);
+            for(j=0;j<16;j++){palettes[0][j]=random_word();palettes[1][j]=random_word();}
+            d35_color_tile_changed(tile);d35_color_palette_changed();
+            struct d35_color_entry *entry=&d35_color_entries[d35_color_bucket(tile)];
+            for(j=0;j<64;j++)entry->pixels[j]=0xa55a;
+            for(unsigned bank=0;bank<2;bank++) {
+                unsigned first=i%8;
+                for(unsigned n=0;n<8;n++) {
+                    unsigned row=(first+n)%8;
+                    uint16_t before[64];memcpy(before,entry->pixels,sizeof(before));
+                    const uint16_t *rgb=d35_color_row(tile,palettes[bank],bits,row);
+                    for(j=0;j<64;j++)assert(entry->pixels[j]==(j/8==row?palettes[bank][tile[j]]:before[j]));
+                    for(j=0;j<8;j++)assert(rgb[j]==palettes[bank][tile[row*8+j]]);
+                    assert(d35_color_row(tile,palettes[bank],bits,row)==rgb);
+                }
+                palettes[bank][tile[first*8]]^=0xffff;d35_color_palette_changed();
+                assert(d35_color_row(tile,palettes[bank],bits,first)[0]==palettes[bank][tile[first*8]]);
+                assert(entry->bits==(bits|(1u<<(first+8))));
+            }
+        }
+    }
     free(GFX.ZERO);
     puts("PASS: 8388608 scalar/vector color comparisons; 280000 tile rows, 2/4bpp, all math modes, flips/transparency/depth");
     puts("PASS: 60000 backdrop/window spans match scalar arithmetic; clipped tails/canaries and palette guard page intact");
     puts("PASS: 60000 planar tiles match independent 2/4/8bpp oracle; blank classification, destination canaries and exact source guard pages");
     puts("PASS: 280000 cached-color rows preserve independent pixel/depth/math/flip oracle; 40000 color-cache cases cover palette changes, tile changes, hash collisions and epoch wrap");
+    puts("PASS: 20000 lazy-row cache cases preserve untouched rows, independently indexed colors and all key invalidations; cache footprint remains 36864 bytes");
     return 0;
 }

@@ -1,10 +1,13 @@
 # MVP1.18: reuse tile colors during fragmented raster effects
 
-**Physical return2026-10-09:** Magitek Bio Blast still causes an audio error
-and library return. FAT damage leaves fresh failure reports/current SRAM zero
-bytes, so no new cache timing or PCM attribution is available. Readable card
-contents, snapshots and earlier SRAM are preserved. Repair/recovery consent
-is pending; the card is unarmed. See the [return](snes-mvp-1.18-return.md).
+**Recovered physical return2026-10-09:** Magitek Bio Blast still causes an audio
+error and library return. Approved FAT repair recovers the missing session/PCM
+reports: reserve erosion and underproduction precede application-pointer
+divergence and SETUP/EBADFD. Readable files, snapshots and earlier SRAM survive;
+the empty current SRAM is restored from its verified pre-test copy. No controlled
+cache-speed comparison exists. [Recovery](fat-recovery-2026-10-09.md),
+[next targeted candidate](snes-mvp-1.19.md). The original [return report](snes-mvp-1.18-return.md)
+preserves the evidence boundary before recovery.
 The following describes the installed candidate and its offline qualification.
 
 [The 1.17 return](snes-mvp-1.17-return.md) isolates a failure during Terra's

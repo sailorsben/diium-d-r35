@@ -146,15 +146,18 @@ static inline void d35_row(const uint8_t *pixels,d35_palette_t table,int flip,
 }
 /* Cached color is pre-math and pre-depth. Index zero remains transparent even
  * when palette color zero is nonzero; flip both index and RGB lanes together. */
-static inline void d35_row_colored(const uint8_t *pixels,const uint16_t *colors,int flip,
-                          uint16_t *screen,uint8_t *depth,const uint8_t *subdepth,
-                          const uint16_t *sub,uint8_t z1,uint8_t z2,
-                          uint16_t fixed,unsigned mode)
+static inline uint8x8_t d35_visible_row(const uint8_t *pixels,int flip,
+                                       uint8x8_t old_depth,uint8_t z1)
 {
-    uint8x8_t idx=vld1_u8(pixels),old_depth=vld1_u8(depth),mask;
+    uint8x8_t idx=vld1_u8(pixels);
     if(flip)idx=vrev64_u8(idx);
-    mask=vand_u8(vcgt_u8(vdup_n_u8(z1),old_depth),vmvn_u8(vceq_u8(idx,vdup_n_u8(0))));
-    if(!vget_lane_u64(vreinterpret_u64_u8(mask),0))return;
+    return vand_u8(vcgt_u8(vdup_n_u8(z1),old_depth),vmvn_u8(vceq_u8(idx,vdup_n_u8(0))));
+}
+static inline void d35_row_colored_masked(const uint16_t *colors,int flip,
+                          uint16_t *screen,uint8_t *depth,const uint8_t *subdepth,
+                          const uint16_t *sub,uint8_t z2,uint16_t fixed,unsigned mode,
+                          uint8x8_t old_depth,uint8x8_t mask)
+{
     uint16x8_t color=vld1q_u16(colors);
     if(flip) {
         uint16x8_t reversed=vrev64q_u16(color);
@@ -163,6 +166,15 @@ static inline void d35_row_colored(const uint8_t *pixels,const uint16_t *colors,
     if(mode)color=d35_blend(color,vld1_u8(subdepth),sub,fixed,mode,mask);
     d35_store(screen,color,mask);
     vst1_u8(depth,vbsl_u8(mask,vdup_n_u8(z2),old_depth));
+}
+static inline void d35_row_colored(const uint8_t *pixels,const uint16_t *colors,int flip,
+                          uint16_t *screen,uint8_t *depth,const uint8_t *subdepth,
+                          const uint16_t *sub,uint8_t z1,uint8_t z2,
+                          uint16_t fixed,unsigned mode)
+{
+    uint8x8_t old_depth=vld1_u8(depth),mask=d35_visible_row(pixels,flip,old_depth,z1);
+    if(!vget_lane_u64(vreinterpret_u64_u8(mask),0))return;
+    d35_row_colored_masked(colors,flip,screen,depth,subdepth,sub,z2,fixed,mode,old_depth,mask);
 }
 /* Process complete eight-pixel spans only; upstream handles the clipped tail.
  * Modes 1..4 are backdrop math, 0 copies sub/fixed, 7 is plain backdrop fill. */

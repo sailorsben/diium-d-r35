@@ -1,5 +1,31 @@
 # Investigation history and negative results
 
+## SNES1.19 demand-driven color rows - 2026-10-10
+
+Return to the recovered1.18 Bio Blast deficit after completing both boot
+screens. Inspection finds eager eight-row RGB materialization before the
+actual transparency/depth rejection. Prepare only visible requested rows,
+retaining the36 KiB cache and existing invalidation, PCM and frame policies.
+Repeated1.18 scene census matches its historical1,200 rows;162 expensive effect
+frames reduce palette lookup rows1,003,928 ->667,001 (33.56%). All other126
+work counters and command-boundary pixels/PCM CRCs match. Row-level requests
+rise slightly, so this does not prove a CPU speedup. Shipping core passes14,400
+clean-core equivalent frames and ARM runner/lifecycle/invalidation checks.
+
+Initial runner integration lacked a separately prepared new-core snapshot;
+prepare its matching header without altering owner input, then pass. The first
+installer guard rejects current SD showlogo before writes because the historical
+lab guard predates Vesper artwork. Current bytes match the independently verified
+Vesper release exactly; pin that hash instead of restoring or weakening the guard.
+
+Archive51 MVP/progress files and49 lab files before installation. Retain29
+private save/state files,49 lab files,27 SPI-reader files and exact current boot
+hashes; create a separate state header with original payload. Fresh FAT before
+writes and after payload is clean; independent readback passes. Only SNES1.19
+is armed; no firmware update trigger or new flash write. Physical first launch,
+complete repeated MagiTek Bio Blast, sound and movement are the next acceptance
+test. [Candidate and receipts](snes-mvp-1.19.md).
+
 ## Both Vesper screens verified; normal startup restored - 2026-10-10
 
 Returned run `db7079b5f61b4ee5b7d36d22e58472fd` completes two 8 MiB SPI reads

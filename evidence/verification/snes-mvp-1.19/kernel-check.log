@@ -1,0 +1,5 @@
+PASS: 8388608 scalar/vector color comparisons; 280000 tile rows, 2/4bpp, all math modes, flips/transparency/depth
+PASS: 60000 backdrop/window spans match scalar arithmetic; clipped tails/canaries and palette guard page intact
+PASS: 60000 planar tiles match independent 2/4/8bpp oracle; blank classification, destination canaries and exact source guard pages
+PASS: 280000 cached-color rows preserve independent pixel/depth/math/flip oracle; 40000 color-cache cases cover palette changes, tile changes, hash collisions and epoch wrap
+PASS: 20000 lazy-row cache cases preserve untouched rows, independently indexed colors and all key invalidations; cache footprint remains 36864 bytes

@@ -26,6 +26,15 @@ for i,suffix in enumerate(['','Add','Add1_2','Sub','Sub1_2']):
     s=s[:match.end()]+f'\n   d35_census[{16+i}] += GFX.EndY-GFX.StartY+1;'+s[match.end():]
 p.write_text(s,encoding='utf-8',newline='\n')
 p=CORE/'source/tile.c';s='#include "census.h"\n'+p.read_text()
+lazy_rows='d35_color_row(cache,colors' in s
+if lazy_rows:
+    anchor='        uint8x8_t mask=d35_visible_row(bp,!!(tile&H_FLIP),old_depth,GFX.Z1);'
+    assert s.count(anchor)==1
+    s=s.replace(anchor,anchor+'''
+        ++d35_census[40];
+        if(!vget_lane_u64(vreinterpret_u64_u8(vcgt_u8(vdup_n_u8(GFX.Z1),old_depth)),0)) ++d35_census[43];
+        if(!vget_lane_u64(vreinterpret_u64_u8(mask),0)) ++d35_census[41];
+        if(vget_lane_u64(vreinterpret_u64_u8(mask),0)==UINT64_MAX) ++d35_census[42];''')
 s=s.replace('static uint8_t ConvertTile(uint8_t* pCache, uint32_t TileAddr)\n{',
     'static uint8_t ConvertTile(uint8_t* pCache, uint32_t TileAddr)\n{\n   ++d35_census[21];')
 for i,suffix in enumerate(['','Add','Add1_2','Sub','Sub1_2','FixedAdd1_2','FixedSub1_2']):
@@ -56,9 +65,9 @@ if p.exists():
     anchor='        d35_palette_t table=d35_palette(palette,bits);'
     assert s.count(anchor)==1
     s=s.replace(anchor,'        ++d35_census[46];\n'+anchor)
-    anchor='    }\n    return entry->pixels;'
+    anchor='    }\n    return entry->pixels+row*8;' if lazy_rows else '    }\n    return entry->pixels;'
     assert s.count(anchor)==1
-    s=s.replace(anchor,'    } else ++d35_census[47];\n    return entry->pixels;')
+    s=s.replace(anchor,anchor.replace('    }','    } else ++d35_census[47];',1))
     p.write_text(s,encoding='utf-8',newline='\n')
 p=CORE/'source/ppu.c';s='#include "census.h"\n'+p.read_text()
 start=s.index('void S9xSetPPU(');end=s.index('uint8_t S9xGetPPU(',start)
@@ -99,5 +108,7 @@ names={0:'ppu_updates',**{1+i:f'mode_{i}_screen_lines' for i in range(8)},
     44:'fixed_color_effective_change_flushes',45:'fixed_color_redundant_flushes',
     46:'color_tile_materializations',47:'color_tile_reuses',
     **{64+i:f'flush_before_{0x2100+i:04x}' for i in range(64)}}
+if lazy_rows:
+    names[46]='color_row_materializations';names[47]='color_row_reuses'
 (OUT/'fields.json').write_text(json.dumps(names,indent=2)+'\n',encoding='utf-8')
 print('Prepared local-only renderer work census; source and production payload unchanged')

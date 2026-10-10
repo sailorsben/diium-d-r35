@@ -6,7 +6,9 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-10
 
-- **Both Vesper boot screens installed and verified:** user confirms Vesper static -> Vesper animation -> stock launcher. Both complete 8 MiB flash reads match the expected image byte for byte. Original SD startup restored; update trigger and all test markers absent, stock/progress hashes preserved, FAT clean. Ready for normal use. External recovery unqualified; audio unresolved. [Verified result](docs/vesper-static-firmware-update.md).
+- **SNES1.19 installed and armed for Bio Blast testing:** demand-driven visible color rows remove33.56% of1.18's effect palette lookup rows with every draw, raster update and native sample retained.14,400 clean-core equivalent frames and ARM lifecycle checks pass; independent card readback preserves stock, Vesper boot, saves, labs and reader captures. Only the SNES one-shot is armed. Physical sound/performance remain pending. [Candidate](docs/snes-mvp-1.19.md), [device test](docs/snes-mvp-1.19-test.txt).
+
+- **Both Vesper boot screens installed and verified:** user confirms Vesper static -> Vesper animation -> stock launcher. Both complete 8 MiB flash reads match the expected image byte for byte. Original SD startup restored; firmware update trigger absent, stock/progress hashes preserved, FAT clean. SNES1.19 is now armed as described above. External recovery unqualified; audio unresolved. [Verified result](docs/vesper-static-firmware-update.md).
 
 - **Previous second-animation baseline verified:** before the first-screen update, both complete 8 MiB reads matched the expected programmed image byte-for-byte after removing Code.bkp. Normal SD init was restored, stock/progress hashes were preserved and FAT was clean. This is the verified baseline for the current replacement. [Previous verified return](docs/vesper-flash-verification.md), [accepted animation update](docs/vesper-sd-firmware-update.md), [current handoff](docs/handoff-2026-10-09.md).
 

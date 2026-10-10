@@ -16,7 +16,8 @@ def change(name,transform):
     prior={'source/tile.c':{'b75fd5e0e454838f0b7a466e0ac55c066abe984f20cb706ac210c8e368bf6f68',
                            'abde1189131d6010118f791cd8b1953c57e99382e8f73078ed547b739bdd1d12',
                            '77ebe2b06c18148973997ae973f6a0016d18230ed77e19043de9f41ab7355317',
-                           '3b435476c9c70e00bc0f4ff5d07282702b6e60b437e51af447bc77eaf50b5bb5'},
+                           '3b435476c9c70e00bc0f4ff5d07282702b6e60b437e51af447bc77eaf50b5bb5',
+                           '8b52a3cd8c22abb798a47c0afae59b84ad558b6f76f3330cc4d286af65af7c29'},
            'source/gfx.c':{'6c5e6390ac5c4ce3c60f5fb72ba7350db335ff206348655e5eb5bbdbd37136d1',
                            'e95ac252f717e6a185165adf980467082d45dd499cf0496eb6ffdf3290401feb'},
            'source/ppu.c':{'225df7337f9214c89aa4b42ee56670d421e8dbc7a75cea3aae84d3489e8681fe'},
@@ -32,17 +33,20 @@ helper='''
 static INLINE __attribute__((always_inline)) bool d35_render_tile(uint32_t tile,int32_t offset,uint32_t line,
     uint32_t count,uint8_t *cache,uint16_t *colors,unsigned mode)
 {
-    const uint16_t *rgb;
     uint8_t *bp;
     int step;
     if(BG.DirectColourMode || (BG.BitShift!=2 && BG.BitShift!=4)) return false;
-    rgb=d35_color_tile(cache,colors,BG.BitShift);
     bp=cache+((tile&V_FLIP)?56-line:line); step=(tile&V_FLIP)?-8:8;
     while(count--) {
         uint16_t *screen=(uint16_t *)GFX.S+offset;
         uint8_t *depth=(mode?GFX.ZBuffer:GFX.DB)+offset;
-        d35_row_colored(bp,rgb+(bp-cache),!!(tile&H_FLIP),screen,depth,
-                GFX.SubZBuffer+offset,screen+GFX.Delta,GFX.Z1,GFX.Z2,GFX.FixedColour,mode);
+        uint8x8_t old_depth=vld1_u8(depth);
+        uint8x8_t mask=d35_visible_row(bp,!!(tile&H_FLIP),old_depth,GFX.Z1);
+        if(vget_lane_u64(vreinterpret_u64_u8(mask),0)) {
+            const uint16_t *rgb=d35_color_row(cache,colors,BG.BitShift,(unsigned)(bp-cache)>>3);
+            d35_row_colored_masked(rgb,!!(tile&H_FLIP),screen,depth,
+                GFX.SubZBuffer+offset,screen+GFX.Delta,GFX.Z2,GFX.FixedColour,mode,old_depth,mask);
+        }
         bp+=step; offset+=GFX.PPL;
     }
     return true;

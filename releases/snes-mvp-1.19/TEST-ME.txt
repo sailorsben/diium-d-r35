@@ -1,0 +1,19 @@
+SNES MVP 1.19 - demand-driven Bio Blast color preparation
+
+1. Safely eject D:, return the card to the handheld, then cold boot normally.
+2. Start FF6 once. Confirm whether it starts on the FIRST attempt.
+3. Load your Narshe snapshot if useful. With Terra in Magitek armor, choose
+   MagiTek -> Bio Blast in battle. This is the armor ability, not Edgar's Tools.
+4. Repeat the ability several times, watching the complete cloud effect and
+   listening for slowing/clicks or an audio error. Continue normal play.
+5. Before using the physical power button, leave the game through our pause
+   menu and wait for "Game closed. In-game save stored." in our library.
+6. Reconnect D:. Report whether the effect completed, sound/movement stayed
+   steady, and where any failure returned: our library, stock, or powered off.
+
+1.19 prepares a tile's colors only when visible pixels need them, and only
+for the requested rows. It retains every emulated frame, the complete effect
+and the existing audio policy. Exact-output checks qualify correctness; only
+this handheld test establishes performance and sound continuity.
+Your existing saves and snapshots are retained. The one-shot is consumed at
+startup, so the next unarmed boot returns to stock. Vesper firmware is unchanged.

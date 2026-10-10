@@ -17,7 +17,7 @@ paced=dict(line.split('=',1) for line in (out/'paced-smoke/last-session.txt').re
 assert paced['runs']=='30' and paced['error']=='' and paced['write_errors']=='0'
 assert paced['held']=='0' and paced['video_submitted']=='30'
 assert 'PASS: real display FIFO' in (out/'display-queue-contract.log').read_text()
-assert report['build_version']=='1.18' and report['phase']=='finished' and report['session_id']
+assert report['build_version']=='1.19' and report['phase']=='finished' and report['session_id']
 assert report['phase_profile_available']=='1' and int(report['phase_profile_samples'])==3
 costs=[list(map(int,v.split(','))) for k,v in report.items() if k.startswith('frame_cost_') and k[len('frame_cost_'):].isdigit()]
 assert len(costs)==24 and [f[0] for f in costs]==list(range(157,181))
@@ -44,6 +44,7 @@ assert 'PASS: wrapper captures CPU/memory with firmware-style PATH lacking head 
 assert 'PASS: 8388608 scalar/vector color comparisons' in (root/'build/plus-a7-out/kernel-check.log').read_text()
 assert 'PASS: 60000 backdrop/window spans' in (root/'build/plus-a7-out/kernel-check.log').read_text()
 assert 'PASS: 60000 planar tiles' in (root/'build/plus-a7-out/kernel-check.log').read_text()
+assert 'PASS: 20000 lazy-row cache cases' in (root/'build/plus-a7-out/kernel-check.log').read_text()
 assert 'PASS: 16777216 extracted stock/patched register cases' in (root/'build/plus-a7-out/raster-contract.log').read_text()
 assert 'failed-session report and exact PCM history survive library retry' in (out/'native-runner-check.log').read_text()
 assert 'PASS: seven A7 tile modes specialized' in (root/'build/plus-a7-out/codegen-check.log').read_text()
@@ -79,7 +80,7 @@ assert all((out/'preview'/name).stat().st_size>900000 for name in ('library.ppm'
 versions=[tuple(map(int,m)) for m in re.findall(r'GLIBC_(\d+)\.(\d+)',(out/'abi-versions.txt').read_text())]
 assert max(versions)<=(2,30)
 data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
-      'version':'1.18','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
+      'version':'1.19','core_sha256':digest(core),'core_crc32':report['core_crc32'],'core_bytes':core.stat().st_size,
       'qualified_snapshot_sha256':digest(root/'build/plus-a7-out/returned.state'),
       'a7_header_sha256':digest(root/'build/plus-a7-render.h'),
       'binary_sha256':digest(out/'snes-mvp'),'binary_bytes':(out/'snes-mvp').stat().st_size,
@@ -107,8 +108,8 @@ data={'passed':True,'time_utc':datetime.now(timezone.utc).isoformat(),
       'native_lifecycle_contract':(out/'native-runner-check.log').read_text().strip(),
       'native_pcm_contract':(out/'native-pcm-check.log').read_text().strip(),
       'audio_owner_contract':(out/'audio-owner-check.log').read_text().strip(),
-      'hardware_audio_display_controls':'1.17 first launch physically succeeded; one 35763-call session ended with Magitek Bio Blast audio starvation; 1.18 speed and audio remain pending',
-      'color_cache_bytes':36864,'magitek_bio_equivalence_frames':1200,'hardware_qualified':False,'purpose':'reuse bounded pre-math RGB565 tile colors across fragmented raster updates; preserve full effect and native audio exactly; retain 1.17 diagnostic isolation',
+      'hardware_audio_display_controls':'1.18 recovered physical trace shows Bio Blast underproduction followed by pointer divergence and SETUP/EBADFD; 1.19 physical result pending',
+      'color_cache_bytes':36864,'lazy_row_cache_cases':20000,'magitek_bio_equivalence_frames':1200,'hardware_qualified':False,'purpose':'materialize only visible demanded RGB565 tile rows; preserve every frame and native audio; retain the existing PCM policy and diagnostic isolation',
       'performance':'QEMU timings are not device performance evidence'}
 sources=list((root/'build/snes-mvp').glob('*.c'))+list((root/'build/snes-mvp').glob('*.h'))
 sources+=list((root/'build/snes-mvp').glob('*.py'))+list((root/'build/snes-mvp').glob('*.sh'))
@@ -116,7 +117,8 @@ sources += [root/'build'/name for name in ('build-snes-mvp.sh','check-snes-mvp.s
     'check-native-runner.sh','check-old-audio-admission.py','apply-plus-a7.py','build-plus-a7.sh','check-plus-a7.sh','plus-a7-render.h','plus-a7-check.c',
     'plus-a7-equivalence.c','plus-a7-profile.h','plus-a7-profile-core.h','plus-a7-raster.h','check-raster-contract.py',
     'plus-a7-color-cache.h','check-color-cache-contract.py','check-magitek-bio.sh','replay-snes-scene.c','replay-snes-scene.sh','prepare-render-census.py',
-    'capture-snes-scene.c','capture-snes-scene.sh','prepare-plus-inputs.py','check-plus-a7-codegen.py','glibc230-stat-compat.c','verify-snes-mvp.py')]
+    'capture-snes-scene.c','capture-snes-scene.sh','prepare-plus-inputs.py','check-plus-a7-codegen.py','glibc230-stat-compat.c','verify-snes-mvp.py',
+    'qualify-snes-1.19.sh','check-color-row-census.sh','analyze-color-row-census.py')]
 data['source_hashes']={p.relative_to(root).as_posix():digest(p) for p in sorted(set(sources))}
 logs=[out/name for name in ('contracts.log','display-queue-contract.log','startup-contract.log',
     'wrapper-contract.log','wrapper-regression.log','board-input-contract.log','vendor-input-reference.log','timing-contract.log',

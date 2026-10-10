@@ -1,5 +1,26 @@
 # Changelog
 
+## SNES1.19 demand-driven colors qualified and armed - 2026-10-10
+
+Resume SNES from the recovered1.18 Bio Blast production deficit. Test index/depth
+visibility before RGB preparation and cache only demanded rows, retaining the
+36 KiB footprint. Repeated1.18 baseline reproduces all1,200 census rows;
+162 effect frames need667,001 palette lookup rows versus1,003,928, down33.56%.
+All other126 counters and command-boundary pixel/PCM CRCs match. Row-tag
+requests increase slightly; work reduction is not an A7 speedup claim.
+Shipping core passes14,400 clean-core equivalent frames including the complete
+Magitek effect, independent color/cache/CGRAM checks and actual ARM runner,
+snapshot, native PCM, wrapper and display lifecycle checks.
+
+Archive51 MVP/progress files and49 lab files before installing exact1.19.
+Preserve29 private save/state files and27 SPI-reader files; stock/current Vesper
+SD artwork and normal init retain their verified hashes. Create a separate
+snapshot header with original payload. FAT clean before writes and after
+payload; independent readback passes. Only SNES armed, no Code.bkp, no flash
+write. The first historical showlogo guard refused before writes; pin the
+already verified Vesper release hash for the current baseline. Physical audio
+and speed remain pending. [Candidate and next test](docs/snes-mvp-1.19.md).
+
 ## Both Vesper screens verified; normal startup restored - 2026-10-10
 
 Returned run `db7079b5f61b4ee5b7d36d22e58472fd` completes two 8 MiB SPI reads
