@@ -8,6 +8,7 @@ Read README.md, docs/boot-and-hardware-contracts.md, docs/investigation-history.
 - Own chunk-backed RGB565 buffers and retain them until the display worker has finished. Join before freeing buffers or the display.
 - On card return, archive logs and all private progress before updating or re-arming. Preserve stock binaries and saves by hashes. A consumed one-shot marker makes the next reboot stock.
 - Test the actual seam that failed. Independent stock-derived fixtures outrank tests that repeat our own assumptions. QEMU checks are not physical input/audio/display or performance evidence.
+- Before installing a performance candidate, write its measured A7 saving, added costs, break-even inequality, predicted remaining audio deficit and falsifiable physical result. Use the cycle-derived quota/deadline and complete cumulative reserve where available; explicitly mark missing measurements. See docs/snes-focus-1-return.md. Work-count reductions alone do not meet this gate.
 - Keep discoveries, corrections, negative results, verification and next physical test in documentation and Git history with source changes. Push authorized work to the configured remote.
 - Do not add ROMs, private states/SRAM, full card backups, vendor binary dependencies, credentials or local attachment/account material to publication commits.
 - Source installers under build/ include historical, path-specific experiments. Read their guards before using them; do not treat every script as a current install instruction.

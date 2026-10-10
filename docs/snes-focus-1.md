@@ -1,4 +1,9 @@
-# SNES focus1: installed diagnostics, physical result pending
+# SNES focus1: diagnostic qualification and installation history
+
+**Returned2026-10-10; marker consumed and no test armed.** Bio Blast still
+fails. See the [physical return, cycle model, effect budget and candidate
+scorecard](snes-focus-1-return.md). The installation account below is historical;
+it does not describe the current armed state.
 
 The installed1.19 core remains byte-identical. Runner1.19-focus1 adds bounded
 phase/callback CPU capture around expensive calls. This is a diagnostic run,

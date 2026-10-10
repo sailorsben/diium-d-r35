@@ -803,3 +803,22 @@ normal init, protected progress/results and prior clean FAT state remain untouch
 Vendor-containing candidates stay ignored/private; three interpreted reports
 join the evidence manifest with all583 prior published hashes unchanged.
 [Qualification, limitations and exact physical sequence](firmware-offline-qualification.md).
+
+
+## Focus1 return and quantitative prediction contract - 2026-10-10
+
+Archive60 runtime/progress and49 lab files read-only; exact payload/consumed
+marker/clean FAT, all58 prior files,12 unchanged progress files and9 snapshot
+CRCs verify. Six retained samples show growing PPU CPU5.741 ->8.904ms while
+APU-inclusive stays4.529..4.898ms. Emulated clocks predict534.688 native /735.948
+sink frames per call; session average534.650 is consistent. Actual late accepted
+production38,480.644/sec is insufficient for44.1kHz. This is a host cost lead,
+not an identified vendor stop mechanism or measured window-entry price.
+
+Cumulative reserve is reconstructable only over the retained partial trace;
+onset/recovery are absent, and pointer divergence disqualifies later reported
+queue as certified reserve. Previous18.287ms was a failing interval, not a
+pre-effect baseline. Enforce measured saving/added costs/break-even/remaining
+deficit/falsifiable prediction before any candidate install. Window gate fails
+because unit costs remain unmeasured. No card writes/rearm/new core. See
+[snes-focus-1-return.md](snes-focus-1-return.md) for calculations and limits.

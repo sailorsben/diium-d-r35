@@ -1,5 +1,10 @@
 # FF6 Bio Blast: ROM-derived cause map and window experiment
 
+**Focus1 returned2026-10-10; card is unarmed.** The
+[physical budget and candidate scorecard](snes-focus-1-return.md) supersede
+pending-return instructions below. Measured PPU cost grows during failure,
+but per-entry/row/bookkeeping costs remain unmeasured; installation gate fails.
+
 The owner ROM rebuilds byte for byte from the pinned annotated disassembly.
 Its native CPU instructions now have a private low-level C analysis map, and
 Bio Blast has a readable C script/model. That map identifies a concrete renderer

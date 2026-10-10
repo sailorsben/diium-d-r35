@@ -1,5 +1,25 @@
 # Changelog
 
+## Focus1 return archived; cycle-derived effect budget and prediction gate - 2026-10-10
+
+Strict read-only collection preserves60 runtime/progress and49 lab files;
+all58 prior files,12 private progress files, nine snapshot CRCs, stock/current
+Vesper init and27 reader files verify. Exact Focus1 runner/unchanged1.19 core
+and wrapper match; FAT clean, marker consumed, no card writes or rearm.
+Session1987 calls ends with SYNC_OBSERVE errno77/SETUP; B/cleanup/final copies
+complete. Six retained phase samples show PPU5.741 ->8.904ms, APU-inclusive
+4.529..4.898ms. Ordinary late calls17.991ms plus0.211ms admission exceed16.688ms.
+
+Derive358,416 emulated master clocks/call ->534.688 native /735.948 sink frames.
+Actual native average534.650 is consistent with the quota; accepted physical
+production38,481/sec requires14.603% more throughput. Separate previous
+18.287ms/13.766% context from this run; previous final cost was not pre-effect
+baseline. Publish chronological partial reserve curve with pointer-validity
+boundary; complete onset/recovery remains missing. Window scorecard fails the
+five-condition prediction gate: per-entry/row/bookkeeping A7 costs unmeasured.
+All665 historical evidence hashes verify before11 bounded files are appended;
+raw progress/dependencies remain private. [Budget and limits](docs/snes-focus-1-return.md).
+
 ## ROM-derived Bio Blast cause map and isolated window patch - 2026-10-10
 
 Rebuild the owner3 MiB FF6 ROM byte for byte from pinned annotated assembly;

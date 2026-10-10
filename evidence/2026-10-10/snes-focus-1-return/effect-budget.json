@@ -1,0 +1,375 @@
+{
+  "version": "1.19-focus1",
+  "session_id": "502-10738153000",
+  "source_sha256": "2e996ccad7649a47532598b5d00d06eb00a2bd12cc596fd88faf0fa2b3d2e60c",
+  "groups": {
+    "retained_successful": {
+      "first_run": 1924,
+      "last_run": 1986,
+      "ordinary": {
+        "count": 57,
+        "mean_ms": {
+          "wall_ns": 15.602157894736841,
+          "cpu_ns": 14.457859649122806,
+          "audio_wall_ns": 0.522,
+          "video_wall_ns": 1.1267719298245613,
+          "admission_wall_ns": 1.5377543859649123
+        }
+      },
+      "profiled": {
+        "count": 6,
+        "mean_ms": {
+          "wall_ns": 19.319166666666668,
+          "cpu_ns": 17.906,
+          "audio_wall_ns": 0.4725,
+          "video_wall_ns": 1.1463333333333332,
+          "admission_wall_ns": 0.5088333333333334,
+          "apu_inclusive_cpu_ns": 4.691666666666667,
+          "ppu_cpu_ns": 7.395333333333333,
+          "audio_callback_cpu_ns": 0.17166666666666666,
+          "video_callback_cpu_ns": 0.8213333333333334
+        }
+      }
+    },
+    "early_retained_1924_1938": {
+      "first_run": 1924,
+      "last_run": 1938,
+      "ordinary": {
+        "count": 15,
+        "mean_ms": {
+          "wall_ns": 12.164933333333334,
+          "cpu_ns": 11.319666666666667,
+          "audio_wall_ns": 0.47226666666666667,
+          "video_wall_ns": 1.1720666666666668,
+          "admission_wall_ns": 4.2776
+        }
+      },
+      "profiled": {
+        "count": 0,
+        "mean_ms": {}
+      }
+    },
+    "rising_1939_1967": {
+      "first_run": 1939,
+      "last_run": 1967,
+      "ordinary": {
+        "count": 26,
+        "mean_ms": {
+          "wall_ns": 16.114923076923077,
+          "cpu_ns": 14.87323076923077,
+          "audio_wall_ns": 0.5678846153846153,
+          "video_wall_ns": 1.1032307692307692,
+          "admission_wall_ns": 0.7734615384615385
+        }
+      },
+      "profiled": {
+        "count": 3,
+        "mean_ms": {
+          "wall_ns": 17.69033333333333,
+          "cpu_ns": 16.661666666666665,
+          "audio_wall_ns": 0.485,
+          "video_wall_ns": 1.1283333333333332,
+          "admission_wall_ns": 0.847,
+          "apu_inclusive_cpu_ns": 4.599666666666667,
+          "ppu_cpu_ns": 6.467666666666667,
+          "audio_callback_cpu_ns": 0.17366666666666666,
+          "video_callback_cpu_ns": 0.802
+        }
+      }
+    },
+    "late_1968_1986": {
+      "first_run": 1968,
+      "last_run": 1986,
+      "ordinary": {
+        "count": 16,
+        "mean_ms": {
+          "wall_ns": 17.9913125,
+          "cpu_ns": 16.7249375,
+          "audio_wall_ns": 0.4940625,
+          "video_wall_ns": 1.1225625,
+          "admission_wall_ns": 0.211125
+        }
+      },
+      "profiled": {
+        "count": 3,
+        "mean_ms": {
+          "wall_ns": 20.948,
+          "cpu_ns": 19.150333333333332,
+          "audio_wall_ns": 0.46,
+          "video_wall_ns": 1.1643333333333332,
+          "admission_wall_ns": 0.17066666666666666,
+          "apu_inclusive_cpu_ns": 4.783666666666667,
+          "ppu_cpu_ns": 8.323,
+          "audio_callback_cpu_ns": 0.16966666666666666,
+          "video_callback_cpu_ns": 0.8406666666666667
+        }
+      }
+    }
+  },
+  "sampled_frames": [
+    {
+      "run": 1944,
+      "epoch": 2,
+      "sampled": 1,
+      "wall_ns": 16248000,
+      "cpu_ns": 15530000,
+      "apu_inclusive_cpu_ns": 4589000,
+      "ppu_cpu_ns": 5741000,
+      "audio_wall_ns": 453000,
+      "video_wall_ns": 1102000,
+      "admission_wall_ns": 2192000,
+      "reason": 1,
+      "audio_callback_cpu_ns": 168000,
+      "video_callback_cpu_ns": 775000,
+      "audio_callbacks": 2,
+      "video_callbacks": 1
+    },
+    {
+      "run": 1952,
+      "epoch": 2,
+      "sampled": 1,
+      "wall_ns": 18020000,
+      "cpu_ns": 16819000,
+      "apu_inclusive_cpu_ns": 4529000,
+      "ppu_cpu_ns": 6601000,
+      "audio_wall_ns": 477000,
+      "video_wall_ns": 1181000,
+      "admission_wall_ns": 175000,
+      "reason": 2,
+      "audio_callback_cpu_ns": 170000,
+      "video_callback_cpu_ns": 848000,
+      "audio_callbacks": 2,
+      "video_callbacks": 1
+    },
+    {
+      "run": 1960,
+      "epoch": 2,
+      "sampled": 1,
+      "wall_ns": 18803000,
+      "cpu_ns": 17636000,
+      "apu_inclusive_cpu_ns": 4681000,
+      "ppu_cpu_ns": 7061000,
+      "audio_wall_ns": 525000,
+      "video_wall_ns": 1102000,
+      "admission_wall_ns": 174000,
+      "reason": 2,
+      "audio_callback_cpu_ns": 183000,
+      "video_callback_cpu_ns": 783000,
+      "audio_callbacks": 2,
+      "video_callbacks": 1
+    },
+    {
+      "run": 1968,
+      "epoch": 2,
+      "sampled": 1,
+      "wall_ns": 19436000,
+      "cpu_ns": 18330000,
+      "apu_inclusive_cpu_ns": 4617000,
+      "ppu_cpu_ns": 7706000,
+      "audio_wall_ns": 466000,
+      "video_wall_ns": 1173000,
+      "admission_wall_ns": 180000,
+      "reason": 2,
+      "audio_callback_cpu_ns": 169000,
+      "video_callback_cpu_ns": 847000,
+      "audio_callbacks": 2,
+      "video_callbacks": 1
+    },
+    {
+      "run": 1976,
+      "epoch": 2,
+      "sampled": 1,
+      "wall_ns": 20637000,
+      "cpu_ns": 19164000,
+      "apu_inclusive_cpu_ns": 4836000,
+      "ppu_cpu_ns": 8359000,
+      "audio_wall_ns": 440000,
+      "video_wall_ns": 1115000,
+      "admission_wall_ns": 152000,
+      "reason": 2,
+      "audio_callback_cpu_ns": 168000,
+      "video_callback_cpu_ns": 794000,
+      "audio_callbacks": 2,
+      "video_callbacks": 1
+    },
+    {
+      "run": 1984,
+      "epoch": 2,
+      "sampled": 1,
+      "wall_ns": 22771000,
+      "cpu_ns": 19957000,
+      "apu_inclusive_cpu_ns": 4898000,
+      "ppu_cpu_ns": 8904000,
+      "audio_wall_ns": 474000,
+      "video_wall_ns": 1205000,
+      "admission_wall_ns": 180000,
+      "reason": 2,
+      "audio_callback_cpu_ns": 172000,
+      "video_callback_cpu_ns": 881000,
+      "audio_callbacks": 2,
+      "video_callbacks": 1
+    }
+  ],
+  "terminal_failure_frame": {
+    "run": 1987,
+    "epoch": 2,
+    "sampled": 0,
+    "wall_ns": 29651000,
+    "cpu_ns": 16447000,
+    "apu_inclusive_cpu_ns": 0,
+    "ppu_cpu_ns": 0,
+    "audio_wall_ns": 12936000,
+    "video_wall_ns": 0,
+    "admission_wall_ns": 334000,
+    "reason": 0,
+    "audio_callback_cpu_ns": 0,
+    "video_callback_cpu_ns": 0,
+    "audio_callbacks": 0,
+    "video_callbacks": 0
+  },
+  "pcm": {
+    "trace_version": "D35 PCM fault history 1.13",
+    "retained_operations": 96,
+    "epoch": 2,
+    "accepted_pointer_difference_first_sample": 0,
+    "application_pointer_difference_changes": [
+      {
+        "seq": 17636,
+        "kernel_ns": 46018595000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 202,
+        "accepted_minus_reported_hw": 74
+      },
+      {
+        "seq": 17643,
+        "kernel_ns": 46037336000,
+        "delta_change": 128,
+        "appl_minus_accepted": 256,
+        "state": 3,
+        "reported_queued": 169,
+        "accepted_minus_reported_hw": -87
+      },
+      {
+        "seq": 17650,
+        "kernel_ns": 46057877000,
+        "delta_change": 128,
+        "appl_minus_accepted": 384,
+        "state": 3,
+        "reported_queued": 137,
+        "accepted_minus_reported_hw": -247
+      }
+    ],
+    "matched_large_batch_interval": {
+      "first_seq": 17565,
+      "last_seq": 17651,
+      "anchor_count": 13,
+      "elapsed_ms": 229.492,
+      "accepted_frames": 8831,
+      "accepted_frames_per_second": 38480.6442054625,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.1274230338897393,
+      "mean_large_batch_interval_ms": 19.124333333333333,
+      "min_large_batch_interval_ms": 17.697,
+      "max_large_batch_interval_ms": 22.952,
+      "reported_hw_advance": 10112,
+      "accepted_minus_hw_change": -1281,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+    },
+    "last_successful_observation": {
+      "seq": 17656,
+      "ns": 46059983000,
+      "op": "SYNC_OK",
+      "arg": 7,
+      "result": 0,
+      "state": 3,
+      "queued": 874,
+      "appl": 1308777,
+      "hw": 1307903,
+      "epoch": 2,
+      "xfer": 1308393
+    },
+    "final_observation": {
+      "seq": 17658,
+      "ns": 46076663000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 1308777,
+      "hw": 1308671,
+      "epoch": 2,
+      "xfer": 1308393
+    },
+    "kernel_read_result": {
+      "bytes": 16335,
+      "errno": 0
+    },
+    "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+  },
+  "observed_effect_marker": "No effect onset/phase marker; intervals are chronological cost windows, not proved ROM script boundaries.",
+  "cycles": {
+    "master_hz": 21477270,
+    "master_clocks_per_scanline": 1368,
+    "scanlines_per_call": 262,
+    "master_clocks_per_call": 358416,
+    "nominal_fps": 59.92274340431231,
+    "native_budget_ms": 16.68815450008311,
+    "spc_clocks_per_call": 17110.028873142855,
+    "dsp_clocks_per_stereo_frame": 32,
+    "expected_native_frames_per_call": 534.6884022857142,
+    "expected_sink_frames_per_call": 735.9475199999999,
+    "expected_cycle_derived_native_hz": 32039.99593142857,
+    "actual_session_native_frames_per_call": 534.6497232008053,
+    "limits": "Remainders, snapshot phase, reset, buffers and terminal partial delivery prevent an exact global quota comparison. Emulated clocks are not host instructions or measured A7 cycles."
+  },
+  "historical_deficits": {
+    "ordinary_final_wall_ms": 18.287,
+    "over_budget_ms": 1.5988454999168873,
+    "accepted_rate": 38763.739,
+    "shortfall_percent": 12.100365079365073,
+    "required_throughput_increase_percent": 13.76611528624727,
+    "label": "Previous 1.19 failing interval, not a pre-effect baseline."
+  },
+  "current_deficit": {
+    "accepted_rate": 38480.6442054625,
+    "required_throughput_increase_percent": 14.603070999886757,
+    "late_successful_ordinary_mean_wall_ms": 17.9913125
+  },
+  "reserve": {
+    "complete_effect_requirement_measured": false,
+    "recovery_captured": false,
+    "retained_pcm_elapsed_ms": 248.281,
+    "trusted_until_elapsed_ms": 169.39399999999998,
+    "retained_trusted_peak_prefix_deficit": 672,
+    "retained_trusted_peak_drawdown": 1407,
+    "running_nominal_peak_drawdown": 1992.9774999999995,
+    "proposed_margin_frames": 864,
+    "margin_policy": "One nominal output call rounded up plus one negotiated period; a declared design margin, not a qualified worst-case bound.",
+    "partial_drawdown_plus_margin": 2271,
+    "minimum_observed_trusted_reserve": 362,
+    "limit": "Only 96 operations survive. Observed peaks are lower bounds. Missing onset/recovery and pointer divergence prohibit a complete-effect buffer sizing claim."
+  },
+  "window_candidate": {
+    "removed_entries_per_replay_call": 106.24691358024691,
+    "added_color_rows_per_replay_call": 1423.9197530864203,
+    "break_even_row_cost_multiplier": 13.40198698582385,
+    "inequality": "removed_entries * entry_overhead_us > added_rows * materialization_us + added_bookkeeping_us",
+    "measured_entry_overhead_us": null,
+    "measured_materialization_us": null,
+    "measured_added_bookkeeping_us": null,
+    "expected_net_saving_us": null,
+    "predicted_deficit_closed_percent": null,
+    "installation_gate": "NOT MET",
+    "limit": "Physical inclusive PPU timing is not a per-entry cost. Replay counters and physical samples are not aligned scenes."
+  },
+  "limits": [
+    "Ordinary and sampled calls are different states, not controlled overhead pairs.",
+    "CPU callback timing can overlap inclusive APU timing; no sum of overlapping regions.",
+    "Admission wall is outside retro_run wall and is mostly pacing when production has headroom.",
+    "Main CPU excludes audio/display worker CPU and kernel service; whole-device budget remains unpriced.",
+    "The terminal failed callback includes fault handling/persistence and is excluded from successful means."
+  ]
+}

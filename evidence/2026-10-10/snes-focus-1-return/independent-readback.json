@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "version": "1.19-focus1",
+  "verified_utc": "2026-10-10T16:45:30.604273+00:00",
+  "archive": "snes-mvp-return-20261010T164528Z",
+  "card_writes": 0,
+  "fat_clean": true,
+  "one_shot_consumed": true,
+  "all_markers_absent": true,
+  "firmware_update_trigger_absent": true,
+  "mvp_progress_files_verified": 60,
+  "lab_files_verified": 49,
+  "prior_files_retained": 58,
+  "progress_files_verified": 12,
+  "owned_snapshot_crc_verified": 9,
+  "changed_progress_files": [],
+  "stock_vesper_init_and_27_reader_files_verified": true,
+  "binary_sha256": "7100b40f608f48ac141c1293e452c0467837ea33f87816623182b81df2c57999",
+  "core_sha256": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+  "wrapper_sha256": "35b1c32fa5924e33a0f1da47833b6710e53dadc5ebd832a6b998a86236e2cc13"
+}

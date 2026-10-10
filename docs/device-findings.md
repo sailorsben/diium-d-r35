@@ -2,19 +2,19 @@
 
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Focus1](snes-focus-1.md) is now the only armed one-shot; Code.bkp and lab markers remain absent. External write recovery unqualified; audio unresolved.
+**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Focus1 has returned](snes-focus-1-return.md); all one-shot markers and Code.bkp are absent. External write recovery unqualified; audio unresolved.
 
-**Current SNES result:** [1.19 returned with the Bio Blast audio failure](snes-mvp-1.19-return.md).
-Matched near-fault accepted production is38,764 frames/sec against44,100 Hz;
-final ordinary calls average18.287 ms wall /16.935 ms CPU. Offline33.56% palette
-lookup savings did not fix physical sound. No phase sample covers the final
-24-call interval; exact PPU/APU attribution there is unresolved. B leaves the
-library after failure, display teardown and final wrapper copies finish. Archive58
-MVP/progress and49 lab files; saves/snapshots remain exact, current stock/Vesper
-SD artwork and normal init verify, FAT clean. That return made zero card writes.
-Subsequent [focus1 installation](snes-focus-1.md) changes only runner diagnostics,
-preserves138 protected hashes and arms the unchanged1.19-core test. Physical
-phase/callback attribution remains pending.
+**Current SNES result:** [Focus1 returned with the Bio Blast audio failure](snes-focus-1-return.md).
+The unchanged1.19 core accepts38,480.644 frames/sec against44,100Hz near failure.
+Six phase samples show PPU CPU5.741 ->8.904ms while APU-inclusive stays4.529..4.898ms.
+Late ordinary calls average17.991ms wall /16.725ms CPU plus0.211ms admission.
+Emulated358,416 master clocks/call predict534.688 native /735.948 sink frames;
+actual native average534.650 is consistent with that quota. Complete effect
+onset/recovery and candidate A7 unit costs remain unmeasured. The window patch
+fails the five-condition prediction gate.60 runtime/progress and49 lab files,
+all58 prior files and12 unchanged progress files verify; FAT clean, no card
+writes or rearm. B/display teardown/wrapper copies complete. The unexplained
+three128-frame pointer increments and SETUP/EBADFD mechanism remain unresolved.
 
 **Current cause map:** [ROM reconstruction and window experiment](ff6-bio-blast-cause-map.md)
 byte-match the entire owner ROM and expose103,538 native instruction addresses

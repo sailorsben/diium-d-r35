@@ -1,0 +1,82 @@
+{
+  "trace_version": "D35 PCM fault history 1.13",
+  "retained_operations": 96,
+  "epoch": 2,
+  "accepted_pointer_difference_first_sample": 0,
+  "application_pointer_difference_changes": [
+    {
+      "seq": 17636,
+      "kernel_ns": 46018595000,
+      "delta_change": 128,
+      "appl_minus_accepted": 128,
+      "state": 3,
+      "reported_queued": 202,
+      "accepted_minus_reported_hw": 74
+    },
+    {
+      "seq": 17643,
+      "kernel_ns": 46037336000,
+      "delta_change": 128,
+      "appl_minus_accepted": 256,
+      "state": 3,
+      "reported_queued": 169,
+      "accepted_minus_reported_hw": -87
+    },
+    {
+      "seq": 17650,
+      "kernel_ns": 46057877000,
+      "delta_change": 128,
+      "appl_minus_accepted": 384,
+      "state": 3,
+      "reported_queued": 137,
+      "accepted_minus_reported_hw": -247
+    }
+  ],
+  "matched_large_batch_interval": {
+    "first_seq": 17565,
+    "last_seq": 17651,
+    "anchor_count": 13,
+    "elapsed_ms": 229.492,
+    "accepted_frames": 8831,
+    "accepted_frames_per_second": 38480.6442054625,
+    "negotiated_frames_per_second": 44100,
+    "production_shortfall_fraction": 0.1274230338897393,
+    "mean_large_batch_interval_ms": 19.124333333333333,
+    "min_large_batch_interval_ms": 17.697,
+    "max_large_batch_interval_ms": 22.952,
+    "reported_hw_advance": 10112,
+    "accepted_minus_hw_change": -1281,
+    "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+  },
+  "last_successful_observation": {
+    "seq": 17656,
+    "ns": 46059983000,
+    "op": "SYNC_OK",
+    "arg": 7,
+    "result": 0,
+    "state": 3,
+    "queued": 874,
+    "appl": 1308777,
+    "hw": 1307903,
+    "epoch": 2,
+    "xfer": 1308393
+  },
+  "final_observation": {
+    "seq": 17658,
+    "ns": 46076663000,
+    "op": "SYNC_OK",
+    "arg": 6,
+    "result": 0,
+    "state": 1,
+    "queued": 0,
+    "appl": 1308777,
+    "hw": 1308671,
+    "epoch": 2,
+    "xfer": 1308393
+  },
+  "kernel_read_result": {
+    "bytes": 16335,
+    "errno": 0
+  },
+  "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+}
