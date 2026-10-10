@@ -12,6 +12,11 @@
 *.asm text eol=lf
 *.log text eol=lf
 *.hex text eol=lf
+# Preserve qualified UI inputs, including their historical trailing CRLF.
+# Normalizing these bytes changes source hashes recorded in release proofs.
+build/snes-mvp/ui-preview.c -text whitespace=cr-at-eol
+build/snes-mvp/ui.c -text whitespace=cr-at-eol
+build/snes-mvp/ui.h -text whitespace=cr-at-eol
 # Evidence hashes describe published bytes; preserve those bytes in Git.
 evidence/** -text -whitespace
 docs/reference/** -text -whitespace

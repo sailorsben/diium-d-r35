@@ -1,5 +1,35 @@
 # Changelog
 
+## ROM-derived Bio Blast cause map and isolated window patch - 2026-10-10
+
+Rebuild the owner3 MiB FF6 ROM byte for byte from pinned annotated assembly;
+lift103,538 native CPU instruction addresses into eight private C banks and
+write a readable Bio Blast script/wave model.178 real wave-kernel executions
+match all32 expected words. Frame320 scroll writes cause no pending-render
+flushes; circular-window edges cause123. Patch a separate core to retain BG1
+window bounds per scanline and defer eligible edge flushes.
+
+Independent original clip code matches all524,288 edge/polarity/masking states;
+3,600 actual ARM comparison frames match per-frame visible/PCM CRCs, sample
+counts, geometry and periodic normalized serialized bytes. Effect PPU updates
+drop78.97%, but color-row materialization rises34.58%; no hardware speed/audio
+claim. Shipping1.19 core and card remain unchanged by this experiment. Publish
+authored tools/models and six bounded evidence files, preserving659 prior hashes;
+private ROM/assets/generated bank maps/states/dependency bytes remain local.
+[Cause map and exact limits](docs/ff6-bio-blast-cause-map.md).
+
+## Focus1 unchanged-core diagnostics qualified and armed - 2026-10-10
+
+Retain64 recent frame records and sample phases/callback CPU one in eight under
+ordinary-call load, with sampled-cost feedback excluded. Actual ARM runner,
+resampler, failing-interval cadence, report-capacity and consuming native PCM
+fault/retry/load/drain/deficit checks pass. Archive58 MVP/progress and49 lab
+files before installing the owned runner/instructions. Independent readback
+checks138 protected hashes, exact1.19 core/wrapper and clean FAT. Only SNES
+armed, no firmware trigger. Physical attribution pending; no audio fix claimed.
+Publish the runner-only release and14 curated files without dependencies,
+preserving645 prior evidence hashes. [Test](docs/snes-focus-1.md).
+
 ## SNES1.19 Bio Blast still fails; clean exit preserved - 2026-10-10
 
 Collect58 MVP/progress and49 lab files with verified hashes before any changes.

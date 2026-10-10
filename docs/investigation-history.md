@@ -1,5 +1,36 @@
 # Investigation history and negative results
 
+## Byte-matched ROM -> circular-window renderer work - 2026-10-10
+
+User asks to reconstruct ROM code and follow functions through hardware behavior
+to an emulator change. Full owner ROM rebuild is byte-exact; static native
+instructions receive a private C map, with readable focused script/wave code.
+178 real wave-copy executions match the model. Direct register/flush trace
+exonerates immediate BG1 scroll redraws in the tested frame and identifies123
+pending-render flushes from the circle's Window2 edges. A separate per-line clip
+patch preserves the actual effect and batches other background work.
+
+The independent original clip oracle covers524,288 states;3,600 actual ARM
+comparison frames pass visible/PCM checksums, geometry, sample counts and periodic
+serialized-byte comparison. The effect interval has78.97% fewer PPU entries but
+34.58% more color-row materialization; a net A7 win cannot be inferred. Initial
+patch preparation crossed a function boundary into Mode7, failed compilation,
+and was narrowed before successful qualification. That was a preparation defect,
+not a hardware result. No new production core or card candidate installed.
+Preserve all private inputs and six bounded public evidence files. The armed
+focus1 result remains the next physical input. [Cause map](ff6-bio-blast-cause-map.md).
+
+## Bounded focus1 diagnostics installed on unchanged1.19 - 2026-10-10
+
+Final24 physical failing calls lacked phase samples. The diagnostic runner keeps
+64 calls, adaptively samples real phase/callback CPU under ordinary-call load and
+prevents sampled cost from extending capture. It does not change pacing, pixels,
+core or audio admission. Actual ARM contract checks and analyzer rejection cases
+pass. Archive58 MVP/progress and49 lab files before writes; clean FAT and138
+protected hashes independently verify. Only focus1 SNES armed, Code.bkp absent.
+Physical cost/overlap and instrumentation overhead remain explicit limits.
+[Qualification and next test](snes-focus-1.md).
+
 ## SNES1.19 Bio Blast failure and completed exit - 2026-10-10
 
 Ben reports another Bio Blast failure and exit with B. Archive58 MVP/progress

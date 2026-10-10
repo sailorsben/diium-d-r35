@@ -1,0 +1,200 @@
+{
+  "version": "1.19 evidence review",
+  "returned_session": "502-9771840000",
+  "session_sha256": "146bbe7f95adca2c22430b432bcf134f5e5fa66f798c514071b58f2ba1cdb78b",
+  "game_reference": {
+    "repository": "https://github.com/everything8215/ff6",
+    "commit": "813013276c952fdd27edcf7b8b86f17291542cbf",
+    "script_sha256": "54f843b3a808826ab3f6188e4f5782f36bb6a536b5293bd4a4549612976fa546",
+    "bio_blast_bg1": "horizontal and vertical HDMA scroll waves, expanding circle, repeated frame updates and palette fade"
+  },
+  "game_delay_hypothesis": {
+    "native_audio_frames_per_core_call": 534.6438995913602,
+    "expected_rate_divided_by_fps": 534.6884701854495,
+    "ratio": 0.9999166419390456,
+    "core_source": "S9xDoHBlankProcessing_NoSFX calls S9xAPUExecute on each HBLANK_END_EVENT; no host sleep found in audited libretro/CPU/PPU/APU source files",
+    "limit": "Static scheduling and near-normal sample count weaken an intentional audio-generation pause. They do not establish every core sync path or driver behavior."
+  },
+  "private_replay_work_comparison": {
+    "pre_effect_indices": [
+      225,
+      259
+    ],
+    "effect_indices": [
+      277,
+      438
+    ],
+    "index_convention": "zero-based inclusive census row indices",
+    "metrics": {
+      "ppu_updates": {
+        "pre_effect_mean": 28.057142857142857,
+        "effect_mean": 134.53703703703704
+      },
+      "bg_0_lines": {
+        "pre_effect_mean": 194,
+        "effect_mean": 215
+      },
+      "bg_1_lines": {
+        "pre_effect_mean": 215,
+        "effect_mean": 357.3395061728395
+      },
+      "bg_2_lines": {
+        "pre_effect_mean": 194,
+        "effect_mean": 215
+      },
+      "tile_decodes": {
+        "pre_effect_mean": 19.314285714285713,
+        "effect_mean": 19.567901234567902
+      },
+      "full_plain_rows": {
+        "pre_effect_mean": 18394,
+        "effect_mean": 20973.11111111111
+      },
+      "full_add_rows": {
+        "pre_effect_mean": 0,
+        "effect_mean": 1949.20987654321
+      },
+      "clipped_plain_rows": {
+        "pre_effect_mean": 0,
+        "effect_mean": 3.753086419753086
+      },
+      "clipped_add_rows": {
+        "pre_effect_mean": 0,
+        "effect_mean": 230.88888888888889
+      },
+      "neon_row_calls": {
+        "pre_effect_mean": 8188.828571428571,
+        "effect_mean": 15368.962962962964
+      },
+      "neon_row_empty": {
+        "pre_effect_mean": 1007.0857142857143,
+        "effect_mean": 3286.4506172839506
+      },
+      "neon_row_depth_rejected": {
+        "pre_effect_mean": 331,
+        "effect_mean": 2514.240740740741
+      },
+      "color_row_materializations": {
+        "pre_effect_mean": 3553.457142857143,
+        "effect_mean": 4117.29012345679
+      },
+      "color_row_reuses": {
+        "pre_effect_mean": 3628.285714285714,
+        "effect_mean": 7965.222222222223
+      }
+    },
+    "census_sha256": "aa66d3d48f97e2c3c83c3277ec5e0d402aabd922eeeee722e461789f886afe55",
+    "limit": "Same existing1200-frame private Narshe-derived replay; not exact physical encounter. Work amplification, not A7 timing attribution."
+  },
+  "physical_phase_samples": {
+    "columns": "run,epoch,sampled,wall_ns,cpu_ns,apu_inclusive_cpu_ns,ppu_cpu_ns,audio_wall_ns,video_wall_ns,admission_wall_ns",
+    "rows": [
+      [
+        1220,
+        2,
+        1,
+        14411000,
+        13353000,
+        4149000,
+        4027000,
+        474000,
+        784000,
+        1385000
+      ],
+      [
+        1284,
+        2,
+        1,
+        16178000,
+        15081000,
+        4126000,
+        5784000,
+        458000,
+        739000,
+        155000
+      ],
+      [
+        1348,
+        2,
+        1,
+        16331000,
+        15316000,
+        4299000,
+        5840000,
+        468000,
+        792000,
+        153000
+      ],
+      [
+        1412,
+        2,
+        1,
+        13682000,
+        12643000,
+        4070000,
+        3894000,
+        461000,
+        750000,
+        4937000
+      ],
+      [
+        1476,
+        2,
+        1,
+        13272000,
+        12513000,
+        3945000,
+        3659000,
+        575000,
+        744000,
+        4974000
+      ],
+      [
+        1540,
+        2,
+        1,
+        13713000,
+        13350000,
+        4038000,
+        4271000,
+        469000,
+        742000,
+        4810000
+      ],
+      [
+        1604,
+        2,
+        1,
+        13079000,
+        12782000,
+        3892000,
+        4040000,
+        508000,
+        752000,
+        5387000
+      ],
+      [
+        1668,
+        2,
+        1,
+        16239000,
+        15550000,
+        4337000,
+        5921000,
+        447000,
+        1106000,
+        2151000
+      ]
+    ],
+    "last_sample_run": 1668,
+    "failed_run": 1713,
+    "limit": "Inclusive measurements contain timers and callbacks; final24 calls unsampled. PPU/APU/callback regions must not be added as independent costs."
+  },
+  "causal_ranking": [
+    "repeated background rendering/composition from HDMA wave and raster-state updates",
+    "other main-core or frontend work and single-CPU scheduling competition remain possible",
+    "deliberate host-clock pause with missing audio is weakened by CPU-heavy final calls and normal native samples per call",
+    "exact vendor pointer advance/SETUP transition remains unidentified"
+  ],
+  "next_probe": "Unchanged1.19 core plus runner-only adaptive phase/callback CPU capture; no recoloring, frame suppression or PCM policy change."
+}

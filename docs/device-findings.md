@@ -2,7 +2,7 @@
 
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. The reader executed without Code.bkp; original normal SD init restored, no test armed, stock/progress and both prior reader profiles unchanged, final FAT clean. Ready for normal use. External write recovery unqualified; audio unresolved.
+**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Focus1](snes-focus-1.md) is now the only armed one-shot; Code.bkp and lab markers remain absent. External write recovery unqualified; audio unresolved.
 
 **Current SNES result:** [1.19 returned with the Bio Blast audio failure](snes-mvp-1.19-return.md).
 Matched near-fault accepted production is38,764 frames/sec against44,100 Hz;
@@ -11,9 +11,21 @@ lookup savings did not fix physical sound. No phase sample covers the final
 24-call interval; exact PPU/APU attribution there is unresolved. B leaves the
 library after failure, display teardown and final wrapper copies finish. Archive58
 MVP/progress and49 lab files; saves/snapshots remain exact, current stock/Vesper
-SD artwork and normal init verify, FAT clean. Nothing armed, Code.bkp absent,
-zero card writes. Next: bounded phase attribution in the actual expensive
-interval before another optimization; no unchanged rearm or flash work.
+SD artwork and normal init verify, FAT clean. That return made zero card writes.
+Subsequent [focus1 installation](snes-focus-1.md) changes only runner diagnostics,
+preserves138 protected hashes and arms the unchanged1.19-core test. Physical
+phase/callback attribution remains pending.
+
+**Current cause map:** [ROM reconstruction and window experiment](ff6-bio-blast-cause-map.md)
+byte-match the entire owner ROM and expose103,538 native instruction addresses
+in private C.178 wave copy-kernel executions match the semantic model. In replay
+frame320, scroll writes trigger zero pending-render flushes; circular window
+edges trigger123. A separate per-row BG1 window patch passes an independent
+524,288-state clip oracle and3,600 frame comparisons, including full Bio Blast.
+Effect PPU update entries fall78.97% while color-row materializations rise34.58%.
+This narrows a code-level inefficiency, not the exact vendor audio failure.
+Candidate remains private/instrumented and uninstalled; no A7 speed or audio
+acceptance inferred from work counts.
 
 ## Platform identity
 

@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "experiment": "ROM-derived BG1 window batching; separate private core",
+  "hardware_qualified": false,
+  "installed_on_card": false,
+  "owner_rom_byte_matched": true,
+  "rom_crc32": "a27f1c7a",
+  "assembly_repository": "https://github.com/everything8215/ff6",
+  "assembly_commit": "813013276c952fdd27edcf7b8b86f17291542cbf",
+  "cc65_commit": "555282497c3ecf8b313d87d5973093af19c35bd5",
+  "c_map_instruction_addresses": 103538,
+  "c_map_banks": 8,
+  "wave_model_checks": 178,
+  "wave_model_mismatches": 0,
+  "frame_320_registers": {
+    "210d": {
+      "writes": 448,
+      "byte_changes": 290,
+      "rendered_flushes": 0
+    },
+    "210e": {
+      "writes": 448,
+      "byte_changes": 303,
+      "rendered_flushes": 0
+    },
+    "2128": {
+      "writes": 225,
+      "byte_changes": 93,
+      "rendered_flushes": 91
+    },
+    "2129": {
+      "writes": 225,
+      "byte_changes": 109,
+      "rendered_flushes": 32
+    },
+    "2132": {
+      "writes": 224,
+      "byte_changes": 25,
+      "rendered_flushes": 23
+    }
+  },
+  "effect_range": {
+    "zero_based_inclusive_census_indices": [
+      277,
+      438
+    ],
+    "frames": 162
+  },
+  "metrics": {
+    "ppu_updates": {
+      "baseline_mean": 134.53703703703704,
+      "candidate_mean": 28.290123456790123,
+      "change_percent": -78.97224133975682
+    },
+    "color_row_materializations": {
+      "baseline_mean": 4117.29012345679,
+      "candidate_mean": 5541.20987654321,
+      "change_percent": 34.583906171055226
+    },
+    "color_row_reuses": {
+      "baseline_mean": 7965.222222222223,
+      "candidate_mean": 6541.302469135802,
+      "change_percent": -17.87671094867659
+    }
+  },
+  "unchanged_effect_counters": 123,
+  "counter_limit": "flush_before_2129 is recorded before the new deferral condition and is not an actual-flush count. ppu_updates counts actual S9xUpdateScreen entries.",
+  "clip_oracle_states": 524288,
+  "clip_oracle_reference": "unchanged source/clip.c ComputeClipWindows",
+  "equivalence_frames": 3600,
+  "equivalence_method": "per-frame visible RGB565 and native PCM CRC32; sample counts/geometry; byte-comparison of normalized serialized state every30 frames",
+  "replay_protocol_identical": true,
+  "shipping_1_19_core_unchanged": true,
+  "candidate_core_sha256": "ca1cb6a8f59eab234be8184d9b4a24ff2c9b2040989075344f1e807c6f785e36",
+  "candidate_instrumented": true,
+  "next_step": "Read the armed unchanged-core focus result; assess a separate production-core candidate and its actual A7 costs before installation.",
+  "limits": [
+    "This C map is not original C or a runnable native game. RAM overlays, SPC code and game data are not broadly lifted.",
+    "The private derived battle is not the exact physical encounter. These are emulation correctness and work counts, not hardware speed or audio acceptance.",
+    "Color-row materializations rise34.58%; reduced renderer entry counts alone do not prove a net CPU improvement.",
+    "Frame-end display masks in the behavior trace are blanking-time values and are not active scanline-state evidence."
+  ],
+  "source_hashes": {
+    "build/analyze-ff6-cause.py": "3fa1f427c0c2557092e06d40c34206aa5345da23b9d3f7e67e4a34a4ceb0d2d1",
+    "build/lift-ff6-code.py": "256d666731156603002b9c12526035ab49c75ebef5d566404fbeb654b10a949a",
+    "build/ff6-python-private.sh": "35a1a053d412f7c9cc90faf68f8e8f43d977df15505e6c6bf3e205fbdf8f737a",
+    "build/ff6-bio-blast.c": "d3a9b40333e2141a320d19a1fdf1519eee8e383a19f0296be8e47692bacacd34",
+    "build/ff6-bio-blast-model.h": "95bd89cc84c4218a6479dfcf3e4839bdfc3742280ae1f63b002ec044a3fb91ae",
+    "build/ff6-cause-trace.c": "4bdc2db46e5294e6e4a8f4e758eb225a4e5cde60717c11cbab9b758e4ccceb2f",
+    "build/prepare-ff6-cause.py": "b42360679715838b8ac25516ec0de7411bfbaf3a7553fbee223569c62822dcde",
+    "build/check-ff6-cause.sh": "faf3948110aa46bba5cd23a94ea2e482c6851105a03ccfadcfa7cdc5c18e5442",
+    "build/prepare-window-batch.py": "c0bcac884b4ee794557b935d6360e1b0c4b73d423ecd1734c1c256e4c2a11012",
+    "build/plus-a7-window.h": "6b7d877d3152e46320bfac7d7aa8c18621b4bb1fb9217fd13117243bfc3ac02a",
+    "build/plus-a7-window-check.c": "e02cc8bddc89095a735009ff310a9a0ec41a5879b0871eb01451bab40302bcff",
+    "build/check-window-oracle.sh": "d6f73ac5da4474da197ac3dda22f2b866a42547a2dfce3883d9fc8368538f67e",
+    "build/prepare-render-census.py": "eb697e243a619efc4a7d19a5b4ae57a7902a90ece2b8a58e9a707c61c2eecc1f",
+    "build/check-render-census.sh": "c726931efa2a923a802eed90baa364bbb501f9b9cfad25f1a8da2cab7d90b5a7",
+    "build/plus-a7-equivalence.c": "0638deaaa93ff85e868357e41e5e043d87a917673b13d068d2466520ba99a8db"
+  },
+  "private_input_hashes": {
+    "build/ff6-cause-private/replay/trace.log": "7c91cccf88906fc853f308fe618c84c093238d5d31d51b02a20e75ae1c553e59",
+    "build/ff6-window-batch-private/census.txt": "1f84c2a2b8a85e5538c37bbc27d3e5bd283fc3402dade902a186df19331267eb",
+    "build/magitek-lazy-candidate-private/census.txt": "aa66d3d48f97e2c3c83c3277ec5e0d402aabd922eeeee722e461789f886afe55",
+    "build/ff6-window-batch-private/replay.log": "cf03d663d2342731b0d2fd3bf2a7e4d546a70b070dd4a3c389ece3aeeebd4be4",
+    "build/ff6-window-batch-private/equivalence-bio.log": "fcaf1fa5268d4c725aa956e474bcf9aad55ba720b099fe191732d169dbb4ccb7",
+    "build/ff6-window-batch-private/equivalence-general.log": "dcb14edcd77d1b73565f1d673019ef50c99a93110c5b7e311666f9ff9ea4b650",
+    "build/ff6-window-batch-private/window-check.log": "c9fa937c44880e0bc3eb0efb1dbb7c1ecb0f4311bbe64591b8c1c937be0c0f1b",
+    "build/ff6-window-batch-private/c-map-syntax.log": "a851c67306823352d54aab59f7e77629b76bedfc1378e226519150e28b641e5c"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "owner_rom_sha256": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+  "rebuilt_rom_byte_equal": true,
+  "rom_bytes": 3145728,
+  "rom_crc32": "a27f1c7a",
+  "debug_sha256": "64118d74c4c53ae7c5b57d5c8ec6bfa80f00be814c8ec2c07503f798c5b6142d",
+  "native_instruction_addresses_lifted": 103538,
+  "native_instruction_bytes_lifted": 232585,
+  "banks": {
+    "c0": 19738,
+    "c1": 27623,
+    "c2": 16667,
+    "c3": 23177,
+    "c5": 762,
+    "d4": 360,
+    "e5": 1083,
+    "ee": 14128
+  },
+  "rejected_span_reasons": {
+    "non_rom_or_non_instruction_span": 3256
+  },
+  "generated_c_files": 8,
+  "limits": [
+    "Not original C source or a runnable native game.",
+    "Static compiler-visible native ROM instructions only; RAM overlays, script/data payloads and unsupported spans require separate lifts.",
+    "Generated helpers expose hardware/flags/control boundaries; only the focused semantic model is execution-checked."
+  ],
+  "generated_c_sha256": {
+    "bank-c0.c": "5fa5c4078547d1f6512ecc45e5999e81c4eb559109db99168c696e4f1a412702",
+    "bank-c1.c": "8e0020afe32d516f35153b2dbd157ddf62e0fcd5e9f4ad745bbfb614cd8b2866",
+    "bank-c2.c": "a89049847554d1ce2f6e7d14a7fb978376ca7e6c6b3ff99849a5d81b752bb0ca",
+    "bank-c3.c": "cd57c3c5c6387df73bb00cadf1d12a97cce2820a8852daf3b5968063ec7d72bb",
+    "bank-c5.c": "ae53196866fff1f5876ca300d3d2e65a257fed39b4536fd4e2b9f994ac3bf9a1",
+    "bank-d4.c": "9946e6415ee38791ede16b1d24caed1fb8285cec5c3b86fe8877205e7e6ed923",
+    "bank-e5.c": "2dfc9818c05a6e32eeb53d045d11e76ca0eaa66012b527ff2e1bd276d692a6be",
+    "bank-ee.c": "a017a5e78154d7db87c07edd75ea147b7304790118dff52eee8777f95b59e629"
+  }
+}

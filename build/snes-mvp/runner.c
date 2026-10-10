@@ -3,6 +3,9 @@
 #include "board.h"
 #include "audio-pipe.h"
 #include "../plus-a7-profile.h"
+#ifdef D35_FOCUS_PROFILE
+#include "focus-profile.h"
+#endif
 #include <libretro.h>
 #include <dlfcn.h>
 #include <errno.h>
@@ -66,6 +69,10 @@ static void (*p_profile_end)(struct d35_core_profile *);
 struct frame_cost {
     uint64_t run,wall,cpu,apu,ppu,audio,video,admission;
     unsigned sampled,epoch;
+#ifdef D35_FOCUS_PROFILE
+    uint64_t audio_cpu,video_cpu;
+    unsigned reason,audio_calls,video_calls;
+#endif
 };
 
 static struct {
@@ -90,11 +97,21 @@ static struct {
     uint64_t device_cleared_estimate, pacing_wait_ns, active_ns, late_calls, max_lateness_ns;
     uint64_t audio_space_wait_ns, audio_lead_wait_ns;
     unsigned profile_sequence,profile_samples,frame_cost_count,frame_cost_next,pcm_epoch;
+#ifdef D35_FOCUS_PROFILE
+    struct frame_cost frame_costs[64];
+    struct d35_focus_policy focus_policy;
+    unsigned focus_active,focus_reason,focus_audio_calls,focus_video_calls;
+    uint64_t focus_audio_cpu,focus_video_cpu,focus_clock_mean_ns;
+#else
     struct frame_cost frame_costs[24];
+#endif
     unsigned sample_cost_count,sample_cost_next;
     struct frame_cost sample_costs[8];
 } s;
 static void progress(const char *phase,int force);
+#ifdef D35_FOCUS_PROFILE
+static uint64_t thread_cpu_ns(void);
+#endif
 
 static void fail(const char *fmt, ...)
 {
@@ -247,6 +264,9 @@ static void audio_reset(void)
     audio_pipe_clear();
     s.phase=s.output_count=s.ring_count=0; s.have_previous=false;
     s.profile_sequence=0;
+#ifdef D35_FOCUS_PROFILE
+    s.focus_policy=(struct d35_focus_policy){0,0,0};
+#endif
 }
 static void pump_audio(void)
 {
@@ -289,6 +309,9 @@ static bool audio_flush(void)
     s.enqueued+=s.output_count;
     s.output_count=0; return !s.failed;
 }
+#ifdef D35_FOCUS_PROFILE
+#define audio_batch audio_batch_inner
+#endif
 static size_t audio_batch(const int16_t *data,size_t frames)
 {
     size_t i; uint64_t began=board_now_ns();
@@ -334,8 +357,25 @@ static size_t audio_batch(const int16_t *data,size_t frames)
     (void)audio_flush(); s.audio_ns+=board_now_ns()-began;
     return s.failed?i:frames;
 }
+#ifdef D35_FOCUS_PROFILE
+#undef audio_batch
+static size_t audio_batch(const int16_t *data,size_t frames)
+{
+    uint64_t began=s.focus_active?thread_cpu_ns():0,end;
+    size_t accepted=audio_batch_inner(data,frames);
+    if(s.focus_active) {
+        end=thread_cpu_ns();
+        if(end>=began) s.focus_audio_cpu+=end-began;
+        ++s.focus_audio_calls;
+    }
+    return accepted;
+}
+#endif
 static void audio_sample(int16_t l,int16_t r)
 { int16_t data[2]={l,r}; (void)audio_batch(data,1); }
+#ifdef D35_FOCUS_PROFILE
+#define video video_inner
+#endif
 static void video(const void *data,unsigned w,unsigned h,size_t pitch)
 {
     uint64_t began,end;
@@ -350,6 +390,19 @@ static void video(const void *data,unsigned w,unsigned h,size_t pitch)
     end=board_now_ns()-began; s.video_ns+=end;
     if(s.max_video_ns<end) s.max_video_ns=end;
 }
+#ifdef D35_FOCUS_PROFILE
+#undef video
+static void video(const void *data,unsigned w,unsigned h,size_t pitch)
+{
+    uint64_t began=s.focus_active?thread_cpu_ns():0,end;
+    video_inner(data,w,h,pitch);
+    if(s.focus_active) {
+        end=thread_cpu_ns();
+        if(end>=began) s.focus_video_cpu+=end-began;
+        ++s.focus_video_calls;
+    }
+}
+#endif
 static void input_poll(void) { /* Runner already captured one fresh GPIO snapshot. */ }
 static int16_t input_state(unsigned port,unsigned device,unsigned index,unsigned id)
 {
@@ -517,7 +570,12 @@ static uint64_t thread_cpu_ns(void)
 }
 static void report_to(const char *path,const char *phase,int ram)
 {
-    char text[16384]; int n; unsigned i;
+#ifdef D35_FOCUS_PROFILE
+    char text[32768];
+#else
+    char text[16384];
+#endif
+    int n; unsigned i;
     struct board_video_metrics display;
     board_video_metrics(&display,0);
     n=snprintf(text,sizeof(text),
@@ -543,7 +601,11 @@ static void report_to(const char *path,const char *phase,int ram)
       (unsigned long long)s.snapshot_rejections,error_text);
     if(n<=0||(size_t)n>=sizeof(text)) return;
     n+=snprintf(text+n,sizeof(text)-(size_t)n,
+#ifdef D35_FOCUS_PROFILE
+      "build_version=1.19-focus1\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+#else
       "build_version=1.19\nsession_id=%ld-%llu\nphase=%s\ncheckpoint_kernel_ns=%llu\n"
+#endif
       "session_elapsed_ns=%llu\naudio_space_wait_ns=%llu\naudio_lead_wait_ns=%llu\n"
       "diagnostic_ram_write_ns=%llu\nmax_diagnostic_ram_write_ns=%llu\n"
       "diagnostic_ram_writes=%u\ndiagnostic_ram_errors=%u\n",
@@ -609,6 +671,25 @@ static void report_to(const char *path,const char *phase,int ram)
         if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
         n+=add;
     }
+#ifdef D35_FOCUS_PROFILE
+    if(n<=0||(size_t)n>=sizeof(text)) return;
+    n+=snprintf(text+n,sizeof(text)-(size_t)n,
+        "focus_profile=1\nfocus_profile_baseline_stride=64\nfocus_profile_hot_stride=8\n"
+        "focus_profile_hot_frames=96\nfocus_profile_wall_trigger_ns=16000000\n"
+        "focus_profile_cpu_trigger_ns=15000000\nfocus_profile_clock_loop_mean_ns=%llu\n"
+        "focus_cost_columns=run,reason,audio_callback_cpu_ns,video_callback_cpu_ns,audio_callbacks,video_callbacks\n",
+        (unsigned long long)s.focus_clock_mean_ns);
+    if(n<=0||(size_t)n>=sizeof(text)) return;
+    for(i=0;i<s.frame_cost_count;i++) {
+        unsigned at=(s.frame_cost_next+ARRAY_SIZE(s.frame_costs)-s.frame_cost_count+i)%ARRAY_SIZE(s.frame_costs);
+        const struct frame_cost *f=&s.frame_costs[at];
+        int add=snprintf(text+n,sizeof(text)-(size_t)n,
+            "focus_cost_%u=%llu,%u,%llu,%llu,%u,%u\n",i,(unsigned long long)f->run,f->reason,
+            (unsigned long long)f->audio_cpu,(unsigned long long)f->video_cpu,f->audio_calls,f->video_calls);
+        if(add<0||(size_t)add>=sizeof(text)-(size_t)n) break;
+        n+=add;
+    }
+#endif
     for(i=0;i<s.sample_cost_count;i++) {
         unsigned at=(s.sample_cost_next+ARRAY_SIZE(s.sample_costs)-s.sample_cost_count+i)%ARRAY_SIZE(s.sample_costs);
         const struct frame_cost *f=&s.sample_costs[at];
@@ -695,6 +776,13 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
     uint32_t old_buttons=0; bool no_pacing=false,save_ready=false;
     const char *value; int actual_rate;
     memset(&s,0,sizeof(s)); memset(&native_av,0,sizeof(native_av));
+#ifdef D35_FOCUS_PROFILE
+    /* Startup-only estimate, not a correction for unknown core clock-call counts. */
+    { unsigned i; uint64_t began=thread_cpu_ns(),ended;
+      for(i=0;i<128;i++) (void)thread_cpu_ns();
+      ended=thread_cpu_ns();
+      if(ended>=began) s.focus_clock_mean_ns=(ended-began)/129u; }
+#endif
     p_profile_begin=NULL; p_profile_end=NULL;
     s.session_ns=board_now_ns();
     value=getenv("D35_MVP_PROGRESS_FILE");
@@ -774,7 +862,11 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
         uint64_t began,elapsed,cpu_start,cpu_end,step_start=board_now_ns(),admission;
         uint64_t audio_before=s.audio_ns,video_before=s.video_ns;
         struct d35_core_profile profile={0};
+#ifdef D35_FOCUS_PROFILE
+        unsigned sample=0;
+#else
         unsigned sample=p_profile_begin && s.profile_sequence++%64u==3u;
+#endif
         unsigned bin; uint32_t buttons=board_poll_input();
         if((buttons&BOARD_MENU)&&!(old_buttons&BOARD_MENU)) {
             if(!pause_menu()) break;
@@ -798,11 +890,21 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
             uint64_t late=board_now_ns()-deadline; ++s.late_calls;
             if(late>s.max_lateness_ns) s.max_lateness_ns=late;
         }
+#ifdef D35_FOCUS_PROFILE
+        s.focus_reason=p_profile_begin?d35_focus_next(&s.focus_policy):0;
+        sample=s.focus_reason!=0;
+        s.focus_active=sample;
+        s.focus_audio_cpu=s.focus_video_cpu=0;
+        s.focus_audio_calls=s.focus_video_calls=0;
+#endif
         if(p_profile_begin) p_profile_begin(sample);
         cpu_start=thread_cpu_ns(); began=board_now_ns();
         p_retro_run();
         elapsed=board_now_ns()-began; cpu_end=thread_cpu_ns(); ++s.runs;
         if(p_profile_end) p_profile_end(&profile);
+#ifdef D35_FOCUS_PROFILE
+        s.focus_active=0;
+#endif
         if(p_profile_end && (profile.abi!=1 || profile.bytes!=sizeof(profile))) fail("Core phase ABI mismatch");
         board_video_cancel();
         pump_audio();
@@ -810,7 +912,14 @@ int runner_run(const char *rom_path,const char *core_path,const char *save_dir)
             struct frame_cost *f=&s.frame_costs[s.frame_cost_next];
             *f=(struct frame_cost){s.runs,elapsed,cpu_end>=cpu_start?cpu_end-cpu_start:0,
                 profile.apu_cpu_ns,profile.ppu_cpu_ns,s.audio_ns-audio_before,s.video_ns-video_before,
-                admission,profile.sampled,s.pcm_epoch};
+                admission,profile.sampled,s.pcm_epoch
+#ifdef D35_FOCUS_PROFILE
+                ,s.focus_audio_cpu,s.focus_video_cpu,s.focus_reason,s.focus_audio_calls,s.focus_video_calls
+#endif
+            };
+#ifdef D35_FOCUS_PROFILE
+            d35_focus_observe(&s.focus_policy,sample,f->wall,f->cpu);
+#endif
             if(profile.sampled) {
                 ++s.profile_samples;
                 s.sample_costs[s.sample_cost_next]=*f;

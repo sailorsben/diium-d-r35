@@ -1,0 +1,3 @@
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; complete Magitek Bio Blast scene replay
+PASS: earlier PCM publication splits 1200 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples

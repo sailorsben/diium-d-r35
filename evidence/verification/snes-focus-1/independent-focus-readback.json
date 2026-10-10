@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "version": "1.19-focus1",
+  "verified_utc": "2026-10-10T14:51:32.616648+00:00",
+  "card_writes": 0,
+  "archive_files_verified": 58,
+  "unchanged_files_independently_verified": 138,
+  "spi_reader_files_verified": 27,
+  "binary_sha256": "7100b40f608f48ac141c1293e452c0467837ea33f87816623182b81df2c57999",
+  "core_sha256": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+  "wrapper_sha256": "35b1c32fa5924e33a0f1da47833b6710e53dadc5ebd832a6b998a86236e2cc13",
+  "one_shot_armed": true,
+  "lab_unarmed": true,
+  "firmware_trigger_absent": true,
+  "fat_clean": true,
+  "private_progress_and_boot_preserved": true,
+  "physical_focus_result": "pending"
+}

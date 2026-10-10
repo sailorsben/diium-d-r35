@@ -1,0 +1,6 @@
+PASS: 8 actual callback conversions equal original 64-bit oracle; extrema, rational/generic rates, batch splits and short writes
+PASS: partial/EAGAIN transport preserves all PCM; priming independent; snapshot roundtrip; mismatched state rejection; live-state rollback; SRAM roundtrip
+audio_frames=58909 crc32=081c5568
+PASS: all64 cadence offsets cover real1.19 failing-cost window with at least two samples; 177 samples total
+PASS: sampled overhead cannot trigger or extend pressure profiling; measured callback PCM equals unmeasured callback PCM
+PASS: real report preserves all64 frame/CPU callback records and histogram without truncation

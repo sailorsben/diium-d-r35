@@ -1,0 +1,2 @@
+PASS: 524288 window states, both screens and every pixel match original ComputeClipWindows
+PASS: retained row ownership, frame reset, missing rows and fallback guards

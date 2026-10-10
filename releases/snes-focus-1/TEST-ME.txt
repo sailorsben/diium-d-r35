@@ -1,0 +1,15 @@
+SNES focus1 - diagnostic runner, unchanged1.19 game core
+
+1. Safely eject D:, return the card to the handheld and cold boot.
+2. Start FF6 and load the existing Narshe snapshot if useful.
+3. Use Terra's MagiTek -> Bio Blast, keeping the same encounter if possible.
+   Watch/listen normally. This capture is not expected to fix the failure.
+4. If the game returns to our library, press B to exit the launcher. Wait
+   until the stock launcher returns before using the physical power button.
+   If the game stays running, Select+Start -> Exit game, then B in our library.
+5. Reconnect D:. Report whether Bio Blast finished and where any error returned.
+
+Only diagnostics change: more frequent phase sampling under load, callback CPU
+timing and64 recent frames. Sampling can add overhead, so failure timing alone
+is not a controlled speed comparison. Core, pixels, audio policy and saves stay
+on1.19. The one-shot is consumed at startup; the next unarmed boot is stock.

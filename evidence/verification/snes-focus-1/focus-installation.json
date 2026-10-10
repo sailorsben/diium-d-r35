@@ -1,0 +1,16 @@
+{
+  "version": "1.19-focus1",
+  "installed_utc": "2026-10-10T14:44:13.203190+00:00",
+  "archive_before_writes": "snes-mvp-return-20261010T144407Z",
+  "binary_sha256": "7100b40f608f48ac141c1293e452c0467837ea33f87816623182b81df2c57999",
+  "core_sha256": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+  "wrapper_sha256": "35b1c32fa5924e33a0f1da47833b6710e53dadc5ebd832a6b998a86236e2cc13",
+  "only_runner_and_test_instructions_replaced": true,
+  "unchanged_files_verified": 138,
+  "core_states_sram_stock_vesper_init_labs_readers_preserved": true,
+  "all_three_fat_checks_clean": true,
+  "only_snes_marker_armed": true,
+  "firmware_trigger_absent": true,
+  "audio_render_and_pacing_policy_unchanged": true,
+  "hardware_profile": "pending physical Bio Blast capture"
+}

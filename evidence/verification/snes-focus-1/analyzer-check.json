@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": 4,
+  "valid_64_record_actual_report": true,
+  "duplicate_field_rejected": true,
+  "wrong_core_rejected": true,
+  "callback_run_mismatch_rejected": true,
+  "hardware_qualified": false
+}

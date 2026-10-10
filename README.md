@@ -6,9 +6,11 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-10
 
-- **SNES1.19 Bio Blast still fails:** fresh native reports show the same audio descriptor error after1,713 calls. Near failure, accepted sound is38,764 frames/sec against44,100 Hz; final ordinary calls average18.287 ms wall /16.935 ms CPU. B exits our library, display teardown and wrapper copies complete, FAT is clean, all progress is preserved. No test is armed. Offline palette-work savings did not fix physical audio; phase attribution in the failing interval is next. [Return](docs/snes-mvp-1.19-return.md), [candidate](docs/snes-mvp-1.19.md).
+- **ROM-derived Bio Blast investigation:** the3 MiB ROM rebuilds byte for byte, with103,538 native instruction addresses mapped into private C and a readable script/wave model.178 actual wave-kernel calls match that model. Circular-window edge writes, rather than scroll writes, repeatedly flush the renderer. A separate scanline-window patch passes524,288 clip states and3,600 comparison frames; effect PPU updates fall78.97%, but color preparation rises34.58%. No physical speedup/audio fix is claimed and this candidate is not installed. [Cause, code and tests](docs/ff6-bio-blast-cause-map.md).
 
-- **Both Vesper boot screens installed and verified:** user confirms Vesper static -> Vesper animation -> stock launcher. Both complete 8 MiB flash reads match the expected image byte for byte. Original SD startup restored; firmware update trigger absent, stock/progress hashes preserved, FAT clean. SNES1.19 returned unarmed as described above. External recovery unqualified; audio unresolved. [Verified result](docs/vesper-static-firmware-update.md).
+- **Focus1 diagnostics installed and armed:** unchanged1.19 core plus a qualified runner retaining64 frames with adaptive phase/callback sampling. Archive/progress,138 protected files and clean FAT verify; physical result pending.1.19's last return still failed Bio Blast with38,764 accepted frames/sec against44,100 Hz, and its final24 calls lacked phase samples. Use the armed test before choosing a production replacement. [Focus test](docs/snes-focus-1.md), [last physical result](docs/snes-mvp-1.19-return.md), [exact resume](docs/handoff-2026-10-10.md).
+
+- **Both Vesper boot screens installed and verified:** user confirms Vesper static -> Vesper animation -> stock launcher. Both complete 8 MiB flash reads match the expected image byte for byte. Original SD startup restored; firmware update trigger absent, stock/progress hashes preserved, FAT clean. Focus1 is currently the only armed test. External recovery unqualified; audio unresolved. [Verified result](docs/vesper-static-firmware-update.md).
 
 - **Previous second-animation baseline verified:** before the first-screen update, both complete 8 MiB reads matched the expected programmed image byte-for-byte after removing Code.bkp. Normal SD init was restored, stock/progress hashes were preserved and FAT was clean. This is the verified baseline for the current replacement. [Previous verified return](docs/vesper-flash-verification.md), [accepted animation update](docs/vesper-sd-firmware-update.md), [current handoff](docs/handoff-2026-10-09.md).
 
@@ -39,7 +41,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 | Source, dependencies, checks, installation and recovery | [Build and test](docs/build-and-test.md) |
 | What each investigation proved or ruled out | [Investigation history](docs/investigation-history.md) |
 | Runtime ownership and next engineering work | [Architecture](docs/architecture.md) |
-| Current A7 core/runtime build and physical acceptance | [MVP1.19](docs/snes-mvp-1.19.md), [physical return](docs/snes-mvp-1.19-return.md), [renderer repair](docs/snes-mvp-1.16.md) |
+| Current A7 core/runtime build and physical acceptance | [Focus1 diagnostic](docs/snes-focus-1.md), [MVP1.19 return](docs/snes-mvp-1.19-return.md), [ROM-derived window experiment](docs/ff6-bio-blast-cause-map.md) |
 | Hardware resources, measured costs and remaining opportunities | [Capability roadmap](docs/hardware-capability-roadmap.md) |
 | Latest infrastructure result and researched audio contracts | [Lab2 return](docs/platform-lab-2-return.md), [interface research](docs/platform-interface-research.md) |
 | Concrete Cortex-A7 core and pipeline proposal | [Full-speed SNES plan](docs/full-speed-snes-plan.md) |

@@ -5163,6 +5163,166 @@
       "published_sha256": "2530e4a247bfa1ee06c685a2ed63d0b5d1a39240f2b3619737d7da565e71f7bd",
       "bytes": 274,
       "normalized": true
+    },
+    {
+      "source": "build/snes-focus-out/focus-check.log",
+      "published": "evidence/verification/snes-focus-1/focus-check.log",
+      "source_sha256": "8dedd1d34cf35336abbe8c2655d16e9424ff8f8f27bd4f9e262dac79f603e9c8",
+      "published_sha256": "8dedd1d34cf35336abbe8c2655d16e9424ff8f8f27bd4f9e262dac79f603e9c8",
+      "bytes": 641,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-focus-out/native-check.log",
+      "published": "evidence/verification/snes-focus-1/native-check.log",
+      "source_sha256": "54db5e2d62390b4f81e731c06a2b9a0bd4ecf852893e524c1a3be511f96f5851",
+      "published_sha256": "54db5e2d62390b4f81e731c06a2b9a0bd4ecf852893e524c1a3be511f96f5851",
+      "bytes": 1455,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-focus-out/abi.txt",
+      "published": "evidence/verification/snes-focus-1/abi.txt",
+      "source_sha256": "2bd281642cc3227e211cc9d54ea2b451d3abd558833339c20cd18de91bb486d8",
+      "published_sha256": "2bd281642cc3227e211cc9d54ea2b451d3abd558833339c20cd18de91bb486d8",
+      "bytes": 2447,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-focus-out/budget-review.json",
+      "published": "evidence/verification/snes-focus-1/budget-review.json",
+      "source_sha256": "73d7907cab2a6f65e5bb849bff2740d120cebfe620dddf2f36652e287f41704d",
+      "published_sha256": "3218c968aaf6d0fbd5dd5791965489df71162830f0568bff4bc4f14e830a78d0",
+      "bytes": 5416,
+      "normalized": true
+    },
+    {
+      "source": "build/snes-focus-out/smoke-analysis.json",
+      "published": "evidence/verification/snes-focus-1/smoke-analysis.json",
+      "source_sha256": "5e849d9891ba3ca5fbf8a3f605f2b0758da4b6529ab34684dd969d78865046b7",
+      "published_sha256": "50950d2012b6873ebe107bdbcb20d2febb0120dfd611748a58251c3ee9d128f0",
+      "bytes": 27555,
+      "normalized": true
+    },
+    {
+      "source": "build/snes-focus-out/analyzer-check.json",
+      "published": "evidence/verification/snes-focus-1/analyzer-check.json",
+      "source_sha256": "bb410995296a587cb66cccf2135a651712a8bd0ca07c52144d1010270584d6d6",
+      "published_sha256": "5958420656e6f77aded96e94f71101228886eb63d083bc9dd85a994abc12d13d",
+      "bytes": 217,
+      "normalized": true
+    },
+    {
+      "source": "build/snes-focus-out/smoke/last-session.txt",
+      "published": "evidence/verification/snes-focus-1/smoke-session.txt",
+      "source_sha256": "5b4abd08ac7d8937e5acdc2821b96d69e23d98e973cc34787b25d41174d98214",
+      "published_sha256": "5b4abd08ac7d8937e5acdc2821b96d69e23d98e973cc34787b25d41174d98214",
+      "bytes": 8714,
+      "normalized": false
+    },
+    {
+      "source": "build/snes-focus-out/verification.json",
+      "published": "evidence/verification/snes-focus-1/verification.json",
+      "source_sha256": "fef4d99b3ee9075e6993b4a5da31bd87455401af739e11710278dc3edff27e0d",
+      "published_sha256": "a782fcaa75a78dedf6448de0ee23877a7054beaa67030b42c465931f86526d30",
+      "bytes": 6221,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T144407Z/focus-installation.json",
+      "published": "evidence/verification/snes-focus-1/focus-installation.json",
+      "source_sha256": "47ce61e32d4712f6b7beb290de53ff706d6382c1e8e31e3305e7bf60f27f4a9d",
+      "published_sha256": "2f1979425f51c4402b51015fab8aa1313aa1fb5cd9ea6d77afaee873c7671b29",
+      "bytes": 786,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T144407Z/independent-focus-readback.json",
+      "published": "evidence/verification/snes-focus-1/independent-focus-readback.json",
+      "source_sha256": "d874ef396d8480334c8d450d21f74c4feab9b55e4e090881821cf5461f221650",
+      "published_sha256": "77e6915b3c644668fd72db5261af76d27a028a75e8e9dffe880abce2d6771f9f",
+      "bytes": 689,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T144407Z/chkdsk-before-focus.txt",
+      "published": "evidence/verification/snes-focus-1/chkdsk-before-focus.txt",
+      "source_sha256": "013052fa4b108527aa654f91467670c33df230fdaddc197b217f0a5b8c4a5241",
+      "published_sha256": "f2f97cd0529c9cfdd46c28ba366217fcce4815c1f51e101e3f490c54b8d4c303",
+      "bytes": 2141,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T144407Z/chkdsk-after-focus-payload.txt",
+      "published": "evidence/verification/snes-focus-1/chkdsk-after-focus-payload.txt",
+      "source_sha256": "ea56d981ccb98d851f501debb9b2428e0664db3e4e0c857086f88e688b396d6a",
+      "published_sha256": "d67d54c28843529922ab3b4419e03b9b0f25c0ccb1d2ef9748a84e6db2137159",
+      "bytes": 2240,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T144407Z/chkdsk-after-focus-arm.txt",
+      "published": "evidence/verification/snes-focus-1/chkdsk-after-focus-arm.txt",
+      "source_sha256": "578eabcf56e97b842919bc123bb4d7d0d1b622808c39e7cd8ff1e10e63aac334",
+      "published_sha256": "0a7d514ad7a352263793eb87f4bda5d6084383aa55fffe6155a017e5bf5723ba",
+      "bytes": 2240,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T144407Z/chkdsk-independent-focus.txt",
+      "published": "evidence/verification/snes-focus-1/chkdsk-independent-focus.txt",
+      "source_sha256": "1abe9c0b8060f0ba3987fea4682e229effb356ed0d165ba652379bbaaffe3e1b",
+      "published_sha256": "0bd97ad8821b0f25346e378aea398b75aa571ed94dd5197cb1c01a9edce16946",
+      "bytes": 2141,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-window-batch-private/analysis.json",
+      "published": "evidence/verification/ff6-bio-blast-cause/analysis.json",
+      "source_sha256": "53511dfad3c7532396d98035f23b6b159b92946b32fb7c4bb15d6501bdaec575",
+      "published_sha256": "663b61b9088e5dddfbd7116039ff6c7ae91bbc42661bed4d877b3cbacdb4ecb2",
+      "bytes": 5629,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-window-batch-private/window-check.log",
+      "published": "evidence/verification/ff6-bio-blast-cause/window-check.log",
+      "source_sha256": "c9fa937c44880e0bc3eb0efb1dbb7c1ecb0f4311bbe64591b8c1c937be0c0f1b",
+      "published_sha256": "c9fa937c44880e0bc3eb0efb1dbb7c1ecb0f4311bbe64591b8c1c937be0c0f1b",
+      "bytes": 167,
+      "normalized": false
+    },
+    {
+      "source": "build/ff6-window-batch-private/c-map-syntax.log",
+      "published": "evidence/verification/ff6-bio-blast-cause/c-map-syntax.log",
+      "source_sha256": "a851c67306823352d54aab59f7e77629b76bedfc1378e226519150e28b641e5c",
+      "published_sha256": "a851c67306823352d54aab59f7e77629b76bedfc1378e226519150e28b641e5c",
+      "bytes": 76,
+      "normalized": false
+    },
+    {
+      "source": "build/ff6-window-batch-private/equivalence-bio.log",
+      "published": "evidence/verification/ff6-bio-blast-cause/equivalence-bio.log",
+      "source_sha256": "fcaf1fa5268d4c725aa956e474bcf9aad55ba720b099fe191732d169dbb4ccb7",
+      "published_sha256": "fcaf1fa5268d4c725aa956e474bcf9aad55ba720b099fe191732d169dbb4ccb7",
+      "bytes": 339,
+      "normalized": false
+    },
+    {
+      "source": "build/ff6-window-batch-private/equivalence-general.log",
+      "published": "evidence/verification/ff6-bio-blast-cause/equivalence-general.log",
+      "source_sha256": "dcb14edcd77d1b73565f1d673019ef50c99a93110c5b7e311666f9ff9ea4b650",
+      "published_sha256": "dcb14edcd77d1b73565f1d673019ef50c99a93110c5b7e311666f9ff9ea4b650",
+      "bytes": 335,
+      "normalized": false
+    },
+    {
+      "source": "build/ff6-cause-private/c-map/verification.json",
+      "published": "evidence/verification/ff6-bio-blast-cause/c-map-verification.json",
+      "source_sha256": "a94b5e0feee4fe992d843ca0aa1f421480d29edf1f0227fdb2542b45fe197b6c",
+      "published_sha256": "d0e935d727c65c131b75b46bd65bfc4dac3162b4ab52ea69c86f93a6ecadc23c",
+      "bytes": 1657,
+      "normalized": true
     }
   ]
 }
