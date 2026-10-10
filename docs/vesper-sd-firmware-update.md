@@ -1,9 +1,14 @@
 # Vesper original-animation SD update — 2026-10-09
 
-**Current return:** card archived, exact Code.bkp removed after clean FAT checks,
-stock/runtime/progress preserved. The unchanged two-pass read-only reader is
-armed for full Vesper-image verification. [Current run and physical procedure](vesper-flash-verification.md)
-supersede the historical return instructions below; no further update is armed.
+**Verified current state - 2026-10-10:** both complete8MiB reads match the
+expected installed Vesper image byte-for-byte. Normal SD init is restored,
+Code.bkp is absent, no test is armed and the final FAT check passes. The user's
+accepted boot remains static D-R35 -> Vesper -> default launcher. First static
+screen stays; external write recovery is unqualified and MVP1.18 audio unresolved.
+[Complete verification and restoration](vesper-flash-verification.md).
+
+The checkpoints below preserve their original evidence boundaries; the verified
+return above supersedes all pending return/readback instructions. Do not reflash.
 
 **Physical boot accepted:** after normal manual power-on, the user reports
 static D-R35 -> Vesper replacing the regular D-R35 animation -> default launcher.

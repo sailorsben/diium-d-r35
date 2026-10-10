@@ -344,9 +344,13 @@ dummy or malformed Code.bkp files: a malformed ZIP fixture faults in the exact
 offline updater. The user subsequently explicitly authorized the [SD update
 before obtaining recovery equipment](vesper-sd-firmware-update.md); its exact
 package was staged and the user's subsequent physical boot shows static D-R35
--> Vesper replacing the original second animation -> default launcher. Full
-flash readback, trigger removal/repeat boot and external recovery remain pending.
-That changes the execution/acceptance state, not the boot-block risk. Returned flash,
+-> Vesper replacing the original second animation -> default launcher. Later
+[two complete8MiB reads](vesper-flash-verification.md) match the expected
+vendor-mutated image byte-for-byte after trigger removal. Boot/init/readback
+execution without Code.bkp succeeds; original normal SD init restored, no test
+armed, protected hashes intact and final FAT clean. External write recovery
+remains unqualified. This completed write/readback establishes this installed
+image, not general updater safety or recovery. Returned flash,
 vendor executables, full candidates and packages remain private. Keep the
 actual on-device readback, cold-boot animation/launcher and restore results
 distinct from offline format/algorithm acceptance.

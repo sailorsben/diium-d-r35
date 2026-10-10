@@ -1,8 +1,8 @@
 # Device findings
 
-Evidence collected on one DIIUM D-R35 through 2026-10-09. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
+Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage result:** the user accepts [original second-animation replacement](vesper-sd-firmware-update.md): static D-R35 -> Vesper -> default launcher. Returned card/progress now archived, stock/protected bytes match, exact update trigger removed after clean FAT checks. The unchanged [two-pass read-only reader is armed](vesper-flash-verification.md), with independent installed/retained-profile hashes and post-install FAT passing. Full8MiB comparison and this cold boot without the update trigger remain pending. The physical boot report does not establish exact full flash bytes or external recovery. First static screen stays; audio unresolved.
+**Current boot/storage result:** [original second-animation replacement](vesper-sd-firmware-update.md) accepted: static D-R35 -> Vesper -> default launcher. Both complete8MiB reads [match the expected installed image byte-for-byte](vesper-flash-verification.md), with successful init/readback execution after update-trigger removal. Normal SD init restored, no update/test armed, protected progress and stock hashes preserved, final FAT clean. First static screen stays; external write recovery remains unqualified and audio unresolved.
 
 ## Platform identity
 

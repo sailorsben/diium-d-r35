@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "archive": "snes-mvp-return-20261010T052230Z",
+  "capture_complete": true,
+  "expected_full_image_sha256": "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+  "full_image_matches": true,
+  "normal_init_restored": true,
+  "flash_writes": false,
+  "pass_sha256": [
+    "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+    "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03"
+  ],
+  "both_passes_match_expected": [
+    true,
+    true
+  ]
+}

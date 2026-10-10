@@ -1,5 +1,20 @@
 # Investigation history and negative results
 
+## Installed Vesper image verified; normal startup restored - 2026-10-10
+
+Run c4a59205933b4459a9d88ed6aafe5dd2 returns two complete8MiB SPI reads in
+103.776166 seconds, each exactly equal to the expected vendor-mutated image.
+Archive twice before restoring original SD init through fresh FAT/run/hash gates.
+Independent card reread confirms full captures, original init, absent Code.bkp/
+armed markers, five pre-update stock/runtime hashes,51 protected MVP/progress,
+49 lab and9 retained prior-reader files. Final FAT clean. This establishes
+installed bytes and init execution without the update trigger, supplementing
+the user's earlier static D-R35 -> Vesper -> default launcher acceptance.
+No additional visual report supplied on this return. Ready for normal use;
+first static screen preserved, external write recovery unqualified, audio
+unresolved. Publish metadata only; raw flash and private progress stay local.
+[Verified return](vesper-flash-verification.md).
+
 ## Original second-animation replacement physically accepted — 2026-10-09
 
 After SD update progress100% and power-off, normal manual power-on shows the

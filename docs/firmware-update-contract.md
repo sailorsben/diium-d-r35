@@ -1,11 +1,12 @@
 # Internal firmware update evidence — 2026-10-09
 
-Later current state: [Vesper replaces the original second animation on physical
-boot](vesper-sd-firmware-update.md) after the authorized SD update. User reports
-static D-R35 -> Vesper -> default launcher following manual power-on. Exact full
-flash readback/repeat boot and recovery remain pending. The returned card is now
-archived and update trigger removed on clean FAT; the [unchanged read-only
-verification reader is armed](vesper-flash-verification.md).
+**Verified current state - 2026-10-10:** both complete8MiB reads match the
+expected installed Vesper image byte-for-byte. Normal SD init is restored,
+Code.bkp is absent, no test is armed and the final FAT check passes. The user's
+accepted boot remains static D-R35 -> Vesper -> default launcher. First static
+screen stays; external write recovery is unqualified and MVP1.18 audio unresolved.
+[Complete verification and restoration](vesper-flash-verification.md).
+
 Historical pending statements below describe their original investigation stage.
 
 Exact privately preserved SD `vrtemu`: SHA256

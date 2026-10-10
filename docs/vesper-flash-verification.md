@@ -1,9 +1,39 @@
 # Vesper post-update flash verification
 
-The original second-animation replacement passes the user's physical boot test:
-static D-R35 -> Vesper -> default launcher. The returned SD card is now archived,
-the exact update trigger removed, and the unchanged read-only reader armed for
-full-image verification. This does not stage or perform another update.
+The original second-animation replacement is complete: physical boot accepted
+static D-R35 -> Vesper -> default launcher, and both full8MiB flash reads match
+the intended installed image exactly. Normal SD init is restored, Code.bkp is
+absent, no test is armed and the final FAT check is clean. Ready for normal use.
+
+## Verified return and restoration - 2026-10-10
+
+Run `c4a59205933b4459a9d88ed6aafe5dd2` completed in103.776166 seconds with
+two full8MiB passes,4,111 operations, CRC32 `3454f3d8` each. Both compare
+byte-for-byte with the private expected vendor-mutated image, SHA256
+`d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03`.
+Consumed run identity, wrapper exit0, repeated IDs/status/settings, bundle length
+and CRCs verify. No errors, timeout, unreaped child or flash/configuration writes.
+
+First return archive `device-evidence/snes-mvp-return-20261010T052014Z`.
+Restore archives again to `snes-mvp-return-20261010T052230Z`, checks fresh FAT
+and exact run/init/rollback identity, then restores original normal init.
+Independent direct card reads verify both full captures against the expected
+image, normal init against the rollback, reader/wrapper and archived results,
+all five stock/runtime hashes and51 protected MVP/progress files against the
+pre-update baseline,49 lab files and all9 retained prior-reader files. No armed
+markers or Code.bkp; final read-only CHKDSK passes. No FAT repair needed.
+
+The completed init/readback run happened after Code.bkp removal and establishes
+boot/rootfs execution without the update trigger. Visual animation/launcher
+acceptance remains the user's earlier physical report; this reconnect supplied
+no additional visual observation. The first static D-R35 screen is preserved.
+External write recovery remains unqualified; the MVP1.18 audio failure unresolved.
+
+[Full-image comparison metadata](../evidence/2026-10-10/vesper-flash-verification-return/verification.json),
+[independent restored-card checks](../evidence/2026-10-10/vesper-flash-verification-return/restoration.json).
+Raw flash, update packages and private progress are retained locally only.
+The installation/procedure below records the completed run, not a new instruction
+to re-arm or flash.
 
 ## Returned card and cleanup
 
@@ -54,9 +84,10 @@ the update trigger and only this reader armed. Post-install FAT check passes.
 changing its qualification hashes.8 host checks cover exact expected image,
 archive-retaining rearm, failure after arming/rollback, update-trigger refusal,
 out-of-parent move refusal and full-byte match/difference/incomplete comparisons.
-These new host checks do not establish the upcoming physical readback.
+Those host checks did not establish physical readback; the completed device
+return above supplies that separate evidence.
 
-## Next physical step and return
+## Historical physical step and return procedure
 
 Safely eject D:, insert while off and cold boot. Vesper may remain animated for
 about two minutes while both reads finish; the previous identical reader took
@@ -74,6 +105,6 @@ Then `restore` archives again, requires fresh healthy FAT and exact run/init/
 rollback identities, and restores normal init. No image or raw capture is published.
 
 Correct expectation includes vendor metadata at0x100/104; unmutated candidate
-SHA is not the expected installed image. Complete full-byte equality is pending,
-as is this boot without Code.bkp. External write recovery remains unqualified;
-MVP/audio unchanged and the Bio Blast failure unresolved.
+SHA is not the expected installed image. The completed return above confirms
+full-byte equality and init/readback execution without Code.bkp. External write
+recovery remains unqualified; MVP/audio unchanged and Bio Blast unresolved.

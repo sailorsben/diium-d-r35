@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "run_id": "c4a59205933b4459a9d88ed6aafe5dd2",
+  "capture_complete": true,
+  "full_image_matches": true,
+  "capacity_bytes": 8388608,
+  "pass_sha256": [
+    "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+    "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03"
+  ],
+  "pass_crc32": [
+    "3454f3d8",
+    "3454f3d8"
+  ],
+  "elapsed_ns": 103776166000,
+  "normal_init_restored": true,
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "installed_reader_and_wrapper_hashes_match": true,
+  "production_hashes_match_preupdate": true,
+  "protected_mvp_files": 51,
+  "protected_lab_files": 49,
+  "protected_progress_matches_preupdate": true,
+  "retained_prior_reader_files": 9,
+  "returned_reader_files_match_archive": true,
+  "update_trigger_absent": true,
+  "armed_markers": [],
+  "postrestore_fat_clean": true,
+  "flash_writes": false,
+  "global_config_writes": false,
+  "limits": "One installed firmware image verified on this device. External write recovery and the MVP1.18 audio failure remain unresolved."
+}

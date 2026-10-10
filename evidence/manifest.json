@@ -4723,6 +4723,22 @@
       "published_sha256": "e976f67029c60c7bf5235a9d0901bd2782a7357d948181caeda2b878e642947b",
       "bytes": 1955,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T052230Z/vesper-flash-verification.json",
+      "published": "evidence/2026-10-10/vesper-flash-verification-return/verification.json",
+      "source_sha256": "8fbfac549fc6b0ff1d07a89ecb2711aa9a54fb3ac3f76f67973e416bbbfb9658",
+      "published_sha256": "8fbfac549fc6b0ff1d07a89ecb2711aa9a54fb3ac3f76f67973e416bbbfb9658",
+      "bytes": 508,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T052230Z/verification-restored-card.json",
+      "published": "evidence/2026-10-10/vesper-flash-verification-return/restoration.json",
+      "source_sha256": "b03bfb5009a954cf474d52d1b85da7a81046f72e801635414871b5d15a8a0d9f",
+      "published_sha256": "b03bfb5009a954cf474d52d1b85da7a81046f72e801635414871b5d15a8a0d9f",
+      "bytes": 1136,
+      "normalized": false
     }
   ]
 }
