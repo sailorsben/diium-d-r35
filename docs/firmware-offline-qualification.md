@@ -125,22 +125,24 @@ python build/check-vesper-firmware.py `
 
 ## Exact next physical work
 
-Ben reports no SPI programmer available. Identify the installed flash chip's
-full marking/package and board access before choosing a programmer or clip.
-JEDECc84017 establishes the64-Mbit family, not the exact suffix/package.
-For example, GigaDevice's [GD25Q64E product page](https://www.gigadevice.com/product/flash/spi-nor-flash/gd25q64e)
-lists2.7–3.6V operation and multiple SOP/USON/WSON/BGA packages. This reference
-does not establish which package or suffix is installed in this device.
+Ben reports no SPI programmer available. Subsequent [board photographs](board-identification.md)
+confirm VT569B and expose an eight-pin flash package. The MD-marked chip's middle
+line appears25Q64CSIG, consistent with the prior JEDECc84017/8MiB evidence.
+The matching GD25Q64C manufacturer specification is2.7–3.6V/SOP8 208mil;
+MD branding is not authoritatively decoded. Recommend Waveshare CH347 SKU25411
+at3.3V and Pomona5250 clip, with jumper leads/multimeter. Real clip contact,
+pin mapping, voltages, bus isolation and external read/recovery remain pending.
 
 Use hardware with confirmed target-compatible supply **and SPI signal voltages**.
 The [flashrom project's CH341A/B documentation](https://raw.githubusercontent.com/flashrom/flashrom/main/doc/supported_hw/supported_prog/ch341ab.rst)
 describes black boards whose socket supply is3.3V while SPI outputs approach5V;
-a3.3V socket label alone is insufficient. No specific kit is selected yet.
+a3.3V socket label alone is insufficient. The recommended CH347 adapter has a
+documented interface-level switch; confirm the actual hardware before connection.
 
 The physical sequence is:
 
-1. Power off, unplug USB; inspect the back/board and battery connection without
-   connecting a programmer. Obtain a readable chip marking and package view.
+1. Obtain the recommended hardware; the board/marking photographs are preserved.
+   The case can be reassembled meanwhile. Reopen with battery/USB disconnected.
 2. Match exact datasheet/package, programmer signals, pin1 orientation and
    isolated power arrangement. Determine whether clip/header access works;
    inaccessible packages or bus contention may require hardware isolation.

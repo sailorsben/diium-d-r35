@@ -1,5 +1,15 @@
 # Changelog
 
+## Physical board photographs and recovery equipment selection — 2026-10-09
+
+Preserve/hash-verify five supplied photographs privately. Confirm this unit's
+VT569B and exposed eight-pin flash package; preserve the user's MD-marked
+transcription separately from apparent25Q64CSIG interpretation. Match compatible
+family to captured c84017/8MiB evidence and manufacturer3.3V/SOP8 208mil data.
+Recommend assembled CH347 adapter and compatible SOIC clip; actual voltage,
+mapping, isolation, external read/write/recovery remain pending. Case may be
+reassembled. No device change or firmware installation. [Findings and next work](docs/board-identification.md).
+
 ## Exact loader/updater qualification and private full Vesper candidate — 2026-10-09
 
 Recover Thumb loader contracts and verify the first static bitmap's boot-code
