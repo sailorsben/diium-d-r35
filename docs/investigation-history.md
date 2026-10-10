@@ -1,5 +1,24 @@
 # Investigation history and negative results
 
+## Physical A7 prices reject the current batching prediction - 2026-10-10
+
+[Cost1 return](snes-a7-cost-return.md) archives all13 physical passes. Each
+reproduces SETUP/77 before the dense frame320. Small warm setup blocks are
+fractions of a microsecond; weighted baseline fixed setup gives2.179us/entry.
+The conditional mean model credits231.5us, debits149.8us for added rows and
+114.6us for short-span helpers:32.9us loss. Zero helper cost still leaves only
+81.7us saving versus the1,514.3us floor. Whole-candidate cache/removed path mix
+and longer pending spans remain unpriced, so this is a negative model verdict,
+not measured whole-candidate performance. No production build or install.
+
+Deep phase clocks add9.294ms CPU in the complete sampled frame and advance
+failure six calls; using the raw29us setup/entry quotient would credit observer
+cost. Later passes have a different color-cache split from frame0 before active
+timing, despite exact total requests and entries. Full unwrapped PCM histories
+show quota consistency and reserve erosion, then the recurring384-frame pointer
+discrepancy. Dense pixel/color attribution and full recovery remain absent.
+Archive/hash/FAT checks pass with0 card writes; all141 protected hashes survive.
+
 ## Byte-matched ROM -> circular-window renderer work - 2026-10-10
 
 User asks to reconstruct ROM code and follow functions through hardware behavior

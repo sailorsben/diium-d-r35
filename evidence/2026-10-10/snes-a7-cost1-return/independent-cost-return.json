@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "card_writes": 0,
+  "protected_hashes_verified": 141,
+  "payloads_exact": true,
+  "production_runner_core_adapter_stock_progress_unchanged": true,
+  "measurement_dispatch_exact": true,
+  "marker_consumed": true,
+  "all_tests_unarmed": true,
+  "clean_fat": true,
+  "candidate_installed": false
+}

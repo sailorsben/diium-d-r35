@@ -2,9 +2,19 @@
 
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Focus1 has returned](snes-focus-1-return.md); only the cost1 measurement one-shot is now armed; Code.bkp is absent. External write recovery unqualified; audio unresolved.
+**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Cost1 has returned](snes-a7-cost-return.md); every test is unarmed and Code.bkp is absent. External write recovery unqualified; audio unresolved.
 
-**Current SNES result:** [Focus1 returned with the Bio Blast audio failure](snes-focus-1-return.md).
+**Current A7 measurement result:** [Cost1 return](snes-a7-cost-return.md) retains
+13 physical failures, before dense frame320. Partial warm prices give2.179us
+setup/entry,0.1052us row payload and114.6us short helper cost per call; the
+conditional model loses32.9us, leaving1.547ms of the late-call floor. It does not
+qualify complete e/r/b. Deep phase clocks add9.294ms CPU in frame277; no timer
+calibration is subtracted. Native quota is99.9994..100%, trusted reserve erodes,
+then terminal pointer excess384/SETUP77 recurs. Archive60+49+67 files,141
+protected hashes and clean FAT verify;0 card writes, no build/install/rearm.
+Long candidate spans/cache interactions and full effect recovery remain absent.
+
+**Focus1 production-path baseline:** [Focus1 returned with the Bio Blast audio failure](snes-focus-1-return.md).
 The unchanged1.19 core accepts38,480.644 frames/sec against44,100Hz near failure.
 Six phase samples show PPU CPU5.741 ->8.904ms while APU-inclusive stays4.529..4.898ms.
 Late ordinary calls average17.991ms wall /16.725ms CPU plus0.211ms admission.

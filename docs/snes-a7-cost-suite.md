@@ -4,7 +4,12 @@ The suite measures the known Bio Blast budget problem. It changes no guest
 clock, audio quota or rendering decision. Its separate baseline renderer has
 owned timing hooks and shadow window helpers. The deferred window renderer is
 not a payload. Production `snes-mvp`, `plus-a7.so` and `emu_sfc.so` stay exact.
-The installation gate remains **NOT MET / A7 results pending**.
+The [physical return is archived and analyzed](snes-a7-cost-return.md). All13
+passes fail before the dense frame320; partial warm prices predict near-zero
+net gain, with a mean33us loss after short-span helpers. The installation gate
+remains **NOT MET**. Frequency is unavailable, observer clocks add material
+cost, and full effect/candidate cache/span coverage is incomplete. The staged
+plan below is preserved as provenance; the measurement marker is now consumed.
 
 Staged2026-10-10 after archive `snes-mvp-return-20261010T182533Z`:60 runtime/
 progress and49 lab files preserved,141 protected hashes verified. Independent

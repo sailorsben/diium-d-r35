@@ -1,5 +1,10 @@
 # Focus1 return: predict the timing contract before changing the implementation
 
+**Latest A7 evidence:** [Cost1 physical return](snes-a7-cost-return.md) supplies
+partial warm prices and a quantitative negative batching model. The gate stays
+NOT MET; full candidate costs and effect/recovery are still missing. The pending
+measurement statements below describe this document's earlier evidence boundary.
+
 The unchanged 1.19 core still fails Terra's Magitek Bio Blast. Focus1 now
 captures the growing PPU cost during that failure. It establishes a specific
 optimization target, not a measured cost per renderer entry or a qualified

@@ -5459,6 +5459,142 @@
       "published_sha256": "c05373c28c645416790354f092e8c99e0cba7529016c38e78fcca1dafa1babb9",
       "bytes": 2141,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/return-analysis.json",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/return-analysis.json",
+      "source_sha256": "59a4f757a3a5647da361ff088593c16f39acb3309f13490f1963dae142859c2a",
+      "published_sha256": "b91fb310829fbc163274896459456a3ca8664ddfe2154d0576827491e5385c96",
+      "bytes": 184425,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/reserve-curve.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/reserve-curve.csv",
+      "source_sha256": "c88461c0e8cb7f37b7168061988bfb7f7807734001a80e52f5cdce2b95b60da7",
+      "published_sha256": "fdbb38c18929aa8d58766466a28ec98e4e424ceacf084edf51d66e85d5ee6f03",
+      "bytes": 1581350,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/independent-cost-return.json",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/independent-cost-return.json",
+      "source_sha256": "13accd7a90aa503502ef79e127f99607d777d983a1ca5c23c9e3922ab807641d",
+      "published_sha256": "1a0d481772368ee5b19f2add022afc644f0b1a0dac4cd80acd43345d46971ded",
+      "bytes": 317,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/chkdsk-cost-return.txt",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/chkdsk-cost-return.txt",
+      "source_sha256": "1f328e1126fd9663d28d4bf28abf99570e9cf5eeb41993aa074c2539a6157b2c",
+      "published_sha256": "f01bcc9de902985ad4b98253e4394ba7470a4da53d01aede0d35ca75ced5de4b",
+      "bytes": 2101,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-00-mode-0/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-00-mode-0-unit-cost.csv",
+      "source_sha256": "d34aca580ac85d7b992d0aee2d6f49ae76ee6e19464ea5267811355fb2576b97",
+      "published_sha256": "d34aca580ac85d7b992d0aee2d6f49ae76ee6e19464ea5267811355fb2576b97",
+      "bytes": 260139,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-01-mode-1/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-01-mode-1-unit-cost.csv",
+      "source_sha256": "d1b1e847a7281c596c3e643f0d50719868d9f464348c535ce4c2dd0a2260b972",
+      "published_sha256": "d1b1e847a7281c596c3e643f0d50719868d9f464348c535ce4c2dd0a2260b972",
+      "bytes": 254921,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-02-mode-2/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-02-mode-2-unit-cost.csv",
+      "source_sha256": "3fd9f7300f7e91431222dd87d942ed54fe53e20868b58da7d14ca85ecc127b80",
+      "published_sha256": "3fd9f7300f7e91431222dd87d942ed54fe53e20868b58da7d14ca85ecc127b80",
+      "bytes": 279074,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-03-mode-2/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-03-mode-2-unit-cost.csv",
+      "source_sha256": "fb8bb004450b2f9c6a8eddb4d63422b3f857f3c45e5aa16844b2fdd83a50adc6",
+      "published_sha256": "fb8bb004450b2f9c6a8eddb4d63422b3f857f3c45e5aa16844b2fdd83a50adc6",
+      "bytes": 279082,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-04-mode-0/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-04-mode-0-unit-cost.csv",
+      "source_sha256": "66748fa7c40e4066dcf544612493cd2daa72816b532cae9cc8b5a1487bd941d6",
+      "published_sha256": "66748fa7c40e4066dcf544612493cd2daa72816b532cae9cc8b5a1487bd941d6",
+      "bytes": 260177,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-05-mode-1/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-05-mode-1-unit-cost.csv",
+      "source_sha256": "e25c46c505df76335030d921267fe7944513a0545855b9ab1a6e4ab6c7ed8a3b",
+      "published_sha256": "e25c46c505df76335030d921267fe7944513a0545855b9ab1a6e4ab6c7ed8a3b",
+      "bytes": 254911,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-06-mode-2/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-06-mode-2-unit-cost.csv",
+      "source_sha256": "0a50eb29afae8d095ac1bb6d104e9b8db5b1c8d5da7f040bb6495f559a2e3cfe",
+      "published_sha256": "0a50eb29afae8d095ac1bb6d104e9b8db5b1c8d5da7f040bb6495f559a2e3cfe",
+      "bytes": 279086,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-07-mode-2/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-07-mode-2-unit-cost.csv",
+      "source_sha256": "ee76c6615f35a90cb9823224e497dfe3200f5089331f51f2c4ba6de65d1088ab",
+      "published_sha256": "ee76c6615f35a90cb9823224e497dfe3200f5089331f51f2c4ba6de65d1088ab",
+      "bytes": 279045,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-08-mode-0/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-08-mode-0-unit-cost.csv",
+      "source_sha256": "048c1c9028ace1c4fd9452a40cd971a2207bb2b8d97d8740d15dbe2d17d7275b",
+      "published_sha256": "048c1c9028ace1c4fd9452a40cd971a2207bb2b8d97d8740d15dbe2d17d7275b",
+      "bytes": 260260,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-09-mode-1/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-09-mode-1-unit-cost.csv",
+      "source_sha256": "1567a3e93a8703890e608b73b9e39141dbde7c37a47528a777124ea9841950d7",
+      "published_sha256": "1567a3e93a8703890e608b73b9e39141dbde7c37a47528a777124ea9841950d7",
+      "bytes": 254930,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-10-mode-2/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-10-mode-2-unit-cost.csv",
+      "source_sha256": "5bdc5bb15f94ee35fdb33fd7376afbc6344525efab75cf2038efc81c2fd813bc",
+      "published_sha256": "5bdc5bb15f94ee35fdb33fd7376afbc6344525efab75cf2038efc81c2fd813bc",
+      "bytes": 279089,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-11-mode-2/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-11-mode-2-unit-cost.csv",
+      "source_sha256": "518aa6f81b22e2e096d202f38fe25cbeacb5f6510ea445c41a793d0455517857",
+      "published_sha256": "518aa6f81b22e2e096d202f38fe25cbeacb5f6510ea445c41a793d0455517857",
+      "bytes": 279062,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T184859Z/snes-cost1/pass-12-mode-3/unit-cost.csv",
+      "published": "evidence/2026-10-10/snes-a7-cost1-return/pass-12-mode-3-unit-cost.csv",
+      "source_sha256": "6e9688a7e500b4741ae9ad54c92c2b65a940ce8886b15ed88db7c6110aeb2c29",
+      "published_sha256": "6e9688a7e500b4741ae9ad54c92c2b65a940ce8886b15ed88db7c6110aeb2c29",
+      "bytes": 260263,
+      "normalized": false
     }
   ]
 }

@@ -1,5 +1,10 @@
 # Execution-budget review after the 1.13 return
 
+**Latest A7 evidence:** [Cost1 physical return](snes-a7-cost-return.md) supplies
+partial warm prices and a quantitative negative batching model. The gate stays
+NOT MET; full candidate costs and effect/recovery are still missing. The pending
+measurement statements below describe this document's earlier evidence boundary.
+
 The current approach became too reactive to the final PCM errno. The
 [retained flight history](snes-mvp-1.13-return.md) now shows production falling
 behind before the unusual pointer increments and stream stop. The next build

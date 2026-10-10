@@ -1,5 +1,27 @@
 # Changelog
 
+## A7 cost1 returned: priced batching model fails the budget - 2026-10-10
+
+Archive60 runtime/progress,49 lab and67 separate measurement files before any
+card writes. Clean FAT, exact payloads and all141 protected hashes verify;
+all tests unarmed. Thirteen physical passes reproduce SETUP/EBADFD; controls
+render291 calls, sparse285, benchmark287. Dense frame320 is never reached.
+
+Retain CPU/wall individual and32-operation distributions, terminal exclusions,
+full PCM histories and cache-alignment checks. The partial warm setup mix is
+2.179us/entry; materialization payload0.1052us/row; short-span helper model114.6us.
+The resulting setup231.5 minus rows149.8 minus helpers114.6 gives32.9us net
+loss, leaving1.547ms of the late deadline gap. This is a conditional model,
+not whole-candidate e/r/b or an installation prediction. Deep phase clocks add
+9.294ms CPU at frame277; no calibration is subtracted. Later passes change the
+cache miss/reuse split from frame0; total row work and entry counts remain exact.
+
+Quota remains99.9994..100%; trusted reserve drawdowns2,823..2,988 frames precede
+the repeated384-frame terminal pointer discrepancy. Complete effect/recovery
+and vendor stop mechanism remain unqualified. Publish17 bounded timing/curve/
+verification files, preserving all682 historical evidence hashes. No new
+executable, candidate installation or re-arm. See [the return](docs/snes-a7-cost-return.md).
+
 ## A7 cost1 diagnostic suite staged; performance gate still pending - 2026-10-10
 
 Build a separate baseline measurement core/owned ARM runner with exclusive
