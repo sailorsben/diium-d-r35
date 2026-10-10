@@ -1,0 +1,23 @@
+{
+  "measured_triplet": "c84017",
+  "measured_six_byte_response": "c84017c84017",
+  "matched_family": "GigaDevice 64-Mbit SPI NOR; exact suffix/package not identified",
+  "nominal_capacity_bytes": 8388608,
+  "capacity_provenance": "Matched primary manufacturer ID/density and Linux flash table; full physical readback pending",
+  "read_opcode": "03",
+  "address_bits": 24,
+  "last_nominal_address": "0x7fffff",
+  "manufacturer_reference": {
+    "url": "https://download.gigadevice.com/Datasheet/DS-00484-GD25Q64E-Rev1.6.pdf",
+    "id_printed_page": 19,
+    "ordinary_read_printed_page": 22
+  },
+  "kernel_reference": "https://raw.githubusercontent.com/torvalds/linux/v4.19/drivers/mtd/spi-nor/spi-nor.c",
+  "kernel_table": "gd25q64, ID0xc84017, 128 * 64KiB",
+  "vendor_read_path": "Exact privately preserved vrtemu uses03 + 24-bit address, command then receive transfer",
+  "flash_writes": false,
+  "global_configuration_writes": false,
+  "recovery_qualified": false,
+  "full_readback_physical_execution": "pending",
+  "raw_flash_contents_published": false
+}

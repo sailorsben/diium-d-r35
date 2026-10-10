@@ -562,3 +562,25 @@ guards and child deadline/reap pass11 software checks. Only identification is
 armed, independently read back with healthy postinstall FAT. Physical chip ID,
 full readback, recovery and persistent second-splash replacement remain pending;
 audio is unresolved. [Return](device-survey-2-return.md), [profile](spi-identify.md).
+
+## Physical SPI ID and pending full readback — 2026-10-09
+
+Archive the successful read-only ID run: three c84017c84017 replies, status00,
+five messages, no competing owner/error/timeout, matching marker and wrapper0.
+Returned FAT clean,51-MVP/49-lab hashes preserved; exact init restored after fresh
+health check. Match C8 40 17 to GigaDevice64-Mbit NOR/nominal8MiB using primary
+manufacturer/kernel references. Do not assign an exact suffix/package from this ID.
+
+Build fixed05/9f/03 two-pass reader using the unchanged physically qualified
+ownership/ID source. Hold two4KiB buffers; store a16MiB bundle plus report,
+compare fresh passes byte-for-byte, retain CRC/checkpoints and refuse busy/wrong
+ID/settings changes/short reads/mismatches. Nine checks exercise independent
+native/ARM packets, actual supervised capture, timeout/reap, damaged/stale returns,
+health-gated restoration, release owner refusal and firmware BusyBox/ABI.
+Independent installed payload/init/marker and protected progress/prior-result
+hashes pass; FAT clean, only readback armed. Physical readback remains pending;
+raw flash stays private. No write/recovery/splash/audio qualification.
+Offline exact `/wdt` main sleeps500ms and loops watchdog ioctls independently,
+with no userspace stock-main check; init starts it before the SD hook. This
+supports the delayed placement but does not qualify extended startup physically.
+[ID return](spi-identify-return.md), [reader](spi-readback.md).

@@ -41,8 +41,8 @@ still declares SPI0.0 as NOR flash; no chip ID or capacity has yet been measured
 
 ## Next physical test
 
-The [read-only SPI identification one-shot](spi-identify.md) is installed and
-armed separately. It uses fixed status/JEDEC commands, checks competing owners,
-and finishes before stock starts. The returned chip ID must be checked against
-a datasheet before a full flash readback is designed. Persistent replacement of
+The [read-only SPI identification](spi-identify-return.md) now returns a stable
+`C8 40 17`, matched to the GigaDevice64-Mbit NOR/nominal8MiB family. The separate
+[two-pass reader](spi-readback.md) is armed and finishes before stock starts.
+Physical full-range readback remains pending. Persistent replacement of
 the original second splash and the MVP audio failure remain unresolved.

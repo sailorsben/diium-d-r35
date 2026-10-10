@@ -36,11 +36,13 @@ also warns that a nonexistent SPI slave need not produce an I/O error. A positiv
 ioctl alone cannot establish chip identity or successful flash readback.
 
 The survey independently finds the DT NOR-flash node on SPI0.0 and stock vrtemu
-holding that node. The [installed read-only identification](spi-identify.md)
-finishes synchronously before stock starts. It should identify the chip,
-then use its datasheet for capacity/addressing and two independently matching
-full readbacks. No SPI transaction has run yet. Do not infer capacity or a valid
-firmware layout from a sibling's specification.
+holding that node. The [physical identification](spi-identify-return.md) now
+returns `C8 40 17` three times: GigaDevice64-Mbit NOR family, nominal8MiB from
+matched manufacturer/kernel references. Exact suffix/package and firmware layout
+remain unverified. The [two-pass reader](spi-readback.md) is armed synchronously
+before stock starts, with fixed03/24-bit reads and byte comparison. Physical
+full-range readback remains pending. No SPI program/erase or configuration writes
+have been attempted. Capacity is no longer inferred from a sibling handheld.
 
 A flash dump is a backup. Recovery also requires a verified way to rewrite the
 chip when normal boot fails. Our SD init hook depends on working internal boot

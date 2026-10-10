@@ -510,3 +510,20 @@ Eleven software checks pass; physical SPI identification remains pending. No
 flash/configuration writes, full dump, recovery, original-splash replacement or
 audio fix is qualified. See [return](device-survey-2-return.md) and
 [probe](spi-identify.md).
+
+## Physical SPI ID and pending full readback — 2026-10-09
+
+Three physical responses are c84017c84017, with status00 before/after, five
+successful messages, no competing owner or timeout and matching consumed marker.
+SPI mode1024/eight bits/default20MHz is reported; single-lane at most1MHz succeeds
+without global changes. Manufacturer/kernel references match the identifying
+triplet C8 40 17 to GigaDevice64-Mbit NOR/nominal8MiB. Exact revision/package
+and readable firmware layout remain unverified. FAT is clean and private progress
+is preserved; exact init restored after fresh health check.
+
+A separately armed two-pass reader keeps the working1MHz fields, uses fixed
+03/24-bit/4KiB reads over the nominal range and compares both copies byte-for-byte.
+Nine software checks and protected install/health readback pass. Physical full
+readback is pending. No flash/configuration write, recovery, original splash
+replacement or audio fix qualified. [ID return](spi-identify-return.md),
+[readback procedure](spi-readback.md).

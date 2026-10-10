@@ -1,5 +1,21 @@
 # Changelog
 
+## Physical SPI ID and qualified two-pass reader — 2026-10-09
+
+Archive successful ID run: three c84017c84017 replies, status00, no competing
+owner/error/timeout, matching consumed marker and wrapper exit0. FAT is clean;
+51 MVP/progress and49 lab hashes preserved. Restore exact init after fresh health.
+Match the triplet to GigaDevice64-Mbit NOR/nominal8MiB using primary manufacturer
+and Linux references; exact silicon revision/package remain unverified.
+
+Build fixed05/9f/03 two-pass reader with4KiB packets, working1MHz limit, byte
+comparison, indexed result bundle/CRCs, owner/settings/identity guards and240s
+owned-child deadline.9 native/ARM/return/health/sparse-shell/ABI checks pass.
+Install readback-only profile, independent release/init/marker and protected
+progress/prior-result readback, healthy postinstall FAT. Physical full readback
+pending; raw contents private, no flash/configuration writes, recovery or splash
+replacement. [ID return](docs/spi-identify-return.md), [next run](docs/spi-readback.md).
+
 ## Survey2 physical return and read-only SPI identification — 2026-10-09
 
 Archive all905 capture ranges; verify CRCs/lengths/completion, matching run and

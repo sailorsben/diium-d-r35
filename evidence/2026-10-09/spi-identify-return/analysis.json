@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "marker_matches": true,
+  "result": {
+    "version": 1,
+    "errno": 0,
+    "stage": "identified",
+    "owner_pid": 0,
+    "operations": 5,
+    "mode": 1024,
+    "bits": 8,
+    "default_speed_hz": 20000000,
+    "transfer_speed_limit_hz": 1000000,
+    "status_before": 0,
+    "status_after": 0,
+    "ids": [
+      "c84017c84017",
+      "c84017c84017",
+      "c84017c84017"
+    ],
+    "timed_out": false,
+    "reap_pending": false,
+    "flash_writes": false,
+    "global_config_writes": false
+  },
+  "limits": "ID exchange completion only; chip datasheet/capacity, full readback and recovery remain unqualified."
+}

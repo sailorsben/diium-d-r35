@@ -1,0 +1,15 @@
+{
+  "software_checks_passed": true,
+  "checks": [
+    "native: independent 03/address/4096-byte packet contract; full supervised two-pass capture/CRC; mismatch/blank/floating/short/error/wrong-ID/busy/settings-change refusals",
+    "native: actual owned-child deadline, SIGKILL and reap",
+    "arm: independent 03/address/4096-byte packet contract; full supervised two-pass capture/CRC; mismatch/blank/floating/short/error/wrong-ID/busy/settings-change refusals",
+    "arm: actual owned-child deadline, SIGKILL and reap",
+    "return analyzer rejects torn bundle, changed bytes and stale marker",
+    "restoration archives analysis and refuses unhealthy FAT before mutation",
+    "exact release ARM binary refuses existing owner without opening SPI",
+    "actual firmware BusyBox consume-first synchronous wrapper and next-boot no-op",
+    "exact ARM GLIBC dependencies <= 2.30"
+  ],
+  "physical_execution": "pending"
+}

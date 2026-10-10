@@ -22,6 +22,14 @@ return verifies all905 ranges and clean FAT. This is not general media/shutdown
 qualification. Archive before checking health, but require healthy FAT before any
 restoration write. A consumed hook already selects stock on the next reboot.
 
+SPI ownership is separate from display ownership. Survey2 finds stock vrtemu
+holding SPI0.0; the [ID probe](spi-identify-return.md) succeeds synchronously
+before stock starts. The [full reader](spi-readback.md) uses the same placement,
+consumes/syncs its marker first and joins its owned child before permitting stock.
+No speculative storage commands, global mode writes or concurrent stock SPI
+owner. Its240-second deadline can require reboot if a child remains kernel-blocked.
+Archive complete/partial flash contents privately before any rearm or restoration.
+
 The [1.18 return](snes-mvp-1.18-return.md) adds a storage boundary: two FAT backup
 entries are unreadable and fresh fault/current SRAM files are zero bytes.
 Preserve readable files and report incomplete collection explicitly. A partial

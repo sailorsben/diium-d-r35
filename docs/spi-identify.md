@@ -44,7 +44,8 @@ so a subsequent power cycle skips the probe and follows stock.
 Eleven software checks pass: independent native/ARM packet fixtures, refusals,
 supervisor timeout/kill/reap, exact release owner refusal, actual firmware BusyBox
 consume-first/next-boot no-op behavior, and GLIBC dependencies at or below2.30.
-These checks simulate hardware responses; physical identification remains pending.
+These checks simulate hardware responses. The [physical return](spi-identify-return.md)
+now succeeds with three `c84017c84017` responses; full readback remains pending.
 Release: `releases/spi-identify-1`. Source, wrapper and release hashes are bound
 in its manifest.
 
@@ -52,7 +53,8 @@ Installed run: `42401fa0056c4cfda90da165e2ad851f`.
 Private baseline: `device-evidence/snes-mvp-return-20261009T234340Z`.
 Independent readback verifies release/init/marker, all51 MVP/progress files,
 all49 lab files and retained survey2 hashes. Post-install read-only CHKDSK is
-healthy. Only SPI identification is armed. [Installation](../evidence/2026-10-09/spi-identify-install/installation.json),
+healthy. That identification is now consumed, its exact init restored, and the
+[separate full reader](spi-readback.md) is armed. Historical [installation](../evidence/2026-10-09/spi-identify-install/installation.json),
 [verification](../evidence/2026-10-09/spi-identify-install/verification.json).
 
 ```text
@@ -63,7 +65,7 @@ python build/manage-spi-identify.py collect
 python build/manage-spi-identify.py restore
 ```
 
-The current installation is already armed; do not rerun install. Safely eject,
+The identification installation has completed; do not rerun install. Its original procedure was: safely eject,
 put the SD back in the handheld and cold boot. Let the stock launcher sit for
 at least45 seconds, use its physical power button and reconnect D:. Collect
 before any change, inspect read-only FAT health, then restore only on a healthy
@@ -71,8 +73,8 @@ card. Restore archives results again and requires the test to be unarmed and exa
 installed/rollback init identities. The analyzer checks consumed-marker identity
 separately. A consumed hook is already a stock next boot.
 
-A stable plausible ID establishes a completed exchange, not capacity or a
-recoverable firmware image. Next verify the actual chip against its datasheet,
-derive capacity/addressing and obtain two independently matching full readbacks.
+A stable plausible ID establishes a completed exchange, not a recoverable image.
+Matched manufacturer/kernel references now establish nominal8MiB capacity and
+24-bit03 reads. Next obtain two independently matching full readbacks.
 A dump is a backup; recovery still needs a verified way to write when internal
 boot fails. Original splash replacement and audio are separate unresolved work.

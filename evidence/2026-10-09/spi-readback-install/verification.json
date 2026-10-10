@@ -1,0 +1,9 @@
+{
+  "release_init_and_marker_readback": true,
+  "mvp_progress_archive_files": 51,
+  "lab_files_unchanged": 49,
+  "prior_probe_and_survey_files_unchanged": 43,
+  "only_spi_readback_armed": true,
+  "postinstall_fat_clean": true,
+  "flash_writes": false
+}

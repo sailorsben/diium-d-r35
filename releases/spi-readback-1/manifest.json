@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "physical_execution": "pending",
+  "software_checks_passed": true,
+  "fixed_commands": [
+    "05",
+    "9f",
+    "03"
+  ],
+  "flash_writes": false,
+  "global_config_writes": false,
+  "source_hashes": {
+    "build/spi-readback.c": "9e3945acd1f5c74bb1720684db657a91c2b37b5b612a01495cb57e0a11dc6b16",
+    "build/spi-identify.c": "8244a4bfc902eaf636bd459b1cfef08e70f065c09e4437a9388941f177e9dddb",
+    "build/build-spi-readback.sh": "85050665c79b539edf431390d12bfe0f31bd1534736804eeff8aab4087cea0f2",
+    "build/launch-spi-readback.sh": "7efcf6c081dc03b4904ba88d7c22130349a5e477020838dc55c1ae5607fc46b3",
+    "build/check-spi-readback.py": "9b78dc84eea2cebb71a62f76e0ca4365d0676541df30973d57721b210008886f",
+    "build/manage-spi-readback.py": "e8f4b51e1c247259d0dbb482dcb16f28e66bebd379379abc3d8a7497ff1110b9",
+    "build/manage-spi-identify.py": "ac186f56a9df176bb9aa2359b1e2c210fcef6768fcdac5d5746bb74c34a1c365",
+    "build/manage-device-survey.py": "ee5d8a5c21bcabeebae0c48b008f0e943731b754ddfa56712a59116c424ffadf"
+  },
+  "release_hashes": {
+    "spi-readback": "b0f47d8742b0ef0c1624fd1d25ae3cb8af7474d5c16f2b941c46ced370749a0b",
+    "abi.txt": "99c4cf0e0a2261a572e9976f682166bdeaef916b9534cf7e15c76a50bc2a72c4",
+    "qualification.json": "33bad8fb066981dcc637fb02b9b839cadac45765505ec893df274b375d2bdf8d",
+    "launch.sh": "7efcf6c081dc03b4904ba88d7c22130349a5e477020838dc55c1ae5607fc46b3"
+  }
+}
