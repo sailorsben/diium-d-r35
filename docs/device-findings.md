@@ -2,7 +2,7 @@
 
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Focus1 has returned](snes-focus-1-return.md); all one-shot markers and Code.bkp are absent. External write recovery unqualified; audio unresolved.
+**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Focus1 has returned](snes-focus-1-return.md); only the cost1 measurement one-shot is now armed; Code.bkp is absent. External write recovery unqualified; audio unresolved.
 
 **Current SNES result:** [Focus1 returned with the Bio Blast audio failure](snes-focus-1-return.md).
 The unchanged1.19 core accepts38,480.644 frames/sec against44,100Hz near failure.
@@ -26,6 +26,8 @@ Effect PPU update entries fall78.97% while color-row materializations rise34.58%
 This narrows a code-level inefficiency, not the exact vendor audio failure.
 Candidate remains private/instrumented and uninstalled; no A7 speed or audio
 acceptance inferred from work counts.
+
+**Current measurement:** [cost1 suite](snes-a7-cost-suite.md) is staged after a fresh60-file/49-lab archive,141 protected hash checks and clean FAT. A separate baseline diagnostic measures setup, color payload, window helpers, frequency and complete PCM history in aligned replay. Sparse row sampling and a dense cross-check expose observer costs; no QEMU timings or work-count reduction become A7 evidence. Original production core/adapter/progress remain exact. Physical unit costs and candidate longer-span/cache coverage remain pending.
 
 ## Platform identity
 

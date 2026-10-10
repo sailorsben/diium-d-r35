@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "card_writes": 0,
+  "payloads_exact": true,
+  "protected_files_reread": 135,
+  "fat_clean": true,
+  "only_measurement_marker_armed": true,
+  "candidate_installed": false
+}

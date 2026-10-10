@@ -1,0 +1,27 @@
+independent diagnostic pass=0 mode=0 begin
+pass=0 ended; worker-stop/flush complete
+independent diagnostic pass=1 mode=1 begin
+pass=1 ended; worker-stop/flush complete
+independent diagnostic pass=2 mode=2 begin
+pass=2 ended; worker-stop/flush complete
+independent diagnostic pass=3 mode=2 begin
+pass=3 ended; worker-stop/flush complete
+independent diagnostic pass=4 mode=0 begin
+pass=4 ended; worker-stop/flush complete
+independent diagnostic pass=5 mode=1 begin
+pass=5 ended; worker-stop/flush complete
+independent diagnostic pass=6 mode=2 begin
+pass=6 ended; worker-stop/flush complete
+independent diagnostic pass=7 mode=2 begin
+pass=7 ended; worker-stop/flush complete
+independent diagnostic pass=8 mode=0 begin
+pass=8 ended; worker-stop/flush complete
+independent diagnostic pass=9 mode=1 begin
+pass=9 ended; worker-stop/flush complete
+independent diagnostic pass=10 mode=2 begin
+pass=10 ended; worker-stop/flush complete
+independent diagnostic pass=11 mode=2 begin
+pass=11 ended; worker-stop/flush complete
+independent diagnostic pass=12 mode=3 begin
+pass=12 ended; worker-stop/flush complete
+suite end passes=13 failures=0 stop=0

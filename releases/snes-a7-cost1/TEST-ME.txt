@@ -1,0 +1,18 @@
+SNES cost1: measurement only
+
+This boot automatically runs13 independent replay passes: three controls,
+three sparse PPU profiles, six warm hot-path benchmarks, and one dense
+frame320 cross-check. Every pass starts from the same separate Bio Blast
+snapshot and replays the same input. No menu selection or game input is needed.
+
+The attack may fail and restart between passes. Those are separate experiments,
+not successful audio recovery. Wait for the stock launcher. Allow about three
+minutes, including log flushing. Select+Start aborts the current suite; wait
+for the stock launcher before the physical power button.
+
+After powering off, reconnect D:. Archive with build/collect-a7-cost.py before
+any writes. The consumed marker means the next reboot is stock. No production
+window candidate is installed and neither SNES adapter/core is replaced.
+
+Do not power off while a replay or flush is running. Measurement results are
+pending until collection; this suite is not an audio fix.

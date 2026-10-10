@@ -1,0 +1,4 @@
+PASS: 600 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; complete Magitek Bio Blast scene replay
+PASS: measurement leaves native callback batching unchanged; extra split frames=0
+PASS: owned sampled phase ABI measures APU/PPU in 10 frames and stays inactive between samples
+PASS: all three diagnostic modes preserve outputs and state; 252200 benchmark iterations; 200 disjoint phase frames; no clock errors/record overflow

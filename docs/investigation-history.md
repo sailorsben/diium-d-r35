@@ -822,3 +822,21 @@ pre-effect baseline. Enforce measured saving/added costs/break-even/remaining
 deficit/falsifiable prediction before any candidate install. Window gate fails
 because unit costs remain unmeasured. No card writes/rearm/new core. See
 [snes-focus-1-return.md](snes-focus-1-return.md) for calculations and limits.
+
+## A7 cost1 suite and measurement-only handoff - 2026-10-10
+
+User requests measured costs and a diagnostic suite that accounts for logging.
+Separate baseline core retains every renderer decision while timing setup,
+window/clip regions, sampled rows/cache and actual warm source blocks. Dense
+per-row clocks can themselves exhaust the budget, so sparse1/64 row timing and
+one dense cross-check are labeled separately. Full bounded PCM RAM history and
+per-call accepted/pointer/frequency/worker data preserve more than a fault tail.
+Post-pass flushing and sync keep SD writeback outside the next live pass.
+
+Exact outputs/state and consuming-client contracts pass;13 automatic mock
+passes verify replay/lifecycle/log separation. No QEMU duration is A7 evidence.
+Stage measurement after fresh archive/FAT/hash/readback checks; retain old
+production binaries and private progress. The current PCM cadence needs more
+saving than the partial late-call account alone. Do not manufacture e/r/b or a
+passing scorecard from warm payloads that omit longer candidate spans and cache
+interaction. A7 capture is pending. [Procedure and limits](snes-a7-cost-suite.md).

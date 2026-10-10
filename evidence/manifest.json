@@ -5411,6 +5411,54 @@
       "published_sha256": "72da66fc4d04460d8caca82e003e253826626a765e83e9d75071ef0567e03fb9",
       "bytes": 118,
       "normalized": false
+    },
+    {
+      "source": "build/a7-cost-private-v9/equivalence.log",
+      "published": "evidence/verification/snes-a7-cost1/equivalence.log",
+      "source_sha256": "7fb885ed95c8903288d7fd4af06ea63f4b065de64ef3554887ec74b8dbc774ae",
+      "published_sha256": "7fb885ed95c8903288d7fd4af06ea63f4b065de64ef3554887ec74b8dbc774ae",
+      "bytes": 482,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-cost-private-v9/native-check.log",
+      "published": "evidence/verification/snes-a7-cost1/native-check.log",
+      "source_sha256": "d579c2d5159a77bc62ef680afb89ab4d23990ea38884329dcb0a275a1c18d8fe",
+      "published_sha256": "d579c2d5159a77bc62ef680afb89ab4d23990ea38884329dcb0a275a1c18d8fe",
+      "bytes": 1094,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-cost-private-v9/suite-check.log",
+      "published": "evidence/verification/snes-a7-cost1/suite-check.log",
+      "source_sha256": "8177e3accce1cd41373c144289282a95207c91a233d2ae9a5d5fd612981719da",
+      "published_sha256": "8177e3accce1cd41373c144289282a95207c91a233d2ae9a5d5fd612981719da",
+      "bytes": 1136,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-cost-private-v9/runner-abi.txt",
+      "published": "evidence/verification/snes-a7-cost1/runner-abi.txt",
+      "source_sha256": "3d5c1d9335fe186a00ee95b237f31b6c185ac19d2be21ac931cd5d7cbb3d0032",
+      "published_sha256": "3d5c1d9335fe186a00ee95b237f31b6c185ac19d2be21ac931cd5d7cbb3d0032",
+      "bytes": 2465,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T182533Z/independent-cost-readback.json",
+      "published": "evidence/verification/snes-a7-cost1/independent-cost-readback.json",
+      "source_sha256": "f913746fbcc4727b3a67537af66d4f41e43215d02b00edecf60bd5ca01b036ac",
+      "published_sha256": "f435b0b8f7e48006efabc558b1cfea1a1f818655e43cfcceb755bd2eb72f2a1e",
+      "bytes": 194,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T182533Z/chkdsk-independent-cost.txt",
+      "published": "evidence/verification/snes-a7-cost1/chkdsk-independent-cost.txt",
+      "source_sha256": "ce8852dabb9a1b67b1d90c205f326b055f9b75b371c0cbcc0d38c711100bef48",
+      "published_sha256": "c05373c28c645416790354f092e8c99e0cba7529016c38e78fcca1dafa1babb9",
+      "bytes": 2141,
+      "normalized": true
     }
   ]
 }

@@ -1,5 +1,28 @@
 # Changelog
 
+## A7 cost1 diagnostic suite staged; performance gate still pending - 2026-10-10
+
+Build a separate baseline measurement core/owned ARM runner with exclusive
+setup/window regions, sparse1/64 row/cache clocks, dense frame320 cross-check,
+warm actual-path kernels, individual versus32-operation distributions, kernel
+CPU/wall clocks, per-call frequency/worker/PCM observations and32,768-event RAM
+PCM history. Flush after audio join/display drain and sync between independent
+passes. No emulated quota, render decision or production core change.
+
+600 exact comparison frames, four500-call captures, consuming native
+fault/retry/drain/sustained-deficit checks and13 automatic mock passes qualify
+contracts only. QEMU costs discarded; unpriced longer candidate spans and whole
+cache interaction remain explicit. The1.514ms late-call account is distinct
+from about2.436ms needed at the current PCM production-cadence proxy.
+
+Archive60 runtime/progress and49 lab files before staging.141 protected hashes,
+all new payloads/135 independently reread hashes and four fresh FAT checks pass.
+Only measurement is armed; original normal init, production runner/core/adapter,
+stock/current Vesper and private progress preserved. Publish owned runner and
+six bounded verification files; preserve all676 historical evidence hashes.
+No ROM/private state/diagnostic core/runtime dependencies published. See
+[suite](docs/snes-a7-cost-suite.md). Physical A7 e/r/b and verdict remain pending.
+
 ## Focus1 return archived; cycle-derived effect budget and prediction gate - 2026-10-10
 
 Strict read-only collection preserves60 runtime/progress and49 lab files;
