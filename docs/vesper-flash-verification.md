@@ -1,5 +1,9 @@
 # Vesper post-update flash verification
 
+The later [first static-screen update](vesper-static-firmware-update.md) is now
+staged and awaits its own physical/full-image acceptance. This document records
+the completed earlier second-animation verification.
+
 The original second-animation replacement is complete: physical boot accepted
 static D-R35 -> Vesper -> default launcher, and both full8MiB flash reads match
 the intended installed image exactly. Normal SD init is restored, Code.bkp is

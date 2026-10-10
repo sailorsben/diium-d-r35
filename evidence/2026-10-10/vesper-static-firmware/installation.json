@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "run_id": "9cb16d1fda284bdab17d18bc641d7211",
+  "package_sha256": "0012b1016df784ff92d92691d1740b3215bfda005a58b6382aaabffaf5c18b4c",
+  "package_bytes": 5713655,
+  "exact_staged_package_matches": true,
+  "verified_installed_baseline_matches": true,
+  "current_spi_backup_matches": true,
+  "expected_after_vendor_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "normal_init_unchanged": true,
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "protected_mvp_files": 51,
+  "protected_lab_files": 49,
+  "protected_progress_and_stock_match_preupdate": true,
+  "retained_reader_files": 9,
+  "armed_markers": [],
+  "poststage_fat_clean": true,
+  "physical_update": "pending"
+}

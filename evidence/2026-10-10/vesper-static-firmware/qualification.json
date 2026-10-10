@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "test": "check-static-splash: installed Vesper baseline",
+      "passed": true,
+      "stdout": "PASS exact Thumb bitmap pointer/dimension stores and all 614400 referenced bytes; MMIO is RAM, boot ROM and panel not executed\n"
+    },
+    {
+      "test": "check-boot-loader: installed Vesper baseline",
+      "passed": true,
+      "stdout": "PASS exact Thumb table parser/getter, GPAP selection, three-section load and DT initrd bounds with intercepted SPI; kernel not executed\nreads=3 kernel=000c0078/2366616 rootfs=00301d10/3297826 dt=006417ee/10490 entry=02000000\n"
+    },
+    {
+      "test": "check-static-splash: new static Vesper candidate",
+      "passed": true,
+      "stdout": "PASS exact Thumb bitmap pointer/dimension stores and all 614400 referenced bytes; MMIO is RAM, boot ROM and panel not executed\n"
+    },
+    {
+      "test": "check-boot-loader: new static Vesper candidate",
+      "passed": true,
+      "stdout": "PASS exact Thumb table parser/getter, GPAP selection, three-section load and DT initrd bounds with intercepted SPI; kernel not executed\nreads=3 kernel=000c0078/2366616 rootfs=00301d10/3297826 dt=006417ee/10490 entry=02000000\n"
+    },
+    {
+      "test": "Exact vendor updater: compatible first-splash update",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=1 config_calls=6 reads=17665 erases=10 pages=2560 metadata=17e40b24/5d4a6000\nerased_blocks=000000,010000,020000,030000,040000,050000,060000,070000,080000,090000\n"
+    },
+    {
+      "test": "Exact vendor updater: incompatible family",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Exact vendor updater: consistent wrong ZIP CRC",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Exact vendor updater: missing WQW prefix",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Exact vendor updater: already-recorded CRC",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Private firmware output guard",
+      "passed": true
+    }
+  ],
+  "baseline_sha256": "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+  "candidate_sha256": "9f99ec3984f19b38d216cef2cad38eacb2bad9792046900d8fa91262a6e772b9",
+  "expected_after_vendor_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "package_sha256": "0012b1016df784ff92d92691d1740b3215bfda005a58b6382aaabffaf5c18b4c",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "ram_erase_blocks": 10,
+  "ram_page_programs": 2560,
+  "ram_result_matches_vendor_mutated_candidate": true,
+  "boot_code_erase_blocks_rewritten": [
+    "0x0"
+  ],
+  "bitmap_scope": "Exact Thumb pointer/dimension stores into anonymous RAM and 614400 referenced bytes. GPIO/display setup, boot ROM and physical panel not executed.",
+  "loader_scope": "Exact section parser/getter, GPAP selection, kernel/rootfs/DT loads with intercepted SPI. No kernel execution.",
+  "updater_scope": "Exact captured UpdateROM/UpdateROMProc and ZIP decoder. Device/display/reboot seams intercepted; only RAM erased/programmed.",
+  "boot_rom_integrity_contract": "unknown; no matching public primary documentation found; header and executable bytes remain unchanged",
+  "device_access": false,
+  "physical_update": "pending",
+  "external_recovery_qualified": false,
+  "source_sha256": {
+    "build/prepare-vesper-static.py": "985975b2617d21d24767028d415e634aaff2dcdaee1c4cbdf35804b9ef6be0bf",
+    "build/check-vesper-static.py": "c4a4fd1bfd9ec11212d8a214632275c98d14d72c4b0181eacec715b78e044dad",
+    "build/check-static-splash.c": "681a517a19e0f43f337ed0ced48445dfc8ae9d5e1810a587f9ef8f9a56a61d5f",
+    "build/check-boot-loader.c": "2671654d7e1995b3903404401a4db41d42e138c0ff51b9292e77022e9e7127e3",
+    "build/check-vendor-updater.c": "d4a46993a2a059aedf46a76fd092de0cd054c3821ec6aad5774e0199739ba35d"
+  }
+}

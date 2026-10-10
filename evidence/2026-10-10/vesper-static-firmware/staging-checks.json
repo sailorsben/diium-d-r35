@@ -1,0 +1,18 @@
+{
+  "all_checks_passed": true,
+  "checks": [
+    "exact hash-bound candidate/package, qualified sources and vendor-mutated expected image",
+    "wrong card refused before access",
+    "success: exact package only, current installed backup and expected image retained",
+    "health-rollback: original bytes preserved; no owned update left",
+    "existing-update: original bytes preserved; no owned update left",
+    "complete but different flash baseline refused",
+    "competing armed runtime refused"
+  ],
+  "device_access": false,
+  "source_sha256": {
+    "build/manage-vesper-static.py": "799e0bc0b28a98fbc93725d3e54f5066101ac343c78b787eb8ed6c893d8d7820",
+    "build/check-vesper-static-staging.py": "8cb6e0551e3db10f6ea05379c7dac0faee5c73d26d9f8e30ceb44c7ac3194b78"
+  },
+  "limits": "Host staging/baseline/refusal/rollback checks, separate from physical flashing and display acceptance."
+}

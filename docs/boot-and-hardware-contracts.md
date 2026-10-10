@@ -354,3 +354,12 @@ image, not general updater safety or recovery. Returned flash,
 vendor executables, full candidates and packages remain private. Keep the
 actual on-device readback, cold-boot animation/launcher and restore results
 distinct from offline format/algorithm acceptance.
+
+The subsequent [first static Vesper candidate](vesper-static-firmware-update.md)
+changes only the640 x480 RGB565 bitmap at0x8854/614400 bytes in that verified
+installed baseline. Boot instructions/header, kernel/rootfs and second animation
+remain exact. The exact Thumb bitmap-pointer/dimension stores execute against
+anonymous MMIO RAM, and captured updater simulation programs ten64KiB blocks.
+Block0 still contains preserved boot code; boot-ROM integrity is untested.
+Qualified package staged on clean FAT with full card preservation; new physical
+first-screen acceptance and full-image comparison remain pending.

@@ -1,6 +1,10 @@
 # Vesper original-animation SD update — 2026-10-09
 
-**Verified current state - 2026-10-10:** both complete8MiB reads match the
+The subsequent [first static Vesper screen](vesper-static-firmware-update.md)
+is staged for the next SD boot. The evidence below records the completed
+second-animation update and its removed trigger.
+
+**Verified second-animation state - 2026-10-10:** both complete8MiB reads match the
 expected installed Vesper image byte-for-byte. Normal SD init is restored,
 Code.bkp is absent, no test is armed and the final FAT check passes. The user's
 accepted boot remains static D-R35 -> Vesper -> default launcher. First static

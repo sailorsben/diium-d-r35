@@ -1,5 +1,21 @@
 # Investigation history and negative results
 
+## First static Vesper update qualified and staged - 2026-10-10
+
+Replace the exact640 x480 RGB565 bitmap using the accepted animation background.
+Start from the physically verified Vesper-installed image; preserve every byte
+outside bitmap0x8854/614400, including boot instructions/header and second
+animation/rootfs/kernel/tables. Ten offline checks execute the actual Thumb
+bitmap stores/loader and captured updater with RAM-only flash, including refusal
+fixtures. Valid simulation erases ten64KiB blocks/2560 pages; metadata
+17e40b24/5d4a6000. Seven host stage/rollback/card/baseline/refusal checks pass.
+Archive current progress/profile/logs and verified full backup before staging.
+All1,006 original readable card files exact; only qualified Code.bkp added.
+Independent package/init/protected/profile reads and fresh FAT pass. Normal
+init exact and no test armed; user SD update/first-screen boot/full new-image
+verification remain pending. External recovery unqualified, audio unresolved.
+[Exact staged image and next physical/return steps](vesper-static-firmware-update.md).
+
 ## Installed Vesper image verified; normal startup restored - 2026-10-10
 
 Run c4a59205933b4459a9d88ed6aafe5dd2 returns two complete8MiB SPI reads in

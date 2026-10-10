@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "run_id": "9cb16d1fda284bdab17d18bc641d7211",
+  "stage_utc": "2026-10-10T05:41:55.590290+00:00",
+  "archive": "snes-mvp-return-20261010T054138Z",
+  "card_path": "retro/update/Code.bkp",
+  "package_sha256": "0012b1016df784ff92d92691d1740b3215bfda005a58b6382aaabffaf5c18b4c",
+  "package_bytes": 5713655,
+  "baseline_sha256": "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+  "candidate_sha256": "9f99ec3984f19b38d216cef2cad38eacb2bad9792046900d8fa91262a6e772b9",
+  "expected_after_vendor_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "protected_card_files": 1006,
+  "card_inventory_exclusions": [
+    "System Volume Information"
+  ],
+  "first_static_screen": "Vesper replacement",
+  "second_animation": "verified Vesper preserved",
+  "authorization": "User requests replacing first static screen via established SD update path; prior no-programmer risk acceptance retained.",
+  "external_recovery_available": false,
+  "recovery_qualified": false,
+  "physical_update": "pending",
+  "physical_animation": "pending",
+  "status": "staged-and-verified"
+}

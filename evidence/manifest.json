@@ -4739,6 +4739,46 @@
       "published_sha256": "b03bfb5009a954cf474d52d1b85da7a81046f72e801635414871b5d15a8a0d9f",
       "bytes": 1136,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-static-qualified-20261010/preparation.json",
+      "published": "evidence/2026-10-10/vesper-static-firmware/preparation.json",
+      "source_sha256": "2af9b00df8e64993ddf8303db7125ec83f693b9e067a9c1547b4f82632e44381",
+      "published_sha256": "2af9b00df8e64993ddf8303db7125ec83f693b9e067a9c1547b4f82632e44381",
+      "bytes": 2896,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-static-qualified-20261010/qualification.json",
+      "published": "evidence/2026-10-10/vesper-static-firmware/qualification.json",
+      "source_sha256": "9373b435fa3d613d6b50ac46c58dabbc2a4d6ce9bc7dcb30375509a8f7a463f4",
+      "published_sha256": "9373b435fa3d613d6b50ac46c58dabbc2a4d6ce9bc7dcb30375509a8f7a463f4",
+      "bytes": 4609,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-static-qualified-20261010/staging-checks.json",
+      "published": "evidence/2026-10-10/vesper-static-firmware/staging-checks.json",
+      "source_sha256": "01075513573966dd8a2e37f03420a5b3a2494eaa31a3ea4f326b2343154a07e9",
+      "published_sha256": "01075513573966dd8a2e37f03420a5b3a2494eaa31a3ea4f326b2343154a07e9",
+      "bytes": 894,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T054138Z/static-staging.json",
+      "published": "evidence/2026-10-10/vesper-static-firmware/staging.json",
+      "source_sha256": "ec4233575927fcbd72c110f5161a10de7f03240c2e4bd8884fd4eaa36aba56ab",
+      "published_sha256": "ec4233575927fcbd72c110f5161a10de7f03240c2e4bd8884fd4eaa36aba56ab",
+      "bytes": 1300,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T054138Z/static-independent-install.json",
+      "published": "evidence/2026-10-10/vesper-static-firmware/installation.json",
+      "source_sha256": "ff677645ec39810a4f86d4b16230b84c07668a7ed628e684369a42e54f95b688",
+      "published_sha256": "ff677645ec39810a4f86d4b16230b84c07668a7ed628e684369a42e54f95b688",
+      "bytes": 765,
+      "normalized": false
     }
   ]
 }

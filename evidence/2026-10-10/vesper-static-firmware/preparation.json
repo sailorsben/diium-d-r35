@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "baseline_sha256": "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03",
+  "candidate_sha256": "9f99ec3984f19b38d216cef2cad38eacb2bad9792046900d8fa91262a6e772b9",
+  "expected_after_vendor_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "package_sha256": "0012b1016df784ff92d92691d1740b3215bfda005a58b6382aaabffaf5c18b4c",
+  "package_bytes": 5713655,
+  "bitmap_offset": "0x8854",
+  "bitmap_bytes": 614400,
+  "dimensions": [
+    640,
+    480
+  ],
+  "pixel_format": "little-endian RGB565",
+  "original_bitmap_sha256": "88a6f47f3e29e4bb1da2d854ea840272897f24fa3b90efebf5a72bd97921b975",
+  "replacement_bitmap_sha256": "82616f0a09e5cb91633dc5eacf2eb1a36216de0f70e0af2375d2681482c91946",
+  "accepted_ui_sha256": "a4b4a573f9120cc91a113a692489f6ad7a51f8f6c36831535cbb2428b4dfb874",
+  "candidate_changes_only_bitmap": true,
+  "second_animation_rootfs_kernel_tables_unchanged": true,
+  "boot_header_and_code_unchanged": true,
+  "changed_64k_blocks": [
+    "0x0",
+    "0x10000",
+    "0x20000",
+    "0x30000",
+    "0x40000",
+    "0x50000",
+    "0x60000",
+    "0x70000",
+    "0x80000",
+    "0x90000"
+  ],
+  "vendor_metadata": {
+    "crc_offset": "0x100",
+    "date_offset": "0x104",
+    "crc32": "17e40b24",
+    "zip_dos_time": "5d4a6000"
+  },
+  "files": {
+    "baseline-installed.bin": {
+      "bytes": 8388608,
+      "sha256": "d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03"
+    },
+    "spi-vesper-static.bin": {
+      "bytes": 8388608,
+      "sha256": "9f99ec3984f19b38d216cef2cad38eacb2bad9792046900d8fa91262a6e772b9"
+    },
+    "expected-after-vendor.bin": {
+      "bytes": 8388608,
+      "sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd"
+    },
+    "fixture-compatible.bkp": {
+      "bytes": 5713655,
+      "sha256": "0012b1016df784ff92d92691d1740b3215bfda005a58b6382aaabffaf5c18b4c"
+    },
+    "fixture-incompatible.bkp": {
+      "bytes": 5713655,
+      "sha256": "18cb7847570c50f4f2c45b88d173519ac3eee6e480897b5bef77ce3ffe40c876"
+    },
+    "fixture-consistent-bad-crc.bkp": {
+      "bytes": 5713655,
+      "sha256": "a36943b68adc3aa55b8441976400b350f950da7edbaddaf58a18f17194bdb17a"
+    },
+    "fixture-missing-prefix.bkp": {
+      "bytes": 5713652,
+      "sha256": "7025f07954cbc8d3a3fdb8276517ed2c29cddd8e98557e254b1e93bd02ce9750"
+    },
+    "fixture-already-recorded-baseline.bin": {
+      "bytes": 8388608,
+      "sha256": "8eb838a2ecaeb220d666bc7a28a1a31471e7f3c60268ae2947e85a816fb7372c"
+    },
+    "vesper-static.rgb565": {
+      "bytes": 614400,
+      "sha256": "82616f0a09e5cb91633dc5eacf2eb1a36216de0f70e0af2375d2681482c91946"
+    }
+  },
+  "device_access": false,
+  "staged_to_card": false,
+  "physical_update": "pending",
+  "limits": "Candidate only; loader/updater and bitmap-reference execution qualify separately. Boot ROM and physical display acceptance remain untested."
+}
