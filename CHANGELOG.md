@@ -1,5 +1,14 @@
 # Changelog
 
+## First SD update report:100% then power-off — 2026-10-09
+
+User reports battery-only startup, progress100% and power-off without observed
+automatic restart. Re-inspect the exact captured completion path: successful
+programming return invokes sync then reboot(0x01234567). Correct the physical
+instruction: normal manual power-on once with card inserted; no ten-minute wait
+in an actually powered-off device. Boot/animation/full readback and recovery
+remain unverified; no new card access or writes. Preserve exact current resume.
+
 ## Authorized SD firmware staging before external recovery — 2026-10-09
 
 User explicitly chooses SD update now with programmer purchase if boot fails.

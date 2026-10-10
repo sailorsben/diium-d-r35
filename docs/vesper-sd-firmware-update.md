@@ -1,7 +1,17 @@
 # Vesper original-animation SD update — 2026-10-09
 
-The exact qualified update is **staged on D:**. Physical flashing and the
-replacement animation remain pending. The user explicitly chose to proceed
+**First physical report:** battery-only startup reached100% progress, then the
+device powered off; USB charging was not connected and no automatic restart was
+observed. Normal manual power-on once with the SD inserted is the current next
+step. The conservative ten-minute instruction below applies to an active or
+uncertain update, not waiting for writes in an actually powered-off device.
+Exact completion re-inspection confirms successful programming return -> sync
+at0x13990 -> reboot(0x01234567) at0x1399c. The report fits that path but is not
+proof of actual flash equality, new firmware boot or the replacement animation.
+No postupdate logs/readback collected yet.
+
+The exact qualified update was **staged on D:**. Physical flash verification and
+replacement-animation boot acceptance remain pending. The user explicitly chose to proceed
 through the SD updater before obtaining external recovery equipment, accepting
 that a failed boot could require purchasing a programmer and restoring the chip.
 This supersedes the earlier wait-for-equipment execution gate. Recovery is still
