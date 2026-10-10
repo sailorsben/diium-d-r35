@@ -3,7 +3,9 @@
 Later current state: [Vesper replaces the original second animation on physical
 boot](vesper-sd-firmware-update.md) after the authorized SD update. User reports
 static D-R35 -> Vesper -> default launcher following manual power-on. Exact full
-flash readback, update-trigger removal/repeat boot and recovery remain pending.
+flash readback/repeat boot and recovery remain pending. The returned card is now
+archived and update trigger removed on clean FAT; the [unchanged read-only
+verification reader is armed](vesper-flash-verification.md).
 Historical pending statements below describe their original investigation stage.
 
 Exact privately preserved SD `vrtemu`: SHA256

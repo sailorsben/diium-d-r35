@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "collection_archive": "snes-mvp-return-20261010T050003Z",
+  "cleanup_archive": "snes-mvp-return-20261010T050039Z",
+  "complete_collection": true,
+  "protected_mvp_progress_files": 51,
+  "protected_lab_files": 49,
+  "stock_production_files_matching_preupdate": 5,
+  "all_protected_mvp_progress_bytes_match_preupdate": true,
+  "exact_update_trigger_removed": true,
+  "pre_post_removal_fat_clean": true,
+  "update_package_sha256": "5263abf58bdfd161e90811e6cc0ecd233657ac8328a924185234c98af2ad8499",
+  "cleanup_flash_writes": false,
+  "animation_acceptance": "user reports static D-R35 -> Vesper -> default launcher",
+  "full_flash_readback": "pending",
+  "audio": "unresolved"
+}

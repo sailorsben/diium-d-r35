@@ -2,8 +2,10 @@
 
 **Returned successfully:** two complete8MiB reads match in103.771059 seconds;
 FAT clean, protected progress/results preserved and normal init restored.
-Nothing is armed. [Physical return and boot-image inspection](spi-readback-return.md)
-supersede the historical install/pending procedure below.
+That original profile was unarmed after restoration. It is now retained intact
+and the same reader is [armed with a fresh run for post-Vesper verification](vesper-flash-verification.md).
+The [original physical return and boot-image inspection](spi-readback-return.md)
+and current verification handoff supersede the historical install procedure below.
 
 The [physical identification](spi-identify-return.md) repeatedly reads
 `C8 40 17`. Primary manufacturer/kernel references establish the nominal8MiB

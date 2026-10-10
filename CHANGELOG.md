@@ -1,5 +1,18 @@
 # Changelog
 
+## Post-update return, trigger cleanup and read-only verification rearm
+
+Archive51 MVP/progress,49 lab and all prior profiles/logs before card changes.
+Stock runtime/core and protected progress match pre-update hashes; fresh FAT
+passes before/after removing the exact Code.bkp trigger. Keep all9 prior reader
+files intact via guarded archived rename; reuse unchanged qualified ARM reader/
+wrapper and fresh run identity.8 host checks qualify manager rearm/rollback,
+directory-move/update refusal and full-byte match/difference/incomplete analysis.
+Independent installed reader/init/marker/retained-profile/protected hashes and
+post-install FAT pass. Only read-only verification armed; full8MiB comparison
+and boot without updater trigger pending. Physical splash acceptance retained;
+no new flash program/erase, audio unchanged. [Run and physical procedure](docs/vesper-flash-verification.md).
+
 ## Original second-splash replacement physically accepted — 2026-10-09
 
 User confirms normal manual power-on shows static D-R35, then Vesper replacing

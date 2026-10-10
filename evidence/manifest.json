@@ -4707,6 +4707,22 @@
       "published_sha256": "940e3f95cd62f2cc9f603ba19ab76832539fd6d3961f93661c5109e237d90c71",
       "bytes": 992,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T050039Z/firmware-return.json",
+      "published": "evidence/2026-10-09/vesper-flash-verification-install/return.json",
+      "source_sha256": "116118de279db0dcacbf7ebe3e81dc29a9a23cba2bd49a8734b5f8e92eab3b74",
+      "published_sha256": "6c24e0ec6b636e630154a94753cb8d862ea2dad60af743d81b826134e65ee01b",
+      "bytes": 696,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T050947Z/vesper-verification-rearm.json",
+      "published": "evidence/2026-10-09/vesper-flash-verification-install/installation.json",
+      "source_sha256": "f80364b5e51e8ab7542760359e495a472221d0c8625d48ac82d80d778522cf48",
+      "published_sha256": "e976f67029c60c7bf5235a9d0901bd2782a7357d948181caeda2b878e642947b",
+      "bytes": 1955,
+      "normalized": true
     }
   ]
 }

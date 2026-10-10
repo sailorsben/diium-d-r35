@@ -1,5 +1,10 @@
 # Vesper original-animation SD update — 2026-10-09
 
+**Current return:** card archived, exact Code.bkp removed after clean FAT checks,
+stock/runtime/progress preserved. The unchanged two-pass read-only reader is
+armed for full Vesper-image verification. [Current run and physical procedure](vesper-flash-verification.md)
+supersede the historical return instructions below; no further update is armed.
+
 **Physical boot accepted:** after normal manual power-on, the user reports
 static D-R35 -> Vesper replacing the regular D-R35 animation -> default launcher.
 This is the requested original second-splash replacement, with the first static
@@ -8,8 +13,8 @@ based on the user's physical observation, not a collected photograph/video or
 full SPI readback. The card has not returned; update-trigger removal, exact full
 flash comparison and another cold boot without the trigger remain pending.
 
-Current next action: normal power-down, return D:, collect/archive first, then
-remove only the exact known update package on healthy FAT. Do not reflash.
+That acceptance checkpoint's next action was card return and trigger removal;
+both are now complete. Do not reflash.
 
 **First physical report:** battery-only startup reached100% progress, then the
 device powered off; USB charging was not connected and no automatic restart was
