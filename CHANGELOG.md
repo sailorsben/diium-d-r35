@@ -1,5 +1,20 @@
 # Changelog
 
+## Both Vesper screens verified; normal startup restored - 2026-10-10
+
+Returned run `db7079b5f61b4ee5b7d36d22e58472fd` completes two 8 MiB SPI reads
+in 103.790618 seconds. Both match the expected programmed image byte for byte,
+SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd`,
+CRC32 `cdf3f0aa`. Marker/run, wrapper exit, ID/status/counts and CRC checks pass.
+Archive twice before fresh FAT/run/init gates and original startup restoration.
+Independent reread verifies normal init, no Code.bkp/armed markers, five stock
+hashes, 51 protected MVP/progress files, 49 lab files, both nine-file prior reader
+profiles and all returned captures. Final FAT clean; no flash/config writes.
+The user's earlier Vesper static -> Vesper animation -> stock launcher report
+and complete installed equality finish both requested replacements. Ready for
+normal use with no verification delay. External recovery unqualified; audio
+unresolved. [Verified result](docs/vesper-static-firmware-update.md).
+
 ## Both Vesper boot screens accepted; read-only verification armed - 2026-10-10
 
 User explicitly confirms Vesper static -> Vesper animation -> stock launcher.

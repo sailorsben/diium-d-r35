@@ -4811,6 +4811,38 @@
       "published_sha256": "6cfb617e7d1402a44e3481e6629bd56400e4dd3ff664d1588e5eb5d9433af638",
       "bytes": 840,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T060245Z/readback-analysis.json",
+      "published": "evidence/2026-10-10/vesper-static-verification/readback-analysis.json",
+      "source_sha256": "d1c0972e2819b7870a9fdb34d7406936b157c00ab0c09ac83d01a22370b4a59e",
+      "published_sha256": "d1c0972e2819b7870a9fdb34d7406936b157c00ab0c09ac83d01a22370b4a59e",
+      "bytes": 1123,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T060907Z/vesper-flash-verification.json",
+      "published": "evidence/2026-10-10/vesper-static-verification/flash-comparison.json",
+      "source_sha256": "138c8e99d0695462ef9cadfbddceb1e213bcc040cb352e07af7f2d0f8c879082",
+      "published_sha256": "138c8e99d0695462ef9cadfbddceb1e213bcc040cb352e07af7f2d0f8c879082",
+      "bytes": 508,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T060907Z/readback-restoration.json",
+      "published": "evidence/2026-10-10/vesper-static-verification/restoration.json",
+      "source_sha256": "9c7a46ec7d5627402a8b7a0307f281ab34709ffa81589de93b0b3b78429b0867",
+      "published_sha256": "9c7a46ec7d5627402a8b7a0307f281ab34709ffa81589de93b0b3b78429b0867",
+      "bytes": 117,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T060907Z/static-verification-restored-card.json",
+      "published": "evidence/2026-10-10/vesper-static-verification/restored-card.json",
+      "source_sha256": "41ad72cf6fd20ec39d49dc1bd413e47776f497ca11d24f67eaec6b419f5cd2fd",
+      "published_sha256": "41ad72cf6fd20ec39d49dc1bd413e47776f497ca11d24f67eaec6b419f5cd2fd",
+      "bytes": 1377,
+      "normalized": false
     }
   ]
 }

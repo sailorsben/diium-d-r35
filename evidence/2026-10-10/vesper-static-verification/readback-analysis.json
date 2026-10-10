@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "marker_matches": true,
+  "errors": [],
+  "result": {
+    "kind": "result",
+    "version": 1,
+    "errno": 0,
+    "stage": "readback-complete",
+    "owner_pid": 0,
+    "operations": 4111,
+    "capacity_bytes": 8388608,
+    "block_bytes": 4096,
+    "bytes": [
+      8388608,
+      8388608
+    ],
+    "crc32": [
+      "cdf3f0aa",
+      "cdf3f0aa"
+    ],
+    "byte_compared": true,
+    "elapsed_ns": 103790618000,
+    "mode": 1024,
+    "bits": 8,
+    "default_speed_hz": 20000000,
+    "transfer_speed_limit_hz": 1000000,
+    "status_before": 0,
+    "status_after": 0,
+    "ids": [
+      "c84017c84017",
+      "c84017c84017",
+      "c84017c84017"
+    ],
+    "timed_out": false,
+    "reap_pending": false,
+    "flash_writes": false,
+    "global_config_writes": false
+  },
+  "pass_sha256": [
+    "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+    "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd"
+  ],
+  "limits": "Two matching 8-MiB SPI reads only; layout, boot-image ownership, writes and recovery are not qualified."
+}

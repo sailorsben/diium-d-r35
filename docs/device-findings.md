@@ -2,7 +2,7 @@
 
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage state:** user accepts [both Vesper screens](vesper-static-firmware-update.md): Vesper static -> Vesper animation -> stock launcher. Returned card/progress archived; exact Code.bkp removed after clean FAT checks. Unchanged read-only reader armed for the new expected full-image SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd`. Fresh run/init/rollback, stock/progress/retained-profile hashes and final FAT pass. Full installed equality and this next boot without the update trigger remain pending. External write recovery unqualified; audio unresolved.
+**Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. The reader executed without Code.bkp; original normal SD init restored, no test armed, stock/progress and both prior reader profiles unchanged, final FAT clean. Ready for normal use. External write recovery unqualified; audio unresolved.
 
 ## Platform identity
 

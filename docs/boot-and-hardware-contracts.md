@@ -362,7 +362,10 @@ remain exact. The exact Thumb bitmap-pointer/dimension stores execute against
 anonymous MMIO RAM, and captured updater simulation programs ten64KiB blocks.
 Block0 still contains preserved boot code; boot-ROM integrity is untested.
 The user subsequently confirms successful flash and Vesper static -> Vesper
-animation -> stock launcher. Returned card archived, exact update trigger
-removed on clean FAT and unchanged read-only reader armed for the NEW expected
-image. First-screen/normal boot acceptance passes; full-image comparison remains
-pending. This does not recover the boot-ROM policy or qualify external recovery.
+animation -> stock launcher. After trigger removal, two complete 8 MiB reads
+match the new expected programmed image byte for byte, SHA256
+`509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd`.
+Original normal SD init is restored through fresh FAT/run/hash gates; no update
+or test is armed, stock/progress and prior reader profiles remain exact, final
+FAT clean. Both screens and this entire installed image are accepted. The
+boot-ROM policy and external recovery remain unqualified.

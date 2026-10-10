@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "run_id": "db7079b5f61b4ee5b7d36d22e58472fd",
+  "capture_complete": true,
+  "full_image_matches": true,
+  "expected_full_image_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "capacity_bytes": 8388608,
+  "pass_sha256": [
+    "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+    "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd"
+  ],
+  "pass_crc32": [
+    "cdf3f0aa",
+    "cdf3f0aa"
+  ],
+  "elapsed_ns": 103790618000,
+  "normal_init_restored": true,
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "installed_reader_wrapper_manifest_match": true,
+  "production_hashes_match_preupdate": true,
+  "protected_mvp_files": 51,
+  "protected_lab_files": 49,
+  "protected_progress_matches_preupdate": true,
+  "retained_prior_reader_profiles": 2,
+  "retained_prior_reader_files": 18,
+  "returned_reader_files": 9,
+  "returned_reader_files_match_archive": true,
+  "update_trigger_absent": true,
+  "armed_markers": [],
+  "postrestore_fat_clean": true,
+  "flash_writes": false,
+  "global_config_writes": false,
+  "additional_visual_report_collected": false,
+  "limits": "Both Vesper screens were previously accepted by the user; this return verifies the entire installed image. External write recovery is unqualified and MVP1.18 audio remains unresolved."
+}

@@ -2,10 +2,42 @@
 
 **Both screens physically accepted:** the user reports "Reconnected, flash
 worked" and explicitly confirms Vesper static -> Vesper animation -> stock
-launcher. First-screen and normal startup acceptance pass. Exact full installed
-SPI equality remains pending; appearance is the user's report, not a photo/video.
+launcher. **Full installed image verified and normal startup restored** on the
+subsequent readback return. Appearance is the user's report; returned captures
+independently establish complete image equality.
 
-## Current return and read-only verification
+## Completed full-image verification and restoration
+
+Run `db7079b5f61b4ee5b7d36d22e58472fd` returns both complete 8 MiB passes in
+103.790618 seconds. Each matches the new expected programmed image byte for
+byte, SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd`,
+CRC32 `cdf3f0aa`. Marker/run, wrapper exit, IDs/status/operation count,
+lengths and CRCs pass; no timeout, pending child, flash or global config writes.
+
+Initial return archive `device-evidence/snes-mvp-return-20261010T060245Z` and
+restoration archive `snes-mvp-return-20261010T060907Z` preserve current logs,
+private progress, full captures and both previous reader profiles before
+restoring normal SD init through fresh FAT/run/hash checks.
+
+Independent direct card reads confirm the original init SHA256
+`b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7`,
+exact reader/wrapper/manifest and full captures, five stock/runtime hashes,
+51 protected MVP/progress files against pre-update bytes, 49 lab files,
+18 files in the two prior reader profiles and all nine returned reader files.
+Code.bkp and all armed markers are absent. Final FAT clean; results remain on
+the card and archived locally. No additional visual report supplied on this
+return; the previous accepted boot sequence remains the appearance evidence.
+
+[Returned reader analysis](../evidence/2026-10-10/vesper-static-verification/readback-analysis.json),
+[full image comparison](../evidence/2026-10-10/vesper-static-verification/flash-comparison.json),
+[startup restoration](../evidence/2026-10-10/vesper-static-verification/restoration.json),
+[independent restored-card checks](../evidence/2026-10-10/vesper-static-verification/restored-card.json).
+
+Both requested boot-screen replacements are complete. Safely eject the card
+for normal use; the verification delay is removed. External write recovery is
+unqualified and MVP1.18 audio remains unresolved. No SNES test is armed.
+
+## Historical return and verification installation
 
 Initial archive `device-evidence/snes-mvp-return-20261010T054957Z` and cleanup
 archive `snes-mvp-return-20261010T055009Z` preserve 51 MVP/progress files, 49 lab files,
@@ -31,7 +63,7 @@ writes. Target SHA is the new expected `509cdc...622d9fd` listed below.
 [reader installation](../evidence/2026-10-10/vesper-static-verification-install/installation.json),
 [independent installed checks](../evidence/2026-10-10/vesper-static-verification-install/independent-install.json).
 
-## Next physical verification step
+## Historical physical verification step
 
 Safely eject D:, insert while handheld off and cold boot. Allow up to five
 minutes for the stock launcher; the identical reader previously finished in
@@ -129,10 +161,10 @@ Full images, updater packages/vendor binaries and private progress remain local.
 4. Once the launcher is stable, use the normal physical power button, then reconnect
    the SD card as D: for archive/trigger removal and full flash verification.
 
-## Exact return procedure
+## Historical return procedure
 
-Archive before changing the card. These commands are for the next return, not
-another update now:
+Archive before changing the card. These commands record the completed trigger
+removal and readback installation:
 
 ```powershell
 python build/manage-vesper-static.py collect
@@ -157,5 +189,5 @@ These wrappers bind the established verification helper to the new expected
 image without changing its ARM reader, source qualification or fixed 05/9f/03
 commands. Preserve any mismatch/incomplete return; never reflash automatically.
 Restoration archives first and checks fresh FAT/run/init/rollback identity.
-Physical appearance is accepted by the user's report above; full installed
-equality remains pending. MVP1.18 audio unresolved and no SNES test armed.
+Physical appearance and full installed equality are accepted as recorded above.
+Normal SD startup is restored; MVP1.18 audio unresolved and no SNES test armed.
