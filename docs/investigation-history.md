@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Explicit1.19 rearm for proper exit - 2026-10-10
+
+Ben requests rearming the same installed release to exit properly. Archive56
+returned MVP/progress files and49 lab files before mutation; FAT is clean.
+Exact1.19 payload, current stock/Vesper boot baseline, private progress and27
+reader files verify across138 protected hashes. Only the one-shot marker is
+recreated. This is an authorized lifecycle retry, not new audio/performance
+acceptance or a changed candidate. Select+Start opens the game menu; choose
+Exit game and wait for the stored-save status before power off.
+
 ## SNES1.19 demand-driven color rows - 2026-10-10
 
 Return to the recovered1.18 Bio Blast deficit after completing both boot

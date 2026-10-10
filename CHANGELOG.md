@@ -1,5 +1,15 @@
 # Changelog
 
+## SNES1.19 rearmed for proper game exit - 2026-10-10
+
+User explicitly requests rearming the unchanged build to exit properly.
+Archive56 returned MVP/progress files and49 lab files before a clean read-only
+FAT check. Verify exact1.19 payload and138 current protected file hashes,
+including27 reader files and the current Vesper/stock boot baseline. Recreate
+only the SNES one-shot marker; all archived bytes remain exact. No payload/save
+or flash changes and no new audio acceptance inferred.
+[Rearm receipt](evidence/2026-10-10/snes-mvp-1.19-rearm/rearm.json).
+
 ## SNES1.19 demand-driven colors qualified and armed - 2026-10-10
 
 Resume SNES from the recovered1.18 Bio Blast production deficit. Test index/depth

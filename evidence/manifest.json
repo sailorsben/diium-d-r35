@@ -5091,6 +5091,14 @@
       "published_sha256": "5843199c21badfc42cf64a25573d791348983ca32f7c2111b28d9d4ea0e0d52b",
       "bytes": 656,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T070839Z/rearm-1.19.json",
+      "published": "evidence/2026-10-10/snes-mvp-1.19-rearm/rearm.json",
+      "source_sha256": "cf7fda61c9e949b698b7817c22889ee768ea1f4300d8a4dec3584ad3096a0410",
+      "published_sha256": "cf7fda61c9e949b698b7817c22889ee768ea1f4300d8a4dec3584ad3096a0410",
+      "bytes": 564,
+      "normalized": false
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "version": "1.19",
+  "rearmed_utc": "2026-10-10T07:08:42.886354+00:00",
+  "archive_before_writes": "snes-mvp-return-20261010T070839Z",
+  "fat_clean": true,
+  "exact_release_verified": true,
+  "only_snes_armed": true,
+  "already_armed": false,
+  "card_writes": 1,
+  "protected_current_files_verified": 138,
+  "all_returned_progress_and_logs_preserved": true,
+  "firmware_update_trigger_absent": true,
+  "hardware_audio_result": "not inferred from rearm",
+  "intent": "User requested another launch to exit properly; no payload or save changes"
+}
