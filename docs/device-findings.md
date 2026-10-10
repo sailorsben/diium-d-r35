@@ -2,7 +2,7 @@
 
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
-**Current boot/storage state:** [first static Vesper replacement is staged](vesper-static-firmware-update.md); physical update/first-screen acceptance and new full SPI comparison are pending. Candidate changes only the bitmap, preserving verified second animation/rootfs/kernel and boot instructions. Ten offline ARM and seven host staging checks pass; all 1,006 original card files unchanged, normal init exact, no test armed, FAT clean. Last fully verified installed image remains the [accepted second-animation update](vesper-flash-verification.md), SHA d20301be923288e6ace49b43dd8cce306855ded8cd961643e5ee14854d9e6f03. External write recovery unqualified; audio unresolved.
+**Current boot/storage state:** user accepts [both Vesper screens](vesper-static-firmware-update.md): Vesper static -> Vesper animation -> stock launcher. Returned card/progress archived; exact Code.bkp removed after clean FAT checks. Unchanged read-only reader armed for the new expected full-image SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd`. Fresh run/init/rollback, stock/progress/retained-profile hashes and final FAT pass. Full installed equality and this next boot without the update trigger remain pending. External write recovery unqualified; audio unresolved.
 
 ## Platform identity
 

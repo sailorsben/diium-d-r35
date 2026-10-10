@@ -1,5 +1,21 @@
 # Investigation history and negative results
 
+## Both Vesper boot screens accepted; read-only verification armed - 2026-10-10
+
+User explicitly confirms Vesper static -> Vesper animation -> stock launcher.
+Archived 51 MVP/progress files, 49 lab files, profiles/root/display logs and the
+exact package before removing Code.bkp through fresh FAT checks. Stock/progress
+hashes remain exact. Retained all nine second-animation capture files and nine
+older factory-reader files; reused the unchanged qualified reader/wrapper with
+fresh run `db7079b5f61b4ee5b7d36d22e58472fd`.
+Independent marker/no-stale-results/init/rollback/reader/manifest/protected/
+retained-profile checks and post-arm FAT pass. Only read-only reader armed,
+targeting the new expected full image, SHA256
+`509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd`.
+Full 8 MiB equality and the next boot without the trigger are pending. First/second
+appearance acceptance is the user's report. External recovery unqualified;
+audio unchanged. [Current physical verification/return](vesper-static-firmware-update.md).
+
 ## First static Vesper update qualified and staged - 2026-10-10
 
 Replace the exact640 x480 RGB565 bitmap using the accepted animation background.

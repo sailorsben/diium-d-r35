@@ -1,9 +1,51 @@
 # First static Vesper screen - 2026-10-10
 
-The first-screen update is **staged and independently verified on D:**. Physical
-flashing and the new boot sequence remain pending. The expected order is Vesper
-static -> existing Vesper animation -> default launcher. The previously installed
-second animation has already passed physical boot and full-image readback.
+**Both screens physically accepted:** the user reports "Reconnected, flash
+worked" and explicitly confirms Vesper static -> Vesper animation -> stock
+launcher. First-screen and normal startup acceptance pass. Exact full installed
+SPI equality remains pending; appearance is the user's report, not a photo/video.
+
+## Current return and read-only verification
+
+Initial archive `device-evidence/snes-mvp-return-20261010T054957Z` and cleanup
+archive `snes-mvp-return-20261010T055009Z` preserve 51 MVP/progress files, 49 lab files,
+all prior profiles/root/display logs and the exact package before removal.
+Fresh pre/post-removal FAT checks pass. Only the known Code.bkp is removed;
+stock/protected progress remain exact. This does not undo internal flash.
+
+Reader run `db7079b5f61b4ee5b7d36d22e58472fd`, preservation/rearm archive
+`snes-mvp-return-20261010T055025Z`, installation `snes-mvp-return-20261010T055030Z`.
+Reuse unchanged spi-readback-1 with fixed 05/9f/03 operations only. Retain all nine
+second-animation-reader files under
+`retro/spi-readback.pre-vesper-2ef5b65b19664fbc934a7460000e8eee`; all nine factory
+reader files in the earlier parked profile also stay exact. No capture deleted.
+
+Independent direct card reads verify reader/wrapper/manifest, new marker/run and
+no stale results, patched init and original rollback, 51 protected MVP/49 lab/
+18 retained reader files, pre-update stock/progress hashes, absence of Code.bkp
+and only the reader armed. Fresh final FAT passes. No flash or global config
+writes. Target SHA is the new expected `509cdc...622d9fd` listed below.
+
+[Physical startup report](../evidence/2026-10-10/vesper-static-verification-install/physical-boot.json),
+[archived cleanup](../evidence/2026-10-10/vesper-static-verification-install/cleanup.json),
+[reader installation](../evidence/2026-10-10/vesper-static-verification-install/installation.json),
+[independent installed checks](../evidence/2026-10-10/vesper-static-verification-install/independent-install.json).
+
+## Next physical verification step
+
+Safely eject D:, insert while handheld off and cold boot. Allow up to five
+minutes for the stock launcher; the identical reader previously finished in
+103.776166 seconds, so Vesper may animate about two minutes. Once the launcher
+is stable, use the physical power button and reconnect D:. If still at splash
+after five minutes, report it and return normally for incomplete-run review.
+The 240-second child deadline cannot guarantee recovery from a kernel-blocked child.
+
+On that return, run `python build/manage-vesper-static.py verify-collect` before
+changes, then healthy `verify-restore`. Both complete 8 MiB passes must match the
+new expected image including vendor metadata. Preserve any mismatch, never
+automatically reflash. Boot without the update trigger/full equality remain
+pending; external write recovery is unqualified and MVP1.18 audio unresolved.
+The staging/update instructions below record the completed earlier steps.
 
 ## Exact change and qualification
 
@@ -75,7 +117,7 @@ Curated [preparation](../evidence/2026-10-10/vesper-static-firmware/preparation.
 [independent installed checks](../evidence/2026-10-10/vesper-static-firmware/installation.json).
 Full images, updater packages/vendor binaries and private progress remain local.
 
-## Next physical step
+## Historical physical update procedure
 
 1. With sufficient battery charge, safely eject D:, insert the card while the
    handheld is off, and turn it on normally.
@@ -115,5 +157,5 @@ These wrappers bind the established verification helper to the new expected
 image without changing its ARM reader, source qualification or fixed 05/9f/03
 commands. Preserve any mismatch/incomplete return; never reflash automatically.
 Restoration archives first and checks fresh FAT/run/init/rollback identity.
-Physical appearance and full installed equality remain pending. MVP1.18 audio
-remains unresolved and no SNES test is armed.
+Physical appearance is accepted by the user's report above; full installed
+equality remains pending. MVP1.18 audio unresolved and no SNES test armed.

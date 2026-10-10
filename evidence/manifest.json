@@ -4779,6 +4779,38 @@
       "published_sha256": "ff677645ec39810a4f86d4b16230b84c07668a7ed628e684369a42e54f95b688",
       "bytes": 765,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T055009Z/static-physical-boot.json",
+      "published": "evidence/2026-10-10/vesper-static-verification-install/physical-boot.json",
+      "source_sha256": "aca04354494def59d8c67750cbd613461cb5fa37c89379eb054e0d64824c9c9c",
+      "published_sha256": "aca04354494def59d8c67750cbd613461cb5fa37c89379eb054e0d64824c9c9c",
+      "bytes": 704,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T055009Z/static-cleanup-summary.json",
+      "published": "evidence/2026-10-10/vesper-static-verification-install/cleanup.json",
+      "source_sha256": "12ddbf0252ddbd666f32af5d821b59d5292b033d86d5023c5de3c64f53cee487",
+      "published_sha256": "12ddbf0252ddbd666f32af5d821b59d5292b033d86d5023c5de3c64f53cee487",
+      "bytes": 635,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T055025Z/vesper-verification-rearm.json",
+      "published": "evidence/2026-10-10/vesper-static-verification-install/installation.json",
+      "source_sha256": "5c26455e1e3c8db866cfbee1a640f50b7511e48111b7f77b7f308b7f572a4c1b",
+      "published_sha256": "5c26455e1e3c8db866cfbee1a640f50b7511e48111b7f77b7f308b7f572a4c1b",
+      "bytes": 1233,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T055030Z/static-verification-install.json",
+      "published": "evidence/2026-10-10/vesper-static-verification-install/independent-install.json",
+      "source_sha256": "6cfb617e7d1402a44e3481e6629bd56400e4dd3ff664d1588e5eb5d9433af638",
+      "published_sha256": "6cfb617e7d1402a44e3481e6629bd56400e4dd3ff664d1588e5eb5d9433af638",
+      "bytes": 840,
+      "normalized": false
     }
   ]
 }

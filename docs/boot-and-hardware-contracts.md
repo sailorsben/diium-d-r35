@@ -361,5 +361,8 @@ installed baseline. Boot instructions/header, kernel/rootfs and second animation
 remain exact. The exact Thumb bitmap-pointer/dimension stores execute against
 anonymous MMIO RAM, and captured updater simulation programs ten64KiB blocks.
 Block0 still contains preserved boot code; boot-ROM integrity is untested.
-Qualified package staged on clean FAT with full card preservation; new physical
-first-screen acceptance and full-image comparison remain pending.
+The user subsequently confirms successful flash and Vesper static -> Vesper
+animation -> stock launcher. Returned card archived, exact update trigger
+removed on clean FAT and unchanged read-only reader armed for the NEW expected
+image. First-screen/normal boot acceptance passes; full-image comparison remains
+pending. This does not recover the boot-ROM policy or qualify external recovery.

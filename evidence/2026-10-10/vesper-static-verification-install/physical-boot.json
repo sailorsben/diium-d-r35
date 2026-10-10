@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "recorded_utc": "2026-10-10T05:53:33.033061+00:00",
+  "staging_run_id": "9cb16d1fda284bdab17d18bc641d7211",
+  "evidence_source": "User physical-device reports in this conversation",
+  "initial_report": "Reconnected, flash worked.",
+  "startup_confirmation": "Yes, both Vesper screens then launcher",
+  "observed_order": [
+    "Vesper static",
+    "Vesper animation",
+    "stock launcher"
+  ],
+  "physical_flash_and_boot_accepted": true,
+  "first_static_appearance_accepted": true,
+  "second_animation_preserved": true,
+  "photo_or_video_collected": false,
+  "full_installed_image_comparison": "pending",
+  "external_write_recovery_qualified": false,
+  "audio_failure": "unresolved"
+}

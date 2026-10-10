@@ -7,6 +7,6 @@
   "rgb565_sha256": "82616f0a09e5cb91633dc5eacf2eb1a36216de0f70e0af2375d2681482c91946",
   "accepted_background_source": "releases/vesper-boot-1/ui.raw, first sprite",
   "preview_sha256": "7fa72c4ad29bfaea78763f041dd43a179d2e0b775b69a77f5e01830cdd377224",
-  "physical_appearance": "pending",
+  "physical_appearance": "accepted: user confirms Vesper static -> Vesper animation -> stock launcher",
   "vendor_binary_bytes_in_release": false
 }

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "run_id": "db7079b5f61b4ee5b7d36d22e58472fd",
+  "reader_and_wrapper_and_manifest_match": true,
+  "fresh_armed_run_and_no_stale_results": true,
+  "init_hash_matches": true,
+  "rollback_normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "expected_full_image_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "update_trigger_absent": true,
+  "only_reader_armed": true,
+  "armed_markers": [
+    "retro/spi-readback/armed"
+  ],
+  "protected_mvp_files": 51,
+  "protected_lab_files": 49,
+  "stock_and_protected_progress_match_preupdate": true,
+  "newly_retained_reader_files": 9,
+  "previously_retained_reader_files": 9,
+  "postinstall_fat_clean": true,
+  "flash_writes": false,
+  "global_config_writes": false,
+  "physical_full_image_readback": "pending"
+}

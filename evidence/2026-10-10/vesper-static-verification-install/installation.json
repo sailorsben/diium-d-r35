@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "archive": "snes-mvp-return-20261010T055025Z",
+  "retained_prior_profile": "retro/spi-readback.pre-vesper-2ef5b65b19664fbc934a7460000e8eee",
+  "expected_full_image_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "read_only_commands": [
+    "05",
+    "9f",
+    "03"
+  ],
+  "flash_writes": false,
+  "global_config_writes": false,
+  "status": "armed",
+  "installation_archive": "snes-mvp-return-20261010T055030Z",
+  "installation": {
+    "version": 1,
+    "run_id": "db7079b5f61b4ee5b7d36d22e58472fd",
+    "archive": "snes-mvp-return-20261010T055030Z",
+    "init_before_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+    "init_readback_sha256": "012b13133b4a0a76ff4f0939931b67f82dae07405bc72f140e88f4f44085cc02",
+    "binary_sha256": "b0f47d8742b0ef0c1624fd1d25ae3cb8af7474d5c16f2b941c46ced370749a0b",
+    "wrapper_sha256": "7efcf6c081dc03b4904ba88d7c22130349a5e477020838dc55c1ae5607fc46b3",
+    "capacity_bytes": 8388608,
+    "passes": 2,
+    "hook": "synchronous before stock main",
+    "fixed_commands": [
+      "05",
+      "9f",
+      "03"
+    ],
+    "flash_writes": false,
+    "global_config_writes": false,
+    "physical_execution": "pending"
+  }
+}
