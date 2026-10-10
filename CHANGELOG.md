@@ -1,5 +1,21 @@
 # Changelog
 
+## Exact loader/updater qualification and private full Vesper candidate — 2026-10-09
+
+Recover Thumb loader contracts and verify the first static bitmap's boot-code
+pointer. Prepare a private8MiB candidate changing only rootfs/table length;
+kernel, DT, bootstrap/static bitmap and GPDA remain exact. Execute captured
+parser/getter/header selection/section loading and DT initrd patch under QEMU.
+Execute exact vrtemu UpdateROM/ZIP/UpdateROMProc with intercepted hardware and
+RAM-only erase/program callbacks. Nine offline outcomes qualify acceptance,
+four no-write refusals, private-output guard and a malformed-ZIP NULL-image fault.
+Compatible image fully matches simulated readback:55 erases/14,080 page programs,
+including boot-code block0 because vendor metadata changes. No device writes,
+SD staging, kernel execution or recovery claimed. Programmer unavailable;
+chip marking/package/access is the next physical dependency. Publish only
+interpreted metadata; preserve all prior evidence hashes. Audio unresolved.
+[Qualification and exact next work](docs/firmware-offline-qualification.md).
+
 ## Full SPI backup, boot layout and private Vesper rootfs candidate — 2026-10-09
 
 Archive the complete16MiB return, independently verify two identical8MiB passes,

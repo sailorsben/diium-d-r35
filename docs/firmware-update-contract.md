@@ -11,8 +11,12 @@ UpdateROM at0x1231c. UpdateROM at0x133fc opens `/dev/spidev0.0`, configures SPI,
 reads existing flash metadata and opens that staged file as `r+b`. It checks
 the three-byte prefix `WQW`, uses OpenZipU/first-item extraction, compares CRC32
 and compares compatibility data with the existing image before the programming
-routine. Complete container layout, chip capacity and compatibility fields still
-need recovery. The separate `/media/sdcarda1/SPI_ROM.bin` string is present;
+routine. [Later exact-code offline qualification](firmware-offline-qualification.md)
+recovers the WQW+ZIP/8MiB image, metadata offsets and compatibility division-by10
+rule, confirms valid-package acceptance/full RAM simulation, and observes a
+malformed-ZIP NULL-image fault before programming. The vendor would rewrite
+boot-code block0 for metadata. This does not qualify physical writes or recovery.
+The separate `/media/sdcarda1/SPI_ROM.bin` string is present;
 it does not establish that filename as this main-path trigger.
 
 | Recovered SPI operation | Contract |
@@ -41,9 +45,10 @@ returns `C8 40 17` three times: GigaDevice64-Mbit NOR family, nominal8MiB from
 matched manufacturer/kernel references. Exact suffix/package remains unverified.
 The [two-pass reader returned complete matching8MiB copies](spi-readback-return.md).
 Its offline section table and gzip/cpio/DT boundaries are recovered; exact stock
-showlogo lives in that rootfs. A private Vesper rootfs-only candidate fits the
-current allocation, but boot-loader checks and complete updater container remain
-unverified. No SPI program/erase or configuration writes have been attempted.
+showlogo lives in that rootfs. A private full Vesper candidate fits the current
+allocation and passes the exact loader/updater offline; [nine outcomes](firmware-offline-qualification.md)
+keep software acceptance separate from physical writing, recovery and boot.
+No physical SPI program/erase or configuration writes have been attempted.
 Capacity is no longer inferred from a sibling handheld.
 
 A flash dump is a backup. Recovery also requires a verified way to rewrite the

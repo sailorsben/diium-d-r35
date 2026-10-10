@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "test": "Exact Thumb loader: original",
+      "passed": true,
+      "stdout": "PASS exact Thumb table parser/getter, GPAP selection, three-section load and DT initrd bounds with intercepted SPI; kernel not executed\nreads=3 kernel=000c0078/2366616 rootfs=00301d10/3406558 dt=006417ee/10490 entry=02000000\n"
+    },
+    {
+      "test": "Exact Thumb loader: Vesper candidate",
+      "passed": true,
+      "stdout": "PASS exact Thumb table parser/getter, GPAP selection, three-section load and DT initrd bounds with intercepted SPI; kernel not executed\nreads=3 kernel=000c0078/2366616 rootfs=00301d10/3297826 dt=006417ee/10490 entry=02000000\n"
+    },
+    {
+      "test": "Exact vendor updater: compatible",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=1 config_calls=6 reads=23425 erases=55 pages=14080 metadata=f2914d07/5d496000\nerased_blocks=000000,0c0000,300000,310000,320000,330000,340000,350000,360000,370000,380000,390000,3a0000,3b0000,3c0000,3d0000,3e0000,3f0000,400000,410000,420000,430000,440000,450000,460000,470000,480000,490000,4a0000,4b0000,4c0000,4d0000,4e0000,4f0000,500000,510000,520000,530000,540000,550000,560000,570000,580000,590000,5a0000,5b0000,5c0000,5d0000,5e0000,5f0000,600000,610000,620000,630000,640000\n"
+    },
+    {
+      "test": "Exact vendor updater: incompatible family",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Exact vendor updater: bad first-item CRC with matching local/central declarations",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Exact vendor updater: inconsistent local/central CRC",
+      "passed": true,
+      "observed_vendor_fault": "NULL image dereference at ARM 0x13920, address 0x108",
+      "safe_rejection": false,
+      "stdout": "OBSERVED vendor fault at 0x13920: NULL image+0x108; configuration_calls=6 erase/program_calls=0\n"
+    },
+    {
+      "test": "Exact vendor updater: missing WQW prefix",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Exact vendor updater: already recorded CRC",
+      "passed": true,
+      "stdout": "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000\nerased_blocks=\n"
+    },
+    {
+      "test": "Private vendor-image output guard",
+      "passed": true
+    }
+  ],
+  "flash_baseline_sha256": "5c4ea86ca5c497a26136ee9a59d8a31085e15c8d1dc5f063b874a20c400d9e2b",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "candidate_sha256": "246a46afa5cda655b47db787dff94e430bbf7f8a897b751cfca28ddc79f68ff7",
+  "loader_scope": "Exact Thumb table parser/getter, GPAP copy selection, three-section loading and patched DT initrd bounds; SPI callback reads private files into RAM. No boot main or kernel execution.",
+  "updater_scope": "Exact ARM UpdateROM/UpdateROMProc and bundled ZIP decoder. All hardware/display/process-control seams intercepted; erase/program callbacks change RAM only.",
+  "updater_container": "WQW + single-member ZIP; first item contains full 8 MiB SPI image; member filename SPI_ROM.bin works offline but is not proven mandatory.",
+  "updater_metadata": {
+    "crc_offset": "0x100",
+    "zip_dos_time_offset": "0x104",
+    "compatibility_offset": "0x108",
+    "compatibility_rule": "unsigned candidate word / 10 == unsigned existing word / 10",
+    "written_crc": "0xf2914d07",
+    "written_zip_dos_time": "0x5d496000"
+  },
+  "updater_ram_dry_run": {
+    "erase_blocks": 55,
+    "page_programs": 14080,
+    "boot_code_block_0_rewritten": true,
+    "all_simulated_flash_bytes_match_mutated_candidate": true
+  },
+  "malformed_zip_fault_observed": true,
+  "device_access": false,
+  "staged_to_card": false,
+  "physical_flash_write": false,
+  "recovery_qualified": false,
+  "limits": "Offline acceptance and a RAM-only erase/program simulation. Does not prove physical SPI writes, recovery, kernel execution, gzip extraction by this running kernel or on-device original-animation replacement.",
+  "source_sha256": {
+    "build/check-boot-loader.c": "2671654d7e1995b3903404401a4db41d42e138c0ff51b9292e77022e9e7127e3",
+    "build/check-vendor-updater.c": "d4a46993a2a059aedf46a76fd092de0cd054c3821ec6aad5774e0199739ba35d",
+    "build/prepare-vesper-firmware.py": "f554106137f8c7d67eab337990615cdd1e83f925163db15ec1c05dbe44a941ad",
+    "build/check-vesper-firmware.py": "57fcc3957ccf59b4148a66f67ed3735b079298857cab95adf826df7b17e63067"
+  }
+}

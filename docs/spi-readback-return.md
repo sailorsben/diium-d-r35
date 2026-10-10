@@ -1,5 +1,10 @@
 # Full SPI readback and boot-image inspection — 2026-10-09
 
+**Later qualification:** [exact loader/updater and private full candidate](firmware-offline-qualification.md)
+now complete offline; static bitmap code reference is verified. Physical writing,
+recovery and original-screen replacement remain pending. The record below
+preserves the earlier readback/rootfs-only preparation stage.
+
 Run `5250ec9cd87740ff9fba5ec82ae3a707` completed both independent8MiB reads
 in103.771059 seconds. Ben returned the card after about ten minutes. All4,111
 messages completed, three identity phases each returned `c84017c84017`, status

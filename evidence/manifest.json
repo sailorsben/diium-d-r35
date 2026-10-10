@@ -4667,6 +4667,30 @@
       "published_sha256": "65e8465d959a3c5929c8e47708a7a38fdb91ba54e6c32b2375dba06ab6cc5697",
       "bytes": 872,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T003708Z/spi-readback/firmware-qualified-candidate/loader-contract.json",
+      "published": "evidence/2026-10-09/firmware-offline-qualification/loader-contract.json",
+      "source_sha256": "efb1ca54c1c30020bcc1a1b4b0296df369f9e0bafcbf4a98382eb1483a495a2a",
+      "published_sha256": "efb1ca54c1c30020bcc1a1b4b0296df369f9e0bafcbf4a98382eb1483a495a2a",
+      "bytes": 2432,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T003708Z/spi-readback/firmware-qualified-candidate/preparation.json",
+      "published": "evidence/2026-10-09/firmware-offline-qualification/preparation.json",
+      "source_sha256": "9f60babbad3d3877f982e360955380140b49c5f2c6e43eef5bd0b158069054c4",
+      "published_sha256": "9f60babbad3d3877f982e360955380140b49c5f2c6e43eef5bd0b158069054c4",
+      "bytes": 3281,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/snes-mvp-return-20261010T003708Z/spi-readback/firmware-qualified-candidate/qualification.json",
+      "published": "evidence/2026-10-09/firmware-offline-qualification/qualification.json",
+      "source_sha256": "6a93d02ac88800913f9854380b8ecfa3e82e5cec3cc56e274483876fb6a6880b",
+      "published_sha256": "6a93d02ac88800913f9854380b8ecfa3e82e5cec3cc56e274483876fb6a6880b",
+      "bytes": 5037,
+      "normalized": false
     }
   ]
 }

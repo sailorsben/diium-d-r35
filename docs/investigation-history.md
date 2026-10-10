@@ -602,3 +602,29 @@ are refused. Matching static bitmap located visually; its code reference unknown
 Kernel built-in cpio has no rescue init. No full flash candidate/update staged;
 boot validation, recovery, original-screen replacement and audio unresolved.
 [Return/layout/candidate and next work](spi-readback-return.md).
+
+## Exact boot loader/updater acceptance and failure boundary — 2026-10-09
+
+Follow the verified flash backup with exact-code offline checks. Thumb boot-main
+pointer stores bind the static bitmap to the boot display setup; first screen
+owner is now supported by code, and remains unchanged. Prepare a private full
+candidate that changes only compressed rootfs and its table length; all other
+flash bytes exact. Actual captured parser/getter/GPAP copy selector/section loader
+and DT initrd-bound mutation pass for original and candidate under QEMU.
+
+Actual vrtemu UpdateROM/bundled ZIP/UpdateROMProc accepts our WQW+ZIP full image
+and fully matches simulated RAM flash after55 erases/14,080 page programs.
+Metadata CRC/DOS time at0x100/104 and compatibility word0x108 are recovered;
+compatibility compares unsigned words divided by10. Vendor metadata forces an
+erase of boot-code block0; table and rootfs boundaries also share kernel blocks.
+Four rejected/repeat fixtures do not program. Inconsistent ZIP CRC declarations
+instead trigger a captured NULL-image fault at0x13920 before programming.
+Nine outcomes include that fault; it is not described as safe rejection.
+
+No physical flash/configuration write or SD staging. Programmer unavailable
+by Ben's direct answer. Exact marking/package/access and recovery equipment are
+next; do not confuse a verified dump with demonstrated write recovery. Current
+normal init, protected progress/results and prior clean FAT state remain untouched.
+Vendor-containing candidates stay ignored/private; three interpreted reports
+join the evidence manifest with all583 prior published hashes unchanged.
+[Qualification, limitations and exact physical sequence](firmware-offline-qualification.md).

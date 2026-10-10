@@ -327,3 +327,22 @@ Keep direct-color/clipped fallback and serialization ABI intact. Cache entries
 are bounded36KiB derived data; full effect/core equivalence is required before
 installation. A cache hit count is not A7 speed proof; Lab1's rejected cache
 remains a negative result. Exact Magitek Bio Blast scene coverage matters.
+
+## Persistent firmware replacement boundary
+
+The original second animation is `/showlogo` in internal gzip/cpio rootfs;
+SD-stage animation changes cannot replace it. The first static bitmap is directly
+referenced by Thumb boot code. Exact [offline loader/updater qualification](firmware-offline-qualification.md)
+accepts the private Vesper image, but neither QEMU nor a flash dump qualifies
+physical write recovery. GPAP primary/secondary headers are not proven full
+firmware-bank redundancy. No USB boot-ROM or SD-only rescue is qualified.
+
+Vendor UpdateROM changes CRC/time metadata and erases boot-code block0 even
+for this animation change. Table/rootfs erase blocks share preserved kernel
+bytes; retain whole-block contents, not just desired payload spans. Never stage
+dummy or malformed Code.bkp files: a malformed ZIP fixture faults in the exact
+offline updater. All physical program/erase activity remains pending until the
+concrete recovery equipment/path is available and checked. Returned flash,
+vendor executables, full candidates and packages remain private. Keep the
+actual on-device readback, cold-boot animation/launcher and restore results
+distinct from offline format/algorithm acceptance.

@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "image_sha256": "5c4ea86ca5c497a26136ee9a59d8a31085e15c8d1dc5f063b874a20c400d9e2b",
+  "image_bytes": 8388608,
+  "instruction_set": "ARM entry vectors; Thumb boot main and section-table routines",
+  "flash_to_ram_bias": "0x025ffe00",
+  "boot_main": "flash0x53ec / RAM0x026051ed Thumb",
+  "static_splash_reference": {
+    "bitmap_flash_offset": "0x8854",
+    "bitmap_bytes": 614400,
+    "bitmap_ram_pointer": "0x02608654",
+    "pointer_literal_flash_offset": "0x5628",
+    "pointer_store_instruction": "Thumb flash0x54ca: str r2,[r3]",
+    "pointer_register_address": "0xd05001e0",
+    "dimensions_store_instruction": "Thumb flash0x54f6",
+    "dimensions_register_address": "0xd05002e4",
+    "dimensions_packed": "0x01e00280",
+    "dimensions": [
+      640,
+      480
+    ],
+    "code_reference_verified": true,
+    "physical_MMIO_contract_tested": false
+  },
+  "bootloader_size_bytes": 664064,
+  "app_header_offset": "0xb0000",
+  "app_header_copy_stride": "0x1000",
+  "app_partition_offset": "0xc0000",
+  "app_partition_limit": "0x650000",
+  "functions_flash_offsets": {
+    "section_name_compare": "0x641c",
+    "word_reader": "0x6448",
+    "section_getter": "0x6478",
+    "section_parser": "0x64a8",
+    "section_loader": "0x5a1c",
+    "dt_initrd_patch": "0x6594",
+    "gp_header_magic_copy": "0x6e64",
+    "gp_header_select": "0x6e8c",
+    "partition_find_by_type": "0x6ef8",
+    "partition_decode": "0x6ec8"
+  },
+  "section_parser": "type1, header body >=28 bytes; first three names kernel/initrd/cmdline; offset/length/load-address records",
+  "section_destination_addresses": {
+    "kernel_scratch": "0x02000000",
+    "initrd": "0x00a00000",
+    "device_tree": "0x00000100"
+  },
+  "gp_header_selection": "GPAP magic and generation byte7 choose primary/secondary header copy; this does not establish a second full firmware slot",
+  "existing_update_metadata": {
+    "crc_offset": "0x100",
+    "crc": "0x0",
+    "zip_dos_time_offset": "0x104",
+    "zip_dos_time": "0x598b6319",
+    "compatibility_offset": "0x108",
+    "compatibility": "0x134d829"
+  },
+  "source_sha256": "4b2f0c93c565acd3ecd602f196707592d7fd270b4a82e989efd98bac2b9adba7",
+  "device_access": false,
+  "vendor_code_executed": false,
+  "limits": "Exact pointer/instruction fingerprints and interpreted routine contracts; QEMU execution is a separate result. No physical flash-write, boot-ROM recovery or full kernel execution qualification."
+}

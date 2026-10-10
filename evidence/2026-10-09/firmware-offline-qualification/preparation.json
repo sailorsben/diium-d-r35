@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "baseline_sha256": "5c4ea86ca5c497a26136ee9a59d8a31085e15c8d1dc5f063b874a20c400d9e2b",
+  "candidate_sha256": "246a46afa5cda655b47db787dff94e430bbf7f8a897b751cfca28ddc79f68ff7",
+  "candidate_bytes": 8388608,
+  "rootfs_gzip_sha256": "c21e859f68d04a600ad168b30d28d145c75139ac66580608a4a401e2f163ba94",
+  "rootfs_compressed_bytes": 3297826,
+  "rootfs_slot_bytes": 3406558,
+  "changed_ranges": [
+    {
+      "offset": 786496,
+      "bytes": 4,
+      "purpose": "initrd table length"
+    },
+    {
+      "offset": 3153168,
+      "bytes": 3406558,
+      "purpose": "gzip rootfs plus FF tail"
+    }
+  ],
+  "all_other_flash_bytes_exact": true,
+  "changed_64k_blocks": [
+    "0xc0000",
+    "0x300000",
+    "0x310000",
+    "0x320000",
+    "0x330000",
+    "0x340000",
+    "0x350000",
+    "0x360000",
+    "0x370000",
+    "0x380000",
+    "0x390000",
+    "0x3a0000",
+    "0x3b0000",
+    "0x3c0000",
+    "0x3d0000",
+    "0x3e0000",
+    "0x3f0000",
+    "0x400000",
+    "0x410000",
+    "0x420000",
+    "0x430000",
+    "0x440000",
+    "0x450000",
+    "0x460000",
+    "0x470000",
+    "0x480000",
+    "0x490000",
+    "0x4a0000",
+    "0x4b0000",
+    "0x4c0000",
+    "0x4d0000",
+    "0x4e0000",
+    "0x4f0000",
+    "0x500000",
+    "0x510000",
+    "0x520000",
+    "0x530000",
+    "0x540000",
+    "0x550000",
+    "0x560000",
+    "0x570000",
+    "0x580000",
+    "0x590000",
+    "0x5a0000",
+    "0x5b0000",
+    "0x5c0000",
+    "0x5d0000",
+    "0x5e0000",
+    "0x5f0000",
+    "0x600000",
+    "0x610000",
+    "0x620000",
+    "0x630000",
+    "0x640000"
+  ],
+  "shared_blocks": {
+    "0xc0000": "table plus initial kernel bytes; preserved kernel bytes must be rewritten together",
+    "0x300000": "kernel tail plus rootfs start; preserved kernel tail must be rewritten together"
+  },
+  "bootloader_static_splash_kernel_dt_gpda_unchanged": true,
+  "compatibility_word_offset": "0x108",
+  "compatibility_word": "0x134d829",
+  "first_item_crc32": "0xf2914d07",
+  "files": {
+    "spi-vesper-offline.bin": {
+      "bytes": 8388608,
+      "sha256": "246a46afa5cda655b47db787dff94e430bbf7f8a897b751cfca28ddc79f68ff7"
+    },
+    "fixture-compatible.bkp": {
+      "bytes": 5683533,
+      "sha256": "5263abf58bdfd161e90811e6cc0ecd233657ac8328a924185234c98af2ad8499"
+    },
+    "fixture-incompatible.bkp": {
+      "bytes": 5683533,
+      "sha256": "f8696751550202dd2b9de70937a04e8c207231ffd973730258274e60806b517d"
+    },
+    "fixture-bad-crc.bkp": {
+      "bytes": 5683533,
+      "sha256": "91d4a42551f8c8fcafd7bfcf553f96b1ffc9d1e2ebc16fd23de98140ad091cd1"
+    },
+    "fixture-missing-prefix.bkp": {
+      "bytes": 5683530,
+      "sha256": "4b4f64826ab0f6c61329e52dd610b5ac9256be8376a77e38af73d403b71af2e6"
+    },
+    "fixture-consistent-bad-crc.bkp": {
+      "bytes": 5683533,
+      "sha256": "0eef81a7c06d7ac25bb7b6df06529b48f059dccd151e49a1a2a8c43af22f2f4a"
+    },
+    "fixture-already-recorded-baseline.bin": {
+      "bytes": 8388608,
+      "sha256": "90d0161e159bde0b3c532fb366f76f53b81540af87e43d705e34b68e126a918a"
+    }
+  },
+  "device_access": false,
+  "staged_to_card": false,
+  "physical_flash_write": false,
+  "recovery_qualified": false,
+  "limits": "Private candidate and rejection fixtures only. Actual loader/updater checks run separately. No physical-write or recovery qualification."
+}
