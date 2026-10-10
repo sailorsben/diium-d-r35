@@ -1,0 +1,133 @@
+{
+  "version": "1.19",
+  "archive": "snes-mvp-return-20261010T071438Z",
+  "collected_utc": "2026-10-10T07:14:39.800865+00:00",
+  "card_writes": 0,
+  "mvp_progress_files_hash_verified": 58,
+  "lab_files_hash_verified": 49,
+  "exact_release_and_stock_init_verified": true,
+  "fat_read_only_check_clean": true,
+  "one_shot_consumed": true,
+  "all_prior_files_retained": true,
+  "private_snapshot_files_unchanged_and_crc_verified": 9,
+  "nonempty_private_sram_files": 3,
+  "updated_private_sram_generations_archived": 0,
+  "user_report": "Bio Blast still crashed the game; exited the menu with B.",
+  "observed_exit": {
+    "game_launch_requests": 1,
+    "game_exit": "native audio error returned to our library",
+    "B_exit": "B left the library after the audio failure; not an in-game Exit game selection",
+    "display_worker_joined_and_board_closed": true,
+    "wrapper_final_copies_completed": true,
+    "exit_status": 255,
+    "exit_status_meaning": "Normal process return of rc=-1 inherited from the failed game; not a recorded signal crash"
+  },
+  "session": {
+    "id": "502-9771840000",
+    "runs": 1713,
+    "video_submitted": 1712,
+    "held": 0,
+    "duplicates": 0,
+    "active_seconds": 28.62062,
+    "calls_per_active_second": 59.85195289270463,
+    "snapshot_loads": 1,
+    "pauses": 1,
+    "audio_error": "Audio publication failed: File descriptor in bad state",
+    "pcm_detail": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=1121846 hw=1121791 prime_written=2823 start_calls=0 epoch=2 xfer=1121462 trace_errno=0 trace_synced=1 trace_bytes=27851",
+    "audio_remaining_frames": 705,
+    "recorded_xruns": 0,
+    "ordinary_final_calls": 23,
+    "ordinary_final_mean_wall_ms": 18.287434782608695,
+    "ordinary_final_mean_main_cpu_ms": 16.935347826086957,
+    "native_frame_budget_ms": 16.688154500170086,
+    "sampled_ppu_apu_limit": "No phase sample falls in the final 24-call window; earlier inclusive samples do not price its PPU/APU split.",
+    "finished_reports_differ_only_in": [
+      "checkpoint_kernel_ns",
+      "diagnostic_ram_write_ns",
+      "diagnostic_ram_writes",
+      "session_elapsed_ns"
+    ]
+  },
+  "pcm": {
+    "trace_version": "D35 PCM fault history 1.13",
+    "retained_operations": 96,
+    "epoch": 2,
+    "accepted_pointer_difference_first_sample": 0,
+    "application_pointer_difference_changes": [
+      {
+        "seq": 15193,
+        "kernel_ns": 40835437000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 183,
+        "accepted_minus_reported_hw": 55
+      },
+      {
+        "seq": 15207,
+        "kernel_ns": 40874112000,
+        "delta_change": 256,
+        "appl_minus_accepted": 384,
+        "state": 3,
+        "reported_queued": 247,
+        "accepted_minus_reported_hw": -137
+      }
+    ],
+    "matched_large_batch_interval": {
+      "first_seq": 15129,
+      "last_seq": 15215,
+      "anchor_count": 13,
+      "elapsed_ms": 227.816,
+      "accepted_frames": 8831,
+      "accepted_frames_per_second": 38763.73915791692,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.12100364721276824,
+      "mean_large_batch_interval_ms": 18.984666666666666,
+      "min_large_batch_interval_ms": 18.096,
+      "max_large_batch_interval_ms": 20.899,
+      "reported_hw_advance": 9984,
+      "accepted_minus_hw_change": -1153,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+    },
+    "last_successful_observation": {
+      "seq": 15220,
+      "ns": 40895258000,
+      "op": "SYNC_OK",
+      "arg": 7,
+      "result": 0,
+      "state": 3,
+      "queued": 823,
+      "appl": 1121846,
+      "hw": 1121023,
+      "epoch": 2,
+      "xfer": 1121462
+    },
+    "final_observation": {
+      "seq": 15222,
+      "ns": 40912879000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 1121846,
+      "hw": 1121791,
+      "epoch": 2,
+      "xfer": 1121462
+    },
+    "kernel_read_result": {
+      "bytes": 16335,
+      "errno": 0
+    },
+    "causal_limit": "Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time."
+  },
+  "historical_1_18_context_not_controlled_speed_comparison": {
+    "ordinary_final_mean_wall_ms": 18.328478260869566,
+    "ordinary_final_mean_main_cpu_ms": 17.000608695652176,
+    "accepted_frames_per_second": 38512.35561137056,
+    "limit": "Different physical run, call history and encounter timing; similar costs do not establish the cache speed delta."
+  },
+  "inference": "The 1.19 palette work reduction did not prevent physical Bio Blast audio failure. Production falls below the sink near failure, before a total 384-frame unexplained application-pointer difference and SETUP/EBADFD. The leading trigger remains transient underproduction.",
+  "limits": "No attribution of pointer changes to a specific owner, kernel stop mechanism, exact expensive-phase CPU subsystem, save payload semantics or general hard-power-off safety. No core signal crash or controlled 1.18/1.19 speed comparison established.",
+  "next_action": "Keep failed 1.19 unarmed. Attribute the expensive phase using a bounded RAM-only PPU/APU/core/callback profile before another optimization; do not rearm the unchanged failure or infer A7 speed from palette work counts."
+}

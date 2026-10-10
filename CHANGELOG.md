@@ -1,5 +1,23 @@
 # Changelog
 
+## SNES1.19 Bio Blast still fails; clean exit preserved - 2026-10-10
+
+Collect58 MVP/progress and49 lab files with verified hashes before any changes.
+Exact1.19, all prior files, nine snapshots and three SRAM generations survive;
+fresh FAT is clean.1,713 core calls end with native SYNC_OBSERVE errno77/SETUP.
+Near failure, accepted audio is38,764 frames/sec against44,100 Hz; final ordinary
+calls average18.287 ms wall /16.935 ms CPU. Offline color-work savings have not
+fixed physical audio. No phase sample covers the final24-call window.
+
+B exits our library after the game error; display join/close and wrapper final
+copies complete. Fresh failure reports and stderr agree; recorded255 status
+is the failed game's rc=-1, not a signal crash. Stock/current Vesper SD artwork,
+normal init and58 archived files independently reread exact. No card writes,
+repair or rearm; all tests and Code.bkp absent. Guarded return publisher keeps
+private progress/binaries local and preserves637 prior evidence hashes. Next
+engineering step is bounded phase attribution during the failing interval.
+[Return](docs/snes-mvp-1.19-return.md).
+
 ## SNES1.19 rearmed for proper game exit - 2026-10-10
 
 User explicitly requests rearming the unchanged build to exit properly.

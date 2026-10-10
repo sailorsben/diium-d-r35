@@ -1,5 +1,12 @@
 # MVP1.19: prepare only visible color rows
 
+**Physical return2026-10-10: Bio Blast still fails with native EBADFD/SETUP.**
+The one-shot is consumed; clean FAT, completed B/library exit, wrapper flush
+and unchanged progress verify. Near-fault audio production remains about12%
+below the sink. Offline color-work savings have not fixed sound. Keep this
+release unarmed; attribute the actual expensive phase before another change.
+[Returned evidence and limits](snes-mvp-1.19-return.md).
+
 The recovered 1.18 Bio Blast return has a real production deficit: matched
 large-batch anchors produce 38,512 accepted frames/sec against the 44,100 Hz
 sink. Audio reserve erodes before the application pointer advances in three
@@ -58,6 +65,7 @@ Vesper SD artwork/normal init preserved. [Readback](../evidence/verification/sne
 [work counts](../evidence/verification/snes-mvp-1.19/lazy-row-work-counts.json),
 [qualification](../releases/snes-mvp-1.19/manifest.json).
 
-Physical acceptance remains pending: first launch, repeated Terra MagiTek
-Bio Blast with complete motion and steady sound, pause/snapshot/resume, normal
-game exit and returned evidence. [Device instructions](snes-mvp-1.19-test.txt).
+The original [device instructions](snes-mvp-1.19-test.txt) describe the intended
+qualification sequence. The returned Bio Blast failure above supersedes its
+pending acceptance: sound continuity failed. This build remains installed but
+unarmed; do not run that historical sequence again unchanged.

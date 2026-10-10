@@ -4,13 +4,16 @@ Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means ret
 
 **Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. The reader executed without Code.bkp; original normal SD init restored, no test armed, stock/progress and both prior reader profiles unchanged, final FAT clean. Ready for normal use. External write recovery unqualified; audio unresolved.
 
-**Current SNES test:** [1.19](snes-mvp-1.19.md) is now installed and independently
-verified, with only its SNES one-shot armed. Visible demanded color rows remove
-33.56% of1.18's effect palette lookup rows;14,400 shipping-core equivalent frames
-and ARM lifecycle checks pass. Current stock/Vesper SD artwork, normal init,
-private progress, lab files and27 reader files retain hashes; FAT checks are
-clean. This supersedes the earlier unarmed card state above. Physical audio
-continuity and A7 performance remain pending; no new flash write.
+**Current SNES result:** [1.19 returned with the Bio Blast audio failure](snes-mvp-1.19-return.md).
+Matched near-fault accepted production is38,764 frames/sec against44,100 Hz;
+final ordinary calls average18.287 ms wall /16.935 ms CPU. Offline33.56% palette
+lookup savings did not fix physical sound. No phase sample covers the final
+24-call interval; exact PPU/APU attribution there is unresolved. B leaves the
+library after failure, display teardown and final wrapper copies finish. Archive58
+MVP/progress and49 lab files; saves/snapshots remain exact, current stock/Vesper
+SD artwork and normal init verify, FAT clean. Nothing armed, Code.bkp absent,
+zero card writes. Next: bounded phase attribution in the actual expensive
+interval before another optimization; no unchanged rearm or flash work.
 
 ## Platform identity
 

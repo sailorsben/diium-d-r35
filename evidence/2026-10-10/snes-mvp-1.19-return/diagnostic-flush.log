@@ -1,0 +1,2 @@
+diagnostics=outside_child_lifetime ram_progress=once_per_second background_monitor=none
+final_copies=after_child_exit

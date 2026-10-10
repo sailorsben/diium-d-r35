@@ -1,5 +1,26 @@
 # Investigation history and negative results
 
+## SNES1.19 Bio Blast failure and completed exit - 2026-10-10
+
+Ben reports another Bio Blast failure and exit with B. Archive58 MVP/progress
+and49 lab files read-only; fresh FAT is clean. Exact1.19 release, all prior files,
+nine CRC-valid snapshots and three nonempty SRAM generations verify. Current
+stock/Vesper SD artwork and normal init match; all markers and Code.bkp absent.
+No card changes. Native session502-9771840000 runs1,713 calls, loads a snapshot,
+then reports SYNC_OBSERVE errno77/SETUP; its audio error returns to our library.
+B leaves that library, display worker joins and wrapper final copies complete.
+Status255 is rc=-1 from the game failure, not a recorded signal crash.
+
+Final23 ordinary calls average18.287 ms wall /16.935 ms CPU. Matched227.816 ms
+audio interval supplies38,764 accepted frames/sec to a44,100 Hz sink; reserve
+erosion precedes an unexplained+128/+256 pointer difference, total384 frames.
+The offline lookup savings did not fix physical sound. Similar1.18 costs are
+historical context, not controlled cache-speed proof. No phase sample covers
+the final24 calls; next work is bounded RAM-only phase attribution of the actual
+expensive interval, retaining instrumentation-cost limits. Keep1.19 unarmed.
+Publish text/metadata only, preserving all637 previous evidence hashes.
+[Physical result and reproducible analysis](snes-mvp-1.19-return.md).
+
 ## Explicit1.19 rearm for proper exit - 2026-10-10
 
 Ben requests rearming the same installed release to exit properly. Archive56
