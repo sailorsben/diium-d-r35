@@ -1,8 +1,9 @@
 # Internal firmware update evidence — 2026-10-09
 
-Later current state: [exact Vesper package staged on D:](vesper-sd-firmware-update.md)
-after explicit user acceptance of proceeding before external recovery hardware.
-Physical flashing and original-animation replacement still await the boot test.
+Later current state: [Vesper replaces the original second animation on physical
+boot](vesper-sd-firmware-update.md) after the authorized SD update. User reports
+static D-R35 -> Vesper -> default launcher following manual power-on. Exact full
+flash readback, update-trigger removal/repeat boot and recovery remain pending.
 Historical pending statements below describe their original investigation stage.
 
 Exact privately preserved SD `vrtemu`: SHA256

@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Original second-animation replacement physically accepted — 2026-10-09
+
+After SD update progress100% and power-off, normal manual power-on shows the
+static D-R35 screen, Vesper replacing the regular D-R35 animation, then default
+launcher. The user's physical observation accepts the requested replacement
+and boot path. The earlier added third SD-stage splash stays consumed/unarmed.
+Card-return logs/package, exact flash bytes, trigger removal/repeat cold boot
+and external recovery remain pending; no new device/card access on this report.
+First static screen preserved and audio unresolved. [Result and next return](vesper-sd-firmware-update.md).
+
 ## Current authorization and SD firmware staging — 2026-10-09
 
 The user explicitly chooses the SD update now, accepting programmer purchase

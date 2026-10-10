@@ -1,5 +1,15 @@
 # Changelog
 
+## Original second-splash replacement physically accepted — 2026-10-09
+
+User confirms normal manual power-on shows static D-R35, then Vesper replacing
+the regular D-R35 animation, then default launcher. Requested physical boot/
+animation acceptance passes; first static screen stays. Record outcome and exact
+card-return resume without another write. Collect/archive before removing the
+known update trigger; full SPI comparison and repeat cold boot without trigger
+remain pending. External recovery unqualified and audio unresolved.
+[Accepted result and return procedure](docs/vesper-sd-firmware-update.md).
+
 ## First SD update report:100% then power-off — 2026-10-09
 
 User reports battery-only startup, progress100% and power-off without observed

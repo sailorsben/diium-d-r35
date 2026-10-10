@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "recorded_utc": "2026-10-10T04:58:42.384366+00:00",
+  "staging_run_id": "c157689a17174f2c8e433c9ce58c0c68",
+  "evidence_kind": "user-reported physical observation",
+  "first_update_report": {
+    "charging_usb_connected": false,
+    "progress_percent_reported": 100,
+    "then_powered_off": true,
+    "automatic_restart_observed": false
+  },
+  "subsequent_manual_power_on": {
+    "sequence": [
+      "static D-R35 screen",
+      "Vesper replacing regular D-R35 animation",
+      "default launcher"
+    ],
+    "original_second_animation_replacement": "accepted",
+    "stock_launcher_boot": "accepted",
+    "first_static_screen": "preserved",
+    "repeat_update_reported": false
+  },
+  "postupdate_card_collected": false,
+  "update_trigger_removed": false,
+  "full_spi_readback_verified": false,
+  "another_cold_boot_after_trigger_removal": "pending",
+  "external_write_recovery_qualified": false,
+  "audio_failure": "unresolved",
+  "card_or_device_writes_this_report": 0
+}

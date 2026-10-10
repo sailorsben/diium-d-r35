@@ -8,8 +8,10 @@ It does **not** establish physical flashing or recovery. D: was not changed;
 normal init remains restored and nothing is armed. Both original screens remain.
 This paragraph records the offline checkpoint. Subsequently, explicit user
 authorization chose to proceed before recovery equipment: the [exact package
-is now staged on D:](vesper-sd-firmware-update.md). Physical flashing/recovery
-remain pending; the new handoff supersedes the earlier equipment-first sequence.
+was staged on D:](vesper-sd-firmware-update.md) and the user now reports successful
+physical boot: static D-R35 -> Vesper replacing the regular animation -> default
+launcher. Exact full flash readback and recovery remain pending; the new handoff
+supersedes the earlier equipment-first sequence.
 
 [Interpreted loader contract](../evidence/2026-10-09/firmware-offline-qualification/loader-contract.json),
 [candidate preparation](../evidence/2026-10-09/firmware-offline-qualification/preparation.json),

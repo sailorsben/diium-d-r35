@@ -4699,6 +4699,14 @@
       "published_sha256": "61ddbd2ee57858fdcbc7f3ea9f60e6925788ea187c440b003c3da8cc01198629",
       "bytes": 1818,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/firmware-physical-boot-20261010T045842Z/physical-boot.json",
+      "published": "evidence/2026-10-09/firmware-sd-staging/physical-boot.json",
+      "source_sha256": "940e3f95cd62f2cc9f603ba19ab76832539fd6d3961f93661c5109e237d90c71",
+      "published_sha256": "940e3f95cd62f2cc9f603ba19ab76832539fd6d3961f93661c5109e237d90c71",
+      "bytes": 992,
+      "normalized": false
     }
   ]
 }

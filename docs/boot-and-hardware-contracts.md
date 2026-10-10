@@ -343,8 +343,10 @@ bytes; retain whole-block contents, not just desired payload spans. Never stage
 dummy or malformed Code.bkp files: a malformed ZIP fixture faults in the exact
 offline updater. The user subsequently explicitly authorized the [SD update
 before obtaining recovery equipment](vesper-sd-firmware-update.md); its exact
-package is staged and physical execution remains pending. That changes the
-execution decision, not the boot-block risk or unqualified recovery. Returned flash,
+package was staged and the user's subsequent physical boot shows static D-R35
+-> Vesper replacing the original second animation -> default launcher. Full
+flash readback, trigger removal/repeat boot and external recovery remain pending.
+That changes the execution/acceptance state, not the boot-block risk. Returned flash,
 vendor executables, full candidates and packages remain private. Keep the
 actual on-device readback, cold-boot animation/launcher and restore results
 distinct from offline format/algorithm acceptance.

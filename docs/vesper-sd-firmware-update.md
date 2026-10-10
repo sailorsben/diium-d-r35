@@ -1,17 +1,28 @@
 # Vesper original-animation SD update — 2026-10-09
 
+**Physical boot accepted:** after normal manual power-on, the user reports
+static D-R35 -> Vesper replacing the regular D-R35 animation -> default launcher.
+This is the requested original second-splash replacement, with the first static
+screen preserved. No repeat update was reported. Boot/animation acceptance is
+based on the user's physical observation, not a collected photograph/video or
+full SPI readback. The card has not returned; update-trigger removal, exact full
+flash comparison and another cold boot without the trigger remain pending.
+
+Current next action: normal power-down, return D:, collect/archive first, then
+remove only the exact known update package on healthy FAT. Do not reflash.
+
 **First physical report:** battery-only startup reached100% progress, then the
 device powered off; USB charging was not connected and no automatic restart was
-observed. Normal manual power-on once with the SD inserted is the current next
-step. The conservative ten-minute instruction below applies to an active or
+observed. Normal manual power-on once with the SD inserted was the next
+step and has now succeeded. The conservative ten-minute instruction below applies to an active or
 uncertain update, not waiting for writes in an actually powered-off device.
 Exact completion re-inspection confirms successful programming return -> sync
 at0x13990 -> reboot(0x01234567) at0x1399c. The report fits that path but is not
 proof of actual flash equality, new firmware boot or the replacement animation.
 No postupdate logs/readback collected yet.
 
-The exact qualified update was **staged on D:**. Physical flash verification and
-replacement-animation boot acceptance remain pending. The user explicitly chose to proceed
+The exact qualified update was **staged on D:**. Replacement-animation boot
+acceptance now passes; exact physical flash readback remains pending. The user explicitly chose to proceed
 through the SD updater before obtaining external recovery equipment, accepting
 that a failed boot could require purchasing a programmer and restoring the chip.
 This supersedes the earlier wait-for-equipment execution gate. Recovery is still
@@ -52,7 +63,7 @@ filesystem staging, poststage-health failure rollback, existing-update refusal,
 and competing armed-runtime refusal. They do not establish physical flash or
 recovery. All image/package contents remain ignored/private.
 
-## Next physical step
+## Historical first-update instructions
 
 1. Safely eject D:, insert the card with the handheld off, and connect charging
    power with a well-charged battery. Leave that power source connected.
