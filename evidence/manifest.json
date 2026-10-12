@@ -5747,6 +5747,110 @@
       "published_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
       "bytes": 1018,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/pair-analysis.json",
+      "published": "evidence/2026-10-11/a7-pair1-return/analysis.json",
+      "source_sha256": "00dbcca987b1ddaa486249a4581f266951f56e98d37e8c0956e6648860b3b53d",
+      "published_sha256": "281190a0abab10643c0e3d1de21d5e72b7c0692ff2a8da582d467cfc98e1cf61",
+      "bytes": 55859,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-00-start-0-baseline/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-00-start-0-baseline.csv",
+      "source_sha256": "b106e25c73c29af1ba40489ef8d656e094d5995a687106a765bb66e3923533b3",
+      "published_sha256": "b106e25c73c29af1ba40489ef8d656e094d5995a687106a765bb66e3923533b3",
+      "bytes": 40999,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-01-start-0-combined/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-01-start-0-combined.csv",
+      "source_sha256": "76f3162b9b23b4d87a32eb4a641d17107d081ec020bef7f43ed087b698cb5746",
+      "published_sha256": "76f3162b9b23b4d87a32eb4a641d17107d081ec020bef7f43ed087b698cb5746",
+      "bytes": 66949,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-02-start-0-combined/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-02-start-0-combined.csv",
+      "source_sha256": "106fcc12f91483f776a563b4cac3ccfed0a6af2424d5d39f3c46a2e9e93050a8",
+      "published_sha256": "106fcc12f91483f776a563b4cac3ccfed0a6af2424d5d39f3c46a2e9e93050a8",
+      "bytes": 66919,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-03-start-0-baseline/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-03-start-0-baseline.csv",
+      "source_sha256": "d80f12a6848f72ea154d3cf43e8829ecd069759abdcf342469f5b369c1b5b118",
+      "published_sha256": "d80f12a6848f72ea154d3cf43e8829ecd069759abdcf342469f5b369c1b5b118",
+      "bytes": 41475,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-04-start-261-baseline/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-04-start-261-baseline.csv",
+      "source_sha256": "6a8c2ab5a49bd8af392846ad6dd6f28f854781ef29122fe82a7c0b77452c3dc6",
+      "published_sha256": "6a8c2ab5a49bd8af392846ad6dd6f28f854781ef29122fe82a7c0b77452c3dc6",
+      "bytes": 6826,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-05-start-261-combined/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-05-start-261-combined.csv",
+      "source_sha256": "ad3a0f5d876a0618e923a55e2f94605e1983bf438e495a098cfe7fc76c28e9a3",
+      "published_sha256": "ad3a0f5d876a0618e923a55e2f94605e1983bf438e495a098cfe7fc76c28e9a3",
+      "bytes": 10513,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-06-start-261-combined/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-06-start-261-combined.csv",
+      "source_sha256": "69ac303ac275b2a2d803c5b9a5bf0633ef1844bfa5ae296a8c5e85394161bfcd",
+      "published_sha256": "69ac303ac275b2a2d803c5b9a5bf0633ef1844bfa5ae296a8c5e85394161bfcd",
+      "bytes": 10509,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-07-start-261-baseline/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-07-start-261-baseline.csv",
+      "source_sha256": "c1e27d0e86152fe3b562cc444db9218f86088eaed08bf4fb0cbe6106296d089d",
+      "published_sha256": "c1e27d0e86152fe3b562cc444db9218f86088eaed08bf4fb0cbe6106296d089d",
+      "bytes": 6701,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-08-start-384-baseline/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-08-start-384-baseline.csv",
+      "source_sha256": "9b8aa5e203fa6d6679ceb4ba118435950316e40a3c24d655dec8c32ec4cdfe03",
+      "published_sha256": "9b8aa5e203fa6d6679ceb4ba118435950316e40a3c24d655dec8c32ec4cdfe03",
+      "bytes": 2292,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-09-start-384-combined/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-09-start-384-combined.csv",
+      "source_sha256": "06363b078987a286c92f7c42ba29e3d26a7ac2305bbfadb5b55447ad5731d013",
+      "published_sha256": "06363b078987a286c92f7c42ba29e3d26a7ac2305bbfadb5b55447ad5731d013",
+      "bytes": 12529,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-10-start-384-combined/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-10-start-384-combined.csv",
+      "source_sha256": "663366efe369901d38783bdca42248e566e0665a0b28f85d86dd6a118591bff7",
+      "published_sha256": "663366efe369901d38783bdca42248e566e0665a0b28f85d86dd6a118591bff7",
+      "bytes": 12488,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261012T034845Z/retro/snes-pair1/pass-11-start-384-baseline/pair.csv",
+      "published": "evidence/2026-10-11/a7-pair1-return/pass-11-start-384-baseline.csv",
+      "source_sha256": "61fb3455c274c7b11f80ef412d9cf5a660e7bdb73a44bea324e553b134926b8d",
+      "published_sha256": "61fb3455c274c7b11f80ef412d9cf5a660e7bdb73a44bea324e553b134926b8d",
+      "bytes": 2166,
+      "normalized": false
     }
   ]
 }

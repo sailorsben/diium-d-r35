@@ -1,0 +1,2225 @@
+{
+  "version": "1.19-pair1",
+  "archive": "a7-pair-before-20261012T034845Z",
+  "hardware_measured": true,
+  "production_accepted": false,
+  "protected_original_retro_files": 455,
+  "runtime_mutable_files_changed": [
+    "retro/swapfile"
+  ],
+  "all_staged_payload_hashes_match": true,
+  "fat_clean": true,
+  "card_writes": 0,
+  "combined_complete_passes": 6,
+  "baseline_failed_passes": 6,
+  "runs": [
+    {
+      "pass": 0,
+      "start": 0,
+      "variant": "baseline",
+      "calls": 310,
+      "submitted": 309,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "failed": true,
+      "effect_calls_after_warmup": 33,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 310,
+          "mean": 12590.22258064516,
+          "median": 11995.5,
+          "p95": 16567.75,
+          "p99": 17343.75,
+          "min": 11366.0,
+          "max": 17816.0
+        },
+        "wall_ns": {
+          "n": 310,
+          "mean": 13796.448387096774,
+          "median": 13151.0,
+          "p95": 17815.7,
+          "p99": 19000.24,
+          "min": 12097.0,
+          "max": 21592.0
+        },
+        "admission_ns": {
+          "n": 310,
+          "mean": 2908.9,
+          "median": 3733.0,
+          "p95": 4575.0,
+          "p99": 4843.83,
+          "min": 149.0,
+          "max": 5486.0
+        },
+        "observer_ns": {
+          "n": 310,
+          "mean": 10.435483870967742,
+          "median": 10.0,
+          "p95": 14.0,
+          "p99": 15.910000000000025,
+          "min": 8.0,
+          "max": 159.0
+        },
+        "step_ns": {
+          "n": 310,
+          "mean": 16857.732258064516,
+          "median": 17269.0,
+          "p95": 18922.100000000002,
+          "p99": 19332.64,
+          "min": 13137.0,
+          "max": 21981.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 33,
+          "mean": 16570.878787878788,
+          "median": 16554.0,
+          "p95": 17555.6,
+          "p99": 17780.48,
+          "min": 15398.0,
+          "max": 17816.0
+        },
+        "wall_ns": {
+          "n": 33,
+          "mean": 17985.575757575756,
+          "median": 17776.0,
+          "p95": 19924.399999999998,
+          "p99": 21260.16,
+          "min": 16590.0,
+          "max": 21592.0
+        },
+        "admission_ns": {
+          "n": 33,
+          "mean": 196.8181818181818,
+          "median": 182.0,
+          "p95": 274.39999999999986,
+          "p99": 432.52,
+          "min": 152.0,
+          "max": 477.0
+        },
+        "observer_ns": {
+          "n": 33,
+          "mean": 18.060606060606062,
+          "median": 14.0,
+          "p95": 16.4,
+          "p99": 113.55999999999996,
+          "min": 9.0,
+          "max": 159.0
+        },
+        "step_ns": {
+          "n": 33,
+          "mean": 18354.666666666668,
+          "median": 18103.0,
+          "p95": 20247.0,
+          "p99": 21625.8,
+          "min": 16914.0,
+          "max": 21981.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 33,
+        "mean": 18182.39393939394,
+        "median": 17960.0,
+        "p95": 20105.199999999997,
+        "p99": 21433.04,
+        "min": 16778.0,
+        "max": 21762.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6870967741935,
+      "held": 0,
+      "accepted_including_prime": 230229,
+      "resampled_enqueued": 228112,
+      "priming": 2823,
+      "remaining": 706,
+      "running_production": {
+        "interval_s": 5.189982,
+        "accepted_delta": 226672,
+        "accepted_frames_per_s": 43674.91062589428,
+        "reserve_start": 2918,
+        "reserve_end": 982
+      },
+      "minimum_frame_observed_running_reserve": 759,
+      "trace_entries": 2763,
+      "trace_total": 2763,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "2756",
+        "ns": "14503290000",
+        "op": "SYNC_OK",
+        "arg": "7",
+        "result": "0",
+        "state": "3",
+        "queued": "854",
+        "appl": "230613",
+        "hw": "229759",
+        "epoch": "1",
+        "xfer": "230229"
+      },
+      "fault_events": [
+        {
+          "seq": "2757",
+          "ns": "14520767000",
+          "op": "SYNC_FAIL",
+          "arg": "7",
+          "result": "-77",
+          "state": "3",
+          "queued": "854",
+          "appl": "230613",
+          "hw": "229759",
+          "epoch": "1",
+          "xfer": "230229"
+        },
+        {
+          "seq": "2759",
+          "ns": "14520814000",
+          "op": "SYNC_OBSERVE",
+          "arg": "0",
+          "result": "-77",
+          "state": "1",
+          "queued": "0",
+          "appl": "230613",
+          "hw": "230527",
+          "epoch": "1",
+          "xfer": "230229"
+        }
+      ],
+      "last_running_pointer_bias": 384,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 1,
+      "start": 0,
+      "variant": "combined",
+      "calls": 500,
+      "submitted": 500,
+      "error": "",
+      "failed": false,
+      "effect_calls_after_warmup": 162,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 500,
+          "mean": 12412.582,
+          "median": 11734.0,
+          "p95": 14758.0,
+          "p99": 14845.22,
+          "min": 10761.0,
+          "max": 14916.0
+        },
+        "wall_ns": {
+          "n": 500,
+          "mean": 13338.94,
+          "median": 12559.0,
+          "p95": 15979.25,
+          "p99": 17521.6,
+          "min": 11253.0,
+          "max": 17838.0
+        },
+        "admission_ns": {
+          "n": 500,
+          "mean": 3160.056,
+          "median": 3192.0,
+          "p95": 5470.349999999999,
+          "p99": 5787.0599999999995,
+          "min": 157.0,
+          "max": 6292.0
+        },
+        "observer_ns": {
+          "n": 500,
+          "mean": 13.446,
+          "median": 13.0,
+          "p95": 15.049999999999955,
+          "p99": 17.0,
+          "min": 8.0,
+          "max": 325.0
+        },
+        "step_ns": {
+          "n": 500,
+          "mean": 16663.792,
+          "median": 17105.0,
+          "p95": 18205.249999999996,
+          "p99": 19188.19,
+          "min": 12891.0,
+          "max": 19881.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 162,
+          "mean": 14287.925925925925,
+          "median": 14537.5,
+          "p95": 14827.95,
+          "p99": 14909.9,
+          "min": 11519.0,
+          "max": 14916.0
+        },
+        "wall_ns": {
+          "n": 162,
+          "mean": 15420.308641975309,
+          "median": 15637.0,
+          "p95": 16766.699999999997,
+          "p99": 17770.579999999998,
+          "min": 12092.0,
+          "max": 17838.0
+        },
+        "admission_ns": {
+          "n": 162,
+          "mean": 1076.5246913580247,
+          "median": 641.0,
+          "p95": 2816.8,
+          "p99": 4112.709999999986,
+          "min": 157.0,
+          "max": 4876.0
+        },
+        "observer_ns": {
+          "n": 162,
+          "mean": 13.728395061728396,
+          "median": 11.0,
+          "p95": 15.0,
+          "p99": 17.0,
+          "min": 8.0,
+          "max": 325.0
+        },
+        "step_ns": {
+          "n": 162,
+          "mean": 16666.895061728395,
+          "median": 16497.5,
+          "p95": 18155.649999999998,
+          "p99": 19360.659999999996,
+          "min": 14688.0,
+          "max": 19881.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 162,
+        "mean": 16496.833333333332,
+        "median": 16319.5,
+        "p95": 17965.75,
+        "p99": 18989.019999999997,
+        "min": 14551.0,
+        "max": 19720.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.688,
+      "held": 0,
+      "accepted_including_prime": 370796,
+      "resampled_enqueued": 367973,
+      "priming": 2823,
+      "remaining": 0,
+      "running_production": {
+        "interval_s": 8.319878,
+        "accepted_delta": 367239,
+        "accepted_frames_per_s": 44139.95012907642,
+        "reserve_start": 3046,
+        "reserve_end": 3053
+      },
+      "minimum_frame_observed_running_reserve": 2768,
+      "trace_entries": 4450,
+      "trace_total": 4450,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "4447",
+        "ns": "23617143000",
+        "op": "RESET_DROP",
+        "arg": "0",
+        "result": "0",
+        "state": "3",
+        "queued": "3053",
+        "appl": "370796",
+        "hw": "367743",
+        "epoch": "1",
+        "xfer": "370796"
+      },
+      "fault_events": [],
+      "last_running_pointer_bias": 0,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 2,
+      "start": 0,
+      "variant": "combined",
+      "calls": 500,
+      "submitted": 500,
+      "error": "",
+      "failed": false,
+      "effect_calls_after_warmup": 162,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 500,
+          "mean": 12508.082,
+          "median": 11800.5,
+          "p95": 14861.0,
+          "p99": 14963.02,
+          "min": 10762.0,
+          "max": 14988.0
+        },
+        "wall_ns": {
+          "n": 500,
+          "mean": 13516.242,
+          "median": 12673.5,
+          "p95": 15982.05,
+          "p99": 17537.12,
+          "min": 11537.0,
+          "max": 18113.0
+        },
+        "admission_ns": {
+          "n": 500,
+          "mean": 2988.942,
+          "median": 2912.5,
+          "p95": 5388.2,
+          "p99": 5507.3099999999995,
+          "min": 156.0,
+          "max": 5690.0
+        },
+        "observer_ns": {
+          "n": 500,
+          "mean": 12.702,
+          "median": 13.0,
+          "p95": 16.0,
+          "p99": 16.00999999999999,
+          "min": 8.0,
+          "max": 61.0
+        },
+        "step_ns": {
+          "n": 500,
+          "mean": 16665.624,
+          "median": 17090.5,
+          "p95": 18051.59999999999,
+          "p99": 19166.04,
+          "min": 13282.0,
+          "max": 19928.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 162,
+          "mean": 14368.277777777777,
+          "median": 14690.0,
+          "p95": 14941.75,
+          "p99": 14970.39,
+          "min": 11749.0,
+          "max": 14988.0
+        },
+        "wall_ns": {
+          "n": 162,
+          "mean": 15530.135802469136,
+          "median": 15802.0,
+          "p95": 16819.749999999996,
+          "p99": 17895.849999999995,
+          "min": 12780.0,
+          "max": 18113.0
+        },
+        "admission_ns": {
+          "n": 162,
+          "mean": 979.2407407407408,
+          "median": 440.5,
+          "p95": 2908.3999999999996,
+          "p99": 4283.499999999998,
+          "min": 156.0,
+          "max": 4453.0
+        },
+        "observer_ns": {
+          "n": 162,
+          "mean": 11.506172839506172,
+          "median": 10.0,
+          "p95": 15.0,
+          "p99": 16.0,
+          "min": 8.0,
+          "max": 61.0
+        },
+        "step_ns": {
+          "n": 162,
+          "mean": 16672.635802469136,
+          "median": 16401.5,
+          "p95": 18398.399999999994,
+          "p99": 19308.839999999997,
+          "min": 14130.0,
+          "max": 19565.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 162,
+        "mean": 16509.376543209877,
+        "median": 16233.0,
+        "p95": 18260.349999999995,
+        "p99": 19167.889999999996,
+        "min": 13991.0,
+        "max": 19425.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.688,
+      "held": 0,
+      "accepted_including_prime": 370796,
+      "resampled_enqueued": 367973,
+      "priming": 2823,
+      "remaining": 0,
+      "running_production": {
+        "interval_s": 8.320795,
+        "accepted_delta": 367239,
+        "accepted_frames_per_s": 44135.08564986879,
+        "reserve_start": 3046,
+        "reserve_end": 3053
+      },
+      "minimum_frame_observed_running_reserve": 2736,
+      "trace_entries": 4444,
+      "trace_total": 4444,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "4441",
+        "ns": "32674749000",
+        "op": "RESET_DROP",
+        "arg": "0",
+        "result": "0",
+        "state": "3",
+        "queued": "3053",
+        "appl": "370796",
+        "hw": "367743",
+        "epoch": "1",
+        "xfer": "370796"
+      },
+      "fault_events": [],
+      "last_running_pointer_bias": 0,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 3,
+      "start": 0,
+      "variant": "baseline",
+      "calls": 312,
+      "submitted": 311,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "failed": true,
+      "effect_calls_after_warmup": 35,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 312,
+          "mean": 12438.448717948719,
+          "median": 11799.0,
+          "p95": 16556.0,
+          "p99": 17541.62,
+          "min": 11210.0,
+          "max": 17939.0
+        },
+        "wall_ns": {
+          "n": 312,
+          "mean": 13415.71794871795,
+          "median": 12608.0,
+          "p95": 17876.45,
+          "p99": 19121.609999999997,
+          "min": 11993.0,
+          "max": 21888.0
+        },
+        "admission_ns": {
+          "n": 312,
+          "mean": 3285.144230769231,
+          "median": 4218.5,
+          "p95": 5013.95,
+          "p99": 5232.16,
+          "min": 162.0,
+          "max": 6287.0
+        },
+        "observer_ns": {
+          "n": 312,
+          "mean": 13.91025641025641,
+          "median": 14.0,
+          "p95": 16.0,
+          "p99": 16.0,
+          "min": 9.0,
+          "max": 17.0
+        },
+        "step_ns": {
+          "n": 312,
+          "mean": 16863.13141025641,
+          "median": 17231.0,
+          "p95": 18908.35,
+          "p99": 19461.34,
+          "min": 13466.0,
+          "max": 22266.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 35,
+          "mean": 16554.914285714287,
+          "median": 16508.0,
+          "p95": 17598.6,
+          "p99": 17847.54,
+          "min": 15282.0,
+          "max": 17939.0
+        },
+        "wall_ns": {
+          "n": 35,
+          "mean": 17970.485714285714,
+          "median": 17715.0,
+          "p95": 19700.1,
+          "p99": 21393.299999999996,
+          "min": 16442.0,
+          "max": 21888.0
+        },
+        "admission_ns": {
+          "n": 35,
+          "mean": 197.77142857142857,
+          "median": 184.0,
+          "p95": 258.29999999999984,
+          "p99": 427.71999999999935,
+          "min": 162.0,
+          "max": 493.0
+        },
+        "observer_ns": {
+          "n": 35,
+          "mean": 13.114285714285714,
+          "median": 13.0,
+          "p95": 16.0,
+          "p99": 16.0,
+          "min": 9.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 35,
+          "mean": 18337.628571428573,
+          "median": 18238.0,
+          "p95": 20023.499999999996,
+          "p99": 21754.639999999996,
+          "min": 16758.0,
+          "max": 22266.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 35,
+        "mean": 18168.257142857143,
+        "median": 18060.0,
+        "p95": 19879.1,
+        "p99": 21563.459999999995,
+        "min": 16622.0,
+        "max": 22050.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6858974358975,
+      "held": 0,
+      "accepted_including_prime": 231702,
+      "resampled_enqueued": 229583,
+      "priming": 2823,
+      "remaining": 704,
+      "running_production": {
+        "interval_s": 5.225845,
+        "accepted_delta": 228145,
+        "accepted_frames_per_s": 43657.05450506091,
+        "reserve_start": 3046,
+        "reserve_end": 919
+      },
+      "minimum_frame_observed_running_reserve": 887,
+      "trace_entries": 2783,
+      "trace_total": 2783,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "2776",
+        "ns": "38569448000",
+        "op": "SYNC_OK",
+        "arg": "7",
+        "result": "0",
+        "state": "3",
+        "queued": "791",
+        "appl": "232086",
+        "hw": "231295",
+        "epoch": "1",
+        "xfer": "231702"
+      },
+      "fault_events": [
+        {
+          "seq": "2777",
+          "ns": "38587323000",
+          "op": "SYNC_FAIL",
+          "arg": "7",
+          "result": "-77",
+          "state": "3",
+          "queued": "791",
+          "appl": "232086",
+          "hw": "231295",
+          "epoch": "1",
+          "xfer": "231702"
+        },
+        {
+          "seq": "2779",
+          "ns": "38587369000",
+          "op": "SYNC_OBSERVE",
+          "arg": "0",
+          "result": "-77",
+          "state": "1",
+          "queued": "0",
+          "appl": "232086",
+          "hw": "232063",
+          "epoch": "1",
+          "xfer": "231702"
+        }
+      ],
+      "last_running_pointer_bias": 384,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 4,
+      "start": 261,
+      "variant": "baseline",
+      "calls": 51,
+      "submitted": 50,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "failed": true,
+      "effect_calls_after_warmup": 35,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 51,
+          "mean": 15751.921568627451,
+          "median": 15968.0,
+          "p95": 17431.5,
+          "p99": 17858.0,
+          "min": 11648.0,
+          "max": 18026.0
+        },
+        "wall_ns": {
+          "n": 51,
+          "mean": 17110.56862745098,
+          "median": 17165.0,
+          "p95": 19298.5,
+          "p99": 21097.5,
+          "min": 12404.0,
+          "max": 21222.0
+        },
+        "admission_ns": {
+          "n": 51,
+          "mean": 548.0,
+          "median": 184.0,
+          "p95": 2321.0,
+          "p99": 4597.0,
+          "min": 159.0,
+          "max": 4817.0
+        },
+        "observer_ns": {
+          "n": 51,
+          "mean": 13.490196078431373,
+          "median": 14.0,
+          "p95": 16.0,
+          "p99": 16.0,
+          "min": 8.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 51,
+          "mean": 17810.960784313724,
+          "median": 17775.0,
+          "p95": 19834.0,
+          "p99": 21417.5,
+          "min": 13497.0,
+          "max": 21538.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 35,
+          "mean": 16513.485714285714,
+          "median": 16529.0,
+          "p95": 17567.5,
+          "p99": 17911.76,
+          "min": 15185.0,
+          "max": 18026.0
+        },
+        "wall_ns": {
+          "n": 35,
+          "mean": 17918.14285714286,
+          "median": 17687.0,
+          "p95": 19894.999999999996,
+          "p99": 21137.34,
+          "min": 16410.0,
+          "max": 21222.0
+        },
+        "admission_ns": {
+          "n": 35,
+          "mean": 198.62857142857143,
+          "median": 183.0,
+          "p95": 273.2999999999997,
+          "p99": 439.6999999999995,
+          "min": 159.0,
+          "max": 489.0
+        },
+        "observer_ns": {
+          "n": 35,
+          "mean": 13.17142857142857,
+          "median": 14.0,
+          "p95": 15.299999999999997,
+          "p99": 16.0,
+          "min": 8.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 35,
+          "mean": 18262.4,
+          "median": 18064.0,
+          "p95": 20254.699999999997,
+          "p99": 21456.059999999998,
+          "min": 16727.0,
+          "max": 21538.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 35,
+        "mean": 18116.77142857143,
+        "median": 17917.0,
+        "p95": 20110.399999999994,
+        "p99": 21317.0,
+        "min": 16592.0,
+        "max": 21402.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6862745098039,
+      "held": 0,
+      "accepted_including_prime": 39619,
+      "resampled_enqueued": 37501,
+      "priming": 2823,
+      "remaining": 705,
+      "running_production": {
+        "interval_s": 0.87066,
+        "accepted_delta": 36062,
+        "accepted_frames_per_s": 41419.15328601291,
+        "reserve_start": 2918,
+        "reserve_end": 964
+      },
+      "minimum_frame_observed_running_reserve": 740,
+      "trace_entries": 390,
+      "trace_total": 390,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "383",
+        "ns": "40134585000",
+        "op": "SYNC_OK",
+        "arg": "7",
+        "result": "0",
+        "state": "3",
+        "queued": "836",
+        "appl": "40003",
+        "hw": "39167",
+        "epoch": "1",
+        "xfer": "39619"
+      },
+      "fault_events": [
+        {
+          "seq": "384",
+          "ns": "40151870000",
+          "op": "SYNC_FAIL",
+          "arg": "7",
+          "result": "-77",
+          "state": "3",
+          "queued": "836",
+          "appl": "40003",
+          "hw": "39167",
+          "epoch": "1",
+          "xfer": "39619"
+        },
+        {
+          "seq": "386",
+          "ns": "40151918000",
+          "op": "SYNC_OBSERVE",
+          "arg": "0",
+          "result": "-77",
+          "state": "1",
+          "queued": "0",
+          "appl": "40003",
+          "hw": "39935",
+          "epoch": "1",
+          "xfer": "39619"
+        }
+      ],
+      "last_running_pointer_bias": 384,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 5,
+      "start": 261,
+      "variant": "combined",
+      "calls": 80,
+      "submitted": 80,
+      "error": "",
+      "failed": false,
+      "effect_calls_after_warmup": 64,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 80,
+          "mean": 13758.95,
+          "median": 13774.5,
+          "p95": 14700.55,
+          "p99": 14803.73,
+          "min": 11040.0,
+          "max": 14814.0
+        },
+        "wall_ns": {
+          "n": 80,
+          "mean": 14833.9375,
+          "median": 14741.5,
+          "p95": 15992.75,
+          "p99": 17262.36,
+          "min": 11789.0,
+          "max": 17275.0
+        },
+        "admission_ns": {
+          "n": 80,
+          "mean": 1678.3625,
+          "median": 1696.0,
+          "p95": 3481.1499999999996,
+          "p99": 5195.519999999998,
+          "min": 161.0,
+          "max": 5442.0
+        },
+        "observer_ns": {
+          "n": 80,
+          "mean": 12.65,
+          "median": 13.0,
+          "p95": 15.049999999999997,
+          "p99": 16.209999999999994,
+          "min": 9.0,
+          "max": 17.0
+        },
+        "step_ns": {
+          "n": 80,
+          "mean": 16677.75,
+          "median": 16864.0,
+          "p95": 17905.949999999997,
+          "p99": 19275.889999999996,
+          "min": 14208.0,
+          "max": 19599.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 64,
+          "mean": 13979.890625,
+          "median": 13984.0,
+          "p95": 14709.35,
+          "p99": 14805.81,
+          "min": 13039.0,
+          "max": 14814.0
+        },
+        "wall_ns": {
+          "n": 64,
+          "mean": 15080.328125,
+          "median": 15055.0,
+          "p95": 16004.75,
+          "p99": 17264.92,
+          "min": 13772.0,
+          "max": 17275.0
+        },
+        "admission_ns": {
+          "n": 64,
+          "mean": 1452.078125,
+          "median": 1515.0,
+          "p95": 3158.85,
+          "p99": 3458.88,
+          "min": 161.0,
+          "max": 3474.0
+        },
+        "observer_ns": {
+          "n": 64,
+          "mean": 12.40625,
+          "median": 13.0,
+          "p95": 15.0,
+          "p99": 16.369999999999997,
+          "min": 9.0,
+          "max": 17.0
+        },
+        "step_ns": {
+          "n": 64,
+          "mean": 16697.234375,
+          "median": 16848.5,
+          "p95": 17841.25,
+          "p99": 19142.249999999996,
+          "min": 14870.0,
+          "max": 19599.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 64,
+        "mean": 16532.40625,
+        "median": 16707.0,
+        "p95": 17675.5,
+        "p99": 18996.469999999998,
+        "min": 14727.0,
+        "max": 19457.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6875,
+      "held": 0,
+      "accepted_including_prime": 61698,
+      "resampled_enqueued": 58875,
+      "priming": 2823,
+      "remaining": 0,
+      "running_production": {
+        "interval_s": 1.320525,
+        "accepted_delta": 58141,
+        "accepted_frames_per_s": 44028.70070615854,
+        "reserve_start": 3046,
+        "reserve_end": 2819
+      },
+      "minimum_frame_observed_running_reserve": 2818,
+      "trace_entries": 706,
+      "trace_total": 706,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "703",
+        "ns": "42170195000",
+        "op": "RESET_DROP",
+        "arg": "0",
+        "result": "0",
+        "state": "3",
+        "queued": "2819",
+        "appl": "61698",
+        "hw": "58879",
+        "epoch": "1",
+        "xfer": "61698"
+      },
+      "fault_events": [],
+      "last_running_pointer_bias": 0,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 6,
+      "start": 261,
+      "variant": "combined",
+      "calls": 80,
+      "submitted": 80,
+      "error": "",
+      "failed": false,
+      "effect_calls_after_warmup": 64,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 80,
+          "mean": 13751.6875,
+          "median": 13742.0,
+          "p95": 14701.65,
+          "p99": 14736.0,
+          "min": 11018.0,
+          "max": 14736.0
+        },
+        "wall_ns": {
+          "n": 80,
+          "mean": 14857.9625,
+          "median": 14822.0,
+          "p95": 16103.449999999999,
+          "p99": 17192.26,
+          "min": 11776.0,
+          "max": 17434.0
+        },
+        "admission_ns": {
+          "n": 80,
+          "mean": 1684.2,
+          "median": 1619.0,
+          "p95": 3476.2,
+          "p99": 5369.53,
+          "min": 157.0,
+          "max": 5443.0
+        },
+        "observer_ns": {
+          "n": 80,
+          "mean": 14.55,
+          "median": 13.0,
+          "p95": 16.099999999999994,
+          "p99": 67.21,
+          "min": 8.0,
+          "max": 68.0
+        },
+        "step_ns": {
+          "n": 80,
+          "mean": 16704.3375,
+          "median": 16691.0,
+          "p95": 18406.35,
+          "p99": 19352.36,
+          "min": 14333.0,
+          "max": 19365.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 64,
+          "mean": 13969.53125,
+          "median": 13975.5,
+          "p95": 14712.05,
+          "p99": 14736.0,
+          "min": 13121.0,
+          "max": 14736.0
+        },
+        "wall_ns": {
+          "n": 64,
+          "mean": 15107.53125,
+          "median": 15167.0,
+          "p95": 16222.65,
+          "p99": 17241.219999999998,
+          "min": 13835.0,
+          "max": 17434.0
+        },
+        "admission_ns": {
+          "n": 64,
+          "mean": 1454.59375,
+          "median": 1472.0,
+          "p95": 3068.2,
+          "p99": 3324.25,
+          "min": 157.0,
+          "max": 3340.0
+        },
+        "observer_ns": {
+          "n": 64,
+          "mean": 14.703125,
+          "median": 13.0,
+          "p95": 17.69999999999999,
+          "p99": 67.37,
+          "min": 8.0,
+          "max": 68.0
+        },
+        "step_ns": {
+          "n": 64,
+          "mean": 16728.6875,
+          "median": 16716.5,
+          "p95": 18360.6,
+          "p99": 19267.73,
+          "min": 15005.0,
+          "max": 19349.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 64,
+        "mean": 16562.125,
+        "median": 16566.5,
+        "p95": 18216.35,
+        "p99": 19025.149999999998,
+        "min": 14859.0,
+        "max": 19211.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6875,
+      "held": 0,
+      "accepted_including_prime": 61698,
+      "resampled_enqueued": 58875,
+      "priming": 2823,
+      "remaining": 0,
+      "running_production": {
+        "interval_s": 1.322227,
+        "accepted_delta": 58141,
+        "accepted_frames_per_s": 43972.025983435524,
+        "reserve_start": 3046,
+        "reserve_end": 2819
+      },
+      "minimum_frame_observed_running_reserve": 2818,
+      "trace_entries": 710,
+      "trace_total": 710,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "707",
+        "ns": "44169825000",
+        "op": "RESET_DROP",
+        "arg": "0",
+        "result": "0",
+        "state": "3",
+        "queued": "2819",
+        "appl": "61698",
+        "hw": "58879",
+        "epoch": "1",
+        "xfer": "61698"
+      },
+      "fault_events": [],
+      "last_running_pointer_bias": 0,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 7,
+      "start": 261,
+      "variant": "baseline",
+      "calls": 50,
+      "submitted": 49,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "failed": true,
+      "effect_calls_after_warmup": 34,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 50,
+          "mean": 15793.08,
+          "median": 16103.5,
+          "p95": 17547.75,
+          "p99": 17842.8,
+          "min": 11463.0,
+          "max": 18029.0
+        },
+        "wall_ns": {
+          "n": 50,
+          "mean": 17148.44,
+          "median": 17408.0,
+          "p95": 19630.199999999997,
+          "p99": 20442.07,
+          "min": 12169.0,
+          "max": 20813.0
+        },
+        "admission_ns": {
+          "n": 50,
+          "mean": 542.54,
+          "median": 185.0,
+          "p95": 2177.85,
+          "p99": 4813.99,
+          "min": 159.0,
+          "max": 4887.0
+        },
+        "observer_ns": {
+          "n": 50,
+          "mean": 13.72,
+          "median": 14.0,
+          "p95": 15.0,
+          "p99": 15.509999999999998,
+          "min": 10.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 50,
+          "mean": 17836.42,
+          "median": 17851.0,
+          "p95": 20230.95,
+          "p99": 20800.339999999997,
+          "min": 14494.0,
+          "max": 21209.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 34,
+          "mean": 16558.647058823528,
+          "median": 16508.0,
+          "p95": 17643.15,
+          "p99": 17903.600000000002,
+          "min": 15264.0,
+          "max": 18029.0
+        },
+        "wall_ns": {
+          "n": 34,
+          "mean": 17989.5,
+          "median": 17826.5,
+          "p95": 20008.55,
+          "p99": 20563.190000000002,
+          "min": 16440.0,
+          "max": 20813.0
+        },
+        "admission_ns": {
+          "n": 34,
+          "mean": 193.14705882352942,
+          "median": 182.5,
+          "p95": 202.5999999999999,
+          "p99": 425.66000000000054,
+          "min": 159.0,
+          "max": 524.0
+        },
+        "observer_ns": {
+          "n": 34,
+          "mean": 13.617647058823529,
+          "median": 14.0,
+          "p95": 15.0,
+          "p99": 15.670000000000002,
+          "min": 10.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 34,
+          "mean": 18329.058823529413,
+          "median": 18160.0,
+          "p95": 20336.65,
+          "p99": 20933.780000000002,
+          "min": 16760.0,
+          "max": 21209.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 34,
+        "mean": 18182.647058823528,
+        "median": 18012.5,
+        "p95": 20193.0,
+        "p99": 20745.22,
+        "min": 16622.0,
+        "max": 20998.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.68,
+      "held": 0,
+      "accepted_including_prime": 38883,
+      "resampled_enqueued": 36764,
+      "priming": 2823,
+      "remaining": 704,
+      "running_production": {
+        "interval_s": 0.856042,
+        "accepted_delta": 35326,
+        "accepted_frames_per_s": 41266.66682242227,
+        "reserve_start": 3046,
+        "reserve_end": 740
+      },
+      "minimum_frame_observed_running_reserve": 740,
+      "trace_entries": 381,
+      "trace_total": 381,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "374",
+        "ns": "45626863000",
+        "op": "SYNC_OK",
+        "arg": "7",
+        "result": "0",
+        "state": "3",
+        "queued": "740",
+        "appl": "39139",
+        "hw": "38399",
+        "epoch": "1",
+        "xfer": "38883"
+      },
+      "fault_events": [
+        {
+          "seq": "375",
+          "ns": "45643727000",
+          "op": "SYNC_FAIL",
+          "arg": "7",
+          "result": "-77",
+          "state": "3",
+          "queued": "740",
+          "appl": "39139",
+          "hw": "38399",
+          "epoch": "1",
+          "xfer": "38883"
+        },
+        {
+          "seq": "377",
+          "ns": "45643776000",
+          "op": "SYNC_OBSERVE",
+          "arg": "0",
+          "result": "-77",
+          "state": "1",
+          "queued": "0",
+          "appl": "39267",
+          "hw": "39167",
+          "epoch": "1",
+          "xfer": "38883"
+        }
+      ],
+      "last_running_pointer_bias": 256,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 8,
+      "start": 384,
+      "variant": "baseline",
+      "calls": 15,
+      "submitted": 14,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "failed": true,
+      "effect_calls_after_warmup": 0,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 15,
+          "mean": 18723.933333333334,
+          "median": 18436.0,
+          "p95": 19889.299999999996,
+          "p99": 22163.46,
+          "min": 17765.0,
+          "max": 22732.0
+        },
+        "wall_ns": {
+          "n": 15,
+          "mean": 20240.333333333332,
+          "median": 19686.0,
+          "p95": 22334.1,
+          "p99": 23323.62,
+          "min": 19616.0,
+          "max": 23571.0
+        },
+        "admission_ns": {
+          "n": 15,
+          "mean": 182.6,
+          "median": 182.0,
+          "p95": 199.09999999999997,
+          "p99": 219.82,
+          "min": 166.0,
+          "max": 225.0
+        },
+        "observer_ns": {
+          "n": 15,
+          "mean": 14.0,
+          "median": 14.0,
+          "p95": 17.0,
+          "p99": 17.0,
+          "min": 12.0,
+          "max": 17.0
+        },
+        "step_ns": {
+          "n": 15,
+          "mean": 20574.533333333333,
+          "median": 20070.0,
+          "p95": 22696.0,
+          "p99": 23642.399999999998,
+          "min": 19948.0,
+          "max": 23879.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 0
+        },
+        "wall_ns": {
+          "n": 0
+        },
+        "admission_ns": {
+          "n": 0
+        },
+        "observer_ns": {
+          "n": 0
+        },
+        "step_ns": {
+          "n": 0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6666666666666,
+      "held": 0,
+      "accepted_including_prime": 13125,
+      "resampled_enqueued": 11006,
+      "priming": 2823,
+      "remaining": 704,
+      "running_production": {
+        "interval_s": 0.262592,
+        "accepted_delta": 9568,
+        "accepted_frames_per_s": 36436.75359493054,
+        "reserve_start": 2534,
+        "reserve_end": 966
+      },
+      "minimum_frame_observed_running_reserve": 869,
+      "trace_entries": 114,
+      "trace_total": 114,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "107",
+        "ns": "46537891000",
+        "op": "SYNC_OK",
+        "arg": "7",
+        "result": "0",
+        "state": "3",
+        "queued": "838",
+        "appl": "13509",
+        "hw": "12671",
+        "epoch": "1",
+        "xfer": "13125"
+      },
+      "fault_events": [
+        {
+          "seq": "108",
+          "ns": "46555751000",
+          "op": "SYNC_FAIL",
+          "arg": "7",
+          "result": "-77",
+          "state": "3",
+          "queued": "838",
+          "appl": "13509",
+          "hw": "12671",
+          "epoch": "1",
+          "xfer": "13125"
+        },
+        {
+          "seq": "110",
+          "ns": "46555798000",
+          "op": "SYNC_OBSERVE",
+          "arg": "0",
+          "result": "-77",
+          "state": "1",
+          "queued": "0",
+          "appl": "13509",
+          "hw": "13439",
+          "epoch": "1",
+          "xfer": "13125"
+        }
+      ],
+      "last_running_pointer_bias": 384,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 9,
+      "start": 384,
+      "variant": "combined",
+      "calls": 96,
+      "submitted": 96,
+      "error": "",
+      "failed": false,
+      "effect_calls_after_warmup": 39,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 96,
+          "mean": 13697.947916666666,
+          "median": 14149.5,
+          "p95": 15111.0,
+          "p99": 15320.049999999992,
+          "min": 11113.0,
+          "max": 17867.0
+        },
+        "wall_ns": {
+          "n": 96,
+          "mean": 14822.770833333334,
+          "median": 15663.5,
+          "p95": 16771.0,
+          "p99": 18118.399999999998,
+          "min": 11600.0,
+          "max": 18639.0
+        },
+        "admission_ns": {
+          "n": 96,
+          "mean": 1671.4583333333333,
+          "median": 191.5,
+          "p95": 5285.75,
+          "p99": 5626.4,
+          "min": 141.0,
+          "max": 5653.0
+        },
+        "observer_ns": {
+          "n": 96,
+          "mean": 13.447916666666666,
+          "median": 14.0,
+          "p95": 15.0,
+          "p99": 16.0,
+          "min": 9.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 96,
+          "mean": 16655.114583333332,
+          "median": 16597.5,
+          "p95": 18429.5,
+          "p99": 19563.149999999998,
+          "min": 14151.0,
+          "max": 19946.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 39,
+          "mean": 14481.205128205129,
+          "median": 14928.0,
+          "p95": 15110.4,
+          "p99": 15119.58,
+          "min": 11628.0,
+          "max": 15123.0
+        },
+        "wall_ns": {
+          "n": 39,
+          "mean": 15799.333333333334,
+          "median": 16171.0,
+          "p95": 17939.9,
+          "p99": 18039.46,
+          "min": 11991.0,
+          "max": 18090.0
+        },
+        "admission_ns": {
+          "n": 39,
+          "mean": 619.0769230769231,
+          "median": 185.0,
+          "p95": 4632.900000000001,
+          "p99": 5095.379999999999,
+          "min": 141.0,
+          "max": 5247.0
+        },
+        "observer_ns": {
+          "n": 39,
+          "mean": 13.461538461538462,
+          "median": 14.0,
+          "p95": 15.0,
+          "p99": 15.619999999999997,
+          "min": 10.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 39,
+          "mean": 16582.17948717949,
+          "median": 16541.0,
+          "p95": 18300.2,
+          "p99": 19365.739999999998,
+          "min": 14205.0,
+          "max": 19946.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 39,
+        "mean": 16418.410256410258,
+        "median": 16394.0,
+        "p95": 18159.9,
+        "p99": 19216.539999999997,
+        "min": 13707.0,
+        "max": 19793.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6875,
+      "held": 0,
+      "accepted_including_prime": 73473,
+      "resampled_enqueued": 70650,
+      "priming": 2823,
+      "remaining": 0,
+      "running_production": {
+        "interval_s": 1.580397,
+        "accepted_delta": 69916,
+        "accepted_frames_per_s": 44239.51703274557,
+        "reserve_start": 2790,
+        "reserve_end": 2946
+      },
+      "minimum_frame_observed_running_reserve": 2693,
+      "trace_entries": 788,
+      "trace_total": 788,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "785",
+        "ns": "48840912000",
+        "op": "RESET_DROP",
+        "arg": "0",
+        "result": "0",
+        "state": "3",
+        "queued": "2946",
+        "appl": "73473",
+        "hw": "70527",
+        "epoch": "1",
+        "xfer": "73473"
+      },
+      "fault_events": [],
+      "last_running_pointer_bias": 0,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 10,
+      "start": 384,
+      "variant": "combined",
+      "calls": 96,
+      "submitted": 96,
+      "error": "",
+      "failed": false,
+      "effect_calls_after_warmup": 39,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 96,
+          "mean": 13686.916666666666,
+          "median": 13994.0,
+          "p95": 14974.25,
+          "p99": 15180.299999999992,
+          "min": 11209.0,
+          "max": 17675.0
+        },
+        "wall_ns": {
+          "n": 96,
+          "mean": 14853.0,
+          "median": 15444.5,
+          "p95": 16516.0,
+          "p99": 17846.699999999997,
+          "min": 12260.0,
+          "max": 18506.0
+        },
+        "admission_ns": {
+          "n": 96,
+          "mean": 1669.5208333333333,
+          "median": 930.0,
+          "p95": 4540.0,
+          "p99": 4656.95,
+          "min": 156.0,
+          "max": 4694.0
+        },
+        "observer_ns": {
+          "n": 96,
+          "mean": 9.864583333333334,
+          "median": 10.0,
+          "p95": 11.25,
+          "p99": 13.0,
+          "min": 8.0,
+          "max": 13.0
+        },
+        "step_ns": {
+          "n": 96,
+          "mean": 16676.677083333332,
+          "median": 16541.5,
+          "p95": 18815.0,
+          "p99": 19105.85,
+          "min": 14175.0,
+          "max": 19236.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 39,
+          "mean": 14393.205128205129,
+          "median": 14811.0,
+          "p95": 14952.2,
+          "p99": 15002.1,
+          "min": 11746.0,
+          "max": 15004.0
+        },
+        "wall_ns": {
+          "n": 39,
+          "mean": 15591.564102564103,
+          "median": 15910.0,
+          "p95": 17565.6,
+          "p99": 17696.66,
+          "min": 12771.0,
+          "max": 17713.0
+        },
+        "admission_ns": {
+          "n": 39,
+          "mean": 843.6923076923077,
+          "median": 171.0,
+          "p95": 4307.6,
+          "p99": 4434.62,
+          "min": 156.0,
+          "max": 4454.0
+        },
+        "observer_ns": {
+          "n": 39,
+          "mean": 10.179487179487179,
+          "median": 10.0,
+          "p95": 12.0,
+          "p99": 12.619999999999997,
+          "min": 8.0,
+          "max": 13.0
+        },
+        "step_ns": {
+          "n": 39,
+          "mean": 16583.615384615383,
+          "median": 16318.0,
+          "p95": 17924.5,
+          "p99": 18685.179999999997,
+          "min": 14175.0,
+          "max": 19099.0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 39,
+        "mean": 16435.25641025641,
+        "median": 16182.0,
+        "p95": 17782.7,
+        "p99": 18545.179999999997,
+        "min": 14033.0,
+        "max": 18959.0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6875,
+      "held": 0,
+      "accepted_including_prime": 73473,
+      "resampled_enqueued": 70650,
+      "priming": 2823,
+      "remaining": 0,
+      "running_production": {
+        "interval_s": 1.582922,
+        "accepted_delta": 69916,
+        "accepted_frames_per_s": 44168.9483120457,
+        "reserve_start": 2790,
+        "reserve_end": 2818
+      },
+      "minimum_frame_observed_running_reserve": 2756,
+      "trace_entries": 826,
+      "trace_total": 826,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "823",
+        "ns": "51099976000",
+        "op": "RESET_DROP",
+        "arg": "0",
+        "result": "0",
+        "state": "3",
+        "queued": "2818",
+        "appl": "73473",
+        "hw": "70655",
+        "epoch": "1",
+        "xfer": "73473"
+      },
+      "fault_events": [],
+      "last_running_pointer_bias": 0,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    },
+    {
+      "pass": 11,
+      "start": 384,
+      "variant": "baseline",
+      "calls": 14,
+      "submitted": 13,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "failed": true,
+      "effect_calls_after_warmup": 0,
+      "all_frame_cost_us": {
+        "cpu_ns": {
+          "n": 14,
+          "mean": 18984.14285714286,
+          "median": 18747.0,
+          "p95": 20410.85,
+          "p99": 22652.569999999996,
+          "min": 17710.0,
+          "max": 23213.0
+        },
+        "wall_ns": {
+          "n": 14,
+          "mean": 20508.85714285714,
+          "median": 20057.0,
+          "p95": 22515.2,
+          "p99": 23655.039999999997,
+          "min": 19763.0,
+          "max": 23940.0
+        },
+        "admission_ns": {
+          "n": 14,
+          "mean": 195.85714285714286,
+          "median": 185.5,
+          "p95": 258.59999999999997,
+          "p99": 318.9199999999999,
+          "min": 166.0,
+          "max": 334.0
+        },
+        "observer_ns": {
+          "n": 14,
+          "mean": 13.714285714285714,
+          "median": 13.5,
+          "p95": 16.0,
+          "p99": 16.0,
+          "min": 11.0,
+          "max": 16.0
+        },
+        "step_ns": {
+          "n": 14,
+          "mean": 20847.785714285714,
+          "median": 20379.0,
+          "p95": 22947.0,
+          "p99": 24028.6,
+          "min": 20086.0,
+          "max": 24299.0
+        }
+      },
+      "effect_cost_us": {
+        "cpu_ns": {
+          "n": 0
+        },
+        "wall_ns": {
+          "n": 0
+        },
+        "admission_ns": {
+          "n": 0
+        },
+        "observer_ns": {
+          "n": 0
+        },
+        "step_ns": {
+          "n": 0
+        }
+      },
+      "effect_core_plus_admission_us": {
+        "n": 0
+      },
+      "frame_frequency_values_khz": [
+        -1
+      ],
+      "mean_native_frames_per_call": 534.6428571428571,
+      "held": 0,
+      "accepted_including_prime": 12388,
+      "resampled_enqueued": 10271,
+      "priming": 2823,
+      "remaining": 706,
+      "running_production": {
+        "interval_s": 0.245385,
+        "accepted_delta": 8831,
+        "accepted_frames_per_s": 35988.34484585447,
+        "reserve_start": 2534,
+        "reserve_end": 869
+      },
+      "minimum_frame_observed_running_reserve": 869,
+      "trace_entries": 107,
+      "trace_total": 107,
+      "trace_retained_from": 0,
+      "last_running_trace": {
+        "seq": "100",
+        "ns": "51960241000",
+        "op": "SYNC_OK",
+        "arg": "7",
+        "result": "0",
+        "state": "3",
+        "queued": "741",
+        "appl": "12644",
+        "hw": "11903",
+        "epoch": "1",
+        "xfer": "12388"
+      },
+      "fault_events": [
+        {
+          "seq": "101",
+          "ns": "51977902000",
+          "op": "SYNC_FAIL",
+          "arg": "7",
+          "result": "-77",
+          "state": "3",
+          "queued": "741",
+          "appl": "12644",
+          "hw": "11903",
+          "epoch": "1",
+          "xfer": "12388"
+        },
+        {
+          "seq": "103",
+          "ns": "51977950000",
+          "op": "SYNC_OBSERVE",
+          "arg": "0",
+          "result": "-77",
+          "state": "1",
+          "queued": "0",
+          "appl": "12772",
+          "hw": "12671",
+          "epoch": "1",
+          "xfer": "12388"
+        }
+      ],
+      "last_running_pointer_bias": 256,
+      "pin": "not_exposed_or_not_writable",
+      "governor": "unavailable_errno_2"
+    }
+  ],
+  "aligned_pairs": [
+    {
+      "baseline_pass": 0,
+      "combined_pass": 1,
+      "first_frame": 277,
+      "last_frame": 308,
+      "common_running_effect_calls_after_warmup": 32,
+      "saving_us": {
+        "cpu_ns": {
+          "n": 32,
+          "mean": 2891.6875,
+          "median": 2877.0,
+          "p95": 3582.85,
+          "p99": 3703.0800000000004,
+          "min": 2140.0,
+          "max": 3744.0
+        },
+        "wall_ns": {
+          "n": 32,
+          "mean": 3124.53125,
+          "median": 3114.5,
+          "p95": 4262.5,
+          "p99": 5306.260000000001,
+          "min": 1138.0,
+          "max": 5664.0
+        },
+        "admission_ns": {
+          "n": 32,
+          "mean": -1647.0625,
+          "median": -2267.0,
+          "p95": 21.9,
+          "p99": 123.05000000000018,
+          "min": -2863.0,
+          "max": 168.0
+        },
+        "observer_ns": {
+          "n": 32,
+          "mean": -1.65625,
+          "median": 4.0,
+          "p95": 6.449999999999999,
+          "p99": 104.98000000000019,
+          "min": -311.0,
+          "max": 149.0
+        },
+        "step_ns": {
+          "n": 32,
+          "mean": 1472.65625,
+          "median": 1537.5,
+          "p95": 3378.1,
+          "p99": 3600.5200000000004,
+          "min": -1372.0,
+          "max": 3696.0
+        }
+      },
+      "core_plus_admission_saving_us": {
+        "n": 32,
+        "mean": 1477.46875,
+        "median": 1537.0,
+        "p95": 3371.45,
+        "p99": 3596.9000000000005,
+        "min": -1372.0,
+        "max": 3693.0
+      }
+    },
+    {
+      "baseline_pass": 3,
+      "combined_pass": 2,
+      "first_frame": 277,
+      "last_frame": 310,
+      "common_running_effect_calls_after_warmup": 34,
+      "saving_us": {
+        "cpu_ns": {
+          "n": 34,
+          "mean": 2908.3529411764707,
+          "median": 2917.0,
+          "p95": 3613.2999999999997,
+          "p99": 3672.04,
+          "min": 2039.0,
+          "max": 3676.0
+        },
+        "wall_ns": {
+          "n": 34,
+          "mean": 3214.323529411765,
+          "median": 3236.0,
+          "p95": 4570.199999999999,
+          "p99": 5499.040000000001,
+          "min": 1617.0,
+          "max": 5767.0
+        },
+        "admission_ns": {
+          "n": 34,
+          "mean": -1715.1764705882354,
+          "median": -2089.5,
+          "p95": 29.149999999999896,
+          "p99": 226.4900000000004,
+          "min": -3958.0,
+          "max": 308.0
+        },
+        "observer_ns": {
+          "n": 34,
+          "mean": -0.8823529411764706,
+          "median": -0.5,
+          "p95": 2.0,
+          "p99": 2.0,
+          "min": -6.0,
+          "max": 2.0
+        },
+        "step_ns": {
+          "n": 34,
+          "mean": 1494.1470588235295,
+          "median": 1346.0,
+          "p95": 3636.1499999999996,
+          "p99": 3808.44,
+          "min": -919.0,
+          "max": 3852.0
+        }
+      },
+      "core_plus_admission_saving_us": {
+        "n": 34,
+        "mean": 1499.1470588235295,
+        "median": 1382.5,
+        "p95": 3394.5499999999993,
+        "p99": 3820.8400000000006,
+        "min": -920.0,
+        "max": 3937.0
+      }
+    },
+    {
+      "baseline_pass": 4,
+      "combined_pass": 5,
+      "first_frame": 277,
+      "last_frame": 310,
+      "common_running_effect_calls_after_warmup": 34,
+      "saving_us": {
+        "cpu_ns": {
+          "n": 34,
+          "mean": 2884.794117647059,
+          "median": 2909.0,
+          "p95": 3544.1,
+          "p99": 3590.75,
+          "min": 2005.0,
+          "max": 3599.0
+        },
+        "wall_ns": {
+          "n": 34,
+          "mean": 3149.294117647059,
+          "median": 3283.0,
+          "p95": 4108.15,
+          "p99": 4521.380000000001,
+          "min": 1010.0,
+          "max": 4658.0
+        },
+        "admission_ns": {
+          "n": 34,
+          "mean": -1652.735294117647,
+          "median": -2199.5,
+          "p95": 1.799999999999983,
+          "p99": 10.350000000000009,
+          "min": -3283.0,
+          "max": 12.0
+        },
+        "observer_ns": {
+          "n": 34,
+          "mean": -0.47058823529411764,
+          "median": 0.0,
+          "p95": 2.349999999999998,
+          "p99": 3.0,
+          "min": -6.0,
+          "max": 3.0
+        },
+        "step_ns": {
+          "n": 34,
+          "mean": 1483.5,
+          "median": 1515.0,
+          "p95": 3751.6499999999996,
+          "p99": 4391.4000000000015,
+          "min": -1937.0,
+          "max": 4662.0
+        }
+      },
+      "core_plus_admission_saving_us": {
+        "n": 34,
+        "mean": 1496.5588235294117,
+        "median": 1514.5,
+        "p95": 3746.35,
+        "p99": 4392.090000000001,
+        "min": -1946.0,
+        "max": 4665.0
+      }
+    },
+    {
+      "baseline_pass": 7,
+      "combined_pass": 6,
+      "first_frame": 277,
+      "last_frame": 309,
+      "common_running_effect_calls_after_warmup": 33,
+      "saving_us": {
+        "cpu_ns": {
+          "n": 33,
+          "mean": 2971.848484848485,
+          "median": 2942.0,
+          "p95": 3565.3999999999996,
+          "p99": 3750.44,
+          "min": 2033.0,
+          "max": 3761.0
+        },
+        "wall_ns": {
+          "n": 33,
+          "mean": 3249.7272727272725,
+          "median": 3269.0,
+          "p95": 4918.4,
+          "p99": 5518.96,
+          "min": 638.0,
+          "max": 5646.0
+        },
+        "admission_ns": {
+          "n": 33,
+          "mean": -1658.878787878788,
+          "median": -2044.0,
+          "p95": 2.3999999999999844,
+          "p99": 9.68,
+          "min": -3164.0,
+          "max": 10.0
+        },
+        "observer_ns": {
+          "n": 33,
+          "mean": -3.727272727272727,
+          "median": -1.0,
+          "p95": 1.3999999999999986,
+          "p99": 2.0,
+          "min": -53.0,
+          "max": 2.0
+        },
+        "step_ns": {
+          "n": 33,
+          "mean": 1580.030303030303,
+          "median": 1452.0,
+          "p95": 3607.7999999999997,
+          "p99": 3894.44,
+          "min": -474.0,
+          "max": 3937.0
+        }
+      },
+      "core_plus_admission_saving_us": {
+        "n": 33,
+        "mean": 1590.8484848484848,
+        "median": 1457.0,
+        "p95": 3603.9999999999995,
+        "p99": 3895.56,
+        "min": -476.0,
+        "max": 3941.0
+      }
+    },
+    {
+      "baseline_pass": 8,
+      "combined_pass": 9,
+      "first_frame": null,
+      "last_frame": null,
+      "common_running_effect_calls_after_warmup": 0,
+      "saving_us": {
+        "cpu_ns": {
+          "n": 0
+        },
+        "wall_ns": {
+          "n": 0
+        },
+        "admission_ns": {
+          "n": 0
+        },
+        "observer_ns": {
+          "n": 0
+        },
+        "step_ns": {
+          "n": 0
+        }
+      },
+      "core_plus_admission_saving_us": {
+        "n": 0
+      }
+    },
+    {
+      "baseline_pass": 11,
+      "combined_pass": 10,
+      "first_frame": null,
+      "last_frame": null,
+      "common_running_effect_calls_after_warmup": 0,
+      "saving_us": {
+        "cpu_ns": {
+          "n": 0
+        },
+        "wall_ns": {
+          "n": 0
+        },
+        "admission_ns": {
+          "n": 0
+        },
+        "observer_ns": {
+          "n": 0
+        },
+        "step_ns": {
+          "n": 0
+        }
+      },
+      "core_plus_admission_saving_us": {
+        "n": 0
+      }
+    }
+  ],
+  "late_floor_us": 1514.283,
+  "PCM_proxy_required_us": 2436.981,
+  "limits": [
+    "CPU frequency sysfs unavailable: paired frequency parity unproved",
+    "later starts are independent audio epochs, not continuous effect/recovery",
+    "baseline stops early: paired saving covers only overlapping RUNNING calls, not whole effect",
+    "CPU and step timing include instrumentation; observer is never subtracted",
+    "accepted rate over selected RUNNING endpoints is reserve-sensitive, not an unbounded sustained throughput measurement",
+    "no physical pixel capture; visual observations separate from offline exact-output qualification"
+  ]
+}

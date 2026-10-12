@@ -1,4 +1,16 @@
-# A7 pair1 staged: physical return pending
+# A7 pair1: physical return analyzed
+
+## Return supersedes pending state
+
+I: returned and was strictly archived at
+`device-evidence/a7-pair-before-20261012T034845Z`. FAT is clean, staged payloads
+match and the marker is consumed; next boot is stock. All6 combined passes
+complete, all6 baselines fail errno77/SETUP. Full combined replays reach500
+drawings/effect/recovery with stable reserve. Aligned pairs save~2.9ms CPU and
+~3.2ms core wall. No return-handling card writes or rearm. See
+[return](snes-a7-pair-return.md) for sample coverage, costs, pointer epochs,
+visual observations and next qualification. Earlier staging account below is
+historical; do not treat it as current armed state.
 
 The user replaced the system disk: C: is the new4TB drive, D: the old system
 drive, and **I: the original D-R35 test card**. Never run historical installers

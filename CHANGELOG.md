@@ -1,5 +1,18 @@
 # Changelog
 
+## A7 pair1 returned: combined renderer completes every pass - 2026-10-11
+
+Strictly archive the physical return on I: and verify clean FAT/staged payloads.
+All six combined passes complete; all six baseline passes stop with native
+errno77/SETUP. Both combined full500-call replays preserve500 drawings and
+complete effect/recovery with stable audio reserve. Matching RUNNING effect
+calls save2.885–2.972ms CPU and3.125–3.250ms core wall; complete-effect core
+wall means15.420/15.530ms, with observer-inclusive cadence near16.688ms.
+Late baseline warmup never finishes, so no invented late paired price.
+Frequency remains unavailable; extended gameplay and exact vendor stop semantics
+remain unqualified. Preserve all raw evidence privately; no card writes/rearm.
+See [return analysis](docs/snes-a7-pair-return.md).
+
 ## A7 pair1 measurement staged on reassigned I: card - 2026-10-11
 
 Prepare a separate whole-path baseline/combined renderer comparison:12 ABBA
