@@ -6,13 +6,22 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-12
 
+- **Confuser gameplay1 staged on I:** user authorizes an experimental manual
+  one-shot with counter-free BG3 batching and refined half-add. Normal controls,
+  latest copied test SRAM/snapshot and separate saves; original files preserved.
+  Final4,800 output comparisons and runtime/native/wrapper seams pass, with clean
+  FAT and protected readback. New A7 savings remain unmeasured; physical return
+  pending. [Test](docs/snes-confuser-gameplay-test.txt),
+  [prediction and setup](docs/snes-confuser-gameplay.md).
+
 - **Confuser investigated offline:** the combined core's BG1-only batching falls
   back on Confuser's BG3 circle, alongside growing half-add/depth work. A separate
   BG3 extension removes2,028 tile calls/effect call; a refined exact-math shortcut
   covers4,042 half-add rows.10,800 output comparisons and original clipping/math
   oracles pass. Physical tail requires0.803ms minimum, with a1.020ms local PCM
   throughput proxy; incremental A7 prices remain missing. No card changes or
-  new A7 test staged. [Findings and predictions](docs/confuser-rendering-investigation.md).
+  new A7 test during that analysis; later authorized staging is above.
+  [Findings and predictions](docs/confuser-rendering-investigation.md).
 
 - **Manual combined-renderer gameplay returned:** Bio Blast seemed fine; Confuser
   stopped after225s with native PCM errno77/SETUP. Archive/hash verification

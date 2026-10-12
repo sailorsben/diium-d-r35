@@ -3,6 +3,11 @@
 Investigation began2026-10-11 and completed2026-10-12. Evidence retains the
 initial2026-10-11 experiment directory; the manual physical return is separate.
 
+Subsequent explicit “Load it to I:” authorization stages a separate counter-free
+experimental gameplay qualification, with the performance gate still pending.
+See [setup/prediction](snes-confuser-gameplay.md); the offline findings below do
+not establish new measured A7 prices.
+
 The strongest explanation is a rendering path the Bio Blast optimization does
 not cover. Confuser uses a moving **BG3** circle, while the installed batching
 guard requires **BG1**. Confuser also copies and waves the battle background on

@@ -5995,6 +5995,62 @@
       "published_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
       "bytes": 682,
       "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/equivalence-confuser.log",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/equivalence-confuser.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/equivalence-bio.log",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/equivalence-bio.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/equivalence-snapshot.log",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/equivalence-snapshot.log",
+      "source_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "published_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "bytes": 349,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/smoke.log",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/smoke.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/native-check.log",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/native-check.log",
+      "source_sha256": "762f535955bb9c050d9a75368e2983dd08a533fc413d0f352532d6178e2ce546",
+      "published_sha256": "762f535955bb9c050d9a75368e2983dd08a533fc413d0f352532d6178e2ce546",
+      "bytes": 1455,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/wrapper-check.log",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/wrapper-check.log",
+      "source_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "published_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "bytes": 1018,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-gameplay-private-v1/abi.txt",
+      "published": "evidence/2026-10-12/confuser-gameplay1-qualification/abi.txt",
+      "source_sha256": "93cf98efb6e4dfbbf6fd6a76008487a3ab306162a8305a015c13bf21aa36fea8",
+      "published_sha256": "93cf98efb6e4dfbbf6fd6a76008487a3ab306162a8305a015c13bf21aa36fea8",
+      "bytes": 4202,
+      "normalized": false
     }
   ]
 }

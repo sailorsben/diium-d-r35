@@ -1,0 +1,16 @@
+CONFUSER GAMEPLAY1 — separate experimental renderer test
+
+1. Safely eject I: and cold-boot. Our normal SNES library should appear.
+2. Launch Final Fantasy VI. Your latest separate test SRAM is copied.
+   The Narshe snapshot is available through Select+Start -> Load snapshot.
+3. Use Terra's MagiTek -> Confuser several times. Also test Bio Blast.
+   Reload the snapshot if useful; all controls remain manual.
+4. Watch for stutter, incorrect graphics, audio breakup or an Audio error.
+   Note the effect, approximate cast count and when the failure happens.
+5. Finish with Select+Start -> Exit game. Then press B in our SNES library.
+   Wait for stock to return before powering down and reconnecting I:.
+
+Only one cold boot is armed. The next unarmed reboot follows stock.
+Original progress and binaries stay intact; this version's saves are separate.
+New A7 savings are unmeasured. This is an explicitly authorized qualification
+test, not a claim that the performance installation gate has passed.

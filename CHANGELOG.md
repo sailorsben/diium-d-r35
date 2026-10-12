@@ -1,5 +1,21 @@
 # Changelog
 
+## Confuser candidate staged for authorized manual qualification — 2026-10-12
+
+After explicit “Load it to I:” instruction, build the counter-free BG3 batching
+and refined half-add candidate in a separate versioned one-shot. Preserve regular
+1.19 runner/PCM/display/input/save/exit behavior, production files and all prior
+progress. Copy latest combined-gameplay SRAM and migrate only snapshot identity.
+Write conditional cost inequality, unmeasured prices and falsifiable physical
+prediction before staging; production gate remains unmet, experiment pending.
+
+Final4,800 output/state comparisons and180 actual-runner frames pass; consuming
+native snapshot/fault/drain/deficit and wrapper checks pass. Fresh complete archive,
+readonly FAT,553 protected prior-file hashes and payload/arm readback guard I:.
+Publish seven bounded proofs and separate identity, excluding core/ROM/save bytes.
+See [procedure](docs/snes-confuser-gameplay-test.txt) and
+[setup](docs/snes-confuser-gameplay.md). Physical performance pending.
+
 ## Confuser offline cause map, work reductions and budget — 2026-10-12
 
 Use the archived manual failure and byte-matched ROM/emulator C to identify BG3
