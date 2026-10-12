@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## C-path inverse model and held-out failure - 2026-10-11
+
+[Backward analysis](bio-blast-backward-model.md) finds increasing NEON row
+visits and scalar clipped operations, nearly flat tile decoding, and only17us
+of added warm materialization payload. Source confirms full-tile NEON versus
+scalar clipped fallback and row sums' inability to expose dispatch fragmentation.
+Single-count regression on archived controls fails seven-call held-out timing
+by at least0.84ms mean absolute error. Do not treat fitted entry slopes as costs.
+Rank mechanisms, record inverse thresholds and exact missing populations/prices
+before another diagnostic. Analysis only; unchanged card and executables.
+
 ## Physical A7 prices reject the current batching prediction - 2026-10-10
 
 [Cost1 return](snes-a7-cost-return.md) archives all13 physical passes. Each

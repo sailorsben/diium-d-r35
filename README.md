@@ -6,6 +6,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-10
 
+- **Backward cost model,2026-10-11:** archived controls and C paths favor growing row/compositor work and possible tile-dispatch fragmentation; tile decodes stay flat and added materialization payload predicts only17us growth. Scalar clipping is real but requires6.45..12.33us saving per requested row to close the floor. Best held-out count model still misses0.84..0.85ms. [Ranked causes, thresholds and missing evidence](docs/bio-blast-backward-model.md). Analysis only; no new diagnostic or card changes.
+
 - **A7 cost1 returned, unarmed:**13 physical passes reproduce the PCM stop before dense frame320. Partial warm setup credit0.231ms minus extra rows0.150ms and short helpers0.115ms predicts a0.033ms loss, far below the1.514ms saving needed. Deep phase clocks materially perturb the test; full candidate cache/span coverage remains incomplete. Archive, clean FAT and141 protected hashes verify with0 card writes. No new build/install. [Measured costs and prediction](docs/snes-a7-cost-return.md).
 
 - **ROM-derived Bio Blast investigation:** the3 MiB ROM rebuilds byte for byte, with103,538 native instruction addresses mapped into private C and a readable script/wave model.178 actual wave-kernel calls match that model. Circular-window edge writes, rather than scroll writes, repeatedly flush the renderer. A separate scanline-window patch passes524,288 clip states and3,600 comparison frames; effect PPU updates fall78.97%, but color preparation rises34.58%. No physical speedup/audio fix is claimed and this candidate is not installed. [Cause, code and tests](docs/ff6-bio-blast-cause-map.md).

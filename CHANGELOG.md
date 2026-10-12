@@ -1,5 +1,17 @@
 # Changelog
 
+## Bio Blast inverse cost model - 2026-10-11
+
+Inspect full NEON versus scalar clipped C paths and align three archived A7
+controls with retained replay work counts. Quantify row/clip/cache/decode
+population changes, inverse saving requirements and held-out prediction errors.
+NEON visits grow38.66%; decodes stay flat; added palette payload predicts17.21us.
+The best single-count model misses0.841..0.851ms on seven held-out calls, so
+correlations are not installation prices. Preserve a reproducible offline
+analysis with input/source hashes and exact missing call/branch/cache evidence,
+observer budget and audio acceptance requirements. No executable/device changes.
+See [backward model](docs/bio-blast-backward-model.md).
+
 ## A7 cost1 returned: priced batching model fails the budget - 2026-10-10
 
 Archive60 runtime/progress,49 lab and67 separate measurement files before any
