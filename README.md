@@ -6,6 +6,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-11
 
+- **Manual combined-renderer gameplay test staged:** the exact core that completed both full A7 replays now runs in a separate one-shot regular-launcher folder, with live controls and copied SRAM/snapshot. Original progress and production files are preserved. Snapshot/native-menu/save/audio/wrapper checks pass; longer gameplay remains pending. [Manual test](docs/snes-combined-gameplay-test.txt), [measured gate and setup](docs/snes-combined-gameplay.md).
+
 - **A7 pair1 physical return:** all6 combined passes finish; all6 baselines stop with PCM errno77. Both full500-call combined replays keep stable reserve, render every frame and complete effect/recovery. Aligned effect calls save~2.9ms CPU/~3.2ms core wall. This closes the bounded replay deficit; longer gameplay and vendor lifecycle remain unqualified. Card archived/hash-verified/FAT clean; no writes or rearm. [Measured return](docs/snes-a7-pair-return.md).
 
 - **A7 pair1 staged,2026-10-11:** I: is now the test card. A separate automatic12-pass ABBA suite compares shipping1.19 with window batching/palette tables/prefix validity, including later aligned states. No nested core clocks or work counters; native audio/display stay active.6,000 output comparisons and consuming-client/wrapper checks pass. Archive/FAT/protected hashes verify; production files and progress remain exact. Physical performance is pending. [Test](docs/snes-a7-pair-test.txt), [design and limits](docs/snes-a7-pair-suite.md).

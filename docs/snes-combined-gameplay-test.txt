@@ -1,0 +1,21 @@
+Combined renderer: manual longer gameplay test (one-shot)
+
+1. Safely eject I:, insert the card and cold-boot. The regular SNES library opens.
+2. Launch FF6. Use Select+Start -> Load snapshot if you want the copied Narshe
+   snapshot. Controls are live: no automatic inputs or scripted Bio Blast.
+3. Play normally for about 10-15 minutes. Trigger Terra's MagiTek -> Bio Blast
+   several times. If a fight ends, reload the snapshot or find another encounter.
+4. Watch/listen for stuttering, crackles, incomplete effects, incorrect graphics,
+   freezes, audio stops or power-off. Note when each happens and whether menus
+   or other effects also lag. Killing the wolf can simply be the battle outcome.
+5. Finish through Select+Start -> Exit game, then B from the SNES library.
+   Wait for the stock launcher before powering down normally.
+6. Reconnect the card and report its drive letter, approximate play duration,
+   number of Bio Blast casts, sound/graphics/stability, and whether exit worked.
+
+This is the exact combined core that passed the two complete A7 replays, with
+the regular1.19 runner and lightweight existing counters/sparse samples.
+All original progress remains untouched. Your SRAM and snapshot were copied
+into retro/snes-combined-gameplay1/saves; new test saves are kept there.
+The first boot consumes the one-shot. Do not reboot/re-arm to repeat it before
+the return is archived. A later unarmed boot uses stock.

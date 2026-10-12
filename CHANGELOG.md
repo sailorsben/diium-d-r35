@@ -1,5 +1,22 @@
 # Changelog
 
+## Combined renderer staged for manual longer gameplay - 2026-10-11
+
+User authorizes manual Bio Blast casts. Reuse the exact physically measured
+combined core and immutable regular1.19 runner in a separate gameplay folder;
+remove automatic replay and retain normal library/input/pause/save/load/exit.
+Copy current SRAM and qualify a separate header for the unchanged snapshot
+payload; original progress and binaries remain intact. Write the measured
+whole-path gate, conditional margins, cadence/reserve and falsifiable longer
+gameplay prediction before staging. Sparse/recent normal telemetry stays light.
+
+Additional2,400 snapshot output comparisons,180 actual-runner frames, consuming
+native menu/load/resume/fault/drain/deficit checks and wrapper fixtures pass.
+Archive/hash/healthy-FAT guards and payload/arm readback protect the I: card;
+new test saves stay separate. Long gameplay remains pending. See
+[instructions](docs/snes-combined-gameplay-test.txt) and
+[qualification](docs/snes-combined-gameplay.md).
+
 ## A7 pair1 returned: combined renderer completes every pass - 2026-10-11
 
 Strictly archive the physical return on I: and verify clean FAT/staged payloads.

@@ -5851,6 +5851,46 @@
       "published_sha256": "61fb3455c274c7b11f80ef412d9cf5a660e7bdb73a44bea324e553b134926b8d",
       "bytes": 2166,
       "normalized": false
+    },
+    {
+      "source": "build/combined-gameplay-private-v1/snapshot-equivalence.log",
+      "published": "evidence/2026-10-11/combined-gameplay1-qualification/snapshot-equivalence.log",
+      "source_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "published_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "bytes": 349,
+      "normalized": false
+    },
+    {
+      "source": "build/combined-gameplay-private-v1/smoke.log",
+      "published": "evidence/2026-10-11/combined-gameplay1-qualification/smoke.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "normalized": false
+    },
+    {
+      "source": "build/combined-gameplay-private-v1/native-check.log",
+      "published": "evidence/2026-10-11/combined-gameplay1-qualification/native-check.log",
+      "source_sha256": "b2652a93303e7e8f9842126a17bf454401a56d5e0d0e3d6425ec3f9275e85d6e",
+      "published_sha256": "b2652a93303e7e8f9842126a17bf454401a56d5e0d0e3d6425ec3f9275e85d6e",
+      "bytes": 1455,
+      "normalized": false
+    },
+    {
+      "source": "build/combined-gameplay-private-v1/wrapper-check.log",
+      "published": "evidence/2026-10-11/combined-gameplay1-qualification/wrapper-check.log",
+      "source_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "published_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "bytes": 1018,
+      "normalized": false
+    },
+    {
+      "source": "build/combined-gameplay-private-v1/abi.txt",
+      "published": "evidence/2026-10-11/combined-gameplay1-qualification/abi.txt",
+      "source_sha256": "2bd281642cc3227e211cc9d54ea2b451d3abd558833339c20cd18de91bb486d8",
+      "published_sha256": "2bd281642cc3227e211cc9d54ea2b451d3abd558833339c20cd18de91bb486d8",
+      "bytes": 2447,
+      "normalized": false
     }
   ]
 }
