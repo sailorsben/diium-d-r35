@@ -1,5 +1,23 @@
 # Changelog
 
+## Offline Bio Blast hypotheses: dispatch, palette tables and prefix validity - 2026-10-11
+
+Build isolated counted ARM/QEMU variants without changing production or accessing
+the card. Window batching removes8,340.864 plain full-tile calls/effect frame;
+row populations stay exact. Palette-table caching/direct NEON construction cuts
+palette builds4,117 ->13 and entry storage36KiB ->3.75KiB; former RGB hits now
+perform gathers, so net A7 cost remains unmeasured. Prefix validity replaces
+ordered scans with two reads/comparison and preserves original fallback.
+
+Six1,200-frame Bio Blast output comparisons plus two2,400-frame broader checks
+pass; original clip524,288 states and independent validity38,400 queries pass.
+Diagnose obsolete callback-batching assertion without weakening output checks.
+Revised partial dispatch threshold0.1855us/call could close the late floor;
+0.2961us could close the separate PCM proxy before other costs/headroom. These
+are falsifiable prices to measure, not QEMU performance predictions. Publish11
+count/proof files, preserving699 historical evidence entries. No install/rearm.
+See [experiment and limits](docs/bio-blast-clever-renderer.md).
+
 ## Bio Blast inverse cost model - 2026-10-11
 
 Inspect full NEON versus scalar clipped C paths and align three archived A7

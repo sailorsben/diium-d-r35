@@ -6,6 +6,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-10
 
+- **Creative offline renderer experiments,2026-10-11:** new counters reveal8,341 fewer plain tile calls/frame under window batching, despite identical row counts. A small palette-table/direct-NEON alternative removes RGB-cache traffic; constant-time prefix validity replaces row scans. Six Bio Blast comparisons plus two broader checks pass12,000 frames; original clipping and prefix oracles pass. No A7 speedup/install claim. [Tested mechanisms and revised cost gate](docs/bio-blast-clever-renderer.md).
+
 - **Backward cost model,2026-10-11:** archived controls and C paths favor growing row/compositor work and possible tile-dispatch fragmentation; tile decodes stay flat and added materialization payload predicts only17us growth. Scalar clipping is real but requires6.45..12.33us saving per requested row to close the floor. Best held-out count model still misses0.84..0.85ms. [Ranked causes, thresholds and missing evidence](docs/bio-blast-backward-model.md). Analysis only; no new diagnostic or card changes.
 
 - **A7 cost1 returned, unarmed:**13 physical passes reproduce the PCM stop before dense frame320. Partial warm setup credit0.231ms minus extra rows0.150ms and short helpers0.115ms predicts a0.033ms loss, far below the1.514ms saving needed. Deep phase clocks materially perturb the test; full candidate cache/span coverage remains incomplete. Archive, clean FAT and141 protected hashes verify with0 card writes. No new build/install. [Measured costs and prediction](docs/snes-a7-cost-return.md).

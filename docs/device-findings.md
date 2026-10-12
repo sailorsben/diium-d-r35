@@ -1,5 +1,12 @@
 # Device findings
 
+**Offline update2026-10-11:** [creative renderer hypotheses](bio-blast-clever-renderer.md)
+find8,341 removed plain tile calls/effect frame hidden by prior row counters.
+Palette tables/direct NEON and prefix validity pass full-effect/broader output
+checks. The A7 installation gate remains NOT MET; no new hardware measurements
+or card changes. Earlier partial batching verdicts do not price this dispatch
+component or the new palette mechanism.
+
 Evidence collected on one DIIUM D-R35 through 2026-10-10. **Observed** means returned device data or exact binary/source evidence. **Inferred** means supported but not a direct census or measurement. Unknowns remain explicit. Evidence filenames and hashes are indexed in [the evidence manifest](../evidence/manifest.json). Dated entries below preserve earlier investigation states; the latest result supersedes their pending statuses.
 
 **Current boot/storage state:** [both Vesper screens are installed and verified](vesper-static-firmware-update.md): the user accepts Vesper static -> Vesper animation -> stock launcher, and two complete 8 MiB reads match expected SHA256 `509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd` byte for byte. Original normal SD init restored; stock/progress and prior reader profiles unchanged, FAT clean. [Cost1 has returned](snes-a7-cost-return.md); every test is unarmed and Code.bkp is absent. External write recovery unqualified; audio unresolved.

@@ -5595,6 +5595,94 @@
       "published_sha256": "6e9688a7e500b4741ae9ad54c92c2b65a940ce8886b15ed88db7c6110aeb2c29",
       "bytes": 260263,
       "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/analysis.json",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/analysis.json",
+      "source_sha256": "a2ba89fc3b4423dcaa15a0763fc530041dfa67d68b48825dce509f31a05b0a9a",
+      "published_sha256": "a2ba89fc3b4423dcaa15a0763fc530041dfa67d68b48825dce509f31a05b0a9a",
+      "bytes": 24134,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/effect-counts.csv",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/effect-counts.csv",
+      "source_sha256": "a515794292c6920ec6603f5f23f7e702ec6e171d90fc38dc252cdbe1b46844d5",
+      "published_sha256": "a515794292c6920ec6603f5f23f7e702ec6e171d90fc38dc252cdbe1b46844d5",
+      "bytes": 161357,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/fast-window-check.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/fast-window-check.log",
+      "source_sha256": "dabd00f105030400e5fa3676f8429dbaa79ee98c3542c565ec1a888e6c73c8c6",
+      "published_sha256": "dabd00f105030400e5fa3676f8429dbaa79ee98c3542c565ec1a888e6c73c8c6",
+      "bytes": 235,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/baseline/equivalence-bio.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/baseline-equivalence-bio.log",
+      "source_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "bytes": 340,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/window/equivalence-bio.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/window-equivalence-bio.log",
+      "source_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "bytes": 340,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/palette/equivalence-bio.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/palette-equivalence-bio.log",
+      "source_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "bytes": 340,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/palette/equivalence-general.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/palette-equivalence-general.log",
+      "source_sha256": "9aed615d3db27ecb6b5bd1543cb0e0050b30d7a276069886816f3b4ffee0930d",
+      "published_sha256": "9aed615d3db27ecb6b5bd1543cb0e0050b30d7a276069886816f3b4ffee0930d",
+      "bytes": 336,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/palette-window/equivalence-bio.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/palette-window-equivalence-bio.log",
+      "source_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "bytes": 340,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/palette-fast-window/equivalence-bio.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/palette-fast-window-equivalence-bio.log",
+      "source_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "bytes": 340,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/palette-fast-window/equivalence-general.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/palette-fast-window-equivalence-general.log",
+      "source_sha256": "9aed615d3db27ecb6b5bd1543cb0e0050b30d7a276069886816f3b4ffee0930d",
+      "published_sha256": "9aed615d3db27ecb6b5bd1543cb0e0050b30d7a276069886816f3b4ffee0930d",
+      "bytes": 336,
+      "normalized": false
+    },
+    {
+      "source": "build/bio-hypotheses-private/palette-fast-window-counts/equivalence-bio.log",
+      "published": "evidence/2026-10-11/bio-offline-hypotheses/palette-fast-window-counts-equivalence-bio.log",
+      "source_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
+      "bytes": 340,
+      "normalized": false
     }
   ]
 }

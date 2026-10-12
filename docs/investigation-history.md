@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## Offline hypotheses reveal omitted tile-call overhead - 2026-10-11
+
+[Creative renderer report](bio-blast-clever-renderer.md) tests six isolated ARM
+variants. Full-row sums concealed8,341 plain tile calls removed by window batching;
+the earlier partial price model omitted this cost. Tiny palette tables/direct
+NEON eliminate RGB-row cache storage/work while adding gathers on former hits.
+Prefix summaries replace ordered validity scans, with original fallback retained.
+12,000 output-comparison frames and clip/range oracles pass; no measured A7 saving.
+Revised partial dispatch thresholds0.1855/0.2961us target late/PCM floors.
+Retain original negative component accounting, but do not reject the entire
+mechanism from it. No production source/card change or installation.
+
 ## C-path inverse model and held-out failure - 2026-10-11
 
 [Backward analysis](bio-blast-backward-model.md) finds increasing NEON row

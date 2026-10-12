@@ -1,0 +1,3 @@
+PASS: 524288 window states, both screens and every pixel match original ComputeClipWindows
+PASS: retained row ownership, frame reset, missing rows and fallback guards
+PASS: 38400 prefix queries match independent original validity scan

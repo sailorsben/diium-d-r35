@@ -1,5 +1,11 @@
 # A7 cost1 return: batching does not earn the Bio Blast budget
 
+**Later offline evidence,2026-10-11:** [tile dispatch and palette experiments](bio-blast-clever-renderer.md)
+measure8,341 fewer plain tile calls/frame, a component omitted from this partial
+warm scorecard. Its priced terms remain valid within their limits; they cannot
+settle the whole candidate. New exact-output candidates remain A7-unpriced and
+uninstalled. Read the revised equation before deciding the next measurement.
+
 The physical return supplies repeatable A7 hot-path prices. It does **not**
 qualify the window candidate. The measured fixed-work scenario offers only
 0.231ms of setup credit, costs0.150ms in extra color materialization, and costs

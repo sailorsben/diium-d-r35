@@ -1,5 +1,11 @@
 # Bio Blast: backward model from C paths and archived failures
 
+**2026-10-11 follow-up:** [new isolated QEMU hypotheses](bio-blast-clever-renderer.md)
+resolve the missing tile-call population:8,341 plain dispatches are removed per
+effect frame. Palette/direct-NEON and fast validity variants pass output checks.
+The ranking/unknowns below preserve the pre-experiment boundary; the new report
+supersedes entry-only shelving and supplies a revised, still-unpriced cost gate.
+
 2026-10-11. Analysis only: no device access, executable build, installation or
 rearm. Reproduce with `python build/analyze-bio-backward.py`. The script reads
 immutable work censuses and three archived A7 control CSVs, asserts alignment of
