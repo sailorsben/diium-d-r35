@@ -1,4 +1,12 @@
-# Manual combined-renderer gameplay test: physical return pending
+# Manual combined-renderer gameplay test: returned
+
+Latest return: Bio Blast seemed fine; Confuser stopped with native errno77.
+Archive `device-evidence/a7-pair-before-20261012T043106Z`, hashes verified,
+FAT clean, marker consumed and zero writes. Session225.095s/13,456 calls;
+last23 complete calls average17.491ms core+admission, local gap0.803ms.
+Sparse PPU growth and reserve erosion lead; exact effect path and vendor edge
+remain unresolved. See [return analysis](snes-combined-gameplay-return.md).
+Do not rearm or install another diagnostic without the missing replay evidence.
 
 Explicit unchanged retry: user forgot B at library exit and requested quick
 re-arm with no extra tests. Return was privately archived at

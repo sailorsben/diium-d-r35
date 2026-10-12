@@ -1,5 +1,15 @@
 # Changelog
 
+## Manual combined gameplay return: Bio Blast works, Confuser stops — 2026-10-11
+
+Archive and hash-verify the returned card without writes; FAT clean and unarmed.
+User reports Bio Blast fine, Confuser crash. Retained225s session ends with PCM
+errno77/SETUP and orderly library/display exit. Last23 complete calls imply
+0.803ms local deadline gap; sparse PPU samples grow while APU stays near4ms.
+Preserve pointer-bias uncertainty and missing effect-aligned replay/subphase
+evidence. No new build, test, installation or rearm. See
+[analysis](docs/snes-combined-gameplay-return.md).
+
 ## Combined renderer staged for manual longer gameplay - 2026-10-11
 
 User authorizes manual Bio Blast casts. Reuse the exact physically measured
