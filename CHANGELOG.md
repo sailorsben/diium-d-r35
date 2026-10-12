@@ -1,5 +1,22 @@
 # Changelog
 
+## A7 pair1 measurement staged on reassigned I: card - 2026-10-11
+
+Prepare a separate whole-path baseline/combined renderer comparison:12 ABBA
+passes across the complete Bio Blast replay and two aligned later starts.
+Disable nested phase/callback clocks and core counters; record bounded per-call
+CPU/wall, admission, observer, frequency and worker/PCM state, flushing after
+worker joins. Keep native audio/display active, all frames and original quotas.
+Later snapshots are independent audio epochs, not playback recovery proof.
+
+Qualify6,000 output comparisons,12 mock passes/2,704 calls, both cores through
+consuming native fault/drain/deficit contracts and the actual one-shot/splash
+wrapper. Archive457 retro files before writes; clean FAT and protected readback
+guard I:, serial11EB-1465. Production binaries, adapter, init, prior diagnostics
+and private progress stay exact; only owned diagnostic payload/dispatch/marker
+are staged. Physical speedup and audio closure remain pending. See
+[test instructions](docs/snes-a7-pair-test.txt) and [suite](docs/snes-a7-pair-suite.md).
+
 ## Offline Bio Blast hypotheses: dispatch, palette tables and prefix validity - 2026-10-11
 
 Build isolated counted ARM/QEMU variants without changing production or accessing

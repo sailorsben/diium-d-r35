@@ -1,0 +1,68 @@
+{
+  "version": "1.19-pair1",
+  "output_comparisons": 6000,
+  "checks": [
+    "1200 Bio Blast and 2400 general exact pixel/PCM/geometry/state comparisons",
+    "two cold-reloaded later states: 1200 comparisons each",
+    "12 bounded ABBA mock passes; all frames submitted; exact PCM accounting; no save writes; deferred evidence flushing",
+    "shipping baseline binary exact; core profiler disabled; no census counters; GLIBC <=2.30",
+    "both cores through actual diagnostic native client: injected EBADFD, deferred flush after join, clean 120-frame independent retry/drain, sustained deficit rejected without hidden reprime",
+    "actual one-shot wrapper: early error, PCM failure, startup timeout, ready session, unarmed boot, splash exit/stall/zombie; no live-child card writes or global sync"
+  ],
+  "hardware_measured": false,
+  "production_replacement": false,
+  "limits": [
+    "QEMU performance timings excluded",
+    "later starts have a fresh audio epoch; not recovery or uninterrupted full-effect proof",
+    "first 16 calls of each later start are warmup; verify steady state on return",
+    "whole-path net saving, not isolated e/r/b unit prices"
+  ],
+  "card": "I:",
+  "protected_retro_files": 456,
+  "all_fat_checks_clean": true,
+  "one_shot_armed": true,
+  "physical_result": "PENDING",
+  "artifact_sha256": {
+    "pair-suite": "47ddb0a4fbb3b22edbce28bcd37df0ba6080d71667a564726a24cc812b80c5f5",
+    "baseline.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+    "combined.so": "ee0b241c3b7c561e76efbedbbdcf37bf8e104bb6754d7b0493c3ed4774172155",
+    "launch.sh": "fbc71faf5413a5fdc45cc04c1847cc854d49bfea6bec5f8aa4946216200717be",
+    "dispatch.sh": "672d980001ea124a99e7221a21d907beff4ccbecd6c1840e0260c1a9e98a6fc4"
+  },
+  "owned_source_sha256": {
+    "build/a7-cost-host.h": "14120202d75235a02562798e02dabded0fc2a43a631932c8cf1baf5e1f68cd0e",
+    "build/a7-pair-host.h": "0c610c02414db7fc277bc79d4bb8ce8d2d5ea3dd174a4415b621f8b0551ea0d4",
+    "build/a7-pair-main.c": "6bf4e18f65fb3d8382cce65ef57001bc0ded3e22229afa1bb5acaf1d8dceb810",
+    "build/archive-a7-pair-card.py": "bb6b64f02be111fffdb3f4269497ad427317ca2f3fbb6242fcb3b6d2c999f27b",
+    "build/bio-palette-cache.h": "88389c190d86be32b5761fafcc769f54826781f610c49a562f667cbb20caf489",
+    "build/bio-palette-direct.h": "fadfeca56cfaa67675eb3e4a8e35b5c1fb818f0f9630234d29abaa59065f1820",
+    "build/build-a7-pair.sh": "dcbcdcda863d2004e093d519e74c14ec2c7821d905a9621895125993a038fabc",
+    "build/glibc230-stat-compat.c": "6928645154983f34cfb63a565802a7b40783e0dc4d38a2b72f090ccc28f51b4a",
+    "build/plus-a7-profile.h": "de62b22d87cdf5140bd3d91c4eabb2e111aa124402a518fb5cd56e8ddb35a339",
+    "build/plus-a7-window.h": "6b7d877d3152e46320bfac7d7aa8c18621b4bb1fb9217fd13117243bfc3ac02a",
+    "build/prepare-a7-pair.py": "d430f14b81e3f403d2719e0457712271f4ff79990d988e97bc7707ec3ed2bd93",
+    "build/prepare-bio-fast-window.py": "a17ced149a7a44f49af0322d605b1e50dc6bc41cb53ab22e8146088b00d1b3a0",
+    "build/prepare-window-batch.py": "c0bcac884b4ee794557b935d6360e1b0c4b73d423ecd1734c1c256e4c2a11012",
+    "build/qualify-a7-pair.py": "a69a53b644895df31642c88f9861f69091d3c6caffc7f0d7d334b64ea279b304",
+    "build/check-a7-pair-native.py": "fee08194a091776bb384f0648d0bdec9266c12d5c918f220f1798ebbcc188c02",
+    "build/a7-cost-native-check.c": "c5e536a69433d9e83caa1118edb18ae55f67d600b495ead6c8a23423f50f1acb",
+    "build/snes-mvp/native-runner-check.c": "66fc227c43bd51f4d138d9f5c31d7b34978517fd3891094c1fff5be3969c99d7",
+    "build/check-a7-pair-wrapper.py": "987ad1aa5deddb92693b391ce4055f080ad54a9fcc2a13bbaaf0a3b153adeedc",
+    "build/snes-mvp/check-startup-wrapper.py": "d4c6c38753ba24d9a0554a280fa40424fce67d5333ef0b81fa4d9409aaf9d2ad",
+    "build/install-a7-pair.py": "8a9cfab29c01161a17263b3a07cfb2a3d24833380359bca8e6db66bbb56c9c40",
+    "build/publish-a7-pair.py": "a76b538dcda18e2b37b4ca2eaa401e22163a29ef23c524ae45f2d99fef7b1280"
+  },
+  "qualification_manifest_sha256": "1309ecb1a87e9149687b9ba2af4351d7b3b06e695a6fa1fcd9023b7b420f5d68",
+  "staging_proof_sha256": "08ece7c89327161aad7b561c9592ac5e0ce8304d1d4dced9b2ee006bbfc1accc",
+  "private_archive": "a7-pair-before-20261012T032639Z",
+  "proofs": {
+    "equivalence-bio.log": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+    "equivalence-general.log": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+    "equivalence-reload-261.log": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+    "equivalence-reload-384.log": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+    "suite-check.log": "54b88c57da5cef9de0553922178436fd71821df9a047d803888a195a0e8fb17a",
+    "native-baseline.log": "39a3bc6bc681b4d28d69392a8a4f35608bf42ac836a280edd5c1a34faed01872",
+    "native-combined.log": "17cc3296299bdab9dc52317fd22fd73d22962ddd981e0fe1d9212bedb8cd0b47",
+    "wrapper-check.log": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3"
+  }
+}

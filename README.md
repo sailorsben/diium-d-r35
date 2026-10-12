@@ -6,6 +6,8 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-10
 
+- **A7 pair1 staged,2026-10-11:** I: is now the test card. A separate automatic12-pass ABBA suite compares shipping1.19 with window batching/palette tables/prefix validity, including later aligned states. No nested core clocks or work counters; native audio/display stay active.6,000 output comparisons and consuming-client/wrapper checks pass. Archive/FAT/protected hashes verify; production files and progress remain exact. Physical performance is pending. [Test](docs/snes-a7-pair-test.txt), [design and limits](docs/snes-a7-pair-suite.md).
+
 - **Creative offline renderer experiments,2026-10-11:** new counters reveal8,341 fewer plain tile calls/frame under window batching, despite identical row counts. A small palette-table/direct-NEON alternative removes RGB-cache traffic; constant-time prefix validity replaces row scans. Six Bio Blast comparisons plus two broader checks pass12,000 frames; original clipping and prefix oracles pass. No A7 speedup/install claim. [Tested mechanisms and revised cost gate](docs/bio-blast-clever-renderer.md).
 
 - **Backward cost model,2026-10-11:** archived controls and C paths favor growing row/compositor work and possible tile-dispatch fragmentation; tile decodes stay flat and added materialization payload predicts only17us growth. Scalar clipping is real but requires6.45..12.33us saving per requested row to close the floor. Best held-out count model still misses0.84..0.85ms. [Ranked causes, thresholds and missing evidence](docs/bio-blast-backward-model.md). Analysis only; no new diagnostic or card changes.

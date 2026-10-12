@@ -1,0 +1,25 @@
+pair pass=0 start=0 variant=baseline limit=500 begin
+pair pass=0 workers joined; evidence flushed
+pair pass=1 start=0 variant=combined limit=500 begin
+pair pass=1 workers joined; evidence flushed
+pair pass=2 start=0 variant=combined limit=500 begin
+pair pass=2 workers joined; evidence flushed
+pair pass=3 start=0 variant=baseline limit=500 begin
+pair pass=3 workers joined; evidence flushed
+pair pass=4 start=261 variant=baseline limit=80 begin
+pair pass=4 workers joined; evidence flushed
+pair pass=5 start=261 variant=combined limit=80 begin
+pair pass=5 workers joined; evidence flushed
+pair pass=6 start=261 variant=combined limit=80 begin
+pair pass=6 workers joined; evidence flushed
+pair pass=7 start=261 variant=baseline limit=80 begin
+pair pass=7 workers joined; evidence flushed
+pair pass=8 start=384 variant=baseline limit=96 begin
+pair pass=8 workers joined; evidence flushed
+pair pass=9 start=384 variant=combined limit=96 begin
+pair pass=9 workers joined; evidence flushed
+pair pass=10 start=384 variant=combined limit=96 begin
+pair pass=10 workers joined; evidence flushed
+pair pass=11 start=384 variant=baseline limit=96 begin
+pair pass=11 workers joined; evidence flushed
+pair end passes=12 failures=0 stop=0

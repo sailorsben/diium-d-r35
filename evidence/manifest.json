@@ -5683,6 +5683,70 @@
       "published_sha256": "b83b58946968d78c975465f445f32dc41d6c6f66662c168dffe8377fbaa0730e",
       "bytes": 340,
       "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/equivalence-bio.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/equivalence-bio.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/equivalence-general.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/equivalence-general.log",
+      "source_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "published_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "bytes": 349,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/equivalence-reload-261.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/equivalence-reload-261.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/equivalence-reload-384.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/equivalence-reload-384.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/suite-check.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/suite-check.log",
+      "source_sha256": "54b88c57da5cef9de0553922178436fd71821df9a047d803888a195a0e8fb17a",
+      "published_sha256": "54b88c57da5cef9de0553922178436fd71821df9a047d803888a195a0e8fb17a",
+      "bytes": 1225,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/native-baseline.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/native-baseline.log",
+      "source_sha256": "39a3bc6bc681b4d28d69392a8a4f35608bf42ac836a280edd5c1a34faed01872",
+      "published_sha256": "39a3bc6bc681b4d28d69392a8a4f35608bf42ac836a280edd5c1a34faed01872",
+      "bytes": 1094,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/native-combined.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/native-combined.log",
+      "source_sha256": "17cc3296299bdab9dc52317fd22fd73d22962ddd981e0fe1d9212bedb8cd0b47",
+      "published_sha256": "17cc3296299bdab9dc52317fd22fd73d22962ddd981e0fe1d9212bedb8cd0b47",
+      "bytes": 1094,
+      "normalized": false
+    },
+    {
+      "source": "build/a7-pair-private-v1/wrapper-check.log",
+      "published": "evidence/2026-10-11/a7-pair1-qualification/wrapper-check.log",
+      "source_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "published_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "bytes": 1018,
+      "normalized": false
     }
   ]
 }

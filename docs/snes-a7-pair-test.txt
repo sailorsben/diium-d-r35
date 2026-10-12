@@ -1,0 +1,18 @@
+SNES 1.19-pair1 -- separate A7 renderer comparison (measurement only)
+
+1. Safely eject I: (DIIUM D-R35), insert it into the handheld, and cold-boot.
+2. Let it run automatically. Do not navigate menus or manually select Bio Blast.
+   It replays Bio Blast and two later sections: baseline, combined, combined,
+   baseline in each section, 12 independent passes total. Some passes may stop
+   audio early; the next pass is a separate measurement, not playback recovery.
+3. Wait for it to finish and return to the stock launcher. MENU aborts the suite.
+4. Record whether the complete-effect passes looked correct, whether sound was
+   clean, whether the device powered off, and whether it returned to the launcher.
+5. Power down normally, reconnect the card, and report its current drive letter.
+   Do not reboot for another test: this one-shot is consumed on the first boot.
+
+All results are under retro/snes-pair1. Returned cost1 results and private game
+progress remain intact. Production runner/core, adapter, init and vendor binaries
+are unchanged; only the owned diagnostic launch dispatch and one-shot are changed.
+Frame records and native PCM history flush after audio/display workers join.
+No speedup or fix is claimed until the physical return is archived and analyzed.
