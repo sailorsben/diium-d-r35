@@ -4,9 +4,21 @@ Source, hardware investigation and a working SNES-only launcher/runtime prototyp
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.
 
-## Current status — 2026-10-11
+## Current status — 2026-10-12
 
-- **Manual combined-renderer gameplay test staged:** the exact core that completed both full A7 replays now runs in a separate one-shot regular-launcher folder, with live controls and copied SRAM/snapshot. Original progress and production files are preserved. Snapshot/native-menu/save/audio/wrapper checks pass; longer gameplay remains pending. [Manual test](docs/snes-combined-gameplay-test.txt), [measured gate and setup](docs/snes-combined-gameplay.md).
+- **Confuser investigated offline:** the combined core's BG1-only batching falls
+  back on Confuser's BG3 circle, alongside growing half-add/depth work. A separate
+  BG3 extension removes2,028 tile calls/effect call; a refined exact-math shortcut
+  covers4,042 half-add rows.10,800 output comparisons and original clipping/math
+  oracles pass. Physical tail requires0.803ms minimum, with a1.020ms local PCM
+  throughput proxy; incremental A7 prices remain missing. No card changes or
+  new A7 test staged. [Findings and predictions](docs/confuser-rendering-investigation.md).
+
+- **Manual combined-renderer gameplay returned:** Bio Blast seemed fine; Confuser
+  stopped after225s with native PCM errno77/SETUP. Archive/hash verification
+  and readonly FAT pass; original progress remains preserved and card unarmed.
+  [Return](docs/snes-combined-gameplay-return.md),
+  [measured gate and setup](docs/snes-combined-gameplay.md).
 
 - **A7 pair1 physical return:** all6 combined passes finish; all6 baselines stop with PCM errno77. Both full500-call combined replays keep stable reserve, render every frame and complete effect/recovery. Aligned effect calls save~2.9ms CPU/~3.2ms core wall. This closes the bounded replay deficit; longer gameplay and vendor lifecycle remain unqualified. Card archived/hash-verified/FAT clean; no writes or rearm. [Measured return](docs/snes-a7-pair-return.md).
 

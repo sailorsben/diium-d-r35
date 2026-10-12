@@ -5891,6 +5891,110 @@
       "published_sha256": "2bd281642cc3227e211cc9d54ea2b451d3abd558833339c20cd18de91bb486d8",
       "bytes": 2447,
       "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/analysis.json",
+      "published": "evidence/2026-10-11/confuser-offline/analysis.json",
+      "source_sha256": "640bd24aa080994d2d0b5123e450ce433acbc701dff2f0f6a01a5337f6839b23",
+      "published_sha256": "c7bf0957384ba9c768ee12028ada737b813082ca55b5697aabe7a5f0ffc66b6c",
+      "bytes": 23939,
+      "normalized": true
+    },
+    {
+      "source": "build/confuser-private-v1/effect-counts.csv",
+      "published": "evidence/2026-10-11/confuser-offline/effect-counts.csv",
+      "source_sha256": "cc27dc1fd26e27cdd92450c2b0c500f5e6028d7e733c1ea886555850545b9289",
+      "published_sha256": "81600bc78ba9d42ceabf086bce36569493836908ad5abbe50bd8bc0543286753",
+      "bytes": 12783925,
+      "normalized": true
+    },
+    {
+      "source": "build/confuser-private-v1/baseline/equivalence-confuser.log",
+      "published": "evidence/2026-10-11/confuser-offline/baseline-equivalence-confuser.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-window/equivalence-confuser.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-window-equivalence-confuser.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-blend/equivalence-confuser.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-blend-equivalence-confuser.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-submask/equivalence-confuser.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-submask-equivalence-confuser.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-window/equivalence-bio.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-window-equivalence-bio.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-window/equivalence-general.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-window-equivalence-general.log",
+      "source_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "published_sha256": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+      "bytes": 349,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-blend/equivalence-bio.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-blend-equivalence-bio.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/bg3-submask/equivalence-bio.log",
+      "published": "evidence/2026-10-11/confuser-offline/bg3-submask-equivalence-bio.log",
+      "source_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "published_sha256": "5d0414e264b9e81efc92cae564718b6727d47ffd440b14e637cfe570ac1b364c",
+      "bytes": 353,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/window-oracle.log",
+      "published": "evidence/2026-10-11/confuser-offline/window-oracle.log",
+      "source_sha256": "a308a0bb31d46cf32179d74efc738c98660f034003d192979940f343c10a9640",
+      "published_sha256": "a308a0bb31d46cf32179d74efc738c98660f034003d192979940f343c10a9640",
+      "bytes": 195,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/blend-oracle.log",
+      "published": "evidence/2026-10-11/confuser-offline/blend-oracle.log",
+      "source_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
+      "published_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
+      "bytes": 682,
+      "normalized": false
+    },
+    {
+      "source": "build/confuser-private-v1/submask-oracle.log",
+      "published": "evidence/2026-10-11/confuser-offline/submask-oracle.log",
+      "source_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
+      "published_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
+      "bytes": 682,
+      "normalized": false
     }
   ]
 }

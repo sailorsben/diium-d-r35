@@ -1,5 +1,21 @@
 # Changelog
 
+## Confuser offline cause map, work reductions and budget — 2026-10-12
+
+Use the archived manual failure and byte-matched ROM/emulator C to identify BG3
+window fallback plus growing half-add/depth work. Preserve the first incorrect
+Heal Force replay as a negative control, then verify normal-input Confuser by
+visual cursor and ROM initialization. Separate BG3 batching removes2,028 tile
+calls/call; half-add experiments cover4,042 rows. Refine the guard after
+counter-free ARM assembly reveals extra register saves in the first shortcut.
+
+10,800 ARM output/state comparisons,1,048,576 original clipping states and
+independent scalar/math/row oracles pass. Publish bounded counts/proofs and an
+incremental cost inequality:0.803ms timing floor,1.020ms local accepted-rate
+proxy, explicit added costs and transfer limits. A7 prices remain missing; no
+card access, production changes, device suite or rearm. See
+[investigation](docs/confuser-rendering-investigation.md).
+
 ## Manual combined gameplay return: Bio Blast works, Confuser stops — 2026-10-11
 
 Archive and hash-verify the returned card without writes; FAT clean and unarmed.

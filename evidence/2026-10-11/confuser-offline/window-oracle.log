@@ -1,0 +1,2 @@
+PASS: 1048576 BG1/BG3 window states match original ComputeClipWindows on both screens, all pixels
+PASS: BG4 Mode1 guard, retained rows, wrong layer, reset, missing rows and unsupported fallbacks
