@@ -1,5 +1,14 @@
 # Manual combined-renderer gameplay test: physical return pending
 
+Explicit unchanged retry: user forgot B at library exit and requested quick
+re-arm with no extra tests. Return was privately archived at
+`device-evidence/a7-pair-before-20261012T042206Z`; fresh readonly FAT is clean.
+Only `retro/snes-mvp/armed` was written. All549 existing files, including
+returned logs and test progress, remain unchanged. No build, replay, benchmark
+or runtime-result analysis ran. This is an explicitly requested retry of the
+same test, not a newly qualified experiment. Private proof:
+`manual-gameplay-rearm.json` in that archive.
+
 User explicitly authorized a longer manual Bio Blast gameplay test. I: remains
 the FAT32 DIIUM D-R35 card, serial11EB-1465. D: is the old system disk; do not
 use historical D:-hardcoded installers.
