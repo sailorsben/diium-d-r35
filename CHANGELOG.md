@@ -1,5 +1,17 @@
 # Changelog
 
+## Use historical A7 transitions as a conditional forecast — 2026-10-13
+
+Correct the implication that unknown isolated prices prevent useful prediction.
+Matched Window2 changes save 1.740–2.572 ms and move Ultima/GrandTrain to bounded
+completion. Their net restart-plus-associated-work ratios support a conditional
+transfer forecast: roughly 3.3–3.8 ms fixed-color batching in Siren/Carbunkl/
+Lullaby, about 0.5 ms Holy/Meteor, before differences in new costs/work mix.
+These are empirical priors, not isolated entry prices or confidence bounds.
+Predict stronger deadline closure in the former, continued needs in the latter,
+and no 20% margin from this path alone. No fullpaths return data used and no card
+or frozen payload changes. [Calibration and limits](docs/snes-fullpaths-prior.md).
+
 ## Five-core A7 savings and headroom measurement staged — 2026-10-13
 
 Explicit measurement-only authority stages 1.19-fullpaths1 in its own I: folder.
