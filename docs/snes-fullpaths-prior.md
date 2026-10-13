@@ -71,3 +71,54 @@ Sources: [matched A7 differences](../evidence/2026-10-13/ability2-return/aligned
 [old removed work](../evidence/2026-10-13/ability-regression/qualification.json),
 [new aligned populations and deficits](../evidence/2026-10-13/full-fidelity-paths/prediction.json),
 [negative math-cache result](snes-ability3-return.md).
+
+## Pearl: explicit combined planning forecast
+
+Pearl is HOLY in the suite, original-ROM spell ID 0x0e. This forecast is written
+on request before inspecting any fullpaths return. Existing staged bytes stay
+unchanged. Measured ability2 heavy-tail step is 17.6605625 ms; deadline is
+16.6881545 ms; proposed 20% target is 13.3505236 ms. These tail means are not an
+entire-effect service curve or worst-case bound.
+
+My working point estimate is **1.0 ms additional net saving**, allocated as:
+
+| Path | Planning allowance ms | Basis and uncertainty |
+| --- | ---: | --- |
+| Fixed-color batching | 0.5 | Historical transfer above, subject to different new costs |
+| True-subscreen composition | 0.3 | Engineering assumption over 4,166 eligible rows; no isolated A7 price |
+| DSP unused interpolation | 0.2 | Engineering assumption over 1,372.25 zero-envelope calls; no isolated A7 price |
+
+The last two numbers are expressly judgments, not empirical estimates recovered
+from successful past tests. They assume effective net credits of about 0.072 us
+per eligible row and 0.146 us per omitted interpolation after added predicates on
+other work. The C confirms that selections/classification and four-tap Gaussian
+work can be removed; it does not supply these microsecond prices. Prior A7 warm
+benchmarks price different functions and do not measure these paths. Neither
+Confuser's unmatched successful tail nor its coupled BG3/half-add change can
+identify either new price. The fixed-color term is better calibrated than the
+other two. No extra standalone saving is credited for cache interactions.
+
+A rough **0.7–1.4 ms planning band** expresses uncertainty in added costs and
+interaction. It is judgmental, not a confidence interval, observed range or
+guaranteed bound; outcomes outside it remain possible. In particular, isolated
+gains are not proven additive merely because the point estimate adds allowances.
+
+| Additional saving ms | Conditional remaining step ms | Margin to deadline ms | Budget margin |
+| --- | ---: | ---: | ---: |
+| 0.7 | 16.961 | -0.272 | -1.63% |
+| 1.0 | 16.661 | +0.028 | +0.17% |
+| 1.4 | 16.261 | +0.428 | +2.56% |
+
+This calculation assumes saved CPU work translates approximately into reduced
+active wall/service time with comparable peripheral work. New intentional pacing
+must be separated in the return rather than mistaken for lost savings. The
+new observer's included cost and ordinary timing variation can consume the tiny
+point-estimate margin; no calibration is subtracted to force a pass.
+
+**Verdict:** borderline for bounded cast completion; do not predict a reliable
+repeated-cast fix or comfortable headroom. A finite cast may complete because
+reserve absorbs some slow calls, but the whole-effect reserve curve is needed
+to predict that confidently. The 20% target needs 4.310 ms saving, leaving this
+point forecast about **3.310 ms short** (even the optimistic band is 2.910 ms
+short). The test should determine whether the weak assumptions are wrong and
+which path supplies or consumes the difference.

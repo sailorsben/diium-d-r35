@@ -1,5 +1,15 @@
 # Changelog
 
+## State Pearl's combined forecast and its weak assumptions — 2026-10-13
+
+Identify Pearl as HOLY/0x0e and record a 1.0 ms additional-saving planning point:
+0.5 ms historically calibrated batching plus explicitly assumed 0.3 ms subscreen
+and 0.2 ms DSP. Judgmental 0.7–1.4 ms band is not a confidence interval or measured
+unit pricing. Conditional central tail becomes 16.661 ms, only 0.028 ms/0.17%
+below the deadline, 3.310 ms short of the proposed 20% target. Predict borderline
+completion, not reliable repeated-cast acceptance. No fullpaths return inspected,
+no card/payload changes. [Forecast and assumptions](docs/snes-fullpaths-prior.md).
+
 ## Use historical A7 transitions as a conditional forecast — 2026-10-13
 
 Correct the implication that unknown isolated prices prevent useful prediction.
