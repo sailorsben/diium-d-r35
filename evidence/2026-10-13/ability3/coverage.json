@@ -1,0 +1,149 @@
+{
+  "version": "1.19-ability3",
+  "cases": [
+    {
+      "seq": 0,
+      "original_case": 14,
+      "name": "HOLY",
+      "family": "magic",
+      "observed_effect_id": 14,
+      "calls": 1200
+    },
+    {
+      "seq": 1,
+      "original_case": 19,
+      "name": "METEOR",
+      "family": "magic",
+      "observed_effect_id": 19,
+      "calls": 1200
+    },
+    {
+      "seq": 2,
+      "original_case": 20,
+      "name": "ULTIMA",
+      "family": "magic",
+      "observed_effect_id": 20,
+      "calls": 1200
+    },
+    {
+      "seq": 3,
+      "original_case": 23,
+      "name": "MELTDOWN",
+      "family": "magic",
+      "observed_effect_id": 23,
+      "calls": 1200
+    },
+    {
+      "seq": 4,
+      "original_case": 40,
+      "name": "SLOW_2",
+      "family": "magic",
+      "observed_effect_id": 40,
+      "calls": 1200
+    },
+    {
+      "seq": 5,
+      "original_case": 57,
+      "name": "SIREN",
+      "family": "esper",
+      "observed_effect_id": 57,
+      "calls": 1200
+    },
+    {
+      "seq": 6,
+      "original_case": 67,
+      "name": "BAHAMUT",
+      "family": "esper",
+      "observed_effect_id": 67,
+      "calls": 1200
+    },
+    {
+      "seq": 7,
+      "original_case": 73,
+      "name": "CARBUNKL",
+      "family": "esper",
+      "observed_effect_id": 73,
+      "calls": 1200
+    },
+    {
+      "seq": 8,
+      "original_case": 110,
+      "name": "QUASAR",
+      "family": "lore",
+      "observed_effect_id": 160,
+      "calls": 1200
+    },
+    {
+      "seq": 9,
+      "original_case": 111,
+      "name": "GRANDTRAIN",
+      "family": "lore",
+      "observed_effect_id": 161,
+      "calls": 1200
+    },
+    {
+      "seq": 10,
+      "original_case": 149,
+      "name": "RAGE_004",
+      "family": "rage",
+      "observed_effect_id": 168,
+      "calls": 1200
+    },
+    {
+      "seq": 11,
+      "original_case": 150,
+      "name": "RAGE_005",
+      "family": "rage",
+      "observed_effect_id": 14,
+      "calls": 1200
+    },
+    {
+      "seq": 12,
+      "original_case": 177,
+      "name": "RAGE_032",
+      "family": "rage",
+      "observed_effect_id": 19,
+      "calls": 1200
+    },
+    {
+      "seq": 13,
+      "original_case": 231,
+      "name": "RAGE_086",
+      "family": "rage",
+      "observed_effect_id": 23,
+      "calls": 1200
+    },
+    {
+      "seq": 14,
+      "original_case": 233,
+      "name": "RAGE_088",
+      "family": "rage",
+      "observed_effect_id": 40,
+      "calls": 1200
+    },
+    {
+      "seq": 15,
+      "original_case": 58,
+      "name": "TERRATO",
+      "family": "esper",
+      "observed_effect_id": 58,
+      "calls": 1200
+    },
+    {
+      "seq": 16,
+      "original_case": 84,
+      "name": "BIO_BLAST",
+      "family": "magitek",
+      "observed_effect_id": 134,
+      "calls": 1200
+    },
+    {
+      "seq": 17,
+      "original_case": 86,
+      "name": "CONFUSER",
+      "family": "magitek",
+      "observed_effect_id": 136,
+      "calls": 1200
+    }
+  ]
+}

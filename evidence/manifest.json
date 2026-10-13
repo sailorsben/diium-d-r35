@@ -6231,6 +6231,48 @@
       "published": "evidence/2026-10-13/ability-regression/installation.json",
       "source_sha256": "566e04c114368d41232d677c74f372d3a561616d06b783b6137f0ea634630925",
       "published_sha256": "186021042d9e8a52731570e51d19af489dea97c80ae26e4763143ab74a8589e3"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T162915Z/ability-analysis/interpreted-summary.json",
+      "published": "evidence/2026-10-13/ability2-return/summary.json",
+      "source_sha256": "fc3438d304728066b93cc2d8d47c9acf133fada5fba0942b81d7cd3978e5dfa5",
+      "published_sha256": "814c3bb302f2c1173600f755d81a5cd52ab1f292ee7d107f067ffa34bdea2f09"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T162915Z/ability-analysis/cases.json",
+      "published": "evidence/2026-10-13/ability2-return/cases.json",
+      "source_sha256": "5842587522927bc8318af0a29e31e1cffa6e292b2ff2f7fa7e39e9f77905f376",
+      "published_sha256": "d1cdc8870aac11e55a3cdbc8dd57e8af7c79019d47723cc432cb711134da123b"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T162915Z/ability-analysis/aligned-comparison.json",
+      "published": "evidence/2026-10-13/ability2-return/aligned-comparison.json",
+      "source_sha256": "756421c6b99670c6cd947cebe366edbf8f557d308adb89b869e989b15da85245",
+      "published_sha256": "a580b06fa1c0c9473c7f427c95700619b8176a5e63be3726afaca401090b85f7"
+    },
+    {
+      "source": "build/ability3-private-v1/public-qualification.json",
+      "published": "evidence/2026-10-13/ability3/qualification.json",
+      "source_sha256": "29432375bab7d0c33e7a3c1ac8ac125d153089aef27c834de53e1b9e391793d1",
+      "published_sha256": "71b3ae4b3e9ef1e2fe823b6060f64938c43c131c97f57601d25ef58f308ad320"
+    },
+    {
+      "source": "build/ability3-private-v1/predictions.json",
+      "published": "evidence/2026-10-13/ability3/predictions.json",
+      "source_sha256": "82a7e79fcaa4b4c0172beb5092204c0f908916b5bb213f93ab9cef9ca62abae3",
+      "published_sha256": "b1c1abd52432d29c0711e64d81cc0cd37573852b20ada0160de70f6f505e7f94"
+    },
+    {
+      "source": "build/ability3-private-v1/public-coverage.json",
+      "published": "evidence/2026-10-13/ability3/coverage.json",
+      "source_sha256": "83cb28a824333d81cc5fe6a9de64a2c2ad0fcf2249ba8f670b0b4c81fa98a2f6",
+      "published_sha256": "40cf03fc7a3d9359674fcd27f4e6283612386da1995257037ae24f1ab87b3cc6"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T162915Z/ability3-installation.json",
+      "published": "evidence/2026-10-13/ability3/installation.json",
+      "source_sha256": "3d4cb33e370fb1c2aca8ac7c53f773874edac7a999ed93bc8a169d72ae3eee6c",
+      "published_sha256": "3a333f386f177b91a5871d093caf9bdb9f29161d0679fff86a8992455c794aaf"
     }
   ]
 }

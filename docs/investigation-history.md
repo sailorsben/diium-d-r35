@@ -1,5 +1,23 @@
 # Investigation history and negative results
 
+## Ability2 measured partial improvement and fixed-math hypothesis — 2026-10-13
+
+Same-frame A7 CPU savings establish useful Window2 batching without a universal
+fix: Ultima/GrandTrain complete, Holy/Meteor remain short.12/18 native failures
+remain; no signal/C crash retained. Whole-call savings are not e/r/b unit prices.
+Slow2 improves in one context with unchanged work but fails in Rage; variance
+and context prevent crediting that improvement to window deferral. Included
+observer costs are not subtracted and frequency remains unexposed.
+
+New fixed-operand math palettes target repeated RGB arithmetic; eligible rows
+are most numerous in Carbunkl/Siren/Lullaby. Preserve real register flushes and
+all mixed/depth-dependent fallback. Exact scalar/memory/cache oracle and18
+normal cast replays pass. Initial hidden census export was detected before
+claiming work counts, preserved and corrected; mandatory counter presence
+prevents absent observations becoming zero. Conditional thresholds remain
+unpriced; only the next separately versioned A7 test can measure real saving.
+[Return](snes-ability2-return.md), [candidate](snes-ability3.md).
+
 ## Aligned common renderer patterns and short regression — 2026-10-13
 
 Generalized Window2 batching removes tile/entry preambles in four of the eleven

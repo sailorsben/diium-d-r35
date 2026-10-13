@@ -1,5 +1,26 @@
 # Changelog
 
+## Ability2 measured return and fixed-math reuse experiment — 2026-10-13
+
+Archive4,813 files, verify79 payloads and4,603 protected prior files; only swap
+changes, FAT clean. Six of18 cases complete;12 fail native SETUP/errno77.
+Same-frame CPU savings: Holy1.880ms, Meteor1.740ms, Ultima2.012ms,
+GrandTrain2.572ms. Ultima/GrandTrain complete; Bio Blast/Confuser remain clean.
+Requested properties/Rage selections and PCM accounting verify; no C crash
+retained. Draw deficit12 is terminal audio-abort behavior, not frameskip.
+
+Build separate1.19-ability3 exact fixed-operand palette cache with epoch/fixed/
+mode/bit-depth keys, wrap invalidation and bounded2bpp reads. Mixed/subscreen/
+clipped/direct-color fallback stays original.43,200 exact comparisons,2,097,152
+scalar palette checks,18 actual-runner cases and native/wrapper seams pass.
+Repair offline counter export; preserve invalid missing-counter receipts.
+Matched work thresholds and conditional cadence precede installation; new A7
+unit prices and net saving remain unknown, production gate false. Experimental
+18-case staging uses a new folder and protected archive/FAT/hash gates.
+Guarded I: installation completes:79 payloads read back,4,812 archived prior
+files protected, production/progress exact, final FAT clean and one-shot armed.
+[Return](docs/snes-ability2-return.md), [candidate](docs/snes-ability3.md).
+
 ## Generalized renderer and18-case physical regression staged — 2026-10-13
 
 Build counter-free multi-background/irrelevant Window2 batching as separate

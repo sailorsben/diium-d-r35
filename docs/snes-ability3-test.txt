@@ -1,0 +1,18 @@
+ABILITY3 — fixed-operand palette reuse, automatic18-case test
+
+Safely eject I:, put the card in the handheld and boot.
+The test starts automatically. No B press is needed.
+Let it finish (about6–7 minutes if all18 windows complete).
+MENU stops early; please let it finish if possible.
+
+Order: Holy, Meteor, Ultima, Meltdown, Slow2, Siren, Bahamut, Carbunkl,
+Quasar, GrandTrain, Rages004/005/032/086/088, Terrato, Bio Blast, Confuser.
+Each cast uses independent valid targets and its original deterministic input.
+Native audio errors are recorded as failures, then the next fixture starts.
+It returns to stock afterward; the next reboot is stock too.
+
+This is a separately versioned experimental renderer. Actual saves/progress,
+the ROM and production emulator binaries are preserved. Offline graphics/audio/
+state checks establish correctness; A7 savings and stability remain to measure.
+
+After it finishes, power off and reconnect I: for archival and comparison.

@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest2026-10-13:** [ability2 return](snes-ability2-return.md) verifies4,813
+files and clean FAT.6/18 complete;12 native SETUP/errno77 failures remain.
+Aligned net A7 CPU savings1.880/1.740/2.012/2.572ms Holy/Meteor/Ultima/GrandTrain;
+Ultima/GrandTrain now complete, Bio Blast/Confuser remain clean. No C crash
+retained. [Ability3](snes-ability3.md) fixed-math cache is exact offline across
+18 contexts plus scalar cache/memory oracles; new A7 saving unknown. Separate
+experimental ability3 armed on healthy I:,79 payloads and4,812 protected prior
+files verify; production gate false. Earlier ability2 arming
+and unpriced whole-candidate saving statements are superseded by this return.
+
 **Current staging2026-10-13:** [ability2 regression](snes-ability-regression.md)
 is armed on I:,18 automatic cases (~6–7 minutes) with a separate counter-free
 generalized Window2 core. Returned-state counters identify removable setup in

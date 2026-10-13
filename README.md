@@ -6,7 +6,16 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
-- **Ability2 short regression armed on I:**18 automatic cases (~6–7 minutes),
+- **Ability2 evaluated; ability3 armed on I:**6/18 complete;
+  12 native PCM failures remain. Aligned A7 CPU savings are1.88ms Holy,
+  1.74ms Meteor,2.01ms Ultima and2.57ms GrandTrain; Ultima/GrandTrain now finish.
+  Bio Blast/Confuser stay clean. New fixed-operand math-palette reuse passes
+  43,200 exact replay calls,2,097,152 scalar palette checks and actual runner/
+  native/wrapper checks. Physical saving pending, production gate false.
+  [Return](docs/snes-ability2-return.md), [new test](docs/snes-ability3-test.txt),
+  [mechanism and thresholds](docs/snes-ability3.md). Fresh4,813-file archive,
+  4,812 protected files,79 verified new payloads and clean final FAT.
+- **Historical ability2 staging:**18 automatic cases (~6–7 minutes),
   including all11 failed effects, five Rages and Terrato/Bio Blast/Confuser
   controls. Separate counter-free generalized Window2 renderer passes48,000
   exact comparison calls and18 actual-runner cases offline. Matched tails remove

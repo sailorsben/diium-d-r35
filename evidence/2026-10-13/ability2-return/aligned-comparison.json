@@ -1,0 +1,1096 @@
+[
+  {
+    "case": 0,
+    "original_case": 14,
+    "name": "HOLY",
+    "old_calls": 376,
+    "new_calls": 416,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=308623 hw=308607 prime_written=2823 start_calls=0 epoch=1 xfer=308239 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374
+    ],
+    "baseline_tail": {
+      "cpu_ns": 17737.125,
+      "wall_ns": 19189.4375,
+      "step_ns": 19564.75,
+      "admission_ns": 184.625
+    },
+    "new_tail": {
+      "cpu_ns": 16034.625,
+      "wall_ns": 17334.875,
+      "step_ns": 17660.5625,
+      "admission_ns": 185.125
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 1880.25,
+        "median": 1927.5,
+        "p95": 2197.0,
+        "p99": 2197.0,
+        "max": 2197.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 1937.6875,
+        "median": 1951.0,
+        "p95": 3860.0,
+        "p99": 3860.0,
+        "max": 3860.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15856.875,
+      "wall_ns": 17251.75,
+      "step_ns": 17686.4375
+    }
+  },
+  {
+    "case": 1,
+    "original_case": 19,
+    "name": "METEOR",
+    "old_calls": 389,
+    "new_calls": 408,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=302737 hw=302719 prime_written=2823 start_calls=0 epoch=1 xfer=302353 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387
+    ],
+    "baseline_tail": {
+      "cpu_ns": 17941.75,
+      "wall_ns": 19363.5,
+      "step_ns": 19680.5625,
+      "admission_ns": 176.0
+    },
+    "new_tail": {
+      "cpu_ns": 16820.125,
+      "wall_ns": 18123.5625,
+      "step_ns": 18466.125,
+      "admission_ns": 197.9375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 1740.125,
+        "median": 1759.0,
+        "p95": 1967.0,
+        "p99": 1967.0,
+        "max": 1967.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 1868.875,
+        "median": 1779.5,
+        "p95": 3763.0,
+        "p99": 3763.0,
+        "max": 3763.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16201.625,
+      "wall_ns": 17494.625,
+      "step_ns": 17839.875
+    }
+  },
+  {
+    "case": 2,
+    "original_case": 20,
+    "name": "ULTIMA",
+    "old_calls": 557,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      540,
+      541,
+      542,
+      543,
+      544,
+      545,
+      546,
+      547,
+      548,
+      549,
+      550,
+      551,
+      552,
+      553,
+      554,
+      555
+    ],
+    "baseline_tail": {
+      "cpu_ns": 16341.0625,
+      "wall_ns": 17743.4375,
+      "step_ns": 18144.875,
+      "admission_ns": 209.125
+    },
+    "new_tail": {
+      "cpu_ns": 11202.1875,
+      "wall_ns": 11997.4375,
+      "step_ns": 16382.875,
+      "admission_ns": 4244.375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 2012.4375,
+        "median": 1994.0,
+        "p95": 2309.0,
+        "p99": 2309.0,
+        "max": 2309.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 2235.5625,
+        "median": 2083.0,
+        "p95": 3760.0,
+        "p99": 3760.0,
+        "max": 3760.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 14328.625,
+      "wall_ns": 15507.875,
+      "step_ns": 16614.3125
+    }
+  },
+  {
+    "case": 3,
+    "original_case": 23,
+    "name": "MELTDOWN",
+    "old_calls": 421,
+    "new_calls": 417,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=309360 hw=309247 prime_written=2823 start_calls=0 epoch=1 xfer=308976 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414,
+      415
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15724.25,
+      "wall_ns": 17041.666666666668,
+      "step_ns": 17363.333333333332,
+      "admission_ns": 179.5
+    },
+    "new_tail": {
+      "cpu_ns": 15778.0,
+      "wall_ns": 17226.875,
+      "step_ns": 17559.0,
+      "admission_ns": 187.3125
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 12,
+        "mean": -55.916666666666664,
+        "median": -73.0,
+        "p95": 147.0,
+        "p99": 147.0,
+        "max": 147.0
+      },
+      "wall_ns": {
+        "count": 12,
+        "mean": -118.75,
+        "median": -88.0,
+        "p95": 1721.0,
+        "p99": 1721.0,
+        "max": 1721.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15780.166666666666,
+      "wall_ns": 17160.416666666668,
+      "step_ns": 17489.0
+    }
+  },
+  {
+    "case": 4,
+    "original_case": 40,
+    "name": "SLOW_2",
+    "old_calls": 461,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      444,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454,
+      455,
+      456,
+      457,
+      458,
+      459
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15427.4375,
+      "wall_ns": 16628.3125,
+      "step_ns": 16971.9375,
+      "admission_ns": 181.9375
+    },
+    "new_tail": {
+      "cpu_ns": 11278.6875,
+      "wall_ns": 12128.0,
+      "step_ns": 16657.0,
+      "admission_ns": 670.5
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 153.6875,
+        "median": 155.5,
+        "p95": 309.0,
+        "p99": 309.0,
+        "max": 309.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 44.4375,
+        "median": 102.5,
+        "p95": 1668.0,
+        "p99": 1668.0,
+        "max": 1668.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15273.75,
+      "wall_ns": 16583.875,
+      "step_ns": 16912.1875
+    }
+  },
+  {
+    "case": 5,
+    "original_case": 57,
+    "name": "SIREN",
+    "old_calls": 408,
+    "new_calls": 407,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=302000 hw=301951 prime_written=2823 start_calls=0 epoch=1 xfer=301616 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405
+    ],
+    "baseline_tail": {
+      "cpu_ns": 16946.13333333333,
+      "wall_ns": 18385.466666666667,
+      "step_ns": 18711.93333333333,
+      "admission_ns": 186.0
+    },
+    "new_tail": {
+      "cpu_ns": 16874.0625,
+      "wall_ns": 18189.5625,
+      "step_ns": 18523.3125,
+      "admission_ns": 189.1875
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 15,
+        "mean": -15.133333333333333,
+        "median": -32.0,
+        "p95": 226.0,
+        "p99": 226.0,
+        "max": 226.0
+      },
+      "wall_ns": {
+        "count": 15,
+        "mean": 102.53333333333333,
+        "median": -25.0,
+        "p95": 1877.0,
+        "p99": 1877.0,
+        "max": 1877.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16961.266666666666,
+      "wall_ns": 18282.93333333333,
+      "step_ns": 18613.86666666667
+    }
+  },
+  {
+    "case": 6,
+    "original_case": 67,
+    "name": "BAHAMUT",
+    "old_calls": 611,
+    "new_calls": 597,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=441830 hw=441727 prime_written=2823 start_calls=0 epoch=1 xfer=441446 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      594,
+      595
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15216.0,
+      "wall_ns": 16473.5,
+      "step_ns": 16792.5,
+      "admission_ns": 175.5
+    },
+    "new_tail": {
+      "cpu_ns": 15288.1875,
+      "wall_ns": 16762.9375,
+      "step_ns": 17089.25,
+      "admission_ns": 185.0625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 2,
+        "mean": -145.5,
+        "median": -145.5,
+        "p95": -111.0,
+        "p99": -111.0,
+        "max": -111.0
+      },
+      "wall_ns": {
+        "count": 2,
+        "mean": -1004.0,
+        "median": -1004.0,
+        "p95": -307.0,
+        "p99": -307.0,
+        "max": -307.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15361.5,
+      "wall_ns": 17477.5,
+      "step_ns": 17806.5
+    }
+  },
+  {
+    "case": 7,
+    "original_case": 73,
+    "name": "CARBUNKL",
+    "old_calls": 417,
+    "new_calls": 415,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=307888 hw=307839 prime_written=2823 start_calls=0 epoch=1 xfer=307504 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15915.857142857143,
+      "wall_ns": 17310.5,
+      "step_ns": 17669.714285714286,
+      "admission_ns": 185.85714285714286
+    },
+    "new_tail": {
+      "cpu_ns": 15962.5625,
+      "wall_ns": 17254.4375,
+      "step_ns": 17572.9375,
+      "admission_ns": 178.4375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 14,
+        "mean": -34.857142857142854,
+        "median": -15.5,
+        "p95": 201.0,
+        "p99": 201.0,
+        "max": 201.0
+      },
+      "wall_ns": {
+        "count": 14,
+        "mean": 53.714285714285715,
+        "median": -49.0,
+        "p95": 1813.0,
+        "p99": 1813.0,
+        "max": 1813.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15950.714285714286,
+      "wall_ns": 17256.785714285714,
+      "step_ns": 17575.5
+    }
+  },
+  {
+    "case": 8,
+    "original_case": 110,
+    "name": "QUASAR",
+    "old_calls": 441,
+    "new_calls": 444,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=329230 hw=329215 prime_written=2823 start_calls=0 epoch=1 xfer=328846 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      424,
+      425,
+      426,
+      427,
+      428,
+      429,
+      430,
+      431,
+      432,
+      433,
+      434,
+      435,
+      436,
+      437,
+      438,
+      439
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15890.375,
+      "wall_ns": 17348.125,
+      "step_ns": 17672.4375,
+      "admission_ns": 181.625
+    },
+    "new_tail": {
+      "cpu_ns": 15872.875,
+      "wall_ns": 17226.375,
+      "step_ns": 17549.0,
+      "admission_ns": 181.6875
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 12.75,
+        "median": 22.0,
+        "p95": 177.0,
+        "p99": 177.0,
+        "max": 177.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 128.125,
+        "median": 43.0,
+        "p95": 1887.0,
+        "p99": 1887.0,
+        "max": 1887.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15877.625,
+      "wall_ns": 17220.0,
+      "step_ns": 17542.75
+    }
+  },
+  {
+    "case": 9,
+    "original_case": 111,
+    "name": "GRANDTRAIN",
+    "old_calls": 480,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      463,
+      464,
+      465,
+      466,
+      467,
+      468,
+      469,
+      470,
+      471,
+      472,
+      473,
+      474,
+      475,
+      476,
+      477,
+      478
+    ],
+    "baseline_tail": {
+      "cpu_ns": 17959.9375,
+      "wall_ns": 19284.75,
+      "step_ns": 19653.4375,
+      "admission_ns": 183.625
+    },
+    "new_tail": {
+      "cpu_ns": 11030.625,
+      "wall_ns": 11537.8125,
+      "step_ns": 16512.1875,
+      "admission_ns": 4820.625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 2571.6875,
+        "median": 2644.5,
+        "p95": 3181.0,
+        "p99": 3181.0,
+        "max": 3181.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 2604.9375,
+        "median": 2650.0,
+        "p95": 4016.0,
+        "p99": 4016.0,
+        "max": 4016.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15388.25,
+      "wall_ns": 16679.8125,
+      "step_ns": 17125.8125
+    }
+  },
+  {
+    "case": 10,
+    "original_case": 149,
+    "name": "RAGE_004",
+    "old_calls": 345,
+    "new_calls": 344,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=255636 hw=255615 prime_written=2823 start_calls=0 epoch=1 xfer=255252 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342
+    ],
+    "baseline_tail": {
+      "cpu_ns": 16955.4,
+      "wall_ns": 18430.733333333334,
+      "step_ns": 18750.93333333333,
+      "admission_ns": 180.66666666666666
+    },
+    "new_tail": {
+      "cpu_ns": 17039.6875,
+      "wall_ns": 18359.375,
+      "step_ns": 18704.8125,
+      "admission_ns": 179.5
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 15,
+        "mean": -98.26666666666667,
+        "median": -103.0,
+        "p95": 80.0,
+        "p99": 80.0,
+        "max": 80.0
+      },
+      "wall_ns": {
+        "count": 15,
+        "mean": 49.93333333333333,
+        "median": -71.0,
+        "p95": 1730.0,
+        "p99": 1730.0,
+        "max": 1730.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 17053.666666666668,
+      "wall_ns": 18380.8,
+      "step_ns": 18728.06666666667
+    }
+  },
+  {
+    "case": 11,
+    "original_case": 150,
+    "name": "RAGE_005",
+    "old_calls": 325,
+    "new_calls": 372,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=276242 hw=276223 prime_written=2823 start_calls=0 epoch=1 xfer=275858 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319,
+      320,
+      321,
+      322,
+      323
+    ],
+    "baseline_tail": {
+      "cpu_ns": 17566.875,
+      "wall_ns": 18886.5625,
+      "step_ns": 19209.0,
+      "admission_ns": 185.625
+    },
+    "new_tail": {
+      "cpu_ns": 15878.75,
+      "wall_ns": 17190.3125,
+      "step_ns": 17597.6875,
+      "admission_ns": 191.9375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 1862.4375,
+        "median": 1851.5,
+        "p95": 2082.0,
+        "p99": 2082.0,
+        "max": 2082.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 1775.6875,
+        "median": 1831.0,
+        "p95": 3583.0,
+        "p99": 3583.0,
+        "max": 3583.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15704.4375,
+      "wall_ns": 17110.875,
+      "step_ns": 17431.75
+    }
+  },
+  {
+    "case": 12,
+    "original_case": 177,
+    "name": "RAGE_032",
+    "old_calls": 335,
+    "new_calls": 353,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=262259 hw=262143 prime_written=2823 start_calls=0 epoch=1 xfer=261875 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333
+    ],
+    "baseline_tail": {
+      "cpu_ns": 17837.6875,
+      "wall_ns": 19280.0,
+      "step_ns": 19619.875,
+      "admission_ns": 194.125
+    },
+    "new_tail": {
+      "cpu_ns": 16801.1875,
+      "wall_ns": 18156.0625,
+      "step_ns": 18475.8125,
+      "admission_ns": 180.5625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 1749.5625,
+        "median": 1755.5,
+        "p95": 2072.0,
+        "p99": 2072.0,
+        "max": 2072.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 1744.0625,
+        "median": 1750.5,
+        "p95": 3491.0,
+        "p99": 3491.0,
+        "max": 3491.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16088.125,
+      "wall_ns": 17535.9375,
+      "step_ns": 17958.3125
+    }
+  },
+  {
+    "case": 13,
+    "original_case": 231,
+    "name": "RAGE_086",
+    "old_calls": 360,
+    "new_calls": 369,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=274034 hw=273919 prime_written=2823 start_calls=0 epoch=1 xfer=273650 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15839.9375,
+      "wall_ns": 17129.4375,
+      "step_ns": 17538.75,
+      "admission_ns": 217.0
+    },
+    "new_tail": {
+      "cpu_ns": 15724.5,
+      "wall_ns": 17041.75,
+      "step_ns": 17428.5,
+      "admission_ns": 196.4375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 94.9375,
+        "median": 72.0,
+        "p95": 308.0,
+        "p99": 308.0,
+        "max": 308.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 102.6875,
+        "median": 61.5,
+        "p95": 2084.0,
+        "p99": 2084.0,
+        "max": 2084.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15745.0,
+      "wall_ns": 17026.75,
+      "step_ns": 17357.6875
+    }
+  },
+  {
+    "case": 14,
+    "original_case": 233,
+    "name": "RAGE_088",
+    "old_calls": 405,
+    "new_calls": 409,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=303472 hw=303359 prime_written=2823 start_calls=0 epoch=1 xfer=303088 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403
+    ],
+    "baseline_tail": {
+      "cpu_ns": 15498.25,
+      "wall_ns": 16839.375,
+      "step_ns": 17168.1875,
+      "admission_ns": 184.0
+    },
+    "new_tail": {
+      "cpu_ns": 15464.875,
+      "wall_ns": 16812.0625,
+      "step_ns": 17149.875,
+      "admission_ns": 192.0
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 57.0625,
+        "median": 70.0,
+        "p95": 279.0,
+        "p99": 279.0,
+        "max": 279.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 49.25,
+        "median": -89.5,
+        "p95": 2276.0,
+        "p99": 2276.0,
+        "max": 2276.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15441.1875,
+      "wall_ns": 16790.125,
+      "step_ns": 17132.5
+    }
+  },
+  {
+    "case": 15,
+    "original_case": 58,
+    "name": "TERRATO",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_tail": {
+      "cpu_ns": 11285.625,
+      "wall_ns": 12149.0,
+      "step_ns": 16762.375,
+      "admission_ns": 160.4375
+    },
+    "new_tail": {
+      "cpu_ns": 11219.5,
+      "wall_ns": 12090.3125,
+      "step_ns": 16649.9375,
+      "admission_ns": 966.875
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 66.125,
+        "median": 75.0,
+        "p95": 213.0,
+        "p99": 213.0,
+        "max": 213.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 58.6875,
+        "median": 69.0,
+        "p95": 1840.0,
+        "p99": 1840.0,
+        "max": 1840.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 11219.5,
+      "wall_ns": 12090.3125,
+      "step_ns": 16649.9375
+    }
+  },
+  {
+    "case": 16,
+    "original_case": 84,
+    "name": "BIO_BLAST",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_tail": {
+      "cpu_ns": 12920.375,
+      "wall_ns": 13992.25,
+      "step_ns": 16523.75,
+      "admission_ns": 2376.125
+    },
+    "new_tail": {
+      "cpu_ns": 12918.8125,
+      "wall_ns": 14042.6875,
+      "step_ns": 16609.9375,
+      "admission_ns": 2418.8125
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 1.5625,
+        "median": 13.5,
+        "p95": 127.0,
+        "p99": 127.0,
+        "max": 127.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -50.4375,
+        "median": 44.5,
+        "p95": 1854.0,
+        "p99": 1854.0,
+        "max": 1854.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 12918.8125,
+      "wall_ns": 14042.6875,
+      "step_ns": 16609.9375
+    }
+  },
+  {
+    "case": 17,
+    "original_case": 86,
+    "name": "CONFUSER",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_tail": {
+      "cpu_ns": 11025.5625,
+      "wall_ns": 11760.6875,
+      "step_ns": 16453.3125,
+      "admission_ns": 4520.375
+    },
+    "new_tail": {
+      "cpu_ns": 10974.5625,
+      "wall_ns": 11878.625,
+      "step_ns": 16476.375,
+      "admission_ns": 4447.4375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 51.0,
+        "median": 46.5,
+        "p95": 262.0,
+        "p99": 262.0,
+        "max": 262.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -117.9375,
+        "median": -303.0,
+        "p95": 1943.0,
+        "p99": 1943.0,
+        "max": 1943.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 10974.5625,
+      "wall_ns": 11878.625,
+      "step_ns": 16476.375
+    }
+  }
+]
