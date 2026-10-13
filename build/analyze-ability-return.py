@@ -1,7 +1,7 @@
 """Analyze an immutable returned archive; no card access and no emulation runs."""
 from pathlib import Path
 from hashlib import sha256
-import csv,json,math,statistics,sys
+import csv,json,math,statistics,sys,zlib
 ROOT=Path(__file__).resolve().parent.parent
 BUDGET_MS=16.6881545
 def digest(p):return sha256(p.read_bytes()).hexdigest()
@@ -21,6 +21,10 @@ def analyze(archive,suite='ability1'):
     assert q['version']==plan['version']==f'1.19-{suite}'
     before=ROOT/'device-evidence'/q['archive'];install=json.loads((before/('ability-installation.json' if suite=='ability1' else f'{suite}-installation.json')).read_text())
     for n,h in install['payload_hashes'].items():assert digest(base/n)==h,n
+    expected_core_crc=f"{zlib.crc32((base/'plus-a7.so').read_bytes()):08x}"
+    # Historical ability1 identity records the core hash, without a CRC field.
+    # Derive its session CRC from the hash-verified archived installed bytes.
+    if q.get('core_crc32') is not None:assert q['core_crc32']==expected_core_crc
     assert digest(archive/'retro/snes-mvp/launch.sh')==install['dispatch_sha256']
     assert not list((archive/'retro').rglob('armed')) and (base/'last-launch').is_file()
     unchanged=[];changed=[]
@@ -38,7 +42,7 @@ def analyze(archive,suite='ability1'):
         status='runtime_failed' if rc not in (None,'0') or error else 'incomplete' if rc is None or runs<1200 or len(frames)!=1200 or len(anim)!=1200 else 'bounded_run_completed'
         if status!='bounded_run_completed':failures.append({'case':seq,'name':c['name'],'status':status,'calls':runs,'error':error})
         if session:
-            assert session['mock_backend']=='0' and session['core_crc32']==q['core_crc32'] and session['build_version']==q['version']
+            assert session['mock_backend']=='0' and session['core_crc32']==expected_core_crc and session['build_version']==q['version']
             for field in ['held','video_dupes','write_errors','xrun_count','snapshot_load_rejections']:
                 if int(session.get(field,0)):anomalies.append({'case':seq,'field':field,'value':session[field]})
         header=kv(d/'frames.csv');pin.add(header.get('#pin','missing'))
