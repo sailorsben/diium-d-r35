@@ -1,0 +1,53 @@
+{
+  "archive": "a7-pair-before-20261013T013316Z",
+  "card_writes": 0,
+  "fat_clean": true,
+  "all_archived_files_verified": 577,
+  "payload_and_dispatch_hashes_match": true,
+  "marker_consumed": true,
+  "protected_prior_files_unchanged": 552,
+  "changed_prior_files": [
+    "retro/swapfile"
+  ],
+  "user_observation": "Worked beautifully in two fights",
+  "effect_identity_retained_in_log": false,
+  "session_id": "503-11337519000",
+  "session_seconds": 125.263278,
+  "active_seconds": 118.661633,
+  "calls": 7119,
+  "active_calls_per_second": 59.994117896557185,
+  "video_submitted": 7119,
+  "held": 0,
+  "video_dupes": 0,
+  "write_errors": 0,
+  "xruns": 0,
+  "pauses": 3,
+  "snapshot_load_successes": 1,
+  "native_frames": 3806370,
+  "native_frames_per_call": 534.6776232616941,
+  "generated_converted_frames": 5239102,
+  "accepted_minus_priming_frames": 5239102,
+  "running_reported_reserve_min_frames": 1313,
+  "final_epoch_pointer_bias_frames": 0,
+  "retained_tail_mean_core_wall_ms": 13.173291666666666,
+  "retained_tail_mean_core_cpu_ms": 12.558833333333334,
+  "retained_tail_sample_count": 24,
+  "retained_sparse_ppu_cpu_ms": [
+    4.683,
+    3.307,
+    3.324,
+    3.854,
+    3.33,
+    0.328,
+    4.995,
+    5.095
+  ],
+  "orderly_library_B_exit_and_worker_close": true,
+  "production_unit_cost_gate_passed": false,
+  "limits": [
+    "One manual session and user-reported two fights; no retained cast identities or exact input replay.",
+    "Session cadence is measured; unmatched recent costs are not aligned Confuser savings.",
+    "Running reserve minimum is retained aggregate telemetry, not the full effect reserve timeline.",
+    "No incremental A7 unit prices, broad effect coverage, or universal crash-free claim."
+  ]
+}

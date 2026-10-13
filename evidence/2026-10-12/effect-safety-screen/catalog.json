@@ -1,0 +1,7468 @@
+[
+  {
+    "index": 0,
+    "name": "FIRE",
+    "init": 37,
+    "init_pc": 12777156,
+    "scripts": {
+      "sprite_script": "FIRE_SPRITE"
+    },
+    "init_source": {
+      "description": "fire, bio, etc.",
+      "pc": 12777156,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 1,
+    "name": "BLIZZARD",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "BLIZZARD_SPRITE",
+      "bg1_gfx": "BLIZZARD_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 2,
+    "name": "THUNDER",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {
+      "sprite_script": "THUNDER_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 3,
+    "name": "POISON",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "POISON_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 4,
+    "name": "DRAIN",
+    "init": 24,
+    "init_pc": 12777124,
+    "scripts": {
+      "sprite_script": "DRAIN_SPRITE",
+      "bg1_script": "DRAIN_BG1"
+    },
+    "init_source": {
+      "description": "drain, osmose, raid, cold dust",
+      "pc": 12777124,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 5,
+    "name": "FIRA",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "FIRA_SPRITE",
+      "bg1_gfx": "FIRA_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 6,
+    "name": "BLIZZARA",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "BLIZZARA_SPRITE",
+      "bg1_gfx": "BLIZZARA_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 7,
+    "name": "THUNDARA",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "THUNDARA_SPRITE",
+      "bg1_gfx": "THUNDARA_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 8,
+    "name": "BIO",
+    "init": 37,
+    "init_pc": 12777156,
+    "scripts": {
+      "sprite_script": "BIO_SPRITE",
+      "bg1_gfx": "BIO_BG1"
+    },
+    "init_source": {
+      "description": "fire, bio, etc.",
+      "pc": 12777156,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 9,
+    "name": "FIRAGA",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "FIRAGA_SPRITE",
+      "bg1_gfx": "FIRAGA_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 10,
+    "name": "BLIZZAGA",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "BLIZZAGA_SPRITE",
+      "bg1_gfx": "BLIZZAGA_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 11,
+    "name": "THUNDAGA",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "THUNDAGA_SPRITE",
+      "bg1_gfx": "THUNDAGA_BG1"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 12,
+    "name": "BREAK",
+    "init": 48,
+    "init_pc": 12776868,
+    "scripts": {
+      "sprite_script": "BREAK_SPRITE",
+      "bg1_script": "BREAK_BG1"
+    },
+    "init_source": {
+      "description": "break",
+      "pc": 12776868,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 13,
+    "name": "DOOM",
+    "init": 39,
+    "init_pc": 12777543,
+    "scripts": {
+      "sprite_script": "DOOM_SPRITE",
+      "bg1_script": "DOOM_BG1"
+    },
+    "init_source": {
+      "description": "doom, roulette, sabresoul",
+      "pc": 12777543,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f36f",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 14,
+    "name": "HOLY",
+    "init": 49,
+    "init_pc": 12776443,
+    "scripts": {
+      "sprite_script": "HOLY_SPRITE",
+      "bg1_script": "HOLY_BG1",
+      "bg3_script": "HOLY_BG3"
+    },
+    "init_source": {
+      "description": "pearl",
+      "pc": 12776443,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9bb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 15,
+    "name": "FLARE",
+    "init": 21,
+    "init_pc": 12776845,
+    "scripts": {
+      "sprite_script": "FLARE_SPRITE",
+      "bg1_script": "FLARE_BG1"
+    },
+    "init_source": {
+      "description": "flare, step mine, dread, fenix down",
+      "pc": 12776845,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 16,
+    "name": "DEMI",
+    "init": 103,
+    "init_pc": 12774467,
+    "scripts": {
+      "sprite_script": "DEMI_SPRITE"
+    },
+    "init_source": {
+      "description": "demi, quartr, reflect???, charm",
+      "pc": 12774467,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011",
+        "_c2f9d3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 17,
+    "name": "QUARTR",
+    "init": 103,
+    "init_pc": 12774467,
+    "scripts": {
+      "sprite_script": "DEMI_SPRITE"
+    },
+    "init_source": {
+      "description": "demi, quartr, reflect???, charm",
+      "pc": 12774467,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011",
+        "_c2f9d3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 18,
+    "name": "DEZONE",
+    "init": 42,
+    "init_pc": 12776425,
+    "scripts": {
+      "sprite_script": "DEZONE_SPRITE",
+      "bg3_script": "DEZONE_BG3"
+    },
+    "init_source": {
+      "description": "x-zone",
+      "pc": 12776425,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f9df"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 19,
+    "name": "METEOR",
+    "init": 40,
+    "init_pc": 12777051,
+    "scripts": {
+      "sprite_script": "METEOR_SPRITE",
+      "bg1_script": "METEOR_BG1",
+      "bg3_script": "METEOR_BG3"
+    },
+    "init_source": {
+      "description": "meteor, fire dance",
+      "pc": 12777051,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL",
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa03"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 20,
+    "name": "ULTIMA",
+    "init": 50,
+    "init_pc": 12776089,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "ULTIMA_BG1",
+      "bg3_script": "ULTIMA_BG3"
+    },
+    "init_source": {
+      "description": "ultima",
+      "pc": 12776089,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL",
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f9af"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 21,
+    "name": "QUAKE",
+    "init": 41,
+    "init_pc": 12776273,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "QUAKE_BG1"
+    },
+    "init_source": {
+      "description": "quake",
+      "pc": 12776273,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 22,
+    "name": "TORNADO",
+    "init": 15,
+    "init_pc": 12777281,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "TORNADO_BG1"
+    },
+    "init_source": {
+      "description": "w wind, spiraler, black magic, blitz",
+      "pc": 12777281,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 23,
+    "name": "MELTDOWN",
+    "init": 45,
+    "init_pc": 12776862,
+    "scripts": {
+      "sprite_script": "MELTDOWN_SPRITE",
+      "bg3_script": "MELTDOWN_BG3"
+    },
+    "init_source": {
+      "description": "merton",
+      "pc": 12776862,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 24,
+    "name": "SCAN",
+    "init": 25,
+    "init_pc": 12777341,
+    "scripts": {
+      "sprite_script": "SCAN_SPRITE",
+      "bg1_script": "SCAN_BG1"
+    },
+    "init_source": {
+      "description": "scan, targetting",
+      "pc": 12777341,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f9f7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 25,
+    "name": "SLOW",
+    "init": 111,
+    "init_pc": 12774332,
+    "scripts": {
+      "sprite_script": "SLOW_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "SLOW_BG3"
+    },
+    "init_source": {
+      "description": "slow, x-potion, x-ether",
+      "pc": 12774332,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 26,
+    "name": "RASP",
+    "init": 26,
+    "init_pc": 12776472,
+    "scripts": {
+      "sprite_script": "RASP_SPRITE",
+      "bg3_script": "RASP_BG3"
+    },
+    "init_source": {
+      "description": "rasp",
+      "pc": 12776472,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 27,
+    "name": "MUTE",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "MUTE_SPRITE",
+      "bg1_script": "MUTE_BG1"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 28,
+    "name": "SAFE",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "SAFE_SPRITE",
+      "bg1_script": "SAFE_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 29,
+    "name": "SLEEP",
+    "init": 87,
+    "init_pc": 12775079,
+    "scripts": {
+      "sprite_script": "SLEEP_SPRITE",
+      "bg1_script": "SLEEP_BG1"
+    },
+    "init_source": {
+      "description": "sleep, 7-flush, fire ball, love token, meteo",
+      "pc": 12775079,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 30,
+    "name": "CONFUSE",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CONFUSE_SPRITE",
+      "bg1_script": "CONFUSE_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 31,
+    "name": "HASTE",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_script": "HASTE_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "HASTE_BG3"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 32,
+    "name": "STOP",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "STOP_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 33,
+    "name": "BERSERK",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_script": "BERSERK_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 34,
+    "name": "FLOAT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "FLOAT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 35,
+    "name": "IMP",
+    "init": 31,
+    "init_pc": 12776285,
+    "scripts": {
+      "sprite_script": "IMP_SPRITE",
+      "bg1_script": "IMP_BG1"
+    },
+    "init_source": {
+      "description": "imp",
+      "pc": 12776285,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 36,
+    "name": "REFLECT",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "REFLECT_SPRITE"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 37,
+    "name": "SHELL",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SHELL_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 38,
+    "name": "VANISH",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "VANISH_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 39,
+    "name": "HASTE2",
+    "init": 35,
+    "init_pc": 12776865,
+    "scripts": {
+      "sprite_script": "HASTE_SPRITE",
+      "bg3_script": "HASTE_BG3"
+    },
+    "init_source": {
+      "description": "haste2, phantasm",
+      "pc": 12776865,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 40,
+    "name": "SLOW_2",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "SLOW_SPRITE",
+      "bg1_script": "SLOW_2_BG1",
+      "bg3_script": "SLOW_BG3"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 41,
+    "name": "OSMOSE",
+    "init": 24,
+    "init_pc": 12777124,
+    "scripts": {
+      "sprite_script": "DRAIN_SPRITE",
+      "bg1_script": "DRAIN_BG1"
+    },
+    "init_source": {
+      "description": "drain, osmose, raid, cold dust",
+      "pc": 12777124,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 42,
+    "name": "WARP",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "WARP_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 43,
+    "name": "QUICK",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "QUICK_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 44,
+    "name": "DISPEL",
+    "init": 34,
+    "init_pc": 12776897,
+    "scripts": {
+      "sprite_script": "DISPEL_SPRITE",
+      "bg1_script": "DISPEL_BG1"
+    },
+    "init_source": {
+      "description": "dispel, shock wave",
+      "pc": 12776897,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 45,
+    "name": "CURE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "CURE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 46,
+    "name": "CURA",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CURA_SPRITE"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 47,
+    "name": "CURAGA",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "CURAGA_SPRITE"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 48,
+    "name": "RAISE",
+    "init": 20,
+    "init_pc": 12777008,
+    "scripts": {
+      "sprite_script": "RAISE_SPRITE"
+    },
+    "init_source": {
+      "description": "life, life 2, whump, fallen one",
+      "pc": 12777008,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 49,
+    "name": "ARISE",
+    "init": 20,
+    "init_pc": 12777008,
+    "scripts": {
+      "sprite_script": "ARISE_SPRITE"
+    },
+    "init_source": {
+      "description": "life, life 2, whump, fallen one",
+      "pc": 12777008,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 50,
+    "name": "POISONA",
+    "init": 36,
+    "init_pc": 12776121,
+    "scripts": {
+      "sprite_script": "POISONA_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "REGEN_BG3"
+    },
+    "init_source": {
+      "description": "antdot, regen, star prism",
+      "pc": 12776121,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 51,
+    "name": "REMEDY",
+    "init": 22,
+    "init_pc": 12777315,
+    "scripts": {
+      "sprite_script": "REMEDY_SPRITE",
+      "bg1_script": "REMEDY_BG1"
+    },
+    "init_source": {
+      "description": "remedy, wild bear",
+      "pc": 12777315,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 52,
+    "name": "REGEN",
+    "init": 36,
+    "init_pc": 12776121,
+    "scripts": {
+      "sprite_script": "REGEN_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "REGEN_BG3"
+    },
+    "init_source": {
+      "description": "antdot, regen, star prism",
+      "pc": 12776121,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 53,
+    "name": "RERAISE",
+    "init": 23,
+    "init_pc": 12777173,
+    "scripts": {
+      "sprite_script": "RERAISE_SPRITE",
+      "bg1_gfx": "RERAISE_SPRITE"
+    },
+    "init_source": {
+      "description": "life 3",
+      "pc": 12777173,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 54,
+    "name": "RAMUH",
+    "init": 56,
+    "init_pc": 12775969,
+    "scripts": {
+      "sprite_gfx": "RAMUH_SPRITE",
+      "bg1_script": "RAMUH_BG1",
+      "bg3_script": "RAMUH_BG3",
+      "extra_gfx": "RAMUH_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt fist",
+      "pc": 12775969,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 55,
+    "name": "IFRIT",
+    "init": 51,
+    "init_pc": 12776073,
+    "scripts": {
+      "sprite_gfx": "IFRIT_SPRITE",
+      "bg1_script": "IFRIT_BG1",
+      "bg3_script": "IFRIT_BG3",
+      "extra_gfx": "IFRIT_SPRITE"
+    },
+    "init_source": {
+      "description": "inferno",
+      "pc": 12776073,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 56,
+    "name": "SHIVA",
+    "init": 57,
+    "init_pc": 12775953,
+    "scripts": {
+      "sprite_gfx": "SHIVA_SPRITE",
+      "bg1_script": "SHIVA_BG1",
+      "bg3_script": "SHIVA_BG3",
+      "extra_gfx": "SHIVA_SPRITE"
+    },
+    "init_source": {
+      "description": "gem dust",
+      "pc": 12775953,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 57,
+    "name": "SIREN",
+    "init": 58,
+    "init_pc": 12775930,
+    "scripts": {
+      "sprite_script": "SIREN_SPRITE",
+      "bg1_script": "SIREN_BG1",
+      "bg3_script": "SIREN_BG3",
+      "extra_gfx": "SIREN_SPRITE"
+    },
+    "init_source": {
+      "description": "hope song",
+      "pc": 12775930,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f66d",
+        "_c2fa03"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 58,
+    "name": "TERRATO",
+    "init": 53,
+    "init_pc": 12776029,
+    "scripts": {
+      "sprite_gfx": "TERRATO_SPRITE",
+      "bg1_script": "TERRATO_BG1",
+      "bg3_script": "TERRATO_BG3",
+      "extra_gfx": "TERRATO_SPRITE"
+    },
+    "init_source": {
+      "description": "earth aura",
+      "pc": 12776029,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f9a3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 59,
+    "name": "SHOAT",
+    "init": 52,
+    "init_pc": 12776059,
+    "scripts": {
+      "sprite_gfx": "SHOAT_SPRITE",
+      "bg1_script": "SHOAT_BG1",
+      "extra_gfx": "SHOAT_SPRITE"
+    },
+    "init_source": {
+      "description": "demon eye",
+      "pc": 12776059,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 60,
+    "name": "MADUIN",
+    "init": 67,
+    "init_pc": 12775617,
+    "scripts": {
+      "sprite_gfx": "MADUIN_SPRITE",
+      "bg1_script": "MADUIN_BG1",
+      "bg3_script": "MADUIN_BG3",
+      "extra_gfx": "MADUIN_SPRITE"
+    },
+    "init_source": {
+      "description": "chaos wing",
+      "pc": 12775617,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 61,
+    "name": "BISMARK",
+    "init": 54,
+    "init_pc": 12776001,
+    "scripts": {
+      "sprite_script": "BISMARK_SPRITE",
+      "bg1_script": "BISMARK_BG1",
+      "extra_gfx": "BISMARK_EXTRA"
+    },
+    "init_source": {
+      "description": "sea song",
+      "pc": 12776001,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 62,
+    "name": "STRAY",
+    "init": 104,
+    "init_pc": 12774454,
+    "scripts": {
+      "sprite_script": "STRAY_SPRITE",
+      "bg1_script": "STRAY_BG1"
+    },
+    "init_source": {
+      "description": "cat rain",
+      "pc": 12774454,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 63,
+    "name": "PALIDOR",
+    "init": 68,
+    "init_pc": 12775566,
+    "scripts": {
+      "sprite_script": "PALIDOR_SPRITE",
+      "bg1_script": "PALIDOR_BG1"
+    },
+    "init_source": {
+      "description": "sonic dive",
+      "pc": 12775566,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 64,
+    "name": "TRITOCH",
+    "init": 108,
+    "init_pc": 12774382,
+    "scripts": {
+      "sprite_gfx": "TRITOCH_SPRITE",
+      "bg1_script": "TRITOCH_BG1",
+      "bg3_script": "TRITOCH_BG3",
+      "extra_gfx": "TRITOCH_SPRITE"
+    },
+    "init_source": {
+      "description": "tri-dazer",
+      "pc": 12774382,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 65,
+    "name": "ODIN",
+    "init": 69,
+    "init_pc": 12775536,
+    "scripts": {
+      "sprite_gfx": "ODIN_SPRITE",
+      "bg1_script": "ODIN_BG1",
+      "extra_gfx": "ODIN_SPRITE"
+    },
+    "init_source": {
+      "description": "atom edge",
+      "pc": 12775536,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 66,
+    "name": "RAIDEN",
+    "init": 107,
+    "init_pc": 12774398,
+    "scripts": {
+      "sprite_gfx": "ODIN_SPRITE",
+      "bg1_script": "ODIN_BG1",
+      "bg3_script": "RAIDEN_BG3",
+      "extra_gfx": "ODIN_SPRITE"
+    },
+    "init_source": {
+      "description": "true edge",
+      "pc": 12774398,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 67,
+    "name": "BAHAMUT",
+    "init": 66,
+    "init_pc": 12775645,
+    "scripts": {
+      "sprite_script": "BAHAMUT_SPRITE",
+      "bg1_script": "BAHAMUT_BG1",
+      "bg3_script": "BAHAMUT_BG3"
+    },
+    "init_source": {
+      "description": "sun flare",
+      "pc": 12775645,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f66f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 68,
+    "name": "ALEXANDR",
+    "init": 59,
+    "init_pc": 12775829,
+    "scripts": {
+      "sprite_script": "ALEXANDR_SPRITE",
+      "bg1_script": "ALEXANDR_BG1",
+      "bg3_script": "ALEXANDR_BG3",
+      "extra_gfx": "ALEXANDR_EXTRA"
+    },
+    "init_source": {
+      "description": "justice",
+      "pc": 12775829,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f178",
+        "_c2f1ca",
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 69,
+    "name": "CRUSADER",
+    "init": 116,
+    "init_pc": 12774223,
+    "scripts": {
+      "sprite_gfx": "CRUSADER_SPRITE",
+      "bg1_script": "CRUSADER_BG1",
+      "bg3_script": "CRUSADER_BG3",
+      "extra_gfx": "CRUSADER_SPRITE"
+    },
+    "init_source": {
+      "description": "purifier",
+      "pc": 12774223,
+      "circle": true,
+      "mode7": true,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f1ca"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 70,
+    "name": "RAGNAROK",
+    "init": 106,
+    "init_pc": 12774428,
+    "scripts": {
+      "sprite_gfx": "RAGNAROK_SPRITE",
+      "bg1_script": "RAGNAROK_BG1",
+      "bg3_script": "RAGNAROK_BG3",
+      "extra_gfx": "RAGNAROK_SPRITE"
+    },
+    "init_source": {
+      "description": "metamorph",
+      "pc": 12774428,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 71,
+    "name": "KIRIN",
+    "init": 61,
+    "init_pc": 12775757,
+    "scripts": {
+      "sprite_gfx": "KIRIN_SPRITE",
+      "bg1_script": "KIRIN_BG1",
+      "extra_gfx": "KIRIN_SPRITE"
+    },
+    "init_source": {
+      "description": "life guard",
+      "pc": 12775757,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 72,
+    "name": "ZONESEEK",
+    "init": 55,
+    "init_pc": 12775985,
+    "scripts": {
+      "sprite_script": "WALL_SPRITE",
+      "bg1_script": "WALL_BG1"
+    },
+    "init_source": {
+      "description": "wall (zoneseek)",
+      "pc": 12775985,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 73,
+    "name": "CARBUNKL",
+    "init": 60,
+    "init_pc": 12775787,
+    "scripts": {
+      "sprite_gfx": "CARBUNKL_SPRITE",
+      "bg1_script": "CARBUNKL_BG1",
+      "extra_gfx": "CARBUNKL_SPRITE"
+    },
+    "init_source": {
+      "description": "ruby power",
+      "pc": 12775787,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 74,
+    "name": "PHANTOM",
+    "init": 109,
+    "init_pc": 12774369,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "PHANTOM_BG1"
+    },
+    "init_source": {
+      "description": "fader",
+      "pc": 12774369,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 75,
+    "name": "SRAPHIM",
+    "init": 64,
+    "init_pc": 12775689,
+    "scripts": {
+      "sprite_script": "SRAPHIM_SPRITE",
+      "bg1_script": "SRAPHIM_BG1",
+      "bg3_script": "SRAPHIM_BG3"
+    },
+    "init_source": {
+      "description": "reviver",
+      "pc": 12775689,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 76,
+    "name": "GOLEM",
+    "init": 105,
+    "init_pc": 12774441,
+    "scripts": {
+      "sprite_script": "GOLEM_SPRITE",
+      "bg1_script": "GOLEM_BG1"
+    },
+    "init_source": {
+      "description": "earth wall",
+      "pc": 12774441,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f590"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 77,
+    "name": "UNICORN",
+    "init": 62,
+    "init_pc": 12775721,
+    "scripts": {
+      "sprite_gfx": "UNICORN_SPRITE",
+      "bg1_script": "UNICORN_BG1",
+      "bg3_script": "UNICORN_BG3",
+      "extra_gfx": "UNICORN_SPRITE"
+    },
+    "init_source": {
+      "description": "heal horn",
+      "pc": 12775721,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f997"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 78,
+    "name": "FENRIR",
+    "init": 70,
+    "init_pc": 12775456,
+    "scripts": {
+      "sprite_gfx": "FENRIR_SPRITE",
+      "bg1_script": "FENRIR_BG1",
+      "extra_gfx": "FENRIR_SPRITE"
+    },
+    "init_source": {
+      "description": "moon song",
+      "pc": 12775456,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 79,
+    "name": "STARLET",
+    "init": 65,
+    "init_pc": 12775673,
+    "scripts": {
+      "sprite_gfx": "STARLET_SPRITE",
+      "bg1_script": "STARLET_BG1",
+      "extra_gfx": "STARLET_SPRITE"
+    },
+    "init_source": {
+      "description": "group hug",
+      "pc": 12775673,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 80,
+    "name": "PHOENIX",
+    "init": 63,
+    "init_pc": 12775705,
+    "scripts": {
+      "sprite_gfx": "PHOENIX_SPRITE",
+      "bg1_script": "PHOENIX_BG1",
+      "bg3_script": "PHOENIX_BG3",
+      "extra_gfx": "PHOENIX_SPRITE"
+    },
+    "init_source": {
+      "description": "rebirth",
+      "pc": 12775705,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9a3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 81,
+    "name": "FIRE_SKEAN",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "FIRE_SKEAN_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 82,
+    "name": "WATER_EDGE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "WATER_EDGE_SPRITE",
+      "bg1_script": "WATER_EDGE_BG1",
+      "extra_gfx": "WATER_EDGE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 83,
+    "name": "BOLT_EDGE",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "BOLT_EDGE_BG1",
+      "bg3_script": "BOLT_EDGE_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 84,
+    "name": "STORM",
+    "init": 19,
+    "init_pc": 12777377,
+    "scripts": {
+      "sprite_script": "STORM_SPRITE",
+      "bg1_script": "STORM_BG1"
+    },
+    "init_source": {
+      "description": "storm, rage/lore, swdtech",
+      "pc": 12777377,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 85,
+    "name": "DISPATCH",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_script": "DISPATCH_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 86,
+    "name": "RETORT",
+    "init": 7,
+    "init_pc": 12777504,
+    "scripts": {
+      "sprite_gfx": "RETORT_SPRITE",
+      "bg1_script": "THICK_DIAG_HIT_BG1",
+      "extra_script": "RETORT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 87,
+    "name": "SLASH",
+    "init": 8,
+    "init_pc": 12776127,
+    "scripts": {
+      "sprite_script": "SLASH_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "SLASH_BG3"
+    },
+    "init_source": {
+      "description": "slash",
+      "pc": 12776127,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 88,
+    "name": "QUADRA_SLAM",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_gfx": "QUADRA_SLAM_SPRITE",
+      "bg1_script": "THICK_DIAG_HIT_BG1",
+      "extra_script": "QUADRA_SLAM_SPRITE"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 89,
+    "name": "EMPOWERER",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_gfx": "EMPOWERER_SPRITE",
+      "bg1_script": "EMPOWERER_BG1",
+      "extra_script": "EMPOWERER_SPRITE"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 90,
+    "name": "STUNNER",
+    "init": 10,
+    "init_pc": 12776585,
+    "scripts": {
+      "sprite_gfx": "STUNNER_SPRITE",
+      "bg1_script": "STUNNER_BG1",
+      "extra_script": "STUNNER_SPRITE"
+    },
+    "init_source": {
+      "description": "stunner, spin edge, takedown",
+      "pc": 12776585,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 91,
+    "name": "QUADRA_SLICE",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_gfx": "QUADRA_SLAM_SPRITE",
+      "bg1_script": "THICK_DIAG_HIT_BG1",
+      "extra_script": "QUADRA_SLAM_SPRITE"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 92,
+    "name": "CLEAVE",
+    "init": 11,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "CLEAVE_SPRITE",
+      "extra_script": "CLEAVE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 93,
+    "name": "PUMMEL",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_gfx": "PUMMEL_SPRITE",
+      "bg1_script": "UNARMED_HIT_BG1",
+      "extra_script": "PUMMEL_SPRITE"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 94,
+    "name": "AURABOLT",
+    "init": 12,
+    "init_pc": 12776555,
+    "scripts": {
+      "sprite_gfx": "AURABOLT_SPRITE",
+      "bg1_script": "AURABOLT_BG1",
+      "bg3_script": "AURABOLT_BG3",
+      "extra_script": "AURABOLT_SPRITE"
+    },
+    "init_source": {
+      "description": "aurabolt",
+      "pc": 12776555,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 95,
+    "name": "SUPLEX",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {
+      "sprite_script": "SUPLEX_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 96,
+    "name": "FIRE_DANCE",
+    "init": 40,
+    "init_pc": 12777051,
+    "scripts": {
+      "sprite_script": "FIRE_DANCE_SPRITE",
+      "bg1_script": "FIRE_DANCE_BG1"
+    },
+    "init_source": {
+      "description": "meteor, fire dance",
+      "pc": 12777051,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL",
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa03"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 97,
+    "name": "MANTRA",
+    "init": 14,
+    "init_pc": 12777415,
+    "scripts": {
+      "bg1_script": "MANTRA_BG1"
+    },
+    "init_source": {
+      "description": "mantra",
+      "pc": 12777415,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 98,
+    "name": "AIR_BLADE",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_script": "AIR_BLADE_SPRITE",
+      "bg1_script": "AIR_BLADE_BG1"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 99,
+    "name": "SPIRALER",
+    "init": 15,
+    "init_pc": 12777281,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SPIRALER_BG1"
+    },
+    "init_source": {
+      "description": "w wind, spiraler, black magic, blitz",
+      "pc": 12777281,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 100,
+    "name": "BUM_RUSH",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_gfx": "BUM_RUSH_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "extra_script": "BUM_RUSH_SPRITE"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 101,
+    "name": "WIND_SLASH",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "WIND_SLASH_SPRITE",
+      "bg1_script": "WIND_SLASH_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 102,
+    "name": "SUN_BATH",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "SUN_BATH_SPRITE",
+      "extra_gfx": "SUN_BATH_EXTRA"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 103,
+    "name": "RAGE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "RAGE_BG1",
+      "bg3_script": "RAGE_BG3"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 104,
+    "name": "HARVESTER",
+    "init": 72,
+    "init_pc": 12775422,
+    "scripts": {
+      "sprite_script": "HARVESTER_SPRITE",
+      "bg1_script": "HARVESTER_BG1",
+      "bg3_script": "HARVESTER_BG3"
+    },
+    "init_source": {
+      "description": "harvester, scar beam",
+      "pc": 12775422,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f66f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 105,
+    "name": "SAND_STORM",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SAND_STORM_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 106,
+    "name": "ANTLION",
+    "init": 73,
+    "init_pc": 12775395,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "ANTLION_BG1"
+    },
+    "init_source": {
+      "description": "antlion, lifeshaver",
+      "pc": 12775395,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f98b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 107,
+    "name": "ELF_FIRE",
+    "init": 74,
+    "init_pc": 12775378,
+    "scripts": {
+      "sprite_script": "ELF_FIRE_SPRITE"
+    },
+    "init_source": {
+      "description": "elf fire, fire wall",
+      "pc": 12775378,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 108,
+    "name": "SPECTER",
+    "init": 75,
+    "init_pc": 12775291,
+    "scripts": {
+      "sprite_script": "SPECTER_SPRITE",
+      "bg1_script": "SPECTER_BG1"
+    },
+    "init_source": {
+      "description": "specter",
+      "pc": 12775291,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9d3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 109,
+    "name": "LAND_SLIDE",
+    "init": 76,
+    "init_pc": 12775271,
+    "scripts": {
+      "sprite_script": "LAND_SLIDE_SPRITE"
+    },
+    "init_source": {
+      "description": "land slide",
+      "pc": 12775271,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 110,
+    "name": "SONIC_BOOM",
+    "init": 37,
+    "init_pc": 12777156,
+    "scripts": {
+      "sprite_script": "SONIC_BOOM_SPRITE"
+    },
+    "init_source": {
+      "description": "fire, bio, etc.",
+      "pc": 12777156,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 111,
+    "name": "EL_NINO",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "EL_NINO_SPRITE",
+      "bg1_script": "EL_NINO_BG1"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 112,
+    "name": "PLASMA",
+    "init": 37,
+    "init_pc": 12777156,
+    "scripts": {
+      "sprite_script": "PLASMA_SPRITE"
+    },
+    "init_source": {
+      "description": "fire, bio, etc.",
+      "pc": 12777156,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 113,
+    "name": "SNARE",
+    "init": 80,
+    "init_pc": 12775199,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SNARE_BG1"
+    },
+    "init_source": {
+      "description": "snare",
+      "pc": 12775199,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f98b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 114,
+    "name": "CAVE_IN",
+    "init": 77,
+    "init_pc": 12775257,
+    "scripts": {
+      "sprite_script": "CAVE_IN_SPRITE"
+    },
+    "init_source": {
+      "description": "cave in, snowball, lode stone",
+      "pc": 12775257,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 115,
+    "name": "SNOWBALL",
+    "init": 77,
+    "init_pc": 12775257,
+    "scripts": {
+      "sprite_script": "SNOWBALL_SPRITE"
+    },
+    "init_source": {
+      "description": "cave in, snowball, lode stone",
+      "pc": 12775257,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 116,
+    "name": "SURGE",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_script": "SURGE_SPRITE",
+      "bg1_script": "SURGE_BG1",
+      "bg3_script": "SURGE_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 117,
+    "name": "COKATRICE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "COKATRICE_SPRITE",
+      "bg1_script": "COKATRICE_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 118,
+    "name": "WOMBAT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "WOMBAT_SPRITE",
+      "bg1_script": "WOMBAT_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 119,
+    "name": "KITTY",
+    "init": 79,
+    "init_pc": 12775240,
+    "scripts": {
+      "sprite_script": "KITTY_SPRITE",
+      "bg1_script": "KITTY_BG1"
+    },
+    "init_source": {
+      "description": "sneeze, green cherry",
+      "pc": 12775240,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 120,
+    "name": "TAPIR",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "TAPIR_SPRITE",
+      "bg1_script": "TAPIR_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 121,
+    "name": "WHUMP",
+    "init": 20,
+    "init_pc": 12777008,
+    "scripts": {
+      "sprite_script": "WHUMP_SPRITE",
+      "bg1_script": "WHUMP_BG1"
+    },
+    "init_source": {
+      "description": "life, life 2, whump, fallen one",
+      "pc": 12777008,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 122,
+    "name": "WILD_BEAR",
+    "init": 22,
+    "init_pc": 12777315,
+    "scripts": {
+      "sprite_gfx": "WILD_BEAR_SPRITE",
+      "bg1_script": "WILD_BEAR_BG1",
+      "extra_gfx": "WILD_BEAR_SPRITE"
+    },
+    "init_source": {
+      "description": "remedy, wild bear",
+      "pc": 12777315,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 123,
+    "name": "POIS_FROG",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "POIS_FROG_SPRITE",
+      "bg1_script": "POIS_FROG_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 124,
+    "name": "ICE_RABBIT",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "ICE_RABBIT_SPRITE",
+      "bg1_script": "ICE_RABBIT_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 125,
+    "name": "SUPER_BALL",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SUPER_BALL_SPRITE",
+      "extra_script": "SUPER_BALL_EXTRA"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 126,
+    "name": "FLASH_SLOT",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "bg1_script": "FLASH_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 127,
+    "name": "CHOCOBOP",
+    "init": 94,
+    "init_pc": 12774901,
+    "scripts": {
+      "sprite_script": "CHOCOBOP_SPRITE"
+    },
+    "init_source": {
+      "description": "chocobop, l.4 flare, gp rain, autocrossbow, throw 2 dice",
+      "pc": 12774901,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f6da",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 128,
+    "name": "H_BOMB",
+    "init": 117,
+    "init_pc": 12774197,
+    "scripts": {
+      "sprite_script": "H_BOMB_SPRITE",
+      "bg1_script": "H_BOMB_BG1"
+    },
+    "init_source": {
+      "description": "h-bomb",
+      "pc": 12774197,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 129,
+    "name": "SEVEN_FLUSH",
+    "init": 87,
+    "init_pc": 12775079,
+    "scripts": {
+      "sprite_script": "SEVEN_FLUSH_SPRITE",
+      "bg1_script": "SEVEN_FLUSH_BG1"
+    },
+    "init_source": {
+      "description": "sleep, 7-flush, fire ball, love token, meteo",
+      "pc": 12775079,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 130,
+    "name": "SHOCK",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_gfx": "SHOCK_CMD_SPRITE",
+      "bg1_script": "SHOCK_CMD_BG1",
+      "extra_script": "SHOCK_CMD_SPRITE"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 131,
+    "name": "FIRE_BEAM",
+    "init": 78,
+    "init_pc": 12775243,
+    "scripts": {
+      "sprite_script": "FIRE_BEAM_SPRITE",
+      "bg1_script": "FIRE_BEAM_BG1",
+      "bg3_script": "FIRE_BEAM_BG3"
+    },
+    "init_source": {
+      "description": "fire beam, bolt beam, ice beam, tek laser",
+      "pc": 12775243,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 132,
+    "name": "BOLT_BEAM",
+    "init": 78,
+    "init_pc": 12775243,
+    "scripts": {
+      "sprite_script": "BOLT_BEAM_SPRITE",
+      "bg1_script": "BOLT_BEAM_BG1",
+      "bg3_script": "BOLT_BEAM_BG3"
+    },
+    "init_source": {
+      "description": "fire beam, bolt beam, ice beam, tek laser",
+      "pc": 12775243,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 133,
+    "name": "ICE_BEAM",
+    "init": 78,
+    "init_pc": 12775243,
+    "scripts": {
+      "sprite_script": "FIRE_BEAM_SPRITE",
+      "bg1_script": "ICE_BEAM_BG1",
+      "bg3_script": "FIRE_BEAM_BG3"
+    },
+    "init_source": {
+      "description": "fire beam, bolt beam, ice beam, tek laser",
+      "pc": 12775243,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 134,
+    "name": "BIO_BLAST",
+    "init": 82,
+    "init_pc": 12775178,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "BIO_BLAST_BG1"
+    },
+    "init_source": {
+      "description": "bio blast",
+      "pc": 12775178,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 135,
+    "name": "HEAL_FORCE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "HEAL_FORCE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 136,
+    "name": "CONFUSER",
+    "init": 84,
+    "init_pc": 12775134,
+    "scripts": {
+      "sprite_script": "CONFUSER_SPRITE",
+      "bg1_script": "CONFUSER_BG1",
+      "bg3_script": "CONFUSER_BG3"
+    },
+    "init_source": {
+      "description": "confuser, 50 gs, revenger",
+      "pc": 12775134,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f973"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 137,
+    "name": "XFER",
+    "init": 85,
+    "init_pc": 12775101,
+    "scripts": {
+      "sprite_script": "XFER_SPRITE",
+      "bg3_script": "XFER_BG3"
+    },
+    "init_source": {
+      "description": "x-fer",
+      "pc": 12775101,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2eefe",
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 138,
+    "name": "TEKMISSILE",
+    "init": 92,
+    "init_pc": 12774924,
+    "scripts": {
+      "sprite_script": "TEKMISSILE_SPRITE"
+    },
+    "init_source": {
+      "description": "tekmissile, cleansweep, launcher, missile",
+      "pc": 12774924,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f178",
+        "_c2f1ca",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 139,
+    "name": "CONDEMNED",
+    "init": 38,
+    "init_pc": 12777532,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "CONDEMNED_BG1",
+      "bg3_script": "CONDEMNED_BG3"
+    },
+    "init_source": {
+      "description": "condemned",
+      "pc": 12777532,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 140,
+    "name": "ROULETTE",
+    "init": 39,
+    "init_pc": 12777543,
+    "scripts": {
+      "sprite_script": "DOOM_SPRITE",
+      "bg1_script": "DOOM_BG1"
+    },
+    "init_source": {
+      "description": "doom, roulette, sabresoul",
+      "pc": 12777543,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f36f",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 141,
+    "name": "CLEANSWEEP",
+    "init": 92,
+    "init_pc": 12774924,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "CLEANSWEEP_BG1"
+    },
+    "init_source": {
+      "description": "tekmissile, cleansweep, launcher, missile",
+      "pc": 12774924,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f178",
+        "_c2f1ca",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 142,
+    "name": "AQUA_RAKE",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "AQUA_RAKE_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 143,
+    "name": "AERO",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "AERO_SPRITE",
+      "bg1_script": "AERO_BG1",
+      "bg3_script": "AERO_BG3"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 144,
+    "name": "BLOW_FISH",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "BLOW_FISH_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 145,
+    "name": "BIG_GUARD",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "BIG_GUARD_SPRITE",
+      "bg1_gfx": "BIG_GUARD_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 146,
+    "name": "REVENGE",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "UNARMED_HIT_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 147,
+    "name": "WHITE_WIND",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CURA_SPRITE",
+      "bg1_script": "WHITE_WIND_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 148,
+    "name": "L5_DOOM",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "L5_DOOM_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 149,
+    "name": "L4_FLARE",
+    "init": 94,
+    "init_pc": 12774901,
+    "scripts": {
+      "sprite_script": "L4_FLARE_SPRITE",
+      "bg1_script": "L4_FLARE_BG1",
+      "extra_gfx": "L4_FLARE_EXTRA"
+    },
+    "init_source": {
+      "description": "chocobop, l.4 flare, gp rain, autocrossbow, throw 2 dice",
+      "pc": 12774901,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f6da",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 150,
+    "name": "L3_CONFUSE",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CONFUSE_SPRITE",
+      "bg1_script": "CONFUSE_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 151,
+    "name": "REFLECT_LORE",
+    "init": 103,
+    "init_pc": 12774467,
+    "scripts": {
+      "sprite_script": "DEMI_SPRITE"
+    },
+    "init_source": {
+      "description": "demi, quartr, reflect???, charm",
+      "pc": 12774467,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011",
+        "_c2f9d3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 152,
+    "name": "PEARL_LORE",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "PEARL_LORE_SPRITE",
+      "bg1_gfx": "PEARL_LORE_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 153,
+    "name": "STEP_MINE",
+    "init": 21,
+    "init_pc": 12776845,
+    "scripts": {
+      "sprite_script": "STEP_MINE_SPRITE",
+      "bg1_script": "STEP_MINE_BG1"
+    },
+    "init_source": {
+      "description": "flare, step mine, dread, fenix down",
+      "pc": 12776845,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 154,
+    "name": "FORCEFIELD",
+    "init": 101,
+    "init_pc": 12774482,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg3_script": "FORCEFIELD_BG3"
+    },
+    "init_source": {
+      "description": "forcefield",
+      "pc": 12774482,
+      "circle": true,
+      "mode7": true,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 155,
+    "name": "DISCHORD",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_gfx": "DISCHORD_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "extra_gfx": "DISCHORD_SPRITE"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 156,
+    "name": "SOUR_MOUTH",
+    "init": 3,
+    "init_pc": 12777455,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg3_script": "BIO_BLASTER_BG3"
+    },
+    "init_source": {
+      "description": "sour mouth, bio blaster",
+      "pc": 12777455,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 157,
+    "name": "PEP_UP",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "PEP_UP_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 158,
+    "name": "RIPPLER",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "RIPPLER_SPRITE",
+      "bg1_script": "RIPPLER_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 159,
+    "name": "STONE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "STONE_SPRITE",
+      "bg1_script": "STONE_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 160,
+    "name": "QUASAR",
+    "init": 95,
+    "init_pc": 12774828,
+    "scripts": {
+      "sprite_gfx": "QUASAR_SPRITE",
+      "bg1_script": "QUASAR_BG1",
+      "bg3_script": "QUASAR_BG3",
+      "extra_gfx": "QUASAR_SPRITE"
+    },
+    "init_source": {
+      "description": "quasar",
+      "pc": 12774828,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f1ca",
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 161,
+    "name": "GRANDTRAIN",
+    "init": 93,
+    "init_pc": 12774909,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "GRANDTRAIN_BG1",
+      "bg3_script": "GRANDTRAIN_BG3"
+    },
+    "init_source": {
+      "description": "grandtrain, train",
+      "pc": 12774909,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 162,
+    "name": "EXPLODER",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "EXPLODER_SPRITE",
+      "bg1_script": "EXPLODER_BG1"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 163,
+    "name": "IMP_SONG",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "IMP_SONG_SPRITE",
+      "bg1_script": "IMP_SONG_BG1"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 164,
+    "name": "CLEAR",
+    "init": 88,
+    "init_pc": 12775065,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg3_script": "CLEAR_BG3"
+    },
+    "init_source": {
+      "description": "clear",
+      "pc": 12775065,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 165,
+    "name": "VIRITE",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "VIRITE_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 166,
+    "name": "CHOKESMOKE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "CHOKESMOKE_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 167,
+    "name": "SCHILLER",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "SCHILLER_SPRITE",
+      "extra_gfx": "SCHILLER_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 168,
+    "name": "LULLABY",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "LULLABY_SPRITE",
+      "bg1_script": "IMP_SONG_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 169,
+    "name": "ACID_RAIN",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "FLASH_RAIN_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 170,
+    "name": "CONFUSION",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CONFUSE_SPRITE"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 171,
+    "name": "MEGAZERK",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "MEGAZERK_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 172,
+    "name": "ENEMY_MUTE",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "MUTE_SPRITE",
+      "bg1_script": "MUTE_BG1"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 173,
+    "name": "NET",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "NET_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 174,
+    "name": "SLIMER",
+    "init": 90,
+    "init_pc": 12775053,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SLIMER_BG1"
+    },
+    "init_source": {
+      "description": "slimer",
+      "pc": 12775053,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 175,
+    "name": "DELTA_HIT",
+    "init": 91,
+    "init_pc": 12775030,
+    "scripts": {
+      "sprite_gfx": "DELTA_HIT_SPRITE",
+      "bg1_script": "DELTA_HIT_BG1",
+      "extra_gfx": "DELTA_HIT_SPRITE"
+    },
+    "init_source": {
+      "description": "delta hit, evil toot",
+      "pc": 12775030,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f1ca",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 176,
+    "name": "ENTWINE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ENTWINE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 177,
+    "name": "BLASTER",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "BLASTER_SPRITE"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 178,
+    "name": "CYCLONIC",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "CYCLONIC_SPRITE",
+      "bg1_script": "CYCLONIC_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 179,
+    "name": "FIRE_BALL",
+    "init": 87,
+    "init_pc": 12775079,
+    "scripts": {
+      "sprite_script": "FIRE_BALL_SPRITE"
+    },
+    "init_source": {
+      "description": "sleep, 7-flush, fire ball, love token, meteo",
+      "pc": 12775079,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 180,
+    "name": "ATOMIC_RAY",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "ATOMIC_RAY_SPRITE",
+      "bg1_script": "ATOMIC_RAY_BG1"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 181,
+    "name": "TEK_LASER",
+    "init": 78,
+    "init_pc": 12775243,
+    "scripts": {
+      "sprite_script": "TEK_LASER_SPRITE",
+      "bg1_script": "TEK_LASER_BG1"
+    },
+    "init_source": {
+      "description": "fire beam, bolt beam, ice beam, tek laser",
+      "pc": 12775243,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 182,
+    "name": "DIFFUSER",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_gfx": "DIFFUSER_SPRITE",
+      "bg1_script": "DIFFUSER_BG1",
+      "bg3_script": "DIFFUSER_BG3",
+      "extra_gfx": "DIFFUSER_SPRITE"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 183,
+    "name": "WAVECANNON",
+    "init": 118,
+    "init_pc": 12774173,
+    "scripts": {
+      "sprite_script": "WAVECANNON_SPRITE",
+      "bg1_script": "WAVECANNON_BG1"
+    },
+    "init_source": {
+      "description": "wavecannon",
+      "pc": 12774173,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 184,
+    "name": "MEGA_VOLT",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "THUNDARA_SPRITE",
+      "bg1_gfx": "THUNDARA_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 185,
+    "name": "GIGA_VOLT",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "THUNDAGA_SPRITE",
+      "bg1_gfx": "THUNDAGA_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 186,
+    "name": "SNOWSTORM",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "SNOWSTORM_SPRITE",
+      "bg1_script": "SNOWSTORM_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 187,
+    "name": "ABSOLUTE0",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "ABSOLUTE0_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 188,
+    "name": "MAGNITUDE8",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MAGNITUDE8_SPRITE",
+      "bg1_script": "MAGNITUDE8_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 189,
+    "name": "RAID",
+    "init": 24,
+    "init_pc": 12777124,
+    "scripts": {
+      "sprite_script": "DRAIN_SPRITE",
+      "bg1_script": "DRAIN_BG1"
+    },
+    "init_source": {
+      "description": "drain, osmose, raid, cold dust",
+      "pc": 12777124,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 190,
+    "name": "FLASH_RAIN",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "FLASH_RAIN_BG1",
+      "bg3_script": "FLASH_RAIN_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 191,
+    "name": "TEKBARRIER",
+    "init": 32,
+    "init_pc": 12776373,
+    "scripts": {
+      "sprite_script": "TEKBARRIER_SPRITE",
+      "bg1_script": "TEKBARRIER_BG1",
+      "bg3_script": "TEKBARRIER_BG3"
+    },
+    "init_source": {
+      "description": "tekbarrier",
+      "pc": 12776373,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL",
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa03"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 192,
+    "name": "FALLEN_ONE",
+    "init": 20,
+    "init_pc": 12777008,
+    "scripts": {
+      "sprite_script": "RAISE_SPRITE"
+    },
+    "init_source": {
+      "description": "life, life 2, whump, fallen one",
+      "pc": 12777008,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 193,
+    "name": "WALLCHANGE",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_gfx": "WALLCHANGE_SPRITE",
+      "extra_gfx": "WALLCHANGE_SPRITE"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 194,
+    "name": "ESCAPE",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "sprite_gfx": "ESCAPE_SPRITE",
+      "extra_gfx": "ESCAPE_SPRITE"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 195,
+    "name": "FIFTY_GS",
+    "init": 84,
+    "init_pc": 12775134,
+    "scripts": {
+      "sprite_script": "FIFTY_GS_SPRITE",
+      "bg1_script": "FIFTY_GS_BG1"
+    },
+    "init_source": {
+      "description": "confuser, 50 gs, revenger",
+      "pc": 12775134,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f973"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 196,
+    "name": "MIND_BLAST",
+    "init": 98,
+    "init_pc": 12774766,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "MIND_BLAST_BG1",
+      "bg3_script": "MIND_BLAST_BG3"
+    },
+    "init_source": {
+      "description": "mind blast, seize, zinger",
+      "pc": 12774766,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f322"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 197,
+    "name": "N_CROSS",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "BLIZZARA_SPRITE",
+      "bg1_gfx": "BLIZZARA_BG1",
+      "bg3_script": "N_CROSS_BG3"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 198,
+    "name": "FLARE_STAR",
+    "init": 97,
+    "init_pc": 12774798,
+    "scripts": {
+      "sprite_script": "FLARE_STAR_SPRITE",
+      "bg1_script": "FLARE_STAR_BG1",
+      "bg3_script": "FLARE_STAR_BG3"
+    },
+    "init_source": {
+      "description": "flare star",
+      "pc": 12774798,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL",
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f967"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 199,
+    "name": "LOVE_TOKEN",
+    "init": 87,
+    "init_pc": 12775079,
+    "scripts": {
+      "sprite_script": "LOVE_TOKEN_SPRITE"
+    },
+    "init_source": {
+      "description": "sleep, 7-flush, fire ball, love token, meteo",
+      "pc": 12775079,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 200,
+    "name": "SEIZE",
+    "init": 98,
+    "init_pc": 12774766,
+    "scripts": {
+      "sprite_script": "SEIZE_SPRITE",
+      "bg1_script": "SEIZE_BG1"
+    },
+    "init_source": {
+      "description": "mind blast, seize, zinger",
+      "pc": 12774766,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f322"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 201,
+    "name": "R_POLARITY",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "R_POLARITY_SPRITE",
+      "bg1_script": "R_POLARITY_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 202,
+    "name": "TARGETTING",
+    "init": 25,
+    "init_pc": 12777341,
+    "scripts": {
+      "sprite_script": "SCAN_SPRITE",
+      "bg1_script": "SCAN_BG1"
+    },
+    "init_source": {
+      "description": "scan, targetting",
+      "pc": 12777341,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f9f7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 203,
+    "name": "SNEEZE",
+    "init": 79,
+    "init_pc": 12775240,
+    "scripts": {
+      "sprite_script": "SNEEZE_SPRITE"
+    },
+    "init_source": {
+      "description": "sneeze, green cherry",
+      "pc": 12775240,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 204,
+    "name": "S_CROSS",
+    "init": 99,
+    "init_pc": 12774646,
+    "scripts": {
+      "sprite_gfx": "S_CROSS_SPRITE",
+      "bg1_script": "S_CROSS_BG1",
+      "extra_gfx": "S_CROSS_SPRITE"
+    },
+    "init_source": {
+      "description": "s. cross",
+      "pc": 12774646,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 205,
+    "name": "LAUNCHER",
+    "init": 92,
+    "init_pc": 12774924,
+    "scripts": {
+      "sprite_script": "TEKMISSILE_SPRITE"
+    },
+    "init_source": {
+      "description": "tekmissile, cleansweep, launcher, missile",
+      "pc": 12774924,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f178",
+        "_c2f1ca",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 206,
+    "name": "CHARM",
+    "init": 103,
+    "init_pc": 12774467,
+    "scripts": {
+      "sprite_script": "CHARM_SPRITE"
+    },
+    "init_source": {
+      "description": "demi, quartr, reflect???, charm",
+      "pc": 12774467,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011",
+        "_c2f9d3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 207,
+    "name": "COLD_DUST",
+    "init": 24,
+    "init_pc": 12777124,
+    "scripts": {
+      "sprite_script": "COLD_DUST_SPRITE",
+      "bg1_script": "COLD_DUST_BG1"
+    },
+    "init_source": {
+      "description": "drain, osmose, raid, cold dust",
+      "pc": 12777124,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa27"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 208,
+    "name": "TENTACLE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "TENTACLE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 209,
+    "name": "HYPERDRIVE",
+    "init": 114,
+    "init_pc": 12774188,
+    "scripts": {
+      "sprite_script": "HYPERDRIVE_SPRITE",
+      "bg1_script": "HYPERDRIVE_BG1"
+    },
+    "init_source": {
+      "description": "hyperdrive",
+      "pc": 12774188,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 210,
+    "name": "TRAIN",
+    "init": 93,
+    "init_pc": 12774909,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "TRAIN_BG1",
+      "bg3_script": "TRAIN_BG3"
+    },
+    "init_source": {
+      "description": "grandtrain, train",
+      "pc": 12774909,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 211,
+    "name": "EVIL_TOOT",
+    "init": 91,
+    "init_pc": 12775030,
+    "scripts": {
+      "sprite_gfx": "EVIL_TOOT_SPRITE",
+      "extra_gfx": "EVIL_TOOT_SPRITE"
+    },
+    "init_source": {
+      "description": "delta hit, evil toot",
+      "pc": 12775030,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f1ca",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 212,
+    "name": "GRAV_BOMB",
+    "init": 83,
+    "init_pc": 12775158,
+    "scripts": {
+      "sprite_script": "GRAV_BOMB_SPRITE",
+      "bg1_script": "GRAV_BOMB_BG1"
+    },
+    "init_source": {
+      "description": "grav bomb",
+      "pc": 12775158,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9d3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 213,
+    "name": "ENGULF",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_script": "ENGULF_SPRITE",
+      "bg1_script": "ENGULF_BG1",
+      "bg3_script": "ENGULF_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 214,
+    "name": "DISASTER",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "DISASTER_SPRITE",
+      "bg1_script": "DISASTER_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 215,
+    "name": "SHRAPNEL",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "SHRAPNEL_SPRITE",
+      "bg1_script": "SHRAPNEL_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 216,
+    "name": "BOMBLET",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638"
+    },
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 217,
+    "name": "HEART_BURN",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "HEART_BURN_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 218,
+    "name": "ZINGER",
+    "init": 98,
+    "init_pc": 12774766,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "ZINGER_BG1"
+    },
+    "init_source": {
+      "description": "mind blast, seize, zinger",
+      "pc": 12774766,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f322"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 219,
+    "name": "DISCARD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "DISCARD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 220,
+    "name": "OVERCAST",
+    "init": 100,
+    "init_pc": 12774754,
+    "scripts": {
+      "sprite_script": "OVERCAST_SPRITE",
+      "bg1_script": "OVERCAST_BG1"
+    },
+    "init_source": {
+      "description": "overcast",
+      "pc": 12774754,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 221,
+    "name": "MISSILE",
+    "init": 92,
+    "init_pc": 12774924,
+    "scripts": {
+      "sprite_gfx": "TEKMISSILE_SPRITE",
+      "extra_gfx": "TEKMISSILE_SPRITE"
+    },
+    "init_source": {
+      "description": "tekmissile, cleansweep, launcher, missile",
+      "pc": 12774924,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2f178",
+        "_c2f1ca",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 222,
+    "name": "GONER",
+    "init": 96,
+    "init_pc": 12774819,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "GONER_BG1",
+      "bg3_script": "GONER_BG3"
+    },
+    "init_source": {
+      "description": "goner",
+      "pc": 12774819,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 223,
+    "name": "METEO",
+    "init": 87,
+    "init_pc": 12775079,
+    "scripts": {
+      "sprite_script": "METEO_SPRITE",
+      "bg3_script": "METEO_BG3"
+    },
+    "init_source": {
+      "description": "sleep, 7-flush, fire ball, love token, meteo",
+      "pc": 12775079,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 224,
+    "name": "REVENGER",
+    "init": 84,
+    "init_pc": 12775134,
+    "scripts": {
+      "sprite_gfx": "REVENGER_SPRITE",
+      "bg1_script": "CONFUSER_BG1",
+      "extra_gfx": "REVENGER_SPRITE"
+    },
+    "init_source": {
+      "description": "confuser, 50 gs, revenger",
+      "pc": 12775134,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f973"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 225,
+    "name": "PHANTASM",
+    "init": 35,
+    "init_pc": 12776865,
+    "scripts": {
+      "sprite_script": "PHANTASM_SPRITE",
+      "bg3_script": "PHANTASM_BG3"
+    },
+    "init_source": {
+      "description": "haste2, phantasm",
+      "pc": 12776865,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 226,
+    "name": "DREAD",
+    "init": 21,
+    "init_pc": 12776845,
+    "scripts": {
+      "sprite_script": "DREAD_SPRITE"
+    },
+    "init_source": {
+      "description": "flare, step mine, dread, fenix down",
+      "pc": 12776845,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 227,
+    "name": "SHOCK_WAVE",
+    "init": 34,
+    "init_pc": 12776897,
+    "scripts": {
+      "sprite_script": "SHOCK_WAVE_SPRITE",
+      "bg1_script": "SHOCK_WAVE_BG1"
+    },
+    "init_source": {
+      "description": "dispel, shock wave",
+      "pc": 12776897,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 228,
+    "name": "BLAZE",
+    "init": 37,
+    "init_pc": 12777156,
+    "scripts": {
+      "sprite_script": "FIRE_SPRITE"
+    },
+    "init_source": {
+      "description": "fire, bio, etc.",
+      "pc": 12777156,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 229,
+    "name": "SOUL_OUT",
+    "init": 115,
+    "init_pc": 12774279,
+    "scripts": {
+      "sprite_script": "SOUL_OUT_SPRITE",
+      "bg1_script": "SOUL_OUT_BG1"
+    },
+    "init_source": {
+      "description": "soul out",
+      "pc": 12774279,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f011"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 230,
+    "name": "GALE_CUT",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "WIND_SLASH_SPRITE",
+      "bg1_script": "WIND_SLASH_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 231,
+    "name": "SHIMSHAM",
+    "init": 37,
+    "init_pc": 12777156,
+    "scripts": {
+      "sprite_script": "SONIC_BOOM_SPRITE"
+    },
+    "init_source": {
+      "description": "fire, bio, etc.",
+      "pc": 12777156,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 232,
+    "name": "LODE_STONE",
+    "init": 77,
+    "init_pc": 12775257,
+    "scripts": {
+      "sprite_script": "CAVE_IN_SPRITE"
+    },
+    "init_source": {
+      "description": "cave in, snowball, lode stone",
+      "pc": 12775257,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 233,
+    "name": "SCAR_BEAM",
+    "init": 72,
+    "init_pc": 12775422,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "HARVESTER_BG1",
+      "bg3_script": "HARVESTER_BG3"
+    },
+    "init_source": {
+      "description": "harvester, scar beam",
+      "pc": 12775422,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f66f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 234,
+    "name": "BABABREATH",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "BABABREATH_SPRITE",
+      "bg1_script": "SAND_STORM_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 235,
+    "name": "LIFESHAVER",
+    "init": 73,
+    "init_pc": 12775395,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "LIFESHAVER_BG1"
+    },
+    "init_source": {
+      "description": "antlion, lifeshaver",
+      "pc": 12775395,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f98b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 236,
+    "name": "FIRE_WALL",
+    "init": 74,
+    "init_pc": 12775378,
+    "scripts": {
+      "sprite_script": "ELF_FIRE_SPRITE"
+    },
+    "init_source": {
+      "description": "elf fire, fire wall",
+      "pc": 12775378,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 237,
+    "name": "SLIDE",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_script": "SURGE_SPRITE",
+      "bg1_script": "SURGE_BG1",
+      "bg3_script": "SURGE_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 238,
+    "name": "BATTLE",
+    "init": 11,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MONSTER_FIGHT_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 239,
+    "name": "SPECIAL",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {},
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 240,
+    "name": "RIOT_BLADE",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "RIOT_BLADE_SPRITE",
+      "extra_script": "SUPER_BALL_EXTRA"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 241,
+    "name": "MIRAGER",
+    "init": 102,
+    "init_pc": 12774475,
+    "scripts": {
+      "sprite_script": "MIRAGER_SPRITE",
+      "bg1_script": "MIRAGER_BG1"
+    },
+    "init_source": {
+      "description": "mirager",
+      "pc": 12774475,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 242,
+    "name": "BACK_BLADE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg3_script": "BACK_BLADE_BG3"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 243,
+    "name": "SHADOWFANG",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SHADOWFANG_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 244,
+    "name": "ROYALSHOCK",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "ROYALSHOCK_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 245,
+    "name": "TIGERBREAK",
+    "init": 110,
+    "init_pc": 12774338,
+    "scripts": {
+      "sprite_gfx": "TIGERBREAK_SPRITE",
+      "bg1_script": "TIGERBREAK_BG1",
+      "extra_script": "TIGERBREAK_SPRITE"
+    },
+    "init_source": {
+      "description": "tigerbreak",
+      "pc": 12774338,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f98b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 246,
+    "name": "SPIN_EDGE",
+    "init": 10,
+    "init_pc": 12776585,
+    "scripts": {
+      "sprite_gfx": "SPIN_EDGE_SPRITE",
+      "bg1_script": "SPIN_EDGE_BG1",
+      "extra_script": "SPIN_EDGE_SPRITE"
+    },
+    "init_source": {
+      "description": "stunner, spin edge, takedown",
+      "pc": 12776585,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 247,
+    "name": "SABRESOUL",
+    "init": 39,
+    "init_pc": 12777543,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "SABRESOUL_BG1"
+    },
+    "init_source": {
+      "description": "doom, roulette, sabresoul",
+      "pc": 12777543,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f36f",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 248,
+    "name": "STAR_PRISM",
+    "init": 36,
+    "init_pc": 12776121,
+    "scripts": {
+      "sprite_script": "STAR_PRISM_SPRITE",
+      "bg1_script": "STAR_PRISM_BG1"
+    },
+    "init_source": {
+      "description": "antdot, regen, star prism",
+      "pc": 12776121,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 249,
+    "name": "RED_CARD",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638"
+    },
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 250,
+    "name": "MOOGLERUSH",
+    "init": 9,
+    "init_pc": 12776604,
+    "scripts": {
+      "sprite_script": "PUMMEL_SPRITE",
+      "bg1_script": "UNARMED_HIT_BG1"
+    },
+    "init_source": {
+      "description": "quadra slam, empowerer, quadra slice, pummel, air blade, shock, mooglerush",
+      "pc": 12776604,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 251,
+    "name": "X_METEO",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "X_METEO_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 252,
+    "name": "TAKEDOWN",
+    "init": 10,
+    "init_pc": 12776585,
+    "scripts": {
+      "sprite_script": "TAKEDOWN_SPRITE",
+      "bg1_script": "TAKEDOWN_BG1"
+    },
+    "init_source": {
+      "description": "stunner, spin edge, takedown",
+      "pc": 12776585,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 253,
+    "name": "WILD_FANG",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "WILD_FANG_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 254,
+    "name": "LAGOMORPH",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "LAGOMORPH_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 255,
+    "name": "NONE",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {},
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 256,
+    "name": "STEP_FORWARD_MAGITEK",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "STEP_FORWARD_MAGITEK_SPRITE",
+      "extra_gfx": "STEP_FORWARD_MAGITEK_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 257,
+    "name": "TERRA_TRITOCH",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "sprite_script": "TERRA_TRITOCH_SPRITE",
+      "bg1_script": "TERRA_TRITOCH_BG1",
+      "bg3_script": "TERRA_TRITOCH_BG3"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 258,
+    "name": "BLIZZARD_FIST",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "bg1_script": "BLIZZARD_FIST_BG1",
+      "bg3_script": "BLIZZARD_FIST_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 259,
+    "name": "TERRA_TRITOCH_ALT",
+    "init": 86,
+    "init_pc": 12775084,
+    "scripts": {
+      "bg1_script": "TERRA_TRITOCH_ALT_BG1",
+      "bg3_script": "TERRA_TRITOCH_BG3"
+    },
+    "init_source": {
+      "description": "bolt 3, blow fish, exploder, imp song, virite, net",
+      "pc": 12775084,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 260,
+    "name": "WATER_SPLASH_BG1",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "WATER_SPLASH_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 261,
+    "name": "WATER_SPLASH_SPRITE",
+    "init": 71,
+    "init_pc": 12775439,
+    "scripts": {
+      "sprite_script": "WATER_SPLASH_SPRITE"
+    },
+    "init_source": {
+      "description": "mute, slow 2, cure 3, sun bath, el nino, blaster, atomic ray, riot blade",
+      "pc": 12775439,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 262,
+    "name": "EVENT_BAHAMUT",
+    "init": 66,
+    "init_pc": 12775645,
+    "scripts": {
+      "bg1_script": "EVENT_BAHAMUT_BG1"
+    },
+    "init_source": {
+      "description": "sun flare",
+      "pc": 12775645,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2f66f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 263,
+    "name": "EVENT_ZONESEEK",
+    "init": 55,
+    "init_pc": 12775985,
+    "scripts": {
+      "bg1_script": "EVENT_ZONESEEK_BG1"
+    },
+    "init_source": {
+      "description": "wall (zoneseek)",
+      "pc": 12775985,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 264,
+    "name": "EVENT_FENRIR",
+    "init": 70,
+    "init_pc": 12775456,
+    "scripts": {
+      "bg1_script": "EVENT_FENRIR_BG1"
+    },
+    "init_source": {
+      "description": "moon song",
+      "pc": 12775456,
+      "circle": false,
+      "mode7": true,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 265,
+    "name": "EVENT_TERRATO",
+    "init": 121,
+    "init_pc": 12774055,
+    "scripts": {
+      "bg1_script": "EVENT_TERRATO_BG1"
+    },
+    "init_source": {
+      "description": "event animation $08-$0c",
+      "pc": 12774055,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 266,
+    "name": "EVENT_SHIVA",
+    "init": 121,
+    "init_pc": 12774055,
+    "scripts": {
+      "bg1_script": "EVENT_SHIVA_BG1"
+    },
+    "init_source": {
+      "description": "event animation $08-$0c",
+      "pc": 12774055,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 267,
+    "name": "EVENT_KIRIN",
+    "init": 121,
+    "init_pc": 12774055,
+    "scripts": {
+      "bg1_script": "EVENT_KIRIN_BG1"
+    },
+    "init_source": {
+      "description": "event animation $08-$0c",
+      "pc": 12774055,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 268,
+    "name": "EVENT_BISMARK",
+    "init": 121,
+    "init_pc": 12774055,
+    "scripts": {
+      "bg1_script": "EVENT_BISMARK_BG1"
+    },
+    "init_source": {
+      "description": "event animation $08-$0c",
+      "pc": 12774055,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 269,
+    "name": "EVENT_CARBUNKL",
+    "init": 121,
+    "init_pc": 12774055,
+    "scripts": {
+      "bg1_script": "EVENT_CARBUNKL_BG1"
+    },
+    "init_source": {
+      "description": "event animation $08-$0c",
+      "pc": 12774055,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 270,
+    "name": "EVENT_PHANTOM",
+    "init": 109,
+    "init_pc": 12774369,
+    "scripts": {
+      "bg1_script": "EVENT_PHANTOM_BG1"
+    },
+    "init_source": {
+      "description": "fader",
+      "pc": 12774369,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 271,
+    "name": "TRANSFORM_MAGICITE",
+    "init": 122,
+    "init_pc": 12774024,
+    "scripts": {
+      "sprite_script": "TRANSFORM_MAGICITE_SPRITE",
+      "bg3_script": "TRANSFORM_MAGICITE_BG3"
+    },
+    "init_source": {
+      "description": "transforming into magicite",
+      "pc": 12774024,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 272,
+    "name": "MOVE_FORWARD_SLOW",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MOVE_FORWARD_SLOW_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 273,
+    "name": "MOVE_BACK_SLOW",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MOVE_BACK_SLOW_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 274,
+    "name": "FLASH_RED",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "bg1_script": "FLASH_RED_BG1"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 275,
+    "name": "RUNIC_ABSORB",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "RUNIC_ABSORB_SPRITE",
+      "bg1_script": "STEP_FORWARD_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 276,
+    "name": "UMARO_THROW",
+    "init": 126,
+    "init_pc": 12773847,
+    "scripts": {
+      "sprite_script": "UMARO_THROW_SPRITE",
+      "bg1_script": "UMARO_THROW_BG1"
+    },
+    "init_source": {
+      "description": "umaro's throw",
+      "pc": 12773847,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 277,
+    "name": "UMARO_TACKLE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "UMARO_TACKLE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 278,
+    "name": "POSSESS",
+    "init": 119,
+    "init_pc": 12774091,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "POSSESS_BG1"
+    },
+    "init_source": {
+      "description": "possess",
+      "pc": 12774091,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 279,
+    "name": "JUMP_UNARMED",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_UNARMED_SPRITE",
+      "extra_script": "JUMP_UNARMED_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 280,
+    "name": "JUMP_CMD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_CMD_SPRITE",
+      "extra_script": "JUMP_CMD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 281,
+    "name": "ATTACK_GFX_281",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {},
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 282,
+    "name": "STEP_FORWARD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "MONSTER_ATTACK_SPRITE",
+      "extra_script": "MONSTER_ATTACK_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 283,
+    "name": "MORPH",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "bg1_script": "MORPH_CMD_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 284,
+    "name": "BLACK_MAGIC",
+    "init": 15,
+    "init_pc": 12777281,
+    "scripts": {
+      "bg1_script": "BLACK_MAGIC_CMD_BG1"
+    },
+    "init_source": {
+      "description": "w wind, spiraler, black magic, blitz",
+      "pc": 12777281,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 285,
+    "name": "WHITE_MAGIC",
+    "init": 17,
+    "init_pc": 12777197,
+    "scripts": {
+      "sprite_gfx": "WHITE_MAGIC_CMD_SPRITE",
+      "bg1_script": "WHITE_MAGIC_CMD_BG1",
+      "extra_script": "WHITE_MAGIC_CMD_SPRITE"
+    },
+    "init_source": {
+      "description": "white/effect magic",
+      "pc": 12777197,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f4b3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 286,
+    "name": "SUMMON",
+    "init": 18,
+    "init_pc": 12776650,
+    "scripts": {
+      "sprite_gfx": "SUMMON_CMD_SPRITE",
+      "bg1_script": "SUMMON_CMD_BG1",
+      "extra_script": "SUMMON_CMD_SPRITE"
+    },
+    "init_source": {
+      "description": "esper magic",
+      "pc": 12776650,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f4b3"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 287,
+    "name": "LORE",
+    "init": 19,
+    "init_pc": 12777377,
+    "scripts": {
+      "bg1_script": "LORE_CMD_BG1"
+    },
+    "init_source": {
+      "description": "storm, rage/lore, swdtech",
+      "pc": 12777377,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 288,
+    "name": "REVERT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "REVERT_CMD_SPRITE",
+      "extra_script": "REVERT_CMD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 289,
+    "name": "STEAL",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "STEAL_CMD_SPRITE",
+      "extra_script": "STEAL_CMD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 290,
+    "name": "BUSHIDO",
+    "init": 19,
+    "init_pc": 12777377,
+    "scripts": {
+      "bg1_script": "BUSHIDO_CMD_BG1"
+    },
+    "init_source": {
+      "description": "storm, rage/lore, swdtech",
+      "pc": 12777377,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 291,
+    "name": "BLITZ",
+    "init": 15,
+    "init_pc": 12777281,
+    "scripts": {
+      "bg1_script": "BLITZ_CMD_SPRITE"
+    },
+    "init_source": {
+      "description": "w wind, spiraler, black magic, blitz",
+      "pc": 12777281,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 292,
+    "name": "RUNIC",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "RUNIC_CMD_SPRITE",
+      "extra_script": "RUNIC_CMD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 293,
+    "name": "DANCE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "DANCE_CMD_SPRITE",
+      "extra_script": "DANCE_CMD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 294,
+    "name": "KEFKA_LEO_SMOKE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "KEFKA_LEO_SMOKE_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 295,
+    "name": "JUMP_MONSTER_UP",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "JUMP_MONSTER_UP_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 296,
+    "name": "GIL_TOSS",
+    "init": 94,
+    "init_pc": 12774901,
+    "scripts": {
+      "sprite_script": "GIL_TOSS_SPRITE",
+      "extra_script": "GIL_TOSS_EXTRA"
+    },
+    "init_source": {
+      "description": "chocobop, l.4 flare, gp rain, autocrossbow, throw 2 dice",
+      "pc": 12774901,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f6da",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 297,
+    "name": "JUMP_MONSTER_DOWN",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "JUMP_MONSTER_DOWN_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 298,
+    "name": "JUMP_CHAR_MISS",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_CHAR_MISS_SPRITE",
+      "extra_script": "JUMP_CHAR_MISS_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 299,
+    "name": "JUMP_MONSTER_MISS",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "JUMP_MONSTER_MISS_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 300,
+    "name": "SKETCH",
+    "init": 47,
+    "init_pc": 12776914,
+    "scripts": {
+      "sprite_gfx": "SKETCH_CMD_SPRITE",
+      "bg1_script": "SKETCH_CMD_BG1",
+      "bg3_script": "SKETCH_CMD_BG3",
+      "extra_script": "SKETCH_CMD_SPRITE"
+    },
+    "init_source": {
+      "description": "sketch",
+      "pc": 12776914,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 301,
+    "name": "LEAP",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "LEAP_CMD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 302,
+    "name": "HEALTH",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CURA_SPRITE"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 303,
+    "name": "RUN_AWAY",
+    "init": 89,
+    "init_pc": 12774960,
+    "scripts": {
+      "sprite_script": "RUN_AWAY_SPRITE"
+    },
+    "init_source": {
+      "description": "run",
+      "pc": 12774960,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f098"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 304,
+    "name": "JUMP_THICK_KNIFE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_THICK_KNIFE_SPRITE",
+      "extra_script": "JUMP_THICK_KNIFE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 305,
+    "name": "JUMP_THIN_KNIFE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_THIN_KNIFE_SPRITE",
+      "extra_script": "JUMP_THIN_KNIFE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 306,
+    "name": "JUMP_SWORD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_SWORD_SPRITE",
+      "extra_script": "JUMP_SWORD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 307,
+    "name": "JUMP_KATANA",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_KATANA_SPRITE",
+      "extra_script": "JUMP_KATANA_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 308,
+    "name": "JUMP_ROD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_ROD_SPRITE",
+      "extra_script": "JUMP_ROD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 309,
+    "name": "JUMP_SPEAR",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_SPEAR_SPRITE",
+      "extra_script": "JUMP_SPEAR_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 310,
+    "name": "JUMP_HAWK_EYE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_HAWK_EYE_SPRITE",
+      "extra_script": "JUMP_HAWK_EYE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 311,
+    "name": "JUMP_UNUSED",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "JUMP_UNUSED_SPRITE",
+      "extra_script": "JUMP_UNUSED_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 312,
+    "name": "THROW_THICK_KNIFE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_THICK_KNIFE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 313,
+    "name": "THROW_THIN_KNIFE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_THIN_KNIFE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 314,
+    "name": "THROW_SWORD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_SWORD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 315,
+    "name": "THROW_KATANA",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_KATANA_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 316,
+    "name": "THROW_ROD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_ROD_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 317,
+    "name": "THROW_SPEAR",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_SPEAR_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 318,
+    "name": "THROW_HAWK_EYE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_HAWK_EYE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 319,
+    "name": "THROW_ARISE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ARISE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 320,
+    "name": "THROW_FIRE_SKEAN",
+    "init": 27,
+    "init_pc": 12777529,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "FIRE_SKEAN_BG1"
+    },
+    "init_source": {
+      "description": "ice, fire 2, bolt 2, ice 3, etc.",
+      "pc": 12777529,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 321,
+    "name": "THROW_WATER_EDGE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "WATER_EDGE_SPRITE",
+      "bg1_script": "WATER_EDGE_BG1",
+      "extra_gfx": "WATER_EDGE_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 322,
+    "name": "THROW_BOLT_EDGE",
+    "init": 81,
+    "init_pc": 12775196,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "BOLT_EDGE_BG1",
+      "bg3_script": "BOLT_EDGE_BG3"
+    },
+    "init_source": {
+      "description": "bolt edge, surge, diffuser, flash rain, engulf, slide",
+      "pc": 12775196,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9c7"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 323,
+    "name": "THROW_INVIZ_EDGE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "INVIZ_EDGE_BG1",
+      "bg3_script": "RAGE_BG3"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 324,
+    "name": "THROW_SHADOW_EDGE",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "SHADOW_EDGE_SPRITE",
+      "bg1_script": "CONFUSER_BG1"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 325,
+    "name": "THROW_FULL_MOON",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_FULL_MOON_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 326,
+    "name": "THROW_BOOMERANG",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "THROW_BOOMERANG_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 327,
+    "name": "THROW_UNUSED",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638"
+    },
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 328,
+    "name": "NOISEBLASTER",
+    "init": 1,
+    "init_pc": 12777504,
+    "scripts": {
+      "sprite_script": "NOISEBLASTER_SPRITE",
+      "extra_script": "NOISEBLASTER_EXTRA"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 329,
+    "name": "BIO_BLASTER",
+    "init": 3,
+    "init_pc": 12777455,
+    "scripts": {
+      "sprite_gfx": "BIO_BLASTER_SPRITE",
+      "bg3_script": "BIO_BLASTER_BG3",
+      "extra_script": "BIO_BLASTER_SPRITE"
+    },
+    "init_source": {
+      "description": "sour mouth, bio blaster",
+      "pc": 12777455,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW34SEL"
+      ],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 330,
+    "name": "FLASH_TOOL",
+    "init": 1,
+    "init_pc": 12777504,
+    "scripts": {
+      "sprite_gfx": "FLASH_TOOL_SPRITE",
+      "extra_script": "FLASH_TOOL_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 331,
+    "name": "CHAIN_SAW",
+    "init": 1,
+    "init_pc": 12777504,
+    "scripts": {
+      "sprite_gfx": "CHAIN_SAW_SPRITE",
+      "extra_script": "CHAIN_SAW_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 332,
+    "name": "DEBILITATOR",
+    "init": 4,
+    "init_pc": 12776502,
+    "scripts": {
+      "sprite_script": "DEBILITATOR_SPRITE",
+      "bg1_script": "DEBILITATOR_BG1",
+      "bg3_script": "DEBILITATOR_BG3",
+      "extra_script": "DEBILITATOR_EXTRA"
+    },
+    "init_source": {
+      "description": "debilitator",
+      "pc": 12776502,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [
+        "hW12SEL"
+      ],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 333,
+    "name": "DRILL",
+    "init": 1,
+    "init_pc": 12777504,
+    "scripts": {
+      "sprite_gfx": "DRILL_SPRITE",
+      "extra_script": "DRILL_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 334,
+    "name": "AIR_ANCHOR",
+    "init": 5,
+    "init_pc": 12777490,
+    "scripts": {
+      "sprite_script": "AIR_ANCHOR_SPRITE",
+      "extra_script": "AIR_ANCHOR_EXTRA"
+    },
+    "init_source": {
+      "description": "air anchor",
+      "pc": 12777490,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 335,
+    "name": "AUTOCROSSBOW",
+    "init": 94,
+    "init_pc": 12774901,
+    "scripts": {
+      "sprite_script": "AUTOCROSSBOW_SPRITE",
+      "bg1_script": "AUTOCROSSBOW_BG1"
+    },
+    "init_source": {
+      "description": "chocobop, l.4 flare, gp rain, autocrossbow, throw 2 dice",
+      "pc": 12774901,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f6da",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 336,
+    "name": "CHAINSAW_ALT",
+    "init": 1,
+    "init_pc": 12777504,
+    "scripts": {
+      "sprite_gfx": "CHAIN_SAW_ALT_SPRITE",
+      "extra_script": "CHAIN_SAW_ALT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 337,
+    "name": "TONIC",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "TONIC_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 338,
+    "name": "POTION",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "POTION_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 339,
+    "name": "X_POTION",
+    "init": 111,
+    "init_pc": 12774332,
+    "scripts": {
+      "sprite_script": "X_POTION_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "X_POTION_BG3"
+    },
+    "init_source": {
+      "description": "slow, x-potion, x-ether",
+      "pc": 12774332,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 340,
+    "name": "TINCTURE",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "TONIC_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 341,
+    "name": "ETHER",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "POTION_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 342,
+    "name": "X_ETHER",
+    "init": 111,
+    "init_pc": 12774332,
+    "scripts": {
+      "sprite_script": "X_POTION_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "X_POTION_BG3"
+    },
+    "init_source": {
+      "description": "slow, x-potion, x-ether",
+      "pc": 12774332,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 343,
+    "name": "ELIXIR",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "ELIXIR_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 344,
+    "name": "MEGALIXIR",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "MEGALIXIR_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 345,
+    "name": "FENIX_DOWN",
+    "init": 21,
+    "init_pc": 12776845,
+    "scripts": {
+      "sprite_script": "FENIX_DOWN_SPRITE"
+    },
+    "init_source": {
+      "description": "flare, step mine, dread, fenix down",
+      "pc": 12776845,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa33"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 346,
+    "name": "REVIVIFY",
+    "init": 112,
+    "init_pc": 12774295,
+    "scripts": {
+      "sprite_script": "EYEDROP_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "X_POTION_BG3"
+    },
+    "init_source": {
+      "description": "revivify, eyedrop",
+      "pc": 12774295,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 347,
+    "name": "ANTIDOTE",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "ANTIDOTE_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 348,
+    "name": "EYEDROP",
+    "init": 112,
+    "init_pc": 12774295,
+    "scripts": {
+      "sprite_script": "EYEDROP_SPRITE",
+      "bg1_script": "CHAR_GFX_BG1",
+      "bg3_script": "X_POTION_BG3"
+    },
+    "init_source": {
+      "description": "revivify, eyedrop",
+      "pc": 12774295,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 349,
+    "name": "SOFT",
+    "init": 125,
+    "init_pc": 12773955,
+    "scripts": {
+      "sprite_script": "ANTIDOTE_SPRITE"
+    },
+    "init_source": {
+      "description": "tonic, potion, tincture, ether, elixir, megalixir, antidote, soft",
+      "pc": 12773955,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 350,
+    "name": "REMEDY_ITEM",
+    "init": 113,
+    "init_pc": 12774289,
+    "scripts": {
+      "sprite_script": "REMEDY_ITEM_SPRITE"
+    },
+    "init_source": {
+      "description": "remedy",
+      "pc": 12774289,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2eefe",
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 351,
+    "name": "SLEEPING_BAG",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {},
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 352,
+    "name": "TENT",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {},
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 353,
+    "name": "GREEN_CHERRY",
+    "init": 79,
+    "init_pc": 12775240,
+    "scripts": {
+      "sprite_script": "GREEN_CHERRY_SPRITE"
+    },
+    "init_source": {
+      "description": "sneeze, green cherry",
+      "pc": 12775240,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f9eb"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 354,
+    "name": "MAGICITE",
+    "init": 0,
+    "init_pc": 12777526,
+    "scripts": {},
+    "init_source": {
+      "description": "bolt, suplex, bomblet",
+      "pc": 12777526,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa3f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 355,
+    "name": "SUPER_BALL_ITEM",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SUPER_BALL_SPRITE",
+      "extra_script": "SUPER_BALL_EXTRA"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 356,
+    "name": "ECHO_SCREEN",
+    "init": 120,
+    "init_pc": 12774077,
+    "scripts": {
+      "sprite_script": "ECHO_SCREEN_SPRITE"
+    },
+    "init_source": {
+      "description": "echo screen, smoke bomb",
+      "pc": 12774077,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 357,
+    "name": "SMOKE_BOMB",
+    "init": 120,
+    "init_pc": 12774077,
+    "scripts": {
+      "sprite_script": "SMOKE_BOMB_SPRITE"
+    },
+    "init_source": {
+      "description": "echo screen, smoke bomb",
+      "pc": 12774077,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 358,
+    "name": "WARP_STONE",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "ATTACK_ANIM_SCRIPT_638",
+      "bg1_script": "WARP_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 359,
+    "name": "DRIED_MEAT",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CURA_SPRITE"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 360,
+    "name": "SMOKE_ENTRY",
+    "init": 120,
+    "init_pc": 12774077,
+    "scripts": {
+      "sprite_script": "SMOKE_ENTRY_SPRITE"
+    },
+    "init_source": {
+      "description": "echo screen, smoke bomb",
+      "pc": 12774077,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 361,
+    "name": "CEILING_EXIT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "CEILING_EXIT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 362,
+    "name": "CEILING_ENTRY",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "CEILING_ENTRY_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 363,
+    "name": "SIDE_EXIT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SIDE_EXIT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 364,
+    "name": "SIDE_ENTRY",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SIDE_ENTRY_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 365,
+    "name": "WATER_EXIT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "WATER_EXIT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 366,
+    "name": "WATER_ENTRY",
+    "init": 120,
+    "init_pc": 12774077,
+    "scripts": {
+      "sprite_script": "WATER_ENTRY_SPRITE"
+    },
+    "init_source": {
+      "description": "echo screen, smoke bomb",
+      "pc": 12774077,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 367,
+    "name": "FLOAT_EXIT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "FLOAT_EXIT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 368,
+    "name": "FLOAT_ENTRY",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "FLOAT_ENTRY_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 369,
+    "name": "SAND_EXIT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SAND_EXIT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 370,
+    "name": "SAND_ENTRY",
+    "init": 120,
+    "init_pc": 12774077,
+    "scripts": {
+      "sprite_script": "SAND_ENTRY_SPRITE"
+    },
+    "init_source": {
+      "description": "echo screen, smoke bomb",
+      "pc": 12774077,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 371,
+    "name": "FADE_DOWN_EXIT",
+    "init": 124,
+    "init_pc": 12773989,
+    "scripts": {
+      "bg3_script": "FADE_DOWN_EXIT_BG3"
+    },
+    "init_source": {
+      "description": "use high priority bg3",
+      "pc": 12773989,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 372,
+    "name": "FADE_DOWN_ENTRY",
+    "init": 123,
+    "init_pc": 12774001,
+    "scripts": {
+      "bg3_script": "FADE_DOWN_ENTRY_BG3"
+    },
+    "init_source": {
+      "description": "",
+      "pc": 12774001,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 373,
+    "name": "FADE_UP_EXIT",
+    "init": 124,
+    "init_pc": 12773989,
+    "scripts": {
+      "bg3_script": "FADE_UP_EXIT_BG3"
+    },
+    "init_source": {
+      "description": "use high priority bg3",
+      "pc": 12773989,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 374,
+    "name": "FADE_UP_ENTRY",
+    "init": 123,
+    "init_pc": 12774001,
+    "scripts": {
+      "bg3_script": "FADE_UP_ENTRY_BG3"
+    },
+    "init_source": {
+      "description": "",
+      "pc": 12774001,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 375,
+    "name": "MATERIALIZE_EXIT",
+    "init": 124,
+    "init_pc": 12773989,
+    "scripts": {
+      "bg3_script": "MATERIALIZE_EXIT_BG3"
+    },
+    "init_source": {
+      "description": "use high priority bg3",
+      "pc": 12773989,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 376,
+    "name": "MATERIALIZE_ENTRY",
+    "init": 123,
+    "init_pc": 12774001,
+    "scripts": {
+      "bg3_script": "MATERIALIZE_ENTRY_BG3"
+    },
+    "init_source": {
+      "description": "",
+      "pc": 12774001,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 377,
+    "name": "HORZ_FADE_EXIT",
+    "init": 124,
+    "init_pc": 12773989,
+    "scripts": {
+      "bg3_script": "HORZ_FADE_EXIT_BG3"
+    },
+    "init_source": {
+      "description": "use high priority bg3",
+      "pc": 12773989,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 378,
+    "name": "HORZ_FADE_ENTRY",
+    "init": 123,
+    "init_pc": 12774001,
+    "scripts": {
+      "bg3_script": "HORZ_FADE_ENTRY_BG3"
+    },
+    "init_source": {
+      "description": "",
+      "pc": 12774001,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 379,
+    "name": "DANCE_FAIL",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_gfx": "DANCE_FAIL_SPRITE",
+      "extra_script": "DANCE_FAIL_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 380,
+    "name": "THREE_DICE",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "DICE_SPRITE"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 381,
+    "name": "TWO_DICE",
+    "init": 94,
+    "init_pc": 12774901,
+    "scripts": {
+      "sprite_script": "DICE_SPRITE"
+    },
+    "init_source": {
+      "description": "chocobop, l.4 flare, gp rain, autocrossbow, throw 2 dice",
+      "pc": 12774901,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2f6da",
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 382,
+    "name": "MOVE_FORWARD_8",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MOVE_FORWARD_8_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 383,
+    "name": "MOVE_BACK_8",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MOVE_BACK_8_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 384,
+    "name": "GESTAHL_LIGHTNING",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "GESTAHL_LIGHTNING_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 385,
+    "name": "GESTAHL_BLACK_MAGIC",
+    "init": 15,
+    "init_pc": 12777281,
+    "scripts": {
+      "bg1_script": "GESTAHL_BLACK_MAGIC_BG1"
+    },
+    "init_source": {
+      "description": "w wind, spiraler, black magic, blitz",
+      "pc": 12777281,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 386,
+    "name": "CAPTURE_TO",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "CAPTURE_TO_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 387,
+    "name": "CAPTURE_FROM",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "CAPTURE_FROM_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 388,
+    "name": "CHARS_RUN_LEFT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "CHARS_RUN_LEFT_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 389,
+    "name": "CHARS_RUN_RIGHT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "CHARS_RUN_RIGHT_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 390,
+    "name": "SMOKE_EXIT",
+    "init": 120,
+    "init_pc": 12774077,
+    "scripts": {
+      "sprite_script": "ECHO_SCREEN_SPRITE"
+    },
+    "init_source": {
+      "description": "echo screen, smoke bomb",
+      "pc": 12774077,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": []
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 391,
+    "name": "BOSS_DEATH",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "BOSS_DEATH_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 392,
+    "name": "MOVE_FORWARD_64",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MOVE_FORWARD_64_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 393,
+    "name": "MOVE_BACK_64",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "MOVE_BACK_64_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 394,
+    "name": "CHARDARNOOK_EXIT",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "bg1_script": "CHADARNOOK_EXIT_SPRITE"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 395,
+    "name": "CHARDARNOOK_ENTRY",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "CHADARNOOK_ENTRY_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 396,
+    "name": "SIDE_EXIT_INSTANT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SIDE_EXIT_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 397,
+    "name": "SIDE_ENTRY_INSTANT",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "SIDE_ENTRY_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 398,
+    "name": "KEFKA_ENTRY",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "sprite_script": "KEFKA_ENTRY_SPRITE"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 399,
+    "name": "KEFKA_HEAD",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "KEFKA_HEAD_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 400,
+    "name": "MONSTER_GLOW_LONG",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "MONSTER_GLOW_LONG_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 401,
+    "name": "MONSTER_GLOW_SHORT",
+    "init": 29,
+    "init_pc": 12777674,
+    "scripts": {
+      "bg1_script": "MONSTER_GLOW_SHORT_BG1"
+    },
+    "init_source": {
+      "description": "haste, bserk, dispatch, bum rush, dischord, wallchange, escape",
+      "pc": 12777674,
+      "circle": true,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa0f"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 402,
+    "name": "RENAME_CARD",
+    "init": 28,
+    "init_pc": 12777022,
+    "scripts": {
+      "sprite_script": "CURA_SPRITE"
+    },
+    "init_source": {
+      "description": "fire 3, muddle, cure 2, etc.",
+      "pc": 12777022,
+      "circle": false,
+      "mode7": false,
+      "window_registers": [],
+      "helper_calls": [
+        "_c2fa1b"
+      ]
+    },
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 403,
+    "name": "KEFKA_DEATH",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "KEFKA_DEATH_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 404,
+    "name": "CONTROL",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "CONTROL_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  },
+  {
+    "index": 405,
+    "name": "MONSTER_STEAL",
+    "init": 16,
+    "init_pc": 12777481,
+    "scripts": {
+      "bg1_script": "MONSTER_STEAL_BG1"
+    },
+    "init_source": {},
+    "context": "substituted animation in derived single-enemy Magitek cast"
+  }
+]

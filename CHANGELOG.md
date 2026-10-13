@@ -1,5 +1,25 @@
 # Changelog
 
+## Successful physical return and systematic effect screen — 2026-10-12
+
+Confuser gameplay1 returns cleanly: 7,119 calls/drawings, zero audio errors,
+59.994 active calls/sec, minimum reported running reserve1,313 frames and normal
+B/display/wrapper exit. Strict577-file archive, clean FAT, consumed marker and
+552 unchanged prior files/progress verify; only runtime swap differs. Card stays
+unarmed,0 writes. Ben reports two beautiful fights. See
+[return](docs/snes-confuser-gameplay-return.md).
+
+At Ben’s request, screen all406 AttackAnimProp records on current and generalized
+renderers, plus23 inward trace pairs,19 negative-hypothesis cases and eight
+normal completed Magitek casts:567,000 exact graphics/PCM/state comparisons and
+2,097,152 original clipping oracle states pass. Generalize Mode1 Window2 to
+multiple BG targets and irrelevant-edge writes, removing major Holy/Meteor/
+Ultima/Snare/GrandTrain preambles. Reject unused fixed-color shortcut: zero work
+saved in19 cases. El Nino/glow/Mode7 remain workload leads, not confirmed A7
+crashes. No new hardware build/stage or speed claim; incremental A7 prices and
+broader command/state coverage remain missing. See
+[coverage, fix, calculations and next evidence](docs/ff6-effect-safety-screen.md).
+
 ## Confuser candidate staged for authorized manual qualification — 2026-10-12
 
 After explicit “Load it to I:” instruction, build the counter-free BG3 batching

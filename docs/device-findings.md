@@ -1,5 +1,16 @@
 # Device findings
 
+**Latest evidence2026-10-12:** [Confuser gameplay return](snes-confuser-gameplay-return.md)
+completes7,119 full-render calls with lossless PCM accounting, zero errors,
+59.994 active calls/sec and clean exit; user reports two successful fights.
+Archive/FAT/protected progress verify; I: is unarmed. This is one manual session,
+not universal effect qualification or measured incremental prices.
+[Systematic offline screen](ff6-effect-safety-screen.md) passes406 animation
+records on current/generalized windows and567,000 total comparisons. The new
+multiple-background/irrelevant Window2 fix remains offline; no card changes or
+A7 speed claim. El Nino/glow/Mode7 and broader contexts remain to measure.
+Dated results below preserve historical gate/return states, not current arming.
+
 **Offline update2026-10-11:** [creative renderer hypotheses](bio-blast-clever-renderer.md)
 find8,341 removed plain tile calls/effect frame hidden by prior row counters.
 Palette tables/direct NEON and prefix validity pass full-effect/broader output

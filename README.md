@@ -6,6 +6,17 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-12
 
+- **Confuser candidate returned successfully:** two fights reported beautiful;
+  7,119 calls/drawings, zero audio errors,59.994 active calls/sec and orderly exit.
+  Card archived/FAT clean/unarmed; original progress intact. [Return](docs/snes-confuser-gameplay-return.md).
+- **Systematic effect screen:**406 animation records pass current and generalized
+  window renderers;567,000 exact comparisons plus original clipping oracle.
+  Shared Holy/Meteor/Ultima window inefficiency is corrected offline. El Nino,
+  glow and Mode7 remain risks to measure, with no new A7 crash/speed guarantee or
+  card change. [Coverage and findings](docs/ff6-effect-safety-screen.md).
+
+Historical staging and earlier investigation states follow:
+
 - **Confuser gameplay1 staged on I:** user authorizes an experimental manual
   one-shot with counter-free BG3 batching and refined half-add. Normal controls,
   latest copied test SRAM/snapshot and separate saves; original files preserved.

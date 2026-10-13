@@ -1,0 +1,40 @@
+CASE effect=131 init=78 init_pc=c2ef4b overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=132 init=78 init_pc=c2ef4b overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=133 init=78 init_pc=c2ef4b overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=134 init=82 init_pc=c2ef0a overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=135 init=16 init_pc=c2f809 overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=2 table_hits=1 deinit_hits=2
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=136 init=84 init_pc=c2eede overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=137 init=85 init_pc=c2eebd overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples
+CASE effect=138 init=92 init_pc=c2ee0c overlay_bytes=0 context=normal_magitek_cast
+PASS: 1200 frames exact visible pixels, native PCM, geometry and periodic state with named host pointers normalized; normal Magitek ability cast, original ROM, animation init/deinit verified
+IDENTITY init_hits=1 table_hits=1 deinit_hits=1
+PASS: unchanged native callback batching; extra split 0 frames into multiple byte-equivalent batches
+PASS: owned sampled phase ABI measures APU/PPU in 19 frames and stays inactive between samples

@@ -1,0 +1,2 @@
+PASS: guarded mode/hires/mosaic/Window1/OBJ/color fallbacks, retained rows, prefix/reset and disabled Window2
+PASS: 1572864 exhaustive single-layer and 524288 randomized multi-layer states match original ComputeClipWindows, both screens/all pixels

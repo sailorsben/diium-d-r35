@@ -6051,6 +6051,70 @@
       "published_sha256": "93cf98efb6e4dfbbf6fd6a76008487a3ab306162a8305a015c13bf21aa36fea8",
       "bytes": 4202,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T013316Z/confuser-gameplay-return-analysis.json",
+      "published": "evidence/2026-10-12/effect-safety-screen/confuser-gameplay-return-analysis.json",
+      "source_sha256": "5e178978f7e4ddc85c43dedbc92e23b0c9de8303ac5d25973d77ee48ac39fa7f",
+      "published_sha256": "2bd9942f306e2a894aabb0533e9b3e9541cfdfda336db3873f572607034b638f",
+      "bytes": 1736,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/analysis.json",
+      "published": "evidence/2026-10-12/effect-safety-screen/analysis.json",
+      "source_sha256": "529a90feda3388af692f13b3dfc5bdd4b867249b9fcbbdd535a773c49d80e8d7",
+      "published_sha256": "a1690961da817791f2f1bc991a3f625eac7db18fbe7e1e3b932381381ceeee99",
+      "bytes": 296730,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/catalog.json",
+      "published": "evidence/2026-10-12/effect-safety-screen/catalog.json",
+      "source_sha256": "68944febc4396471077c73915f1d330d55c2f77499db89540cbce139a29341e0",
+      "published_sha256": "7d4aa1ec8094bc5aaa4c30d7ca0ad3ee44bc7bae47f5aba55f6214a7d972aea1",
+      "bytes": 177961,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/coverage.csv",
+      "published": "evidence/2026-10-12/effect-safety-screen/coverage.csv",
+      "source_sha256": "076a475bd31fbacbbe3e0b28f03677003c70969e114372db26f76a8acb88e4fc",
+      "published_sha256": "6714ccb2171b0d87c8635df201c1d98463b53483c139c7726bf1fde9f033f5d9",
+      "bytes": 76294,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/window-pairs.csv",
+      "published": "evidence/2026-10-12/effect-safety-screen/window-pairs.csv",
+      "source_sha256": "177f2180dbe3302feebd70de1e0d6736c5cc03f5fbad2bda0e79e714e0953a05",
+      "published_sha256": "f425ec556e06b5d44aa21beb6be4f7c10cdd8121aeb0e694b5a54f1ecd968106",
+      "bytes": 10431,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/multi-window-oracle.log",
+      "published": "evidence/2026-10-12/effect-safety-screen/multi-window-oracle.log",
+      "source_sha256": "5b056d665e5d029e360bc3815aeb8d78de9e808aaba66b6a69dd1911db52e530",
+      "published_sha256": "5b056d665e5d029e360bc3815aeb8d78de9e808aaba66b6a69dd1911db52e530",
+      "bytes": 248,
+      "normalized": false
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/natural-proof-summary.log",
+      "published": "evidence/2026-10-12/effect-safety-screen/natural-proof-summary.log",
+      "source_sha256": "f2680e1d8698d2bfa7ed7483e3ea1280c758173e6fb8d1e3abb5c19c284c5eed",
+      "published_sha256": "9ef5884ced3e75992e356cd2bf02dda6a79da1dc279197e90e1cebd6617a4589",
+      "bytes": 4144,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-effect-screen-private-v1/final-identities.json",
+      "published": "evidence/2026-10-12/effect-safety-screen/final-identities.json",
+      "source_sha256": "301cc4346354d46a844a7bdca87ea864717c57660b651d0bc6791a9cfcef6b72",
+      "published_sha256": "301cc4346354d46a844a7bdca87ea864717c57660b651d0bc6791a9cfcef6b72",
+      "bytes": 6251,
+      "normalized": false
     }
   ]
 }
