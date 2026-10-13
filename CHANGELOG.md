@@ -1,5 +1,26 @@
 # Changelog
 
+## Automated valid-target ability suite staged — 2026-10-12
+
+Stage authorized experimental ability1 on healthy archived I:, separate from
+production and gameplay saves.400 independent cases use the unchanged successful
+Confuser core:54 Magic,27 Espers,8 Magitek,24 Lore,8 Tools,8 Blitz,8 Bushido,
+8 Dance and255 Rage entries. Each runs up to1,200 calls with native audio/display;
+full nominal duration133.505 minutes before between-case load/flush overhead.
+Logs stay in RAM during casts; flush after audio join/display idle.
+
+149 distinct contexts exercised offline,153 full-bound executions, plus one
+preserved225-call intentional stop. Correct KO-ally cursor selection and observer
+global-versus-command-local identities; verify all16 Blitz/Bushido and8 Tool
+graphic identities and late Rage IDs252–254. Chainsaw's natural alternate
+animation is retained. Native consuming/fault/drain/deficit and wrapper seams pass.
+Property observations do not prove completion or physical speed.
+
+Archive577 prior files; protect576 unchanged, verify1,607 payload files, clean
+FAT before/after staging and one-shot arming. No ROM/production/core changes or
+progress overwrite. A7 results pending; production gate remains false.
+[Test and evidence limits](docs/snes-ability-suite.md).
+
 ## Isolated FF6 super-unit ability lab — 2026-10-12
 
 Build three private playable profiles with9,999 HP/999 MP, full spell/Lore/

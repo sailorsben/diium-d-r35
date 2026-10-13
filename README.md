@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-12
 
+- **Automated ability suite staged and armed on I:**400 independent command
+  fixtures reuse the successful Confuser core, with valid heal/revive/cure/buff
+  targets, real inputs, normal audio/display and deferred per-case evidence.
+  About2h15 plus reset/flush time; no B press. Original progress and576 prior
+  files protected; physical result pending. [Instructions](docs/snes-ability-suite-test.txt),
+  [scope, predictions and limits](docs/snes-ability-suite.md).
 - **Ability lab built locally:** isolated super-unit profiles,30 private checkpoints
   and124 real-command casts qualified offline. All54 spells,24 Lores,27 summons,
   eight Magitek and eight Tools pass; broader skill/context and A7 speed coverage

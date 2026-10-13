@@ -1,5 +1,12 @@
 # Device findings
 
+**Current staging2026-10-12:** [automated ability1](snes-ability-suite.md) is
+armed on I:, following a complete577-file archive and clean FAT.400 independent
+valid-target contexts reuse the successful Confuser core;576 existing files and
+original progress remain unchanged. Native/wrapper seams and149 offline contexts
+are checked; no physical results or new measured renderer savings yet.
+Older unarmed statements below describe the returned pre-install state.
+
 **Latest evidence2026-10-12:** [Confuser gameplay return](snes-confuser-gameplay-return.md)
 completes7,119 full-render calls with lossless PCM accounting, zero errors,
 59.994 active calls/sec and clean exit; user reports two successful fights.

@@ -1,0 +1,16 @@
+SNES ability1: automated animation exercise
+
+Boot the device normally with the card installed. No B press or manual casts.
+The test automatically loads independent battles and exercises400 command cases.
+Each lasts up to20 seconds. Full sweep takes more than2 hours15 minutes.
+Use external power. Random Rage/Dance choices and some misses are expected;
+we will distinguish those from renderer/audio failures using the returned logs.
+
+MENU or Select+Start stops early. After the test exits, stock starts.
+Wait for stock before powering off and returning I: for archive/analysis.
+If it hangs or exits abruptly, note what you saw; next reboot is stock because
+the one-shot marker was consumed. Do not expect manual gameplay controls here.
+
+Original ROM, stock emulator and gameplay saves are preserved.
+The previously successful Confuser core is reused; this is a diagnostic exercise,
+not a new renderer fix or a production promotion.

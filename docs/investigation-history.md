@@ -1,5 +1,22 @@
 # Investigation history and negative results
 
+## Ability targeting and observer identity corrections — 2026-10-12
+
+Before the authorized automated I: exercise, test real command inputs against
+separate fixtures. Raise/Arise initially animate toward living Terra and leave
+Wedge dead; explicit Down after opening the target cursor revives him. Keep both
+negative and corrected receipts. Blitz/Bushido/Tools load command-local attack
+numbers with an animation-table base; global-index matching wrongly reports
+absent animations. Reinterpret preserved frames using the actual LoadAnimProp
+contract; all16 Blitz/Bushido and8 Tool identities are observed. Retort/Stunner
+share properties; Chainsaw naturally takes alternate record336. Late Rage menu
+checks select252–254 rather than repeating the first entry.
+
+400 independent contexts now staged on unchanged successful core;149 contexts
+exercised offline, without A7 performance inference. Frame-boundary observation
+is not animation-completion proof. Full-target/reset/logging plan, measured-cost
+limits and pending hardware qualification are in [ability1](snes-ability-suite.md).
+
 ## Successful physical return and systematic effect screen — 2026-10-12
 
 Confuser gameplay1 returns cleanly: 7,119 calls/drawings, zero audio errors,

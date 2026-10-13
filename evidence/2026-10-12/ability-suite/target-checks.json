@@ -1,0 +1,134 @@
+[
+  {
+    "case": 48,
+    "ko_ally_revived": true
+  },
+  {
+    "case": 49,
+    "ko_ally_revived": true
+  },
+  {
+    "case": 121,
+    "requested_properties_observed_samples": 171,
+    "command_local_attack": 0
+  },
+  {
+    "case": 122,
+    "requested_properties_observed_samples": 225,
+    "command_local_attack": 1
+  },
+  {
+    "case": 123,
+    "requested_properties_observed_samples": 320,
+    "command_local_attack": 2
+  },
+  {
+    "case": 124,
+    "requested_properties_observed_samples": 324,
+    "command_local_attack": 3
+  },
+  {
+    "case": 125,
+    "requested_properties_observed_samples": 341,
+    "command_local_attack": 4
+  },
+  {
+    "case": 126,
+    "requested_properties_observed_samples": 298,
+    "command_local_attack": 5
+  },
+  {
+    "case": 127,
+    "requested_properties_observed_samples": 364,
+    "command_local_attack": 6
+  },
+  {
+    "case": 128,
+    "requested_properties_observed_samples": 46,
+    "command_local_attack": 7
+  },
+  {
+    "case": 129,
+    "requested_properties_observed_samples": 46,
+    "command_local_attack": 0
+  },
+  {
+    "case": 130,
+    "requested_properties_observed_samples": 351,
+    "command_local_attack": 1
+  },
+  {
+    "case": 131,
+    "requested_properties_observed_samples": 55,
+    "command_local_attack": 2
+  },
+  {
+    "case": 132,
+    "requested_properties_observed_samples": 385,
+    "command_local_attack": 3
+  },
+  {
+    "case": 133,
+    "requested_properties_observed_samples": 215,
+    "command_local_attack": 4
+  },
+  {
+    "case": 134,
+    "requested_properties_observed_samples": 178,
+    "command_local_attack": 5
+  },
+  {
+    "case": 135,
+    "requested_properties_observed_samples": 385,
+    "command_local_attack": 6
+  },
+  {
+    "case": 136,
+    "requested_properties_observed_samples": 289,
+    "command_local_attack": 7
+  },
+  {
+    "case": 397,
+    "selected_rage_id": 252
+  },
+  {
+    "case": 398,
+    "selected_rage_id": 253
+  },
+  {
+    "case": 399,
+    "selected_rage_id": 254
+  },
+  {
+    "case": 113,
+    "requested_tool_or_natural_branch_samples": 184
+  },
+  {
+    "case": 114,
+    "requested_tool_or_natural_branch_samples": 274
+  },
+  {
+    "case": 115,
+    "requested_tool_or_natural_branch_samples": 177
+  },
+  {
+    "case": 116,
+    "requested_tool_or_natural_branch_samples": 281
+  },
+  {
+    "case": 117,
+    "requested_tool_or_natural_branch_samples": 370
+  },
+  {
+    "case": 118,
+    "requested_tool_or_natural_branch_samples": 195
+  },
+  {
+    "case": 119,
+    "requested_tool_or_natural_branch_samples": 273
+  },
+  {
+    "case": 120,
+    "requested_tool_or_natural_branch_samples": 158
+  }
+]

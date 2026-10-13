@@ -1,0 +1,30 @@
+{
+  "version": "1.19-ability1",
+  "archive": "a7-pair-before-20261013T033038Z",
+  "authorization": "Stage on I, automated each ability; valid targeting; animation criterion.",
+  "passed": true,
+  "native_client_qualified": true,
+  "wrapper_qualified": true,
+  "renderer_changed": false,
+  "production_gate_passed": false,
+  "hardware_measured": false,
+  "hardware_result": "PENDING",
+  "core_sha256": "d5761eacc68fbcba91052de19d37ca9f159fb2b40df7c9272f49398b9b4f880a",
+  "runner_sha256": "7aa85848f11f52163f8f319d0895472ce3cd65cd49d7742f7c67826359b0cc9e",
+  "wrapper_sha256": "a79e925ee2db6308807bea2d44fc102bc4ee8fda96e0193cb25b8792740e03fb",
+  "case_count": 400,
+  "calls_per_case": 1200,
+  "nominal_minutes_before_reset_flush_overhead": 133.505236,
+  "offline_completed_case_contexts": 149,
+  "offline_full_bound_executions": 153,
+  "offline_animation_completion_not_proven": true,
+  "preserved_partial_offline_cases": [
+    {
+      "case": 73,
+      "calls": 225,
+      "reason": "owned SIGINT stopped long offline sweep"
+    }
+  ],
+  "core_and_stock_progress_preserved": true,
+  "animation_matches_are_not_completion_proof": true
+}

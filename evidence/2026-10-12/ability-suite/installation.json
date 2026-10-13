@@ -1,0 +1,16 @@
+{
+  "version": "1.19-ability1",
+  "card": "I:",
+  "archive": "a7-pair-before-20261013T033038Z",
+  "one_shot_armed": true,
+  "fat_checks_clean": true,
+  "production_gate_passed": false,
+  "renderer_changed": false,
+  "hardware_result": "PENDING",
+  "cases": 400,
+  "original_retro_files_protected": 576,
+  "original_progress_unchanged": true,
+  "production_binaries_unchanged": true,
+  "payload_files": 1607,
+  "dispatch_sha256": "d6c01a4c1e8853e347d074b5f95aa5e3f2f762327b6fcf062cf7376b18dcad36"
+}

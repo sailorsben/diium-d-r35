@@ -6147,6 +6147,36 @@
       "published_sha256": "efecac796146424049ac469bd62ed12ff11f05a1eec73a75eb34c50480254928",
       "bytes": 965,
       "normalized": false
+    },
+    {
+      "source": "build/ability-suite-private-v1/public-summary.json",
+      "published": "evidence/2026-10-12/ability-suite/summary.json",
+      "source_sha256": "758bc51510e456ed43411fca9e926239a36c048ed69c5957a617713f586f5d9f",
+      "published_sha256": "9f46dd929ed9fbe39de72c5a04e8badc0c9f463d28c90b6e6f48d210f00ba31c"
+    },
+    {
+      "source": "build/ability-suite-private-v1/public-installation.json",
+      "published": "evidence/2026-10-12/ability-suite/installation.json",
+      "source_sha256": "f80f2e60567987afbe4975585cb4dbf12433e79cdc92d90f289374d7a613b74b",
+      "published_sha256": "06b5ed559a746375c07d6bf8c25e5b900ddbf14ffdae1121e2e15d4e3a980348"
+    },
+    {
+      "source": "build/ability-suite-private-v1/public-coverage.csv",
+      "published": "evidence/2026-10-12/ability-suite/coverage.csv",
+      "source_sha256": "fc8d920735c90ea9a1bf4d4becb24d53d75eb53192eb01bdebff6f07519c5b69",
+      "published_sha256": "fb0948a645f8df318d3684c94e410e052d34655e52319a7a1060a9ef801ff599"
+    },
+    {
+      "source": "build/ability-suite-private-v1/public-proof.log",
+      "published": "evidence/2026-10-12/ability-suite/contract-proof.log",
+      "source_sha256": "5f692124accd203ab6a35defb81ca2d2722cf33f5f22ee412f084de8c3d207c5",
+      "published_sha256": "5f692124accd203ab6a35defb81ca2d2722cf33f5f22ee412f084de8c3d207c5"
+    },
+    {
+      "source": "build/ability-suite-private-v1/target-checks-v2.json",
+      "published": "evidence/2026-10-12/ability-suite/target-checks.json",
+      "source_sha256": "79a7504bee07c5d178f99fc952dd9e5b16b864116e72d24a04f2b347866fdff0",
+      "published_sha256": "353b93feaf647d315432f538e5a96d5c9c01ec4c31acdaea50570872ccb3135a"
     }
   ]
 }
