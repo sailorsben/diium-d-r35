@@ -4,9 +4,15 @@ Source, hardware investigation and a working SNES-only launcher/runtime prototyp
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.
 
-## Current status — 2026-10-12
+## Current status — 2026-10-13
 
-- **Automated ability suite staged and armed on I:**400 independent command
+- **Ability suite returned:** all400 cases attempted,376 full windows completed,
+  24 native PCM failures grouped into11 effects. All27 summons fired; Siren,
+  Bahamut and Carbunkl failed. Bio Blast/Confuser completed. New archived contexts
+  pass13,200 offline graphics/PCM/state comparisons; A7 deficits remain measured,
+  candidate savings unpriced. Archive/FAT/progress verify; I: unarmed,0 writes.
+  [Results and measured targets](docs/snes-ability-suite-return.md).
+- **Historical staging: automated ability suite armed on I:**400 independent command
   fixtures reuse the successful Confuser core, with valid heal/revive/cure/buff
   targets, real inputs, normal audio/display and deferred per-case evidence.
   About2h15 plus reset/flush time; no B press. Original progress and576 prior

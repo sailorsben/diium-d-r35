@@ -1,5 +1,24 @@
 # Changelog
 
+## Ability1 physical return and matched offline checks — 2026-10-13
+
+Archive4,605 returned files; verify1,607 installed payload files,575 unchanged
+prior files, consumed marker and clean FAT. Only runtime swapfile changes;
+card stays unarmed,0 writes.400 cases attempted,376 complete1,200 calls;24 PCM
+errno77 failures across11 observed effects. All summons fire,24/27 complete.
+Bio Blast/Confuser and all Magitek/Tools/Blitz/Bushido/Dance cases complete.
+255 Rage and8 Dance selections verify.32 completed Rage cases without requested
+spell properties remain an observation/branch coverage gap, not proven failures.
+
+460,615 calls maintain100.000058% native quota; complete software PCM accounting.
+Holy/Meteor final16 ordinary calls measure19–20ms steps versus16.688ms budget,
+requiring approximately2.5–3.0ms aligned saving before margin. Existing generalized
+renderer completes11 archived failing contexts/13,200 exact original-output/state
+comparisons with verified animation initialization/deinitialization; no new core
+build or A7 speed inference. Record observer cost, frequency unavailability,
+pointer-bias/reserve limits and missing incremental prices. Five bounded proofs
+preserve773 existing entries. [Return and next evidence](docs/snes-ability-suite-return.md).
+
 ## Automated valid-target ability suite staged — 2026-10-12
 
 Stage authorized experimental ability1 on healthy archived I:, separate from

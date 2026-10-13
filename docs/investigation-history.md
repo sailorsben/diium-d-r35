@@ -1,5 +1,24 @@
 # Investigation history and negative results
 
+## Ability1 hardware failure replication — 2026-10-13
+
+400-case return identifies24 native PCM failures grouped into11 observed
+effects. Holy repeats across six Magic/Rage contexts, Meteor four, Meltdown
+and Slow2 three each, Lullaby two; Ultima/Siren/Bahamut/Carbunkl/Quasar/GrandTrain
+one each. All use SETUP/errno77;23 SYNC_OBSERVE and one WRITEI_FRAMES. No C/signal
+crash is retained. Heavy call tails exceed16.688ms; pooled59.985FPS hides these
+local failures. Native quota100.000058% and full software accounting refute a
+quota explanation in this sweep. Pointer bias makes late reported reserve
+inexact; completed Ifrit has transient128-frame bias, so discrepancy alone is
+not a fatality criterion.
+
+Existing generalized Window2 renderer completes11 exact archived failing
+contexts offline against original1.19,13,200 graphics/PCM/state comparisons with
+animation init/table/deinit observations. No new core build/card writes. This
+strengthens correctness coverage but does not price its A7 saving; old work
+counts/sensitivity assumptions must not be mixed with new unmatched tail costs.
+[Measured tails and missing evidence](snes-ability-suite-return.md).
+
 ## Ability targeting and observer identity corrections — 2026-10-12
 
 Before the authorized automated I: exercise, test real command inputs against
@@ -8,7 +27,7 @@ Wedge dead; explicit Down after opening the target cursor revives him. Keep both
 negative and corrected receipts. Blitz/Bushido/Tools load command-local attack
 numbers with an animation-table base; global-index matching wrongly reports
 absent animations. Reinterpret preserved frames using the actual LoadAnimProp
-contract; all16 Blitz/Bushido and8 Tool identities are observed. Retort/Stunner
+contract; all16 Blitz/Bushido and8 Tool identities are observed. Quadra Slam/Quadra Slice
 share properties; Chainsaw naturally takes alternate record336. Late Rage menu
 checks select252–254 rather than repeating the first entry.
 

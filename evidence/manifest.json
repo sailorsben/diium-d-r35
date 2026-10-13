@@ -6177,6 +6177,36 @@
       "published": "evidence/2026-10-12/ability-suite/target-checks.json",
       "source_sha256": "79a7504bee07c5d178f99fc952dd9e5b16b864116e72d24a04f2b347866fdff0",
       "published_sha256": "353b93feaf647d315432f538e5a96d5c9c01ec4c31acdaea50570872ccb3135a"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T063819Z/ability-analysis/summary.json",
+      "published": "evidence/2026-10-13/ability-return/summary.json",
+      "source_sha256": "a32cb4004e378b99751a139f90966f726775315a4975e801963bcf135675ff34",
+      "published_sha256": "09bbf64d9e17c791595d760d483be81e473fc76f2da951302f99289c67298a7b"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T063819Z/ability-analysis/cases.csv",
+      "published": "evidence/2026-10-13/ability-return/cases.csv",
+      "source_sha256": "66e70e8b51d91f5c2f92fea2c8e0974cf7dbf702908266ee70394f3daacbe873",
+      "published_sha256": "28c8abbc78a80b4d7ee54fdd371c33ce153f739df6bd9e8b31de1924cf4016ca"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T063819Z/ability-analysis/cases.json",
+      "published": "evidence/2026-10-13/ability-return/cases.json",
+      "source_sha256": "8b5d5ffbb2ec02d998462bbd233386bfabeb73c7bff57b024c63fed45412d39b",
+      "published_sha256": "5ccb5c23529e1936d8e3044ff61ca141eb73b7a8afe727b735dd3b828d8d4370"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T063819Z/ability-analysis/failure-analysis.json",
+      "published": "evidence/2026-10-13/ability-return/failure-analysis.json",
+      "source_sha256": "cb6281f2d0c023b859a627de29476dcf5b76bb8abd2c594deb83e02d785435c5",
+      "published_sha256": "619a387312b94528158f6612a194dac591c10f1b8ab5ab0c5804e2a4dc48a9a2"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T063819Z/ability-analysis/offline-contexts/summary.json",
+      "published": "evidence/2026-10-13/ability-return/offline-summary.json",
+      "source_sha256": "ccafe555b13e4ec6452c5931107afc667672e4f645988de24106616bb161e271",
+      "published_sha256": "ccafe555b13e4ec6452c5931107afc667672e4f645988de24106616bb161e271"
     }
   ]
 }

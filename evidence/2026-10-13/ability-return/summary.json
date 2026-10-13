@@ -1,0 +1,754 @@
+{
+  "archive": "a7-pair-before-20261013T063819Z",
+  "card_writes": 0,
+  "fat_clean": true,
+  "archived_files_verified": 4605,
+  "exact_installed_payload_verified": 1607,
+  "marker_consumed": true,
+  "protected_files_unchanged": 575,
+  "changed_prior_files": [
+    "retro/swapfile"
+  ],
+  "cases_started": 400,
+  "bounded_cases_completed": 376,
+  "runtime_failed_cases": [
+    {
+      "case": 14,
+      "name": "HOLY",
+      "status": "runtime_failed",
+      "calls": 376,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 19,
+      "name": "METEOR",
+      "status": "runtime_failed",
+      "calls": 389,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 20,
+      "name": "ULTIMA",
+      "status": "runtime_failed",
+      "calls": 557,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 23,
+      "name": "MELTDOWN",
+      "status": "runtime_failed",
+      "calls": 421,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 40,
+      "name": "SLOW_2",
+      "status": "runtime_failed",
+      "calls": 461,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 57,
+      "name": "SIREN",
+      "status": "runtime_failed",
+      "calls": 408,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 67,
+      "name": "BAHAMUT",
+      "status": "runtime_failed",
+      "calls": 611,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 73,
+      "name": "CARBUNKL",
+      "status": "runtime_failed",
+      "calls": 417,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 110,
+      "name": "QUASAR",
+      "status": "runtime_failed",
+      "calls": 441,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 111,
+      "name": "GRANDTRAIN",
+      "status": "runtime_failed",
+      "calls": 480,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 149,
+      "name": "RAGE_004",
+      "status": "runtime_failed",
+      "calls": 345,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 150,
+      "name": "RAGE_005",
+      "status": "runtime_failed",
+      "calls": 325,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 177,
+      "name": "RAGE_032",
+      "status": "runtime_failed",
+      "calls": 335,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 181,
+      "name": "RAGE_036",
+      "status": "runtime_failed",
+      "calls": 323,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 225,
+      "name": "RAGE_080",
+      "status": "runtime_failed",
+      "calls": 345,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 226,
+      "name": "RAGE_081",
+      "status": "runtime_failed",
+      "calls": 335,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 231,
+      "name": "RAGE_086",
+      "status": "runtime_failed",
+      "calls": 360,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 233,
+      "name": "RAGE_088",
+      "status": "runtime_failed",
+      "calls": 405,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 250,
+      "name": "RAGE_105",
+      "status": "runtime_failed",
+      "calls": 324,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 251,
+      "name": "RAGE_106",
+      "status": "runtime_failed",
+      "calls": 324,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 334,
+      "name": "RAGE_189",
+      "status": "runtime_failed",
+      "calls": 324,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 369,
+      "name": "RAGE_224",
+      "status": "runtime_failed",
+      "calls": 335,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 385,
+      "name": "RAGE_240",
+      "status": "runtime_failed",
+      "calls": 405,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 394,
+      "name": "RAGE_249",
+      "status": "runtime_failed",
+      "calls": 369,
+      "error": "Audio publication failed: File descriptor in bad state"
+    }
+  ],
+  "accounting_or_selection_anomalies": [
+    {
+      "case": 14,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 14,
+      "field": "draw_count",
+      "calls": 376,
+      "videos": 375
+    },
+    {
+      "case": 19,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 19,
+      "field": "draw_count",
+      "calls": 389,
+      "videos": 388
+    },
+    {
+      "case": 20,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 20,
+      "field": "draw_count",
+      "calls": 557,
+      "videos": 556
+    },
+    {
+      "case": 23,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 23,
+      "field": "draw_count",
+      "calls": 421,
+      "videos": 420
+    },
+    {
+      "case": 40,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 40,
+      "field": "draw_count",
+      "calls": 461,
+      "videos": 460
+    },
+    {
+      "case": 57,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 57,
+      "field": "draw_count",
+      "calls": 408,
+      "videos": 407
+    },
+    {
+      "case": 67,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 67,
+      "field": "draw_count",
+      "calls": 611,
+      "videos": 610
+    },
+    {
+      "case": 73,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 73,
+      "field": "draw_count",
+      "calls": 417,
+      "videos": 416
+    },
+    {
+      "case": 110,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 110,
+      "field": "draw_count",
+      "calls": 441,
+      "videos": 440
+    },
+    {
+      "case": 111,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 111,
+      "field": "draw_count",
+      "calls": 480,
+      "videos": 479
+    },
+    {
+      "case": 149,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 149,
+      "field": "draw_count",
+      "calls": 345,
+      "videos": 344
+    },
+    {
+      "case": 150,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 150,
+      "field": "draw_count",
+      "calls": 325,
+      "videos": 324
+    },
+    {
+      "case": 177,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 177,
+      "field": "draw_count",
+      "calls": 335,
+      "videos": 334
+    },
+    {
+      "case": 181,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 181,
+      "field": "draw_count",
+      "calls": 323,
+      "videos": 322
+    },
+    {
+      "case": 225,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 225,
+      "field": "draw_count",
+      "calls": 345,
+      "videos": 344
+    },
+    {
+      "case": 226,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 226,
+      "field": "draw_count",
+      "calls": 335,
+      "videos": 334
+    },
+    {
+      "case": 231,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 231,
+      "field": "draw_count",
+      "calls": 360,
+      "videos": 359
+    },
+    {
+      "case": 233,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 233,
+      "field": "draw_count",
+      "calls": 405,
+      "videos": 404
+    },
+    {
+      "case": 250,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 250,
+      "field": "draw_count",
+      "calls": 324,
+      "videos": 323
+    },
+    {
+      "case": 251,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 251,
+      "field": "draw_count",
+      "calls": 324,
+      "videos": 323
+    },
+    {
+      "case": 334,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 334,
+      "field": "draw_count",
+      "calls": 324,
+      "videos": 323
+    },
+    {
+      "case": 369,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 369,
+      "field": "draw_count",
+      "calls": 335,
+      "videos": 334
+    },
+    {
+      "case": 385,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 385,
+      "field": "draw_count",
+      "calls": 405,
+      "videos": 404
+    },
+    {
+      "case": 394,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 394,
+      "field": "draw_count",
+      "calls": 369,
+      "videos": 368
+    }
+  ],
+  "calls": 460615,
+  "video_submitted": 460591,
+  "native_frames": 246285455,
+  "converted_frames": 338987304,
+  "accepted_minus_prime": 338970383,
+  "active_seconds": 7678.829888,
+  "summed_session_seconds_excluding_between_case_flushes": 8050.315884,
+  "active_calls_per_second": 59.985050680679954,
+  "native_quota_percent": 100.00005760798247,
+  "frequency_khz_observed": [],
+  "frequency_pin_reports": [
+    "not_exposed_or_not_writable"
+  ],
+  "core_cpu_ms": {
+    "count": 460615,
+    "mean": 11.7473123888714,
+    "median": 11.33,
+    "p95": 13.446,
+    "p99": 14.822,
+    "max": 18.891
+  },
+  "core_wall_ms": {
+    "count": 460615,
+    "mean": 12.595659029775408,
+    "median": 12.116,
+    "p95": 14.677,
+    "p99": 16.214,
+    "max": 23.897
+  },
+  "frequency_observer_us": {
+    "count": 460615,
+    "mean": 13.27113532993932,
+    "median": 13.0,
+    "p95": 15.0,
+    "p99": 16.0,
+    "max": 2266.0
+  },
+  "animation_observer_us": {
+    "count": 460615,
+    "mean": 8.671261248548136,
+    "median": 8.0,
+    "p95": 11.0,
+    "p99": 12.0,
+    "max": 2257.0
+  },
+  "cases_requested_properties_observed": 368,
+  "cases_requested_properties_not_observed": [
+    {
+      "case": 145,
+      "name": "RAGE_000",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 152,
+      "name": "RAGE_007",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 168,
+      "name": "RAGE_023",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 169,
+      "name": "RAGE_024",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 170,
+      "name": "RAGE_025",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 171,
+      "name": "RAGE_026",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 173,
+      "name": "RAGE_028",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 186,
+      "name": "RAGE_041",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 191,
+      "name": "RAGE_046",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 199,
+      "name": "RAGE_054",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 201,
+      "name": "RAGE_056",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 202,
+      "name": "RAGE_057",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 237,
+      "name": "RAGE_092",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 238,
+      "name": "RAGE_093",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 239,
+      "name": "RAGE_094",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 243,
+      "name": "RAGE_098",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 246,
+      "name": "RAGE_101",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 258,
+      "name": "RAGE_113",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 260,
+      "name": "RAGE_115",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 266,
+      "name": "RAGE_121",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 268,
+      "name": "RAGE_123",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 285,
+      "name": "RAGE_140",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 289,
+      "name": "RAGE_144",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 293,
+      "name": "RAGE_148",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 295,
+      "name": "RAGE_150",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 307,
+      "name": "RAGE_162",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 347,
+      "name": "RAGE_202",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 353,
+      "name": "RAGE_208",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 356,
+      "name": "RAGE_211",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 389,
+      "name": "RAGE_244",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 390,
+      "name": "RAGE_245",
+      "family": "rage",
+      "random_or_conditional": true
+    },
+    {
+      "case": 393,
+      "name": "RAGE_248",
+      "family": "rage",
+      "random_or_conditional": true
+    }
+  ],
+  "production_gate_passed": false,
+  "animation_completion_proven": false,
+  "limits": [
+    "Frame-boundary cached properties are not complete animation-thread proof.",
+    "One seeded Dance/Rage outcome does not cover every possible branch.",
+    "Whole-core timings do not price renderer e/r/b or identify PPU subphases.",
+    "Observed timing includes instrumentation; no calibration subtraction."
+  ],
+  "family_summary": {
+    "magic": {
+      "started": 54,
+      "bounded_completed": 49,
+      "requested_properties_observed": 54,
+      "mean_core_cpu_ms": 11.655107274688888
+    },
+    "esper": {
+      "started": 27,
+      "bounded_completed": 24,
+      "requested_properties_observed": 27,
+      "mean_core_cpu_ms": 11.913321458613026
+    },
+    "magitek": {
+      "started": 8,
+      "bounded_completed": 8,
+      "requested_properties_observed": 8,
+      "mean_core_cpu_ms": 11.672887708333334
+    },
+    "lore": {
+      "started": 24,
+      "bounded_completed": 22,
+      "requested_properties_observed": 24,
+      "mean_core_cpu_ms": 11.808209282289305
+    },
+    "tools": {
+      "started": 8,
+      "bounded_completed": 8,
+      "requested_properties_observed": 8,
+      "mean_core_cpu_ms": 11.581596875
+    },
+    "blitz": {
+      "started": 8,
+      "bounded_completed": 8,
+      "requested_properties_observed": 8,
+      "mean_core_cpu_ms": 11.683209270833334
+    },
+    "bushido": {
+      "started": 8,
+      "bounded_completed": 8,
+      "requested_properties_observed": 8,
+      "mean_core_cpu_ms": 11.6860846875
+    },
+    "dance": {
+      "started": 8,
+      "bounded_completed": 8,
+      "requested_properties_observed": 8,
+      "mean_core_cpu_ms": 11.758676354166667
+    },
+    "rage": {
+      "started": 255,
+      "bounded_completed": 241,
+      "requested_properties_observed": 223,
+      "mean_core_cpu_ms": 11.793468951870969
+    }
+  }
+}

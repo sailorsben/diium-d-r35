@@ -1,5 +1,9 @@
 # Automated original-ROM ability exercise
 
+The staged plan below is retained. [Physical return2026-10-13](snes-ability-suite-return.md):
+all400 cases attempted,376 full windows completed,24 native PCM failures.
+I: is now unarmed; original progress is preserved. No new card writes/rearm.
+
 Authorized experimental one-shot `1.19-ability1`, separate directory
 `retro/snes-ability1` on I:. The original ROM and gameplay saves are unchanged.
 The emulator is the same counter-free core that passed the two Confuser fights
@@ -27,7 +31,7 @@ Offline targeting checks found Raise/Arise initially aimed at living Terra.
 Selecting Down after opening the target cursor revives Wedge in both corrected
 cases. Preserve the negative receipts. All16 Blitz/Bushido graphic identities
 are observed; their attack numbers are command-local, unlike global graphics
-indices. Retort/Stunner share graphics properties, so the local number matters.
+indices. Quadra Slam/Quadra Slice share graphics properties, so the local number matters.
 The last three Rage cases select IDs252–254, verified from game RAM.
 
 ## Timing, evidence and limits
@@ -72,4 +76,5 @@ unchanged protected hashes, exact qualified runner/core/wrapper/fixture hashes,
 and readback. Only the owned dispatch and one-shot marker change outside the
 new versioned folder. The marker is consumed before running; next boot is stock.
 
-See [instructions](snes-ability-suite-test.txt). Physical result is pending.
+See [original instructions](snes-ability-suite-test.txt) and the
+[returned results](snes-ability-suite-return.md).

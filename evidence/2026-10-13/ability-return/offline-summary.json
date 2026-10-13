@@ -1,0 +1,198 @@
+{
+  "archived_failing_contexts": 11,
+  "exact_output_state_completed_contexts": 11,
+  "comparison_calls": 13200,
+  "existing_generalized_renderer_checked": true,
+  "new_core_builds": 0,
+  "card_writes": 0,
+  "A7_performance_evidence": false,
+  "records": [
+    {
+      "case": 14,
+      "effect": "HOLY",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "42856ad1edfecab52c3a283eee2470873bdc671014b7137cb5b2d9fc1991cbc5",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/014/scene.state": "50864c78828aef1e678a12b1c161bd5cdb4a979da92141a9d6163b8723d31826",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/014/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 19,
+      "effect": "METEOR",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "c60df7300b5557aff75791022407c6ad98243e0379d954d181094f4cf957f5e8",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/019/scene.state": "7dd0a7bfe7540db4e11e1cd264a914726cba4ef2a909db16298c2fe2e077282b",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/019/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 20,
+      "effect": "ULTIMA",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "f803c7266112f0e7ff4476a3b1b7266e336f90e3b6e625c5668fca6678563b5c",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/020/scene.state": "f1afdc9566cfa1cc674c95aa817810d71f7c60492e21f9f22501a96d05ea7539",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/020/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 23,
+      "effect": "MELTDOWN",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "69adbba662fcace844227486d729ef853f76bf302878b86e91e5cebbc22efb57",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/023/scene.state": "3e9ea3f47246334bde5a55c039eb3fc69858a76237244ea234c95a4e7e8a8938",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/023/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 40,
+      "effect": "SLOW_2",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "ca9215eaa8c7a2109e3cd6579bf92e5a3a0d8661746e5e9b846bc01567dc40ad",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/040/scene.state": "90d77bd983957f42d23f7968c44b322d28d9b859984092a1c702d9f54434e8e5",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/040/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 57,
+      "effect": "SIREN",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "e667fa87a014fe02ad5909b9bcf7d94dba5bf4dd4b539623c715866c30810bb7",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/057/scene.state": "f1e554a4fdf365ae41b01708c54c694d2458ac97bebc9b93dc7ea73cd7b3bca5",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/057/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 67,
+      "effect": "BAHAMUT",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "a8275174ec78239c43f2973cae5b5755d9dbd8b493cd20d63d1b2805704f121e",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/067/scene.state": "9036fc6fb8a45e4eadb87a38acd1db42f28a83fe3c6eef07ef52e223c04331a3",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/067/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 73,
+      "effect": "CARBUNKL",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "e5fe46c71187b1b1a30e3a56edda537775197c3228e51e822a5e9610521b4a2a",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/073/scene.state": "72bbfd587991fbbc14e48f13a46588e28737a75f3c04887ac856c66068725335",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/073/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 110,
+      "effect": "QUASAR",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "88c76d518b32f09a524bb73b562411240fc07a1494564047dbf029766867fcce",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/110/scene.state": "bb35acabc0758a5861e81799b0bc26fc8d1b4dcaf2b11806215bc10e2ca2dbb7",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/110/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 111,
+      "effect": "GRANDTRAIN",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "bfd2ce063a2590b3a738c5e2dd3aec04108c475282f05667cfc1312618f18fcf",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/111/scene.state": "21f73305b5ce0dd6e39023ac305e28ac0b9a126437f3e50f0f1153c8c99c6781",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/111/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    },
+    {
+      "case": 149,
+      "effect": "LULLABY",
+      "returncode": 0,
+      "passed": true,
+      "calls": 1200,
+      "A7_performance_evidence": false,
+      "log_sha256": "80a215b951b7fdf56a01189e8e5cea6f0ebbd45f4f627a78f159744909f3be08",
+      "identities": {
+        "build/ff6-ability-lab-private-v1/check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7",
+        "build/plus-a7-out/plus-a7.so": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+        "build/ff6-effect-screen-private-v1/natural/core/snes9x2005_plus_libretro.so": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+        "build/plus-a7-out/ff6.sfc": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/149/scene.state": "5efdcff8301e086a5c3a8022635a537d2934c9b18d82837cf879185cd1b61614",
+        "device-evidence/a7-pair-before-20261013T063819Z/retro/snes-ability1/cases/149/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde"
+      }
+    }
+  ]
+}

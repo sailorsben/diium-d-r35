@@ -1,5 +1,15 @@
 # Device findings
 
+**Current return2026-10-13:** [ability1 physical sweep](snes-ability-suite-return.md)
+attempts400 cases;376 complete full windows and24 fail with native PCM errno77,
+grouped into11 observed effects. Bio Blast/Confuser complete; Siren/Bahamut/
+Carbunkl fail. Holy/Meteor late steps require~2.5–3.0ms saving against16.688ms.
+All Rage/Dance selections verify;32 completed Rage cases lack requested spell
+properties and remain a coverage gap. Original progress/payload/FAT verify;
+4,605 files archived, I: unarmed,0 writes. Existing generalized renderer passes
+11 newly archived contexts offline; measured candidate A7 savings still absent.
+Historical arming/pending states below are superseded by this return.
+
 **Current staging2026-10-12:** [automated ability1](snes-ability-suite.md) is
 armed on I:, following a complete577-file archive and clean FAT.400 independent
 valid-target contexts reuse the successful Confuser core;576 existing files and
