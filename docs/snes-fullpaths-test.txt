@@ -1,0 +1,23 @@
+SNES 1.19-fullpaths1 — measurement only, every frame
+
+Safely eject I:, insert the card and cold boot the D-R35.
+No B press or menu selection is required. The one-shot starts automatically.
+Let it run until the stock launcher returns. Allow about 40 minutes; the full
+100-run schedule is 33.4 minutes of gameplay plus loading/flushing. Failed runs
+can shorten the test. Keep the device powered throughout.
+
+Repeated effects are intentional. The suite tests baseline, fixed-color rows,
+subscreen composition, DSP dead-work removal, and all three combined. Each
+plays Holy, Meteor, Meltdown, Siren, Bahamut, Carbunkl, Quasar, Lullaby Rage,
+Bio Blast and Confuser. The second pass reverses case and variant order.
+
+Every SNES frame and audio sample is retained. Fatal errors remain visible;
+after orderly worker cleanup, the next independent run starts. Per-frame data
+stays in RAM; files are flushed between runs after the workers stop. Headroom,
+valid pointer accounting, frequency availability and frame completion are logged.
+This is an experiment, not a production replacement or a universal guarantee.
+
+MENU or Select+Start requests an early stop. Wait for the stock launcher before
+powering off, then reconnect I:. The next cold boot takes the stock path because
+the one-shot marker was consumed. Original ROM, saves and production cores remain
+protected; all new progress and diagnostics are in retro/snes-fullpaths1.

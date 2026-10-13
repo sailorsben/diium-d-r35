@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Fullpaths measurement prepared:** 100 automatic runs compare baseline,
+  fixed-color rows, subscreen composition, DSP removal and their combination
+  across ten contexts in two reversed orders. New combination exactness,
+  actual controller, native fault/retry/deficit and wrapper checks pass offline.
+  Every frame retained; RAM logging and explicit pacing accounting measure
+  included costs. A7 saving/headroom pending, production gate false.
+  [Measurement design](docs/snes-fullpaths-measurement.md),
+  [physical instructions](docs/snes-fullpaths-test.txt).
 - **Every frame required; three new paths qualified offline:** fixed-color row
   batching, true-subscreen composition and unused DSP interpolation removal
   preserve pixels/PCM/state in 129,600 comparisons. Fixed rows also pass 406
