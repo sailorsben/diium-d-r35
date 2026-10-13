@@ -1,5 +1,22 @@
 # Investigation history and negative results
 
+## Fixed-math cache does not close physical deficits — 2026-10-13
+
+Ability3 returns the same six passes/twelve native failures as ability2.
+Carbunkl/Lullaby save~96/98us in matched overlap, controls50–102us; Siren has
+no net gain, several cases regress. Retain measured negative result; do not
+rearm unchanged or price row operations by dividing whole-core time. Source
+classification now runs before original blend classification; optimized ARM
+half-add stack grows76→148 bytes. Added predicate/palette/stack overhead is a
+supported explanation to investigate, not a measured cost or exclusive cause.
+
+Generalized analysis preserves identity/hash/FAT/progress gates and matches
+original Rage IDs. Missing old failure tails no longer become zero savings;
+explicit common-frame overlap retains earlier Bahamut/Quasar/Siren/Rage stops.
+Next targets remain genuine fixed-color fragmentation and mode-specific row/
+subscreen work; direct warm/sparse A7 prices are missing.0 card writes, I: unarmed.
+[Return and missing evidence](snes-ability3-return.md).
+
 ## Ability2 measured partial improvement and fixed-math hypothesis — 2026-10-13
 
 Same-frame A7 CPU savings establish useful Window2 batching without a universal

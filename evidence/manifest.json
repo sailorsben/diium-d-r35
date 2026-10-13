@@ -6273,6 +6273,30 @@
       "published": "evidence/2026-10-13/ability3/installation.json",
       "source_sha256": "3d4cb33e370fb1c2aca8ac7c53f773874edac7a999ed93bc8a169d72ae3eee6c",
       "published_sha256": "3a333f386f177b91a5871d093caf9bdb9f29161d0679fff86a8992455c794aaf"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T172104Z/ability-analysis/summary.json",
+      "published": "evidence/2026-10-13/ability3-return/summary.json",
+      "source_sha256": "535a6de6c80c92baf29db10090ce3785fb91beae7ea2521b5dfb268af1d65e3c",
+      "published_sha256": "03f53cc5b58913fc72e178d202fff58753b2c4db3e280f58057671ae167edfb5"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T172104Z/ability-analysis/cases.json",
+      "published": "evidence/2026-10-13/ability3-return/cases.json",
+      "source_sha256": "b12e2c98c5ecb44c36b69accd76581712866124b496779c74464cf5f9b1bc1bf",
+      "published_sha256": "946959b0e6fe616d5aa367d111ee12d7750f172ec96ea98c582eb8bdb2777b27"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T172104Z/ability-analysis/aligned-comparison.json",
+      "published": "evidence/2026-10-13/ability3-return/aligned-comparison.json",
+      "source_sha256": "c017a09b3adca2c592023a83ce936c91feb8a25c2a0568f785ca23f8ca5cb070",
+      "published_sha256": "55e26c4fbf270fd525134bfd2657948f58c017cfe82a23a6bfcefce7235ca7a1"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T172104Z/ability-analysis/verdict.json",
+      "published": "evidence/2026-10-13/ability3-return/verdict.json",
+      "source_sha256": "554179859830538fdbed79a787cb9ebd6c56cd49cf02d3e25c18baba8e84600b",
+      "published_sha256": "14ef44f3f279c79d9409177cd406e2c276a419cb8d4cb8da3fd5fd4e7d9b7b5d"
     }
   ]
 }

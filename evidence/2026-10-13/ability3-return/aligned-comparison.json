@@ -1,0 +1,1573 @@
+[
+  {
+    "case": 0,
+    "original_case": 14,
+    "name": "HOLY",
+    "old_calls": 416,
+    "new_calls": 417,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=309360 hw=309247 prime_written=2823 start_calls=0 epoch=1 xfer=308976 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 30.0625,
+      "median": 1.5,
+      "p95": 253.0,
+      "p99": 253.0,
+      "max": 253.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 16034.625,
+      "wall_ns": 17334.875,
+      "step_ns": 17660.5625,
+      "admission_ns": 185.125
+    },
+    "new_tail": {
+      "cpu_ns": 16020.25,
+      "wall_ns": 17432.625,
+      "step_ns": 17754.625,
+      "admission_ns": 176.8125
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 30.0625,
+        "median": 1.5,
+        "p95": 253.0,
+        "p99": 253.0,
+        "max": 253.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -80.0625,
+        "median": 44.5,
+        "p95": 1740.0,
+        "p99": 1740.0,
+        "max": 1740.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16004.5625,
+      "wall_ns": 17414.9375,
+      "step_ns": 17734.0
+    }
+  },
+  {
+    "case": 1,
+    "original_case": 19,
+    "name": "METEOR",
+    "old_calls": 408,
+    "new_calls": 408,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=302737 hw=302719 prime_written=2823 start_calls=0 epoch=1 xfer=302353 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -49.875,
+      "median": -49.0,
+      "p95": 130.0,
+      "p99": 130.0,
+      "max": 130.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 16820.125,
+      "wall_ns": 18123.5625,
+      "step_ns": 18466.125,
+      "admission_ns": 197.9375
+    },
+    "new_tail": {
+      "cpu_ns": 16870.0,
+      "wall_ns": 18298.4375,
+      "step_ns": 18629.25,
+      "admission_ns": 187.5625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": -49.875,
+        "median": -49.0,
+        "p95": 130.0,
+        "p99": 130.0,
+        "max": 130.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -174.875,
+        "median": -73.0,
+        "p95": 1745.0,
+        "p99": 1745.0,
+        "max": 1745.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16870.0,
+      "wall_ns": 18298.4375,
+      "step_ns": 18629.25
+    }
+  },
+  {
+    "case": 2,
+    "original_case": 20,
+    "name": "ULTIMA",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 100.3125,
+      "median": 105.0,
+      "p95": 316.0,
+      "p99": 316.0,
+      "max": 316.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 11202.1875,
+      "wall_ns": 11997.4375,
+      "step_ns": 16382.875,
+      "admission_ns": 4244.375
+    },
+    "new_tail": {
+      "cpu_ns": 11101.875,
+      "wall_ns": 11995.4375,
+      "step_ns": 16497.375,
+      "admission_ns": 4354.25
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 100.3125,
+        "median": 105.0,
+        "p95": 316.0,
+        "p99": 316.0,
+        "max": 316.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 2.0,
+        "median": 96.5,
+        "p95": 700.0,
+        "p99": 700.0,
+        "max": 700.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 11101.875,
+      "wall_ns": 11995.4375,
+      "step_ns": 16497.375
+    }
+  },
+  {
+    "case": 3,
+    "original_case": 23,
+    "name": "MELTDOWN",
+    "old_calls": 417,
+    "new_calls": 420,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=311568 hw=311551 prime_written=2823 start_calls=0 epoch=1 xfer=311184 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414,
+      415
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414,
+      415
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 69.5,
+      "median": 40.0,
+      "p95": 314.0,
+      "p99": 314.0,
+      "max": 314.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 15778.0,
+      "wall_ns": 17226.875,
+      "step_ns": 17559.0,
+      "admission_ns": 187.3125
+    },
+    "new_tail": {
+      "cpu_ns": 15706.125,
+      "wall_ns": 17084.8125,
+      "step_ns": 17480.0625,
+      "admission_ns": 182.375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 69.5,
+        "median": 40.0,
+        "p95": 314.0,
+        "p99": 314.0,
+        "max": 314.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 241.875,
+        "median": 78.5,
+        "p95": 2068.0,
+        "p99": 2068.0,
+        "max": 2068.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15708.5,
+      "wall_ns": 16985.0,
+      "step_ns": 17328.9375
+    }
+  },
+  {
+    "case": 4,
+    "original_case": 40,
+    "name": "SLOW_2",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 70.75,
+      "median": 61.0,
+      "p95": 236.0,
+      "p99": 236.0,
+      "max": 236.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 11278.6875,
+      "wall_ns": 12128.0,
+      "step_ns": 16657.0,
+      "admission_ns": 670.5
+    },
+    "new_tail": {
+      "cpu_ns": 11207.9375,
+      "wall_ns": 11967.0,
+      "step_ns": 16665.25,
+      "admission_ns": 2748.8125
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 70.75,
+        "median": 61.0,
+        "p95": 236.0,
+        "p99": 236.0,
+        "max": 236.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 161.0,
+        "median": 30.5,
+        "p95": 1966.0,
+        "p99": 1966.0,
+        "max": 1966.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 11207.9375,
+      "wall_ns": 11967.0,
+      "step_ns": 16665.25
+    }
+  },
+  {
+    "case": 5,
+    "original_case": 57,
+    "name": "SIREN",
+    "old_calls": 407,
+    "new_calls": 406,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=301264 hw=301183 prime_written=2823 start_calls=0 epoch=1 xfer=300880 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": false,
+    "matched_overlap_frames": [
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -16.3125,
+      "median": 30.5,
+      "p95": 185.0,
+      "p99": 185.0,
+      "max": 185.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 16840.733333333334,
+      "wall_ns": 18163.666666666668,
+      "step_ns": 18497.86666666667,
+      "admission_ns": 189.73333333333335
+    },
+    "new_tail": {
+      "cpu_ns": 16802.25,
+      "wall_ns": 18114.375,
+      "step_ns": 18466.9375,
+      "admission_ns": 211.375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 15,
+        "mean": -29.733333333333334,
+        "median": 24.0,
+        "p95": 62.0,
+        "p99": 62.0,
+        "max": 62.0
+      },
+      "wall_ns": {
+        "count": 15,
+        "mean": -27.666666666666668,
+        "median": 12.0,
+        "p95": 1652.0,
+        "p99": 1652.0,
+        "max": 1652.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16870.466666666667,
+      "wall_ns": 18191.333333333332,
+      "step_ns": 18545.733333333334
+    }
+  },
+  {
+    "case": 6,
+    "original_case": 67,
+    "name": "BAHAMUT",
+    "old_calls": 597,
+    "new_calls": 577,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=427111 hw=427007 prime_written=2823 start_calls=0 epoch=1 xfer=426727 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": false,
+    "matched_overlap_frames": [
+      560,
+      561,
+      562,
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570,
+      571,
+      572,
+      573,
+      574,
+      575
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -85.9375,
+      "median": -100.0,
+      "p95": 165.0,
+      "p99": 165.0,
+      "max": 165.0
+    },
+    "new_tail": {
+      "cpu_ns": 15540.25,
+      "wall_ns": 16852.125,
+      "step_ns": 17181.4375,
+      "admission_ns": 181.25
+    }
+  },
+  {
+    "case": 7,
+    "original_case": 73,
+    "name": "CARBUNKL",
+    "old_calls": 415,
+    "new_calls": 425,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=315247 hw=315135 prime_written=2823 start_calls=0 epoch=1 xfer=314863 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 95.5625,
+      "median": 91.5,
+      "p95": 257.0,
+      "p99": 257.0,
+      "max": 257.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 15962.5625,
+      "wall_ns": 17254.4375,
+      "step_ns": 17572.9375,
+      "admission_ns": 178.4375
+    },
+    "new_tail": {
+      "cpu_ns": 15842.5625,
+      "wall_ns": 17098.625,
+      "step_ns": 17490.4375,
+      "admission_ns": 202.3125
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 95.5625,
+        "median": 91.5,
+        "p95": 257.0,
+        "p99": 257.0,
+        "max": 257.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -35.6875,
+        "median": 123.5,
+        "p95": 1904.0,
+        "p99": 1904.0,
+        "max": 1904.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15867.0,
+      "wall_ns": 17290.125,
+      "step_ns": 17613.25
+    }
+  },
+  {
+    "case": 8,
+    "original_case": 110,
+    "name": "QUASAR",
+    "old_calls": 444,
+    "new_calls": 432,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=320399 hw=320383 prime_written=2823 start_calls=0 epoch=1 xfer=320015 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      427,
+      428,
+      429,
+      430
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": false,
+    "matched_overlap_frames": [
+      415,
+      416,
+      417,
+      418,
+      419,
+      420,
+      421,
+      422,
+      423,
+      424,
+      425,
+      426,
+      427,
+      428,
+      429,
+      430
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -175.3125,
+      "median": -142.0,
+      "p95": -71.0,
+      "p99": -71.0,
+      "max": -71.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 15894.75,
+      "wall_ns": 17109.5,
+      "step_ns": 17433.0,
+      "admission_ns": 183.0
+    },
+    "new_tail": {
+      "cpu_ns": 16080.5,
+      "wall_ns": 17371.3125,
+      "step_ns": 17791.5625,
+      "admission_ns": 191.0
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 4,
+        "mean": -193.0,
+        "median": -163.5,
+        "p95": -136.0,
+        "p99": -136.0,
+        "max": -136.0
+      },
+      "wall_ns": {
+        "count": 4,
+        "mean": -214.75,
+        "median": -192.5,
+        "p95": -186.0,
+        "p99": -186.0,
+        "max": -186.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16087.75,
+      "wall_ns": 17324.25,
+      "step_ns": 17654.75
+    }
+  },
+  {
+    "case": 9,
+    "original_case": 111,
+    "name": "GRANDTRAIN",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 60.875,
+      "median": 57.0,
+      "p95": 171.0,
+      "p99": 171.0,
+      "max": 171.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 11030.625,
+      "wall_ns": 11537.8125,
+      "step_ns": 16512.1875,
+      "admission_ns": 4820.625
+    },
+    "new_tail": {
+      "cpu_ns": 10969.75,
+      "wall_ns": 11357.4375,
+      "step_ns": 16461.9375,
+      "admission_ns": 4927.0
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 60.875,
+        "median": 57.0,
+        "p95": 171.0,
+        "p99": 171.0,
+        "max": 171.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 180.375,
+        "median": 60.5,
+        "p95": 1693.0,
+        "p99": 1693.0,
+        "max": 1693.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 10969.75,
+      "wall_ns": 11357.4375,
+      "step_ns": 16461.9375
+    }
+  },
+  {
+    "case": 10,
+    "original_case": 149,
+    "name": "RAGE_004",
+    "old_calls": 344,
+    "new_calls": 345,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=256371 hw=256255 prime_written=2823 start_calls=0 epoch=1 xfer=255987 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 98.0,
+      "median": 105.5,
+      "p95": 279.0,
+      "p99": 279.0,
+      "max": 279.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 17039.6875,
+      "wall_ns": 18359.375,
+      "step_ns": 18704.8125,
+      "admission_ns": 179.5
+    },
+    "new_tail": {
+      "cpu_ns": 16968.875,
+      "wall_ns": 18281.375,
+      "step_ns": 18630.5,
+      "admission_ns": 206.625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 98.0,
+        "median": 105.5,
+        "p95": 279.0,
+        "p99": 279.0,
+        "max": 279.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 101.625,
+        "median": 118.0,
+        "p95": 670.0,
+        "p99": 670.0,
+        "max": 670.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16941.6875,
+      "wall_ns": 18257.75,
+      "step_ns": 18607.0
+    }
+  },
+  {
+    "case": 11,
+    "original_case": 150,
+    "name": "RAGE_005",
+    "old_calls": 372,
+    "new_calls": 377,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=279921 hw=279807 prime_written=2823 start_calls=0 epoch=1 xfer=279537 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -14.75,
+      "median": -18.0,
+      "p95": 143.0,
+      "p99": 143.0,
+      "max": 143.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 15878.75,
+      "wall_ns": 17190.3125,
+      "step_ns": 17597.6875,
+      "admission_ns": 191.9375
+    },
+    "new_tail": {
+      "cpu_ns": 15891.375,
+      "wall_ns": 17176.9375,
+      "step_ns": 17502.0625,
+      "admission_ns": 183.5
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": -14.75,
+        "median": -18.0,
+        "p95": 143.0,
+        "p99": 143.0,
+        "max": 143.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -123.375,
+        "median": -19.5,
+        "p95": 1729.0,
+        "p99": 1729.0,
+        "max": 1729.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15893.5,
+      "wall_ns": 17313.6875,
+      "step_ns": 17691.25
+    }
+  },
+  {
+    "case": 12,
+    "original_case": 177,
+    "name": "RAGE_032",
+    "old_calls": 353,
+    "new_calls": 353,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=262259 hw=262143 prime_written=2823 start_calls=0 epoch=1 xfer=261875 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -29.4375,
+      "median": -26.0,
+      "p95": 281.0,
+      "p99": 281.0,
+      "max": 281.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 16801.1875,
+      "wall_ns": 18156.0625,
+      "step_ns": 18475.8125,
+      "admission_ns": 180.5625
+    },
+    "new_tail": {
+      "cpu_ns": 16830.625,
+      "wall_ns": 18249.75,
+      "step_ns": 18605.875,
+      "admission_ns": 204.6875
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": -29.4375,
+        "median": -26.0,
+        "p95": 281.0,
+        "p99": 281.0,
+        "max": 281.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -93.6875,
+        "median": -10.5,
+        "p95": 1626.0,
+        "p99": 1626.0,
+        "max": 1626.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 16830.625,
+      "wall_ns": 18249.75,
+      "step_ns": 18605.875
+    }
+  },
+  {
+    "case": 13,
+    "original_case": 231,
+    "name": "RAGE_086",
+    "old_calls": 369,
+    "new_calls": 373,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=276978 hw=276863 prime_written=2823 start_calls=0 epoch=1 xfer=276594 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 32.625,
+      "median": 46.5,
+      "p95": 212.0,
+      "p99": 212.0,
+      "max": 212.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 15724.5,
+      "wall_ns": 17041.75,
+      "step_ns": 17428.5,
+      "admission_ns": 196.4375
+    },
+    "new_tail": {
+      "cpu_ns": 15706.5625,
+      "wall_ns": 16999.1875,
+      "step_ns": 17384.875,
+      "admission_ns": 179.0625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 32.625,
+        "median": 46.5,
+        "p95": 212.0,
+        "p99": 212.0,
+        "max": 212.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": -66.625,
+        "median": -2.5,
+        "p95": 1579.0,
+        "p99": 1579.0,
+        "max": 1579.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15691.875,
+      "wall_ns": 17108.375,
+      "step_ns": 17484.75
+    }
+  },
+  {
+    "case": 14,
+    "original_case": 233,
+    "name": "RAGE_088",
+    "old_calls": 409,
+    "new_calls": 401,
+    "passed": false,
+    "terminal": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=297585 hw=297471 prime_written=2823 start_calls=0 epoch=1 xfer=297201 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "baseline_tail_frames": [
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": false,
+    "matched_overlap_frames": [
+      384,
+      385,
+      386,
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": -52.75,
+      "median": -47.5,
+      "p95": 218.0,
+      "p99": 218.0,
+      "max": 218.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 15463.875,
+      "wall_ns": 16940.5,
+      "step_ns": 17267.625,
+      "admission_ns": 185.625
+    },
+    "new_tail": {
+      "cpu_ns": 15526.0,
+      "wall_ns": 16737.875,
+      "step_ns": 17202.0625,
+      "admission_ns": 184.25
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 8,
+        "mean": -53.0,
+        "median": -53.5,
+        "p95": 18.0,
+        "p99": 18.0,
+        "max": 18.0
+      },
+      "wall_ns": {
+        "count": 8,
+        "mean": 196.25,
+        "median": -21.5,
+        "p95": 1747.0,
+        "p99": 1747.0,
+        "max": 1747.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 15516.875,
+      "wall_ns": 16744.25,
+      "step_ns": 17078.5
+    }
+  },
+  {
+    "case": 15,
+    "original_case": 58,
+    "name": "TERRATO",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 101.625,
+      "median": 93.0,
+      "p95": 284.0,
+      "p99": 284.0,
+      "max": 284.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 11219.5,
+      "wall_ns": 12090.3125,
+      "step_ns": 16649.9375,
+      "admission_ns": 966.875
+    },
+    "new_tail": {
+      "cpu_ns": 11117.875,
+      "wall_ns": 11988.875,
+      "step_ns": 16561.0625,
+      "admission_ns": 4072.9375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 101.625,
+        "median": 93.0,
+        "p95": 284.0,
+        "p99": 284.0,
+        "max": 284.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 101.4375,
+        "median": 118.0,
+        "p95": 1857.0,
+        "p99": 1857.0,
+        "max": 1857.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 11117.875,
+      "wall_ns": 11988.875,
+      "step_ns": 16561.0625
+    }
+  },
+  {
+    "case": 16,
+    "original_case": 84,
+    "name": "BIO_BLAST",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 101.0,
+      "median": 106.0,
+      "p95": 225.0,
+      "p99": 225.0,
+      "max": 225.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 12918.8125,
+      "wall_ns": 14042.6875,
+      "step_ns": 16609.9375,
+      "admission_ns": 2418.8125
+    },
+    "new_tail": {
+      "cpu_ns": 12817.8125,
+      "wall_ns": 13876.9375,
+      "step_ns": 16530.4375,
+      "admission_ns": 2513.375
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 101.0,
+        "median": 106.0,
+        "p95": 225.0,
+        "p99": 225.0,
+        "max": 225.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 165.75,
+        "median": 62.5,
+        "p95": 1823.0,
+        "p99": 1823.0,
+        "max": 1823.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 12817.8125,
+      "wall_ns": 13876.9375,
+      "step_ns": 16530.4375
+    }
+  },
+  {
+    "case": 17,
+    "original_case": 86,
+    "name": "CONFUSER",
+    "old_calls": 1200,
+    "new_calls": 1200,
+    "passed": true,
+    "terminal": "",
+    "baseline_tail_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "baseline_suite": "ability2",
+    "candidate_suite": "ability3",
+    "complete_baseline_tail_available": true,
+    "matched_overlap_frames": [
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198
+    ],
+    "overlap_cpu_saving_us": {
+      "count": 16,
+      "mean": 50.25,
+      "median": 65.0,
+      "p95": 128.0,
+      "p99": 128.0,
+      "max": 128.0
+    },
+    "baseline_tail": {
+      "cpu_ns": 10974.5625,
+      "wall_ns": 11878.625,
+      "step_ns": 16476.375,
+      "admission_ns": 4447.4375
+    },
+    "new_tail": {
+      "cpu_ns": 10924.3125,
+      "wall_ns": 11843.125,
+      "step_ns": 16485.125,
+      "admission_ns": 4500.5625
+    },
+    "same_frame_saving_us": {
+      "cpu_ns": {
+        "count": 16,
+        "mean": 50.25,
+        "median": 65.0,
+        "p95": 128.0,
+        "p99": 128.0,
+        "max": 128.0
+      },
+      "wall_ns": {
+        "count": 16,
+        "mean": 35.5,
+        "median": 18.0,
+        "p95": 1692.0,
+        "p99": 1692.0,
+        "max": 1692.0
+      }
+    },
+    "candidate_on_baseline_tail_us": {
+      "cpu_ns": 10924.3125,
+      "wall_ns": 11843.125,
+      "step_ns": 16485.125
+    }
+  }
+]

@@ -1,0 +1,1273 @@
+[
+  {
+    "case": 0,
+    "name": "HOLY",
+    "family": "magic",
+    "status": "runtime_failed",
+    "calls": 417,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 114,
+    "first_requested_property_frame": 303,
+    "last_requested_property_frame": 416,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 417,
+      "mean": 12.200074340527578,
+      "median": 11.374,
+      "p95": 15.953,
+      "p99": 16.092,
+      "max": 16.162
+    },
+    "wall_ms": {
+      "count": 417,
+      "mean": 13.159980815347723,
+      "median": 12.273,
+      "p95": 17.197,
+      "p99": 18.822,
+      "max": 19.711
+    },
+    "step_ms": {
+      "count": 417,
+      "mean": 16.81017026378897,
+      "median": 17.316,
+      "p95": 18.869,
+      "p99": 19.325,
+      "max": 20.094
+    },
+    "frequency_observer_us": {
+      "count": 417,
+      "mean": 14.088729016786571,
+      "median": 14.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 159.0
+    },
+    "animation_observer_us": {
+      "count": 417,
+      "mean": 9.0,
+      "median": 9.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "max": 13.0
+    },
+    "core_wall_over_budget_calls": 57,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 881,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.483130113569985,
+    "native_quota_percent": 100.00004664411388,
+    "native_frames": 222965,
+    "converted_frames": 306857,
+    "accepted_minus_prime": 306153
+  },
+  {
+    "case": 1,
+    "name": "METEOR",
+    "family": "magic",
+    "status": "runtime_failed",
+    "calls": 408,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 105,
+    "first_requested_property_frame": 303,
+    "last_requested_property_frame": 407,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 408,
+      "mean": 12.120318627450981,
+      "median": 11.388,
+      "p95": 16.657,
+      "p99": 16.911,
+      "max": 17.115
+    },
+    "wall_ms": {
+      "count": 408,
+      "mean": 13.074259803921569,
+      "median": 12.274000000000001,
+      "p95": 17.991,
+      "p99": 18.54,
+      "max": 20.407
+    },
+    "step_ms": {
+      "count": 408,
+      "mean": 16.81169607843137,
+      "median": 17.265,
+      "p95": 18.657,
+      "p99": 19.221,
+      "max": 20.802
+    },
+    "frequency_observer_us": {
+      "count": 408,
+      "mean": 13.588235294117647,
+      "median": 13.5,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 63.0
+    },
+    "animation_observer_us": {
+      "count": 408,
+      "mean": 8.96078431372549,
+      "median": 9.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 12.0
+    },
+    "core_wall_over_budget_calls": 34,
+    "core_cpu_over_budget_calls": 19,
+    "reported_running_reserve_min_frames": 785,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      384
+    ],
+    "active_calls_per_second": 59.477750364884336,
+    "native_quota_percent": 99.99967729027095,
+    "native_frames": 218152,
+    "converted_frames": 300234,
+    "accepted_minus_prime": 299530
+  },
+  {
+    "case": 2,
+    "name": "ULTIMA",
+    "family": "magic",
+    "status": "bounded_run_completed",
+    "calls": 1200,
+    "error": "",
+    "requested_property_samples": 420,
+    "first_requested_property_frame": 303,
+    "last_requested_property_frame": 722,
+    "subsequent_property_change_observed": true,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 1200,
+      "mean": 11.9630025,
+      "median": 11.381499999999999,
+      "p95": 14.471,
+      "p99": 14.805,
+      "max": 15.002
+    },
+    "wall_ms": {
+      "count": 1200,
+      "mean": 12.827470833333333,
+      "median": 12.283999999999999,
+      "p95": 15.678,
+      "p99": 16.017,
+      "max": 17.763
+    },
+    "step_ms": {
+      "count": 1200,
+      "mean": 16.665633333333332,
+      "median": 17.1895,
+      "p95": 18.123,
+      "p99": 19.388,
+      "max": 19.797
+    },
+    "frequency_observer_us": {
+      "count": 1200,
+      "mean": 13.143333333333333,
+      "median": 12.0,
+      "p95": 15.0,
+      "p99": 50.0,
+      "max": 386.0
+    },
+    "animation_observer_us": {
+      "count": 1200,
+      "mean": 8.735,
+      "median": 8.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 148.0
+    },
+    "core_wall_over_budget_calls": 7,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 2759,
+    "running_pointer_bias_frames": [
+      0
+    ],
+    "active_calls_per_second": 59.9978790749747,
+    "native_quota_percent": 100.00006234165221,
+    "native_frames": 641626,
+    "converted_frames": 883136,
+    "accepted_minus_prime": 883136
+  },
+  {
+    "case": 3,
+    "name": "MELTDOWN",
+    "family": "magic",
+    "status": "runtime_failed",
+    "calls": 420,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 116,
+    "first_requested_property_frame": 304,
+    "last_requested_property_frame": 419,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 420,
+      "mean": 12.401928571428572,
+      "median": 11.590499999999999,
+      "p95": 15.735,
+      "p99": 15.832,
+      "max": 15.963
+    },
+    "wall_ms": {
+      "count": 420,
+      "mean": 13.405330952380952,
+      "median": 12.4285,
+      "p95": 16.994,
+      "p99": 18.594,
+      "max": 19.029
+    },
+    "step_ms": {
+      "count": 420,
+      "mean": 16.81104523809524,
+      "median": 17.2275,
+      "p95": 18.873,
+      "p99": 19.135,
+      "max": 19.689
+    },
+    "frequency_observer_us": {
+      "count": 420,
+      "mean": 14.792857142857143,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 373.0
+    },
+    "animation_observer_us": {
+      "count": 420,
+      "mean": 8.888095238095238,
+      "median": 8.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 74.0
+    },
+    "core_wall_over_budget_calls": 72,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 785,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.48006773363523,
+    "native_quota_percent": 100.00001781190063,
+    "native_frames": 224569,
+    "converted_frames": 309065,
+    "accepted_minus_prime": 308361
+  },
+  {
+    "case": 4,
+    "name": "SLOW_2",
+    "family": "magic",
+    "status": "bounded_run_completed",
+    "calls": 1200,
+    "error": "",
+    "requested_property_samples": 247,
+    "first_requested_property_frame": 319,
+    "last_requested_property_frame": 565,
+    "subsequent_property_change_observed": true,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 1200,
+      "mean": 11.843630833333334,
+      "median": 11.265,
+      "p95": 15.445,
+      "p99": 15.727,
+      "max": 15.917
+    },
+    "wall_ms": {
+      "count": 1200,
+      "mean": 12.722863333333333,
+      "median": 12.034,
+      "p95": 16.661,
+      "p99": 17.025,
+      "max": 18.701
+    },
+    "step_ms": {
+      "count": 1200,
+      "mean": 16.67561,
+      "median": 16.712,
+      "p95": 18.304,
+      "p99": 19.112,
+      "max": 19.722
+    },
+    "frequency_observer_us": {
+      "count": 1200,
+      "mean": 11.858333333333333,
+      "median": 11.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 402.0
+    },
+    "animation_observer_us": {
+      "count": 1200,
+      "mean": 7.730833333333333,
+      "median": 7.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 70.0
+    },
+    "core_wall_over_budget_calls": 56,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 750,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.962945897582586,
+    "native_quota_percent": 100.00006234165221,
+    "native_frames": 641626,
+    "converted_frames": 883136,
+    "accepted_minus_prime": 883136
+  },
+  {
+    "case": 5,
+    "name": "SIREN",
+    "family": "esper",
+    "status": "runtime_failed",
+    "calls": 406,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 138,
+    "first_requested_property_frame": 268,
+    "last_requested_property_frame": 405,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 406,
+      "mean": 12.22802709359606,
+      "median": 11.627500000000001,
+      "p95": 15.985,
+      "p99": 17.204,
+      "max": 17.537
+    },
+    "wall_ms": {
+      "count": 406,
+      "mean": 13.205283251231528,
+      "median": 12.448,
+      "p95": 17.262,
+      "p99": 18.738,
+      "max": 20.838
+    },
+    "step_ms": {
+      "count": 406,
+      "mean": 16.812977832512317,
+      "median": 17.2785,
+      "p95": 18.865,
+      "p99": 19.331,
+      "max": 21.154
+    },
+    "frequency_observer_us": {
+      "count": 406,
+      "mean": 13.657635467980295,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 65.0
+    },
+    "animation_observer_us": {
+      "count": 406,
+      "mean": 9.379310344827585,
+      "median": 9.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "max": 156.0
+    },
+    "core_wall_over_budget_calls": 44,
+    "core_cpu_over_budget_calls": 11,
+    "reported_running_reserve_min_frames": 785,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.47318477146623,
+    "native_quota_percent": 99.99984890594638,
+    "native_frames": 217083,
+    "converted_frames": 298763,
+    "accepted_minus_prime": 298057
+  },
+  {
+    "case": 6,
+    "name": "BAHAMUT",
+    "family": "esper",
+    "status": "runtime_failed",
+    "calls": 577,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 309,
+    "first_requested_property_frame": 268,
+    "last_requested_property_frame": 576,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 577,
+      "mean": 12.55753726169844,
+      "median": 11.811,
+      "p95": 15.617,
+      "p99": 15.847,
+      "max": 16.015
+    },
+    "wall_ms": {
+      "count": 577,
+      "mean": 13.574402079722704,
+      "median": 12.821,
+      "p95": 16.876,
+      "p99": 18.507,
+      "max": 19.331
+    },
+    "step_ms": {
+      "count": 577,
+      "mean": 16.77188734835355,
+      "median": 17.165,
+      "p95": 18.449,
+      "p99": 19.333,
+      "max": 19.649
+    },
+    "frequency_observer_us": {
+      "count": 577,
+      "mean": 13.44367417677643,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 84.0
+    },
+    "animation_observer_us": {
+      "count": 577,
+      "mean": 10.488734835355286,
+      "median": 10.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "max": 371.0
+    },
+    "core_wall_over_budget_calls": 58,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 744,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.618930674032825,
+    "native_quota_percent": 100.00000777920098,
+    "native_frames": 308515,
+    "converted_frames": 424609,
+    "accepted_minus_prime": 423904
+  },
+  {
+    "case": 7,
+    "name": "CARBUNKL",
+    "family": "esper",
+    "status": "runtime_failed",
+    "calls": 425,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 157,
+    "first_requested_property_frame": 268,
+    "last_requested_property_frame": 424,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 425,
+      "mean": 12.538336470588236,
+      "median": 11.697,
+      "p95": 15.812,
+      "p99": 16.031,
+      "max": 16.101
+    },
+    "wall_ms": {
+      "count": 425,
+      "mean": 13.534275294117647,
+      "median": 12.527,
+      "p95": 17.07,
+      "p99": 18.487,
+      "max": 20.86
+    },
+    "step_ms": {
+      "count": 425,
+      "mean": 16.808482352941176,
+      "median": 17.232,
+      "p95": 18.698,
+      "p99": 19.145,
+      "max": 21.254
+    },
+    "frequency_observer_us": {
+      "count": 425,
+      "mean": 19.228235294117646,
+      "median": 14.0,
+      "p95": 15.0,
+      "p99": 17.0,
+      "max": 2192.0
+    },
+    "animation_observer_us": {
+      "count": 425,
+      "mean": 9.143529411764705,
+      "median": 9.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 12.0
+    },
+    "core_wall_over_budget_calls": 53,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 880,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.48926575688683,
+    "native_quota_percent": 99.99982397651142,
+    "native_frames": 227242,
+    "converted_frames": 312746,
+    "accepted_minus_prime": 312040
+  },
+  {
+    "case": 8,
+    "name": "QUASAR",
+    "family": "lore",
+    "status": "runtime_failed",
+    "calls": 432,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 101,
+    "first_requested_property_frame": 331,
+    "last_requested_property_frame": 431,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 432,
+      "mean": 12.320965277777777,
+      "median": 11.6195,
+      "p95": 16.053,
+      "p99": 16.2,
+      "max": 16.249
+    },
+    "wall_ms": {
+      "count": 432,
+      "mean": 13.274298611111112,
+      "median": 12.492999999999999,
+      "p95": 17.32,
+      "p99": 18.918,
+      "max": 21.186
+    },
+    "step_ms": {
+      "count": 432,
+      "mean": 16.80853240740741,
+      "median": 17.249000000000002,
+      "p95": 18.583,
+      "p99": 19.265,
+      "max": 21.581
+    },
+    "frequency_observer_us": {
+      "count": 432,
+      "mean": 14.465277777777779,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 524.0
+    },
+    "animation_observer_us": {
+      "count": 432,
+      "mean": 8.337962962962964,
+      "median": 8.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 48.0
+    },
+    "core_wall_over_budget_calls": 51,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 816,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.48907149952946,
+    "native_quota_percent": 99.9999064875217,
+    "native_frames": 230985,
+    "converted_frames": 317896,
+    "accepted_minus_prime": 317192
+  },
+  {
+    "case": 9,
+    "name": "GRANDTRAIN",
+    "family": "lore",
+    "status": "bounded_run_completed",
+    "calls": 1200,
+    "error": "",
+    "requested_property_samples": 367,
+    "first_requested_property_frame": 338,
+    "last_requested_property_frame": 704,
+    "subsequent_property_change_observed": true,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 1200,
+      "mean": 12.129106666666667,
+      "median": 11.447,
+      "p95": 15.195,
+      "p99": 15.703,
+      "max": 15.979
+    },
+    "wall_ms": {
+      "count": 1200,
+      "mean": 13.0711575,
+      "median": 12.49,
+      "p95": 16.448,
+      "p99": 17.017,
+      "max": 18.709
+    },
+    "step_ms": {
+      "count": 1200,
+      "mean": 16.66536333333333,
+      "median": 17.123,
+      "p95": 18.202,
+      "p99": 19.296,
+      "max": 19.878
+    },
+    "frequency_observer_us": {
+      "count": 1200,
+      "mean": 13.090833333333334,
+      "median": 11.0,
+      "p95": 14.0,
+      "p99": 16.0,
+      "max": 1766.0
+    },
+    "animation_observer_us": {
+      "count": 1200,
+      "mean": 7.971666666666667,
+      "median": 7.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 64.0
+    },
+    "core_wall_over_budget_calls": 42,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 2249,
+    "running_pointer_bias_frames": [
+      0
+    ],
+    "active_calls_per_second": 59.998854021888185,
+    "native_quota_percent": 100.00006234165221,
+    "native_frames": 641626,
+    "converted_frames": 883136,
+    "accepted_minus_prime": 883136
+  },
+  {
+    "case": 10,
+    "name": "RAGE_004",
+    "family": "rage",
+    "status": "runtime_failed",
+    "calls": 345,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 66,
+    "first_requested_property_frame": 279,
+    "last_requested_property_frame": 344,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": true,
+    "rage_ids": [
+      4
+    ],
+    "dance_ids": [],
+    "selection_observed": true,
+    "cpu_ms": {
+      "count": 345,
+      "mean": 12.295486956521739,
+      "median": 11.607,
+      "p95": 16.893,
+      "p99": 17.149,
+      "max": 17.248
+    },
+    "wall_ms": {
+      "count": 345,
+      "mean": 13.120005797101449,
+      "median": 12.226,
+      "p95": 18.185,
+      "p99": 18.495,
+      "max": 21.961
+    },
+    "step_ms": {
+      "count": 345,
+      "mean": 16.84449565217391,
+      "median": 17.16,
+      "p95": 18.822,
+      "p99": 19.698,
+      "max": 22.422
+    },
+    "frequency_observer_us": {
+      "count": 345,
+      "mean": 13.043478260869565,
+      "median": 12.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 164.0
+    },
+    "animation_observer_us": {
+      "count": 345,
+      "mean": 11.597101449275362,
+      "median": 8.0,
+      "p95": 11.0,
+      "p99": 54.0,
+      "max": 406.0
+    },
+    "core_wall_over_budget_calls": 29,
+    "core_cpu_over_budget_calls": 26,
+    "reported_running_reserve_min_frames": 852,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.36213067721351,
+    "native_quota_percent": 99.99980484352355,
+    "native_frames": 184467,
+    "converted_frames": 253870,
+    "accepted_minus_prime": 253164
+  },
+  {
+    "case": 11,
+    "name": "RAGE_005",
+    "family": "rage",
+    "status": "runtime_failed",
+    "calls": 377,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 127,
+    "first_requested_property_frame": 250,
+    "last_requested_property_frame": 376,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": true,
+    "rage_ids": [
+      5
+    ],
+    "dance_ids": [],
+    "selection_observed": true,
+    "cpu_ms": {
+      "count": 377,
+      "mean": 12.409127320954907,
+      "median": 11.583,
+      "p95": 15.881,
+      "p99": 15.955,
+      "max": 16.141
+    },
+    "wall_ms": {
+      "count": 377,
+      "mean": 13.32631299734748,
+      "median": 12.364,
+      "p95": 17.143,
+      "p99": 18.834,
+      "max": 19.726
+    },
+    "step_ms": {
+      "count": 377,
+      "mean": 16.827352785145887,
+      "median": 17.291,
+      "p95": 18.907,
+      "p99": 19.406,
+      "max": 20.101
+    },
+    "frequency_observer_us": {
+      "count": 377,
+      "mean": 13.23342175066313,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 71.0
+    },
+    "animation_observer_us": {
+      "count": 377,
+      "mean": 8.862068965517242,
+      "median": 8.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "max": 48.0
+    },
+    "core_wall_over_budget_calls": 65,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 754,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.42246408723785,
+    "native_quota_percent": 99.9998134711308,
+    "native_frames": 201577,
+    "converted_frames": 277420,
+    "accepted_minus_prime": 276714
+  },
+  {
+    "case": 12,
+    "name": "RAGE_032",
+    "family": "rage",
+    "status": "runtime_failed",
+    "calls": 353,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 103,
+    "first_requested_property_frame": 250,
+    "last_requested_property_frame": 352,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": true,
+    "rage_ids": [
+      32
+    ],
+    "dance_ids": [],
+    "selection_observed": true,
+    "cpu_ms": {
+      "count": 353,
+      "mean": 12.30130028328612,
+      "median": 11.624,
+      "p95": 16.712,
+      "p99": 16.907,
+      "max": 17.02
+    },
+    "wall_ms": {
+      "count": 353,
+      "mean": 13.282201133144476,
+      "median": 12.469,
+      "p95": 17.943,
+      "p99": 19.368,
+      "max": 20.402
+    },
+    "step_ms": {
+      "count": 353,
+      "mean": 16.833390934844193,
+      "median": 17.279,
+      "p95": 18.704,
+      "p99": 19.687,
+      "max": 20.794
+    },
+    "frequency_observer_us": {
+      "count": 353,
+      "mean": 13.563739376770538,
+      "median": 14.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 17.0
+    },
+    "animation_observer_us": {
+      "count": 353,
+      "mean": 9.062322946175637,
+      "median": 9.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "max": 12.0
+    },
+    "core_wall_over_budget_calls": 32,
+    "core_cpu_over_budget_calls": 18,
+    "reported_running_reserve_min_frames": 756,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256
+    ],
+    "active_calls_per_second": 59.401158911562106,
+    "native_quota_percent": 100.00007205494079,
+    "native_frames": 188745,
+    "converted_frames": 259757,
+    "accepted_minus_prime": 259052
+  },
+  {
+    "case": 13,
+    "name": "RAGE_086",
+    "family": "rage",
+    "status": "runtime_failed",
+    "calls": 373,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 122,
+    "first_requested_property_frame": 251,
+    "last_requested_property_frame": 372,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": true,
+    "rage_ids": [
+      86
+    ],
+    "dance_ids": [],
+    "selection_observed": true,
+    "cpu_ms": {
+      "count": 373,
+      "mean": 12.572292225201073,
+      "median": 11.636,
+      "p95": 15.734,
+      "p99": 15.816,
+      "max": 15.933
+    },
+    "wall_ms": {
+      "count": 373,
+      "mean": 13.579348525469168,
+      "median": 12.44,
+      "p95": 16.977,
+      "p99": 18.596,
+      "max": 18.886
+    },
+    "step_ms": {
+      "count": 373,
+      "mean": 16.82650402144772,
+      "median": 17.226,
+      "p95": 18.898,
+      "p99": 19.268,
+      "max": 19.508
+    },
+    "frequency_observer_us": {
+      "count": 373,
+      "mean": 13.742627345844504,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 164.0
+    },
+    "animation_observer_us": {
+      "count": 373,
+      "mean": 9.225201072386058,
+      "median": 9.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "max": 77.0
+    },
+    "core_wall_over_budget_calls": 71,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 755,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.425535104639124,
+    "native_quota_percent": 99.99968712178841,
+    "native_frames": 199438,
+    "converted_frames": 274476,
+    "accepted_minus_prime": 273771
+  },
+  {
+    "case": 14,
+    "name": "RAGE_088",
+    "family": "rage",
+    "status": "runtime_failed",
+    "calls": 401,
+    "error": "Audio publication failed: File descriptor in bad state",
+    "requested_property_samples": 136,
+    "first_requested_property_frame": 265,
+    "last_requested_property_frame": 400,
+    "subsequent_property_change_observed": false,
+    "animation_completion_proven": false,
+    "random_or_conditional": true,
+    "rage_ids": [
+      88
+    ],
+    "dance_ids": [],
+    "selection_observed": true,
+    "cpu_ms": {
+      "count": 401,
+      "mean": 12.489650872817956,
+      "median": 11.604,
+      "p95": 15.748,
+      "p99": 15.871,
+      "max": 15.966
+    },
+    "wall_ms": {
+      "count": 401,
+      "mean": 13.335655860349128,
+      "median": 12.114,
+      "p95": 17.029,
+      "p99": 18.793,
+      "max": 18.908
+    },
+    "step_ms": {
+      "count": 401,
+      "mean": 16.815608478802993,
+      "median": 17.237,
+      "p95": 18.588,
+      "p99": 19.534,
+      "max": 19.759
+    },
+    "frequency_observer_us": {
+      "count": 401,
+      "mean": 12.688279301745636,
+      "median": 13.0,
+      "p95": 15.0,
+      "p99": 15.0,
+      "max": 66.0
+    },
+    "animation_observer_us": {
+      "count": 401,
+      "mean": 10.077306733167083,
+      "median": 8.0,
+      "p95": 12.0,
+      "p99": 50.0,
+      "max": 377.0
+    },
+    "core_wall_over_budget_calls": 68,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 785,
+    "running_pointer_bias_frames": [
+      0,
+      128,
+      256,
+      384
+    ],
+    "active_calls_per_second": 59.463964244511075,
+    "native_quota_percent": 100.00005223639685,
+    "native_frames": 214410,
+    "converted_frames": 295082,
+    "accepted_minus_prime": 294378
+  },
+  {
+    "case": 15,
+    "name": "TERRATO",
+    "family": "esper",
+    "status": "bounded_run_completed",
+    "calls": 1200,
+    "error": "",
+    "requested_property_samples": 400,
+    "first_requested_property_frame": 268,
+    "last_requested_property_frame": 667,
+    "subsequent_property_change_observed": true,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 1200,
+      "mean": 11.984983333333334,
+      "median": 11.36,
+      "p95": 15.337,
+      "p99": 15.605,
+      "max": 15.812
+    },
+    "wall_ms": {
+      "count": 1200,
+      "mean": 12.882335,
+      "median": 12.1605,
+      "p95": 16.53,
+      "p99": 16.958,
+      "max": 18.914
+    },
+    "step_ms": {
+      "count": 1200,
+      "mean": 16.666614166666665,
+      "median": 16.7275,
+      "p95": 18.372,
+      "p99": 19.119,
+      "max": 20.199
+    },
+    "frequency_observer_us": {
+      "count": 1200,
+      "mean": 13.076666666666666,
+      "median": 11.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 1828.0
+    },
+    "animation_observer_us": {
+      "count": 1200,
+      "mean": 7.845833333333333,
+      "median": 7.5,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 47.0
+    },
+    "core_wall_over_budget_calls": 35,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 1162,
+    "running_pointer_bias_frames": [
+      0
+    ],
+    "active_calls_per_second": 59.99543134790286,
+    "native_quota_percent": 100.00006234165221,
+    "native_frames": 641626,
+    "converted_frames": 883136,
+    "accepted_minus_prime": 883136
+  },
+  {
+    "case": 16,
+    "name": "BIO_BLAST",
+    "family": "magitek",
+    "status": "bounded_run_completed",
+    "calls": 1200,
+    "error": "",
+    "requested_property_samples": 321,
+    "first_requested_property_frame": 213,
+    "last_requested_property_frame": 533,
+    "subsequent_property_change_observed": true,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 1200,
+      "mean": 11.850260833333333,
+      "median": 11.326,
+      "p95": 14.933,
+      "p99": 15.096,
+      "max": 15.211
+    },
+    "wall_ms": {
+      "count": 1200,
+      "mean": 12.7599225,
+      "median": 12.159500000000001,
+      "p95": 16.048,
+      "p99": 16.235,
+      "max": 18.135
+    },
+    "step_ms": {
+      "count": 1200,
+      "mean": 16.667133333333332,
+      "median": 17.182499999999997,
+      "p95": 18.348,
+      "p99": 19.308,
+      "max": 19.897
+    },
+    "frequency_observer_us": {
+      "count": 1200,
+      "mean": 13.0025,
+      "median": 12.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 329.0
+    },
+    "animation_observer_us": {
+      "count": 1200,
+      "mean": 8.2,
+      "median": 8.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 61.0
+    },
+    "core_wall_over_budget_calls": 9,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 2737,
+    "running_pointer_bias_frames": [
+      0
+    ],
+    "active_calls_per_second": 59.99351170170946,
+    "native_quota_percent": 100.00006234165221,
+    "native_frames": 641626,
+    "converted_frames": 883136,
+    "accepted_minus_prime": 883136
+  },
+  {
+    "case": 17,
+    "name": "CONFUSER",
+    "family": "magitek",
+    "status": "bounded_run_completed",
+    "calls": 1200,
+    "error": "",
+    "requested_property_samples": 449,
+    "first_requested_property_frame": 214,
+    "last_requested_property_frame": 662,
+    "subsequent_property_change_observed": true,
+    "animation_completion_proven": false,
+    "random_or_conditional": false,
+    "rage_ids": [],
+    "dance_ids": [],
+    "selection_observed": null,
+    "cpu_ms": {
+      "count": 1200,
+      "mean": 12.057151666666666,
+      "median": 11.2095,
+      "p95": 14.945,
+      "p99": 15.079,
+      "max": 15.25
+    },
+    "wall_ms": {
+      "count": 1200,
+      "mean": 12.947648333333333,
+      "median": 12.0015,
+      "p95": 16.062,
+      "p99": 17.746,
+      "max": 18.28
+    },
+    "step_ms": {
+      "count": 1200,
+      "mean": 16.664345833333332,
+      "median": 17.1755,
+      "p95": 18.279,
+      "p99": 19.468,
+      "max": 20.298
+    },
+    "frequency_observer_us": {
+      "count": 1200,
+      "mean": 12.988333333333333,
+      "median": 12.0,
+      "p95": 15.0,
+      "p99": 16.0,
+      "max": 365.0
+    },
+    "animation_observer_us": {
+      "count": 1200,
+      "mean": 8.4925,
+      "median": 8.0,
+      "p95": 11.0,
+      "p99": 12.0,
+      "max": 79.0
+    },
+    "core_wall_over_budget_calls": 19,
+    "core_cpu_over_budget_calls": 0,
+    "reported_running_reserve_min_frames": 2734,
+    "running_pointer_bias_frames": [
+      0
+    ],
+    "active_calls_per_second": 60.00374723401477,
+    "native_quota_percent": 100.00006234165221,
+    "native_frames": 641626,
+    "converted_frames": 883136,
+    "accepted_minus_prime": 883136
+  }
+]

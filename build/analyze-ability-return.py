@@ -11,13 +11,15 @@ def dist(v):
     if not v:return None
     v=sorted(v);at=lambda q:v[max(0,math.ceil(len(v)*q)-1)]
     return {'count':len(v),'mean':statistics.mean(v),'median':statistics.median(v),'p95':at(.95),'p99':at(.99),'max':v[-1]}
-def analyze(archive):
+def analyze(archive,suite='ability1'):
+    assert suite in ('ability1','ability2','ability3')
     archive=archive.resolve();assert archive.is_relative_to(ROOT/'device-evidence')
     a=json.loads((archive/'archive.json').read_text());assert a['fat_clean'] and not a['card_writes']
     for e in a['all_retro_files']:
         p=archive/e['path'];assert p.stat().st_size==e['bytes'] and digest(p)==e['sha256'],e['path']
-    base=archive/'retro/snes-ability1';q=json.loads((base/'suite-identity.json').read_text());plan=json.loads((base/'plan.json').read_text())
-    before=ROOT/'device-evidence'/q['archive'];install=json.loads((before/'ability-installation.json').read_text())
+    base=archive/f'retro/snes-{suite}';q=json.loads((base/'suite-identity.json').read_text());plan=json.loads((base/'plan.json').read_text())
+    assert q['version']==plan['version']==f'1.19-{suite}'
+    before=ROOT/'device-evidence'/q['archive'];install=json.loads((before/('ability-installation.json' if suite=='ability1' else f'{suite}-installation.json')).read_text())
     for n,h in install['payload_hashes'].items():assert digest(base/n)==h,n
     assert digest(archive/'retro/snes-mvp/launch.sh')==install['dispatch_sha256']
     assert not list((archive/'retro').rglob('armed')) and (base/'last-launch').is_file()
@@ -36,7 +38,7 @@ def analyze(archive):
         status='runtime_failed' if rc not in (None,'0') or error else 'incomplete' if rc is None or runs<1200 or len(frames)!=1200 or len(anim)!=1200 else 'bounded_run_completed'
         if status!='bounded_run_completed':failures.append({'case':seq,'name':c['name'],'status':status,'calls':runs,'error':error})
         if session:
-            assert session['mock_backend']=='0' and session['core_crc32']=='5cb51346' and session['build_version']=='1.19-ability1'
+            assert session['mock_backend']=='0' and session['core_crc32']==q['core_crc32'] and session['build_version']==q['version']
             for field in ['held','video_dupes','write_errors','xrun_count','snapshot_load_rejections']:
                 if int(session.get(field,0)):anomalies.append({'case':seq,'field':field,'value':session[field]})
         header=kv(d/'frames.csv');pin.add(header.get('#pin','missing'))
@@ -51,14 +53,15 @@ def analyze(archive):
         changed_after_first=first is not None and any((r['attack'],r['properties'])!=(anim[first]['attack'],anim[first]['properties']) for r in anim[first+1:])
         rage_ids=sorted({int(r[k],16) for r in anim for k in ['rage_terra','rage_wedge','rage_vicks'] if r[k]!='ff'})
         dance_ids=sorted({int(r[k],16) for r in anim for k in ['dance_terra','dance_wedge','dance_vicks'] if r[k]!='ff'})
-        selection_ok=(seq-145 in rage_ids) if c['family']=='rage' else (seq-137 in dance_ids) if c['family']=='dance' else None
+        original_case=c.get('original_case',seq)
+        selection_ok=(original_case-145 in rage_ids) if c['family']=='rage' else (original_case-137 in dance_ids) if c['family']=='dance' else None
         if selection_ok is False:anomalies.append({'case':seq,'field':'selected_command_not_observed','rage_ids':rage_ids,'dance_ids':dance_ids})
         reserve=[int(f['playable']) for f in frames if int(f['state'])==3]
         bias=sorted({int(f['appl'])-int(f['xfer']) for f in frames if int(f['state'])==3})
         active_ns=int(session.get('active_wall_ns',0));count=int(session.get('runs',0));videos=int(session.get('video_submitted',0))
         native=int(session.get('native_audio_frames',0));converted=int(session.get('resampled_enqueued_frames',0));accepted=int(session.get('output_accepted_frames_including_priming',0))-int(session.get('priming_silence_frames',0))
         if accepted+int(session.get('audio_remaining_frames',0))+int(session.get('audio_cleared_frames',0))!=converted:anomalies.append({'case':seq,'field':'PCM_accounting'})
-        if videos!=count:anomalies.append({'case':seq,'field':'draw_count','calls':count,'videos':videos})
+        if videos!=count and not (status=='runtime_failed' and videos==count-1):anomalies.append({'case':seq,'field':'draw_count','calls':count,'videos':videos})
         total_runs+=count;total_videos+=videos;total_native+=native;total_converted+=converted;total_accepted+=accepted;active+=active_ns;elapsed+=int(session.get('session_elapsed_ns',0))
         item={'case':seq,'name':c['name'],'family':c['family'],'status':status,'calls':runs,'error':error,
             'requested_property_samples':len(matched),'first_requested_property_frame':first,'last_requested_property_frame':last,
@@ -70,7 +73,7 @@ def analyze(archive):
             'active_calls_per_second':count*1e9/active_ns if active_ns else None,'native_quota_percent':100*native/(count*534.688) if count else None,
             'native_frames':native,'converted_frames':converted,'accepted_minus_prime':accepted}
         results.append(item);families.setdefault(c['family'],[]).append(item)
-    summary={'archive':archive.name,'card_writes':0,'fat_clean':True,'archived_files_verified':len(a['all_retro_files']),
+    summary={'archive':archive.name,'version':q['version'],'card_writes':0,'fat_clean':True,'archived_files_verified':len(a['all_retro_files']),
         'exact_installed_payload_verified':len(install['payload_hashes']),'marker_consumed':True,'protected_files_unchanged':len(unchanged),'changed_prior_files':changed,
         'cases_started':sum(r['status']!='not_started' for r in results),'bounded_cases_completed':sum(r['status']=='bounded_run_completed' for r in results),
         'runtime_failed_cases':failures,'accounting_or_selection_anomalies':anomalies,'calls':total_runs,'video_submitted':total_videos,
@@ -88,4 +91,4 @@ def analyze(archive):
         fields=['case','name','family','status','calls','requested_property_samples','selection_observed','active_calls_per_second','reported_running_reserve_min_frames','core_wall_over_budget_calls','core_cpu_over_budget_calls']
         w=csv.DictWriter(f,fields,extrasaction='ignore');w.writeheader();w.writerows(results)
     print(json.dumps({k:v for k,v in summary.items() if k not in ('cases_requested_properties_not_observed','accounting_or_selection_anomalies')},indent=2))
-if __name__=='__main__':analyze(Path(sys.argv[1]))
+if __name__=='__main__':analyze(Path(sys.argv[1]),sys.argv[2] if len(sys.argv)>2 else 'ability1')

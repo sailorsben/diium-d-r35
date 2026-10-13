@@ -1,5 +1,23 @@
 # Changelog
 
+## Ability3 physical return rejects math cache as deficit fix — 2026-10-13
+
+Archive5,021 returned files; verify79 installed payloads, consumed marker and
+4,811 unchanged prior files, only swap differs. FAT clean,0 card writes/rearm.
+The same6/18 cases complete; the same12 fail native SETUP/errno77 with384-frame
+terminal pointer excess. All properties/Rage selections and PCM accounting verify.
+Matched gains30–98us in several failed tails resemble50–102us control changes;
+Meteor/Siren/Bahamut/Quasar and some Rages regress. Remaining tail deficits
+range0.493–1.942ms. No C/signal crash retained; no deficit closure or unit price
+inferred. Preserve ability3 as a negative result; ability2 remains source baseline.
+
+Existing ARM half-add function grows stack76→148 bytes and adds predicate/table/
+stack work before original classification. Record this as plausible overhead,
+not A7 cycle pricing. Generalize read-only return analysis to exact suite IDs
+and correct Rage mappings; report partial/missing old-tail overlap explicitly.
+Four bounded receipts preserve all789 historical manifest entries. I: remains
+unarmed and next boot stock. [Measured return](docs/snes-ability3-return.md).
+
 ## Ability2 measured return and fixed-math reuse experiment — 2026-10-13
 
 Archive4,813 files, verify79 payloads and4,603 protected prior files; only swap

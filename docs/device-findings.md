@@ -1,5 +1,13 @@
 # Device findings
 
+**Latest2026-10-13:** [ability3 returned](snes-ability3-return.md):same6/18
+complete and12 native SETUP/errno77 failures. Fixed-math reuse does not close
+the remaining0.493–1.942ms tail deficits; small gains resemble control variation,
+and some cases regress. No row/cache unit prices inferred.5,021 files archived,
+79 payloads and4,811 protected prior files verify, only swap differs, FAT clean.
+I: unarmed,0 writes, next boot stock. Ability2 remains baseline; ability3 is a
+measured negative result. Older arming/pending claims below are superseded.
+
 **Latest2026-10-13:** [ability2 return](snes-ability2-return.md) verifies4,813
 files and clean FAT.6/18 complete;12 native SETUP/errno77 failures remain.
 Aligned net A7 CPU savings1.880/1.740/2.012/2.572ms Holy/Meteor/Ultima/GrandTrain;

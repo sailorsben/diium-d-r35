@@ -6,7 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
-- **Ability2 evaluated; ability3 armed on I:**6/18 complete;
+- **Ability3 returned; I: unarmed:**same6/18 complete and12 native PCM failures.
+  Fixed-math cache does not close deficits; matched CPU gains are small and
+  comparable to controls, with some regressions. Preserve it as a negative result;
+  ability2 remains the source baseline.5,021 files archived,79 payloads and4,811
+  protected prior files verified, FAT clean,0 card writes. Next boot stock.
+  [Measured verdict and next evidence](docs/snes-ability3-return.md).
+- **Historical ability3 staging:**6/18 ability2 cases complete;
   12 native PCM failures remain. Aligned A7 CPU savings are1.88ms Holy,
   1.74ms Meteor,2.01ms Ultima and2.57ms GrandTrain; Ultima/GrandTrain now finish.
   Bio Blast/Confuser stay clean. New fixed-operand math-palette reuse passes

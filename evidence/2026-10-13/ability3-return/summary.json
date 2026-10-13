@@ -1,0 +1,250 @@
+{
+  "archive": "a7-pair-before-20261013T172104Z",
+  "version": "1.19-ability3",
+  "card_writes": 0,
+  "fat_clean": true,
+  "archived_files_verified": 5021,
+  "exact_installed_payload_verified": 79,
+  "marker_consumed": true,
+  "protected_files_unchanged": 4811,
+  "changed_prior_files": [
+    "retro/swapfile"
+  ],
+  "cases_started": 18,
+  "bounded_cases_completed": 6,
+  "runtime_failed_cases": [
+    {
+      "case": 0,
+      "name": "HOLY",
+      "status": "runtime_failed",
+      "calls": 417,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 1,
+      "name": "METEOR",
+      "status": "runtime_failed",
+      "calls": 408,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 3,
+      "name": "MELTDOWN",
+      "status": "runtime_failed",
+      "calls": 420,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 5,
+      "name": "SIREN",
+      "status": "runtime_failed",
+      "calls": 406,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 6,
+      "name": "BAHAMUT",
+      "status": "runtime_failed",
+      "calls": 577,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 7,
+      "name": "CARBUNKL",
+      "status": "runtime_failed",
+      "calls": 425,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 8,
+      "name": "QUASAR",
+      "status": "runtime_failed",
+      "calls": 432,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 10,
+      "name": "RAGE_004",
+      "status": "runtime_failed",
+      "calls": 345,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 11,
+      "name": "RAGE_005",
+      "status": "runtime_failed",
+      "calls": 377,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 12,
+      "name": "RAGE_032",
+      "status": "runtime_failed",
+      "calls": 353,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 13,
+      "name": "RAGE_086",
+      "status": "runtime_failed",
+      "calls": 373,
+      "error": "Audio publication failed: File descriptor in bad state"
+    },
+    {
+      "case": 14,
+      "name": "RAGE_088",
+      "status": "runtime_failed",
+      "calls": 401,
+      "error": "Audio publication failed: File descriptor in bad state"
+    }
+  ],
+  "accounting_or_selection_anomalies": [
+    {
+      "case": 0,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 1,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 3,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 5,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 6,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 7,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 8,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 10,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 11,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 12,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 13,
+      "field": "write_errors",
+      "value": "1"
+    },
+    {
+      "case": 14,
+      "field": "write_errors",
+      "value": "1"
+    }
+  ],
+  "calls": 12134,
+  "video_submitted": 12122,
+  "native_frames": 6487904,
+  "converted_frames": 8929591,
+  "accepted_minus_prime": 8921132,
+  "active_seconds": 202.977073,
+  "summed_session_seconds_excluding_between_case_flushes": 217.037138,
+  "active_calls_per_second": 59.78015063799841,
+  "native_quota_percent": 99.9999970406468,
+  "frequency_khz_observed": [],
+  "frequency_pin_reports": [
+    "not_exposed_or_not_writable"
+  ],
+  "core_cpu_ms": {
+    "count": 12134,
+    "mean": 12.135913960771386,
+    "median": 11.396,
+    "p95": 15.607,
+    "p99": 16.114,
+    "max": 17.537
+  },
+  "core_wall_ms": {
+    "count": 12134,
+    "mean": 13.057359403329487,
+    "median": 12.259,
+    "p95": 16.855,
+    "p99": 18.141,
+    "max": 21.961
+  },
+  "frequency_observer_us": {
+    "count": 12134,
+    "mean": 13.3870117026537,
+    "median": 13.0,
+    "p95": 15.0,
+    "p99": 16.0,
+    "max": 2192.0
+  },
+  "animation_observer_us": {
+    "count": 12134,
+    "mean": 8.67677600131861,
+    "median": 8.0,
+    "p95": 11.0,
+    "p99": 12.0,
+    "max": 406.0
+  },
+  "cases_requested_properties_observed": 18,
+  "cases_requested_properties_not_observed": [],
+  "production_gate_passed": false,
+  "animation_completion_proven": false,
+  "limits": [
+    "Frame-boundary cached properties are not complete animation-thread proof.",
+    "One seeded Dance/Rage outcome does not cover every possible branch.",
+    "Whole-core timings do not price renderer e/r/b or identify PPU subphases.",
+    "Observed timing includes instrumentation; no calibration subtraction."
+  ],
+  "family_summary": {
+    "magic": {
+      "started": 5,
+      "bounded_completed": 2,
+      "requested_properties_observed": 5,
+      "mean_core_cpu_ms": 12.105790974548093
+    },
+    "esper": {
+      "started": 4,
+      "bounded_completed": 1,
+      "requested_properties_observed": 4,
+      "mean_core_cpu_ms": 12.327221039804018
+    },
+    "lore": {
+      "started": 2,
+      "bounded_completed": 1,
+      "requested_properties_observed": 2,
+      "mean_core_cpu_ms": 12.225035972222223
+    },
+    "rage": {
+      "started": 5,
+      "bounded_completed": 0,
+      "requested_properties_observed": 5,
+      "mean_core_cpu_ms": 12.413571531756359
+    },
+    "magitek": {
+      "started": 2,
+      "bounded_completed": 2,
+      "requested_properties_observed": 2,
+      "mean_core_cpu_ms": 11.95370625
+    }
+  }
+}
