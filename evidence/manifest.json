@@ -6357,6 +6357,54 @@
       "published": "evidence/2026-10-13/full-fidelity-paths/old-integration-counterexample.txt",
       "source_sha256": "354ad20c5dd86b42b08bd20ed0044750cb3c8ee7a3b05171cb143171d62c5945",
       "published_sha256": "354ad20c5dd86b42b08bd20ed0044750cb3c8ee7a3b05171cb143171d62c5945"
+    },
+    {
+      "source": "build/fullpaths-private-v2/qualification.json",
+      "published": "evidence/2026-10-13/fullpaths-measurement/qualification.json",
+      "source_sha256": "cea04546f49460d8ad98afd1d9e7cde3f61e19bcbb77fd05b608ad700678b01c",
+      "published_sha256": "cea04546f49460d8ad98afd1d9e7cde3f61e19bcbb77fd05b608ad700678b01c"
+    },
+    {
+      "source": "build/fullpaths-private-v2/verification.json",
+      "published": "evidence/2026-10-13/fullpaths-measurement/identity.json",
+      "source_sha256": "c7428aed55e4ed16c5177221a2ba1a0ff12a3ff04cda89c9f0823c0685c6beba",
+      "published_sha256": "61363df7fd430883235478404f20aa3c525e901a8b002115eeca5cde4889683d"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T205010Z/fullpaths-installation.json",
+      "published": "evidence/2026-10-13/fullpaths-measurement/installation.json",
+      "source_sha256": "b366cd7c03a9672f69f8d61fa003b0430e2f174494572cf0f4b83d197d9e1df9",
+      "published_sha256": "9193f98e3e9729ccb1e3ea65f39f41b4b45f18bbe4bf11c70a6f17687b018da7"
+    },
+    {
+      "source": "build/fullpaths-private-v2/headroom-check.log",
+      "published": "evidence/2026-10-13/fullpaths-measurement/headroom-check.txt",
+      "source_sha256": "99bf9641a23ad092a9d88425e87f715b819559347c105fffb8ad654db49871aa",
+      "published_sha256": "99bf9641a23ad092a9d88425e87f715b819559347c105fffb8ad654db49871aa"
+    },
+    {
+      "source": "build/fullpaths-private-v2/model-check.log",
+      "published": "evidence/2026-10-13/fullpaths-measurement/model-check.txt",
+      "source_sha256": "a59e26f565b2727acfc01c77fe7fe3317e3479a930ae2eaa51c9f6098ff1e415",
+      "published_sha256": "a59e26f565b2727acfc01c77fe7fe3317e3479a930ae2eaa51c9f6098ff1e415"
+    },
+    {
+      "source": "build/fullpaths-private-v2/native.log",
+      "published": "evidence/2026-10-13/fullpaths-measurement/native-check.txt",
+      "source_sha256": "da409c33cfe17356aaaf0ea7d617ced5638bfa1129d78640eda56e2b464c744b",
+      "published_sha256": "da409c33cfe17356aaaf0ea7d617ced5638bfa1129d78640eda56e2b464c744b"
+    },
+    {
+      "source": "build/fullpaths-private-v2/wrapper.log",
+      "published": "evidence/2026-10-13/fullpaths-measurement/wrapper-check.txt",
+      "source_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "published_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3"
+    },
+    {
+      "source": "build/fullpaths-private-v2/public-plan.json",
+      "published": "evidence/2026-10-13/fullpaths-measurement/plan.json",
+      "source_sha256": "033fa9a3fe94ab941c4e844e1ba908d327e8eecfecf2ed158ee0ce2376225aad",
+      "published_sha256": "4f4b58bb53377a55ca6bb04f9aef63dc4abf9818f19f9774480960342363c01a"
     }
   ]
 }

@@ -1,0 +1,796 @@
+{
+  "version": "1.19-fullpaths1",
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 1,
+      "fixture": 0,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 2,
+      "fixture": 0,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 3,
+      "fixture": 0,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 4,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 5,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 6,
+      "fixture": 1,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 7,
+      "fixture": 1,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 8,
+      "fixture": 1,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 9,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 10,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 11,
+      "fixture": 3,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 12,
+      "fixture": 3,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 13,
+      "fixture": 3,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 14,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 15,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 16,
+      "fixture": 5,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 17,
+      "fixture": 5,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 18,
+      "fixture": 5,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 19,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 20,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 21,
+      "fixture": 6,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 22,
+      "fixture": 6,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 23,
+      "fixture": 6,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 24,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 25,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 26,
+      "fixture": 7,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 27,
+      "fixture": 7,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 28,
+      "fixture": 7,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 29,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 30,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 31,
+      "fixture": 8,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 32,
+      "fixture": 8,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 33,
+      "fixture": 8,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 34,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 35,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 36,
+      "fixture": 10,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 37,
+      "fixture": 10,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 38,
+      "fixture": 10,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 39,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 40,
+      "fixture": 16,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 41,
+      "fixture": 16,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 42,
+      "fixture": 16,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 43,
+      "fixture": 16,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 44,
+      "fixture": 16,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 45,
+      "fixture": 17,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 46,
+      "fixture": 17,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 47,
+      "fixture": 17,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 48,
+      "fixture": 17,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0
+    },
+    {
+      "run": 49,
+      "fixture": 17,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0
+    },
+    {
+      "run": 50,
+      "fixture": 17,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 51,
+      "fixture": 17,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 52,
+      "fixture": 17,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 53,
+      "fixture": 17,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 54,
+      "fixture": 17,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 55,
+      "fixture": 16,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 56,
+      "fixture": 16,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 57,
+      "fixture": 16,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 58,
+      "fixture": 16,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 59,
+      "fixture": 16,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 60,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 61,
+      "fixture": 10,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 62,
+      "fixture": 10,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 63,
+      "fixture": 10,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 64,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 65,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 66,
+      "fixture": 8,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 67,
+      "fixture": 8,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 68,
+      "fixture": 8,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 69,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 70,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 71,
+      "fixture": 7,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 72,
+      "fixture": 7,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 73,
+      "fixture": 7,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 74,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 75,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 76,
+      "fixture": 6,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 77,
+      "fixture": 6,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 78,
+      "fixture": 6,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 79,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 80,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 81,
+      "fixture": 5,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 82,
+      "fixture": 5,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 83,
+      "fixture": 5,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 84,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 85,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 86,
+      "fixture": 3,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 87,
+      "fixture": 3,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 88,
+      "fixture": 3,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 89,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 90,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 91,
+      "fixture": 1,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 92,
+      "fixture": 1,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 93,
+      "fixture": 1,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 94,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 95,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1
+    },
+    {
+      "run": 96,
+      "fixture": 0,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1
+    },
+    {
+      "run": 97,
+      "fixture": 0,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 98,
+      "fixture": 0,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 99,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    }
+  ],
+  "contexts": [
+    {
+      "fixture": 0,
+      "name": "HOLY",
+      "family": "magic"
+    },
+    {
+      "fixture": 1,
+      "name": "METEOR",
+      "family": "magic"
+    },
+    {
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "family": "magic"
+    },
+    {
+      "fixture": 5,
+      "name": "SIREN",
+      "family": "esper"
+    },
+    {
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "family": "esper"
+    },
+    {
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "family": "esper"
+    },
+    {
+      "fixture": 8,
+      "name": "QUASAR",
+      "family": "lore"
+    },
+    {
+      "fixture": 10,
+      "name": "RAGE_004",
+      "family": "rage"
+    },
+    {
+      "fixture": 16,
+      "name": "BIO_BLAST",
+      "family": "magitek"
+    },
+    {
+      "fixture": 17,
+      "name": "CONFUSER",
+      "family": "magitek"
+    }
+  ],
+  "cores": {
+    "baseline": {
+      "sha256": "53c6d1f6c0253cb1c6e7b81ba22192f3739fa3f9605837c64691085918e1106b",
+      "crc32": "4eef8dba",
+      "bytes": 798312
+    },
+    "fixed": {
+      "sha256": "a3bd2a9772d7388cd3f0986c5c867463485483b5d1330cd4b76e21a0e6a075c5",
+      "crc32": "762da0aa",
+      "bytes": 806796
+    },
+    "subscreen": {
+      "sha256": "8a450dbb9bdef49d218fe7aa6403372401ea87f8c1b4553e630f685607c564fd",
+      "crc32": "976a158e",
+      "bytes": 798332
+    },
+    "dsp": {
+      "sha256": "d6ac3b9714d63caf79b5df55ac62e1667b4e3377cf4fe1405fa5fb985bac018a",
+      "crc32": "2cfbc69a",
+      "bytes": 798376
+    },
+    "combined": {
+      "sha256": "6608a657a1e4eae9ac067dc305310f5ee1e19844374c92a8f4f2ec8ba47b1483",
+      "crc32": "a0db81da",
+      "bytes": 806884
+    }
+  },
+  "nominal_minutes": 33.376309,
+  "every_frame": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "A7_result": "PENDING",
+  "new_combination_exact_calls": 21600,
+  "actual_offline_controller_calls": 120000,
+  "warmup_calls": 120,
+  "headroom_fraction": 0.2,
+  "period_ns": 16688154.5,
+  "target_ns": 13350523.6,
+  "logging": "RAM; diagnostic flush after audio join and display idle; included observer costs"
+}

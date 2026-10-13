@@ -6,12 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
-- **Fullpaths measurement prepared:** 100 automatic runs compare baseline,
+- **Fullpaths measurement armed on I:** 100 automatic runs compare baseline,
   fixed-color rows, subscreen composition, DSP removal and their combination
   across ten contexts in two reversed orders. New combination exactness,
   actual controller, native fault/retry/deficit and wrapper checks pass offline.
   Every frame retained; RAM logging and explicit pacing accounting measure
-  included costs. A7 saving/headroom pending, production gate false.
+  included costs. Fresh 5,021-file archive, 5,020 protected old files and 91
+  verified payloads; final FAT clean. A7 saving/headroom pending, production
+  gate false. Cold boot starts automatically; allow about 40 minutes.
   [Measurement design](docs/snes-fullpaths-measurement.md),
   [physical instructions](docs/snes-fullpaths-test.txt).
 - **Every frame required; three new paths qualified offline:** fixed-color row

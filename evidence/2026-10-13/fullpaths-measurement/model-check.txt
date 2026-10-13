@@ -1,0 +1,1 @@
+PASS synthetic model only: matched 2000us difference, negative combination interaction, target miss, missing flip and incomplete heavy interval rejection; no physical performance claim

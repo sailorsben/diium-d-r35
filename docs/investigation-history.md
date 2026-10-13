@@ -1,5 +1,30 @@
 # Investigation history and negative results
 
+## Measure each full-frame path and interaction on the A7 — 2026-10-13
+
+Stage a measurement-only five-core crossover under explicit new authority.
+Standalone binaries/proofs remain exact; the new combination passes 18 original
+contexts. The actual 100-run controller, native faults/retries/deficit and wrapper
+ownership pass offline. Distinguish full frame submissions in mock from actual
+hardware flips; never label mock costs physical. Independent accounting rejects
+pointer drift, missing frames and clock/wait faults. Synthetic analyzer fixtures
+catch missing flips and incomplete heavy-state overlap instead of calling them
+zero-cost savings. These checks do not price the paths.
+
+Only fresh-observation, capacity-available, surplus-lead condition waits count as
+intentional pacing. Other admission work stays in the budget. Included observers
+and worker CPU produce a conservative service proxy, with remaining complete-
+effect/recovery/final-worker boundaries explicit. Two reversed orders reveal
+variation and interaction; they do not establish worst-case or universal proof.
+
+Archive/hash/FAT guards protect all 5,020 old files except the authorized dispatch
+after a 5,021-file collection. New 91-file payload and marker verify; I: armed.
+Generator expected an obsolete optional-profile guard; retained assertion failure
+corrected by asserting existing disabled clocks. New parser avoids unsupported
+C23 strtoul ABI; independent fixture bounds its path to satisfy Werror. A return
+parser correction uses real display_flipped instead of a nonexistent drawings
+field. No A7 saving inferred from these corrections. [Design](snes-fullpaths-measurement.md).
+
 ## Full frames, removable work and a missed clipping boundary — 2026-10-13
 
 New isolated fixed-row/subscreen/DSP paths pass 129,600 original-command

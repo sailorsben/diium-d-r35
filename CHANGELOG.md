@@ -1,5 +1,33 @@
 # Changelog
 
+## Five-core A7 savings and headroom measurement staged — 2026-10-13
+
+Explicit measurement-only authority stages 1.19-fullpaths1 in its own I: folder.
+Five hash-pinned counter-free cores compare ability2 baseline, fixed-color rows,
+true-subscreen shortcuts, DSP dead interpolation and their new combination.
+Ten valid-target contexts repeat in two reversed case/variant orders: 100 runs,
+1,200 calls each, nominal 33.4 minutes plus load/flush. Every frame/sample kept.
+
+New combination passes 21,600 exact pixel/PCM/state comparisons. Reuse standalone
+proof by hash; actual new controller passes all 100 runs/120,000 calls offline.
+Native fault/retry/sustained-deficit and exact wrapper seams pass. Nine accounting
+fixtures reject false headroom; synthetic model checks matched saving, negative
+interaction, missing flips and missing heavy overlap. No QEMU timing is A7 data.
+
+Kernel clocks and RAM-only per-frame records include observers and all new costs.
+Distinguish pure intentional pacing from required admission; conservative service
+proxy retains other waits and adds worker CPU. Log distributions, pointer validity,
+full-frame completion and a conditional 20% headroom flag; complete recovery and
+final worker service remain required on return. Source-generator guard/C23 parser
+corrections and the retained failed construction are documented.
+
+Archive 5,021 files before writing; preserve 5,020 old files and all production/
+progress hashes. Verify 91 new payloads and clean FAT after payload/arming.
+Only known one-shot dispatch changes; no production core or init replacement.
+Eight public bounded receipts preserve 803 historical manifest entries. Hardware
+saving/headroom pending, production gate false. [Design](docs/snes-fullpaths-measurement.md),
+[test](docs/snes-fullpaths-test.txt).
+
 ## Full-frame mechanisms and independent boundary qualification — 2026-10-13
 
 Keep every frame; no evidence proves full-frame execution impossible on the A7.

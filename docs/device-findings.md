@@ -1,5 +1,14 @@
 # Device findings
 
+**Current 2026-10-13 measurement staging:** I: is armed for fullpaths1, a separate
+100-run crossover of baseline, three individual paths and their combination.
+Every frame retained; ten valid-target contexts, two reversed orders, RAM records
+and explicit pacing/worker accounting. New combination/controller/native/wrapper
+checks pass offline; new A7 savings and headroom remain pending. Fresh 5,021-file
+archive, 5,020 protected old files, 91 verified payloads, final FAT clean.
+Production gate false. Earlier unarmed claims below describe earlier returns.
+[Measurement contract](snes-fullpaths-measurement.md), [instructions](snes-fullpaths-test.txt).
+
 **Latest 2026-10-13 offline work:** every frame remains required; no measured
 lower bound proves a hardware limit. Three separate full-fidelity mechanisms
 pass pixels/PCM/state qualification; fixed-row batching also passes 406 bounded

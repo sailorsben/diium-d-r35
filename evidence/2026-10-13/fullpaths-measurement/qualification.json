@@ -1,0 +1,1301 @@
+{
+  "version": "1.19-fullpaths1",
+  "passed": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "frameskip": false,
+  "A7_saving_measured": false,
+  "QEMU_timings_used": false,
+  "card_writes": 0,
+  "combined_exact_comparisons": [
+    {
+      "case": 0,
+      "name": "HOLY",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "64e238ec8248e19baa3c4762e37dc643409da997f94c24df7363b6bdd90962b1"
+    },
+    {
+      "case": 1,
+      "name": "METEOR",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "95629192d17df0f9af175cf33e46fb88c19eb8876f684ae91306784882e71e88"
+    },
+    {
+      "case": 2,
+      "name": "ULTIMA",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "b4dabaa24f186546234380fe3e22bf577cfb1efa9b0c0d79a0201d8302f85902"
+    },
+    {
+      "case": 3,
+      "name": "MELTDOWN",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "40e9d6ddb6ac140598e7ed90e37dec5096ccbcf8d2c95b8969c13ca311ce9b0c"
+    },
+    {
+      "case": 4,
+      "name": "SLOW_2",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "e669cc50b1f88859c74c9114d6d2206a680ca0859398165d4a34ab38d20dd41c"
+    },
+    {
+      "case": 5,
+      "name": "SIREN",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "e0ec8c5795ef13490003294efe074ec92f6c84295f0bf77b3aa964afefa6142b"
+    },
+    {
+      "case": 6,
+      "name": "BAHAMUT",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "230293de187f7fb6c5327e946038e0a71124feb50b9e7563590c63126c1519a5"
+    },
+    {
+      "case": 7,
+      "name": "CARBUNKL",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "182d0ea6ed29fa7b1b8bf74046454b55858a118bd7349fb579488511389ae304"
+    },
+    {
+      "case": 8,
+      "name": "QUASAR",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "a0eb5e4b400206fe3f7afe25c93cef9f15a1455e6f80916fdacfa8decacf860b"
+    },
+    {
+      "case": 9,
+      "name": "GRANDTRAIN",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "b3be0193179656cbf2b7e3c1cf74de8b244c7c407fe309f3f9096afad885a69d"
+    },
+    {
+      "case": 10,
+      "name": "RAGE_004",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "2316d54dc66511df11d447809277a1f6d550e097c603ae44a622d5b54900138b"
+    },
+    {
+      "case": 11,
+      "name": "RAGE_005",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "64e238ec8248e19baa3c4762e37dc643409da997f94c24df7363b6bdd90962b1"
+    },
+    {
+      "case": 12,
+      "name": "RAGE_032",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "95629192d17df0f9af175cf33e46fb88c19eb8876f684ae91306784882e71e88"
+    },
+    {
+      "case": 13,
+      "name": "RAGE_086",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "40e9d6ddb6ac140598e7ed90e37dec5096ccbcf8d2c95b8969c13ca311ce9b0c"
+    },
+    {
+      "case": 14,
+      "name": "RAGE_088",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "e669cc50b1f88859c74c9114d6d2206a680ca0859398165d4a34ab38d20dd41c"
+    },
+    {
+      "case": 15,
+      "name": "TERRATO",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "4f93f44b1eb3db9c2190d719be5f2fa7a3a3253d8e221b4c86a1f10389cdf2d1"
+    },
+    {
+      "case": 16,
+      "name": "BIO_BLAST",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "aebc515c682610d459eb90a00eb528bd641e9c1cdb4a799ad7068cbdc0ac5a0e"
+    },
+    {
+      "case": 17,
+      "name": "CONFUSER",
+      "passed": true,
+      "calls": 1200,
+      "log_sha256": "f892e6fe525ed8351fb6d4543bce598f37dd7188c6dc604d6b684131a241d3f5"
+    }
+  ],
+  "reused_standalone_proof": [
+    {
+      "variant": "fixed",
+      "proof": "build/fixed-rows-private-v3/qualification.json",
+      "proof_sha256": "cccfd85e9571c785781e6fb517631ffa3ce3678fd5cc4bfe75dcdd5d140484c7",
+      "core_sha256": "a3bd2a9772d7388cd3f0986c5c867463485483b5d1330cd4b76e21a0e6a075c5",
+      "cases": 18,
+      "calls_per_case": 1200
+    },
+    {
+      "variant": "subscreen",
+      "proof": "build/subscreen-rows-private-v1/qualification.json",
+      "proof_sha256": "f5ec1e0875b7c0ce754f4a52c28770ee9c9883e4dede27e660bf487ac0a06d30",
+      "core_sha256": "8a450dbb9bdef49d218fe7aa6403372401ea87f8c1b4553e630f685607c564fd",
+      "cases": 18,
+      "calls_per_case": 1200
+    },
+    {
+      "variant": "dsp",
+      "proof": "build/dsp-dead-work-private-v1/qualification.json",
+      "proof_sha256": "41beb39795c0271fdf414c891a5111298deb783f30be8eefcfea3f79ba1db050",
+      "core_sha256": "d6ac3b9714d63caf79b5df55ac62e1667b4e3377cf4fe1405fa5fb985bac018a",
+      "cases": 18,
+      "calls_per_case": 1200
+    }
+  ],
+  "actual_controller_runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 1,
+      "fixture": 0,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 2,
+      "fixture": 0,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 3,
+      "fixture": 0,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 4,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 5,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 6,
+      "fixture": 1,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 7,
+      "fixture": 1,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 8,
+      "fixture": 1,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 9,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 10,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 11,
+      "fixture": 3,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 12,
+      "fixture": 3,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 13,
+      "fixture": 3,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 14,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 15,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 16,
+      "fixture": 5,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 17,
+      "fixture": 5,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 18,
+      "fixture": 5,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 19,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 20,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 21,
+      "fixture": 6,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 22,
+      "fixture": 6,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 23,
+      "fixture": 6,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 24,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 25,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 26,
+      "fixture": 7,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 27,
+      "fixture": 7,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 28,
+      "fixture": 7,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 29,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 30,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 31,
+      "fixture": 8,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 32,
+      "fixture": 8,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 33,
+      "fixture": 8,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 34,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 35,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 36,
+      "fixture": 10,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 37,
+      "fixture": 10,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 38,
+      "fixture": 10,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 39,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 40,
+      "fixture": 16,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 41,
+      "fixture": 16,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 42,
+      "fixture": 16,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 43,
+      "fixture": 16,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 44,
+      "fixture": 16,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 45,
+      "fixture": 17,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 46,
+      "fixture": 17,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 47,
+      "fixture": 17,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 48,
+      "fixture": 17,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 49,
+      "fixture": 17,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 50,
+      "fixture": 17,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 51,
+      "fixture": 17,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 52,
+      "fixture": 17,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 53,
+      "fixture": 17,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 54,
+      "fixture": 17,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 55,
+      "fixture": 16,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 56,
+      "fixture": 16,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 57,
+      "fixture": 16,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 58,
+      "fixture": 16,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 59,
+      "fixture": 16,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 60,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 61,
+      "fixture": 10,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 62,
+      "fixture": 10,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 63,
+      "fixture": 10,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 64,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 65,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 66,
+      "fixture": 8,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 67,
+      "fixture": 8,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 68,
+      "fixture": 8,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 69,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 70,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 71,
+      "fixture": 7,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 72,
+      "fixture": 7,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 73,
+      "fixture": 7,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 74,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 75,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 76,
+      "fixture": 6,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 77,
+      "fixture": 6,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 78,
+      "fixture": 6,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 79,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 80,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 81,
+      "fixture": 5,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 82,
+      "fixture": 5,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 83,
+      "fixture": 5,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 84,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 85,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 86,
+      "fixture": 3,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 87,
+      "fixture": 3,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 88,
+      "fixture": 3,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 89,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 90,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 91,
+      "fixture": 1,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 92,
+      "fixture": 1,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 93,
+      "fixture": 1,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 94,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 95,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 4,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 96,
+      "fixture": 0,
+      "variant": "dsp",
+      "variant_id": 3,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 97,
+      "fixture": 0,
+      "variant": "subscreen",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 98,
+      "fixture": 0,
+      "variant": "fixed",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 99,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    }
+  ],
+  "runner_sha256": "27c72aa67e252901661c0c73a24f6d5ff4fc77d1067d24817cd5dd88d86d5f41",
+  "wrapper_sha256": "7564a678d2bccbee860652bc568aeb69ec2223ce34e9d7303b6697e2153b769a",
+  "native_client_qualified": true,
+  "wrapper_qualified": true,
+  "cores": {
+    "baseline": {
+      "sha256": "53c6d1f6c0253cb1c6e7b81ba22192f3739fa3f9605837c64691085918e1106b",
+      "crc32": "4eef8dba",
+      "bytes": 798312
+    },
+    "fixed": {
+      "sha256": "a3bd2a9772d7388cd3f0986c5c867463485483b5d1330cd4b76e21a0e6a075c5",
+      "crc32": "762da0aa",
+      "bytes": 806796
+    },
+    "subscreen": {
+      "sha256": "8a450dbb9bdef49d218fe7aa6403372401ea87f8c1b4553e630f685607c564fd",
+      "crc32": "976a158e",
+      "bytes": 798332
+    },
+    "dsp": {
+      "sha256": "d6ac3b9714d63caf79b5df55ac62e1667b4e3377cf4fe1405fa5fb985bac018a",
+      "crc32": "2cfbc69a",
+      "bytes": 798376
+    },
+    "combined": {
+      "sha256": "6608a657a1e4eae9ac067dc305310f5ee1e19844374c92a8f4f2ec8ba47b1483",
+      "crc32": "a0db81da",
+      "bytes": 806884
+    }
+  },
+  "limits": [
+    "Finite matched contexts, not every plausible spell.",
+    "Headroom requires valid PCM accounting and complete effect/recovery; no physical result yet."
+  ]
+}
