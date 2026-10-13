@@ -6,6 +6,10 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-12
 
+- **Ability lab built locally:** isolated super-unit profiles,30 private checkpoints
+  and124 real-command casts qualified offline. All54 spells,24 Lores,27 summons,
+  eight Magitek and eight Tools pass; broader skill/context and A7 speed coverage
+  remain open. ROM/progress/card untouched. [Lab and limits](docs/ff6-ability-lab.md).
 - **Confuser candidate returned successfully:** two fights reported beautiful;
   7,119 calls/drawings, zero audio errors,59.994 active calls/sec and orderly exit.
   Card archived/FAT clean/unarmed; original progress intact. [Return](docs/snes-confuser-gameplay-return.md).

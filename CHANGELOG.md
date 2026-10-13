@@ -1,5 +1,20 @@
 # Changelog
 
+## Isolated FF6 super-unit ability lab — 2026-10-12
+
+Build three private playable profiles with9,999 HP/999 MP, full spell/Lore/
+Magitek/Tools lists and unlocked Bushido/Blitz/Dance/Rage menus, plus27 named
+summon checkpoints. Original ROM and actual gameplay progress remain untouched;
+no card access or installation. Validate124 actual requested casts against
+original1.19 through normal controls:151,200 exact graphics/PCM/state comparison
+calls over126 cases. Soldier Rage's physical branch and Water Rondo's non-native
+stumble remain unqualified for requested Fire/El Nino. Keep38 earlier receipts
+and correct language-specific cursors, menu redraw, battle Tools inventory and
+mechanics-versus-animation IDs. Six new-profile loads/360 drawings also pass the
+actual runner/PCM-owner mock fixture. Four bounded proofs preserve764 earlier entries.
+QEMU results do not establish A7 speed or universal ability coverage. See
+[ability lab, remaining coverage and manual test](docs/ff6-ability-lab.md).
+
 ## Successful physical return and systematic effect screen — 2026-10-12
 
 Confuser gameplay1 returns cleanly: 7,119 calls/drawings, zero audio errors,

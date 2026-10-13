@@ -6115,6 +6115,38 @@
       "published_sha256": "301cc4346354d46a844a7bdca87ea864717c57660b651d0bc6791a9cfcef6b72",
       "bytes": 6251,
       "normalized": false
+    },
+    {
+      "source": "build/ff6-ability-lab-private-v1/analysis.json",
+      "published": "evidence/2026-10-12/ability-lab/analysis.json",
+      "source_sha256": "a25b65090002d590fff9a1f8ddf3b6bdc1c9139d8f5c5d8d89337e4023a9219f",
+      "published_sha256": "d821c45aef293719f0fb4a153f76896416687e0eaafe39c3791b57135a6aed60",
+      "bytes": 29372,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-ability-lab-private-v1/coverage.csv",
+      "published": "evidence/2026-10-12/ability-lab/coverage.csv",
+      "source_sha256": "a1f18ad665de47297c0e992b7a3da667d95fe4d951d7f263253edc1e273a2505",
+      "published_sha256": "eed09c4fe7b1e14391c9cd961a969da3acd093705871921cb52aedd29c83fd41",
+      "bytes": 28308,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-ability-lab-private-v1/proof-summary.log",
+      "published": "evidence/2026-10-12/ability-lab/proof-summary.log",
+      "source_sha256": "a08aa155bbcbec46369643b9882f4023eff3a4c2c6a3e3c31f5c97c070149a21",
+      "published_sha256": "1b79372778745d883baaee4e4340f09d6c33601b87062cf3f76c86429b1949ae",
+      "bytes": 33751,
+      "normalized": true
+    },
+    {
+      "source": "build/ff6-ability-lab-private-v1/runner-proof.json",
+      "published": "evidence/2026-10-12/ability-lab/runner-proof.json",
+      "source_sha256": "efecac796146424049ac469bd62ed12ff11f05a1eec73a75eb34c50480254928",
+      "published_sha256": "efecac796146424049ac469bd62ed12ff11f05a1eec73a75eb34c50480254928",
+      "bytes": 965,
+      "normalized": false
     }
   ]
 }

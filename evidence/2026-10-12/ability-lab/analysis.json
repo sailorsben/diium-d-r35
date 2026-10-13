@@ -1,0 +1,399 @@
+{
+  "version": "ff6-ability-lab-1",
+  "rom_modified": false,
+  "rom_sha256": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+  "working_core_sha256": "d5761eacc68fbcba91052de19d37ca9f159fb2b40df7c9272f49398b9b4f880a",
+  "comparison_identities": {
+    "state": "7b303290d0b884328d09f86ff034a57849f3beb1a2de63b2c440edc3ef715646",
+    "input": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+    "reference": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+    "candidate": "19d032a2c37389eba57da0f09ddef305ddfd7ff65499b1b19090e8fcf254b3f0",
+    "check": "e72ed914877b8f47b71ab868b5b4bca13a6dcef305581ec6560c425db15b81c7"
+  },
+  "card_access": false,
+  "a7_performance_evidence": false,
+  "production_gate_passed": false,
+  "final_cases": 126,
+  "requested_casts_passed": 124,
+  "needs_context": 2,
+  "exact_output_state_comparison_calls": 151200,
+  "calls_per_case": 1200,
+  "family_results": {
+    "blitz": {
+      "passed": 1
+    },
+    "bushido": {
+      "passed": 1
+    },
+    "dance": {
+      "needs_context": 1
+    },
+    "dance-native": {
+      "passed": 1
+    },
+    "esper": {
+      "passed": 27
+    },
+    "lore": {
+      "passed": 24
+    },
+    "magic": {
+      "passed": 54
+    },
+    "magitek": {
+      "passed": 8
+    },
+    "rage": {
+      "needs_context": 1
+    },
+    "tools": {
+      "passed": 8
+    }
+  },
+  "preserved_prior_receipts": 38,
+  "prior_receipt_results": {
+    "needs_context": 34,
+    "passed": 4
+  },
+  "prior_attempts_counted_as_final_qualification": false,
+  "resources": {
+    "party_hp": 9999,
+    "party_mp": 999,
+    "enemy_hp": 60000,
+    "levels_and_attack_stats": "original"
+  },
+  "profiles": {
+    "spellbook": [
+      "Magic",
+      "Lore",
+      "Magitek",
+      "Item"
+    ],
+    "skills": [
+      "Tools",
+      "SwdTech",
+      "Blitz",
+      "Dance"
+    ],
+    "rage": [
+      "Rage",
+      "Magic",
+      "Lore",
+      "Item"
+    ]
+  },
+  "unlocked": {
+    "magic": 54,
+    "lore": 24,
+    "magitek": 8,
+    "tools": 8,
+    "blitz": 8,
+    "bushido": 8,
+    "dance": 8,
+    "rage_table_ids": 255
+  },
+  "context_limits": [
+    "Copied early Narshe single-enemy Magitek-party battle; this is an engineered test fixture.",
+    "124 requested animation identities start and complete through normal commands in the original ROM.",
+    "Soldier Rage sets monster ID 1 and Rage status, but the selected run chooses Fight; Fire is not qualified by that run.",
+    "Water Rondo uses non-native terrain and ends without Dance status; El Nino is not qualified by that stumble.",
+    "Native-terrain Wind Song starts/completes Wind Slash and compares exactly.",
+    "Only Pummel and Dispatch are qualified among eight unlocked Blitzes/Bushidos; only one Dance outcome is qualified.",
+    "Rage table IDs include unusual/boss entries, not a claim of 255 ordinary learnable or safe Rages.",
+    "Enemy-only, item/weapon, event/field, reflected/multi-target and side/back contexts remain separate.",
+    "QEMU verifies ARM execution and outputs; physical speed, audio reserve and repeated-cast stability remain unmeasured."
+  ],
+  "rng_predictions": {
+    "soldier_fire_first_choice_probability": 0.5,
+    "water_rondo_non_native_stumble_probability": 0.5,
+    "water_rondo_first_el_nino_probability": 0.21875,
+    "native_wind_song_first_wind_slash_probability": 0.4375,
+    "basis": "Original RandRage, RandDance/DanceRateTbl and ACTION_BATTLE_CMD::DANCE; unchanged RNG."
+  },
+  "final_receipt_sha256": {
+    "build/ff6-ability-lab-private-v1/select-000/check.json": "6d929c882d27d6bae09bc7df31afb0f1332608d946a24219c56abe54679bb915",
+    "build/ff6-ability-lab-private-v1/select-001/check.json": "1b319a2aa912695b5ba4f880c85f0c567c01fbd5642be3cba338f8684e9032f3",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-002/check.json": "2d2d97803d84c134f179bec296e4f21d2c9858fe0ae67fef57cecd0585f4aeae",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-003/check.json": "7e0c51ae4eb3be42e3c9569536cb4ad1b6b3d34a87563a00fbf83d0dfad5c8cc",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-004/check.json": "8e07fd11bbbeb70aaef47b62459d51bdd0ac2d87eba7b0d2cc689ce51b6b6f0a",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-005/check.json": "607c6b31d3477a5406c1186bf03ee05900d1dd0c0b6cc2d7873b203d7f699da3",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-006/check.json": "ad2faa9802de8ed2100455f95301781749ea665e75b925b2660389fd6ca0b9c3",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-007/check.json": "fbf41466076b7631b2bd824446d66150e0193e3173a124e7a9ce0aaf977444fb",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-008/check.json": "9230299f676f0db2e072280a7bff20b23a8ba02a76179fe222c8ed549af43d69",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-009/check.json": "f94193503565682cb7043078776c7da018f3a87b2f249b59b4a70e35630c1412",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-010/check.json": "b775e277fef48de25ca9c3b93a1914dc25d2acb3c5830f84a48f38599eb306ac",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-011/check.json": "f3308c7ab1ec10e36966ff2576dbf80355961c1f056067847de6c8a101aab4a2",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-012/check.json": "a9a99c7ae317df851811f6abb879eee176d949403ea906b4915224d9ba51144d",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-013/check.json": "6ed1e9cbeb5a19c74cc508a0334098de74e0c1c8aeb4a7ad2745a0f3983cdc27",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-014/check.json": "f070a37c4e65fdd072331bf02ee771288f5ad56fcf728db0e5e2ada98249db4e",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-015/check.json": "f8302192bd3fab5807f403dc04e5c73adee2067b8cf59ccd0a2b6b65723f0101",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-016/check.json": "48884048c315b5d8dd60c78d7bf0ae141e7095628d13d99b580af9e027270b2e",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-017/check.json": "996682377b559df1c67b927bfb64dcc53a24b9d802687daaf985574272096716",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-018/check.json": "dc8a9b2d56347aa75e68b1aefa40652b5f3cd3993b85ee1c00e6b126b1014db6",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-019/check.json": "df563443d17d2183a45ceeb3b2e28db3c7c349d37d6d9ca002db74e6db384a74",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-020/check.json": "5e85978c59e11fbad345b6d430b54ecb5e701fca5b87dc0792912f6ee63d2715",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-021/check.json": "5ea0031f9ebc34a9ed5309089af6cfc479d9600b171b99690aa26fbc120e3264",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-022/check.json": "4d6511946423067f433eed782fc180296592ace1fb5e8fd0c1163a3dc18d5896",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-023/check.json": "7df64bbaf979aae280f3102cb943b6deb33c9df365ff3eef58f232dbd1981003",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-024/check.json": "6642caf76a1f2445150b1e34d6b2aca25b31e2e1eb42a9b6e7a14d62b134fb89",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-025/check.json": "b526a1ff190b59178ded6bd619585e2c939670a565bacd18812960595ad3aa2b",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-026/check.json": "841dccc987768b90ac0dab40e9c5931bc8931f81cd1f6112f8df9222114646d9",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-027/check.json": "ee357c771381c2ab19badd8c5fbbf73f0717a1f66eaed91e1d3a81ec438499f9",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-028/check.json": "0873cafb5fd0fdd1c4820ba2d46e6b50382c2ff792556ef60b2cdaee94fbafd5",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-029/check.json": "589b6b252e82a007810be9bbbea8f30f340b676221d9652cb1a2661b073ec230",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-030/check.json": "b6019a6aa9e205ebf6fbfafc8c797850c29b1d9b3b06edde8f3140a79681e528",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-031/check.json": "57a24f2533d4a768a295778bcb8a2a3f6d2b77afaecd4e05380bbae9e99bdcc0",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-032/check.json": "dafd1d93f085786d1355f56cddc5d4ad18b0e6cc74659d4a8f5349ef791606bd",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-033/check.json": "271522382f24ff63db2e4528963b2a840c7f26becc2336586ca6a4eccbf50e7f",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-034/check.json": "98b9b6baad41bf79def6193c05fe649806a123890532d188138bdd42e87e2bbd",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-035/check.json": "1392b56e7507c41748e7896fd0611efd934d0f788e47701d6f249c1732224624",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-036/check.json": "e3bded49ad1e21ed1bb982512db92b0359f04433acfb0fa550830d9c23f3c928",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-037/check.json": "4165a969cf75ea9db288b943b041d68cf63adbd4e6d3876453e642f1ad84142c",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-038/check.json": "9b69e2fad09787fc8fcda805325708594f45ac60003a5b841325b34b87f8befa",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-039/check.json": "ada51a8f82b05045e724464ca8d08e7aaaefd0da5a1157117a151daa574f4c4c",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-040/check.json": "7fdf1417b55c33f3ad11e89d5b2afd39a6c2f336365e41023f26496da5d7d5b8",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-041/check.json": "b44709b6374d257baa6b36518960b8995e8adfd12792a4b99f61fa55c7156637",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-042/check.json": "a64ae0f422361a45b167171600fd51fee1c085a57884422f8fcbba5937c724be",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-043/check.json": "92f8b76fc42983fa005a7d30fc568b01579496cd6a6efbdbbf7ed16aa9185708",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-044/check.json": "40b9334b07764fdbe244524f3c87c159963e05ae7239f624a553b70f758d5d9b",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-045/check.json": "47f18192235ee9d73352f0141ff19cc3b94ac72dd2160691e4392dae36345cfd",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-046/check.json": "cfdfa6589513ecad471ffc71a7ee4dfad2b8d1fdb2ed9c8529e13c56ce06f16f",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-047/check.json": "0352aa00d694b3492621e1eab7cf2069060fab8a88d5cf0f5c44f2efe6db1c92",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-048/check.json": "bf1b893dc6d72672cd5c1bc65e66d2b8b63e071c5fbb6f5e9bd830ea94f104a2",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-049/check.json": "1bf0ffb606692c7cfa89a8f6867185697d91db710bcb05478275a8dd2bf826e9",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-050/check.json": "3cf82759ffe971e98c21c09b3299d119412cca1c4ef97ad4767b5e80cf3ce3fa",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-051/check.json": "2401696f16b3944d901085607655a37f51c78e1b17a6c4457e836f240057256f",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-052/check.json": "3bd68e3a477e2629f521962bff11e28fe25b4d1c99df3584f8d485faab9c5475",
+    "build/ff6-ability-lab-private-v1/select-magic-fixed-053/check.json": "e86cc4edc58c6a76ede31254bb9764aeaf050563deeb4eb85f9a6f6ef6d7d055",
+    "build/ff6-ability-lab-private-v1/select-054/check.json": "1c3c9b71e02df01399d1364e187e5a1b58f08d0bdc69cfaa588ccce113f9749c",
+    "build/ff6-ability-lab-private-v1/select-055/check.json": "a607229a368163677048d9d27189ebea4b9f70796bfed508e94227fa5b37315c",
+    "build/ff6-ability-lab-private-v1/select-056/check.json": "a4736c9cc1eb32947a48065d30bf68d71cb892e44d09ff615b1aa35faf6e136f",
+    "build/ff6-ability-lab-private-v1/select-057/check.json": "551fb66b0097ea33373b90b6c7b53995a09df050594ba138f49769e1a22ab503",
+    "build/ff6-ability-lab-private-v1/select-058/check.json": "0fc2e633e1508ee8f3ca4385000d2a4669288022b35f894273bf44606bf5c67a",
+    "build/ff6-ability-lab-private-v1/select-059/check.json": "13a6c079679fc76c00f391440226ccb961d03ede44efed4cdbab6720958dead2",
+    "build/ff6-ability-lab-private-v1/select-060/check.json": "c69db848603c2565d237c501b332d0124a8c9b4595b9399badef6d94d1a89074",
+    "build/ff6-ability-lab-private-v1/select-061/check.json": "9fcf38f68f880cb3d644f44efcca24720ee367588c73aa78cf4f497c8ff58d61",
+    "build/ff6-ability-lab-private-v1/select-062/check.json": "d3b9a11864209c5623ab52f5ba70354971eeac56d6ba3945307a8698b801922a",
+    "build/ff6-ability-lab-private-v1/select-063/check.json": "959020d44e2584e7f51361cfc5244a40e0ce1cce71c56e2ad91ef40f4db19e2f",
+    "build/ff6-ability-lab-private-v1/select-064/check.json": "2dd7c5d8200f5a478287526bcbee30a67ba45a9c2a8df1a4b63d89680c600816",
+    "build/ff6-ability-lab-private-v1/select-065/check.json": "a0b4a5b99b7feb988ee7873f00302f3b191fae417e3da2c2ea910afdafca130b",
+    "build/ff6-ability-lab-private-v1/select-066/check.json": "f27ad8b02beb64fea0596394b4118879526aaf4f4adf2fe7cb4267af02221b79",
+    "build/ff6-ability-lab-private-v1/select-067/check.json": "c0d262e771cb8c9f2f9c288c71c884f04a4460633954bd9931cc07341d3aa706",
+    "build/ff6-ability-lab-private-v1/select-068/check.json": "0de611618afa459b9e5274dd968281209887cd5a03cc9b6032cb10def0a1250f",
+    "build/ff6-ability-lab-private-v1/select-069/check.json": "ef6e9bbe309873b8dc1ada7e3e6e5e570c64ec87317802046af5bc1a0e2403eb",
+    "build/ff6-ability-lab-private-v1/select-070/check.json": "611b53318e2cfbdf9b4c3ea8f3a921e95716461aec08b51e7247df3e68aa7067",
+    "build/ff6-ability-lab-private-v1/select-071/check.json": "30a57920b93fa59c4b2bd84a206eacb1460d347f3c42e9a883c3386535e3ee37",
+    "build/ff6-ability-lab-private-v1/select-072/check.json": "c030b9b23005ab6bc63afa24ea87da285758e6d7c0620370233410aaf92397a3",
+    "build/ff6-ability-lab-private-v1/select-073/check.json": "0ce6064ccfe53896d6829a586f40dbfe408c3229f6e61574b3948e46bec2bb6c",
+    "build/ff6-ability-lab-private-v1/select-074/check.json": "ef540cd9d545000c40f2cea6fb803a3f1bf1f5dd31c3b92fc714c8bab8e4cc3b",
+    "build/ff6-ability-lab-private-v1/select-075/check.json": "157b8436ffdeeded314d0ab210244c50386e91af991992bb3a3a339abdb4dcbf",
+    "build/ff6-ability-lab-private-v1/select-076/check.json": "151e94ee24cb667346904aa57576a7afd95e7c20e3731b9250ad996ed39b0a24",
+    "build/ff6-ability-lab-private-v1/select-077/check.json": "8f998aea4fa03b29cdd8aaf9168d966993e95a0d2836d65dd61ee2ac6ee63c22",
+    "build/ff6-ability-lab-private-v1/select-078/check.json": "fe626e5e4fba8fc63c955ccc8e8201d721506d7018c6c8b90ec982a4d559db3a",
+    "build/ff6-ability-lab-private-v1/select-079/check.json": "dd99333f5f637c19f4fbbf1519399185edd7308a96c927a3d4db450e5b9f3823",
+    "build/ff6-ability-lab-private-v1/select-080/check.json": "acdc326701871410e9c6cd0e1c2d6020aa674e79b9a86c4b2d10804aebad1225",
+    "build/ff6-ability-lab-private-v1/select-131/check.json": "256e133d9da2f1f859b588467562ba00e626e18907bdcc4013313e676fbe6cb0",
+    "build/ff6-ability-lab-private-v1/select-132/check.json": "0fcd6c71b43a273930d3c9eacc016057b045c41eb4bf369eae1e4f44f2b8e6ed",
+    "build/ff6-ability-lab-private-v1/select-133/check.json": "f59f6f35d9102f74368784cb2db2526600af848aeb5feaf33dda25a80e89b707",
+    "build/ff6-ability-lab-private-v1/select-134/check.json": "1b1cb8c2ab12739b940285381f9414f1f010a345adf100f2c0df33443ea34e98",
+    "build/ff6-ability-lab-private-v1/select-135/check.json": "0e4d8f03ee6bca5d93211e63401c74fb4b06f9b7b2fe8ec70f92bb8ff139b978",
+    "build/ff6-ability-lab-private-v1/select-136/check.json": "6b5f2b3d769924aaefb14b3cb41ae6bef8e716f612fa80431cf9bc852985e42d",
+    "build/ff6-ability-lab-private-v1/select-137/check.json": "a4fd0281d63595a5061e13546280660b5d818b3825d1b13285108a40c8ba85c0",
+    "build/ff6-ability-lab-private-v1/select-138/check.json": "543f3fa2b3a1e40407b4a1bd38e26fb513aef8c800c9352f0f89af4464fcde50",
+    "build/ff6-ability-lab-private-v1/select-lore-english-139/check.json": "6afa063f570cfa84667164820c54e555bc44cde777396715ac7ef982864a54dd",
+    "build/ff6-ability-lab-private-v1/select-lore-english-140/check.json": "bd5dec97ceabd63674201ba1d92f31da08cca6f7737150239c79c832a1ebae02",
+    "build/ff6-ability-lab-private-v1/select-lore-english-141/check.json": "f9e8e3c57c58362702eb0f6ea2de5cbc265f51fd639acf1136c24762e1cd0386",
+    "build/ff6-ability-lab-private-v1/select-lore-english-142/check.json": "bab2e4ceb580514b292fbe3f8ff62e0a030c69d80d27421501efafac118e1c8f",
+    "build/ff6-ability-lab-private-v1/select-lore-english-143/check.json": "8f9737c26afac9208c0f9442bedb5a6b3e05eea9e12c75a105c2726af9fa8c5b",
+    "build/ff6-ability-lab-private-v1/select-lore-english-144/check.json": "d9c06105489255d2c3d29d68493947d42e4604dc56ca89afc2d28986691abd8b",
+    "build/ff6-ability-lab-private-v1/select-lore-english-145/check.json": "a82eb9f08cb683f4e255a2649e3423c267728c88db34f0cf8247e65f0a6ac915",
+    "build/ff6-ability-lab-private-v1/select-lore-english-146/check.json": "d604b1e78fc7d227e66b0a90aa79fe810eb77874c3ac7a34f4c9c979a0129f31",
+    "build/ff6-ability-lab-private-v1/select-lore-english-147/check.json": "ffeb0fc2eaf70094737ba8fe3dcc1f4d36e071278dbf0a5ecad4ebb2823f9c02",
+    "build/ff6-ability-lab-private-v1/select-lore-english-148/check.json": "da83144807a6603de7765ece0ad9042d777744ed55bf73185e5549857442c619",
+    "build/ff6-ability-lab-private-v1/select-lore-english-149/check.json": "0e50d17d0a70b1515a0a914872927211ca0376f29bbaf0037ff1f3864e72341d",
+    "build/ff6-ability-lab-private-v1/select-lore-english-150/check.json": "ccd8a9e4ffa97c0607676dd0f27bfa8d93f9685b2068489ff5bb5860b2660e4b",
+    "build/ff6-ability-lab-private-v1/select-lore-english-151/check.json": "6fa8a0dd4840894b3510d3f7f299fba40b95c62ce5d54eb5918d08978966e8ce",
+    "build/ff6-ability-lab-private-v1/select-lore-english-152/check.json": "52d203bf5e92d8fff73757a0ece07991f14706856eda361d96d4259a723b06e7",
+    "build/ff6-ability-lab-private-v1/select-lore-english-153/check.json": "60ac612a49a8e2671ac59b4cefd775318df9ad5b8248fddf1e45bd70182ee76b",
+    "build/ff6-ability-lab-private-v1/select-lore-english-154/check.json": "ccfb1be06a0459e6b692eb85c6f391baafd73dd7a95a8fd4452d228a6744b897",
+    "build/ff6-ability-lab-private-v1/select-lore-english-155/check.json": "673923e841cd0ab6eeda62a0d00f50bc1e854dbbe44275446235cf4c9d31b413",
+    "build/ff6-ability-lab-private-v1/select-lore-english-156/check.json": "aeceb39ea9d71aebfe76055dc2bcbe1c2027c7d806654360e8afffb252e8a9ce",
+    "build/ff6-ability-lab-private-v1/select-lore-english-157/check.json": "0187f0822e624b153e05ab1392482e80fba73c427cc6e7bcb3ccb491c1d6d209",
+    "build/ff6-ability-lab-private-v1/select-lore-english-158/check.json": "e50d446981a89327a0cd1375943c5882ceb94cbe11cf39eb8e927d9ef6f78d8b",
+    "build/ff6-ability-lab-private-v1/select-lore-english-159/check.json": "94413999c5588d356efb526ac2288af676aacf100f4bdda66707133e615ae27d",
+    "build/ff6-ability-lab-private-v1/select-lore-english-160/check.json": "8aa728652ba91f9db4d269ff89606f8801d3fa391fed4c807688e202ae8492a7",
+    "build/ff6-ability-lab-private-v1/select-lore-english-161/check.json": "c6dc0e0d447e733b4265cd647684938e44f85d80a37c714b414ae2330ce521b2",
+    "build/ff6-ability-lab-private-v1/select-lore-english-162/check.json": "05a6582d4f2baa613c4786b6c834934a90e80c11378c2bd6ee3ddcab94fe52be",
+    "build/ff6-ability-lab-private-v1/select-extra-blitz-093/check.json": "b106a1d71913f28c7ff915187c1149b92e1a0e7cd7b7ad6995552b098b33948c",
+    "build/ff6-ability-lab-private-v1/select-extra-bushido-085/check.json": "c2b89186eda25cd60ad9f0203ff93592bf29ba6b523def43a821f04f866df169",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-328/check.json": "a13c21900cf635b29d2760a5d15e12b15f060041bf8c63f378ebf2e61b1888d8",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-329/check.json": "c569898c62113fa5bc9694484c235eef81e9f8caf05e1fb2341c7f8c122268b0",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-330/check.json": "766b8a4165706c5adf15c5630492b2435477ee074608d1d1dbdf9c6414c223ea",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-331/check.json": "31f14017b35ddf5928bbe7aa06ca38181ae9ff9c95f32b65e105780858ce2da7",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-332/check.json": "a8aaa577372ffb854d4fc048f4f994944511f00ce2ef3c4ae8a0afad333f2854",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-333/check.json": "a89e0de4f6f465a8971cee31b905e059ab7019840155274f1b11de9c312a080a",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-334/check.json": "3a91e5144282baedf419333def79ac60b61f27f5c5e49d927244bc9f00e41410",
+    "build/ff6-ability-lab-private-v1/select-tools-complete-335/check.json": "905a539eef1b5035ec03231244f3cd2c63f33ae648ea6be3936fc62a3a298331",
+    "build/ff6-ability-lab-private-v1/confirm-select-active-rage-000/check.json": "5445e67ad32b1a1bee7126132ac4faca6612bbb129ff7971ac345d47b8ac3075",
+    "build/ff6-ability-lab-private-v1/confirm-select-active-dance-111/check.json": "f8a4f65204400946c747a1ae3f7a788a1326889967b34736db33f4d83bf9c983",
+    "build/ff6-ability-lab-private-v1/confirm-select-active-dance-native-101/check.json": "dcd3d049cf7409d4cbcded63f160d033ed28fe218b00f6c8418e0f9d1bc0b1cd"
+  },
+  "source_sha256": {
+    "build/prepare-ff6-ability-lab.py": "464317343d4c8641dff9d67b8c9030e32252c081552a87d8b440ffcc410e2f63",
+    "build/run-ff6-ability-lab.py": "146bb0f7acbc86bfb31f81aac3e4cb2289a690d19eed9d7e792fa234ab69f2f4",
+    "build/ff6-ability-lab-check.c": "6959b5717153d3b69ac47fc4f68c09e50bbda68ec9b44495d5af4c1e5630f923",
+    "build/build-ff6-ability-lab.sh": "5ec5f05fc6f5b8e0e373d284d482a57851372497d7fd8cadecc527993c2b3e8f"
+  },
+  "private_playable_checkpoints": [
+    {
+      "name": "spellbook",
+      "path": "build/ff6-ability-lab-private-v1/playable/spellbook/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "6bb864a2622c14d36d672f8b6bf7ad3c4be590b5f1e6a01a0ad039012e8602bf"
+    },
+    {
+      "name": "skills",
+      "path": "build/ff6-ability-lab-private-v1/playable/skills/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "301357abba16b14953758b2d81e36ca69b10348e6f7a4e2b6bb738c295dfc910"
+    },
+    {
+      "name": "rage",
+      "path": "build/ff6-ability-lab-private-v1/playable/rage/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "2f2cc3acbd1444490aa1354805a8bc24613ff1866617e531fbf59d54baeb9591"
+    },
+    {
+      "name": "summon-054-ramuh",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-054-ramuh/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "a8c78858330333b1dfe1641cbe7347a181a1d1155dd9c3163517261c260fe4fb"
+    },
+    {
+      "name": "summon-055-ifrit",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-055-ifrit/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "6035558ea8eaa47bd0fcd19072f1f42114f85b34c72ba3472ff14fe5b216d4cb"
+    },
+    {
+      "name": "summon-056-shiva",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-056-shiva/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "4f319156c177b8cf7d70523050806c01adc97e0d5e69e5d8b04a9f3018b0a452"
+    },
+    {
+      "name": "summon-057-siren",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-057-siren/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "3571740fa819f7a92d5784265a38d3a1aa3ef6571426a8421ee1faeebabcaa82"
+    },
+    {
+      "name": "summon-058-terrato",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-058-terrato/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "2e14ea3ea28e917d28126e94879fb75e426382af4338face5dce0591ffbcc122"
+    },
+    {
+      "name": "summon-059-shoat",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-059-shoat/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "e61e56a55d823c6e7a28a2ec8bf8be11ac8d6cda6c5d9ab07a115397e68e3dbf"
+    },
+    {
+      "name": "summon-060-maduin",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-060-maduin/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "e020319c3e27f4f61a3e4f1c778a8be5a41152984347a73a28a78f91a7b98f6f"
+    },
+    {
+      "name": "summon-061-bismark",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-061-bismark/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "0edbc3b96f8fd74ecf2a247c779e88ca2097cca65acd8fde6cb99e264065a070"
+    },
+    {
+      "name": "summon-062-stray",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-062-stray/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "bc080009f231b5bb42eee5a1e1d054a2e28f43520004995c5fdaba3b33e5e6fc"
+    },
+    {
+      "name": "summon-063-palidor",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-063-palidor/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "393f371f1bca730ecd2876142704004bf43c45f6d97b97a18c7902d6a4cb7dbc"
+    },
+    {
+      "name": "summon-064-tritoch",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-064-tritoch/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "45f547cb5c90286b576889d170deddedbf4fbfbf8edb796dc595190aa17044ba"
+    },
+    {
+      "name": "summon-065-odin",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-065-odin/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "f248b23d77d602bbe5e062eeb08070308889d9e045dc403d3b5351b6da3bccd3"
+    },
+    {
+      "name": "summon-066-raiden",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-066-raiden/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "797112f4cb4f6ce782420d07c5a22bc8b05914a680b9f5f02dcf3abf49ea1650"
+    },
+    {
+      "name": "summon-067-bahamut",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-067-bahamut/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "08657b06905a0f5a077a6e60ebf689b750688602575641c143e2592672e9a43f"
+    },
+    {
+      "name": "summon-068-alexandr",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-068-alexandr/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "514a0f2dede26f41522779b4151d4817022801411dcba151bec54ea667bba5ec"
+    },
+    {
+      "name": "summon-069-crusader",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-069-crusader/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "b915ebcbd767edb1bad4d43f3089b1a3f53f465abb030aec241d70634e92650e"
+    },
+    {
+      "name": "summon-070-ragnarok",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-070-ragnarok/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "61ae1c03d574e926fd09ff964a4e6b357a2034c7423f00dc9fe1b84a201650c1"
+    },
+    {
+      "name": "summon-071-kirin",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-071-kirin/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "1d17fd0ca9c1df68e03a90b959fe0da1efe44b360e1fbb2aacf5378bfb51d84d"
+    },
+    {
+      "name": "summon-072-zoneseek",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-072-zoneseek/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "846da6fede608a6aaeb5f7925d6a7ac55fda1d88fecf70167047d8e4f0d95541"
+    },
+    {
+      "name": "summon-073-carbunkl",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-073-carbunkl/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "7893f54c55ac48b88c78711376923d60e2044a8e8f09868cbdc253a2b5f01ec1"
+    },
+    {
+      "name": "summon-074-phantom",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-074-phantom/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "c31440633d8260a565e8ea07eb7c1e021cbfd888351f1f6a6c02262f055afa07"
+    },
+    {
+      "name": "summon-075-sraphim",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-075-sraphim/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "49a8c348937f09f58f0395763f8eb5bf60cf6d87e660ad0dd2e52308631b4b59"
+    },
+    {
+      "name": "summon-076-golem",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-076-golem/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "b140cd2372eafadd5d8ede53ed22845862a492a867ff97279c974ca4d81631a5"
+    },
+    {
+      "name": "summon-077-unicorn",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-077-unicorn/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "23b005fb9ff12912d6f2d3f6c524d558e7ff9b8f9c30ae681240ce1d03030328"
+    },
+    {
+      "name": "summon-078-fenrir",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-078-fenrir/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "c7990964c952e8b5928e8192af0fc4330681ff4eec3a766b3721ab1199d237fe"
+    },
+    {
+      "name": "summon-079-starlet",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-079-starlet/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "6a874b5d7fbc0d65db8bd1352cd9b427c10346da7087a06bc0adf9ec613a5f88"
+    },
+    {
+      "name": "summon-080-phoenix",
+      "path": "build/ff6-ability-lab-private-v1/playable/summon-080-phoenix/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+      "sha256": "530bb8c3f6f4d1c5db35c33e877b6de3baf9479c705c3bb9db2661a520f480b6"
+    }
+  ]
+}

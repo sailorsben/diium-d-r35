@@ -1,0 +1,504 @@
+RECEIPT family=magic effect=0 status=passed
+CASE effect=0 init_pc=c2f6c4 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=0 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=1 status=passed
+CASE effect=1 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=1 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=2 status=passed
+CASE effect=2 init_pc=c2f836 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=2 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=3 status=passed
+CASE effect=3 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=3 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=4 status=passed
+CASE effect=4 init_pc=c2f6a4 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=4 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=5 status=passed
+CASE effect=5 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=5 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=6 status=passed
+CASE effect=6 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=6 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=7 status=passed
+CASE effect=7 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=7 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=8 status=passed
+CASE effect=8 init_pc=c2f6c4 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=8 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=9 status=passed
+CASE effect=9 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=9 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=10 status=passed
+CASE effect=10 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=10 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=11 status=passed
+CASE effect=11 init_pc=c2eeac rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=11 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=12 status=passed
+CASE effect=12 init_pc=c2f5a4 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=12 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=13 status=passed
+CASE effect=13 init_pc=c2f847 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=13 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=14 status=passed
+CASE effect=14 init_pc=c2f3fb rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=14 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=15 status=passed
+CASE effect=15 init_pc=c2f58d rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=15 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=16 status=passed
+CASE effect=16 init_pc=c2ec43 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=16 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=17 status=passed
+CASE effect=17 init_pc=c2ec43 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=17 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=18 status=passed
+CASE effect=18 init_pc=c2f3e9 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=18 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=19 status=passed
+CASE effect=19 init_pc=c2f65b rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=19 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=20 status=passed
+CASE effect=20 init_pc=c2f299 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=20 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=21 status=passed
+CASE effect=21 init_pc=c2f351 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=21 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=22 status=passed
+CASE effect=22 init_pc=c2f741 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=22 init_hits=2 table_hits=1 deinit_hits=2
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=23 status=passed
+CASE effect=23 init_pc=c2f59e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=23 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=24 status=passed
+CASE effect=24 init_pc=c2f77d rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=24 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=25 status=passed
+CASE effect=25 init_pc=c2ebbc rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=25 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=26 status=passed
+CASE effect=26 init_pc=c2f418 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=26 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=27 status=passed
+CASE effect=27 init_pc=c2f00f rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=27 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=28 status=passed
+CASE effect=28 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=28 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=29 status=passed
+CASE effect=29 init_pc=c2eea7 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=29 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=30 status=passed
+CASE effect=30 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=30 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=31 status=passed
+CASE effect=31 init_pc=c2f8ca rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=31 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=32 status=passed
+CASE effect=32 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=32 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=33 status=passed
+CASE effect=33 init_pc=c2f8ca rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=33 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=34 status=passed
+CASE effect=34 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=34 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=35 status=passed
+CASE effect=35 init_pc=c2f35d rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=35 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=36 status=passed
+CASE effect=36 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=36 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=37 status=passed
+CASE effect=37 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=37 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=38 status=passed
+CASE effect=38 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=38 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=39 status=passed
+CASE effect=39 init_pc=c2f5a1 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=39 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=40 status=passed
+CASE effect=40 init_pc=c2f00f rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=40 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=41 status=passed
+CASE effect=41 init_pc=c2f6a4 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=41 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=42 status=passed
+CASE effect=42 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=42 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=43 status=passed
+CASE effect=43 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=43 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=44 status=passed
+CASE effect=44 init_pc=c2f5c1 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=44 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=45 status=passed
+CASE effect=45 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=45 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=46 status=passed
+CASE effect=46 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=46 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=47 status=passed
+CASE effect=47 init_pc=c2f00f rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=47 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=48 status=passed
+CASE effect=48 init_pc=c2f630 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=48 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=49 status=passed
+CASE effect=49 init_pc=c2f630 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=49 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=50 status=passed
+CASE effect=50 init_pc=c2f2b9 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=50 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=51 status=passed
+CASE effect=51 init_pc=c2f763 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=51 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=52 status=passed
+CASE effect=52 init_pc=c2f2b9 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=52 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magic effect=53 status=passed
+CASE effect=53 init_pc=c2f6d5 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=53 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=54 status=passed
+CASE effect=54 init_pc=c2f221 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=54 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=55 status=passed
+CASE effect=55 init_pc=c2f289 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=55 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=56 status=passed
+CASE effect=56 init_pc=c2f211 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=56 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=57 status=passed
+CASE effect=57 init_pc=c2f1fa rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=57 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=58 status=passed
+CASE effect=58 init_pc=c2f25d rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=58 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=59 status=passed
+CASE effect=59 init_pc=c2f27b rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=59 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=60 status=passed
+CASE effect=60 init_pc=c2f0c1 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=60 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=61 status=passed
+CASE effect=61 init_pc=c2f241 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=61 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=62 status=passed
+CASE effect=62 init_pc=c2ec36 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=62 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=63 status=passed
+CASE effect=63 init_pc=c2f08e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=63 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=64 status=passed
+CASE effect=64 init_pc=c2ebee rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=64 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=65 status=passed
+CASE effect=65 init_pc=c2f070 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=65 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=66 status=passed
+CASE effect=66 init_pc=c2ebfe rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=66 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=67 status=passed
+CASE effect=67 init_pc=c2f0dd rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=67 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=68 status=passed
+CASE effect=68 init_pc=c2f195 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=68 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=69 status=passed
+CASE effect=69 init_pc=c2eb4f rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=69 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=70 status=passed
+CASE effect=70 init_pc=c2ec1c rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=70 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=71 status=passed
+CASE effect=71 init_pc=c2f14d rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=71 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=72 status=passed
+CASE effect=72 init_pc=c2f231 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=72 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=73 status=passed
+CASE effect=73 init_pc=c2f16b rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=73 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=74 status=passed
+CASE effect=74 init_pc=c2ebe1 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=74 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=75 status=passed
+CASE effect=75 init_pc=c2f109 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=75 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=76 status=passed
+CASE effect=76 init_pc=c2ec29 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=76 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=77 status=passed
+CASE effect=77 init_pc=c2f129 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=77 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=78 status=passed
+CASE effect=78 init_pc=c2f020 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=78 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=79 status=passed
+CASE effect=79 init_pc=c2f0f9 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=79 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=esper effect=80 status=passed
+CASE effect=80 init_pc=c2f119 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=80 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=131 status=passed
+CASE effect=131 init_pc=c2ef4b rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=131 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=132 status=passed
+CASE effect=132 init_pc=c2ef4b rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=132 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=133 status=passed
+CASE effect=133 init_pc=c2ef4b rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=133 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=134 status=passed
+CASE effect=134 init_pc=c2ef0a rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=134 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=135 status=passed
+CASE effect=135 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=135 init_hits=2 table_hits=1 deinit_hits=2
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=136 status=passed
+CASE effect=136 init_pc=c2eede rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=136 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=137 status=passed
+CASE effect=137 init_pc=c2eebd rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=137 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=magitek effect=138 status=passed
+CASE effect=138 init_pc=c2ee0c rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=138 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=139 status=passed
+CASE effect=139 init_pc=c2f83c rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=139 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=140 status=passed
+CASE effect=140 init_pc=c2f847 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=140 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=141 status=passed
+CASE effect=141 init_pc=c2ee0c rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=141 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=142 status=passed
+CASE effect=142 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=142 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=143 status=passed
+CASE effect=143 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=143 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=144 status=passed
+CASE effect=144 init_pc=c2eeac rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=144 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=145 status=passed
+CASE effect=145 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=145 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=146 status=passed
+CASE effect=146 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=146 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=147 status=passed
+CASE effect=147 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=147 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=148 status=passed
+CASE effect=148 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=148 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=149 status=passed
+CASE effect=149 init_pc=c2edf5 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=149 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=150 status=passed
+CASE effect=150 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=150 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=151 status=passed
+CASE effect=151 init_pc=c2ec43 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=151 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=152 status=passed
+CASE effect=152 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=152 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=153 status=passed
+CASE effect=153 init_pc=c2f58d rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=153 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=154 status=passed
+CASE effect=154 init_pc=c2ec52 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=154 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=155 status=passed
+CASE effect=155 init_pc=c2f8ca rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=155 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=156 status=passed
+CASE effect=156 init_pc=c2f7ef rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=156 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=157 status=passed
+CASE effect=157 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=157 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=158 status=passed
+CASE effect=158 init_pc=c2f63e rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=158 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=159 status=passed
+CASE effect=159 init_pc=c2f809 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=159 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=160 status=passed
+CASE effect=160 init_pc=c2edac rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=160 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=161 status=passed
+CASE effect=161 init_pc=c2edfd rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=161 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=lore effect=162 status=passed
+CASE effect=162 init_pc=c2eeac rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=162 init_hits=2 table_hits=2 deinit_hits=2
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=blitz effect=93 status=passed
+CASE effect=93 init_pc=c2f49c rom_overlay=0 input_calls=68 calls=1200
+IDENTITY effect=93 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=bushido effect=85 status=passed
+CASE effect=85 init_pc=c2f8ca rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=85 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=328 status=passed
+CASE effect=328 init_pc=c2f820 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=328 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=329 status=passed
+CASE effect=329 init_pc=c2f7ef rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=329 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=330 status=passed
+CASE effect=330 init_pc=c2f820 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=330 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=331 status=passed
+CASE effect=331 init_pc=c2f820 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=331 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=332 status=passed
+CASE effect=332 init_pc=c2f436 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=332 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=333 status=passed
+CASE effect=333 init_pc=c2f820 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=333 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=334 status=passed
+CASE effect=334 init_pc=c2f812 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=334 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=tools effect=335 status=passed
+CASE effect=335 init_pc=c2edf5 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=335 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed
+RECEIPT family=rage effect=0 status=needs_context
+CASE effect=0 init_pc=c2f6c4 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=0 init_hits=0 table_hits=0 deinit_hits=0
+FAIL cast identity or completion
+RECEIPT family=dance effect=111 status=needs_context
+CASE effect=111 init_pc=c2f00f rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=111 init_hits=0 table_hits=0 deinit_hits=0
+FAIL cast identity or completion
+RECEIPT family=dance-native effect=101 status=passed
+CASE effect=101 init_pc=c2f839 rom_overlay=0 input_calls=36 calls=1200
+IDENTITY effect=101 init_hits=1 table_hits=1 deinit_hits=1
+PASS 1200 calls: exact graphics/PCM/state, original ROM, requested animation started/completed

@@ -1,0 +1,31 @@
+{
+  "fixture_sha256": "d46092e8dc7366aaf2b9b09ec9ffa407c30b3ab13c5d501898fc411a673b3587",
+  "core_sha256": "d5761eacc68fbcba91052de19d37ca9f159fb2b40df7c9272f49398b9b4f880a",
+  "rom_sha256": "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2",
+  "physical_hardware": false,
+  "profiles": [
+    {
+      "profile": "spellbook",
+      "two_loads_passed": true,
+      "calls": 120,
+      "log_sha256": "bbe35b90eaa549840b8631db553399016cb873b9ac482b89fb3e30251ae15913",
+      "a7_timing": false
+    },
+    {
+      "profile": "skills",
+      "two_loads_passed": true,
+      "calls": 120,
+      "log_sha256": "41de9967e5cad6ea6dc4db93a1417303ea3488450bb651de858dbe4a544c6915",
+      "a7_timing": false
+    },
+    {
+      "profile": "rage",
+      "two_loads_passed": true,
+      "calls": 120,
+      "log_sha256": "f13dfa2f85260f77fbc9365e59a9326bff6599ef74575755c684bbbf6a77d25a",
+      "a7_timing": false
+    }
+  ],
+  "calls": 360,
+  "snapshot_loads": 6
+}
