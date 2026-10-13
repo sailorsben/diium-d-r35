@@ -1,0 +1,39 @@
+{
+  "A7_measured": false,
+  "production_gate_passed": false,
+  "prior_staged_combination_saving_us": 1000,
+  "prior_is_judgment": true,
+  "total_required_us": 4310.0389,
+  "conditional_remaining_us": 3310.0388999999996,
+  "early_successful_calls": 4763,
+  "sole_sub_calls": 4569,
+  "inequality": "4763*h + 4569*s - b >= 4310.0389 - P; microseconds, P is measured staged combined saving when available",
+  "equal_net_unit_threshold_us": 0.35469769609944274,
+  "early_only_threshold_us": 0.6949483308838966,
+  "sole_sub_only_threshold_us": 0.7244558765594221,
+  "equal_net_with_250us_other_cost": 0.3814872374624946,
+  "scenarios": [
+    {
+      "h_us": 0,
+      "s_required_us_if_b_zero": 0.7244558765594221
+    },
+    {
+      "h_us": 0.2,
+      "s_required_us_if_b_zero": 0.5159638651783759
+    },
+    {
+      "h_us": 0.35,
+      "s_required_us_if_b_zero": 0.3595948566425913
+    },
+    {
+      "h_us": 0.5,
+      "s_required_us_if_b_zero": 0.20322584810680663
+    }
+  ],
+  "limits": [
+    "Counts and original-output equality are offline evidence, not A7 time.",
+    "Threshold assumes prior P=1000us; replace with staged A7 combined result.",
+    "No guarantee of 20 percent headroom or universal coverage.",
+    "No card reads/writes or changed staged payloads."
+  ]
+}

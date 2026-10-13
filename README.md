@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Pearl workback, offline:** main BG3 spends most visited rows behind higher
+  priority pixels. An early depth test removes 4,763 tile preambles per heavy
+  call; a sole-layer subscreen path accelerates 4,569 opaque rows. Constant-color
+  band filling is inapplicable here. Original-output qualification and independent
+  tile fixtures support the mechanisms; A7 unit costs and comfortable headroom
+  remain unproven. External A7/ARM emulator implementations were checked for
+  reusable patterns. Staged fullpaths1 remains unchanged.
+  [Mechanisms, break-even prices and evidence gaps](docs/snes-pearl-workback.md).
 - **Fullpaths measurement armed on I:** 100 automatic runs compare baseline,
   fixed-color rows, subscreen composition, DSP removal and their combination
   across ten contexts in two reversed orders. New combination exactness,

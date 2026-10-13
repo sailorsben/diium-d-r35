@@ -74,6 +74,10 @@ Sources: [matched A7 differences](../evidence/2026-10-13/ability2-return/aligned
 
 ## Pearl: explicit combined planning forecast
 
+Later offline [C workback](snes-pearl-workback.md) identifies two additional
+mechanisms and the unit-price threshold needed to reach the capacity target.
+It does not retroactively change this prior or provide a fullpaths A7 result.
+
 Pearl is HOLY in the suite, original-ROM spell ID 0x0e. This forecast is written
 on request before inspecting any fullpaths return. Existing staged bytes stay
 unchanged. Measured ability2 heavy-tail step is 17.6605625 ms; deadline is

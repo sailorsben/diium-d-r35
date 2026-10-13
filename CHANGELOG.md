@@ -1,5 +1,22 @@
 # Changelog
 
+## Trace Pearl's redundant tile work and qualify exact replacements — 2026-10-13
+
+Aligned source census identifies 4,275 wholly hidden main BG3 row visits and
+4,569 opaque sole-BG3 subscreen rows per heavy call. Early depth rejection removes
+4,763 preambles; inline sole-layer production retains pixels while avoiding
+indirect calls and unnecessary depth competition. Shared BG1/BG2 and flat-band
+hypotheses are rejected for Pearl; 16x16 opacity is not constant color. Preserve
+an offline dangling-else failure and corrected block-scoped v2 integration.
+
+Original-output replay and independent scalar tile/map fixtures qualify bounded
+correctness, not A7 speed. Research Supafaust, 2010/2002, ARM SPC and quickerSnes9x
+for applicable mechanisms; reject approximate audio and nontransferable timing.
+Conditional remaining 3.310 ms requires `4763*h + 4569*s - b >= 3310.0389us` under
+the earlier 1.0 ms staged forecast; equal net prices need 0.354698us before other
+cost. No measured unit price or comfortable-headroom claim. No card access or
+staged source/payload change. [Analysis](docs/snes-pearl-workback.md).
+
 ## State Pearl's combined forecast and its weak assumptions — 2026-10-13
 
 Identify Pearl as HOLY/0x0e and record a 1.0 ms additional-saving planning point:

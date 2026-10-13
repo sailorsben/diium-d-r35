@@ -1,5 +1,12 @@
 # Device findings
 
+**Newest offline Pearl analysis:** early rejection removes 4,763 wholly hidden
+tile preambles; a separate sole-BG3 subscreen producer accelerates 4,569 opaque
+rows. Source census and independent original-output fixtures support bounded
+correctness; no new A7 time or guarantee of 20% headroom. Flat-color bands and
+shared BG1/BG2 production do not apply to this Pearl state. No card access or
+change to the armed measurement. [Workback and researched alternatives](snes-pearl-workback.md).
+
 **Current 2026-10-13 measurement staging:** I: is armed for fullpaths1, a separate
 100-run crossover of baseline, three individual paths and their combination.
 Every frame retained; ten valid-target contexts, two reversed orders, RAM records

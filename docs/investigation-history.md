@@ -1,5 +1,24 @@
 # Investigation history and negative results
 
+## Follow Pearl's C path before assigning new milliseconds — 2026-10-13
+
+An aligned layer/plane census distinguishes mostly hidden main BG3 tile setup
+from opaque sole-layer subscreen production. Early rejection removes 4,763
+preambles; a separate inline producer accelerates 4,569 subscreen calls. Both
+preserve output in the bounded original replay and independent tile fixtures.
+Reject shared BG1/BG2 production (zero eligible rows) and constant-color bands
+(actual BG3 uses16x16 tiles and no uniform rows). No speed credit for dormant
+code. Correct a generated dangling else caught by the original-output oracle.
+
+Legacy 406-overlay runner stops at missing diagnostic ABI symbols, so it supplies
+no new overlay coverage. Initial hidden census export/sysroot issues are build
+failures, not game failures. Research upstream A7/ARM renderers, SPC assembly,
+exact versus approximate Gaussian arithmetic and headless optimization targets;
+separate transferable mechanisms from incompatible representations and timings.
+The conditional3.310ms target now has a concrete unit-price inequality, but no
+new measured A7 price. Already armed fullpaths1/card remain untouched. See
+[full evidence and next measurement boundary](snes-pearl-workback.md).
+
 ## Measure each full-frame path and interaction on the A7 — 2026-10-13
 
 Stage a measurement-only five-core crossover under explicit new authority.

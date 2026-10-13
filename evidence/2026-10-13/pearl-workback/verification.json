@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "ordinary_command_replay_calls": 216000,
+  "original_command_contexts": 18,
+  "variants": [
+    "early_depth",
+    "flat_band_inactive",
+    "early_depth_plus_flat_inactive",
+    "sole_sub",
+    "early_depth_plus_sole_sub"
+  ],
+  "counted_and_counterfree": true,
+  "base_census_calls": 1200,
+  "shape_probe_calls": 1200,
+  "independent_depth_cases": 64512,
+  "independent_sole_sub_cases": 2304,
+  "independent_flat_cases": 258048,
+  "flat_rejection_cases": 4,
+  "seam_logs": [
+    {
+      "path": "build/pearl-paths-private-v1/clipping-exact.log",
+      "sha256": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66",
+      "text": "PASS: actual clipped renderer matches independently flushed original rows\n"
+    },
+    {
+      "path": "build/pearl-paths-private-v1/clipping-candidate.log",
+      "sha256": "cfd8c76df430c9dee7747288a2f90de89b99f30c3e0c37b09ba8e1670d365f6e",
+      "text": "PASS: 64512 original/candidate clipped tile cases; negative X, first row, right edge, eight distinct colors, all flips/math modes/2-4bpp/256-512 stride\n"
+    },
+    {
+      "path": "build/pearl-paths-private-v1/flat-check.log",
+      "sha256": "30a2408eabaed87575a3469f37190be70e6ec0c5ef4a4816fb8b3a1601ba5e6c",
+      "text": "PASS 258048 independent flat-band cases, 4 transactional rejection cases; no timing claims\n"
+    },
+    {
+      "path": "build/pearl-sub-private-v2/clipping-exact.log",
+      "sha256": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66",
+      "text": "PASS: actual clipped renderer matches independently flushed original rows\n"
+    },
+    {
+      "path": "build/pearl-sub-private-v2/clipping-candidate.log",
+      "sha256": "62ddb04ee4b513ffc40684cb9975b30e3a5c1e28c100a4d5128538902da63a19",
+      "text": "PASS: 2304 original/candidate clipped tile cases; negative X, first row, right edge, eight distinct colors, all flips/math modes/2-4bpp/256-512 stride\n"
+    }
+  ],
+  "negative_results": [
+    "BG1/BG2 shared-producer eligibility is zero for Pearl.",
+    "Flat band passes oracle but never activates in Pearl.",
+    "Sub v1 output mismatch at frame264 from generated dangling else; corrected in v2.",
+    "Initial census export visibility and nested sysroot path failed before qualification.",
+    "Legacy overlay runner lacks required symbols in these cores: startup failures, no 406-overlay coverage claimed."
+  ],
+  "card_writes": 0,
+  "A7_saving_measured": false,
+  "production_gate_passed": false,
+  "staged_local_identity_unchanged": {
+    "source_hashes": 160,
+    "payload_hashes": 90,
+    "proof_hashes": 25
+  }
+}

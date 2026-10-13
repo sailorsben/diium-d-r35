@@ -6405,6 +6405,36 @@
       "published": "evidence/2026-10-13/fullpaths-measurement/plan.json",
       "source_sha256": "033fa9a3fe94ab941c4e844e1ba908d327e8eecfecf2ed158ee0ce2376225aad",
       "published_sha256": "4f4b58bb53377a55ca6bb04f9aef63dc4abf9818f19f9774480960342363c01a"
+    },
+    {
+      "source": "build/pearl-sub-private-v2/public-paths-qualified.json",
+      "published": "evidence/2026-10-13/pearl-workback/paths-qualified.json",
+      "source_sha256": "ed7f3c3811a068371908cbf4647e3e4e20812c8131928d36156025e675691b58",
+      "published_sha256": "680086248f987904887e49476744ee10af94e4c43b2a6468f9d906815577eedf"
+    },
+    {
+      "source": "build/pearl-sub-private-v2/public-sub-qualified.json",
+      "published": "evidence/2026-10-13/pearl-workback/sub-qualified.json",
+      "source_sha256": "eb5d2cfab94ba1f1f8f51b7d22a0db9464fa02b52466a7f3f9239d01c4cbe712",
+      "published_sha256": "eb5d2cfab94ba1f1f8f51b7d22a0db9464fa02b52466a7f3f9239d01c4cbe712"
+    },
+    {
+      "source": "build/pearl-sub-private-v2/public-shapes.json",
+      "published": "evidence/2026-10-13/pearl-workback/shapes.json",
+      "source_sha256": "1a3b4086f66b15d44317d42c50528419b1a98f207d7a8cc9c76a4b7934acd4dc",
+      "published_sha256": "84bca9f903118266064ee07fe703609c554018431411cb4f5ad0315a1a0bf6f1"
+    },
+    {
+      "source": "build/pearl-sub-private-v2/public-prediction.json",
+      "published": "evidence/2026-10-13/pearl-workback/prediction.json",
+      "source_sha256": "f183bd78b71108bd2d974a750fa64bca8611aada0d514404a953b3ddc81f4151",
+      "published_sha256": "74a8d6a09a1b409a4844a5d23dd47ed41b0b2f5e65affe4c46f48780bbb0d09d"
+    },
+    {
+      "source": "build/pearl-sub-private-v2/public-verification.json",
+      "published": "evidence/2026-10-13/pearl-workback/verification.json",
+      "source_sha256": "cfc680ead45e11b60e2c76626294e6c678fbff65f891121d86d48134e2779ef5",
+      "published_sha256": "fb048d402b7833c61286385d667b615644dc3bde90913c87599dde948f5c9525"
     }
   ]
 }
