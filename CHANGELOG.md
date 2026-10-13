@@ -1,5 +1,29 @@
 # Changelog
 
+## Full-frame mechanisms and independent boundary qualification — 2026-10-13
+
+Keep every frame; no evidence proves full-frame execution impossible on the A7.
+Build three separate offline hypotheses from ability2: raster fixed-color capture
+and batching, true-subscreen compositor shortcuts, and pure DSP interpolation
+whose result is unused for zero-envelope/noise voices. Preserve guest timing,
+all samples and fallback behavior; no installation or rearm.
+
+Each final core and counted variant passes 18 original-command contexts for
+1,200 calls: 129,600 comparisons. Fixed rows additionally pass 406 bounded
+animation overlays for 600 calls each. Those overlays do not establish natural
+command coverage or completion. Independent original tile code checks 16,128
+clipping fixtures; it rejects an earlier negative-X row-selection integration
+missed by the replay suite. Correct first-visible-pixel lookup; affected local
+candidate never installed. Row oracle passes 22,118,400 checks; subscreen oracle
+also passes. Preserve corrected fixture/construction errors and counterexample.
+
+Align work populations to archived ability2 physical tail frames. Up to 12,532
+full/clipped calls disappear in Carbunkl; Meteor removes only 1,612 and has few
+new full-add rows. Proposed 20% margin requires 3.032–5.354 ms saving across
+these tails. Actual candidate A7 prices/net saving remain unknown; no universal
+fix or gate pass claimed. Publish 10 bounded receipts while preserving all 793
+prior manifest entries. [Analysis and missing evidence](docs/snes-full-fidelity-paths.md).
+
 ## Ability3 physical return rejects math cache as deficit fix — 2026-10-13
 
 Archive5,021 returned files; verify79 installed payloads, consumed marker and

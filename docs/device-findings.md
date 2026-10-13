@@ -1,5 +1,14 @@
 # Device findings
 
+**Latest 2026-10-13 offline work:** every frame remains required; no measured
+lower bound proves a hardware limit. Three separate full-fidelity mechanisms
+pass pixels/PCM/state qualification; fixed-row batching also passes 406 bounded
+overlays and independent clipped-tile checks that caught an earlier local bug.
+Aligned ability2 tails require up to 5.354 ms saving for a proposed 20% capacity
+margin. Counts are exact; new A7 savings and broad natural-context coverage are
+unknown. No card writes/rearm; production gate false.
+[Calculations and evidence boundaries](snes-full-fidelity-paths.md).
+
 **Latest2026-10-13:** [ability3 returned](snes-ability3-return.md):same6/18
 complete and12 native SETUP/errno77 failures. Fixed-math reuse does not close
 the remaining0.493–1.942ms tail deficits; small gains resemble control variation,

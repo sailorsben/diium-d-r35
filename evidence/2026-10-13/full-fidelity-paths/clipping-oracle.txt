@@ -1,0 +1,1 @@
+PASS: 16128 original/candidate clipped tile cases; negative X, first row, right edge, eight distinct colors, all flips/math modes/2-4bpp/256-512 stride

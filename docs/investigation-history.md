@@ -1,5 +1,29 @@
 # Investigation history and negative results
 
+## Full frames, removable work and a missed clipping boundary — 2026-10-13
+
+New isolated fixed-row/subscreen/DSP paths pass 129,600 original-command
+comparisons; fixed rows pass another 243,600 bounded overlay comparisons.
+Do not equate those counts with universal coverage or physical speed. Genuine
+fixed-color fragmentation removes much more setup in Siren/Carbunkl/Lullaby than
+in Meteor. New full-add shortcuts mostly target Holy/Meltdown/Quasar/Bahamut;
+zero-envelope DSP work is shared but unpriced. Added predicates/capture/cache
+traffic need direct A7 measurement before combining or promoting anything.
+
+An earlier clipped lookup used a negative-X tile base to select a row. Source
+reasoning found the counterexample after ordinary battle/overlay replays passed.
+Original scalar tile functions independently reject that version and match the
+corrected first-visible-pixel lookup across 16,128 fixtures. No affected build
+was installed. Corrected helper setup/green-bit assumptions are fixture errors,
+not device failures. Preserve these negative results and bounded proof receipts.
+
+Proposed 20% capacity margin means 13.351 ms unpaced service, requiring up to
+5.354 ms saving in matched expensive tails. Healthy pacing is not spare-capacity
+measurement. Frameskip is unauthorized; neither these tests nor repeated failed
+optimizations prove hardware impossibility. Native SETUP/errno77/pointer excess
+remains a separate unresolved protocol seam. No card writes or rearm.
+[Mechanisms and remaining proof](snes-full-fidelity-paths.md).
+
 ## Fixed-math cache does not close physical deficits — 2026-10-13
 
 Ability3 returns the same six passes/twelve native failures as ability2.

@@ -6297,6 +6297,66 @@
       "published": "evidence/2026-10-13/ability3-return/verdict.json",
       "source_sha256": "554179859830538fdbed79a787cb9ebd6c56cd49cf02d3e25c18baba8e84600b",
       "published_sha256": "14ef44f3f279c79d9409177cd406e2c276a419cb8d4cb8da3fd5fd4e7d9b7b5d"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/qualification.json",
+      "published": "evidence/2026-10-13/full-fidelity-paths/fixed-rows.json",
+      "source_sha256": "cccfd85e9571c785781e6fb517631ffa3ce3678fd5cc4bfe75dcdd5d140484c7",
+      "published_sha256": "cccfd85e9571c785781e6fb517631ffa3ce3678fd5cc4bfe75dcdd5d140484c7"
+    },
+    {
+      "source": "build/subscreen-rows-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/full-fidelity-paths/subscreen-rows.json",
+      "source_sha256": "f5ec1e0875b7c0ce754f4a52c28770ee9c9883e4dede27e660bf487ac0a06d30",
+      "published_sha256": "f5ec1e0875b7c0ce754f4a52c28770ee9c9883e4dede27e660bf487ac0a06d30"
+    },
+    {
+      "source": "build/dsp-dead-work-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/full-fidelity-paths/DSP-dead-work.json",
+      "source_sha256": "41beb39795c0271fdf414c891a5111298deb783f30be8eefcfea3f79ba1db050",
+      "published_sha256": "41beb39795c0271fdf414c891a5111298deb783f30be8eefcfea3f79ba1db050"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/screen.json",
+      "published": "evidence/2026-10-13/full-fidelity-paths/animation-screen.json",
+      "source_sha256": "6c0d71160dc2ddf6b38ef74670b5dfc665aac2eebede0da61676e97e3f1278fa",
+      "published_sha256": "6c0d71160dc2ddf6b38ef74670b5dfc665aac2eebede0da61676e97e3f1278fa"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/prediction.json",
+      "published": "evidence/2026-10-13/full-fidelity-paths/prediction.json",
+      "source_sha256": "6c8ea589c2a858df7275389fdafe334e3ceabfa89f065d6d5e77bd23dbec2468",
+      "published_sha256": "6c8ea589c2a858df7275389fdafe334e3ceabfa89f065d6d5e77bd23dbec2468"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/row-check.log",
+      "published": "evidence/2026-10-13/full-fidelity-paths/row-oracle.txt",
+      "source_sha256": "3b2c19c17f8d7a927f8a22da01660a39098cf9c3e715b58ee22cac40607d3e63",
+      "published_sha256": "3b2c19c17f8d7a927f8a22da01660a39098cf9c3e715b58ee22cac40607d3e63"
+    },
+    {
+      "source": "build/subscreen-rows-private-v1/check.log",
+      "published": "evidence/2026-10-13/full-fidelity-paths/subscreen-oracle.txt",
+      "source_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
+      "published_sha256": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/clipping-candidate.log",
+      "published": "evidence/2026-10-13/full-fidelity-paths/clipping-oracle.txt",
+      "source_sha256": "f7c495d9dc8a1aedd96d75736f2cb31a9998deea57b86b30745ad66b224ed88f",
+      "published_sha256": "f7c495d9dc8a1aedd96d75736f2cb31a9998deea57b86b30745ad66b224ed88f"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/clipping-exact.log",
+      "published": "evidence/2026-10-13/full-fidelity-paths/clipping-exact.txt",
+      "source_sha256": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66",
+      "published_sha256": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66"
+    },
+    {
+      "source": "build/fixed-rows-private-v3/clipping-old-counterexample.log",
+      "published": "evidence/2026-10-13/full-fidelity-paths/old-integration-counterexample.txt",
+      "source_sha256": "354ad20c5dd86b42b08bd20ed0044750cb3c8ee7a3b05171cb143171d62c5945",
+      "published_sha256": "354ad20c5dd86b42b08bd20ed0044750cb3c8ee7a3b05171cb143171d62c5945"
     }
   ]
 }

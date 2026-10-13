@@ -6,6 +6,15 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Every frame required; three new paths qualified offline:** fixed-color row
+  batching, true-subscreen composition and unused DSP interpolation removal
+  preserve pixels/PCM/state in 129,600 comparisons. Fixed rows also pass 406
+  bounded animation overlays and an independent negative-X clipping oracle;
+  the oracle exposes and verifies the correction of an earlier local candidate.
+  A proposed 20% capacity margin needs up to 5.354 ms saving in matched tails.
+  New A7 prices and universal coverage remain missing; no hardware-impossibility
+  proof, production gate false, no card writes or rearm.
+  [Mechanisms, calculations and evidence gaps](docs/snes-full-fidelity-paths.md).
 - **Ability3 returned; I: unarmed:**same6/18 complete and12 native PCM failures.
   Fixed-math cache does not close deficits; matched CPU gains are small and
   comparable to controls, with some regressions. Preserve it as a negative result;

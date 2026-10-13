@@ -1,0 +1,1984 @@
+{
+  "baseline": "ability2, hash verified original-command fixtures and archived frame indices",
+  "period_us": 16688.1545,
+  "proposed_headroom_fraction": 0.2,
+  "proposed_total_step_target_us": 13350.5236,
+  "headroom_target_scope": "Unpaced service capacity. Matched expensive-step saving target is conservative and retains all observers/admission costs. Healthy intentional pacing must be identified separately; paced wall duration does not measure spare capacity.",
+  "full_fidelity_required": true,
+  "frameskip_authorized": false,
+  "clipped_renderer_cases": 16128,
+  "clipped_renderer_matches_original_flushes": true,
+  "old_fixed_v2_rejected_by_boundary_counterexample": true,
+  "card_writes": 0,
+  "production_gate_passed": false,
+  "A7_candidate_savings_measured": false,
+  "cases": [
+    {
+      "case": 0,
+      "name": "HOLY",
+      "tail_frames": [
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 15230,
+        "clipped_calls": 540,
+        "neon_rows": 17103,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 13618,
+        "clipped_calls": 540,
+        "neon_rows": 17103,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17660.5625,
+      "baseline_main_CPU_us": 16034.625,
+      "baseline_admission_us": 185.125,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 41671.80518740555,
+      "required_net_saving_us": 972.4079999999994,
+      "required_net_saving_for_20_percent_headroom_us": 4310.0389,
+      "optimistic_equal_tile_dispatch_floor_us": 0.6032307692307689,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.6737214019851114,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 4166,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 1372.25,
+        "noise_replacement": 0,
+        "interpolated": 2905.25
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 17499.3625,
+          "cadence_proxy_frames_sec": 42055.67602819817
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 17257.5625,
+          "cadence_proxy_frames_sec": 42644.92856392668
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16854.5625,
+          "cadence_proxy_frames_sec": 43664.5875560401
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 1,
+      "name": "METEOR",
+      "tail_frames": [
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 13818.5,
+        "clipped_calls": 288,
+        "neon_rows": 20037.5,
+        "tile_decodes": 21.75,
+        "palette_builds": 15,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 12206.5,
+        "clipped_calls": 288,
+        "neon_rows": 20037.5,
+        "tile_decodes": 21.75,
+        "palette_builds": 15,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 18466.125,
+      "baseline_main_CPU_us": 16820.125,
+      "baseline_admission_us": 197.9375,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 39853.9227910566,
+      "required_net_saving_us": 1777.9704999999994,
+      "required_net_saving_for_20_percent_headroom_us": 5115.6014,
+      "optimistic_equal_tile_dispatch_floor_us": 1.1029593672456572,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 3.17345,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 274.8125,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4278,
+        "zero_envelope": 749.875,
+        "noise_replacement": 405.75,
+        "interpolated": 3122.375
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 18304.925,
+          "cadence_proxy_frames_sec": 40204.8913065746
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 18063.125,
+          "cadence_proxy_frames_sec": 40743.08958167538
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 17660.125,
+          "cadence_proxy_frames_sec": 41672.837536540654
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 2,
+      "name": "ULTIMA",
+      "tail_frames": [
+        1183,
+        1184,
+        1185,
+        1186,
+        1187,
+        1188,
+        1189,
+        1190,
+        1191,
+        1192,
+        1193,
+        1194,
+        1195,
+        1196,
+        1197,
+        1198
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 6937,
+        "clipped_calls": 38,
+        "neon_rows": 8120.875,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 5325,
+        "clipped_calls": 38,
+        "neon_rows": 8120.875,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 16382.875,
+      "baseline_main_CPU_us": 11202.1875,
+      "baseline_admission_us": 4244.375,
+      "physical_fixture_failed": false,
+      "baseline_local_cadence_proxy_frames_sec": 44921.756407224006,
+      "required_net_saving_us": 0,
+      "required_net_saving_for_20_percent_headroom_us": 3032.3513999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.0,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 1.8811112903225804,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 1567.5625,
+        "noise_replacement": 0,
+        "interpolated": 2709.9375
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16221.675,
+          "cadence_proxy_frames_sec": 45368.158343697556
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 15979.875,
+          "cadence_proxy_frames_sec": 46054.648112078474
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 15576.875,
+          "cadence_proxy_frames_sec": 47246.159451109415
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 3,
+      "name": "MELTDOWN",
+      "tail_frames": [
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 12154.75,
+        "clipped_calls": 226.5,
+        "neon_rows": 17848.1875,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 10542.75,
+        "clipped_calls": 226.5,
+        "neon_rows": 17848.1875,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0.0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17559.0,
+      "baseline_main_CPU_us": 15778.0,
+      "baseline_admission_us": 187.3125,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 41912.83786092602,
+      "required_net_saving_us": 870.8454999999994,
+      "required_net_saving_for_20_percent_headroom_us": 4208.4764,
+      "optimistic_equal_tile_dispatch_floor_us": 0.5402267369727044,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.610717369727047,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 4410,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 480.6875,
+        "noise_replacement": 1069.375,
+        "interpolated": 2727.4375
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 17397.8,
+          "cadence_proxy_frames_sec": 42301.18290818379
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 17156.0,
+          "cadence_proxy_frames_sec": 42897.38400559571
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16753.0,
+          "cadence_proxy_frames_sec": 43929.29743926461
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 4,
+      "name": "SLOW_2",
+      "tail_frames": [
+        1183,
+        1184,
+        1185,
+        1186,
+        1187,
+        1188,
+        1189,
+        1190,
+        1191,
+        1192,
+        1193,
+        1194,
+        1195,
+        1196,
+        1197,
+        1198
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 6956,
+        "clipped_calls": 0,
+        "neon_rows": 8263.875,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 5344,
+        "clipped_calls": 0,
+        "neon_rows": 8263.875,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 16657.0,
+      "baseline_main_CPU_us": 11278.6875,
+      "baseline_admission_us": 670.5,
+      "physical_fixture_failed": false,
+      "baseline_local_cadence_proxy_frames_sec": 44182.47703668127,
+      "required_net_saving_us": 0,
+      "required_net_saving_for_20_percent_headroom_us": 3306.4763999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.0,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.0511640198511163,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 2709.5,
+        "noise_replacement": 0,
+        "interpolated": 1568
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16495.8,
+          "cadence_proxy_frames_sec": 44614.23635107118
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16254.0,
+          "cadence_proxy_frames_sec": 45277.93281653747
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 15851.0,
+          "cadence_proxy_frames_sec": 46429.09090909091
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 5,
+      "name": "SIREN",
+      "tail_frames": [
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405
+      ],
+      "before": {
+        "renderer_entries": 158.5,
+        "tile_calls": 16766.875,
+        "clipped_calls": 522,
+        "neon_rows": 10849.4375,
+        "tile_decodes": 0,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 154.375
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 8416.5,
+        "clipped_calls": 315,
+        "neon_rows": 10849.4375,
+        "tile_decodes": 0,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 153.5,
+        "tile_calls": 8350.375,
+        "clipped_calls": 207,
+        "neon_rows": 0.0,
+        "tile_decodes": 0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 154.375
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 18523.3125,
+      "baseline_main_CPU_us": 16874.0625,
+      "baseline_admission_us": 189.1875,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 39730.880748246294,
+      "required_net_saving_us": 1835.1579999999994,
+      "required_net_saving_for_20_percent_headroom_us": 5172.7889,
+      "optimistic_equal_tile_dispatch_floor_us": 0.2144533808556946,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 0.6044831388130121,
+      "fixed_queries_mean": 156.0625,
+      "batched_fixed_entries_mean": 4,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 1543.9375,
+        "noise_replacement": 0,
+        "interpolated": 2733.5625
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 855.7375000000001,
+          "predicted_step_us": 17667.575,
+          "cadence_proxy_frames_sec": 41655.26508306884
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 2139.34375,
+          "predicted_step_us": 16383.96875,
+          "cadence_proxy_frames_sec": 44918.7575507308
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 4278.6875,
+          "predicted_step_us": 14244.625,
+          "cadence_proxy_frames_sec": 51664.92764814798
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 6,
+      "name": "BAHAMUT",
+      "tail_frames": [
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 10607.75,
+        "clipped_calls": 104,
+        "neon_rows": 18851.875,
+        "tile_decodes": 0,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 8995.75,
+        "clipped_calls": 104,
+        "neon_rows": 18851.875,
+        "tile_decodes": 0,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17089.25,
+      "baseline_main_CPU_us": 15288.1875,
+      "baseline_admission_us": 185.0625,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 43064.9396550463,
+      "required_net_saving_us": 401.09549999999945,
+      "required_net_saving_for_20_percent_headroom_us": 3738.7263999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.24881854838709644,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.319309181141439,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 3262.5,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 1373.6875,
+        "noise_replacement": 394.3125,
+        "interpolated": 2509.5
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16928.05,
+          "cadence_proxy_frames_sec": 43475.03226892643
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16686.25,
+          "cadence_proxy_frames_sec": 44105.02779234399
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16283.25,
+          "cadence_proxy_frames_sec": 45196.598959053015
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 7,
+      "name": "CARBUNKL",
+      "tail_frames": [
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413
+      ],
+      "before": {
+        "renderer_entries": 167.625,
+        "tile_calls": 17809,
+        "clipped_calls": 278,
+        "neon_rows": 8729.5625,
+        "tile_decodes": 21,
+        "palette_builds": 14,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 163.5625
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 5517,
+        "clipped_calls": 38,
+        "neon_rows": 8729.5625,
+        "tile_decodes": 21,
+        "palette_builds": 14,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 162.625,
+        "tile_calls": 12292,
+        "clipped_calls": 240,
+        "neon_rows": 0.0,
+        "tile_decodes": 0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 163.5625
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17572.9375,
+      "baseline_main_CPU_us": 15962.5625,
+      "baseline_admission_us": 178.4375,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 41879.59582739084,
+      "required_net_saving_us": 884.7829999999994,
+      "required_net_saving_for_20_percent_headroom_us": 4222.4139,
+      "optimistic_equal_tile_dispatch_floor_us": 0.07060189913820615,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 0.33693056974146185,
+      "fixed_queries_mean": 165.5625,
+      "batched_fixed_entries_mean": 4,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4278,
+        "zero_envelope": 1716.4375,
+        "noise_replacement": 0,
+        "interpolated": 2561.5625
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 1253.2,
+          "predicted_step_us": 16319.7375,
+          "cadence_proxy_frames_sec": 45095.548871420266
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 3133.0,
+          "predicted_step_us": 14439.9375,
+          "cadence_proxy_frames_sec": 50966.115331177854
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 6266.0,
+          "predicted_step_us": 11306.9375,
+          "cadence_proxy_frames_sec": 65088.13902968863
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 8,
+      "name": "QUASAR",
+      "tail_frames": [
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 15483,
+        "clipped_calls": 262,
+        "neon_rows": 18609.6875,
+        "tile_decodes": 19.5,
+        "palette_builds": 15,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 13871,
+        "clipped_calls": 262,
+        "neon_rows": 18609.6875,
+        "tile_decodes": 19.5,
+        "palette_builds": 15,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17549.0,
+      "baseline_main_CPU_us": 15872.875,
+      "baseline_admission_us": 181.6875,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 41936.721180694054,
+      "required_net_saving_us": 860.8454999999994,
+      "required_net_saving_for_20_percent_headroom_us": 4198.4764,
+      "optimistic_equal_tile_dispatch_floor_us": 0.534023263027295,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.6045138957816376,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 4395,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4278,
+        "zero_envelope": 1305.9375,
+        "noise_replacement": 0,
+        "interpolated": 2972.0625
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 17387.8,
+          "cadence_proxy_frames_sec": 42325.51099046458
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 17146.0,
+          "cadence_proxy_frames_sec": 42922.40289280299
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16743.0,
+          "cadence_proxy_frames_sec": 43955.53485038524
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 9,
+      "name": "GRANDTRAIN",
+      "tail_frames": [
+        1183,
+        1184,
+        1185,
+        1186,
+        1187,
+        1188,
+        1189,
+        1190,
+        1191,
+        1192,
+        1193,
+        1194,
+        1195,
+        1196,
+        1197,
+        1198
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 6956,
+        "clipped_calls": 0,
+        "neon_rows": 8298,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 5344,
+        "clipped_calls": 0,
+        "neon_rows": 8298,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 16512.1875,
+      "baseline_main_CPU_us": 11030.625,
+      "baseline_admission_us": 4820.625,
+      "physical_fixture_failed": false,
+      "baseline_local_cadence_proxy_frames_sec": 44569.95900755124,
+      "required_net_saving_us": 0,
+      "required_net_saving_for_20_percent_headroom_us": 3161.6638999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.0,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 1.961329962779156,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 2023.4375,
+        "noise_replacement": 0,
+        "interpolated": 2254.0625
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16350.9875,
+          "cadence_proxy_frames_sec": 45009.36227857798
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16109.1875,
+          "cadence_proxy_frames_sec": 45684.95586757557
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 15706.1875,
+          "cadence_proxy_frames_sec": 46857.17141731563
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 10,
+      "name": "RAGE_004",
+      "tail_frames": [
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342
+      ],
+      "before": {
+        "renderer_entries": 167.75,
+        "tile_calls": 17667.25,
+        "clipped_calls": 245,
+        "neon_rows": 11088.4375,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 163.6875
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 7016.1875,
+        "clipped_calls": 135.625,
+        "neon_rows": 11088.4375,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 162.75,
+        "tile_calls": 10651.0625,
+        "clipped_calls": 109.375,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 163.6875
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 18704.8125,
+      "baseline_main_CPU_us": 17039.6875,
+      "baseline_admission_us": 179.5,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 39345.356709670305,
+      "required_net_saving_us": 2016.6579999999994,
+      "required_net_saving_for_20_percent_headroom_us": 5354.2889,
+      "optimistic_equal_tile_dispatch_floor_us": 0.18741412698136106,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 0.49759026061905004,
+      "fixed_queries_mean": 165.625,
+      "batched_fixed_entries_mean": 4,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 1467.6875,
+        "noise_replacement": 0,
+        "interpolated": 2809.8125
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 1076.04375,
+          "predicted_step_us": 17628.76875,
+          "cadence_proxy_frames_sec": 41746.96091580418
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 2690.109375,
+          "predicted_step_us": 16014.703125,
+          "cadence_proxy_frames_sec": 45954.49033651693
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 5380.21875,
+          "predicted_step_us": 13324.59375,
+          "cadence_proxy_frames_sec": 55232.26702502656
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 11,
+      "name": "RAGE_005",
+      "tail_frames": [
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 15232.25,
+        "clipped_calls": 540,
+        "neon_rows": 17129.625,
+        "tile_decodes": 19.625,
+        "palette_builds": 13.1875,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 13620.25,
+        "clipped_calls": 540,
+        "neon_rows": 17129.625,
+        "tile_decodes": 19.625,
+        "palette_builds": 13.1875,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0.0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17597.6875,
+      "baseline_main_CPU_us": 15878.75,
+      "baseline_admission_us": 191.9375,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 41820.69490664612,
+      "required_net_saving_us": 909.5329999999994,
+      "required_net_saving_for_20_percent_headroom_us": 4247.1639,
+      "optimistic_equal_tile_dispatch_floor_us": 0.5642264267990071,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.6347170595533496,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 4166,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4278,
+        "zero_envelope": 1293.3125,
+        "noise_replacement": 0,
+        "interpolated": 2984.6875
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 17436.4875,
+          "cadence_proxy_frames_sec": 42207.326446911975
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 17194.6875,
+          "cadence_proxy_frames_sec": 42800.86625592934
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16791.6875,
+          "cadence_proxy_frames_sec": 43828.08577160574
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 12,
+      "name": "RAGE_032",
+      "tail_frames": [
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 13782.5,
+        "clipped_calls": 288,
+        "neon_rows": 19976.0625,
+        "tile_decodes": 21.75,
+        "palette_builds": 15,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 12170.5,
+        "clipped_calls": 288,
+        "neon_rows": 19976.0625,
+        "tile_decodes": 21.75,
+        "palette_builds": 15,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 18475.8125,
+      "baseline_main_CPU_us": 16801.1875,
+      "baseline_admission_us": 180.5625,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 39833.02601712374,
+      "required_net_saving_us": 1787.6579999999994,
+      "required_net_saving_for_20_percent_headroom_us": 5125.2889,
+      "optimistic_equal_tile_dispatch_floor_us": 1.1089689826302727,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 3.1794596153846153,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 271.375,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277,
+        "zero_envelope": 1511.6875,
+        "noise_replacement": 370.1875,
+        "interpolated": 2395.125
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 18314.6125,
+          "cadence_proxy_frames_sec": 40183.624960670066
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 18072.8125,
+          "cadence_proxy_frames_sec": 40721.25022046237
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 17669.8125,
+          "cadence_proxy_frames_sec": 41649.99034370059
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 13,
+      "name": "RAGE_086",
+      "tail_frames": [
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 12154.75,
+        "clipped_calls": 226.5,
+        "neon_rows": 17866.8125,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 10542.75,
+        "clipped_calls": 226.5,
+        "neon_rows": 17866.8125,
+        "tile_decodes": 19.5,
+        "palette_builds": 13,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0.0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17428.5,
+      "baseline_main_CPU_us": 15724.5,
+      "baseline_admission_us": 196.4375,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 42226.670109303726,
+      "required_net_saving_us": 740.3454999999994,
+      "required_net_saving_for_20_percent_headroom_us": 4077.9763999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.4592714019851113,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.529762034739454,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 4410,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 1527.4375,
+        "noise_replacement": 1069.375,
+        "interpolated": 1680.6875
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 17267.3,
+          "cadence_proxy_frames_sec": 42620.87992911457
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 17025.5,
+          "cadence_proxy_frames_sec": 43226.19130128337
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16622.5,
+          "cadence_proxy_frames_sec": 44274.1777710934
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 14,
+      "name": "RAGE_088",
+      "tail_frames": [
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 10343.5,
+        "clipped_calls": 118,
+        "neon_rows": 18255.25,
+        "tile_decodes": 19.5,
+        "palette_builds": 14,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 8731.5,
+        "clipped_calls": 118,
+        "neon_rows": 18255.25,
+        "tile_decodes": 19.5,
+        "palette_builds": 14,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612.0,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 17149.875,
+      "baseline_main_CPU_us": 15464.875,
+      "baseline_admission_us": 192.0,
+      "physical_fixture_failed": true,
+      "baseline_local_cadence_proxy_frames_sec": 42912.70461154965,
+      "required_net_saving_us": 461.72049999999945,
+      "required_net_saving_for_20_percent_headroom_us": 3799.3513999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.2864271091811411,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.3569177419354834,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 4281.6875,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 403.5,
+        "noise_replacement": 0,
+        "interpolated": 3874
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16988.675,
+          "cadence_proxy_frames_sec": 43319.889279181574
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16746.875,
+          "cadence_proxy_frames_sec": 43945.36413509983
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 16343.875,
+          "cadence_proxy_frames_sec": 45028.94937706021
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 15,
+      "name": "TERRATO",
+      "tail_frames": [
+        1183,
+        1184,
+        1185,
+        1186,
+        1187,
+        1188,
+        1189,
+        1190,
+        1191,
+        1192,
+        1193,
+        1194,
+        1195,
+        1196,
+        1197,
+        1198
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 6937,
+        "clipped_calls": 38,
+        "neon_rows": 8111.5,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 5325,
+        "clipped_calls": 38,
+        "neon_rows": 8111.5,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 16649.9375,
+      "baseline_main_CPU_us": 11219.5,
+      "baseline_admission_us": 966.875,
+      "physical_fixture_failed": false,
+      "baseline_local_cadence_proxy_frames_sec": 44201.21817274089,
+      "required_net_saving_us": 0,
+      "required_net_saving_for_20_percent_headroom_us": 3299.4138999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.0,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.046782816377171,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 2345.6875,
+        "noise_replacement": 0,
+        "interpolated": 1931.8125
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16488.7375,
+          "cadence_proxy_frames_sec": 44633.34563971317
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16246.9375,
+          "cadence_proxy_frames_sec": 45297.61501205996
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 15843.9375,
+          "cadence_proxy_frames_sec": 46449.78686642762
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 16,
+      "name": "BIO_BLAST",
+      "tail_frames": [
+        1183,
+        1184,
+        1185,
+        1186,
+        1187,
+        1188,
+        1189,
+        1190,
+        1191,
+        1192,
+        1193,
+        1194,
+        1195,
+        1196,
+        1197,
+        1198
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 8665,
+        "clipped_calls": 38,
+        "neon_rows": 13733.1875,
+        "tile_decodes": 19.5,
+        "palette_builds": 12.3125,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 7053,
+        "clipped_calls": 38,
+        "neon_rows": 13733.1875,
+        "tile_decodes": 19.5,
+        "palette_builds": 12.3125,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0.0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 16609.9375,
+      "baseline_main_CPU_us": 12918.8125,
+      "baseline_admission_us": 2418.8125,
+      "physical_fixture_failed": false,
+      "baseline_local_cadence_proxy_frames_sec": 44307.66340932951,
+      "required_net_saving_us": 0,
+      "required_net_saving_for_20_percent_headroom_us": 3259.4138999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.0,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 2.0219689205955333,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 16.75,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 2593.125,
+        "noise_replacement": 0,
+        "interpolated": 1684.375
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16448.7375,
+          "cadence_proxy_frames_sec": 44741.8849015008
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16206.9375,
+          "cadence_proxy_frames_sec": 45409.41309855733
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 15803.9375,
+          "cadence_proxy_frames_sec": 46567.35196529346
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    },
+    {
+      "case": 17,
+      "name": "CONFUSER",
+      "tail_frames": [
+        1183,
+        1184,
+        1185,
+        1186,
+        1187,
+        1188,
+        1189,
+        1190,
+        1191,
+        1192,
+        1193,
+        1194,
+        1195,
+        1196,
+        1197,
+        1198
+      ],
+      "before": {
+        "renderer_entries": 28,
+        "tile_calls": 6956,
+        "clipped_calls": 0,
+        "neon_rows": 8258.5,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "after": {
+        "renderer_entries": 5,
+        "tile_calls": 5344,
+        "clipped_calls": 0,
+        "neon_rows": 8258.5,
+        "tile_decodes": 19.5,
+        "palette_builds": 12,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 0
+      },
+      "removed": {
+        "renderer_entries": 23,
+        "tile_calls": 1612,
+        "clipped_calls": 0,
+        "neon_rows": 0.0,
+        "tile_decodes": 0.0,
+        "palette_builds": 0,
+        "window1_left_flush": 0,
+        "window1_right_flush": 0,
+        "fixed_color_flush": 23
+      },
+      "A7_unit_prices_measured": false,
+      "baseline_step_us": 16476.375,
+      "baseline_main_CPU_us": 10974.5625,
+      "baseline_admission_us": 4447.4375,
+      "physical_fixture_failed": false,
+      "baseline_local_cadence_proxy_frames_sec": 44666.83478617111,
+      "required_net_saving_us": 0,
+      "required_net_saving_for_20_percent_headroom_us": 3125.8513999999996,
+      "optimistic_equal_tile_dispatch_floor_us": 0.0,
+      "optimistic_equal_tile_dispatch_floor_for_headroom_us": 1.9391137717121585,
+      "fixed_queries_mean": 24,
+      "batched_fixed_entries_mean": 2,
+      "new_subscreen_fast_rows_mean": {
+        "full_add": 0,
+        "full_subtract": 0,
+        "half_subtract": 0
+      },
+      "DSP_mean": {
+        "voice_calls": 4277.5,
+        "zero_envelope": 2394.3125,
+        "noise_replacement": 0,
+        "interpolated": 1883.1875
+      },
+      "sensitivity_not_A7_prices": [
+        {
+          "d_us": 0.1,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 161.20000000000002,
+          "predicted_step_us": 16315.175,
+          "cadence_proxy_frames_sec": 45108.159734725494
+        },
+        {
+          "d_us": 0.25,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 403.0,
+          "predicted_step_us": 16073.375,
+          "cadence_proxy_frames_sec": 45786.74484979041
+        },
+        {
+          "d_us": 0.5,
+          "e_us": 0,
+          "b_us": 0,
+          "saving_us": 806.0,
+          "predicted_step_us": 15670.375,
+          "cadence_proxy_frames_sec": 46964.257077447095
+        }
+      ],
+      "scorecard": "S = removed_full*d_full + removed_clip*d_clip + removed_entries*e - b; all prices require aligned A7 measurement",
+      "subscreen_scorecard": "S_sub = N_add*k_add + N_sub*k_sub + N_half_sub*k_half_sub - predicate_cost_on_all_other_rows - other_added_costs",
+      "DSP_scorecard": "S_dsp = N_zero*g_zero + N_noise*g_noise - branch_cost_on_other_voices - other_added_costs; A7 prices remain unknown",
+      "predicted_saving_measured": false
+    }
+  ],
+  "screen_cases": 406,
+  "screen_calls_per_case": 600,
+  "screen_context": "14-byte animation overlay in both cores; original Bio Blast mechanics and single-enemy target",
+  "universal_coverage": false,
+  "fixed_core_sha256": "a3bd2a9772d7388cd3f0986c5c867463485483b5d1330cd4b76e21a0e6a075c5",
+  "subscreen_core_sha256": "8a450dbb9bdef49d218fe7aa6403372401ea87f8c1b4553e630f685607c564fd",
+  "DSP_core_sha256": "d6ac3b9714d63caf79b5df55ac62e1667b4e3377cf4fe1405fa5fb985bac018a",
+  "evidence_boundaries": [
+    "Output equivalence and removed work do not establish performance.",
+    "20 percent is a proposed engineering target, not proof across all legal PPU states.",
+    "Native SETUP/errno77/pointer discrepancy remains a separate unresolved protocol cause.",
+    "No measured lower bound proves full-frame emulation impossible on this A7."
+  ],
+  "checks": {
+    "build/fixed-rows-private-v3/qualification.json": "cccfd85e9571c785781e6fb517631ffa3ce3678fd5cc4bfe75dcdd5d140484c7",
+    "build/fixed-rows-private-v3/row-check.log": "3b2c19c17f8d7a927f8a22da01660a39098cf9c3e715b58ee22cac40607d3e63",
+    "build/fixed-rows-private-v3/screen.json": "6c0d71160dc2ddf6b38ef74670b5dfc665aac2eebede0da61676e97e3f1278fa",
+    "build/subscreen-rows-private-v1/qualification.json": "f5ec1e0875b7c0ce754f4a52c28770ee9c9883e4dede27e660bf487ac0a06d30",
+    "build/subscreen-rows-private-v1/check.log": "2579914595734e39838997ac607e777646142bc9de176b2e097973c52f76a7a4",
+    "build/dsp-dead-work-private-v1/qualification.json": "41beb39795c0271fdf414c891a5111298deb783f30be8eefcfea3f79ba1db050",
+    "build/fixed-rows-private-v3/clipping-exact.log": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66",
+    "build/fixed-rows-private-v3/clipping-old-counterexample.log": "354ad20c5dd86b42b08bd20ed0044750cb3c8ee7a3b05171cb143171d62c5945"
+  }
+}
