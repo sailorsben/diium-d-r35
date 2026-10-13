@@ -1,5 +1,29 @@
 # Investigation history and negative results
 
+## Aligned common renderer patterns and short regression — 2026-10-13
+
+Generalized Window2 batching removes tile/entry preambles in four of the eleven
+failed-effect tails, while preserving row attempts/decode/palette counts and
+exact original output. Seven effects have no removed work; do not claim their
+failures fixed. Siren/Carbunkl/Lullaby have~158–164 real fixed-color flushes and
+~162–168 renderer entries in matched tails. Remaining28-entry cases retain
+heavy row work. Captured per-row color/all-consumer correctness is a future
+design, not permission to ignore genuine color writes. Existing unused-color
+shortcut remains a zero-saving negative result.
+
+18 actual fixtures with a new counter-free core plus22 aligned census runs pass
+48,000 exact calls; the actual runner's18 full windows and native/wrapper seams
+pass. Initial disabled-counter guard, owned include paths and empty mock base
+errors were caught offline and preserved/corrected before staging. Correctly
+label $2126/$2127 as Window1; those zeros do not measure Window2 deferrals.
+Rage subset uses five confirmed failed contexts; control summon is Terrato.
+
+Conditional dispatch/setup prices still do not close the measured deficits and
+are not new A7 measurements. Explicitly requested experimental18-case one-shot
+staged on archived healthy I:,79 payloads verified and4,604 prior files preserved.
+No production installation acceptance or physical fix claim.
+[Predictions, sources and staging](snes-ability-regression.md).
+
 ## Ability1 hardware failure replication — 2026-10-13
 
 400-case return identifies24 native PCM failures grouped into11 observed

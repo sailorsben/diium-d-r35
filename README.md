@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Ability2 short regression armed on I:**18 automatic cases (~6–7 minutes),
+  including all11 failed effects, five Rages and Terrato/Bio Blast/Confuser
+  controls. Separate counter-free generalized Window2 renderer passes48,000
+  exact comparison calls and18 actual-runner cases offline. Matched tails remove
+  repeated setup in Holy/Meteor/Ultima/GrandTrain; seven effects remain unresolved.
+  Archive4,605 files, protect4,604, verify79 payloads and clean FAT. Physical
+  savings pending; production gate false. [Instructions](docs/snes-ability-regression-test.txt),
+  [calculations and remaining mechanisms](docs/snes-ability-regression.md).
 - **Ability suite returned:** all400 cases attempted,376 full windows completed,
   24 native PCM failures grouped into11 effects. All27 summons fired; Siren,
   Bahamut and Carbunkl failed. Bio Blast/Confuser completed. New archived contexts

@@ -1,5 +1,14 @@
 # Device findings
 
+**Current staging2026-10-13:** [ability2 regression](snes-ability-regression.md)
+is armed on I:,18 automatic cases (~6–7 minutes) with a separate counter-free
+generalized Window2 core. Returned-state counters identify removable setup in
+Holy/Meteor/Ultima/GrandTrain; seven effects have unchanged work in failed tails.
+48,000 offline exact calls and all18 actual-runner windows pass; A7 savings
+remain unpriced. Fresh4,605-file archive,4,604 protected files,79 verified
+payloads and clean FAT preserve production/progress. Experimental only;
+production gate false. Older unarmed statements describe the pre-install return.
+
 **Current return2026-10-13:** [ability1 physical sweep](snes-ability-suite-return.md)
 attempts400 cases;376 complete full windows and24 fail with native PCM errno77,
 grouped into11 observed effects. Bio Blast/Confuser complete; Siren/Bahamut/

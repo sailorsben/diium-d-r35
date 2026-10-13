@@ -6207,6 +6207,30 @@
       "published": "evidence/2026-10-13/ability-return/offline-summary.json",
       "source_sha256": "ccafe555b13e4ec6452c5931107afc667672e4f645988de24106616bb161e271",
       "published_sha256": "ccafe555b13e4ec6452c5931107afc667672e4f645988de24106616bb161e271"
+    },
+    {
+      "source": "build/ability-regression-private-v1/public-qualification.json",
+      "published": "evidence/2026-10-13/ability-regression/qualification.json",
+      "source_sha256": "8f2e60a481163d3ac9c3352d3d9c05a633b46500e6365d197ebd12246160cc64",
+      "published_sha256": "5081f07af834da942678a9ea8dd27c5a14307bc706f37735b84200c6ab477107"
+    },
+    {
+      "source": "build/ability-regression-private-v1/predictions.json",
+      "published": "evidence/2026-10-13/ability-regression/predictions.json",
+      "source_sha256": "40ec2f283042f6fc370ec7815e61888eaab2a93a24638259fe684f1cd04235b9",
+      "published_sha256": "ca074177dd6c321a25e2903631a6fd37922e89c6e9c9ac89e72f3d57d5a85173"
+    },
+    {
+      "source": "build/ability-regression-private-v1/public-coverage.json",
+      "published": "evidence/2026-10-13/ability-regression/coverage.json",
+      "source_sha256": "6981f6fea1206453bf1f5229d77fa277b34cb5288eaa1895f5c9ec15f12e60ad",
+      "published_sha256": "80732d12663cd8bfd849af2d26943f4566af257323b2c4587cc889bdf949494f"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261013T071014Z/ability2-installation.json",
+      "published": "evidence/2026-10-13/ability-regression/installation.json",
+      "source_sha256": "566e04c114368d41232d677c74f372d3a561616d06b783b6137f0ea634630925",
+      "published_sha256": "186021042d9e8a52731570e51d19af489dea97c80ae26e4763143ab74a8589e3"
     }
   ]
 }

@@ -1,5 +1,27 @@
 # Changelog
 
+## Generalized renderer and18-case physical regression staged — 2026-10-13
+
+Build counter-free multi-background/irrelevant Window2 batching as separate
+ability2. Replay the actual returned fixtures and align inward counters to the
+final16 ordinary A7 calls: remove4,320 Holy tile calls,2,148.75 Meteor,
+1,452.0625 full/clipped Ultima and2,895 GrandTrain per call. Row/decode counts
+remain exact; seven failed effects show no removed work. Price sensitivity still
+fails the production gate; document fixed-color fragmentation and remaining
+row/compositor targets rather than claiming universal fixes.
+
+18 new-core/22 census comparisons total48,000 exact calls; all18 actual-runner
+windows, requested properties/five Rage selections, state-header payload
+preservation, native fault/retry/drain/deficit and wrapper checks pass offline.
+Record corrected owned mock base/header setup and Window1 counter labels;
+negative receipts retained privately. QEMU timings excluded from A7 evidence.
+
+Fresh4,605-file archive/FAT/serial checks precede all writes. Stage79 verified
+payload files in retro/snes-ability2, preserve4,604 prior files and all original
+progress/production binaries; consume-on-boot one-shot armed. About6–7 minutes,
+no B press; physical performance and continuity pending. Four bounded public
+proofs preserve778 earlier manifest entries. [Scope and predictions](docs/snes-ability-regression.md).
+
 ## Ability1 physical return and matched offline checks — 2026-10-13
 
 Archive4,605 returned files; verify1,607 installed payload files,575 unchanged

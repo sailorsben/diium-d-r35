@@ -1,0 +1,42 @@
+SNES ability2:18 automatic returned-context renderer regressions
+
+I: carries a separate experimental renderer and eighteen independent fixtures.
+Safely eject I:, insert it in the D-R35 and boot normally. No B press required.
+Allow about6-7 minutes. Every case gets1,200 nominal calls (~20 seconds) unless
+the native runtime fails. A failed case closes audio before the next fresh case.
+MENU stops the suite. Buttons otherwise follow each fixture's scripted inputs.
+
+Order:
+1 Holy
+2 Meteor
+3 Ultima
+4 Meltdown
+5 Slow2
+6 Siren
+7 Bahamut
+8 Carbunkl
+9 Quasar
+10 GrandTrain
+11 Rage004 (returned Lullaby failure)
+12 Rage005 (returned Holy failure)
+13 Rage032 (returned Meteor failure)
+14 Rage086 (returned Meltdown failure)
+15 Rage088 (returned Slow2 failure)
+16 Terrato (successful summon control)
+17 Bio Blast (successful control)
+18 Confuser (successful control)
+
+The largest old section was255 Rages; this subset uses five confirmed failing
+Rage contexts and also checks their shared effects through normal commands.
+This is a six-minute test, not the earlier two-hour400-case sweep.
+
+Watch for complete animations, wrong colors, stutter or abrupt case endings.
+After it returns to stock, power off and reconnect I: for collection.
+The one-shot is consumed before starting. Another boot is stock.
+Original ROM, production binaries and actual gameplay saves are preserved.
+
+The generic Window2 fix removes repeated setup in Holy/Meteor/Ultima/GrandTrain.
+The other seven failure effects show no measured offline work reduction in their
+matched failure tails. They remain explicit unresolved cases, not claimed fixes.
+This run measures A7 net savings and checks that boundary. No frameskip, reduced
+audio quota, error suppression or automatic reprime has been introduced.
