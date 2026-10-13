@@ -196,3 +196,43 @@ the prediction is exact output plus eliminated main BG3 preambles and direct
 subsurface rows at the populations above. A result below `4310.0389 - P` us saving
 fails the proposed 20% tail gate. A tail pass without complete-effect/recovery
 capacity evidence still does not establish a production fix or universal safety.
+
+## Conditional table for the failed contexts actually staged on I:
+
+The current staged version is1.19-fullpaths1: ability2 baseline, fixed rows,
+subscreen, DSP and combined variants, each repeated in ten contexts. The two
+newest depth/sole-sub paths are offline prototypes and are **not installed**.
+Eight staged contexts failed the earlier ability2 physical test; Bio Blast and
+Confuser are completed controls. Their healthy paced wall time is not a new
+service/headroom forecast and is excluded from this failed-tail table.
+
+To compare all eight with explicit assumptions, transfer the historical
+fixed-row restart-bundle range and scale Pearl's unmeasured subscreen/DSP
+allowances by each context's eligible counts. Price the newest successful depth
+rejects and sole-sub calls at0.30–0.40us net each, with other added cost b=0.
+These are **illustrative engineering scenarios, not an observed range or
+confidence interval**. The new price and transfer assumptions can be wrong;
+additional cost reduces saving. Whole-effect/recovery acceptance remains missing.
+
+| Ability | Last A7 tail ms | Total scenario saving ms | Conditional new service ms | Interpretation against16.688ms deadline /13.351ms target |
+| --- | ---: | ---: | ---: | --- |
+| Pearl/Holy |17.66|3.79–4.77|12.89–13.87|Below deadline;20% target crossed within scenario range |
+| Meteor |18.47|0.76–0.87|17.60–17.70|Still misses deadline |
+| Meltdown |17.56|1.02–1.12|16.43–16.54|Below deadline with thin margin |
+| Siren |18.52|3.63–4.03|14.49–14.89|Below deadline, below20% target |
+| Bahamut |17.09|1.07–1.17|15.92–16.02|Below deadline with modest margin |
+| Carbunkl |17.57|4.02–4.50|13.07–13.55|20% target crossed within scenario range |
+| Quasar |17.55|1.14–1.24|16.31–16.41|Below deadline with thin margin |
+| Lullaby Rage |18.70|3.99–4.47|14.24–14.72|Below deadline, below20% target |
+
+New-path populations are not uniform across effects: Pearl has4,763 successful
+early rejects plus4,569 sole-sub calls. Meteor/Meltdown/Siren/Bahamut/Quasar have
+488 early rejects and zero sole-sub calls; Carbunkl/Lullaby have1,058 and zero.
+The newest paths consequently contribute2.800–3.733ms to Pearl in this scenario,
+0.146–0.195ms to the former group,0.317–0.423ms to the latter. Do not transfer
+Pearl's gain wholesale to Meteor. Meteor remains the clearest unresolved target.
+
+Reproduce with `python build/forecast-pearl-cases.py`; the bounded
+[case calculations and assumptions](../evidence/2026-10-13/pearl-workback/forecast-cases.json)
+pin every compared census log. No new build, replay, card access or returned
+fullpaths result was used for this table.

@@ -1,0 +1,384 @@
+{
+  "staged_version": "1.19-fullpaths1",
+  "latest_paths_installed": false,
+  "A7_new_prices_measured": false,
+  "scenario_is_confidence_interval": false,
+  "all_frames_retained": true,
+  "card_access": false,
+  "deadline_us": 16688.1545,
+  "target_20pct_us": 13350.5236,
+  "assumptions": [
+    "Historical fixed-row restart-bundle transfer range; not isolated entry prices.",
+    "Transfer Pearl judgment of300us/4166 eligible subscreen rows and200us/1372.25 omitted interpolations to other contexts; unmeasured and uncertain.",
+    "New early/sub calls each save0.30 to0.40us net; illustrative price scenarios, not a measured or bounded range.",
+    "Other added costs/interactions b=0; subtract measured b from saving.",
+    "Saved CPU translates into failed-tail service reduction; tail means are not complete-effect or worst-case guarantees."
+  ],
+  "cases": [
+    {
+      "fixture": 0,
+      "name": "HOLY",
+      "baseline_version": "ability2",
+      "baseline_step_us": 17660.5625,
+      "aligned_frames": [
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414
+      ],
+      "log_sha256": "16ae4d50f7475782eb6dda970ffd75fbceb55518187d28f45c5efd19f455d061",
+      "early_removed_calls": 4763,
+      "sole_sub_calls": 4569,
+      "staged_planning_saving_us": [
+        988.0838418000001,
+        1041.3574561
+      ],
+      "latest_planning_saving_us": [
+        2799.6,
+        3732.8
+      ],
+      "total_planning_saving_us": [
+        3787.6838417999998,
+        4774.1574561
+      ],
+      "conditional_service_step_us": [
+        12886.4050439,
+        13872.8786582
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 1,
+      "name": "METEOR",
+      "baseline_version": "ability2",
+      "baseline_step_us": 18466.125,
+      "aligned_frames": [
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406
+      ],
+      "log_sha256": "0649efb93a1415c986af110cd64b412c55b9cb51ebd074e901e19a98bf98b776",
+      "early_removed_calls": 488,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        617.1648180391278,
+        670.4384323391278
+      ],
+      "latest_planning_saving_us": [
+        146.4,
+        195.20000000000002
+      ],
+      "total_planning_saving_us": [
+        763.5648180391278,
+        865.6384323391278
+      ],
+      "conditional_service_step_us": [
+        17600.48656766087,
+        17702.56018196087
+      ],
+      "entire_range_below_deadline": false,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "baseline_version": "ability2",
+      "baseline_step_us": 17559.0,
+      "aligned_frames": [
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415
+      ],
+      "log_sha256": "5fd87289a80674709fb0276383ea5f0ecfe1a35b146a11906e9dfb9ecaa6a3ac",
+      "early_removed_calls": 488,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        875.7129515448246,
+        928.9865658448247
+      ],
+      "latest_planning_saving_us": [
+        146.4,
+        195.20000000000002
+      ],
+      "total_planning_saving_us": [
+        1022.1129515448246,
+        1124.1865658448246
+      ],
+      "conditional_service_step_us": [
+        16434.813434155174,
+        16536.887048455177
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 5,
+      "name": "SIREN",
+      "baseline_version": "ability2",
+      "baseline_step_us": 18523.3125,
+      "aligned_frames": [
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405
+      ],
+      "log_sha256": "23b35fc6311fe56e985c0b8a0aaac6ceed392e71644afad9434de67eb160b8de",
+      "early_removed_calls": 488,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        3482.4518909183644,
+        3837.995360268364
+      ],
+      "latest_planning_saving_us": [
+        146.4,
+        195.20000000000002
+      ],
+      "total_planning_saving_us": [
+        3628.8518909183645,
+        4033.195360268364
+      ],
+      "conditional_service_step_us": [
+        14490.117139731636,
+        14894.460609081636
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "baseline_version": "ability2",
+      "baseline_step_us": 17089.25,
+      "aligned_frames": [
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595
+      ],
+      "log_sha256": "18514a7a020ca6d27dbd013f4af9723d76e9257c40bbba0f86f2ea3939643bb9",
+      "early_removed_calls": 488,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        923.2309417433512,
+        976.5045560433512
+      ],
+      "latest_planning_saving_us": [
+        146.4,
+        195.20000000000002
+      ],
+      "total_planning_saving_us": [
+        1069.6309417433513,
+        1171.7045560433512
+      ],
+      "conditional_service_step_us": [
+        15917.54544395665,
+        16019.619058256649
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "baseline_version": "ability2",
+      "baseline_step_us": 17572.9375,
+      "aligned_frames": [
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413
+      ],
+      "log_sha256": "014ebbd6b4504cf575398b2833f4bc2d719e7fd6588f878c31ab7f65c0cc04f9",
+      "early_removed_calls": 1058,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        3701.235041367221,
+        4077.914238129721
+      ],
+      "latest_planning_saving_us": [
+        317.4,
+        423.20000000000005
+      ],
+      "total_planning_saving_us": [
+        4018.635041367221,
+        4501.114238129721
+      ],
+      "conditional_service_step_us": [
+        13071.823261870279,
+        13554.30245863278
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 8,
+      "name": "QUASAR",
+      "baseline_version": "ability2",
+      "baseline_step_us": 17549.0,
+      "aligned_frames": [
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442
+      ],
+      "log_sha256": "f84f6d3bbe261e226a8394777d424f99e4834fc533ec1cb47c52cace6a76ddda",
+      "early_removed_calls": 488,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        994.9096961884784,
+        1048.1833104884786
+      ],
+      "latest_planning_saving_us": [
+        146.4,
+        195.20000000000002
+      ],
+      "total_planning_saving_us": [
+        1141.3096961884785,
+        1243.3833104884786
+      ],
+      "conditional_service_step_us": [
+        16305.616689511522,
+        16407.69030381152
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    },
+    {
+      "fixture": 10,
+      "name": "RAGE_004",
+      "baseline_version": "ability2",
+      "baseline_step_us": 18704.8125,
+      "aligned_frames": [
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342
+      ],
+      "log_sha256": "bb894922f3dc8925bef5cefa98f40a60ed36cfff179d3c4d2e4db930e88a6495",
+      "early_removed_calls": 1058,
+      "sole_sub_calls": 0,
+      "staged_planning_saving_us": [
+        3667.633344106732,
+        4044.6020713817315
+      ],
+      "latest_planning_saving_us": [
+        317.4,
+        423.20000000000005
+      ],
+      "total_planning_saving_us": [
+        3985.033344106732,
+        4467.802071381731
+      ],
+      "conditional_service_step_us": [
+        14237.010428618269,
+        14719.779155893268
+      ],
+      "entire_range_below_deadline": true,
+      "entire_range_below_20pct_target": false
+    }
+  ],
+  "completed_controls_without_new_headroom_claim": [
+    "BIO_BLAST",
+    "CONFUSER"
+  ],
+  "control_limit": "Healthy paced wall duration cannot be reduced into an active-service prediction without intentional-wait accounting."
+}

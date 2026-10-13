@@ -6435,6 +6435,12 @@
       "published": "evidence/2026-10-13/pearl-workback/verification.json",
       "source_sha256": "cfc680ead45e11b60e2c76626294e6c678fbff65f891121d86d48134e2779ef5",
       "published_sha256": "fb048d402b7833c61286385d667b615644dc3bde90913c87599dde948f5c9525"
+    },
+    {
+      "source": "build/pearl-sub-private-v2/forecast-cases.json",
+      "published": "evidence/2026-10-13/pearl-workback/forecast-cases.json",
+      "source_sha256": "bb39c4c4c052ac9e18fc02b49e40ce1773c2b839464e089c36fdff728a8c986f",
+      "published_sha256": "eec5ce1e5d84cd351a4826e445c2921c524c71aa80ea08452826153e298bbf7f"
     }
   ]
 }

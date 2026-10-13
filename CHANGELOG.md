@@ -1,5 +1,18 @@
 # Changelog
 
+## Compare new renderer applicability across staged failing cases — 2026-10-13
+
+Use already qualified per-case census logs; no new build/replay/card access.
+Pearl has9,332 affected calls; most other staged failing tails have only488,
+Carbunkl/Lullaby1,058. Publish an explicit conditional table combining historical
+batching transfer, scaled Pearl subscreen/DSP judgments and illustrative0.30–0.40us
+new-path net prices, b=0. Meteor still exceeds deadline in that model; Meltdown
+and Quasar remain thin, Pearl/Carbunkl straddle the proposed20% target. No measured
+new A7 prices or confidence interval. Preserve all816 prior evidence entries.
+Exclude healthy paced controls from unsupported service subtraction. Current
+I: version remains fullpaths1; newest two paths remain offline.
+[Table and assumptions](docs/snes-pearl-workback.md#conditional-table-for-the-failed-contexts-actually-staged-on-i).
+
 ## Trace Pearl's redundant tile work and qualify exact replacements — 2026-10-13
 
 Aligned source census identifies 4,275 wholly hidden main BG3 row visits and
