@@ -1,5 +1,17 @@
 # Changelog
 
+## Reset efficiency research; identify codegen confound — 2026-10-14
+
+Read current source/build/ELF and earlier physical/profile evidence plus primary
+upstream references. Unchanged selected CPU/APU source hashes produce different
+SPC/DSP machine-code structure across PPU variants; final .text grows22,568 bytes.
+This bounds family attribution, not a proven cause of regression or cache miss
+rate. Research priority: stable codegen/current inward cost ownership, then
+winner/source production architecture and exact interpreter/DSP work. Historical
+overdraw/phase counts require refresh on v3; newer core labels do not price a
+port. Publish reproducible read-only ELF audit. No emulator build/card access.
+See docs/snes-efficiency-research-reset.md.
+
 ## Evaluate PPU return; reject combination — 2026-10-14
 
 Strictly archive7,226 files/1,827,485,639 bytes, clean FAT,91 exact payloads,

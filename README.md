@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **Efficiency research reset:** source-level PPU isolation did not isolate
+  emitted CPU/APU code under LTO. Fresh ELF audit establishes changed SPC/DSP
+  structure across unchanged sources; performance causality remains unproven.
+  Prioritize current inward cost ownership and architectural work avoidance.
+  [Findings and research gates](docs/snes-efficiency-research-reset.md).
+
 - **PPU return: combination rejected; I: unarmed.** All56 epochs ran;
   same16/18 contexts pass twice. Combined Meteor is slower over the matched
   warm prefix and loses pointers earlier than v3. Bulk depth shows useful

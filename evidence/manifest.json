@@ -7023,6 +7023,14 @@
       "published_sha256": "8dae7a12b240fc5770d4e93e7aeb08747e2ef4285d068470c68a6691c7a4f06e",
       "bytes": 150719,
       "normalized": true
+    },
+    {
+      "source": "build/audit-core-codegen.py",
+      "published": "evidence/2026-10-14/core-codegen-review/analysis.json",
+      "source_sha256": "312693710ff2e692f6597bf14d0eb56db7953928f2322f911c96001e226a4911",
+      "published_sha256": "f99d70d4ea2b6d4f0c58fe939dc34779e471f40d0a6b9ee02718e9c537708516",
+      "bytes": 7762,
+      "normalized": true
     }
   ]
 }

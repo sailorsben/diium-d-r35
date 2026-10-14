@@ -1,0 +1,204 @@
+{
+  "read_only": true,
+  "card_access": false,
+  "emulator_changes": false,
+  "A7_prices_from_assembly": false,
+  "variants": {
+    "baseline": {
+      "core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+      "text_section_bytes": 657196,
+      "gnu_size_code_plus_readonly_bytes": 701872,
+      "data_bytes": 22736,
+      "bss_bytes": 983424,
+      "functions_bytes": {
+        "dsp_voice_V8_V5_V2": 248,
+        "dsp_voice_V3": 1124,
+        "dsp_voice_V7_V4_V1": 1836,
+        "DrawOBJS.lto_priv.0": 4084,
+        "dsp_run.part.0": 10216,
+        "DrawBackground.lto_priv.0": 16456,
+        "S9xUpdateScreen": 17136,
+        "spc_run_until_.lto_priv.0": 21260
+      },
+      "static_call_sites": {
+        "dsp_run.part.0": {
+          "dsp_voice_V3": 15,
+          "dsp_voice_V7_V4_V1": 16,
+          "dsp_voice_V8_V5_V2": 18
+        },
+        "spc_run_until_.lto_priv.0": {
+          "spc_cpu_read": 100,
+          "spc_cpu_write": 42,
+          "dsp_run.part.0": 16,
+          "spc_cpu_write_smp_reg_": 4,
+          "spc_run_timer_": 12
+        }
+      },
+      "source_hashes": {
+        "apu_blargg.c": "b9a2006af2185a561a1de3b492dcf127785ce25c142dd3d770caa788314603c4",
+        "cpuexec.c": "e99414accfab7584100850271c222f6e6dc498819c3937bd96625b1fe8b773ae",
+        "cpuops.c": "d737edbc2a7095103b616b3230eb72fc1db75e2ca773650e5f1b2530b2ffd03e",
+        "cpuops.h": "e36d5c8864e0f809621d03329aec5dffc7dd14b9a3799d5a9ee6597de104405d"
+      },
+      "same_selected_CPU_APU_sources_as_baseline": true
+    },
+    "obj": {
+      "core_sha256": "fe825460ff2e9ab50607efa278818c011691e88bbb6fdfb0a00696eef40b0df0",
+      "text_section_bytes": 658676,
+      "gnu_size_code_plus_readonly_bytes": 703352,
+      "data_bytes": 22736,
+      "bss_bytes": 983424,
+      "functions_bytes": {
+        "dsp_voice_V8_V5_V2": 248,
+        "dsp_voice_V3": 1124,
+        "dsp_voice_V7_V4_V1": 1836,
+        "DrawOBJS.lto_priv.0": 5532,
+        "spc_run_until_.lto_priv.0": 10212,
+        "dsp_run.part.0": 10220,
+        "DrawBackground.lto_priv.0": 16456,
+        "S9xUpdateScreen": 17136
+      },
+      "static_call_sites": {
+        "spc_run_until_.lto_priv.0": {
+          "spc_cpu_read": 50,
+          "spc_cpu_write": 21,
+          "dsp_run.part.0": 8,
+          "spc_cpu_write_smp_reg_": 2,
+          "spc_run_timer_": 6
+        },
+        "dsp_run.part.0": {
+          "dsp_voice_V3": 15,
+          "dsp_voice_V7_V4_V1": 16,
+          "dsp_voice_V8_V5_V2": 18
+        }
+      },
+      "source_hashes": {
+        "apu_blargg.c": "b9a2006af2185a561a1de3b492dcf127785ce25c142dd3d770caa788314603c4",
+        "cpuexec.c": "e99414accfab7584100850271c222f6e6dc498819c3937bd96625b1fe8b773ae",
+        "cpuops.c": "d737edbc2a7095103b616b3230eb72fc1db75e2ca773650e5f1b2530b2ffd03e",
+        "cpuops.h": "e36d5c8864e0f809621d03329aec5dffc7dd14b9a3799d5a9ee6597de104405d"
+      },
+      "same_selected_CPU_APU_sources_as_baseline": true
+    },
+    "shapes": {
+      "core_sha256": "a242319f6cda10d3d3517bd70cb24b3dfd55c111ab813740d6cbe8377ec41b70",
+      "text_section_bytes": 659172,
+      "gnu_size_code_plus_readonly_bytes": 703935,
+      "data_bytes": 22740,
+      "bss_bytes": 983424,
+      "functions_bytes": {
+        "dsp_voice_V8_V5_V2": 248,
+        "dsp_voice_V3": 1128,
+        "dsp_voice_V7_V4_V1": 1836,
+        "DrawOBJS.lto_priv.0": 4084,
+        "spc_run_until_.lto_priv.0": 10212,
+        "dsp_run.part.0": 10220,
+        "DrawBackground.lto_priv.0": 16456,
+        "S9xUpdateScreen": 17136
+      },
+      "static_call_sites": {
+        "spc_run_until_.lto_priv.0": {
+          "spc_cpu_read": 50,
+          "spc_cpu_write": 21,
+          "dsp_run.part.0": 8,
+          "spc_cpu_write_smp_reg_": 2,
+          "spc_run_timer_": 6
+        },
+        "dsp_run.part.0": {
+          "dsp_voice_V3": 15,
+          "dsp_voice_V7_V4_V1": 16,
+          "dsp_voice_V8_V5_V2": 18
+        }
+      },
+      "source_hashes": {
+        "apu_blargg.c": "b9a2006af2185a561a1de3b492dcf127785ce25c142dd3d770caa788314603c4",
+        "cpuexec.c": "e99414accfab7584100850271c222f6e6dc498819c3937bd96625b1fe8b773ae",
+        "cpuops.c": "d737edbc2a7095103b616b3230eb72fc1db75e2ca773650e5f1b2530b2ffd03e",
+        "cpuops.h": "e36d5c8864e0f809621d03329aec5dffc7dd14b9a3799d5a9ee6597de104405d"
+      },
+      "same_selected_CPU_APU_sources_as_baseline": true
+    },
+    "bulk": {
+      "core_sha256": "67e55670ee55d934e2d007ccf65a8242e72585fd4c8d7eb46a57f43a5359979c",
+      "text_section_bytes": 658020,
+      "gnu_size_code_plus_readonly_bytes": 702696,
+      "data_bytes": 22736,
+      "bss_bytes": 983424,
+      "functions_bytes": {
+        "dsp_voice_V8_V5_V2": 248,
+        "dsp_voice_V3": 1124,
+        "dsp_voice_V7_V4_V1": 1836,
+        "DrawOBJS.lto_priv.0": 4084,
+        "dsp_run.part.0": 10216,
+        "DrawBackground.lto_priv.0": 16456,
+        "S9xUpdateScreen": 17376,
+        "spc_run_until_.lto_priv.0": 21260
+      },
+      "static_call_sites": {
+        "dsp_run.part.0": {
+          "dsp_voice_V3": 15,
+          "dsp_voice_V7_V4_V1": 16,
+          "dsp_voice_V8_V5_V2": 18
+        },
+        "spc_run_until_.lto_priv.0": {
+          "spc_cpu_read": 100,
+          "spc_cpu_write": 42,
+          "dsp_run.part.0": 16,
+          "spc_cpu_write_smp_reg_": 4,
+          "spc_run_timer_": 12
+        }
+      },
+      "source_hashes": {
+        "apu_blargg.c": "b9a2006af2185a561a1de3b492dcf127785ce25c142dd3d770caa788314603c4",
+        "cpuexec.c": "e99414accfab7584100850271c222f6e6dc498819c3937bd96625b1fe8b773ae",
+        "cpuops.c": "d737edbc2a7095103b616b3230eb72fc1db75e2ca773650e5f1b2530b2ffd03e",
+        "cpuops.h": "e36d5c8864e0f809621d03329aec5dffc7dd14b9a3799d5a9ee6597de104405d"
+      },
+      "same_selected_CPU_APU_sources_as_baseline": true
+    },
+    "combined": {
+      "core_sha256": "623fd5386a78ffdda40e48ebd58fbdaa15bfc06cdfc3f337f9b6677197c78c4d",
+      "text_section_bytes": 679764,
+      "gnu_size_code_plus_readonly_bytes": 724527,
+      "data_bytes": 22740,
+      "bss_bytes": 983424,
+      "functions_bytes": {
+        "dsp_voice_V8_V5_V2": 248,
+        "dsp_voice_V3": 1124,
+        "dsp_voice_V7_V4_V1": 1836,
+        "DrawOBJS.lto_priv.0": 5532,
+        "spc_run_until_.lto_priv.0": 10212,
+        "dsp_run.part.0": 10220,
+        "DrawBackground.lto_priv.0": 16456,
+        "S9xUpdateScreen": 17376
+      },
+      "static_call_sites": {
+        "spc_run_until_.lto_priv.0": {
+          "spc_cpu_read": 50,
+          "spc_cpu_write": 21,
+          "dsp_run.part.0": 8,
+          "spc_cpu_write_smp_reg_": 2,
+          "spc_run_timer_": 6
+        },
+        "dsp_run.part.0": {
+          "dsp_voice_V3": 15,
+          "dsp_voice_V7_V4_V1": 16,
+          "dsp_voice_V8_V5_V2": 18
+        }
+      },
+      "source_hashes": {
+        "apu_blargg.c": "b9a2006af2185a561a1de3b492dcf127785ce25c142dd3d770caa788314603c4",
+        "cpuexec.c": "e99414accfab7584100850271c222f6e6dc498819c3937bd96625b1fe8b773ae",
+        "cpuops.c": "d737edbc2a7095103b616b3230eb72fc1db75e2ca773650e5f1b2530b2ffd03e",
+        "cpuops.h": "e36d5c8864e0f809621d03329aec5dffc7dd14b9a3799d5a9ee6597de104405d"
+      },
+      "same_selected_CPU_APU_sources_as_baseline": true
+    }
+  },
+  "limits": [
+    "Static call sites are not dynamic frequencies or cycles.",
+    "Code size is not instruction-cache miss rate.",
+    "LTO differences across unchanged source establish a confound, not causation of physical regression.",
+    "Baseline phase attribution predates demand-v3; current inner PPU/CPU/SPC costs remain unpriced."
+  ]
+}

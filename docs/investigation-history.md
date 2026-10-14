@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Deeper efficiency research / codegen interaction — 2026-10-14
+
+Source-identical CPU/APU modules produce different SPC/DSP codegen when PPU
+variants are rebuilt under LTO; .text combined+22,568 bytes. Static call-site
+populations are not runtime counts. No causality/speedup claimed. Architectural
+priority is current inward ownership, then winning-source/color production,
+main/sub sharing beyond installed geometry, exact interpreter/DSP mechanisms.
+Historical counts are not current v3 prices. Primary upstream code comparison
+and reproducible ELF audit preserved; no emulator/card changes. See
+snes-efficiency-research-reset.md.
+
 ## PPU physical combination rejected — 2026-10-14
 
 56 epochs return, same16/18 final contexts clean; Meteor/Rage032 still fail.
