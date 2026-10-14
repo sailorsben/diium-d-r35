@@ -1,0 +1,217 @@
+{
+  "card_access": false,
+  "production_gate_passed": false,
+  "A7_savings_measured": false,
+  "QEMU_timings_used": false,
+  "qualified_original_command_calls_this_review": 24000,
+  "baseline_core_sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+  "alignment_candidate_core_sha256": "832531a13f4e7b2355c5a5ade0963a7e4b54d006fa460f2f06219ad59e160291",
+  "alignment": {
+    "baseline_palette_symbol_offset": 1301288,
+    "baseline_palette_array_mod64": 40,
+    "table_bytes": 32,
+    "old_entry_bytes": 48,
+    "old_table_member_offset": 16,
+    "old_table_starts_mod64": [
+      56,
+      40,
+      24,
+      8
+    ],
+    "old_split_tables_out_of80": 40,
+    "new_split_tables_out_of80": 0,
+    "old_cache_bytes": 3840,
+    "new_cache_bytes": 3520,
+    "tile_alignment_guarantee": 64,
+    "decoded_tile_stride_bytes": 64,
+    "tile_allocation_sizes_unchanged": true,
+    "baseline_A7_tile_pointers_recorded": false,
+    "ARM_QEMU_old_tile_pointers_mod64": [
+      8,
+      8,
+      8
+    ],
+    "qualified_original_calls": 9600,
+    "new_layout_verified_in_every_case": true
+  },
+  "shared_geometry_first_envelope": {
+    "qualified_comparison_calls": 9600,
+    "recorded_commands": 0,
+    "replayed_commands": 0,
+    "active_optimization_coverage": false,
+    "recommended_for_A7_test": false,
+    "guard_probe": {
+      "cases": [
+        {
+          "fixture": 1,
+          "means": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.0,
+            0.0,
+            2.0,
+            0.0,
+            1.0,
+            3.0,
+            3.0,
+            0.0,
+            0.0
+          ],
+          "calls": 1200,
+          "exact": true
+        },
+        {
+          "fixture": 8,
+          "means": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.0,
+            0.0,
+            1.0,
+            0.0,
+            2.0,
+            2.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "calls": 1200,
+          "exact": true
+        }
+      ],
+      "counter7": "BG0 visits",
+      "counter8": "nonmode1",
+      "counter9": "non8x8",
+      "counter10": "unsupported_batch",
+      "counter11": "not_both_enabled",
+      "counter12": "clip_count_nonzero",
+      "counter13": "window2_target",
+      "counter14": "main_clip_count1_fullwidth",
+      "counter15": "sub_clip_count1_fullwidth"
+    },
+    "extra_guard_probe_exact_calls": 2400,
+    "command_storage_bytes": 65536
+  },
+  "source_sharing_by_layer": {
+    "passed": true,
+    "observer_only": true,
+    "qualified_original_command_calls": 2400,
+    "cases": [
+      {
+        "fixture": 1,
+        "name": "METEOR",
+        "exact_calls": 1200,
+        "log_sha256": "27d6c39cfb4f57d9cbbbf1874bbc8c5d7478cc98981fd2ef365ce6ee31e65026",
+        "peak_layer_means": {
+          "BG0": {
+            "sub_requests": 4664,
+            "main_requests": 3230,
+            "matching_main_requests": 3094
+          },
+          "BG1": {
+            "sub_requests": 0,
+            "main_requests": 6330,
+            "matching_main_requests": 0
+          },
+          "BG2": {
+            "sub_requests": 0,
+            "main_requests": 3542,
+            "matching_main_requests": 0
+          },
+          "BG3": {
+            "sub_requests": 0,
+            "main_requests": 0,
+            "matching_main_requests": 0
+          },
+          "OBJ": {
+            "sub_requests": 828.59375,
+            "main_requests": 1464.09375,
+            "matching_main_requests": 827.59375
+          }
+        },
+        "no_source_table_overflow": true,
+        "no_unsupported_layout": true,
+        "exact_original_output": true
+      },
+      {
+        "fixture": 8,
+        "name": "QUASAR",
+        "exact_calls": 1200,
+        "log_sha256": "f70a6a967ab55183094c7b4bcc997a7278243f72b68d9c08e29b5d16dfe422d3",
+        "peak_layer_means": {
+          "BG0": {
+            "sub_requests": 0,
+            "main_requests": 4546,
+            "matching_main_requests": 0
+          },
+          "BG1": {
+            "sub_requests": 4704,
+            "main_requests": 6330,
+            "matching_main_requests": 4410
+          },
+          "BG2": {
+            "sub_requests": 0,
+            "main_requests": 1021.2058823529412,
+            "matching_main_requests": 0
+          },
+          "BG3": {
+            "sub_requests": 0,
+            "main_requests": 0,
+            "matching_main_requests": 0
+          },
+          "OBJ": {
+            "sub_requests": 1236.764705882353,
+            "main_requests": 1856.4705882352941,
+            "matching_main_requests": 1220.7058823529412
+          }
+        },
+        "no_source_table_overflow": true,
+        "no_unsupported_layout": true,
+        "exact_original_output": true
+      }
+    ],
+    "candidate_core_sha256": "e4b38afebd8903b0f60fc77530b824bf4c7a82191505bb7e6577b3c6b0f83d18",
+    "A7_measurements": false,
+    "QEMU_timings_used": false,
+    "limits": [
+      "Warm nonblank ordinary full-tile2/4bpp requests only; clipped/scaled/Mode7 paths excluded.",
+      "Same redraw, layer, destination, decoded-row pointer, palette pointer and HFlip.",
+      "Source-key set retains earlier overlapping OBJ requests; a match is source identity, not a visible or cheap consumer.",
+      "No source-sharing optimization or A7 saving measured."
+    ]
+  },
+  "copy_removal_scenario": {
+    "basis": "Optimistic illustration using sampled callback means, not an aligned net A7 prediction. No new PPU/chunk/cache or ownership costs priced.",
+    "Meteor": {
+      "callback_ms": 0.824,
+      "current_deadline_gap_ms": 1.3083455,
+      "remaining_gap_if_whole_callback_free_ms": 0.4843455,
+      "remaining_saving_for20pct_margin_ms": 3.8219764
+    },
+    "Quasar": {
+      "callback_ms": 0.8585,
+      "current_deadline_gap_ms": 0.803283,
+      "slack_if_whole_callback_free_ms": 0.055217,
+      "remaining_saving_for20pct_margin_ms": 3.2824139
+    }
+  },
+  "2010_local_reviewed_commit": "fe690dd321fa5a46b5234a2bde089d2518c62b0e",
+  "limits": [
+    "Static baseline palette alignment is exact for its ELF and page-aligned load base; old A7 dynamic tile allocation addresses remain unknown.",
+    "A split tile/table footprint is not a cache miss, extra miss per access, DRAM transfer count, or time saving. Neighboring tiles can share warm cache lines.",
+    "Geometry v1 exercised fallback only: exact outputs do not qualify its positive path. No production install or A7 measurement should use this version.",
+    "Source-key matches are warm nonblank ordinary full-tile2/4bpp requests, not guaranteed visible final owners. No savings overlap with prior hidden-row/fused candidates is measured.",
+    "No direct-output-buffer or generalized deferred-span implementation was built. Generic DMA-buffer APIs do not establish the private chunk driver contract.",
+    "Original drawings, native PCM and geometry match every call; normalized emulated state is compared every30 calls."
+  ]
+}

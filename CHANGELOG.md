@@ -1,5 +1,21 @@
 # Changelog
 
+## Qualify explicit A7 cache layout; locate shared source work — 2026-10-13
+
+Review2010 allocation/framebuffer/span mechanisms and bsnes source sharing.
+Exact current ELF puts half its32-byte palette tables across64-byte lines.
+An isolated64-aligned tile/compact palette variant passes9600 original-input
+calls across eight contexts, cache3840->3520 bytes; A7 saving unmeasured.
+Reject a restricted BG0 geometry bypass:9600 exact fallback-only calls, zero
+reused commands, with2400 guard-probe calls. A separate2400-call observer locates
+Meteor's3094 shared BG rows on BG0 and Quasar's4410 on BG1, plus827.59/1220.71
+eligible matching OBJ rows/call. Preserve separate visibility/cost boundaries.
+Document direct-output ownership/fallback requirements, existing fill evidence
+and optimistic copy-removal limits.2010's single-thread span path drains
+immediately; do not import a queue as free throughput. Publish bounded receipts
+and input identities, retain original production/core/card unchanged. No A7
+test, card access, installation, frame omission or production promotion.
+
 ## Count architectural waste before changing rendering order — 2026-10-13
 
 Audit current Plus C, not just upstream. Three owned observer iterations pass

@@ -6771,6 +6771,18 @@
       "published": "evidence/2026-10-13/architecture-populations/memory-accounting-note.json",
       "source_sha256": "42d019c2b8c9aec3db7c17ba86feaf36879d6f4bfa870cb204694f8ae84cd240",
       "published_sha256": "c7ccc2c89e8bafa18a525e3261d4b7ba955d35bbc73503c9d6d30c8a4ec0d97a"
+    },
+    {
+      "source": "build/cache-alignment-private-v1/public-analysis.json",
+      "published": "evidence/2026-10-13/source-reuse-review/analysis.json",
+      "source_sha256": "71f57dd57f55965b290efa0110901246207615e93d184e97ec262a1b48d9bb26",
+      "published_sha256": "3e5bf5025681148c0aa156e5713419ac0a07a7bf361cfe083eb83c16a400dfe3"
+    },
+    {
+      "source": "build/cache-alignment-private-v1/public-inputs.json",
+      "published": "evidence/2026-10-13/source-reuse-review/inputs.json",
+      "source_sha256": "bcdf7e8d565cb16d4bd37b71d1ec701a50dff0b86b5d695ab9dc006e741c81ad",
+      "published_sha256": "cafefe16eafa7472b239d6de15aefc85f7cd9a2a78486bf0fb9dc9f622d7a7b2"
     }
   ]
 }
