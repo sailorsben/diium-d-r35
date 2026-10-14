@@ -1,0 +1,17 @@
+SNES 1.19-combined1: automated A7 combined-improvement measurement
+
+Safely eject I:, insert the card and cold-boot. No B press is needed.
+Allow 20-25 minutes; wait until the stock launcher returns, then power off
+before removing/reconnecting the card. MENU stops the suite safely.
+
+Eight contexts: Pearl (Holy), Meteor, Meltdown, Siren, Bahamut, Carbunkl,
+Quasar and Lullaby (Rage004). Each appears SIX times intentionally:
+original baseline, previous combined, latest combined, in two reversed orders.
+48 runs, each up to 1200 emulated calls. Older controls may stop early from
+known audio errors; the suite records that failure and starts the next run.
+
+Every frame and all audio simulation remain enabled. Separate test states
+and SRAM only; original ROM, stock emulator and gameplay saves are preserved.
+This measures savings and headroom; it is not a production installation.
+Do not interpret an offline pass, completed animation or average FPS as proof
+of sustained full-effect headroom. Return the card for archived analysis.

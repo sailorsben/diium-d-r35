@@ -1,0 +1,11 @@
+{
+  "archived_files": 5834,
+  "prior_payloads_verified": 91,
+  "dispatch_verified": true,
+  "prior_protected_changes": [
+    "retro/swapfile"
+  ],
+  "marker_consumed": true,
+  "fat_clean": true,
+  "card_writes": 0
+}

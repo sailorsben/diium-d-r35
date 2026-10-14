@@ -1,0 +1,2 @@
+Recorded successful check-combined-model.py output from this qualification:
+PASS synthetic-only model: incremental2000us, included final200us worker tail, target miss, missing flip, undrained/discarded PCM, nonphysical flag and incomplete tail rejection; no physical claim

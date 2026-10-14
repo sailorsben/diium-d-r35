@@ -1,0 +1,588 @@
+{
+  "version": "1.19-combined1",
+  "passed": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "frameskip": false,
+  "A7_saving_measured": false,
+  "QEMU_timings_used": false,
+  "card_writes": 0,
+  "reused_unchanged_core_proof": [
+    {
+      "variant": "baseline",
+      "proof": "build/fullpaths-private-v2/verification.json",
+      "proof_sha256": "c7428aed55e4ed16c5177221a2ba1a0ff12a3ff04cda89c9f0823c0685c6beba",
+      "core_sha256": "53c6d1f6c0253cb1c6e7b81ba22192f3739fa3f9605837c64691085918e1106b",
+      "reuse": "unchanged binary; no repeated emulator comparison"
+    },
+    {
+      "variant": "prior",
+      "proof": "build/fullpaths-private-v2/qualification.json",
+      "proof_sha256": "cea04546f49460d8ad98afd1d9e7cde3f61e19bcbb77fd05b608ad700678b01c",
+      "core_sha256": "6608a657a1e4eae9ac067dc305310f5ee1e19844374c92a8f4f2ec8ba47b1483",
+      "reuse": "unchanged binary; no repeated emulator comparison"
+    },
+    {
+      "variant": "combined",
+      "proof": "build/common-band-private-v3/qualification.json",
+      "proof_sha256": "1ffacf57b28febb6e655224bccff6b8262937172437641350da9bc7d29e6b929",
+      "core_sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "reuse": "unchanged binary; no repeated emulator comparison"
+    }
+  ],
+  "actual_controller_runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 1,
+      "fixture": 0,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 2,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 3,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 4,
+      "fixture": 1,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 5,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 6,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 7,
+      "fixture": 3,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 8,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 9,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 10,
+      "fixture": 5,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 11,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 12,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 13,
+      "fixture": 6,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 14,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 15,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 16,
+      "fixture": 7,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 17,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 18,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 19,
+      "fixture": 8,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 20,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 21,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 22,
+      "fixture": 10,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 23,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 24,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 25,
+      "fixture": 10,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 26,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 27,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 28,
+      "fixture": 8,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 29,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 30,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 31,
+      "fixture": 7,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 32,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 33,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 34,
+      "fixture": 6,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 35,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 36,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 37,
+      "fixture": 5,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 38,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 39,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 40,
+      "fixture": 3,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 41,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 42,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 43,
+      "fixture": 1,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 44,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 45,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 46,
+      "fixture": 0,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    },
+    {
+      "run": 47,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1,
+      "calls": 1200,
+      "requested_properties_observed": true,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true
+    }
+  ],
+  "runner_sha256": "92f4bfc884e1ce2eeff17e985f8e510a5e0e20c97d4098a11cee4f4e8d92c7f2",
+  "wrapper_sha256": "1cd08295a75202fa1c0449ee207c2d5a5075f9ebb7d8da286ebf50076514c1ff",
+  "native_client_qualified": true,
+  "wrapper_qualified": true,
+  "cores": {
+    "baseline": {
+      "sha256": "53c6d1f6c0253cb1c6e7b81ba22192f3739fa3f9605837c64691085918e1106b",
+      "crc32": "4eef8dba",
+      "bytes": 798312
+    },
+    "prior": {
+      "sha256": "6608a657a1e4eae9ac067dc305310f5ee1e19844374c92a8f4f2ec8ba47b1483",
+      "crc32": "a0db81da",
+      "bytes": 806884
+    },
+    "combined": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944",
+      "bytes": 823512
+    }
+  },
+  "limits": [
+    "Finite matched contexts, not every plausible spell.",
+    "Headroom requires valid PCM accounting and complete effect/recovery; no physical result yet."
+  ]
+}

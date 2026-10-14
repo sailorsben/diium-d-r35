@@ -6,6 +6,16 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Combined1 measurement qualified; installation next:** archive-first return
+  preserves 5,834 files and all 91 prior payloads; FAT is clean. Prior combined
+  completed five of eight failure contexts in both repeats; Holy, Meteor and
+  Quasar still failed. New48-run suite compares original, prior combined and
+  latest combined in two reversed orders across eight cases; every frame/audio
+  retained, final worker/PCM accounting included. Offline qualification passes;
+  actual A7 savings/headroom remain pending, production gate false.
+  [Test](docs/snes-combined-test.txt), [design](docs/snes-combined-measurement.md),
+  [prior return](docs/snes-fullpaths-return.md). Older status bullets below are
+  historical stages and forecasts superseded by this returned evidence.
 - **Shared renderer candidate qualified offline:** all eight staged failures
   use the common band path. It handles2,058–10,055 former tile calls per heavy
   call with103–378 band entries, reuses palettes within each background call and

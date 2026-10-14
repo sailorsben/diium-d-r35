@@ -1,0 +1,412 @@
+{
+  "version": "1.19-combined1",
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 1,
+      "fixture": 0,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 2,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 3,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 4,
+      "fixture": 1,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 5,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 6,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 7,
+      "fixture": 3,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 8,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 9,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 10,
+      "fixture": 5,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 11,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 12,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 13,
+      "fixture": 6,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 14,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 15,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 16,
+      "fixture": 7,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 17,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 18,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 19,
+      "fixture": 8,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 20,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 21,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 22,
+      "fixture": 10,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 23,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 0
+    },
+    {
+      "run": 24,
+      "fixture": 10,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 25,
+      "fixture": 10,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 26,
+      "fixture": 10,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 27,
+      "fixture": 8,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 28,
+      "fixture": 8,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 29,
+      "fixture": 8,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 30,
+      "fixture": 7,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 31,
+      "fixture": 7,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 32,
+      "fixture": 7,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 33,
+      "fixture": 6,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 34,
+      "fixture": 6,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 35,
+      "fixture": 6,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 36,
+      "fixture": 5,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 37,
+      "fixture": 5,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 38,
+      "fixture": 5,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 39,
+      "fixture": 3,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 40,
+      "fixture": 3,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 41,
+      "fixture": 3,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 42,
+      "fixture": 1,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 43,
+      "fixture": 1,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 44,
+      "fixture": 1,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 45,
+      "fixture": 0,
+      "variant": "combined",
+      "variant_id": 2,
+      "repeat": 1
+    },
+    {
+      "run": 46,
+      "fixture": 0,
+      "variant": "prior",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 47,
+      "fixture": 0,
+      "variant": "baseline",
+      "variant_id": 0,
+      "repeat": 1
+    }
+  ],
+  "contexts": [
+    {
+      "fixture": 0,
+      "name": "HOLY",
+      "family": "magic"
+    },
+    {
+      "fixture": 1,
+      "name": "METEOR",
+      "family": "magic"
+    },
+    {
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "family": "magic"
+    },
+    {
+      "fixture": 5,
+      "name": "SIREN",
+      "family": "esper"
+    },
+    {
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "family": "esper"
+    },
+    {
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "family": "esper"
+    },
+    {
+      "fixture": 8,
+      "name": "QUASAR",
+      "family": "lore"
+    },
+    {
+      "fixture": 10,
+      "name": "RAGE_004",
+      "family": "rage"
+    }
+  ],
+  "cores": {
+    "baseline": {
+      "sha256": "53c6d1f6c0253cb1c6e7b81ba22192f3739fa3f9605837c64691085918e1106b",
+      "crc32": "4eef8dba",
+      "bytes": 798312
+    },
+    "prior": {
+      "sha256": "6608a657a1e4eae9ac067dc305310f5ee1e19844374c92a8f4f2ec8ba47b1483",
+      "crc32": "a0db81da",
+      "bytes": 806884
+    },
+    "combined": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944",
+      "bytes": 823512
+    }
+  },
+  "nominal_minutes": 16.02062832,
+  "every_frame": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "A7_result": "PENDING",
+  "unchanged_core_proofs_reused_by_hash": true,
+  "actual_offline_controller_calls": 57600,
+  "warmup_calls": 120,
+  "headroom_fraction": 0.2,
+  "period_ns": 16688154.5,
+  "target_ns": 13350523.6,
+  "logging": "RAM; diagnostic flush after audio join and display idle; included observer costs"
+}

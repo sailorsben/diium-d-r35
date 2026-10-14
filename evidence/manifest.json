@@ -6471,6 +6471,60 @@
       "published": "evidence/2026-10-13/common-renderer/verification.json",
       "source_sha256": "dd72d829cde61a3a6276c1352e095498cb793fd1f8c8aa773fe39eb6a902f195",
       "published_sha256": "dd72d829cde61a3a6276c1352e095498cb793fd1f8c8aa773fe39eb6a902f195"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T003316Z/fullpaths-analysis/analysis.json",
+      "published": "evidence/2026-10-13/combined-measurement/prior-return-analysis.json",
+      "source_sha256": "99aa6d47fa13dd37f91d37a9689634e440dbef8960515cb70c5d511507fe1f5c",
+      "published_sha256": "21a868919692a1ddc75dfb28c44679ae89ac1416f63261e39793e1619b1ef02e"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T003316Z/fullpaths-return-integrity.json",
+      "published": "evidence/2026-10-13/combined-measurement/prior-return-integrity.json",
+      "source_sha256": "ce828b4050710a81f5ac2e485f020cc3afb114ded8c706a82b4f4b24a438b217",
+      "published_sha256": "36287fab928d8e9d709b42da99320d855d9c6bf68b6e46f9e883157722578499"
+    },
+    {
+      "source": "build/combined-test-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/combined-measurement/qualification.json",
+      "source_sha256": "30b62e466ea89850cb276a69f88f945a266c312599e1bb8b0850be09372a6c79",
+      "published_sha256": "30b62e466ea89850cb276a69f88f945a266c312599e1bb8b0850be09372a6c79"
+    },
+    {
+      "source": "build/combined-test-private-v1/verification.json",
+      "published": "evidence/2026-10-13/combined-measurement/identity.json",
+      "source_sha256": "eff28a9bd60afd318a614f934df082ba3b044e2ba809d02bf52fc6f84ac43462",
+      "published_sha256": "412bfc892d6d33dc1849de26bf45ad580616bc89252a870c901c69136434c856"
+    },
+    {
+      "source": "build/combined-test-private-v1/headroom-check.log",
+      "published": "evidence/2026-10-13/combined-measurement/headroom-check.txt",
+      "source_sha256": "47c81597c559241eb5efaa17531247371a5951cd5ecc8f2932401ed01effd93c",
+      "published_sha256": "47c81597c559241eb5efaa17531247371a5951cd5ecc8f2932401ed01effd93c"
+    },
+    {
+      "source": "build/combined-test-private-v1/model-check.log",
+      "published": "evidence/2026-10-13/combined-measurement/model-check.txt",
+      "source_sha256": "fd8726c928ee632edeaab6d5532617cdfcf32cee63453d9fead7dfd5387b653d",
+      "published_sha256": "9dce3faa06d5bad0acdb171b5e3069b736ce56902f40ccd0ac2751981bc3d096"
+    },
+    {
+      "source": "build/combined-test-private-v1/native.log",
+      "published": "evidence/2026-10-13/combined-measurement/native-check.txt",
+      "source_sha256": "d59e65c4e387b4631d8609bde726bef2d1ac02ac3e17fa4c0b050b2539ba6d0a",
+      "published_sha256": "d59e65c4e387b4631d8609bde726bef2d1ac02ac3e17fa4c0b050b2539ba6d0a"
+    },
+    {
+      "source": "build/combined-test-private-v1/wrapper.log",
+      "published": "evidence/2026-10-13/combined-measurement/wrapper-check.txt",
+      "source_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+      "published_sha256": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3"
+    },
+    {
+      "source": "build/combined-test-private-v1/public-plan.json",
+      "published": "evidence/2026-10-13/combined-measurement/plan.json",
+      "source_sha256": "b5ed07183e6e8b65e62f60d3c8d48d9cc20cb0322eb6badba51c55f04d1392df",
+      "published_sha256": "0a4608bdb3a5227b61b7a25f0291dc7159c840d2d8c96e07eb106cf52e049d01"
     }
   ]
 }

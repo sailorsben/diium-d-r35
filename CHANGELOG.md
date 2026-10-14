@@ -1,5 +1,20 @@
 # Changelog
 
+## Archive fullpaths return and qualify combined A7 crossover — 2026-10-13
+
+Archive5,834 files before writes, verify91 previous payloads and clean FAT.
+All100 old epochs attempted;55 runtime failures. Previous combined completes
+five/eight contexts both repeats; Holy/Meteor/Quasar still fail. Preserve actual
+non-additive A7 gains and supersede old optimistic transfer assumptions.
+
+Qualify48-run three-version/two-order test of all eight contexts, retaining
+every frame. Reuse unchanged core proofs; verify actual new controller, native
+provider faults/retry/drain/deficit, wrapper and ABI. Fourteen independent
+accounting fixtures and synthetic archive rejection checks cover final worker
+CPU, PCM, discarded/undrained data, missing frames and partial intervals.
+Freeze source/payload/proofs; authorized measurement staging next.
+No new A7 saving or production pass claimed. [Design](docs/snes-combined-measurement.md).
+
 ## Qualify common background bands across every failing context — 2026-10-13
 
 Review the shared CPU/APU/PPU/render/cache/runner C paths. Target repeated full-tile

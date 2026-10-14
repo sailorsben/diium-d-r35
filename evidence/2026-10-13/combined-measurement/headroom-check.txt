@@ -1,0 +1,1 @@
+PASS:14 independent accounting fixtures; final workers, draining, PCM equality, discarded data and final-error rejection; included worker cost; pure pacing distinction; mock, pointer drift, missing frame, bad wait/clock, tail overrun, fatal and incomplete rejection
