@@ -1,0 +1,73 @@
+{
+  "version": "1.19-profile1",
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "frameskip": false,
+  "calls_per_run": 800,
+  "warmup_calls": 120,
+  "period_ns": 16688154.5,
+  "target_ns": 13350523.6,
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 1,
+      "variant": "control",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "variant": "profile",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 2,
+      "fixture": 8,
+      "variant": "profile",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 3,
+      "fixture": 8,
+      "variant": "control",
+      "variant_id": 0,
+      "repeat": 0
+    }
+  ],
+  "variants": [
+    "control",
+    "profile"
+  ],
+  "cases": [
+    {
+      "fixture": 1,
+      "name": "METEOR"
+    },
+    {
+      "fixture": 8,
+      "name": "QUASAR"
+    }
+  ],
+  "cores": {
+    "control": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944"
+    },
+    "profile": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944"
+    }
+  },
+  "nominal_minutes": 0.8900349066666667,
+  "sampling": "fixed 1 in 8 calls, frame index mod 8 == 3; no adaptive trigger",
+  "limits": [
+    "PPU and APU inclusive CPU regions, not inward tile kernel unit costs.",
+    "APU includes audio callback. PPU may include video callback; never sum nested regions blindly.",
+    "Unattributed residual includes SNES CPU, port-driven SPC, dispatch and observer work.",
+    "All observer costs remain included; aligned control differences are disturbance estimates, never calibration subtraction.",
+    "800 calls cap includes known 392-549 failure/peak interval; early native faults may truncate it."
+  ]
+}

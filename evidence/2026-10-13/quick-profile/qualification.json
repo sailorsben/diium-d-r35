@@ -1,0 +1,81 @@
+{
+  "version": "1.19-profile1",
+  "passed": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "frameskip": false,
+  "A7_saving_measured": false,
+  "QEMU_timings_used": false,
+  "card_writes": 0,
+  "actual_controller_runs": [
+    {
+      "run": 0,
+      "fixture": 1,
+      "variant": "control",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 800,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true,
+      "phase_samples": 0,
+      "QEMU_performance_evidence": false
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "variant": "profile",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 800,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true,
+      "phase_samples": 100,
+      "QEMU_performance_evidence": false
+    },
+    {
+      "run": 2,
+      "fixture": 8,
+      "variant": "profile",
+      "variant_id": 1,
+      "repeat": 0,
+      "calls": 800,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true,
+      "phase_samples": 100,
+      "QEMU_performance_evidence": false
+    },
+    {
+      "run": 3,
+      "fixture": 8,
+      "variant": "control",
+      "variant_id": 0,
+      "repeat": 0,
+      "calls": 800,
+      "all_frames_submitted": true,
+      "PCM_accounting_exact": true,
+      "phase_samples": 0,
+      "QEMU_performance_evidence": false
+    }
+  ],
+  "phase_ABI_qualified": true,
+  "control_profile_animation_observations_equal": true,
+  "native_client_qualified": true,
+  "native_client_proof_reused_by_source_identity": true,
+  "wrapper_qualified": true,
+  "runner_sha256": "7c10bbb58d275d54d8dfea2b79d45fdf97a5874a720388d9c5eea6ed94422b3c",
+  "wrapper_sha256": "79403714bd6dd729cf2294b87ccd18a8980d0e56018b4525cb789e7c486dcbe5",
+  "cores": {
+    "control": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944"
+    },
+    "profile": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944"
+    }
+  },
+  "reused_proofs": {
+    "build/common-band-private-v3/qualification.json": "1ffacf57b28febb6e655224bccff6b8262937172437641350da9bc7d29e6b929",
+    "build/combined-test-private-v1/qualification.json": "30b62e466ea89850cb276a69f88f945a266c312599e1bb8b0850be09372a6c79"
+  }
+}

@@ -6699,6 +6699,24 @@
       "published": "evidence/2026-10-13/ppu-selection-design/installed-dispatch-inspection.json",
       "source_sha256": "de25279f8e0d5e31cc1047ea7d2565de10c0e2e2c52a7a99731218ddf794d5d8",
       "published_sha256": "8e21bc333f318cd7b953b2d8f8fb8360cc7e1dcca31124b3efef9f57b020aa95"
+    },
+    {
+      "source": "build/quick-profile-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/quick-profile/qualification.json",
+      "source_sha256": "408310f1145c7a99599c291fe0d513508edeb246370d423139880443a132676e",
+      "published_sha256": "408310f1145c7a99599c291fe0d513508edeb246370d423139880443a132676e"
+    },
+    {
+      "source": "build/quick-profile-private-v1/verification.json",
+      "published": "evidence/2026-10-13/quick-profile/identity.json",
+      "source_sha256": "71ad5cf329c40dc6961a2c6099c3f7106f5aec6082f00e459adea1afc3e5bc42",
+      "published_sha256": "5bf359414ac3ea785c83ab1452e50836dc28c16c35d06519b4e0851260e4939b"
+    },
+    {
+      "source": "build/quick-profile-private-v1/public-plan.json",
+      "published": "evidence/2026-10-13/quick-profile/plan.json",
+      "source_sha256": "d1579639e4d23b930b370efe7fef39637d476525d299e6dd460f242e3f942682",
+      "published_sha256": "a882ec57552b7781f1c06b3554a8d7fa2c00dc321aee57543e18a860030bea7b"
     }
   ]
 }

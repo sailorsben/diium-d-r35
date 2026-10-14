@@ -1,0 +1,15 @@
+SNES 1.19-profile1: quick A7 CPU breakdown (measurement only)
+
+Safely eject I:, insert it and cold-boot. No B press is needed.
+Allow about 2 minutes; wait for the stock launcher to return, then power off
+before reconnecting the card. MENU stops safely.
+
+Four automatic epochs, at most 800 calls each:
+1 Meteor control; 2 Meteor with sparse phase clocks;
+3 Quasar with sparse phase clocks; 4 Quasar control.
+The known audio failure can end an epoch early. That is recorded and the
+next epoch starts; a successful animation is not the benchmark verdict.
+
+Same latest combined core in every epoch, all video frames and audio retained.
+This is a profiler, not a new rendering fix. Original ROM and saves preserved.
+The one-shot marker is consumed before launch; later boots are stock.

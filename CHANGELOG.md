@@ -1,5 +1,16 @@
 # Changelog
 
+## Quick four-epoch A7 CPU profile — 2026-10-13
+
+Build separately versioned1.19-profile1 for Meteor and Quasar with matched
+profile-off/on controls. Reuse the exact combined1 core and snapshot payloads;
+enable existing PPU/APU hooks and callback CPU clocks on one call in eight.
+Retain every frame/audio and bounded per-call RAM records, flush after workers
+stop. Qualify actual ARM controller:3200 calls,200 phase samples, unchanged
+gameplay observations and exact PCM/frame accounting; reuse frozen core/native
+proofs. Archive I: and stage only after clean FAT/hash guards. No renderer
+changes, performance promotion or A7 timings from QEMU. Native result pending.
+
 ## Design scalar/NEON PPU selection rules without recoding — 2026-10-13
 
 Map C paths to state/layout/operation kernels and sparse/dense payload decisions.
