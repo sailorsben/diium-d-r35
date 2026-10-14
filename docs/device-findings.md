@@ -1,5 +1,17 @@
 # Device findings
 
+**Combined1 return, current:** private archive6249 files/1650726005 bytes;
+clean FAT,57 payloads and protected boot/core/ROM/progress verify, marker absent.
+All48 attempted,21 full windows and27 errno77 native PCM failures. Latest6/8
+contexts complete twice; Meteor/Quasar fail twice. Distinct-thread CPU sums
+avoid conservative service proxy overlap: worst16 means17.85-17.97ms Meteor,
+17.41-17.46ms Quasar.20% target needs4.50-4.62ms and4.06-4.11ms further saving
+before uncounted costs; no hardware-limit proof. Existing replay logs locate
+later Quasar peaks with roughly doubled OBJ row activity. Consider state-based
+scalar/NEON BG/OBJ backend design; current code already uses native NEON.
+Analysis only: no recoding/build/card writes/rearm. Historical pending statuses
+below are superseded. [Evidence and design](snes-combined-return-and-ppu-design.md).
+
 **Current Window2 status and offline tool fusion:** all three combined1 test
 cores already include ability2's generalized scanline window patch. Older
 uninstalled statements below describe earlier prototypes. Production remains

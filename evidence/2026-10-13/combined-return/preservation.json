@@ -1,0 +1,16 @@
+{
+  "archive": "a7-pair-before-20261014T021915Z",
+  "files": 6249,
+  "bytes": 1650726005,
+  "card_writes": 0,
+  "fat_clean": true,
+  "all_57_payloads_verified": true,
+  "dispatch_verified": true,
+  "boot_adapter_production_core_ROM_unchanged": true,
+  "previous_files_checked": 5834,
+  "previous_changed": [
+    "retro/snes-mvp/launch.sh",
+    "retro/swapfile"
+  ],
+  "armed_markers_absent": true
+}

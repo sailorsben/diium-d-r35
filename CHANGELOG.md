@@ -1,5 +1,20 @@
 # Changelog
 
+## Evaluate combined1 return and consider a general PPU backend — 2026-10-13
+
+Archive6249 returned files read-only; clean FAT and exact57 payloads, boot/core/
+ROM/progress verify. All48 runs attempted:21 complete,27 native PCM errno77;
+latest completes six contexts twice, Meteor/Quasar still fail. Preserve actual
+incremental gains and the small negative Carbunkl result. No code/build/rearm.
+
+Separate conservative wall+worker proxy from distinct-thread CPU sum; inspect
+worst sustained16-call windows before pointer divergence. Meteor17.85-17.97ms,
+Quasar17.41-17.46ms versus16.69ms budget.20% target needs4.50-4.62 /4.06-4.11ms
+more saving before other costs. Existing logs show later Quasar peak with roughly
+doubled OBJ activity. Document state-driven BG+OBJ scalar/NEON backend design,
+memory lifetime, exact arithmetic and unmeasured costs; no implementation.
+[Return and design](docs/snes-combined-return-and-ppu-design.md).
+
 ## Fuse exact renderer tools and correct Window2 installation status — 2026-10-13
 
 Verify generalized scanline Window2 already exists in all three staged combined1

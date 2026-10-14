@@ -1,0 +1,50 @@
+{
+  "case": 8,
+  "name": "QUASAR",
+  "windows": [
+    {
+      "frames": [
+        427,
+        442
+      ],
+      "common_rows": 16524.3125,
+      "common_partial_rows": 741,
+      "BG1_main_math_active_rows": 4351,
+      "BG1_main_opaque_rows": 4312,
+      "BG2_sub_active_rows": 4460,
+      "OBJ_main_active_rows": 664.4375,
+      "OBJ_sub_active_rows": 577
+    },
+    {
+      "frames": [
+        508,
+        523
+      ],
+      "common_rows": 16622.6875,
+      "common_partial_rows": 1020.125,
+      "BG1_main_math_active_rows": 3998.0625,
+      "BG1_main_opaque_rows": 3798.8125,
+      "BG2_sub_active_rows": 4090.125,
+      "OBJ_main_active_rows": 1164.75,
+      "OBJ_sub_active_rows": 1099.6875
+    },
+    {
+      "frames": [
+        514,
+        529
+      ],
+      "common_rows": 16630.875,
+      "common_partial_rows": 1105.5,
+      "BG1_main_math_active_rows": 3955.4375,
+      "BG1_main_opaque_rows": 3712.6875,
+      "BG2_sub_active_rows": 4046.6875,
+      "OBJ_main_active_rows": 1246.5,
+      "OBJ_sub_active_rows": 1180.0625
+    }
+  ],
+  "source_sha256": "b2e08cdc1019b68dc2184c54ba1d87652e4054601ec7e0765f657ed76c3aa14b",
+  "counter_definition": "PEARL frame + (plane*6+layer)*24 fields; active=4, opaque=5, math=8. Layers0..3 BG,4 OBJ. Common fields336..351.",
+  "source": "build/common-band-private-v3/exact/008-census.log",
+  "new_build_or_replay": false,
+  "A7_phase_time": false
+}

@@ -1,0 +1,402 @@
+[
+  {
+    "case": 0,
+    "name": "HOLY",
+    "repeat": 0,
+    "frames": [
+      478,
+      493
+    ],
+    "installed_common_row_visits": 6914,
+    "installed_common_active_rows": 6595.9375,
+    "installed_common_partial_rows": 748.5,
+    "installed_common_opaque_rows": 5847.4375,
+    "installed_band_calls": 378,
+    "offline_fused_sparse_one_two_rows": 26,
+    "offline_fused_index_rows": 584,
+    "offline_fused_4bpp_probe_rows": 1,
+    "offline_fused_new_hidden4bpp_tiles": 0,
+    "active_populations": [
+      {
+        "plane": 0,
+        "layer": 1,
+        "active_rows": 6062.9375,
+        "partial_rows": 328.5,
+        "plain_active_rows": 0,
+        "math_active_rows": 6062.9375
+      },
+      {
+        "plane": 0,
+        "layer": 4,
+        "active_rows": 735.1875,
+        "partial_rows": 528.25,
+        "plain_active_rows": 735.1875,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 2,
+        "active_rows": 401,
+        "partial_rows": 301,
+        "plain_active_rows": 401,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 0,
+        "active_rows": 132,
+        "partial_rows": 119,
+        "plain_active_rows": 132,
+        "math_active_rows": 0
+      }
+    ],
+    "common_log_sha256": "b19bd77b099878b80348ac70f1b5201bfbc8dfedf23072f17c2e03de619f9847",
+    "fused_log_sha256": "e773de0bf91d0cf915ff6d1ada4211be666172cf980ee45b4cd8b50005f1f5f3",
+    "new_replay_or_build": false,
+    "A7_phase_timing": false
+  },
+  {
+    "case": 0,
+    "name": "HOLY",
+    "repeat": 1,
+    "frames": [
+      478,
+      493
+    ],
+    "installed_common_row_visits": 6914,
+    "installed_common_active_rows": 6595.9375,
+    "installed_common_partial_rows": 748.5,
+    "installed_common_opaque_rows": 5847.4375,
+    "installed_band_calls": 378,
+    "offline_fused_sparse_one_two_rows": 26,
+    "offline_fused_index_rows": 584,
+    "offline_fused_4bpp_probe_rows": 1,
+    "offline_fused_new_hidden4bpp_tiles": 0,
+    "active_populations": [
+      {
+        "plane": 0,
+        "layer": 1,
+        "active_rows": 6062.9375,
+        "partial_rows": 328.5,
+        "plain_active_rows": 0,
+        "math_active_rows": 6062.9375
+      },
+      {
+        "plane": 0,
+        "layer": 4,
+        "active_rows": 735.1875,
+        "partial_rows": 528.25,
+        "plain_active_rows": 735.1875,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 2,
+        "active_rows": 401,
+        "partial_rows": 301,
+        "plain_active_rows": 401,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 0,
+        "active_rows": 132,
+        "partial_rows": 119,
+        "plain_active_rows": 132,
+        "math_active_rows": 0
+      }
+    ],
+    "common_log_sha256": "b19bd77b099878b80348ac70f1b5201bfbc8dfedf23072f17c2e03de619f9847",
+    "fused_log_sha256": "e773de0bf91d0cf915ff6d1ada4211be666172cf980ee45b4cd8b50005f1f5f3",
+    "new_replay_or_build": false,
+    "A7_phase_timing": false
+  },
+  {
+    "case": 1,
+    "name": "METEOR",
+    "repeat": 0,
+    "frames": [
+      392,
+      407
+    ],
+    "installed_common_row_visits": 17766,
+    "installed_common_active_rows": 15050.5,
+    "installed_common_partial_rows": 8177.1875,
+    "installed_common_opaque_rows": 6873.3125,
+    "installed_band_calls": 332,
+    "offline_fused_sparse_one_two_rows": 3977,
+    "offline_fused_index_rows": 12752,
+    "offline_fused_4bpp_probe_rows": 3,
+    "offline_fused_new_hidden4bpp_tiles": 0,
+    "active_populations": [
+      {
+        "plane": 0,
+        "layer": 1,
+        "active_rows": 6027.0625,
+        "partial_rows": 2389.75,
+        "plain_active_rows": 4118.0625,
+        "math_active_rows": 1909
+      },
+      {
+        "plane": 0,
+        "layer": 2,
+        "active_rows": 3495,
+        "partial_rows": 301,
+        "plain_active_rows": 401,
+        "math_active_rows": 3094
+      },
+      {
+        "plane": 1,
+        "layer": 0,
+        "active_rows": 3200.4375,
+        "partial_rows": 3184.4375,
+        "plain_active_rows": 3200.4375,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 0,
+        "active_rows": 2328,
+        "partial_rows": 2302,
+        "plain_active_rows": 2328,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 4,
+        "active_rows": 716.3125,
+        "partial_rows": 493.875,
+        "plain_active_rows": 716.3125,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 1,
+        "layer": 4,
+        "active_rows": 628.625,
+        "partial_rows": 425.1875,
+        "plain_active_rows": 628.625,
+        "math_active_rows": 0
+      }
+    ],
+    "common_log_sha256": "0cc492fd509c222bc67df9f13bf111ac78eb13582650c75f4fe54b7cda831f2d",
+    "fused_log_sha256": "868d25faef44d329ffe21ef1e607d1afcc27eade4ab5e16f2464017c7f7c91c8",
+    "new_replay_or_build": false,
+    "A7_phase_timing": false
+  },
+  {
+    "case": 1,
+    "name": "METEOR",
+    "repeat": 1,
+    "frames": [
+      396,
+      411
+    ],
+    "installed_common_row_visits": 17766,
+    "installed_common_active_rows": 15012.1875,
+    "installed_common_partial_rows": 8152.625,
+    "installed_common_opaque_rows": 6859.5625,
+    "installed_band_calls": 332,
+    "offline_fused_sparse_one_two_rows": 3971.3125,
+    "offline_fused_index_rows": 12752,
+    "offline_fused_4bpp_probe_rows": 3,
+    "offline_fused_new_hidden4bpp_tiles": 0,
+    "active_populations": [
+      {
+        "plane": 0,
+        "layer": 1,
+        "active_rows": 6011.5,
+        "partial_rows": 2387.9375,
+        "plain_active_rows": 4102.5,
+        "math_active_rows": 1909
+      },
+      {
+        "plane": 0,
+        "layer": 2,
+        "active_rows": 3495,
+        "partial_rows": 301,
+        "plain_active_rows": 401,
+        "math_active_rows": 3094
+      },
+      {
+        "plane": 1,
+        "layer": 0,
+        "active_rows": 3188.5,
+        "partial_rows": 3172.5,
+        "plain_active_rows": 3188.5,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 0,
+        "active_rows": 2317.1875,
+        "partial_rows": 2291.1875,
+        "plain_active_rows": 2317.1875,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 4,
+        "active_rows": 745.4375,
+        "partial_rows": 508.5,
+        "plain_active_rows": 745.4375,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 1,
+        "layer": 4,
+        "active_rows": 658.4375,
+        "partial_rows": 439.6875,
+        "plain_active_rows": 658.4375,
+        "math_active_rows": 0
+      }
+    ],
+    "common_log_sha256": "0cc492fd509c222bc67df9f13bf111ac78eb13582650c75f4fe54b7cda831f2d",
+    "fused_log_sha256": "868d25faef44d329ffe21ef1e607d1afcc27eade4ab5e16f2464017c7f7c91c8",
+    "new_replay_or_build": false,
+    "A7_phase_timing": false
+  },
+  {
+    "case": 8,
+    "name": "QUASAR",
+    "repeat": 0,
+    "frames": [
+      514,
+      529
+    ],
+    "installed_common_row_visits": 16630.875,
+    "installed_common_active_rows": 10535.25,
+    "installed_common_partial_rows": 1105.5,
+    "installed_common_opaque_rows": 9429.75,
+    "installed_band_calls": 353,
+    "offline_fused_sparse_one_two_rows": 189.625,
+    "offline_fused_index_rows": 5288,
+    "offline_fused_4bpp_probe_rows": 4411,
+    "offline_fused_new_hidden4bpp_tiles": 570,
+    "active_populations": [
+      {
+        "plane": 0,
+        "layer": 0,
+        "active_rows": 4087.4375,
+        "partial_rows": 374.75,
+        "plain_active_rows": 132,
+        "math_active_rows": 3955.4375
+      },
+      {
+        "plane": 1,
+        "layer": 1,
+        "active_rows": 4046.6875,
+        "partial_rows": 405.375,
+        "plain_active_rows": 4046.6875,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 1,
+        "active_rows": 1909,
+        "partial_rows": 21,
+        "plain_active_rows": 0,
+        "math_active_rows": 1909
+      },
+      {
+        "plane": 0,
+        "layer": 4,
+        "active_rows": 1246.5,
+        "partial_rows": 670.3125,
+        "plain_active_rows": 1246.5,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 1,
+        "layer": 4,
+        "active_rows": 1180.0625,
+        "partial_rows": 603.875,
+        "plain_active_rows": 1180.0625,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 2,
+        "active_rows": 492.125,
+        "partial_rows": 304.375,
+        "plain_active_rows": 401,
+        "math_active_rows": 91.125
+      }
+    ],
+    "common_log_sha256": "b2e08cdc1019b68dc2184c54ba1d87652e4054601ec7e0765f657ed76c3aa14b",
+    "fused_log_sha256": "aa4e7d8e75e51ab10ef1008a6e8b49beb62be90265e9d370737fe2d351e9b450",
+    "new_replay_or_build": false,
+    "A7_phase_timing": false
+  },
+  {
+    "case": 8,
+    "name": "QUASAR",
+    "repeat": 1,
+    "frames": [
+      508,
+      523
+    ],
+    "installed_common_row_visits": 16622.6875,
+    "installed_common_active_rows": 10613.5,
+    "installed_common_partial_rows": 1020.125,
+    "installed_common_opaque_rows": 9593.375,
+    "installed_band_calls": 353,
+    "offline_fused_sparse_one_two_rows": 174.125,
+    "offline_fused_index_rows": 5288,
+    "offline_fused_4bpp_probe_rows": 4411,
+    "offline_fused_new_hidden4bpp_tiles": 570,
+    "active_populations": [
+      {
+        "plane": 0,
+        "layer": 0,
+        "active_rows": 4130.0625,
+        "partial_rows": 331.25,
+        "plain_active_rows": 132,
+        "math_active_rows": 3998.0625
+      },
+      {
+        "plane": 1,
+        "layer": 1,
+        "active_rows": 4090.125,
+        "partial_rows": 365.5625,
+        "plain_active_rows": 4090.125,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 1,
+        "active_rows": 1909,
+        "partial_rows": 21,
+        "plain_active_rows": 0,
+        "math_active_rows": 1909
+      },
+      {
+        "plane": 0,
+        "layer": 4,
+        "active_rows": 1164.75,
+        "partial_rows": 634.0,
+        "plain_active_rows": 1164.75,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 1,
+        "layer": 4,
+        "active_rows": 1099.6875,
+        "partial_rows": 568.9375,
+        "plain_active_rows": 1099.6875,
+        "math_active_rows": 0
+      },
+      {
+        "plane": 0,
+        "layer": 2,
+        "active_rows": 484.3125,
+        "partial_rows": 302.3125,
+        "plain_active_rows": 401,
+        "math_active_rows": 83.3125
+      }
+    ],
+    "common_log_sha256": "b2e08cdc1019b68dc2184c54ba1d87652e4054601ec7e0765f657ed76c3aa14b",
+    "fused_log_sha256": "aa4e7d8e75e51ab10ef1008a6e8b49beb62be90265e9d370737fe2d351e9b450",
+    "new_replay_or_build": false,
+    "A7_phase_timing": false
+  }
+]

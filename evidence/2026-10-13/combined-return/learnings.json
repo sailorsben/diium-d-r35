@@ -1,0 +1,1578 @@
+{
+  "archive": "a7-pair-before-20261014T021915Z",
+  "period_ms": 16.6881545,
+  "target_ms": 13.350523599999999,
+  "card_writes": 0,
+  "emulator_source_changes": false,
+  "cases": [
+    {
+      "case": 0,
+      "name": "HOLY",
+      "completed": {
+        "baseline": 0,
+        "prior": 0,
+        "combined": 2
+      },
+      "latest": [
+        {
+          "run": 2,
+          "repeat": 0,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 1.245375,
+          "aligned_service_proxy_ms": {
+            "mean": 17.3465,
+            "median": 17.3485,
+            "p05": 16.73,
+            "p95": 17.61,
+            "p99": 17.61,
+            "max": 18.733
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 14.36475,
+              "median": 14.3335,
+              "p95": 14.528,
+              "p99": 14.528,
+              "max": 14.539
+            },
+            "main_step_cpu_ns": {
+              "mean": 14.58675,
+              "median": 14.54,
+              "p95": 14.733,
+              "p99": 14.733,
+              "max": 14.771
+            },
+            "worker_delta": {
+              "mean": 1.311,
+              "median": 1.2959999999999998,
+              "p95": 1.373,
+              "p99": 1.373,
+              "max": 1.41
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 15.89775,
+              "median": 15.8665,
+              "p95": 16.068,
+              "p99": 16.068,
+              "max": 16.138
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.7904044999999993,
+          "thread_CPU_mean_20_percent_margin_ms": -2.5472264000000013,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2733,
+          "minimum_reported_playable_all_frames": 2733,
+          "observer_mean_us": 33.76416666666666
+        },
+        {
+          "run": 45,
+          "repeat": 1,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 1.0715,
+          "aligned_service_proxy_ms": {
+            "mean": 17.2978125,
+            "median": 17.2015,
+            "p05": 16.986,
+            "p95": 17.446,
+            "p99": 17.446,
+            "max": 19.127
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 14.4525625,
+              "median": 14.465,
+              "p95": 14.656,
+              "p99": 14.656,
+              "max": 14.697
+            },
+            "main_step_cpu_ns": {
+              "mean": 14.6569375,
+              "median": 14.6685,
+              "p95": 14.866,
+              "p99": 14.866,
+              "max": 14.909
+            },
+            "worker_delta": {
+              "mean": 1.259625,
+              "median": 1.2734999999999999,
+              "p95": 1.317,
+              "p99": 1.317,
+              "max": 1.353
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 15.9165625,
+              "median": 15.94,
+              "p95": 16.153,
+              "p99": 16.153,
+              "max": 16.159
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.7715920000000001,
+          "thread_CPU_mean_20_percent_margin_ms": -2.5660389000000006,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2733,
+          "minimum_reported_playable_all_frames": 2733,
+          "observer_mean_us": 34.6675
+        }
+      ]
+    },
+    {
+      "case": 1,
+      "name": "METEOR",
+      "completed": {
+        "baseline": 0,
+        "prior": 0,
+        "combined": 0
+      },
+      "latest": [
+        {
+          "run": 5,
+          "repeat": 0,
+          "rows": 414,
+          "full_window": false,
+          "worker_PCM_valid": false,
+          "prior_to_latest_CPU_gain_ms": 0.3500625,
+          "aligned_service_proxy_ms": {
+            "mean": 19.4824375,
+            "median": 19.3555,
+            "p05": 19.093,
+            "p95": 19.666,
+            "p99": 19.666,
+            "max": 21.154
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 16.456187500000002,
+              "median": 16.482,
+              "p95": 16.638,
+              "p99": 16.638,
+              "max": 16.667
+            },
+            "main_step_cpu_ns": {
+              "mean": 16.6513125,
+              "median": 16.6755,
+              "p95": 16.83,
+              "p99": 16.83,
+              "max": 16.86
+            },
+            "worker_delta": {
+              "mean": 1.2910625,
+              "median": 1.298,
+              "p95": 1.333,
+              "p99": 1.333,
+              "max": 1.349
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 17.942375,
+              "median": 17.9625,
+              "p95": 18.123,
+              "p99": 18.123,
+              "max": 18.183
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": -1.2542204999999989,
+          "thread_CPU_mean_20_percent_margin_ms": -4.5918513999999995,
+          "first_invalid_pointer_frame": 408,
+          "last_valid_frame": 407,
+          "minimum_reported_playable_valid_frames": 881,
+          "minimum_reported_playable_all_frames": 0,
+          "observer_mean_us": 34.628019323671495
+        },
+        {
+          "run": 42,
+          "repeat": 1,
+          "rows": 420,
+          "full_window": false,
+          "worker_PCM_valid": false,
+          "prior_to_latest_CPU_gain_ms": 0.5128125,
+          "aligned_service_proxy_ms": {
+            "mean": 19.345375,
+            "median": 19.15,
+            "p05": 17.928,
+            "p95": 20.864,
+            "p99": 20.864,
+            "max": 21.097
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 16.3148125,
+              "median": 16.287,
+              "p95": 16.46,
+              "p99": 16.46,
+              "max": 16.603
+            },
+            "main_step_cpu_ns": {
+              "mean": 16.511,
+              "median": 16.4785,
+              "p95": 16.651,
+              "p99": 16.651,
+              "max": 16.799
+            },
+            "worker_delta": {
+              "mean": 1.248625,
+              "median": 1.2475,
+              "p95": 1.33,
+              "p99": 1.33,
+              "max": 1.912
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 17.759625,
+              "median": 17.759999999999998,
+              "p95": 18.04,
+              "p99": 18.04,
+              "max": 18.45
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": -1.0714705000000002,
+          "thread_CPU_mean_20_percent_margin_ms": -4.409101400000001,
+          "first_invalid_pointer_frame": 413,
+          "last_valid_frame": 412,
+          "minimum_reported_playable_valid_frames": 849,
+          "minimum_reported_playable_all_frames": 0,
+          "observer_mean_us": 32.75714285714286
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "name": "MELTDOWN",
+      "completed": {
+        "baseline": 0,
+        "prior": 0,
+        "combined": 2
+      },
+      "latest": [
+        {
+          "run": 8,
+          "repeat": 0,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.382875,
+          "aligned_service_proxy_ms": {
+            "mean": 17.9735625,
+            "median": 17.827,
+            "p05": 17.516,
+            "p95": 19.28,
+            "p99": 19.28,
+            "max": 19.379
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 15.1304375,
+              "median": 15.1345,
+              "p95": 15.303,
+              "p99": 15.303,
+              "max": 15.305
+            },
+            "main_step_cpu_ns": {
+              "mean": 15.307625,
+              "median": 15.3105,
+              "p95": 15.477,
+              "p99": 15.477,
+              "max": 15.477
+            },
+            "worker_delta": {
+              "mean": 1.2066875,
+              "median": 1.1735,
+              "p95": 1.233,
+              "p99": 1.233,
+              "max": 1.665
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 16.5143125,
+              "median": 16.5165,
+              "p95": 16.683,
+              "p99": 16.683,
+              "max": 16.945
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.1738420000000005,
+          "thread_CPU_mean_20_percent_margin_ms": -3.1637889,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2578,
+          "minimum_reported_playable_all_frames": 2578,
+          "observer_mean_us": 31.77166666666667
+        },
+        {
+          "run": 39,
+          "repeat": 1,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.2,
+          "aligned_service_proxy_ms": {
+            "mean": 18.0104375,
+            "median": 17.8945,
+            "p05": 17.755,
+            "p95": 18.09,
+            "p99": 18.09,
+            "max": 19.614
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 15.205625,
+              "median": 15.195,
+              "p95": 15.332,
+              "p99": 15.332,
+              "max": 15.353
+            },
+            "main_step_cpu_ns": {
+              "mean": 15.4090625,
+              "median": 15.405999999999999,
+              "p95": 15.537,
+              "p99": 15.537,
+              "max": 15.54
+            },
+            "worker_delta": {
+              "mean": 1.2151875,
+              "median": 1.216,
+              "p95": 1.263,
+              "p99": 1.263,
+              "max": 1.271
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 16.62425,
+              "median": 16.622,
+              "p95": 16.742,
+              "p99": 16.742,
+              "max": 16.743
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.06390449999999959,
+          "thread_CPU_mean_20_percent_margin_ms": -3.273726400000001,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 1228,
+          "minimum_reported_playable_all_frames": 1228,
+          "observer_mean_us": 33.6975
+        }
+      ]
+    },
+    {
+      "case": 5,
+      "name": "SIREN",
+      "completed": {
+        "baseline": 0,
+        "prior": 2,
+        "combined": 2
+      },
+      "latest": [
+        {
+          "run": 11,
+          "repeat": 0,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.53025,
+          "aligned_service_proxy_ms": {
+            "mean": 16.2811875,
+            "median": 16.1445,
+            "p05": 15.486,
+            "p95": 16.743,
+            "p99": 16.743,
+            "max": 18.122
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 13.5510625,
+              "median": 13.549,
+              "p95": 13.849,
+              "p99": 13.849,
+              "max": 13.991
+            },
+            "main_step_cpu_ns": {
+              "mean": 13.7710625,
+              "median": 13.761500000000002,
+              "p95": 14.044,
+              "p99": 14.044,
+              "max": 14.216
+            },
+            "worker_delta": {
+              "mean": 1.301125,
+              "median": 1.294,
+              "p95": 1.355,
+              "p99": 1.355,
+              "max": 1.389
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 15.0721875,
+              "median": 15.049,
+              "p95": 15.33,
+              "p99": 15.33,
+              "max": 15.571
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 1.6159669999999995,
+          "thread_CPU_mean_20_percent_margin_ms": -1.7216639000000011,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2611,
+          "minimum_reported_playable_all_frames": 2611,
+          "observer_mean_us": 33.94
+        },
+        {
+          "run": 36,
+          "repeat": 1,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.64575,
+          "aligned_service_proxy_ms": {
+            "mean": 16.1851875,
+            "median": 16.018,
+            "p05": 15.499,
+            "p95": 16.462,
+            "p99": 16.462,
+            "max": 19.204
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 13.511625,
+              "median": 13.4825,
+              "p95": 13.814,
+              "p99": 13.814,
+              "max": 13.974
+            },
+            "main_step_cpu_ns": {
+              "mean": 13.722375,
+              "median": 13.677,
+              "p95": 14.038,
+              "p99": 14.038,
+              "max": 14.19
+            },
+            "worker_delta": {
+              "mean": 1.266125,
+              "median": 1.2639999999999998,
+              "p95": 1.335,
+              "p99": 1.335,
+              "max": 2.101
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 14.9885,
+              "median": 14.8825,
+              "p95": 15.482,
+              "p99": 15.482,
+              "max": 16.139
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 1.6996544999999994,
+          "thread_CPU_mean_20_percent_margin_ms": -1.6379764000000012,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2739,
+          "minimum_reported_playable_all_frames": 2739,
+          "observer_mean_us": 35.181666666666665
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "name": "BAHAMUT",
+      "completed": {
+        "baseline": 1,
+        "prior": 2,
+        "combined": 2
+      },
+      "latest": [
+        {
+          "run": 14,
+          "repeat": 0,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.200875,
+          "aligned_service_proxy_ms": {
+            "mean": 17.7536875,
+            "median": 17.6695,
+            "p05": 17.422,
+            "p95": 17.907,
+            "p99": 17.907,
+            "max": 19.297
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 14.74575,
+              "median": 14.721499999999999,
+              "p95": 14.985,
+              "p99": 14.985,
+              "max": 15.102
+            },
+            "main_step_cpu_ns": {
+              "mean": 14.9394375,
+              "median": 14.911000000000001,
+              "p95": 15.177,
+              "p99": 15.177,
+              "max": 15.289
+            },
+            "worker_delta": {
+              "mean": 1.286375,
+              "median": 1.2805,
+              "p95": 1.35,
+              "p99": 1.35,
+              "max": 1.378
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 16.2258125,
+              "median": 16.192,
+              "p95": 16.412,
+              "p99": 16.412,
+              "max": 16.511
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.4623419999999996,
+          "thread_CPU_mean_20_percent_margin_ms": -2.875288900000001,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2570,
+          "minimum_reported_playable_all_frames": 2570,
+          "observer_mean_us": 33.74583333333334
+        },
+        {
+          "run": 33,
+          "repeat": 1,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.0303125,
+          "aligned_service_proxy_ms": {
+            "mean": 17.6693125,
+            "median": 17.5265,
+            "p05": 17.314,
+            "p95": 17.938,
+            "p99": 17.938,
+            "max": 19.384
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 14.8765,
+              "median": 14.913,
+              "p95": 15.107,
+              "p99": 15.107,
+              "max": 15.132
+            },
+            "main_step_cpu_ns": {
+              "mean": 15.068375,
+              "median": 15.096,
+              "p95": 15.318,
+              "p99": 15.318,
+              "max": 15.323
+            },
+            "worker_delta": {
+              "mean": 1.214,
+              "median": 1.2245,
+              "p95": 1.273,
+              "p99": 1.273,
+              "max": 1.286
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 16.282375,
+              "median": 16.261,
+              "p95": 16.556,
+              "p99": 16.556,
+              "max": 16.56
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.4057795000000013,
+          "thread_CPU_mean_20_percent_margin_ms": -2.9318513999999993,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2214,
+          "minimum_reported_playable_all_frames": 2214,
+          "observer_mean_us": 36.655
+        }
+      ]
+    },
+    {
+      "case": 7,
+      "name": "CARBUNKL",
+      "completed": {
+        "baseline": 0,
+        "prior": 2,
+        "combined": 2
+      },
+      "latest": [
+        {
+          "run": 17,
+          "repeat": 0,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": -0.074625,
+          "aligned_service_proxy_ms": {
+            "mean": 15.159625,
+            "median": 15.038,
+            "p05": 14.693,
+            "p95": 15.733,
+            "p99": 15.733,
+            "max": 16.66
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 12.444375,
+              "median": 12.405999999999999,
+              "p95": 12.656,
+              "p99": 12.656,
+              "max": 12.838
+            },
+            "main_step_cpu_ns": {
+              "mean": 12.663625,
+              "median": 12.6235,
+              "p95": 12.873,
+              "p99": 12.873,
+              "max": 13.056
+            },
+            "worker_delta": {
+              "mean": 1.331375,
+              "median": 1.2985,
+              "p95": 1.359,
+              "p99": 1.359,
+              "max": 1.779
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 13.995,
+              "median": 13.968,
+              "p95": 14.344,
+              "p99": 14.344,
+              "max": 14.357
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 2.6931545000000003,
+          "thread_CPU_mean_20_percent_margin_ms": -0.6444764000000003,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2825,
+          "minimum_reported_playable_all_frames": 2825,
+          "observer_mean_us": 33.93666666666667
+        },
+        {
+          "run": 30,
+          "repeat": 1,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": -0.0546875,
+          "aligned_service_proxy_ms": {
+            "mean": 15.06825,
+            "median": 14.9585,
+            "p05": 14.655,
+            "p95": 15.396,
+            "p99": 15.396,
+            "max": 16.7
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 12.480625,
+              "median": 12.4565,
+              "p95": 12.631,
+              "p99": 12.631,
+              "max": 12.771
+            },
+            "main_step_cpu_ns": {
+              "mean": 12.6960625,
+              "median": 12.677,
+              "p95": 12.848,
+              "p99": 12.848,
+              "max": 12.968
+            },
+            "worker_delta": {
+              "mean": 1.238,
+              "median": 1.242,
+              "p95": 1.274,
+              "p99": 1.274,
+              "max": 1.278
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 13.9340625,
+              "median": 13.8965,
+              "p95": 14.067,
+              "p99": 14.067,
+              "max": 14.183
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 2.754092,
+          "thread_CPU_mean_20_percent_margin_ms": -0.5835389000000006,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2832,
+          "minimum_reported_playable_all_frames": 2832,
+          "observer_mean_us": 32.80083333333334
+        }
+      ]
+    },
+    {
+      "case": 8,
+      "name": "QUASAR",
+      "completed": {
+        "baseline": 0,
+        "prior": 0,
+        "combined": 0
+      },
+      "latest": [
+        {
+          "run": 20,
+          "repeat": 0,
+          "rows": 549,
+          "full_window": false,
+          "worker_PCM_valid": false,
+          "prior_to_latest_CPU_gain_ms": 0.563375,
+          "aligned_service_proxy_ms": {
+            "mean": 18.03425,
+            "median": 17.969,
+            "p05": 17.058,
+            "p95": 18.176,
+            "p99": 18.176,
+            "max": 19.969
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 15.0486875,
+              "median": 15.013,
+              "p95": 15.22,
+              "p99": 15.22,
+              "max": 15.258
+            },
+            "main_step_cpu_ns": {
+              "mean": 15.245125,
+              "median": 15.246,
+              "p95": 15.407,
+              "p99": 15.407,
+              "max": 15.448
+            },
+            "worker_delta": {
+              "mean": 1.27625,
+              "median": 1.2799999999999998,
+              "p95": 1.346,
+              "p99": 1.346,
+              "max": 1.38
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 16.521375,
+              "median": 16.515,
+              "p95": 16.644,
+              "p99": 16.644,
+              "max": 16.727
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.16677950000000052,
+          "thread_CPU_mean_20_percent_margin_ms": -3.1708514,
+          "first_invalid_pointer_frame": 540,
+          "last_valid_frame": 539,
+          "minimum_reported_playable_valid_frames": 746,
+          "minimum_reported_playable_all_frames": 0,
+          "observer_mean_us": 35.763205828779604
+        },
+        {
+          "run": 27,
+          "repeat": 1,
+          "rows": 536,
+          "full_window": false,
+          "worker_PCM_valid": false,
+          "prior_to_latest_CPU_gain_ms": 0.4456875,
+          "aligned_service_proxy_ms": {
+            "mean": 18.09775,
+            "median": 18.0095,
+            "p05": 17.853,
+            "p95": 18.133,
+            "p99": 18.133,
+            "max": 19.688
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 15.1159375,
+              "median": 15.0785,
+              "p95": 15.283,
+              "p99": 15.283,
+              "max": 15.303
+            },
+            "main_step_cpu_ns": {
+              "mean": 15.3109375,
+              "median": 15.279,
+              "p95": 15.478,
+              "p99": 15.478,
+              "max": 15.495
+            },
+            "worker_delta": {
+              "mean": 1.275125,
+              "median": 1.27,
+              "p95": 1.334,
+              "p99": 1.334,
+              "max": 1.361
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 16.5860625,
+              "median": 16.5505,
+              "p95": 16.75,
+              "p99": 16.75,
+              "max": 16.763
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 0.10209199999999896,
+          "thread_CPU_mean_20_percent_margin_ms": -3.2355389000000017,
+          "first_invalid_pointer_frame": 524,
+          "last_valid_frame": 523,
+          "minimum_reported_playable_valid_frames": 875,
+          "minimum_reported_playable_all_frames": 0,
+          "observer_mean_us": 33.87686567164179
+        }
+      ]
+    },
+    {
+      "case": 10,
+      "name": "RAGE_004",
+      "completed": {
+        "baseline": 0,
+        "prior": 2,
+        "combined": 2
+      },
+      "latest": [
+        {
+          "run": 23,
+          "repeat": 0,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.0806875,
+          "aligned_service_proxy_ms": {
+            "mean": 16.0436875,
+            "median": 15.8455,
+            "p05": 15.379,
+            "p95": 16.479,
+            "p99": 16.479,
+            "max": 17.82
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 13.3104375,
+              "median": 13.316500000000001,
+              "p95": 13.531,
+              "p99": 13.531,
+              "max": 13.61
+            },
+            "main_step_cpu_ns": {
+              "mean": 13.5341875,
+              "median": 13.548,
+              "p95": 13.8,
+              "p99": 13.8,
+              "max": 13.832
+            },
+            "worker_delta": {
+              "mean": 1.2990625,
+              "median": 1.2865,
+              "p95": 1.37,
+              "p99": 1.37,
+              "max": 1.434
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 14.83325,
+              "median": 14.8765,
+              "p95": 15.069,
+              "p99": 15.069,
+              "max": 15.083
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 1.8549045,
+          "thread_CPU_mean_20_percent_margin_ms": -1.4827264000000007,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2802,
+          "minimum_reported_playable_all_frames": 2802,
+          "observer_mean_us": 35.4375
+        },
+        {
+          "run": 24,
+          "repeat": 1,
+          "rows": 1200,
+          "full_window": true,
+          "worker_PCM_valid": true,
+          "prior_to_latest_CPU_gain_ms": 0.2890625,
+          "aligned_service_proxy_ms": {
+            "mean": 15.5145,
+            "median": 15.3455,
+            "p05": 14.725,
+            "p95": 16.094,
+            "p99": 16.094,
+            "max": 18.323
+          },
+          "aligned_thread_CPU_ms": {
+            "cpu_ns": {
+              "mean": 13.1675625,
+              "median": 13.157499999999999,
+              "p95": 13.558,
+              "p99": 13.558,
+              "max": 13.602
+            },
+            "main_step_cpu_ns": {
+              "mean": 13.393,
+              "median": 13.384,
+              "p95": 13.777,
+              "p99": 13.777,
+              "max": 13.807
+            },
+            "worker_delta": {
+              "mean": 1.2113125,
+              "median": 1.2069999999999999,
+              "p95": 1.81,
+              "p99": 1.81,
+              "max": 1.86
+            },
+            "timed_thread_cpu_ns": {
+              "mean": 14.6043125,
+              "median": 14.559999999999999,
+              "p95": 15.216,
+              "p99": 15.216,
+              "max": 15.637
+            }
+          },
+          "thread_CPU_mean_deadline_margin_ms": 2.083841999999999,
+          "thread_CPU_mean_20_percent_margin_ms": -1.2537889000000018,
+          "first_invalid_pointer_frame": null,
+          "last_valid_frame": 1199,
+          "minimum_reported_playable_valid_frames": 2793,
+          "minimum_reported_playable_all_frames": 2793,
+          "observer_mean_us": 34.0425
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "variant": "baseline",
+      "rows": 417,
+      "completed": false,
+      "pointer_invalid_rows": 9,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=309360 hw=309247 prime_written=2823 start_calls=0 epoch=1 xfer=308976",
+      "native_quota_percent": 99.99995870825806,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 1,
+      "fixture": 0,
+      "variant": "prior",
+      "rows": 446,
+      "completed": false,
+      "pointer_invalid_rows": 14,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=330702 hw=330623 prime_written=2823 start_calls=0 epoch=1 xfer=330318",
+      "native_quota_percent": 99.99997580357626,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 2,
+      "fixture": 0,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 3,
+      "fixture": 1,
+      "variant": "baseline",
+      "rows": 405,
+      "completed": false,
+      "pointer_invalid_rows": 5,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=300529 hw=300415 prime_written=2823 start_calls=0 epoch=1 xfer=300145",
+      "native_quota_percent": 99.99961651883466,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 4,
+      "fixture": 1,
+      "variant": "prior",
+      "rows": 407,
+      "completed": false,
+      "pointer_invalid_rows": 5,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=302000 hw=301951 prime_written=2823 start_calls=0 epoch=1 xfer=301616",
+      "native_quota_percent": 99.99990471185922,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 5,
+      "fixture": 1,
+      "variant": "combined",
+      "rows": 414,
+      "completed": false,
+      "pointer_invalid_rows": 6,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=307152 hw=307071 prime_written=2823 start_calls=0 epoch=1 xfer=306768",
+      "native_quota_percent": 99.99998795830376,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 6,
+      "fixture": 3,
+      "variant": "baseline",
+      "rows": 417,
+      "completed": false,
+      "pointer_invalid_rows": 13,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=309360 hw=309247 prime_written=2823 start_calls=0 epoch=1 xfer=308976",
+      "native_quota_percent": 99.99995870825806,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 7,
+      "fixture": 3,
+      "variant": "prior",
+      "rows": 445,
+      "completed": false,
+      "pointer_invalid_rows": 17,
+      "failure": "WRITEI_FRAMES errno=77 state=1 queued=0 avail=3712 appl=329966 hw=329855 prime_written=2823 start_calls=0 epoch=1 xfer=329582",
+      "native_quota_percent": 99.99984481931612,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 8,
+      "fixture": 3,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 9,
+      "fixture": 5,
+      "variant": "baseline",
+      "rows": 405,
+      "completed": false,
+      "pointer_invalid_rows": 5,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=300529 hw=300415 prime_written=2823 start_calls=0 epoch=1 xfer=300145",
+      "native_quota_percent": 99.99961651883466,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 10,
+      "fixture": 5,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 11,
+      "fixture": 5,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 12,
+      "fixture": 6,
+      "variant": "baseline",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 13,
+      "fixture": 6,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 14,
+      "fixture": 6,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 15,
+      "fixture": 7,
+      "variant": "baseline",
+      "rows": 410,
+      "completed": false,
+      "pointer_invalid_rows": 10,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=304208 hw=304127 prime_written=2823 start_calls=0 epoch=1 xfer=303824",
+      "native_quota_percent": 99.99987557154283,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 16,
+      "fixture": 7,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 17,
+      "fixture": 7,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 18,
+      "fixture": 8,
+      "variant": "baseline",
+      "rows": 453,
+      "completed": false,
+      "pointer_invalid_rows": 13,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=335854 hw=335743 prime_written=2823 start_calls=0 epoch=1 xfer=335470",
+      "native_quota_percent": 99.99963792630004,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 19,
+      "fixture": 8,
+      "variant": "prior",
+      "rows": 463,
+      "completed": false,
+      "pointer_invalid_rows": 13,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=343214 hw=343167 prime_written=2823 start_calls=0 epoch=1 xfer=342830",
+      "native_quota_percent": 99.99969232015297,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 20,
+      "fixture": 8,
+      "variant": "combined",
+      "rows": 549,
+      "completed": false,
+      "pointer_invalid_rows": 9,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=406505 hw=406399 prime_written=2823 start_calls=0 epoch=1 xfer=406121",
+      "native_quota_percent": 99.999669511085,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 21,
+      "fixture": 10,
+      "variant": "baseline",
+      "rows": 342,
+      "completed": false,
+      "pointer_invalid_rows": 4,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=254163 hw=254079 prime_written=2823 start_calls=0 epoch=1 xfer=253779",
+      "native_quota_percent": 99.99975019477445,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 22,
+      "fixture": 10,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 23,
+      "fixture": 10,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 24,
+      "fixture": 10,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 25,
+      "fixture": 10,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 26,
+      "fixture": 10,
+      "variant": "baseline",
+      "rows": 346,
+      "completed": false,
+      "pointer_invalid_rows": 6,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=257107 hw=257023 prime_written=2823 start_calls=0 epoch=1 xfer=256723",
+      "native_quota_percent": 99.9998861185493,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 27,
+      "fixture": 8,
+      "variant": "combined",
+      "rows": 536,
+      "completed": false,
+      "pointer_invalid_rows": 12,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=396938 hw=396927 prime_written=2823 start_calls=0 epoch=1 xfer=396554",
+      "native_quota_percent": 99.99999301521466,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 28,
+      "fixture": 8,
+      "variant": "prior",
+      "rows": 473,
+      "completed": false,
+      "pointer_invalid_rows": 17,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=350572 hw=350463 prime_written=2823 start_calls=0 epoch=1 xfer=350188",
+      "native_quota_percent": 99.9997444140544,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 29,
+      "fixture": 8,
+      "variant": "baseline",
+      "rows": 445,
+      "completed": false,
+      "pointer_invalid_rows": 13,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=329966 hw=329855 prime_written=2823 start_calls=0 epoch=1 xfer=329582",
+      "native_quota_percent": 99.99984481931612,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 30,
+      "fixture": 7,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 31,
+      "fixture": 7,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 32,
+      "fixture": 7,
+      "variant": "baseline",
+      "rows": 425,
+      "completed": false,
+      "pointer_invalid_rows": 11,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=315247 hw=315135 prime_written=2823 start_calls=0 epoch=1 xfer=314863",
+      "native_quota_percent": 99.99973604085143,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 33,
+      "fixture": 6,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 34,
+      "fixture": 6,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 35,
+      "fixture": 6,
+      "variant": "baseline",
+      "rows": 602,
+      "completed": false,
+      "pointer_invalid_rows": 22,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=445510 hw=445439 prime_written=2823 start_calls=0 epoch=1 xfer=445126",
+      "native_quota_percent": 99.99985738584066,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 36,
+      "fixture": 5,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 37,
+      "fixture": 5,
+      "variant": "prior",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 38,
+      "fixture": 5,
+      "variant": "baseline",
+      "rows": 409,
+      "completed": false,
+      "pointer_invalid_rows": 5,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=303472 hw=303359 prime_written=2823 start_calls=0 epoch=1 xfer=303088",
+      "native_quota_percent": 99.99973281303967,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 39,
+      "fixture": 3,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 40,
+      "fixture": 3,
+      "variant": "prior",
+      "rows": 497,
+      "completed": false,
+      "pointer_invalid_rows": 25,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=368235 hw=368127 prime_written=2823 start_calls=0 epoch=1 xfer=367851",
+      "native_quota_percent": 99.99993614786065,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 41,
+      "fixture": 3,
+      "variant": "baseline",
+      "rows": 409,
+      "completed": false,
+      "pointer_invalid_rows": 13,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=303472 hw=303359 prime_written=2823 start_calls=0 epoch=1 xfer=303088",
+      "native_quota_percent": 99.99973281303967,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 42,
+      "fixture": 1,
+      "variant": "combined",
+      "rows": 420,
+      "completed": false,
+      "pointer_invalid_rows": 7,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=311568 hw=311551 prime_written=2823 start_calls=0 epoch=1 xfer=311184",
+      "native_quota_percent": 99.99992987607018,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 43,
+      "fixture": 1,
+      "variant": "prior",
+      "rows": 407,
+      "completed": false,
+      "pointer_invalid_rows": 5,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=302000 hw=301951 prime_written=2823 start_calls=0 epoch=1 xfer=301616",
+      "native_quota_percent": 99.99990471185922,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 44,
+      "fixture": 1,
+      "variant": "baseline",
+      "rows": 409,
+      "completed": false,
+      "pointer_invalid_rows": 5,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=303472 hw=303359 prime_written=2823 start_calls=0 epoch=1 xfer=303088",
+      "native_quota_percent": 99.99973281303967,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 45,
+      "fixture": 0,
+      "variant": "combined",
+      "rows": 1200,
+      "completed": true,
+      "pointer_invalid_rows": 0,
+      "failure": "",
+      "native_quota_percent": 99.9999744057826,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 46,
+      "fixture": 0,
+      "variant": "prior",
+      "rows": 465,
+      "completed": false,
+      "pointer_invalid_rows": 13,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=344685 hw=344575 prime_written=2823 start_calls=0 epoch=1 xfer=344301",
+      "native_quota_percent": 99.99994424049353,
+      "frequencies_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 47,
+      "fixture": 0,
+      "variant": "baseline",
+      "rows": 417,
+      "completed": false,
+      "pointer_invalid_rows": 9,
+      "failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=309360 hw=309247 prime_written=2823 start_calls=0 epoch=1 xfer=308976",
+      "native_quota_percent": 99.99995870825806,
+      "frequencies_khz": [
+        -1
+      ]
+    }
+  ],
+  "limits": [
+    "Timed thread CPU is main-step CPU plus audio/display worker deltas, without adding their overlapping wall time. It includes observers and does not cover all kernel/other-process costs.",
+    "Worker samples bracket nearby rather than identical instants; aggregate intervals are more useful than individual rows.",
+    "Service proxy is conservative and can double-count overlap; it is not a hardware lower bound.",
+    "Pointer drift invalidates later playable/reserve values. Drain success is software evidence, not recorded speaker playback.",
+    "No new build, recode, rearm or frequency-to-cycle conversion."
+  ]
+}

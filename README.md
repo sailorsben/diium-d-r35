@@ -6,6 +6,15 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Combined1 returned; analysis only:** all48 runs archived and identities/FAT
+  verified;21 complete,27 native PCM failures. Latest completes6/8 contexts in
+  both orders; Meteor/Quasar still fail. Worst16 main+worker CPU averages17.85-
+  17.97ms and17.41-17.46ms respectively;20% margin needs4.50-4.62ms and4.06-4.11ms
+  additional reduction before other costs. Quasar's worst load shifts later,
+  where sprite activity roughly doubles. Recommend a shared scalar/NEON PPU
+  backend covering BG/OBJ visibility and composition, selected by state/span.
+  No code changes, new build, card writes or rearm; marker consumed. Older armed
+  bullets below are historical. [Return and design](docs/snes-combined-return-and-ppu-design.md).
 - **Window batching is already in the experimental test:** all three combined1
   cores include ability2's generalized scanline Window2 patch. The old78.97%
   figure measures fewer renderer entries, not total CPU saving; production

@@ -6639,6 +6639,48 @@
       "published": "evidence/2026-10-13/fused-toolbox/identity.json",
       "source_sha256": "d45a2f7a4a1d2315105326969987a75fef6b6e8918353fb136ad9d3e1a260a9d",
       "published_sha256": "d45a2f7a4a1d2315105326969987a75fef6b6e8918353fb136ad9d3e1a260a9d"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-preservation.json",
+      "published": "evidence/2026-10-13/combined-return/preservation.json",
+      "source_sha256": "64110b217cee4865115939754cca475c6815093a803d3816e65082903bd22a72",
+      "published_sha256": "b73e3ae0d496ff0e6de19f026c01719d0cd552d19715a05a74d2b1326316387a"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-analysis/analysis.json",
+      "published": "evidence/2026-10-13/combined-return/analysis.json",
+      "source_sha256": "a4c4ea34a0e23b03202d9771bb3f8c5b11e7b0e9346051a53daaf79421b70ca9",
+      "published_sha256": "cc69572320ec169c995186c0faaf7aca8f535dad72ae85e7ac4735db7b6998ab"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-analysis/learnings.json",
+      "published": "evidence/2026-10-13/combined-return/learnings.json",
+      "source_sha256": "cdd86d442e9fef62752296622273611f481be66e23cc8daf10f9d118577eca31",
+      "published_sha256": "08b913d860fefa9fcb4e26eea93a0e4b92ac53aced3940de4ad45e62efd4d39a"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-analysis/peak-intervals.json",
+      "published": "evidence/2026-10-13/combined-return/peak-intervals.json",
+      "source_sha256": "9e527bd39978f3ab3593791588f9b47b37223aaf74d72590a87192dce434ad09",
+      "published_sha256": "cc1a0489190bd8de7c7f0ada4fbdf5cf9a5835fba3910c5a8a2f856d8f306b36"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-analysis/aligned-work.json",
+      "published": "evidence/2026-10-13/combined-return/aligned-work.json",
+      "source_sha256": "3573c92d165cf0b9c092f0697c5e63090770e9c99b96a1c3aa09c77e87848b73",
+      "published_sha256": "b15b6f366b3aa9ea99e3b3e72fbf5ff103e5e465174772de02ec8bae892634b5"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-analysis/window-migration.json",
+      "published": "evidence/2026-10-13/combined-return/window-migration.json",
+      "source_sha256": "1fa94afc2a7163132400402b4523ab2dd965a44b3e5229d93b2a0af6be404895",
+      "published_sha256": "b2ddd26b2d83823d4ce85b6e04c667880d0f1348b9baaf3674844d9fdc2ccd97"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T021915Z/combined-analysis/inputs.json",
+      "published": "evidence/2026-10-13/combined-return/inputs.json",
+      "source_sha256": "5996db9534f79d5047e60e172c123fd189d340cb38349cb757c1d851d66cbe54",
+      "published_sha256": "e7c039c55b1f367d10e11f8973193eec13f8bf0061093a13da6c2622d30ca538"
     }
   ]
 }

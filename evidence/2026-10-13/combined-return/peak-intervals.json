@@ -1,0 +1,370 @@
+[
+  {
+    "case": 0,
+    "name": "HOLY",
+    "repeat": 0,
+    "run": 2,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      478,
+      493
+    ],
+    "worst16_thread_CPU_mean_ms": 16.282375,
+    "worst16_core_CPU_mean_ms": 14.715875,
+    "worst16_20_percent_CPU_gap_ms": 2.9318513999999993,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 1.5955365,
+    "excess_interval": [
+      481,
+      483
+    ],
+    "implied_sink_frames_at44100": 70.36315965,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 0,
+    "name": "HOLY",
+    "repeat": 1,
+    "run": 45,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      478,
+      493
+    ],
+    "worst16_thread_CPU_mean_ms": 16.2494375,
+    "worst16_core_CPU_mean_ms": 14.6766875,
+    "worst16_20_percent_CPU_gap_ms": 2.8989139,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 1.7888455,
+    "excess_interval": [
+      529,
+      529
+    ],
+    "implied_sink_frames_at44100": 78.88808655,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 1,
+    "name": "METEOR",
+    "repeat": 0,
+    "run": 5,
+    "valid_prefix_rows": 408,
+    "worst16_thread_CPU_frames": [
+      392,
+      407
+    ],
+    "worst16_thread_CPU_mean_ms": 17.97325,
+    "worst16_core_CPU_mean_ms": 16.483625,
+    "worst16_20_percent_CPU_gap_ms": 4.622726400000001,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 44.367056,
+    "excess_interval": [
+      376,
+      407
+    ],
+    "implied_sink_frames_at44100": 1956.5871696000002,
+    "last_valid_reported_hardware_queue": 881,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 1,
+    "name": "METEOR",
+    "repeat": 1,
+    "run": 42,
+    "valid_prefix_rows": 413,
+    "worst16_thread_CPU_frames": [
+      396,
+      411
+    ],
+    "worst16_thread_CPU_mean_ms": 17.8500625,
+    "worst16_core_CPU_mean_ms": 16.412625,
+    "worst16_20_percent_CPU_gap_ms": 4.499538900000001,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 44.4932835,
+    "excess_interval": [
+      376,
+      412
+    ],
+    "implied_sink_frames_at44100": 1962.15380235,
+    "last_valid_reported_hardware_queue": 849,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 3,
+    "name": "MELTDOWN",
+    "repeat": 0,
+    "run": 8,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      478,
+      493
+    ],
+    "worst16_thread_CPU_mean_ms": 16.6355,
+    "worst16_core_CPU_mean_ms": 15.1955625,
+    "worst16_20_percent_CPU_gap_ms": 3.2849764000000015,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 4.8739745,
+    "excess_interval": [
+      340,
+      378
+    ],
+    "implied_sink_frames_at44100": 214.94227545,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 3,
+    "name": "MELTDOWN",
+    "repeat": 1,
+    "run": 39,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      479,
+      494
+    ],
+    "worst16_thread_CPU_mean_ms": 16.81425,
+    "worst16_core_CPU_mean_ms": 15.283625,
+    "worst16_20_percent_CPU_gap_ms": 3.4637264000000023,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 33.6704345,
+    "excess_interval": [
+      342,
+      500
+    ],
+    "implied_sink_frames_at44100": 1484.86616145,
+    "last_valid_reported_hardware_queue": 2888,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 5,
+    "name": "SIREN",
+    "repeat": 0,
+    "run": 11,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      361,
+      376
+    ],
+    "worst16_thread_CPU_mean_ms": 16.5675,
+    "worst16_core_CPU_mean_ms": 15.009,
+    "worst16_20_percent_CPU_gap_ms": 3.2169764,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 4.558056,
+    "excess_interval": [
+      353,
+      384
+    ],
+    "implied_sink_frames_at44100": 201.01026960000002,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 5,
+    "name": "SIREN",
+    "repeat": 1,
+    "run": 36,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      369,
+      384
+    ],
+    "worst16_thread_CPU_mean_ms": 16.3591875,
+    "worst16_core_CPU_mean_ms": 14.8973125,
+    "worst16_20_percent_CPU_gap_ms": 3.008663900000002,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 1.8998455,
+    "excess_interval": [
+      369,
+      369
+    ],
+    "implied_sink_frames_at44100": 83.78318655,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 6,
+    "name": "BAHAMUT",
+    "repeat": 0,
+    "run": 14,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      599,
+      614
+    ],
+    "worst16_thread_CPU_mean_ms": 16.651625,
+    "worst16_core_CPU_mean_ms": 15.1523125,
+    "worst16_20_percent_CPU_gap_ms": 3.3011014000000003,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 5.0696825,
+    "excess_interval": [
+      599,
+      613
+    ],
+    "implied_sink_frames_at44100": 223.57299824999998,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 6,
+    "name": "BAHAMUT",
+    "repeat": 1,
+    "run": 33,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      471,
+      486
+    ],
+    "worst16_thread_CPU_mean_ms": 16.759125,
+    "worst16_core_CPU_mean_ms": 15.175875,
+    "worst16_20_percent_CPU_gap_ms": 3.408601400000002,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 12.679258,
+    "excess_interval": [
+      474,
+      549
+    ],
+    "implied_sink_frames_at44100": 559.1552778,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 7,
+    "name": "CARBUNKL",
+    "repeat": 0,
+    "run": 17,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      222,
+      237
+    ],
+    "worst16_thread_CPU_mean_ms": 14.5805,
+    "worst16_core_CPU_mean_ms": 13.0495625,
+    "worst16_20_percent_CPU_gap_ms": 1.2299764000000017,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 0.0,
+    "excess_interval": [
+      0,
+      0
+    ],
+    "implied_sink_frames_at44100": 0.0,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 7,
+    "name": "CARBUNKL",
+    "repeat": 1,
+    "run": 30,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      221,
+      236
+    ],
+    "worst16_thread_CPU_mean_ms": 14.4915625,
+    "worst16_core_CPU_mean_ms": 12.9884375,
+    "worst16_20_percent_CPU_gap_ms": 1.1410389000000016,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 0.0,
+    "excess_interval": [
+      0,
+      0
+    ],
+    "implied_sink_frames_at44100": 0.0,
+    "last_valid_reported_hardware_queue": 3144,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 8,
+    "name": "QUASAR",
+    "repeat": 0,
+    "run": 20,
+    "valid_prefix_rows": 540,
+    "worst16_thread_CPU_frames": [
+      514,
+      529
+    ],
+    "worst16_thread_CPU_mean_ms": 17.4153125,
+    "worst16_core_CPU_mean_ms": 15.988625,
+    "worst16_20_percent_CPU_gap_ms": 4.0647889,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 43.3557435,
+    "excess_interval": [
+      383,
+      539
+    ],
+    "implied_sink_frames_at44100": 1911.9882883500002,
+    "last_valid_reported_hardware_queue": 746,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 8,
+    "name": "QUASAR",
+    "repeat": 1,
+    "run": 27,
+    "valid_prefix_rows": 524,
+    "worst16_thread_CPU_frames": [
+      508,
+      523
+    ],
+    "worst16_thread_CPU_mean_ms": 17.462,
+    "worst16_core_CPU_mean_ms": 15.9925,
+    "worst16_20_percent_CPU_gap_ms": 4.111476400000001,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 43.143533,
+    "excess_interval": [
+      398,
+      523
+    ],
+    "implied_sink_frames_at44100": 1902.6298052999998,
+    "last_valid_reported_hardware_queue": 875,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 10,
+    "name": "RAGE_004",
+    "repeat": 0,
+    "run": 23,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      380,
+      395
+    ],
+    "worst16_thread_CPU_mean_ms": 15.189625,
+    "worst16_core_CPU_mean_ms": 13.6198125,
+    "worst16_20_percent_CPU_gap_ms": 1.8391014000000006,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 0.3098455,
+    "excess_interval": [
+      383,
+      383
+    ],
+    "implied_sink_frames_at44100": 13.66418655,
+    "last_valid_reported_hardware_queue": 3016,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  },
+  {
+    "case": 10,
+    "name": "RAGE_004",
+    "repeat": 1,
+    "run": 24,
+    "valid_prefix_rows": 1200,
+    "worst16_thread_CPU_frames": [
+      1160,
+      1175
+    ],
+    "worst16_thread_CPU_mean_ms": 14.828375,
+    "worst16_core_CPU_mean_ms": 13.355125,
+    "worst16_20_percent_CPU_gap_ms": 1.4778514000000005,
+    "valid_prefix_max_cumulative_unpaced_wall_excess_ms": 0.0638455,
+    "excess_interval": [
+      436,
+      436
+    ],
+    "implied_sink_frames_at44100": 2.8155865500000004,
+    "last_valid_reported_hardware_queue": 3016,
+    "last_valid_remaining_software": 0,
+    "limits": "Cumulative unpaced wall excess is a workload debt model, not exact audio reserve: observation timestamps bracket nearby queue reads and hardware pointers may have earlier unobserved anomalies. Stops before first invalid pointer."
+  }
+]
