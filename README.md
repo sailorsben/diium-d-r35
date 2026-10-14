@@ -4,7 +4,16 @@ Source, hardware investigation and a working SNES-only launcher/runtime prototyp
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.
 
-## Current status — 2026-10-13
+## Current status — 2026-10-14
+
+- **CPU-demand candidates implemented offline:** isolated shared geometry,
+  strict DMA spans, ring/brightness/OAM/selection/palette cleanup and owned
+  direct output; fresh combination reuses qualified fusion and alignment.
+  Final visibility guard rejects570 hidden Quasar main cells before setup,
+  without claiming another4410 index-row saving.302400 raw original-command
+  comparisons/18 contexts plus source, migration, native and FIFO checks pass.
+  All A7 prices/headroom and real chunk/scaler behavior remain unknown. Card
+  untouched; no rearm or promotion. [Implementation, scorecard and next test](docs/snes-demand-optimization.md).
 
 - **Architecture hypotheses counted offline:** three observer iterations pass
   28800 exact original-command calls. Only5.55%/5.88% of Meteor/Quasar tile math

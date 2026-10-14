@@ -1,0 +1,498 @@
+{
+  "status": "LOCAL_PLAN_ONLY_NOT_STAGED_OR_ARMED",
+  "runs": [
+    {
+      "epoch": 0,
+      "case": 1,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 1,
+      "case": 1,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 2,
+      "case": 1,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 3,
+      "case": 1,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 4,
+      "case": 1,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 5,
+      "case": 1,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 6,
+      "case": 1,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 7,
+      "case": 1,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 8,
+      "case": 1,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 9,
+      "case": 1,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 10,
+      "case": 1,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 11,
+      "case": 1,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 12,
+      "case": 1,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 13,
+      "case": 1,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 14,
+      "case": 1,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 15,
+      "case": 1,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 16,
+      "case": 1,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 17,
+      "case": 1,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 18,
+      "case": 1,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 19,
+      "case": 1,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 20,
+      "case": 1,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 21,
+      "case": 1,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 22,
+      "case": 1,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 23,
+      "case": 1,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 24,
+      "case": 1,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 25,
+      "case": 1,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 26,
+      "case": 1,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 27,
+      "case": 1,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 28,
+      "case": 1,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 29,
+      "case": 1,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 30,
+      "case": 1,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 31,
+      "case": 1,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 32,
+      "case": 1,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 33,
+      "case": 1,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 34,
+      "case": 1,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 35,
+      "case": 1,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 36,
+      "case": 8,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 37,
+      "case": 8,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 38,
+      "case": 8,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 39,
+      "case": 8,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 40,
+      "case": 8,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 41,
+      "case": 8,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 42,
+      "case": 8,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 43,
+      "case": 8,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 44,
+      "case": 8,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 45,
+      "case": 8,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 46,
+      "case": 8,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 47,
+      "case": 8,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 48,
+      "case": 8,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 49,
+      "case": 8,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 50,
+      "case": 8,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 51,
+      "case": 8,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 52,
+      "case": 8,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 53,
+      "case": 8,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 54,
+      "case": 8,
+      "variant": "combined_v3",
+      "calls": 1200
+    },
+    {
+      "epoch": 55,
+      "case": 8,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 56,
+      "case": 8,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 57,
+      "case": 8,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 58,
+      "case": 8,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 59,
+      "case": 8,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 60,
+      "case": 8,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 61,
+      "case": 8,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 62,
+      "case": 8,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 63,
+      "case": 8,
+      "variant": "reference",
+      "calls": 1200
+    },
+    {
+      "epoch": 64,
+      "case": 8,
+      "variant": "alignment",
+      "calls": 1200
+    },
+    {
+      "epoch": 65,
+      "case": 8,
+      "variant": "fused",
+      "calls": 1200
+    },
+    {
+      "epoch": 66,
+      "case": 8,
+      "variant": "dma",
+      "calls": 1200
+    },
+    {
+      "epoch": 67,
+      "case": 8,
+      "variant": "small",
+      "calls": 1200
+    },
+    {
+      "epoch": 68,
+      "case": 8,
+      "variant": "geometry",
+      "calls": 1200
+    },
+    {
+      "epoch": 69,
+      "case": 8,
+      "variant": "output",
+      "calls": 1200
+    },
+    {
+      "epoch": 70,
+      "case": 8,
+      "variant": "combined_v2",
+      "calls": 1200
+    },
+    {
+      "epoch": 71,
+      "case": 8,
+      "variant": "combined_v3",
+      "calls": 1200
+    }
+  ],
+  "variant_hashes": {
+    "reference": {
+      "path": "build/common-band-private-v3/plus-a7.so",
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129"
+    },
+    "alignment": {
+      "path": "build/cache-alignment-private-v1/core/snes9x2005_plus_libretro.so",
+      "sha256": "832531a13f4e7b2355c5a5ade0963a7e4b54d006fa460f2f06219ad59e160291"
+    },
+    "fused": {
+      "path": "build/fused-toolbox-private-v2/core/snes9x2005_plus_libretro.so",
+      "sha256": "e4157329c2a80fe3d9bcd16f9de6c99753641b2b17ff26477b2e341add5e9d4e"
+    },
+    "dma": {
+      "path": "build/demand-private-v1/dma/core/snes9x2005_plus_libretro.so",
+      "sha256": "988feb5654c959345319a2fb181e5f5f296539d7b6235399b81f3af79928a37a"
+    },
+    "small": {
+      "path": "build/demand-private-v1/small/core/snes9x2005_plus_libretro.so",
+      "sha256": "a6d8a612799875c3d3fb65f632a58ce9bbd29aa89d4fc71b9216ecf1736a1289"
+    },
+    "geometry": {
+      "path": "build/demand-private-v1/geometry/core/snes9x2005_plus_libretro.so",
+      "sha256": "ed480e2ebe2e04b98bfabc32cc9b48bd331ee0814a950b2b695acbdf30bc175c"
+    },
+    "output": {
+      "path": "build/demand-private-v1/output/core/snes9x2005_plus_libretro.so",
+      "sha256": "8c1be538da1cb0cc1886d2833bd7de2a2f2ac1f3228bc94f4073b5abc902dd06"
+    },
+    "combined_v2": {
+      "path": "build/demand-final-private-v2/core/snes9x2005_plus_libretro.so",
+      "sha256": "e99f413876ead04770e635710fbc7861d6b66c7bc145615b24c05ac91532cc8d"
+    },
+    "combined_v3": {
+      "path": "build/demand-visible-private-v3/core/snes9x2005_plus_libretro.so",
+      "sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8"
+    }
+  },
+  "deadline_ms": 16.6881545,
+  "headroom20pct_target_ms": 13.3505236,
+  "prior_failure_total_CPU_ms": {
+    "METEOR": 17.9965,
+    "QUASAR": 17.4914
+  },
+  "observer_policy": "Kernel syscall monotonic and thread CPU clocks around whole calls/steps; nested phase clocks and work counters off. Include observer/worker costs, never calibration-subtract. Record replay index and one-based run number. Frequency unavailable is not 666MHz.",
+  "capture": "Whole effect and recovery, every drawing/PCM callback, complete producer/consumer reserve, pointer validity, main/audio/display disjoint CPU and final worker joins. RAM records during epochs; diagnostic persistence after joins.",
+  "hardware_access_authorized_now": false,
+  "before_future_writes": [
+    "Explicit new card-test authority",
+    "Fresh archive of all logs/private progress; source/copy/source and independent readback hashes",
+    "Card identity, FAT health, consumed-marker and stock/emu_sfc.so hashes",
+    "Exact source pushed, owned candidate directories and payload readback; never overwrite adapter",
+    "Declare candidate saving hypothesis/additional costs and failed-state falsification; measurement experiment is not production promotion"
+  ],
+  "predictions": [
+    "Identical graphics/native PCM/state and every frame retained.",
+    "V3 Quasar rejects570 main cells per counted heavy call; geometry reads drop2280 logical bytes versusv2, with zero newly removed index rows and unchanged aggregate depth-vector count.",
+    "Meteor sparse one/two pixel hits remain3978.75 per heavy call in this specific interval; v3 adds one failed coverage vector, then vetoes.",
+    "Eligible direct callbacks copy zero visible bytes; fallback and promotion account migration/copy costs explicitly.",
+    "A candidate may measure zero gain or regress. Prefer only repeatable matched net main+worker CPU reduction with complete valid reserve and no new failures."
+  ]
+}

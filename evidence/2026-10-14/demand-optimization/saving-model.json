@@ -1,0 +1,24 @@
+{
+  "net_saving_ms": null,
+  "A7_unit_prices": null,
+  "deadline_gap_after_ms": null,
+  "headroom_gap_after_ms": null,
+  "audio_rate_after": null,
+  "order": "reference -> fused/alignment -> DMA/small -> geometry -> owned output -> clip rejection; price complete incremental stages and interactions",
+  "formula": "S_total = S_fused + S_alignment + S_DMA + S_small + S_geometry + S_owned + S_clip - A_interactions, with each term a matched net incremental A7 measurement. Counts alone cannot price it.",
+  "geometry_formula": "Sub/main map/flip/grouping work avoided minus extra producer cells,132 bytes/band writes,4 bytes/consumer-cell reads, metadata/clip guards and footprint. Main hidden cells eliminated by S_clip receive no geometry-sharing credit.",
+  "clip_formula": "570*(removed tile setup + removed descriptor read) + old_depth_loop_cost - new_clip_depth_loop_cost -19*clip_guard_setup, in Quasar heavy interval. 4410 rows were already absent from index production; aggregate depth vectors remain5319.",
+  "owned_formula": "Strided copy cost removed - chunk PPU access delta - acquire/publication/restore/migration costs;224 rows*512 bytes read+write removed on successful direct frames, not the whole0.82-0.86ms callback.",
+  "reserve_formula": "For measured complete production/consumption, D(t)=consumed-produced; require maximum prefix deficit and maximum capped-reserve drawdown plus declared margin, using only valid pointers.",
+  "provisional_required_saving_ms": {
+    "METEOR": {
+      "deadline": 1.3083455,
+      "headroom20pct": 4.6459764
+    },
+    "QUASAR": {
+      "deadline": 0.8032455,
+      "headroom20pct": 4.1408764
+    }
+  },
+  "warning": "Prior failure windows, not healthy acceptance. These rounded totals may differ from exact earlier receipts. Use exact matched A7 return and cycle quota for the subsequent decision."
+}

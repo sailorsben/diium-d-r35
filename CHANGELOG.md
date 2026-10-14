@@ -1,5 +1,20 @@
 # Changelog
 
+## Implement shared CPU-demand candidates and qualify their combination — 2026-10-14
+
+Fresh isolated DMA, CPU/APU cleanup, shared geometry and owned-output candidates;
+reuse qualified fusion/alignment in new combinations. Generic8/16-tile/window-aware
+producer exercises Meteor BG0 and Quasar BG1. Counted overlap shows Quasar's570
+shared main cells are hidden; final clip rejection removes their setup and2280
+descriptor-read bytes without charging4410 already-removed index rows again.
+Preserve every frame/native PCM/CPU/APU operation;302400 raw original-command
+comparisons pass across18 contexts. Independent source/seam and native/FIFO tests
+pass; retained synthetic239-line state divergence reproduces between identical
+baseline cores, with separate deterministic test-only HDMA initialization for
+layout qualification. Final core HDMA unchanged. Document costs, limits and72-epoch
+A7 measurement plan. All A7 savings unmeasured; no card access/install/rearm or
+production promotion. Existing measured and qualified artifact trees preserved.
+
 ## Qualify explicit A7 cache layout; locate shared source work — 2026-10-13
 
 Review2010 allocation/framebuffer/span mechanisms and bsnes source sharing.

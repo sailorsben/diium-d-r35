@@ -1,5 +1,20 @@
 # Device findings
 
+**Latest offline implementation,2026-10-14:** fresh shared8/16-tile/window
+geometry, strict VRAM DMA bookkeeping, exact ring/brightness/OAM/selection/palette
+cleanup and retained owned output. Combined v3 reuses qualified fusion/alignment;
+302400 raw original-command comparisons pass across18 contexts. Quasar's570
+shared BG1 main cells are already hidden; new clip guard removes tile setup/
+2280 descriptor-read bytes, not another4410 index rows. Aggregate depth vectors
+remain5319. Original/reference and prior candidate trees are hash-protected.
+Synthetic extended-height baseline-vs-identical-baseline state divergence exposes
+stale HDMA host-base leakage; common test-only pointer initialization isolates
+output migration, with no field masking or final-core HDMA change. Native/FIFO
+and resolution/state seams pass within their documented boundaries. New A7
+savings, chunk coherency, complete healthy reserve and production acceptance
+remain unknown. No card access, installation or rearm.
+[Implementation and evidence](snes-demand-optimization.md).
+
 **Architecture census, current offline evidence:**28800 exact replay calls in
 three observer iterations; no card access/rearm/optimization. Heavy Meteor math
 overwritten2250/40528 pixels(5.55%), Quasar2792.4/47493.3(5.88%). Plain RGB overdraw

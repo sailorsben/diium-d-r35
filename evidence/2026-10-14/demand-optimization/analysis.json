@@ -1,0 +1,502 @@
+{
+  "reference_sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+  "preferred_offline_candidate": {
+    "path": "build/demand-visible-private-v3/core/snes9x2005_plus_libretro.so",
+    "sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+    "reason": "Preserves Meteor sparse work and rejects Quasar hidden main clips before tile setup. Preferred by qualified work elimination; not established fastest on A7.",
+    "runner_path": "build/demand-private-v1/owned-output-runner",
+    "runner_sha256": "e31fbccd50b3e0d71215e789e8cfdb8df6f24cfc9741cfe5b796f732918c4065"
+  },
+  "original_command_raw_comparison_calls": 302400,
+  "candidate_iterations": [
+    {
+      "name": "demand-private-v1",
+      "calls": 216000,
+      "ordinary_core_sha256": "2f1748a88d75064b59b029be2fb0bb98d7a9f4c0269cb8638d0cb64335cfe955"
+    },
+    {
+      "name": "demand-final-private-v2",
+      "calls": 43200,
+      "ordinary_core_sha256": "e99f413876ead04770e635710fbc7861d6b66c7bc145615b24c05ac91532cc8d"
+    },
+    {
+      "name": "demand-visible-private-v3",
+      "calls": 43200,
+      "ordinary_core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8"
+    }
+  ],
+  "final_combination_original_command_calls": 43200,
+  "final_synthetic_transition_calls": 8400,
+  "every_original_frame_raw_graphics_PCM_geometry": true,
+  "normalized_state_every": 30,
+  "final_heavy_intervals_zero_based": {
+    "METEOR": [
+      384,
+      415
+    ],
+    "QUASAR": [
+      496,
+      529
+    ]
+  },
+  "heavy": {
+    "METEOR": {
+      "work": {
+        "dma_spans": 27,
+        "dma_bytes": 1344,
+        "dma_old_flags": 4032,
+        "dma_flags": 165,
+        "ring_old_copies": 5.3125,
+        "ring_copies": 2.125,
+        "zero_palettes": 1,
+        "obj_invalidation_avoided": 4.71875,
+        "no_recipient_scanlines": 8,
+        "geometry_produced_bands": 91,
+        "geometry_reused_bands": 91,
+        "geometry_write_bytes": 12012,
+        "geometry_read_bytes": 19800,
+        "geometry_full_tiles": 4806,
+        "geometry_edges": 144,
+        "geometry_fallbacks": 5,
+        "direct_frames": 1,
+        "output_promotions": 0,
+        "aux_migration_bytes": 0,
+        "output_fallbacks": 0,
+        "geometry_16_bands": 91,
+        "geometry_bg0": 91,
+        "geometry_bg1": 0,
+        "geometry_bg2": 0,
+        "geometry_bg3": 0,
+        "geometry_window_bands": 91,
+        "geometry_main_cells": 2038,
+        "geometry_sub_cells": 2912,
+        "palette_last_reuse": 958.59375,
+        "palette_lookup": 400.3125,
+        "shared_geometry_hidden_main_cells": 0,
+        "shared_geometry_hidden_main_rows": 0,
+        "coverage_probes": 1,
+        "covered_clips": 0,
+        "clip_cells_eliminated": 0,
+        "clip_tile_rows_eliminated": 0,
+        "clip_depth_vectors": 1,
+        "clip_depth_scalar_reads": 0,
+        "coverage_misses": 1,
+        "coverage_vetoes": 1
+      },
+      "fused_by_index": [
+        153,
+        0,
+        3,
+        0,
+        868,
+        911,
+        488,
+        528,
+        59,
+        12693,
+        12752,
+        0,
+        0,
+        0,
+        620,
+        0,
+        1940.0625,
+        2038.6875,
+        10036.34375,
+        4169.625,
+        1887.96875,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        3890,
+        908,
+        3,
+        0
+      ],
+      "depth_vectors_before_clip_guard": 911,
+      "depth_vectors_after_including_clip_guard": 912,
+      "new_clip_guard_index_row_saving": 0
+    },
+    "QUASAR": {
+      "work": {
+        "dma_spans": 11.058823529411764,
+        "dma_bytes": 839.5294117647059,
+        "dma_old_flags": 2518.5882352941176,
+        "dma_flags": 101.82352941176471,
+        "ring_old_copies": 2.2058823529411766,
+        "ring_copies": 2.1470588235294117,
+        "zero_palettes": 1,
+        "obj_invalidation_avoided": 14.970588235294118,
+        "no_recipient_scanlines": 8,
+        "geometry_produced_bands": 19,
+        "geometry_reused_bands": 19,
+        "geometry_write_bytes": 2508,
+        "geometry_read_bytes": 2432,
+        "geometry_full_tiles": 608,
+        "geometry_edges": 0,
+        "geometry_fallbacks": 5,
+        "direct_frames": 1,
+        "output_promotions": 0,
+        "aux_migration_bytes": 0,
+        "output_fallbacks": 0,
+        "geometry_16_bands": 0,
+        "geometry_bg0": 0,
+        "geometry_bg1": 19,
+        "geometry_bg2": 0,
+        "geometry_bg3": 0,
+        "geometry_window_bands": 0,
+        "geometry_main_cells": 0,
+        "geometry_sub_cells": 608,
+        "palette_last_reuse": 1586.3529411764705,
+        "palette_lookup": 479.52941176470586,
+        "shared_geometry_hidden_main_cells": 0,
+        "shared_geometry_hidden_main_rows": 0,
+        "coverage_probes": 19,
+        "covered_clips": 19,
+        "clip_cells_eliminated": 570,
+        "clip_tile_rows_eliminated": 4410,
+        "clip_depth_vectors": 4410,
+        "clip_depth_scalar_reads": 0,
+        "coverage_misses": 0,
+        "coverage_vetoes": 0
+      },
+      "fused_by_index": [
+        315,
+        0,
+        1,
+        0,
+        868,
+        909,
+        488,
+        528,
+        57,
+        5231,
+        5288,
+        0,
+        0,
+        0,
+        586,
+        0,
+        83.20588235294117,
+        85.8529411764706,
+        4695.5,
+        599.5588235294117,
+        3926.8823529411766,
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        0,
+        9365.088235294117,
+        908,
+        1,
+        0
+      ],
+      "depth_vectors_before_clip_guard": 5319,
+      "depth_vectors_after_including_clip_guard": 5319,
+      "new_clip_guard_index_row_saving": 0
+    }
+  },
+  "checks": {
+    "seams_v1": {
+      "passed": true,
+      "checks": {
+        "geometry": {
+          "passed": true,
+          "output": "PASS 8192 exact stock-walker command streams: four layers, 8/16 tiles, flips/priority, scrolls/wrap, separate/empty clips and per-row windows; positive reuse",
+          "source_sha256": "f29b650afd904359931c13a0d6bac3cfcfc0e6a563e4a36efca2a0dd937e7d57"
+        },
+        "dma": {
+          "passed": true,
+          "output": "PASS 12000 actual DMA branch fixtures: modes1/5, mapped/unmapped, even/odd, fixed/decrement, 4KiB/VRAM wrap, increment/high/remap and chip guards",
+          "source_sha256": "29cf34e69949100a17da1492f8a37d2e2d61346f1d3083c3a0cafc0cf6165cc3"
+        },
+        "ring": {
+          "passed": true,
+          "output": "PASS 1501760 actual replacement ring states, whole-capacity reads, wrap and output canaries",
+          "source_sha256": "ac6f2efd10fb49cacd19ed6d3acd88c729210a3887688ca3e8ef57597bd833e0"
+        },
+        "output": {
+          "passed": true,
+          "output": "PASS 1691 output layout/migration cases: compact 224/239, seven promotion/fallback reasons, state-load cancellation, prefix/tail canaries, released main ownership",
+          "source_sha256": "0f508d5d3385a145544efbfb073654b5e3b1c0b96cbf725baaf8a74b32d9709a"
+        }
+      },
+      "A7_performance_evidence": false
+    },
+    "OAM": {
+      "passed": true,
+      "source_sha256": "a9ceab0ed3f6cbe1e33cc78193299d78a9be80a1ed8bad292a14f13582853b7e",
+      "output": "PASS 2048 original OAM/OBJ scheduler fixtures: appearance, position, VFlip, sizes, high table, latch, first-sprite and rotation; identical flushes and complete schedule",
+      "A7_performance_evidence": false
+    },
+    "runtime_FIFO": {
+      "passed": true,
+      "FIFO_output": "PASS: real display FIFO releases source before scanout, reserves queue credit, preserves pixels/order and joins before teardown",
+      "runner_sha256": "e31fbccd50b3e0d71215e789e8cfdb8df6f24cfc9741cfe5b796f732918c4065",
+      "physical_driver_qualified": false
+    },
+    "seams_v2": {
+      "passed": true,
+      "checks": {
+        "geometry": {
+          "passed": true,
+          "output": "PASS 8193 exact stock-walker command streams: four layers, 8/16 tiles, flips/priority, scrolls/wrap, separate/empty clips and per-row windows; positive reuse",
+          "source_sha256": "13320d389750d54f9f39f854bafd2b78e693e15b882f74a54dc600a27d20772d"
+        },
+        "ring": {
+          "passed": true,
+          "output": "PASS 1501760 actual replacement ring states, whole-capacity reads, wrap and output canaries",
+          "source_sha256": "455e106a8c9ee53525a810a73daba56296e22ef35de2cd67184aa9b59337896a"
+        }
+      },
+      "A7_performance_evidence": false
+    },
+    "visibility_v3": {
+      "passed": true,
+      "output": "PASS 3976 clip coverage bounds, vector/tail endpoints and independent all-hidden original commands\nPASS 8192 exact stock-walker command streams: four layers, 8/16 tiles, flips/priority, scrolls/wrap, separate/empty clips and per-row windows; positive reuse",
+      "source_sha256": "037cbd24ec131aea0e1a0d3a48e33166353b19be560d1ff16baea21d746db5c7",
+      "NEON_lanes_emulated_for_native_fixture": true,
+      "actual_ARM_NEON_qualified_in_original_replays": true,
+      "A7_performance_evidence": false
+    },
+    "native_v2": {
+      "passed": true,
+      "real_owned_runner_and_core": true,
+      "physical_driver": false,
+      "A7_performance_evidence": false,
+      "log_sha256": "3a8b3e6accd94b06ade1be35b77408dccf6ea4826424a049e4bb146248198c15",
+      "output": [
+        "PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full drawings, zero lost/cleared PCM",
+        "PASS: sustained 19.8805ms production against 44100Hz consumption exposes starvation without hidden re-prime, frame suppression or accounting loss",
+        "PASS: failed-session report and exact PCM history survive library retry and a later failure under unique kernel-clock session names",
+        "PASS: 149 real runner direct-output callbacks, slot reuse, native fault/retry, state loads and drain"
+      ]
+    },
+    "native_v3": {
+      "passed": true,
+      "real_owned_runner_and_core": true,
+      "physical_driver": false,
+      "A7_performance_evidence": false,
+      "log_sha256": "a5aa4e3fd539cb800dbb3a27142ee298ae31570c8e7c4eca8dd01cdbe97c28f7",
+      "output": [
+        "PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full drawings, zero lost/cleared PCM",
+        "PASS: sustained 19.8805ms production against 44100Hz consumption exposes starvation without hidden re-prime, frame suppression or accounting loss",
+        "PASS: failed-session report and exact PCM history survive library retry and a later failure under unique kernel-clock session names",
+        "PASS: 149 real runner direct-output callbacks, slot reuse, native fault/retry, state loads and drain"
+      ]
+    },
+    "transitions_v2": {
+      "passed": true,
+      "calls": 8400,
+      "cases": [
+        {
+          "kind": "midframe_mode5",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 1200,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "29356a5e56617af4f5948eebc2b43aa4f5d339df3c6157ee1d53dd4ada0d9255"
+        },
+        {
+          "kind": "midframe_mode6",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 1200,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "4a9162bb3bcd1cb2a8be1458cf2de443bf9a2f374c54cf4603ff34f00f1356f1"
+        },
+        {
+          "kind": "midframe_interlace",
+          "calls": 1200,
+          "direct_frames": 300,
+          "promotions": 300,
+          "fallbacks": 900,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "6d6fb21f92c95754728c3856aa6dd845926ccf30bb76a1355d3fe1a06d474289"
+        },
+        {
+          "kind": "midframe_239",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 0,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "bd30321e3058fab0043efaabffe9796a022c4c47b8336f229ba91fc037dd84c6"
+        },
+        {
+          "kind": "midframe_pseudohires",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 1200,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "7ed87abb8a11245c580e05f6dc9face5dc6c31f848447b6837067d905fe0f6fc"
+        },
+        {
+          "kind": "initial_hires_fallback",
+          "calls": 1200,
+          "direct_frames": 0,
+          "promotions": 0,
+          "fallbacks": 1200,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "683b44f7a6b94dfdbb6c933cb398be58e387f7935666bd18829ebab644aee940"
+        },
+        {
+          "kind": "state_load_cycles",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 0,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "77953b43666ff75527feb71b64e21a07609a97c5641b4603b81307868b1c1f79"
+        }
+      ],
+      "synthetic_register_writes": true,
+      "common_fixture_HDMA_base_reset": true,
+      "final_core_HDMA_changed": false,
+      "ignored_emulated_fields": false,
+      "ROM_modified": false,
+      "A7_performance_evidence": false
+    },
+    "transitions_v3": {
+      "passed": true,
+      "calls": 8400,
+      "cases": [
+        {
+          "kind": "midframe_mode5",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 1200,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "aa0645070bd581909af27f0d0f5dad9012d35244ada3e9a79ffe83f2a1c1c9c3"
+        },
+        {
+          "kind": "midframe_mode6",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 1200,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "be663afb6465655144eb3ed51db403b58b5be414147a52e76d950a575c6d57e9"
+        },
+        {
+          "kind": "midframe_interlace",
+          "calls": 1200,
+          "direct_frames": 300,
+          "promotions": 300,
+          "fallbacks": 900,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "a09516d586a8f23098e16f975522a18e1892a067c5bb9a2d503c84ffe991b198"
+        },
+        {
+          "kind": "midframe_239",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 0,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "3edf0e84436609170a3b638b5e6fded8f4fdb81b28cdfc12113fc547aab68034"
+        },
+        {
+          "kind": "midframe_pseudohires",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 1200,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "952676d336cb7de2d201f03fb7a27881c0852ef94c38bebf3258ba01d47bde22"
+        },
+        {
+          "kind": "initial_hires_fallback",
+          "calls": 1200,
+          "direct_frames": 0,
+          "promotions": 0,
+          "fallbacks": 1200,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "8493a336a663732eb3ed9b449baa08f3b22060f5749d53bda49c8c90615bce79"
+        },
+        {
+          "kind": "state_load_cycles",
+          "calls": 1200,
+          "direct_frames": 1200,
+          "promotions": 0,
+          "fallbacks": 0,
+          "raw_graphics_PCM_state_match": true,
+          "log_sha256": "12cff4459f096a46d4b006d50ae10e8abe7c5533bbb6fd8fa8d8779845bb3487"
+        }
+      ],
+      "synthetic_register_writes": true,
+      "common_fixture_HDMA_base_reset": true,
+      "final_core_HDMA_changed": false,
+      "ignored_emulated_fields": false,
+      "ROM_modified": false,
+      "A7_performance_evidence": false
+    },
+    "baseline_control": {
+      "baseline_vs_identical_baseline_diverges": true,
+      "same_binary_sha256": "c524119a8f9a9dcd7dec38fd00f3184ebc36ce5a9167cef23890fa0df1ce66cb",
+      "failure_frame": 240,
+      "diagnostics": [
+        "DMA_INDIRECT_OFFSET 2928 STRIDE 22 FILLRAM_OFFSET 330768",
+        "FAIL emulated state frame=240",
+        "DIFF 2928 18 40",
+        "DIFF 2929 59 92",
+        "DIFF 2950 18 40",
+        "DIFF 2951 59 92",
+        "DIFF 2972 18 40",
+        "DIFF 2973 59 92",
+        "DIFF 2994 d8 00",
+        "DIFF 2995 56 90",
+        "DIFF 3016 50 78",
+        "DIFF 3017 5a 93",
+        "DIFF 3038 10 38",
+        "DIFF 3039 59 92",
+        "DIFF 3060 d8 00",
+        "DIFF 3061 56 90",
+        "DIFF 3082 49 71",
+        "DIFF 3083 cd 06",
+        "DIFF 347925 18 40",
+        "DIFF 347926 59 92",
+        "DIFF 347941 18 40",
+        "DIFF 347942 59 92",
+        "DIFF 347957 18 40",
+        "DIFF 347958 59 92",
+        "DIFF 347973 d8 00",
+        "DIFF 347974 56 90",
+        "DIFF 347989 50 78",
+        "DIFF 347990 5a 93",
+        "DIFF 348005 10 38",
+        "DIFF 348006 59 92",
+        "DIFF 348021 d8 00",
+        "DIFF 348022 56 90",
+        "DIFF 348037 49 71",
+        "DIFF 348038 cd 06"
+      ],
+      "cause_source": "S9xStartHDMA resets HDMAMemPointers but retains stale HDMABasePointers. A zero-line termination subtracts NULL minus stale base and writes its host-derived low16 bits to IndirectAddress and $43x5/6.",
+      "final_core_changed_for_HDMA": false,
+      "ignored_emulated_state_fields": false
+    }
+  },
+  "frozen_files_verified": 3589,
+  "card_access": false,
+  "A7_savings_measured": false,
+  "QEMU_timings_used": false,
+  "production_gate_passed": false,
+  "limits": [
+    "No new millisecond saving established. A7 chunk-memory access/cache/coherency cost and total thread CPU demand remain unknown.",
+    "Synthetic resolution tests use the same test-only HDMA base-pointer initialization in both source clones after identical unchanged baselines reproduce an allocator-derived register divergence. Final candidate HDMA code stays unchanged; no emulated state fields masked.",
+    "BG geometry producer shares one eligible layer per redraw. OBJ traversal remains; shared last-palette preparation covers OBJ and clipped callers. No RGB/source-row descriptor cache introduced.",
+    "Appearance writes avoided are not OBJ schedule rebuilds removed. Measured peaks previously had zero redundant rebuilds; no peak saving credited.",
+    "Work request bytes/vectors/stores are distinct from retired instructions, cache misses or physical DDR traffic."
+  ]
+}

@@ -1,5 +1,30 @@
 # Investigation history and negative results
 
+## Implement shared work elimination; measure intersections — 2026-10-14
+
+Fresh isolated and combined candidates pass302400 raw original-command frame/
+PCM/geometry comparisons, with periodic normalized state. Replace zero-hit BG0
+restriction with eligible-layer,8/16-tile and window-aware geometry. Reuse frozen
+fusion/alignment; strict DMA spans and exact local cleanup preserve simulation.
+Own direct output with reserved FIFO credit, coupled layouts, auxiliary migration,
+completed-draw source release and joined teardown. No device/card work or A7 gain.
+
+Counted combination reveals all570 Quasar shared BG1 main cells are hidden,
+intersecting4410 fused rows. New clip rejection removes setup/descriptor reads;
+aggregate depth-vector count stays5319 and index rows unchanged. Meteor adds one
+failed coverage probe before veto; sparse opportunities retained. Ring modulo
+was a needless added price and is removed in a fresh revision. Appearance dirty
+writes avoided are not actual removed schedule rebuilds; retain zero peak credit.
+
+Synthetic239-line state mismatch at frame240 reproduces between identical
+baseline binaries. HDMA current pointer reset leaves stale base; null-minus-base
+termination contaminates emulated registers with host-address bits. Never mask
+those fields. Test-only common null/null initialization isolates resolution/state
+seams; final core remains unchanged at HDMA. Setup/ABI fixture errors and failed
+boundary/control receipts retained. Full added-cost ledger and subsequent72-epoch
+A7 plan documented; no deadline/headroom guarantee or production promotion.
+[Changes, negative result and missing prices](snes-demand-optimization.md).
+
 ## Count proposed architectural shortcuts, not hypothetical traversal — 2026-10-13
 
 Source review plus28800 exact replay calls in three observer-only iterations.

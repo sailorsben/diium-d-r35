@@ -6783,6 +6783,38 @@
       "published": "evidence/2026-10-13/source-reuse-review/inputs.json",
       "source_sha256": "bcdf7e8d565cb16d4bd37b71d1ec701a50dff0b86b5d695ab9dc006e741c81ad",
       "published_sha256": "cafefe16eafa7472b239d6de15aefc85f7cd9a2a78486bf0fb9dc9f622d7a7b2"
+    },
+    {
+      "source": "evidence/2026-10-14/demand-optimization/analysis.json",
+      "published": "evidence/2026-10-14/demand-optimization/analysis.json",
+      "source_sha256": "bbc7c152efd6d42799b1fb2b3e25b2ca4bcdf6cbcfee0a41332c019a16dfa127",
+      "published_sha256": "bbc7c152efd6d42799b1fb2b3e25b2ca4bcdf6cbcfee0a41332c019a16dfa127",
+      "bytes": 18647,
+      "normalized": false
+    },
+    {
+      "source": "evidence/2026-10-14/demand-optimization/measurement-plan.json",
+      "published": "evidence/2026-10-14/demand-optimization/measurement-plan.json",
+      "source_sha256": "621efbb6644b736cca5a8107631c1725b38838b5f226e4b20ef2489106769f2c",
+      "published_sha256": "621efbb6644b736cca5a8107631c1725b38838b5f226e4b20ef2489106769f2c",
+      "bytes": 10706,
+      "normalized": false
+    },
+    {
+      "source": "evidence/2026-10-14/demand-optimization/saving-model.json",
+      "published": "evidence/2026-10-14/demand-optimization/saving-model.json",
+      "source_sha256": "c50fed8a5bb675d4a8a41a4a25361e25683260b44fc315adb225ae6b96b351d0",
+      "published_sha256": "c50fed8a5bb675d4a8a41a4a25361e25683260b44fc315adb225ae6b96b351d0",
+      "bytes": 1857,
+      "normalized": false
+    },
+    {
+      "source": "evidence/2026-10-14/demand-optimization/inputs.json",
+      "published": "evidence/2026-10-14/demand-optimization/inputs.json",
+      "source_sha256": "a2c4540bb4ba478570da73a898086d70daf46f867211c57b1124b8136d0a722f",
+      "published_sha256": "a2c4540bb4ba478570da73a898086d70daf46f867211c57b1124b8136d0a722f",
+      "bytes": 373052,
+      "normalized": false
     }
   ]
 }
