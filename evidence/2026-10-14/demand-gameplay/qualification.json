@@ -1,0 +1,59 @@
+{
+  "version": "1.19-demand-gameplay1",
+  "archive": "a7-pair-before-20261014T064641Z",
+  "authorization": "User explicitly requested Push it to I: after the offline candidate was completed.",
+  "manual_controls": true,
+  "forced_replay": false,
+  "production_gate_passed": false,
+  "A7_saving_measured": false,
+  "core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+  "runner_sha256": "e31fbccd50b3e0d71215e789e8cfdb8df6f24cfc9741cfe5b796f732918c4065",
+  "snapshot_source": "retro/snes-confuser-gameplay1/saves/game-a27f1c7a-3145728-core-5cb51346-798296.state",
+  "snapshot_source_sha256": "0b3675fd8f964a99eff9879445bfe5013b9fa32fde977a5c30ac4a1dac86c77c",
+  "snapshot_payload_sha256": "bd2b2089d5228e980c7c4738f24855da0cf91c0176b062f42ffec57144031ea6",
+  "snapshot_name": "game-a27f1c7a-3145728-core-02bb090e-857380.state",
+  "core_crc32": "02bb090e",
+  "core_bytes": 857380,
+  "runtime_report_version": "1.19; identify experiment through wrapper and core CRC",
+  "payload_hashes": {
+    "dispatch.sh": "b61124f274529881f2b1eea5abbc8dbb136f4f4fcc7da463a7de1e270f6af016",
+    "launch.sh": "160beb4e55f2208f81b1ca723652e70282b96867bd021ec370e441418b636637",
+    "plus-a7.so": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+    "snes-mvp": "e31fbccd50b3e0d71215e789e8cfdb8df6f24cfc9741cfe5b796f732918c4065",
+    "saves/game-a27f1c7a-3145728-core-02bb090e-857380.state": "5aaca56021e99b2cb09b3eb0b99a8803b7da35367e76d96dd5c0fd38c0dfb196",
+    "saves/game-a27f1c7a-3145728.srm": "7945ce65eec8169f357d1ca5f95bab243f48bd91df6c68fe92fca73b1c9f2ce7",
+    "saves/game-a27f1c7a-3145728.srm.bak": "7945ce65eec8169f357d1ca5f95bab243f48bd91df6c68fe92fca73b1c9f2ce7",
+    "saves/game-c0fa0464-3145728.srm": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47"
+  },
+  "passed": true,
+  "physical_gameplay_qualified": false,
+  "native_client_qualified": true,
+  "wrapper_qualified": true,
+  "checks": [
+    "2400 exact latest-progress output/state comparisons",
+    "180 actual gameplay-runner full-frame mock calls and exact PCM accounting",
+    "actual native consuming client: migrated progress, direct callbacks, two state loads, fault/retry/drain",
+    "actual gameplay wrapper splash/timeout/one-shot/no live-child diagnostics",
+    "glibc <=2.30"
+  ],
+  "source_hashes": {
+    "build/prepare-demand-gameplay.py": "d5b3e547e9ed1e05068da6b9ca68ff294349b9abd68725dc54ee61173c24e7c3",
+    "build/qualify-demand-gameplay.py": "88a15ea64d4453239c037b4b4f32c718df684156398daa6abd379e87f26b0b03",
+    "build/install-demand-gameplay.py": "acfc965071437d183a90fe153a61a9b1d054250c0f24243d0a06d00c3bf2f574",
+    "docs/snes-demand-gameplay-test.txt": "0b92899960376464d72defd326292fa831c645391ec24546a8ec335aea3f75d1"
+  },
+  "proof_hashes": {
+    "latest-progress-exact.log": "c3e8854f149d790cc5afd8733463863a6f8b1f7d900c3255caf6941c26dcb742",
+    "smoke.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native.log": "0a33aa95193f68fbdccdfa8cf1dd31684c9669a781d3889f30cc982329bf4119",
+    "wrapper.log": "a7419673d4506a2b3cb47329bf18ba6676c73b0e8b265dd6241157d5b0163fc3",
+    "abi.txt": "96a3754fa832cc0bf3e840267deef525d63c89e90b4c95e2360b566b3bbe6158"
+  },
+  "archive_files": 6317,
+  "archive_bytes": 1657276489,
+  "strict_archive_sha256": "e8bd84c6c180e51985cf1aca7ca28e86e7799e32fb858420be55bc31798b41c8",
+  "all_prior_frozen_hashes_verified": true,
+  "card_writes": 0,
+  "physical_result": "PENDING",
+  "install_status": "qualified; not yet installed"
+}

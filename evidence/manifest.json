@@ -6815,6 +6815,14 @@
       "published_sha256": "a2c4540bb4ba478570da73a898086d70daf46f867211c57b1124b8136d0a722f",
       "bytes": 373052,
       "normalized": false
+    },
+    {
+      "source": "build/demand-gameplay-private-v1/verification.json",
+      "published": "evidence/2026-10-14/demand-gameplay/qualification.json",
+      "source_sha256": "d30202c81307af1c0c52978e69793ea0938dd1b5a84b4291648e6f5631e377cd",
+      "published_sha256": "65b1de09b2c67f371d43194ba2b0cd2ecd2f817170044a2cd67b24c0bc8a71a1",
+      "bytes": 3594,
+      "normalized": true
     }
   ]
 }

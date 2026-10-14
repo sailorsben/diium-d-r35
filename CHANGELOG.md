@@ -1,5 +1,18 @@
 # Changelog
 
+## Qualify separately staged demand-v3 gameplay for I: — 2026-10-14
+
+Following explicit “Push it to I:” authorization, strictly archive6317 retro
+files and private progress; clean FAT/known serial and consumed marker verify.
+Reuse exact qualified ordinary v3 core and owned-output runner in a new private
+payload. Latest separate gameplay state changes only its core identity header;
+2400 exact comparisons,180 actual runner mock calls, consuming native client
+with149 direct callbacks/two loads and actual wrapper/ABI checks pass. Fresh
+guarded installer protects production/adapter/ROM/all old progress, requires a
+clean pushed source commit, and targets a separate experimental one-shot only.
+New A7 prices/headroom/coherency and physical gameplay remain pending. The
+72-epoch automatic plan is not staged. See docs/snes-demand-gameplay.md.
+
 ## Implement shared CPU-demand candidates and qualify their combination — 2026-10-14
 
 Fresh isolated DMA, CPU/APU cleanup, shared geometry and owned-output candidates;

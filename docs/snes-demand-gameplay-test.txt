@@ -1,0 +1,23 @@
+SNES demand-gameplay1: separate manual v3 qualification
+
+Safely eject the I: card in Windows, then insert it with the handheld off.
+Cold-boot. The one-shot opens the SNES library; choose Final Fantasy VI.
+Use Select+Start to open the pause menu and Load state to resume the copied
+latest Confuser-gameplay snapshot. The original snapshot and SRAM remain intact.
+All new progress goes to retro/snes-demand-gameplay1/saves.
+
+Check normal movement, graphics and sound, then the previously difficult
+Meteor, Quasar and Bio Blast effects. Report stutter, missing pixels, delayed
+input, audio failure or a crash. Record which effect and whether it recovers.
+No frames, effects or emulated work are intentionally omitted.
+
+Exit through Select+Start -> Exit game, then B from the library. Wait for stock
+launcher before powering down. If it hangs, reboot: the marker was consumed
+before hardware initialization, so the next boot takes the stock path.
+Return the card for strict collection before any rearm or update.
+
+This is an explicitly authorized experimental install, not production promotion.
+A7 savings and output-buffer coherency remain unmeasured. Manual play cannot
+certify deadline/headroom closure; the separate 72-epoch plan is not armed.
+Runtime reports retain version 1.19 because the qualified binary is reused.
+Identify this experiment by wrapper 1.19-demand-gameplay1 and its core CRC/hash.
