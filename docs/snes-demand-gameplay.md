@@ -12,6 +12,12 @@ owned-output runner, SHA256
 Neither qualified binary nor older artifact tree is modified. Runtime reports
 retain 1.19; wrapper identity and core CRC `02bb090e` identify this experiment.
 
+Installed and one-shot armed on I: from pushed source `9a0340f`. All nine
+payloads read back exactly;6316 original retro files and the ROM remain exact.
+Read-only FAT checks before installation, after payload and after arm are clean.
+The [installation receipt](../evidence/2026-10-14/demand-gameplay/installation.json)
+records identities and archive; physical gameplay is pending.
+
 Fresh private staging uses `build/demand-gameplay-private-v1`; the card target is
 `retro/snes-demand-gameplay1`. All existing retro files are archived and checked
 before writes. Only `retro/snes-mvp/launch.sh` changes to dispatch the separate

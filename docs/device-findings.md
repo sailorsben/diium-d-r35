@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest card status,2026-10-14:** explicitly authorized demand-v3 manual
+gameplay candidate installed separately at I:/retro/snes-demand-gameplay1 and
+one-shot armed. Strict archive6317 files; nine payloads read back,6316 protected
+retro files and ROM exact, clean FAT before/after payload/after arm. Production
+core, adapter, boot hook and original progress unchanged. Latest separate state
+payload retained with new identity header; native/direct-output, actual wrapper
+and2400 latest-progress exact comparisons pass offline. Physical input/display/
+audio/coherency and A7 saving remain PENDING, production gate false. The72-epoch
+automatic plan is not armed. [Install and test](snes-demand-gameplay.md).
+
 **Latest offline implementation,2026-10-14:** fresh shared8/16-tile/window
 geometry, strict VRAM DMA bookkeeping, exact ring/brightness/OAM/selection/palette
 cleanup and retained owned output. Combined v3 reuses qualified fusion/alignment;

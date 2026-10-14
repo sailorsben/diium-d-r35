@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **Demand-v3 gameplay installed on I:** separate one-shot manual experiment,
+  qualified core plus owned-output runtime; latest separate progress copied.
+  Nine payloads read back,6316 prior retro files/ROM unchanged and FAT clean.
+  Production/adapter/boot hook/original saves protected. Physical result and A7
+  savings pending; no production promotion or automatic72-epoch suite.
+  [Installation and test](docs/snes-demand-gameplay.md).
+
 - **CPU-demand candidates implemented offline:** isolated shared geometry,
   strict DMA spans, ring/brightness/OAM/selection/palette cleanup and owned
   direct output; fresh combination reuses qualified fusion and alignment.

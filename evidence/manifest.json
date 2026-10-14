@@ -6823,6 +6823,14 @@
       "published_sha256": "65b1de09b2c67f371d43194ba2b0cd2ecd2f817170044a2cd67b24c0bc8a71a1",
       "bytes": 3594,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T064641Z/demand-gameplay-installation.json",
+      "published": "evidence/2026-10-14/demand-gameplay/installation.json",
+      "source_sha256": "e47b178656b3b867f6b3cccb3f51e5615d800b922d167f1cb5d6be04787ef997",
+      "published_sha256": "e47b178656b3b867f6b3cccb3f51e5615d800b922d167f1cb5d6be04787ef997",
+      "bytes": 1657,
+      "normalized": false
     }
   ]
 }

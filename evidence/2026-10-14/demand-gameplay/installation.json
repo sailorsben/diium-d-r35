@@ -1,0 +1,29 @@
+{
+  "version": "1.19-demand-gameplay1",
+  "card": "I:",
+  "archive": "a7-pair-before-20261014T064641Z",
+  "source_commit": "9a0340fe84645c0fe6489c3059699abbf4c108f1",
+  "one_shot_armed": true,
+  "fat_checks_clean": true,
+  "experimental_qualification": true,
+  "production_gate_passed": false,
+  "A7_saving_measured": false,
+  "original_retro_files_protected": 6316,
+  "original_progress_unchanged": true,
+  "new_test_saves_separate": true,
+  "production_binaries_unchanged": true,
+  "original_ROM_zip_sha256": "f61af2bd9e3f9b6a2bd543fb176af0b81fd9e5ba4ea0fa0f453371ccb45d3911",
+  "payload_hashes": {
+    "launch.sh": "160beb4e55f2208f81b1ca723652e70282b96867bd021ec370e441418b636637",
+    "plus-a7.so": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+    "snes-mvp": "e31fbccd50b3e0d71215e789e8cfdb8df6f24cfc9741cfe5b796f732918c4065",
+    "saves/game-a27f1c7a-3145728-core-02bb090e-857380.state": "5aaca56021e99b2cb09b3eb0b99a8803b7da35367e76d96dd5c0fd38c0dfb196",
+    "saves/game-a27f1c7a-3145728.srm": "7945ce65eec8169f357d1ca5f95bab243f48bd91df6c68fe92fca73b1c9f2ce7",
+    "saves/game-a27f1c7a-3145728.srm.bak": "7945ce65eec8169f357d1ca5f95bab243f48bd91df6c68fe92fca73b1c9f2ce7",
+    "saves/game-c0fa0464-3145728.srm": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+    "suite-identity.json": "d30202c81307af1c0c52978e69793ea0938dd1b5a84b4291648e6f5631e377cd",
+    "TEST-ME.txt": "0b92899960376464d72defd326292fa831c645391ec24546a8ec335aea3f75d1"
+  },
+  "dispatch_sha256": "b61124f274529881f2b1eea5abbc8dbb136f4f4fcc7da463a7de1e270f6af016",
+  "physical_gameplay_result": "PENDING"
+}

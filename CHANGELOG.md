@@ -1,5 +1,15 @@
 # Changelog
 
+## Install authorized separate demand-v3 gameplay one-shot — 2026-10-14
+
+Install from pushed9a0340f at I:/retro/snes-demand-gameplay1; all nine payloads
+read back exactly. Protect6316 original retro files, stock/adapter/production
+core/boot hook/ROM and all original progress. Read-only FAT checks clean before
+install, after payload and after arm. One old launch dispatcher plus consumed
+marker route the next cold boot into the separate manual test; following reboot
+stock. Publish hash-only installation receipt and update handoff. Actual physical
+gameplay/coherency/performance pending; production gate remains false.
+
 ## Qualify separately staged demand-v3 gameplay for I: — 2026-10-14
 
 Following explicit “Push it to I:” authorization, strictly archive6317 retro
