@@ -1,5 +1,12 @@
 # Device findings
 
+**Latest offline implementation:** general PPU refinements pass259,200 raw
+graphics/PCM comparisons plus independent and native/resolution seams. Final
+v5 includes OBJ/sparse/math/clipped/depth/bulk changes; row cache separate.
+New A7 saving and remaining deficit unknown; I: untouched/unarmed. Physical
+Meteor and production acceptance remain pending.
+[Qualification and cost model](snes-ppu-refinements.md).
+
 **Latest physical evaluation:** all40 spell-test epochs returned. Demand-v3 has
 32/36 clean windows,16/18 contexts pass twice; remaining two share Meteor effect19.
 Quasar passes both vs both failing controls,1.44–1.47ms matched recorded CPU

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "real_owned_runner_and_core": true,
+  "physical_driver": false,
+  "A7_performance_evidence": false,
+  "log_sha256": "9ef3e405c751411629e73e2f8316b8a3abb3a5fe491f2ca829c4a993d172bdf1",
+  "output": [
+    "PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full drawings, zero lost/cleared PCM",
+    "PASS: sustained 19.8805ms production against 44100Hz consumption exposes starvation without hidden re-prime, frame suppression or accounting loss",
+    "PASS: failed-session report and exact PCM history survive library retry and a later failure under unique kernel-clock session names",
+    "PASS: 149 real runner direct-output callbacks, slot reuse, native fault/retry, state loads and drain"
+  ]
+}

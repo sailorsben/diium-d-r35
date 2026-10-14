@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **General PPU refinements qualified offline:** OBJ window reuse, opaque depth,
+  clipped normalization, sparse plain/math and contiguous depth clears.
+  259,200 raw graphics/PCM comparisons across18 contexts/variants plus native
+  and resolution/state seams pass. Source-row cache remains separate pending
+  net A7 pricing. New physical savings unknown; I: untouched/unarmed.
+  [Changes, evidence and cost model](docs/snes-ppu-refinements.md).
+
 - **Automatic spell return evaluated; I: unarmed:**32/36 demand-v3 windows
   clean,16/18 contexts pass twice. Both unresolved contexts invoke Meteor.
   Quasar passes twice while both matched controls fail;1.44–1.47ms recorded

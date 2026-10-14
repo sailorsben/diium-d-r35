@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "calls": 8400,
+  "cases": [
+    {
+      "kind": "midframe_mode5",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 1200,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "aeae718bc5f48dfdac513eef99a0fa08ff0ed46de1401015d0973b6638dd952e"
+    },
+    {
+      "kind": "midframe_mode6",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 1200,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "41e6649ba4647fb40bac82eb91b3ba19021820f336bd867d798aa7e3cbff9f25"
+    },
+    {
+      "kind": "midframe_interlace",
+      "calls": 1200,
+      "direct_frames": 300,
+      "promotions": 300,
+      "fallbacks": 900,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "dbc6c87910db8f988e6e03e316672549e7796777e89f0de36e2d916ccc32ea43"
+    },
+    {
+      "kind": "midframe_239",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 0,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "d973cbd2f7ba7929400760038ed689bbd2b2f2e67e9c9032051d7ee6427ba7e2"
+    },
+    {
+      "kind": "midframe_pseudohires",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 1200,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "13fa9a18636283d147d6a04ca29902ac1cc9d1480bac1930ad3a7de896b03fe4"
+    },
+    {
+      "kind": "initial_hires_fallback",
+      "calls": 1200,
+      "direct_frames": 0,
+      "promotions": 0,
+      "fallbacks": 1200,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "0fb067ad2d4897f7936172f5a7a7316b455104774be1eadadd22a4976609f41c"
+    },
+    {
+      "kind": "state_load_cycles",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 0,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "5a67864f0e926e582bcdc81cf6a199acdc9af4ed202bf9bca01ccffe6629f06d"
+    }
+  ],
+  "synthetic_register_writes": true,
+  "common_fixture_HDMA_base_reset": true,
+  "final_core_HDMA_changed": false,
+  "ignored_emulated_fields": false,
+  "ROM_modified": false,
+  "A7_performance_evidence": false
+}

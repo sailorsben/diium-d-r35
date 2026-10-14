@@ -1,5 +1,16 @@
 # Changelog
 
+## Implement general PPU refinements — 2026-10-14
+
+Add state-based OBJ window reuse, opaque depth stores, full-width clipped
+normalization, three-lane/half-row plain kernels, exact sparse color math and
+contiguous depth clears. CPU/APU/DMA and owned-output runner unchanged.
+Isolated/final variants and separate row-cache experiment pass259,200 raw
+graphics/PCM comparisons across18 contexts, state every30 calls; independent
+stock/scalar/NEON and native/resolution seams pass. Cache excluded from final
+pending A7 net pricing. Prior evidence exact; no card writes/rearm or new A7
+speed claim. See docs/snes-ppu-refinements.md for costs and acceptance limits.
+
 ## Evaluate automatic spell return before recoding — 2026-10-14
 
 Strict archive6,721 files/1,730,576,357 bytes, clean FAT,82 exact payloads and

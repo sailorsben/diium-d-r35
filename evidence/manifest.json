@@ -6879,6 +6879,110 @@
       "published_sha256": "a717c1d34829fb9ab9ba0d1ed55e20445cd7c67e3f17779ab73fc652b08f4dcc",
       "bytes": 97284,
       "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/analysis.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "be617084d945b887a86571896a2338576136344e044583e3544dff8c1fa10451",
+      "bytes": 3866,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/inputs.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "b3995840a7d1fe6cede8f6d366e912295ae65fb76120fbbe88ce25f198e75a06",
+      "bytes": 481655,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/work-counts.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "704c1a7c7d8d0da9d30b241c05c6766fac3f4d4f869e4268647631305a9907e2",
+      "bytes": 3037,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--seams.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "b967f5d8796df20451919cb74c9d1b65279106cbc1184315569f66d5bafa3e3b",
+      "bytes": 307,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--qualification.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "70f22e0d5aae980aac98327ec44c2f691e6db18e5646ef5fbde9e2a22771c85c",
+      "bytes": 107659,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--row-review--qualification.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "325d4c6cf2a235a4bc82458b191218903e9037a66a664af30c55d2a0feec125c",
+      "bytes": 31478,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v5--qualification.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "733f34fd5178854c843b6eedf74d2e896d89f01f450108befe4d2cfd45dd93a2",
+      "bytes": 27845,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--integration--native-proof.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "e565ffa3547b9892dff19951c8f6ef37d05604dc9f5b9c0eaed97b4959b776be",
+      "bytes": 917,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--integration--transitions-fixed.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "aa705f911723175c26d8dd56ff1bb1201c67d42429324abe86069a8227f8410b",
+      "bytes": 2270,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--row-integration--native-proof.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "6b013c298b0d31f19a1e313d57b39af973dc208f9cb7f1d8b16693a986b018ff",
+      "bytes": 917,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v4--row-integration--transitions-fixed.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "3a3c2749b4ff7588c683c5a7c4b0e0159cfa77d4591e04b8d228facee89d5dd2",
+      "bytes": 2270,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v5--integration--native-proof.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "a2973c8b7e90149725fc6a4b6dccea3769004971f18db61683da3cfedcadd423",
+      "bytes": 917,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-ppu-refinements.py",
+      "published": "evidence/2026-10-14/ppu-refinements/ppu-refinements-private-v5--integration--transitions-fixed.json",
+      "source_sha256": "a2b77bb19dadb859a96baa0974e3fbb5df410b055251cf0c578bea6fda638ce3",
+      "published_sha256": "5be2c5a5d966c0068f1a3a2e7f271626abc0b72b1c5bde625e110cfb92f5e219",
+      "bytes": 2270,
+      "normalized": true
     }
   ]
 }

@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## General PPU refinements qualified offline — 2026-10-14
+
+Implement state-based OBJ initial-window reuse, opaque depth, clipped
+normalization, sparse plain/math and contiguous depth fills. Final v5 inlines
+math and corrects legacy counter labeling.18 contexts/variants pass259,200 raw
+graphics/PCM calls with normalized state every30, independent stock/scalar/NEON
+oracles, native fault/retry and resolution seams. Synthetic239 uses shared
+test-only HDMA host-pointer reset for existing baseline defect. Separate1KiB
+row cache exact but excluded pending positive A7 price. Prior cores/proofs and
+setup failures preserved. No card writes/rearm or new physical speed claim;
+remaining deficit unknown. See snes-ppu-refinements.md for added-cost accounting.
+
 ## Physical spell return narrows remaining work to Meteor — 2026-10-14
 
 Evaluate before recoding:32/36 v3 windows clean,16/18 contexts pass twice. The

@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "stock_window": "PASS: 1052000 actual-stock window starts, simple/empty/complex/degenerated boundaries",
+  "clipped_original_C_exact": true,
+  "math": "PASS: 1769472 sparse math cases vs actual NEON, all6 math modes/fixed/sub/mixed/flips/canaries",
+  "physical_timing": false
+}

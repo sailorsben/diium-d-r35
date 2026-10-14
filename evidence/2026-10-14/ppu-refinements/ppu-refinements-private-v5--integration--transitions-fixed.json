@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "calls": 8400,
+  "cases": [
+    {
+      "kind": "midframe_mode5",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 1200,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "83798d1876822ab5338fb87e628585ae465aa833c4893cbcef50d67811307d0c"
+    },
+    {
+      "kind": "midframe_mode6",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 1200,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "564cbd9a1953768fe93e82e66734392aa8f61759f822f155ad23c66c60c6e380"
+    },
+    {
+      "kind": "midframe_interlace",
+      "calls": 1200,
+      "direct_frames": 300,
+      "promotions": 300,
+      "fallbacks": 900,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "0c0d1a00076be6a58e737a847cbeb67adb636fdc58352bf7620329cbf7894a80"
+    },
+    {
+      "kind": "midframe_239",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 0,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "87133b471fb4c456ff88fa4355caf8a90c7ba34dd414c0928ff8aeb3458428cc"
+    },
+    {
+      "kind": "midframe_pseudohires",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 1200,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "6b0a0985ce13852c5e82458a8f2b208fe1142861226e2dac3650ce9eeab779c5"
+    },
+    {
+      "kind": "initial_hires_fallback",
+      "calls": 1200,
+      "direct_frames": 0,
+      "promotions": 0,
+      "fallbacks": 1200,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "91ce6c6afd8f6ed341e1f557cd7dae702850bc9cd9e9b53212945f3e45458e4e"
+    },
+    {
+      "kind": "state_load_cycles",
+      "calls": 1200,
+      "direct_frames": 1200,
+      "promotions": 0,
+      "fallbacks": 0,
+      "raw_graphics_PCM_state_match": true,
+      "log_sha256": "82ec0ed459fdf0f4010c9cedbffbb48d743632a07ba2962f74c26ffa79d4763c"
+    }
+  ],
+  "synthetic_register_writes": true,
+  "common_fixture_HDMA_base_reset": true,
+  "final_core_HDMA_changed": false,
+  "ignored_emulated_fields": false,
+  "ROM_modified": false,
+  "A7_performance_evidence": false
+}
