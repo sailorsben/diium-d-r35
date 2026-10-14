@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Architecture hypotheses counted offline:** three observer iterations pass
+  28800 exact original-command calls. Only5.55%/5.88% of Meteor/Quasar tile math
+  is later overwritten; deferred-only math adds a costly metadata/final pass.
+  Main/sub share3094/4410 warm full-tile row requests; current cache is already
+  3840-byte palette tables and backdrop bulk already NEON. Strict DMA spans,
+  an eight-row no-recipient guard, brightness0 and ring-wrap cleanup are concrete
+  small candidates; no A7 saving, optimized core or installation claimed.
+  [Population evidence and decisions](docs/snes-architecture-populations.md).
 - **Quick CPU benchmark returned:** four epochs archived, clean FAT,18 payloads
   and protected progress verified; I: unarmed. PPU accounts for~87% of measured
   effect-related CPU growth:3.32ms early to7.91/7.04ms Meteor/Quasar. APU-inclusive

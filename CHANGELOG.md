@@ -1,5 +1,18 @@
 # Changelog
 
+## Count architectural waste before changing rendering order — 2026-10-13
+
+Audit current Plus C, not just upstream. Three owned observer iterations pass
+28800 exact original-command calls across eight contexts. Measure successful
+RGB/math writes, overwritten owners, shared source rows, palette behavior and
+traversal populations. Heavy discarded tile math only5.55% Meteor/5.88% Quasar;
+plain RGB overdraw33.37%/9.71%. Backdrop bulk and small palette cache already
+installed. Fully clipped layers/full-width OBJ dispatch have zero peak hits;
+no-recipient math entries cover8 rows. Strict DMA spans eliminate logical flag
+store repetition; ring fixture passes230785 exact states. Preserve partial
+memory-ledger limits and unmeasured A7 costs. No optimized renderer, card write
+or rearm. Publish bounded counts and source identities, retain raw data privately.
+
 ## Archive and analyze quick A7 CPU profile — 2026-10-13
 
 Archive6317 files/1,657,276,489 bytes; clean FAT,18 installed hashes, frozen local

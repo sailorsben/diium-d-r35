@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## Count proposed architectural shortcuts, not hypothetical traversal — 2026-10-13
+
+Source review plus28800 exact replay calls in three observer-only iterations.
+NEON backdrop and small palette cache already installed. Whole invisible layers
+and full-width clipped OBJ calls have zero peak hits; discard those explanations.
+Only~5.6/5.9% of Meteor/Quasar tile math later overwritten, despite greater plain
+RGB overdraw. Defer-only math is not first without a guard/metadata/traffic price.
+Strict contiguous DMA eligibility covers1344/839.5 bytes per heavy call; once-per-
+tile invalidation reduces logical store requests. Recipient-aware guard covers8
+rows, brightness0 allows exact zero fills, and real ring fragmentation is small
+on average. Preserve current renderer/timing and conditional cost equations;
+no new A7 test/card writes. [Counts and limits](snes-architecture-populations.md).
+
 ## Measure the core split before further PPU changes — 2026-10-13
 
 Quick profile1 return confirms PPU~87% of effect CPU growth for Meteor/Quasar.

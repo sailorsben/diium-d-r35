@@ -1,0 +1,9 @@
+{
+  "counter": "explicit_depth_initialization_bytes",
+  "precision": "upper estimate",
+  "reason": "Observer charges IPPU.RenderedScreenWidth for clipped SubZBuffer memset spans instead of the exact clipped third argument.",
+  "reported_peak_upper_estimate_bytes_per_call": 114432,
+  "implication": "Do not present as exact requested bytes or DRAM traffic; other semantic/math ownership counts are independent.",
+  "raw_counter_data_preserved": true,
+  "corrected_interpretation": "docs/snes-architecture-populations.md"
+}

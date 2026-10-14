@@ -6741,6 +6741,36 @@
       "published": "evidence/2026-10-13/quick-profile-return/inputs.json",
       "source_sha256": "49702253270ea329ea87ecda0609336fc2f5c7a95941d76a86feb01a3fdf51a9",
       "published_sha256": "0f704d750237e5a0ed8fe2f1609fb73a5549a70f3f4a7fcaa31de03537595171"
+    },
+    {
+      "source": "build/architecture-audit-private-v1/public-summary.json",
+      "published": "evidence/2026-10-13/architecture-audit/analysis.json",
+      "source_sha256": "a7cade6143a0c48fc45f4f7930841a3513856f18521e450bf4c4336c7db10bbc",
+      "published_sha256": "b07af3e643c3d9797cde590aea43ebfeb254155cecf615840772ce58e33ff05e"
+    },
+    {
+      "source": "build/architecture-audit-private-v1/public-inputs.json",
+      "published": "evidence/2026-10-13/architecture-audit/inputs.json",
+      "source_sha256": "69ac6f1e1fa3022d5883ca99f5cdbf489a831dfa699682f556a821d54333d231",
+      "published_sha256": "ea72a5dd1e7583ee69715f00d74ae80199e06dcf6b7c0f361c928200baded840"
+    },
+    {
+      "source": "build/architecture-stream-private-v1/public-analysis.json",
+      "published": "evidence/2026-10-13/architecture-populations/analysis.json",
+      "source_sha256": "1c0455c577e8e16c5ac3f17a2e77e9605067529e6698f128df2181723bc67f85",
+      "published_sha256": "0b9df8c039a80cc31d2b098f54887630dcb0941bc5ca5e56245a3e413dce59ee"
+    },
+    {
+      "source": "build/architecture-stream-private-v1/public-inputs.json",
+      "published": "evidence/2026-10-13/architecture-populations/inputs.json",
+      "source_sha256": "b3e149db8b8494bf3f605fb5cf8c54074ed35a2bc92ab70e2f354b96fc363a4d",
+      "published_sha256": "15347ebdc43f5b2628821fa113b5b8f7e2be20ae354c05bc4358143f8e69fbf8"
+    },
+    {
+      "source": "build/architecture-stream-private-v1/memory-accounting-note.json",
+      "published": "evidence/2026-10-13/architecture-populations/memory-accounting-note.json",
+      "source_sha256": "42d019c2b8c9aec3db7c17ba86feaf36879d6f4bfa870cb204694f8ae84cd240",
+      "published_sha256": "c7ccc2c89e8bafa18a525e3261d4b7ba955d35bbc73503c9d6d30c8a4ec0d97a"
     }
   ]
 }

@@ -1,5 +1,19 @@
 # Device findings
 
+**Architecture census, current offline evidence:**28800 exact replay calls in
+three observer iterations; no card access/rearm/optimization. Heavy Meteor math
+overwritten2250/40528 pixels(5.55%), Quasar2792.4/47493.3(5.88%). Plain RGB overdraw
+larger; simple deferred-only math would add metadata and survivor RGB traffic.
+Shared warm source rows3094/4410, but decoded indices already cached and hidden
+row elimination may overlap. Installed global palette cache3840 bytes, not old
+36KiB RGB cache; installed backdrop bulk NEON, scalar tail0-7 pixels/span.
+Strict DMA spans and8-row no-recipient entries occur at peaks; unnecessary OBJ
+rebuild/full-width clip populations are zero there. One brightness0 rebuild per
+call suggests zero-fill specialization. Ring copy fragmentation real but small
+on average. Source work counts do not price A7 saving; depth-init counter is a
+whole-row upper estimate for clipped fills, not exact bus traffic.
+[Evidence and ranking](snes-architecture-populations.md).
+
 **Quick profile return, current:** archive6317 files/1,657,276,489 bytes, clean
 FAT,18 payloads and protected boot/core/ROM/progress verify. All four epochs end
 with PCM errno77;115 phase samples. PPU grows3.32->7.91ms Meteor and3.32->7.04ms
