@@ -1,5 +1,13 @@
 # Authorized PPU measurement test
 
+**Installed and armed:** guarded installation from pushed514d359 completed on
+I:. All91 payloads read back exactly;6,720 prior files, stock/adapter/boot/ROM
+and original progress verify. FAT clean before install, after payload and after
+arm. Archive a7-pair-before-20261014T221441Z preserves6,721 files/
+1,730,576,357 bytes. Only existing dispatcher and new one-shot marker change
+boot selection. [Installation receipt](../evidence/2026-10-14/ppu-test/installation.json).
+Physical result PENDING; production gate remains false.
+
 Ben requested “Arm I” after the general PPU fixes. This authorizes a separate
 experimental one-shot measurement run; it does not promote the core to
 production. New A7 prices and predicted audio deficit are explicitly unknown.

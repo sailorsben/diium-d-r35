@@ -7007,6 +7007,14 @@
       "published_sha256": "284fd6a9aa695ac4db56d20baf752e229fe41418c8f785084ef2aba10bc49324",
       "bytes": 27156,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T221441Z/ppu-test-installation.json",
+      "published": "evidence/2026-10-14/ppu-test/installation.json",
+      "source_sha256": "868634bf0ad70e65c8819705da0bc774a4291e51bebad889f45e072d1cbad46c",
+      "published_sha256": "868634bf0ad70e65c8819705da0bc774a4291e51bebad889f45e072d1cbad46c",
+      "bytes": 9298,
+      "normalized": false
     }
   ]
 }

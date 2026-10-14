@@ -1,5 +1,10 @@
 # Device findings
 
+**Current card:** I: armed for separate PPU measurement56 epochs from pushed
+514d359.91 payloads exact;6,720 prior files and stock/ROM/progress protected,
+FAT clean. One consumed marker returns next reboot to stock. Physical result
+pending; no production promotion. [Test/receipt](snes-ppu-test.md).
+
 **Latest offline implementation:** general PPU refinements pass259,200 raw
 graphics/PCM comparisons plus independent and native/resolution seams. Final
 v5 includes OBJ/sparse/math/clipped/depth/bulk changes; row cache separate.

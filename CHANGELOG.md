@@ -1,5 +1,13 @@
 # Changelog
 
+## Arm I: for authorized PPU measurement — 2026-10-14
+
+From pushed514d359 install91 separately owned payloads after strict6,721-file
+archive; all readback exact,6,720 prior files/stock/ROM/progress protected.
+FAT clean before install/after payload/after arm. Existing dispatcher plus one
+consumed marker starts56 epochs; following reboot stock. Physical result pending,
+no production promotion. Publish installation receipt; frozen preparation exact.
+
 ## Prepare authorized PPU measurement rearm — 2026-10-14
 
 On “Arm I,” strictly archive6,721 files/1,730,576,357 bytes with clean FAT;
