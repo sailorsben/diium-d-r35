@@ -6525,6 +6525,18 @@
       "published": "evidence/2026-10-13/combined-measurement/plan.json",
       "source_sha256": "b5ed07183e6e8b65e62f60d3c8d48d9cc20cb0322eb6badba51c55f04d1392df",
       "published_sha256": "0a4608bdb3a5227b61b7a25f0291dc7159c840d2d8c96e07eb106cf52e049d01"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T003316Z/combined-installation.json",
+      "published": "evidence/2026-10-13/combined-measurement/installation.json",
+      "source_sha256": "8139eea1202e96656e267c91c55846d98c1609eefd30462e2a66f7e97407ee75",
+      "published_sha256": "e82d73bdc3a5f605bdebc2ea451444b8f718549d012828fa61c3f6afa8d77c5c"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T003316Z/combined-independent-readback.json",
+      "published": "evidence/2026-10-13/combined-measurement/independent-readback.json",
+      "source_sha256": "e675381a77989559d64284302710005239ef9b67cd5cbfcf7b4a032a6e4b6835",
+      "published_sha256": "ac79e3fc0ab905f2d73883cf71157306d4e1e64c34792502c2f9eff1528c40e9"
     }
   ]
 }

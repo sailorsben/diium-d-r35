@@ -1,5 +1,20 @@
 # Device findings
 
+**Current combined1 A7 measurement armed on I:** archive5,834 files first;
+fullpaths1 attempted100 runs,55 runtime failures. Prior combination completed
+five/eight failure contexts in both repeats; Holy/Meteor/Quasar still fail.
+Measured combination gains are non-additive and supersede optimistic transfer
+forecasts. [Returned A7 evidence](snes-fullpaths-return.md).
+
+Latest all-paths core is separately staged with original and prior controls:
+48 automatic runs,8 contexts,2 reversed orders, every frame/audio retained.
+Final workerCPU/PCM accounting included, diagnostic writes after worker joins.
+Offline qualification passes;57 installed payloads independently read back,
+5,833 protected files unchanged, original ROM/production unchanged, FAT clean.
+Cold boot, no B; allow20-25min, six appearances per effect. Actual new A7 savings
+and headroom pending; production gate false. [Design](snes-combined-measurement.md),
+[instructions](snes-combined-test.txt). Statuses below describe earlier stages.
+
 **Newest shared C candidate, offline:** constant-mode bands amortize tile-call
 setup and palette work across all eight failing contexts. Meteor8,208 old cell
 dispatches become332 band calls; every case has substantial eligibility. Final

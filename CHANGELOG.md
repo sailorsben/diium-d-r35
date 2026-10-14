@@ -12,7 +12,9 @@ every frame. Reuse unchanged core proofs; verify actual new controller, native
 provider faults/retry/drain/deficit, wrapper and ABI. Fourteen independent
 accounting fixtures and synthetic archive rejection checks cover final worker
 CPU, PCM, discarded/undrained data, missing frames and partial intervals.
-Freeze source/payload/proofs; authorized measurement staging next.
+Freeze source/payload/proofs; push9633be6 before guarded I: staging. All57
+payloads independently read back,5,833 prior protected files unchanged and final
+FAT clean. Separate combined1 one-shot armed, ROM/production unchanged.
 No new A7 saving or production pass claimed. [Design](docs/snes-combined-measurement.md).
 
 ## Qualify common background bands across every failing context — 2026-10-13

@@ -6,13 +6,15 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
-- **Combined1 measurement qualified; installation next:** archive-first return
+- **Combined1 measurement armed on I:** archive-first return
   preserves 5,834 files and all 91 prior payloads; FAT is clean. Prior combined
   completed five of eight failure contexts in both repeats; Holy, Meteor and
   Quasar still failed. New48-run suite compares original, prior combined and
   latest combined in two reversed orders across eight cases; every frame/audio
-  retained, final worker/PCM accounting included. Offline qualification passes;
-  actual A7 savings/headroom remain pending, production gate false.
+  retained, final worker/PCM accounting included. All57 new payloads independently
+  read back;5,833 prior files protected; final FAT clean. Source9633be6 pushed
+  before installation. Cold boot automatically, no B; allow20-25 minutes until
+  stock returns. Actual A7 savings/headroom pending, production gate false.
   [Test](docs/snes-combined-test.txt), [design](docs/snes-combined-measurement.md),
   [prior return](docs/snes-fullpaths-return.md). Older status bullets below are
   historical stages and forecasts superseded by this returned evidence.

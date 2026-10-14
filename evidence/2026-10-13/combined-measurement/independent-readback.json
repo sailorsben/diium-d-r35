@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "version": "1.19-combined1",
+  "source_commit": "9633be6738d89e183b7989b401f6b6d9b663ac05",
+  "payloads_independently_read_back": 57,
+  "dispatch_verified": true,
+  "unique_marker_content_verified": true,
+  "production_core_unchanged": true,
+  "original_ROM_unchanged": true,
+  "guarded_installer_verified_protected_prior_files": 5833,
+  "fat_reports_clean": true,
+  "frameskip": false,
+  "hardware_result": "PENDING",
+  "production_gate_passed": false
+}
