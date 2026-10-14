@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Install and arm the prepared spell suite — 2026-10-14
+
+Explicit “Arm I” authorizes guarded separate demand-spells1 installation.
+Fresh strict6,340-file archive, known clean FAT, exact qualified packet and
+pushed source verify before writes.82 payloads read back,6,339 prior retro
+files/stock/adapter/boot/ROM/progress preserved; only dispatcher and one marker
+route the automatic40-epoch test. Clean FAT after payload/arm and final protected
+readback. Frozen preparation receipts remain exact. Physical results pending.
+[Installation receipt and boot sequence](snes-demand-spells-installation.md).
+
 ## Prepare bounded automatic late-game effect coverage — 2026-10-14
 
 User cannot manually access late-game spells and requests a test for unfixed

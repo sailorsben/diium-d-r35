@@ -6863,6 +6863,14 @@
       "published_sha256": "dc5e0b3110867284db2a26b2680013dc8a45bc61e08204501276db512ef2114d",
       "bytes": 24534,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T141353Z/demand-spells-installation.json",
+      "published": "evidence/2026-10-14/demand-spells/installation.json",
+      "source_sha256": "30420decfa62afd812849abc1fa04577d2fbcbca8957f8277e432ecd430aceb4",
+      "published_sha256": "30420decfa62afd812849abc1fa04577d2fbcbca8957f8277e432ecd430aceb4",
+      "bytes": 8448,
+      "normalized": false
     }
   ]
 }

@@ -1,5 +1,14 @@
 # Changelog
 
+## Arm I: for authorized automatic spell coverage — 2026-10-14
+
+On explicit “Arm I,” archive6,340 retro files before writes, verify prepared
+source/payload/proofs and clean pushedba8e5f3. Install82 separately owned payloads,
+read back all, preserve6,339 prior files/stock/adapter/boot/ROM/original progress,
+and arm one consumed boot marker through the old dispatcher. FAT clean before
+install, after payload and after arm. Publish installation receipt without
+mutating frozen preparation artifacts.40-epoch physical run pending; no promotion.
+
 ## Prepare automatic demand-v3 tests for unqualified spells — 2026-10-14
 
 New local40-epoch suite runs18 archived contexts twice and unchanged reference

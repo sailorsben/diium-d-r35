@@ -1,5 +1,12 @@
 # Device findings
 
+**Current card status:** explicitly authorized demand-spells1 installed and
+one-shot armed on I:. Fresh6,340-file archive;82 payloads read back,6,339 prior
+retro files and original ROM/progress exact. Clean FAT before/after payload/
+after arm.40 automatic epochs across18 contexts with Meteor/Quasar controls;
+physical result pending, production gate false. Frozen preparation documents
+remain historical receipts. [Current boot sequence](snes-demand-spells-installation.md).
+
 **Next physical spell test, prepared only:** fresh40-epoch demand-spells1 suite
 uses18 archived contexts twice, plus matched reference controls on unresolved
 Meteor/Quasar. No late-game manual save needed. Actual ARM controller48,000 calls,
