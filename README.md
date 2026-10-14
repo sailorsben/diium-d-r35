@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Scalar/NEON policy designed, no recoding:** state/operation/layout and setup
+  reuse select a kernel family; mask density selects payload within it. Existing
+  peak counts give Meteor3971-3977 sparse opportunities, but supplying the full
+  20% margin needs1.13-1.16us net per hit before guard costs. Quasar needs other
+  levers. Audit full-width scalar clip dispatch, opaque OBJ depth merges and
+  preserve distinct sprite test/write depths. Native crossover prices remain
+  missing; no build, replay or card access. [Rules and predictions](docs/snes-ppu-scalar-neon-selection.md).
 - **Combined1 returned; analysis only:** all48 runs archived and identities/FAT
   verified;21 complete,27 native PCM failures. Latest completes6/8 contexts in
   both orders; Meteor/Quasar still fail. Worst16 main+worker CPU averages17.85-

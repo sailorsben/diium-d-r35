@@ -1,0 +1,31 @@
+{
+  "qualified_sources_unchanged": true,
+  "inputs_sha256": {
+    "build/combined-test-private-v1/verification.json": "eff28a9bd60afd318a614f934df082ba3b044e2ba809d02bf52fc6f84ac43462",
+    "build/fused-toolbox-private-v2/identity.json": "d45a2f7a4a1d2315105326969987a75fef6b6e8918353fb136ad9d3e1a260a9d",
+    "build/partial-selective-private-v1/workback-identity.json": "35b8a338b6fc00bbbb7f3fcbfee5c940d7e102be28a752959a4b50f11a94ca1a",
+    "build/fused-toolbox-private-v2/exact/000-census.log": "e773de0bf91d0cf915ff6d1ada4211be666172cf980ee45b4cd8b50005f1f5f3",
+    "build/fused-toolbox-private-v2/exact/001-census.log": "868d25faef44d329ffe21ef1e607d1afcc27eade4ab5e16f2464017c7f7c91c8",
+    "build/fused-toolbox-private-v2/exact/008-census.log": "aa4e7d8e75e51ab10ef1008a6e8b49beb62be90265e9d370737fe2d351e9b450",
+    "build/fused-toolbox-private-v2/exact/011-census.log": "1777e8aa7dc547da7756948487bacfb0224b6936bd06dc86a343f8e5880ccd1a",
+    "evidence/2026-10-13/combined-return/peak-intervals.json": "cc1a0489190bd8de7c7f0ada4fbdf5cf9a5835fba3910c5a8a2f856d8f306b36",
+    "evidence/2026-10-13/combined-return/aligned-work.json": "b15b6f366b3aa9ea99e3b3e72fbf5ff103e5e465174772de02ec8bae892634b5",
+    "build/partial-merge-private-v1/analysis.json": "2435b621a32aff9f4b54048760917a87d6c58afcc9c206ee3553068f28accf05",
+    "build/common-band-private-v3/core/source/gfx.c": "cb6f6fc6af3e5bc1329b52f0814ce5bfcb19d5418d6941053e9af6689c0adddf",
+    "build/common-band-private-v3/core/source/tile.c": "9e839932017dba2c37ae2f1fe053d6a7e632af06afc2e7f5061b3eee6162086c",
+    "build/common-band-private-v3/core/source/tile.h": "f0d0edf5859cd3bca60d8cb96b05673b03b3cd8f9efd6141a3c7870720eb74ad",
+    "build/common-band-private-v3/core/source/a7_tile.h": "1e24e4d7b61479b8c35d1d0885454f7b03cc79826c88b5acc3aadefc2c48abc8",
+    "build/common-band-private-v3/core/source/a7_common_batch.h": "5d7043a4be995d167e90650e5a90b382ff3109fc1b46fd31c47109f936bf1ee6",
+    "build/common-band-private-v3/core/source/a7_common_band.h": "ec4b527d3a4c01de3e9e71bd94c1591af365a2be604704e5626bf9f67dc32bcf",
+    "build/common-band-private-v3/core/source/a7_pearl_sub2.h": "011d2b02a7d801abe17b934b7b68f6995743e35c5bb92a3b6cb5a9d1685f35f4",
+    "build/common-band-private-v3/core/source/a7_color_cache.h": "66918cb4c9bd83bc3aba1d9f27c09237708cf979bd9fd2929167945ed32f62ca",
+    "build/partial-merge-kernels.h": "1d63b3c115136dab46738f4861654422ddf3b21c15ee5616ba6369112def9b7d",
+    "build/fused-toolbox-v2.h": "1295bbb45f1fb4851ff3d308a64a8685fcfac54536bae2d5ee0b42f1b3476350",
+    "docs/snes-a7-cost-return.md": "ca5cd18f73b1623d6ee659341bc924bb47cd07238d4a721da0e3b70055608cd8",
+    "docs/snes-ppu-scalar-neon-selection.md": "0de5652d4ae6a69dc6f434c16ffed94366b96d6153800be03efb42fd3027923e",
+    "build/common-band-private-v3/plus-a7.so": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129"
+  },
+  "new_builds": 0,
+  "new_replays": 0,
+  "card_access": false
+}

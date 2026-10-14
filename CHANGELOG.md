@@ -1,5 +1,20 @@
 # Changelog
 
+## Design scalar/NEON PPU selection rules without recoding — 2026-10-13
+
+Map C paths to state/layout/operation kernels and sparse/dense payload decisions.
+Define guard-inclusive break-even equations and realistic palette reuse. Reuse
+native peaks and archived mask logs; Meteor sparse-only20% target requires
+1.13-1.16us/hit before guards, Quasar needs broader work reduction. Preserve
+negative cost scenarios and zero empty sole-layer hits. Inspect installed ARM
+bodies for scalar clipped/full-tile coverage; identify eligible full-width clip
+and opaque OBJ depth-store candidates without pricing unmeasured work.
+
+Document exact Z1/Z2/order, math-lane, clipping, cache and scaled-layout contracts;
+list missing A7 classes and observer-aware measurement plan. No C or diagnostic
+source changes, build, replay, card access or rearm. Publish bounded calculations
+and unchanged-source identities. [Selection design](docs/snes-ppu-scalar-neon-selection.md).
+
 ## Evaluate combined1 return and consider a general PPU backend — 2026-10-13
 
 Archive6249 returned files read-only; clean FAT and exact57 payloads, boot/core/

@@ -6681,6 +6681,24 @@
       "published": "evidence/2026-10-13/combined-return/inputs.json",
       "source_sha256": "5996db9534f79d5047e60e172c123fd189d340cb38349cb757c1d851d66cbe54",
       "published_sha256": "e7c039c55b1f367d10e11f8973193eec13f8bf0061093a13da6c2622d30ca538"
+    },
+    {
+      "source": "build/ppu-selection-analysis-private-v1/predictions.json",
+      "published": "evidence/2026-10-13/ppu-selection-design/predictions.json",
+      "source_sha256": "733ac046addb199583c04ca4c361a6ddf326009ad6b30d700942a533e8470622",
+      "published_sha256": "e82df90aa7ea1187cef1c57dc78a49e1d06eb0c7bf08249ee53282cee692a07f"
+    },
+    {
+      "source": "build/ppu-selection-analysis-private-v1/inputs.json",
+      "published": "evidence/2026-10-13/ppu-selection-design/inputs.json",
+      "source_sha256": "f76b4b7b4051f08a7d8df9c2dc5b3da69977b8caef66b5652d8acbde5b0eeb61",
+      "published_sha256": "7107e708a787d4d754408a631f2669fae43d7980a857532f338bbaed1be4e345"
+    },
+    {
+      "source": "build/ppu-selection-analysis-private-v1/installed-dispatch-inspection.json",
+      "published": "evidence/2026-10-13/ppu-selection-design/installed-dispatch-inspection.json",
+      "source_sha256": "de25279f8e0d5e31cc1047ea7d2565de10c0e2e2c52a7a99731218ddf794d5d8",
+      "published_sha256": "8e21bc333f318cd7b953b2d8f8fb8360cc7e1dcca31124b3efef9f57b020aa95"
     }
   ]
 }

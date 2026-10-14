@@ -1,5 +1,15 @@
 # Device findings
 
+**Shared scalar/NEON policy, design only:** classify format/layout/operation
+once per safe segment, reuse masks, and select sparse versus dense payload
+using measured per-class crossover costs. Installed full-width clipped plain/
+add bodies lack vector memory/mask/gather operations; eligible normalization
+needs count/bounds/state proof. Opaque OBJ depth merge is another distinct gap.
+Existing sole-layer traces have zero empty hits: no credit for an added empty
+guard there. Current peak sparse opportunities imply1.13-1.16us/hit for all of
+Meteor's20% margin before guards; these are required prices, not measured ones.
+No code/build/replay/card change. [Design and measurement gaps](snes-ppu-scalar-neon-selection.md).
+
 **Combined1 return, current:** private archive6249 files/1650726005 bytes;
 clean FAT,57 payloads and protected boot/core/ROM/progress verify, marker absent.
 All48 attempted,21 full windows and27 errno77 native PCM failures. Latest6/8

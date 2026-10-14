@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## Derive scalar/NEON selection from state and work shape — 2026-10-13
+
+Design only: keep geometry/state decisions outside pixel loops and reuse the
+visibility mask across scalar sparse or NEON dense payloads. Separate plain,
+math-operand, clip/layout and palette-reuse classes; measure guard misses and
+integrated ABI/cache costs before choosing thresholds. Existing source/binary
+inspection exposes full-width scalar clip routing and opaque OBJ depth merging.
+Preserve separate sprite test/write depths and order. Zero empty sole-layer hits
+deny a tempting source-only credit; more n3 candidates do not prove speed.
+Use existing native peaks/logs for required saving thresholds, never inclusive
+CPU/count quotients. No recoding/build/replay/card access. [Policy and evidence](snes-ppu-scalar-neon-selection.md).
+
 ## Find a shared full-tile boundary instead of eight effect patches — 2026-10-13
 
 Trace CPU/WaitAddress, APU interpolation/envelopes/clocks, PPU flush/captured state,

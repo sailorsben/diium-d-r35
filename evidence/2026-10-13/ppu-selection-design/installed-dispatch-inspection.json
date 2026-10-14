@@ -1,0 +1,26 @@
+{
+  "core_sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+  "functions": {
+    "DrawClippedTile16": {
+      "disassembly_sha256": "532c8d0addd9e811be2460a4a2fa452be3741f9ce6bfdcd3b628dc3eff474dd2",
+      "vector_memory_mask_gather_operations": 0,
+      "limits": "Static body inspection only; no cycles/time inferred. Cold decode callees may use NEON independently.",
+      "disassembly_address_lines_including_literal_pool": 951
+    },
+    "DrawClippedTile16Add": {
+      "disassembly_sha256": "0d8c0fef55392eaf740157dec8e365c8b07ed5d3f95c0ac4d5e56a7c6b7dcb9b",
+      "vector_memory_mask_gather_operations": 0,
+      "limits": "Static body inspection only; no cycles/time inferred. Cold decode callees may use NEON independently.",
+      "disassembly_address_lines_including_literal_pool": 393
+    },
+    "DrawTile16": {
+      "disassembly_sha256": "8d9ec9ef67732bab52534edbac7e1d08b20381776bea1a6988ec13b862cff2c9",
+      "vector_memory_mask_gather_operations": 50,
+      "limits": "Static body inspection only; no cycles/time inferred. Cold decode callees may use NEON independently.",
+      "disassembly_address_lines_including_literal_pool": 1244
+    }
+  },
+  "new_builds": 0,
+  "new_replays": 0,
+  "card_access": false
+}
