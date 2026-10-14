@@ -6717,6 +6717,12 @@
       "published": "evidence/2026-10-13/quick-profile/plan.json",
       "source_sha256": "d1579639e4d23b930b370efe7fef39637d476525d299e6dd460f242e3f942682",
       "published_sha256": "a882ec57552b7781f1c06b3554a8d7fa2c00dc321aee57543e18a860030bea7b"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T032043Z/profile-installation.json",
+      "published": "evidence/2026-10-13/quick-profile/installation.json",
+      "source_sha256": "57d561a24669c0188ad0dc5a6c7c16da8ce762d0de1961cd730e00b15c606ecb",
+      "published_sha256": "d4925ed61bf5d385a654809d12e6cf89f549e0246a8ed55f0bf6a953bd191e18"
     }
   ]
 }

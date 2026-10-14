@@ -1,0 +1,43 @@
+{
+  "version": "1.19-profile1",
+  "card": "I:",
+  "archive": "a7-pair-before-20261014T032043Z",
+  "one_shot_armed": true,
+  "fat_checks_clean": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "hardware_result": "PENDING",
+  "frameskip": false,
+  "runs": 4,
+  "variants": [
+    "control",
+    "profile"
+  ],
+  "contexts": 2,
+  "original_retro_files_protected": 6248,
+  "original_progress_unchanged": true,
+  "production_binaries_unchanged": true,
+  "original_ROM_zip_sha256": "f61af2bd9e3f9b6a2bd543fb176af0b81fd9e5ba4ea0fa0f453371ccb45d3911",
+  "payload_files": 18,
+  "payload_hashes": {
+    "ability-suite": "7c10bbb58d275d54d8dfea2b79d45fdf97a5874a720388d9c5eea6ed94422b3c",
+    "launch.sh": "79403714bd6dd729cf2294b87ccd18a8980d0e56018b4525cb789e7c486dcbe5",
+    "ROM-PATH.txt": "3d457ccb6a370c1018d0fbb7125d6c8ce40f0672a63b4029e02c25b5fa8c93ef",
+    "plan.json": "3cfed8e7daf8a08f38b31f28058f816317c889d6525feaa9e836645bd5f4e6ba",
+    "suite-identity.json": "71ad5cf329c40dc6961a2c6099c3f7106f5aec6082f00e459adea1afc3e5bc42",
+    "TEST-ME.txt": "9e255fe015dfcc5f09cebb0526d3a3408ede42942268a46cb90fe8af5ec3e5e5",
+    "cores/control.so": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+    "cores/profile.so": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+    "cases/001/case.json": "b5ad9615086ea8062f08e8c63ac74617a9ae54ac88e4301fb45595cf4c6de078",
+    "cases/001/control.state": "c4c992446365d090e92eb80bb0e0a9c178e76ba46b9d284ad302e39480596d6f",
+    "cases/001/expected.bin": "91c095b6d03b3ed11568df2eb640724bff3344366a593ff40dfa700788af5d4d",
+    "cases/001/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+    "cases/001/profile.state": "c4c992446365d090e92eb80bb0e0a9c178e76ba46b9d284ad302e39480596d6f",
+    "cases/008/case.json": "40b174c9551fba4552306e871af7e3b58f5360fe52e76fecff5562a603ebad6c",
+    "cases/008/control.state": "5d0544446a100764f66ba2cc011bbf8e8bfa5c9c6d9cd2c3bba26e74728f4352",
+    "cases/008/expected.bin": "1107dacd483e63ba8fd18c19bccb477a9e5a5f47324d7544b4d1e590d28466ba",
+    "cases/008/input.txt": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+    "cases/008/profile.state": "5d0544446a100764f66ba2cc011bbf8e8bfa5c9c6d9cd2c3bba26e74728f4352"
+  },
+  "dispatch_sha256": "0bd79fe481bf819dde9aec6cc7652089156c3e6af6d9b1531500138213433bfe"
+}
