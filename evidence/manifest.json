@@ -6871,6 +6871,14 @@
       "published_sha256": "30420decfa62afd812849abc1fa04577d2fbcbca8957f8277e432ecd430aceb4",
       "bytes": 8448,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T151744Z/demand-spells-return-evaluation.json",
+      "published": "evidence/2026-10-14/demand-spells-return/analysis.json",
+      "source_sha256": "ad2eded057ed2f25bd49fd121b1575c6918ba8751c701e11a98aaa977f586c9a",
+      "published_sha256": "a717c1d34829fb9ab9ba0d1ed55e20445cd7c67e3f17779ab73fc652b08f4dcc",
+      "bytes": 97284,
+      "normalized": true
     }
   ]
 }

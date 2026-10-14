@@ -6,12 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **I: armed for automatic demand-v3 spell testing:**40 epochs/all18 contexts
-  twice, with matched Meteor/Quasar reference controls; roughly15–20 minutes.
-  Fresh6,340-file archive,82 payloads read back,6,339 protected files exact and
-  clean FAT before/after staging/after arm. Stock/adapter/ROM/original saves
-  intact. Physical result pending, no production promotion.
-  [Current installation and boot sequence](docs/snes-demand-spells-installation.md).
+- **Automatic spell return evaluated; I: unarmed:**32/36 demand-v3 windows
+  clean,16/18 contexts pass twice. Both unresolved contexts invoke Meteor.
+  Quasar passes twice while both matched controls fail;1.44–1.47ms recorded
+  thread-CPU saving. Meteor saves1.09–1.10ms but reserve/pointers still fail;
+  recorded worst valid CPU gap0.23–0.27ms above nominal quota, not a guaranteed
+  remaining fix budget. All clean frames/PCM/direct output verified. No emulator
+  recoding or card writes; production margin pending.
+  [Results and decision](docs/snes-demand-spells-return.md).
 
 - **Demand-v3 returned clean and unarmed:** opening-scene run; Ben reports
   Confuser worked fine, with no Ultima/Holy/late-game coverage.3,952 full frames,

@@ -1,5 +1,16 @@
 # Device findings
 
+**Latest physical evaluation:** all40 spell-test epochs returned. Demand-v3 has
+32/36 clean windows,16/18 contexts pass twice; remaining two share Meteor effect19.
+Quasar passes both vs both failing controls,1.44–1.47ms matched recorded CPU
+saving. Meteor improves1.09–1.10ms but still loses reserve/pointer integrity;
+valid recorded CPU gap0.23–0.27ms above quota is not a guaranteed fix target.
+Three nominal1200-call candidate completions have pointer drift and are invalid.
+All32 clean epochs have full frames/PCM/valid trace and actual direct-output
+counts. Strict6,721-file archive, clean FAT, exact payload/stock/ROM/progress;
+marker consumed, I: unarmed. No emulator recoding or card writes. Production
+20% margin remains unqualified. [Evaluation](snes-demand-spells-return.md).
+
 **Current card status:** explicitly authorized demand-spells1 installed and
 one-shot armed on I:. Fresh6,340-file archive;82 payloads read back,6,339 prior
 retro files and original ROM/progress exact. Clean FAT before/after payload/

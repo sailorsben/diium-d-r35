@@ -1,5 +1,18 @@
 # Changelog
 
+## Evaluate automatic spell return before recoding — 2026-10-14
+
+Strict archive6,721 files/1,730,576,357 bytes, clean FAT,82 exact payloads and
+protected stock/ROM/progress; only prior swapfile changes, marker consumed.
+All40 epochs ran.32/36 demand windows clean;16/18 contexts pass both orders.
+Unresolved Meteor and Rage032 share observed Meteor branch19. Quasar passes
+both versus two failing controls,1.436–1.466ms matched recorded CPU saving.
+Meteor saves1.088–1.102ms and drifts later, but worst valid CPU still0.231–0.270ms
+above quota across its two contexts; reserve falls to138–174 frames. Three
+nominally complete candidate epochs have pointer drift despite empty errors,
+and remain invalid. Publish bounded evaluation; keep all core/runtime/test
+artifacts exact. No recoding, card writes/rearm or production promotion.
+
 ## Arm I: for authorized automatic spell coverage — 2026-10-14
 
 On explicit “Arm I,” archive6,340 retro files before writes, verify prepared

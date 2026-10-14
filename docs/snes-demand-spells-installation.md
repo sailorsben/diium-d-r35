@@ -1,5 +1,9 @@
 # I: armed for the automatic demand-v3 spell test
 
+**Returned and now unarmed:** the40-epoch test is complete.32/36 demand windows
+are clean; remaining contexts both invoke Meteor. See
+[the evaluation](snes-demand-spells-return.md). Installation below is historical.
+
 Ben explicitly requested “Arm I.” The guarded installer ran from pushed
 `ba8e5f302511e15d4be00c4a002f63750348d8e6`, after strict archive
 `device-evidence/a7-pair-before-20261014T141353Z` preserved6,340 retro files/

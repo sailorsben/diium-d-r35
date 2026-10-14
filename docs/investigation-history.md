@@ -1,5 +1,22 @@
 # Investigation history and negative results
 
+## Physical spell return narrows remaining work to Meteor — 2026-10-14
+
+Evaluate before recoding:32/36 v3 windows clean,16/18 contexts pass twice. The
+remaining Meteor/Rage032 contexts both exercise effect19. Quasar2/2 clean vs
+0/2 reference;1.436–1.466ms matched recorded CPU saving. Meteor1.088–1.102ms
+saving, later reserve collapse/pointer drift, but still0.231–0.270ms recorded
+CPU above nominal quota in its worst valid intervals. This excludes uncounted
+costs and is not a promised sufficient fix. Conservative service proxy can
+double-count overlap; full20% margin remains unmet.
+
+Three candidate windows complete1200 with empty errors yet pointer drift;
+do not pass them on nominal completion/software totals. All32 accepted bounded
+windows have full frames/exact PCM/valid untruncated trace and1200 actual direct
+submissions/zero copied bytes. Archive6,721 files, clean FAT and protected
+payload/stock/ROM/progress verify; I: unarmed. No recoding or device writes.
+[Evaluation and trustworthy prefix limits](snes-demand-spells-return.md).
+
 ## Install and arm the prepared spell suite — 2026-10-14
 
 Explicit “Arm I” authorizes guarded separate demand-spells1 installation.
