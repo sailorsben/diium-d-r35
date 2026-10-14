@@ -6723,6 +6723,24 @@
       "published": "evidence/2026-10-13/quick-profile/installation.json",
       "source_sha256": "57d561a24669c0188ad0dc5a6c7c16da8ce762d0de1961cd730e00b15c606ecb",
       "published_sha256": "d4925ed61bf5d385a654809d12e6cf89f549e0246a8ed55f0bf6a953bd191e18"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T033243Z/quick-profile-analysis/analysis.json",
+      "published": "evidence/2026-10-13/quick-profile-return/analysis.json",
+      "source_sha256": "d842e1029bfd6f4859f5d100a6147f01e9a45ce12b50e00056725a78c1760685",
+      "published_sha256": "58253fd9f2356ca7b8f421b62c1cf0fb30d212084ffc0d73f3fc6b34a95de32e"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T033243Z/quick-profile-analysis/integrity.json",
+      "published": "evidence/2026-10-13/quick-profile-return/integrity.json",
+      "source_sha256": "4a044e4d9fe73144e3fb2eee3a7ab67d209f585870ef857b6e2420dc94189252",
+      "published_sha256": "a6950d2bb5f681b8ea57f01dbcea447f3354d4734e8e7151ed3bc479901b559a"
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T033243Z/quick-profile-analysis/inputs.json",
+      "published": "evidence/2026-10-13/quick-profile-return/inputs.json",
+      "source_sha256": "49702253270ea329ea87ecda0609336fc2f5c7a95941d76a86feb01a3fdf51a9",
+      "published_sha256": "0f704d750237e5a0ed8fe2f1609fb73a5549a70f3f4a7fcaa31de03537595171"
     }
   ]
 }

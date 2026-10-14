@@ -1,5 +1,17 @@
 # Changelog
 
+## Archive and analyze quick A7 CPU profile — 2026-10-13
+
+Archive6317 files/1,657,276,489 bytes; clean FAT,18 installed hashes, frozen local
+proofs, boot/core/ROM and prior progress verify. Marker consumed; zero card writes.
+All four epochs run and end with native PCM errno77,1866 calls/1862 drawings,
+115 phase samples. PPU explains86.83%/87.26% of sampled Meteor/Quasar CPU growth.
+Control worst16 nonterminal CPU17.997/17.491ms;20% target needs4.646/4.141ms saving.
+Retain~1.3ms sampled-call disturbance, partial late coverage and invalid pointer
+limits. Correct universal audio-nesting assumption from actual C; distinguish
+video copy, display worker and CPU/SPC residual. Publish bounded measurements
+and ranked general improvements. No emulator changes, new builds or rearm.
+
 ## Quick four-epoch A7 CPU profile — 2026-10-13
 
 Build separately versioned1.19-profile1 for Meteor and Quasar with matched

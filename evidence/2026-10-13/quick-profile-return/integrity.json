@@ -1,0 +1,20 @@
+{
+  "archive": "a7-pair-before-20261014T033243Z",
+  "files": 6317,
+  "bytes": 1657276489,
+  "clean_FAT": true,
+  "card_writes": 0,
+  "payload_files_verified": 18,
+  "local_frozen_sources_payload_proofs_verified": true,
+  "previous_retro_changed": [
+    "retro/snes-mvp/launch.sh",
+    "retro/swapfile"
+  ],
+  "previous_retro_unchanged": 6247,
+  "marker_consumed": true,
+  "production_core_boot_files_unchanged": true,
+  "previous_progress_unchanged": true,
+  "original_ROM_zip_sha256": "f61af2bd9e3f9b6a2bd543fb176af0b81fd9e5ba4ea0fa0f453371ccb45d3911",
+  "ROM_live_readback_verified": true,
+  "production_gate_passed": false
+}

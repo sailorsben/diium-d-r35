@@ -6,11 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
-- **Quick CPU benchmark authorized:** `1.19-profile1` runs Meteor and Quasar,
-  each with phase clocks off/on, using the unchanged latest combined core.
-  Four automatic epochs, at most800 calls each, every frame/audio retained.
-  PPU/APU-inclusive/callback CPU plus worker occupancy; no new speedup claim.
-  [Test and evidence limits](docs/snes-quick-profile.md).
+- **Quick CPU benchmark returned:** four epochs archived, clean FAT,18 payloads
+  and protected progress verified; I: unarmed. PPU accounts for~87% of measured
+  effect-related CPU growth:3.32ms early to7.91/7.04ms Meteor/Quasar. APU-inclusive
+  heavy cost4.28/4.23ms; video callback~0.82-0.86ms. Sampled calls incur~1.3ms
+  disturbance. Unprofiled CPU deficits~1.31/0.80ms;20% margin needs4.65/4.14ms.
+  All four end in native PCM errno77; no full-effect acceptance or rearm.
+  [Measured breakdown and savings priorities](docs/snes-quick-profile-return.md).
 - **Scalar/NEON policy designed, no recoding:** state/operation/layout and setup
   reuse select a kernel family; mask density selects payload within it. Existing
   peak counts give Meteor3971-3977 sparse opportunities, but supplying the full

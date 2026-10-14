@@ -1,0 +1,496 @@
+{
+  "integrity": {
+    "archive": "a7-pair-before-20261014T033243Z",
+    "files": 6317,
+    "bytes": 1657276489,
+    "clean_FAT": true,
+    "card_writes": 0,
+    "payload_files_verified": 18,
+    "local_frozen_sources_payload_proofs_verified": true,
+    "previous_retro_changed": [
+      "retro/snes-mvp/launch.sh",
+      "retro/swapfile"
+    ],
+    "previous_retro_unchanged": 6247,
+    "marker_consumed": true,
+    "production_core_boot_files_unchanged": true,
+    "previous_progress_unchanged": true,
+    "original_ROM_zip_sha256": "f61af2bd9e3f9b6a2bd543fb176af0b81fd9e5ba4ea0fa0f453371ccb45d3911",
+    "ROM_live_readback_verified": true,
+    "production_gate_passed": false
+  },
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 1,
+      "variant": "control",
+      "variant_id": 0,
+      "repeat": 0,
+      "name": "Meteor",
+      "calls": 417,
+      "video_submitted": 416,
+      "flipped": 416,
+      "sampled_calls": 0,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "native_error": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=309360 hw=309247 prime_written=2823 start_calls=0 epoch=1 xfer=308976 trace_errno=0 trace_synced=0 trace_bytes=0",
+      "first_invalid_PCM_pointer": 411,
+      "remaining_PCM_frames": 704,
+      "cleared_PCM_frames": 0,
+      "frequency_khz": [
+        -1
+      ],
+      "frequency_pin": "not_exposed_or_not_writable",
+      "clock_loop_mean_ns": "1240",
+      "worst_nonterminal_16": {
+        "first": 400,
+        "last": 415,
+        "components_us": {
+          "core": 16513.25,
+          "other_main": 198.625,
+          "audio_worker": 503.25,
+          "display_worker": 781.375
+        },
+        "CPU_sum_mean_us": 17996.5,
+        "invalid_PCM_pointer_frames": 5,
+        "deadline_deficit_us": 1308.3454999999994,
+        "saving_for_20_percent_margin_us": 4645.9764
+      },
+      "worst_pointer_valid_16": {
+        "first": 394,
+        "last": 409,
+        "components_us": {
+          "core": 16458.8125,
+          "other_main": 198.1875,
+          "audio_worker": 507.625,
+          "display_worker": 784.625
+        },
+        "CPU_sum_mean_us": 17949.25,
+        "invalid_PCM_pointer_frames": 0,
+        "deadline_deficit_us": 1261.0954999999994,
+        "saving_for_20_percent_margin_us": 4598.7264
+      }
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "variant": "profile",
+      "variant_id": 1,
+      "repeat": 0,
+      "name": "Meteor",
+      "calls": 411,
+      "video_submitted": 410,
+      "flipped": 410,
+      "sampled_calls": 51,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "native_error": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=304944 hw=304895 prime_written=2823 start_calls=0 epoch=1 xfer=304560 trace_errno=0 trace_synced=0 trace_bytes=0",
+      "first_invalid_PCM_pointer": 406,
+      "remaining_PCM_frames": 705,
+      "cleared_PCM_frames": 0,
+      "frequency_khz": [
+        -1
+      ],
+      "frequency_pin": "not_exposed_or_not_writable",
+      "clock_loop_mean_ns": "1496",
+      "worst_nonterminal_16": {
+        "first": 393,
+        "last": 408,
+        "components_us": {
+          "core": 16643.6875,
+          "other_main": 200.875,
+          "audio_worker": 490.6875,
+          "display_worker": 836.875
+        },
+        "CPU_sum_mean_us": 18172.125,
+        "invalid_PCM_pointer_frames": 3,
+        "deadline_deficit_us": 1483.9704999999994,
+        "saving_for_20_percent_margin_us": 4821.6014
+      },
+      "worst_pointer_valid_16": {
+        "first": 390,
+        "last": 405,
+        "components_us": {
+          "core": 16588.0625,
+          "other_main": 200.0625,
+          "audio_worker": 490.5625,
+          "display_worker": 780.4375
+        },
+        "CPU_sum_mean_us": 18059.125,
+        "invalid_PCM_pointer_frames": 0,
+        "deadline_deficit_us": 1370.9704999999994,
+        "saving_for_20_percent_margin_us": 4708.6014
+      }
+    },
+    {
+      "run": 2,
+      "fixture": 8,
+      "variant": "profile",
+      "variant_id": 1,
+      "repeat": 0,
+      "name": "Quasar",
+      "calls": 509,
+      "video_submitted": 508,
+      "flipped": 508,
+      "sampled_calls": 64,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "native_error": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=377066 hw=376959 prime_written=2823 start_calls=0 epoch=1 xfer=376682 trace_errno=0 trace_synced=0 trace_bytes=0",
+      "first_invalid_PCM_pointer": 496,
+      "remaining_PCM_frames": 705,
+      "cleared_PCM_frames": 0,
+      "frequency_khz": [
+        -1
+      ],
+      "frequency_pin": "not_exposed_or_not_writable",
+      "clock_loop_mean_ns": "1496",
+      "worst_nonterminal_16": {
+        "first": 491,
+        "last": 506,
+        "components_us": {
+          "core": 15519.0,
+          "other_main": 207.3125,
+          "audio_worker": 502.1875,
+          "display_worker": 817.625
+        },
+        "CPU_sum_mean_us": 17046.125,
+        "invalid_PCM_pointer_frames": 11,
+        "deadline_deficit_us": 357.97049999999945,
+        "saving_for_20_percent_margin_us": 3695.6013999999996
+      },
+      "worst_pointer_valid_16": {
+        "first": 414,
+        "last": 429,
+        "components_us": {
+          "core": 15347.875,
+          "other_main": 286.75,
+          "audio_worker": 489.875,
+          "display_worker": 796.25
+        },
+        "CPU_sum_mean_us": 16920.75,
+        "invalid_PCM_pointer_frames": 0,
+        "deadline_deficit_us": 232.59549999999945,
+        "saving_for_20_percent_margin_us": 3570.2263999999996
+      }
+    },
+    {
+      "run": 3,
+      "fixture": 8,
+      "variant": "control",
+      "variant_id": 0,
+      "repeat": 0,
+      "name": "Quasar",
+      "calls": 529,
+      "video_submitted": 528,
+      "flipped": 528,
+      "sampled_calls": 0,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "native_error": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=391786 hw=391679 prime_written=2823 start_calls=0 epoch=1 xfer=391402 trace_errno=0 trace_synced=0 trace_bytes=0",
+      "first_invalid_PCM_pointer": 520,
+      "remaining_PCM_frames": 704,
+      "cleared_PCM_frames": 0,
+      "frequency_khz": [
+        -1
+      ],
+      "frequency_pin": "not_exposed_or_not_writable",
+      "clock_loop_mean_ns": "1496",
+      "worst_nonterminal_16": {
+        "first": 509,
+        "last": 524,
+        "components_us": {
+          "core": 15989.6875,
+          "other_main": 196.9375,
+          "audio_worker": 524.8125,
+          "display_worker": 780.0
+        },
+        "CPU_sum_mean_us": 17491.4375,
+        "invalid_PCM_pointer_frames": 5,
+        "deadline_deficit_us": 803.2829999999994,
+        "saving_for_20_percent_margin_us": 4140.9139
+      },
+      "worst_pointer_valid_16": {
+        "first": 504,
+        "last": 519,
+        "components_us": {
+          "core": 15895.25,
+          "other_main": 202.375,
+          "audio_worker": 516.6875,
+          "display_worker": 822.25
+        },
+        "CPU_sum_mean_us": 17436.5625,
+        "invalid_PCM_pointer_frames": 0,
+        "deadline_deficit_us": 748.4079999999994,
+        "saving_for_20_percent_margin_us": 4086.0388999999996
+      }
+    }
+  ],
+  "growth": [
+    {
+      "run": 1,
+      "name": "Meteor",
+      "reference_frames": [
+        120,
+        239
+      ],
+      "heavy_frames": [
+        384,
+        407
+      ],
+      "reference_samples": 15,
+      "heavy_samples": 3,
+      "reference_means_us": {
+        "core_cpu_ns": 12312.133333333333,
+        "ppu_cpu_ns": 3320.4,
+        "apu_inclusive_cpu_ns": 3879.8666666666663,
+        "video_callback_cpu_ns": 825.2666666666667,
+        "audio_callback_cpu_ns": 189.53333333333333
+      },
+      "heavy_means_us": {
+        "core_cpu_ns": 17595.0,
+        "ppu_cpu_ns": 7907.666666666667,
+        "apu_inclusive_cpu_ns": 4277.333333333333,
+        "video_callback_cpu_ns": 824.0,
+        "audio_callback_cpu_ns": 209.66666666666666
+      },
+      "growth_us": {
+        "core_cpu_ns": 5282.866666666667,
+        "ppu_cpu_ns": 4587.266666666666,
+        "apu_inclusive_cpu_ns": 397.4666666666667,
+        "video_callback_cpu_ns": -1.2666666666666515,
+        "audio_callback_cpu_ns": 20.133333333333326
+      },
+      "PPU_share_of_main_CPU_growth_percent": 86.83290637658845,
+      "residual_excluding_video_us": {
+        "reference": 4286.6,
+        "heavy": 4585.999999999999
+      },
+      "heavy_distributions_us": {
+        "core_cpu_ns": {
+          "n": 3,
+          "mean_us": 17595.0,
+          "median_us": 17499.0,
+          "p95_us": 17831.0,
+          "p99_us": 17831.0,
+          "max_us": 17831.0
+        },
+        "ppu_cpu_ns": {
+          "n": 3,
+          "mean_us": 7907.666666666667,
+          "median_us": 7910.0,
+          "p95_us": 7939.0,
+          "p99_us": 7939.0,
+          "max_us": 7939.0
+        },
+        "apu_inclusive_cpu_ns": {
+          "n": 3,
+          "mean_us": 4277.333333333333,
+          "median_us": 4183.0,
+          "p95_us": 4483.0,
+          "p99_us": 4483.0,
+          "max_us": 4483.0
+        },
+        "video_callback_cpu_ns": {
+          "n": 3,
+          "mean_us": 824.0,
+          "median_us": 824.0,
+          "p95_us": 831.0,
+          "p99_us": 831.0,
+          "max_us": 831.0
+        },
+        "audio_callback_cpu_ns": {
+          "n": 3,
+          "mean_us": 209.66666666666666,
+          "median_us": 211.0,
+          "p95_us": 240.0,
+          "p99_us": 240.0,
+          "max_us": 240.0
+        }
+      },
+      "sampled_frames": [
+        387,
+        395,
+        403
+      ]
+    },
+    {
+      "run": 2,
+      "name": "Quasar",
+      "reference_frames": [
+        120,
+        239
+      ],
+      "heavy_frames": [
+        496,
+        507
+      ],
+      "reference_samples": 15,
+      "heavy_samples": 2,
+      "reference_means_us": {
+        "core_cpu_ns": 12368.4,
+        "ppu_cpu_ns": 3321.0666666666666,
+        "apu_inclusive_cpu_ns": 3895.0666666666666,
+        "video_callback_cpu_ns": 809.4666666666666,
+        "audio_callback_cpu_ns": 191.0
+      },
+      "heavy_means_us": {
+        "core_cpu_ns": 16635.0,
+        "ppu_cpu_ns": 7044.0,
+        "apu_inclusive_cpu_ns": 4233.5,
+        "video_callback_cpu_ns": 858.5,
+        "audio_callback_cpu_ns": 187.0
+      },
+      "growth_us": {
+        "core_cpu_ns": 4266.6,
+        "ppu_cpu_ns": 3722.9333333333334,
+        "apu_inclusive_cpu_ns": 338.4333333333334,
+        "video_callback_cpu_ns": 49.03333333333342,
+        "audio_callback_cpu_ns": -4.0
+      },
+      "PPU_share_of_main_CPU_growth_percent": 87.25761340020937,
+      "residual_excluding_video_us": {
+        "reference": 4342.799999999999,
+        "heavy": 4499.0
+      },
+      "heavy_distributions_us": {
+        "core_cpu_ns": {
+          "n": 2,
+          "mean_us": 16635.0,
+          "median_us": 16635.0,
+          "p95_us": 16867.0,
+          "p99_us": 16867.0,
+          "max_us": 16867.0
+        },
+        "ppu_cpu_ns": {
+          "n": 2,
+          "mean_us": 7044.0,
+          "median_us": 7044.0,
+          "p95_us": 7263.0,
+          "p99_us": 7263.0,
+          "max_us": 7263.0
+        },
+        "apu_inclusive_cpu_ns": {
+          "n": 2,
+          "mean_us": 4233.5,
+          "median_us": 4233.5,
+          "p95_us": 4264.0,
+          "p99_us": 4264.0,
+          "max_us": 4264.0
+        },
+        "video_callback_cpu_ns": {
+          "n": 2,
+          "mean_us": 858.5,
+          "median_us": 858.5,
+          "p95_us": 893.0,
+          "p99_us": 893.0,
+          "max_us": 893.0
+        },
+        "audio_callback_cpu_ns": {
+          "n": 2,
+          "mean_us": 187.0,
+          "median_us": 187.0,
+          "p95_us": 189.0,
+          "p99_us": 189.0,
+          "max_us": 189.0
+        }
+      },
+      "sampled_frames": [
+        499,
+        507
+      ]
+    }
+  ],
+  "sensitivity": [
+    {
+      "name": "Meteor",
+      "planning_only": "conditional fractions of observer-inclusive sampled PPU scale; not measured candidate savings",
+      "control_deadline_deficit_us": 1308.3454999999994,
+      "control_20_percent_margin_saving_us": 4645.9764,
+      "conditional_PPU_savings_us": {
+        "0.1": 790.7666666666668,
+        "0.2": 1581.5333333333335,
+        "0.3": 2372.3,
+        "0.5": 3953.8333333333335
+      },
+      "PPU_fraction_for_deadline": 0.16545278843316605,
+      "PPU_fraction_for_20_percent_margin": 0.5875281035282215
+    },
+    {
+      "name": "Quasar",
+      "planning_only": "conditional fractions of observer-inclusive sampled PPU scale; not measured candidate savings",
+      "control_deadline_deficit_us": 803.2829999999994,
+      "control_20_percent_margin_saving_us": 4140.9139,
+      "conditional_PPU_savings_us": {
+        "0.1": 704.4000000000001,
+        "0.2": 1408.8000000000002,
+        "0.3": 2113.2,
+        "0.5": 3522.0
+      },
+      "PPU_fraction_for_deadline": 0.1140379045996592,
+      "PPU_fraction_for_20_percent_margin": 0.587863983532084
+    }
+  ],
+  "observer_disturbance": [
+    {
+      "control_run": 0,
+      "profile_run": 1,
+      "calls": "sampled_calls",
+      "profile_minus_control_cpu": {
+        "n": 36,
+        "mean_us": 1270.9722222222222,
+        "median_us": 1259.5,
+        "p95_us": 1406.0,
+        "p99_us": 1478.0,
+        "max_us": 1478.0
+      },
+      "interpretation": "one pair; includes run noise/cache/scheduling; not a calibration subtraction or renderer saving"
+    },
+    {
+      "control_run": 0,
+      "profile_run": 1,
+      "calls": "unsampled_calls",
+      "profile_minus_control_cpu": {
+        "n": 255,
+        "mean_us": -7.474509803921569,
+        "median_us": -10.0,
+        "p95_us": 167.0,
+        "p99_us": 211.0,
+        "max_us": 248.0
+      },
+      "interpretation": "one pair; includes run noise/cache/scheduling; not a calibration subtraction or renderer saving"
+    },
+    {
+      "control_run": 3,
+      "profile_run": 2,
+      "calls": "sampled_calls",
+      "profile_minus_control_cpu": {
+        "n": 49,
+        "mean_us": 1315.408163265306,
+        "median_us": 1308.0,
+        "p95_us": 1477.0,
+        "p99_us": 1659.0,
+        "max_us": 1659.0
+      },
+      "interpretation": "one pair; includes run noise/cache/scheduling; not a calibration subtraction or renderer saving"
+    },
+    {
+      "control_run": 3,
+      "profile_run": 2,
+      "calls": "unsampled_calls",
+      "profile_minus_control_cpu": {
+        "n": 340,
+        "mean_us": 41.564705882352946,
+        "median_us": 32.0,
+        "p95_us": 250.0,
+        "p99_us": 371.0,
+        "max_us": 413.0
+      },
+      "interpretation": "one pair; includes run noise/cache/scheduling; not a calibration subtraction or renderer saving"
+    }
+  ],
+  "limits": [
+    "Only 3 Meteor / 2 Quasar samples in narrow late intervals; descriptive tails only.",
+    "Quasar profile terminates before prior worst508-529 interval; never extrapolate it as a complete peak.",
+    "CPU regions include instrumentation; no clock-loop or aligned-control calibration subtraction.",
+    "APU includes nested audio publication where invoked, but final audio upload may lie outside it.",
+    "Residual excludes measured video CPU, but still includes port-driven SPC, dispatch, final upload and observer work.",
+    "Native errno77, nonzero remaining PCM and pointer drift prevent full-effect/headroom acceptance.",
+    "Current broad PPU timing cannot price BG/OBJ/partial/clip microkernels individually."
+  ]
+}

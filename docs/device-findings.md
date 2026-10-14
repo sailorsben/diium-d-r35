@@ -1,5 +1,17 @@
 # Device findings
 
+**Quick profile return, current:** archive6317 files/1,657,276,489 bytes, clean
+FAT,18 payloads and protected boot/core/ROM/progress verify. All four epochs end
+with PCM errno77;115 phase samples. PPU grows3.32->7.91ms Meteor and3.32->7.04ms
+Quasar,~87% of corresponding main-call growth. Sampled calls cost~1.3ms more than
+controls; do not calibrate it away. Controls need~1.31/0.80ms deadline saving or
+4.65/4.14ms for20% margin. Video callback~0.82-0.86ms is outside PPU/APU; audio
+publication is only partly nested, residual includes port-driven SPC. Prioritize
+shared PPU row/mask/clip work, exact frame-copy improvements, then measured inner
+CPU/SPC/DSP optimization. Quasar profile truncates before former worst508-529;
+no stable effect or hardware-limit proof. I: unarmed, no writes/rearm/builds.
+[Return analysis](snes-quick-profile-return.md).
+
 **Shared scalar/NEON policy, design only:** classify format/layout/operation
 once per safe segment, reuse masks, and select sparse versus dense payload
 using measured per-class crossover costs. Installed full-width clipped plain/

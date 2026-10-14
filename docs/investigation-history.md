@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## Measure the core split before further PPU changes — 2026-10-13
+
+Quick profile1 return confirms PPU~87% of effect CPU growth for Meteor/Quasar.
+Early3.32ms becomes7.91/7.04ms; APU-inclusive grows only~0.4/0.34ms. Kernel-clock
+sampling itself adds~1.3ms on sampled calls, with nearly unchanged unsampled
+costs; retain costs and use unprofiled controls for budget. All four runs fail
+native PCM, with pointer drift and incomplete effects. Video callback outside
+PPU/APU consumes~0.85ms, exposing compact chunk-buffer copying as a common
+secondary target. Residual after video remains~4.5ms, includes port-driven SPC
+and cannot be labelled pure65C816. No new core, test build, card writes or rearm.
+[Measurements and conditional savings](snes-quick-profile-return.md).
+
 ## Derive scalar/NEON selection from state and work shape — 2026-10-13
 
 Design only: keep geometry/state decisions outside pixel loops and reuse the
