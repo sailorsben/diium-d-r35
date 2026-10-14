@@ -1,5 +1,19 @@
 # Investigation history and negative results
 
+## Prepare bounded automatic late-game effect coverage — 2026-10-14
+
+User cannot manually access late-game spells and requests a test for unfixed
+effects. New demand-spells1 drives all18 preserved original state/input/property
+contexts twice, with Meteor/Quasar reference controls in opposite orders. Fresh
+controller preserves qualified ordinary cores, every frame/PCM and original
+state payloads, joins workers before trace flush and uses owned chunk output.
+Add direct/copy metrics missing from the manual runner; disable nested phase
+clocks and ambient frequency pinning.40 epochs/48,000 actual ARM mock calls,
+18 expected property fixtures, native149 direct callbacks with fault/retry/drain/
+deficit, actual wrapper/ABI and reporter mock-rejection checks pass. QEMU timings
+do not price A7 work; headroom/conditional-branch/output boundaries remain. Test
+prepared locally, not installed or armed; no card access. [Scope](snes-demand-spells.md).
+
 ## Demand-v3 opening-scene physical return — 2026-10-14
 
 Strict6,340-file return archive and clean FAT verify exact candidate/stock/ROM/

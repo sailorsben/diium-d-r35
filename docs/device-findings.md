@@ -1,5 +1,13 @@
 # Device findings
 
+**Next physical spell test, prepared only:** fresh40-epoch demand-spells1 suite
+uses18 archived contexts twice, plus matched reference controls on unresolved
+Meteor/Quasar. No late-game manual save needed. Actual ARM controller48,000 calls,
+all requested effect properties, native acquired-output/fault/retry/drain/deficit,
+wrapper/ABI and archive reporter guards qualify offline. Direct/copy metrics
+persisted; no phase timing or frequency pinning. No card install/rearm/change.
+[Ready test](snes-demand-spells.md). Physical acceptance remains pending.
+
 **Latest returned demand-v3 evidence,2026-10-14:** opening-scene manual run;
 Ben reports Confuser worked fine and cannot test Ultima/Holy/etc.3,952 full
 frames at59.995 active calls/s; no logged errors/underruns, exact converted/

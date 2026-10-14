@@ -1,0 +1,26 @@
+Demand-v3 automated spell test: 18 contexts, 40 epochs
+
+After guarded installation on I:
+
+Safely eject in Windows, insert with the handheld off, then cold-boot.
+It starts automatically. No late-game progress or manual spell selection needed.
+The repeated state loads/animations are intentional. Do not press gameplay
+buttons. Select+Start aborts the suite and returns through joined cleanup.
+
+Allow roughly15-20 minutes: nominal animation time13.35 minutes plus loading
+and between-epoch log flushing. It returns to the stock launcher when finished.
+Wait for stock, power down, and return I: for strict collection before rearming.
+If stuck, reboot; the one-shot was consumed before hardware startup, so the next
+boot uses stock. All original saves and production binaries remain intact.
+
+Observe visual corruption, missing pixels, stutter or audio trouble if possible.
+Logs identify each spell and retain timing, complete bounded PCM history, effect
+properties, reserve pointers and direct/copy counts. They cannot hear the speaker
+or independently compare the physical panel pixels.
+
+Demand-v3 runs all18 contexts twice. Meteor and Quasar also use the unchanged
+reference core in opposite orders, because they remained physically failing.
+HOLY, METEOR, ULTIMA, MELTDOWN, SLOW2, SIREN, BAHAMUT, CARBUNKL,
+QUASAR, GRANDTRAIN, Rage004/005/032/086/088, TERRATO, BIO BLAST, CONFUSER.
+Confuser is a previously working control; random/conditional fixtures qualify
+their observed branch only. This is an experiment, not production acceptance.

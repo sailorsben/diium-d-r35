@@ -6847,6 +6847,22 @@
       "published_sha256": "8845bda3f848c47825e7a53e26dc34d9ed344e96eedb8460776b294dec69d086",
       "bytes": 4964,
       "normalized": false
+    },
+    {
+      "source": "build/demand-spells-private-v1/ready.json",
+      "published": "evidence/2026-10-14/demand-spells/ready.json",
+      "source_sha256": "abb5f751785cfb7861a7cee8788049c7c0c17d56a2b2d08e43269419771ae1f7",
+      "published_sha256": "abb5f751785cfb7861a7cee8788049c7c0c17d56a2b2d08e43269419771ae1f7",
+      "bytes": 25437,
+      "normalized": false
+    },
+    {
+      "source": "build/demand-spells-private-v1/plan.json",
+      "published": "evidence/2026-10-14/demand-spells/plan.json",
+      "source_sha256": "dc5e0b3110867284db2a26b2680013dc8a45bc61e08204501276db512ef2114d",
+      "published_sha256": "dc5e0b3110867284db2a26b2680013dc8a45bc61e08204501276db512ef2114d",
+      "bytes": 24534,
+      "normalized": false
     }
   ]
 }

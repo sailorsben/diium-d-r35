@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **Automatic demand-v3 spell test ready locally:** all18 archived contexts
+  twice, with opposite-order reference controls for still-failing Meteor/Quasar.
+ 40 epochs/~13.35 minutes nominal, no late-game user progress needed. Actual ARM
+  controller passes48,000 mock calls; native acquired-output/fault/retry/drain,
+  wrapper and archive reporter checks pass. Not installed or armed; I: unchanged.
+  [Ready test and scope](docs/snes-demand-spells.md).
+
 - **Demand-v3 returned clean and unarmed:** opening-scene run; Ben reports
   Confuser worked fine, with no Ultima/Holy/late-game coverage.3,952 full frames,
   59.995 active calls/s, zero logged PCM faults/underruns and exact audio accounting.

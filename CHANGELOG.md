@@ -1,5 +1,18 @@
 # Changelog
 
+## Prepare automatic demand-v3 tests for unqualified spells — 2026-10-14
+
+New local40-epoch suite runs18 archived contexts twice and unchanged reference
+controls for Meteor/Quasar in AB/BA order. No late-game manual progress needed;
+all20 copied state payloads exact. Reuse ordinary qualified cores by hash, fresh
+measurement runner with owned-output board/acquisition and persisted direct/copy
+counts. Keep all frames/PCM, disable nested phase clocks/frequency pinning, flush
+bounded complete histories after joined workers. Actual ARM controller passes
+48,000 calls/all18 property fixtures; native149 direct callbacks, fault/retry/
+drain/deficit, actual wrapper/ABI and mock-rejecting archive reporter pass. Preserve
+all prior frozen/published artifacts; no card access, install, rearm or production
+promotion. Ready packet and guarded future installer documented.
+
 ## Collect demand-v3 manual return and bound physical acceptance — 2026-10-14
 
 Strictly archive6,340 files/1,658,860,825 bytes from I: read-only; clean FAT,

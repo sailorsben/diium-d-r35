@@ -1,0 +1,878 @@
+{
+  "version": "1.19-demand-spells1",
+  "authorization": "Put together a test for the spells that we have not fixed.",
+  "status": "LOCAL_BUILD_NOT_INSTALLED_OR_ARMED",
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "frameskip": false,
+  "calls_per_run": 1200,
+  "warmup_calls": 120,
+  "period_ns": 16688152.946053859,
+  "target_ns": 13350522.356843088,
+  "nominal_minutes": 13.350522356843085,
+  "variants": [
+    "reference",
+    "demand"
+  ],
+  "cases": [
+    {
+      "seq": 0,
+      "name": "HOLY",
+      "family": "magic",
+      "possible_attack_ids": [
+        14
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "18e59b25dd5a3e1a1f2e12a7054a8f36107465117d3d208b3f562a2f5938487d",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "ec1a6a4b91663a2c0e9127ce2e350221d66042bfd2bc5f770675d355eaa71702",
+      "random_or_conditional": false,
+      "original_case": 14,
+      "observed_effect_id": 14
+    },
+    {
+      "seq": 1,
+      "name": "METEOR",
+      "family": "magic",
+      "possible_attack_ids": [
+        19
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "a480bb0e805bfcd10f8222677d536392c33d947ad649329ad3f2026c40e60295",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "91c095b6d03b3ed11568df2eb640724bff3344366a593ff40dfa700788af5d4d",
+      "random_or_conditional": false,
+      "original_case": 19,
+      "observed_effect_id": 19
+    },
+    {
+      "seq": 2,
+      "name": "ULTIMA",
+      "family": "magic",
+      "possible_attack_ids": [
+        20
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "593efee777b00f243895b58d843268c4cbde83ee68a126ea2885739b5f95b547",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "ba51707369dc8de4a70195956be25b8a519f9ef731773e23740a988f9f4e6f91",
+      "random_or_conditional": false,
+      "original_case": 20,
+      "observed_effect_id": 20
+    },
+    {
+      "seq": 3,
+      "name": "MELTDOWN",
+      "family": "magic",
+      "possible_attack_ids": [
+        23
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "81bebb4c04e44fad02af4ec26e9a69a74fb2c3bd4f2f365b174d8c8f8849410a",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "c55535d1fe16ef2d83e12eb704bce8a0a8fb1ed3567cb6bbb8344454f028730b",
+      "random_or_conditional": false,
+      "original_case": 23,
+      "observed_effect_id": 23
+    },
+    {
+      "seq": 4,
+      "name": "SLOW_2",
+      "family": "magic",
+      "possible_attack_ids": [
+        40
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "2b5660330bfa7f1eb84e4a0bbdeef3c3f8ab09047c3dae1fcd9aa54d08264798",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "9f8dbcadd5650e9e113fb585c8d60568f6fa7003a135743aca7fdda09e711cc6",
+      "random_or_conditional": false,
+      "original_case": 40,
+      "observed_effect_id": 40
+    },
+    {
+      "seq": 5,
+      "name": "SIREN",
+      "family": "esper",
+      "possible_attack_ids": [
+        57
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "ec67bc4c3011f1ffe77f64d96e424b511a535ce46d57d7049f3ff044c316dff2",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "37937538a54d7ac244ea5d1f2216fcae84fe1c5f14f6323b347e520f8002faa4",
+      "random_or_conditional": false,
+      "original_case": 57,
+      "observed_effect_id": 57
+    },
+    {
+      "seq": 6,
+      "name": "BAHAMUT",
+      "family": "esper",
+      "possible_attack_ids": [
+        67
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "e15ccab04c50e5236e776199cd52cb74e99f5f3984d91a9db2e5d1554cc0b3a1",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "3b6e04f9d84d607d18787994dc7c3c53d45a9401e6d8052c8c3a9b23abd9aa58",
+      "random_or_conditional": false,
+      "original_case": 67,
+      "observed_effect_id": 67
+    },
+    {
+      "seq": 7,
+      "name": "CARBUNKL",
+      "family": "esper",
+      "possible_attack_ids": [
+        73
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "0c1b66d70a0981d65b501748cf417a7e2800907f3c683bb42da61df9e3764786",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "8f390fe8c4d1cdc2a9914a3aa649d1722e14a236989c20befba85a50a46645dd",
+      "random_or_conditional": false,
+      "original_case": 73,
+      "observed_effect_id": 73
+    },
+    {
+      "seq": 8,
+      "name": "QUASAR",
+      "family": "lore",
+      "possible_attack_ids": [
+        160
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "43d111a2e848fbf8ec8f154aa93dcdeb8d27daa68f6c29c5b6ad2d14930e0479",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "1107dacd483e63ba8fd18c19bccb477a9e5a5f47324d7544b4d1e590d28466ba",
+      "random_or_conditional": false,
+      "original_case": 110,
+      "observed_effect_id": 160
+    },
+    {
+      "seq": 9,
+      "name": "GRANDTRAIN",
+      "family": "lore",
+      "possible_attack_ids": [
+        161
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "f1fbcbc20d41ed8e53959373a3677e86849ff2008926586d737a2a4d0b67ccb4",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "82129b6380b3aedb517f6324cdde0d5abe75d457c037bbe6e817e0e48c93e2ed",
+      "random_or_conditional": false,
+      "original_case": 111,
+      "observed_effect_id": 161
+    },
+    {
+      "seq": 10,
+      "name": "RAGE_004",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        168
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "e06936371ff57b72d79d66530ffa8eff8b79582e5181bcfe57ba70e451bed711",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "baed10da626af667cfd3c1655ae79aae06e2c06dd0a8fbe2cebb84d84b41a164",
+      "random_or_conditional": true,
+      "original_case": 149,
+      "observed_effect_id": 168
+    },
+    {
+      "seq": 11,
+      "name": "RAGE_005",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        14
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "9d5d6d9c23d25bb3efb2a13e48992c0c5830939589e64d87b6c05b7f6e35f3a1",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "ec1a6a4b91663a2c0e9127ce2e350221d66042bfd2bc5f770675d355eaa71702",
+      "random_or_conditional": true,
+      "original_case": 150,
+      "observed_effect_id": 14
+    },
+    {
+      "seq": 12,
+      "name": "RAGE_032",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        19
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "427125e9cc84fbfc7c1eac2dbdf9e5a4fb18404d284a74c6d2d1450b17724119",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "91c095b6d03b3ed11568df2eb640724bff3344366a593ff40dfa700788af5d4d",
+      "random_or_conditional": true,
+      "original_case": 177,
+      "observed_effect_id": 19
+    },
+    {
+      "seq": 13,
+      "name": "RAGE_086",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        23
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "94bf11ed189b7b7f7673f7ba6a3255617f86060d6106250b435cb47bb7d82893",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "c55535d1fe16ef2d83e12eb704bce8a0a8fb1ed3567cb6bbb8344454f028730b",
+      "random_or_conditional": true,
+      "original_case": 231,
+      "observed_effect_id": 23
+    },
+    {
+      "seq": 14,
+      "name": "RAGE_088",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        40
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "24401784d95d24394dd0f67c3932c2b301960cd413469c0329604f6c89e2ee84",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "9f8dbcadd5650e9e113fb585c8d60568f6fa7003a135743aca7fdda09e711cc6",
+      "random_or_conditional": true,
+      "original_case": 233,
+      "observed_effect_id": 40
+    },
+    {
+      "seq": 15,
+      "name": "TERRATO",
+      "family": "esper",
+      "possible_attack_ids": [
+        58
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "e8b853218d4a901d0d25a4cb6aa8bedcfdb231b6ada324aec4f2a797f169dfe2",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "158eb34b45f3674e2d543409a1de38a182eb89e92127a9137439600e30a1bf02",
+      "random_or_conditional": false,
+      "original_case": 58,
+      "observed_effect_id": 58
+    },
+    {
+      "seq": 16,
+      "name": "BIO_BLAST",
+      "family": "magitek",
+      "possible_attack_ids": [
+        134
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "a532ae343a92d7adcda1b3f112feac7142e0aafe1829284636dc00370271c8be",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "3881efb83b12cedaefcd01708b50291f0eb3b37ac84f63eb83f48fcd591ce0bf",
+      "random_or_conditional": false,
+      "original_case": 84,
+      "observed_effect_id": 134
+    },
+    {
+      "seq": 17,
+      "name": "CONFUSER",
+      "family": "magitek",
+      "possible_attack_ids": [
+        136
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "ca8441a22107cc6ccd27400647b239f45bcdcfaa5df51c26fa37410e89052845",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "211f795df865b2e6e9519227668e29cf526c6ecb0b5b381ea9bc0f7c76f8425c",
+      "random_or_conditional": false,
+      "original_case": 86,
+      "observed_effect_id": 136
+    }
+  ],
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "name": "HOLY",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 2,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 3,
+      "fixture": 2,
+      "name": "ULTIMA",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 4,
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 5,
+      "fixture": 4,
+      "name": "SLOW_2",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 6,
+      "fixture": 5,
+      "name": "SIREN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 7,
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 8,
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 9,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 10,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 11,
+      "fixture": 9,
+      "name": "GRANDTRAIN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 12,
+      "fixture": 10,
+      "name": "RAGE_004",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 13,
+      "fixture": 11,
+      "name": "RAGE_005",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 14,
+      "fixture": 12,
+      "name": "RAGE_032",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 15,
+      "fixture": 13,
+      "name": "RAGE_086",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 16,
+      "fixture": 14,
+      "name": "RAGE_088",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 17,
+      "fixture": 15,
+      "name": "TERRATO",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 18,
+      "fixture": 16,
+      "name": "BIO_BLAST",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 19,
+      "fixture": 17,
+      "name": "CONFUSER",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 20,
+      "fixture": 17,
+      "name": "CONFUSER",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 21,
+      "fixture": 16,
+      "name": "BIO_BLAST",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 22,
+      "fixture": 15,
+      "name": "TERRATO",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 23,
+      "fixture": 14,
+      "name": "RAGE_088",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 24,
+      "fixture": 13,
+      "name": "RAGE_086",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 25,
+      "fixture": 12,
+      "name": "RAGE_032",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 26,
+      "fixture": 11,
+      "name": "RAGE_005",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 27,
+      "fixture": 10,
+      "name": "RAGE_004",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 28,
+      "fixture": 9,
+      "name": "GRANDTRAIN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 29,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 30,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 31,
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 32,
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 33,
+      "fixture": 5,
+      "name": "SIREN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 34,
+      "fixture": 4,
+      "name": "SLOW_2",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 35,
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 36,
+      "fixture": 2,
+      "name": "ULTIMA",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 37,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 38,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 39,
+      "fixture": 0,
+      "name": "HOLY",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    }
+  ],
+  "snapshot_migrations": [
+    {
+      "fixture": 0,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "21467712d21aad84d8acd0e4db8d9deccd57c3229d9b69659e412d50a683882d",
+      "payload_sha256": "22dc9aa77c7df09dd9e90f63dc165121d7ed1c76d273c7b5e8e0800f4be05741"
+    },
+    {
+      "fixture": 1,
+      "variant": "reference",
+      "payload_unchanged": true,
+      "state_sha256": "c4c992446365d090e92eb80bb0e0a9c178e76ba46b9d284ad302e39480596d6f",
+      "payload_sha256": "a1af827c3e8daf299f22e1cd939e8c91fd0ff1d32b116265da954cd634334956"
+    },
+    {
+      "fixture": 1,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "f737704f237b4831f30a135ffa787bc90412de19bd5db291fa578ce8dcc1db58",
+      "payload_sha256": "a1af827c3e8daf299f22e1cd939e8c91fd0ff1d32b116265da954cd634334956"
+    },
+    {
+      "fixture": 2,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "214a9b0483c539ecce80ebb7611dbe29bfc2564259c4d25956458d5bcb913cb0",
+      "payload_sha256": "d528083d6f45e4e8c0797af166c0cdadf926a92d33d81c108cfe61647572992b"
+    },
+    {
+      "fixture": 3,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "f222d9fd7e90efc3301feb5cc8b9a5957d9c82288c8cda3f8c3a05db0aceb38a",
+      "payload_sha256": "6e29e81a0a5f40a98d4223fe6a21f5eea05e17ab23a42dc6ff96c35e94ac37e3"
+    },
+    {
+      "fixture": 4,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "d2e9ca93053ce8a7852098faef13640193f59ce8e17d38a5a7a05450be6887c5",
+      "payload_sha256": "53b727e19d24ac49889792f2bd0d5e0638e11e1662dd4c1332a2706cce563a3f"
+    },
+    {
+      "fixture": 5,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "c00f180cd64a3f0dfb46a66b57fa765ccac3de5dbf7df9ee8acf15e32e30ddd4",
+      "payload_sha256": "1fe874e9c36fc652cac0b829932934c1ed2a79dfbe36e427e776c9b4f6919e73"
+    },
+    {
+      "fixture": 6,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "0714497b42e14b7e85712ecffeadc5bd582c69e2bcde045082ba2b04c17de148",
+      "payload_sha256": "08831abaff2fffb3ff372b1f70a39853b6a3d030f5438a1a6757f6798793602d"
+    },
+    {
+      "fixture": 7,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "05fc44e68499ae79a7e4cf73d5b8827721b0628f1d303693fb17d2d301e06da6",
+      "payload_sha256": "0dc99672903f213cc75be30ee9d9611bf9115ec6d7987689eb71425874f7f269"
+    },
+    {
+      "fixture": 8,
+      "variant": "reference",
+      "payload_unchanged": true,
+      "state_sha256": "5d0544446a100764f66ba2cc011bbf8e8bfa5c9c6d9cd2c3bba26e74728f4352",
+      "payload_sha256": "f853a6e697a2d160ad05b841cf6f7720ea843632b2483b139ce83433853ec6ca"
+    },
+    {
+      "fixture": 8,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "dca4f556b756defa1d1de6973b155dac41735881e0a33f8253a1283cc9e51b50",
+      "payload_sha256": "f853a6e697a2d160ad05b841cf6f7720ea843632b2483b139ce83433853ec6ca"
+    },
+    {
+      "fixture": 9,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "d5473f890add86c15dff6718f1bad75ef49eee818a76aa387b28b732fdef5783",
+      "payload_sha256": "b18a95687b111a45a347ebb986143b91670fdb39d0f99f9fd1816915f145a6df"
+    },
+    {
+      "fixture": 10,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "88e76c4872d344781ad7a5d0d9cbe48b99eb7f1f9be261f6d6f621e30bd2ff80",
+      "payload_sha256": "ae5f6f7bf23719e8bb6fc879d2ac0a2404017e4fd89439bbf5493202fa6bb13f"
+    },
+    {
+      "fixture": 11,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "d725dca6d3af9af99d4e70854778443b5704630c128efffe374a3d7119e2f3ee",
+      "payload_sha256": "ce22b0b9c65fe19be6719ad518abe13ac159bf5d90744abaa90848866b40122f"
+    },
+    {
+      "fixture": 12,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "7a2b125e689ac1f79a07f79cdfa4351cb3c22832d080bcafbbdc9bda8b6fe73f",
+      "payload_sha256": "7b35b4222f56594dd91309e4fe05b5cf5d0fcbd2a917d89e4e3d7d99fc376291"
+    },
+    {
+      "fixture": 13,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "4f95f48532edd5f513ae342389560f409f5db265a445c4918c4d1ea3cdf5ade9",
+      "payload_sha256": "daadcbc61c2aa98adcbb908a62a82df965383ef04f797eb135d9b335ab3a0bf0"
+    },
+    {
+      "fixture": 14,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "f98c16b93d93003e2ca7a99e45a45f86f308e2ea98b51ca6cdabbe5234f0e216",
+      "payload_sha256": "da1d089270bd1ab2f7c487eee35440683e278588c8d707322ed9646c1c7a1cce"
+    },
+    {
+      "fixture": 15,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "de137a80b3e96c74fcc4328cea27658a12f368a6883b6d1c745b49300cf0b5de",
+      "payload_sha256": "7b7214019bbc7844bb51f93a25d258c0af7ce0f2e7a8c276392b14bb2d9042ac"
+    },
+    {
+      "fixture": 16,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "66a1751f77cf1f73bedf341f9a42c53da5902079ed75c0e3a8cdf987bd29c8f9",
+      "payload_sha256": "b4ce71c17d5c73e5c2a4968a9f70ebd4915f0877adf147f0762f9683a041be63"
+    },
+    {
+      "fixture": 17,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "56795719a178866a2dc47938a7af04480ca2475de62825737022cdccf64c4cf0",
+      "payload_sha256": "dfe742886214f0ebfa59b0915d79f450c4602def5319c8243f3629015b2fd12d"
+    }
+  ],
+  "cores": {
+    "reference": {
+      "sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+      "crc32": "b64cf944",
+      "bytes": 823512
+    },
+    "demand": {
+      "sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+      "crc32": "02bb090e",
+      "bytes": 857380
+    }
+  },
+  "known_unresolved_physical_cases": [
+    "METEOR",
+    "QUASAR"
+  ],
+  "coverage": "All18 contexts on v3 twice; Confuser is a previously working manual control; ref/v3 AB/BA on Meteor and Quasar only.",
+  "observations": [
+    "original archived input and expected effect properties",
+    "full frame/native PCM production and final accounting",
+    "complete bounded PCM history flushed after join",
+    "per-call main/thread worker CPU and valid pointers",
+    "direct/copy counts and retained full effect/recovery window"
+  ],
+  "limits": [
+    "No isolated per-optimization A7 prices.",
+    "Conditional/Rage fixture coverage is its observed branch, not all random branches.",
+    "Observer costs included; no frequency pinning or assumed MHz.",
+    "Offline equivalence reused by exact core hash; physical panel/speaker correctness requires observation."
+  ]
+}
