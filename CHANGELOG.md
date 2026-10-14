@@ -1,5 +1,18 @@
 # Changelog
 
+## Evaluate PPU return; reject combination — 2026-10-14
+
+Strictly archive7,226 files/1,827,485,639 bytes, clean FAT,91 exact payloads,
+protected stock/ROM/progress; only stock swapfile differs. Marker consumed.
+All56 epochs ran:42 clean,14 invalid,12 reported runner errors. Final remains
+32/36 clean windows/16 of18 contexts passing twice; Meteor/Rage032 unresolved.
+Combined Meteor common-warm CPU regresses0.071–0.120ms and first pointer drift
+480/484 vs496/505 controls. Isolated bulk saves0.181–0.215ms in matched control-
+heavy intervals but both nominal1200-call Meteor completions drift and fail.
+Add all-common-window/fixed-interval analysis to avoid selective peak claims.
+Preserve qualified sources/cores/proofs; no recoding, card writes or rearm.
+See docs/snes-ppu-test-return.md.
+
 ## Arm I: for authorized PPU measurement — 2026-10-14
 
 From pushed514d359 install91 separately owned payloads after strict6,721-file

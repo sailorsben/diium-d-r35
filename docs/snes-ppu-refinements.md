@@ -1,5 +1,11 @@
 # General PPU refinements — 2026-10-14
 
+**Physical result supersedes offline preference:** the combined candidate
+does not improve acceptance and regresses Meteor's warm-common CPU/pointer
+survival versus matched v3. Reject as an upgrade. Bulk shows isolated savings
+but still fails Meteor pointer integrity. Source-row cache was not tested.
+[Returned evidence](snes-ppu-test-return.md). Offline results below remain exact.
+
 Implemented on request after the automatic demand-v3 return. These paths select
 on current PPU geometry, visibility, depth and color-math state; there are no
 spell IDs or animation predictions. The final offline candidate is

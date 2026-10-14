@@ -1,9 +1,13 @@
 # Device findings
 
-**Current card:** I: armed for separate PPU measurement56 epochs from pushed
-514d359.91 payloads exact;6,720 prior files and stock/ROM/progress protected,
-FAT clean. One consumed marker returns next reboot to stock. Physical result
-pending; no production promotion. [Test/receipt](snes-ppu-test.md).
+**Latest physical return / current card:** I: unarmed, marker consumed. All56
+PPU epochs ran;16/18 contexts pass twice, Meteor/Rage032 still fail. Combined
+Meteor warm-common CPU costs0.071–0.120ms more and drifts earlier than matched
+v3. Bulk isolated heavy saving0.181–0.215ms, but both nominal1200-call Meteor
+runs have pointer drift and fail.42/56 epochs clean,14 invalid,12 runner errors.
+Clean FAT,91 payloads and protected stock/ROM/progress exact; only stock
+swapfile changes. No card writes/rearm or emulator changes during evaluation.
+[Results and decision](snes-ppu-test-return.md).
 
 **Latest offline implementation:** general PPU refinements pass259,200 raw
 graphics/PCM comparisons plus independent and native/resolution seams. Final

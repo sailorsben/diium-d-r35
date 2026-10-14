@@ -7015,6 +7015,14 @@
       "published_sha256": "868634bf0ad70e65c8819705da0bc774a4291e51bebad889f45e072d1cbad46c",
       "bytes": 9298,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T231531Z/ppu-test-return-evaluation.json",
+      "published": "evidence/2026-10-14/ppu-test-return/analysis.json",
+      "source_sha256": "250b2ea76580f09c2855d1377cd1961d95dfbcdf6841e341bc11eea57cf59329",
+      "published_sha256": "8dae7a12b240fc5770d4e93e7aeb08747e2ef4285d068470c68a6691c7a4f06e",
+      "bytes": 150719,
+      "normalized": true
     }
   ]
 }

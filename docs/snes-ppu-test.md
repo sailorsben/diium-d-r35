@@ -1,5 +1,10 @@
 # Authorized PPU measurement test
 
+**Returned / unarmed:** all56 epochs evaluated. Combination rejected: same
+16/18 contexts pass, Meteor warm prefix slower and pointer drift earlier.
+Bulk isolated savings do not pass full effect/recovery. Installation below
+is historical. [Results](snes-ppu-test-return.md).
+
 **Installed and armed:** guarded installation from pushed514d359 completed on
 I:. All91 payloads read back exactly;6,720 prior files, stock/adapter/boot/ROM
 and original progress verify. FAT clean before install, after payload and after

@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## PPU physical combination rejected — 2026-10-14
+
+56 epochs return, same16/18 final contexts clean; Meteor/Rage032 still fail.
+Combined Meteor common-warm CPU slower0.071–0.120ms and pointer drift earlier
+480/484 vs496/505 controls. Control-heavy selector alone reports0.055ms saving;
+all-common windows/fixed intervals expose the regression and must accompany
+that number. Bulk isolated helps heavy intervals but nominally complete1200
+calls drift; no acceptance. Shapes helps Quasar, OBJ broader prices weak/mixed;
+savings do not add. Cause of combination loss remains unproven. Strict archive,
+FAT/protected identities verify; no emulator/card writes/rearm. See
+snes-ppu-test-return.md and the bounded published analysis.
+
 ## Authorized PPU measurement test — 2026-10-14
 
 Fresh56-epoch controller qualifies67,200 calls before user-authorized rearm;

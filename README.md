@@ -6,11 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **I: armed for PPU measurement:** separate56-epoch test, final18 contexts
-  twice plus matched Meteor/Quasar and isolated family controls.91 payloads
-  read back;6,720 prior files/progress protected, FAT clean. Allow25–30 minutes
-  after cold boot, wait for stock, power down/return. Physical result pending.
-  [Sequence and receipt](docs/snes-ppu-test.md).
+- **PPU return: combination rejected; I: unarmed.** All56 epochs ran;
+  same16/18 contexts pass twice. Combined Meteor is slower over the matched
+  warm prefix and loses pointers earlier than v3. Bulk depth shows useful
+  isolated savings but its completed Meteor runs still have pointer drift.
+  Clean FAT,91 payloads/protected stock/progress verify; no card writes/rearm.
+  [Results and decision](docs/snes-ppu-test-return.md).
 
 - **General PPU refinements qualified offline:** OBJ window reuse, opaque depth,
   clipped normalization, sparse plain/math and contiguous depth clears.
