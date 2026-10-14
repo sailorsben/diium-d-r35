@@ -6,12 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **Demand-v3 gameplay installed on I:** separate one-shot manual experiment,
-  qualified core plus owned-output runtime; latest separate progress copied.
-  Nine payloads read back,6316 prior retro files/ROM unchanged and FAT clean.
-  Production/adapter/boot hook/original saves protected. Physical result and A7
-  savings pending; no production promotion or automatic72-epoch suite.
-  [Installation and test](docs/snes-demand-gameplay.md).
+- **Demand-v3 returned clean and unarmed:** opening-scene run; Ben reports
+  Confuser worked fine, with no Ultima/Holy/late-game coverage.3,952 full frames,
+  59.995 active calls/s, zero logged PCM faults/underruns and exact audio accounting.
+  Core wall mean11.266ms, minimum reported reserve2,028 frames. Strict6,340-file
+  archive, clean FAT and exact candidate/stock/ROM/original progress verify.
+  Incremental saving and worst-effect headroom remain unmeasured; no rearm or
+  production promotion. [Return and limits](docs/snes-demand-gameplay-return.md).
 
 - **CPU-demand candidates implemented offline:** isolated shared geometry,
   strict DMA spans, ring/brightness/OAM/selection/palette cleanup and owned

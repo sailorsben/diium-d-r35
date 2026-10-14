@@ -6831,6 +6831,22 @@
       "published_sha256": "e47b178656b3b867f6b3cccb3f51e5615d800b922d167f1cb5d6be04787ef997",
       "bytes": 1657,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T070253Z/demand-gameplay-return-analysis.json",
+      "published": "evidence/2026-10-14/demand-gameplay-return/analysis.json",
+      "source_sha256": "dd3209a50868ad1b96b1a5c7ed1bf8f038dea1ce75fb8abdec39b9960b37f841",
+      "published_sha256": "dd3209a50868ad1b96b1a5c7ed1bf8f038dea1ce75fb8abdec39b9960b37f841",
+      "bytes": 7759,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261014T070253Z/retro/snes-demand-gameplay1/saves/last-session.txt",
+      "published": "evidence/2026-10-14/demand-gameplay-return/session-telemetry.txt",
+      "source_sha256": "8845bda3f848c47825e7a53e26dc34d9ed344e96eedb8460776b294dec69d086",
+      "published_sha256": "8845bda3f848c47825e7a53e26dc34d9ed344e96eedb8460776b294dec69d086",
+      "bytes": 4964,
+      "normalized": false
     }
   ]
 }

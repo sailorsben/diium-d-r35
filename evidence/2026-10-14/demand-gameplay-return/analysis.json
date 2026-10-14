@@ -1,0 +1,204 @@
+{
+  "archive": "a7-pair-before-20261014T070253Z",
+  "card_writes": 0,
+  "FAT_clean": true,
+  "archived_files": 6340,
+  "archived_bytes": 1658860825,
+  "all_archive_hashes_verified": true,
+  "candidate_and_stock_identity_verified": true,
+  "marker_consumed": true,
+  "stock_next_boot": true,
+  "protected_prior_files_unchanged": 6315,
+  "changed_prior_files": [
+    "retro/swapfile"
+  ],
+  "unexpected_prior_changes": [],
+  "session_id": "504-24796368000",
+  "clean_observed_run": true,
+  "user_observation": "Opening scene only. Confuser worked fine. Cannot test Ultima, Holy, etc.",
+  "effect_identity_from_logs": false,
+  "orderly_exit_and_worker_join": true,
+  "phase": "finished",
+  "error": "",
+  "PCM_error_detail": "",
+  "fault_files": [],
+  "totals": {
+    "runs": 3952,
+    "held": 0,
+    "video_submitted": 3952,
+    "video_dupes": 0,
+    "write_errors": 0,
+    "xrun_count": 0,
+    "pauses": 2,
+    "snapshot_load_successes": 1,
+    "snapshot_load_rejections": 0,
+    "native_audio_frames": 2113012,
+    "resampled_enqueued_frames": 2908357,
+    "output_accepted_frames_including_priming": 2914003,
+    "priming_silence_frames": 5646,
+    "audio_cleared_frames": 0,
+    "audio_remaining_frames": 0,
+    "device_cleared_frames_estimate": 0,
+    "display_scaled": 3958,
+    "display_flipped": 3958,
+    "late_calls": 0,
+    "max_lateness_ns": 0,
+    "pcm_epoch": 2,
+    "pcm_admissions": 3952,
+    "pcm_observations": 24002,
+    "pcm_playable_min_running_frames": 2028,
+    "pcm_admission_min_lead_frames": 2411,
+    "phase_profile_samples": 62,
+    "diagnostic_ram_errors": 0
+  },
+  "accepted_nonpriming_PCM_frames": 2908357,
+  "software_PCM_accounting_exact": true,
+  "final_report_vs_RAM_checkpoint_deltas": {
+    "checkpoint_kernel_ns": [
+      "94924585000",
+      "94925326000"
+    ],
+    "diagnostic_ram_write_ns": [
+      "63394000",
+      "64179000"
+    ],
+    "diagnostic_ram_writes": [
+      "73",
+      "74"
+    ],
+    "session_elapsed_ns": [
+      "70128219000",
+      "70128959000"
+    ]
+  },
+  "native_frames_per_call": 534.669028340081,
+  "timing": {
+    "session_seconds": 70.128959,
+    "active_seconds": 65.871903,
+    "active_calls_per_second": 59.99523043990394,
+    "emulated_fps": 59.922743404,
+    "cycle_derived_deadline_ms": 16.688152946053858,
+    "20_percent_target_ms": 13.350522356843086,
+    "core_wall_mean_ms": 11.265928137651821,
+    "core_thread_CPU_mean_ms": 10.458652834008097,
+    "audio_worker_CPU_mean_ms": 0.5212424089068826,
+    "display_worker_CPU_mean_ms": 0.6805764170040486,
+    "distinct_recorded_threads_CPU_mean_ms": 11.660471659919029,
+    "video_callback_mean_ms": 0.24270040485829958,
+    "audio_callback_mean_ms": 0.539051113360324,
+    "admission_wait_mean_ms": 5.25799266194332,
+    "display_copy_total_ms": 27.326,
+    "display_copy_total_divided_by_calls_us": 6.9144736842105265,
+    "core_wall_max_ms": 25.076,
+    "ordinary_tail_wall": {
+      "count": 24,
+      "mean_ms": 12.037666666666667,
+      "min_ms": 11.774,
+      "max_ms": 13.634
+    },
+    "ordinary_tail_CPU": {
+      "count": 24,
+      "mean_ms": 11.096333333333334,
+      "min_ms": 11.005,
+      "max_ms": 11.226
+    },
+    "ordinary_tail_video_callback": {
+      "count": 24,
+      "mean_ms": 0.48125,
+      "min_ms": 0.375,
+      "max_ms": 2.25
+    },
+    "sparse_PPU_CPU": {
+      "count": 8,
+      "mean_ms": 4.085875,
+      "min_ms": 4.013,
+      "max_ms": 4.192
+    },
+    "sparse_APU_inclusive_CPU": {
+      "count": 8,
+      "mean_ms": 3.77375,
+      "min_ms": 3.676,
+      "max_ms": 3.898
+    },
+    "sparse_sample_runs": [
+      3452,
+      3516,
+      3580,
+      3644,
+      3708,
+      3772,
+      3836,
+      3900
+    ],
+    "ordinary_tail_runs": [
+      3929,
+      3930,
+      3931,
+      3932,
+      3933,
+      3934,
+      3935,
+      3936,
+      3937,
+      3938,
+      3939,
+      3940,
+      3941,
+      3942,
+      3943,
+      3944,
+      3945,
+      3946,
+      3947,
+      3948,
+      3949,
+      3950,
+      3951,
+      3952
+    ],
+    "histogram_calls_definitely_over_cycle_deadline": 9,
+    "histogram_calls_possibly_over_cycle_deadline": 18,
+    "histogram_calls_definitely_over_20_percent_target": 195,
+    "histogram_calls_possibly_over_20_percent_target": 462
+  },
+  "reserve": {
+    "reported_running_min_frames": 2028,
+    "reported_running_min_ms": 45.986394557823125,
+    "reported_admission_min_frames": 2411,
+    "final_epoch_appl_minus_transferred_frames": 0,
+    "final_epoch_appl_minus_hw_frames": 3008,
+    "final_pointer_arithmetic_matches_buffer_avail": true,
+    "complete_effect_reserve_timeline_available": false,
+    "physical_minimum_independently_certified": false
+  },
+  "test_progress": {
+    "saves/game-a27f1c7a-3145728-core-02bb090e-857380.state": "unchanged",
+    "saves/game-a27f1c7a-3145728.srm": "unchanged",
+    "saves/game-a27f1c7a-3145728.srm.bak": "unchanged",
+    "saves/game-c0fa0464-3145728.srm": "unchanged"
+  },
+  "production_gate_passed": false,
+  "incremental_A7_saving_measured": false,
+  "broad_spell_coverage": false,
+  "limits": [
+    "Manual opening-scene run; user reports Confuser worked fine and cannot test Ultima/Holy/etc. No retained cast identities/input replay.",
+    "Unmatched manual-session times cannot establish incremental demand-v3 savings or compare spell peaks with earlier controls.",
+    "Distinct-thread CPU sum omits other main-thread work and OS/kernel/other processes; session average is not worst-effect 20 percent acceptance.",
+    "Core wall time includes nested callbacks. APU-inclusive and callback times must not be added again.",
+    "Eight sparse samples and24 recent calls do not preserve the complete spell/onset/recovery timeline; sampled overhead remains included.",
+    "Reported reserve minimum is aggregate telemetry. Final pointer consistency does not independently validate all earlier observations.",
+    "Direct submission count and copied payload bytes are not persisted by this runner. Small copy timer is consistent with direct output but not a measured direct-hit count.",
+    "Display scale/flip totals include pause/menu draws; callbacks and completed flips do not establish visual correctness or broad coherency.",
+    "Late_calls uses lateness greater than one period at admission, not each core-only overrun. Core histogram includes sampled calls and coarse1ms bins."
+  ],
+  "input_hashes": {
+    "device-evidence/a7-pair-before-20261014T070253Z/archive.json": "182da952290fa036d47c6f79c1ab752c827f53df3022d8bc4e97713ba739e592",
+    "device-evidence/a7-pair-before-20261014T070253Z/demand-live-readback.json": "2db5cd32170c14f2bc7156fea640d661b4f70bd69f65b413d4214d2d5e0fa09e",
+    "device-evidence/a7-pair-before-20261014T070253Z/retro/snes-demand-gameplay1/last-progress.txt": "0678d820003572a77044de3d2d7a4ad42ab79e60e6df9fa54b31d515e7be2255",
+    "device-evidence/a7-pair-before-20261014T070253Z/retro/snes-demand-gameplay1/saves/last-session.txt": "8845bda3f848c47825e7a53e26dc34d9ed344e96eedb8460776b294dec69d086",
+    "device-evidence/a7-pair-before-20261014T070253Z/retro/snes-demand-gameplay1/startup.log": "59489f81c6edd2bf6b5d6f97d851db17348f5106624529eec2a5c64c74058de6",
+    "device-evidence/a7-pair-before-20261014T070253Z/retro/snes-demand-gameplay1/last-run.log": "456a4272e1e5315872521bc2913729eb433fea012228636d9f9b56fe8bedb326",
+    "evidence/2026-10-14/demand-gameplay/installation.json": "e47b178656b3b867f6b3cccb3f51e5615d800b922d167f1cb5d6be04787ef997",
+    "build/analyze-demand-gameplay-return.py": "5fac4fe104c81c1b549fa9ba928e6ccf6163d09b2839c2d00be8c35043316bbe"
+  }
+}

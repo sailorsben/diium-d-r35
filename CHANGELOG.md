@@ -1,5 +1,17 @@
 # Changelog
 
+## Collect demand-v3 manual return and bound physical acceptance — 2026-10-14
+
+Strictly archive6,340 files/1,658,860,825 bytes from I: read-only; clean FAT,
+consumed marker and exact candidate/stock/ROM/progress verify. Only prior stock
+swapfile changes. Opening-scene run completes3,952 full frames at59.995 calls/s,
+zero logged PCM faults/underruns and exact nonpriming accounting. Ben reports
+Confuser worked fine; no Ultima/Holy/late-game coverage. Core wall11.266ms mean,
+25.076ms maximum; reported reserve minimum2,028 frames. Preserve transient
+overrun, aggregate/partial telemetry, unmatched-price and visual-proof limits.
+Publish analysis/telemetry with reproducible archive-only analyzer; frozen inputs
+and prior evidence remain exact. No card writes/rearm or production promotion.
+
 ## Install authorized separate demand-v3 gameplay one-shot — 2026-10-14
 
 Install from pushed9a0340f at I:/retro/snes-demand-gameplay1; all nine payloads

@@ -1,5 +1,16 @@
 # Device findings
 
+**Latest returned demand-v3 evidence,2026-10-14:** opening-scene manual run;
+Ben reports Confuser worked fine and cannot test Ultima/Holy/etc.3,952 full
+frames at59.995 active calls/s; no logged errors/underruns, exact converted/
+accepted PCM, minimum reported running reserve2,028 frames. Core wall mean
+11.266ms; distinct recorded CPU-region sum11.660ms/call, not worst-effect or
+complete-system headroom. Maximum core wall25.076ms; coarse histogram9–18
+over nominal quota with no logged starvation. Strict archive6,340 files, clean
+FAT, exact candidate/stock/ROM/original progress; only prior stock swapfile changed.
+One-shot consumed; card remains unarmed, no writes/rearm. No matched savings,
+late-game physical coverage or production promotion. [Return](snes-demand-gameplay-return.md).
+
 **Latest card status,2026-10-14:** explicitly authorized demand-v3 manual
 gameplay candidate installed separately at I:/retro/snes-demand-gameplay1 and
 one-shot armed. Strict archive6317 files; nine payloads read back,6316 protected

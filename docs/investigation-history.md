@@ -1,5 +1,24 @@
 # Investigation history and negative results
 
+## Demand-v3 opening-scene physical return — 2026-10-14
+
+Strict6,340-file return archive and clean FAT verify exact candidate/stock/ROM/
+original progress; consumed marker leaves I: unarmed. Only prior stock swapfile
+changes.3,952 submitted frames,59.995 active calls/s, no logged PCM faults/
+underruns, exact2,908,357 accepted nonpriming audio frames. Ben reports Confuser
+worked fine; opening-scene coverage only, no Ultima/Holy/late-game play.
+
+Core wall11.266ms average,25.076ms maximum. Histogram retains9–18 nominal-quota
+overruns without logged starvation; reported running reserve minimum2,028 frames.
+Do not claim every call met its deadline from late_calls=0: its admission test
+uses a different boundary. Distinct recorded CPU-region mean11.660ms is partial
+system cost and whole-session average, not20% worst-effect acceptance. Tail and
+sparse samples have no spell identity; no matched incremental savings. Small
+copy timer is consistent with owned output, but direct counts/bytes are not
+persisted. Normal display-worker teardown proves lifecycle, not broad visual
+coherency. No new card writes/rearm or production promotion.
+[Return and reproducible evidence](snes-demand-gameplay-return.md).
+
 ## Implement shared work elimination; measure intersections — 2026-10-14
 
 Fresh isolated and combined candidates pass302400 raw original-command frame/

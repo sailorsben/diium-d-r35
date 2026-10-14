@@ -1,5 +1,10 @@
 # Demand v3 separate physical gameplay qualification
 
+**Returned:** opening-scene run completed cleanly, Confuser reported working;
+I: now unarmed. No late-game coverage or matched A7-saving measurement.
+See [the physical return](snes-demand-gameplay-return.md) for preserved logs,
+timing, reserve and acceptance limits. Installation details below are historical.
+
 Ben explicitly requested “Push it to I:” after the offline implementation was
 completed and pushed at d26f64c. This authorizes a separate experimental manual
 gameplay install and one-shot boot, with no promotion of the production core.
@@ -16,7 +21,7 @@ Installed and one-shot armed on I: from pushed source `9a0340f`. All nine
 payloads read back exactly;6316 original retro files and the ROM remain exact.
 Read-only FAT checks before installation, after payload and after arm are clean.
 The [installation receipt](../evidence/2026-10-14/demand-gameplay/installation.json)
-records identities and archive; physical gameplay is pending.
+records identities and the pre-install archive.
 
 Fresh private staging uses `build/demand-gameplay-private-v1`; the card target is
 `retro/snes-demand-gameplay1`. All existing retro files are archived and checked
