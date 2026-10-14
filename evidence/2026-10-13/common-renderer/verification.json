@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "new_original_command_calls": 129600,
+  "final_candidate_calls": 43200,
+  "independent_final_tile_cases": 129024,
+  "independent_repeated_palette_cases": 3584,
+  "repeated_palette_calls_per_case": 16,
+  "seam_logs": [
+    {
+      "path": "build/common-band-private-v3/clipping-exact.log",
+      "sha256": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66",
+      "text": "PASS: actual clipped renderer matches independently flushed original rows\n"
+    },
+    {
+      "path": "build/common-band-private-v3/clipping-candidate.log",
+      "sha256": "e76def334792fea4a2e0098d900ee588d1f0e70889a643cadf5ea18d9c5ffb97",
+      "text": "PASS: 129024 original/candidate common tile cases; blank states, covered/equal/visible depth; negative X, first row, right edge, eight distinct colors, all flips/math modes/2-4bpp/256-512 stride\n"
+    },
+    {
+      "path": "build/common-band-private-v3/palette-exact.log",
+      "sha256": "b628b14eae5909a5d0c37d711a0e629f6b61bce180e98cd609d2480b1a3f0e66",
+      "text": "PASS: actual clipped renderer matches independently flushed original rows\n"
+    },
+    {
+      "path": "build/common-band-private-v3/palette-candidate.log",
+      "sha256": "abcd6e9af5482903a81c99ddc43ea7296de94ebfc2ee37c29c82bf8430ccf653",
+      "text": "PASS: 3584 original/candidate common tile cases; blank states, covered/equal/visible depth; negative X, first row, right edge, eight distinct colors, all flips/math modes/2-4bpp/256-512 stride\n"
+    }
+  ],
+  "staged_frozen_identities_unchanged": {
+    "source_hashes": 160,
+    "payload_hashes": 90,
+    "proof_hashes": 25
+  },
+  "A7_saving_measured": false,
+  "card_access": false,
+  "production_gate_passed": false
+}

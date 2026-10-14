@@ -1,0 +1,279 @@
+{
+  "cases": [
+    {
+      "name": "HOLY",
+      "case": 0,
+      "tile_dispatches_handled_in_band": 2078,
+      "band_calls": 378,
+      "opaque_rows": 5920,
+      "palette_materializations_before": 12,
+      "palette_materializations_after": 7,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        0,
+        522.3550581999989
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.0,
+        0.25137394523580314
+      ],
+      "equation": "S_common_us = 2078*entry_credit + 5920*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "METEOR",
+      "case": 1,
+      "tile_dispatches_handled_in_band": 8208,
+      "band_calls": 332,
+      "opaque_rows": 6875,
+      "palette_materializations_before": 15,
+      "palette_materializations_after": 10,
+      "conditional_additional_saving_to_deadline_us": [
+        912.332067660871,
+        1014.4056819608704
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        4249.962967660871,
+        4352.0365819608705
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.11115156769747453,
+        0.12358743688607096
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.5177830126292484,
+        0.5302188818178448
+      ],
+      "equation": "S_common_us = 8208*entry_credit + 6875*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "MELTDOWN",
+      "case": 3,
+      "tile_dispatches_handled_in_band": 6726.75,
+      "band_calls": 237,
+      "opaque_rows": 14190.125,
+      "palette_materializations_before": 16,
+      "palette_materializations_after": 11,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        3084.2898341551736,
+        3186.3634484551767
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.45851114344299604,
+        0.47368542735424635
+      ],
+      "equation": "S_common_us = 6726.75*entry_credit + 14190.125*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "SIREN",
+      "case": 5,
+      "tile_dispatches_handled_in_band": 6102.0625,
+      "band_calls": 222.625,
+      "opaque_rows": 5869.6875,
+      "palette_materializations_before": 14,
+      "palette_materializations_after": 9,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        1139.5935397316352,
+        1543.9370090816356
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.18675546829152195,
+        0.25301887830248143
+      ],
+      "equation": "S_common_us = 6102.0625*entry_credit + 5869.6875*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "BAHAMUT",
+      "case": 6,
+      "tile_dispatches_handled_in_band": 4827.5,
+      "band_calls": 195.5,
+      "opaque_rows": 12674.25,
+      "palette_materializations_before": 18,
+      "palette_materializations_after": 13,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        2567.021843956649,
+        2669.0954582566483
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.5317497346362815,
+        0.55289393231624
+      ],
+      "equation": "S_common_us = 4827.5*entry_credit + 12674.25*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "CARBUNKL",
+      "case": 7,
+      "tile_dispatches_handled_in_band": 2057.5,
+      "band_calls": 103,
+      "opaque_rows": 5739.8125,
+      "palette_materializations_before": 13,
+      "palette_materializations_after": 8,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        0,
+        203.7788586327788
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.0,
+        0.09904197260402371
+      ],
+      "equation": "S_common_us = 2057.5*entry_credit + 5739.8125*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "QUASAR",
+      "case": 8,
+      "tile_dispatches_handled_in_band": 10055.0,
+      "band_calls": 353,
+      "opaque_rows": 10556,
+      "palette_materializations_before": 256,
+      "palette_materializations_after": 10,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        2955.0930895115216,
+        3057.1667038115193
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.2938928980120857,
+        0.30404442603794324
+      ],
+      "equation": "S_common_us = 10055.0*entry_credit + 10556*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    },
+    {
+      "name": "RAGE_004",
+      "case": 10,
+      "tile_dispatches_handled_in_band": 3750.1875,
+      "band_calls": 161,
+      "opaque_rows": 3463.8125,
+      "palette_materializations_before": 13,
+      "palette_materializations_after": 8,
+      "conditional_additional_saving_to_deadline_us": [
+        0,
+        0
+      ],
+      "conditional_additional_saving_to_20pct_us": [
+        886.4868286182682,
+        1369.2555558932672
+      ],
+      "conditional_deadline_net_per_cell_us": [
+        0.0,
+        0.0
+      ],
+      "conditional_20pct_net_per_cell_us": [
+        0.23638466839811828,
+        0.3651165590769174
+      ],
+      "equation": "S_common_us = 3750.1875*entry_credit + 3463.8125*opaque_store_credit - added_band_cache_and_spill_cost; measure whole combination",
+      "new_unit_prices_measured": false
+    }
+  ],
+  "source_scope": [
+    "CPU dispatch/WaitAddress owner",
+    "APU interpolation/envelope/clock path",
+    "PPU register flush/window/fixed-color ownership",
+    "background/OBJ/Mode7/mosaic/clipped rendering and tile-cache invalidation",
+    "NEON mask/palette/color/store kernels",
+    "runner resampling/audio publication and display buffer ownership"
+  ],
+  "gate_is_conditional_on_prior_forecast": true,
+  "A7_prices_measured": false,
+  "production_gate_passed": false,
+  "no_card_access": true,
+  "assumptions": [
+    "Earlier all-new-code forecast is itself unmeasured; replace it with measured service before accepting a gate.",
+    "Per-cell threshold is normalized net saving after added costs, not an isolated ABI instruction price.",
+    "No conversion of disassembly or QEMU duration to A7 microseconds.",
+    "Only ordinary indexed 2/4bpp plain/full-add/full-sub background bands use specialization; unsupported and cold paths retain original behavior."
+  ],
+  "negative_results": [
+    "Generic v1 exact output passes, but emitted code introduces out-of-line per-row blend calls; reject that performance design.",
+    "One-palette v2 exact output passes; Quasar rebuilds palette256 times. Eight-slot batch-local v3 avoids repeated materialization; slot lifetime ends with DrawBackground.",
+    "Tile decode, exact arithmetic-only replacement and simulation quota are not demonstrated universal millisecond sources."
+  ],
+  "assembly": [
+    {
+      "variant": "generic",
+      "symbol": "DrawBackground",
+      "sha256": "a4a8df596f85b4a7bea7176ce1e0efb95d5ee9b86ef130cc3adf9d75a64f7a6e",
+      "out_of_line_blend_call_sites": [
+        "45204:\tebfff3f5 \tbl\t421e0 <d35_blend.lto_priv.0>",
+        "458a0:\tebfff24e \tbl\t421e0 <d35_blend.lto_priv.0>",
+        "46d3c:\tebffed27 \tbl\t421e0 <d35_blend.lto_priv.0>",
+        "47a0c:\tebffe9f3 \tbl\t421e0 <d35_blend.lto_priv.0>",
+        "47bf8:\tebffe978 \tbl\t421e0 <d35_blend.lto_priv.0>"
+      ],
+      "A7_time": false
+    },
+    {
+      "variant": "band",
+      "symbol": "d35_band_0",
+      "sha256": "eb147b07c3a11cc4c7ced96206db1746df5be1b34f4731e09e918f8892602424",
+      "out_of_line_blend_call_sites": [],
+      "A7_time": false
+    },
+    {
+      "variant": "band",
+      "symbol": "d35_band_1",
+      "sha256": "603b0443f87e220a86270516a5f5f830d85df38385f89b89d3b2deb46f91831c",
+      "out_of_line_blend_call_sites": [],
+      "A7_time": false
+    },
+    {
+      "variant": "band",
+      "symbol": "d35_band_3",
+      "sha256": "62beb32142b925c513935d76f2975b06d27f3936d6d38fb689a42ac4c910c26b",
+      "out_of_line_blend_call_sites": [],
+      "A7_time": false
+    }
+  ]
+}

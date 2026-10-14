@@ -1,5 +1,23 @@
 # Changelog
 
+## Qualify common background bands across every failing context — 2026-10-13
+
+Review the shared CPU/APU/PPU/render/cache/runner C paths. Target repeated full-tile
+ABI/palette work and opaque depth merges rather than transplant Pearl's counts.
+Final constant-mode band v3 handles2,058–10,055 former cells per heavy call with
+103–378 band entries across all eight staged failures; Meteor8,208 to332. Eight
+batch-local palettes and first-active-tile lookup avoid repeated row checks.
+
+Final code passes43,200 original-command comparisons,129,024 independent scalar
+tile cases and3,584 repeated-palette cases; three prototypes total129,600 replay
+calls. Reject generic v1's extra per-row blend calls by assembly inspection,
+retain v2's exactness and improve its one-slot Quasar palette churn256 to10 in v3.
+Require real named final functions with inline color math. No time inferred from
+assembly, counts or QEMU. Conditional Meteor deadline needs0.912–1.014ms more,
+20% target4.250–4.352ms; new unit prices and all added costs remain missing.
+All817 old evidence entries and staged160/90/25 identities preserved. No card
+access, new install or production claim. [Analysis](docs/snes-common-renderer.md).
+
 ## Compare new renderer applicability across staged failing cases — 2026-10-13
 
 Use already qualified per-case census logs; no new build/replay/card access.

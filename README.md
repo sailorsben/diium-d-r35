@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Shared renderer candidate qualified offline:** all eight staged failures
+  use the common band path. It handles2,058–10,055 former tile calls per heavy
+  call with103–378 band entries, reuses palettes within each background call and
+  directly stores fully visible depth rows. Final variant passes43,200 original
+  replay calls,129,024 scalar tile cases and3,584 repeated-palette cases. Preserve
+  a generic prototype that added per-row blend calls as a rejected design.
+  New A7 prices/headroom remain unknown; no card access or staged payload change.
+  [C review, per-effect work and break-even conditions](docs/snes-common-renderer.md).
 - **Pearl workback, offline:** main BG3 spends most visited rows behind higher
   priority pixels. An early depth test removes 4,763 tile preambles per heavy
   call; a sole-layer subscreen path accelerates 4,569 opaque rows. Constant-color

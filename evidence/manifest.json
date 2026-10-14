@@ -6441,6 +6441,36 @@
       "published": "evidence/2026-10-13/pearl-workback/forecast-cases.json",
       "source_sha256": "bb39c4c4c052ac9e18fc02b49e40ce1773c2b839464e089c36fdff728a8c986f",
       "published_sha256": "eec5ce1e5d84cd351a4826e445c2921c524c71aa80ea08452826153e298bbf7f"
+    },
+    {
+      "source": "build/common-band-private-v3/public-generic-v1.json",
+      "published": "evidence/2026-10-13/common-renderer/generic-v1.json",
+      "source_sha256": "b6fc250e0a19d098c37331919c2ac26cd675f7884b0838c804671629be19f39a",
+      "published_sha256": "b6fc250e0a19d098c37331919c2ac26cd675f7884b0838c804671629be19f39a"
+    },
+    {
+      "source": "build/common-band-private-v3/public-band-v2.json",
+      "published": "evidence/2026-10-13/common-renderer/band-v2.json",
+      "source_sha256": "b2903fcacfc614501690395bac70471804528f0366c628462291ef36b17218b4",
+      "published_sha256": "b2903fcacfc614501690395bac70471804528f0366c628462291ef36b17218b4"
+    },
+    {
+      "source": "build/common-band-private-v3/public-band-v3.json",
+      "published": "evidence/2026-10-13/common-renderer/band-v3.json",
+      "source_sha256": "1ffacf57b28febb6e655224bccff6b8262937172437641350da9bc7d29e6b929",
+      "published_sha256": "1ffacf57b28febb6e655224bccff6b8262937172437641350da9bc7d29e6b929"
+    },
+    {
+      "source": "build/common-band-private-v3/public-analysis.json",
+      "published": "evidence/2026-10-13/common-renderer/analysis.json",
+      "source_sha256": "09ebaad22c6ef0ef328c3f784d2b7863df2f657695920567f4cd50df78f90cd7",
+      "published_sha256": "09ebaad22c6ef0ef328c3f784d2b7863df2f657695920567f4cd50df78f90cd7"
+    },
+    {
+      "source": "build/common-band-private-v3/public-verification.json",
+      "published": "evidence/2026-10-13/common-renderer/verification.json",
+      "source_sha256": "dd72d829cde61a3a6276c1352e095498cb793fd1f8c8aa773fe39eb6a902f195",
+      "published_sha256": "dd72d829cde61a3a6276c1352e095498cb793fd1f8c8aa773fe39eb6a902f195"
     }
   ]
 }

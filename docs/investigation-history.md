@@ -1,5 +1,22 @@
 # Investigation history and negative results
 
+## Find a shared full-tile boundary instead of eight effect patches — 2026-10-13
+
+Trace CPU/WaitAddress, APU interpolation/envelopes/clocks, PPU flush/captured state,
+background/OBJ/Mode7/mosaic/clipped rendering, cache/math/store helpers and runner
+resampling/publication ownership. Thousands of tile entry boundaries recur in
+every failure; only0–21.75 decodes do. Existing exact resampler and mandatory CPU
+state are not free removals. Preserve clock/quota/frame fidelity.
+
+Generic batch v1 is exact but introduces outlined blend calls per math row.
+Constant-mode band v2 keeps math inline; v3 hoists palette lookup to tile scope and
+retains eight tables only for the owning background call. Quasar's prototype
+materializations256 to10 are not the staged core's cache count. All three pass
+18 original-command contexts; final independent tile and repeated-palette seams
+pass. Case counts support one common candidate, not universal positive A7 saving.
+No price from prologue bytes/QEMU/inclusive time and no new hardware test. See
+[common C analysis and conditional gate](snes-common-renderer.md).
+
 ## Follow Pearl's C path before assigning new milliseconds — 2026-10-13
 
 An aligned layer/plane census distinguishes mostly hidden main BG3 tile setup

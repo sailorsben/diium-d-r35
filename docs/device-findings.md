@@ -1,5 +1,13 @@
 # Device findings
 
+**Newest shared C candidate, offline:** constant-mode bands amortize tile-call
+setup and palette work across all eight failing contexts. Meteor8,208 old cell
+dispatches become332 band calls; every case has substantial eligibility. Final
+v3 exact replay/scalar/palette oracles pass and emitted math stays inline.
+Actual A7 net saving, added cache/spill/band cost and whole-effect headroom remain
+unmeasured. No card access or change to fullpaths1. Generic row-call prototype is
+a retained negative design. [Shared-path analysis](snes-common-renderer.md).
+
 **Newest offline Pearl analysis:** early rejection removes 4,763 wholly hidden
 tile preambles; a separate sole-BG3 subscreen producer accelerates 4,569 opaque
 rows. Source census and independent original-output fixtures support bounded
