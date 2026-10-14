@@ -6591,6 +6591,54 @@
       "published": "evidence/2026-10-13/partial-merge/mask-kernel-check.txt",
       "source_sha256": "f0f3dedb202b4cd3be3f8d67cd4ec51bdfd426b2b2863a67e4e9503fc322d8a7",
       "published_sha256": "f0f3dedb202b4cd3be3f8d67cd4ec51bdfd426b2b2863a67e4e9503fc322d8a7"
+    },
+    {
+      "source": "build/fused-toolbox-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/fused-toolbox/prototype-qualification.json",
+      "source_sha256": "c6830687b243dea528624a094ba07f6d4bf6ff2e8632811e301a6225cef0a4cd",
+      "published_sha256": "c6830687b243dea528624a094ba07f6d4bf6ff2e8632811e301a6225cef0a4cd"
+    },
+    {
+      "source": "build/fused-toolbox-private-v1/oracles.json",
+      "published": "evidence/2026-10-13/fused-toolbox/prototype-oracles.json",
+      "source_sha256": "ee6f01791df5d08c04faf4ecc031b50eab8522c3bb10d946e385bc55929d3662",
+      "published_sha256": "ee6f01791df5d08c04faf4ecc031b50eab8522c3bb10d946e385bc55929d3662"
+    },
+    {
+      "source": "build/fused-toolbox-private-v1/composition.json",
+      "published": "evidence/2026-10-13/fused-toolbox/prototype-composition.json",
+      "source_sha256": "1801d5f4ad126d0857c053298de3d6b18a833adf851abf4b501e0b7da9fabe5a",
+      "published_sha256": "fa92d6a86333c0be95daa7535ff74ec794c3a9483f7e705d51649cbbf06f67cd"
+    },
+    {
+      "source": "build/fused-toolbox-private-v2/qualification.json",
+      "published": "evidence/2026-10-13/fused-toolbox/veto-qualification.json",
+      "source_sha256": "683a218390de6be643da4d86e90e0e59779c16bbda4dcde262026a6b612c24bf",
+      "published_sha256": "683a218390de6be643da4d86e90e0e59779c16bbda4dcde262026a6b612c24bf"
+    },
+    {
+      "source": "build/fused-toolbox-private-v2/oracles.json",
+      "published": "evidence/2026-10-13/fused-toolbox/veto-oracles.json",
+      "source_sha256": "ee6f01791df5d08c04faf4ecc031b50eab8522c3bb10d946e385bc55929d3662",
+      "published_sha256": "ee6f01791df5d08c04faf4ecc031b50eab8522c3bb10d946e385bc55929d3662"
+    },
+    {
+      "source": "build/fused-toolbox-private-v2/composition.json",
+      "published": "evidence/2026-10-13/fused-toolbox/veto-composition.json",
+      "source_sha256": "2438fad9b935c160426cac81d561cf422d60145ddaec726d22ca4fd301acf547",
+      "published_sha256": "2438fad9b935c160426cac81d561cf422d60145ddaec726d22ca4fd301acf547"
+    },
+    {
+      "source": "build/fused-count-private-v2/qualification.json",
+      "published": "evidence/2026-10-13/fused-toolbox/observer-refinement.json",
+      "source_sha256": "59e9fad24fd4d352e6449636cb83d07e37a15fe096a6aa01d36bf01d3005b6a6",
+      "published_sha256": "59e9fad24fd4d352e6449636cb83d07e37a15fe096a6aa01d36bf01d3005b6a6"
+    },
+    {
+      "source": "build/fused-toolbox-private-v2/identity.json",
+      "published": "evidence/2026-10-13/fused-toolbox/identity.json",
+      "source_sha256": "d45a2f7a4a1d2315105326969987a75fef6b6e8918353fb136ad9d3e1a260a9d",
+      "published_sha256": "d45a2f7a4a1d2315105326969987a75fef6b6e8918353fb136ad9d3e1a260a9d"
     }
   ]
 }

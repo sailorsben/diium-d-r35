@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "policy_scalar_cases": 387072,
+  "sole_scalar_cases": 9216,
+  "prior_scalar_reference_sha256": "1c607638839bd809717ea1c4c53d4386a29524b1b4e22a4807c7b25d75762fdb",
+  "QEMU_timings_used": false,
+  "production_gate_passed": false
+}

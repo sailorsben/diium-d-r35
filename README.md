@@ -6,6 +6,15 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Window batching is already in the experimental test:** all three combined1
+  cores include ability2's generalized scanline Window2 patch. The old78.97%
+  figure measures fewer renderer entries, not total CPU saving; production
+  promotion remains pending. New offline fusion reuses visibility results,
+  shares band/palette setup and combines sparse stores with selected hidden-tile
+  rejection. Quasar avoids4410 index rows per heavy call while Meteor retains
+  3978.5625 sparse rows.90000 exact replay comparisons pass across prototypes
+  and observer refinement; A7 costs remain unmeasured, current I: test unchanged.
+  [Composition, negative case and evidence limits](docs/snes-fused-toolbox.md).
 - **Meteor/Quasar workback, offline:** new exact census separates their costs:
   Meteor8182 partial rows versus Quasar741. A selective plain-row scalar path
   handles3978.5625 one/two-pixel Meteor rows per heavy call versus132 Quasar;

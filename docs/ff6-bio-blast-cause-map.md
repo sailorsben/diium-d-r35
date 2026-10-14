@@ -1,5 +1,15 @@
 # FF6 Bio Blast: ROM-derived cause map and window experiment
 
+**Status correction, 2026-10-13:** the uninstalled status below describes the
+original instrumented prototype at the Focus1 return. Its generalized Mode1
+Window2 successor is already included in ability2 and all three cores staged
+for the current combined1 experiment. The source retains scanline window state
+and conditionally avoids `$2128/$2129` renderer flushes. The production default
+has not been promoted. The 78.97% result measures renderer entries, not total
+runtime. See the [current installation and identities](snes-combined-measurement.md)
+and [generalized implementation](snes-ability-regression.md). Retain the earlier
+scorecard below as historical evidence, not current installation status.
+
 **Focus1 returned2026-10-10; card is unarmed.** The
 [physical budget and candidate scorecard](snes-focus-1-return.md) supersede
 pending-return instructions below. Measured PPU cost grows during failure,

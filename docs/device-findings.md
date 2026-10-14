@@ -1,5 +1,16 @@
 # Device findings
 
+**Current Window2 status and offline tool fusion:** all three combined1 test
+cores already include ability2's generalized scanline window patch. Older
+uninstalled statements below describe earlier prototypes. Production remains
+unpromoted;78.97% fewer renderer entries never meant78.97% total CPU saving.
+New fusion combines shared band/palette decisions, reused depth results, sparse
+stores and selected4bpp rejection. Quasar4410 fewer index rows/heavy call;
+Meteor3978.5625 sparse rows retained. Visible-result veto bounds Terrato probing
+in the replay, with an explicit loss of some hidden-row elimination.90000 exact
+replay comparisons pass. Policy/ABI/cache costs and net A7 saving unmeasured;
+no card access or change to staged test. [Details](snes-fused-toolbox.md).
+
 **Latest Meteor/Quasar C workback, offline:** exact row census finds8182 vs741
 partial rows. Meteor's dominant merges are plain, with3978.5625 sparse one/two-
 pixel candidate hits versus132 Quasar. Exact selective scalar stores, signed

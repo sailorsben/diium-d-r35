@@ -1,0 +1,29 @@
+{
+  "source_hashes": {
+    "build/build-fused-count.sh": "c1a89e7f3e90830de5554089955e50de1b90f6d675fd68f18b72359e597970b4",
+    "build/build-fused-toolbox-v2.sh": "90e8c0955ed0f8acabd27761e70d071a3d39ec89e64bdf5be24f92695c4eb63a",
+    "build/build-fused-toolbox.sh": "14e64fd53bda1260fd04ac4d8231fca0a8b22db320149c05e22cb8bb2ac9dfeb",
+    "build/check-fused-toolbox.py": "6f069858313763de7e6966dbb9b0c49eef88b24d047e46303deba69c4ced6924",
+    "build/fused-toolbox-band-v2.h": "139940fe287accc1479edc8a30af71b29ef5d6cb8d367efd3bc9522906dad159",
+    "build/fused-toolbox-band.h": "ccd62daa69fc0d5df5a64b5909509058ec1b7048c427f2b92297fef58e95fd8a",
+    "build/fused-toolbox-v2.h": "1295bbb45f1fb4851ff3d308a64a8685fcfac54536bae2d5ee0b42f1b3476350",
+    "build/fused-toolbox.h": "f09044362bb3000875cef73284e3e7ad1978ae746338c06888fa6a37b67467d7",
+    "build/inspect-fused-toolbox.sh": "37acfbc0e3026d3f3011d700ee43da85d772fe12b300329f0ed59cb06cb202e8",
+    "build/prepare-fused-count.py": "23362bbc3309a39e9fce71802759a608f816867e5e86dd60eb30657e1051386a",
+    "build/prepare-fused-toolbox.py": "7cb6058e2e11fe049e43a3b1485d4b33f1f9574ac63c5e0e1c1358b147cb00fd",
+    "build/publish-fused-toolbox.py": "b75dc31399394dfe7b4740dabb06c051401eb17c38b62192a2ebeec77481e2a7",
+    "build/qualify-fused-count.py": "b740241ffd82eff868fe6ae917c79880d5e87038757f2b1bf30e61bfae8e41fe",
+    "build/qualify-fused-toolbox.py": "0a2b383a58e3e17996a004a7fc12f191744c3da1de7c0609d6093b226b0f1653",
+    "build/report-fused-toolbox.py": "fb87d1fdda91c8c33d44118cbe79ef1d50924f09cab55a190bb676c455263b9c",
+    "docs/snes-fused-toolbox.md": "6a36576c5322229d96d7b7db999d7d87c51beecf38efe3a773eee9df6d8f563f"
+  },
+  "prior_staged_sources_payloads_proofs_unchanged": true,
+  "prior_partial_workback_sources_unchanged": true,
+  "staged_verification_sha256": "eff28a9bd60afd318a614f934df082ba3b044e2ba809d02bf52fc6f84ac43462",
+  "window_header_sha256": "09aea539fd3a81c4770022c6bd6d0d86801c9dadecf46a1dec02fec961ebf740",
+  "card_access": false,
+  "installed": false,
+  "A7_savings_measured": false,
+  "QEMU_timings_used": false,
+  "production_gate_passed": false
+}

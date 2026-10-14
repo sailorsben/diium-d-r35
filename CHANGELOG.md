@@ -1,5 +1,21 @@
 # Changelog
 
+## Fuse exact renderer tools and correct Window2 installation status — 2026-10-13
+
+Verify generalized scanline Window2 already exists in all three staged combined1
+cores; correct stale cause-map wording without promoting production or confusing
+78.97% fewer renderer entries with total runtime saving. Keep card untouched.
+
+Offline fusion shares band/palette decisions, reuses the first visible depth
+result and combines sparse stores with selected4bpp hidden-tile rejection.
+Negative Terrato probe behavior leads to a visible-result veto; preserve the
+first prototype and its tradeoff. Quasar4410 fewer index rows/heavy call and
+Meteor3978.5625 sparse opportunities compose without double-crediting work.
+90000 original-output calls,396288 scalar cases per variant pass. Extra saved
+registers, selector/cache costs and net A7 saving remain unpriced. Publish
+bounded receipts and verify original staged/prior workback identities unchanged.
+[Mechanisms and limits](docs/snes-fused-toolbox.md).
+
 ## Work backward through Meteor and Quasar partial merges — 2026-10-13
 
 Keep running combined1 test untouched. Exact offline mask/plane census finds
