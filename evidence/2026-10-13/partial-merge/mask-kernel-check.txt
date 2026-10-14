@@ -1,0 +1,1 @@
+PASS 32768 scalar-oracle mask/flip/index-depth/canary cases; 4608 sparse hits; exact sign expansion; no timings

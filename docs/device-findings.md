@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest Meteor/Quasar C workback, offline:** exact row census finds8182 vs741
+partial rows. Meteor's dominant merges are plain, with3978.5625 sparse one/two-
+pixel candidate hits versus132 Quasar. Exact selective scalar stores, signed
+mask widening and plain-state snapshots qualified; broader snapshots retained
+as unpriced math register-pressure risk. Quasar's mainBG2 plain4410 hidden rows
+instead suggest earlier4bpp rejection; observer probe hits570/849 vs90.3125/2743
+Meteor.18000 replay calls plus387072 scalar tile and32768 canonical-mask checks;
+no A7 saving or hardware limit inferred. Current I: test unchanged, physical
+logs pending. [Workback and conditional budget](snes-meteor-quasar-partial-workback.md).
+
 **Current combined1 A7 measurement armed on I:** archive5,834 files first;
 fullpaths1 attempted100 runs,55 runtime failures. Prior combination completed
 five/eight failure contexts in both repeats; Holy/Meteor/Quasar still fail.

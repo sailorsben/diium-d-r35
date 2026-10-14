@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "mask_cases": 32768,
+  "candidate_scalar_tile_cases": 258048,
+  "QEMU_timing_used": false,
+  "unchanged_original_scalar_reference_sha256": "1c607638839bd809717ea1c4c53d4386a29524b1b4e22a4807c7b25d75762fdb"
+}

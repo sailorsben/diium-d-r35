@@ -6,6 +6,15 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-13
 
+- **Meteor/Quasar workback, offline:** new exact census separates their costs:
+  Meteor8182 partial rows versus Quasar741. A selective plain-row scalar path
+  handles3978.5625 one/two-pixel Meteor rows per heavy call versus132 Quasar;
+  retain NEON for dense rows. Exact signed mask widening and plain-state snapshots
+  avoid a broad prototype's math register-pressure risk. Quasar instead offers
+  570/849 fully hidden4bpp tiles to an observer-only early-reject probe versus
+  Meteor90.3125/2743. 18000 replay calls,387072 scalar tile cases and32768 canonical
+  mask fixtures pass; no A7 time inferred. Current combined1 test is unchanged.
+  [Mechanisms, rejected shortcuts and savings thresholds](docs/snes-meteor-quasar-partial-workback.md).
 - **Combined1 measurement armed on I:** archive-first return
   preserves 5,834 files and all 91 prior payloads; FAT is clean. Prior combined
   completed five of eight failure contexts in both repeats; Holy, Meteor and

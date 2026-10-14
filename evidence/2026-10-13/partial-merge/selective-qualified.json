@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "comparisons": [
+    {
+      "case": 0,
+      "name": "HOLY",
+      "variant": "selective",
+      "calls": 1200,
+      "passed": true,
+      "core_sha256": "905911860900afdffb22e1518385248d0bd2affbc17447c85bebde9bbef39545",
+      "log_sha256": "64e238ec8248e19baa3c4762e37dc643409da997f94c24df7363b6bdd90962b1"
+    },
+    {
+      "case": 1,
+      "name": "METEOR",
+      "variant": "selective",
+      "calls": 1200,
+      "passed": true,
+      "core_sha256": "905911860900afdffb22e1518385248d0bd2affbc17447c85bebde9bbef39545",
+      "log_sha256": "95629192d17df0f9af175cf33e46fb88c19eb8876f684ae91306784882e71e88"
+    },
+    {
+      "case": 8,
+      "name": "QUASAR",
+      "variant": "selective",
+      "calls": 1200,
+      "passed": true,
+      "core_sha256": "905911860900afdffb22e1518385248d0bd2affbc17447c85bebde9bbef39545",
+      "log_sha256": "a0eb5e4b400206fe3f7afe25c93cef9f15a1455e6f80916fdacfa8decacf860b"
+    }
+  ],
+  "calls": 3600,
+  "A7_timings_measured": false,
+  "QEMU_timings_used": false,
+  "frameskip": false,
+  "card_access": false,
+  "production_gate_passed": false
+}

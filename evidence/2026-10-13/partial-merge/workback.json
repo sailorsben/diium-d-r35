@@ -1,0 +1,349 @@
+{
+  "status": "OFFLINE_QUALIFIED_NOT_INSTALLED",
+  "A7_savings_measured": false,
+  "QEMU_timings_used": false,
+  "card_access": false,
+  "frameskip": false,
+  "production_gate_passed": false,
+  "cases": [
+    {
+      "case": 0,
+      "name": "HOLY",
+      "partial_rows": 688,
+      "plain_partial_rows": 420,
+      "plain_active_rows": 533,
+      "sparse_one_pixel_rows": 1,
+      "sparse_two_pixel_rows": 25,
+      "eligible_sparse_rows": 26,
+      "eligible_fraction_of_partial_rows": 0.0377906976744186,
+      "terminal_logical_byte_reduction": 734,
+      "terminal_byte_model": "Original partial store path reads16 RGB bytes and writes16 RGB+8 depth. Sparse path adds n index-byte and2n palette-byte reads and writes2n RGB+n depth. Difference40-6n bytes; initial index/depth loads, cache-line traffic, guards/spills and fallback effects excluded. Not DRAM bandwidth.",
+      "rows_with_unchanged_active_RGB": 88.25,
+      "depth_store_noop_rows": 0,
+      "direct_full_depth_legal_rows": 0,
+      "full_half_only_rows": 34,
+      "depth4_probe": {
+        "depth4_probe_tiles": 849,
+        "depth4_hidden_tiles": 16,
+        "depth4_requested_rows": 6518,
+        "depth4_probe_row_visits": 1016,
+        "depth4_single_row_tiles": 0,
+        "depth4_hidden_single_row_tiles": 0
+      },
+      "scorecard": "S_us = L + 1*s1 + 25*s2 - 420*q - B; all prices unmeasured",
+      "blind_depth4_scorecard": "S4_us = 16*h - 1016*p - B4; prices unmeasured, not implemented",
+      "prior_combined_conservative_deadline_gap_us": [
+        1556.033,
+        1533.783
+      ],
+      "prior_combined_conservative_20_percent_gap_us": [
+        4893.6639000000005,
+        4871.4139000000005
+      ],
+      "current_combined_gain_G_us": "PENDING_RETURN; subtract G before pricing any remaining deficit",
+      "sparse_credit_only_scenarios": [
+        {
+          "net_hit_credit_us": 0.05,
+          "saving_before_all_guard_and_other_costs_us": 1.3
+        },
+        {
+          "net_hit_credit_us": 0.1,
+          "saving_before_all_guard_and_other_costs_us": 2.6
+        },
+        {
+          "net_hit_credit_us": 0.2,
+          "saving_before_all_guard_and_other_costs_us": 5.2
+        },
+        {
+          "net_hit_credit_us": 0.25,
+          "saving_before_all_guard_and_other_costs_us": 6.5
+        },
+        {
+          "net_hit_credit_us": 0.3,
+          "saving_before_all_guard_and_other_costs_us": 7.8
+        },
+        {
+          "net_hit_credit_us": 0.5,
+          "saving_before_all_guard_and_other_costs_us": 13.0
+        }
+      ],
+      "optimistic_per_hit_threshold_before_G_L_guards_for_old_deadline_us": [
+        59.84742307692307,
+        58.991653846153845
+      ],
+      "optimistic_per_hit_threshold_before_G_L_guards_for_old_20_percent_us": [
+        188.21784230769234,
+        187.36207307692308
+      ]
+    },
+    {
+      "case": 1,
+      "name": "METEOR",
+      "partial_rows": 8182,
+      "plain_partial_rows": 8161.0,
+      "plain_active_rows": 10054.0,
+      "sparse_one_pixel_rows": 1937.6875,
+      "sparse_two_pixel_rows": 2040.875,
+      "eligible_sparse_rows": 3978.5625,
+      "eligible_fraction_of_partial_rows": 0.48625794426790514,
+      "terminal_logical_byte_reduction": 123025.875,
+      "terminal_byte_model": "Original partial store path reads16 RGB bytes and writes16 RGB+8 depth. Sparse path adds n index-byte and2n palette-byte reads and writes2n RGB+n depth. Difference40-6n bytes; initial index/depth loads, cache-line traffic, guards/spills and fallback effects excluded. Not DRAM bandwidth.",
+      "rows_with_unchanged_active_RGB": 4345.5625,
+      "depth_store_noop_rows": 0,
+      "direct_full_depth_legal_rows": 0,
+      "full_half_only_rows": 145,
+      "depth4_probe": {
+        "depth4_probe_tiles": 2743,
+        "depth4_hidden_tiles": 90.3125,
+        "depth4_requested_rows": 9612,
+        "depth4_probe_row_visits": 3059.5625,
+        "depth4_single_row_tiles": 1714,
+        "depth4_hidden_single_row_tiles": 61.875
+      },
+      "scorecard": "S_us = L + 1937.6875*s1 + 2040.875*s2 - 8161.0*q - B; all prices unmeasured",
+      "blind_depth4_scorecard": "S4_us = 90.3125*h - 3059.5625*p - B4; prices unmeasured, not implemented",
+      "prior_combined_conservative_deadline_gap_us": [
+        2883.408,
+        2943.8455
+      ],
+      "prior_combined_conservative_20_percent_gap_us": [
+        6221.0389000000005,
+        6281.4764000000005
+      ],
+      "current_combined_gain_G_us": "PENDING_RETURN; subtract G before pricing any remaining deficit",
+      "sparse_credit_only_scenarios": [
+        {
+          "net_hit_credit_us": 0.05,
+          "saving_before_all_guard_and_other_costs_us": 198.92812500000002
+        },
+        {
+          "net_hit_credit_us": 0.1,
+          "saving_before_all_guard_and_other_costs_us": 397.85625000000005
+        },
+        {
+          "net_hit_credit_us": 0.2,
+          "saving_before_all_guard_and_other_costs_us": 795.7125000000001
+        },
+        {
+          "net_hit_credit_us": 0.25,
+          "saving_before_all_guard_and_other_costs_us": 994.640625
+        },
+        {
+          "net_hit_credit_us": 0.3,
+          "saving_before_all_guard_and_other_costs_us": 1193.56875
+        },
+        {
+          "net_hit_credit_us": 0.5,
+          "saving_before_all_guard_and_other_costs_us": 1989.28125
+        }
+      ],
+      "optimistic_per_hit_threshold_before_G_L_guards_for_old_deadline_us": [
+        0.7247361327112494,
+        0.7399269208413842
+      ],
+      "optimistic_per_hit_threshold_before_G_L_guards_for_old_20_percent_us": [
+        1.5636398573605417,
+        1.5788306454906766
+      ]
+    },
+    {
+      "case": 8,
+      "name": "QUASAR",
+      "partial_rows": 741,
+      "plain_partial_rows": 668,
+      "plain_active_rows": 4993,
+      "sparse_one_pixel_rows": 63,
+      "sparse_two_pixel_rows": 69,
+      "eligible_sparse_rows": 132,
+      "eligible_fraction_of_partial_rows": 0.17813765182186234,
+      "terminal_logical_byte_reduction": 4074,
+      "terminal_byte_model": "Original partial store path reads16 RGB bytes and writes16 RGB+8 depth. Sparse path adds n index-byte and2n palette-byte reads and writes2n RGB+n depth. Difference40-6n bytes; initial index/depth loads, cache-line traffic, guards/spills and fallback effects excluded. Not DRAM bandwidth.",
+      "rows_with_unchanged_active_RGB": 250.5,
+      "depth_store_noop_rows": 0,
+      "direct_full_depth_legal_rows": 0,
+      "full_half_only_rows": 45,
+      "depth4_probe": {
+        "depth4_probe_tiles": 849,
+        "depth4_hidden_tiles": 570,
+        "depth4_requested_rows": 6518,
+        "depth4_probe_row_visits": 4693,
+        "depth4_single_row_tiles": 0,
+        "depth4_hidden_single_row_tiles": 0
+      },
+      "scorecard": "S_us = L + 63*s1 + 69*s2 - 668*q - B; all prices unmeasured",
+      "blind_depth4_scorecard": "S4_us = 570*h - 4693*p - B4; prices unmeasured, not implemented",
+      "prior_combined_conservative_deadline_gap_us": [
+        1981.408,
+        1603.283
+      ],
+      "prior_combined_conservative_20_percent_gap_us": [
+        5319.0389000000005,
+        4940.9139000000005
+      ],
+      "current_combined_gain_G_us": "PENDING_RETURN; subtract G before pricing any remaining deficit",
+      "sparse_credit_only_scenarios": [
+        {
+          "net_hit_credit_us": 0.05,
+          "saving_before_all_guard_and_other_costs_us": 6.6000000000000005
+        },
+        {
+          "net_hit_credit_us": 0.1,
+          "saving_before_all_guard_and_other_costs_us": 13.200000000000001
+        },
+        {
+          "net_hit_credit_us": 0.2,
+          "saving_before_all_guard_and_other_costs_us": 26.400000000000002
+        },
+        {
+          "net_hit_credit_us": 0.25,
+          "saving_before_all_guard_and_other_costs_us": 33.0
+        },
+        {
+          "net_hit_credit_us": 0.3,
+          "saving_before_all_guard_and_other_costs_us": 39.6
+        },
+        {
+          "net_hit_credit_us": 0.5,
+          "saving_before_all_guard_and_other_costs_us": 66.0
+        }
+      ],
+      "optimistic_per_hit_threshold_before_G_L_guards_for_old_deadline_us": [
+        15.010666666666665,
+        12.146083333333333
+      ],
+      "optimistic_per_hit_threshold_before_G_L_guards_for_old_20_percent_us": [
+        40.29574924242424,
+        37.431165909090915
+      ]
+    }
+  ],
+  "assembly": {
+    "baseline_0": {
+      "static_instructions_excluding_literal_pool": 651,
+      "prologue": [
+        "42828:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "42830:\ted2d8b08 \tvpush\t{d8-d11}",
+        "42834:\te24dd074 \tsub\tsp, sp, #116\t@ 0x74"
+      ],
+      "asm_sha256": "eb147b07c3a11cc4c7ced96206db1746df5be1b34f4731e09e918f8892602424"
+    },
+    "baseline_1": {
+      "static_instructions_excluding_literal_pool": 865,
+      "prologue": [
+        "432c4:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "432cc:\ted2d8b08 \tvpush\t{d8-d11}",
+        "432d0:\te24dd07c \tsub\tsp, sp, #124\t@ 0x7c"
+      ],
+      "asm_sha256": "603b0443f87e220a86270516a5f5f830d85df38385f89b89d3b2deb46f91831c"
+    },
+    "baseline_3": {
+      "static_instructions_excluding_literal_pool": 860,
+      "prologue": [
+        "440b8:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "440c0:\ted2d8b0c \tvpush\t{d8-d13}",
+        "440c4:\te24dd07c \tsub\tsp, sp, #124\t@ 0x7c"
+      ],
+      "asm_sha256": "62beb32142b925c513935d76f2975b06d27f3936d6d38fb689a42ac4c910c26b"
+    },
+    "local_0": {
+      "static_instructions_excluding_literal_pool": 611,
+      "prologue": [
+        "42828:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "42830:\ted2d8b08 \tvpush\t{d8-d11}",
+        "42834:\te24dd06c \tsub\tsp, sp, #108\t@ 0x6c"
+      ],
+      "asm_sha256": "9fd7fb0b2c9003b400473888326890bdefcfd5cd5e705cd2687da93bb10a6372"
+    },
+    "local_1": {
+      "static_instructions_excluding_literal_pool": 834,
+      "prologue": [
+        "43208:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "43210:\ted2d8b08 \tvpush\t{d8-d11}",
+        "43214:\te24dd08c \tsub\tsp, sp, #140\t@ 0x8c"
+      ],
+      "asm_sha256": "cb42d611d1176674a4bc245d156ff961d80ea7a2cddeed41731fc1981669ccfa"
+    },
+    "local_3": {
+      "static_instructions_excluding_literal_pool": 814,
+      "prologue": [
+        "43f5c:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "43f64:\ted2d8b10 \tvpush\t{d8-d15}",
+        "43f68:\te24dd08c \tsub\tsp, sp, #140\t@ 0x8c"
+      ],
+      "asm_sha256": "5b6cca6572b9366e231eb879a069ffa630843bb7617f43f657a5b02e178df955"
+    },
+    "sparse_0": {
+      "static_instructions_excluding_literal_pool": 739,
+      "prologue": [
+        "42828:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "42830:\ted2d8b08 \tvpush\t{d8-d11}",
+        "42834:\te24dd06c \tsub\tsp, sp, #108\t@ 0x6c"
+      ],
+      "asm_sha256": "d5c8f759eacba186648263e957f39a3fd4aa46add7a7f7622251b147f3242cfc"
+    },
+    "sparse_1": {
+      "static_instructions_excluding_literal_pool": 834,
+      "prologue": [
+        "43408:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "43410:\ted2d8b08 \tvpush\t{d8-d11}",
+        "43414:\te24dd08c \tsub\tsp, sp, #140\t@ 0x8c"
+      ],
+      "asm_sha256": "858f5ae7ad2cb2966c3416812f8b0c49dab94240fb07c4c41137464365ff1a6c"
+    },
+    "sparse_3": {
+      "static_instructions_excluding_literal_pool": 814,
+      "prologue": [
+        "4415c:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "44164:\ted2d8b10 \tvpush\t{d8-d15}",
+        "44168:\te24dd08c \tsub\tsp, sp, #140\t@ 0x8c"
+      ],
+      "asm_sha256": "508cdd831d134c2b97c652cee622106c8127f0110cedcc91c755cdf9120ff6fc"
+    },
+    "selective_0": {
+      "static_instructions_excluding_literal_pool": 715,
+      "prologue": [
+        "42828:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "42830:\ted2d8b08 \tvpush\t{d8-d11}",
+        "42834:\te24dd064 \tsub\tsp, sp, #100\t@ 0x64"
+      ],
+      "asm_sha256": "dc1a576a34ec3568c682778ad0ec14297af7a9cb9e91ff24dde5c140ae4c3e95"
+    },
+    "selective_1": {
+      "static_instructions_excluding_literal_pool": 824,
+      "prologue": [
+        "433a8:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "433b0:\ted2d8b08 \tvpush\t{d8-d11}",
+        "433b4:\te24dd06c \tsub\tsp, sp, #108\t@ 0x6c"
+      ],
+      "asm_sha256": "9be55334fe2f7bb26b1c4703edde00b623aec2f5d8d5d6abb9b38bd2634c8d28"
+    },
+    "selective_3": {
+      "static_instructions_excluding_literal_pool": 818,
+      "prologue": [
+        "440f8:\te92d4ff0 \tpush\t{r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "44100:\ted2d8b0c \tvpush\t{d8-d13}",
+        "44104:\te24dd06c \tsub\tsp, sp, #108\t@ 0x6c"
+      ],
+      "asm_sha256": "68bd626ea44a25b0847cfc3efd8db80465e573f13b2d9d59eab2aef2d4620fb5"
+    }
+  },
+  "proofs": {
+    "profile_calls": 3600,
+    "preflight_probe_calls": 3600,
+    "prototype_calls": 7200,
+    "selective_calls": 3600,
+    "total_original_output_calls": 18000,
+    "scalar_tile_cases": 387072,
+    "canonical_mask_cases": 32768,
+    "scalar_reference_reused_by_hash": true
+  },
+  "limits": [
+    "Counts identify applicability, not microsecond costs.",
+    "Current physical combined1 remains unchanged; its logs have not returned.",
+    "L is whole non-sparse net saving; s1/s2 are sparse hit credits excluding common guard; q is density guard cost per plain partial row; B includes all other added branches/cache/spills/interactions.",
+    "Prior service proxy can double-count overlap and is not a hardware lower bound.",
+    "RGB equality cannot justify skipping required depth updates.",
+    "Replays compare graphics/PCM every call and normalized state checkpoints every30 calls.",
+    "Three contexts and finite independent oracles do not establish universal acceptance."
+  ]
+}

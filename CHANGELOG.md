@@ -1,5 +1,22 @@
 # Changelog
 
+## Work backward through Meteor and Quasar partial merges — 2026-10-13
+
+Keep running combined1 test untouched. Exact offline mask/plane census finds
+8182 Meteor partial rows versus741 Quasar; most Meteor merges are plain, not
+color arithmetic. Qualify scalar stores on one/two visible pixels, exact signed
+mask widening and selective plain-state snapshots. Preserve broad snapshot
+prototype as an unpriced register-pressure risk; refinement restores original
+math save sets.3978.5625 sparse hits Meteor versus132 Quasar; all depth-skip and
+unguarded full-depth-write shortcuts fail sampled legality. Quasar's hidden4bpp
+background offers a separate preflight hypothesis; no blind generalized prepass.
+
+18000 original-output calls,387072 scalar tile cases,32768 canonical masks pass.
+Publish source/count/qualification identities and explicit conditional cost
+model charging miss guards, cache, spills and interactions. No QEMU time used,
+card access, installation, new A7 savings or production gate pass.
+[Detailed workback](docs/snes-meteor-quasar-partial-workback.md).
+
 ## Archive fullpaths return and qualify combined A7 crossover — 2026-10-13
 
 Archive5,834 files before writes, verify91 previous payloads and clean FAT.

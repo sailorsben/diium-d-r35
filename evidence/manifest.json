@@ -6537,6 +6537,60 @@
       "published": "evidence/2026-10-13/combined-measurement/independent-readback.json",
       "source_sha256": "e675381a77989559d64284302710005239ef9b67cd5cbfcf7b4a032a6e4b6835",
       "published_sha256": "ac79e3fc0ab905f2d73883cf71157306d4e1e64c34792502c2f9eff1528c40e9"
+    },
+    {
+      "source": "build/partial-merge-private-v1/analysis.json",
+      "published": "evidence/2026-10-13/partial-merge/mask-census.json",
+      "source_sha256": "2435b621a32aff9f4b54048760917a87d6c58afcc9c206ee3553068f28accf05",
+      "published_sha256": "2435b621a32aff9f4b54048760917a87d6c58afcc9c206ee3553068f28accf05"
+    },
+    {
+      "source": "build/partial-preflight-private-v1/analysis.json",
+      "published": "evidence/2026-10-13/partial-merge/depth-probe-census.json",
+      "source_sha256": "0732e24070206630868d71f6cd6f22cc22d4bc4cec6b93c61cf87499813d58a6",
+      "published_sha256": "0732e24070206630868d71f6cd6f22cc22d4bc4cec6b93c61cf87499813d58a6"
+    },
+    {
+      "source": "build/partial-candidates-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/partial-merge/prototypes-qualified.json",
+      "source_sha256": "3f96139b9b48962e6f6a5f9d5ce33e46b5266a106b6818d41bb461e89805709b",
+      "published_sha256": "3f96139b9b48962e6f6a5f9d5ce33e46b5266a106b6818d41bb461e89805709b"
+    },
+    {
+      "source": "build/partial-candidates-private-v1/oracles.json",
+      "published": "evidence/2026-10-13/partial-merge/prototypes-oracles.json",
+      "source_sha256": "89e051c689112db6679a4c0acefad920c3dcea73f67b50c0dc704c69066c5877",
+      "published_sha256": "89e051c689112db6679a4c0acefad920c3dcea73f67b50c0dc704c69066c5877"
+    },
+    {
+      "source": "build/partial-selective-private-v1/qualification.json",
+      "published": "evidence/2026-10-13/partial-merge/selective-qualified.json",
+      "source_sha256": "589ae1f89194e2f574a3b1fd8003a859866c55b17ffef3c7c1ec52eb37af3812",
+      "published_sha256": "589ae1f89194e2f574a3b1fd8003a859866c55b17ffef3c7c1ec52eb37af3812"
+    },
+    {
+      "source": "build/partial-selective-private-v1/oracles.json",
+      "published": "evidence/2026-10-13/partial-merge/selective-oracles.json",
+      "source_sha256": "8ba3f2cd3d1d68135a7f70f1009881cf46ac7db7300ec2e228c52fc3dee07bfa",
+      "published_sha256": "8ba3f2cd3d1d68135a7f70f1009881cf46ac7db7300ec2e228c52fc3dee07bfa"
+    },
+    {
+      "source": "build/partial-selective-private-v1/workback.json",
+      "published": "evidence/2026-10-13/partial-merge/workback.json",
+      "source_sha256": "141dc61c7133f9eeb214b4ab7dff11ec926599a885087773854db686aebec794",
+      "published_sha256": "5dfd0d0df7ebbefd0a52bebd509f76f9aab7cc53f8ff7912232039053e18fcf4"
+    },
+    {
+      "source": "build/partial-selective-private-v1/workback-identity.json",
+      "published": "evidence/2026-10-13/partial-merge/identity.json",
+      "source_sha256": "35b8a338b6fc00bbbb7f3fcbfee5c940d7e102be28a752959a4b50f11a94ca1a",
+      "published_sha256": "68ca33aaf2b9babfadea1e380876a596f4830255f45736b1795e4b931ed8c9f9"
+    },
+    {
+      "source": "build/partial-candidates-private-v1/kernel-check.log",
+      "published": "evidence/2026-10-13/partial-merge/mask-kernel-check.txt",
+      "source_sha256": "f0f3dedb202b4cd3be3f8d67cd4ec51bdfd426b2b2863a67e4e9503fc322d8a7",
+      "published_sha256": "f0f3dedb202b4cd3be3f8d67cd4ec51bdfd426b2b2863a67e4e9503fc322d8a7"
     }
   ]
 }
