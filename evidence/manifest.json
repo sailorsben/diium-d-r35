@@ -6983,6 +6983,30 @@
       "published_sha256": "5be2c5a5d966c0068f1a3a2e7f271626abc0b72b1c5bde625e110cfb92f5e219",
       "bytes": 2270,
       "normalized": true
+    },
+    {
+      "source": "build/ppu-test-private-v1/plan.json",
+      "published": "evidence/2026-10-14/ppu-test/plan.json",
+      "source_sha256": "5b020e15dfa5509467a8d0806469098336e3731710f26d965f2ab6bad22db4a2",
+      "published_sha256": "5b020e15dfa5509467a8d0806469098336e3731710f26d965f2ab6bad22db4a2",
+      "bytes": 26589,
+      "normalized": false
+    },
+    {
+      "source": "build/ppu-test-private-v1/ready.json",
+      "published": "evidence/2026-10-14/ppu-test/ready.json",
+      "source_sha256": "4ef6946f9a8fc06fdbc5c8c99b4cde133c8cb8d5a1824caac179073c7ec74bbc",
+      "published_sha256": "4ef6946f9a8fc06fdbc5c8c99b4cde133c8cb8d5a1824caac179073c7ec74bbc",
+      "bytes": 1431,
+      "normalized": false
+    },
+    {
+      "source": "build/ppu-test-private-v1/verification.json",
+      "published": "evidence/2026-10-14/ppu-test/verification.json",
+      "source_sha256": "284fd6a9aa695ac4db56d20baf752e229fe41418c8f785084ef2aba10bc49324",
+      "published_sha256": "284fd6a9aa695ac4db56d20baf752e229fe41418c8f785084ef2aba10bc49324",
+      "bytes": 27156,
+      "normalized": false
     }
   ]
 }

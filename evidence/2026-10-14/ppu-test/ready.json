@@ -1,0 +1,22 @@
+{
+  "ready": true,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "installed": false,
+  "armed": false,
+  "verification_sha256": "284fd6a9aa695ac4db56d20baf752e229fe41418c8f785084ef2aba10bc49324",
+  "additional_sources": {
+    "build/ppu-test-private-v1/build.sh": "16458de9116bcaa6598715000f11f12ea0441ac1e25412ed2462725bae854b08",
+    "build/ppu-test-private-v1/qualify.py": "4fe2fdf0c38cae39b1468caa45a3fe8912bb34c4ba12cebafa970a83b6f6d636",
+    "build/ppu-test-private-v1/install.py": "8ba9694448a36e8481448e1700cc18024093b08945c8bed807bb26ccb2741f40",
+    "build/ppu-test-private-v1/report.py": "692d22db689bf9cccce26374bd26a1152d0deaecdc5e7c54aebb5b8dc9d315e6",
+    "build/ppu-test-private-v1/TEST-ME.txt": "a80d3c762713fd55957bc8ca1689ad4174aa34b682f6ee01b58abd91abc702b2",
+    "build/finalize-ppu-test.py": "0661fd2d143169c4d35aedf2c2a88a34ef56575a88a039d4d3783d365263c0ba"
+  },
+  "reporter_mock_rejection_passed": true,
+  "actual_epochs": 56,
+  "calls": 67200,
+  "core_exactness": "reused only by exact qualified ordinary core hashes",
+  "authorization": "Explicit Arm I for measurement after PPU fixes; prices unknown, no production promotion",
+  "prediction": "Final combination must improve matched valid tail/recovery costs and prevent reserve/pointer collapse; failure or negative isolated saving rejects the candidate. Residual deficit is unknown pending this measurement."
+}

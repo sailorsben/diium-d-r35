@@ -1,5 +1,16 @@
 # Changelog
 
+## Prepare authorized PPU measurement rearm — 2026-10-14
+
+On “Arm I,” strictly archive6,721 files/1,730,576,357 bytes with clean FAT;
+only stock swapfile differs from evaluated return. Fresh56-epoch suite compares
+final v5 across18 contexts twice and frozen v3/isolated OBJ/shapes/bulk on
+Meteor/Quasar in opposite orders. Actual ARM controller passes67,200 calls,
+native consuming PCM/direct output/fault/retry, wrapper/ABI and physical-mock
+rejection pass. State payloads unchanged, prior evidence exact. Explicit
+measurement-only exception obtains missing A7 prices; no production promotion.
+See docs/snes-ppu-test.md; prepared receipt is not an installation claim.
+
 ## Implement general PPU refinements — 2026-10-14
 
 Add state-based OBJ window reuse, opaque depth stores, full-width clipped

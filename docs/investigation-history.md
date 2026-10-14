@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Authorized PPU measurement test — 2026-10-14
+
+Fresh56-epoch controller qualifies67,200 calls before user-authorized rearm;
+18-context final regression and Meteor/Quasar baseline/isolated family blocks.
+Native/wrapper/ABI and mock-rejecting reporter pass. Preserve6,721 returned
+files and private progress; clean FAT. No row-cache experiment. Missing new A7
+prices remain explicitly unknown; authorization allows measurement installation,
+not production acceptance. See snes-ppu-test.md and its installation receipt.
+
 ## General PPU refinements qualified offline — 2026-10-14
 
 Implement state-based OBJ initial-window reuse, opaque depth, clipped

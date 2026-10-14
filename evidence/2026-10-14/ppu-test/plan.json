@@ -1,0 +1,1040 @@
+{
+  "version": "1.19-ppu-test1",
+  "authorization": "Arm I after general PPU fixes; measurement-only exception to missing new A7 prices",
+  "status": "LOCAL_BUILD_NOT_INSTALLED_OR_ARMED",
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "frameskip": false,
+  "calls_per_run": 1200,
+  "warmup_calls": 120,
+  "period_ns": 16688152.946053859,
+  "target_ns": 13350522.356843088,
+  "nominal_minutes": 18.69073129958032,
+  "variants": [
+    "reference",
+    "demand",
+    "obj",
+    "shapes",
+    "bulk"
+  ],
+  "cases": [
+    {
+      "seq": 0,
+      "name": "HOLY",
+      "family": "magic",
+      "possible_attack_ids": [
+        14
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "18e59b25dd5a3e1a1f2e12a7054a8f36107465117d3d208b3f562a2f5938487d",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "ec1a6a4b91663a2c0e9127ce2e350221d66042bfd2bc5f770675d355eaa71702",
+      "random_or_conditional": false,
+      "original_case": 14,
+      "observed_effect_id": 14
+    },
+    {
+      "seq": 1,
+      "name": "METEOR",
+      "family": "magic",
+      "possible_attack_ids": [
+        19
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "a480bb0e805bfcd10f8222677d536392c33d947ad649329ad3f2026c40e60295",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "91c095b6d03b3ed11568df2eb640724bff3344366a593ff40dfa700788af5d4d",
+      "random_or_conditional": false,
+      "original_case": 19,
+      "observed_effect_id": 19
+    },
+    {
+      "seq": 2,
+      "name": "ULTIMA",
+      "family": "magic",
+      "possible_attack_ids": [
+        20
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "593efee777b00f243895b58d843268c4cbde83ee68a126ea2885739b5f95b547",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "ba51707369dc8de4a70195956be25b8a519f9ef731773e23740a988f9f4e6f91",
+      "random_or_conditional": false,
+      "original_case": 20,
+      "observed_effect_id": 20
+    },
+    {
+      "seq": 3,
+      "name": "MELTDOWN",
+      "family": "magic",
+      "possible_attack_ids": [
+        23
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "81bebb4c04e44fad02af4ec26e9a69a74fb2c3bd4f2f365b174d8c8f8849410a",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "c55535d1fe16ef2d83e12eb704bce8a0a8fb1ed3567cb6bbb8344454f028730b",
+      "random_or_conditional": false,
+      "original_case": 23,
+      "observed_effect_id": 23
+    },
+    {
+      "seq": 4,
+      "name": "SLOW_2",
+      "family": "magic",
+      "possible_attack_ids": [
+        40
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "2b5660330bfa7f1eb84e4a0bbdeef3c3f8ab09047c3dae1fcd9aa54d08264798",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "9f8dbcadd5650e9e113fb585c8d60568f6fa7003a135743aca7fdda09e711cc6",
+      "random_or_conditional": false,
+      "original_case": 40,
+      "observed_effect_id": 40
+    },
+    {
+      "seq": 5,
+      "name": "SIREN",
+      "family": "esper",
+      "possible_attack_ids": [
+        57
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "ec67bc4c3011f1ffe77f64d96e424b511a535ce46d57d7049f3ff044c316dff2",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "37937538a54d7ac244ea5d1f2216fcae84fe1c5f14f6323b347e520f8002faa4",
+      "random_or_conditional": false,
+      "original_case": 57,
+      "observed_effect_id": 57
+    },
+    {
+      "seq": 6,
+      "name": "BAHAMUT",
+      "family": "esper",
+      "possible_attack_ids": [
+        67
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "e15ccab04c50e5236e776199cd52cb74e99f5f3984d91a9db2e5d1554cc0b3a1",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "3b6e04f9d84d607d18787994dc7c3c53d45a9401e6d8052c8c3a9b23abd9aa58",
+      "random_or_conditional": false,
+      "original_case": 67,
+      "observed_effect_id": 67
+    },
+    {
+      "seq": 7,
+      "name": "CARBUNKL",
+      "family": "esper",
+      "possible_attack_ids": [
+        73
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "0c1b66d70a0981d65b501748cf417a7e2800907f3c683bb42da61df9e3764786",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "8f390fe8c4d1cdc2a9914a3aa649d1722e14a236989c20befba85a50a46645dd",
+      "random_or_conditional": false,
+      "original_case": 73,
+      "observed_effect_id": 73
+    },
+    {
+      "seq": 8,
+      "name": "QUASAR",
+      "family": "lore",
+      "possible_attack_ids": [
+        160
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "43d111a2e848fbf8ec8f154aa93dcdeb8d27daa68f6c29c5b6ad2d14930e0479",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "1107dacd483e63ba8fd18c19bccb477a9e5a5f47324d7544b4d1e590d28466ba",
+      "random_or_conditional": false,
+      "original_case": 110,
+      "observed_effect_id": 160
+    },
+    {
+      "seq": 9,
+      "name": "GRANDTRAIN",
+      "family": "lore",
+      "possible_attack_ids": [
+        161
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "f1fbcbc20d41ed8e53959373a3677e86849ff2008926586d737a2a4d0b67ccb4",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "82129b6380b3aedb517f6324cdde0d5abe75d457c037bbe6e817e0e48c93e2ed",
+      "random_or_conditional": false,
+      "original_case": 111,
+      "observed_effect_id": 161
+    },
+    {
+      "seq": 10,
+      "name": "RAGE_004",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        168
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "e06936371ff57b72d79d66530ffa8eff8b79582e5181bcfe57ba70e451bed711",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "baed10da626af667cfd3c1655ae79aae06e2c06dd0a8fbe2cebb84d84b41a164",
+      "random_or_conditional": true,
+      "original_case": 149,
+      "observed_effect_id": 168
+    },
+    {
+      "seq": 11,
+      "name": "RAGE_005",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        14
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "9d5d6d9c23d25bb3efb2a13e48992c0c5830939589e64d87b6c05b7f6e35f3a1",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "ec1a6a4b91663a2c0e9127ce2e350221d66042bfd2bc5f770675d355eaa71702",
+      "random_or_conditional": true,
+      "original_case": 150,
+      "observed_effect_id": 14
+    },
+    {
+      "seq": 12,
+      "name": "RAGE_032",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        19
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "427125e9cc84fbfc7c1eac2dbdf9e5a4fb18404d284a74c6d2d1450b17724119",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "91c095b6d03b3ed11568df2eb640724bff3344366a593ff40dfa700788af5d4d",
+      "random_or_conditional": true,
+      "original_case": 177,
+      "observed_effect_id": 19
+    },
+    {
+      "seq": 13,
+      "name": "RAGE_086",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        23
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "94bf11ed189b7b7f7673f7ba6a3255617f86060d6106250b435cb47bb7d82893",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "c55535d1fe16ef2d83e12eb704bce8a0a8fb1ed3567cb6bbb8344454f028730b",
+      "random_or_conditional": true,
+      "original_case": 231,
+      "observed_effect_id": 23
+    },
+    {
+      "seq": 14,
+      "name": "RAGE_088",
+      "family": "rage",
+      "possible_attack_ids": [
+        238,
+        40
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "24401784d95d24394dd0f67c3932c2b301960cd413469c0329604f6c89e2ee84",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "9f8dbcadd5650e9e113fb585c8d60568f6fa7003a135743aca7fdda09e711cc6",
+      "random_or_conditional": true,
+      "original_case": 233,
+      "observed_effect_id": 40
+    },
+    {
+      "seq": 15,
+      "name": "TERRATO",
+      "family": "esper",
+      "possible_attack_ids": [
+        58
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "e8b853218d4a901d0d25a4cb6aa8bedcfdb231b6ada324aec4f2a797f169dfe2",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "158eb34b45f3674e2d543409a1de38a182eb89e92127a9137439600e30a1bf02",
+      "random_or_conditional": false,
+      "original_case": 58,
+      "observed_effect_id": 58
+    },
+    {
+      "seq": 16,
+      "name": "BIO_BLAST",
+      "family": "magitek",
+      "possible_attack_ids": [
+        134
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "a532ae343a92d7adcda1b3f112feac7142e0aafe1829284636dc00370271c8be",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "3881efb83b12cedaefcd01708b50291f0eb3b37ac84f63eb83f48fcd591ce0bf",
+      "random_or_conditional": false,
+      "original_case": 84,
+      "observed_effect_id": 134
+    },
+    {
+      "seq": 17,
+      "name": "CONFUSER",
+      "family": "magitek",
+      "possible_attack_ids": [
+        136
+      ],
+      "conditions": [
+        "injured living allies",
+        "living high-HP enemy",
+        "MP headroom"
+      ],
+      "calls": 1200,
+      "state_sha256": "ca8441a22107cc6ccd27400647b239f45bcdcfaa5df51c26fa37410e89052845",
+      "input_sha256": "d0aba665090005ffaadcf7d110bd227f119f9f6fdd520b316be36aacaa1cabde",
+      "expected_sha256": "211f795df865b2e6e9519227668e29cf526c6ecb0b5b381ea9bc0f7c76f8425c",
+      "random_or_conditional": false,
+      "original_case": 86,
+      "observed_effect_id": 136
+    }
+  ],
+  "runs": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "name": "HOLY",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 2,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 3,
+      "fixture": 2,
+      "name": "ULTIMA",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 4,
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 5,
+      "fixture": 4,
+      "name": "SLOW_2",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 6,
+      "fixture": 5,
+      "name": "SIREN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 7,
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 8,
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 9,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 0
+    },
+    {
+      "run": 10,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 11,
+      "fixture": 9,
+      "name": "GRANDTRAIN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 12,
+      "fixture": 10,
+      "name": "RAGE_004",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 13,
+      "fixture": 11,
+      "name": "RAGE_005",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 14,
+      "fixture": 12,
+      "name": "RAGE_032",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 15,
+      "fixture": 13,
+      "name": "RAGE_086",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 16,
+      "fixture": 14,
+      "name": "RAGE_088",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 17,
+      "fixture": 15,
+      "name": "TERRATO",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 18,
+      "fixture": 16,
+      "name": "BIO_BLAST",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 19,
+      "fixture": 17,
+      "name": "CONFUSER",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0
+    },
+    {
+      "run": 20,
+      "fixture": 17,
+      "name": "CONFUSER",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 21,
+      "fixture": 16,
+      "name": "BIO_BLAST",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 22,
+      "fixture": 15,
+      "name": "TERRATO",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 23,
+      "fixture": 14,
+      "name": "RAGE_088",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 24,
+      "fixture": 13,
+      "name": "RAGE_086",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 25,
+      "fixture": 12,
+      "name": "RAGE_032",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 26,
+      "fixture": 11,
+      "name": "RAGE_005",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 27,
+      "fixture": 10,
+      "name": "RAGE_004",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 28,
+      "fixture": 9,
+      "name": "GRANDTRAIN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 29,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 30,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 31,
+      "fixture": 7,
+      "name": "CARBUNKL",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 32,
+      "fixture": 6,
+      "name": "BAHAMUT",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 33,
+      "fixture": 5,
+      "name": "SIREN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 34,
+      "fixture": 4,
+      "name": "SLOW_2",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 35,
+      "fixture": 3,
+      "name": "MELTDOWN",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 36,
+      "fixture": 2,
+      "name": "ULTIMA",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 37,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 38,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 1
+    },
+    {
+      "run": 39,
+      "fixture": 0,
+      "name": "HOLY",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 1
+    },
+    {
+      "run": 40,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 2
+    },
+    {
+      "run": 41,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "obj",
+      "variant_id": 2,
+      "repeat": 2
+    },
+    {
+      "run": 42,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "shapes",
+      "variant_id": 3,
+      "repeat": 2
+    },
+    {
+      "run": 43,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "bulk",
+      "variant_id": 4,
+      "repeat": 2
+    },
+    {
+      "run": 44,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 2
+    },
+    {
+      "run": 45,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "obj",
+      "variant_id": 2,
+      "repeat": 2
+    },
+    {
+      "run": 46,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "shapes",
+      "variant_id": 3,
+      "repeat": 2
+    },
+    {
+      "run": 47,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "bulk",
+      "variant_id": 4,
+      "repeat": 2
+    },
+    {
+      "run": 48,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "bulk",
+      "variant_id": 4,
+      "repeat": 3
+    },
+    {
+      "run": 49,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "shapes",
+      "variant_id": 3,
+      "repeat": 3
+    },
+    {
+      "run": 50,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "obj",
+      "variant_id": 2,
+      "repeat": 3
+    },
+    {
+      "run": 51,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 3
+    },
+    {
+      "run": 52,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "bulk",
+      "variant_id": 4,
+      "repeat": 3
+    },
+    {
+      "run": 53,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "shapes",
+      "variant_id": 3,
+      "repeat": 3
+    },
+    {
+      "run": 54,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "obj",
+      "variant_id": 2,
+      "repeat": 3
+    },
+    {
+      "run": 55,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 3
+    }
+  ],
+  "snapshot_migrations": [
+    {
+      "fixture": 0,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "4e547626d9a9c6b2be7fbdd7430ec6da9e2531b6d6993b49c7854a5829c10882"
+    },
+    {
+      "fixture": 1,
+      "variant": "reference",
+      "payload_unchanged": true,
+      "state_sha256": "f737704f237b4831f30a135ffa787bc90412de19bd5db291fa578ce8dcc1db58"
+    },
+    {
+      "fixture": 1,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "f2aa28b17b1f0c273f26a9f6c7f00c3dd37944a32e10c5de960a3bc088f2ebd5"
+    },
+    {
+      "fixture": 1,
+      "variant": "obj",
+      "payload_unchanged": true,
+      "state_sha256": "57280dd69141f183c71dd8d95c58aaf229e32e8cb70d370e5810852e62ec2fbf"
+    },
+    {
+      "fixture": 1,
+      "variant": "shapes",
+      "payload_unchanged": true,
+      "state_sha256": "041394b7ed3bfef875ff181058c9a55e9e70cbce9e22fa7848b5833f70d17429"
+    },
+    {
+      "fixture": 1,
+      "variant": "bulk",
+      "payload_unchanged": true,
+      "state_sha256": "769e7f5cf3f1b0ec5c385e72da7379bf9795e9b978b17202cae15cf0787345c5"
+    },
+    {
+      "fixture": 2,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "f57740c9bde90469f9034f0a787069130044d49292052514228ec9dd446591b0"
+    },
+    {
+      "fixture": 3,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "9b2a0d91c9cb5d2b506304edd0e7a9f993bbcd73d59462b1f4cf7c6e4f6ef254"
+    },
+    {
+      "fixture": 4,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "25350ef48c8fe803da602de7c29000e5f0cc665cf1c9717b45661287874be9da"
+    },
+    {
+      "fixture": 5,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "597138b3b351ba8aa1db6685fdee6296383f85111eeb2c35d45264a26118227c"
+    },
+    {
+      "fixture": 6,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "975293ff2ebaacca4dbdee21bae39c20054ffa40f73397e9f36704c89c0b7318"
+    },
+    {
+      "fixture": 7,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "8a4dc5d6bcd88f16b408648ba20f58f0b290badde42136e756350cade0c08c76"
+    },
+    {
+      "fixture": 8,
+      "variant": "reference",
+      "payload_unchanged": true,
+      "state_sha256": "dca4f556b756defa1d1de6973b155dac41735881e0a33f8253a1283cc9e51b50"
+    },
+    {
+      "fixture": 8,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "5a2bd61652dc85e6103e07728b0ace815a657e19ab7c64caa03316704f52c2aa"
+    },
+    {
+      "fixture": 8,
+      "variant": "obj",
+      "payload_unchanged": true,
+      "state_sha256": "43c94dbb29ad23bac45033a842aa19df7fb05a4f04f6e7cd5f9803f6b7fcc173"
+    },
+    {
+      "fixture": 8,
+      "variant": "shapes",
+      "payload_unchanged": true,
+      "state_sha256": "2224397d425f863f8d3ea60cf71907dd6821e911fbca6712b264f5cc8825a1b9"
+    },
+    {
+      "fixture": 8,
+      "variant": "bulk",
+      "payload_unchanged": true,
+      "state_sha256": "8ff14d1217b7f9d1bdcd846ed84fd780a756c6a3e5b08b7b7ba4e822fe5f8e5a"
+    },
+    {
+      "fixture": 9,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "6a9ebd63fdcfd44ae127d48ed86bf4461529d1db8e80a8d2bc0d22166c5213fb"
+    },
+    {
+      "fixture": 10,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "ef04185068a37147feae98f590615c6bdfb69cd448dcc2695f8df746cca85d62"
+    },
+    {
+      "fixture": 11,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "a9b10dbb88313aa544d78e4418043187023b546ead8fbbf807658e8626b8432b"
+    },
+    {
+      "fixture": 12,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "2a0dbc690a43019278b73818affcf06cf3fc44a3772a0f241aa660de698098e7"
+    },
+    {
+      "fixture": 13,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "e7942b34fa8e11e5969a8260a64c4d1c92290a7aafffcb55974ad910e8c73066"
+    },
+    {
+      "fixture": 14,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "2dd878f9335097d9417ce199445e80d323c4f11a5e29d79f538f3eaf14d1dd32"
+    },
+    {
+      "fixture": 15,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "60d9ea5e5acd44c475291eca2803d1d2ea3e239ef8135f748574f8e986775e87"
+    },
+    {
+      "fixture": 16,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "ebea3d35c3136bedd6c12caa91942154ae45a5719e233cd34af78c38cdc13c8a"
+    },
+    {
+      "fixture": 17,
+      "variant": "demand",
+      "payload_unchanged": true,
+      "state_sha256": "251afac97f21c3e9c6373d2b702ba4d56ac15cb56878adfc9ba5049898641d98"
+    }
+  ],
+  "cores": {
+    "reference": {
+      "sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+      "crc32": "02bb090e",
+      "bytes": 857380
+    },
+    "demand": {
+      "sha256": "623fd5386a78ffdda40e48ebd58fbdaa15bfc06cdfc3f337f9b6677197c78c4d",
+      "crc32": "356d983c",
+      "bytes": 882648
+    },
+    "obj": {
+      "sha256": "fe825460ff2e9ab50607efa278818c011691e88bbb6fdfb0a00696eef40b0df0",
+      "crc32": "94899e0c",
+      "bytes": 857868
+    },
+    "shapes": {
+      "sha256": "a242319f6cda10d3d3517bd70cb24b3dfd55c111ab813740d6cbe8377ec41b70",
+      "crc32": "1beb7bbc",
+      "bytes": 861844
+    },
+    "bulk": {
+      "sha256": "67e55670ee55d934e2d007ccf65a8242e72585fd4c8d7eb46a57f43a5359979c",
+      "crc32": "9e968847",
+      "bytes": 857444
+    }
+  },
+  "known_unresolved_physical_cases": [
+    "METEOR",
+    "QUASAR"
+  ],
+  "coverage": "18 contexts final twice, demand-v3 Meteor/Quasar AB/BA; isolated obj/shapes/bulk with demand-v3 in forward/reverse blocks.",
+  "observations": [
+    "original archived input and expected effect properties",
+    "full frame/native PCM production and final accounting",
+    "complete bounded PCM history flushed after join",
+    "per-call main/thread worker CPU and valid pointers",
+    "direct/copy counts and retained full effect/recovery window"
+  ],
+  "limits": [
+    "New A7 unit prices and residual audio deficit unknown; explicit measurement-only install, no production promotion.",
+    "No row-cache core or nested PPU timers.",
+    "Isolated shape variant includes opaque/clip/sparse plain/math together.",
+    "Full effect/recovery and cumulative reserve/pointer validity required; no assumed MHz."
+  ]
+}
