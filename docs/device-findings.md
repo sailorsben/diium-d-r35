@@ -974,3 +974,12 @@ card files remain exact; fresh archive, clean FAT and independent full-package/
 image readback pass. Only Code.bkp added; normal init unchanged, no UART test
 armed. Physical flashing occurs on next normal boot and remains pending.
 [Verified staging and boot instructions](vesper-wings-firmware-update.md).
+
+## Wings2 flash return and UART next step - 2026-10-15
+
+Wings2 flash user-reported successful. Return archive7,822 files; clean FAT,
+stock/ROM/progress hashes verify. Exact completed Code.bkp removed; no other
+host card changes and no IRQ test armed. Full post-update SPI readback remains
+pending. Next UART correction must qualify the live FIFO-size/room contract:
+probe initializes8 and TX sends half-size batches, then use a light original/
+corrected/restored comparison. [Next test contract](uart-correction-plan.md).

@@ -82,3 +82,14 @@ candidate and unchanged init. Physical update and appearance remain pending.
 
 [Staging receipt](../evidence/2026-10-15/vesper-wings-firmware/staging.json),
 [independent readback](../evidence/2026-10-15/vesper-wings-firmware/independent-staging.json).
+
+## Returned update and cleanup - 2026-10-15
+
+Ben reports "Flash worked." Fresh private archive
+vesper-wings-return-20261015T055425Z retains7,822 files/1,942,963,405 bytes,
+including the exact update trigger. All8,455 pre-stage card paths are present;
+only stock swapfile differs. ROM/private progress and normal init verify.
+Clean FAT checks pass before/after removal of only the exact archived Code.bkp.
+No armed markers or IRQ correction are installed. Post-update full SPI image
+readback remains pending; user acceptance is not byte-for-byte verification.
+[Return and cleanup receipt](../evidence/2026-10-15/vesper-wings-firmware/return-cleanup.json).

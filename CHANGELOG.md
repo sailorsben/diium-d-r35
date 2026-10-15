@@ -1,5 +1,14 @@
 # Changelog
 
+## Accept Wings2 flash report and clean completed trigger - 2026-10-15
+
+Wings2 flash user-reported successful. Return archive7,822 files; clean FAT,
+stock/ROM/progress hashes verify. Exact completed Code.bkp removed; no other
+host card changes and no IRQ test armed. Full post-update SPI readback remains
+pending. Next UART correction must qualify the live FIFO-size/room contract:
+probe initializes8 and TX sends half-size batches, then use a light original/
+corrected/restored comparison. [Next test contract](docs/uart-correction-plan.md).
+
 ## Stage verified Wings2 firmware update on I: - 2026-10-15
 
 Wings2 firmware is staged on I: from pushed source e12c531. All8,455 prior

@@ -7407,6 +7407,14 @@
       "published_sha256": "a64fc08818d930f8edce59365167887df7014481e1ce9523dbb3e7adae422704",
       "bytes": 369,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-wings-return-20261015T055425Z/return-cleanup.json",
+      "published": "evidence/2026-10-15/vesper-wings-firmware/return-cleanup.json",
+      "source_sha256": "ed84b8d5bd7001853b4e349e16a3772cbb77e96faa81d16e2a834d954cbf9e05",
+      "published_sha256": "ed84b8d5bd7001853b4e349e16a3772cbb77e96faa81d16e2a834d954cbf9e05",
+      "bytes": 813,
+      "normalized": false
     }
   ]
 }

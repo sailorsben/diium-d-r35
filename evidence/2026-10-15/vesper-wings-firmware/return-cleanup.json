@@ -1,0 +1,22 @@
+{
+  "version": "vesper-wings-2-return",
+  "archive": "vesper-wings-return-20261015T055425Z",
+  "user_report": "Flash worked",
+  "physical_update_user_accepted": true,
+  "full_postupdate_flash_readback": "PENDING",
+  "expected_full_image_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "archive_files": 7822,
+  "archive_bytes": 1942963405,
+  "clean_FAT": true,
+  "only_removed_path": "retro/update/Code.bkp",
+  "removed_trigger_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "original_card_files": 8455,
+  "original_changed": [
+    "retro/swapfile"
+  ],
+  "ROM_and_progress_preserved": true,
+  "normal_init_preserved": true,
+  "armed_markers": 0,
+  "only_host_card_write": "remove exact archived completed update trigger",
+  "IRQ_test_armed": false
+}
