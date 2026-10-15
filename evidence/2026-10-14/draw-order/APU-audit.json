@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "APU_source_unchanged": true,
+  "APU_object_byte_identical": true,
+  "APU_object_sha256": "a3baec4aabbbb539858fb7fc59b5b96bddf7e7e6bb7a51c6e6fa394f8b542097",
+  "SPC_DSP_functions": {
+    "S9xAPUAllowTimeOverflow": {
+      "bytes": 20,
+      "boundary_address": 696404,
+      "priority_address": 696788
+    },
+    "S9xAPUExecute": {
+      "bytes": 1488,
+      "boundary_address": 694608,
+      "priority_address": 694992
+    },
+    "S9xAPULoadState": {
+      "bytes": 2580,
+      "boundary_address": 699456,
+      "priority_address": 699840
+    },
+    "S9xAPUReadPort": {
+      "bytes": 100,
+      "boundary_address": 694356,
+      "priority_address": 694740
+    },
+    "S9xAPUSaveState": {
+      "bytes": 2244,
+      "boundary_address": 697212,
+      "priority_address": 697596
+    },
+    "S9xAPUSetReferenceTime": {
+      "bytes": 20,
+      "boundary_address": 694584,
+      "priority_address": 694968
+    },
+    "S9xAPUTimingSetSpeedup": {
+      "bytes": 308,
+      "boundary_address": 696096,
+      "priority_address": 696480
+    },
+    "S9xAPUWritePort": {
+      "bytes": 128,
+      "boundary_address": 694456,
+      "priority_address": 694840
+    },
+    "dsp_reset": {
+      "bytes": 312,
+      "boundary_address": 641056,
+      "priority_address": 641440
+    },
+    "dsp_run.part.0": {
+      "bytes": 18220,
+      "boundary_address": 645472,
+      "priority_address": 645856
+    },
+    "dsp_voice_V7_V4_V1": {
+      "bytes": 1836,
+      "boundary_address": 642320,
+      "priority_address": 642704
+    },
+    "dsp_voice_V8_V5_V2": {
+      "bytes": 248,
+      "boundary_address": 641444,
+      "priority_address": 641828
+    },
+    "spc_apuram": {
+      "bytes": 20,
+      "boundary_address": 687604,
+      "priority_address": 687988
+    },
+    "spc_copy_state": {
+      "bytes": 3028,
+      "boundary_address": 687624,
+      "priority_address": 688008
+    },
+    "spc_cpu_read": {
+      "bytes": 400,
+      "boundary_address": 663692,
+      "priority_address": 664076
+    },
+    "spc_cpu_write": {
+      "bytes": 344,
+      "boundary_address": 664092,
+      "priority_address": 664476
+    },
+    "spc_cpu_write_smp_reg_": {
+      "bytes": 1316,
+      "boundary_address": 644156,
+      "priority_address": 644540
+    },
+    "spc_enable_rom": {
+      "bytes": 164,
+      "boundary_address": 687440,
+      "priority_address": 687824
+    },
+    "spc_reset": {
+      "bytes": 184,
+      "boundary_address": 642136,
+      "priority_address": 642520
+    },
+    "spc_reset_common": {
+      "bytes": 440,
+      "boundary_address": 641696,
+      "priority_address": 642080
+    },
+    "spc_run_until_": {
+      "bytes": 23000,
+      "boundary_address": 664440,
+      "priority_address": 664824
+    }
+  },
+  "SPC_DSP_function_sizes_identical": true,
+  "ordinary_observers_absent": true,
+  "limits": [
+    "Compiled object bytes are fixed; linked addresses/layout and relocation values can differ.",
+    "This audit establishes code-generation stability, not boundary speed or A7 savings."
+  ]
+}

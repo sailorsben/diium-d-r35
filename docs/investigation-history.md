@@ -1,5 +1,19 @@
 # Investigation history and negative results
 
+## Ordinary draw-order candidate and APU compiler boundary — 2026-10-14
+
+Implement state-based Mode1 top-BG3 priority pass from frozen v3 without research
+arrays. Preserve original lower order/depth/math/windows/OBJ/fallback. Same
+unchanged APU unit compiled once non-LTO and reused by hash;21 linked SPC/DSP
+sizes identical.43,200 ordinary original-input calls/all18,2,560 actual original
+renderer pixel/depth/OBJ oracle fixtures,8,400 resolution/state calls pass.
+New48-epoch controller57,600 calls plus native direct/failure/retry/state,
+wrapper/ABI and mock-rejecting reporter pass. User explicitly authorizes putting
+qualified result on I:; separate measurement suite includes raw v3, boundary
+and candidate in both orders. A7 net saving/boundary cost/remaining deficit
+unknown; falsifiable acceptance and added costs written before installation.
+Frozen and prior evidence exact. See snes-draw-order.md.
+
 ## PC diagnostic physical owner census — 2026-10-14
 
 All four unchanged-v3 epochs return; clean Quasar twice, Meteor pointer failure

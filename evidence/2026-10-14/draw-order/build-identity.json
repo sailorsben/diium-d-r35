@@ -1,0 +1,10 @@
+{
+  "APU_object_sha256": "a3baec4aabbbb539858fb7fc59b5b96bddf7e7e6bb7a51c6e6fa394f8b542097",
+  "cores": {
+    "boundary": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+    "priority": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a"
+  },
+  "APU_object_byte_identical": true,
+  "APU_source_unchanged": true,
+  "ordinary_no_work_observers": true
+}

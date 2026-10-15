@@ -1,0 +1,299 @@
+{
+  "passed": true,
+  "comparisons": [
+    {
+      "label": "boundary",
+      "case": 0,
+      "name": "HOLY",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "c211dbeaab14d48161ca03d24a58617556d08153879a3f0372e0fec33b8735e3"
+    },
+    {
+      "label": "boundary",
+      "case": 1,
+      "name": "METEOR",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "69b3a5413e25fe267e0321a58e28a7cc2b055d14ba194bb8bdc92775badfb18d"
+    },
+    {
+      "label": "boundary",
+      "case": 2,
+      "name": "ULTIMA",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "5d5d1635f61c5a72c851cea0c42cf36f691012c9ccbae1cb299c92182b421b90"
+    },
+    {
+      "label": "boundary",
+      "case": 3,
+      "name": "MELTDOWN",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "f7e102f4a6a5ed8bfcddd919cf682c86340bc3a9e93f178938b2f39ad3031fe8"
+    },
+    {
+      "label": "boundary",
+      "case": 4,
+      "name": "SLOW_2",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "4fcf35bea74b031c9e39e42378a69647c817f5621af1bba6cc696ec39231632d"
+    },
+    {
+      "label": "boundary",
+      "case": 5,
+      "name": "SIREN",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "06c4ff6448e735e47f45ff161313421177c0f54a95f11fe7aac6303aa9e6d18a"
+    },
+    {
+      "label": "boundary",
+      "case": 6,
+      "name": "BAHAMUT",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "4651473d3694c99b053cbcb7ff8f78b8701c03a12ae5e8bc85cedfa9822f0f8e"
+    },
+    {
+      "label": "boundary",
+      "case": 7,
+      "name": "CARBUNKL",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "abbedd1124b1105f61b0e4ee9acbb0ab497b3190e48e6ce4f108f7799ff80314"
+    },
+    {
+      "label": "boundary",
+      "case": 8,
+      "name": "QUASAR",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "1f4d4bae41168cbe43c467c695758795571424f4a2e323f3f05cb19961fe3fcd"
+    },
+    {
+      "label": "boundary",
+      "case": 9,
+      "name": "GRANDTRAIN",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "42981ea9c403012820b7ce0c0070728b6b0ff8e05ea86dfb26f896fb5eb749d8"
+    },
+    {
+      "label": "boundary",
+      "case": 10,
+      "name": "RAGE_004",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "f7a7e47d1cad671ec0d4c3c596742bab5cae0e2ebbc018a9e69639e2eeffabd2"
+    },
+    {
+      "label": "boundary",
+      "case": 11,
+      "name": "RAGE_005",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "c211dbeaab14d48161ca03d24a58617556d08153879a3f0372e0fec33b8735e3"
+    },
+    {
+      "label": "boundary",
+      "case": 12,
+      "name": "RAGE_032",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "69b3a5413e25fe267e0321a58e28a7cc2b055d14ba194bb8bdc92775badfb18d"
+    },
+    {
+      "label": "boundary",
+      "case": 13,
+      "name": "RAGE_086",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "f7e102f4a6a5ed8bfcddd919cf682c86340bc3a9e93f178938b2f39ad3031fe8"
+    },
+    {
+      "label": "boundary",
+      "case": 14,
+      "name": "RAGE_088",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "4fcf35bea74b031c9e39e42378a69647c817f5621af1bba6cc696ec39231632d"
+    },
+    {
+      "label": "boundary",
+      "case": 15,
+      "name": "TERRATO",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "ca63e522a7d0a3c97c0cccd1a972e373d8b3792fc9e39b3510d9206451cddffa"
+    },
+    {
+      "label": "boundary",
+      "case": 16,
+      "name": "BIO_BLAST",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "96c1b48862c4e38eeac36906f766bb4e40d8f83b8c357ef590852e88cf4469cd"
+    },
+    {
+      "label": "boundary",
+      "case": 17,
+      "name": "CONFUSER",
+      "calls": 1200,
+      "core_sha256": "24739a6e9d8d050175408e3d95ea1f24ec58c67616f652a8831bfc513dbb3516",
+      "log_sha256": "039574b8cf9549dbc85690d93739250e9f8480732e22287ddeefb6b5d6b1a9ba"
+    },
+    {
+      "label": "priority",
+      "case": 0,
+      "name": "HOLY",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "c211dbeaab14d48161ca03d24a58617556d08153879a3f0372e0fec33b8735e3"
+    },
+    {
+      "label": "priority",
+      "case": 1,
+      "name": "METEOR",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "69b3a5413e25fe267e0321a58e28a7cc2b055d14ba194bb8bdc92775badfb18d"
+    },
+    {
+      "label": "priority",
+      "case": 2,
+      "name": "ULTIMA",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "5d5d1635f61c5a72c851cea0c42cf36f691012c9ccbae1cb299c92182b421b90"
+    },
+    {
+      "label": "priority",
+      "case": 3,
+      "name": "MELTDOWN",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "f7e102f4a6a5ed8bfcddd919cf682c86340bc3a9e93f178938b2f39ad3031fe8"
+    },
+    {
+      "label": "priority",
+      "case": 4,
+      "name": "SLOW_2",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "4fcf35bea74b031c9e39e42378a69647c817f5621af1bba6cc696ec39231632d"
+    },
+    {
+      "label": "priority",
+      "case": 5,
+      "name": "SIREN",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "06c4ff6448e735e47f45ff161313421177c0f54a95f11fe7aac6303aa9e6d18a"
+    },
+    {
+      "label": "priority",
+      "case": 6,
+      "name": "BAHAMUT",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "4651473d3694c99b053cbcb7ff8f78b8701c03a12ae5e8bc85cedfa9822f0f8e"
+    },
+    {
+      "label": "priority",
+      "case": 7,
+      "name": "CARBUNKL",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "abbedd1124b1105f61b0e4ee9acbb0ab497b3190e48e6ce4f108f7799ff80314"
+    },
+    {
+      "label": "priority",
+      "case": 8,
+      "name": "QUASAR",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "1f4d4bae41168cbe43c467c695758795571424f4a2e323f3f05cb19961fe3fcd"
+    },
+    {
+      "label": "priority",
+      "case": 9,
+      "name": "GRANDTRAIN",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "42981ea9c403012820b7ce0c0070728b6b0ff8e05ea86dfb26f896fb5eb749d8"
+    },
+    {
+      "label": "priority",
+      "case": 10,
+      "name": "RAGE_004",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "f7a7e47d1cad671ec0d4c3c596742bab5cae0e2ebbc018a9e69639e2eeffabd2"
+    },
+    {
+      "label": "priority",
+      "case": 11,
+      "name": "RAGE_005",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "c211dbeaab14d48161ca03d24a58617556d08153879a3f0372e0fec33b8735e3"
+    },
+    {
+      "label": "priority",
+      "case": 12,
+      "name": "RAGE_032",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "69b3a5413e25fe267e0321a58e28a7cc2b055d14ba194bb8bdc92775badfb18d"
+    },
+    {
+      "label": "priority",
+      "case": 13,
+      "name": "RAGE_086",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "f7e102f4a6a5ed8bfcddd919cf682c86340bc3a9e93f178938b2f39ad3031fe8"
+    },
+    {
+      "label": "priority",
+      "case": 14,
+      "name": "RAGE_088",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "4fcf35bea74b031c9e39e42378a69647c817f5621af1bba6cc696ec39231632d"
+    },
+    {
+      "label": "priority",
+      "case": 15,
+      "name": "TERRATO",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "ca63e522a7d0a3c97c0cccd1a972e373d8b3792fc9e39b3510d9206451cddffa"
+    },
+    {
+      "label": "priority",
+      "case": 16,
+      "name": "BIO_BLAST",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "96c1b48862c4e38eeac36906f766bb4e40d8f83b8c357ef590852e88cf4469cd"
+    },
+    {
+      "label": "priority",
+      "case": 17,
+      "name": "CONFUSER",
+      "calls": 1200,
+      "core_sha256": "48b49949a26ba0732ed70867deaa14816de52cc3bf08f171307e735fa6d0ff3a",
+      "log_sha256": "039574b8cf9549dbc85690d93739250e9f8480732e22287ddeefb6b5d6b1a9ba"
+    }
+  ],
+  "raw_graphics_PCM_geometry_calls": 43200,
+  "normalized_state_every": 30,
+  "APU_object_sha256": "a3baec4aabbbb539858fb7fc59b5b96bddf7e7e6bb7a51c6e6fa394f8b542097",
+  "A7_saving_measured": false,
+  "production_gate_passed": false,
+  "card_writes": 0
+}

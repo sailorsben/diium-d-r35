@@ -1,5 +1,19 @@
 # Changelog
 
+## Implement and qualify draw order with fixed APU compilation — 2026-10-14
+
+Fresh ordinary Mode1 unique-top BG3-first core preserves original low BG3/OBJ/
+window/math/fallback rules. Compile unchanged APU unit once outside LTO, reuse
+byte-identical object in boundary/priority, verify21 linked SPC/DSP sizes.
+43,200 exact frame/PCM/state calls/all18 contexts,2,560 independent original
+renderer pixel/depth/OBJ-limit fixtures,8,400 resolution/state calls pass.
+48-epoch raw/boundary/candidate hardware suite qualifies57,600 actual ARM calls,
+142 native acquired-output callbacks and fault/retry/state/wrapper/ABI/mock
+guards. No new A7 saving or boundary price; explicit cost/break-even/deficit/
+physical prediction contract retained. User authorized separate installation
+after validation; source/readiness committed before staging. Prior proofs exact.
+See docs/snes-draw-order.md and evidence/2026-10-14/draw-order.
+
 ## Evaluate unchanged-core PC diagnostic return — 2026-10-14
 
 Strict7,359-file/1,848,513,197-byte archive, FAT clean,88 exact payloads and

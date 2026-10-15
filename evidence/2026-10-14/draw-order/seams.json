@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "original_renderer_probe": "PASS original RenderScreen pixel/depth/OBJ-limit oracle: 2560 fixtures, 1024 positive, 1536 fallback, 1280 limited; cold/warm, flips,8/16,math,clips,Window2,OBJ rotation/limits,pitch/hires/mosaic guards",
+  "resolution_state_transitions": {
+    "passed": true,
+    "calls": 8400,
+    "cases": [
+      {
+        "kind": "midframe_mode5",
+        "calls": 1200,
+        "direct_frames": 1200,
+        "promotions": 1200,
+        "fallbacks": 0,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "b036d8e99a265b573dd29bfc0f44a22cd84f0d1b656207d3f89497e972c3cc1b"
+      },
+      {
+        "kind": "midframe_mode6",
+        "calls": 1200,
+        "direct_frames": 1200,
+        "promotions": 1200,
+        "fallbacks": 0,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "da6551769a021733cffab434cc435eec20e15f1182d43d2c26e58704391efa9b"
+      },
+      {
+        "kind": "midframe_interlace",
+        "calls": 1200,
+        "direct_frames": 300,
+        "promotions": 300,
+        "fallbacks": 900,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "d9383a758fe5f3458f44f3ed8658e83d5474f24794cd2488128457a7ed71a6c0"
+      },
+      {
+        "kind": "midframe_239",
+        "calls": 1200,
+        "direct_frames": 1200,
+        "promotions": 0,
+        "fallbacks": 0,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "3e3c702a2b549ada2b73eec676dd75a759112915056094728ba69710937d38ae"
+      },
+      {
+        "kind": "midframe_pseudohires",
+        "calls": 1200,
+        "direct_frames": 1200,
+        "promotions": 1200,
+        "fallbacks": 0,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "84759af5c2930b4f2ae518ccdb71973dd84406ba32f72de101670082af282004"
+      },
+      {
+        "kind": "initial_hires_fallback",
+        "calls": 1200,
+        "direct_frames": 0,
+        "promotions": 0,
+        "fallbacks": 1200,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "d22cd185ff151bccbdf8163e668344ba1f61de4f4ba81a3e2dffe33a62eec72a"
+      },
+      {
+        "kind": "state_load_cycles",
+        "calls": 1200,
+        "direct_frames": 1200,
+        "promotions": 0,
+        "fallbacks": 0,
+        "raw_graphics_PCM_state_match": true,
+        "log_sha256": "904d7287f6241497a348ea8b2cb2b7c5fc386f059aabc59a0298351837ebe49f"
+      }
+    ],
+    "synthetic_register_writes": true,
+    "common_fixture_HDMA_base_reset": true,
+    "final_core_HDMA_changed": false,
+    "ignored_emulated_fields": false,
+    "ROM_modified": false,
+    "A7_performance_evidence": false
+  },
+  "A7_performance_evidence": false
+}

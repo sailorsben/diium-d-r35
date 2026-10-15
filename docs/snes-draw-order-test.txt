@@ -1,0 +1,12 @@
+Draw-order optimization candidate, 1.19-draw-order1.
+
+Safely eject I:, cold-boot with the handheld initially off, and allow20-25min.
+The automatic test runs all18 archived spell contexts twice, then compares
+raw demand-v3, fixed-APU-only and draw-order cores on Meteor/Quasar in opposite
+orders. No manual late-game save or inputs are needed. Wait for the stock
+launcher, power down and return I:. Select+Start aborts; next reboot is stock.
+
+Draw-order and its control share one byte-identical APU object. No PC sampling,
+nested phase clocks, dropped frames/audio or production promotion. Returned
+valid pointers, full audio reserve/recovery and matched timing decide whether
+the candidate improves the device. Archive before any update or rearm.

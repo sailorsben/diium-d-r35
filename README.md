@@ -6,6 +6,16 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **Draw-order candidate validated; authorized I: installation next:** Mode1
+  unique-top BG3 first, original lower-layer order and unsupported fallback.
+  The control/candidate share one byte-identical non-LTO APU object;21 linked
+  SPC/DSP function sizes match.43,200 ordinary exact calls/all18 contexts,
+  2,560 original-renderer pixel/depth/OBJ fixtures,8,400 resolution/state calls
+  and57,600 actual controller calls pass, plus native/wrapper/ABI/mock guards.
+  Net A7 saving and boundary cost remain unknown; the48-epoch hardware suite
+  includes raw v3, boundary-only and draw-order controls. No production promotion.
+  [Implementation, evidence and test](docs/snes-draw-order.md).
+
 - **PC diagnostic returned; I: unarmed:** all four epochs ran. Quasar is clean
   twice; Meteor pointer drift starts at532 control/488 sampled, with sampled
   audio failure at509 calls. Valid heavy-prefix PC samples place named PPU

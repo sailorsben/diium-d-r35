@@ -7135,6 +7135,62 @@
       "published_sha256": "e18be6fd812cfd7c8357d699eec180821fb8ccd4cc30681e4a9710d3a05950fb",
       "bytes": 70804,
       "normalized": false
+    },
+    {
+      "source": "build/draw-order-private-v1/build-identity.json",
+      "published": "evidence/2026-10-14/draw-order/build-identity.json",
+      "source_sha256": "045522822a1386ec1f9b6c438685be09d28f7d2140d7d47f4f4e987cfbeccdb7",
+      "published_sha256": "045522822a1386ec1f9b6c438685be09d28f7d2140d7d47f4f4e987cfbeccdb7",
+      "bytes": 386,
+      "normalized": false
+    },
+    {
+      "source": "build/draw-order-private-v1/qualification.json",
+      "published": "evidence/2026-10-14/draw-order/qualification.json",
+      "source_sha256": "bcd36444a2859957eaeba739cdcdac8902cacf9d12685665b1c64d42997b2f70",
+      "published_sha256": "bcd36444a2859957eaeba739cdcdac8902cacf9d12685665b1c64d42997b2f70",
+      "bytes": 10365,
+      "normalized": false
+    },
+    {
+      "source": "build/draw-order-private-v1/seams.json",
+      "published": "evidence/2026-10-14/draw-order/seams.json",
+      "source_sha256": "5f8e014d6d0cc41107c83ac12df7d2e7e7164ea29f66dd6bb6425e1f6431383f",
+      "published_sha256": "5f8e014d6d0cc41107c83ac12df7d2e7e7164ea29f66dd6bb6425e1f6431383f",
+      "bytes": 2670,
+      "normalized": false
+    },
+    {
+      "source": "build/draw-order-private-v1/APU-audit.json",
+      "published": "evidence/2026-10-14/draw-order/APU-audit.json",
+      "source_sha256": "ce12fe0e8c9ad9de5c30dc660273db254b080912ad2be435765a918a950b9737",
+      "published_sha256": "ce12fe0e8c9ad9de5c30dc660273db254b080912ad2be435765a918a950b9737",
+      "bytes": 3011,
+      "normalized": false
+    },
+    {
+      "source": "build/draw-order-test-private-v1/plan.json",
+      "published": "evidence/2026-10-14/draw-order/plan.json",
+      "source_sha256": "9f514413a3ef7515333ae3535f1b2c175ef6d4221a8620984b399afd2b4ea5d6",
+      "published_sha256": "9f514413a3ef7515333ae3535f1b2c175ef6d4221a8620984b399afd2b4ea5d6",
+      "bytes": 25904,
+      "normalized": false
+    },
+    {
+      "source": "build/draw-order-test-private-v1/ready.json",
+      "published": "evidence/2026-10-14/draw-order/ready.json",
+      "source_sha256": "81e2c1c5ce889c2804b3b7330d78a1c47cca473a6654d5e85ce1790cddc1135e",
+      "published_sha256": "81e2c1c5ce889c2804b3b7330d78a1c47cca473a6654d5e85ce1790cddc1135e",
+      "bytes": 28483,
+      "normalized": false
+    },
+    {
+      "source": "build/draw-order-test-private-v1/verification.json",
+      "published": "evidence/2026-10-14/draw-order/verification.json",
+      "source_sha256": "f3460d89d8b6bab7b59334df99f2bdf843f3b1cae9a1900bb65156dbb57581c5",
+      "published_sha256": "f3460d89d8b6bab7b59334df99f2bdf843f3b1cae9a1900bb65156dbb57581c5",
+      "bytes": 26285,
+      "normalized": false
     }
   ]
 }
