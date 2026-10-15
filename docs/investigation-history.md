@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Authorized draw-order physical candidate installed — 2026-10-14
+
+After full validation and clean source push9ba664f, install85 payloads in
+separate draw-order1 directory, verify7,358 prior files/stock/ROM/progress and
+clean FAT at all three stages. Strict7,359-file archive matches evaluated return.
+One-shot armed for48 automatic epochs; next reboot stock. Fixed APU compiler
+object and priority candidate are paired with boundary-only/raw-v3 controls.
+No measured net A7 gain or full effect/recovery acceptance until return. Prior
+proofs/frozen readiness exact. See snes-draw-order-installation.md.
+
 ## Ordinary draw-order candidate and APU compiler boundary — 2026-10-14
 
 Implement state-based Mode1 top-BG3 priority pass from frozen v3 without research

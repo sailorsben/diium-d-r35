@@ -1,5 +1,16 @@
 # Changelog
 
+## Install and arm validated draw-order candidate on I: — 2026-10-14
+
+From clean pushed9ba664f, guarded separate draw-order1 install verifies85
+payloads,7,358 prior files and original stock/adapter/boot/ROM/progress after
+strict7,359-file/1,848,513,197-byte archive, identical to evaluated PC return.
+FAT clean before installation/after payload/after arm. Existing dispatcher plus
+one-shot marker selects48-epoch18-context regression and raw/fixed-APU/candidate
+pricing. Production gate false; net A7 saving/boundary cost/effect recovery pending.
+Frozen preparation and prior published hashes exact. Allow20–25min, wait stock,
+power down/return; next reboot stock. See snes-draw-order-installation.md.
+
 ## Implement and qualify draw order with fixed APU compilation — 2026-10-14
 
 Fresh ordinary Mode1 unique-top BG3-first core preserves original low BG3/OBJ/

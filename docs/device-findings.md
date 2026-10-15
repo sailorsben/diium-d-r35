@@ -1,5 +1,14 @@
 # Device findings
 
+**Current card:** draw-order1 installed separately and one-shot armed on I: from
+clean pushed9ba664f. Strict7,359-file archive matches evaluated return;85 payloads
+read back exact and7,358 prior files/stock/ROM/progress unchanged. FAT clean before
+install/after payload/after arm.48 automatic epochs, no PC/phase/work observers;
+all18 candidate contexts twice plus raw/fixed-APU/candidate Meteor/Quasar price
+blocks. Net A7 saving and full reserve/recovery acceptance remain pending. Allow
+20–25min, wait stock, power down/return. Older card statuses below are historical.
+[Installation receipt and procedure](snes-draw-order-installation.md).
+
 **Latest implementation:** general Mode1 highest-priority BG3-first candidate
 qualified in fresh ordinary cores. Same unchanged APU source and byte-identical
 non-LTO object in control/candidate,21 final SPC/DSP sizes identical; linked
@@ -7,12 +16,12 @@ addresses/layout may change.43,200 exact ordinary calls/all18,2,560 original
 renderer pixel/depth/OBJ fixtures and8,400 state/resolution calls pass. Actual
 48-epoch controller57,600 calls/native acquired-output/fault/retry/wrapper/ABI/
 physical-mock rejection pass. User explicitly authorized installation after
-validation; source/readiness must be pushed before guarded separate I: staging.
+validation; clean source/readiness pushed before guarded separate I: staging.
 New net A7 saving and boundary cost remain unknown, measured by raw/control/
-candidate price blocks; no production acceptance. Existing card still unarmed
-before that installation. [Implementation and cost contract](snes-draw-order.md).
+candidate price blocks; no production acceptance. Installation is recorded above.
+[Implementation and cost contract](snes-draw-order.md).
 
-**Current card / latest return:** I: unarmed, marker consumed. Unchanged-v3 PC
+**Prior PC return:** marker consumed before this new installation. Unchanged-v3 PC
 diagnostic ran all four epochs. Quasar clean twice; Meteor control completes
 but first pointer drift532, sampled drift488/audio error509 calls. Sampler works:
 613/1,333 active samples,583/1,333 valid-prefix counts; requested1ms delivers

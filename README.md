@@ -6,7 +6,7 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **Draw-order candidate validated; authorized I: installation next:** Mode1
+- **I: armed with the validated draw-order candidate:** Mode1
   unique-top BG3 first, original lower-layer order and unsupported fallback.
   The control/candidate share one byte-identical non-LTO APU object;21 linked
   SPC/DSP function sizes match.43,200 ordinary exact calls/all18 contexts,
@@ -14,7 +14,10 @@ The project replaces the launcher/runtime in userspace while retaining the worki
   and57,600 actual controller calls pass, plus native/wrapper/ABI/mock guards.
   Net A7 saving and boundary cost remain unknown; the48-epoch hardware suite
   includes raw v3, boundary-only and draw-order controls. No production promotion.
-  [Implementation, evidence and test](docs/snes-draw-order.md).
+  All85 payloads and7,358 protected prior files/ROM/progress verify, FAT clean.
+  Allow20–25min, wait stock, power down/return; next reboot stock.
+  [Installation and test](docs/snes-draw-order-installation.md),
+  [implementation and evidence](docs/snes-draw-order.md).
 
 - **PC diagnostic returned; I: unarmed:** all four epochs ran. Quasar is clean
   twice; Meteor pointer drift starts at532 control/488 sampled, with sampled

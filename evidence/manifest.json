@@ -7191,6 +7191,14 @@
       "published_sha256": "f3460d89d8b6bab7b59334df99f2bdf843f3b1cae9a1900bb65156dbb57581c5",
       "bytes": 26285,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T003800Z/draw-order-installation.json",
+      "published": "evidence/2026-10-14/draw-order/installation.json",
+      "source_sha256": "772b165d4e8e709308a7e0b3df64eb88276e2cc9c6e0d661a725e8e526ddd373",
+      "published_sha256": "772b165d4e8e709308a7e0b3df64eb88276e2cc9c6e0d661a725e8e526ddd373",
+      "bytes": 8741,
+      "normalized": false
     }
   ]
 }
