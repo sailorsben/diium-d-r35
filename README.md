@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **I: armed for UART state1 preflight.** Separate one-shot snapshot diagnostic
+  from pushed3892f2a;7,797-file archive,7,796 protected prior files and ROM/progress
+  verify, FAT clean after arm. Safely eject/boot, wait stock, leave it30s, power
+  down/return. No spell suite; physical module lifecycle and UART cause pending.
+  [Scope, evidence and instructions](docs/uart-state-preflight.md).
+
 - **UART snapshot preflight qualified offline.** Reconstructed observed module
   ABI and exact kernel exports remove the vendor-source prerequisite for this
   small probe.27 checks include actual kernel relocation, compiled observer,

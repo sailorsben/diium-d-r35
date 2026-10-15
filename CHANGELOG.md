@@ -1,5 +1,15 @@
 # Changelog
 
+## Arm separate UART snapshot preflight on I: — 2026-10-14
+
+From clean pushed3892f2a, strict7,797-file/1,937,074,272-byte archive and clean FAT
+precede the separate uart-state1 install. All7,796 protected prior files, ROM and
+progress verify; payloads and sole marker/dispatcher read back exactly, FAT clean
+after arm. No UART configuration/handler/core/firmware changes.100 idle snapshots
+and non-forced module lifecycle are pending physical qualification. Boot once,
+wait stock, leave30s, power down/return; next consumed-marker boot stock. See
+docs/uart-state-preflight.md and the interpreted installation receipt.
+
 ## Reconstruct and qualify UART snapshot preflight — 2026-10-14
 
 Match observed448-byte module ABI, init/exit/core/init-layout/kallsyms/refcount

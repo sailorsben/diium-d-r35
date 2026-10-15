@@ -1,5 +1,16 @@
 # UART state1: snapshot preflight — 2026-10-14
 
+**Installed and armed on I:** exact pushed source`3892f2a` precedes the install.
+Strict archive`a7-pair-before-20261015T021858Z` preserves7,797 files/
+1,937,074,272 bytes. All7,796 protected prior files, ROM/progress and four installed
+payloads verify; FAT is clean before/after payload/after arm. Only the existing
+dispatcher, one-shot marker and separate`retro/uart-state1` package change.
+[Installation receipt](../evidence/2026-10-14/uart-state/installation.json).
+Safely eject, boot, wait for the stock launcher, leave it there about30 seconds,
+then power down and reconnect I:. If stock has not appeared after a minute,
+power down and return the card; do not repeatedly rearm it. Next boot after the
+consumed marker is stock. Physical results remain pending.
+
 The matching vendor source is still unlocated after targeted public code and
 repository searches. We no longer depend on locating it to prepare the first
 observation: an upstream-header reconstruction matches the independently
