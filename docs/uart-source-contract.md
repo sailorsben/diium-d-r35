@@ -142,3 +142,10 @@ Pair1 now records both TX enables set and GIC pending/active/unmasked on all
 12,340 captures, including12,202 ignored-status entries. This closes the earlier
 status/control correlation gap; physical causal correction and CPU benefit are
 still unmeasured. [Returned tuples and limits](uart-pair-return.md).
+
+## Subsequent causal correction test - 2026-10-15
+
+UART TX1 reduces the idle flood from about7k to70 IRQ19/sec in both corrected
+intervals; both exact restorations reproduce it. This establishes the tested
+TX service mechanism causally, while CPU/wire/full-FIFO/gameplay qualification
+remains pending. [Physical result](uart-tx-return.md).

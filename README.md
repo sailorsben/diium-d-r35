@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+UART TX1 physical causal test passes: original/restored6,951-7,060 IRQ19/sec,
+corrected68.87/71.86, weighted98.994% reduction. Both restorations reproduce the
+flood; TX counters/queues progress, RX/errors stay flat, no faults/bypass.
+Restore/unload/exit0 and archive/FAT/stock/ROM/progress verify; I: unarmed.
+CPU savings, wire/full-FIFO/mixed-RX and SNES benefit remain unmeasured.
+[Physical result and limits](docs/uart-tx-return.md).
+
 UART TX1 is armed once on I: from pushed source a173f82. Fresh archive,
 three clean FAT checks, all7,820 protected prior files/stock/ROM/progress and
 four payloads/dispatcher/sole marker verify. Five5-second original/corrected/

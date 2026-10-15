@@ -1000,3 +1000,12 @@ three clean FAT checks, all7,820 protected prior files/stock/ROM/progress and
 four payloads/dispatcher/sole marker verify. Five5-second original/corrected/
 restored phases, then unload/stock startup; physical FIFO/IRQ/CPU result pending.
 [Installation and boot procedure](uart-tx-correction-test.md).
+
+## UART TX1 physical causal return - 2026-10-15
+
+UART TX1 physical causal test passes: original/restored6,951-7,060 IRQ19/sec,
+corrected68.87/71.86, weighted98.994% reduction. Both restorations reproduce the
+flood; TX counters/queues progress, RX/errors stay flat, no faults/bypass.
+Restore/unload/exit0 and archive/FAT/stock/ROM/progress verify; I: unarmed.
+CPU savings, wire/full-FIFO/mixed-RX and SNES benefit remain unmeasured.
+[Physical result and limits](uart-tx-return.md).

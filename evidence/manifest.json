@@ -7447,6 +7447,14 @@
       "published_sha256": "ba9eb7503e4e6609973ce9d93e96e5de171d7ace1c02fc4a50dd10078cda1045",
       "bytes": 883,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T062141Z/uart-tx-return.json",
+      "published": "evidence/2026-10-15/uart-tx/return.json",
+      "source_sha256": "619b3b45967c11b1da2aca244ae80f5490ae3398fc41d3a4d4c7f09843a5e09e",
+      "published_sha256": "619b3b45967c11b1da2aca244ae80f5490ae3398fc41d3a4d4c7f09843a5e09e",
+      "bytes": 15678,
+      "normalized": false
     }
   ]
 }

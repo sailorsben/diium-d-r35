@@ -1,5 +1,14 @@
 # Changelog
 
+## UART TX correction suppresses flood and restoration reproduces it - 2026-10-15
+
+UART TX1 physical causal test passes: original/restored6,951-7,060 IRQ19/sec,
+corrected68.87/71.86, weighted98.994% reduction. Both restorations reproduce the
+flood; TX counters/queues progress, RX/errors stay flat, no faults/bypass.
+Restore/unload/exit0 and archive/FAT/stock/ROM/progress verify; I: unarmed.
+CPU savings, wire/full-FIFO/mixed-RX and SNES benefit remain unmeasured.
+[Physical result and limits](docs/uart-tx-return.md).
+
 ## Arm reversible UART TX1 correction test on I: - 2026-10-15
 
 UART TX1 is armed once on I: from pushed source a173f82. Fresh archive,

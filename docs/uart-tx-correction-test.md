@@ -113,3 +113,9 @@ FAT checks pass before installation, after payload and after arming. Independent
 readback confirms all payloads, dispatcher and marker; no firmware trigger exists.
 All956 earlier published proofs retain their hashes. Physical result pending.
 [Installation receipt](../evidence/2026-10-15/uart-tx/installation.json).
+
+## Physical return - 2026-10-15
+
+Both corrected intervals suppress the idle flood by about99%; both restorations
+reproduce it with queue/TX progress and no added observed errors. Restore/unload
+pass; I: unarmed. [Results and boundaries](uart-tx-return.md).
