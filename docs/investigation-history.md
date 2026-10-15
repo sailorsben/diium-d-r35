@@ -1436,3 +1436,11 @@ archive,7,812 protected prior hashes, stock/ROM/progress and three clean FAT
 checks pass. Four new payloads and sole marker/dispatcher verify. Physical
 capture pending; boot once, wait for stock startup, power off and return card.
 [Verified installation and procedure](uart-pair-probe.md).
+
+## Vesper feather animation candidate - 2026-10-15
+
+Vesper Wings2 replaces the loading dots with a rising cyan feather-light sweep.
+All18 frames pass the original ARM decoder/drawing seam;133,088-byte content
+fits the141,940-byte ZIP span. Authored GIF/native assets are ready for review;
+physical cadence/appearance pending. No card or firmware staging; UART pair1
+remains armed. [Preview, format and verification](vesper-wings-animation.md).

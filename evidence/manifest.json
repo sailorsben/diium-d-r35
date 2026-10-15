@@ -7351,6 +7351,14 @@
       "published_sha256": "519187621f24c6e7b48ad687facdf2a7a59a937d0c585ed6b9ee775ba1b27867",
       "bytes": 888,
       "normalized": false
+    },
+    {
+      "source": "releases/vesper-wings-2/manifest.json",
+      "published": "releases/vesper-wings-2/manifest.json",
+      "source_sha256": "f13d534c814041e58ad74c3c0ba18d1be2db4d69b001c18b234c5c8b0f8f96e3",
+      "published_sha256": "f13d534c814041e58ad74c3c0ba18d1be2db4d69b001c18b234c5c8b0f8f96e3",
+      "bytes": 2137,
+      "normalized": false
     }
   ]
 }

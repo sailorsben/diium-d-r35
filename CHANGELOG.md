@@ -1,5 +1,13 @@
 # Changelog
 
+## Animate the feathers in Vesper Wings2 - 2026-10-15
+
+Vesper Wings2 replaces the loading dots with a rising cyan feather-light sweep.
+All18 frames pass the original ARM decoder/drawing seam;133,088-byte content
+fits the141,940-byte ZIP span. Authored GIF/native assets are ready for review;
+physical cadence/appearance pending. No card or firmware staging; UART pair1
+remains armed. [Preview, format and verification](docs/vesper-wings-animation.md).
+
 ## Arm paired UART capture on I: - 2026-10-15
 
 UART pair1 is armed once on I: from pushed source ec8ec39. Fresh7,813-file

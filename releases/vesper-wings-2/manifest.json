@@ -1,0 +1,39 @@
+{
+  "version": "vesper-wings-2",
+  "effect": "cyan feather light rising from the V tip to both wing tips",
+  "frames": 18,
+  "preview_frame_ms": 90,
+  "physical_cadence_measured": false,
+  "original_artwork_sha256": "8b2460b58b9d9080e0fa4a9f78215be0c17fbb0786a4bc9e1b4cd3c6c9e52d7f",
+  "stock_sha256": "436d8018808b150c926274575a195f664e61db646f44713371019e9ae10caf3b",
+  "stock_code_and_all_outside_zip_unchanged": true,
+  "zip_bytes": 141940,
+  "zip_capacity": 141940,
+  "compressed_content_and_headers_bytes": 133088,
+  "padding_bytes": 8852,
+  "uncompressed_bytes": 1021736,
+  "stock_allocation_bytes": 2808092,
+  "largest_extra_sprite_pixels": 11620,
+  "stock_background_pixels_per_frame": 307200,
+  "added_runtime_processes_or_decoders": 0,
+  "new_per_frame_shader_work": 0,
+  "stock_loader_and_sprite_check": "PASS exact stock OpenZipU/UnzipItem decode, 18 ShowSprite frames, pixel equality and buffer canaries; no hardware calls",
+  "preview_review": "nine-frame contact sheet visually checked; all18 GIF frames distinct; logo/heart/lettering retained",
+  "physical_boot_appearance": "PENDING",
+  "card_access": false,
+  "firmware_staged": false,
+  "private_patched_executable_sha256": "a29bd39e6f023404c0ba037cb101a19cf7aaa5be1787234cffdba853ec98486a",
+  "assets": {
+    "ui.raw": "759af63adf80568e0085cbb401b3823e230e79e5427fc78a37413f363fc5cd32",
+    "logo.zip": "f4c3b976207cc20fdeabebaee0921070c205d82af95cb61e5a25876e2fae69c5",
+    "preview.gif": "35ac538023ac0e2d7536dd0b4318575f4b1263a87a923ae4400020ae376e9902",
+    "preview.png": "a655dcbe0298b9cb7bbc591b8383c9926d11fa7fd6039cbb0c9fc232f62d87fd",
+    "contact-sheet.png": "627bf909c8ecf87bea024fc9164b72b8f3746a3cc36c50214949bb0bacbf6101"
+  },
+  "sources": {
+    "build/make-vesper-wings.py": "e43a08982b41cf8f07e1dc37dcca76143edd2bd9f6a3ecab3fef1a7be1adce9e",
+    "build/make-vesper-boot.py": "c8032edeaf213e5c0b8b181f20f54d24c4be5a5353897eb3041075834f719b9f",
+    "build/check-stock-boot.c": "607523430b90a9ee11d410608c6ebc80ee16425b7bd83651982c1d75f5a32d11",
+    "build/check-stock-boot.sh": "cfb4132fcdfbfa63fe2706d2b811e53ad975208751e5507eec230a2b3d294181"
+  }
+}

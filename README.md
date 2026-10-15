@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+Vesper Wings2 replaces the loading dots with a rising cyan feather-light sweep.
+All18 frames pass the original ARM decoder/drawing seam;133,088-byte content
+fits the141,940-byte ZIP span. Authored GIF/native assets are ready for review;
+physical cadence/appearance pending. No card or firmware staging; UART pair1
+remains armed. [Preview, format and verification](docs/vesper-wings-animation.md).
+
 UART pair1 is armed once on I: from pushed source ec8ec39. Fresh7,813-file
 archive,7,812 protected prior hashes, stock/ROM/progress and three clean FAT
 checks pass. Four new payloads and sole marker/dispatcher verify. Physical
