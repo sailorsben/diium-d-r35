@@ -1,17 +1,23 @@
 # UART status1: original interrupt status and branch capture
 
+**Returned:** the physical probe captures31,345 calls;99.54% carry status0x531f
+and select neither RX nor TX, while all return IRQ_HANDLED. Counter identities,
+restoration and non-forced unload pass. I: is unarmed; no rearm or fix was made.
+See [return](uart-status-return.md) for evidence and remaining causal boundary.
+The build/arm instructions below record the earlier deployment.
+
 **Installed and armed on I:** exact pushed source`0b90c2d` precedes deployment.
 Fresh archive`a7-pair-before-20261015T031253Z` preserves7,805 files/
 1,937,114,927 bytes. All7,804 protected prior files, stock binaries, ROM and
 original progress match; four payloads and dispatcher/sole marker read back
 exactly. FAT is clean before install, after payload and after arm. Existing
 state1 logs stay intact. [Installation receipt](../evidence/2026-10-14/uart-status/installation.json).
-Physical interception/status/branch results remain pending.
+Physical interception/status/branch results are now recorded in the return above.
 
 The state1 return leaves IRQ19 flooding with no persistent TX-enable mismatch.
 This probe captures the **actual status value returned by the original ISR's
 entry read**, then continues the original handler at its first status test.
-The physical status/branch result is pending. This is a diagnostic, not a UART
+The physical status/branch result is linked above. This is a diagnostic, not a UART
 fix or a performance candidate; no A7 saving or gameplay improvement is claimed.
 
 ## Interception and measurement scope

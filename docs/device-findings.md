@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest physical return / current card:** I: unarmed, marker consumed. UART
+status1 captures31,345 IRQ19 entries with matching IRQ-counter growth:31,201
+(99.54%) status0x531f select neither RX nor TX;144 TX-only, zero RX. All return
+IRQ_HANDLED. No overflow/bypass; restoration/frozen capture/unload/exit0 pass.
+Dominant ignored-status software path is established; electrical/enable-bit
+origin and A7 cost remain unmeasured. Strict7,813-file archive, clean FAT,
+7,803/7,804 prior files exact, with only stock swapfile changed; stock/ROM/progress verify.
+No card writes/rearm or UART/core changes. Older statuses below are historical.
+[Full return and source-contract question](uart-status-return.md).
+
 **Current card:** I: armed for separate UART status1 from clean pushed0b90c2d.
 Strict7,805-file archive,7,804 protected prior files/stock/ROM/progress and four
 payloads/dispatcher/sole marker verify. FAT clean before/after payload/after arm.

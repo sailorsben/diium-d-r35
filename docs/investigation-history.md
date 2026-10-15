@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## UART status1 identifies dominant unrecognized-status path — 2026-10-14
+
+Archive7,813 files/1,937,139,157 bytes, clean FAT and exact payload/stock/ROM/
+progress; only stock swapfile changes among protected prior files. All31,345
+captured calls equal IRQ19 counter growth.31,201 (99.54%) yield0x531f, selecting
+neither RX nor TX;144 TX-only, zero RX. All return IRQ_HANDLED, no overflow or
+bypass. Restore/frozen capture/non-forced unload/exit0 pass. Original ARM ISR
+with captured0x531f reproduces1000 no-service/no-RAM-write handled returns.
+Identify the live software path; do not invent electrical cause, undocumented
+bit names, register clearing semantics or CPU saving. Sequential rates7,369/
+6,262/5,786 per second are not a treatment effect. Preserve937 prior proofs;
+no card write/rearm/UART fix. See [return](uart-status-return.md).
+
 ## Build original UART status and branch probe — 2026-10-14
 
 User explicitly requests implementation/validation/arm. Use the actual ISR

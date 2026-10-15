@@ -1,0 +1,161 @@
+{
+  "version": "uart-status1-physical-return",
+  "physical_archive": "a7-pair-before-20261015T044508Z",
+  "mock": false,
+  "installed_source_commit": "0b90c2dbe51960f3979adc129a16fc290c190257",
+  "archive_files_verified": 7813,
+  "archive_bytes": 1937139157,
+  "fat_clean": true,
+  "card_writes": 0,
+  "payloads_verified": 4,
+  "one_shot_consumed": true,
+  "protected_prior_files": 7804,
+  "protected_unchanged": 7803,
+  "protected_changed": [
+    "retro/swapfile"
+  ],
+  "stock_boot_and_ROM_verified": true,
+  "original_progress_unchanged": true,
+  "owner_exit": 0,
+  "cancelled": false,
+  "handler_restored": true,
+  "module_loaded_unloaded": true,
+  "initial": {
+    "sample": 0,
+    "owner_ns": 8244883000,
+    "version": 2,
+    "result": 0,
+    "irq": 19,
+    "attached": 1,
+    "total": 0,
+    "rx": 0,
+    "tx_only": 0,
+    "neither": 0,
+    "rx_then_tx": 0,
+    "handled": 0,
+    "other_return": 0,
+    "bypass": 0,
+    "unique": 0,
+    "overflow": 0,
+    "first": 0,
+    "last": 0,
+    "bits_or": 0,
+    "bits_and": 0,
+    "cap": 200000
+  },
+  "final_attached": {
+    "sample": 1,
+    "owner_ns": 13250152000,
+    "version": 2,
+    "result": 0,
+    "irq": 19,
+    "attached": 1,
+    "total": 31345,
+    "rx": 0,
+    "tx_only": 144,
+    "neither": 31201,
+    "rx_then_tx": 0,
+    "handled": 31345,
+    "other_return": 0,
+    "bypass": 0,
+    "unique": 3,
+    "overflow": 0,
+    "first": 21399,
+    "last": 21407,
+    "bits_or": 21407,
+    "bits_and": 21271,
+    "cap": 200000
+  },
+  "frozen": {
+    "version": 2,
+    "result": 0,
+    "irq": 19,
+    "attached": 0,
+    "total": 31345,
+    "rx": 0,
+    "tx_only": 144,
+    "neither": 31201,
+    "rx_then_tx": 0,
+    "handled": 31345,
+    "other_return": 0,
+    "bypass": 0,
+    "unique": 3,
+    "overflow": 0,
+    "first": 21399,
+    "last": 21407,
+    "bits_or": 21407,
+    "bits_and": 21271,
+    "cap": 200000
+  },
+  "status_histogram": {
+    "0x00005397": {
+      "count": 24,
+      "percent": 0.07656723560376455,
+      "branch": "tx_only"
+    },
+    "0x0000531f": {
+      "count": 31201,
+      "percent": 99.54059658637742,
+      "branch": "neither"
+    },
+    "0x0000539f": {
+      "count": 120,
+      "percent": 0.3828361780188228,
+      "branch": "tx_only"
+    }
+  },
+  "unrecognized_percent": 99.54059658637742,
+  "complete_histogram": true,
+  "irq_windows": {
+    "before_load": {
+      "interrupts": 7433,
+      "midpoint_seconds": 1.008747,
+      "per_second": 7368.5473166215115,
+      "endpoint_time_rate_bounds": [
+        7366.597490223129,
+        7370.4981754719975
+      ]
+    },
+    "hook_attached": {
+      "interrupts": 31345,
+      "midpoint_seconds": 5.0056495,
+      "per_second": 6261.924651336455,
+      "endpoint_time_rate_bounds": [
+        6261.647573419291,
+        6262.2017537761
+      ]
+    },
+    "after_unload": {
+      "interrupts": 5839,
+      "midpoint_seconds": 1.0091345,
+      "per_second": 5786.146445295449,
+      "endpoint_time_rate_bounds": [
+        5784.9168127179,
+        5787.376600721564
+      ]
+    }
+  },
+  "hook_count_matches_bracketed_irq_growth": true,
+  "interrupt_status_observed": true,
+  "handler_duration_measured": false,
+  "A7_saving_measured": false,
+  "production_gate": false,
+  "electrical_or_enable_bit_origin_proven": false,
+  "limits": [
+    "Idle startup capture only; rates differ across sequential phases and observer disturbance is unpriced.",
+    "Selections follow captured entry bits and unchanged original tests, not every internal sub-branch.",
+    "Histogram includes attached startup/stop margins; counter read time bounds omit procfs enumeration uncertainty.",
+    "Unrecognized status plus IRQ_HANDLED identifies the dominant software path, not the electrical source or clearing operation.",
+    "Normal wrapper return does not independently establish visual stock-launcher operation."
+  ],
+  "input_sha256": {
+    "archive.json": "e8a6b8fb5532e10f1f5798cc8eaeb315631b37785604ea4f7a185ed63e849f88",
+    "chkdsk-before.txt": "7e69b2c52ee36bf7c3ab0c915e0393213f3f9d1f641b49565dd101238fc628e5",
+    "live-protected-verification.json": "eb895e2b554d35d51c18146eb525dbf024dea5cf94c2e62f8572e05c55921514",
+    "retro/uart-status1/observer.txt": "8057d61f7551f245d2ee010564d3fa4df38907973fb4f65986ea33d08bdc24d5",
+    "retro/uart-status1/startup.log": "240c27da4264335d1c10e827f73897b5542f9f7b18b9882ddcb37528a17a73d4",
+    "retro/uart-status1/owner.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "retro/uart-status1/last-launch": "051d8d71b1b554419f3a615ae51d14a56b30ad1ef0b4acc3733953df5146c4c2"
+  },
+  "installation_receipt_sha256": "dde20f51a292ba1be4ac2998f50b0c6f248aa8d8cd55e66ea2e320799417a686"
+}

@@ -1,0 +1,16 @@
+{
+  "kind": "offline_original_ISR_captured_status_check",
+  "status": "0x0000531f",
+  "calls": 1000,
+  "IRQ_HANDLED_returns": 1000,
+  "fixture_RAM_changes": false,
+  "tty_fixture_calls": 0,
+  "original_kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "sources": {
+    "build/check-uart-status-path.py": "832a0288363f1fa1fd271e4aa3810aa36dc5ce8e017279843c622b5d9af05e5e",
+    "build/check-uart-status-path.c": "476aaed9dfef8c9d9279ab5151039d30ed4837e238a3bd834e20dad870582be6",
+    "build/check-uart-kernel.c": "dfce0f8063692576e199fb99d37686e8f71f42e3b7c7dad420512d2c1e0a1508"
+  },
+  "boundary": "Original ARM instructions against anonymous RAM; no MMIO side effects, electrical causality or A7 duration measured. Control/flags are earlier state1 context, not simultaneous status1 samples.",
+  "output": "1000 original ISR calls with captured status0x531f return IRQ_HANDLED without RAM-register/port/queue changes or RX/TX delivery"
+}

@@ -7287,6 +7287,22 @@
       "published_sha256": "dde20f51a292ba1be4ac2998f50b0c6f248aa8d8cd55e66ea2e320799417a686",
       "bytes": 894,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T044508Z/uart-status-return.json",
+      "published": "evidence/2026-10-14/uart-status/return.json",
+      "source_sha256": "edbc2c2e91212c2cbe94e75280399721f014fdb9e171092ea2d455bc4e24eca3",
+      "published_sha256": "edbc2c2e91212c2cbe94e75280399721f014fdb9e171092ea2d455bc4e24eca3",
+      "bytes": 4830,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-status-private/captured-status-path.json",
+      "published": "evidence/2026-10-14/uart-status/captured-status-path.json",
+      "source_sha256": "f78b5ab92d15c155ecff476b1f33afe1a00a7c9fcc4958a1d5cb6df92d87c05a",
+      "published_sha256": "f78b5ab92d15c155ecff476b1f33afe1a00a7c9fcc4958a1d5cb6df92d87c05a",
+      "bytes": 989,
+      "normalized": false
     }
   ]
 }

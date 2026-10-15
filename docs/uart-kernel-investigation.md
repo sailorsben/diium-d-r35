@@ -1,5 +1,11 @@
 # IRQ19: exact kernel investigation — 2026-10-14
 
+**Latest physical result:** [UART status1 return](uart-status-return.md) captures
+the actual entry read:99.54% status0x531f takes neither recognized branch yet
+returns IRQ_HANDLED. Restoration/unload pass. This supersedes the pending live
+status statements in the original investigation below; hardware assertion/clear
+semantics and A7 duration still require evidence.
+
 **Follow-up:** [UART state1 preflight](uart-state-preflight.md) reconstructs the
 small observer's independently observed module ABI and passes27 offline checks,
 including the actual kernel relocator. The snapshot-only first probe is now

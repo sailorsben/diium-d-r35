@@ -1,5 +1,15 @@
 # Changelog
 
+## UART status1 physical return identifies ignored-status path — 2026-10-14
+
+Capture31,345 IRQ19 calls matching counter growth:99.54% status0x531f selects
+neither RX nor TX,144 TX-only, zero RX; all return IRQ_HANDLED. No overflow/
+bypass, restore/frozen capture/unload/exit0 pass. Confirm captured status in
+1000 original-ARM fixture calls; electrical/enable-bit origin and A7 cost remain
+unknown. Archive7,813 files, clean FAT and exact protected stock/ROM/progress.
+Preserve937 prior proofs, publish interpretation/check only; no card writes,
+rearm or core/UART change. See docs/uart-status-return.md.
+
 ## Arm original UART status/branch capture on I: — 2026-10-14
 
 Exact source0b90c2d pushed before deployment. Fresh7,805-file/1,937,114,927-byte

@@ -6,12 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **I: armed for UART status1.** Exact source`0b90c2d` pushed before install;
-  fresh7,805-file archive,7,804 protected prior files/ROM/progress and payload
-  readback verify, FAT clean after arm. Safely eject/boot, wait stock, leave30s,
-  power down/return. If stock is absent after a minute, power down/return without
-  rearming; the consumed-marker next boot is stock. Physical result pending.
-  [Installation and capture contract](docs/uart-status-probe.md).
+- **UART status1 returned; dominant live path identified.**31,201/31,345
+  events (99.54%) have status0x531f and select neither RX nor TX, yet return
+  IRQ_HANDLED.144 TX-only, zero RX; all captured counts reconcile with IRQ19
+  growth. Restore/unload pass. Electrical/enable-bit cause and A7 cost still
+  unknown. I: unarmed,7,813 files archived, clean FAT/stock/ROM/progress verified.
+  [Actual statuses, limits and next step](docs/uart-status-return.md).
 
 - **Original UART status/branch probe qualified offline.** Captures the
   original entry-read value, then resumes the untouched ISR tests/body. Twelve
