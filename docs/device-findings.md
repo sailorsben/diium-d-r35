@@ -1,6 +1,16 @@
 # Device findings
 
-**Latest physical return / current card:** I: unarmed, marker consumed. All56
+**Current card:** I: one-shot armed for unchanged-demand-v3 PC attribution.
+Four Meteor/Quasar control/sample epochs, exact same core in both variants.
+Fresh 7,226-file archive matches the previous return exactly; 88 installed
+payloads and 7,225 prior files/stock/ROM/original progress verify. FAT clean
+before installation, after payload and after arm. Physical timer support,
+sampling quality, owner distribution and disturbance remain PENDING. Allow
+3–5 minutes, wait for stock, power down and return I:. Earlier card-status
+entries below record their historical state.
+[Installation and boot sequence](snes-pc-profile-installation.md).
+
+**Latest physical return:** marker consumed before this rearm. All56
 PPU epochs ran;16/18 contexts pass twice, Meteor/Rage032 still fail. Combined
 Meteor warm-common CPU costs0.071–0.120ms more and drifts earlier than matched
 v3. Bulk isolated heavy saving0.181–0.215ms, but both nominal1200-call Meteor

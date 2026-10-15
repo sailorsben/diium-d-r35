@@ -7119,6 +7119,14 @@
       "published_sha256": "78e668a53be4b70ecb24d8cfc88480d08cb4127b55a707ef8609c7bd68344a90",
       "bytes": 840,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T001121Z/pc-profile-installation.json",
+      "published": "evidence/2026-10-14/pc-profile/installation.json",
+      "source_sha256": "f60edf7afe7c74b797a195054dbc5974b7e846138eb1b2670a8523f90b95ad31",
+      "published_sha256": "f60edf7afe7c74b797a195054dbc5974b7e846138eb1b2670a8523f90b95ad31",
+      "bytes": 9029,
+      "normalized": false
     }
   ]
 }

@@ -4,6 +4,11 @@
 observer/prototype comparisons and a prepared unchanged-core diagnostic. All
 previous qualified trees, raw returns and published evidence remain intact.
 
+Subsequent explicit "Arm I" authorization installed and armed the unchanged-core
+diagnostic from pushed6123047 after a fresh strict archive and guarded checks.
+Physical attribution remains pending; the research preparation below is retained
+as recorded. [Current installation](snes-pc-profile-installation.md).
+
 ## Compiler interaction pinned to SPC loop unswitching and LTO partitioning
 
 GCC13.3 reports reproduce demand-v3 **byte for byte**. They reproduce the

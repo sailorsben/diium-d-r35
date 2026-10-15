@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## Authorized unchanged-core PC diagnostic — 2026-10-14
+
+Explicit "Arm I" installs1.19-pc-profile1 from clean pushed6123047. Fresh strict
+archive preserves7,226 files/1,827,485,639 bytes, all identical to prior return.
+88 payloads read back;7,225 protected files/stock/ROM/progress exact, three FAT
+checks clean. Four Meteor/Quasar off/on sampling epochs share byte-identical
+ordinary demand-v3 core. Existing dispatcher and one-shot marker select test;
+marker consumed before startup, following reboot stock. Physical support,
+quality, owners and disturbance pending.
+No optimized prototype installed or A7 speed claim. Published receipt and prior
+evidence/frozen artifacts verify. See snes-pc-profile-installation.md.
+
 ## Compiler cause and priority-scheduling research — 2026-10-14
 
 Exact report rebuilds identify SPC loop unswitch loss across LTO partitions;

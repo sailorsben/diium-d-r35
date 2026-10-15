@@ -1,5 +1,16 @@
 # Changelog
 
+## Arm unchanged-core PC diagnostic on I: — 2026-10-14
+
+From clean pushed6123047, explicitly authorized rearm installs88 separate
+payloads after strict7,226-file/1,827,485,639-byte archive, all identical to prior
+return.7,225 protected files/stock/ROM/original progress exact; FAT clean before,
+after payload and after arm. Four Meteor/Quasar control/sample epochs use the
+same exact ordinary demand-v3 core. Physical timer support, owner distribution
+and sampling disturbance pending; no optimization or production promotion.
+Publish verified installation receipt with prior evidence/frozen artifacts exact.
+See docs/snes-pc-profile-installation.md; allow3–5min, wait stock, power down/return.
+
 ## Pin compiler interaction and verify priority-scheduling opportunity — 2026-10-14
 
 Reproduce v3 byte-exact and combined .text-exact with GCC reports. SPC loop
