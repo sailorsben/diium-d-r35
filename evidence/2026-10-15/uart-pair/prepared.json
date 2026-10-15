@@ -1,0 +1,122 @@
+{
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "guards": [
+    {
+      "name": "gp_uart_isr",
+      "address": 3222370268,
+      "bytes": 564,
+      "crc32": 2314782392,
+      "sha256": "5e827da17391360214bef4c3e9cb076d854a3ae9441703b42f63f0d9651e03ba"
+    },
+    {
+      "name": "gp_uart_start_tx",
+      "address": 3222369564,
+      "bytes": 64,
+      "crc32": 3266367995,
+      "sha256": "a4ef547445b4f854267be75797e476598fed195b39e0a456ebbed35ed532c9ca"
+    },
+    {
+      "name": "gp_uart_stop_tx",
+      "address": 3222369628,
+      "bytes": 64,
+      "crc32": 104871804,
+      "sha256": "4125ba760307fb837babaf49915f033ac429c31207ece017c96630622fdc1442"
+    },
+    {
+      "name": "gp_uart_probe",
+      "address": 3222370972,
+      "bytes": 276,
+      "crc32": 3681466150,
+      "sha256": "cdfd7c51ba93759d203b243281cc6b4e9fe7a86d2bd82bcf1080f30c50613d7c"
+    },
+    {
+      "name": "gp_uart_console_write",
+      "address": 3222371520,
+      "bytes": 148,
+      "crc32": 1197234755,
+      "sha256": "e44de8464a83a8e022ffd3a89b89ff226c7adf134c1442c66b81e8de8ac571d5"
+    },
+    {
+      "name": "gpHalUartGetCtrl",
+      "address": 3222369124,
+      "bytes": 20,
+      "crc32": 3495123267,
+      "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+    },
+    {
+      "name": "irq_to_desc",
+      "address": 3222659416,
+      "bytes": 32,
+      "crc32": 3819730374,
+      "sha256": "cb429d6d2a44e612253d482c2fee07ed58031ef41599b8e02ef8126ec727136b"
+    },
+    {
+      "name": "gpHalUartGetIntSts",
+      "address": 3222369044,
+      "bytes": 20,
+      "crc32": 2131588061,
+      "sha256": "5ca391da985e7d3c22296afe016cf6d95004cef983d45cdea596683805fb3873"
+    },
+    {
+      "name": "__handle_irq_event_percpu",
+      "address": 3222662500,
+      "bytes": 332,
+      "crc32": 80415560,
+      "sha256": "55d32d9789bdb1c01a9a1e4329d07d7f50f8177e38ff079eebbc6afdf2a46746"
+    },
+    {
+      "name": "synchronize_irq",
+      "address": 3222663436,
+      "bytes": 172,
+      "crc32": 3583213534,
+      "sha256": "75325382daaa207d117d4c29bd2b4c91cbfd890aa000879b35d3e6b4559fa8ed"
+    },
+    {
+      "name": "try_module_get",
+      "address": 3222798012,
+      "bytes": 104,
+      "crc32": 1539618190,
+      "sha256": "4221a54c94cf25e96c1d184db7fc1e45083ba62c076b0bb3edcad80d8a05a9cd"
+    },
+    {
+      "name": "module_put",
+      "address": 3222798116,
+      "bytes": 104,
+      "crc32": 820256752,
+      "sha256": "077c17ad7018f6a672e02e4c53e2d4e8f0f2539444efc3c2a57ec16b4173edc0"
+    },
+    {
+      "name": "irq_get_irqchip_state",
+      "address": 3222664260,
+      "bytes": 200,
+      "crc32": 2516794647,
+      "sha256": "0b2cf32d8f70a8608876f56e29dfc7a4cf712e3e964dfec257a4f8e84c910137"
+    },
+    {
+      "name": "__irq_get_desc_lock",
+      "address": 3222661132,
+      "bytes": 168,
+      "crc32": 3944154374,
+      "sha256": "b4f231187c5e449eea1bcc03773c5632d8a6c6d1b88ad6982767b0f6caa75a55"
+    },
+    {
+      "name": "__irq_put_desc_unlock",
+      "address": 3222661300,
+      "bytes": 52,
+      "crc32": 28664692,
+      "sha256": "0ca78baddd3411e8d4a071bdfed41367c5eb2a2973f48b395b0400c16ee39aee"
+    },
+    {
+      "name": "gic_irq_get_irqchip_state",
+      "address": 3224386908,
+      "bytes": 232,
+      "crc32": 921476790,
+      "sha256": "15bf32b2ac7ae583fdb66c39fd7e1b53639d5ccf0ef8272e50d31f2e6af1dc17"
+    }
+  ],
+  "verified_entry_instructions": 8,
+  "resume_address": "0xc01177f8",
+  "extra_status_reads": 0,
+  "kernel_text_patches": 0,
+  "physical_result": "PENDING"
+}

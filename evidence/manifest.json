@@ -7319,6 +7319,30 @@
       "published_sha256": "c4ba92aa8bbe4d25473cf3413136b91fbd3c0a9467fae75bac3f5e904f0d753e",
       "bytes": 1860,
       "normalized": false
+    },
+    {
+      "source": "build/uart-pair-private/prepared.json",
+      "published": "evidence/2026-10-15/uart-pair/prepared.json",
+      "source_sha256": "aec976eeb99acd41ecbcc5d299a9ba6058f08e8261cbe41e5405fa6046404e0e",
+      "published_sha256": "aec976eeb99acd41ecbcc5d299a9ba6058f08e8261cbe41e5405fa6046404e0e",
+      "bytes": 3685,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-pair-private/qualification.json",
+      "published": "evidence/2026-10-15/uart-pair/qualification.json",
+      "source_sha256": "45e65c0176997d0ee9fdb53262a8e57beda9cc7a4efdca7bdc92fc3327d09596",
+      "published_sha256": "45e65c0176997d0ee9fdb53262a8e57beda9cc7a4efdca7bdc92fc3327d09596",
+      "bytes": 3640,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-pair-private/package-qualification.json",
+      "published": "evidence/2026-10-15/uart-pair/package-qualification.json",
+      "source_sha256": "7f668dea59b776c4ffcd74b57507c9923f232f5d3aa7cd882ddbdadb3f859f05",
+      "published_sha256": "7f668dea59b776c4ffcd74b57507c9923f232f5d3aa7cd882ddbdadb3f859f05",
+      "bytes": 3147,
+      "normalized": false
     }
   ]
 }

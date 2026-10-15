@@ -930,3 +930,12 @@ Nine software checks and protected install/health readback pass. Physical full
 readback is pending. No flash/configuration write, recovery, original splash
 replacement or audio fix qualified. [ID return](spi-identify-return.md),
 [readback procedure](spi-readback.md).
+
+## Paired UART source capture - 2026-10-15
+
+UART pair1 qualifies same-handler status/control/software queue/GIC correlation.
+Sixteen exact-image guards, original handler retained,64 bounded tuples, explicit
+query errors and restore/drain/unload.14 compiled groups include52 original-vs-
+intercepted cases and all8 GIC combinations;18 owner/firmware-shell checks.
+Diagnostic only: physical result and added A7 cost pending; no UART settings or
+core/APU change. [Procedure and limits](uart-pair-probe.md).

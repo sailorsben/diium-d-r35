@@ -1,0 +1,109 @@
+{
+  "version": "uart-pair1",
+  "original_status_capture": true,
+  "owner_checks": [
+    {
+      "case": "normal",
+      "exit": 0
+    },
+    {
+      "case": "large_report",
+      "exit": 0
+    },
+    {
+      "case": "wrong_kernel",
+      "exit": 3
+    },
+    {
+      "case": "already_loaded",
+      "exit": 4
+    },
+    {
+      "case": "load_fail",
+      "exit": 8
+    },
+    {
+      "case": "unload_fail",
+      "exit": 10
+    },
+    {
+      "case": "read_fail",
+      "exit": 9
+    },
+    {
+      "case": "observer_refuses",
+      "exit": 13
+    },
+    {
+      "case": "cancel",
+      "exit": 0
+    },
+    {
+      "case": "sync_fail",
+      "exit": 6
+    },
+    {
+      "case": "existing",
+      "exit": 5
+    },
+    {
+      "case": "stop_fail",
+      "exit": 10
+    },
+    {
+      "case": "stop_refuses",
+      "exit": 10
+    },
+    {
+      "case": "frozen_fail",
+      "exit": 9
+    },
+    {
+      "case": "frozen_refuses",
+      "exit": 13
+    },
+    {
+      "case": "exact_firmware_shell_syntax",
+      "exit": 0
+    },
+    {
+      "case": "exact_firmware_wrapper_execution_and_consumed_reboot",
+      "exit": 0
+    },
+    {
+      "case": "exact_firmware_failure_withholds_stock_and_consumed_reboot_preserves_logs",
+      "exit": 124
+    }
+  ],
+  "userspace_abi": {
+    "ELF": "ARM32 little-endian hard-float",
+    "required_versions": [
+      "GCC_3.5",
+      "GLIBC_2.4"
+    ]
+  },
+  "compiled_module_qualification_sha256": "45e65c0176997d0ee9fdb53262a8e57beda9cc7a4efdca7bdc92fc3327d09596",
+  "sources": {
+    "build/uart-pair-owner.c": "93fa6154db0bb3bebe8873cf1d76f053967dacae08e6acfe8dd59520bdb82038",
+    "build/uart-pair-owner-fixture.c": "6847e14e870fe46609df596d9c98a4a093cf5e4478d6b5ffaff1a70c77f2394c",
+    "build/build-uart-pair.sh": "3c18d92a940226a44d4c03084535ec25952ea79150897374ec7a70323d0ed09f",
+    "build/launch-uart-pair.sh": "cc980ee91200fe7cc09078b8c0c87307739c1dfa532b39708de88a1dcdcb274e",
+    "build/install-uart-pair.py": "495c13a1d8742b8aa353c74441cf1f07404e7404c136db462e8738cb9bdba0b4",
+    "build/check-uart-pair-package.py": "e3be976dfd15fc0082daf2aef9beae34ab8021702d498fcb6413b5137574663d"
+  },
+  "payloads": {
+    "d35_uart_pair.ko": "6c40ce7249a38e0da58b52fc1c19ac4e49ae72e3e0a2d8607986b348fd1b7791",
+    "dispatch.sh": "df19b85b295bd750ea44865aae32fdde113d6e588f1d271f8838b65278337ebf",
+    "launch.sh": "cc980ee91200fe7cc09078b8c0c87307739c1dfa532b39708de88a1dcdcb274e",
+    "uart-pair-owner": "70f3357d1b97312b2d8a11b5f6705080874f1139d8993249b61889ae35da38f3"
+  },
+  "physical_result": "PENDING",
+  "card_access": false,
+  "module_load_unload_physical_result": "PENDING",
+  "production_gate": false,
+  "nominal_capture_seconds": 7,
+  "samples": 2,
+  "frozen_reports": 1,
+  "same_entry_status_control_gic": true,
+  "scope": "Idle original-entry status/control/software queue/GIC tuple capture. Temporary guarded IRQ action hook, original status read and original ISR body retained, bounded RAM aggregates. No UART configuration/kernel-text/firmware/core changes or extra status/FIFO reads."
+}

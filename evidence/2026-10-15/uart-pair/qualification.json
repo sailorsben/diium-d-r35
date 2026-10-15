@@ -1,0 +1,80 @@
+{
+  "kind": "offline_compiled_uart_pair_observer",
+  "checks": [
+    "actual ARM relocator matches independent ELF relocation byte-for-byte",
+    "exact owner attaches with a live module reference and two owned proc entries",
+    "52 original-vs-intercepted cases preserve status-read counts, RX/TX side effects, return and r4-r11",
+    "RX priority, TX-only, unrecognized and RX-then-TX counts match original branch execution",
+    "full 32-bit status values, including high bits, survive histogram capture",
+    "actual generic IRQ getter, descriptor lock/unlock, chip dispatch and GIC leaf preserve RAM for all8 state combinations",
+    "same-entry tuples retain control/software queue correlations and explicitly mark all three getter failures",
+    "ownership conflict refuses restoration/unpin; exact restoration drains IRQ before unpin",
+    "detach is idempotent, frozen counters survive, cleanup removes owned entries only",
+    "wrong handler, dev_id, serial state, hardware IRQ, GIC getter or bus callbacks refuse attachment without leaks",
+    "wrong symbols, changed code and unreadable code refuse before hook installation",
+    "first/second proc creation and module-reference failure unwind cleanly",
+    "histogram has a hard 64-tuple bound and explicit overflow",
+    "200000-capture ceiling falls back to original ISR without further aggregation"
+  ],
+  "observed_abi_values": [
+    448,
+    12,
+    232,
+    416,
+    256,
+    304,
+    352,
+    372,
+    396,
+    420,
+    264,
+    4,
+    72,
+    100,
+    120,
+    124,
+    184,
+    192
+  ],
+  "relocations": {
+    "entry_points": {
+      "init_module": 16779072,
+      "cleanup_module": 16779596
+    },
+    "relocation_types": [
+      2,
+      28
+    ],
+    "undefined_symbols": [
+      "irq_get_irqchip_state",
+      "kallsyms_lookup_name",
+      "memcmp",
+      "memcpy",
+      "memset",
+      "module_put",
+      "probe_kernel_read",
+      "proc_create_single_data",
+      "remove_proc_entry",
+      "seq_printf",
+      "synchronize_irq",
+      "try_module_get"
+    ],
+    "actual_kernel_relocator_address": "0xc010de00"
+  },
+  "observer_module_sha256": "6c40ce7249a38e0da58b52fc1c19ac4e49ae72e3e0a2d8607986b348fd1b7791",
+  "abi_module_sha256": "455adf31c863b8408ae71a81c4c83b3f546de955d96fe8975a8c6a12a0785bf0",
+  "configuration_sha256": "69eff498b13c6216b053fdb5c0e374933e13e1c1d4ab951b09b5fbc0d1fda6a8",
+  "sources": {
+    "build/uart-pair-observer.c": "9f5e8cb028df737a760688b7dee47e7d5b9d471e3c63c3a30c172d175d8f9fb0",
+    "build/uart-observer-abi.c": "4b7dfbb36b7030d04ae88eac4feb721dc7ba6e6544f24164767476690ad0c8e0",
+    "build/prepare-uart-pair.py": "04d22b1f06c3647e8c2b3c819120cedbd0f88afcdbf58f544cc164fc94b6cfbc",
+    "build/build-uart-pair.sh": "3c18d92a940226a44d4c03084535ec25952ea79150897374ec7a70323d0ed09f",
+    "build/check-uart-pair-observer.c": "38845405b111e66f12967221d90c0c53bfcd8cc913535360ad09cde6c5390e84",
+    "build/check-uart-pair-observer.py": "9e1fdfe8b60ae592cd4bdfdd6cdea1fe3e184a71ccac67ec77f968bce709e669"
+  },
+  "installed": false,
+  "live_irq_cause_proven": false,
+  "live_module_load_unload_qualified": false,
+  "same_entry_status_control_gic": true,
+  "boundary": "Compiled module code executes against RAM and fixture kernel APIs; actual archived ISR, status getter, tail, TX/RX helpers and irq_to_desc execute against RAM; actual generic IRQ getter/descriptor helpers/chip dispatch/GIC leaf execute on RAM; tty APIs and radix lookup are fixtures. Getter failure is injected separately. No A7 cost or real module-loader lifecycle is measured."
+}

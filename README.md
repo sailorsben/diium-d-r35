@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+UART pair1 qualifies same-handler status/control/software queue/GIC correlation.
+Sixteen exact-image guards, original handler retained,64 bounded tuples, explicit
+query errors and restore/drain/unload.14 compiled groups include52 original-vs-
+intercepted cases and all8 GIC combinations;18 owner/firmware-shell checks.
+Diagnostic only: physical result and added A7 cost pending; no UART settings or
+core/APU change. [Procedure and limits](docs/uart-pair-probe.md).
+
 - **UART source research identifies pending-vs-empty mismatch.** Matching
   GP32/GPM4 definitions distinguish TX pending0x4000 from FIFO empty0x80. All
   captured entries have the former; the driver services only the latter. Six
