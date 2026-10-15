@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **Original UART status/branch probe qualified for installation.** Captures the
+  original entry-read value, then resumes the untouched ISR tests/body. Twelve
+  compiled check groups include40 original-vs-intercepted ARM cases;17 owner/
+  firmware-shell checks cover stop/refusal/cancel/unload and stock withholding.
+  Separate one-shot package; physical status/cause and added A7 cost pending.
+  [Mechanism, proof and boot procedure](docs/uart-status-probe.md).
+
 - **UART state1 returned; I: unarmed.** All100 physical snapshots and module
   load/unload pass. IRQ19 persists at6,756–7,323/s across phases while every
   snapshot has both TX enables clear, empty queue and zero mismatch. Persistent

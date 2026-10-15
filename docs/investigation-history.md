@@ -1,5 +1,19 @@
 # Investigation history and negative results
 
+## Build original UART status and branch probe — 2026-10-14
+
+User explicitly requests implementation/validation/arm. Use the actual ISR
+entry getter return instead of another snapshot hypothesis: verified frame
+bridge, RAM aggregate callback, resume original tests/body, no extra status read
+or executable text patch. Temporarily replace only the guarded IRQ19 action
+handler; pin until restoration/drain and withhold stock on cleanup failure.
+Actual ARM relocation and40 original/intercepted cases qualify side effects,
+status-read counts, return and preserved registers; histogram bounds/lifecycle
+faults pass. Catch a Thumb host-memcpy fixture mismatch and use a typed ARM
+fixture for the kernel import.17 owner/actual-firmware-shell checks qualify
+detach failures/cancellation/consumed reboot. Physical cause/cost still pending.
+See [probe](uart-status-probe.md); no UART fix or emulator/APU change.
+
 ## UART state1 physical return rejects persistent TX mismatch — 2026-10-14
 
 Archive7,805 files before analysis; clean FAT, exact deployed payloads/dispatcher,

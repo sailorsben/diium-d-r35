@@ -1,5 +1,13 @@
 # Device findings
 
+**Next diagnostic qualified:** UART status1 captures the original ISR entry
+status and branch selections, with no extra status/FIFO reads or kernel-text
+patches. Temporary verified action hook pins its module until exact restoration
+and IRQ drain.12 compiled groups/40 equivalence cases and17 owner/firmware-shell
+checks pass. Physical result and added A7 cost pending; this is not a fix.
+Source must be pushed before separate one-shot installation; receipt follows.
+[Scope and physical result contract](uart-status-probe.md).
+
 **Latest return / card state:** UART state1 completes100 valid physical snapshots,
 ordinary load/non-forced unload and wrapper exit0. IRQ19 remains6,756–7,323/s
 across phases; all snapshots show controlb070/flags05, TX hardware/software

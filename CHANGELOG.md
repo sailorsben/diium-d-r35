@@ -1,5 +1,15 @@
 # Changelog
 
+## Qualify original UART interrupt-status capture — 2026-10-14
+
+Build exact-entry status bridge and32-value histogram/branch aggregates; resume
+original ISR body, no extra status reads or kernel-text/UART register writes.
+Guard temporary IRQ19 action ownership, module pin, restore/drain/unpin and
+failure withholding.12 compiled groups include40 original/intercepted ARM cases;
+17 owner/firmware-shell checks pass. Preserve933 prior evidence hashes and
+publish interpreted metadata only. Physical hook/status/branch cause and added
+A7 cost pending; no emulator/APU change. See docs/uart-status-probe.md.
+
 ## UART state1 physical snapshot return — 2026-10-14
 
 Collect/hash7,805 files; clean FAT, exact payloads, consumed marker, stock/ROM/

@@ -1,0 +1,74 @@
+{
+  "kind": "offline_compiled_uart_status_observer",
+  "checks": [
+    "actual ARM relocator matches independent ELF relocation byte-for-byte",
+    "exact owner attaches with a live module reference and two owned proc entries",
+    "40 original-vs-intercepted cases preserve status-read counts, RX/TX side effects, return and r4-r11",
+    "RX priority, TX-only, unrecognized and RX-then-TX counts match original branch execution",
+    "full 32-bit status values, including high bits, survive histogram capture",
+    "ownership conflict refuses restoration/unpin; exact restoration drains IRQ before unpin",
+    "detach is idempotent, frozen counters survive, cleanup removes owned entries only",
+    "wrong handler, dev_id and missing serial state refuse attachment without leaks",
+    "wrong symbols, changed code and unreadable code refuse before hook installation",
+    "first/second proc creation and module-reference failure unwind cleanly",
+    "histogram has a hard 32-value bound and explicit overflow",
+    "200000-capture ceiling falls back to original ISR without further aggregation"
+  ],
+  "observed_abi_values": [
+    448,
+    12,
+    232,
+    416,
+    256,
+    304,
+    352,
+    372,
+    396,
+    420,
+    264,
+    4,
+    72,
+    100,
+    120,
+    124,
+    184,
+    192
+  ],
+  "relocations": {
+    "entry_points": {
+      "init_module": 16778456,
+      "cleanup_module": 16778948
+    },
+    "relocation_types": [
+      2,
+      28
+    ],
+    "undefined_symbols": [
+      "kallsyms_lookup_name",
+      "memcpy",
+      "module_put",
+      "probe_kernel_read",
+      "proc_create_single_data",
+      "remove_proc_entry",
+      "seq_printf",
+      "synchronize_irq",
+      "try_module_get"
+    ],
+    "actual_kernel_relocator_address": "0xc010de00"
+  },
+  "observer_module_sha256": "67b0e54c37cee095aed258ce3f613cd01490a92c1e2b816acbc8f99706ad2827",
+  "abi_module_sha256": "455adf31c863b8408ae71a81c4c83b3f546de955d96fe8975a8c6a12a0785bf0",
+  "configuration_sha256": "69eff498b13c6216b053fdb5c0e374933e13e1c1d4ab951b09b5fbc0d1fda6a8",
+  "sources": {
+    "build/uart-status-observer.c": "65eea20c2bea4b5511aeeba0b422e30acb670922f85bb71fe9a5788ac47666f8",
+    "build/uart-observer-abi.c": "4b7dfbb36b7030d04ae88eac4feb721dc7ba6e6544f24164767476690ad0c8e0",
+    "build/prepare-uart-status.py": "3fa5fb56315e77eaf963246d7dc6b5b903d15e51d7720f1b3557802e906d0855",
+    "build/build-uart-status.sh": "8183977621de950ddfbae4cdc10e43c7766218f0beadf9dde6aa51b3ba9dafca",
+    "build/check-uart-status-observer.c": "a6c2fcf1fd590f33632a45d4bd015a3dfe9027f461fb359a3525c9002c817af1",
+    "build/check-uart-status-observer.py": "02231183bee4504a8df4f1c2bda1011f421c8aaaf7166b708fe6ef32ba4d8e74"
+  },
+  "installed": false,
+  "live_irq_cause_proven": false,
+  "live_module_load_unload_qualified": false,
+  "boundary": "Compiled module code executes against RAM and fixture kernel APIs; actual archived ISR, status getter, tail, TX/RX helpers and irq_to_desc execute against RAM; tty APIs and radix lookup are fixtures. No A7 cost or real module-loader lifecycle is measured."
+}
