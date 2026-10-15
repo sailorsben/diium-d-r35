@@ -7359,6 +7359,14 @@
       "published_sha256": "f13d534c814041e58ad74c3c0ba18d1be2db4d69b001c18b234c5c8b0f8f96e3",
       "bytes": 2137,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T052954Z/uart-pair-return.json",
+      "published": "evidence/2026-10-15/uart-pair/return.json",
+      "source_sha256": "6ada7c7e7a489da83d8090ec6aad7940c4df1951f2510b7d9ffa05cc17974dfa",
+      "published_sha256": "6ada7c7e7a489da83d8090ec6aad7940c4df1951f2510b7d9ffa05cc17974dfa",
+      "bytes": 7640,
+      "normalized": false
     }
   ]
 }

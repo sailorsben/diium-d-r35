@@ -135,3 +135,10 @@ claiming causality. No speculative pending-clear, FIFO reset or IRQ_NONE change.
 [Interpreted source metadata and ARM checks](../evidence/2026-10-15/uart-source-contract/research.json).
 All939 previous published hashes remain exact. No device access occurred in
 this research; no measured CPU saving or production acceptance is claimed.
+
+## Subsequent same-handler physical evidence - 2026-10-15
+
+Pair1 now records both TX enables set and GIC pending/active/unmasked on all
+12,340 captures, including12,202 ignored-status entries. This closes the earlier
+status/control correlation gap; physical causal correction and CPU benefit are
+still unmeasured. [Returned tuples and limits](uart-pair-return.md).

@@ -106,3 +106,8 @@ Boot once, allow the probe to finish and stock menu to appear, then power off
 and return I:. No gameplay is needed. If startup remains stalled after30 seconds,
 power off and return the card. A consumed marker makes the next boot stock.
 The actual source correlation and new module's physical result remain pending.
+
+## Physical return - 2026-10-15
+
+Captured paired enables and pending/active/unmasked GIC state in all12,340 calls.
+Restore/unload pass; I: unarmed. [Complete result and boundaries](uart-pair-return.md).

@@ -1,5 +1,15 @@
 # Changelog
 
+## UART pair1 catches enabled ignored TX condition - 2026-10-15
+
+UART pair1 returned: all12,340 captured calls have both TX enables set and
+GIC pending/active/unmasked.12,202 (98.88%) select neither service, including
+1,324 with an empty software queue. Original FIFO-empty predicate ignores the
+pending condition. Restore/unload and counter conservation pass; observer
+strongly disturbs rate, so no CPU saving or causal correction claimed. Archive/
+FAT/stock/ROM/progress verify; I: unarmed, no card writes or rearm.
+[Paired evidence and next causal check](docs/uart-pair-return.md).
+
 ## Animate the feathers in Vesper Wings2 - 2026-10-15
 
 Vesper Wings2 replaces the loading dots with a rising cyan feather-light sweep.

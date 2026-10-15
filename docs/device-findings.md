@@ -947,3 +947,13 @@ archive,7,812 protected prior hashes, stock/ROM/progress and three clean FAT
 checks pass. Four new payloads and sole marker/dispatcher verify. Physical
 capture pending; boot once, wait for stock startup, power off and return card.
 [Verified installation and procedure](uart-pair-probe.md).
+
+## UART pair1 physical return - 2026-10-15
+
+UART pair1 returned: all12,340 captured calls have both TX enables set and
+GIC pending/active/unmasked.12,202 (98.88%) select neither service, including
+1,324 with an empty software queue. Original FIFO-empty predicate ignores the
+pending condition. Restore/unload and counter conservation pass; observer
+strongly disturbs rate, so no CPU saving or causal correction claimed. Archive/
+FAT/stock/ROM/progress verify; I: unarmed, no card writes or rearm.
+[Paired evidence and next causal check](uart-pair-return.md).

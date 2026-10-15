@@ -1444,3 +1444,13 @@ All18 frames pass the original ARM decoder/drawing seam;133,088-byte content
 fits the141,940-byte ZIP span. Authored GIF/native assets are ready for review;
 physical cadence/appearance pending. No card or firmware staging; UART pair1
 remains armed. [Preview, format and verification](vesper-wings-animation.md).
+
+## UART pair1 physical return - 2026-10-15
+
+UART pair1 returned: all12,340 captured calls have both TX enables set and
+GIC pending/active/unmasked.12,202 (98.88%) select neither service, including
+1,324 with an empty software queue. Original FIFO-empty predicate ignores the
+pending condition. Restore/unload and counter conservation pass; observer
+strongly disturbs rate, so no CPU saving or causal correction claimed. Archive/
+FAT/stock/ROM/progress verify; I: unarmed, no card writes or rearm.
+[Paired evidence and next causal check](uart-pair-return.md).
