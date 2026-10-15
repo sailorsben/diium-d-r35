@@ -1,0 +1,16 @@
+{
+  "all_checks_passed": true,
+  "checks": [
+    "exact qualified package, sources and firmware baseline hashes",
+    "wrong-card refusal before card reads",
+    "actual write/rename/readback adds only exact qualified update",
+    "health-failure: protected progress and original trigger state preserved",
+    "existing-trigger: protected progress and original trigger state preserved",
+    "actual retained full flash capture accepted; complete different firmware refused"
+  ],
+  "card_access": false,
+  "sources": {
+    "build/stage-vesper-wings-firmware.py": "d6821c86cb23dd811b5d9477a8730028f9f253f1e4bf964c82b3f7f52fd160f5",
+    "build/check-vesper-wings-staging.py": "0332bbdae3a4ccfa586cfeebdbe6fb05a39b3ff1bc3ceadb4527d355831b082e"
+  }
+}

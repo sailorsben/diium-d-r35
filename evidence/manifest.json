@@ -7367,6 +7367,30 @@
       "published_sha256": "6ada7c7e7a489da83d8090ec6aad7940c4df1951f2510b7d9ffa05cc17974dfa",
       "bytes": 7640,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-wings-firmware-20261015/preparation.json",
+      "published": "evidence/2026-10-15/vesper-wings-firmware/preparation.json",
+      "source_sha256": "83a67297580cde048bb468203dafa00146c56b3519bdbb9e109507f0d1250db5",
+      "published_sha256": "83a67297580cde048bb468203dafa00146c56b3519bdbb9e109507f0d1250db5",
+      "bytes": 3453,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-wings-firmware-20261015/qualification.json",
+      "published": "evidence/2026-10-15/vesper-wings-firmware/qualification.json",
+      "source_sha256": "1c6b3d999d36e410f3d47c9bab61c6ddb5fddca106a849b592e77610a4b37078",
+      "published_sha256": "1c6b3d999d36e410f3d47c9bab61c6ddb5fddca106a849b592e77610a4b37078",
+      "bytes": 2092,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/vesper-wings-firmware-20261015/staging-checks.json",
+      "published": "evidence/2026-10-15/vesper-wings-firmware/staging-checks.json",
+      "source_sha256": "64b9b998e282a67ee1a537143525feae3d73a24ccba0d6e2275b5fc3ff7284df",
+      "published_sha256": "64b9b998e282a67ee1a537143525feae3d73a24ccba0d6e2275b5fc3ff7284df",
+      "bytes": 746,
+      "normalized": false
     }
   ]
 }

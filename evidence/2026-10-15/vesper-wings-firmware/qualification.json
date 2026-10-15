@@ -1,0 +1,37 @@
+{
+  "all_checks_passed": true,
+  "checks": [
+    "independent GNU gzip exact expansion",
+    "independent libarchive tar extracts exact new showlogo",
+    "check-static-splash: baseline-installed.bin",
+    "check-boot-loader: baseline-installed.bin",
+    "check-static-splash: candidate.bin",
+    "check-boot-loader: candidate.bin",
+    "exact vendor updater: compatible",
+    "exact vendor updater: incompatible",
+    "exact vendor updater: bad_crc",
+    "exact vendor updater: no_prefix",
+    "exact vendor updater: repeated",
+    "exact original ZIP decode and all18 ShowSprite frames"
+  ],
+  "preparation_sha256": "83a67297580cde048bb468203dafa00146c56b3519bdbb9e109507f0d1250db5",
+  "baseline_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "candidate_sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+  "expected_after_vendor_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "ram_result_matches_vendor_mutated_candidate": true,
+  "ram_erase_blocks": 52,
+  "ram_page_programs": 13312,
+  "device_access": false,
+  "physical_update": "PENDING",
+  "sources": {
+    "build/prepare-vesper-wings-firmware.py": "9562ddabdec2ae4e47e90ea6279de52cc055e72449be070d3c03c0a8b54206ba",
+    "build/inspect-spi-boot.py": "ceafe31aacfc4684c4dba1328a7b0e8b201a448159984ce0d5048883b3259fd9",
+    "build/check-static-splash.c": "681a517a19e0f43f337ed0ced48445dfc8ae9d5e1810a587f9ef8f9a56a61d5f",
+    "build/check-boot-loader.c": "2671654d7e1995b3903404401a4db41d42e138c0ff51b9292e77022e9e7127e3",
+    "build/check-vendor-updater.c": "d4a46993a2a059aedf46a76fd092de0cd054c3821ec6aad5774e0199739ba35d",
+    "build/check-stock-boot.c": "607523430b90a9ee11d410608c6ebc80ee16425b7bd83651982c1d75f5a32d11",
+    "build/check-stock-boot.sh": "cfb4132fcdfbfa63fe2706d2b811e53ad975208751e5507eec230a2b3d294181"
+  }
+}

@@ -1,5 +1,14 @@
 # Changelog
 
+## Qualify Wings2 firmware animation update - 2026-10-15
+
+Wings2 firmware update qualified:12 independent/original-ARM checks plus6 host
+staging checks. Only the rootfs showlogo ZIP changes; accepted static screen,
+other filesystem bytes, kernel and DT remain exact. Original updater RAM model
+matches all8MiB after52 erases/13,312 pages. Authorized I: staging follows fresh
+archive/FAT/hash/source checks; physical update still pending.
+[Image contract and boot procedure](docs/vesper-wings-firmware-update.md).
+
 ## UART pair1 catches enabled ignored TX condition - 2026-10-15
 
 UART pair1 returned: all12,340 captured calls have both TX enables set and

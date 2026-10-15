@@ -1454,3 +1454,12 @@ pending condition. Restore/unload and counter conservation pass; observer
 strongly disturbs rate, so no CPU saving or causal correction claimed. Archive/
 FAT/stock/ROM/progress verify; I: unarmed, no card writes or rearm.
 [Paired evidence and next causal check](uart-pair-return.md).
+
+## Wings2 firmware update qualification - 2026-10-15
+
+Wings2 firmware update qualified:12 independent/original-ARM checks plus6 host
+staging checks. Only the rootfs showlogo ZIP changes; accepted static screen,
+other filesystem bytes, kernel and DT remain exact. Original updater RAM model
+matches all8MiB after52 erases/13,312 pages. Authorized I: staging follows fresh
+archive/FAT/hash/source checks; physical update still pending.
+[Image contract and boot procedure](vesper-wings-firmware-update.md).

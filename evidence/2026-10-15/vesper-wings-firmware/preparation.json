@@ -1,0 +1,123 @@
+{
+  "version": "vesper-wings-2-firmware",
+  "baseline_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "candidate_sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+  "expected_after_vendor_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "rootfs_compressed_bytes": 3382648,
+  "rootfs_slot_bytes": 3406558,
+  "rootfs_bytes": 8455680,
+  "static_bitmap_preserved": true,
+  "only_rootfs_showlogo_zip_changed": true,
+  "all_other_cpio_bytes_exact": true,
+  "other_flash_bytes_exact_except_rootfs_and_length": true,
+  "vendor_metadata": [
+    1091833821,
+    1565483008
+  ],
+  "expected_erased_blocks": [
+    "000000",
+    "0c0000",
+    "320000",
+    "330000",
+    "340000",
+    "350000",
+    "360000",
+    "370000",
+    "380000",
+    "390000",
+    "3a0000",
+    "3b0000",
+    "3c0000",
+    "3d0000",
+    "3e0000",
+    "3f0000",
+    "400000",
+    "410000",
+    "420000",
+    "430000",
+    "440000",
+    "450000",
+    "460000",
+    "470000",
+    "480000",
+    "490000",
+    "4a0000",
+    "4b0000",
+    "4c0000",
+    "4d0000",
+    "4e0000",
+    "4f0000",
+    "500000",
+    "510000",
+    "520000",
+    "530000",
+    "540000",
+    "550000",
+    "560000",
+    "570000",
+    "580000",
+    "590000",
+    "5a0000",
+    "5b0000",
+    "5c0000",
+    "5d0000",
+    "5e0000",
+    "5f0000",
+    "600000",
+    "610000",
+    "620000",
+    "630000"
+  ],
+  "expected_erase_count": 52,
+  "expected_page_count": 13312,
+  "files": {
+    "baseline-installed.bin": {
+      "sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+      "bytes": 8388608
+    },
+    "candidate.bin": {
+      "sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+      "bytes": 8388608
+    },
+    "expected-after-vendor.bin": {
+      "sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+      "bytes": 8388608
+    },
+    "rootfs.cpio": {
+      "sha256": "a126a5bdd93f8585eaf519e4034e610afdc7a85eeffde55784c9dfd8e6aa70a0",
+      "bytes": 8455680
+    },
+    "rootfs.cpio.gz": {
+      "sha256": "f7163a171799903b381a8d5d8c2c2f1244f6b8e56bc78a057dbcf6b4fe133db2",
+      "bytes": 3382648
+    },
+    "showlogo-wings": {
+      "sha256": "a29bd39e6f023404c0ba037cb101a19cf7aaa5be1787234cffdba853ec98486a",
+      "bytes": 198408
+    },
+    "fixture-compatible.bkp": {
+      "sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+      "bytes": 5797906
+    },
+    "fixture-incompatible.bkp": {
+      "sha256": "ae1d8a0342711b590724efeafedf3c4b90e08c70747bbb683bf4f7d1aa936445",
+      "bytes": 5797906
+    },
+    "fixture-consistent-bad-crc.bkp": {
+      "sha256": "6ff2291ba67aba2b70ce02df77a2945d0bdebc2dfc9d54bc2d93145cf171bcd3",
+      "bytes": 5797906
+    },
+    "fixture-missing-prefix.bkp": {
+      "sha256": "7aac7456f7381a030db5f5505ffac04cc0b3d14b5204e8d38d0542c16c7af7e3",
+      "bytes": 5797903
+    },
+    "fixture-already-recorded-baseline.bin": {
+      "sha256": "91e7b4d7e27881fba9528ae9bebab4a72f229fc90876cb65c4765168907ddc6f",
+      "bytes": 8388608
+    }
+  },
+  "card_access": false,
+  "physical_update": "PENDING"
+}
