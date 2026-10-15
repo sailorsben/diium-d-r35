@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "calls": 14400,
+  "normalized_state_every": 30,
+  "results": [
+    {
+      "label": "combined",
+      "case": "METEOR",
+      "calls": 1200,
+      "core_sha256": "7e4613f4ef82709afe93dab6b08e0a7fcf57291ee68bb5e0dbc22c1dfa9c2118",
+      "log_sha256": "d8979c8163ac59e0b48278f7175256494b96088ae7879b0a412fd39e9ace88c6"
+    },
+    {
+      "label": "combined",
+      "case": "QUASAR",
+      "calls": 1200,
+      "core_sha256": "7e4613f4ef82709afe93dab6b08e0a7fcf57291ee68bb5e0dbc22c1dfa9c2118",
+      "log_sha256": "94273513b5964d8105052df0394dfac242b25c0cc551faa7e2e2938f6a4520bf"
+    },
+    {
+      "label": "combined",
+      "case": "CONFUSER",
+      "calls": 1200,
+      "core_sha256": "7e4613f4ef82709afe93dab6b08e0a7fcf57291ee68bb5e0dbc22c1dfa9c2118",
+      "log_sha256": "15a290ee7443fd72d5cce0e3cc658a400ff0a0562f2b19f02298b182853852b4"
+    },
+    {
+      "label": "combined-one",
+      "case": "METEOR",
+      "calls": 1200,
+      "core_sha256": "69773d480e7edb8201e9ab5452f753af3ef7fb9f3d83dffbc83d9dc050196ab6",
+      "log_sha256": "79cd7280b0e83ef589a2c65ec23ca1ad055bbfbf150215a523945134694b968c"
+    },
+    {
+      "label": "combined-one",
+      "case": "QUASAR",
+      "calls": 1200,
+      "core_sha256": "69773d480e7edb8201e9ab5452f753af3ef7fb9f3d83dffbc83d9dc050196ab6",
+      "log_sha256": "ad8c75ff88fe3493c22f17802b2be064f7d896341a38c3738260bb86990fe4e1"
+    },
+    {
+      "label": "combined-one",
+      "case": "CONFUSER",
+      "calls": 1200,
+      "core_sha256": "69773d480e7edb8201e9ab5452f753af3ef7fb9f3d83dffbc83d9dc050196ab6",
+      "log_sha256": "1350ed26bcba83d91ba1d10c4504aa4aa6162ccff2cc0981bfef67ab6e1c0972"
+    },
+    {
+      "label": "combined-flag-local",
+      "case": "METEOR",
+      "calls": 1200,
+      "core_sha256": "642ccb57d00813c2262c8c3482671c8cccba1a7f3f2696260960652995d735b0",
+      "log_sha256": "ee48e3efb0034e0fb9d3845b8e259d0b3a1f081d04941952128d45f60409a921"
+    },
+    {
+      "label": "combined-flag-local",
+      "case": "QUASAR",
+      "calls": 1200,
+      "core_sha256": "642ccb57d00813c2262c8c3482671c8cccba1a7f3f2696260960652995d735b0",
+      "log_sha256": "2100bdbaedf70d04c1cd047e78114927b3d756242b9d03c5360b7662ebb2c638"
+    },
+    {
+      "label": "combined-flag-local",
+      "case": "CONFUSER",
+      "calls": 1200,
+      "core_sha256": "642ccb57d00813c2262c8c3482671c8cccba1a7f3f2696260960652995d735b0",
+      "log_sha256": "f457d2f4ab6dc844ac249c7bb412b4e112bdb0ccd81139d5b4d2b6c29b0bb998"
+    },
+    {
+      "label": "combined-apu-boundary",
+      "case": "METEOR",
+      "calls": 1200,
+      "core_sha256": "753581ef84a34764cf40b4eaa0fd34dc63e66117c65b7e6e2b44435d9ce94e22",
+      "log_sha256": "61208d69dc62faff4a575febcec9939c60cc0cd2948b69012196a57c762bb76f"
+    },
+    {
+      "label": "combined-apu-boundary",
+      "case": "QUASAR",
+      "calls": 1200,
+      "core_sha256": "753581ef84a34764cf40b4eaa0fd34dc63e66117c65b7e6e2b44435d9ce94e22",
+      "log_sha256": "820cea861912f1221a8572de3ee93ba2be0d95efe50e269abdf3fb0631c0096b"
+    },
+    {
+      "label": "combined-apu-boundary",
+      "case": "CONFUSER",
+      "calls": 1200,
+      "core_sha256": "753581ef84a34764cf40b4eaa0fd34dc63e66117c65b7e6e2b44435d9ce94e22",
+      "log_sha256": "383feedd94511f294b155956b44e712a4f0e55176bb0f888453fc2a2f5dbc370"
+    }
+  ],
+  "A7_time_claim": false,
+  "card_access": false
+}

@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **Deeper research completed locally:** exact compiler reports pin the changed
+  SPC loop optimization to LTO partitioning; a reproducible APU object boundary
+  is demonstrated. Priority scheduling removes32.5% of Meteor's main RGB writes
+  in an exact18-context counterfactual. Net A7 gain remains unmeasured. The
+  unchanged-v3 PC diagnostic is locally qualified and awaits explicit rearm;
+  current A7 inner-owner time is still missing. I: untouched by this research.
+  [Findings, proofs and next measurement](docs/snes-deep-efficiency-research.md).
+
 - **Efficiency research reset:** source-level PPU isolation did not isolate
   emitted CPU/APU code under LTO. Fresh ELF audit establishes changed SPC/DSP
   structure across unchanged sources; performance causality remains unproven.

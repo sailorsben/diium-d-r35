@@ -1,0 +1,36 @@
+{
+  "version": "1.19-pc-profile1",
+  "ready": true,
+  "installed": false,
+  "armed": false,
+  "card_writes": 0,
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "verification_sha256": "8c7bfdfd354450fc736b3e1eff56c87da4a3b2d8f35a0c338eb18db9f306a2c2",
+  "additional_sources": {
+    "build/main-pc-sampler.h": "f8d7adf9d5a279ff4992ab789f771fe4f779dd1977eed5b8fc44faf10988b5ec",
+    "build/check-main-pc-sampler.c": "7bf575ef78d0f91f09a2771ddb5278fbb9e75b870e163bb46f6a3f386fc962a8",
+    "build/check-main-pc-sampler.sh": "9d696b1ca00d4d8d8a350b8cedaeb7c2f19be3458cc23e9faae190fb28ee6686",
+    "build/analyze-main-pc.py": "ba9853b050b2ca16eba0bc53ac1ac70ee25cd30a57829793b52e80887e69b02a",
+    "build/install-current-pc-profile.py": "93c69b0fc30b16aa0716bc9d417638c144b688c94e0ed93d41a84ddfff67b59b",
+    "build/finalize-current-pc-profile.py": "603b7ce4da88c5caa1cd5c8af39901d7aa10e91c8be9cbfd38721031a2713d63",
+    "build/current-pc-profile-private-v1/main-pc-sampler.h": "f8d7adf9d5a279ff4992ab789f771fe4f779dd1977eed5b8fc44faf10988b5ec",
+    "build/current-pc-profile-private-v1/build.sh": "2c00ada4d161e35a66212617caf52b1866bdff4dd966a2c24626055e04a4dc73",
+    "build/current-pc-profile-private-v1/qualify.py": "d83e3539f3d706c21bdf716772ae5ffa131fc7188cd316f8584abc279c002689",
+    "docs/snes-pc-profile-test.txt": "bc970ee0801732f973f7cd0ac5a87a925699c14fb25704522aec6507e9423ae3"
+  },
+  "same_exact_core_both_variants": true,
+  "raw_core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+  "controller_calls": 4800,
+  "host_and_ARM_sampler_lifecycle_checked": true,
+  "actual_native_PCM_sampler_checked": true,
+  "physical_mock_rejection": true,
+  "A7_timer_support_verified": false,
+  "A7_function_time_distribution_measured": false,
+  "installation_authorized_by_this_receipt": false,
+  "limits": [
+    "Host/ARM-QEMU checks establish sampling/lifecycle only.",
+    "Timer delivery coalesces; no invented1ms resolution or overrun weighting.",
+    "A7 main-thread ownership remains pending this actual diagnostic return."
+  ]
+}

@@ -1,0 +1,16 @@
+Unchanged demand-v3 PC attribution diagnostic; not an optimization candidate.
+
+Not installed/armed by research preparation. After explicit authorized install:
+safely eject I:, cold-boot with the handheld off first, allow3-5min for four
+epochs and log flushing, wait for stock, power down and return I:.
+
+Meteor control then sample; Quasar sample then control. Both payloads are the
+same exact demand-v3 core. No nested phase clocks or dropped frames/audio.
+Main-thread CPU timer records frame+ELF PC offsets in RAM, then flushes after
+joined workers. Requested1ms is not guaranteed delivered resolution; overruns
+and dropped counts are preserved. No signal/mapping/timer support fails clearly.
+
+Select+Start aborts. Marker consumed before hardware startup; next reboot stock.
+Archive on return before any update. Reject mock telemetry, invalid PCM pointer
+prefixes, dropped traces and sparse-window overinterpretation. No performance
+acceptance or candidate installation is established by this diagnostic.

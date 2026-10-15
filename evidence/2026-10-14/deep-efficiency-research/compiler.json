@@ -1,0 +1,65 @@
+{
+  "toolchain": "arm-linux-gnueabihf-gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "controls": {
+    "baseline": {
+      "core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+      "text_sha256": "2bceb34e71deb75e1ae463d71075d8ab6512670dd352c128c1d4e8fc97891f05",
+      "SPC_unswitch_reports": [
+        "source/apu_blargg.c:1608:14: optimized: unswitching loop 1 on \u00e2\u20ac\u02dcif\u00e2\u20ac\u2122 with condition: pretmp_3367 != 0"
+      ],
+      "SPC_report_locations": [
+        "snes9x2005_plus_libretro.so.ltrans11.ltrans.153t.unswitch",
+        "snes9x2005_plus_libretro.so.ltrans11.ltrans.254t.optimized"
+      ],
+      "SPC_and_APU_init_same_optimized_unit": true
+    },
+    "combined": {
+      "core_sha256": "7e4613f4ef82709afe93dab6b08e0a7fcf57291ee68bb5e0dbc22c1dfa9c2118",
+      "text_sha256": "ce35f470e5a9c01689631826060e93f3302095fe59861422f19bae6db5af1b02",
+      "SPC_unswitch_reports": [],
+      "SPC_report_locations": [
+        "snes9x2005_plus_libretro.so.ltrans12.ltrans.153t.unswitch",
+        "snes9x2005_plus_libretro.so.ltrans12.ltrans.254t.optimized"
+      ],
+      "SPC_and_APU_init_same_optimized_unit": false
+    },
+    "combined-one": {
+      "core_sha256": "69773d480e7edb8201e9ab5452f753af3ef7fb9f3d83dffbc83d9dc050196ab6",
+      "text_sha256": "1d45500887d5a69a58377f1475dfc83e3b8b6badca25c52c17dd592203622226",
+      "SPC_unswitch_reports": [
+        "source/apu_blargg.c:1608:14: optimized: unswitching loop 1 on \u00e2\u20ac\u02dcif\u00e2\u20ac\u2122 with condition: pretmp_3367 != 0"
+      ],
+      "SPC_report_locations": [
+        "snes9x2005_plus_libretro.so.ltrans0.ltrans.153t.unswitch",
+        "snes9x2005_plus_libretro.so.ltrans0.ltrans.254t.optimized"
+      ],
+      "SPC_and_APU_init_same_optimized_unit": true
+    },
+    "combined-flag-local": {
+      "core_sha256": "642ccb57d00813c2262c8c3482671c8cccba1a7f3f2696260960652995d735b0",
+      "text_sha256": "2de1ec80c3eb906b9cec55ad84189d15053964205b21a00ca344e463894110c4",
+      "SPC_unswitch_reports": [],
+      "SPC_report_locations": [
+        "snes9x2005_plus_libretro.so.ltrans12.ltrans.153t.unswitch",
+        "snes9x2005_plus_libretro.so.ltrans12.ltrans.254t.optimized"
+      ],
+      "SPC_and_APU_init_same_optimized_unit": false
+    },
+    "combined-apu-boundary": {
+      "core_sha256": "753581ef84a34764cf40b4eaa0fd34dc63e66117c65b7e6e2b44435d9ce94e22",
+      "text_sha256": "5c5e499a2e5502962a1161a68e9fb1e3b688f30ec1b622c99cbd149b1e15b5c2",
+      "SPC_unswitch_reports": [
+        "source/apu_blargg.c:1608:14: optimized: unswitching loop 1 on \u00e2\u20ac\u02dcif\u00e2\u20ac\u2122 with condition: pretmp_3355 != 0"
+      ],
+      "SPC_report_locations": [
+        "source/apu_blargg.c.153t.unswitch",
+        "source/apu_blargg.c.254t.optimized"
+      ],
+      "SPC_and_APU_init_same_optimized_unit": true
+    }
+  },
+  "baseline_byte_exact_reproduction": true,
+  "combined_text_exact_reproduction": true,
+  "fixed_APU_object_sha256": "a3baec4aabbbb539858fb7fc59b5b96bddf7e7e6bb7a51c6e6fa394f8b542097",
+  "APU_object_identical_across_PPU_changes": true
+}

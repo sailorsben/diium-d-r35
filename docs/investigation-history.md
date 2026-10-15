@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## Compiler cause and priority-scheduling research — 2026-10-14
+
+Exact report rebuilds identify SPC loop unswitch loss across LTO partitions;
+one-partition/fixed-APU controls restore it, flag snapshot alone does not. Fixed
+APU object identical across PPU variants.14,400 compiler comparisons pass.
+Fresh current census7,200 calls finds27,600 late-Meteor RGB pixels overwritten
+by BG3. State-based unique top-BG3-first counterfactual passes21,600 calls/all18,
+main RGB writes-32.5% with extra traversal/guards unpriced. Current A7 budget is
+core~15.5ms plus~1.5ms other recorded CPU, inner ownership unmeasured. Unchanged-
+core PC/control diagnostic qualifies4,800 calls plus native lifecycle/reporter;
+timer overruns retained, no1ms delivery claim. No card access/rearm or optimized
+installation. See snes-deep-efficiency-research.md for proofs and limits.
+
 ## Deeper efficiency research / codegen interaction — 2026-10-14
 
 Source-identical CPU/APU modules produce different SPC/DSP codegen when PPU

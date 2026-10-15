@@ -7031,6 +7031,94 @@
       "published_sha256": "f99d70d4ea2b6d4f0c58fe939dc34779e471f40d0a6b9ee02718e9c537708516",
       "bytes": 7762,
       "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/compiler.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "3c99e065d3c1f5b241dc96cf3411ac1156301c51659ca4ab2b9c34b3c85c334f",
+      "bytes": 3172,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/compiler-qualification.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "deecce0e43f36ccd38cb4d82e5f8f52efed07a0be9246f8768adef1198c438b2",
+      "bytes": 3457,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/current-work.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "bf12010b5fc056d516bba6f35e18a4b7beadbfad8f472e405dd3ac7c7ad31c17",
+      "bytes": 33300,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/current-A7-budget.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "6b1510b03a77619b5be2daa0d6667b7257b61a3152fcf8bc2a26a45423fd7777",
+      "bytes": 38235,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/priority-hypothesis.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "1a2381d035fd98ddff79b8d36d1a795ad092ba862b417d4ccc78b12a398e84aa",
+      "bytes": 82990,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/priority-deltas.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "7584c2a6ca0a600558a5d11f77dae2a094b6af06b772545acb4e3b1f4bd6e38a",
+      "bytes": 26806,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/PC-diagnostic-ready.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "af7cde18d4c0585903c52810034a557af0c4bb9906837c47433b72ec55601888",
+      "bytes": 2114,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/PC-diagnostic-plan.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "ffc119ca0ba74424aadfa5c0fafba3e2c1af3442ef891c6ea80aa17592b5af7a",
+      "bytes": 19516,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/PC-diagnostic-qualification.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "8e7e5fdde532a33010deda4fdaec1e2e93055d4ac48d0f405cebba998349dc44",
+      "bytes": 14766,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/inputs.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "7ac45ebc41c7f5bf5bd22f0a00d68d74daea8f61259babc2d94b32a575533640",
+      "bytes": 6771,
+      "normalized": true
+    },
+    {
+      "source": "build/publish-deep-efficiency-research.py",
+      "published": "evidence/2026-10-14/deep-efficiency-research/decision.json",
+      "source_sha256": "63dcff762f3d4230fee351f451153dde1e5d5bf696fe849b608dc57771f7fa3e",
+      "published_sha256": "78e668a53be4b70ecb24d8cfc88480d08cb4127b55a707ef8609c7bd68344a90",
+      "bytes": 840,
+      "normalized": true
     }
   ]
 }

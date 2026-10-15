@@ -1,0 +1,983 @@
+{
+  "HOLY": {
+    "early": {
+      "main_RGB_writes": {
+        "before": 57500.36666666667,
+        "after": 54949.308333333334,
+        "removed": 2551.0583333333343
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3329.3,
+        "after": 778.2416666666667,
+        "removed": 2551.0583333333334
+      },
+      "math_pixel_writes": {
+        "before": 17635.6,
+        "after": 15295.466666666667,
+        "removed": 2340.1333333333314
+      },
+      "overwritten_math_writes": {
+        "before": 2340.133333333333,
+        "after": 0,
+        "removed": 2340.133333333333
+      },
+      "plain_batch_row_visits": {
+        "before": 10150.4,
+        "after": 10150.4,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2225.866666666667,
+        "after": 2225.866666666667,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6546.825,
+        "after": 6424.825,
+        "removed": 122.0
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 201.21666666666667,
+        "after": 206.21666666666667,
+        "removed": -5.0
+      },
+      "BG_draw_invocations": {
+        "before": 10.208333333333334,
+        "after": 13.441666666666666,
+        "removed": -3.2333333333333325
+      },
+      "NEON_palette_preparations": {
+        "before": 14.816666666666666,
+        "after": 14.816666666666666,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 20.033333333333335,
+        "after": 20.033333333333335,
+        "removed": 0.0
+      }
+    },
+    "full_warm": {
+      "main_RGB_writes": {
+        "before": 58374.05925925926,
+        "after": 55949.02685185185,
+        "removed": 2425.0324074074088
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3258.5925925925926,
+        "after": 833.5601851851852,
+        "removed": 2425.0324074074074
+      },
+      "math_pixel_writes": {
+        "before": 24997.15925925926,
+        "after": 22766.607407407406,
+        "removed": 2230.5518518518547
+      },
+      "overwritten_math_writes": {
+        "before": 2230.551851851852,
+        "after": 0,
+        "removed": 2230.551851851852
+      },
+      "plain_batch_row_visits": {
+        "before": 8323.362962962963,
+        "after": 8323.362962962963,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 3300.840740740741,
+        "after": 3300.840740740741,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6955.751851851852,
+        "after": 6839.809259259259,
+        "removed": 115.94259259259252
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 169.67777777777778,
+        "after": 173.11296296296297,
+        "removed": -3.4351851851851904
+      },
+      "BG_draw_invocations": {
+        "before": 6.87037037037037,
+        "after": 8.63888888888889,
+        "removed": -1.768518518518519
+      },
+      "NEON_palette_preparations": {
+        "before": 13.562037037037037,
+        "after": 13.562037037037037,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.78148148148148,
+        "after": 19.78148148148148,
+        "removed": 0.0
+      }
+    }
+  },
+  "METEOR": {
+    "early": {
+      "main_RGB_writes": {
+        "before": 57521.941666666666,
+        "after": 54946.65,
+        "removed": 2575.2916666666642
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3350.875,
+        "after": 775.5833333333334,
+        "removed": 2575.2916666666665
+      },
+      "math_pixel_writes": {
+        "before": 17635.6,
+        "after": 15270.4,
+        "removed": 2365.199999999999
+      },
+      "overwritten_math_writes": {
+        "before": 2365.2,
+        "after": 0,
+        "removed": 2365.2
+      },
+      "plain_batch_row_visits": {
+        "before": 10167.2,
+        "after": 10167.2,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2225.866666666667,
+        "after": 2225.866666666667,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6554.65,
+        "after": 6431.65,
+        "removed": 123.0
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 192.91666666666666,
+        "after": 201.91666666666666,
+        "removed": -9.0
+      },
+      "BG_draw_invocations": {
+        "before": 10.2,
+        "after": 13.433333333333334,
+        "removed": -3.2333333333333343
+      },
+      "NEON_palette_preparations": {
+        "before": 14.808333333333334,
+        "after": 14.808333333333334,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 20.033333333333335,
+        "after": 20.033333333333335,
+        "removed": 0.0
+      }
+    },
+    "full_warm": {
+      "main_RGB_writes": {
+        "before": 64185.43703703704,
+        "after": 55820.35833333333,
+        "removed": 8365.078703703708
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 9170.014814814815,
+        "after": 804.9361111111111,
+        "removed": 8365.078703703704
+      },
+      "math_pixel_writes": {
+        "before": 21427.332407407408,
+        "after": 19189.408333333333,
+        "removed": 2237.924074074075
+      },
+      "overwritten_math_writes": {
+        "before": 2237.9240740740743,
+        "after": 0,
+        "removed": 2237.9240740740743
+      },
+      "plain_batch_row_visits": {
+        "before": 14889.925925925925,
+        "after": 13446.281481481481,
+        "removed": 1443.6444444444442
+      },
+      "math_batch_row_visits": {
+        "before": 2684.600925925926,
+        "after": 2684.600925925926,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 8007.975925925926,
+        "after": 7110.542592592593,
+        "removed": 897.4333333333334
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 1694.6601851851851,
+        "after": 1129.512962962963,
+        "removed": 565.1472222222221
+      },
+      "BG_draw_invocations": {
+        "before": 6.850925925925926,
+        "after": 8.931481481481482,
+        "removed": -2.0805555555555557
+      },
+      "NEON_palette_preparations": {
+        "before": 14.056481481481482,
+        "after": 13.787962962962963,
+        "removed": 0.26851851851851904
+      },
+      "decoded_tiles": {
+        "before": 19.908333333333335,
+        "after": 19.908333333333335,
+        "removed": 0.0
+      }
+    },
+    "earlier_peak": {
+      "main_RGB_writes": {
+        "before": 85684.5,
+        "after": 57864,
+        "removed": 27820.5
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 28596.5,
+        "after": 776,
+        "removed": 27820.5
+      },
+      "math_pixel_writes": {
+        "before": 40528,
+        "after": 38278,
+        "removed": 2250
+      },
+      "overwritten_math_writes": {
+        "before": 2250,
+        "after": 0,
+        "removed": 2250
+      },
+      "plain_batch_row_visits": {
+        "before": 25504,
+        "after": 19316,
+        "removed": 6188
+      },
+      "math_batch_row_visits": {
+        "before": 5014,
+        "after": 5014,
+        "removed": 0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 11060.59375,
+        "after": 7565.03125,
+        "removed": 3495.5625
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 6017.4375,
+        "after": 3581.40625,
+        "removed": 2436.03125
+      },
+      "BG_draw_invocations": {
+        "before": 7,
+        "after": 9,
+        "removed": -2
+      },
+      "NEON_palette_preparations": {
+        "before": 16,
+        "after": 15,
+        "removed": 1
+      },
+      "decoded_tiles": {
+        "before": 21.625,
+        "after": 21.625,
+        "removed": 0.0
+      }
+    },
+    "late_peak": {
+      "main_RGB_writes": {
+        "before": 85686.975,
+        "after": 57865.25,
+        "removed": 27821.725000000006
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 28598.975,
+        "after": 777.25,
+        "removed": 27821.725
+      },
+      "math_pixel_writes": {
+        "before": 40528,
+        "after": 38278,
+        "removed": 2250
+      },
+      "overwritten_math_writes": {
+        "before": 2250,
+        "after": 0,
+        "removed": 2250
+      },
+      "plain_batch_row_visits": {
+        "before": 25504,
+        "after": 19316,
+        "removed": 6188
+      },
+      "math_batch_row_visits": {
+        "before": 5014,
+        "after": 5014,
+        "removed": 0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 10922.475,
+        "after": 7515.25,
+        "removed": 3407.2250000000004
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 5940.125,
+        "after": 3525.925,
+        "removed": 2414.2
+      },
+      "BG_draw_invocations": {
+        "before": 7,
+        "after": 9,
+        "removed": -2
+      },
+      "NEON_palette_preparations": {
+        "before": 16,
+        "after": 15,
+        "removed": 1
+      },
+      "decoded_tiles": {
+        "before": 19.5,
+        "after": 19.5,
+        "removed": 0.0
+      }
+    }
+  },
+  "QUASAR": {
+    "early": {
+      "main_RGB_writes": {
+        "before": 57546.075,
+        "after": 54973.75,
+        "removed": 2572.324999999997
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3375.008333333333,
+        "after": 802.6833333333333,
+        "removed": 2572.325
+      },
+      "math_pixel_writes": {
+        "before": 17635.6,
+        "after": 15269.866666666667,
+        "removed": 2365.7333333333318
+      },
+      "overwritten_math_writes": {
+        "before": 2365.733333333333,
+        "after": 0,
+        "removed": 2365.733333333333
+      },
+      "plain_batch_row_visits": {
+        "before": 10167.2,
+        "after": 10167.2,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2225.866666666667,
+        "after": 2225.866666666667,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6554.125,
+        "after": 6431.125,
+        "removed": 123.0
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 192.39166666666668,
+        "after": 200.39166666666668,
+        "removed": -8.0
+      },
+      "BG_draw_invocations": {
+        "before": 10.225,
+        "after": 13.475,
+        "removed": -3.25
+      },
+      "NEON_palette_preparations": {
+        "before": 14.833333333333334,
+        "after": 14.833333333333334,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 20.033333333333335,
+        "after": 20.033333333333335,
+        "removed": 0.0
+      }
+    },
+    "full_warm": {
+      "main_RGB_writes": {
+        "before": 58732.31296296296,
+        "after": 56174.85555555556,
+        "removed": 2557.4574074074044
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3832.446296296296,
+        "after": 1274.9888888888888,
+        "removed": 2557.457407407407
+      },
+      "math_pixel_writes": {
+        "before": 22124.662962962964,
+        "after": 19785.2,
+        "removed": 2339.4629629629635
+      },
+      "overwritten_math_writes": {
+        "before": 2339.462962962963,
+        "after": 0,
+        "removed": 2339.462962962963
+      },
+      "plain_batch_row_visits": {
+        "before": 11456.659259259259,
+        "after": 11456.659259259259,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2932.125,
+        "after": 2932.125,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 7988.287037037037,
+        "after": 7858.337962962963,
+        "removed": 129.94907407407482
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 219.1027777777778,
+        "after": 226.46851851851852,
+        "removed": -7.365740740740733
+      },
+      "BG_draw_invocations": {
+        "before": 6.828703703703703,
+        "after": 8.973148148148148,
+        "removed": -2.144444444444445
+      },
+      "NEON_palette_preparations": {
+        "before": 13.898148148148149,
+        "after": 13.898148148148149,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.830555555555556,
+        "after": 19.830555555555556,
+        "removed": 0.0
+      }
+    },
+    "late_peak": {
+      "main_RGB_writes": {
+        "before": 63241.891304347824,
+        "after": 60109.04347826087,
+        "removed": 3132.8478260869524
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 6153.891304347826,
+        "after": 3021.0434782608695,
+        "removed": 3132.8478260869565
+      },
+      "math_pixel_writes": {
+        "before": 47213.5,
+        "after": 44406.19565217391,
+        "removed": 2807.304347826088
+      },
+      "overwritten_math_writes": {
+        "before": 2807.304347826087,
+        "after": 0,
+        "removed": 2807.304347826087
+      },
+      "plain_batch_row_visits": {
+        "before": 10576,
+        "after": 10576,
+        "removed": 0
+      },
+      "math_batch_row_visits": {
+        "before": 6902.195652173913,
+        "after": 6902.195652173913,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 10521.739130434782,
+        "after": 10339.54347826087,
+        "removed": 182.1956521739121
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 262.67391304347825,
+        "after": 270.67391304347825,
+        "removed": -8.0
+      },
+      "BG_draw_invocations": {
+        "before": 7,
+        "after": 9,
+        "removed": -2
+      },
+      "NEON_palette_preparations": {
+        "before": 15.891304347826088,
+        "after": 15.891304347826088,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 22.52173913043478,
+        "after": 22.52173913043478,
+        "removed": 0.0
+      }
+    }
+  },
+  "RAGE_032": {
+    "early": {
+      "main_RGB_writes": {
+        "before": 58893.74166666667,
+        "after": 56389.083333333336,
+        "removed": 2504.658333333333
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3380.9416666666666,
+        "after": 876.2833333333333,
+        "removed": 2504.6583333333333
+      },
+      "math_pixel_writes": {
+        "before": 16880.633333333335,
+        "after": 14567.633333333333,
+        "removed": 2313.000000000002
+      },
+      "overwritten_math_writes": {
+        "before": 2313,
+        "after": 0,
+        "removed": 2313
+      },
+      "plain_batch_row_visits": {
+        "before": 14261.6,
+        "after": 14261.6,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2148.866666666667,
+        "after": 2148.866666666667,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 8479.883333333333,
+        "after": 8360.883333333333,
+        "removed": 119.0
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 265.84166666666664,
+        "after": 268.84166666666664,
+        "removed": -3.0
+      },
+      "BG_draw_invocations": {
+        "before": 9.258333333333333,
+        "after": 11.65,
+        "removed": -2.3916666666666675
+      },
+      "NEON_palette_preparations": {
+        "before": 15.308333333333334,
+        "after": 15.308333333333334,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.716666666666665,
+        "after": 19.716666666666665,
+        "removed": 0.0
+      }
+    },
+    "full_warm": {
+      "main_RGB_writes": {
+        "before": 64214.21759259259,
+        "after": 55871.45277777778,
+        "removed": 8342.764814814815
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 9136.010185185185,
+        "after": 793.2453703703703,
+        "removed": 8342.764814814815
+      },
+      "math_pixel_writes": {
+        "before": 21576.66574074074,
+        "after": 19338.982407407406,
+        "removed": 2237.6833333333343
+      },
+      "overwritten_math_writes": {
+        "before": 2237.6833333333334,
+        "after": 0,
+        "removed": 2237.6833333333334
+      },
+      "plain_batch_row_visits": {
+        "before": 14968.148148148148,
+        "after": 13524.503703703704,
+        "removed": 1443.6444444444442
+      },
+      "math_batch_row_visits": {
+        "before": 2703.267592592593,
+        "after": 2703.267592592593,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 8041.724074074074,
+        "after": 7151.042592592593,
+        "removed": 890.6814814814816
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 1696.401851851852,
+        "after": 1123.9907407407406,
+        "removed": 572.4111111111113
+      },
+      "BG_draw_invocations": {
+        "before": 7.173148148148148,
+        "after": 9.337962962962964,
+        "removed": -2.1648148148148154
+      },
+      "NEON_palette_preparations": {
+        "before": 14.275,
+        "after": 14.006481481481481,
+        "removed": 0.26851851851851904
+      },
+      "decoded_tiles": {
+        "before": 19.908333333333335,
+        "after": 19.908333333333335,
+        "removed": 0.0
+      }
+    },
+    "earlier_peak": {
+      "main_RGB_writes": {
+        "before": 85657.5,
+        "after": 57856,
+        "removed": 27801.5
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 28569.5,
+        "after": 768,
+        "removed": 27801.5
+      },
+      "math_pixel_writes": {
+        "before": 40528,
+        "after": 38278,
+        "removed": 2250
+      },
+      "overwritten_math_writes": {
+        "before": 2250,
+        "after": 0,
+        "removed": 2250
+      },
+      "plain_batch_row_visits": {
+        "before": 25488,
+        "after": 19300,
+        "removed": 6188
+      },
+      "math_batch_row_visits": {
+        "before": 5014,
+        "after": 5014,
+        "removed": 0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 10896.25,
+        "after": 7494.84375,
+        "removed": 3401.40625
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 5951,
+        "after": 3516.09375,
+        "removed": 2434.90625
+      },
+      "BG_draw_invocations": {
+        "before": 7,
+        "after": 9,
+        "removed": -2
+      },
+      "NEON_palette_preparations": {
+        "before": 16,
+        "after": 15,
+        "removed": 1
+      },
+      "decoded_tiles": {
+        "before": 19.5,
+        "after": 19.5,
+        "removed": 0.0
+      }
+    },
+    "late_peak": {
+      "main_RGB_writes": {
+        "before": 85659.975,
+        "after": 57858.25,
+        "removed": 27801.725000000006
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 28571.975,
+        "after": 770.25,
+        "removed": 27801.725
+      },
+      "math_pixel_writes": {
+        "before": 40528,
+        "after": 38278,
+        "removed": 2250
+      },
+      "overwritten_math_writes": {
+        "before": 2250,
+        "after": 0,
+        "removed": 2250
+      },
+      "plain_batch_row_visits": {
+        "before": 25488,
+        "after": 19300,
+        "removed": 6188
+      },
+      "math_batch_row_visits": {
+        "before": 5014,
+        "after": 5014,
+        "removed": 0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 11027.175,
+        "after": 7544.625,
+        "removed": 3482.5499999999993
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 6006.175,
+        "after": 3565,
+        "removed": 2441.175
+      },
+      "BG_draw_invocations": {
+        "before": 7,
+        "after": 9,
+        "removed": -2
+      },
+      "NEON_palette_preparations": {
+        "before": 15.775,
+        "after": 14.775,
+        "removed": 1.0
+      },
+      "decoded_tiles": {
+        "before": 19.5,
+        "after": 19.5,
+        "removed": 0.0
+      }
+    }
+  },
+  "BIO_BLAST": {
+    "early": {
+      "main_RGB_writes": {
+        "before": 57363.03333333333,
+        "after": 54835.208333333336,
+        "removed": 2527.824999999997
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3271.3,
+        "after": 743.475,
+        "removed": 2527.8250000000003
+      },
+      "math_pixel_writes": {
+        "before": 16560.4,
+        "after": 14225.5,
+        "removed": 2334.9000000000015
+      },
+      "overwritten_math_writes": {
+        "before": 2334.9,
+        "after": 0,
+        "removed": 2334.9
+      },
+      "plain_batch_row_visits": {
+        "before": 10048.8,
+        "after": 10048.8,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2092.8,
+        "after": 2092.8,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6496.125,
+        "after": 6377.125,
+        "removed": 119.0
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 198.86666666666667,
+        "after": 199.86666666666667,
+        "removed": -1.0
+      },
+      "BG_draw_invocations": {
+        "before": 9.916666666666666,
+        "after": 13.108333333333333,
+        "removed": -3.1916666666666664
+      },
+      "NEON_palette_preparations": {
+        "before": 14.133333333333333,
+        "after": 14.133333333333333,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.516666666666666,
+        "after": 19.516666666666666,
+        "removed": 0.0
+      }
+    },
+    "full_warm": {
+      "main_RGB_writes": {
+        "before": 57895.680555555555,
+        "after": 55497.71203703704,
+        "removed": 2397.9685185185153
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3318.4509259259257,
+        "after": 920.4824074074074,
+        "removed": 2397.968518518518
+      },
+      "math_pixel_writes": {
+        "before": 17785.55925925926,
+        "after": 15562.15462962963,
+        "removed": 2223.404629629629
+      },
+      "overwritten_math_writes": {
+        "before": 2223.4046296296297,
+        "after": 0,
+        "removed": 2223.4046296296297
+      },
+      "plain_batch_row_visits": {
+        "before": 12268.453703703704,
+        "after": 12268.453703703704,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2230.4435185185184,
+        "after": 2230.4435185185184,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 7545.858333333334,
+        "after": 7433.957407407407,
+        "removed": 111.90092592592646
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 232.13888888888889,
+        "after": 230.32592592592593,
+        "removed": 1.8129629629629562
+      },
+      "BG_draw_invocations": {
+        "before": 6.711111111111111,
+        "after": 8.853703703703705,
+        "removed": -2.1425925925925933
+      },
+      "NEON_palette_preparations": {
+        "before": 13.578703703703704,
+        "after": 13.578703703703704,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.660185185185185,
+        "after": 19.660185185185185,
+        "removed": 0.0
+      }
+    }
+  },
+  "CONFUSER": {
+    "early": {
+      "main_RGB_writes": {
+        "before": 57362.96666666667,
+        "after": 54840.175,
+        "removed": 2522.7916666666642
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3266.9666666666667,
+        "after": 744.175,
+        "removed": 2522.791666666667
+      },
+      "math_pixel_writes": {
+        "before": 16560.4,
+        "after": 14230.3,
+        "removed": 2330.100000000002
+      },
+      "overwritten_math_writes": {
+        "before": 2330.1,
+        "after": 0,
+        "removed": 2330.1
+      },
+      "plain_batch_row_visits": {
+        "before": 10048.8,
+        "after": 10048.8,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 2092.8,
+        "after": 2092.8,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6496.033333333334,
+        "after": 6377.033333333334,
+        "removed": 119.0
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 197.5,
+        "after": 198.5,
+        "removed": -1.0
+      },
+      "BG_draw_invocations": {
+        "before": 9.983333333333333,
+        "after": 13.2,
+        "removed": -3.216666666666667
+      },
+      "NEON_palette_preparations": {
+        "before": 14.15,
+        "after": 14.15,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.516666666666666,
+        "after": 19.516666666666666,
+        "removed": 0.0
+      }
+    },
+    "full_warm": {
+      "main_RGB_writes": {
+        "before": 58681.21111111111,
+        "after": 55629.89444444444,
+        "removed": 3051.3166666666657
+      },
+      "overwritten_main_RGB_writes": {
+        "before": 3811.314814814815,
+        "after": 759.9981481481482,
+        "removed": 3051.3166666666666
+      },
+      "math_pixel_writes": {
+        "before": 24467.18611111111,
+        "after": 21753.366666666665,
+        "removed": 2713.8194444444453
+      },
+      "overwritten_math_writes": {
+        "before": 2713.8194444444443,
+        "after": 0,
+        "removed": 2713.8194444444443
+      },
+      "plain_batch_row_visits": {
+        "before": 10681.314814814816,
+        "after": 10681.314814814816,
+        "removed": 0.0
+      },
+      "math_batch_row_visits": {
+        "before": 1958.1333333333334,
+        "after": 1958.1333333333334,
+        "removed": 0.0
+      },
+      "batch_RGB_vector_expansions": {
+        "before": 6811.2231481481485,
+        "after": 6696.528703703703,
+        "removed": 114.69444444444525
+      },
+      "sparse_plain_pixel_stores": {
+        "before": 202.89537037037036,
+        "after": 204.34814814814814,
+        "removed": -1.4527777777777828
+      },
+      "BG_draw_invocations": {
+        "before": 7.20462962962963,
+        "after": 9.478703703703705,
+        "removed": -2.2740740740740746
+      },
+      "NEON_palette_preparations": {
+        "before": 14.10925925925926,
+        "after": 14.10925925925926,
+        "removed": 0.0
+      },
+      "decoded_tiles": {
+        "before": 19.646296296296295,
+        "after": 19.646296296296295,
+        "removed": 0.0
+      }
+    }
+  }
+}

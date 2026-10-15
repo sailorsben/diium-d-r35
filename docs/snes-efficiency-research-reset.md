@@ -1,5 +1,12 @@
 # Research reset after the PPU regression
 
+**Follow-through:** deeper local research now pins the SPC loop-unswitch/LTO
+partition interaction, demonstrates a fixed APU object control, refreshes v3
+populations and qualifies a priority-scheduling counterfactual plus unchanged-core
+PC diagnostic. Current inner A7 time still requires its physical return. See
+[new findings](snes-deep-efficiency-research.md). Earlier hypotheses below are
+superseded where the new report supplies stronger evidence.
+
 2026-10-14. Read-only review of existing source, assembly and physical evidence;
 no new emulator build, card access, install or rearm. A failed local optimization
 bundle does not establish the device's emulation limit. The missing work is

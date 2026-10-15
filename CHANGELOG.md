@@ -1,5 +1,20 @@
 # Changelog
 
+## Pin compiler interaction and verify priority-scheduling opportunity — 2026-10-14
+
+Reproduce v3 byte-exact and combined .text-exact with GCC reports. SPC loop
+unswitching disappears across changed LTO partitions; one-partition and fixed
+non-LTO APU object controls restore it. APU object bytes identical across PPU
+variants; local flag snapshot alone does not restore unswitching.14,400 compiler
+control comparisons pass. Refresh current v3 work with7,200 exact calls; highest
+mode1 BG3 causes27,600 overwritten late-Meteor pixels. State-based early top-BG3
+counterfactual passes21,600 exact calls/all18 contexts and cuts main RGB writes
+32.5%, with extra traversal/guard costs unpriced. Existing A7 logs measure core
+~15.5ms plus~1.5ms other timed CPU, not an inner engine split. Prepare/qualify
+unchanged-core4-epoch PC sampler:4,800 controller calls, host/ARM and native
+lifecycle/mock rejection. Timer overruns explicit. No card access/install/rearm;
+physical owner distribution and net candidate gain pending. See research report.
+
 ## Reset efficiency research; identify codegen confound — 2026-10-14
 
 Read current source/build/ELF and earlier physical/profile evidence plus primary

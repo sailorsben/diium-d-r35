@@ -1,0 +1,17 @@
+{
+  "strongest_verified_work_removal": "state-based mode1 highest-priority BG3 scheduling",
+  "A7_net_saving_ms": null,
+  "current_inner_A7_function_time_measured": false,
+  "optimization_candidate_installed": false,
+  "card_access": false,
+  "exact_graphics_PCM_state_calls": 43200,
+  "unchanged_core_controller_calls": 4800,
+  "next_step": "Explicitly authorized unchanged-v3 PC/control diagnostic before any optimization install",
+  "added_costs": [
+    "two extra BG traversals",
+    "priority-filter guards and skipped tile visits",
+    "codegen/layout/cache interactions",
+    "all existing depth, transparency, main/sub and raster work retained"
+  ],
+  "falsifier": "Reject if valid full effect/recovery matched net cost or cumulative reserve/pointers do not improve after independently qualified implementation."
+}
