@@ -1,0 +1,129 @@
+{
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "guards": [
+    {
+      "name": "gp_uart_isr",
+      "address": 3222370268,
+      "bytes": 564,
+      "crc32": 2314782392,
+      "sha256": "5e827da17391360214bef4c3e9cb076d854a3ae9441703b42f63f0d9651e03ba"
+    },
+    {
+      "name": "gp_uart_start_tx",
+      "address": 3222369564,
+      "bytes": 64,
+      "crc32": 3266367995,
+      "sha256": "a4ef547445b4f854267be75797e476598fed195b39e0a456ebbed35ed532c9ca"
+    },
+    {
+      "name": "gp_uart_stop_tx",
+      "address": 3222369628,
+      "bytes": 64,
+      "crc32": 104871804,
+      "sha256": "4125ba760307fb837babaf49915f033ac429c31207ece017c96630622fdc1442"
+    },
+    {
+      "name": "gp_uart_probe",
+      "address": 3222370972,
+      "bytes": 276,
+      "crc32": 3681466150,
+      "sha256": "cdfd7c51ba93759d203b243281cc6b4e9fe7a86d2bd82bcf1080f30c50613d7c"
+    },
+    {
+      "name": "gp_uart_console_write",
+      "address": 3222371520,
+      "bytes": 148,
+      "crc32": 1197234755,
+      "sha256": "e44de8464a83a8e022ffd3a89b89ff226c7adf134c1442c66b81e8de8ac571d5"
+    },
+    {
+      "name": "gpHalUartGetCtrl",
+      "address": 3222369124,
+      "bytes": 20,
+      "crc32": 3495123267,
+      "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+    },
+    {
+      "name": "irq_to_desc",
+      "address": 3222659416,
+      "bytes": 32,
+      "crc32": 3819730374,
+      "sha256": "cb429d6d2a44e612253d482c2fee07ed58031ef41599b8e02ef8126ec727136b"
+    },
+    {
+      "name": "gpHalUartGetIntSts",
+      "address": 3222369044,
+      "bytes": 20,
+      "crc32": 2131588061,
+      "sha256": "5ca391da985e7d3c22296afe016cf6d95004cef983d45cdea596683805fb3873"
+    },
+    {
+      "name": "__handle_irq_event_percpu",
+      "address": 3222662500,
+      "bytes": 332,
+      "crc32": 80415560,
+      "sha256": "55d32d9789bdb1c01a9a1e4329d07d7f50f8177e38ff079eebbc6afdf2a46746"
+    },
+    {
+      "name": "synchronize_irq",
+      "address": 3222663436,
+      "bytes": 172,
+      "crc32": 3583213534,
+      "sha256": "75325382daaa207d117d4c29bd2b4c91cbfd890aa000879b35d3e6b4559fa8ed"
+    },
+    {
+      "name": "try_module_get",
+      "address": 3222798012,
+      "bytes": 104,
+      "crc32": 1539618190,
+      "sha256": "4221a54c94cf25e96c1d184db7fc1e45083ba62c076b0bb3edcad80d8a05a9cd"
+    },
+    {
+      "name": "module_put",
+      "address": 3222798116,
+      "bytes": 104,
+      "crc32": 820256752,
+      "sha256": "077c17ad7018f6a672e02e4c53e2d4e8f0f2539444efc3c2a57ec16b4173edc0"
+    },
+    {
+      "name": "gpHalUartPutChar",
+      "address": 3222369020,
+      "bytes": 24,
+      "crc32": 3488110729,
+      "sha256": "a1b6caaa2c5dc7fe0b7751b0fa67e4d6e57ba26585c5b961b3f9d6a99838d6e4"
+    },
+    {
+      "name": "uart_write_wakeup",
+      "address": 3224592216,
+      "bytes": 36,
+      "crc32": 426711642,
+      "sha256": "8188f9ad81d4169c4adb6337916c92149345316582477a1c48b4f04c9907ffab"
+    }
+  ],
+  "verified_entry_instructions": 8,
+  "resume_address": "0xc01177f8",
+  "extra_status_reads": 0,
+  "new_path_max_writes_per_irq": 1,
+  "runtime_fifo_size_required": 8,
+  "TX_full_mask": 32,
+  "kernel_text_patches": 0,
+  "physical_result": "PENDING",
+  "FIFO_full_flag_sources": [
+    {
+      "name": "freexyz-gpl32-drv_l1_uart.h",
+      "sha256": "9791dca87bebe5c8cbae8e2480fc62e81ef96b63969878a18f6afec1a5d47795",
+      "url": "https://raw.githubusercontent.com/freexyz/gpl32/91e466ec9502d308cfec10a1bdcefd0ad2de63e5/driver_l1/common/inc/drv_l1_uart.h"
+    },
+    {
+      "name": "davidgiven-gp32-sdk-uart_hw.h",
+      "sha256": "9c15ad31b223b286377b4d27e3ba0b0c172550acc76700053330f2f6c65dd5e1",
+      "url": "https://raw.githubusercontent.com/davidgiven/gp32-sdk/a7e4f98275a1438898b03f150cc339a313ba9dfa/src/gp32/uart_hw.h"
+    },
+    {
+      "name": "gpm4-drv_l1_uart.h",
+      "sha256": "3b59b9830a25f8bc55b972777d0b2d58eb1da4fea03ac7575c2ee33f80327d79",
+      "url": "https://raw.githubusercontent.com/daviskung/GPM4_MLX_0528/7ae0d2f0eed5420e6b29ebb557ff1c54939d01b0/driver_l1/common/inc/drv_l1_uart.h"
+    }
+  ],
+  "physical_FIFO_flag_semantics_proven": false
+}

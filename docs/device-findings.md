@@ -1,5 +1,15 @@
 # Device findings
 
+**Persistent UART correction / next measurement,2026-10-15:** TX1 causal idle
+suppression passes98.994%; fixed service is now built without a diagnostic cutoff
+and loads from normal card init every boot. Exact guards/FIFO8/single-byte/full
+safety, original RX and explicit restore/drain remain.18 module groups,16 helper
+cases, exact firmware shell/startup and five transactions qualify offline.
+The same48-epoch FFVI suite is prepared unchanged except destination and UART
+boundary reports. Persistent hardware/gameplay and A7 savings remain pending.
+[Fix and rollback](uart-persistent-fix.md), [retest](snes-uart-retest.md).
+Earlier card/status paragraphs below are historical.
+
 **Latest source research,2026-10-15:** GP32/GPM4 UART-family definitions name
 status0x4000 TX pending and0x80 TX FIFO empty. Every status1 entry has pending;
 only144 have empty, the bit the shipped ISR services. This is a concrete

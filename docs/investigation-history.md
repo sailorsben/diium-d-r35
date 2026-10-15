@@ -1,5 +1,25 @@
 # Investigation history and negative results
 
+## Persistent UART correction and identical FFVI repeat — 2026-10-15
+
+The physically causal TX1 correction becomes an automatic card-boot package,
+without SPI changes, a resident process or diagnostic cutoff. Preserve the
+hash-frozen original test and all guards/service semantics; change only cutoff,
+cap report and description in the module source. Targeted compiled checks cross
+the old200,000 threshold and unsigned wrap after a bulk new-path RAM replay
+timeout.18 module groups,16 helper cases and exact firmware startup/failure
+barriers pass. Five temporary-card transactions verify activation-last and
+rollback/preservation.
+
+For the user's requested FFVI measurement, retain the previous48-run plan,
+controller/cores/states/inputs byte-for-byte (82 unchanged payloads). New wrapper
+destination and pre/post UART checks are outside the child. Reuse full48-epoch
+qualification by hashes and execute a one-epoch retarget seam; a redundant bulk
+mock replay timed out after partial progress and remains private. Both offline
+timeouts are qualification execution limits, not hardware/performance findings.
+No A7 CPU saving, audio deficit closure or persistent physical acceptance is
+claimed. [Fix](uart-persistent-fix.md), [retest](snes-uart-retest.md).
+
 ## UART pending-versus-empty source contract — 2026-10-15
 
 Locate/pin/hash GP32/GPM4 definitions matching the actual register layout:

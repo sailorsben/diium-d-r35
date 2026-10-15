@@ -1,0 +1,16 @@
+{
+  "version": "uart-fix1",
+  "base_source_sha256": "06b6f0f2d0096a3d0f8ca1c01a584e916c5094f49ce10636119b9e8ef27aaa93",
+  "source_transformations": {
+    "#define CAP 200000u": "#define CAP 0u",
+    " || stats.calls>=CAP": "",
+    "Exact-kernel reversible one-byte TX-pending correction test": "Exact-kernel persistent one-byte TX-pending correction"
+  },
+  "original_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "init_sha256": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+  "lifetime": "until explicit detach or reboot",
+  "interrupt_cutoff": false,
+  "firmware_flash_required": false,
+  "automatic_every_boot": true,
+  "card_access": false
+}

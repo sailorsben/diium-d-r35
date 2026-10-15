@@ -7455,6 +7455,46 @@
       "published_sha256": "619b3b45967c11b1da2aca244ae80f5490ae3398fc41d3a4d4c7f09843a5e09e",
       "bytes": 15678,
       "normalized": false
+    },
+    {
+      "source": "build/uart-fix-private/preparation.json",
+      "published": "evidence/2026-10-15/uart-fix1/preparation.json",
+      "source_sha256": "a608e181ab2467e66b29002fbacc359ad24aecfea73200a54602407d9388b57f",
+      "published_sha256": "a608e181ab2467e66b29002fbacc359ad24aecfea73200a54602407d9388b57f",
+      "bytes": 722,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-fix-private/prepared.json",
+      "published": "evidence/2026-10-15/uart-fix1/kernel-guards.json",
+      "source_sha256": "22550d9ecb0b7259ccdd88b50fc0ecb8a946ece91fa5d5f6f415d4107f119b0d",
+      "published_sha256": "22550d9ecb0b7259ccdd88b50fc0ecb8a946ece91fa5d5f6f415d4107f119b0d",
+      "bytes": 4271,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-fix-private/qualification.json",
+      "published": "evidence/2026-10-15/uart-fix1/qualification.json",
+      "source_sha256": "7a95f24c3111fe61dacb4af300966ea854a075053b1cc6df282ab9f858403086",
+      "published_sha256": "7a95f24c3111fe61dacb4af300966ea854a075053b1cc6df282ab9f858403086",
+      "bytes": 4295,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-fix-private/installation-qualification.json",
+      "published": "evidence/2026-10-15/uart-fix1/installation-qualification.json",
+      "source_sha256": "7f681cde2d3c0925409cc92a88250bcc7066192b727e39a00ed83e33f46b8b37",
+      "published_sha256": "7f681cde2d3c0925409cc92a88250bcc7066192b727e39a00ed83e33f46b8b37",
+      "bytes": 517,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-spells-private/qualification.json",
+      "published": "evidence/2026-10-15/uart-spells1/qualification.json",
+      "source_sha256": "5168f1ff7bceef77dddf06b524269db7a689f7e5cb5527ba9b7afae6bd9c47cc",
+      "published_sha256": "5168f1ff7bceef77dddf06b524269db7a689f7e5cb5527ba9b7afae6bd9c47cc",
+      "bytes": 12221,
+      "normalized": false
     }
   ]
 }

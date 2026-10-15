@@ -1,0 +1,16 @@
+{
+  "all_checks_passed": true,
+  "cases": [
+    "success",
+    "before_activation",
+    "after_activation",
+    "existing_target",
+    "changed_init"
+  ],
+  "card_access": false,
+  "qualification_sha256": "7a95f24c3111fe61dacb4af300966ea854a075053b1cc6df282ab9f858403086",
+  "sources": {
+    "build/install-uart-fix.py": "e04a8e6114567f3862a87f219755e46bd67280f0e475b0cd09b8ad8fb119c605",
+    "build/check-uart-fix-install.py": "4a7ee9e13b06411cda1916a1d10da3f943bf9bbba6a2739112a614db65eb0d0a"
+  }
+}

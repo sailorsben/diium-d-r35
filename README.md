@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+Persistent UART fix1 is built and qualified: automatic normal-boot attachment,
+no interrupt cutoff or resident daemon, exact-kernel/FIFO safeguards and rollback.
+18 module groups,16 helper cases, firmware-shell/startup and five installation
+transaction cases pass. The unchanged48-epoch FFVI suite is prepared in a new
+destination for an explicitly authorized UART-corrected repeat. Physical
+persistent/gameplay results remain pending. [Fix](docs/uart-persistent-fix.md),
+[retest and boot procedure](docs/snes-uart-retest.md).
+
 UART TX1 physical causal test passes: original/restored6,951-7,060 IRQ19/sec,
 corrected68.87/71.86, weighted98.994% reduction. Both restorations reproduce the
 flood; TX counters/queues progress, RX/errors stay flat, no faults/bypass.

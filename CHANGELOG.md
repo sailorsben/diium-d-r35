@@ -1,5 +1,15 @@
 # Changelog
 
+## Build persistent UART correction and identical FFVI retest - 2026-10-15
+
+Automatic card-boot TX correction retains the physically proven guarded service,
+removes the diagnostic cutoff, survives reboots by normal-init activation, and
+keeps explicit detach/rollback.18 compiled groups,16 helper cases, exact firmware
+shell/startup and five transaction cases pass. No SPI flash or emulator/APU
+rebuild. Prepared48-epoch retest retains82 payloads exactly and checks UART only
+outside the child. Physical persistent boot/gameplay and A7 savings pending.
+[Implementation](docs/uart-persistent-fix.md), [retest](docs/snes-uart-retest.md).
+
 ## UART TX correction suppresses flood and restoration reproduces it - 2026-10-15
 
 UART TX1 physical causal test passes: original/restored6,951-7,060 IRQ19/sec,
