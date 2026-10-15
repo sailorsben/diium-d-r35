@@ -1,0 +1,44 @@
+{
+  "kind": "offline_UART_board_contract_inspection",
+  "card_access": false,
+  "production_gate": false,
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "device_tree_sha256": "ab4f0809ebbeb38310e11f236d887e521290e8ce44610dfc8f225a3a8e0361b7",
+  "board_marking_authority": "docs/board-identification.md",
+  "board_marking_authority_sha256": "21881da484dd647be3aa28d8b333084198de95568aa1df4af7be8785338ee4e7",
+  "physical_marking": "VT569B",
+  "device_tree_model": "Generalplus EMU Board",
+  "enabled_UART_nodes": [
+    "/soc/uart@C0060000",
+    "/soc/uart@C0070000",
+    "/soc/uart@C0080000"
+  ],
+  "UART_node_pin_bias_properties": {
+    "/soc/uart@C0060000": [],
+    "/soc/uart@C0070000": [],
+    "/soc/uart@C0080000": []
+  },
+  "serial0_physical_block": "0xc0070000",
+  "serial0_clock_names": [
+    "uart1",
+    "uart1_reg"
+  ],
+  "alias_clock_mismatch_observed": false,
+  "RX_pad_number_or_pull_state_recovered": false,
+  "RX_trace_connection_proven": false,
+  "SPI_trigger_types_accepted_by_code": [
+    "rising edge",
+    "level high"
+  ],
+  "checks": [
+    "Three UART nodes available; serial0/serial1 aliases independently checked.",
+    "Actual line0 clock-helper branch selects uart1/uart1_reg, matching C0070000 hardware block.",
+    "Actual clock helper only directly calls gp_enable_clock; no direct pad/pull call in that helper.",
+    "UART DT nodes specify no pin/pull/bias properties; physical pad state remains unknown.",
+    "Actual status and RX-error getters read different offsets; low status bits are not RX-error evidence.",
+    "Actual GIC SPI type validation admits1/4, not arbitrary low-level polarity settings."
+  ],
+  "sources": {
+    "build/inspect-uart-board-contract.py": "a02525a164b99402202bfef231e03515b54da0e89a8f2995c954a98e5a1c34f8"
+  }
+}

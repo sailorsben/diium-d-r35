@@ -1,5 +1,10 @@
 # UART status1 physical return — 2026-10-14
 
+**Source follow-up,2026-10-15:** matching GP32/GPM4 definitions identify a
+TX-pending0x4000 versus FIFO-empty0x80 mismatch. This narrows the lead while
+retaining the need for simultaneous enable/controller correlation; the full
+GPA7 contract and causal suppression are still absent. [Research](uart-source-contract.md).
+
 **The dominant live path is identified:**31,201 of31,345 intercepted IRQ19
 entries (99.5406%) return status`0x0000531f`, which matches neither the shipped
 ISR's RX mask`0xa000` nor its TX mask`0x80`. All31,345 handler calls return

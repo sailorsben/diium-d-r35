@@ -1,5 +1,26 @@
 # Investigation history and negative results
 
+## UART pending-versus-empty source contract — 2026-10-15
+
+Locate/pin/hash GP32/GPM4 definitions matching the actual register layout:
+TX pending0x4000 differs from empty0x80. All31,345 physical statuses have pending,
+144 empty; shipped ISR tests empty. Original ARM comparison reproduces ignored
+pending with queued/enabled TX and service with changed test, but also shows no
+clear in the already-disabled context. Qualify actual GIC pending/active/masked
+leaf reads for8 combinations and ordinary IRQ69 EOI in RAM. Reject differently
+mapped GPL32900/SPMP8050 sources; matching4.19 GPA7 source still absent. Shared
+IP inference is not a causal board result; next correlation must pair status,
+control and controller state in the same call. Preserve939 proofs; no card
+access/rearm/new kernel probe or fix. [Research](uart-source-contract.md).
+
+The subsequent board-focused pasted note is checked against the VT569B photo
+record, retained DT and actual UART clock helper. Serial0 deliberately selects
+hardware UART1 and its matching clocks; no alias/clock mismatch is found. Three
+okay nodes do not prove three active IRQ producers. UART DT nodes specify no
+pad/pull/bias state; RX trace/pull remains unknown. Error status is a different
+register from captured0x531f. Six static board-contract checks preserve this
+boundary without speculative GPIO changes or a polarity flip.
+
 ## UART status1 identifies dominant unrecognized-status path — 2026-10-14
 
 Archive7,813 files/1,937,139,157 bytes, clean FAT and exact payload/stock/ROM/

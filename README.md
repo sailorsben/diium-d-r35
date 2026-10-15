@@ -4,7 +4,15 @@ Source, hardware investigation and a working SNES-only launcher/runtime prototyp
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.
 
-## Current status — 2026-10-14
+## Current status — 2026-10-15
+
+- **UART source research identifies pending-vs-empty mismatch.** Matching
+  GP32/GPM4 definitions distinguish TX pending0x4000 from FIFO empty0x80. All
+  captured entries have the former; the driver services only the latter. Six
+  original-ARM comparison/GIC checks pass. Earlier TX-disabled snapshots prevent
+  calling this a proven board cause or one-word fix. Next: simultaneous status/
+  control/GIC correlation. I: untouched/unarmed; no candidate installed.
+  [Source evidence and remaining causal test](docs/uart-source-contract.md).
 
 - **UART status1 returned; dominant live path identified.**31,201/31,345
   events (99.54%) have status0x531f and select neither RX nor TX, yet return

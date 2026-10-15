@@ -7303,6 +7303,22 @@
       "published_sha256": "f78b5ab92d15c155ecff476b1f33afe1a00a7c9fcc4958a1d5cb6df92d87c05a",
       "bytes": 989,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-source-research/contract-research.json",
+      "published": "evidence/2026-10-15/uart-source-contract/research.json",
+      "source_sha256": "56ca6da7a7b44bb7a828b927c55583752374c9db65937a8d43d77ecee8b6b93d",
+      "published_sha256": "56ca6da7a7b44bb7a828b927c55583752374c9db65937a8d43d77ecee8b6b93d",
+      "bytes": 4922,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-source-research/board-contract.json",
+      "published": "evidence/2026-10-15/uart-source-contract/board.json",
+      "source_sha256": "c4ba92aa8bbe4d25473cf3413136b91fbd3c0a9467fae75bac3f5e904f0d753e",
+      "published_sha256": "c4ba92aa8bbe4d25473cf3413136b91fbd3c0a9467fae75bac3f5e904f0d753e",
+      "bytes": 1860,
+      "normalized": false
     }
   ]
 }

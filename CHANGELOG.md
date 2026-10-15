@@ -1,5 +1,14 @@
 # Changelog
 
+## Trace UART pending-versus-empty mismatch — 2026-10-15
+
+Pin GP32/GPM4 source definitions: TX pending0x4000, FIFO empty0x80; all captured
+statuses have pending but shipped ISR services empty. Six exact-ARM comparison/
+GIC state/EOI groups pass; already-disabled fixture rejects a standalone mask
+change as a proven fix. Reject incompatible vendor UART layouts. Preserve939
+published proofs; shared-IP interpretation, not isolated GPA7 cause or A7 saving.
+No device access, probe install, rearm or core/APU change. See docs/uart-source-contract.md.
+
 ## UART status1 physical return identifies ignored-status path — 2026-10-14
 
 Capture31,345 IRQ19 calls matching counter growth:99.54% status0x531f selects

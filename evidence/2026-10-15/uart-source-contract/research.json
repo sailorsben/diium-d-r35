@@ -1,0 +1,89 @@
+{
+  "kind": "UART_shared_IP_and_exact_kernel_contract",
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "physical_return_sha256": "edbc2c2e91212c2cbe94e75280399721f014fdb9e171092ea2d455bc4e24eca3",
+  "archived_device_tree_sha256": "ab4f0809ebbeb38310e11f236d887e521290e8ce44610dfc8f225a3a8e0361b7",
+  "external_sources": [
+    {
+      "repository": "freexyz/gpl32",
+      "commit": "91e466ec9502d308cfec10a1bdcefd0ad2de63e5",
+      "path": "driver_l1/common/inc/drv_l1_uart.h",
+      "url": "https://raw.githubusercontent.com/freexyz/gpl32/91e466ec9502d308cfec10a1bdcefd0ad2de63e5/driver_l1/common/inc/drv_l1_uart.h",
+      "sha256": "9791dca87bebe5c8cbae8e2480fc62e81ef96b63969878a18f6afec1a5d47795",
+      "git_blob_sha1": "1f6159481c3e2b0b793ca56b1322f637f5cb5fbb",
+      "bytes": 2917
+    },
+    {
+      "repository": "freexyz/gpl32",
+      "commit": "91e466ec9502d308cfec10a1bdcefd0ad2de63e5",
+      "path": "driver_l1/common/src/drv_l1_uart.c",
+      "url": "https://raw.githubusercontent.com/freexyz/gpl32/91e466ec9502d308cfec10a1bdcefd0ad2de63e5/driver_l1/common/src/drv_l1_uart.c",
+      "sha256": "c190c63fbbada54fd094fc1d9794d9266facd036d85542456f00f08e653fa81e",
+      "git_blob_sha1": "be2c225e7adc45d82976bb176aaf72c1c2e59ec4",
+      "bytes": 8595
+    },
+    {
+      "repository": "davidgiven/gp32-sdk",
+      "commit": "a7e4f98275a1438898b03f150cc339a313ba9dfa",
+      "path": "src/gp32/uart_hw.h",
+      "url": "https://raw.githubusercontent.com/davidgiven/gp32-sdk/a7e4f98275a1438898b03f150cc339a313ba9dfa/src/gp32/uart_hw.h",
+      "sha256": "9c15ad31b223b286377b4d27e3ba0b0c172550acc76700053330f2f6c65dd5e1",
+      "git_blob_sha1": "c823ea8a69464d0a8ad0851d40758027d78b26d4",
+      "bytes": 2422
+    },
+    {
+      "repository": "daviskung/GPM4_MLX_0528",
+      "commit": "7ae0d2f0eed5420e6b29ebb557ff1c54939d01b0",
+      "path": "driver_l1/common/inc/drv_l1_uart.h",
+      "url": "https://raw.githubusercontent.com/daviskung/GPM4_MLX_0528/7ae0d2f0eed5420e6b29ebb557ff1c54939d01b0/driver_l1/common/inc/drv_l1_uart.h",
+      "sha256": "3b59b9830a25f8bc55b972777d0b2d58eb1da4fea03ac7575c2ee33f80327d79",
+      "git_blob_sha1": "848466d0cf8df82697bd96c99ca2bf81bc5a6677",
+      "bytes": 4866
+    },
+    {
+      "repository": "daviskung/GPM4_MLX_0528",
+      "commit": "7ae0d2f0eed5420e6b29ebb557ff1c54939d01b0",
+      "path": "driver_l1/common/src/drv_l1_uart.c",
+      "url": "https://raw.githubusercontent.com/daviskung/GPM4_MLX_0528/7ae0d2f0eed5420e6b29ebb557ff1c54939d01b0/driver_l1/common/src/drv_l1_uart.c",
+      "sha256": "ed7d3a157dedc36483c06bc26e12dfe8dc1896cbb74b43fd8faabf0cb95695ca",
+      "git_blob_sha1": "80b47a897a563de37dd81bd0981405bbe22feaa7",
+      "bytes": 20935
+    }
+  ],
+  "shared_IP_TX_pending_bit": "0x4000",
+  "shared_IP_TX_empty_bit": "0x80",
+  "captured_entries_with_TX_pending_bit": 31345,
+  "captured_entries_with_TX_empty_bit": 144,
+  "checks": [
+    "original TX-empty test ignores captured status0x531f even with TX enabled and a queued byte",
+    "TX-pending comparison reaches original transmit service and stop-TX for enabled/queued fixture",
+    "same comparison cannot establish a clear when software/hardware TX are already disabled; no standalone fix claim",
+    "actual GIC getter reads SPI69 pending/active/masked state without changing register RAM for all8 combinations",
+    "actual GIC getter refuses unsupported state without a result write",
+    "actual ordinary GIC EOI function writes hardware IRQ69 to CPU-interface EOI register"
+  ],
+  "DT_SPI": 37,
+  "GIC_hwirq": 69,
+  "DT_trigger": "level high",
+  "gic_state_getter_address": "0xc0303d5c",
+  "ordinary_gic_eoi_address": "0xc03033a0",
+  "next_read_API_exported": "irq_get_irqchip_state",
+  "exact_GPA7_register_manual_recovered": false,
+  "simultaneous_status_control_GIC_capture": false,
+  "live_causal_suppression_performed": false,
+  "A7_duration_measured": false,
+  "card_access": false,
+  "production_gate": false,
+  "negative_findings": [
+    "GPL32900 and SPMP8050 source layouts are incompatible 16550-like blocks; rejected.",
+    "Public G-plus-6662118 kernel/openplatform repositories returned empty-tree HTTP409.",
+    "GP32/GPM4 names and offsets agree but do not certify undocumented/reserved GPA7 bits.",
+    "Earlier state1 TX enables were clear; a one-word TX-condition change alone is not a proven flood fix.",
+    "EOI code exists and executes correctly against RAM; live invocation is not traced here."
+  ],
+  "sources": {
+    "build/check-uart-source-contract.py": "f91248d197d7c7fc2d8767882492dabd13c523186b7a86cc1d109b599fd3edc6",
+    "build/check-uart-source-contract.c": "b8e79a0876ff5186e8b93231b0137c858e4ed970b59c9bebecdb1d65f885fd62",
+    "build/check-uart-kernel.c": "dfce0f8063692576e199fb99d37686e8f71f42e3b7c7dad420512d2c1e0a1508"
+  }
+}

@@ -1,5 +1,14 @@
 # Device findings
 
+**Latest source research,2026-10-15:** GP32/GPM4 UART-family definitions name
+status0x4000 TX pending and0x80 TX FIFO empty. Every status1 entry has pending;
+only144 have empty, the bit the shipped ISR services. This is a concrete
+source-backed TX-side lead, not yet isolated GPA7 causality: earlier state1
+TX enables were clear and were not captured simultaneously. Six original-ARM
+comparison/GIC getter/EOI checks pass; a one-word comparison does not clear the
+already-disabled fixture. No hardware access, new probe install or rearm.
+[Sources, rejected models and next correlation](uart-source-contract.md).
+
 **Latest physical return / current card:** I: unarmed, marker consumed. UART
 status1 captures31,345 IRQ19 entries with matching IRQ-counter growth:31,201
 (99.54%) status0x531f select neither RX nor TX;144 TX-only, zero RX. All return
