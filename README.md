@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+UART TX1 correction test qualified: guarded one-byte pending service with
+TX_FULL/FIFO8 bounds, unchanged vendor RX/empty-FIFO paths and repeated exact
+restoration.17 compiled groups include153 occupancy cases and100-byte draining
+retry;21 owner/firmware-shell groups cover five phases and failure cleanup.
+Physical result, silicon full-flag behavior and A7 saving pending. Separate
+one-shot package; no firmware/core/APU change. [Test and boot procedure](docs/uart-tx-correction-test.md).
+
 Wings2 flash user-reported successful. Return archive7,822 files; clean FAT,
 stock/ROM/progress hashes verify. Exact completed Code.bkp removed; no other
 host card changes and no IRQ test armed. Full post-update SPI readback remains

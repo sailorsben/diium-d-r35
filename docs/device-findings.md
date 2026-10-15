@@ -983,3 +983,12 @@ host card changes and no IRQ test armed. Full post-update SPI readback remains
 pending. Next UART correction must qualify the live FIFO-size/room contract:
 probe initializes8 and TX sends half-size batches, then use a light original/
 corrected/restored comparison. [Next test contract](uart-correction-plan.md).
+
+## Reversible UART TX correction qualification - 2026-10-15
+
+UART TX1 correction test qualified: guarded one-byte pending service with
+TX_FULL/FIFO8 bounds, unchanged vendor RX/empty-FIFO paths and repeated exact
+restoration.17 compiled groups include153 occupancy cases and100-byte draining
+retry;21 owner/firmware-shell groups cover five phases and failure cleanup.
+Physical result, silicon full-flag behavior and A7 saving pending. Separate
+one-shot package; no firmware/core/APU change. [Test and boot procedure](uart-tx-correction-test.md).

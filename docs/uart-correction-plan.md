@@ -37,3 +37,9 @@ or service model. Do not equate fewer IRQ counts with recovered CPU cycles.
 Measure CPU benefit with separately priced observation and matched workload;
 only then test whether it improves sustained SNES audio headroom. No emulator,
 PPU/APU compiler or firmware change belongs in this UART comparison.
+
+## Implemented offline qualification - 2026-10-15
+
+[UART TX1](uart-tx-correction-test.md) now uses a one-byte/full-flag bound in the
+added pending path rather than assuming four free FIFO slots. Original vendor
+RX/empty-FIFO paths are retained. Physical comparison remains pending.

@@ -1,5 +1,14 @@
 # Changelog
 
+## Qualify reversible UART TX pending correction - 2026-10-15
+
+UART TX1 correction test qualified: guarded one-byte pending service with
+TX_FULL/FIFO8 bounds, unchanged vendor RX/empty-FIFO paths and repeated exact
+restoration.17 compiled groups include153 occupancy cases and100-byte draining
+retry;21 owner/firmware-shell groups cover five phases and failure cleanup.
+Physical result, silicon full-flag behavior and A7 saving pending. Separate
+one-shot package; no firmware/core/APU change. [Test and boot procedure](docs/uart-tx-correction-test.md).
+
 ## Accept Wings2 flash report and clean completed trigger - 2026-10-15
 
 Wings2 flash user-reported successful. Return archive7,822 files; clean FAT,

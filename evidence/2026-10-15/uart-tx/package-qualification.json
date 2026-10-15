@@ -1,0 +1,127 @@
+{
+  "version": "uart-tx1",
+  "reversible_TX_correction": true,
+  "owner_checks": [
+    {
+      "case": "normal",
+      "exit": 0
+    },
+    {
+      "case": "wrong_kernel",
+      "exit": 3
+    },
+    {
+      "case": "already_loaded",
+      "exit": 4
+    },
+    {
+      "case": "load_fail",
+      "exit": 8
+    },
+    {
+      "case": "unload_fail",
+      "exit": 10
+    },
+    {
+      "case": "read_fail",
+      "exit": 9
+    },
+    {
+      "case": "observer_refuses",
+      "exit": 9
+    },
+    {
+      "case": "cancel",
+      "exit": 0
+    },
+    {
+      "case": "sync_fail",
+      "exit": 6
+    },
+    {
+      "case": "existing",
+      "exit": 5
+    },
+    {
+      "case": "stop_fail",
+      "exit": 10
+    },
+    {
+      "case": "stop_refuses",
+      "exit": 10
+    },
+    {
+      "case": "frozen_fail",
+      "exit": 9
+    },
+    {
+      "case": "frozen_refuses",
+      "exit": 13
+    },
+    {
+      "case": "on_fail",
+      "exit": 14
+    },
+    {
+      "case": "on_refuses",
+      "exit": 14
+    },
+    {
+      "case": "cpu_fail",
+      "exit": 9
+    },
+    {
+      "case": "fault_seen",
+      "exit": 9
+    },
+    {
+      "case": "exact_firmware_shell_syntax",
+      "exit": 0
+    },
+    {
+      "case": "exact_firmware_wrapper_execution_and_consumed_reboot",
+      "exit": 0
+    },
+    {
+      "case": "exact_firmware_failure_withholds_stock_and_consumed_reboot_preserves_logs",
+      "exit": 124
+    }
+  ],
+  "userspace_abi": {
+    "ELF": "ARM32 little-endian hard-float",
+    "required_versions": [
+      "GCC_3.5",
+      "GLIBC_2.4"
+    ]
+  },
+  "compiled_module_qualification_sha256": "9c4d90709c5f321dd3fc3af2bdb81525c5d0065475cde012d3986e6f6e5581aa",
+  "sources": {
+    "build/uart-tx-owner.c": "0f33d8b849f9aaf725ff048fbc02556bb593c412f6316854852a6dce98dbf0f9",
+    "build/uart-tx-owner-fixture.c": "6860966977fea7c339c49b3112bdf27418a7b74bdf5115b18682b22f28acb038",
+    "build/build-uart-tx.sh": "bd4eece300e92b5e3d313b971a64f9f2e359aad48b719d45b9995c35ef717a62",
+    "build/launch-uart-tx.sh": "b94394f03a17f95db5d089f343bea0deb2e1dd3b6cd0a7d3e7f6229fe49ee58c",
+    "build/install-uart-tx.py": "98b05d5935a8f53100c9c5671fdca83c22767aaefe42f9052353a189b1778cff",
+    "build/check-uart-tx-package.py": "501ab591a10e23b9ef33339648c138a1ef3c49bf0817a81420beae0acab7cffe"
+  },
+  "payloads": {
+    "d35_uart_tx.ko": "49fcdf6982f23c6f5ed0649128ec00b510af63c54bce5a35cbd0485b0d3f3663",
+    "dispatch.sh": "44ac27e7c5768450685f2a43e24c8f3cb5f60d46cc9704f83b5f41f6dd507c6e",
+    "launch.sh": "b94394f03a17f95db5d089f343bea0deb2e1dd3b6cd0a7d3e7f6229fe49ee58c",
+    "uart-tx-owner": "a2f75cceeed28fb45d21b23d2e672e3a6c35e6e5578d23dd59945769f081d6aa"
+  },
+  "physical_result": "PENDING",
+  "card_access": false,
+  "module_load_unload_physical_result": "PENDING",
+  "production_gate": false,
+  "nominal_capture_seconds": 27,
+  "samples": 10,
+  "phases": [
+    "original0",
+    "corrected0",
+    "restored0",
+    "corrected1",
+    "restored1"
+  ],
+  "frozen_reports": 1,
+  "scope": "Reversible one-byte TX-pending correction, guarded FIFO8 and TX_FULL. Five5-second original/corrected/restored phases with boundary-only counters and CPU accounting. Temporary guarded IRQ action hook, original status read and original ISR body retained, bounded RAM aggregates. No kernel-text/firmware/core changes; ordinary TX data and stop-TX writes only. No per-IRQ GIC reads or clocks."
+}
