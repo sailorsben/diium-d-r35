@@ -69,3 +69,16 @@ The earlier UART results remain archived; no UART correction is armed here.
 [Preparation](../evidence/2026-10-15/vesper-wings-firmware/preparation.json),
 [offline qualification](../evidence/2026-10-15/vesper-wings-firmware/qualification.json),
 [staging checks](../evidence/2026-10-15/vesper-wings-firmware/staging-checks.json).
+
+## Staged and independently read back - 2026-10-15
+
+I: now contains the authorized update trigger. Exact source e12c531 was pushed
+before staging. Fresh archive a7-pair-before-20261015T054338Z preserves all7,821
+retro files plus outer-card contents and baseline/package/expected firmware.
+All8,455 existing card files remain exact, normal init stays stock, no armed
+markers exist and FAT is clean before/after staging. Only retro/update/Code.bkp
+was added. Independent readback verifies its complete ZIP/CRC, all8MiB of the
+candidate and unchanged init. Physical update and appearance remain pending.
+
+[Staging receipt](../evidence/2026-10-15/vesper-wings-firmware/staging.json),
+[independent readback](../evidence/2026-10-15/vesper-wings-firmware/independent-staging.json).

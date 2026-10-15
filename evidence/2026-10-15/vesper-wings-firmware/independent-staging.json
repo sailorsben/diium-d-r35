@@ -1,0 +1,10 @@
+{
+  "read_only": true,
+  "package_and_container_verified": true,
+  "candidate_verified": true,
+  "normal_init_verified": true,
+  "armed_markers": 0,
+  "package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "candidate_sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+  "physical_flash": "PENDING"
+}

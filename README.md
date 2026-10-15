@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+Wings2 firmware is staged on I: from pushed source e12c531. All8,455 prior
+card files remain exact; fresh archive, clean FAT and independent full-package/
+image readback pass. Only Code.bkp added; normal init unchanged, no UART test
+armed. Physical flashing occurs on next normal boot and remains pending.
+[Verified staging and boot instructions](docs/vesper-wings-firmware-update.md).
+
 Wings2 firmware update qualified:12 independent/original-ARM checks plus6 host
 staging checks. Only the rootfs showlogo ZIP changes; accepted static screen,
 other filesystem bytes, kernel and DT remain exact. Original updater RAM model

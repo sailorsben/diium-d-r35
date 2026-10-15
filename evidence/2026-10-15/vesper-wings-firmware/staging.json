@@ -1,0 +1,23 @@
+{
+  "version": "vesper-wings-2-firmware",
+  "archive": "a7-pair-before-20261015T054338Z",
+  "source_commit": "e12c531cbb208fa174d70c125f0f291e0ee1c73a",
+  "card": "I:",
+  "status": "staged-and-verified",
+  "package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "package_bytes": 5797906,
+  "baseline_sha256": "509cdc305deca2654fbf48184eb16d523b4b6cae0effffc4a3cba6845622d9fd",
+  "candidate_sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+  "expected_after_vendor_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "protected_card_files": 8455,
+  "all_prior_files_unchanged": true,
+  "clean_FAT": true,
+  "normal_init_preserved": true,
+  "first_static_screen": "preserved",
+  "second_animation": "Wings2 feather sweep",
+  "only_new_card_path": "retro/update/Code.bkp",
+  "armed_markers": 0,
+  "physical_update": "PENDING",
+  "external_recovery_qualified": false,
+  "qualification_sha256": "1c6b3d999d36e410f3d47c9bab61c6ddb5fddca106a849b592e77610a4b37078"
+}

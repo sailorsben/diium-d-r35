@@ -7391,6 +7391,22 @@
       "published_sha256": "64b9b998e282a67ee1a537143525feae3d73a24ccba0d6e2275b5fc3ff7284df",
       "bytes": 746,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T054338Z/wings-staging.json",
+      "published": "evidence/2026-10-15/vesper-wings-firmware/staging.json",
+      "source_sha256": "61c9bef8f2a75ccd984ec71cf42d64fbe665405e12a1397d03b4ecbddfbab5eb",
+      "published_sha256": "61c9bef8f2a75ccd984ec71cf42d64fbe665405e12a1397d03b4ecbddfbab5eb",
+      "bytes": 1046,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T054338Z/wings-independent-staging.json",
+      "published": "evidence/2026-10-15/vesper-wings-firmware/independent-staging.json",
+      "source_sha256": "a64fc08818d930f8edce59365167887df7014481e1ce9523dbb3e7adae422704",
+      "published_sha256": "a64fc08818d930f8edce59365167887df7014481e1ce9523dbb3e7adae422704",
+      "bytes": 369,
+      "normalized": false
     }
   ]
 }
