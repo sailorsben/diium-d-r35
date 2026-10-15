@@ -1,5 +1,22 @@
 # Investigation history and negative results
 
+## UART-corrected FFVI return: resilience improves, CPU margin remains — 2026-10-15
+
+Strict8,275-file/2,026,867,632-byte archive, clean FAT and exact payload/stock/
+ROM/progress. Only swapfile changes among7,827 protected prior files. All48
+epochs finish;46 clean versus44 before. Raw Meteor controls now both qualify;
+APU-only controls still fail, later at521 calls with first invalid frames496.
+Candidate40/40 remains clean with36 reserve improvements/four equal. Quasar
+pricing minimums gain129 frames each, but candidate still costs raw v3 another
+0.545/0.562ms warm thread CPU. No broad CPU saving or20% headroom claim.
+UART stays attached, no fault/bypass;70,633 calls reconcile internally. Wrapper
+rate71.63/sec versus prior6,920.94 (98.965% reduction over16.4minutes).54RX/break
+events, no frame/parity/overrun/full-FIFO event. No serial-wire/general traffic
+qualification inferred. Quasar's planned repetitions complete normally.
+Reporter reproduces all frozen prior statuses/hashes and rejects mock/unsafe
+status/incomplete fixed-window speed claims. No card writes, core changes or
+rearm. I: unarmed, persistent correction retained. [Analysis](snes-uart-retest-return.md).
+
 ## Install persistent UART fix and arm unchanged FFVI suite — 2026-10-15
 
 Fresh strict archive `a7-pair-before-20261015T065323Z` retains7,829 files before

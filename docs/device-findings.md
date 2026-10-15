@@ -1,5 +1,14 @@
 # Device findings
 
+**Latest physical return,2026-10-15:** persistent UART correction stays attached
+through all48 FFVI epochs, fault/bypass0. IRQ19 is71.63/sec versus prior6,920.94,
+98.965% lower over16.4minutes. Valid windows rise44→46: raw Meteor0/2→2/2;
+APU-only Meteor still0/2. Candidate40/40 remains clean, reserve improves36/equal4.
+Quasar pricing gains129 reserve frames but retains its draw-order CPU regression.
+No general CPU speedup or20% margin is proved. Strict8,275-file archive, clean
+FAT, exact payloads/stock/ROM/progress; only prior swapfile changes. I: unarmed,
+UART fix retained; no card writes/rearm. [Full result](snes-uart-retest-return.md).
+
 **Current I: installation,2026-10-15:** persistent UART fix1 plus the unchanged
 48-epoch FFVI suite armed once in a separate directory, from pushed46ddf9a.
 Strict7,829-file archive; four clean FAT gates;7,827 protected prior files and

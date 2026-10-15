@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "unchanged physical reporter rejects retarget mock telemetry",
+    "reject attached=0",
+    "reject cap=200000",
+    "reject fault=1",
+    "reject calls=4",
+    "reject writes=1",
+    "incomplete fixed intervals have no invented saving"
+  ],
+  "sources": {
+    "build/evaluate-uart-spells-return.py": "e95a9418f7b2976c6f4517ef0eed7bbb78d66e42909cdbfb1846967f40795671",
+    "build/check-uart-spells-reporter.py": "5bafe228bc91beeb3c6945f8f769dd05470545a0f40ea0aff013b2668dcebe6a"
+  },
+  "card_access": false
+}

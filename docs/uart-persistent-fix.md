@@ -1,9 +1,14 @@
 # Persistent UART TX correction
 
+The first persistent boot and full48-epoch FFVI run have returned: attachment
+holds throughout, IRQ19 stays near72/sec, fault/bypass0, and valid test windows
+improve44→46. I: is unarmed with the boot correction retained. General CPU
+margin and long-term serial qualification remain separate. [Result](snes-uart-retest-return.md).
+
 Installed on I: from pushed46ddf9a with fresh strict archive and clean FAT.
 Original init is retained at `retro/uart-fix1/original-init`; the separate
 FFVI48-epoch repeat is armed once. [Installation receipt](../evidence/2026-10-15/uart-fix1/installation.json).
-Physical persistent boot and gameplay results are pending.
+That installation record precedes the bounded physical result linked above.
 
 `uart-fix1` applies the TX1 correction automatically on every normal boot from
 this card, before an armed experiment or the stock frontend. It remains attached
@@ -69,5 +74,6 @@ the card is connected to the PC. Remove that file to re-enable the installed
 boot hook. On a live device an administrator can explicitly restore/drain/unload
 using `uart-fix-boot stop ignored`; do not force unload a referenced module.
 
-Persistent physical boot and sustained FFVI acceptance remain pending. The
-[unchanged48-epoch retest](snes-uart-retest.md) is the next hardware measurement.
+The [unchanged48-epoch retest](snes-uart-retest-return.md) verifies the first
+persistent boot and bounded gameplay result. Broad performance margin and
+long-term serial qualification remain unproved.

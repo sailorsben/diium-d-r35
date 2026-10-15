@@ -1,5 +1,10 @@
 # FFVI48-epoch repeat with persistent UART correction
 
+Returned and evaluated:46/48 valid windows versus44/48 before, sustained UART
+flood suppression and improved reserve, but no general CPU/margin acceptance.
+I: is unarmed with the correction retained. The deployment below is historical.
+[Physical result](snes-uart-retest-return.md).
+
 Installed and armed once on I: from pushed source
 `46ddf9a81ca83cefac820fe6e4ceabb98d5b96f1`. The fresh strict archive
 `device-evidence/a7-pair-before-20261015T065323Z` preserves7,829 prior files;

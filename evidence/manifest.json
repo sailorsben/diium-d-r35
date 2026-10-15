@@ -7519,6 +7519,22 @@
       "published_sha256": "46f23f1bc351b8fe8f0694d5f2644fd5e03163ab9a202946bf7ab7027a26dfa8",
       "bytes": 365,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T072449Z/uart-spells-return.json",
+      "published": "evidence/2026-10-15/uart-spells1/return.json",
+      "source_sha256": "366aac85c6802afd28011cdc661273c54a21c8104e0880aa6357bcf04643333d",
+      "published_sha256": "366aac85c6802afd28011cdc661273c54a21c8104e0880aa6357bcf04643333d",
+      "bytes": 295660,
+      "normalized": false
+    },
+    {
+      "source": "build/uart-spells-private/return-reporter-qualification.json",
+      "published": "evidence/2026-10-15/uart-spells1/return-reporter-qualification.json",
+      "source_sha256": "b19523a2beb2a04b947452ccbd32d4e23e7e16f498b0ec131ad47df3a2777df2",
+      "published_sha256": "b19523a2beb2a04b947452ccbd32d4e23e7e16f498b0ec131ad47df3a2777df2",
+      "bytes": 564,
+      "normalized": false
     }
   ]
 }

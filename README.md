@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+UART-corrected FFVI return:46/48 valid windows versus44/48 before; both raw-core
+Meteor controls now pass, while the two APU-only Meteor controls still fail.
+The draw-order candidate retains40/40 clean runs, with reserve higher in36 and
+equal in four. IRQ19 sustains71.63/sec versus6,920.94 (98.965% lower); attachment,
+count conservation and fault/bypass0 hold. No general thread-CPU speedup or20%
+margin is established. Strict archive/FAT/payload/stock/ROM/progress verify.
+I: unarmed; persistent UART fix retained. [Full result](docs/snes-uart-retest-return.md).
+
 I: now has persistent UART fix1 and the same48-epoch FFVI ability test armed once
 in `snes-draw-uart1`, from pushed source46ddf9a. Fresh7,829-file archive, clean
 FAT at all four install gates, exact protected files/ROM/progress and payload

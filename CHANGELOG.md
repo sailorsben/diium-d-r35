@@ -1,5 +1,16 @@
 # Changelog
 
+## UART-corrected FFVI return improves reserve and raw Meteor - 2026-10-15
+
+All48 epochs finish;46 valid versus44 previously. Both raw-v3 Meteor controls
+now pass; fixed-APU-only Meteor still fails twice. Candidate40/40 remains clean;
+reserve improves in36/equal in four, with Quasar pricing gaining129 frames each.
+IRQ19 sustains71.63/sec (98.965% below prior suite) over16.4minutes, attached with
+no faults/bypass. Thread CPU shows no broad gain; Quasar draw-order regression
+and20% margin remain unresolved. Strict8,275-file archive, clean FAT, all payloads
+and protected stock/ROM/progress verify. I: unarmed, permanent UART boot retained;
+no card writes, core changes or rearm. [Analysis](docs/snes-uart-retest-return.md).
+
 ## Install persistent UART fix and arm identical FFVI48-epoch test - 2026-10-15
 
 Install from clean pushed46ddf9a after fresh7,829-file strict archive. Four clean
