@@ -992,3 +992,11 @@ restoration.17 compiled groups include153 occupancy cases and100-byte draining
 retry;21 owner/firmware-shell groups cover five phases and failure cleanup.
 Physical result, silicon full-flag behavior and A7 saving pending. Separate
 one-shot package; no firmware/core/APU change. [Test and boot procedure](uart-tx-correction-test.md).
+
+## UART TX1 installation - 2026-10-15
+
+UART TX1 is armed once on I: from pushed source a173f82. Fresh archive,
+three clean FAT checks, all7,820 protected prior files/stock/ROM/progress and
+four payloads/dispatcher/sole marker verify. Five5-second original/corrected/
+restored phases, then unload/stock startup; physical FIFO/IRQ/CPU result pending.
+[Installation and boot procedure](uart-tx-correction-test.md).

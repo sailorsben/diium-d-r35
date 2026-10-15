@@ -1,5 +1,13 @@
 # Changelog
 
+## Arm reversible UART TX1 correction test on I: - 2026-10-15
+
+UART TX1 is armed once on I: from pushed source a173f82. Fresh archive,
+three clean FAT checks, all7,820 protected prior files/stock/ROM/progress and
+four payloads/dispatcher/sole marker verify. Five5-second original/corrected/
+restored phases, then unload/stock startup; physical FIFO/IRQ/CPU result pending.
+[Installation and boot procedure](docs/uart-tx-correction-test.md).
+
 ## Qualify reversible UART TX pending correction - 2026-10-15
 
 UART TX1 correction test qualified: guarded one-byte pending service with

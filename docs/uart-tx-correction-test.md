@@ -102,3 +102,14 @@ failure evidence. No firmware flash is needed for this run.
 [compiled qualification](../evidence/2026-10-15/uart-tx/qualification.json),
 [owner/package qualification](../evidence/2026-10-15/uart-tx/package-qualification.json).
 Physical result **PENDING**; production gate **false**.
+
+## Armed installation - 2026-10-15
+
+Exact source a173f82da398a3a205bb3188a2d1ccfdc60a853a was pushed before
+installation. Private archive a7-pair-before-20261015T060116Z preserves the
+unarmed baseline. All7,820 protected prior files, stock/init/ROM/private progress,
+four new payloads, dispatcher and sole marker verify unchanged/exact as applicable.
+FAT checks pass before installation, after payload and after arming. Independent
+readback confirms all payloads, dispatcher and marker; no firmware trigger exists.
+All956 earlier published proofs retain their hashes. Physical result pending.
+[Installation receipt](../evidence/2026-10-15/uart-tx/installation.json).

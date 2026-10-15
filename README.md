@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+UART TX1 is armed once on I: from pushed source a173f82. Fresh archive,
+three clean FAT checks, all7,820 protected prior files/stock/ROM/progress and
+four payloads/dispatcher/sole marker verify. Five5-second original/corrected/
+restored phases, then unload/stock startup; physical FIFO/IRQ/CPU result pending.
+[Installation and boot procedure](docs/uart-tx-correction-test.md).
+
 UART TX1 correction test qualified: guarded one-byte pending service with
 TX_FULL/FIFO8 bounds, unchanged vendor RX/empty-FIFO paths and repeated exact
 restoration.17 compiled groups include153 occupancy cases and100-byte draining

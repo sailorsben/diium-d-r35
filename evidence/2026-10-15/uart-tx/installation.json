@@ -1,0 +1,21 @@
+{
+  "version": "uart-tx1",
+  "source_commit": "a173f82da398a3a205bb3188a2d1ccfdc60a853a",
+  "archive": "a7-pair-before-20261015T060116Z",
+  "card": "I:",
+  "one_shot_armed": true,
+  "clean_FAT": true,
+  "protected_files": 7820,
+  "reversible_TX_correction": true,
+  "physical_result": "PENDING",
+  "production_gate": false,
+  "ROM_unchanged": true,
+  "original_progress_unchanged": true,
+  "payload_hashes": {
+    "d35_uart_tx.ko": "49fcdf6982f23c6f5ed0649128ec00b510af63c54bce5a35cbd0485b0d3f3663",
+    "launch.sh": "b94394f03a17f95db5d089f343bea0deb2e1dd3b6cd0a7d3e7f6229fe49ee58c",
+    "uart-tx-owner": "a2f75cceeed28fb45d21b23d2e672e3a6c35e6e5578d23dd59945769f081d6aa",
+    "qualification.json": "e43f371d5b6af14e1711e43e3aaa402211eff395abdc8e4674791b488400d0b8"
+  },
+  "dispatch_sha256": "44ac27e7c5768450685f2a43e24c8f3cb5f60d46cc9704f83b5f41f6dd507c6e"
+}

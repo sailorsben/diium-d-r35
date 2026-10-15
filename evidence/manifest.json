@@ -7439,6 +7439,14 @@
       "published_sha256": "e43f371d5b6af14e1711e43e3aaa402211eff395abdc8e4674791b488400d0b8",
       "bytes": 3504,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T060116Z/uart-tx-installation.json",
+      "published": "evidence/2026-10-15/uart-tx/installation.json",
+      "source_sha256": "ba9eb7503e4e6609973ce9d93e96e5de171d7ace1c02fc4a50dd10078cda1045",
+      "published_sha256": "ba9eb7503e4e6609973ce9d93e96e5de171d7ace1c02fc4a50dd10078cda1045",
+      "bytes": 883,
+      "normalized": false
     }
   ]
 }
