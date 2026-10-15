@@ -1,0 +1,13 @@
+{
+  "version": "uart-fix1",
+  "source_commit": "46ddf9a81ca83cefac820fe6e4ceabb98d5b96f1",
+  "archive": "a7-pair-before-20261015T065323Z",
+  "rollback": false,
+  "automatic_every_boot": true,
+  "one_shot_armed": false,
+  "firmware_flash": false,
+  "stock_ROM_progress_preserved": true,
+  "init_sha256": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+  "qualification_sha256": "7a95f24c3111fe61dacb4af300966ea854a075053b1cc6df282ab9f858403086",
+  "physical_boot": "PENDING"
+}

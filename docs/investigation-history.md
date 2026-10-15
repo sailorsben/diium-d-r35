@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Install persistent UART fix and arm unchanged FFVI suite — 2026-10-15
+
+Fresh strict archive `a7-pair-before-20261015T065323Z` retains7,829 files before
+any card mutation. Install from clean pushed46ddf9a: normal init automatically
+attaches `uart-fix1`, then the one-shot dispatcher selects `snes-draw-uart1`.
+All7,827 previous files except those two authorized scripts verify, along with
+ROM/progress, all new payloads and the sole marker. FAT clean before/after fix,
+after retest payload and after arm. Preserve all previous evidence and original
+init. No firmware update, emulator/APU rebuild or claimed gameplay gain.
+[Installation receipt and procedure](snes-uart-retest.md).
+
 ## Persistent UART correction and identical FFVI repeat — 2026-10-15
 
 The physically causal TX1 correction becomes an automatic card-boot package,

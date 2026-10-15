@@ -1,0 +1,12 @@
+{
+  "verified": true,
+  "source_commit": "46ddf9a81ca83cefac820fe6e4ceabb98d5b96f1",
+  "card_writes": 0,
+  "protected_prior_files_exact": 7827,
+  "test_payloads_exact": 86,
+  "persistent_UART_payloads_exact": true,
+  "sole_marker_and_dispatcher_exact": true,
+  "ROM_progress_exact": true,
+  "no_firmware_trigger": true,
+  "physical_result": "PENDING"
+}

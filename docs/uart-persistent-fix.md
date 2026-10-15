@@ -1,5 +1,10 @@
 # Persistent UART TX correction
 
+Installed on I: from pushed46ddf9a with fresh strict archive and clean FAT.
+Original init is retained at `retro/uart-fix1/original-init`; the separate
+FFVI48-epoch repeat is armed once. [Installation receipt](../evidence/2026-10-15/uart-fix1/installation.json).
+Physical persistent boot and gameplay results are pending.
+
 `uart-fix1` applies the TX1 correction automatically on every normal boot from
 this card, before an armed experiment or the stock frontend. It remains attached
 through gameplay until explicit detach or power-off. The next boot loads it

@@ -1,5 +1,14 @@
 # FFVI48-epoch repeat with persistent UART correction
 
+Installed and armed once on I: from pushed source
+`46ddf9a81ca83cefac820fe6e4ceabb98d5b96f1`. The fresh strict archive
+`device-evidence/a7-pair-before-20261015T065323Z` preserves7,829 prior files;
+all7,827 outside the authorized init/dispatcher changes, stock/ROM/progress and
+new payload readbacks verify. FAT is clean before/after correction installation,
+after retest payloads and after arming. Physical results remain pending.
+[Retest installation](../evidence/2026-10-15/uart-spells1/installation.json),
+[persistent fix installation](../evidence/2026-10-15/uart-fix1/installation.json).
+
 This repeats the last draw-order ability test with `uart-fix1` active throughout.
 The controller, all three emulator cores, plan, states, expected effect data and
 inputs are byte-identical to the qualified and physically returned suite. A new

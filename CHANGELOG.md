@@ -1,5 +1,14 @@
 # Changelog
 
+## Install persistent UART fix and arm identical FFVI48-epoch test - 2026-10-15
+
+Install from clean pushed46ddf9a after fresh7,829-file strict archive. Four clean
+FAT gates, exact payloads and all7,827 prior files except authorized init/
+dispatcher verify; original init retained, previous logs/saves/ROM preserved.
+`uart-fix1` loads every boot; `snes-draw-uart1` runs the unchanged48 epochs once.
+No SPI update or emulator rebuild. Physical improvement remains pending.
+[Deployment and procedure](docs/snes-uart-retest.md).
+
 ## Build persistent UART correction and identical FFVI retest - 2026-10-15
 
 Automatic card-boot TX correction retains the physically proven guarded service,

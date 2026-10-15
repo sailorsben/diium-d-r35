@@ -7495,6 +7495,30 @@
       "published_sha256": "5168f1ff7bceef77dddf06b524269db7a689f7e5cb5527ba9b7afae6bd9c47cc",
       "bytes": 12221,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T065323Z/uart-fix-installation.json",
+      "published": "evidence/2026-10-15/uart-fix1/installation.json",
+      "source_sha256": "0525947f4761286c0f98ed74ebbf5ed0e8cb553082ff02462e8a11cccf535c76",
+      "published_sha256": "0525947f4761286c0f98ed74ebbf5ed0e8cb553082ff02462e8a11cccf535c76",
+      "bytes": 509,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T065323Z/uart-spells-installation.json",
+      "published": "evidence/2026-10-15/uart-spells1/installation.json",
+      "source_sha256": "12934013807e82f9e21c3c7365a205a7534911b7c7cda0238897d5a3953188a9",
+      "published_sha256": "12934013807e82f9e21c3c7365a205a7534911b7c7cda0238897d5a3953188a9",
+      "bytes": 9144,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T065323Z/uart-spells-live-verification.json",
+      "published": "evidence/2026-10-15/uart-spells1/live-verification.json",
+      "source_sha256": "46f23f1bc351b8fe8f0694d5f2644fd5e03163ab9a202946bf7ab7027a26dfa8",
+      "published_sha256": "46f23f1bc351b8fe8f0694d5f2644fd5e03163ab9a202946bf7ab7027a26dfa8",
+      "bytes": 365,
+      "normalized": false
     }
   ]
 }

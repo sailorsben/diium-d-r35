@@ -1,5 +1,13 @@
 # Device findings
 
+**Current I: installation,2026-10-15:** persistent UART fix1 plus the unchanged
+48-epoch FFVI suite armed once in a separate directory, from pushed46ddf9a.
+Strict7,829-file archive; four clean FAT gates;7,827 protected prior files and
+stock/ROM/progress verify. Only normal-init and owned test dispatcher change;
+the original init and all previous test evidence remain preserved. Correction
+loads before both test and stock; future boots retain it. Physical persistent
+boot, sustained gameplay and improvement remain pending. [Procedure](snes-uart-retest.md).
+
 **Persistent UART correction / next measurement,2026-10-15:** TX1 causal idle
 suppression passes98.994%; fixed service is now built without a diagnostic cutoff
 and loads from normal card init every boot. Exact guards/FIFO8/single-byte/full

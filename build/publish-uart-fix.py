@@ -16,6 +16,10 @@ def main(archive=None):
   for n,dest in [('uart-fix-installation.json','uart-fix1/installation.json'),('uart-spells-installation.json','uart-spells1/installation.json')]:
    r=json.loads((archive/n).read_text());assert r['physical_boot' if n.startswith('uart-fix-') else 'physical_result']=='PENDING'
    sources.append(((archive/n).relative_to(ROOT).as_posix(),dest))
+  verified=archive/'uart-spells-live-verification.json'
+  if verified.exists():
+   v=json.loads(verified.read_text());assert v['verified'] and v['card_writes']==0
+   sources.append((verified.relative_to(ROOT).as_posix(),'uart-spells1/live-verification.json'))
  manifest=ROOT/'evidence/manifest.json';raw=manifest.read_bytes();m=json.loads(raw)
  for e in m['entries']:assert digest(ROOT/e['published'])==e['published_sha256'],e['published']
  for source,destination in sources:

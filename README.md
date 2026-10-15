@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+I: now has persistent UART fix1 and the same48-epoch FFVI ability test armed once
+in `snes-draw-uart1`, from pushed source46ddf9a. Fresh7,829-file archive, clean
+FAT at all four install gates, exact protected files/ROM/progress and payload
+readbacks pass. The next boot loads the correction before the test; later boots
+use stock with the correction retained. No SPI update. Physical boot/gameplay
+results pending. [Run instructions](docs/snes-uart-retest.md).
+
 Persistent UART fix1 is built and qualified: automatic normal-boot attachment,
 no interrupt cutoff or resident daemon, exact-kernel/FIFO safeguards and rollback.
 18 module groups,16 helper cases, firmware-shell/startup and five installation
