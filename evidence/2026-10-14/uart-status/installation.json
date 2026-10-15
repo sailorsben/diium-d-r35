@@ -1,0 +1,21 @@
+{
+  "version": "uart-status1",
+  "source_commit": "0b90c2dbe51960f3979adc129a16fc290c190257",
+  "archive": "a7-pair-before-20261015T031253Z",
+  "card": "I:",
+  "one_shot_armed": true,
+  "clean_FAT": true,
+  "protected_files": 7804,
+  "original_status_capture": true,
+  "physical_result": "PENDING",
+  "production_gate": false,
+  "ROM_unchanged": true,
+  "original_progress_unchanged": true,
+  "payload_hashes": {
+    "d35_uart_status.ko": "67b0e54c37cee095aed258ce3f613cd01490a92c1e2b816acbc8f99706ad2827",
+    "launch.sh": "4b86e70d210add92b51abed7085d450be567e7929235a45af96df686ba0cb1c2",
+    "uart-status-owner": "5daf7dfaf5dc47be2d20c5d165019a48679a535b476414248b9ab998f2d4fe42",
+    "qualification.json": "41c32a2081d41e3cf143c0e003ce5be6e786fc9a70df64444c48c4089ae9c090"
+  },
+  "dispatch_sha256": "42377bbda5fdcba8d2acab7ce39d55754066e905ae5e1ff068a64993e0c6548c"
+}

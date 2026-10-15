@@ -7279,6 +7279,14 @@
       "published_sha256": "41c32a2081d41e3cf143c0e003ce5be6e786fc9a70df64444c48c4089ae9c090",
       "bytes": 3034,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261015T031253Z/uart-status-installation.json",
+      "published": "evidence/2026-10-14/uart-status/installation.json",
+      "source_sha256": "dde20f51a292ba1be4ac2998f50b0c6f248aa8d8cd55e66ea2e320799417a686",
+      "published_sha256": "dde20f51a292ba1be4ac2998f50b0c6f248aa8d8cd55e66ea2e320799417a686",
+      "bytes": 894,
+      "normalized": false
     }
   ]
 }

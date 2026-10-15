@@ -1,5 +1,13 @@
 # Changelog
 
+## Arm original UART status/branch capture on I: — 2026-10-14
+
+Exact source0b90c2d pushed before deployment. Fresh7,805-file/1,937,114,927-byte
+archive; all7,804 protected prior files/stock/ROM/progress and four new payloads
+verify. FAT clean before install/after payload/after arm. Separate uart-status1
+package, existing dispatcher and sole marker only; state1 logs remain intact.
+Physical interception/status/branch result pending. See docs/uart-status-probe.md.
+
 ## Qualify original UART interrupt-status capture — 2026-10-14
 
 Build exact-entry status bridge and32-value histogram/branch aggregates; resume

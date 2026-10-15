@@ -1,5 +1,13 @@
 # UART status1: original interrupt status and branch capture
 
+**Installed and armed on I:** exact pushed source`0b90c2d` precedes deployment.
+Fresh archive`a7-pair-before-20261015T031253Z` preserves7,805 files/
+1,937,114,927 bytes. All7,804 protected prior files, stock binaries, ROM and
+original progress match; four payloads and dispatcher/sole marker read back
+exactly. FAT is clean before install, after payload and after arm. Existing
+state1 logs stay intact. [Installation receipt](../evidence/2026-10-14/uart-status/installation.json).
+Physical interception/status/branch results remain pending.
+
 The state1 return leaves IRQ19 flooding with no persistent TX-enable mismatch.
 This probe captures the **actual status value returned by the original ISR's
 entry read**, then continues the original handler at its first status test.
@@ -61,7 +69,7 @@ owner, restores the exact original handler, synchronizes IRQ19, then drops that
 reference. Ownership conflicts retain the reference and refuse restoration;
 ordinary non-forced unloading must then fail rather than free live code.
 Proc teardown drains reads before module code is freed. No forced module calls,
-IRQ disabling/masking, global console changes, kernel/rootfs or flash changes.
+UART-source masking, global console changes, kernel/rootfs or flash changes.
 
 The wrapper consumes the existing one-shot marker before loading. The owner
 uses direct kernel-clock syscalls and relative waits, holds reports in RAM until

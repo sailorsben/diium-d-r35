@@ -6,7 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **Original UART status/branch probe qualified for installation.** Captures the
+- **I: armed for UART status1.** Exact source`0b90c2d` pushed before install;
+  fresh7,805-file archive,7,804 protected prior files/ROM/progress and payload
+  readback verify, FAT clean after arm. Safely eject/boot, wait stock, leave30s,
+  power down/return. If stock is absent after a minute, power down/return without
+  rearming; the consumed-marker next boot is stock. Physical result pending.
+  [Installation and capture contract](docs/uart-status-probe.md).
+
+- **Original UART status/branch probe qualified offline.** Captures the
   original entry-read value, then resumes the untouched ISR tests/body. Twelve
   compiled check groups include40 original-vs-intercepted ARM cases;17 owner/
   firmware-shell checks cover stop/refusal/cancel/unload and stock withholding.

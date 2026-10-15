@@ -14,6 +14,12 @@ fixture for the kernel import.17 owner/actual-firmware-shell checks qualify
 detach failures/cancellation/consumed reboot. Physical cause/cost still pending.
 See [probe](uart-status-probe.md); no UART fix or emulator/APU change.
 
+Subsequent authorized deployment uses clean pushed0b90c2d, strict7,805-file
+archive and clean FAT before/after payload/after arm. All7,804 protected prior
+files/stock/ROM/progress and new payloads/dispatcher/marker verify. I: is armed
+for one idle original-status capture; existing state1 logs remain exact.
+Interception safety/status/branch conclusions require the physical return.
+
 ## UART state1 physical return rejects persistent TX mismatch — 2026-10-14
 
 Archive7,805 files before analysis; clean FAT, exact deployed payloads/dispatcher,

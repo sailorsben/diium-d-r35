@@ -1,5 +1,13 @@
 # Device findings
 
+**Current card:** I: armed for separate UART status1 from clean pushed0b90c2d.
+Strict7,805-file archive,7,804 protected prior files/stock/ROM/progress and four
+payloads/dispatcher/sole marker verify. FAT clean before/after payload/after arm.
+Captures original entry status/branch selections; physical result pending.
+Eject/boot, wait stock, leave30s, power down/return; absent stock after a minute,
+power down/return without rearming. Previous card entries below are historical.
+[Installation receipt and scope](uart-status-probe.md).
+
 **Next diagnostic qualified:** UART status1 captures the original ISR entry
 status and branch selections, with no extra status/FIFO reads or kernel-text
 patches. Temporary verified action hook pins its module until exact restoration
