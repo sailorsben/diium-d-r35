@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+UART pair1 is armed once on I: from pushed source ec8ec39. Fresh7,813-file
+archive,7,812 protected prior hashes, stock/ROM/progress and three clean FAT
+checks pass. Four new payloads and sole marker/dispatcher verify. Physical
+capture pending; boot once, wait for stock startup, power off and return card.
+[Verified installation and procedure](docs/uart-pair-probe.md).
+
 UART pair1 qualifies same-handler status/control/software queue/GIC correlation.
 Sixteen exact-image guards, original handler retained,64 bounded tuples, explicit
 query errors and restore/drain/unload.14 compiled groups include52 original-vs-

@@ -1428,3 +1428,11 @@ query errors and restore/drain/unload.14 compiled groups include52 original-vs-
 intercepted cases and all8 GIC combinations;18 owner/firmware-shell checks.
 Diagnostic only: physical result and added A7 cost pending; no UART settings or
 core/APU change. [Procedure and limits](uart-pair-probe.md).
+
+## Paired UART installation - 2026-10-15
+
+UART pair1 is armed once on I: from pushed source ec8ec39. Fresh7,813-file
+archive,7,812 protected prior hashes, stock/ROM/progress and three clean FAT
+checks pass. Four new payloads and sole marker/dispatcher verify. Physical
+capture pending; boot once, wait for stock startup, power off and return card.
+[Verified installation and procedure](uart-pair-probe.md).

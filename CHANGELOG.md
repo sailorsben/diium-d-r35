@@ -1,5 +1,13 @@
 # Changelog
 
+## Arm paired UART capture on I: - 2026-10-15
+
+UART pair1 is armed once on I: from pushed source ec8ec39. Fresh7,813-file
+archive,7,812 protected prior hashes, stock/ROM/progress and three clean FAT
+checks pass. Four new payloads and sole marker/dispatcher verify. Physical
+capture pending; boot once, wait for stock startup, power off and return card.
+[Verified installation and procedure](docs/uart-pair-probe.md).
+
 ## Qualify paired UART source capture - 2026-10-15
 
 UART pair1 qualifies same-handler status/control/software queue/GIC correlation.

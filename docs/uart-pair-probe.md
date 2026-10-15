@@ -90,3 +90,19 @@ IRQ count proves cycle savings: a later source-specific reversible intervention
 must remove the flood and restoration must reproduce it before calling it causal.
 
 Physical result: **PENDING**. Production gate: **false**.
+
+## Installation verified - 2026-10-15
+
+I: is armed once with source `ec8ec39f79200c1f6f7a00cc192b9e2aa132c84b`, pushed
+before installation. Fresh private archive `a7-pair-before-20261015T051423Z`
+preserves7,813 files/1,937,139,157 bytes. All7,812 protected prior files, stock
+boot binaries/init, FFVI ROM and private progress verify unchanged; only the
+owned dispatcher and sole one-shot marker change alongside the separate four
+new payloads. Exact payload readback and FAT health pass before installation,
+after payload and after arming. All944 previous published proof hashes remain
+exact. [Installation receipt](../evidence/2026-10-15/uart-pair/installation.json).
+
+Boot once, allow the probe to finish and stock menu to appear, then power off
+and return I:. No gameplay is needed. If startup remains stalled after30 seconds,
+power off and return the card. A consumed marker makes the next boot stock.
+The actual source correlation and new module's physical result remain pending.
