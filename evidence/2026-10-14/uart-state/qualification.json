@@ -1,0 +1,74 @@
+{
+  "kind": "offline_compiled_uart_snapshot_observer",
+  "checks": [
+    "actual archived ARM module relocator matches the independent ELF fixture byte-for-byte",
+    "exact identity creates only the owned 0400 proc entry",
+    "hardware TX enabled/software disabled mismatch is reported without state changes",
+    "coherent TX state is reported without state changes",
+    "opposite enable mismatch is distinguished",
+    "wrong handler refuses control-register access",
+    "wrong handler owner refuses control-register access",
+    "wrong port IRQ refuses control-register access",
+    "absent serial state refuses control-register access",
+    "unreadable queue refuses control-register access",
+    "cleanup removes only the owned entry",
+    "wrong symbol identity refuses initialization",
+    "changed UART code refuses initialization",
+    "unreadable code refuses initialization",
+    "proc creation failure propagates without an owned entry"
+  ],
+  "observed_abi_values": [
+    448,
+    12,
+    232,
+    416,
+    256,
+    304,
+    352,
+    372,
+    396,
+    420,
+    264,
+    4,
+    72,
+    100,
+    120,
+    124,
+    184,
+    192
+  ],
+  "relocations": {
+    "entry_points": {
+      "init_module": 16777896,
+      "cleanup_module": 16778224
+    },
+    "relocation_types": [
+      2,
+      28
+    ],
+    "undefined_symbols": [
+      "kallsyms_lookup_name",
+      "ktime_get",
+      "probe_kernel_read",
+      "proc_create_single_data",
+      "remove_proc_entry",
+      "seq_printf"
+    ],
+    "actual_kernel_relocator_address": "0xc010de00"
+  },
+  "observer_module_sha256": "eeaaf09a7cda2508646d6919084975348acf74a29cc7403d968a5276e7401451",
+  "abi_module_sha256": "455adf31c863b8408ae71a81c4c83b3f546de955d96fe8975a8c6a12a0785bf0",
+  "configuration_sha256": "69eff498b13c6216b053fdb5c0e374933e13e1c1d4ab951b09b5fbc0d1fda6a8",
+  "sources": {
+    "build/uart-state-observer.c": "69c1ddd0a9dc488eaf61f7714fa3745a02257ebbf65e8fe241d64e1ec5d78549",
+    "build/uart-observer-abi.c": "4b7dfbb36b7030d04ae88eac4feb721dc7ba6e6544f24164767476690ad0c8e0",
+    "build/prepare-uart-state-observer.py": "ca9c16ccf0e9c28dcaac737ccf0673b015bd07384f59083eab1eb3000184eb60",
+    "build/build-uart-state-observer.sh": "831058ddbbc9447f4105c2bc4761d70ef42395e1b57db324c322e4bf7de8f49b",
+    "build/check-uart-state-observer.c": "e624f8f502057573e5a3f8dd57fcefd4b2ccf635aa32d3b5872791002c065447",
+    "build/check-uart-state-observer.py": "7979ae0bd9ef0df69d0295747eb296651b690703d1bdd6440e70c588459d5e5b"
+  },
+  "installed": false,
+  "live_irq_cause_proven": false,
+  "live_module_load_unload_qualified": false,
+  "boundary": "Compiled module code executes against RAM and fixture kernel APIs; actual archived irq_to_desc and GetCtrl run, with radix lookup intercepted. No A7 cost or real module-loader lifecycle is measured."
+}

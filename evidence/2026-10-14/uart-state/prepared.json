@@ -1,0 +1,68 @@
+{
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "guards": [
+    {
+      "name": "gp_uart_isr",
+      "address": 3222370268,
+      "bytes": 564,
+      "crc32": 2314782392,
+      "sha256": "5e827da17391360214bef4c3e9cb076d854a3ae9441703b42f63f0d9651e03ba"
+    },
+    {
+      "name": "gp_uart_start_tx",
+      "address": 3222369564,
+      "bytes": 64,
+      "crc32": 3266367995,
+      "sha256": "a4ef547445b4f854267be75797e476598fed195b39e0a456ebbed35ed532c9ca"
+    },
+    {
+      "name": "gp_uart_stop_tx",
+      "address": 3222369628,
+      "bytes": 64,
+      "crc32": 104871804,
+      "sha256": "4125ba760307fb837babaf49915f033ac429c31207ece017c96630622fdc1442"
+    },
+    {
+      "name": "gp_uart_probe",
+      "address": 3222370972,
+      "bytes": 276,
+      "crc32": 3681466150,
+      "sha256": "cdfd7c51ba93759d203b243281cc6b4e9fe7a86d2bd82bcf1080f30c50613d7c"
+    },
+    {
+      "name": "gp_uart_console_write",
+      "address": 3222371520,
+      "bytes": 148,
+      "crc32": 1197234755,
+      "sha256": "e44de8464a83a8e022ffd3a89b89ff226c7adf134c1442c66b81e8de8ac571d5"
+    },
+    {
+      "name": "gpHalUartGetCtrl",
+      "address": 3222369124,
+      "bytes": 20,
+      "crc32": 3495123267,
+      "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+    },
+    {
+      "name": "irq_to_desc",
+      "address": 3222659416,
+      "bytes": 32,
+      "crc32": 3819730374,
+      "sha256": "cb429d6d2a44e612253d482c2fee07ed58031ef41599b8e02ef8126ec727136b"
+    }
+  ],
+  "recovered_text_exports": 4394,
+  "required_exports": {
+    "kallsyms_lookup_name": "0xc0184c54",
+    "probe_kernel_read": "0xc01afed8",
+    "proc_create_single_data": "0xc0261fa0",
+    "remove_proc_entry": "0xc026223c",
+    "seq_printf": "0xc022a0e8",
+    "ktime_get": "0xc016da0c"
+  },
+  "abi_source_sha256": "4b7dfbb36b7030d04ae88eac4feb721dc7ba6e6544f24164767476690ad0c8e0",
+  "observer_source_sha256": "69c1ddd0a9dc488eaf61f7714fa3745a02257ebbf65e8fe241d64e1ec5d78549",
+  "generator_sha256": "ca9c16ccf0e9c28dcaac737ccf0673b015bd07384f59083eab1eb3000184eb60",
+  "card_access": false,
+  "live_qualification": false
+}

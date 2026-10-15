@@ -1,5 +1,18 @@
 # Changelog
 
+## Reconstruct and qualify UART snapshot preflight — 2026-10-14
+
+Match observed448-byte module ABI, init/exit/core/init-layout/kallsyms/refcount
+offsets, UART offsets and vermagic from existing artifacts. Recover4,394 text
+exports; build a4760-byte guarded snapshot module without vendor-body transplant,
+forced loading, IRQ replacement, UART writes or status/FIFO reads. Actual kernel
+ARM relocator matches independent ELF bytes;15 compiled-module checks and12
+native owner/firmware-shell checks pass. Target-libc and LF dispatcher seams
+qualify. Separate100-snapshot idle preflight retains ordinary kernel/emulator
+behavior; physical module lifecycle, triggering state and A7 cost remain pending.
+Preserve928 prior evidence records; source and interpreted proofs only published.
+See docs/uart-state-preflight.md.
+
 ## Exact archived UART kernel investigation — 2026-10-14
 
 Decode17,533 kernel symbols from the verified private SPI backup; all242 retained

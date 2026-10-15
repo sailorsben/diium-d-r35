@@ -1,0 +1,83 @@
+{
+  "version": "uart-state1",
+  "snapshot_only": true,
+  "owner_checks": [
+    {
+      "case": "normal",
+      "exit": 0
+    },
+    {
+      "case": "wrong_kernel",
+      "exit": 3
+    },
+    {
+      "case": "already_loaded",
+      "exit": 4
+    },
+    {
+      "case": "load_fail",
+      "exit": 8
+    },
+    {
+      "case": "unload_fail",
+      "exit": 10
+    },
+    {
+      "case": "read_fail",
+      "exit": 9
+    },
+    {
+      "case": "observer_refuses",
+      "exit": 13
+    },
+    {
+      "case": "cancel",
+      "exit": 0
+    },
+    {
+      "case": "sync_fail",
+      "exit": 6
+    },
+    {
+      "case": "existing",
+      "exit": 5
+    },
+    {
+      "case": "exact_firmware_shell_syntax",
+      "exit": 0
+    },
+    {
+      "case": "exact_firmware_wrapper_execution_and_consumed_reboot",
+      "exit": 0
+    }
+  ],
+  "userspace_abi": {
+    "ELF": "ARM32 little-endian hard-float",
+    "required_versions": [
+      "GCC_3.5",
+      "GLIBC_2.4"
+    ]
+  },
+  "compiled_module_qualification_sha256": "cc6a64157bad638de22466b0bf276ac64949fd783a7fb59970d3c2ffeaf6d86a",
+  "sources": {
+    "build/uart-state-owner.c": "35de6d3ac63592cf99399035e31d086039157432a84e8a01183a197c7b11694d",
+    "build/uart-state-owner-fixture.c": "e459b65ee2c0431f052cae5df87b969de28d5401cb26504a143c0a5f479030be",
+    "build/build-uart-state-owner.sh": "64374a8221b4c7b4a3bca51ca9e7d08e8840d66022af63b97d0afcecb965830e",
+    "build/launch-uart-state.sh": "4a29176106a35a1bce15c141bf48cf75f590382012053c3c4f39cc929b43d4a6",
+    "build/install-uart-state.py": "de371d4fe6faea6a34a64512725643b2f9f21f86ee8b7cb5db2a55e6f303d28b",
+    "build/check-uart-state-package.py": "361e1a34623b09feb11d20bfb4028ca85b377c572aae631fc2fc6570a636b04f"
+  },
+  "payloads": {
+    "d35_uart_state.ko": "eeaaf09a7cda2508646d6919084975348acf74a29cc7403d968a5276e7401451",
+    "dispatch.sh": "f92ac15b2b974d366dcc565d1f8ca05214706bec26be0e9ac48f0a384347e557",
+    "launch.sh": "4a29176106a35a1bce15c141bf48cf75f590382012053c3c4f39cc929b43d4a6",
+    "uart-state-owner": "6f0023059d31d3b888327dbcda214f0c9151f78abcb8f7055f8ab9a5fd56aaea"
+  },
+  "physical_result": "PENDING",
+  "card_access": false,
+  "module_load_unload_physical_result": "PENDING",
+  "production_gate": false,
+  "nominal_capture_seconds": 7,
+  "samples": 100,
+  "scope": "Idle boot preflight only; no spell/core changes, IRQ replacement, UART writes, status/FIFO reads or per-IRQ instrumentation."
+}

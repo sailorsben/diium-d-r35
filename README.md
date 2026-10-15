@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **UART snapshot preflight qualified offline.** Reconstructed observed module
+  ABI and exact kernel exports remove the vendor-source prerequisite for this
+  small probe.27 checks include actual kernel relocation, compiled observer,
+  native owner failures and exact firmware wrapper execution.100 idle snapshots,
+  no handler replacement/UART writes/status reads. Live loading/cause/cost still
+  pending. [Build, checks and physical-test scope](docs/uart-state-preflight.md).
+
 - **UART investigation now uses the exact archived kernel.** Latest draw-order
   interval still records about6,921 IRQ19/s,92.32% of interrupt counts. Six
   archived ARM-code checks reproduce a conditional TX-disable failure and

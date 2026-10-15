@@ -543,6 +543,12 @@ bounded audio-headroom production and durable targeted crash records.
 
 ## UART investigation and its negative result
 
+**Subsequent preflight preparation:** [snapshot observer](uart-state-preflight.md)
+now passes27 offline checks against the reconstructed observed module ABI and
+the actual kernel relocator. It takes control/software-state snapshots without
+handler replacement, UART writes or status/FIFO reads. Full vendor source remains
+unlocated; first physical load/read/unload, live cause and IRQ cost remain pending.
+
 **October14 follow-up:** [exact archived kernel research](uart-kernel-investigation.md)
 confirms the latest draw-order suite still averages about6,921 IRQ19/s. Actual
 ARM-code fixtures reproduce a conditional TX-enable/software-flag mismatch that

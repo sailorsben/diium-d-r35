@@ -1,5 +1,12 @@
 # IRQ19: exact kernel investigation — 2026-10-14
 
+**Follow-up:** [UART state1 preflight](uart-state-preflight.md) reconstructs the
+small observer's independently observed module ABI and passes27 offline checks,
+including the actual kernel relocator. The snapshot-only first probe is now
+built; physical load/read/unload and the live interrupt cause remain pending.
+This supersedes the earlier unbuilt-observer prerequisite below, not its safety
+or evidence boundaries. Full vendor source/configuration remains unlocated.
+
 IRQ19 remains active in the latest physical run. The archived draw-order suite
 starts at kernel uptime8.26s with150,669 UART interrupts and ends at980.69s with
 6,880,798: **6,730,129 interrupts in972.43s, approximately6,921/s**. UART accounts

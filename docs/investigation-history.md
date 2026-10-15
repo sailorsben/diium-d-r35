@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## UART snapshot observer reconstructed from existing artifacts — 2026-10-14
+
+User directs continued investigation without supplying vendor contacts. Bounded
+public search still lacks the matching tree; reconstruct the small observer's
+ABI against actual module relocation offsets, loader field accesses and4,394
+verified kernel text exports. Correct old-kernel/new-GCC architecture fallback
+and userspace time/file/libc interfaces.27 checks include actual ARM module
+relocator, compiled snapshot module, owner failure/cancellation/cleanup paths,
+firmware BusyBox execution and consumed reboot. A generated-script CRLF failure
+is caught and corrected with explicit LF bytes. No live cause or IRQ-duration
+claim; snapshot-only idle preflight avoids changing UART settings or handler.
+See [preflight](uart-state-preflight.md) for exact scope and evidence boundaries.
+
 ## Exact UART kernel follow-up — 2026-10-14
 
 Revisit the unresolved IRQ19 after the draw-order return. Verified existing SPI
