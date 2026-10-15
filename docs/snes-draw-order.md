@@ -1,8 +1,10 @@
 # General draw-order candidate with stable APU compilation
 
-Now installed and one-shot armed on I:. The
+The physical test has returned: all18 contexts clean twice, with a measured
+Quasar regression. I: is unarmed; see the [results](snes-draw-order-return.md).
+The earlier
 [actual installation record](snes-draw-order-installation.md) verifies all85
-payloads, protected progress and clean FAT; hardware results remain pending.
+payloads, protected progress and clean FAT at deployment.
 
 Ben explicitly requested implementation, stable APU compiler output, validation
 and installation on I:. The candidate is separately owned at

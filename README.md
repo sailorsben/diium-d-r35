@@ -6,7 +6,16 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **I: armed with the validated draw-order candidate:** Mode1
+- **Draw-order returned: all18 contexts clean twice; I: unarmed.** All40
+  candidate windows pass with full frames/PCM/pointers, including Meteor/Rage032;
+  the four invalid epochs are Meteor controls. Net earlier-heavy Meteor saving
+  0.54–0.62ms vs raw v3; Quasar warm regression0.45–0.56ms. Fixed-APU control
+  itself costs about0.18–0.215ms warm. Preserve this successful bounded result;
+  no production promotion until regression/headroom improve. FAT/protected
+  stock/ROM/progress verify; no recoding, card writes or rearm.
+  [Results and cost comparisons](docs/snes-draw-order-return.md).
+
+- **Earlier draw-order installation:** Mode1
   unique-top BG3 first, original lower-layer order and unsupported fallback.
   The control/candidate share one byte-identical non-LTO APU object;21 linked
   SPC/DSP function sizes match.43,200 ordinary exact calls/all18 contexts,

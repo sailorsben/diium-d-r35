@@ -1,5 +1,18 @@
 # Changelog
 
+## Draw-order physical return passes all18 contexts twice — 2026-10-14
+
+Strict7,797-file/1,937,074,272-byte archive, clean FAT,85 exact payloads and
+protected stock/ROM/progress; marker consumed, I: unarmed. All36 regression and
+4 extra candidate windows clean, including Meteor/Rage032. Four invalid Meteor
+control epochs leave44/48 clean overall. Complete retained PCM/cumulative reserve
+identities verify. Earlier-heavy Meteor net saving0.54–0.62ms vs raw; Quasar warm
+regression0.45–0.56ms. Fixed APU object retained, boundary-only build tax about
+0.18–0.215ms. Preserve bounded success; reject production promotion with regression/
+20% headroom unresolved. All-common/fixed prices, invalid completions and full
+input hashes published; prior proofs exact. No core/card changes or rearm.
+See docs/snes-draw-order-return.md.
+
 ## Install and arm validated draw-order candidate on I: — 2026-10-14
 
 From clean pushed9ba664f, guarded separate draw-order1 install verifies85

@@ -1,6 +1,18 @@
 # Device findings
 
-**Current card:** draw-order1 installed separately and one-shot armed on I: from
+**Current card / latest physical result:** I: unarmed, marker consumed. Draw-order
+passes36/36 regression windows, all18 contexts twice, plus4/4 candidate pricing
+windows; Meteor and Rage032 now clean. All40 candidate runs preserve full frames,
+exact PCM and complete valid pointers/reserve recovery. Minimum candidate reserve
+1,704 frames. Raw/fixed-APU Meteor controls fail;44/48 suite epochs clean. Fixed
+earlier Meteor saving0.54–0.62ms vs raw; Quasar warm regression0.45–0.56ms. APU
+object stays identical, but boundary-only warm cost is about0.18–0.215ms. Preserve
+candidate; no promotion with Quasar regression and20% headroom unmet. Strict7,797
+files/1,937,074,272 bytes, clean FAT,85 exact payloads,7,357 prior files unchanged
+except stock swapfile; stock/ROM/progress exact. No recoding/card writes/rearm.
+[Full return and limits](snes-draw-order-return.md).
+
+**Earlier installation:** draw-order1 installed separately and one-shot armed on I: from
 clean pushed9ba664f. Strict7,359-file archive matches evaluated return;85 payloads
 read back exact and7,358 prior files/stock/ROM/progress unchanged. FAT clean before
 install/after payload/after arm.48 automatic epochs, no PC/phase/work observers;
@@ -21,7 +33,7 @@ New net A7 saving and boundary cost remain unknown, measured by raw/control/
 candidate price blocks; no production acceptance. Installation is recorded above.
 [Implementation and cost contract](snes-draw-order.md).
 
-**Prior PC return:** marker consumed before this new installation. Unchanged-v3 PC
+**Prior PC return:** marker consumed before the draw-order installation. Unchanged-v3 PC
 diagnostic ran all four epochs. Quasar clean twice; Meteor control completes
 but first pointer drift532, sampled drift488/audio error509 calls. Sampler works:
 613/1,333 active samples,583/1,333 valid-prefix counts; requested1ms delivers

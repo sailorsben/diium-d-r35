@@ -1,5 +1,19 @@
 # Investigation history and negative results
 
+## Draw order succeeds on remaining contexts, exposes Quasar cost — 2026-10-14
+
+18/18 contexts pass twice for the first complete clean physical regression suite;
+all4 extra candidate price windows clean too. Meteor/Rage032 now retain valid
+pointers/full frames/PCM/recovery. Raw/fixed-APU Meteor controls fail, including
+one nominal1200-call raw completion with drift.44/48 clean overall. Net earlier
+Meteor saving0.54–0.62ms vs raw; warm Quasar regresses0.45–0.56ms, despite audio
+continuity. User's middle-run observation is consistent but not assigned to an
+exact epoch. Fixed APU object prevents compiler drift but whole boundary-control
+build costs0.18–0.215ms warm. All-common and fixed intervals expose early/Quasar
+overheads; no complete late Meteor price. Preserve candidate, no promotion until
+regression/headroom addressed. Strict archive/FAT/payload/protected/ROM verify;
+I: unarmed, no recoding/card writes/rearm. See snes-draw-order-return.md.
+
 ## Authorized draw-order physical candidate installed — 2026-10-14
 
 After full validation and clean source push9ba664f, install85 payloads in

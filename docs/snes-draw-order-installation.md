@@ -1,5 +1,8 @@
 # Draw-order candidate installed and armed on I:
 
+Historical deployment record: this test has returned and I: is now unarmed.
+See [all18-context success and remaining regressions](snes-draw-order-return.md).
+
 Installed `1.19-draw-order1` from clean, pushed source commit
 `9ba664f2abf67cff8fb3c3815d7e4f23c3010406` after Ben explicitly requested
 implementation, stable APU compiler output, validation and installation.
