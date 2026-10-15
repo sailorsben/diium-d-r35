@@ -1,5 +1,15 @@
 # Changelog
 
+## UART state1 physical snapshot return — 2026-10-14
+
+Collect/hash7,805 files; clean FAT, exact payloads, consumed marker, stock/ROM/
+progress verified. All100 snapshots and ordinary module load/non-forced unload
+pass. IRQ19 persists6,756–7,323/s across phases with zero observed TX mismatch,
+both TX enables clear, empty queue, flat RX and~83.55 TX bytes/s. Persistent TX
+divergence is absent in this idle capture; status/cause/IRQ duration still unknown.
+Publish interpreted metadata and strict evaluator, preserve all932 prior proofs.
+No device writes, rearm or core/firmware change. See docs/uart-state-return.md.
+
 ## Arm separate UART snapshot preflight on I: — 2026-10-14
 
 From clean pushed3892f2a, strict7,797-file/1,937,074,272-byte archive and clean FAT

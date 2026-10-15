@@ -6,18 +6,19 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **I: armed for UART state1 preflight.** Separate one-shot snapshot diagnostic
-  from pushed3892f2a;7,797-file archive,7,796 protected prior files and ROM/progress
-  verify, FAT clean after arm. Safely eject/boot, wait stock, leave it30s, power
-  down/return. No spell suite; physical module lifecycle and UART cause pending.
-  [Scope, evidence and instructions](docs/uart-state-preflight.md).
+- **UART state1 returned; I: unarmed.** All100 physical snapshots and module
+  load/unload pass. IRQ19 persists at6,756–7,323/s across phases while every
+  snapshot has both TX enables clear, empty queue and zero mismatch. Persistent
+  TX divergence is absent in this idle capture; actual status/cost remain unknown.
+  Strict7,805-file archive, clean FAT, stock/ROM/progress hashes verify. No card
+  writes or rearm. [Results and next diagnostic](docs/uart-state-return.md).
 
 - **UART snapshot preflight qualified offline.** Reconstructed observed module
   ABI and exact kernel exports remove the vendor-source prerequisite for this
   small probe.27 checks include actual kernel relocation, compiled observer,
   native owner failures and exact firmware wrapper execution.100 idle snapshots,
-  no handler replacement/UART writes/status reads. Live loading/cause/cost still
-  pending. [Build, checks and physical-test scope](docs/uart-state-preflight.md).
+  no handler replacement/UART writes/status reads. Live loading now passes;
+  cause/cost remain unknown. [Build and scope](docs/uart-state-preflight.md).
 
 - **UART investigation now uses the exact archived kernel.** Latest draw-order
   interval still records about6,921 IRQ19/s,92.32% of interrupt counts. Six

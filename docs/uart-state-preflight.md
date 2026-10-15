@@ -1,5 +1,11 @@
 # UART state1: snapshot preflight — 2026-10-14
 
+**Returned:** all100 physical snapshots and load/unload pass. IRQ19 remains
+6,756–7,323/s across capture phases; all snapshots show both TX enables clear,
+empty queue and zero mismatch. I: unarmed, clean FAT and protected hashes verify.
+See [physical return](uart-state-return.md). Installation instructions below
+record the earlier arm; do not rearm from them.
+
 **Installed and armed on I:** exact pushed source`3892f2a` precedes the install.
 Strict archive`a7-pair-before-20261015T021858Z` preserves7,797 files/
 1,937,074,272 bytes. All7,796 protected prior files, ROM/progress and four installed
@@ -9,7 +15,7 @@ dispatcher, one-shot marker and separate`retro/uart-state1` package change.
 Safely eject, boot, wait for the stock launcher, leave it there about30 seconds,
 then power down and reconnect I:. If stock has not appeared after a minute,
 power down and return the card; do not repeatedly rearm it. Next boot after the
-consumed marker is stock. Physical results remain pending.
+consumed marker is stock. The completed return is linked above.
 
 The matching vendor source is still unlocated after targeted public code and
 repository searches. We no longer depend on locating it to prepare the first
@@ -21,7 +27,7 @@ configuration or a replacement kernel build.
 
 The module and owner pass27 offline checks:15 compiled-module/actual-relocator
 checks and12 owner/firmware-shell checks. Physical module loading, snapshot
-operation and unloading remain pending. No source-level UART fix or A7 saving
+operation and unloading now pass in the returned preflight. No source-level UART fix or A7 saving
 is claimed. This preflight observes idle boot before stock starts; it does not
 alter or run the SNES spell suite. The card installation is recorded separately.
 

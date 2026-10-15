@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## UART state1 physical return rejects persistent TX mismatch — 2026-10-14
+
+Archive7,805 files before analysis; clean FAT, exact deployed payloads/dispatcher,
+consumed marker and stock/ROM/progress verification. Module loads,100 snapshots
+succeed, unloads and wrapper returns0. All samples show TX hardware/software
+disabled, empty queue, no mismatch, flat RX and~83.55 TX bytes/s. IRQ rates are
+7,291.55 before/6,755.75 loaded/7,323.38 after: unexplained phase difference,
+not a measured performance saving. Reject persistent TX divergence for this idle
+capture; retain transient/emulation-only possibilities. Original status/branch
+capture and handler-cost controls remain next. No card writes/rearm or speculative
+UART fix. See [return](uart-state-return.md).
+
 ## UART snapshot observer reconstructed from existing artifacts — 2026-10-14
 
 User directs continued investigation without supplying vendor contacts. Bounded

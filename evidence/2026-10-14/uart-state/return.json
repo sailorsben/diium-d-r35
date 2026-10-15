@@ -1,0 +1,92 @@
+{
+  "version": "uart-state1-physical-return",
+  "physical_archive": "a7-pair-before-20261015T023156Z",
+  "installed_source_commit": "3892f2a42da9950d6da81ec762fa8500d45b48b6",
+  "mock": false,
+  "archive_files_verified": 7805,
+  "archive_bytes": 1937114927,
+  "fat_clean": true,
+  "one_shot_consumed": true,
+  "card_writes": 0,
+  "payloads_verified": 4,
+  "protected_prior_files": 7796,
+  "stock_boot_and_ROM_verified": true,
+  "original_progress_unchanged": true,
+  "protected_unchanged": 7795,
+  "protected_changed": [
+    "retro/swapfile"
+  ],
+  "module_loaded_unloaded": true,
+  "cancelled": false,
+  "owner_exit": 0,
+  "valid_snapshots": 100,
+  "irq_windows": {
+    "before_load": {
+      "interrupts": 7332,
+      "midpoint_seconds": 1.0055475,
+      "per_second": 7291.5501256778025,
+      "endpoint_time_rate_bounds": [
+        7289.560180628381,
+        7293.541157476626
+      ]
+    },
+    "observer_loaded": {
+      "interrupts": 33816,
+      "midpoint_seconds": 5.005513,
+      "per_second": 6755.751108827408,
+      "endpoint_time_rate_bounds": [
+        6755.424506393141,
+        6756.077742843494
+      ]
+    },
+    "after_unload": {
+      "interrupts": 7392,
+      "midpoint_seconds": 1.00937,
+      "per_second": 7323.37993005538,
+      "endpoint_time_rate_bounds": [
+        7321.805847341537,
+        7324.9546897249475
+      ]
+    }
+  },
+  "control_distribution": {
+    "0000b070": 100
+  },
+  "flags_distribution": {
+    "05": 100
+  },
+  "tx_hardware_enabled_samples": 0,
+  "tx_software_enabled_samples": 0,
+  "tx_mismatch_samples": 0,
+  "empty_queue_samples": 100,
+  "sample_span_seconds": 4.955229,
+  "tx_delta": 414,
+  "rx_delta": 0,
+  "tx_per_second_over_sample_span": 83.54810645481773,
+  "snapshot_scope_ns": {
+    "min": 4000,
+    "max": 9000,
+    "total": 636000
+  },
+  "persistent_TX_mismatch_supported": false,
+  "interrupt_status_observed": false,
+  "handler_duration_measured": false,
+  "A7_saving_measured": false,
+  "production_gate": false,
+  "limits": [
+    "Idle pre-stock capture only; transient or emulation-only TX states are not excluded.",
+    "Counter-read endpoint timing bounds do not remove sequential procfs read uncertainty.",
+    "Snapshot times are observer scope, not IRQ handler duration.",
+    "Successful wrapper return does not independently prove stock launcher visual operation."
+  ],
+  "input_sha256": {
+    "archive.json": "5a5e918691c9d15e440756e8e44f0b386ae1366d42a80e4f1d1959639962c604",
+    "chkdsk-before.txt": "c53fc204788ee246c6cc73fe27296c4636af36c03764b4fcd8d78015ff0ec486",
+    "live-protected-verification.json": "2e4fe689ce56b2b30efd1d0436db7a8b6140f5396dcf45ff5fb67e747d50276d",
+    "retro/uart-state1/observer.txt": "e64a4a3fcd1d1f86d5970db2a30e0892d4612f3532fcd8a4ef62f2b311e8e123",
+    "retro/uart-state1/startup.log": "6fea54c198689d38f095632466255c8489eb8de5b16abf55660f373340740158",
+    "retro/uart-state1/owner.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "retro/uart-state1/last-launch": "f911a60461d46692465cc7a2abe67864f6d6ef0a9d1441a2f1520d8a078e5eb5"
+  },
+  "installation_receipt_sha256": "50eafdccf2e1b69fc4727040bdab517b6193a933cb909a4e27f981a61ae78169"
+}

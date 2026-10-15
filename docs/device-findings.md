@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest return / card state:** UART state1 completes100 valid physical snapshots,
+ordinary load/non-forced unload and wrapper exit0. IRQ19 remains6,756–7,323/s
+across phases; all snapshots show controlb070/flags05, TX hardware/software
+disabled, empty queue, no mismatch, RX unchanged and TX~83.55 bytes/s. Persistent
+divergent-TX hypothesis is unsupported here; actual interrupt status and handler
+cost remain unmeasured. I: unarmed/marker consumed;7,805 files archived, clean FAT,
+7,795 protected prior files unchanged except stock swapfile, stock/ROM/progress
+verified. No card writes, rearm or UART/core changes. Prior entries are historical.
+[Full return and next observation](uart-state-return.md).
+
 **Current card / latest physical result:** I: unarmed, marker consumed. Draw-order
 passes36/36 regression windows, all18 contexts twice, plus4/4 candidate pricing
 windows; Meteor and Rage032 now clean. All40 candidate runs preserve full frames,

@@ -107,6 +107,12 @@ duration remains a sensitivity calculation, never measured recovered budget.
 
 ## Required next physical diagnostic
 
+**Follow-up:** the smaller [state1 physical preflight](uart-state-return.md)
+now qualifies this package's load/snapshot/unload lifecycle. The flood persists
+without a persistent TX mismatch in100 idle snapshots. Original status/branch
+and handler-duration observation below remain unimplemented; the missing vendor
+tree was worked around only for the narrow reconstructed snapshot ABI.
+
 The next useful test is an **ABI-qualified kernel observer**, not another
 userspace redirection run. It must preserve the original handler and return
 value and gather bounded RAM aggregates rather than print per interrupt:
@@ -129,7 +135,7 @@ value and gather bounded RAM aggregates rather than print per interrupt:
    bounded stop/unload, restoration and unexpected-state refusal offline.
    Archive/hash/FAT gates and a separate one-shot package still apply.
 
-This observer is **specified, not built or installation-ready**. The exact
+This richer observer is **specified, not built or installation-ready**. The exact
 matching vendor kernel source/generated headers remain unlocated in the local
 references and targeted public searches. The archived stock CRC module provides
 useful metadata: vermagic`4.19.128 mod_unload ARMv7 p2v8 `,
