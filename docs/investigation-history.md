@@ -1,5 +1,20 @@
 # Investigation history and negative results
 
+## PC diagnostic physical owner census — 2026-10-14
+
+All four unchanged-v3 epochs return; clean Quasar twice, Meteor pointer failure
+even in completed control. Sampled Meteor drift488/error509 vs control drift532.
+Sampler supports A7 CPU-targeted delivery but coalesces requested1ms to about10ms;
+613/1,333 active samples,583/1,333 selected before drift, zero sampler errors/
+dropped records. Heavy384–487 named PPU53.0%/46.5%, DSP/APU17.7%/26.8%; short
+fixed windows sparse, late Meteor unavailable. No estimated per-owner ms.
+Warm sampled-minus-control thread CPU+0.159/+0.105ms includes order/variation.
+Full retained PCM transactions and pre-drift cumulative identities verify;
+Meteor loses2,076/2,075 reserve frames, Quasar gains193. Strict archive/FAT/
+payload/protected/ROM checks pass; marker consumed, I: unarmed. General priority
+and hidden-color avoidance remains strongest lead; exact net gain missing.
+No emulator/card writes/rearm. See snes-pc-profile-return.md and published counts.
+
 ## Authorized unchanged-core PC diagnostic — 2026-10-14
 
 Explicit "Arm I" installs1.19-pc-profile1 from clean pushed6123047. Fresh strict

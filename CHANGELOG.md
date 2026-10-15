@@ -1,5 +1,19 @@
 # Changelog
 
+## Evaluate unchanged-core PC diagnostic return — 2026-10-14
+
+Strict7,359-file/1,848,513,197-byte archive, FAT clean,88 exact payloads and
+protected stock/ROM/progress; only stock swapfile changes, marker consumed.
+All four epochs ran. Quasar clean twice; Meteor control drifts532 despite1200
+calls, sampled drift488/error509. Sampler delivers613/1,333 active samples,
+583/1,333 valid, about10ms CPU delivery with explicit overruns. Common heavy
+prefix named PPU53.0%/46.5%, DSP/APU17.7%/26.8%; coarse statistical ownership,
+no exact prices. Observed warm thread CPU disturbance+0.159/+0.105ms. Complete
+pre-drift cumulative reserve identities verify; Meteor loses~2,075 frames,
+Quasar gains193. Preserve frozen sampler/proofs and917 prior published hashes.
+General draw priority/work avoidance remains first lead; no core/card changes
+or rearm. See docs/snes-pc-profile-return.md and reproducible evaluation.
+
 ## Arm unchanged-core PC diagnostic on I: — 2026-10-14
 
 From clean pushed6123047, explicitly authorized rearm installs88 separate

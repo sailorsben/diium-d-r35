@@ -6,19 +6,21 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
-- **I: armed for unchanged-core PC attribution:** four Meteor/Quasar epochs
-  compare sampling off/on with the exact same demand-v3 core. Fresh 7,226-file
-  archive, 88 payload readbacks, 7,225 protected files, original ROM/progress
-  and three FAT checks pass. Allow 3–5 minutes, wait for stock, then power down
-  and return I:. Physical attribution remains pending.
-  [Installation and test](docs/snes-pc-profile-installation.md).
+- **PC diagnostic returned; I: unarmed:** all four epochs ran. Quasar is clean
+  twice; Meteor pointer drift starts at532 control/488 sampled, with sampled
+  audio failure at509 calls. Valid heavy-prefix PC samples place named PPU
+  functions at53.0%/46.5% for Meteor/Quasar, DSP/APU17.7%/26.8%; coarse counts,
+  not exact timing. Sampling adds about0.105–0.159ms observed warm thread CPU.
+  Fresh7,359-file archive, clean FAT,88 exact payloads and protected progress;
+  no recoding or rearm. General draw-order/work avoidance remains the first lead.
+  [Results, accounting and limits](docs/snes-pc-profile-return.md).
 
 - **Deeper research completed locally:** exact compiler reports pin the changed
   SPC loop optimization to LTO partitioning; a reproducible APU object boundary
   is demonstrated. Priority scheduling removes32.5% of Meteor's main RGB writes
   in an exact18-context counterfactual. Net A7 gain remains unmeasured. The
-  unchanged-v3 PC diagnostic qualified locally before the authorized rearm above;
-  current A7 inner-owner time is still missing. Research preparation was local.
+  unchanged-v3 PC diagnostic has now returned the coarse owner counts above;
+  exact inner-kernel prices remain missing. Research preparation was local.
   [Findings, proofs and next measurement](docs/snes-deep-efficiency-research.md).
 
 - **Efficiency research reset:** source-level PPU isolation did not isolate

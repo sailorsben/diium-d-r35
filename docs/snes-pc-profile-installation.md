@@ -1,5 +1,8 @@
 # Unchanged-core PC diagnostic armed on I:
 
+Historical installation record. The diagnostic has now returned; I: is unarmed.
+See [results and current evidence boundaries](snes-pc-profile-return.md).
+
 Ben explicitly requested "Arm I" after the deeper efficiency research.
 Installed `1.19-pc-profile1` from clean, pushed commit
 `6123047df25cc6f3cb3a8b21d84532f68041af9a` on 2026-10-14 America/Chicago.

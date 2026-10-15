@@ -6,8 +6,11 @@ previous qualified trees, raw returns and published evidence remain intact.
 
 Subsequent explicit "Arm I" authorization installed and armed the unchanged-core
 diagnostic from pushed6123047 after a fresh strict archive and guarded checks.
-Physical attribution remains pending; the research preparation below is retained
-as recorded. [Current installation](snes-pc-profile-installation.md).
+The subsequent return establishes coarse valid-prefix owner counts, with named
+PPU functions leading the heavy interval and substantial DSP cost. Exact prices
+remain missing; I: is now unarmed. The research preparation below is retained as
+recorded. [Physical results](snes-pc-profile-return.md),
+[historical installation](snes-pc-profile-installation.md).
 
 ## Compiler interaction pinned to SPC loop unswitching and LTO partitioning
 

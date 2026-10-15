@@ -1,0 +1,2865 @@
+{
+  "version": "1.19-pc-profile1",
+  "archive": "a7-pair-before-20261015T002114Z",
+  "card_writes": 0,
+  "FAT_clean": true,
+  "archive_files": 7359,
+  "archive_bytes": 1848513197,
+  "installed_payloads_verified": 88,
+  "protected_prior_files_unchanged": 7224,
+  "changed_prior_files": [
+    "retro/swapfile"
+  ],
+  "ROM_live_sha256": "f61af2bd9e3f9b6a2bd543fb176af0b81fd9e5ba4ea0fa0f453371ccb45d3911",
+  "marker_consumed": true,
+  "stock_next_boot": true,
+  "same_exact_core_both_variants": true,
+  "core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+  "suite": {
+    "suite": "1.19-pc-profile1",
+    "runs": "4",
+    "planned": "4",
+    "failures": "1",
+    "stopped": "0",
+    "frameskip": "0"
+  },
+  "epochs": [
+    {
+      "run": 0,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 0,
+      "PC_sampling": false,
+      "identity_verified": true,
+      "status": "INVALID_OR_INCOMPLETE",
+      "completed_calls": 1200,
+      "frame_rows": 1200,
+      "valid_CPU_prefix_calls": 532,
+      "first_invalid_frame": 532,
+      "submitted": 1200,
+      "scaled": 1200,
+      "flipped": 1200,
+      "held": 0,
+      "dupes": 0,
+      "error": "",
+      "reported_xruns": 0,
+      "write_errors": 0,
+      "all_workers_joined": true,
+      "effect_properties_observed": true,
+      "PCM_trace_retained_from": 0,
+      "PCM_failure": "",
+      "invalid_running_sync_count": 3398,
+      "first_invalid_running_sync_sequence": 4586,
+      "final_pointer_bias_frames": 384,
+      "valid_prefix_running_sync_samples": 3090,
+      "valid_prefix_minimum_running_reserve_frames": 170,
+      "cumulative_running_reserve": {
+        "trace_prefix_seconds": 8.918723,
+        "initial_observed_reserve_frames": 2823,
+        "last_valid_observed_reserve_frames": 747,
+        "accepted_growth_frames": 391523,
+        "HW_pointer_growth_frames": 393599,
+        "reserve_change_frames": -2076,
+        "accounting_identity_exact": true,
+        "scope": "Complete retained running-sync prefix before the first invalid pointer; vendor logical accounting."
+      },
+      "sink_rate": 44100,
+      "PCM_final_software_accounting_exact": true,
+      "final_direct_submitted": 1200,
+      "final_copied_payload_bytes": 0,
+      "worst16_valid_CPU_frames": [
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435
+      ],
+      "worst16_recorded_threads_CPU_ms": 16.954125,
+      "post_last_sample_audio_CPU_ns": 162000,
+      "post_last_sample_video_CPU_ns": 1782000,
+      "phase_profile_available": 0,
+      "frequency_values_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "name": "METEOR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0,
+      "PC_sampling": true,
+      "identity_verified": true,
+      "status": "INVALID_OR_INCOMPLETE",
+      "completed_calls": 509,
+      "frame_rows": 509,
+      "valid_CPU_prefix_calls": 488,
+      "first_invalid_frame": 488,
+      "submitted": 508,
+      "scaled": 508,
+      "flipped": 508,
+      "held": 0,
+      "dupes": 0,
+      "error": "Audio publication failed: File descriptor in bad state",
+      "reported_xruns": 0,
+      "write_errors": 1,
+      "all_workers_joined": true,
+      "effect_properties_observed": true,
+      "PCM_trace_retained_from": 0,
+      "PCM_failure": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=377066 hw=376959 prime_written=2823 start_calls=0 epoch=1 xfer=376682",
+      "invalid_running_sync_count": 101,
+      "first_invalid_running_sync_sequence": 4266,
+      "final_pointer_bias_frames": 384,
+      "valid_prefix_running_sync_samples": 2864,
+      "valid_prefix_minimum_running_reserve_frames": 141,
+      "cumulative_running_reserve": {
+        "trace_prefix_seconds": 8.185581,
+        "initial_observed_reserve_frames": 2823,
+        "last_valid_observed_reserve_frames": 748,
+        "accepted_growth_frames": 359140,
+        "HW_pointer_growth_frames": 361215,
+        "reserve_change_frames": -2075,
+        "accounting_identity_exact": true,
+        "scope": "Complete retained running-sync prefix before the first invalid pointer; vendor logical accounting."
+      },
+      "sink_rate": 44100,
+      "PCM_final_software_accounting_exact": false,
+      "final_direct_submitted": 508,
+      "final_copied_payload_bytes": 0,
+      "worst16_valid_CPU_frames": [
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448
+      ],
+      "worst16_recorded_threads_CPU_ms": 17.069625,
+      "post_last_sample_audio_CPU_ns": 0,
+      "post_last_sample_video_CPU_ns": 0,
+      "phase_profile_available": 0,
+      "frequency_values_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 2,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "demand",
+      "variant_id": 1,
+      "repeat": 0,
+      "PC_sampling": true,
+      "identity_verified": true,
+      "status": "CLEAN_BOUNDED_WINDOW",
+      "completed_calls": 1200,
+      "frame_rows": 1200,
+      "valid_CPU_prefix_calls": 1200,
+      "first_invalid_frame": null,
+      "submitted": 1200,
+      "scaled": 1200,
+      "flipped": 1200,
+      "held": 0,
+      "dupes": 0,
+      "error": "",
+      "reported_xruns": 0,
+      "write_errors": 0,
+      "all_workers_joined": true,
+      "effect_properties_observed": true,
+      "PCM_trace_retained_from": 0,
+      "PCM_failure": "",
+      "invalid_running_sync_count": 0,
+      "first_invalid_running_sync_sequence": null,
+      "final_pointer_bias_frames": 0,
+      "valid_prefix_running_sync_samples": 7237,
+      "valid_prefix_minimum_running_reserve_frames": 2059,
+      "cumulative_running_reserve": {
+        "trace_prefix_seconds": 20.005157,
+        "initial_observed_reserve_frames": 2823,
+        "last_valid_observed_reserve_frames": 3016,
+        "accepted_growth_frames": 883136,
+        "HW_pointer_growth_frames": 882943,
+        "reserve_change_frames": 193,
+        "accounting_identity_exact": true,
+        "scope": "Complete retained running-sync prefix before the first invalid pointer; vendor logical accounting."
+      },
+      "sink_rate": 44100,
+      "PCM_final_software_accounting_exact": true,
+      "final_direct_submitted": 1200,
+      "final_copied_payload_bytes": 0,
+      "worst16_valid_CPU_frames": [
+        531,
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546
+      ],
+      "worst16_recorded_threads_CPU_ms": 16.207375,
+      "post_last_sample_audio_CPU_ns": 200000,
+      "post_last_sample_video_CPU_ns": 745000,
+      "phase_profile_available": 0,
+      "frequency_values_khz": [
+        -1
+      ]
+    },
+    {
+      "run": 3,
+      "fixture": 8,
+      "name": "QUASAR",
+      "variant": "reference",
+      "variant_id": 0,
+      "repeat": 0,
+      "PC_sampling": false,
+      "identity_verified": true,
+      "status": "CLEAN_BOUNDED_WINDOW",
+      "completed_calls": 1200,
+      "frame_rows": 1200,
+      "valid_CPU_prefix_calls": 1200,
+      "first_invalid_frame": null,
+      "submitted": 1200,
+      "scaled": 1200,
+      "flipped": 1200,
+      "held": 0,
+      "dupes": 0,
+      "error": "",
+      "reported_xruns": 0,
+      "write_errors": 0,
+      "all_workers_joined": true,
+      "effect_properties_observed": true,
+      "PCM_trace_retained_from": 0,
+      "PCM_failure": "",
+      "invalid_running_sync_count": 0,
+      "first_invalid_running_sync_sequence": null,
+      "final_pointer_bias_frames": 0,
+      "valid_prefix_running_sync_samples": 7245,
+      "valid_prefix_minimum_running_reserve_frames": 2059,
+      "cumulative_running_reserve": {
+        "trace_prefix_seconds": 20.005046,
+        "initial_observed_reserve_frames": 2823,
+        "last_valid_observed_reserve_frames": 3016,
+        "accepted_growth_frames": 883136,
+        "HW_pointer_growth_frames": 882943,
+        "reserve_change_frames": 193,
+        "accounting_identity_exact": true,
+        "scope": "Complete retained running-sync prefix before the first invalid pointer; vendor logical accounting."
+      },
+      "sink_rate": 44100,
+      "PCM_final_software_accounting_exact": true,
+      "final_direct_submitted": 1200,
+      "final_copied_payload_bytes": 0,
+      "worst16_valid_CPU_frames": [
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549
+      ],
+      "worst16_recorded_threads_CPU_ms": 16.1458125,
+      "post_last_sample_audio_CPU_ns": 157000,
+      "post_last_sample_video_CPU_ns": 1205000,
+      "phase_profile_available": 0,
+      "frequency_values_khz": [
+        -1
+      ]
+    }
+  ],
+  "PC_attribution": {
+    "physical": true,
+    "runs": [
+      {
+        "run": 1,
+        "fixture": 1,
+        "name": "METEOR",
+        "variant": "demand",
+        "variant_id": 1,
+        "repeat": 0,
+        "PC_sampling": true,
+        "physical": true,
+        "metadata": {
+          "#clock": "CLOCK_THREAD_CPUTIME_ID",
+          "#timer_interval_requested_ns": "1000000",
+          "#error": "0",
+          "#samples": "613",
+          "#dropped": "0",
+          "#outside_core": "23",
+          "#idle": "7",
+          "#timer_overruns": "5519",
+          "#max_overrun": "19",
+          "#observed_thread_CPU_ns": "6149103000"
+        },
+        "valid_prefix_frames": 488,
+        "selected_samples": 583,
+        "selection": "valid_frame_pointer_prefix",
+        "owners": {
+          "65C816_ops_memory": 83,
+          "DMA": 20,
+          "mixed_core_scheduler": 43,
+          "PPU_render": 212,
+          "DSP": 130,
+          "main_host_or_libraries": 23,
+          "PPU_registers": 18,
+          "core_other": 22,
+          "SPC_APU_other": 32
+        },
+        "top_functions": [
+          [
+            "dsp_run.part.0",
+            65
+          ],
+          [
+            "d35_fused_band_0_0",
+            43
+          ],
+          [
+            "d35_fused_band_3_0",
+            42
+          ],
+          [
+            "retro_run",
+            40
+          ],
+          [
+            "dsp_voice_V3",
+            37
+          ],
+          [
+            "d35_geometry_draw_0",
+            35
+          ],
+          [
+            "DrawTile16",
+            33
+          ],
+          [
+            "OUTSIDE_CORE",
+            23
+          ],
+          [
+            "S9xGetByte",
+            23
+          ],
+          [
+            "spc_run_until_.lto_priv.0",
+            20
+          ],
+          [
+            "S9xDoHDMA",
+            19
+          ],
+          [
+            "S9xSetPPU",
+            18
+          ],
+          [
+            "d35_fused_band_1_0",
+            18
+          ],
+          [
+            "OpD0.lto_priv.0",
+            17
+          ],
+          [
+            "DrawOBJS.lto_priv.0",
+            16
+          ],
+          [
+            "dsp_voice_V8_V5_V2",
+            15
+          ],
+          [
+            "S9xUpdateScreen",
+            14
+          ],
+          [
+            "dsp_voice_V7_V4_V1",
+            13
+          ],
+          [
+            "S9xAPUExecute",
+            11
+          ],
+          [
+            "RenderLine",
+            7
+          ]
+        ],
+        "spans": {
+          "early": {
+            "samples": 122,
+            "owners": {
+              "DSP": 25,
+              "SPC_APU_other": 7,
+              "PPU_render": 38,
+              "core_other": 5,
+              "PPU_registers": 4,
+              "DMA": 4,
+              "65C816_ops_memory": 21,
+              "main_host_or_libraries": 8,
+              "mixed_core_scheduler": 10
+            },
+            "all_frames_pointer_valid": true,
+            "sparse_below100": false
+          },
+          "earlier_heavy": {
+            "samples": 50,
+            "owners": {
+              "mixed_core_scheduler": 6,
+              "PPU_render": 24,
+              "PPU_registers": 1,
+              "65C816_ops_memory": 4,
+              "core_other": 6,
+              "SPC_APU_other": 2,
+              "DSP": 4,
+              "main_host_or_libraries": 2,
+              "DMA": 1
+            },
+            "all_frames_pointer_valid": true,
+            "sparse_below100": true
+          },
+          "late_heavy": {
+            "samples": 0,
+            "owners": {},
+            "all_frames_pointer_valid": false,
+            "sparse_below100": true
+          }
+        }
+      },
+      {
+        "run": 2,
+        "fixture": 8,
+        "name": "QUASAR",
+        "variant": "demand",
+        "variant_id": 1,
+        "repeat": 0,
+        "PC_sampling": true,
+        "physical": true,
+        "metadata": {
+          "#clock": "CLOCK_THREAD_CPUTIME_ID",
+          "#timer_interval_requested_ns": "1000000",
+          "#error": "0",
+          "#samples": "1333",
+          "#dropped": "0",
+          "#outside_core": "57",
+          "#idle": "24",
+          "#timer_overruns": "12158",
+          "#max_overrun": "21",
+          "#observed_thread_CPU_ns": "13522585000"
+        },
+        "valid_prefix_frames": 1200,
+        "selected_samples": 1333,
+        "selection": "valid_frame_pointer_prefix",
+        "owners": {
+          "main_host_or_libraries": 57,
+          "SPC_APU_other": 83,
+          "65C816_ops_memory": 210,
+          "PPU_render": 426,
+          "core_other": 56,
+          "DSP": 295,
+          "DMA": 46,
+          "mixed_core_scheduler": 119,
+          "PPU_registers": 41
+        },
+        "top_functions": [
+          [
+            "dsp_run.part.0",
+            126
+          ],
+          [
+            "retro_run",
+            109
+          ],
+          [
+            "d35_fused_band_0_0",
+            105
+          ],
+          [
+            "dsp_voice_V3",
+            102
+          ],
+          [
+            "DrawTile16",
+            84
+          ],
+          [
+            "d35_fused_band_3_0",
+            59
+          ],
+          [
+            "OUTSIDE_CORE",
+            57
+          ],
+          [
+            "d35_fused_band_1_0",
+            55
+          ],
+          [
+            "spc_run_until_.lto_priv.0",
+            50
+          ],
+          [
+            "DrawOBJS.lto_priv.0",
+            48
+          ],
+          [
+            "S9xSetPPU",
+            41
+          ],
+          [
+            "S9xDoHDMA",
+            39
+          ],
+          [
+            "dsp_voice_V7_V4_V1",
+            36
+          ],
+          [
+            "OpD0.lto_priv.0",
+            32
+          ],
+          [
+            "dsp_voice_V8_V5_V2",
+            31
+          ],
+          [
+            "d35_geometry_draw_0",
+            31
+          ],
+          [
+            "RenderLine",
+            30
+          ],
+          [
+            "S9xAPUExecute",
+            27
+          ],
+          [
+            "OpA5M1.lto_priv.0",
+            26
+          ],
+          [
+            "S9xUpdateScreen",
+            25
+          ]
+        ],
+        "spans": {
+          "early": {
+            "samples": 123,
+            "owners": {
+              "SPC_APU_other": 7,
+              "PPU_render": 35,
+              "core_other": 7,
+              "DSP": 32,
+              "65C816_ops_memory": 14,
+              "mixed_core_scheduler": 15,
+              "PPU_registers": 2,
+              "DMA": 5,
+              "main_host_or_libraries": 6
+            },
+            "all_frames_pointer_valid": true,
+            "sparse_below100": false
+          },
+          "earlier_heavy": {
+            "samples": 44,
+            "owners": {
+              "SPC_APU_other": 4,
+              "DSP": 5,
+              "PPU_render": 22,
+              "PPU_registers": 1,
+              "core_other": 4,
+              "65C816_ops_memory": 3,
+              "main_host_or_libraries": 1,
+              "DMA": 1,
+              "mixed_core_scheduler": 3
+            },
+            "all_frames_pointer_valid": true,
+            "sparse_below100": true
+          },
+          "late_heavy": {
+            "samples": 51,
+            "owners": {
+              "PPU_render": 22,
+              "DSP": 13,
+              "core_other": 2,
+              "65C816_ops_memory": 6,
+              "PPU_registers": 2,
+              "DMA": 2,
+              "main_host_or_libraries": 2,
+              "mixed_core_scheduler": 2
+            },
+            "all_frames_pointer_valid": true,
+            "sparse_below100": true
+          }
+        }
+      }
+    ],
+    "estimated_A7_ms": null,
+    "limits": [
+      "Symbol ownership includes inlined work; scheduler remains explicitly mixed.",
+      "Outside-core samples include host callbacks/libraries, not workers.",
+      "Requested1ms is not delivered sample resolution; timer overruns are retained and never turned into invented samples.",
+      "No QEMU/host timing or sample distribution is an A7 price.",
+      "Only the valid frame-pointer prefix is counted; full PCM trace must independently qualify reserve.",
+      "No assumed independent/random sampling or confidence interval; short spans may be too sparse."
+    ]
+  },
+  "PC_function_census": [
+    {
+      "run": 1,
+      "name": "METEOR",
+      "valid_prefix_frames": 488,
+      "selected_samples": 583,
+      "all_functions": [
+        [
+          "dsp_run.part.0",
+          65
+        ],
+        [
+          "d35_fused_band_0_0",
+          43
+        ],
+        [
+          "d35_fused_band_3_0",
+          42
+        ],
+        [
+          "retro_run",
+          40
+        ],
+        [
+          "dsp_voice_V3",
+          37
+        ],
+        [
+          "d35_geometry_draw_0",
+          35
+        ],
+        [
+          "DrawTile16",
+          33
+        ],
+        [
+          "OUTSIDE_CORE",
+          23
+        ],
+        [
+          "S9xGetByte",
+          23
+        ],
+        [
+          "spc_run_until_.lto_priv.0",
+          20
+        ],
+        [
+          "S9xDoHDMA",
+          19
+        ],
+        [
+          "S9xSetPPU",
+          18
+        ],
+        [
+          "d35_fused_band_1_0",
+          18
+        ],
+        [
+          "OpD0.lto_priv.0",
+          17
+        ],
+        [
+          "DrawOBJS.lto_priv.0",
+          16
+        ],
+        [
+          "dsp_voice_V8_V5_V2",
+          15
+        ],
+        [
+          "S9xUpdateScreen",
+          14
+        ],
+        [
+          "dsp_voice_V7_V4_V1",
+          13
+        ],
+        [
+          "S9xAPUExecute",
+          11
+        ],
+        [
+          "RenderLine",
+          7
+        ],
+        [
+          "DrawBackground.lto_priv.0",
+          6
+        ],
+        [
+          "OpA5M1.lto_priv.0",
+          6
+        ],
+        [
+          "S9xSetByte",
+          5
+        ],
+        [
+          "S9xSetWord",
+          5
+        ],
+        [
+          "S9xDoHBlankProcessing_NoSFX",
+          3
+        ],
+        [
+          "S9xGetWord",
+          3
+        ],
+        [
+          "OpC2.lto_priv.0",
+          3
+        ],
+        [
+          "WRITE_4PIXELS16_ADD",
+          3
+        ],
+        [
+          "S9xSetupOBJ",
+          3
+        ],
+        [
+          "OpE2.lto_priv.0",
+          2
+        ],
+        [
+          "REGISTER_2104.lto_priv.1.lto_priv.0",
+          2
+        ],
+        [
+          "OpF0.lto_priv.0",
+          2
+        ],
+        [
+          "OpE8X0",
+          2
+        ],
+        [
+          "S9xAudioCallback",
+          2
+        ],
+        [
+          "DrawClippedTile16Add",
+          2
+        ],
+        [
+          "d35_window_defer",
+          2
+        ],
+        [
+          "OpC9M1.lto_priv.0",
+          1
+        ],
+        [
+          "Op48M1",
+          1
+        ],
+        [
+          "OpE8X1.lto_priv.0",
+          1
+        ],
+        [
+          "spc_cpu_read",
+          1
+        ],
+        [
+          "Op65M1.lto_priv.0",
+          1
+        ],
+        [
+          "RenderScreen",
+          1
+        ],
+        [
+          "Op54X0",
+          1
+        ],
+        [
+          "Op6DM1.lto_priv.0",
+          1
+        ],
+        [
+          "OpAAX0",
+          1
+        ],
+        [
+          "Op06M0.lto_priv.0",
+          1
+        ],
+        [
+          "S9xGetCPU",
+          1
+        ],
+        [
+          "Op45M1.lto_priv.0",
+          1
+        ],
+        [
+          "Op60.lto_priv.0",
+          1
+        ],
+        [
+          "OpBDM1.lto_priv.0",
+          1
+        ],
+        [
+          "S9xDoDMA.part.0",
+          1
+        ],
+        [
+          "Op4C.lto_priv.0",
+          1
+        ],
+        [
+          "Op8AM1.lto_priv.0",
+          1
+        ],
+        [
+          "S9xApplyCheats.part.0",
+          1
+        ],
+        [
+          "d35_geometry_produce",
+          1
+        ],
+        [
+          "Op18.lto_priv.0",
+          1
+        ],
+        [
+          "S9xSetPCBase",
+          1
+        ],
+        [
+          "d35_window_eligible.part.0.lto_priv.0",
+          1
+        ],
+        [
+          "OpBDM0.lto_priv.0",
+          1
+        ]
+      ],
+      "spans": {
+        "warm_valid_prefix": {
+          "samples": 456,
+          "functions": [
+            [
+              "dsp_run.part.0",
+              42
+            ],
+            [
+              "d35_geometry_draw_0",
+              35
+            ],
+            [
+              "d35_fused_band_3_0",
+              33
+            ],
+            [
+              "retro_run",
+              32
+            ],
+            [
+              "DrawTile16",
+              29
+            ],
+            [
+              "dsp_voice_V3",
+              26
+            ],
+            [
+              "d35_fused_band_0_0",
+              25
+            ],
+            [
+              "S9xGetByte",
+              20
+            ],
+            [
+              "d35_fused_band_1_0",
+              18
+            ],
+            [
+              "OUTSIDE_CORE",
+              17
+            ],
+            [
+              "spc_run_until_.lto_priv.0",
+              17
+            ],
+            [
+              "DrawOBJS.lto_priv.0",
+              16
+            ],
+            [
+              "S9xSetPPU",
+              15
+            ],
+            [
+              "S9xDoHDMA",
+              15
+            ],
+            [
+              "OpD0.lto_priv.0",
+              15
+            ],
+            [
+              "S9xAPUExecute",
+              10
+            ],
+            [
+              "dsp_voice_V7_V4_V1",
+              10
+            ],
+            [
+              "S9xUpdateScreen",
+              10
+            ],
+            [
+              "dsp_voice_V8_V5_V2",
+              9
+            ],
+            [
+              "RenderLine",
+              5
+            ],
+            [
+              "DrawBackground.lto_priv.0",
+              4
+            ],
+            [
+              "S9xSetByte",
+              4
+            ],
+            [
+              "S9xSetWord",
+              4
+            ],
+            [
+              "OpA5M1.lto_priv.0",
+              3
+            ],
+            [
+              "OpC2.lto_priv.0",
+              3
+            ],
+            [
+              "WRITE_4PIXELS16_ADD",
+              3
+            ],
+            [
+              "S9xSetupOBJ",
+              3
+            ],
+            [
+              "S9xAudioCallback",
+              2
+            ],
+            [
+              "S9xDoHBlankProcessing_NoSFX",
+              2
+            ],
+            [
+              "S9xGetWord",
+              2
+            ],
+            [
+              "DrawClippedTile16Add",
+              2
+            ],
+            [
+              "d35_window_defer",
+              2
+            ],
+            [
+              "Op65M1.lto_priv.0",
+              1
+            ],
+            [
+              "RenderScreen",
+              1
+            ],
+            [
+              "Op54X0",
+              1
+            ],
+            [
+              "Op6DM1.lto_priv.0",
+              1
+            ],
+            [
+              "OpAAX0",
+              1
+            ],
+            [
+              "Op06M0.lto_priv.0",
+              1
+            ],
+            [
+              "S9xGetCPU",
+              1
+            ],
+            [
+              "Op45M1.lto_priv.0",
+              1
+            ],
+            [
+              "REGISTER_2104.lto_priv.1.lto_priv.0",
+              1
+            ],
+            [
+              "Op60.lto_priv.0",
+              1
+            ],
+            [
+              "OpBDM1.lto_priv.0",
+              1
+            ],
+            [
+              "S9xDoDMA.part.0",
+              1
+            ],
+            [
+              "Op4C.lto_priv.0",
+              1
+            ],
+            [
+              "Op8AM1.lto_priv.0",
+              1
+            ],
+            [
+              "S9xApplyCheats.part.0",
+              1
+            ],
+            [
+              "d35_geometry_produce",
+              1
+            ],
+            [
+              "OpE8X0",
+              1
+            ],
+            [
+              "OpF0.lto_priv.0",
+              1
+            ],
+            [
+              "Op18.lto_priv.0",
+              1
+            ],
+            [
+              "S9xSetPCBase",
+              1
+            ],
+            [
+              "d35_window_eligible.part.0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBDM0.lto_priv.0",
+              1
+            ],
+            [
+              "OpE2.lto_priv.0",
+              1
+            ]
+          ],
+          "owners": {
+            "DSP": 87,
+            "SPC_APU_other": 27,
+            "PPU_render": 175,
+            "core_other": 19,
+            "PPU_registers": 15,
+            "DMA": 16,
+            "65C816_ops_memory": 66,
+            "main_host_or_libraries": 17,
+            "mixed_core_scheduler": 34
+          },
+          "all_requested_frames_valid": true,
+          "selected_frame_start": 120,
+          "selected_frame_end": 487,
+          "sparse_below100": false
+        },
+        "common_heavy_prefix_384_487": {
+          "samples": 164,
+          "functions": [
+            [
+              "d35_geometry_draw_0",
+              19
+            ],
+            [
+              "d35_fused_band_1_0",
+              15
+            ],
+            [
+              "DrawTile16",
+              14
+            ],
+            [
+              "retro_run",
+              12
+            ],
+            [
+              "d35_fused_band_3_0",
+              12
+            ],
+            [
+              "dsp_run.part.0",
+              9
+            ],
+            [
+              "S9xGetByte",
+              8
+            ],
+            [
+              "dsp_voice_V3",
+              8
+            ],
+            [
+              "DrawOBJS.lto_priv.0",
+              6
+            ],
+            [
+              "spc_run_until_.lto_priv.0",
+              5
+            ],
+            [
+              "d35_fused_band_0_0",
+              5
+            ],
+            [
+              "S9xDoHDMA",
+              5
+            ],
+            [
+              "S9xUpdateScreen",
+              4
+            ],
+            [
+              "S9xSetPPU",
+              4
+            ],
+            [
+              "S9xSetupOBJ",
+              3
+            ],
+            [
+              "OUTSIDE_CORE",
+              3
+            ],
+            [
+              "DrawBackground.lto_priv.0",
+              3
+            ],
+            [
+              "dsp_voice_V8_V5_V2",
+              3
+            ],
+            [
+              "DrawClippedTile16Add",
+              2
+            ],
+            [
+              "d35_window_defer",
+              2
+            ],
+            [
+              "RenderLine",
+              2
+            ],
+            [
+              "OpD0.lto_priv.0",
+              2
+            ],
+            [
+              "WRITE_4PIXELS16_ADD",
+              2
+            ],
+            [
+              "dsp_voice_V7_V4_V1",
+              2
+            ],
+            [
+              "S9xAPUExecute",
+              2
+            ],
+            [
+              "S9xApplyCheats.part.0",
+              1
+            ],
+            [
+              "S9xGetWord",
+              1
+            ],
+            [
+              "d35_geometry_produce",
+              1
+            ],
+            [
+              "OpE8X0",
+              1
+            ],
+            [
+              "S9xSetByte",
+              1
+            ],
+            [
+              "OpF0.lto_priv.0",
+              1
+            ],
+            [
+              "Op18.lto_priv.0",
+              1
+            ],
+            [
+              "OpC2.lto_priv.0",
+              1
+            ],
+            [
+              "S9xSetPCBase",
+              1
+            ],
+            [
+              "d35_window_eligible.part.0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBDM0.lto_priv.0",
+              1
+            ],
+            [
+              "OpE2.lto_priv.0",
+              1
+            ]
+          ],
+          "owners": {
+            "mixed_core_scheduler": 12,
+            "PPU_render": 83,
+            "PPU_registers": 4,
+            "65C816_ops_memory": 18,
+            "core_other": 10,
+            "SPC_APU_other": 7,
+            "DSP": 22,
+            "main_host_or_libraries": 3,
+            "DMA": 5
+          },
+          "all_requested_frames_valid": true,
+          "selected_frame_start": 384,
+          "selected_frame_end": 487,
+          "sparse_below100": false
+        },
+        "heavy_384_575": {
+          "samples": 164,
+          "functions": [
+            [
+              "d35_geometry_draw_0",
+              19
+            ],
+            [
+              "d35_fused_band_1_0",
+              15
+            ],
+            [
+              "DrawTile16",
+              14
+            ],
+            [
+              "retro_run",
+              12
+            ],
+            [
+              "d35_fused_band_3_0",
+              12
+            ],
+            [
+              "dsp_run.part.0",
+              9
+            ],
+            [
+              "S9xGetByte",
+              8
+            ],
+            [
+              "dsp_voice_V3",
+              8
+            ],
+            [
+              "DrawOBJS.lto_priv.0",
+              6
+            ],
+            [
+              "spc_run_until_.lto_priv.0",
+              5
+            ],
+            [
+              "d35_fused_band_0_0",
+              5
+            ],
+            [
+              "S9xDoHDMA",
+              5
+            ],
+            [
+              "S9xUpdateScreen",
+              4
+            ],
+            [
+              "S9xSetPPU",
+              4
+            ],
+            [
+              "S9xSetupOBJ",
+              3
+            ],
+            [
+              "OUTSIDE_CORE",
+              3
+            ],
+            [
+              "DrawBackground.lto_priv.0",
+              3
+            ],
+            [
+              "dsp_voice_V8_V5_V2",
+              3
+            ],
+            [
+              "DrawClippedTile16Add",
+              2
+            ],
+            [
+              "d35_window_defer",
+              2
+            ],
+            [
+              "RenderLine",
+              2
+            ],
+            [
+              "OpD0.lto_priv.0",
+              2
+            ],
+            [
+              "WRITE_4PIXELS16_ADD",
+              2
+            ],
+            [
+              "dsp_voice_V7_V4_V1",
+              2
+            ],
+            [
+              "S9xAPUExecute",
+              2
+            ],
+            [
+              "S9xApplyCheats.part.0",
+              1
+            ],
+            [
+              "S9xGetWord",
+              1
+            ],
+            [
+              "d35_geometry_produce",
+              1
+            ],
+            [
+              "OpE8X0",
+              1
+            ],
+            [
+              "S9xSetByte",
+              1
+            ],
+            [
+              "OpF0.lto_priv.0",
+              1
+            ],
+            [
+              "Op18.lto_priv.0",
+              1
+            ],
+            [
+              "OpC2.lto_priv.0",
+              1
+            ],
+            [
+              "S9xSetPCBase",
+              1
+            ],
+            [
+              "d35_window_eligible.part.0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBDM0.lto_priv.0",
+              1
+            ],
+            [
+              "OpE2.lto_priv.0",
+              1
+            ]
+          ],
+          "owners": {
+            "mixed_core_scheduler": 12,
+            "PPU_render": 83,
+            "PPU_registers": 4,
+            "65C816_ops_memory": 18,
+            "core_other": 10,
+            "SPC_APU_other": 7,
+            "DSP": 22,
+            "main_host_or_libraries": 3,
+            "DMA": 5
+          },
+          "all_requested_frames_valid": false,
+          "selected_frame_start": 384,
+          "selected_frame_end": 487,
+          "sparse_below100": false
+        }
+      }
+    },
+    {
+      "run": 2,
+      "name": "QUASAR",
+      "valid_prefix_frames": 1200,
+      "selected_samples": 1333,
+      "all_functions": [
+        [
+          "dsp_run.part.0",
+          126
+        ],
+        [
+          "retro_run",
+          109
+        ],
+        [
+          "d35_fused_band_0_0",
+          105
+        ],
+        [
+          "dsp_voice_V3",
+          102
+        ],
+        [
+          "DrawTile16",
+          84
+        ],
+        [
+          "d35_fused_band_3_0",
+          59
+        ],
+        [
+          "OUTSIDE_CORE",
+          57
+        ],
+        [
+          "d35_fused_band_1_0",
+          55
+        ],
+        [
+          "spc_run_until_.lto_priv.0",
+          50
+        ],
+        [
+          "DrawOBJS.lto_priv.0",
+          48
+        ],
+        [
+          "S9xSetPPU",
+          41
+        ],
+        [
+          "S9xDoHDMA",
+          39
+        ],
+        [
+          "dsp_voice_V7_V4_V1",
+          36
+        ],
+        [
+          "OpD0.lto_priv.0",
+          32
+        ],
+        [
+          "dsp_voice_V8_V5_V2",
+          31
+        ],
+        [
+          "d35_geometry_draw_0",
+          31
+        ],
+        [
+          "RenderLine",
+          30
+        ],
+        [
+          "S9xAPUExecute",
+          27
+        ],
+        [
+          "OpA5M1.lto_priv.0",
+          26
+        ],
+        [
+          "S9xUpdateScreen",
+          25
+        ],
+        [
+          "S9xGetByte",
+          21
+        ],
+        [
+          "DrawBackground.lto_priv.0",
+          15
+        ],
+        [
+          "S9xSetByte",
+          13
+        ],
+        [
+          "S9xGetWord",
+          10
+        ],
+        [
+          "S9xDoHBlankProcessing_NoSFX",
+          10
+        ],
+        [
+          "d35_window_eligible.part.0.lto_priv.0",
+          9
+        ],
+        [
+          "OpF0.lto_priv.0",
+          9
+        ],
+        [
+          "S9xDoDMA.part.0",
+          7
+        ],
+        [
+          "S9xSetWord",
+          6
+        ],
+        [
+          "REGISTER_2104.lto_priv.1.lto_priv.0",
+          5
+        ],
+        [
+          "Op60.lto_priv.0",
+          4
+        ],
+        [
+          "OpE8X0",
+          4
+        ],
+        [
+          "spc_run_timer_",
+          3
+        ],
+        [
+          "Op90.lto_priv.0",
+          3
+        ],
+        [
+          "OpE8X1.lto_priv.0",
+          3
+        ],
+        [
+          "OpC2.lto_priv.0",
+          3
+        ],
+        [
+          "Op54X0",
+          3
+        ],
+        [
+          "ConvertTile.lto_priv.0",
+          3
+        ],
+        [
+          "OpBFM1.lto_priv.0",
+          3
+        ],
+        [
+          "Op65M0.lto_priv.0",
+          3
+        ],
+        [
+          "OpA5M0.lto_priv.0",
+          3
+        ],
+        [
+          "RenderScreen",
+          3
+        ],
+        [
+          "OpAFM1.lto_priv.0",
+          2
+        ],
+        [
+          "Op69M0.lto_priv.0",
+          2
+        ],
+        [
+          "OpFAX0",
+          2
+        ],
+        [
+          "spc_cpu_read",
+          2
+        ],
+        [
+          "S9xSetPCBase",
+          2
+        ],
+        [
+          "Op06M0.lto_priv.0",
+          2
+        ],
+        [
+          "OpBDM0.lto_priv.0",
+          2
+        ],
+        [
+          "Op48M0",
+          2
+        ],
+        [
+          "OpB9M0.lto_priv.0",
+          2
+        ],
+        [
+          "Op99M0",
+          2
+        ],
+        [
+          "S9xSetCPU",
+          2
+        ],
+        [
+          "OpE2.lto_priv.0",
+          2
+        ],
+        [
+          "Op18.lto_priv.0",
+          2
+        ],
+        [
+          "Op8AM0",
+          2
+        ],
+        [
+          "Op4AM1.lto_priv.0",
+          2
+        ],
+        [
+          "Op65M1.lto_priv.0",
+          2
+        ],
+        [
+          "OpE0X1.lto_priv.0",
+          2
+        ],
+        [
+          "OpCEM1.lto_priv.0",
+          2
+        ],
+        [
+          "OpC8X0",
+          1
+        ],
+        [
+          "Op66M1.lto_priv.0",
+          1
+        ],
+        [
+          "SelectTileRenderer.lto_priv.0",
+          1
+        ],
+        [
+          "UNMAPPED_CORE",
+          1
+        ],
+        [
+          "OpAFM0.lto_priv.0",
+          1
+        ],
+        [
+          "Op9DM1.lto_priv.0",
+          1
+        ],
+        [
+          "Op85M0",
+          1
+        ],
+        [
+          "Op8DM0",
+          1
+        ],
+        [
+          "OpE5M0.lto_priv.0",
+          1
+        ],
+        [
+          "Op86X0",
+          1
+        ],
+        [
+          "S9xGetMemPointer",
+          1
+        ],
+        [
+          "OpA2X0.lto_priv.0",
+          1
+        ],
+        [
+          "OpBBX0",
+          1
+        ],
+        [
+          "OpBFM0.lto_priv.0",
+          1
+        ],
+        [
+          "OpE0X0.lto_priv.0",
+          1
+        ],
+        [
+          "Op7AX0",
+          1
+        ],
+        [
+          "S9xSetupOBJ",
+          1
+        ],
+        [
+          "Op30.lto_priv.0",
+          1
+        ],
+        [
+          "S9xAudioCallback",
+          1
+        ],
+        [
+          "OpADM0.lto_priv.0",
+          1
+        ],
+        [
+          "OpCAX0",
+          1
+        ],
+        [
+          "Op97M0",
+          1
+        ],
+        [
+          "spc_cpu_write",
+          1
+        ],
+        [
+          "Op8B",
+          1
+        ],
+        [
+          "Op05M1.lto_priv.0",
+          1
+        ],
+        [
+          "Op20.lto_priv.0",
+          1
+        ],
+        [
+          "OpA0X0.lto_priv.0",
+          1
+        ],
+        [
+          "OpBDM1.lto_priv.0",
+          1
+        ],
+        [
+          "Op7B.lto_priv.0",
+          1
+        ],
+        [
+          "Op9DM0",
+          1
+        ],
+        [
+          "Op5AX0",
+          1
+        ],
+        [
+          "Op69M1.lto_priv.0",
+          1
+        ],
+        [
+          "Op1AM1.lto_priv.0",
+          1
+        ],
+        [
+          "Op8CX0",
+          1
+        ],
+        [
+          "OpA9M1.lto_priv.0",
+          1
+        ],
+        [
+          "S9xStartHDMA",
+          1
+        ],
+        [
+          "Op4C.lto_priv.0",
+          1
+        ],
+        [
+          "OpDDM1.lto_priv.0",
+          1
+        ],
+        [
+          "Op48M1",
+          1
+        ],
+        [
+          "OpB5M1.lto_priv.0",
+          1
+        ],
+        [
+          "Op49M0.lto_priv.0",
+          1
+        ]
+      ],
+      "spans": {
+        "warm_valid_prefix": {
+          "samples": 1208,
+          "functions": [
+            [
+              "dsp_run.part.0",
+              121
+            ],
+            [
+              "retro_run",
+              99
+            ],
+            [
+              "dsp_voice_V3",
+              93
+            ],
+            [
+              "d35_fused_band_0_0",
+              87
+            ],
+            [
+              "DrawTile16",
+              77
+            ],
+            [
+              "d35_fused_band_1_0",
+              55
+            ],
+            [
+              "d35_fused_band_3_0",
+              53
+            ],
+            [
+              "OUTSIDE_CORE",
+              53
+            ],
+            [
+              "spc_run_until_.lto_priv.0",
+              42
+            ],
+            [
+              "DrawOBJS.lto_priv.0",
+              42
+            ],
+            [
+              "S9xSetPPU",
+              38
+            ],
+            [
+              "S9xDoHDMA",
+              32
+            ],
+            [
+              "d35_geometry_draw_0",
+              31
+            ],
+            [
+              "dsp_voice_V7_V4_V1",
+              30
+            ],
+            [
+              "dsp_voice_V8_V5_V2",
+              29
+            ],
+            [
+              "OpD0.lto_priv.0",
+              28
+            ],
+            [
+              "RenderLine",
+              26
+            ],
+            [
+              "S9xUpdateScreen",
+              24
+            ],
+            [
+              "OpA5M1.lto_priv.0",
+              24
+            ],
+            [
+              "S9xAPUExecute",
+              22
+            ],
+            [
+              "S9xGetByte",
+              20
+            ],
+            [
+              "DrawBackground.lto_priv.0",
+              14
+            ],
+            [
+              "S9xSetByte",
+              13
+            ],
+            [
+              "S9xDoHBlankProcessing_NoSFX",
+              9
+            ],
+            [
+              "OpF0.lto_priv.0",
+              9
+            ],
+            [
+              "S9xGetWord",
+              9
+            ],
+            [
+              "d35_window_eligible.part.0.lto_priv.0",
+              8
+            ],
+            [
+              "S9xDoDMA.part.0",
+              7
+            ],
+            [
+              "S9xSetWord",
+              4
+            ],
+            [
+              "OpE8X0",
+              4
+            ],
+            [
+              "REGISTER_2104.lto_priv.1.lto_priv.0",
+              4
+            ],
+            [
+              "Op60.lto_priv.0",
+              3
+            ],
+            [
+              "Op90.lto_priv.0",
+              3
+            ],
+            [
+              "OpE8X1.lto_priv.0",
+              3
+            ],
+            [
+              "OpC2.lto_priv.0",
+              3
+            ],
+            [
+              "Op54X0",
+              3
+            ],
+            [
+              "ConvertTile.lto_priv.0",
+              3
+            ],
+            [
+              "OpBFM1.lto_priv.0",
+              3
+            ],
+            [
+              "Op65M0.lto_priv.0",
+              3
+            ],
+            [
+              "OpA5M0.lto_priv.0",
+              3
+            ],
+            [
+              "RenderScreen",
+              3
+            ],
+            [
+              "spc_cpu_read",
+              2
+            ],
+            [
+              "S9xSetPCBase",
+              2
+            ],
+            [
+              "Op06M0.lto_priv.0",
+              2
+            ],
+            [
+              "OpBDM0.lto_priv.0",
+              2
+            ],
+            [
+              "Op48M0",
+              2
+            ],
+            [
+              "OpB9M0.lto_priv.0",
+              2
+            ],
+            [
+              "Op99M0",
+              2
+            ],
+            [
+              "S9xSetCPU",
+              2
+            ],
+            [
+              "OpE2.lto_priv.0",
+              2
+            ],
+            [
+              "Op18.lto_priv.0",
+              2
+            ],
+            [
+              "Op8AM0",
+              2
+            ],
+            [
+              "Op4AM1.lto_priv.0",
+              2
+            ],
+            [
+              "Op65M1.lto_priv.0",
+              2
+            ],
+            [
+              "OpE0X1.lto_priv.0",
+              2
+            ],
+            [
+              "OpCEM1.lto_priv.0",
+              2
+            ],
+            [
+              "SelectTileRenderer.lto_priv.0",
+              1
+            ],
+            [
+              "UNMAPPED_CORE",
+              1
+            ],
+            [
+              "OpAFM0.lto_priv.0",
+              1
+            ],
+            [
+              "Op9DM1.lto_priv.0",
+              1
+            ],
+            [
+              "Op85M0",
+              1
+            ],
+            [
+              "Op8DM0",
+              1
+            ],
+            [
+              "OpE5M0.lto_priv.0",
+              1
+            ],
+            [
+              "Op69M0.lto_priv.0",
+              1
+            ],
+            [
+              "Op86X0",
+              1
+            ],
+            [
+              "S9xGetMemPointer",
+              1
+            ],
+            [
+              "spc_run_timer_",
+              1
+            ],
+            [
+              "OpA2X0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBBX0",
+              1
+            ],
+            [
+              "OpBFM0.lto_priv.0",
+              1
+            ],
+            [
+              "OpE0X0.lto_priv.0",
+              1
+            ],
+            [
+              "Op7AX0",
+              1
+            ],
+            [
+              "S9xSetupOBJ",
+              1
+            ],
+            [
+              "Op30.lto_priv.0",
+              1
+            ],
+            [
+              "S9xAudioCallback",
+              1
+            ],
+            [
+              "OpADM0.lto_priv.0",
+              1
+            ],
+            [
+              "OpCAX0",
+              1
+            ],
+            [
+              "Op97M0",
+              1
+            ],
+            [
+              "spc_cpu_write",
+              1
+            ],
+            [
+              "Op8B",
+              1
+            ],
+            [
+              "Op05M1.lto_priv.0",
+              1
+            ],
+            [
+              "Op20.lto_priv.0",
+              1
+            ],
+            [
+              "OpA0X0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBDM1.lto_priv.0",
+              1
+            ],
+            [
+              "Op7B.lto_priv.0",
+              1
+            ],
+            [
+              "Op9DM0",
+              1
+            ],
+            [
+              "Op5AX0",
+              1
+            ],
+            [
+              "Op69M1.lto_priv.0",
+              1
+            ],
+            [
+              "Op1AM1.lto_priv.0",
+              1
+            ],
+            [
+              "Op8CX0",
+              1
+            ],
+            [
+              "OpA9M1.lto_priv.0",
+              1
+            ],
+            [
+              "S9xStartHDMA",
+              1
+            ],
+            [
+              "Op4C.lto_priv.0",
+              1
+            ],
+            [
+              "OpDDM1.lto_priv.0",
+              1
+            ],
+            [
+              "Op48M1",
+              1
+            ],
+            [
+              "OpB5M1.lto_priv.0",
+              1
+            ],
+            [
+              "Op49M0.lto_priv.0",
+              1
+            ]
+          ],
+          "owners": {
+            "SPC_APU_other": 68,
+            "PPU_render": 387,
+            "core_other": 49,
+            "DSP": 273,
+            "65C816_ops_memory": 192,
+            "mixed_core_scheduler": 108,
+            "PPU_registers": 38,
+            "DMA": 39,
+            "main_host_or_libraries": 53,
+            "unmapped_core": 1
+          },
+          "all_requested_frames_valid": true,
+          "selected_frame_start": 120,
+          "selected_frame_end": 1199,
+          "sparse_below100": false
+        },
+        "common_heavy_prefix_384_487": {
+          "samples": 142,
+          "functions": [
+            [
+              "d35_fused_band_1_0",
+              27
+            ],
+            [
+              "DrawTile16",
+              16
+            ],
+            [
+              "dsp_run.part.0",
+              14
+            ],
+            [
+              "retro_run",
+              8
+            ],
+            [
+              "dsp_voice_V3",
+              8
+            ],
+            [
+              "dsp_voice_V8_V5_V2",
+              6
+            ],
+            [
+              "S9xSetPPU",
+              5
+            ],
+            [
+              "d35_geometry_draw_0",
+              5
+            ],
+            [
+              "spc_run_until_.lto_priv.0",
+              4
+            ],
+            [
+              "d35_fused_band_3_0",
+              4
+            ],
+            [
+              "S9xDoHDMA",
+              4
+            ],
+            [
+              "DrawOBJS.lto_priv.0",
+              4
+            ],
+            [
+              "S9xAPUExecute",
+              3
+            ],
+            [
+              "RenderLine",
+              3
+            ],
+            [
+              "d35_window_eligible.part.0.lto_priv.0",
+              2
+            ],
+            [
+              "OUTSIDE_CORE",
+              2
+            ],
+            [
+              "S9xGetWord",
+              2
+            ],
+            [
+              "S9xUpdateScreen",
+              2
+            ],
+            [
+              "S9xGetByte",
+              2
+            ],
+            [
+              "dsp_voice_V7_V4_V1",
+              2
+            ],
+            [
+              "OpD0.lto_priv.0",
+              2
+            ],
+            [
+              "DrawBackground.lto_priv.0",
+              1
+            ],
+            [
+              "S9xSetWord",
+              1
+            ],
+            [
+              "Op86X0",
+              1
+            ],
+            [
+              "S9xGetMemPointer",
+              1
+            ],
+            [
+              "d35_fused_band_0_0",
+              1
+            ],
+            [
+              "spc_run_timer_",
+              1
+            ],
+            [
+              "OpA2X0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBBX0",
+              1
+            ],
+            [
+              "S9xSetCPU",
+              1
+            ],
+            [
+              "OpA5M1.lto_priv.0",
+              1
+            ],
+            [
+              "S9xSetByte",
+              1
+            ],
+            [
+              "OpE2.lto_priv.0",
+              1
+            ],
+            [
+              "Op99M0",
+              1
+            ],
+            [
+              "ConvertTile.lto_priv.0",
+              1
+            ],
+            [
+              "OpF0.lto_priv.0",
+              1
+            ],
+            [
+              "S9xDoHBlankProcessing_NoSFX",
+              1
+            ],
+            [
+              "OpBFM1.lto_priv.0",
+              1
+            ]
+          ],
+          "owners": {
+            "SPC_APU_other": 8,
+            "DSP": 30,
+            "PPU_render": 61,
+            "PPU_registers": 5,
+            "core_other": 7,
+            "65C816_ops_memory": 16,
+            "main_host_or_libraries": 2,
+            "DMA": 4,
+            "mixed_core_scheduler": 9
+          },
+          "all_requested_frames_valid": true,
+          "selected_frame_start": 384,
+          "selected_frame_end": 487,
+          "sparse_below100": false
+        },
+        "heavy_384_575": {
+          "samples": 259,
+          "functions": [
+            [
+              "d35_fused_band_1_0",
+              47
+            ],
+            [
+              "DrawTile16",
+              29
+            ],
+            [
+              "dsp_run.part.0",
+              28
+            ],
+            [
+              "dsp_voice_V3",
+              20
+            ],
+            [
+              "retro_run",
+              13
+            ],
+            [
+              "S9xSetPPU",
+              8
+            ],
+            [
+              "d35_geometry_draw_0",
+              8
+            ],
+            [
+              "dsp_voice_V8_V5_V2",
+              7
+            ],
+            [
+              "spc_run_until_.lto_priv.0",
+              7
+            ],
+            [
+              "S9xDoHDMA",
+              7
+            ],
+            [
+              "RenderLine",
+              6
+            ],
+            [
+              "d35_fused_band_3_0",
+              6
+            ],
+            [
+              "DrawOBJS.lto_priv.0",
+              6
+            ],
+            [
+              "dsp_voice_V7_V4_V1",
+              6
+            ],
+            [
+              "S9xAPUExecute",
+              5
+            ],
+            [
+              "OUTSIDE_CORE",
+              5
+            ],
+            [
+              "d35_fused_band_0_0",
+              5
+            ],
+            [
+              "S9xUpdateScreen",
+              5
+            ],
+            [
+              "DrawBackground.lto_priv.0",
+              3
+            ],
+            [
+              "OpA5M1.lto_priv.0",
+              3
+            ],
+            [
+              "OpD0.lto_priv.0",
+              3
+            ],
+            [
+              "d35_window_eligible.part.0.lto_priv.0",
+              2
+            ],
+            [
+              "S9xSetWord",
+              2
+            ],
+            [
+              "S9xGetWord",
+              2
+            ],
+            [
+              "S9xGetByte",
+              2
+            ],
+            [
+              "OpF0.lto_priv.0",
+              2
+            ],
+            [
+              "Op86X0",
+              1
+            ],
+            [
+              "S9xGetMemPointer",
+              1
+            ],
+            [
+              "spc_run_timer_",
+              1
+            ],
+            [
+              "OpA2X0.lto_priv.0",
+              1
+            ],
+            [
+              "OpBBX0",
+              1
+            ],
+            [
+              "S9xSetCPU",
+              1
+            ],
+            [
+              "S9xSetByte",
+              1
+            ],
+            [
+              "OpE2.lto_priv.0",
+              1
+            ],
+            [
+              "Op99M0",
+              1
+            ],
+            [
+              "ConvertTile.lto_priv.0",
+              1
+            ],
+            [
+              "S9xDoHBlankProcessing_NoSFX",
+              1
+            ],
+            [
+              "OpBFM1.lto_priv.0",
+              1
+            ],
+            [
+              "OpE8X0",
+              1
+            ],
+            [
+              "OpBFM0.lto_priv.0",
+              1
+            ],
+            [
+              "OpE0X0.lto_priv.0",
+              1
+            ],
+            [
+              "Op18.lto_priv.0",
+              1
+            ],
+            [
+              "Op7AX0",
+              1
+            ],
+            [
+              "Op8AM0",
+              1
+            ],
+            [
+              "OpE8X1.lto_priv.0",
+              1
+            ],
+            [
+              "S9xSetupOBJ",
+              1
+            ],
+            [
+              "Op30.lto_priv.0",
+              1
+            ],
+            [
+              "Op4AM1.lto_priv.0",
+              1
+            ]
+          ],
+          "owners": {
+            "SPC_APU_other": 13,
+            "DSP": 61,
+            "PPU_render": 111,
+            "PPU_registers": 8,
+            "core_other": 10,
+            "65C816_ops_memory": 30,
+            "main_host_or_libraries": 5,
+            "DMA": 7,
+            "mixed_core_scheduler": 14
+          },
+          "all_requested_frames_valid": true,
+          "selected_frame_start": 384,
+          "selected_frame_end": 575,
+          "sparse_below100": false
+        }
+      }
+    }
+  ],
+  "control_sample_comparisons": [
+    {
+      "control_run": 0,
+      "sample_run": 1,
+      "effect": "METEOR",
+      "intervals": {
+        "all_common": {
+          "calls": 488,
+          "requested_calls": 488,
+          "interval_complete": true,
+          "first_frame": 0,
+          "last_frame": 487,
+          "cpu_ns_sample_minus_control_ms": 0.12271926229508197,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.12935040983606558,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.15032172131147542,
+          "wall_ns_sample_minus_control_ms": 0.2198893442622951
+        },
+        "warm_common": {
+          "calls": 368,
+          "requested_calls": 368,
+          "interval_complete": true,
+          "first_frame": 120,
+          "last_frame": 487,
+          "cpu_ns_sample_minus_control_ms": 0.1323478260869565,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.13935054347826087,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.15930163043478263,
+          "wall_ns_sample_minus_control_ms": 0.2326521739130435
+        },
+        "early": {
+          "calls": 120,
+          "requested_calls": 120,
+          "interval_complete": true,
+          "first_frame": 120,
+          "last_frame": 239,
+          "cpu_ns_sample_minus_control_ms": 0.12030833333333332,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.13655,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.19978333333333334,
+          "wall_ns_sample_minus_control_ms": 0.3868333333333333
+        },
+        "earlier_heavy": {
+          "calls": 32,
+          "requested_calls": 32,
+          "interval_complete": true,
+          "first_frame": 384,
+          "last_frame": 415,
+          "cpu_ns_sample_minus_control_ms": 0.13409375,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.13221875,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.14553125,
+          "wall_ns_sample_minus_control_ms": 0.1546875
+        },
+        "late_heavy": {
+          "calls": 0,
+          "requested_calls": 40,
+          "interval_complete": false,
+          "first_frame": null,
+          "last_frame": null,
+          "cpu_ns_sample_minus_control_ms": null,
+          "main_step_cpu_ns_sample_minus_control_ms": null,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": null,
+          "wall_ns_sample_minus_control_ms": null
+        }
+      },
+      "interpretation": "Observed disturbance plus run/order variation; one pair, not causal timer calibration."
+    },
+    {
+      "control_run": 3,
+      "sample_run": 2,
+      "effect": "QUASAR",
+      "intervals": {
+        "all_common": {
+          "calls": 1200,
+          "requested_calls": 1200,
+          "interval_complete": true,
+          "first_frame": 0,
+          "last_frame": 1199,
+          "cpu_ns_sample_minus_control_ms": 0.10647,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.1057125,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.10303333333333332,
+          "wall_ns_sample_minus_control_ms": 0.1125775
+        },
+        "warm_common": {
+          "calls": 1080,
+          "requested_calls": 1080,
+          "interval_complete": true,
+          "first_frame": 120,
+          "last_frame": 1199,
+          "cpu_ns_sample_minus_control_ms": 0.10868518518518518,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.10778703703703704,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.10491851851851852,
+          "wall_ns_sample_minus_control_ms": 0.11017314814814815
+        },
+        "early": {
+          "calls": 120,
+          "requested_calls": 120,
+          "interval_complete": true,
+          "first_frame": 120,
+          "last_frame": 239,
+          "cpu_ns_sample_minus_control_ms": 0.119575,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.13645833333333335,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.22143333333333334,
+          "wall_ns_sample_minus_control_ms": 0.3980833333333333
+        },
+        "earlier_heavy": {
+          "calls": 32,
+          "requested_calls": 32,
+          "interval_complete": true,
+          "first_frame": 384,
+          "last_frame": 415,
+          "cpu_ns_sample_minus_control_ms": 0.1449375,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.1389375,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.12934375,
+          "wall_ns_sample_minus_control_ms": 0.1815625
+        },
+        "late_heavy": {
+          "calls": 40,
+          "requested_calls": 40,
+          "interval_complete": true,
+          "first_frame": 496,
+          "last_frame": 535,
+          "cpu_ns_sample_minus_control_ms": 0.134325,
+          "main_step_cpu_ns_sample_minus_control_ms": 0.1238,
+          "recorded_threads_CPU_ns_sample_minus_control_ms": 0.09645,
+          "wall_ns_sample_minus_control_ms": 0.03265
+        }
+      },
+      "interpretation": "Observed disturbance plus run/order variation; one pair, not causal timer calibration."
+    }
+  ],
+  "production_gate_passed": false,
+  "emulator_runtime_changes": false,
+  "limits": [
+    "Symbol ownership includes inlined work; scheduler remains explicitly mixed.",
+    "Outside-core samples include host callbacks/libraries, not workers.",
+    "Requested1ms is not delivered sample resolution; timer overruns are retained and never turned into invented samples.",
+    "No QEMU/host timing or sample distribution is an A7 price.",
+    "Only the valid frame-pointer prefix is counted; full PCM trace must independently qualify reserve.",
+    "No assumed independent/random sampling or confidence interval; short spans may be too sparse.",
+    "Control/sample comparisons have one pair per effect and reversed order across effects.",
+    "Named PPU buckets are conservative: RenderLine, RenderScreen, WRITE_4PIXELS and some window/geometry helpers remain in core_other. All symbol counts are retained for audit.",
+    "The original classifier includes one Quasar UNMAPPED_CORE sample in core_other; the extended census exposes unmapped_core separately.",
+    "A nominal completion with pointer drift is invalid; no reserve after first drift is certified.",
+    "No independent physical speaker/panel observation was supplied for this diagnostic.",
+    "Recorded CPU excludes other processes and some kernel work; worker residuals remain separate."
+  ],
+  "inputs": {
+    "device-evidence/a7-pair-before-20261015T002114Z/archive.json": "6665b5f9af09d83782e08c4d29675e3d5cc8b4c4a6e7f1c70fecfd5480d7b352",
+    "evidence/2026-10-14/pc-profile/installation.json": "f60edf7afe7c74b797a195054dbc5974b7e846138eb1b2670a8523f90b95ad31",
+    "build/evaluate-pc-profile-return.py": "e193624e5edb8693c386dd30332b80ded65424898a3a971e014b4ec28fa0fa0c",
+    "build/analyze-main-pc.py": "ba9853b050b2ca16eba0bc53ac1ac70ee25cd30a57829793b52e80887e69b02a",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/plan.json": "9e5053f9f353828299a4dfd0b611c076dfbe078ddf0899a37dfb95721600ebe8",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/suite-result.txt": "67c9761ec692bfe9ba46a8ac2a76b79cc61e536a3a59c7f67cc9fbe5c61da910",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/startup.log": "e782d7aa0b63fd8475da60b39db5ce6ddc5768d32cac8e0b290167759bcd74b8",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/begin.txt": "696ea84b6d1bb0002eaddfac6dc038837c9e4b01139b88c622c83fc5eae9e99a",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/result.txt": "2fc2906ac9e79f50cbcf15101af308fd96b922e97cfd438b9defeb5510037391",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/frames.csv": "1fd920f7e678b2105937029ccab10aa208af4409f7ad198f95aebc8376df1980",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/last-session.txt": "81cbe6c854b18d94bcb6a50cf224a350572a10acca811153f1d0050caa14c8a8",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/headroom.txt": "7fcd9c6ef6d8560db979c2f488d0c37085e6aa6552493ed179b3aec75bbcd7d3",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/pcm-full.txt": "62d77bbf7641245e30fd20f6a83fe51891eb075f6ccc4ddeeeed9243f5aadb6c",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-000/animation.csv": "794b0ecfc57b753941582c24dee6214de9acb5e90b74ed43fd048d538ed0b34a",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/begin.txt": "c65a07490c165c17391e06801e74a14ea866f0ec109858bffc3ef5ab51eb4098",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/result.txt": "57abb1a2cbd00b26b9f18764aa5ac0c6d5169aa9e14a4ee99d9e9703f553d096",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/frames.csv": "7cd1a2d7738a1af338b6785aba6a18d8f23683ea66813125d96a67c7f4c3aad2",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/last-session.txt": "a20d447ecd1177beab5346ea94d3e4a4993039c245e4c74afffd6650d130a4b3",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/headroom.txt": "4558dc59a85976613fea6e5ecce0822fdfc3666748d0ba73716be5c957cfe20f",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/pcm-full.txt": "43b7e963b3cb0e87e810d2e88c4ef551829dd649348ede456f6ef33c1a378043",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/animation.csv": "ad9c338781b4e2b66f08c2bbd863476ca659ef1f35749533a936efed6eb14d02",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-001/main-pc.csv": "748b88cf517beb044d53a13393660eaa79130f33ef84dc44fec86db9dde029cd",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/begin.txt": "24c0e076efe7e7f2813873ace84d845be5d0422685de6cbccc2e979a95fed1d6",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/result.txt": "434bcf7972cb1734bcdcf5a0c925040351f2318040259566f2d9015c950ee480",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/frames.csv": "7e8dae576898a948f542c147ae3c8a3b3227c2838c5dc6b100c08c25e072769d",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/last-session.txt": "35b2a11c5a8e457915cfd7c4a1ae3b4cb78196b35f6f15d1866ac8dbfa0fa3f9",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/headroom.txt": "23f36ba8abd49bf74e535eb689cc15aa983c4018fa506e7c90cd51dc9060081a",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/pcm-full.txt": "8f701d8114ed037ed810ae05514cc98047f511934017cb97fd181100490417ab",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/animation.csv": "15007f6fae078d9f1b46de5270a7263b30099946e95a371fb7e89f225855477a",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-002/main-pc.csv": "16c6c8cd51c24e0b48e19cdca0c80dd5193dff290630d282ae753df8a921b92c",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/begin.txt": "aac1bdc2dd523521192c7e8debda4335add4efa3e5c8b75ba0b41bc72a4b86c8",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/result.txt": "79442fc1aa90c64d3a0a2d2e0e6b66bf4bcb1e34abe30c363eb0ebfa6d52e743",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/frames.csv": "2d6bbb5a2a9df53fd10277b3a08f83c3b1ebee25aeff716d53a9d0703fac545b",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/last-session.txt": "dff76f3ae14ffc9063c1f7e1caee6cacfb32b67dd108b6fc166b9c162c4a90c5",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/headroom.txt": "c206b8b773cef879a05081983b7b1d9463543bf8a046a4abf1e954f6e00b181d",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/pcm-full.txt": "0b4ac90c2e3a8e44e5674c68ef9fbb0aced939a396556806599ff2db4fe2f0e6",
+    "device-evidence/a7-pair-before-20261015T002114Z/retro/snes-pc-profile1/run-003/animation.csv": "88b1125f7017a8f54b420726a027e358a28261de82f5771473a5fcd7111c22ee"
+  }
+}

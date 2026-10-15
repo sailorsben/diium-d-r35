@@ -1,16 +1,21 @@
 # Device findings
 
-**Current card:** I: one-shot armed for unchanged-demand-v3 PC attribution.
-Four Meteor/Quasar control/sample epochs, exact same core in both variants.
-Fresh 7,226-file archive matches the previous return exactly; 88 installed
-payloads and 7,225 prior files/stock/ROM/original progress verify. FAT clean
-before installation, after payload and after arm. Physical timer support,
-sampling quality, owner distribution and disturbance remain PENDING. Allow
-3–5 minutes, wait for stock, power down and return I:. Earlier card-status
-entries below record their historical state.
-[Installation and boot sequence](snes-pc-profile-installation.md).
+**Current card / latest return:** I: unarmed, marker consumed. Unchanged-v3 PC
+diagnostic ran all four epochs. Quasar clean twice; Meteor control completes
+but first pointer drift532, sampled drift488/audio error509 calls. Sampler works:
+613/1,333 active samples,583/1,333 valid-prefix counts; requested1ms delivers
+about10ms CPU spacing, overruns explicit. Common heavy384–487 named PPU share
+53.0%/46.5%, DSP/APU17.7%/26.8%, with mixed/other retained. These are coarse
+counts, not exact prices. Warm observed thread-CPU disturbance+0.159/+0.105ms.
+Meteor cumulative reserve loses2,076/2,075 frames before drift; Quasar retains
+full valid histories and gains193 frames. Strict7,359-file archive, FAT clean,
+88 exact payloads,7,224 protected prior files exact; only stock swapfile changes.
+Stock/ROM/original progress verify; no emulator changes, card writes or rearm.
+General priority/work avoidance remains the strongest lead, net A7 gain unknown.
+Earlier card-status entries below record their historical state.
+[Return and limits](snes-pc-profile-return.md).
 
-**Latest physical return:** marker consumed before this rearm. All56
+**Prior PPU return:** marker consumed before the PC diagnostic rearm. All56
 PPU epochs ran;16/18 contexts pass twice, Meteor/Rage032 still fail. Combined
 Meteor warm-common CPU costs0.071–0.120ms more and drifts earlier than matched
 v3. Bulk isolated heavy saving0.181–0.215ms, but both nominal1200-call Meteor
