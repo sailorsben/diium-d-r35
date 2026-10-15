@@ -6,6 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-14
 
+- **UART investigation now uses the exact archived kernel.** Latest draw-order
+  interval still records about6,921 IRQ19/s,92.32% of interrupt counts. Six
+  archived ARM-code checks reproduce a conditional TX-disable failure and
+  literal-zero character output. Live source state and A7 cost remain unknown;
+  built-in tracing/IRQ-time paths are absent. ABI-qualified kernel observation
+  is the next prerequisite; no module/card/core changes or rearm.
+  [Findings, checks and diagnostic specification](docs/uart-kernel-investigation.md).
+
 - **Draw-order returned: all18 contexts clean twice; I: unarmed.** All40
   candidate windows pass with full frames/PCM/pointers, including Meteor/Rage032;
   the four invalid epochs are Meteor controls. Net earlier-heavy Meteor saving

@@ -1,5 +1,19 @@
 # Investigation history and negative results
 
+## Exact UART kernel follow-up — 2026-10-14
+
+Revisit the unresolved IRQ19 after the draw-order return. Verified existing SPI
+backup yields the exact kernel and17,533 decoded symbols; all242 retained built-in
+runtime triples match. Six archived-code ARM/QEMU fixtures reproduce divergent
+TX-enable state surviving1000 empty handler calls, unconditional IRQ_HANDLED for
+unrecognized status and literal-zero PutChar output. These are code properties,
+not proof of the live IRQ source. Latest suite endpoints retain6.73million IRQ19
+events/~972s,92.32% of interrupt counts; no CPU-time claim. Actual dispatch and
+accounting plus absent tracing symbols narrow the observer options. Matching
+kernel build interface is still missing; specify qualification/cost/restoration
+requirements before any observer installation. No card access, rearm, module,
+core/APU or firmware change. [Research and next measurement](uart-kernel-investigation.md).
+
 ## Draw order succeeds on remaining contexts, exposes Quasar cost — 2026-10-14
 
 18/18 contexts pass twice for the first complete clean physical regression suite;

@@ -543,6 +543,15 @@ bounded audio-headroom production and durable targeted crash records.
 
 ## UART investigation and its negative result
 
+**October14 follow-up:** [exact archived kernel research](uart-kernel-investigation.md)
+confirms the latest draw-order suite still averages about6,921 IRQ19/s. Actual
+ARM-code fixtures reproduce a conditional TX-enable/software-flag mismatch that
+survives empty interrupts, plus literal-zero PutChar output and unconditional
+IRQ_HANDLED for unrecognized status. Live triggering state and CPU cost remain
+unproven. Decoded symbols/dispatch lack tracing and IRQ-time paths; an ABI-qualified
+observer is specified but not built. This is offline research, with no card or
+kernel changes. The historical redirection result below retains its narrow scope.
+
 The kernel identifies `c0070000.uart`, ttyS0, IRQ19 (GIC hwirq69), primary console. Runtime v2 saw about 6,968 IRQ/s and 85.61 reported TX bytes/s. v3 redirected both host/supervisor stdout/stderr to `/dev/null`, but still saw about 6,953 IRQ/s, similar comparable high-load CPU phases, and unchanged perceived behavior.
 
 This rules down ordinary stdout/stderr redirection as a useful performance fix for that test. FD10/FD11 remained `/dev/console`; kernel/polling console writes and the actual interrupt source/cost remain unresolved. Interrupt count times a guessed handler duration is not measured CPU cost.

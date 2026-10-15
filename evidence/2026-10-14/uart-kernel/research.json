@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "kind": "offline_exact_kernel_uart_research",
+  "card_access": false,
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "decoded_kernel_symbols": 17533,
+  "retained_builtin_runtime_symbols_matched": 242,
+  "module_abi": {
+    "vermagic": "4.19.128 mod_unload ARMv7 p2v8 ",
+    "this_module_bytes": 448,
+    "versions_section_present": false,
+    "qualification": "Metadata only; no replacement module built or loaded."
+  },
+  "selected_code_hashes": {
+    "gpHalUartWrite": {
+      "address": "0xc0117250",
+      "bytes": 68,
+      "sha256": "316d62996ab14075a55b1ccea5fbca07bb68f2766a6e4ced35b2534e3bc13009"
+    },
+    "gpHalUartRead": {
+      "address": "0xc0117294",
+      "bytes": 84,
+      "sha256": "6b021d8e253636f03d330b0ade54488c9a882a15d1f61aab0372d82235aa7809"
+    },
+    "gpHalUartGetChar": {
+      "address": "0xc01172e8",
+      "bytes": 20,
+      "sha256": "0afa74fcac963268238110d45d93db393965d93e9e6c0e674cb3ca5389551aa4"
+    },
+    "gpHalUartPutChar": {
+      "address": "0xc01172fc",
+      "bytes": 24,
+      "sha256": "a1b6caaa2c5dc7fe0b7751b0fa67e4d6e57ba26585c5b961b3f9d6a99838d6e4"
+    },
+    "gpHalUartGetIntSts": {
+      "address": "0xc0117314",
+      "bytes": 20,
+      "sha256": "5ca391da985e7d3c22296afe016cf6d95004cef983d45cdea596683805fb3873"
+    },
+    "gpHalUartGetRxSts": {
+      "address": "0xc0117328",
+      "bytes": 20,
+      "sha256": "cbb3396723847b6dd89303e7edbf35b4660b53f0d9a7373239d66043eb8b98c3"
+    },
+    "gpHalUartSetFifoCtrl": {
+      "address": "0xc011733c",
+      "bytes": 20,
+      "sha256": "d9f3c92388cfb7028aab6b62e374237cfca074134004438b539a3a9e505f6e45"
+    },
+    "gpHalUartSetCtrl": {
+      "address": "0xc0117350",
+      "bytes": 20,
+      "sha256": "4763d2cdf7c709d7e5e74f0ad0e9b17c28533de1a8f8f992797818bdabb7b537"
+    },
+    "gpHalUartGetCtrl": {
+      "address": "0xc0117364",
+      "bytes": 20,
+      "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+    },
+    "gpHalUartGetClkRate": {
+      "address": "0xc0117378",
+      "bytes": 92,
+      "sha256": "d99cbc7449f934ef78bda325677d117afc7a6bd6d7dce696227c7ce0422a4d4a"
+    },
+    "gpHalUartSetBaud": {
+      "address": "0xc01173d4",
+      "bytes": 116,
+      "sha256": "539053d890435256a1c06cd2c972f97ec5daf1aed4c4b6cd61888f52ab25ec20"
+    },
+    "gp_uart_get_mctrl": {
+      "address": "0xc0117448",
+      "bytes": 20,
+      "sha256": "8a77818995ef193ce258f9d098c68bb9360459775e4cf9d02fe1f3b962be279e"
+    },
+    "gp_uart_set_mctrl": {
+      "address": "0xc011745c",
+      "bytes": 16,
+      "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+    },
+    "gp_uart_break_ctl": {
+      "address": "0xc011746c",
+      "bytes": 16,
+      "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+    },
+    "gp_uart_release_port": {
+      "address": "0xc011747c",
+      "bytes": 16,
+      "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+    },
+    "gp_uart_request_port": {
+      "address": "0xc011748c",
+      "bytes": 20,
+      "sha256": "8a77818995ef193ce258f9d098c68bb9360459775e4cf9d02fe1f3b962be279e"
+    },
+    "gp_uart_config_port": {
+      "address": "0xc01174a0",
+      "bytes": 24,
+      "sha256": "fd7f4af87cb10e150062ec687a7908c4e87ed16ba4359e47c3f6670bd5672936"
+    },
+    "gp_uart_verify_port": {
+      "address": "0xc01174b8",
+      "bytes": 20,
+      "sha256": "6fab5ec9ec27fb745b0b17720f451f45872fc212243c09784401313a95dfb213"
+    },
+    "gp_uart_type": {
+      "address": "0xc01174cc",
+      "bytes": 20,
+      "sha256": "d481cc443fd9ba19ec2ba60e0b10398951b1e99096b8ab24ac6eae50fc2b9446"
+    },
+    "gp_uart_stop_rx": {
+      "address": "0xc01174e0",
+      "bytes": 60,
+      "sha256": "ca6cdda9ef015346b213e94ca5458c6c7009898b14516f5921284439dc759dbb"
+    },
+    "gp_uart_start_tx": {
+      "address": "0xc011751c",
+      "bytes": 64,
+      "sha256": "a4ef547445b4f854267be75797e476598fed195b39e0a456ebbed35ed532c9ca"
+    },
+    "gp_uart_stop_tx": {
+      "address": "0xc011755c",
+      "bytes": 64,
+      "sha256": "4125ba760307fb837babaf49915f033ac429c31207ece017c96630622fdc1442"
+    },
+    "gp_uart_set_termios": {
+      "address": "0xc011759c",
+      "bytes": 408,
+      "sha256": "8fe30834b9a38a2a85f55b5ab38c344f47b4ad65df412ac3639730f3f95c8bff"
+    },
+    "gp_uart_tx_empty": {
+      "address": "0xc0117734",
+      "bytes": 28,
+      "sha256": "a54de5790994b0ee7d719f0f25a2401c2f7ba0e81bd62f9dcb355b286a6c7ba2"
+    },
+    "gp_uart_console_putchar": {
+      "address": "0xc01177b4",
+      "bytes": 40,
+      "sha256": "72fd1ffd90ecb1f287f6545ae6676a9376f6ddfc9608397e8000b177bde192f0"
+    },
+    "gp_uart_isr": {
+      "address": "0xc01177dc",
+      "bytes": 564,
+      "sha256": "5e827da17391360214bef4c3e9cb076d854a3ae9441703b42f63f0d9651e03ba"
+    },
+    "gp_uart_resume": {
+      "address": "0xc0117a10",
+      "bytes": 44,
+      "sha256": "1cfce4a071de46ffbe69bad23abaeb21e115c4efd047d00bb22551b2b7d2d984"
+    },
+    "gp_uart_suspend": {
+      "address": "0xc0117a3c",
+      "bytes": 44,
+      "sha256": "48c0dc45a0b89fed3084b2fe867ea16650c75bf6cb750b54f6db9bb4800bf9ef"
+    },
+    "gp_uart_remove": {
+      "address": "0xc0117a68",
+      "bytes": 52,
+      "sha256": "4c6e0281b81c92d4915a28182edbe9f51fc050452dd831d19165c78d01b95e84"
+    },
+    "gp_uart_probe": {
+      "address": "0xc0117a9c",
+      "bytes": 276,
+      "sha256": "cdfd7c51ba93759d203b243281cc6b4e9fe7a86d2bd82bcf1080f30c50613d7c"
+    },
+    "gp_uart_console_setup": {
+      "address": "0xc0117bb0",
+      "bytes": 272,
+      "sha256": "834dd481522c90ebafdbbbc4f8ba01a7e2573f6064cd8469e6cda331dd391e59"
+    },
+    "gp_uart_console_write": {
+      "address": "0xc0117cc0",
+      "bytes": 148,
+      "sha256": "e44de8464a83a8e022ffd3a89b89ff226c7adf134c1442c66b81e8de8ac571d5"
+    },
+    "gp_uart_startup": {
+      "address": "0xc0117de8",
+      "bytes": 212,
+      "sha256": "75e6d1ec86bfc12955a1b32ef5da527903d0ea1d69e0cff1b58a26cf6b7f37ed"
+    },
+    "gp_uart_shutdown": {
+      "address": "0xc0117f50",
+      "bytes": 108,
+      "sha256": "508426df195e3bc9e3e0549c8d90c4f6fc11484e27df488a7c6ac85d7420c274"
+    },
+    "gp_uart_pm": {
+      "address": "0xc0117fbc",
+      "bytes": 96,
+      "sha256": "cba6e975ca232c8f97d19923313f8ef24e43efcfd8c93c172b1d94a937d05ea4"
+    },
+    "irq_enter": {
+      "address": "0xc0130df0",
+      "bytes": 116,
+      "sha256": "96d7f8909c3a88a80cf874fbf2bb6e44fcee39dac2e04e11ee00405d9cdffa91"
+    },
+    "irq_exit": {
+      "address": "0xc0130e64",
+      "bytes": 268,
+      "sha256": "08ca5e6d548795a4638128260325fe24d08e9523094c8b779548455d66e4342b"
+    },
+    "account_process_tick": {
+      "address": "0xc01516e0",
+      "bytes": 144,
+      "sha256": "8330a7b1ba4ca6c7a8ae7db35dfc2ef080f39ee0177914bc707d8fe1cb36b465"
+    },
+    "register_console": {
+      "address": "0xc015c110",
+      "bytes": 964,
+      "sha256": "5d19457c7ee1a41c22ac79c597e2c3f9c70997c0b75fd0c112bd3911e0b7b3ed"
+    },
+    "__handle_irq_event_percpu": {
+      "address": "0xc015ed64",
+      "bytes": 332,
+      "sha256": "55d32d9789bdb1c01a9a1e4329d07d7f50f8177e38ff079eebbc6afdf2a46746"
+    },
+    "handle_irq_event_percpu": {
+      "address": "0xc015eeb0",
+      "bytes": 148,
+      "sha256": "f258c789661f6290aa177c05cfb5d835a00e12a4137da966a28ba66d47ec3db0"
+    },
+    "__timer_const_udelay": {
+      "address": "0xc043accc",
+      "bytes": 44,
+      "sha256": "6a79b87d5b266435a7e3ad5563fa51833b639268863d675ed4f10c3feaa7b1ce"
+    },
+    "__loop_const_udelay": {
+      "address": "0xc043c360",
+      "bytes": 24,
+      "sha256": "b20724d49cf0ed8c2b00ced46c45ebb5f2adaaa1b931961cdd09e065f77baaf7"
+    },
+    "gp_uart_module_init": {
+      "address": "0xc0607fac",
+      "bytes": 76,
+      "sha256": "d228537bdf0f6abe1e2ed296627b9cb5099af9b11d5ce43e46263b299d1a5ce0"
+    },
+    "hrtimers_init": {
+      "address": "0xc060b0fc",
+      "bytes": 124,
+      "sha256": "3151390a36260ce0b2e9abaa676cbb61e3babe28da92a8655cc8665243f90845"
+    },
+    "debugfs_init": {
+      "address": "0xc0613298",
+      "bytes": 108,
+      "sha256": "f5543afc47ec544a4a86c4c327c31a3df366a2d2bfeb8ba6e690efca0382ed86"
+    }
+  },
+  "checks": [
+    "no-recognized-status returns IRQ_HANDLED without clearing control",
+    "empty TX with software-enabled flag clears TX control bit",
+    "1000 empty TX calls with clear software flag retain TX control, counters unchanged",
+    "queued TX increments counter but actual PutChar stores zero",
+    "recognized RX branch increments RX counter and delivers fixture byte",
+    "direct PutChar ignores supplied nonzero character"
+  ],
+  "tracefs_symbols_found": [],
+  "archived_rates": {
+    "v2": {
+      "irq19_delta": 625739,
+      "probe_interval_seconds": 89.798692,
+      "nearby_kernel_uptime_interval_seconds": 89.57000000000001,
+      "irq_per_probe_second": 6968.241809134592,
+      "approx_irq_per_kernel_uptime_second": 6986.033270068103,
+      "uptime_minus_irq_probe_elapsed_seconds": [
+        -0.0020919999999993166,
+        -0.23089400000000637
+      ],
+      "tx_delta": 7668,
+      "rx_delta": 0,
+      "brk_delta": 0,
+      "endpoint_caveat": "Coarse cross-check only: uptime has 10ms precision and nonmatching read endpoints; not an IRQ duration or exact rate correction."
+    },
+    "v3": {
+      "irq19_delta": 624818,
+      "probe_interval_seconds": 89.86047500000001,
+      "nearby_kernel_uptime_interval_seconds": 89.63,
+      "irq_per_probe_second": 6953.201616172182,
+      "approx_irq_per_kernel_uptime_second": 6971.0811112350775,
+      "uptime_minus_irq_probe_elapsed_seconds": [
+        -0.0019239999999989266,
+        -0.23251500000000647
+      ],
+      "tx_delta": 7686,
+      "rx_delta": 0,
+      "brk_delta": 0,
+      "endpoint_caveat": "Coarse cross-check only: uptime has 10ms precision and nonmatching read endpoints; not an IRQ duration or exact rate correction."
+    }
+  },
+  "live_irq_cause_proven": false,
+  "a7_irq_duration_measured": false,
+  "inputs": {
+    "build/inspect-uart-kernel.py": "b3d834ad0603f2f3ef315635f4a325e8085df3ef67feb579e181d247ae088d99",
+    "build/check-uart-kernel.py": "f4f0bd44cbcf671438ef2ce88a26c4076730e00b232152256698dd3a701b753d",
+    "build/check-uart-kernel.c": "dfce0f8063692576e199fb99d37686e8f71f42e3b7c7dad420512d2c1e0a1508",
+    "evidence/2026-10-04/hardware-runtime-return-20261004T182651Z/hardware_probe_v2.jsonl": "105f05ffed96a35be5a347a88105fd30348369df2f03df10277021928b22e7b4",
+    "device-evidence/hardware-console-return-20261004T185838Z/hardware_probe_v3.jsonl": "b7319e0e1af652159be5190a85e5005a8b5a89fef2dc5ba0ca7ea8b425af3392",
+    "device-evidence/a7-pair-before-20261015T011612Z/retro/snes-draw-order1/runtime-platform.txt": "45cda5ae04db685676a085b6318c5de6c760872732701ef2a89078316c3e9da6",
+    "device-evidence/a7-pair-before-20261015T011612Z/retro/snes-draw-order1/runtime-platform-latest.txt": "2e669dbbc242ca5926d02de5156d81383c87c32eaf9759a993fbcb132c00b3c0"
+  },
+  "private_check_binary_sha256": "da7ea1e8efbb1a147f2270fe1e4b8c8f7b753f5678a113577a34a0c6f9821c75",
+  "latest_draw_order_suite": {
+    "snapshots": [
+      {
+        "uptime": 8.26,
+        "irq19": 150669,
+        "total_irq": 151774
+      },
+      {
+        "uptime": 980.69,
+        "irq19": 6880798,
+        "total_irq": 7441438
+      }
+    ],
+    "kernel_uptime_interval_seconds": 972.4300000000001,
+    "irq19_delta": 6730129,
+    "irq19_per_second": 6920.939296401797,
+    "all_irq_delta": 7289664,
+    "irq19_share_of_interrupt_counts_percent": 92.32426899237056,
+    "boundary": "Whole-suite interval includes emulation, startup, inter-epoch flushes and teardown. IRQ and uptime reads are separate; this is an approximate rate and count share, never CPU-time share."
+  }
+}

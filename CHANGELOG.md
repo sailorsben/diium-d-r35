@@ -1,5 +1,18 @@
 # Changelog
 
+## Exact archived UART kernel investigation — 2026-10-14
+
+Decode17,533 kernel symbols from the verified private SPI backup; all242 retained
+built-in runtime triples match. Six actual ARM-code QEMU checks establish the
+conditional TX-stop mismatch, unrecognized-status IRQ_HANDLED return and literal
+zero PutChar store. Latest draw-order snapshots still show6,730,129 IRQ19 events
+over972.43s (~6,921/s),92.32% of interrupt-count growth, not CPU time. Actual
+dispatch/accounting and absent tracing symbols explain limits of existing
+telemetry. Specify bounded ABI-qualified observation; matching vendor build
+interface, live cause and A7 duration remain missing. Preserve all927 prior
+published hashes. No device access, core/APU change, module load, rearm or flash.
+See docs/uart-kernel-investigation.md.
+
 ## Draw-order physical return passes all18 contexts twice — 2026-10-14
 
 Strict7,797-file/1,937,074,272-byte archive, clean FAT,85 exact payloads and
