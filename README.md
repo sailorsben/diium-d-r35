@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
+Matched five-game physical package qualified:20 ABBA/reversed epochs,
+24,000 exact gameplay pixel/PCM calls plus34,624 Star Fox cold-replay calls.
+Both native policies, firmware recovery and installer rollback gates pass.
+Sparse pre-install collection hashes10,759 existing files, saves zero new bytes
+and finds clean FAT. No full backup. Physical result pending installation/run.
+[Physical test and boot instructions](docs/fivegame-physical-test.md).
+
 Ranger black screen and Star Fox state divergence are fixed in an isolated
 candidate; a newly exposed SuperFX direct-target pixel failure uses the
 full-layout compatibility path. All five reach inspected gameplay and pass

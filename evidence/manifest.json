@@ -7783,6 +7783,14 @@
       "published_sha256": "e8bf4239c8daefbd0f03a431c56d229b660119a2607cd3b188c453b2b4f44a42",
       "bytes": 34925,
       "normalized": false
+    },
+    {
+      "source": "build/fivegame-physical-private-v1/verification.json",
+      "published": "evidence/2026-10-16/fivegame/qualification.json",
+      "source_sha256": "95a320caec711955847c563fc8820bafeed7f56ab295f261474b6ab5d2d6b5b6",
+      "published_sha256": "3fcd2551e55eec0e13837c0adab76a46bd6d68e513f82eb4c3bd7b1b0065bc53",
+      "bytes": 16476,
+      "normalized": true
     }
   ]
 }

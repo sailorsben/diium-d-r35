@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## Qualify matched five-game physical test — 2026-10-16
+
+Prepare20 policy-only ABBA/reversed epochs across the five actual gameplay
+scenes, exact corrected core and original backup ROMs.24,000 controller calls
+match original pixel/PCM/sample oracles; Star Fox uses34,624 cold calls and no
+GSU snapshot continuation. Both consuming native policies, busy/fault/drain,
+firmware/reap and seven installer transaction cases pass. PAL-aware native
+period/headroom and relative deficit fixture. Sparse inventory preserves all
+10,759 prior files with zero new content bytes; no full backup. Measurement
+experiment only: rebuilt-core A7 saving/remaining deficit explicitly missing.
+[Qualification, gate and boot](fivegame-physical-test.md).
+
 ## Fix Ranger/Star Fox and qualify five gameplay scenes — 2026-10-16
 
 Resolve Ranger's stalled SPC SYNC exchange with AVCJ-only instruction-complete
