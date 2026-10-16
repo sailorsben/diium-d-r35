@@ -1,5 +1,16 @@
 # Changelog
 
+## Correct pressure-test cleanup and load baseline — 2026-10-15
+
+Prepare separate pressure2: remove controller's second finish, retain joined
+audio-worker error handling, move phases59–65 to static cached/direct/queued
+render+audio and record executed load events. Actual-controller/threaded-owner
+fixture catches the original double-drain, propagates finish failure and executes
+six bursts. All70 mock cells,60 image cases, firmware recovery/faults, ABI/source
+pins pass. Original pressure1/evidence and production core/drivers preserved.
+Offline qualification only; installation/physical results pending.
+[Details](docs/render-pressure2.md).
+
 ## Collect first ROM-free pressure return — 2026-10-15
 
 Archive and verify all 70 physical cells:50 non-audio passes, five completed

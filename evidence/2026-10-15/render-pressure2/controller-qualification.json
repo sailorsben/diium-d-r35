@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "actual_threaded_audio_owner": true,
+  "single_finish_success": true,
+  "finish_failure_propagates": true,
+  "reintroduced_double_finish_rejected": true,
+  "bursts_executed": 6,
+  "device_backend": "deterministic fake; no PCM/DMA/performance claim",
+  "sources": {
+    "build/check-render-pressure2-controller.py": "dbaeab3a06c2f7eb87cf85c29c5fa60ffe9d59d7d4133827c95bfccfb04e6bca",
+    "build/check-render-pressure2-controller.c": "712998049152fe5cb4877f918cba561c355dc6bdb73891c187d378d964f0ff00",
+    "build/render-pressure2.c": "c172fea7e6d7e06eb340ca421568458cd96776a035cdc6dd3a5abd0caf01d44d",
+    "build/render-pressure2-private/runner/audio-owner.c": "caccf1ae8d764ba162cd99e6cb5b0c590d5f693b4da66a8e8b88cdc46737126b"
+  }
+}

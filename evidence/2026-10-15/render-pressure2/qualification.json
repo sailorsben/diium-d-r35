@@ -1,0 +1,89 @@
+{
+  "version": "render-pressure2",
+  "passed": true,
+  "oracle": "PASS scalar oracle / NEON / cached rows: 60 full-frame cases; palette/tile churn, depth, windows, flips, geometry and guards",
+  "controller_mock_phases": 70,
+  "supervisor_child_reaped": true,
+  "firmware_shell_checks": [
+    "syntax",
+    "normal consumption and completion",
+    "consumed reboot skips",
+    "forced72 withholds stock"
+  ],
+  "mock_rejected_as_physical": true,
+  "mock_timings_published": false,
+  "native_board_audio_support_reused_by_hash": true,
+  "controller_qualification_sha256": "2cad96f1779f9bd1306f302c2a1a0348c05e3c29c233adce9629bc84b2f55691",
+  "load_sweeps_on_light_workload": true,
+  "sources": {
+    "build/render-pressure2.c": "c172fea7e6d7e06eb340ca421568458cd96776a035cdc6dd3a5abd0caf01d44d",
+    "build/render-pressure-kernels.h": "9610289e22389789cef11d970b9d9211b87361f2b20603b160d1dec0cddc800f",
+    "build/plus-a7-render.h": "5dcaf8def5b5ef53140c0302fe78b1b0d33bab99dea47ef5338b3f37575b5b54",
+    "build/prepare-render-pressure2.py": "7fd0cfc8bed0ca3ae8273a276a278cc5edc4942656dad35a065356afafb51cf9",
+    "build/build-render-pressure2.sh": "382527c201f6497c78fc87bef6576b0c3a9fa32757a1ded4fb6b14b615bcb430",
+    "build/report-render-pressure2.py": "12b8d898ad9dbc1614f37e22af0871c646fa47720f19d1e425693d72dbd3c761",
+    "build/qualify-render-pressure2.py": "7a0776e896207c4cb14cb220103ea823242ccb8bb39a16113f4ea81c427fb01e",
+    "build/audit-device-render-path.py": "f24fd5f6d4b5de52b06fe93b879a487de258f0c62a80159e698f178ec194d476",
+    "build/launch-platform-lab2.sh": "2013263e724bc3303e7b15d90888879e1246500245e6b6bbe70c3ca60aaeff5c",
+    "build/install-render-pressure2.py": "21664ebc9004e9a295bf5b6c69419a5c1827496980cdac273a9198f1451693e3",
+    "build/check-render-pressure2-controller.py": "dbaeab3a06c2f7eb87cf85c29c5fa60ffe9d59d7d4133827c95bfccfb04e6bca",
+    "build/check-render-pressure2-controller.c": "712998049152fe5cb4877f918cba561c355dc6bdb73891c187d378d964f0ff00",
+    "build/check-render-pressure2-faults.py": "c8e5985c2a593e3df20bf4837b531d742df606431442b9b796070f35ff1bb929"
+  },
+  "local_compile_dependencies": {
+    "build/render-pressure2.c": "c172fea7e6d7e06eb340ca421568458cd96776a035cdc6dd3a5abd0caf01d44d",
+    "build/render-pressure-kernels.h": "9610289e22389789cef11d970b9d9211b87361f2b20603b160d1dec0cddc800f",
+    "build/snes9x2005/source/gfx.h": "8529d85a867da49758a1806efae6e0382062099587a8fc32557b2544464682e3",
+    "build/snes9x2005/source/../copyright": "82f348cdc5728a9493619754acf337c3587a7bbd98327013a3d13d8065899f2d",
+    "build/snes9x2005/source/port.h": "19b421ef000609a6b21ad023fe877c8db3202d961c436e74016448993096adff",
+    "build/snes9x2005/libretro-common/include/retro_inline.h": "c0efdc2f6d9b7126748c8bcdac07be8e5bfc316903bbd383dafff77670de3300",
+    "build/snes9x2005/source/pixform.h": "0920832e1e1a23ed7a7033374e697d2b77253a6e4fc757e940263143006f9580",
+    "build/snes9x2005/libretro-common/include/libretro.h": "a3ade6b81de16ae51374d7aeb87a05cd24c147ed436716a8c5c88a83bdc02bec",
+    "build/snes9x2005/source/ppu.h": "6b58622acc6866d2acc47516d7225a77e6e38255be12fc4f3866073786c9f012",
+    "build/snes9x2005/libretro-common/include/boolean.h": "2b8e993f330fdfc0b8a947869286d90738cfe154dfa78824e4f7209f73c8d2fb",
+    "build/snes9x2005/source/memmap.h": "f836f44c3ccf42719c0676eae0c25921a2306352bd2cf2ad0f7df9012e47006f",
+    "build/snes9x2005/source/snes9x.h": "650df2a46e794849fb33c215623e23db596f2402d7aee98d81a5ba59346349a1",
+    "build/snes9x2005/source/65c816.h": "ddbbc53b0155abc298c38d1915f84970baa3adbacdafff01355976858e2a9d48",
+    "build/plus-a7-render.h": "5dcaf8def5b5ef53140c0302fe78b1b0d33bab99dea47ef5338b3f37575b5b54",
+    "build/render-pressure2-private/runner/board.h": "a1c5274728a344a21291e2c2e5e6e5ff0948328dfe8e1c7c79593da9be5aee9a",
+    "build/render-pressure2-private/runner/audio-pipe.h": "a1b402f78165b81ab981fef13d5e269655619088c684f37da5ae6fc0add13931",
+    "build/render-pressure2-private/runner/native-pcm.h": "983fdbb9840863204c4e4fe7a69a9abc58c513b6909aa3ef2f39b4c501d3a4d3",
+    "build/render-pressure2-private/runner/startup.h": "aeb2217abd9ead418cbb956588cdde064a63751236ad4893261fd4bcdf35d6ec"
+  },
+  "ABI_versions": [
+    "GCC_3.5",
+    "GLIBC_2.17",
+    "GLIBC_2.4",
+    "GLIBC_2.7"
+  ],
+  "private_support": {
+    "board.c": "4dee5a71242dd2f924b0551e2e91032c6d61c5704287bb1393969d18f36314ed",
+    "board.h": "a1c5274728a344a21291e2c2e5e6e5ff0948328dfe8e1c7c79593da9be5aee9a",
+    "audio-owner.c": "caccf1ae8d764ba162cd99e6cb5b0c590d5f693b4da66a8e8b88cdc46737126b",
+    "audio-pipe.h": "a1b402f78165b81ab981fef13d5e269655619088c684f37da5ae6fc0add13931",
+    "native-pcm.c": "c197a45b3b7e6da07cb48175d09027e19c971438927f9f185e2e0e7b10a62c58",
+    "native-pcm.h": "983fdbb9840863204c4e4fe7a69a9abc58c513b6909aa3ef2f39b4c501d3a4d3",
+    "startup.c": "1809cd84ccc874a46e3d42d10ef4e830a3b87b7efb943ce302b294e046a84cb2",
+    "startup.h": "aeb2217abd9ead418cbb956588cdde064a63751236ad4893261fd4bcdf35d6ec",
+    "platform.c": "f6efdec4897767d0ba02acb0812f608ee85ad562f5bee0910f1ed132b604dccd",
+    "platform.h": "2b7205dc07633b40df48108ffaccb98bc8f67b5a77e915c426f5884445fdd2f1",
+    "timing.c": "48fc5caff836f7717ee8221da38d7c2cbd3bf7ceef02619c69b0a566745ab220",
+    "timing.h": "c59ea5c243702917f120ff14bbeb552bb7276e5639b036bf1840ed18e9847f13"
+  },
+  "payloads": {
+    "render-pressure": "75835b418f51792f1d9e3ffea6e56b87330ad7492a640a8e65970846cfb4f530",
+    "launch.sh": "12d017338a72d180c82468625a006c29195c971ba8b64133e4f92eb943883eed",
+    "dispatch.sh": "c1240d0f7312fb14818889c30a39450c69d3f70d25c58e8abafcccaeff4e5cd1"
+  },
+  "preparation_sha256": "2553c43d9c50faf19e97dd1cf8c60774bced016d03af0afac646fce56e70a488",
+  "card_access": false,
+  "physical_result": "PENDING",
+  "installed": false,
+  "armed": false,
+  "production_gate": false,
+  "limits": [
+    "Null backend does not exercise new controller against real DMA/display/PCM.",
+    "Frozen support seams have prior physical evidence, not qualification of this new combined test.",
+    "Fault injection and a sustained physical return are still required before treating every stress threshold as a device ceiling."
+  ]
+}

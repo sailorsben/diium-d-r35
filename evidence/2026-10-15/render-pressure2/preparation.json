@@ -1,0 +1,25 @@
+{
+  "version": "render-pressure2",
+  "ROM_required": false,
+  "phases": 70,
+  "copied_support": {
+    "board.c": "4dee5a71242dd2f924b0551e2e91032c6d61c5704287bb1393969d18f36314ed",
+    "board.h": "a1c5274728a344a21291e2c2e5e6e5ff0948328dfe8e1c7c79593da9be5aee9a",
+    "audio-owner.c": "caccf1ae8d764ba162cd99e6cb5b0c590d5f693b4da66a8e8b88cdc46737126b",
+    "audio-pipe.h": "a1b402f78165b81ab981fef13d5e269655619088c684f37da5ae6fc0add13931",
+    "native-pcm.c": "c197a45b3b7e6da07cb48175d09027e19c971438927f9f185e2e0e7b10a62c58",
+    "native-pcm.h": "983fdbb9840863204c4e4fe7a69a9abc58c513b6909aa3ef2f39b4c501d3a4d3",
+    "startup.c": "1809cd84ccc874a46e3d42d10ef4e830a3b87b7efb943ce302b294e046a84cb2",
+    "startup.h": "aeb2217abd9ead418cbb956588cdde064a63751236ad4893261fd4bcdf35d6ec",
+    "platform.c": "f6efdec4897767d0ba02acb0812f608ee85ad562f5bee0910f1ed132b604dccd",
+    "platform.h": "2b7205dc07633b40df48108ffaccb98bc8f67b5a77e915c426f5884445fdd2f1",
+    "timing.c": "48fc5caff836f7717ee8221da38d7c2cbd3bf7ceef02619c69b0a566745ab220",
+    "timing.h": "c59ea5c243702917f120ff14bbeb552bb7276e5639b036bf1840ed18e9847f13"
+  },
+  "frozen_suite_verification_sha256": "f3460d89d8b6bab7b59334df99f2bdf843f3b1cae9a1900bb65156dbb57581c5",
+  "card_access": false,
+  "physical_result": "PENDING",
+  "installed": false,
+  "armed": false,
+  "qualification_boundary": "Copied board/audio semantics are physically exercised; new controller and synthetic workloads require their own device return."
+}

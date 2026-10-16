@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Qualify corrected pressure2 before physical repeat — 2026-10-15
+
+Remove the new controller's extra drain without changing the frozen audio owner;
+place steady/burst sweeps on the previously successful light static route.
+Record load events and check the real controller plus real threaded owner with
+a fake device: normal single finish, finish failure propagation, six actual burns
+and a negative control restoring the original bug. All70 mock/oracle/wrapper/ABI
+checks pass. Preserve pressure1 and matching-kernel audit; no speed claim or
+device threshold from fake timing. [Details](render-pressure2.md).
+
 ## First independent pressure return separates rendering and shutdown — 2026-10-15
 
 All 70 cells finish normally; 50 non-audio pass. Audio-only and four light

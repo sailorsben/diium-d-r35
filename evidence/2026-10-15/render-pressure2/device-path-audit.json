@@ -1,0 +1,765 @@
+{
+  "version": "device-render-path1",
+  "kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "symbol_table_sha256": "f35b1bee013fb7e4d9c269195cbcb1b407e63b9b9ade801924b72e74dbe1a734",
+  "functions": [
+    {
+      "name": "gp_pscaler_open",
+      "address": "0xc035f86c",
+      "bytes": 224,
+      "sha256": "c9f1a890d63f84e363ca22a5e1f027cd3df2646fa50e95ab505c3f6f09947799",
+      "direct_calls": [
+        {
+          "at": "0xc035f8dc",
+          "target": "0xc0158354",
+          "name": "down_interruptible"
+        },
+        {
+          "at": "0xc035f8fc",
+          "target": "0xc035f7f4",
+          "name": "__module_clk_en"
+        },
+        {
+          "at": "0xc035f910",
+          "target": "0xc0158420",
+          "name": "up"
+        },
+        {
+          "at": "0xc035f92c",
+          "target": "0xc015d994",
+          "name": "printk"
+        },
+        {
+          "at": "0xc035f940",
+          "target": "0xc015d994",
+          "name": "printk"
+        }
+      ]
+    },
+    {
+      "name": "gp_pscaler_release",
+      "address": "0xc0361428",
+      "bytes": 320,
+      "sha256": "01234911f6dad223d6c7765751589dea55e1c445d351dc28a9d6ef1689f36480",
+      "direct_calls": [
+        {
+          "at": "0xc0361448",
+          "target": "0xc0158354",
+          "name": "down_interruptible"
+        },
+        {
+          "at": "0xc036149c",
+          "target": "0xc01f4ba4",
+          "name": "kfree"
+        },
+        {
+          "at": "0xc03614e4",
+          "target": "0xc01f4ba4",
+          "name": "kfree"
+        },
+        {
+          "at": "0xc03614fc",
+          "target": "0xc043c040",
+          "name": "mmioset"
+        },
+        {
+          "at": "0xc036150c",
+          "target": "0xc043c040",
+          "name": "mmioset"
+        },
+        {
+          "at": "0xc036152c",
+          "target": "0xc03613c4",
+          "name": "_ppu_uninit"
+        },
+        {
+          "at": "0xc0361534",
+          "target": "0xc0158420",
+          "name": "up"
+        },
+        {
+          "at": "0xc0361548",
+          "target": "0xc035f7f4",
+          "name": "__module_clk_en"
+        },
+        {
+          "at": "0xc036155c",
+          "target": "0xc015d994",
+          "name": "printk"
+        }
+      ]
+    },
+    {
+      "name": "gp_pscaler_ioctl",
+      "address": "0xc0360880",
+      "bytes": 2848,
+      "sha256": "b042f09707b9a7b1cc574f9212347ccc16356a213bcbe907f5048ff1df2e90d8",
+      "direct_calls": [
+        {
+          "at": "0xc0360954",
+          "target": "0xc035df7c",
+          "name": "gpHalPscalerStop"
+        },
+        {
+          "at": "0xc0360b78",
+          "target": "0xc035fd7c",
+          "name": "pscaler_trigger"
+        },
+        {
+          "at": "0xc0360bd4",
+          "target": "0xc035f97c",
+          "name": "pscaler_wait.part.0"
+        },
+        {
+          "at": "0xc0360c30",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0360c4c",
+          "target": "0xc035f524",
+          "name": "__enqueue_frame"
+        },
+        {
+          "at": "0xc0360d18",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0360d34",
+          "target": "0xc035f524",
+          "name": "__enqueue_frame"
+        },
+        {
+          "at": "0xc0360dac",
+          "target": "0xc01f4ba4",
+          "name": "kfree"
+        },
+        {
+          "at": "0xc0360f70",
+          "target": "0xc0157050",
+          "name": "__wake_up"
+        },
+        {
+          "at": "0xc0360fc8",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0360ff4",
+          "target": "0xc035f94c",
+          "name": "__get_phy_addr.part.0"
+        },
+        {
+          "at": "0xc036105c",
+          "target": "0xc01f4ba4",
+          "name": "kfree"
+        },
+        {
+          "at": "0xc03610ac",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0361104",
+          "target": "0xc035e888",
+          "name": "__get_input_fmt"
+        },
+        {
+          "at": "0xc0361110",
+          "target": "0xc035e98c",
+          "name": "__get_output_fmt"
+        },
+        {
+          "at": "0xc03611a0",
+          "target": "0xc035f97c",
+          "name": "pscaler_wait.part.0"
+        },
+        {
+          "at": "0xc03611cc",
+          "target": "0xc0439e30",
+          "name": "arm_copy_to_user"
+        },
+        {
+          "at": "0xc03611e8",
+          "target": "0xc035ea88",
+          "name": "pscaler_retrigger"
+        },
+        {
+          "at": "0xc0361220",
+          "target": "0xc035f97c",
+          "name": "pscaler_wait.part.0"
+        },
+        {
+          "at": "0xc0361230",
+          "target": "0xc035ea88",
+          "name": "pscaler_retrigger"
+        },
+        {
+          "at": "0xc036125c",
+          "target": "0xc0439e30",
+          "name": "arm_copy_to_user"
+        },
+        {
+          "at": "0xc03612a0",
+          "target": "0xc035e2c4",
+          "name": "gpHalPscalerSetBypassOutAddrB"
+        },
+        {
+          "at": "0xc03612b4",
+          "target": "0xc035e278",
+          "name": "gpHalPscalerSetBypassOutAddrA"
+        },
+        {
+          "at": "0xc03612c8",
+          "target": "0xc035db14",
+          "name": "gpHalPscalerSetOutputAddrB"
+        },
+        {
+          "at": "0xc03612dc",
+          "target": "0xc035dac8",
+          "name": "gpHalPscalerSetOutputAddrA"
+        },
+        {
+          "at": "0xc03612f0",
+          "target": "0xc035dd18",
+          "name": "gpHalPscalerSetInputAddr"
+        },
+        {
+          "at": "0xc0361318",
+          "target": "0xc043c040",
+          "name": "mmioset"
+        },
+        {
+          "at": "0xc0361364",
+          "target": "0xc012d838",
+          "name": "__stack_chk_fail"
+        },
+        {
+          "at": "0xc0361374",
+          "target": "0xc015d994",
+          "name": "printk"
+        },
+        {
+          "at": "0xc0361384",
+          "target": "0xc015d994",
+          "name": "printk"
+        },
+        {
+          "at": "0xc0361398",
+          "target": "0xc015d994",
+          "name": "printk"
+        }
+      ]
+    },
+    {
+      "name": "pscaler_wait",
+      "address": "0xc035fb38",
+      "bytes": 40,
+      "sha256": "e82375e8e3ded8a43702267815ef38fd416cacc7ca8f7712c75a3eda31042768",
+      "direct_calls": [
+        {
+          "at": "0xc035fb50",
+          "target": "0xc035f97c",
+          "name": "pscaler_wait.part.0"
+        }
+      ]
+    },
+    {
+      "name": "pscaler_wait.part.0",
+      "address": "0xc035f97c",
+      "bytes": 444,
+      "sha256": "9a9d80b6335cfcd0c2d2829e6da156d5ea539ed25349e3207f46a367640e17fe",
+      "direct_calls": [
+        {
+          "at": "0xc035f9bc",
+          "target": "0xc0168630",
+          "name": "__msecs_to_jiffies"
+        },
+        {
+          "at": "0xc035fa10",
+          "target": "0xc0168630",
+          "name": "__msecs_to_jiffies"
+        },
+        {
+          "at": "0xc035fa24",
+          "target": "0xc0157220",
+          "name": "init_wait_entry"
+        },
+        {
+          "at": "0xc035fa40",
+          "target": "0xc0454e3c",
+          "name": "schedule_timeout"
+        },
+        {
+          "at": "0xc035fa58",
+          "target": "0xc015733c",
+          "name": "prepare_to_wait_event"
+        },
+        {
+          "at": "0xc035fa7c",
+          "target": "0xc0157260",
+          "name": "finish_wait"
+        },
+        {
+          "at": "0xc035fa84",
+          "target": "0xc0168630",
+          "name": "__msecs_to_jiffies"
+        },
+        {
+          "at": "0xc035fabc",
+          "target": "0xc0168630",
+          "name": "__msecs_to_jiffies"
+        },
+        {
+          "at": "0xc035fad0",
+          "target": "0xc0157220",
+          "name": "init_wait_entry"
+        },
+        {
+          "at": "0xc035faec",
+          "target": "0xc0454e3c",
+          "name": "schedule_timeout"
+        },
+        {
+          "at": "0xc035fb04",
+          "target": "0xc015733c",
+          "name": "prepare_to_wait_event"
+        },
+        {
+          "at": "0xc035fb2c",
+          "target": "0xc012d838",
+          "name": "__stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "name": "pscaler_irq_handler",
+      "address": "0xc035ee40",
+      "bytes": 1764,
+      "sha256": "6589b10cd49488868bb33f5cc1079542190b4cf1100cf63376408035a149f4e9",
+      "direct_calls": [
+        {
+          "at": "0xc035ee58",
+          "target": "0xc035d814",
+          "name": "PSCALER_IRQHandler"
+        },
+        {
+          "at": "0xc035ee60",
+          "target": "0xc035dfcc",
+          "name": "gpHalPscalerGetStatus"
+        },
+        {
+          "at": "0xc035ef24",
+          "target": "0xc0157050",
+          "name": "__wake_up"
+        },
+        {
+          "at": "0xc035ef34",
+          "target": "0xc035e2ec",
+          "name": "gpHalPscalerGetBypassOutAddrB"
+        },
+        {
+          "at": "0xc035efdc",
+          "target": "0xc035e2c4",
+          "name": "gpHalPscalerSetBypassOutAddrB"
+        },
+        {
+          "at": "0xc035f050",
+          "target": "0xc0157050",
+          "name": "__wake_up"
+        },
+        {
+          "at": "0xc035f060",
+          "target": "0xc035db3c",
+          "name": "gpHalPscalerGetOutputAddrB"
+        },
+        {
+          "at": "0xc035f104",
+          "target": "0xc035db14",
+          "name": "gpHalPscalerSetOutputAddrB"
+        },
+        {
+          "at": "0xc035f110",
+          "target": "0xc035daf0",
+          "name": "gpHalPscalerGetOutputAddrA"
+        },
+        {
+          "at": "0xc035f1a8",
+          "target": "0xc035dac8",
+          "name": "gpHalPscalerSetOutputAddrA"
+        },
+        {
+          "at": "0xc035f1b4",
+          "target": "0xc035e2a0",
+          "name": "gpHalPscalerGetBypassOutAddrA"
+        },
+        {
+          "at": "0xc035f24c",
+          "target": "0xc035e278",
+          "name": "gpHalPscalerSetBypassOutAddrA"
+        },
+        {
+          "at": "0xc035f280",
+          "target": "0xc0157050",
+          "name": "__wake_up"
+        }
+      ]
+    },
+    {
+      "name": "chunkmem_ioctl",
+      "address": "0xc0121548",
+      "bytes": 2404,
+      "sha256": "32826b86884f34d8d9cd9aff2d71b26e5e33077fcaeb1df23b70ce8f83fafb6c",
+      "direct_calls": [
+        {
+          "at": "0xc012160c",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc012163c",
+          "target": "0xc0453dd8",
+          "name": "down_write"
+        },
+        {
+          "at": "0xc0121678",
+          "target": "0xc01ddc04",
+          "name": "do_munmap"
+        },
+        {
+          "at": "0xc0121690",
+          "target": "0xc0158530",
+          "name": "up_write"
+        },
+        {
+          "at": "0xc0121704",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0121748",
+          "target": "0xc0158318",
+          "name": "down"
+        },
+        {
+          "at": "0xc0121750",
+          "target": "0xc0120cb0",
+          "name": "dlMalloc_Status"
+        },
+        {
+          "at": "0xc012175c",
+          "target": "0xc0158420",
+          "name": "up"
+        },
+        {
+          "at": "0xc01217bc",
+          "target": "0xc01213f0",
+          "name": "gp_chunk_free_all"
+        },
+        {
+          "at": "0xc0121840",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0121858",
+          "target": "0xc0121138",
+          "name": "gp_user_va_to_pa"
+        },
+        {
+          "at": "0xc01218d4",
+          "target": "0xc0439e30",
+          "name": "arm_copy_to_user"
+        },
+        {
+          "at": "0xc0121944",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc01219b0",
+          "target": "0xc0120c4c",
+          "name": "dlShare"
+        },
+        {
+          "at": "0xc01219c8",
+          "target": "0xc0120f8c",
+          "name": "dlMalloc_Usable_Size"
+        },
+        {
+          "at": "0xc01219e8",
+          "target": "0xc0158318",
+          "name": "down"
+        },
+        {
+          "at": "0xc0121a00",
+          "target": "0xc0453dd8",
+          "name": "down_write"
+        },
+        {
+          "at": "0xc0121a78",
+          "target": "0xc01df6a8",
+          "name": "do_mmap"
+        },
+        {
+          "at": "0xc0121aa0",
+          "target": "0xc0158530",
+          "name": "up_write"
+        },
+        {
+          "at": "0xc0121ab8",
+          "target": "0xc0158420",
+          "name": "up"
+        },
+        {
+          "at": "0xc0121b44",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc0121b60",
+          "target": "0xc0121138",
+          "name": "gp_user_va_to_pa"
+        },
+        {
+          "at": "0xc0121b9c",
+          "target": "0xc0120f8c",
+          "name": "dlMalloc_Usable_Size"
+        },
+        {
+          "at": "0xc0121bc0",
+          "target": "0xc0453dd8",
+          "name": "down_write"
+        },
+        {
+          "at": "0xc0121be0",
+          "target": "0xc01ddc04",
+          "name": "do_munmap"
+        },
+        {
+          "at": "0xc0121bf8",
+          "target": "0xc0158530",
+          "name": "up_write"
+        },
+        {
+          "at": "0xc0121c00",
+          "target": "0xc0121340",
+          "name": "gp_chunk_free"
+        },
+        {
+          "at": "0xc0121c64",
+          "target": "0xc012080c",
+          "name": "dlGetMemBlock"
+        },
+        {
+          "at": "0xc0121cb4",
+          "target": "0xc01d52ec",
+          "name": "__mm_populate"
+        },
+        {
+          "at": "0xc0121ce0",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121cfc",
+          "target": "0xc012123c",
+          "name": "gp_chunk_malloc_ex"
+        },
+        {
+          "at": "0xc0121d64",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121dc8",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121df4",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121dfc",
+          "target": "0xc0120cb0",
+          "name": "dlMalloc_Status"
+        },
+        {
+          "at": "0xc0121e04",
+          "target": "0xc0121340",
+          "name": "gp_chunk_free"
+        },
+        {
+          "at": "0xc0121e30",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121e68",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121e98",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121ea0",
+          "target": "0xc012d838",
+          "name": "__stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "name": "gp_chunk_malloc_ex",
+      "address": "0xc012123c",
+      "bytes": 220,
+      "sha256": "025abd299d5bd124e2294585e5fc7140cba33f25c5c4c842743cd97d8f921297",
+      "direct_calls": [
+        {
+          "at": "0xc0121284",
+          "target": "0xc0158398",
+          "name": "down_killable"
+        },
+        {
+          "at": "0xc0121298",
+          "target": "0xc011fe44",
+          "name": "dlMalloc"
+        },
+        {
+          "at": "0xc01212a8",
+          "target": "0xc011ea20",
+          "name": "gp_invalidate_dcache_range"
+        },
+        {
+          "at": "0xc01212b4",
+          "target": "0xc0158420",
+          "name": "up"
+        },
+        {
+          "at": "0xc01212d8",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121308",
+          "target": "0xc0117160",
+          "name": "diagLog"
+        },
+        {
+          "at": "0xc0121310",
+          "target": "0xc0120cb0",
+          "name": "dlMalloc_Status"
+        }
+      ]
+    },
+    {
+      "name": "snd_pcm_write",
+      "address": "0xc03bbf7c",
+      "bytes": 24,
+      "sha256": "46d1cf19ed9e6a1d4b657316e3c15d4eb0575f3889a8a8314d116163177be0de",
+      "direct_calls": []
+    },
+    {
+      "name": "snd_pcm_sync_ptr",
+      "address": "0xc03bdb60",
+      "bytes": 576,
+      "sha256": "efa96e59bf77814e40b3b0cb343eeef0c259eda98e8f88032429ab6826b257a7",
+      "direct_calls": [
+        {
+          "at": "0xc03bdb9c",
+          "target": "0xc043c040",
+          "name": "mmioset"
+        },
+        {
+          "at": "0xc03bdbd0",
+          "target": "0xc043af88",
+          "name": "__get_user_4"
+        },
+        {
+          "at": "0xc03bdc28",
+          "target": "0xc04399dc",
+          "name": "arm_copy_from_user"
+        },
+        {
+          "at": "0xc03bdc54",
+          "target": "0xc03bcc14",
+          "name": "snd_pcm_stream_lock_irq"
+        },
+        {
+          "at": "0xc03bdcbc",
+          "target": "0xc03bc3f0",
+          "name": "snd_pcm_stream_unlock_irq"
+        },
+        {
+          "at": "0xc03bdd10",
+          "target": "0xc03bcc14",
+          "name": "snd_pcm_stream_lock_irq"
+        },
+        {
+          "at": "0xc03bdd18",
+          "target": "0xc03bb374",
+          "name": "do_pcm_hwsync"
+        },
+        {
+          "at": "0xc03bdd24",
+          "target": "0xc03bc3f0",
+          "name": "snd_pcm_stream_unlock_irq"
+        },
+        {
+          "at": "0xc03bdd40",
+          "target": "0xc03c3db0",
+          "name": "pcm_lib_apply_appl_ptr"
+        },
+        {
+          "at": "0xc03bdd74",
+          "target": "0xc0439e30",
+          "name": "arm_copy_to_user"
+        },
+        {
+          "at": "0xc03bdd94",
+          "target": "0xc03bc3f0",
+          "name": "snd_pcm_stream_unlock_irq"
+        },
+        {
+          "at": "0xc03bdd9c",
+          "target": "0xc012d838",
+          "name": "__stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "name": "gpa7xxxa_pcm_new",
+      "address": "0xc03e2d94",
+      "bytes": 292,
+      "sha256": "5a6217e39d5192044273e4d73853d4fa1bbf8051b819c8931c6ddaf8751b5631",
+      "direct_calls": [
+        {
+          "at": "0xc03e2ea0",
+          "target": "0xc03c4808",
+          "name": "snd_pcm_lib_preallocate_pages_for_all"
+        }
+      ]
+    }
+  ],
+  "verified_contracts": {
+    "scaler_wait_command": "0x80045004",
+    "timeout_argument": "scalar unsigned milliseconds clamped to5000 then converted with __msecs_to_jiffies",
+    "vendor_argument_3000": "3000ms maximum timeout, not mandatory3000ms delay",
+    "completion_wait": "kernel waitqueue / prepare_to_wait_event / schedule_timeout / finish_wait; completion flags are rechecked",
+    "new_kernel_or_MMIO_writes": false
+  },
+  "configuration_provenance": "build/uart-fix-private/reconstructed.config is a module-build reconstruction, NOT a recovered board configuration; do not promote its HZ/HIGH_RES/PREEMPT choices as device facts.",
+  "limits": [
+    "Call inventory is not a complete semantic review of every driver.",
+    "No persistent-scaler/FIFO/DMA mode is authorized by symbol or queue-field presence.",
+    "Stock scaler3000 maximum timeout and measured job cost must remain separate.",
+    "Physical timer granularity is measured; exact boot configuration is still not recovered."
+  ],
+  "card_access": false,
+  "source_sha256": "f24fd5f6d4b5de52b06fe93b879a487de258f0c62a80159e698f178ec194d476"
+}
