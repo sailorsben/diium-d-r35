@@ -6,14 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
-Corrected `render-pressure2` is qualified offline: the audio worker is the sole
-drain owner, and all seven load sweeps use the known light static workload.
-Actual-controller/threaded-owner fixtures reject the old double-drain and
-execute six bursts; all 70 mock cells and wrapper/oracle/ABI checks pass.
-Installed and armed once on I: from pushed `fa3005d`; fresh archive, clean FAT
-and protected-file/payload/marker readback verify. UART correction and the
-first run's evidence remain intact. Physical results unmeasured.
-[Correction and validation](docs/render-pressure2.md).
+Pressure2 returned all70 phases:58 pass/12 fail. Light rendering plus8 ms extra
+CPU/frame (12.036 ms main CPU) passes180 quanta; plus12 ms fails. Six24 ms
+bursts pass with recovery;48 ms fails to recover before pointer corruption,
+80 ms fails at its first burst. After48 ms, display-slot waits rise to11.452 ms
+while CPU stays4.385 ms, making audio-aware recovery a concrete next lead.
+Dense rendering remains over the sustained budget. Double-drain fixed;
+IRQ19 stays72.29/sec. Archive/FAT/hashes verify; I: unarmed, no new card writes.
+[Measured budget, burst recovery and priorities](docs/render-pressure2-return.md).
 
 The ROM-free pressure test returned all 70 phases: 50 non-audio passes, five
 completed audio-production runs with a controller double-finish shutdown bug,

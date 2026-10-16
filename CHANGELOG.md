@@ -1,5 +1,16 @@
 # Changelog
 
+## Measure frame budget and burst recovery from pressure2 — 2026-10-15
+
+Collect/hash-verify70 physical cells:58 accepted. Light render+8 ms extra CPU
+passes180 quanta at12.036 ms main CPU;12 ms fails. Six24 ms bursts pass;48/80 ms
+sequences fail. Valid post48 ms rows wait11.452 ms for display credit despite
+4.385 ms CPU, exposing presentation-gated recovery as a lead. Censor corrupted
+PCM tails and final-frame recovery claims. Double-drain fixed physically;
+UART72.29/sec. Strict9,035-file archive, clean FAT, frozen payloads/prior files
+and ROM/init verify. I: unarmed; no new build/card writes/rearm.
+[Measured limits and priorities](docs/render-pressure2-return.md).
+
 ## Correct pressure-test cleanup and load baseline — 2026-10-15
 
 Prepare separate pressure2: remove controller's second finish, retain joined

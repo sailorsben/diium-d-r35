@@ -1,5 +1,19 @@
 # Investigation history and negative results
 
+## Physical budget and reserve recovery from pressure2 — 2026-10-15
+
+All70 cells finish;58 pass. Corrected audio-only/light cells now drain normally.
+Added8 ms/frame passes180 quanta at12.036 ms warm main CPU;12 ms fails at57
+completed.24 ms bursts execute6/pass;48 ms executes3/fails, but pointer history
+already becomes invalid around second event;80 ms executes1/fails. First five
+24 ms events restore primed lead after observed minima; last has no recovery
+window. After first48 ms event, clean rows have11.452 ms reservation waits,
+4.385 ms main CPU and inadequate lead recovery. Preserve the distinction between
+CPU capacity and presentation-gated recovery; no speculative driver attribution.
+Hash-bound376 raw files, full PCM histories and censoring gates;9,035-file clean
+archive, prior payloads/progress/ROM/init verify. I: unarmed, UART retained,
+no new build/install/rearm. [Results and next focus](render-pressure2-return.md).
+
 ## Qualify corrected pressure2 before physical repeat — 2026-10-15
 
 Remove the new controller's extra drain without changing the frozen audio owner;

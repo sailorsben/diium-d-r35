@@ -1,5 +1,10 @@
 # Corrected ROM-free pressure test
 
+**Physical return collected:**58 of70 phases pass, including audio-only/light
+cleanup, steady8 ms added load and six24 ms bursts. I: is unarmed.
+[Measured budget and burst recovery](render-pressure2-return.md).
+Installation/PENDING statements below describe preparation before this return.
+
 `render-pressure2` fixes the first lab's controller double-drain and moves the
 seven load sweeps onto the light static workload. It is qualified offline and
 installed/armed once on I: from pushed `fa3005d`; physical results are pending.

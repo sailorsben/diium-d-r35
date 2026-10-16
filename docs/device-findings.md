@@ -1,5 +1,16 @@
 # Device findings
 
+**Latest measured budget, 2026-10-15:** pressure2 completes70 phases,58 accepted.
+Light render+8 ms added CPU/frame passes180 quanta at12.036 ms main CPU;
++12 ms fails at57 completed. Six24 ms bursts pass; first five recover prime
+lead within5.33–10.94 ms after observed minima.48 ms does not recover before
+next burst/pointer fault;80 ms fails on first event. After first48 ms burst,
+valid frames30–58 wait11.452 ms for display credit despite4.385 ms main CPU.
+Audio-aware presentation/recovery is a measured lead; sustained heavy row/core
+work remains over budget. No exact ceiling or long-duration threshold claim.
+Double-drain fixed physically. Archive/FAT/hash gates pass; UART72.29/sec,
+I: unarmed, zero collection writes. [Full results](render-pressure2-return.md).
+
 **Current I: installation, 2026-10-15:** corrected pressure2 is armed once from
 pushed `fa3005d`. Single drain owner, light static steady/burst load sweeps and
 executed-load counts; focused actual-controller/threaded-owner negative/failure
