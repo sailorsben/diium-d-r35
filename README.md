@@ -9,20 +9,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 Routine I: attempts now save changed progress/logs and configuration hashes,
 with no full-card or full-retro copies. See [attempt evidence policy](docs/attempt-evidence-policy.md).
 
-Matched FFVI test is installed and armed once on I: from pushed `a3b8d68`.
-All10,092 protected prior files, UART/init, ROM/saves,95 declared payload files
-and both exact markers independently verify; all FAT gates clean. Cold boot
-once, allow27–35min, wait for stock, power off/return card. Select+Start aborts.
-Physical result pending. Backup retention is now at most one current full
-rollback; no growing per-attempt bulk-copy stack.
-[Run instructions and verification](docs/presentation-ffvi-test.md).
-
-Matched physical FFVI package qualified:80 automatic ABBA/reversed epochs,
-all18 original contexts plus matched24/48 ms bursts, one core/executable and
-policy-only pairs. Actual controller passes96,000 real-core calls/all56 burns;
-native PCM/busy-credit/teardown, firmware recovery and installer rollback gates
-pass. Fresh complete10,093-file archive/FAT is clean. Physical results pending;
-preparation has made no card writes. [Test and boot instructions](docs/presentation-ffvi-test.md).
+Matched FFVI physical return:78/80 clean bounded windows. Both48 ms blocking
+controls fail; both candidates complete1200 renders/all seven bursts with12
+and9 presentation skips. All ordinary and24 ms cells pass. Lowest candidate
+sampled audio reserve:237 frames (5.374 ms). Ben observed no obvious issues.
+UART/init, saves and prior evidence preserved; FAT clean. Sparse collection
+only, zero card writes, no new full backup. I: remains unarmed.
+[Physical return and limits](docs/presentation-ffvi-return.md).
 
 Presentation policy is integrated in an isolated actual-emulator runner:
 21,600 real-core pixel/PCM/state comparisons across18 FFVI contexts,192 board

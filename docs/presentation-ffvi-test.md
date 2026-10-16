@@ -1,5 +1,10 @@
 # Matched physical FFVI presentation-policy test
 
+**Returned and analyzed, 2026-10-16:**78/80 clean bounded windows; both48 ms
+candidates pass and both blocking controls fail. No obvious issues reported.
+UART/saves preserved; I: is unarmed. Installation details below are historical.
+[Physical return and limits](presentation-ffvi-return.md).
+
 This is a separately installed measurement test, not production promotion.
 It preserves normal `retro/init`, the permanent UART correction, stock adapter,
 all prior tests, evidence, ROMs, SRAM and snapshots. Only the owned SNES
@@ -11,7 +16,7 @@ dispatcher changes; two consumed one-shot markers activate the new directory
 authorized dispatcher differs. Both exact one-shots and95 declared payload
 files verify; normal init/UART and original ROM/saves remain exact. All three
 installation FAT gates and the independent final FAT check pass. Hardware
-result remains pending.
+result is recorded in the return report.
 
 [Installation receipt](../evidence/2026-10-16/presentation-ffvi/installation.json),
 [independent readback](../evidence/2026-10-16/presentation-ffvi/live-verification.json).

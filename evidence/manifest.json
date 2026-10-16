@@ -7759,6 +7759,14 @@
       "published_sha256": "e38ab988005b6b41a2d178e8cf9e6bb048f13cd860885567e7ee1fbc31a4f67d",
       "bytes": 454,
       "normalized": false
+    },
+    {
+      "source": "derived:build/evaluate-presentation-ffvi-return.py;archive=a7-pair-before-20261016T174559367837Z",
+      "published": "evidence/2026-10-16/presentation-ffvi/return.json",
+      "source_sha256": "514759c7e6cec5293887182d876b31e46b990ebc48e659fc4b19d909ca2cbb2e",
+      "published_sha256": "514759c7e6cec5293887182d876b31e46b990ebc48e659fc4b19d909ca2cbb2e",
+      "bytes": 199803,
+      "normalized": false
     }
   ]
 }

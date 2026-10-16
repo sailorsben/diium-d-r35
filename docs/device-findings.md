@@ -1,12 +1,12 @@
 # Device findings
 
-**Current I: installation, 2026-10-16:** matched80-epoch FFVI policy test armed
-once from pushed `a3b8d68`. Independent readback verifies10,092 protected prior
-files, UART/normal init, ROM/saves,95 declared payload files and both exact
-markers. All installation/final FAT gates clean; only the owned dispatcher
-changes. Physical result pending. At most one current full rollback backup;
-no expanding per-attempt bulk archive policy.
-[Run and acceptance instructions](presentation-ffvi-test.md).
+Matched FFVI physical return:78/80 clean bounded windows. Both48 ms blocking
+controls fail; both candidates complete1200 renders/all seven bursts with12
+and9 presentation skips. All ordinary and24 ms cells pass. Lowest candidate
+sampled audio reserve:237 frames (5.374 ms). Ben observed no obvious issues.
+UART/init, saves and prior evidence preserved; FAT clean. Sparse collection
+only, zero card writes, no new full backup. I: remains unarmed.
+[Physical return and limits](presentation-ffvi-return.md).
 
 **Matched FFVI package qualified, 2026-10-16:**80 actual-runner ABBA/reversed
 epochs use one unchanged core and policy-only pairs across18 original contexts,

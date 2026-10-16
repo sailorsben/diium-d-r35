@@ -1,5 +1,16 @@
 # Changelog
 
+## Matched FFVI physical return — 2026-10-16
+
+78/80 clean bounded windows. Both48 ms candidates complete all1200 renders and
+seven burns; both blocking controls fail. All72 ordinary and four24 ms cells
+pass.28 total presentation skips; candidate minimum sampled reserve5.374 ms.
+User reports no obvious issues. Bind exact payload, preservation, full native
+PCM and matched effect/input evidence; censor failed control tails. Preserve
+UART/init/saves and all prior evidence. Sparse collection only, no card writes,
+rearm or new full backup. Repair original-proof reconstruction in reporter and
+add regression checks. [Return and limits](docs/presentation-ffvi-return.md).
+
 ## Replace routine I: full copies with sparse evidence — 2026-10-16
 
 Save progress/log generations once per SHA256; record configuration and static

@@ -6,6 +6,15 @@ from attempt_archive import SCHEMA, verify_saved
 def digest(p):return sha256(p.read_bytes()).hexdigest()
 def kv(p):return dict(l.split('=',1) for l in p.read_text().splitlines() if '=' in l) if p.exists() else {}
 def rows(p):return list(csv.DictReader(l for l in p.read_text().splitlines() if not l.startswith('#')))
+
+def original_installation_proof(expected, published):
+ # The local installer was requalified for sparse archives after this boot
+ # package was frozen. Verify the deployed proof's exact original bytes from
+ # its published body rather than mistaking the newer local proof for it.
+ proof=json.loads(published.read_text())['installation_transaction']
+ text=json.dumps(proof,indent=2)+'\n'
+ assert expected in {sha256(text.encode()).hexdigest(),sha256(text.replace('\n','\r\n').encode()).hexdigest()},'Original installed qualification cannot be reconstructed'
+ return digest(published)
 def analyze(base,plan,allow_mock=False):
  reports=[];prefixes={};any_mock=False
  supervisor=kv(base/'supervisor.txt');summary=kv(base/'suite-result.txt')
@@ -78,7 +87,9 @@ def main():
   payload=Path(__file__).resolve().parent/'presentation-ffvi-private-v1' if sparse else target
   for n,h in installed['payload_hashes'].items():
    assert hashes['retro/snes-presentation-ffvi1/'+n]==h,n
-   assert digest(payload/n)==h,n
+   if sparse and n=='installation-qualification.json':
+    original_installation_proof(h,Path(__file__).resolve().parent.parent/'evidence/2026-10-16/presentation-ffvi/qualification.json')
+   else:assert digest(payload/n)==h,n
   runs=list((target/'results').glob('run-*'));assert len(runs)==1,'Select the exact returned run explicitly if repeated'
   root=runs[0];plan=json.loads((payload/'plan.json').read_text())
  result=analyze(root,plan,a.mock);out=root/'presentation-analysis.json'
