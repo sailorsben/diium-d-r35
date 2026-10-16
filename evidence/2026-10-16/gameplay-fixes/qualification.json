@@ -1,0 +1,700 @@
+{
+  "version": "five-gameplay-fixes1",
+  "passed": true,
+  "physical": false,
+  "production_gate": false,
+  "card_access": false,
+  "card_writes": 0,
+  "full_backups_created": 0,
+  "candidate_core_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+  "reference_core_sha256": "8d66a3a7b3a75713dbc969dd2cdc4e24b79f0992c103b1ce49d7cf3483a9c0ee",
+  "candidate_bytes": 849164,
+  "root_causes_and_fixes": {
+    "Ranger": "CPU/SPC SYNC handshake loses acknowledgement at an instruction boundary. Ranger ID AVCJ now finishes the in-progress SPC instruction before CPU port writes; disabled/reset for other ROMs. No ROM edits or forced game-state jumps.",
+    "Star_Fox_state": "HDMA termination redundantly adds a cached host-pointer difference to an already advanced logical indirect address. Remove it; retain actual DMA bytes in strict state comparisons.",
+    "Star_Fox_pixels": "After the DMA fix, direct-target output fails at frame178 even against the same core; full-layout control passes. SuperFX now takes the established full-layout path. Presentation skipping remains independent; emulation/render/audio are retained."
+  },
+  "changed_sources": {
+    "core/dma.c": {
+      "before_sha256": "9cd05aba3e0417e59385d243231a3a370fa75aef36a73062aaa68c2567e99ffd",
+      "after_sha256": "4d8c524f8f561b5b8d5df1092711a86b125ae94037d4a8df4c7139a6d69fe5d2"
+    },
+    "core/apu_blargg.c": {
+      "before_sha256": "b9a2006af2185a561a1de3b492dcf127785ce25c142dd3d770caa788314603c4",
+      "after_sha256": "e3fb702d3e8033ea8d051ec0a6d22effb99d63df2801c71fb58ff87d0be907cc"
+    },
+    "core/apu_blargg.h": {
+      "before_sha256": "318e7c7eb7b64cdbf7cf853feb583bcc616497b2b3884a98f2a32b89b1c8ff15",
+      "after_sha256": "89ccb1d6e9d716ba31039190cd1c658180da338b969b2a03cb5a877f939eb50e"
+    },
+    "core/memmap.c": {
+      "before_sha256": "e8d386849db6b0e6eb743a3e4d8dc9ce6e8d680c2dc78fe82ca58477580346d1",
+      "after_sha256": "a19edda95dac9940b58c35b174563c20b4f8780d67534f1e5457383d63e08084"
+    },
+    "core/a7_demand_output.h": {
+      "before_sha256": "e175530959acb252ab303cd1e5ee41bdd8d76cc059bf6fef5ce14e13e4f54786",
+      "after_sha256": "da4336f3e398ce85641993d8b7ec049200cf5789209b74a0471db65c46ded318"
+    },
+    "reference/dma.c": {
+      "before_sha256": "f7041d035b6731033ae737c182d9ccfed7a488fce045c908d6303ae5d9f4d353",
+      "after_sha256": "970307f410808bf6c438767873c6c246afc455c2738b27787d547aa3ef511527"
+    },
+    "reference/apu_blargg.c": {
+      "before_sha256": "50c6942715597e48005c6c0145ce21d89a29aafc60418b7a513f980dc3169f85",
+      "after_sha256": "c7a495579af78ed9d99e59b2565350f5afa052c6256b323448af275b75421452"
+    },
+    "reference/apu_blargg.h": {
+      "before_sha256": "318e7c7eb7b64cdbf7cf853feb583bcc616497b2b3884a98f2a32b89b1c8ff15",
+      "after_sha256": "89ccb1d6e9d716ba31039190cd1c658180da338b969b2a03cb5a877f939eb50e"
+    },
+    "reference/memmap.c": {
+      "before_sha256": "500677109f231b1406dbbeff076699dc1c82425c2ddd382ba543c2af24f11bda",
+      "after_sha256": "5da9d4ba358b621aa028b742cdb487e12aeb3e65ff931709c08e7ca2f8182f7f"
+    }
+  },
+  "gameplay_comparisons": [
+    {
+      "game": 0,
+      "scene": "Yoshi Island 2 course",
+      "inputs": "fixtures/game-0.txt",
+      "inputs_sha256": "ce8fdb264c7c4b956aa97984004e52e8e582f980d448243f64f8a432d8efb890",
+      "calls": 1200,
+      "gameplay_start_call": 0,
+      "gameplay_calls": 1200,
+      "state": "continue-0/step-006.state",
+      "state_sha256": "397154ee7694b179c89829116dda559f10ce5c18672e8211bba0a6c971767009",
+      "passed": true,
+      "returncode": 0,
+      "recorded_calls": 1200,
+      "artifacts": {
+        "checked-v2-0/frame-00599.ppm": "07a621bef31e18b84c7c564bc054ef8da329d02ccee4084c02a21b912f570874",
+        "checked-v2-0/frame-01199.ppm": "62068c11ebd9a6ef5fed8d58f6bb70b046cc99707bdf7f25d022cefc0531ff54",
+        "checked-v2-0/frames.csv": "820d2d77afeb7ff806b8a04bd2c1fd19f27b7ba11af0455623ee42d3c6f082c8",
+        "checked-v2-0/run.log": "5c86478816c4305bfa9526b2f192ff54379c3dd2f1a6c442122dff840fc2ade3"
+      },
+      "log_tail": [
+        "AV fps=50.319739654 sample_rate=32040.000",
+        "CHECK frame=599 changed=322 samples=382036",
+        "CHECK frame=1199 changed=861 samples=764073",
+        "PASS calls=1200 exact_pixels_PCM_geometry=1 normalized_state_checks=40 routes=400,400,400 changes=861 samples=764073 physical=0"
+      ],
+      "name": "Super Mario World (PAL backup)",
+      "ROM_sha256": "b5be1dba3012b6811a5660fbf2981cb23cdd1e48f845a42df00f0f55b19f0392",
+      "backup_zip_sha256": "a784510415e95a5c46e90e28faf485f0526eee84cb54654a87bf4533bb8c0704",
+      "actual_state_checks": 40,
+      "note": "Four gameplay snapshots; Star Fox uses complete cold boot because GSU snapshot continuation is not qualified."
+    },
+    {
+      "game": 1,
+      "scene": "Ceres station elevator",
+      "inputs": "fixtures/game-1.txt",
+      "inputs_sha256": "ce8fdb264c7c4b956aa97984004e52e8e582f980d448243f64f8a432d8efb890",
+      "calls": 1200,
+      "gameplay_start_call": 0,
+      "gameplay_calls": 1200,
+      "state": "continue3-1/step-080.state",
+      "state_sha256": "5eb8c6deccf172befb2a377324cf41b0a6fb8ad436d404f8cae8c2ebada96930",
+      "passed": true,
+      "returncode": 0,
+      "recorded_calls": 1200,
+      "artifacts": {
+        "checked-v2-1/frame-00599.ppm": "6d0824a64acb025f16aec8a43a0623b476a7cd8eb91094a3c85ace830bebf9f5",
+        "checked-v2-1/frame-01199.ppm": "7fa808237bd99223c1e0561483b6b93fd78920f8efcf32538edc45b4197db7b4",
+        "checked-v2-1/frames.csv": "dd536d7237399fa6aacc03b89ebeece4b57d631fc0943a93acd2175ddb072820",
+        "checked-v2-1/run.log": "9bc3a37d817c34d8b1ce9e59b81d456d87d24a777a10df5477ddbff4aa695fae"
+      },
+      "log_tail": [
+        "AV fps=59.922743404 sample_rate=32040.000",
+        "CHECK frame=599 changed=356 samples=320813",
+        "CHECK frame=1199 changed=698 samples=641626",
+        "PASS calls=1200 exact_pixels_PCM_geometry=1 normalized_state_checks=40 routes=400,400,400 changes=698 samples=641626 physical=0"
+      ],
+      "name": "Super Metroid (translation-labeled backup)",
+      "ROM_sha256": "75a77847908cdca2a4256e715a4a2167d1b49ad5ae90eb13e165f92da3b2c616",
+      "backup_zip_sha256": "8772f551d31ab9c457bb7858819a9fee41f6c65c447a30ef6f9c01981767e6f2",
+      "actual_state_checks": 40,
+      "note": "Four gameplay snapshots; Star Fox uses complete cold boot because GSU snapshot continuation is not qualified."
+    },
+    {
+      "game": 2,
+      "scene": "F-Zero starting grid into race",
+      "inputs": "fixtures/game-2.txt",
+      "inputs_sha256": "8c477fd03b9528a37615f74dde916b2ccd8bd6bcd99a60b418daf40b77e0907a",
+      "calls": 1200,
+      "gameplay_start_call": 0,
+      "gameplay_calls": 1200,
+      "state": "play-2/step-010.state",
+      "state_sha256": "bbf3fe650a3ca3701534d7e70cc90ffe52c86bbd1dce641447be8044a8f5ac07",
+      "passed": true,
+      "returncode": 0,
+      "recorded_calls": 1200,
+      "artifacts": {
+        "checked-v2-2/frame-00599.ppm": "d2ca0cacefb4625e46a560caa1b3d4849ba75ca05e696ad80f48d763800e4f28",
+        "checked-v2-2/frame-01199.ppm": "fa2a05f69c3f608db6af2266d3494ccab541af2a6bd79871532024f2ba9d9408",
+        "checked-v2-2/frames.csv": "16ffca11d5a36fe4d360b946294fda4407b067ab353989f78d63e3b30881c7a5",
+        "checked-v2-2/run.log": "8cb9d4e6fa9392ba2ad12f243702b2b584372bdfae1538403c888cd4682e45dd"
+      },
+      "log_tail": [
+        "AV fps=59.922743404 sample_rate=32040.000",
+        "CHECK frame=599 changed=599 samples=320813",
+        "CHECK frame=1199 changed=1199 samples=641626",
+        "PASS calls=1200 exact_pixels_PCM_geometry=1 normalized_state_checks=40 routes=400,400,400 changes=1199 samples=641626 physical=0"
+      ],
+      "name": "F-Zero",
+      "ROM_sha256": "bf16c3c867c58e2ab061c70de9295b6930d63f29f81cc986f5ecae03e0ad18d2",
+      "backup_zip_sha256": "fba21b06cd98cf5e8413518a93da99638c0c59b784dde21431dfcc066be5184a",
+      "actual_state_checks": 40,
+      "note": "Four gameplay snapshots; Star Fox uses complete cold boot because GSU snapshot continuation is not qualified."
+    },
+    {
+      "game": 3,
+      "scene": "Corneria first mission",
+      "inputs": "fixtures/game-3.txt",
+      "inputs_sha256": "ba69722b8f741d004fa6ffe26f7717311c95e78e2f051129066a89211bcfb9f3",
+      "calls": 9856,
+      "gameplay_start_call": 8656,
+      "gameplay_calls": 1200,
+      "passed": true,
+      "returncode": 0,
+      "recorded_calls": 9856,
+      "artifacts": {
+        "checked-v2-3/frame-00599.ppm": "93a4865aeadca812fd1ca2bc6d5ef1d29c1ab4e4b3748cc4d5d79a033d9c4302",
+        "checked-v2-3/frame-01199.ppm": "1d83db2c61810408c95132fd9b986652e5311faabe8edd86bffa4c1bbd1eb514",
+        "checked-v2-3/frame-01799.ppm": "441697a96db1909768ab0f8adbfa6d8941dcc7c0c7dc314b214f5bd5a9ad7b87",
+        "checked-v2-3/frame-02399.ppm": "4267503decf6e11ee60da8da0bad1de77bd68432dbe9a4f4ec393b04a63d4d03",
+        "checked-v2-3/frame-02999.ppm": "b82609c7359eb3bab2326ce13afbd59f44a9aa19335fea2a1df4f32a35772a52",
+        "checked-v2-3/frame-03599.ppm": "0de5fa1f3b31c1a6eaaf17e5b79a1d4a091f51f61c884ad3589d0f310e423b34",
+        "checked-v2-3/frame-04199.ppm": "981b18ccbc96c7bedab7af05319150cf954e6e2f37a1dee043a6f675909597fd",
+        "checked-v2-3/frame-04799.ppm": "77c7503d196f22d096fdcafef05eeb6e30b1e859b423fc6fda3f13e9512e0bb3",
+        "checked-v2-3/frame-05399.ppm": "2332be3ca0cbf405105fda9a02a0eb68c83331582d2c9e779b34bc7bec7f1d76",
+        "checked-v2-3/frame-05999.ppm": "b73dcd31fa2055f5e4020cbc887b82d146fd30fc9fe61a5c890d6593a8151fa7",
+        "checked-v2-3/frame-06599.ppm": "0d6753b8504e297a360181f706ea38383919dac482d3f64b859474a8bd678262",
+        "checked-v2-3/frame-07199.ppm": "92cb1138a02ea8970530db188106d3cd08d4aca26cb531f613aca2a550cd51cc",
+        "checked-v2-3/frame-07799.ppm": "d32b7cce07b0f6fc7b672aae20f3cbcdd8e9251e75b93225051dd0b7e25d7bd9",
+        "checked-v2-3/frame-08399.ppm": "0a1de35354c44df9c931a6cdd57f421b44559d4dd7fbe4f5c0a888c547b57231",
+        "checked-v2-3/frame-08999.ppm": "be5e1cce2a2f097a4a00095a0c7adb1cdb471810c72908fbe0ad55c3de7cf723",
+        "checked-v2-3/frame-09599.ppm": "1281f56f94d15d5c5bb344f45449b2e24cfc1f3ee75b82eea5ef19035e04ee8e",
+        "checked-v2-3/frames.csv": "67f498a16e1aa148ceb57a00a7e79a7a064e19d89d592b3518242209e93e1810",
+        "checked-v2-3/run.log": "01eec039bcf9f088dcae8c052fcaad40e3056c1f16813c3bd6d9ede8e2d3894b"
+      },
+      "log_tail": [
+        "CHECK frame=8399 changed=2509 samples=4491403",
+        "CHECK frame=8999 changed=2709 samples=4812216",
+        "CHECK frame=9599 changed=2909 samples=5133029",
+        "PASS calls=9856 exact_pixels_PCM_geometry=1 normalized_state_checks=328 routes=3286,3285,3285 changes=2992 samples=5269909 physical=0"
+      ],
+      "name": "Star Fox",
+      "ROM_sha256": "b7381a951e4a62d44c640bbf189cd9161a3ca80f42b9bc514551393a4de9736c",
+      "backup_zip_sha256": "8e7f827c02542f92a53ef59647024b0efd235fcd5ae3d072b262419c77249501",
+      "actual_state_checks": 329,
+      "note": "Four gameplay snapshots; Star Fox uses complete cold boot because GSU snapshot continuation is not qualified."
+    },
+    {
+      "game": 4,
+      "scene": "Rendering Ranger stage1",
+      "inputs": "fixtures/game-4.txt",
+      "inputs_sha256": "ce8fdb264c7c4b956aa97984004e52e8e582f980d448243f64f8a432d8efb890",
+      "calls": 1200,
+      "gameplay_start_call": 0,
+      "gameplay_calls": 1200,
+      "state": "play-4/step-006.state",
+      "state_sha256": "f54fca086720890bcf98003c6fd9a774f1ad66cc67f5cdd3922eece2a6768976",
+      "passed": true,
+      "returncode": 0,
+      "recorded_calls": 1200,
+      "artifacts": {
+        "checked-v2-4/frame-00599.ppm": "15254d83775b954cd7357ba7a6a27598b87b35fd8000e3e4ba9f2da4c8267562",
+        "checked-v2-4/frame-01199.ppm": "2f99732399b56b1822a624b3ba67dd83a1179f7c328b30b57484aa8495914c46",
+        "checked-v2-4/frames.csv": "3937d277f58216e19b510ba7be4a96b086a73e8944970e95e91e866a6f531e7d",
+        "checked-v2-4/run.log": "8cb9d4e6fa9392ba2ad12f243702b2b584372bdfae1538403c888cd4682e45dd"
+      },
+      "log_tail": [
+        "AV fps=59.922743404 sample_rate=32040.000",
+        "CHECK frame=599 changed=599 samples=320813",
+        "CHECK frame=1199 changed=1199 samples=641626",
+        "PASS calls=1200 exact_pixels_PCM_geometry=1 normalized_state_checks=40 routes=400,400,400 changes=1199 samples=641626 physical=0"
+      ],
+      "name": "Rendering Ranger R2",
+      "ROM_sha256": "82a9ee11b5640409c67772363f1148517b26127cef13aa2a8ffc2480b487d81f",
+      "backup_zip_sha256": "80dc9efe4ac7667f548536a390370f7dfa5e654c753ed7af21106e393c464653",
+      "actual_state_checks": 40,
+      "note": "Four gameplay snapshots; Star Fox uses complete cold boot because GSU snapshot continuation is not qualified."
+    }
+  ],
+  "total_compared_calls": 14656,
+  "total_gameplay_calls": 6000,
+  "state_checks": 489,
+  "FFVI": {
+    "physical": false,
+    "candidate_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+    "reference_sha256": "8d66a3a7b3a75713dbc969dd2cdc4e24b79f0992c103b1ce49d7cf3483a9c0ee",
+    "cases": [
+      {
+        "case": 0,
+        "name": "HOLY",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "05bd4e6dcb581d4e154abc453ec073ce80de2122c0c6b00fb6b1564195626b86",
+        "log_tail": [
+          "IDENTITY effect=14 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 1,
+        "name": "METEOR",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+        "log_tail": [
+          "IDENTITY effect=19 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 2,
+        "name": "ULTIMA",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "e3c1a6641f573291a81f1af8c82bb676d11faf6c20b8b0c55156343a92d679a5",
+        "log_tail": [
+          "IDENTITY effect=20 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 3,
+        "name": "MELTDOWN",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "a3b0ca32e04c01b53a9e256601ce9c89f4160fe65708e207655fb27fbd0abf07",
+        "log_tail": [
+          "IDENTITY effect=23 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 4,
+        "name": "SLOW_2",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "b84f6a492320c6619089e5688d78e8a85aca37fca1214f8d78a1745ef42de6cd",
+        "log_tail": [
+          "IDENTITY effect=40 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 5,
+        "name": "SIREN",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "c425e90f9c9a9a063f972cb4100eaa6f3d38fb36c107473850dbef392e92246b",
+        "log_tail": [
+          "IDENTITY effect=57 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 6,
+        "name": "BAHAMUT",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "92bf0b473375d3010cfaf46f862c1bfd062fdf517208b30f25b885294b0e829e",
+        "log_tail": [
+          "IDENTITY effect=67 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 7,
+        "name": "CARBUNKL",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "932b8e2f06cdb57082060b7ecc27cf654cb490a5dc22a8a5eb1c6d0506948254",
+        "log_tail": [
+          "IDENTITY effect=73 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 8,
+        "name": "QUASAR",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+        "log_tail": [
+          "IDENTITY effect=160 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 9,
+        "name": "GRANDTRAIN",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "11a2fb417807614f4be87ee59b663564ce8606057d053b4b9e898695bab722d5",
+        "log_tail": [
+          "IDENTITY effect=161 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 10,
+        "name": "RAGE_004",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "2b288c5dec7149e72b4c929dbb05a87ce4d80b1c7ce9866b74f20c9b97514aac",
+        "log_tail": [
+          "IDENTITY effect=168 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 11,
+        "name": "RAGE_005",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "05bd4e6dcb581d4e154abc453ec073ce80de2122c0c6b00fb6b1564195626b86",
+        "log_tail": [
+          "IDENTITY effect=14 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 12,
+        "name": "RAGE_032",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+        "log_tail": [
+          "IDENTITY effect=19 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 13,
+        "name": "RAGE_086",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "a3b0ca32e04c01b53a9e256601ce9c89f4160fe65708e207655fb27fbd0abf07",
+        "log_tail": [
+          "IDENTITY effect=23 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 14,
+        "name": "RAGE_088",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "b84f6a492320c6619089e5688d78e8a85aca37fca1214f8d78a1745ef42de6cd",
+        "log_tail": [
+          "IDENTITY effect=40 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 15,
+        "name": "TERRATO",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "23b378c0f47308d5f34add72a39bad410015433e1377c27548992a3e8319e761",
+        "log_tail": [
+          "IDENTITY effect=58 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 16,
+        "name": "BIO_BLAST",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "4798ca1cd9433bf8bba8c3fa91cd29aab88d525ea1de7ae127860b52eaf8e820",
+        "log_tail": [
+          "IDENTITY effect=134 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      },
+      {
+        "case": 17,
+        "name": "CONFUSER",
+        "passed": true,
+        "returncode": 0,
+        "calls": 1200,
+        "log_sha256": "95d3c5bf532f187e5dd52c8447a7ada1bf58488ea83a338ed71bf136687bf6a8",
+        "log_tail": [
+          "IDENTITY effect=136 init_hits=0 table_hits=0 deinit_hits=0",
+          "PASS 1200 calls: exact graphics/PCM/state, original ROM, bounded original-ROM replay; hook identity only when exported"
+        ]
+      }
+    ],
+    "generated_compare_sha256": "22a45d4c3f377f491fce0574f81072619e39fb5f70f9d491afb81064b54bdbaa",
+    "source_sha256": "88593e71af79f06bd9e4129bcc170c5338b5758538ffd8874ea4ceefef235657"
+  },
+  "frontend_mock_boots": [
+    {
+      "game": 0,
+      "policy": 0,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "199cedc200a06b34209dc360cecc5b33861262f7400ec630b46da7ff7f5ff925",
+      "native_samples": 381859,
+      "enqueued": 381859,
+      "accepted": 383907,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 0,
+      "policy": 1,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "279feb083ca11bb7f6598348d504e85cec8d0f3bac2df66ad25e11762f06e795",
+      "native_samples": 381859,
+      "enqueued": 381859,
+      "accepted": 383907,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 1,
+      "policy": 0,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "03b6a3ff09a9ceabc371f69bc216a7d697a6c472c9ece92e722bc882d4a710e7",
+      "native_samples": 320737,
+      "enqueued": 320737,
+      "accepted": 322785,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 1,
+      "policy": 1,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "bb4b67dfd3c29a765ad4caee2a7f0762c44f2cb7b877ff0daaae5fcadd758189",
+      "native_samples": 320737,
+      "enqueued": 320737,
+      "accepted": 322785,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 2,
+      "policy": 0,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "09b2bb935d6ddb5e4794792bc824008d7c5564902da72209a36c6060587dec48",
+      "native_samples": 320737,
+      "enqueued": 320737,
+      "accepted": 322785,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 2,
+      "policy": 1,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "9c775c48d71ce68fd7833d011a1dc63c8a6a0ef53de2c27ab6683dfdcb4caa2c",
+      "native_samples": 320737,
+      "enqueued": 320737,
+      "accepted": 322785,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 3,
+      "policy": 0,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "47325a11706706098a8c70848e47d606a8526469b4d26da30ace84dcee148abb",
+      "native_samples": 320737,
+      "enqueued": 320737,
+      "accepted": 322785,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 3,
+      "policy": 1,
+      "calls": 600,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "626729b9c2f438a58bc8e18f31c582ba5eb004c9db6072a0112d51ab1b47f341",
+      "native_samples": 320737,
+      "enqueued": 320737,
+      "accepted": 322785,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 4,
+      "policy": 0,
+      "calls": 2400,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "dc5e0649b12c079833ac7d75b2de77c344f7808387545274081ecf73acc1351d",
+      "native_samples": 1283332,
+      "enqueued": 1283332,
+      "accepted": 1285380,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    },
+    {
+      "game": 4,
+      "policy": 1,
+      "calls": 2400,
+      "passed": true,
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "session_sha256": "a18426ee1196817bb864be025897f1db871471fea4968d368447d0056d8267bd",
+      "native_samples": 1283332,
+      "enqueued": 1283332,
+      "accepted": 1285380,
+      "prime": 2048,
+      "remaining": 0,
+      "cleared": 0
+    }
+  ],
+  "HDMA_contract_cases": [
+    {
+      "source": "build/demand-visible-private-v3/core/source/dma.c",
+      "label": "old",
+      "returncode": 1,
+      "output": "cases=160 failures=160"
+    },
+    {
+      "source": "build/multigame-fixes-private-v1/core/source/dma.c",
+      "label": "fixed",
+      "returncode": 0,
+      "output": "cases=160 failures=0"
+    }
+  ],
+  "recorded_input_recipes": {
+    "continue-0/inputs.txt": "900 0\n8 8\n600 0\n40 80\n60 0\n8 1\n300 0\n",
+    "continue-1/inputs.txt": "8 100\n9000 0\n600 0\n",
+    "continue-3/inputs.txt": "1400 0\n8 8\n600 0\n8 8\n600 0\n8 8\n1200 0\n8 20\n8 0\n8 8\n1800 0\n",
+    "continue2-1/inputs.txt": "8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n8 100\n300 0\n600 0\n",
+    "continue2-3/inputs.txt": "1400 0\n8 8\n600 0\n8 8\n600 0\n8 8\n1200 0\n8 20\n8 0\n8 8\n1800 0\n8 8\n1800 0\n",
+    "continue3-1/inputs.txt": "8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n8 100\n120 0\n900 0\n",
+    "continue3-3/inputs.txt": "1400 0\n8 8\n600 0\n8 8\n600 0\n8 8\n1200 0\n8 20\n8 0\n8 8\n1800 0\n8 8\n1800 0\n1200 2\n",
+    "play-0/inputs.txt": "600 0\n8 8\n180 0\n8 100\n1800 0\n8 100\n300 0\n60 80\n8 1\n300 0\n",
+    "play-1/inputs.txt": "600 0\n8 8\n180 0\n8 100\n6000 0\n6000 0\n8 8\n600 0\n",
+    "play-2/inputs.txt": "600 0\n8 8\n180 0\n8 100\n180 0\n8 8\n180 0\n8 100\n180 0\n8 8\n300 1\n",
+    "play-3/inputs.txt": "1400 0\n8 8\n600 0\n8 8\n600 0\n8 8\n1200 0\n8 8\n600 0\n",
+    "play-4/inputs.txt": "1200 0\n8 8\n300 0\n8 8\n600 0\n8 100\n600 0\n600 82\n"
+  },
+  "diagnostic_log_sha256": {
+    "checked-0/run.log": "5c86478816c4305bfa9526b2f192ff54379c3dd2f1a6c442122dff840fc2ade3",
+    "checked-1/run.log": "9bc3a37d817c34d8b1ce9e59b81d456d87d24a777a10df5477ddbff4aa695fae",
+    "checked-2/run.log": "8cb9d4e6fa9392ba2ad12f243702b2b584372bdfae1538403c888cd4682e45dd",
+    "checked-3/run.log": "d17d8a6513e5a38d3569c1c8d34795751c0ec28ae3a062d5125391072bd5a992",
+    "checked-4/run.log": "8cb9d4e6fa9392ba2ad12f243702b2b584372bdfae1538403c888cd4682e45dd",
+    "checked-v2-0/run.log": "5c86478816c4305bfa9526b2f192ff54379c3dd2f1a6c442122dff840fc2ade3",
+    "checked-v2-1/run.log": "9bc3a37d817c34d8b1ce9e59b81d456d87d24a777a10df5477ddbff4aa695fae",
+    "checked-v2-2/run.log": "8cb9d4e6fa9392ba2ad12f243702b2b584372bdfae1538403c888cd4682e45dd",
+    "checked-v2-3/run.log": "01eec039bcf9f088dcae8c052fcaad40e3056c1f16813c3bd6d9ede8e2d3894b",
+    "checked-v2-4/run.log": "8cb9d4e6fa9392ba2ad12f243702b2b584372bdfae1538403c888cd4682e45dd",
+    "continue-0/run.log": "1351f5d84db9a536702aafe6d27b9110fb8d43800a472c341ee7610470358596",
+    "continue-1/run.log": "0b6bf4944c4bb2b2ed6972d5539fc83dfb724dc2725dd07b8865881f557b63dd",
+    "continue-3/run.log": "c0f15c4102c898be6fe5a9f2b1b394f363591ff65e2a9feb8397917858d54d17",
+    "continue2-1/run.log": "24d770533f43bc047caa12f95b7ddee31dadc8589a13d813082f1f5675b39a2d",
+    "continue2-3/run.log": "7c0965a6fb3965e850a4564d8b2578c89c08ca7f01b470bc1a26d8de616fde39",
+    "continue3-1/run.log": "332ed9b84ccd1f650c41241c5a0e53b05edf851997329ab0a4701a994fbbf550",
+    "continue3-3/run.log": "08ed754d88aff146a74d570ebd00ddd0c6bc8c619f74f19ec5b16853eabc8d33",
+    "explore-3/run.log": "742d7ff25448f22d62c879a695ab71ac65adb75e3de0754a701e822dadb22508",
+    "explore-4/run.log": "bdacfbcd5405083f1feb3aac631d768e09e50a490ff96dd2b6444bb44fbff33e",
+    "play-0/run.log": "7dd3ac944c4fff4adad869431fe5e7d995541fe27a196a7c08a8a0597c7122f9",
+    "play-1/run.log": "898a6692d94700a1b88fd5265d976d50c8ac827de5fcffe868e685f899064eb1",
+    "play-2/run.log": "b42181f703581defb2453d20803283b13f02ccf2c0df5d9c653f9ec526b4ddeb",
+    "play-3/run.log": "968ecbdd1bde9c491df3c2271b6f70d4573fcb4393bb0c5184a21c69e858b9cc",
+    "play-4/run.log": "cccfce1eac46e3036012245d64af425ab23f12ca344bcb203d3afe86202adb11",
+    "porttrace/run.log": "9075b3d6722f7c36df59deb09348caa4a91e0426d0d03ac1c0d941fc6e0779b4",
+    "porttrace-complete/run.log": "fc8a6f2e01546b57ebfecd8c7d1413696f064f982d86f95d868d6b901965f20b",
+    "runner-0-0/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-0-1/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-1-0/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-1-1/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-2-0/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-2-1/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-3-0/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-3-1/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-4-0/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-4-1/run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sf-fallback-result/run.log": "ee1f80c8d9d94bcccdcd2216be744adcff60bdc1a9a4c581dea2d5ef0ff23fb0",
+    "sf-same/run.log": "d17d8a6513e5a38d3569c1c8d34795751c0ec28ae3a062d5125391072bd5a992"
+  },
+  "raw_result_sha256": {
+    "gameplay-v2-result.json": "b9365883a1137226578163bb0333b72c1225eafe7e34c5b09f23456f119e947a",
+    "ffvi-v2-result.json": "6d67ae25c353736b607686fe7b74dedb8207a1a218786f92428ecf5b264520a3",
+    "runner-result.json": "0cffc2ff0f20dafa5b30f71d02c2dcfc88c32ed537996aaa7e8b3902c0a86978",
+    "hdma-check.json": "7612f77cf874c765b710371e78134567c8c33111fec45ffeaed69a40e9459abd",
+    "gameplay-result.json": "89f197ecabda49f3e1fc81a0e5b6937c634d95fba8ca57b577aa3a72d7adef44"
+  },
+  "source_sha256": {
+    "build/prepare-multigame-fixes.py": "667ad158796c57ad38365a3cef20aec053f864411ef5f32792d888104f368a7a",
+    "build/build-multigame-fixes.sh": "38c536d6e92edc5d4654f0ed68fc2842bc51d728a046ecd4a8aea15987ffdc2d",
+    "build/explore-multigame.c": "7628472ffeb64443dd042b0fbe0f41075bc216095b07f2657d4eb3ebfa14e402",
+    "build/explore-five-games.py": "1cfd4e89b96ddce024f6b63def862edb5122ab260905081f86b01ff24b111c02",
+    "build/qualify-five-gameplay.py": "2b7c8906d61961f767d102053fa521d5b87f03031f37d51662dd919a0dab7eaa",
+    "build/check-hdma-termination.py": "e97bbb42c89098e39f5588b399c8a59a9eff2d00b73a0fba254c068577b13391",
+    "build/check-multigame-ffvi.py": "88593e71af79f06bd9e4129bcc170c5338b5758538ffd8874ea4ceefef235657",
+    "build/check-fixed-gameplay-runner.py": "871f0a5030d527c5887326310f61b9e39c19c46eb7861c99c2fdc773ae74f15d",
+    "build/publish-gameplay-fixes.py": "b33c15c4accdc2a8859a58b3a640e97e5b49570e992bcb22dffff9b1cbaf34ee"
+  },
+  "limits": [
+    "QEMU/software compatibility only; new core is not installed or physically performance-qualified.",
+    "Reference shares the scoped APU/HDMA corrections; not an independent original-console accuracy oracle.",
+    "SuperFX uses full-layout callback copies, so its A7 cost/headroom must be measured.",
+    "Ranger port completion is a scoped instruction-level compatibility rule, not a cycle-perfect SPC timing claim.",
+    "Four inspected gameplay snapshots are private derived fixtures, not a claim of compatibility with older user save headers. Existing saves are untouched.",
+    "Star Fox GSU snapshot save/restore remains unqualified; its accepted test starts from cold boot.",
+    "The old harness prints floor(calls/30); actual state checks are at frame0,30,..., hence the public report uses ceil(calls/30).",
+    "Death/respawn in scripted gameplay is not a failure; level completion and sustained playability are not established."
+  ]
+}

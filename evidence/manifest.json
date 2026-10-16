@@ -7775,6 +7775,14 @@
       "published_sha256": "e98329b6a9606421e0ba04ebee4ac2a0ef6921a070311f1b03322f9001bf9c19",
       "bytes": 18851,
       "normalized": false
+    },
+    {
+      "source": "derived:build/publish-gameplay-fixes.py;private=build/multigame-fixes-private-v1",
+      "published": "evidence/2026-10-16/gameplay-fixes/qualification.json",
+      "source_sha256": "e8bf4239c8daefbd0f03a431c56d229b660119a2607cd3b188c453b2b4f44a42",
+      "published_sha256": "e8bf4239c8daefbd0f03a431c56d229b660119a2607cd3b188c453b2b4f44a42",
+      "bytes": 34925,
+      "normalized": false
     }
   ]
 }

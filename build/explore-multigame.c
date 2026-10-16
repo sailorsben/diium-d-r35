@@ -1,0 +1,11 @@
+/* Private deterministic input exploration, with full checkpoints and images. */
+#define main old_main
+#include "demand-private-v1/demand-equivalence.c"
+#undef main
+extern int legacy_sscanf(const char *,const char *,...) __asm__("__isoc99_sscanf");
+static unsigned mask;
+static int16_t buttons(unsigned port,unsigned device,unsigned index,unsigned id){(void)index;if(port||device!=RETRO_DEVICE_JOYPAD)return 0;return id==RETRO_DEVICE_ID_JOYPAD_MASK?(int16_t)mask:id<16?(int)((mask>>id)&1):0;}
+static void image(const char *dir,unsigned step,struct core *c){char path[1024];snprintf(path,sizeof(path),"%s/step-%03u.ppm",dir,step);FILE *f=fopen(path,"wb");assert(f);fprintf(f,"P6\n%u %u\n255\n",c->w,c->h);for(unsigned i=0;i<c->w*c->h;i++){unsigned p=c->frame_pixels[i];unsigned char b[3]={(p>>11)*255/31,((p>>5)&63)*255/63,(p&31)*255/31};assert(fwrite(b,1,3,f)==3);}assert(!fclose(f));}
+int main(int argc,char **argv){assert(argc==4||argc==5);size_t n;unsigned char *rom=read_all(argv[2],&n);struct core c={0};open_core(&c,argv[1],rom,n);c.set_input_state(buttons);size_t size=c.serialize_size();unsigned char *state=calloc(1,size);assert(state);if(argc==5){size_t saved_n;unsigned char *saved=read_all(argv[4],&saved_n);assert(saved_n==size&&c.unserialize(saved,size));free(saved);}unsigned count,step=0,total=0;char line[128],path[1024];
+ while(fgets(line,sizeof(line),stdin)){if(legacy_sscanf(line,"%u %x",&count,&mask)!=2)break;assert(count<=30000 && mask<=65535);for(unsigned i=0;i<count;i++){frame=total++;c.pixels=c.pcm=c.samples=c.videos=0;active=&c;c.run();}active=&c;assert(c.serialize(state,size));SCPUState *cpu=(void *)state;SICPU *icpu=(void *)(state+sizeof(*cpu));size_t fill=sizeof(SCPUState)+sizeof(SICPU)+sizeof(SPPU)+sizeof(SDMA)*8+0x50000;printf("STEP %u total=%u pc=%02x:%04x A=%04x X=%04x Y=%04x pixels=%08x pcm=%08x ports=%02x,%02x,%02x,%02x\n",step,total,icpu->Registers.PB,(unsigned)((uintptr_t)cpu->PC-(uintptr_t)cpu->PCBase),icpu->Registers.A.W,icpu->Registers.X.W,icpu->Registers.Y.W,c.pixels,c.pcm,state[fill+0x2140],state[fill+0x2141],state[fill+0x2142],state[fill+0x2143]);image(argv[3],step,&c);snprintf(path,sizeof(path),"%s/step-%03u.state",argv[3],step);FILE *f=fopen(path,"wb");assert(f&&fwrite(state,1,size,f)==size&&!fclose(f));fflush(stdout);step++;}
+ c.unload_game();c.deinit();return 0;}

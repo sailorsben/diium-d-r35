@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Fix Ranger/Star Fox and qualify five gameplay scenes — 2026-10-16
+
+Resolve Ranger's stalled SPC SYNC exchange with AVCJ-only instruction-complete
+port writes. Remove redundant HDMA cached-pointer subtraction that leaks host
+addresses into Star Fox's DMA register shadows. Strict tests then expose a
+SuperFX direct-target pixel failure; retain the established full-layout path.
+All five reach actual gameplay:14,656 pixel/PCM/geometry comparisons and489
+strict state checks pass. All18 FFVI scenes and ten unchanged-frontend mock
+boot/audio cells pass. No card changes, new full backup or physical promotion.
+[Fixes and acceptance limits](five-gameplay-fixes.md).
+
 ## Five-game backup-ROM evaluation — 2026-10-16
 
 Test Super Mario World, Super Metroid, F-Zero, Star Fox and Rendering Ranger

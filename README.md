@@ -6,13 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
-Five backed-up games tested against the exact FFVI candidate core. Mario,
-Metroid and F-Zero pass6000-call equivalence windows with limited scene
-coverage; Rendering Ranger also matches but stays black. Star Fox fails strict
-state comparison at frame150, reproduced between identical candidate copies.
-All ten actual-runner mock boot cells pass. No general emulator-fixed claim,
-A7 throughput proof, card access or new full backup.
-[Game results and recommendation](docs/multigame-evaluation.md).
+Ranger black screen and Star Fox state divergence are fixed in an isolated
+candidate; a newly exposed SuperFX direct-target pixel failure uses the
+full-layout compatibility path. All five reach inspected gameplay and pass
+14,656 strict compared calls, all18 FFVI regression scenes and ten frontend
+mock boot/audio cells. UART/saves/evidence preserved; no card access or full
+backup. The rebuilt core still needs physical A7 qualification.
+[Fixes, gameplay and evidence](docs/five-gameplay-fixes.md).
 
 Routine I: attempts now save changed progress/logs and configuration hashes,
 with no full-card or full-retro copies. See [attempt evidence policy](docs/attempt-evidence-policy.md).

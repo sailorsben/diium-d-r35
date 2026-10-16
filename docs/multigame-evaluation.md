@@ -1,5 +1,8 @@
 # Five-game evaluation — 2026-10-16
 
+**Superseded by the [corrected five-game gameplay rerun](five-gameplay-fixes.md).**
+The failures below are preserved as the initial negative evidence.
+
 **Do not call the whole emulator fixed yet.** Retain the verified UART,
 diagnostic shutdown and bounded FFVI presentation-recovery fixes. The broader
 game test finds a Rendering Ranger black-screen blocker and an unresolved

@@ -1,12 +1,12 @@
 # Device findings
 
-Five backed-up games tested against the exact FFVI candidate core. Mario,
-Metroid and F-Zero pass6000-call equivalence windows with limited scene
-coverage; Rendering Ranger also matches but stays black. Star Fox fails strict
-state comparison at frame150, reproduced between identical candidate copies.
-All ten actual-runner mock boot cells pass. No general emulator-fixed claim,
-A7 throughput proof, card access or new full backup.
-[Game results and recommendation](multigame-evaluation.md).
+Ranger black screen and Star Fox state divergence are fixed in an isolated
+candidate; a newly exposed SuperFX direct-target pixel failure uses the
+full-layout compatibility path. All five reach inspected gameplay and pass
+14,656 strict compared calls, all18 FFVI regression scenes and ten frontend
+mock boot/audio cells. UART/saves/evidence preserved; no card access or full
+backup. The rebuilt core still needs physical A7 qualification.
+[Fixes, gameplay and evidence](five-gameplay-fixes.md).
 
 Matched FFVI physical return:78/80 clean bounded windows. Both48 ms blocking
 controls fail; both candidates complete1200 renders/all seven bursts with12
