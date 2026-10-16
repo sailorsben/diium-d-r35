@@ -1,5 +1,16 @@
 # Changelog
 
+## Confirm pressure3 burst recovery against blocking controls — 2026-10-15
+
+Collect77 physical cells,62 accepted.48 ms candidate completes180 quanta/six
+bursts with valid PCM recovery,175 presentations/five intentional skips; matched
+blocking control fails during second burst. Post-event display-credit wait
+0.004 versus11.480 ms; first five restore prime lead in19.5–20.0 ms.24 ms
+passes both without skips;80 ms/sustained overload remain failures. Retain full
+histories, censor invalid/error tails and final-frame recovery. Strict9,457-file
+archive, clean FAT/hash gates; UART72.37/sec. I: unarmed, no writes/rearm or
+claimed full-core/visual qualification. [Physical result](docs/render-pressure3-return.md).
+
 ## Qualify presentation-independent recovery candidate — 2026-10-15
 
 Separate pressure3 adds atomic FREE-source/FIFO try-reservation. Busy credit

@@ -1,5 +1,11 @@
 # Presentation-independent audio recovery candidate
 
+**Physical return collected:**48 ms candidate passes six bursts with five
+intentional presentation skips; matched blocking control fails during second.
+All77 cells finish,62 accepted. I: unarmed.
+[Results and recovery accounting](render-pressure3-return.md).
+Installation/PENDING statements below describe preparation before this return.
+
 Pressure3 removes display-credit waits from queued render+audio production.
 It is separately versioned, qualified offline and armed once on I: from pushed
 `678643a`; physical benefit remains pending. The pressure1/2 source and returned evidence remain

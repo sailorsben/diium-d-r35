@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest physical result, 2026-10-15:** pressure3 survives six48 ms bursts,
+180 valid produced quanta/175 presented/five intentional skips, versus blocking
+control59 completed then failure at second burst. First five recover prime lead
+in19.5–20.0 ms after observed minima; last ends production/drains.24 ms passes
+both/no skips;80 ms fails both. All77 cells complete,62 accepted. Post-first48 ms
+reservation wait0.004 versus11.480 ms. Sustained12/16 ms added-load failures
+remain. New policy has bounded synthetic proof, pending full-core/visual tests.
+Strict9,457-file/FAT/hash collection; I: unarmed, UART retained72.37/sec, no
+card writes/rearm. [Full comparison](render-pressure3-return.md).
+
 **Current I: installation, 2026-10-15:** pressure3 armed once from pushed
 `678643a`. Atomic try-reservation skips only presentation when display credit
 is busy; all rendering/load/audio work retained.77 phases include seven matched

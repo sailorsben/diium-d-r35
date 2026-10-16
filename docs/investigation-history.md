@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## Pressure3 demonstrates48 ms recovery with five presentation skips — 2026-10-15
+
+Candidate48 ms passes180 quanta/six burns with valid running pointers, exact
+PCM accounting, oracle and drain;175 drawings/five explicitly skipped. Same-boot
+matched blocking control fails at59 completed during second burst. First five
+candidate events regain prime in19.5–20.0 ms after observed minima; last has no
+production recovery window. Post-event reservation0.004 versus11.480 ms supports
+the proposed catch-up mechanism.24 ms passes both/no skips;80 ms fails both;
+sustained CPU threshold does not change. All77 cells complete,62 accepted.
+Publish418 input hashes with failure-tail censoring, preserve prior evidence,
+clean FAT/stock/ROM/init/progress and UART72.37/sec. No code/install/rearm on
+return; full-core/visual qualification remains next. [Results](render-pressure3-return.md).
+
 ## Presentation-independent recovery candidate — 2026-10-15
 
 Address pressure2's clean48 ms recovery stall with an atomic try-reservation:

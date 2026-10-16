@@ -6,14 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
-Pressure3 candidate qualifies presentation-independent audio recovery: busy
-display credit renders to scratch and skips presentation while retaining every
-render/load/audio quantum.77 phases include the same seven blocking sweep
-controls in the same boot. Actual board ownership192 cases, controller/audio
-seam, oracle and firmware guards pass. Physical savings and presentation cost
-pending. Installed and armed once on I: from pushed `678643a`, after fresh
-archive/FAT/hash gates; prior tests and UART fix preserved.
-[Candidate and acceptance gate](docs/render-pressure3.md).
+Pressure3 physical return passes all six48 ms bursts with valid PCM recovery,
+while its same-boot blocking control fails during the second. Five of180
+presentations skipped; all rendering/audio retained. First five bursts restore
+prime lead in19.5–20.0 ms after observed minima; final burst drains normally.
+24 ms passes/no skips;80 ms fails both paths.77 phases complete,62 accepted.
+Sustained CPU limit unchanged; real-core/visual qualification remains next.
+Archive/FAT/hashes verify, UART72.37/sec; I: unarmed, no rearm/card writes.
+[Physical comparison and skipped-frame accounting](docs/render-pressure3-return.md).
 
 Pressure2 returned all70 phases:58 pass/12 fail. Light rendering plus8 ms extra
 CPU/frame (12.036 ms main CPU) passes180 quanta; plus12 ms fails. Six24 ms
