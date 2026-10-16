@@ -6,13 +6,18 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+I: is now armed once with the ROM-free 70-phase `render-pressure1` test from
+pushed `26e9d3d`. Fresh archive, clean FAT and protected-file/payload readback
+gates pass; persistent UART correction is preserved. Physical results pending.
+[Run instructions and installation evidence](docs/render-pressure-installation.md).
+
 ROM-free render/device pressure lab built:70 isolated/composed phases compare
 scalar/NEON/cached rows, heap/chunk copies, serial/queued display, native audio,
 steady/burst CPU loads and added instrumentation.60 full-frame oracle cases,
 70 short mock cells, firmware recovery guards, ABI/header pins and four faults
 pass. Exact kernel audit now establishes scaler wait's millisecond timeout and
-waitqueue completion. No hardware ceiling or new A7 speed claim. I: untouched;
-new test not installed/armed. [Design, review and readiness](docs/render-pressure-lab.md).
+waitqueue completion. No hardware ceiling or new A7 speed claim.
+[Design, review and qualification](docs/render-pressure-lab.md).
 
 UART-corrected FFVI return:46/48 valid windows versus44/48 before; both raw-core
 Meteor controls now pass, while the two APU-only Meteor controls still fail.

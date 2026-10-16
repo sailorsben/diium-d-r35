@@ -5,9 +5,10 @@ game-driven discovery with controlled command streams, isolated stages and load
 sweeps. Games remain integration/regression evidence after a general change;
 they are no longer the only source of workloads or bottleneck clues.
 
-`render-pressure1` is built and qualified offline, **not installed or armed**.
-No I: access or changes occurred. The persistent UART fix and returned FFVI
-evidence remain intact. A physical run is still needed to price these cells.
+`render-pressure1` is now installed and **armed once on I:** from pushed
+`26e9d3d`. The permanent UART fix and returned FFVI evidence remain intact.
+A physical run is still needed to price these cells.
+[Installation and run instructions](render-pressure-installation.md).
 
 ## What the test can decide
 
@@ -157,5 +158,5 @@ Rebuild with `prepare-render-pressure.py`, `build-render-pressure.sh`,
 `check-render-pressure-faults.py` under build/. Preparation requires a fresh
 private directory. `install-render-pressure.py <fresh-archive>` is explicitly
 install-only: clean pushed source, archive/FAT/stock/init/ROM checks, separate
-versioned package and readback precede arming. It has not been invoked.
+versioned package and readback precede arming. It completed for this installation.
 No ROM or private state is part of the test or publication.

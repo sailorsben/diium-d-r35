@@ -1,15 +1,21 @@
 # Device findings
 
+**Current I: installation, 2026-10-15:** ROM-free 70-phase `render-pressure1`
+installed and armed once from pushed `26e9d3d`, after a fresh strict archive.
+FAT, protected files, payloads and both exact markers verify; UART correction
+remains enabled. Physical acceptance/timing pending.
+[Installation](render-pressure-installation.md).
+
 **Independent pressure test / matching driver review,2026-10-15:** ROM-free
-70-phase lab is built and qualified offline, not installed or armed. It separates
+70-phase lab is built and qualified offline. It separates
 actual project row kernels, memory copies/mappings, queued/serial display, audio,
 load bursts and added measurement cost.60 oracle cases,70 short mock cells and
 recovery/guard checks pass; physical capacity remains unmeasured. Recovered
 kernel ioctl0x80045004 takes a scalar millisecond timeout clamped5000; helper
 converts with __msecs_to_jiffies and uses a completion waitqueue. Vendor3000
 is a maximum timeout, not a fixed delay. No new MMIO/ioctl mode. Reconstructed
-module-build config is not physical boot-config proof. I: untouched/unarmed,
-UART correction retained. [Details](render-pressure-lab.md).
+module-build config is not physical boot-config proof.
+[Details](render-pressure-lab.md).
 
 **Latest physical return,2026-10-15:** persistent UART correction stays attached
 through all48 FFVI epochs, fault/bypass0. IRQ19 is71.63/sec versus prior6,920.94,

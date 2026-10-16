@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Arm independent pressure lab — 2026-10-15
+
+Install the qualified ROM-free 70-phase lab from pushed `26e9d3d` in its own
+directory, preserving persistent UART correction and prior logs/private progress.
+Fresh strict archive, three clean FAT installation gates, protected-file hashes,
+payload readbacks and both one-shot markers verify. No production core or driver
+change; physical acceptance and timing remain pending.
+[Installation and collection route](render-pressure-installation.md).
+
 ## ROM-free pressure lab and actual scaler wait contract — 2026-10-15
 
 Respond to the hardware-ceiling challenge with a70-phase independent harness,

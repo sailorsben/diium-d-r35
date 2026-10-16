@@ -1,5 +1,14 @@
 # Changelog
 
+## Arm ROM-free renderer/platform pressure lab — 2026-10-15
+
+Install and arm the qualified 70-phase `render-pressure1` from pushed `26e9d3d`
+on I:, after a fresh strict archive. Preserve all prior files except the owned
+test dispatcher; retain permanent UART correction, stock/ROM/saves and logs.
+Three clean FAT gates and independent payload/protected-file/marker readback
+verify. Publish installation metadata separately from offline qualification.
+Physical acceptance and timing pending. [Run instructions](docs/render-pressure-installation.md).
+
 ## Build independent renderer/platform pressure lab and inspect matching driver - 2026-10-15
 
 ROM-free70-phase lab isolates row generation, memory routes, scaling/display,
