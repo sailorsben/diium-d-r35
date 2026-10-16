@@ -6,6 +6,9 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
+Routine I: attempts now save changed progress/logs and configuration hashes,
+with no full-card or full-retro copies. See [attempt evidence policy](docs/attempt-evidence-policy.md).
+
 Matched physical FFVI package qualified:80 automatic ABBA/reversed epochs,
 all18 original contexts plus matched24/48 ms bursts, one core/executable and
 policy-only pairs. Actual controller passes96,000 real-core calls/all56 burns;

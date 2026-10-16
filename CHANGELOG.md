@@ -1,5 +1,14 @@
 # Changelog
 
+## Replace routine I: full copies with sparse evidence — 2026-10-16
+
+Save progress/log generations once per SHA256; record configuration and static
+payload hashes without copying packages, ROMs or swapfiles. Apply to both retro
+and outside-retro collectors, retaining FAT/identity/no-write gates. Update
+current FFVI install/report/publication consumers and add fake-card regression
+checks. Original recovery backups remain separate. No install or rearm.
+[Policy](docs/attempt-evidence-policy.md).
+
 ## Qualify matched physical FFVI presentation test — 2026-10-16
 
 Prepare separate80-epoch policy-only ABBA/reversed test:18 original1200-frame

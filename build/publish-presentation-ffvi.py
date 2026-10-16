@@ -18,7 +18,9 @@ def main(phase,archive):
  if phase=='qualified':
   report=json.loads((archive/'archive.json').read_text());extra=json.loads((archive/'outside-retro.json').read_text())
   files=report['all_retro_files']+extra['files']
-  metadata={**q,'all_existing_files_archived':len(files),'archived_bytes':sum(e['bytes'] for e in files),'FAT_clean':report['fat_clean'],
+  metadata={**q,'all_existing_files_hashed':len(files),'inventoried_bytes':sum(e['bytes'] for e in files),
+   'archive_storage_policy':report.get('storage_policy','legacy-full-copy'),
+   'new_content_bytes':sum(e.get('new_content_bytes',e['bytes']) for e in files),'FAT_clean':report['fat_clean'],
    'installation_transaction':iq,'archive':archive.name,'archive_manifest_sha256':digest(archive/'archive.json'),
    'outside_retro_manifest_sha256':digest(archive/'outside-retro.json'),
    'publication_sources':{n:digest(ROOT/'build'/n) for n in ('archive-presentation-extra.py','check-presentation-install.py','install-presentation-ffvi.py','report-presentation-ffvi.py','verify-presentation-card.py','publish-presentation-ffvi.py')},

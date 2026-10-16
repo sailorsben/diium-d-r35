@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Stop full-card copies on routine attempts — 2026-10-16
+
+User requested removal of repeated attempt backups and prohibited repeating the
+whole-I: backup per attempt. Both retro and supplemental collectors now retain
+only progress/log content, sharing unchanged content by hash, with static files
+hash-only. Keep FAT/identity/protected-file checks. Update the current FFVI
+installer/reporter/publisher for explicit sparse manifests. No device writes.
+See [policy and validation](attempt-evidence-policy.md).
+
 ## Matched actual-core presentation test prepared — 2026-10-16
 
 Prepare80 policy-only ABBA/reversed epochs:18 unchanged1200-frame effect/input

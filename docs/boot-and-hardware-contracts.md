@@ -1,5 +1,9 @@
 # Boot and hardware contracts
 
+Routine I: collection preserves changed progress/logs and a complete hash
+inventory, not another card copy. This supersedes historical full-backup-per-
+attempt directions; see [current evidence policy](attempt-evidence-policy.md).
+
 These contracts were recovered from the exact shipped binaries and checked against returned runs. They are the prerequisites for a replacement userspace runtime, not a complete hardware SDK.
 
 ## Splash handoff

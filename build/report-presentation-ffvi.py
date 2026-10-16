@@ -2,6 +2,7 @@
 from pathlib import Path
 from hashlib import sha256
 import argparse,csv,json,re,statistics
+from attempt_archive import SCHEMA, verify_saved
 def digest(p):return sha256(p.read_bytes()).hexdigest()
 def kv(p):return dict(l.split('=',1) for l in p.read_text().splitlines() if '=' in l) if p.exists() else {}
 def rows(p):return list(csv.DictReader(l for l in p.read_text().splitlines() if not l.startswith('#')))
@@ -68,14 +69,20 @@ def main():
   root=a.archive.resolve();plan=json.loads((root.parent/'plan.json').read_text())
  else:
   archive=a.archive.resolve();meta=json.loads((archive/'archive.json').read_text());assert meta['fat_clean'] and meta['card_writes']==0
-  for e in meta['all_retro_files']:assert digest(archive/e['path'])==e['sha256']
+  verify_saved(archive,meta)
   assert a.installation is not None,'Use the frozen installation receipt'
   installed=json.loads(a.installation.read_text());assert installed['version']=='presentation-ffvi1'
   target=archive/'retro/snes-presentation-ffvi1'
-  for n,h in installed['payload_hashes'].items():assert digest(target/n)==h,n
-  assert digest(target/'launch.sh')==installed['payload_hashes']['launch.sh']
+  hashes={e['path']:e['sha256'] for e in meta['all_retro_files']}
+  sparse=meta.get('schema')==SCHEMA
+  payload=Path(__file__).resolve().parent/'presentation-ffvi-private-v1' if sparse else target
+  for n,h in installed['payload_hashes'].items():
+   assert hashes['retro/snes-presentation-ffvi1/'+n]==h,n
+   assert digest(payload/n)==h,n
   runs=list((target/'results').glob('run-*'));assert len(runs)==1,'Select the exact returned run explicitly if repeated'
-  root=runs[0];plan=json.loads((target/'plan.json').read_text())
- result=analyze(root,plan,a.mock);out=root/'presentation-analysis.json';out.write_text(json.dumps(result,indent=2)+'\n')
+  root=runs[0];plan=json.loads((payload/'plan.json').read_text())
+ result=analyze(root,plan,a.mock);out=root/'presentation-analysis.json'
+ # A prior derived report may be linked to immutable saved content.
+ out.unlink(missing_ok=True);out.write_text(json.dumps(result,indent=2)+'\n')
  print(json.dumps({'epochs':len(result['epochs']),'accepted':sum(r['status']=='CLEAN_BOUNDED_WINDOW' for r in result['epochs']),'physical':result['physical'],'report':str(out)}))
 if __name__=='__main__':main()

@@ -2,6 +2,7 @@
 from pathlib import Path
 from hashlib import sha256
 import importlib.util,json,shutil,sys
+from attempt_archive import verify_saved
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'build/presentation-ffvi-private-v1'
 MARKER=b'Matched FFVI presentation policy 80 epochs once\n'
@@ -49,7 +50,10 @@ def main(archive):
  card=Path('I:/').resolve();assert str(card).lower() in ('i:/','i:\\')
  assert not list((card/'retro').rglob('armed')) and not list(card.rglob('Code.bkp'))
  entries=a['all_retro_files']+extra['files']
- for e in entries:assert digest(card/e['path'])==digest(archive/e['path'])==e['sha256'],e['path']
+ verify_saved(archive,a)
+ for e in extra['files']:
+  if extra.get('schema') is None or e['stored']:assert digest(archive/e['path'])==e['sha256'],e['path']
+ for e in entries:assert digest(card/e['path'])==e['sha256'],e['path']
  # UART boot init and all UART files remain protected, never rewritten.
  uq=json.loads((ROOT/'build/uart-fix-private/qualification.json').read_text())
  assert digest(card/'retro/init')==uq['payloads']['init']
@@ -72,7 +76,8 @@ def main(archive):
  assert (card/'retro/snes-mvp/launch.sh').read_bytes()==(OUT/'dispatch.sh').read_bytes()
  report={'version':'presentation-ffvi1','source_commit':commit,'archive':archive.name,'clean_FAT':True,
  'one_shot_armed':True,'physical_result':'PENDING','persistent_UART_preserved':True,
- 'protected_existing_files':len(protected),'all_existing_files_archived':len(entries),
+ 'protected_existing_files':len(protected),'all_existing_files_hashed':len(entries),
+ 'archive_storage_policy':a.get('storage_policy','legacy-full-copy'),
  'only_changed_existing_file':'retro/snes-mvp/launch.sh','previous_dispatch_sha256':sha256(old).hexdigest(),
  'dispatch_sha256':digest(card/'retro/snes-mvp/launch.sh'),'marker_sha256':sha256(MARKER).hexdigest(),
  'payload_hashes':{n:sha256(b).hexdigest() for n,b in payload.items()}}
