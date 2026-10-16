@@ -5,10 +5,12 @@ game-driven discovery with controlled command streams, isolated stages and load
 sweeps. Games remain integration/regression evidence after a general change;
 they are no longer the only source of workloads or bottleneck clues.
 
-`render-pressure1` is now installed and **armed once on I:** from pushed
-`26e9d3d`. The permanent UART fix and returned FFVI evidence remain intact.
-A physical run is still needed to price these cells.
-[Installation and run instructions](render-pressure-installation.md).
+`render-pressure1` has returned its first physical run: all 70 phases finish,
+50 non-audio cells pass, five audio cells finish production before a controller
+double-finish error, and 15 heavy audio cells fail during production. I: is
+unarmed; the permanent UART correction remains intact.
+[Physical results and limitations](render-pressure-return.md),
+[original installation](render-pressure-installation.md).
 
 ## What the test can decide
 

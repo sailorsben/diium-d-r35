@@ -1,5 +1,20 @@
 # Investigation history and negative results
 
+## First independent pressure return separates rendering and shutdown — 2026-10-15
+
+All 70 cells finish normally; 50 non-audio pass. Audio-only and four light
+render cells complete production with valid pointers/reserve, then the new
+controller calls finish after the audio worker has already drained, causing
+errno77. Fifteen dense/loaded cells fail during production; all three burst
+cells fail before frame29. No burst limit or audio end-to-end pass is claimed.
+NEON synthetic dense rows cost20.317 ms main CPU versus16.688 ms audio quantum;
+queued/direct display helps but does not close that budget. Tested cached colors
+show no win. Prebuilt output achieves about60fps at all three dimensions.
+IRQ19 remains72.39/sec with correction attached. Strict archive/input hashes,
+clean FAT, ROM/init/stock/progress verify; markers consumed, no card mutation.
+Record the harness defect and next bounded diagnostic without changing the
+frozen workload or installing another candidate. [Analysis](render-pressure-return.md).
+
 ## Arm independent pressure lab — 2026-10-15
 
 Install the qualified ROM-free 70-phase lab from pushed `26e9d3d` in its own

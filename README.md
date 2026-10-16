@@ -6,10 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
-I: is now armed once with the ROM-free 70-phase `render-pressure1` test from
-pushed `26e9d3d`. Fresh archive, clean FAT and protected-file/payload readback
-gates pass; persistent UART correction is preserved. Physical results pending.
-[Run instructions and installation evidence](docs/render-pressure-installation.md).
+The ROM-free pressure test returned all 70 phases: 50 non-audio passes, five
+completed audio-production runs with a controller double-finish shutdown bug,
+and 15 heavy production failures. Prebuilt display reaches about 60 fps;
+dense NEON rendering costs 20.317 ms main CPU per synthetic frame. Queuing
+helps; the tested color cache does not. Burst cells fail before their first
+burst. IRQ19 stays near 72/sec. Archive/FAT/payload/progress checks pass; I:
+is unarmed with permanent UART correction retained. No new candidate or rearm.
+[Results and evidence boundaries](docs/render-pressure-return.md).
 
 ROM-free render/device pressure lab built:70 isolated/composed phases compare
 scalar/NEON/cached rows, heap/chunk copies, serial/queued display, native audio,

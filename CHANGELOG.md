@@ -1,5 +1,15 @@
 # Changelog
 
+## Collect first ROM-free pressure return — 2026-10-15
+
+Archive and verify all 70 physical cells:50 non-audio passes, five completed
+audio-production runs with a controller double-finish cleanup error,15 heavy
+production failures. Publish source-bound metrics/376 input hashes; separate
+production from shutdown and reject unexecuted burst-tolerance claims. Display
+reaches about60fps; dense NEON rows cost20.317 ms main CPU; tested color cache
+does not win. UART remains corrected at72.39 IRQ19/sec. I: unarmed, no writes,
+rebuild/rearm or claimed hardware ceiling. [Results](docs/render-pressure-return.md).
+
 ## Arm ROM-free renderer/platform pressure lab — 2026-10-15
 
 Install and arm the qualified 70-phase `render-pressure1` from pushed `26e9d3d`

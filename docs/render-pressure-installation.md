@@ -1,5 +1,9 @@
 # ROM-free pressure test armed on I: — 2026-10-15
 
+**Subsequent return:** this one-shot is consumed, I: is unarmed and all logs are
+archived. See [physical results](render-pressure-return.md). The instructions
+and PENDING status below describe the installation before that run.
+
 Installed and armed `render-pressure1` from pushed source
 `26e9d3d7744c5185885beb069be9673894f282b1`. The 70-phase workload and offline
 qualification are described in [the lab design](render-pressure-lab.md).

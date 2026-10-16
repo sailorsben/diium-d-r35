@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest pressure-test return, 2026-10-15:** all 70 phases finish; 50 non-audio
+passes, five complete valid audio-production runs followed by the new
+controller's extra-finish error, 15 heavy production failures. Prebuilt display
+is about 60 fps at all three sizes; dense NEON rows cost 20.317 ms main CPU.
+Queuing helps, cached colors do not; bursts never reach their first trigger.
+No hardware ceiling proved. IRQ19 stays 72.39/sec, no UART faults/bypass. Strict
+archive/FAT/protected hashes verify; I: unarmed, no card writes or rearm.
+[Full physical analysis](render-pressure-return.md). Older status entries below
+describe earlier steps.
+
 **Current I: installation, 2026-10-15:** ROM-free 70-phase `render-pressure1`
 installed and armed once from pushed `26e9d3d`, after a fresh strict archive.
 FAT, protected files, payloads and both exact markers verify; UART correction
