@@ -1,5 +1,16 @@
 # Device findings
 
+**Independent pressure test / matching driver review,2026-10-15:** ROM-free
+70-phase lab is built and qualified offline, not installed or armed. It separates
+actual project row kernels, memory copies/mappings, queued/serial display, audio,
+load bursts and added measurement cost.60 oracle cases,70 short mock cells and
+recovery/guard checks pass; physical capacity remains unmeasured. Recovered
+kernel ioctl0x80045004 takes a scalar millisecond timeout clamped5000; helper
+converts with __msecs_to_jiffies and uses a completion waitqueue. Vendor3000
+is a maximum timeout, not a fixed delay. No new MMIO/ioctl mode. Reconstructed
+module-build config is not physical boot-config proof. I: untouched/unarmed,
+UART correction retained. [Details](render-pressure-lab.md).
+
 **Latest physical return,2026-10-15:** persistent UART correction stays attached
 through all48 FFVI epochs, fault/bypass0. IRQ19 is71.63/sec versus prior6,920.94,
 98.965% lower over16.4minutes. Valid windows rise44→46: raw Meteor0/2→2/2;

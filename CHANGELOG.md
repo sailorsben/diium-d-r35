@@ -1,5 +1,18 @@
 # Changelog
 
+## Build independent renderer/platform pressure lab and inspect matching driver - 2026-10-15
+
+ROM-free70-phase lab isolates row generation, memory routes, scaling/display,
+audio, combined scheduling and steady/burst CPU load. Scalar-oracle/NEON/cache
+equality passes60 full-frame cases; all70 short mock cells and actual firmware
+recovery/guard checks pass. Bounded RAM telemetry, worker ownership, final-frame
+oracle verification, pointer/accounting gates and mock-performance rejection.
+Pin all local compile dependencies; retain physically used board/PCM source by
+hash. Matching kernel ioctl evidence resolves scaler3000 as a capped millisecond
+timeout with waitqueue completion. Module-build reconstruction is not recovered
+device configuration. Diagnostic preparation only; no I: access, install/arm,
+game/core/driver change or claimed A7 gain. [Lab and review](docs/render-pressure-lab.md).
+
 ## UART-corrected FFVI return improves reserve and raw Meteor - 2026-10-15
 
 All48 epochs finish;46 valid versus44 previously. Both raw-v3 Meteor controls

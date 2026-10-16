@@ -1,5 +1,24 @@
 # Investigation history and negative results
 
+## ROM-free pressure lab and actual scaler wait contract — 2026-10-15
+
+Respond to the hardware-ceiling challenge with a70-phase independent harness,
+not another game-specific inference. Compose exact row math, cache-friendly/
+churning/depth/window workloads, heap/chunk traffic, prebuilt display, audio and
+controlled CPU loads. No ROM/core DLL; frozen physically used board/audio support.
+Oracle60 full-frame guards/equality cases and70 short mock cells pass, with
+supervisor/replay/forced termination/UART failures checked in actual firmware
+shell. Physical timing and combined native-driver acceptance remain pending.
+
+The matching kernel is now available, unlike the original lab2 review. Pin11
+functions and verify ioctl jump-table dispatch for0x80045004, scalar arg in r2,
+5000ms clamp and __msecs_to_jiffies / waitqueue / schedule_timeout helpers.
+Vendor3000 is a3-second maximum, not mandatory work or demonstrated busy-spin.
+Queue/retrigger presence does not qualify persistent-FD/DMA changes. Do not
+promote reconstructed module-build HZ/HIGH_RES/PREEMPT settings to board facts.
+All prior evidence retained; no I: access, install/rearm, kernel/driver/game
+mutation or QEMU-derived speed claim. [Test and review](render-pressure-lab.md).
+
 ## UART-corrected FFVI return: resilience improves, CPU margin remains — 2026-10-15
 
 Strict8,275-file/2,026,867,632-byte archive, clean FAT and exact payload/stock/

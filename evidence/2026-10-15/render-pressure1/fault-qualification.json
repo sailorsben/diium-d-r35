@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "UART_absent",
+    "UART_fault",
+    "forced_and_UART_fault",
+    "unknown_child_exit"
+  ],
+  "card_access": false,
+  "physical_result": "PENDING",
+  "wrapper_sha256": "b9765e650f3b0b07f3c201045427b513a0739b50a90816c745ea6a68c0c48707",
+  "source_sha256": "e98da51dbc68e100f0f4a2eca24a3b3a15ff490e1f9c2f13291496c63901baf0",
+  "qualification_sha256": "ce35f471498fef5b049d13be388fe9a2e51118f40f610d046c25413439ed953f"
+}
