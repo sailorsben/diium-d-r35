@@ -1,5 +1,16 @@
 # Changelog
 
+## Qualify presentation-independent recovery candidate — 2026-10-15
+
+Separate pressure3 adds atomic FREE-source/FIFO try-reservation. Busy credit
+uses scratch render and explicitly skips presentation, retaining render/load/
+audio work and source ownership.77 cells include identical blocking controls;
+new produced/presented/skipped accounting and unchanged native audio. Actual
+board192 ownership cases and actual-controller/threaded-owner busy fixture,
+oracle/mock/firmware/ABI checks pass. Price the measured11.452 ms wall-wait
+opportunity against added costs on return; no pre-install A7 saving claimed.
+[Candidate, validation and physical falsifier](docs/render-pressure3.md).
+
 ## Measure frame budget and burst recovery from pressure2 — 2026-10-15
 
 Collect/hash-verify70 physical cells:58 accepted. Light render+8 ms extra CPU

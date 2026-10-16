@@ -6,6 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+Pressure3 candidate qualifies presentation-independent audio recovery: busy
+display credit renders to scratch and skips presentation while retaining every
+render/load/audio quantum.77 phases include the same seven blocking sweep
+controls in the same boot. Actual board ownership192 cases, controller/audio
+seam, oracle and firmware guards pass. Physical savings and presentation cost
+pending; installation pending. [Candidate and acceptance gate](docs/render-pressure3.md).
+
 Pressure2 returned all70 phases:58 pass/12 fail. Light rendering plus8 ms extra
 CPU/frame (12.036 ms main CPU) passes180 quanta; plus12 ms fails. Six24 ms
 bursts pass with recovery;48 ms fails to recover before pointer corruption,

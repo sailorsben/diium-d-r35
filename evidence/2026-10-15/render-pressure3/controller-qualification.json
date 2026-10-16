@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "actual_threaded_audio_owner": true,
+  "actual_board_ownership_cases": 192,
+  "single_finish_success": true,
+  "finish_failure_propagates": true,
+  "busy_credit_does_not_block": true,
+  "full_render_and_audio_on_skipped_presentations": true,
+  "reintroduced_double_finish_rejected": true,
+  "bursts_executed": 6,
+  "device_backend": "deterministic fake; no PCM/DMA/performance claim",
+  "sources": {
+    "build/check-render-pressure3-controller.py": "3a56f922f7708e8e475cc14ba6ae71338240cc91edb62d565c29583efe7f3bff",
+    "build/check-render-pressure3-controller.c": "ebfe2059245bc683191faadfd038a7e2f28c22b51ae79574bb2412e6ec9b3c55",
+    "build/check-pressure3-reservation.c": "b73b935ce8e204950ea5d7de5904414e7bf313e340c40296e6bca9ec42a937ff",
+    "build/pressure3-video-reserve.inc": "47fba3533dc0cbd6725105ab1f3105b3eb30757d744ea84ae4c6465a487cf7e3",
+    "build/render-pressure3.c": "15a5b553cca58ffba95010916654c1e62cf3a07ab3e1fb4e2d7ecfbad58c3834",
+    "build/render-pressure3-private/runner/audio-owner.c": "caccf1ae8d764ba162cd99e6cb5b0c590d5f693b4da66a8e8b88cdc46737126b"
+  }
+}

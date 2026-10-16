@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Presentation-independent recovery candidate — 2026-10-15
+
+Address pressure2's clean48 ms recovery stall with an atomic try-reservation:
+without display credit, render the same frame to scratch, retain load/audio,
+skip only presentation. Never replace READY or touch SCALER ownership.77 phases
+retain original work plus seven matching blocking controls.192 actual board
+states, controller/audio busy-credit/cleanup/burst fixtures, oracle/mock and
+wrapper/source/ABI checks pass. Physical benefit and skipped-frame cost remain
+pending; recorded gate distinguishes11.452 ms observed wall opportunity from
+unmeasured A7 saving. [Details](render-pressure3.md).
+
 ## Physical budget and reserve recovery from pressure2 — 2026-10-15
 
 All70 cells finish;58 pass. Corrected audio-only/light cells now drain normally.

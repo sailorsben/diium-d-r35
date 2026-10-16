@@ -7655,6 +7655,46 @@
       "published_sha256": "cf6479a23c36e74d9c2adacf90888b3bd6b01ac998becaf2bfa2c0730182b806",
       "bytes": 274099,
       "normalized": false
+    },
+    {
+      "source": "build/render-pressure3-private/preparation.json",
+      "published": "evidence/2026-10-15/render-pressure3/preparation.json",
+      "source_sha256": "93d814a9f82fd8111c291a52a2b00b27a9a0840e2d25679e6fb197de4c0eb045",
+      "published_sha256": "93d814a9f82fd8111c291a52a2b00b27a9a0840e2d25679e6fb197de4c0eb045",
+      "bytes": 1517,
+      "normalized": false
+    },
+    {
+      "source": "build/render-pressure3-private/qualification.json",
+      "published": "evidence/2026-10-15/render-pressure3/qualification.json",
+      "source_sha256": "b7ed973f96563cac9f5c50e591d028fe5afc29b92d2ed80ec38d9318b8c3b435",
+      "published_sha256": "b7ed973f96563cac9f5c50e591d028fe5afc29b92d2ed80ec38d9318b8c3b435",
+      "bytes": 6540,
+      "normalized": false
+    },
+    {
+      "source": "build/render-pressure3-private/fault-qualification.json",
+      "published": "evidence/2026-10-15/render-pressure3/fault-qualification.json",
+      "source_sha256": "dd09641be910575d067f5e2783fb06a19b6e6c7238f11eb24e113f6fa8c090fa",
+      "published_sha256": "dd09641be910575d067f5e2783fb06a19b6e6c7238f11eb24e113f6fa8c090fa",
+      "bytes": 470,
+      "normalized": false
+    },
+    {
+      "source": "build/render-pressure3-private/device-path-audit.json",
+      "published": "evidence/2026-10-15/render-pressure3/device-path-audit.json",
+      "source_sha256": "577c5d2a18b8a46d27d2ee5b0cc9b5920e7aa928574b6db84239dd0085180071",
+      "published_sha256": "577c5d2a18b8a46d27d2ee5b0cc9b5920e7aa928574b6db84239dd0085180071",
+      "bytes": 20279,
+      "normalized": false
+    },
+    {
+      "source": "build/render-pressure3-private/controller-qualification.json",
+      "published": "evidence/2026-10-15/render-pressure3/controller-qualification.json",
+      "source_sha256": "aae494e678523ac807550ccaf5645318451fe0429f8de857e263f0a3c6e061ef",
+      "published_sha256": "aae494e678523ac807550ccaf5645318451fe0429f8de857e263f0a3c6e061ef",
+      "bytes": 1129,
+      "normalized": false
     }
   ]
 }
