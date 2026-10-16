@@ -7631,6 +7631,22 @@
       "published_sha256": "2cad96f1779f9bd1306f302c2a1a0348c05e3c29c233adce9629bc84b2f55691",
       "bytes": 769,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261016T034959Z/render-pressure-installation.json",
+      "published": "evidence/2026-10-15/render-pressure2/installation.json",
+      "source_sha256": "df17bf0398677ef57c132f5175cff4c0423adc6f1722eaf7076dd775d7bc96cf",
+      "published_sha256": "df17bf0398677ef57c132f5175cff4c0423adc6f1722eaf7076dd775d7bc96cf",
+      "bytes": 777,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261016T034959Z/render-pressure-live-verification.json",
+      "published": "evidence/2026-10-15/render-pressure2/live-verification.json",
+      "source_sha256": "849f9114531b522187e3a281d419a997d3b42a923225cb2de191b5a244d4dfc2",
+      "published_sha256": "849f9114531b522187e3a281d419a997d3b42a923225cb2de191b5a244d4dfc2",
+      "bytes": 1052,
+      "normalized": false
     }
   ]
 }

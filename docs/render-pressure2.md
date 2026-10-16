@@ -1,8 +1,9 @@
 # Corrected ROM-free pressure test
 
 `render-pressure2` fixes the first lab's controller double-drain and moves the
-seven load sweeps onto the light static workload. It is qualified offline;
-installation and physical results are pending. The original pressure1 sources,
+seven load sweeps onto the light static workload. It is qualified offline and
+installed/armed once on I: from pushed `fa3005d`; physical results are pending.
+The original pressure1 sources,
 payloads, return logs and published evidence remain intact.
 
 The joined audio worker owns the only normal `board_audio_finish()` call.
@@ -66,3 +67,14 @@ boot is stock with permanent UART correction. Results land under
 `retro/render-pressure2/results/run-<boot_id>-<pid>`. Archive before any further
 update/rearm. Native production/finish acceptance, executed physical bursts and
 load thresholds remain to be measured.
+
+Installation uses fresh strict archive
+`device-evidence/a7-pair-before-20261016T034959Z`. FAT checks pass before payload
+staging, after payload verification and after arming. The sole changed prior
+file is the owned SNES dispatcher; all 8,654 protected prior files match exactly.
+Pressure1, all prior logs/private progress,
+stock/ROM/core, normal init and permanent UART correction are preserved. Both
+owned marker bytes and payloads are independently read back after arming.
+[Installation receipt](../evidence/2026-10-15/render-pressure2/installation.json),
+[independent readback](../evidence/2026-10-15/render-pressure2/live-verification.json).
+No firmware update payload or production performance change is installed.

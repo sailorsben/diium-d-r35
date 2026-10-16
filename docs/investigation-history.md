@@ -8,7 +8,10 @@ Record load events and check the real controller plus real threaded owner with
 a fake device: normal single finish, finish failure propagation, six actual burns
 and a negative control restoring the original bug. All70 mock/oracle/wrapper/ABI
 checks pass. Preserve pressure1 and matching-kernel audit; no speed claim or
-device threshold from fake timing. [Details](render-pressure2.md).
+device threshold from fake timing. Install and arm separate pressure2 from
+pushed `fa3005d` after fresh archive/FAT/hash gates; independent readback
+verifies prior files and exact markers/payloads. UART correction retained,
+physical results pending. [Details](render-pressure2.md).
 
 ## First independent pressure return separates rendering and shutdown — 2026-10-15
 

@@ -8,7 +8,9 @@ render+audio and record executed load events. Actual-controller/threaded-owner
 fixture catches the original double-drain, propagates finish failure and executes
 six bursts. All70 mock cells,60 image cases, firmware recovery/faults, ABI/source
 pins pass. Original pressure1/evidence and production core/drivers preserved.
-Offline qualification only; installation/physical results pending.
+Install and arm from pushed `fa3005d` after a fresh strict archive, three clean
+FAT gates and protected-file/payload/marker readback. UART correction and prior
+evidence remain intact; physical results pending.
 [Details](docs/render-pressure2.md).
 
 ## Collect first ROM-free pressure return — 2026-10-15

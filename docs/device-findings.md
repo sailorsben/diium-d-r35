@@ -1,5 +1,13 @@
 # Device findings
 
+**Current I: installation, 2026-10-15:** corrected pressure2 is armed once from
+pushed `fa3005d`. Single drain owner, light static steady/burst load sweeps and
+executed-load counts; focused actual-controller/threaded-owner negative/failure
+fixtures plus all70 mock/oracle/wrapper checks pass. Fresh strict archive,
+three clean FAT gates and protected-file/payload/marker readback verify. Prior
+pressure1 evidence and permanent UART correction preserved. Physical results
+pending. [Correction, validation and run instructions](render-pressure2.md).
+
 **Latest pressure-test return, 2026-10-15:** all 70 phases finish; 50 non-audio
 passes, five complete valid audio-production runs followed by the new
 controller's extra-finish error, 15 heavy production failures. Prebuilt display

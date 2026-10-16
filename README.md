@@ -10,7 +10,9 @@ Corrected `render-pressure2` is qualified offline: the audio worker is the sole
 drain owner, and all seven load sweeps use the known light static workload.
 Actual-controller/threaded-owner fixtures reject the old double-drain and
 execute six bursts; all 70 mock cells and wrapper/oracle/ABI checks pass.
-Separate installation pending; physical results unmeasured.
+Installed and armed once on I: from pushed `fa3005d`; fresh archive, clean FAT
+and protected-file/payload/marker readback verify. UART correction and the
+first run's evidence remain intact. Physical results unmeasured.
 [Correction and validation](docs/render-pressure2.md).
 
 The ROM-free pressure test returned all 70 phases: 50 non-audio passes, five
