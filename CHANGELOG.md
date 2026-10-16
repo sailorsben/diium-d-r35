@@ -1,5 +1,16 @@
 # Changelog
 
+## Install matched five-game physical test — 2026-10-16
+
+Install and arm `retro/snes-fivegame1` once on I: from pushed source `8ccb0a3`.
+Independent complete readback verifies 10,758 protected existing files, all 27
+payload files, exact two markers, persistent UART/init and clean FAT. Only the
+owned dispatcher changes among existing files. Saves and evidence are unchanged;
+sparse collection stored zero new content bytes and no full backup was created.
+Published installation/readback receipts bind the exact qualified package.
+Physical performance, audio and display acceptance remain pending the run.
+[Installed test and boot instructions](docs/fivegame-physical-test.md).
+
 ## Qualify matched five-game physical test — 2026-10-16
 
 Prepare20 policy-only ABBA/reversed epochs across the five actual gameplay

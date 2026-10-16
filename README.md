@@ -6,11 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
-Matched five-game physical package qualified:20 ABBA/reversed epochs,
-24,000 exact gameplay pixel/PCM calls plus34,624 Star Fox cold-replay calls.
-Both native policies, firmware recovery and installer rollback gates pass.
-Sparse pre-install collection hashes10,759 existing files, saves zero new bytes
-and finds clean FAT. No full backup. Physical result pending installation/run.
+Matched five-game physical test installed and armed once on I: from pushed
+source `8ccb0a3`: 20 ABBA/reversed gameplay epochs. Independent readback verifies
+all 10,758 protected existing files, 27 payload files, both expected markers,
+persistent UART/init and clean FAT. Saves and prior evidence are unchanged.
+Sparse collection stored zero new content bytes; no full backup was created.
+Physical results remain pending the device run.
 [Physical test and boot instructions](docs/fivegame-physical-test.md).
 
 Ranger black screen and Star Fox state divergence are fixed in an isolated

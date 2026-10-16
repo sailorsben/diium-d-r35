@@ -1,0 +1,12 @@
+{
+  "version": "fivegame1",
+  "passed": true,
+  "protected_files_verified": 10758,
+  "payload_files_verified": 27,
+  "only_expected_markers": true,
+  "persistent_UART_and_patched_init_exact": true,
+  "FAT_clean": true,
+  "physical_result": "PENDING",
+  "installation_sha256": "8c671a92ecc923f45d69f8253f8e1639b0e4b0e06904922e2398418fdc8b214f",
+  "checker_sha256": "d4ee207a3f150693b21ff594ad86e8ef83ae8942341615eb3b7fc35da1b3f6f5"
+}

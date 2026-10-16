@@ -1,5 +1,12 @@
 # Matched five-game physical test — 2026-10-16
 
+**Installed and armed once on I:** source `8ccb0a3`, independently verified
+2026-10-16. All 10,758 protected prior files, 27 payload files, two markers,
+persistent UART/init and clean FAT pass. Saves and existing evidence are
+unchanged; no full backup was created. Physical results are pending.
+[Installation receipt](../evidence/2026-10-16/fivegame/installation.json) ·
+[Independent readback](../evidence/2026-10-16/fivegame/live-verification.json).
+
 This separately installed **measurement experiment** compares presentation
 policies across all five inspected gameplay scenes. It does not promote the
 rebuilt core as a generally fixed or physically performance-qualified emulator.
@@ -78,7 +85,7 @@ observation; scripts do not qualify interactive controls.
 ## Preservation and boot
 
 The owned target is `retro/snes-fivegame1`. The only existing file changed is
-`retro/snes-mvp/launch.sh`; two consumed one-shot markers select the experiment.
+`retro/snes-mvp/launch.sh`; two one-shot markers select the experiment and are consumed at startup.
 Normal init/UART, stock adapter/core, all original ROMs and saves, prior test
 packages and returned evidence are protected by complete hash inventories.
 Results and any final state stay under the new package's unique results path.

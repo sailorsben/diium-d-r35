@@ -7791,6 +7791,22 @@
       "published_sha256": "3fcd2551e55eec0e13837c0adab76a46bd6d68e513f82eb4c3bd7b1b0065bc53",
       "bytes": 16476,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261016T185326967290Z/fivegame-installation.json",
+      "published": "evidence/2026-10-16/fivegame/installation.json",
+      "source_sha256": "8c671a92ecc923f45d69f8253f8e1639b0e4b0e06904922e2398418fdc8b214f",
+      "published_sha256": "8c671a92ecc923f45d69f8253f8e1639b0e4b0e06904922e2398418fdc8b214f",
+      "bytes": 3376,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261016T185326967290Z/fivegame-live-verification.json",
+      "published": "evidence/2026-10-16/fivegame/live-verification.json",
+      "source_sha256": "f2324f52370e589bd079f7872a8f32650c72b4aa329acc1873f864554cd2db70",
+      "published_sha256": "f2324f52370e589bd079f7872a8f32650c72b4aa329acc1873f864554cd2db70",
+      "bytes": 445,
+      "normalized": false
     }
   ]
 }
