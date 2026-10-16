@@ -1,0 +1,12 @@
+{
+  "version": "presentation-ffvi1",
+  "passed": true,
+  "protected_files_verified": 10092,
+  "payload_files_verified": 95,
+  "only_expected_markers": true,
+  "persistent_UART_and_patched_init_exact": true,
+  "FAT_clean": true,
+  "physical_result": "PENDING",
+  "installation_sha256": "e5e04e8e3d03da463033030d16c824ca5e03ebb68e14eba1711e3af3868882a7",
+  "checker_sha256": "1182a0d4172bdde2ad2801bdaf079c35b3ab55029ec2493baa7471238c6484e1"
+}

@@ -1,5 +1,13 @@
 # Device findings
 
+**Current I: installation, 2026-10-16:** matched80-epoch FFVI policy test armed
+once from pushed `a3b8d68`. Independent readback verifies10,092 protected prior
+files, UART/normal init, ROM/saves,95 declared payload files and both exact
+markers. All installation/final FAT gates clean; only the owned dispatcher
+changes. Physical result pending. At most one current full rollback backup;
+no expanding per-attempt bulk archive policy.
+[Run and acceptance instructions](presentation-ffvi-test.md).
+
 **Matched FFVI package qualified, 2026-10-16:**80 actual-runner ABBA/reversed
 epochs use one unchanged core and policy-only pairs across18 original contexts,
 plus24/48 ms matched bursts.96,000 real-core rehearsal calls/all56 burns,

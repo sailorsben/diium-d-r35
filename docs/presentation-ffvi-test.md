@@ -6,6 +6,16 @@ all prior tests, evidence, ROMs, SRAM and snapshots. Only the owned SNES
 dispatcher changes; two consumed one-shot markers activate the new directory
 `retro/snes-presentation-ffvi1`. No firmware update is staged.
 
+**Installed and independently verified on I:, 2026-10-16**, from pushed source
+`a3b8d68`. All10,092 protected pre-existing files verify unchanged; only the
+authorized dispatcher differs. Both exact one-shots and95 declared payload
+files verify; normal init/UART and original ROM/saves remain exact. All three
+installation FAT gates and the independent final FAT check pass. Hardware
+result remains pending.
+
+[Installation receipt](../evidence/2026-10-16/presentation-ffvi/installation.json),
+[independent readback](../evidence/2026-10-16/presentation-ffvi/live-verification.json).
+
 ## Run on the handheld
 
 Safely eject I:, insert the card and cold boot once. The test is automatic.
@@ -126,11 +136,14 @@ hardware ceiling from these workloads.
 
 ## Collection and reproducibility
 
-Archive all returned files before any mutation/rearm. Use
-`build/archive-a7-pair-card.py`, then supplement with
-`build/archive-presentation-extra.py <archive>` to preserve the rest of I:.
-Keep the installation receipt from the pre-install archive. Analyze the new
-return only:
+Preserve new returned evidence and private progress before any mutation/rearm.
+Keep **at most one full rollback backup for the current try**; do not run the
+historical full-copy collectors on every attempt or recreate old bulk archives.
+Keep unique results/saves and compact inventories separately. The older archive
+directories currently retain inventories/receipts, not their full payload trees.
+No new bulk copy is required for installation readback. Keep the installation
+receipt from the current try. Analyze the new return only after collecting its
+actual raw files into a hash-verified return directory:
 
 ```sh
 python build/report-presentation-ffvi.py <return-archive> --installation <pre-install-archive>/presentation-ffvi-installation.json

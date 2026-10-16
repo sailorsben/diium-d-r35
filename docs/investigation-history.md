@@ -9,6 +9,18 @@ hash-only. Keep FAT/identity/protected-file checks. Update the current FFVI
 installer/reporter/publisher for explicit sparse manifests. No device writes.
 See [policy and validation](attempt-evidence-policy.md).
 
+## Matched FFVI test installed; one-backup limit — 2026-10-16
+
+From pushed `a3b8d68`, install/arm only a separate test directory and owned
+dispatcher after clean FAT/protected-file gates. Independent readback checks
+all10,092 protected prior files,95 declared payload files, exact markers and
+UART/init/ROM/saves; final FAT clean. Hardware return remains pending.
+User explicitly rejects accumulating backups: at most one current full
+rollback, unique evidence/saves plus compact inventories separately. Concurrent
+archive-retention changes are preserved; the installed test remains bound to
+its frozen pushed source and independent readback. No replacement bulk copies
+made. [Installed test](presentation-ffvi-test.md).
+
 ## Matched actual-core presentation test prepared — 2026-10-16
 
 Prepare80 policy-only ABBA/reversed epochs:18 unchanged1200-frame effect/input

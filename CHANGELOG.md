@@ -9,6 +9,17 @@ current FFVI install/report/publication consumers and add fake-card regression
 checks. Original recovery backups remain separate. No install or rearm.
 [Policy](docs/attempt-evidence-policy.md).
 
+## Install matched FFVI test and bound backup retention — 2026-10-16
+
+Install/arm separate `snes-presentation-ffvi1` from pushed `a3b8d68` after
+archive/hash/healthy-FAT gates. Independent readback verifies all10,092 prior
+protected files, exact UART/init/ROM/saves,95 declared payload files and two
+markers; final FAT clean. Only the owned dispatcher changes. Next boot runs
+80 automatic matched epochs; later boot is stock/UART. Physical result pending.
+User limits full rollback backups to at most one current try; retain unique
+evidence and compact inventories, not expanding full-card copies.
+[Run and verification](docs/presentation-ffvi-test.md).
+
 ## Qualify matched physical FFVI presentation test — 2026-10-16
 
 Prepare separate80-epoch policy-only ABBA/reversed test:18 original1200-frame

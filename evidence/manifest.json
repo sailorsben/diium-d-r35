@@ -7743,6 +7743,22 @@
       "published_sha256": "2bb35e1ec7e09be8d0ae1d2f5e030f9b154e0874ed197e8f2a405744e0d9b642",
       "bytes": 38935,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261016T050931Z/presentation-ffvi-installation.json",
+      "published": "evidence/2026-10-16/presentation-ffvi/installation.json",
+      "source_sha256": "e5e04e8e3d03da463033030d16c824ca5e03ebb68e14eba1711e3af3868882a7",
+      "published_sha256": "e5e04e8e3d03da463033030d16c824ca5e03ebb68e14eba1711e3af3868882a7",
+      "bytes": 10088,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261016T050931Z/presentation-ffvi-live-verification.json",
+      "published": "evidence/2026-10-16/presentation-ffvi/live-verification.json",
+      "source_sha256": "e38ab988005b6b41a2d178e8cf9e6bb048f13cd860885567e7ee1fbc31a4f67d",
+      "published_sha256": "e38ab988005b6b41a2d178e8cf9e6bb048f13cd860885567e7ee1fbc31a4f67d",
+      "bytes": 454,
+      "normalized": false
     }
   ]
 }

@@ -9,6 +9,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 Routine I: attempts now save changed progress/logs and configuration hashes,
 with no full-card or full-retro copies. See [attempt evidence policy](docs/attempt-evidence-policy.md).
 
+Matched FFVI test is installed and armed once on I: from pushed `a3b8d68`.
+All10,092 protected prior files, UART/init, ROM/saves,95 declared payload files
+and both exact markers independently verify; all FAT gates clean. Cold boot
+once, allow27–35min, wait for stock, power off/return card. Select+Start aborts.
+Physical result pending. Backup retention is now at most one current full
+rollback; no growing per-attempt bulk-copy stack.
+[Run instructions and verification](docs/presentation-ffvi-test.md).
+
 Matched physical FFVI package qualified:80 automatic ABBA/reversed epochs,
 all18 original contexts plus matched24/48 ms bursts, one core/executable and
 policy-only pairs. Actual controller passes96,000 real-core calls/all56 burns;
