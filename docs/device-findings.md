@@ -1,5 +1,15 @@
 # Device findings
 
+**Latest offline integration, 2026-10-15:** pressure3's presentation policy now
+runs in an isolated actual-emulator candidate.21,600 exact pixel/PCM/state calls
+across18 FFVI contexts,192 actual board states, worker ownership/join and real
+runner/native PCM/resume/control checks pass. Forced busy credit retains120
+renders/all PCM with80 presentations/40 skips; blocking control120/120.
+Production PCM/fault capture stays unchanged. No new A7 saving or handheld
+cadence/input/audio acceptance; physical package/test outstanding. No card
+access/install/rearm; last verified card state is the unarmed return below.
+[Integration and evidence boundaries](presentation-runtime.md).
+
 **Latest physical result, 2026-10-15:** pressure3 survives six48 ms bursts,
 180 valid produced quanta/175 presented/five intentional skips, versus blocking
 control59 completed then failure at second burst. First five recover prime lead

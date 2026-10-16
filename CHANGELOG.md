@@ -1,5 +1,18 @@
 # Changelog
 
+## Integrate presentation policy into isolated real runner — 2026-10-15
+
+Apply pressure3's try-reservation to the actual owned-output emulator runner.
+Busy display credit uses aligned private scratch, retaining every render/core
+call/audio sample and skipping only presentation. Keep production PCM/fault
+persistence unchanged, matched blocking policy and explicit accounting. ARM
+O3/LTO/glibc2.30 build,192 board states, real worker join/ownership,21,600 exact
+pixel/PCM/state comparisons over18 contexts and actual-runner native fault/
+retry/state/resume/skip/blocking/error controls pass. Preserve the failed
+diagnostic-PCM assembly and preliminary O2 tree privately. No card access or
+installation; A7 cost and physical cadence/input/audio remain pending.
+[Integration, proofs and physical gate](docs/presentation-runtime.md).
+
 ## Confirm pressure3 burst recovery against blocking controls — 2026-10-15
 
 Collect77 physical cells,62 accepted.48 ms candidate completes180 quanta/six

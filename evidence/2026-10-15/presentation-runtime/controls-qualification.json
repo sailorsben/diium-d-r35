@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "physical_result": "PENDING",
+  "card_access": false,
+  "qualification_sha256": "b9b6669e1d875d5506a7fd0ef63bfb134bce452faa89d5db0fb2d459895d22e5",
+  "checker_sha256": "3f89756da18a4dff62f420f7aff7827293608f4ff2435a508ee8be52cb8140b1",
+  "generated_fixture_sha256": "519035b0f398322c75197388a984e5c6e15ff1755661183a26e8976815e46546",
+  "log_sha256": "1aa86b54fac0ef84ba30bc03f46a114c80a6f819dab2e271039fd4e31a2a5492",
+  "output": [
+    "PASS: actual blocking control retains 120/120 presentations, identical PCM accounting, two state resumes and exactly three drains",
+    "PASS: unavailable display fails before core call; invalid policy, omitted drawing and invalid geometry remain errors during skip policy",
+    "PASS: real FF6 core with actual runner/owner/native PCM client, consuming 44100/128/3712 provider, truthful WRITEI failure then clean retry, two snapshot loads and re-primed resumes, restored drain threshold, 25ms producer stalls, 120 full renders / 80 presentations / 40 intentional skips, zero lost/cleared PCM",
+    "PASS: sustained 19.8805ms production against 44100Hz consumption exposes starvation without hidden re-prime, frame suppression or accounting loss",
+    "PASS: failed-session report and exact PCM history survive library retry and a later failure under unique kernel-clock session names",
+    "PASS: 225 real runner direct-output callbacks, slot reuse, native fault/retry, state loads and drain"
+  ]
+}

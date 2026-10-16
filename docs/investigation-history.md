@@ -1,5 +1,20 @@
 # Investigation history and negative results
 
+## Real-runner presentation integration qualified offline — 2026-10-15
+
+Use a fresh candidate tree to apply the proven atomic reservation to the actual
+owned-output runner. Busy credit selects aligned heap scratch, fully executes
+the core/render/PCM path and intentionally omits only presentation. Production
+PCM is retained: importing pressure3's diagnostic collector first failed the
+durable-fault assertion; that attempt is preserved rather than hiding the
+support mismatch. Final O3/LTO ARM executable and byte-identical core pass192
+board states, real worker teardown/queue checks,21,600 raw pixel/PCM/normalized
+state comparisons across18 original FFVI contexts, real-runner native failure/
+retry/resume and forced40-of120 skip checks. Blocking/error controls pass.
+Physical A7 costs, visible cadence/input/audio and matched gameplay remain
+pending; no card access/install/rearm or production promotion.
+[Implementation, proof and physical gate](presentation-runtime.md).
+
 ## Pressure3 demonstrates48 ms recovery with five presentation skips — 2026-10-15
 
 Candidate48 ms passes180 quanta/six burns with valid running pointers, exact

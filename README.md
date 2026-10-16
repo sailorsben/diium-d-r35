@@ -6,6 +6,15 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-15
 
+Presentation policy is integrated in an isolated actual-emulator runner:
+21,600 real-core pixel/PCM/state comparisons across18 FFVI contexts,192 board
+ownership cases and actual-runner native PCM/resume/cleanup controls pass.
+Busy-credit fixture retains120 renders/all audio with80 presentations/40 skips;
+blocking control retains120 presentations. Production PCM unchanged. Offline
+qualification only; actual A7 costs, handheld cadence/input/audio and matched
+physical return remain pending. No card access/install/rearm.
+[Integration and next physical gate](docs/presentation-runtime.md).
+
 Pressure3 physical return passes all six48 ms bursts with valid PCM recovery,
 while its same-boot blocking control fails during the second. Five of180
 presentations skipped; all rendering/audio retained. First five bursts restore

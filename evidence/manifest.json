@@ -7719,6 +7719,22 @@
       "published_sha256": "d1f2b9fdcda5e290d16229add9f0d299b440e686c929769894c283989be16f9f",
       "bytes": 343785,
       "normalized": false
+    },
+    {
+      "source": "build/presentation-runtime-private-v1/qualification.json",
+      "published": "evidence/2026-10-15/presentation-runtime/qualification.json",
+      "source_sha256": "b9b6669e1d875d5506a7fd0ef63bfb134bce452faa89d5db0fb2d459895d22e5",
+      "published_sha256": "f53830241f185b95bb6b0203d4a826788d9e6fd2eedd6523fb89bca6cc3b6fc0",
+      "bytes": 11562,
+      "normalized": true
+    },
+    {
+      "source": "build/presentation-runtime-private-v1/controls-qualification.json",
+      "published": "evidence/2026-10-15/presentation-runtime/controls-qualification.json",
+      "source_sha256": "0eb43cefd7e4fec0b30bee9492ed5ecfae4d9a836c622302b91fd1c2f508d7ac",
+      "published_sha256": "0eb43cefd7e4fec0b30bee9492ed5ecfae4d9a836c622302b91fd1c2f508d7ac",
+      "bytes": 1459,
+      "normalized": false
     }
   ]
 }
