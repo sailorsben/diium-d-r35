@@ -1,5 +1,13 @@
 # Device findings
 
+**Matched FFVI package qualified, 2026-10-16:**80 actual-runner ABBA/reversed
+epochs use one unchanged core and policy-only pairs across18 original contexts,
+plus24/48 ms matched bursts.96,000 real-core rehearsal calls/all56 burns,
+native credit/fault/drain, firmware/reap and installer rollback checks pass.
+All10,093 existing card files archived; FAT clean, no preparation card writes.
+Actual A7 costs, reserve recovery, panel/input/audio and production promotion
+remain unqualified. [Test and acceptance boundaries](presentation-ffvi-test.md).
+
 **Latest offline integration, 2026-10-15:** pressure3's presentation policy now
 runs in an isolated actual-emulator candidate.21,600 exact pixel/PCM/state calls
 across18 FFVI contexts,192 actual board states, worker ownership/join and real

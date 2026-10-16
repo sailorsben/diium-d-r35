@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## Matched actual-core presentation test prepared — 2026-10-16
+
+Prepare80 policy-only ABBA/reversed epochs:18 unchanged1200-frame effect/input
+windows four times plus seven executed24/48 ms bursts in each of eight matched
+HOLY cells.96,000 real-core rehearsal calls, all effect properties and56 burns
+pass. Keep full RAM native/frame histories through joined cleanup, separate
+render/present/skip/load accounting and failure censoring. Both consuming-native
+policies pass with the established O2 fixture after a preserved O3/LTO fixture
+admission timeout; no causal compiler/hardware claim. The deployable controller
+remains O3/LTO. Firmware UART/splash/replay/error/reap guards and six installer
+success/rollback cases pass. Archive every10,093 existing file/FAT clean before
+any write. Physical result remains pending. [Test contract](presentation-ffvi-test.md).
+
 ## Real-runner presentation integration qualified offline — 2026-10-15
 
 Use a fresh candidate tree to apply the proven atomic reservation to the actual

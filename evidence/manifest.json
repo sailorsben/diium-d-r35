@@ -7735,6 +7735,14 @@
       "published_sha256": "0eb43cefd7e4fec0b30bee9492ed5ecfae4d9a836c622302b91fd1c2f508d7ac",
       "bytes": 1459,
       "normalized": false
+    },
+    {
+      "source": "build/presentation-ffvi-private-v1/verification.json",
+      "published": "evidence/2026-10-16/presentation-ffvi/qualification.json",
+      "source_sha256": "af9627a0208fca576885a7170b590f10146db9a6379ee8112a8bd11daa8dbffd",
+      "published_sha256": "2bb35e1ec7e09be8d0ae1d2f5e030f9b154e0874ed197e8f2a405744e0d9b642",
+      "bytes": 38935,
+      "normalized": true
     }
   ]
 }

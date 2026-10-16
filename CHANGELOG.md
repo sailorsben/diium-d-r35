@@ -1,5 +1,18 @@
 # Changelog
 
+## Qualify matched physical FFVI presentation test — 2026-10-16
+
+Prepare separate80-epoch policy-only ABBA/reversed test:18 original1200-frame
+contexts four times and eight24/48 ms burst cells. Retain exact core/state
+payloads/inputs/effect criteria, per-frame render/presentation/load/CPU and full
+PCM reserve histories. All96,000 controller calls/56 burns, native both-policy
+busy/failure/drain checks, actual firmware guards/replay/forced-child/reap and
+six installer transaction cases pass. Preserve the preliminary consuming-fixture
+timeout; final fixture uses its established O2 flags, controller remains O3/LTO.
+Archive all10,093 existing card files, clean FAT; no card mutation yet. Push
+qualified exact source before authorized separate installation. Physical result
+pending. [Test, evidence and falsifier](docs/presentation-ffvi-test.md).
+
 ## Integrate presentation policy into isolated real runner — 2026-10-15
 
 Apply pressure3's try-reservation to the actual owned-output emulator runner.

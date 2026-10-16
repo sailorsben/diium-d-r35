@@ -4,7 +4,14 @@ Source, hardware investigation and a working SNES-only launcher/runtime prototyp
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.
 
-## Current status — 2026-10-15
+## Current status — 2026-10-16
+
+Matched physical FFVI package qualified:80 automatic ABBA/reversed epochs,
+all18 original contexts plus matched24/48 ms bursts, one core/executable and
+policy-only pairs. Actual controller passes96,000 real-core calls/all56 burns;
+native PCM/busy-credit/teardown, firmware recovery and installer rollback gates
+pass. Fresh complete10,093-file archive/FAT is clean. Physical results pending;
+preparation has made no card writes. [Test and boot instructions](docs/presentation-ffvi-test.md).
 
 Presentation policy is integrated in an isolated actual-emulator runner:
 21,600 real-core pixel/PCM/state comparisons across18 FFVI contexts,192 board
