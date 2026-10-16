@@ -9,7 +9,9 @@ retain original work plus seven matching blocking controls.192 actual board
 states, controller/audio busy-credit/cleanup/burst fixtures, oracle/mock and
 wrapper/source/ABI checks pass. Physical benefit and skipped-frame cost remain
 pending; recorded gate distinguishes11.452 ms observed wall opportunity from
-unmeasured A7 saving. [Details](render-pressure3.md).
+unmeasured A7 saving. Install/arm separate pressure3 from pushed `678643a`
+after fresh archive, clean FAT and exact prior/payload/marker gates; UART
+correction and earlier tests remain intact. [Details](render-pressure3.md).
 
 ## Physical budget and reserve recovery from pressure2 — 2026-10-15
 

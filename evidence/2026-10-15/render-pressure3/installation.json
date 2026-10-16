@@ -1,0 +1,17 @@
+{
+  "version": "render-pressure3",
+  "source_commit": "678643abfe389c7e3ff503fba835510b962ec607",
+  "archive": "a7-pair-before-20261016T041539Z",
+  "one_shot_armed": true,
+  "clean_FAT": true,
+  "persistent_UART_preserved": true,
+  "payload_hashes": {
+    "render-pressure": "4fbe44846ae75e1559fb59db232e5aca8499e27231731ac19e94532fad33c43e",
+    "launch.sh": "feb3c33ca6aae82a2a81874c81e1cfa53cc8137cba7e894909f0cbcc01be50b3",
+    "qualification.json": "b7ed973f96563cac9f5c50e591d028fe5afc29b92d2ed80ec38d9318b8c3b435"
+  },
+  "dispatch_sha256": "d3684ddb9e923eed2c450f1050ba85be51cbc5c442aa6c0a6b2abf3738a8924f",
+  "marker_sha256": "f91579755c6f6a62ae7c8a458d7ff61cbcf60d4d231777b5ec2dbc8f47a8d03b",
+  "physical_result": "PENDING",
+  "ROM_required": false
+}

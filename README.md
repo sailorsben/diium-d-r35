@@ -11,7 +11,9 @@ display credit renders to scratch and skips presentation while retaining every
 render/load/audio quantum.77 phases include the same seven blocking sweep
 controls in the same boot. Actual board ownership192 cases, controller/audio
 seam, oracle and firmware guards pass. Physical savings and presentation cost
-pending; installation pending. [Candidate and acceptance gate](docs/render-pressure3.md).
+pending. Installed and armed once on I: from pushed `678643a`, after fresh
+archive/FAT/hash gates; prior tests and UART fix preserved.
+[Candidate and acceptance gate](docs/render-pressure3.md).
 
 Pressure2 returned all70 phases:58 pass/12 fail. Light rendering plus8 ms extra
 CPU/frame (12.036 ms main CPU) passes180 quanta; plus12 ms fails. Six24 ms

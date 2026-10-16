@@ -1,8 +1,8 @@
 # Presentation-independent audio recovery candidate
 
 Pressure3 removes display-credit waits from queued render+audio production.
-It is separately versioned and qualified offline; installation and physical
-benefit remain pending. The pressure1/2 source and returned evidence remain
+It is separately versioned, qualified offline and armed once on I: from pushed
+`678643a`; physical benefit remains pending. The pressure1/2 source and returned evidence remain
 unchanged. This is a controlled platform candidate, not an already-qualified
 production emulator speedup.
 
@@ -93,3 +93,11 @@ not returned after six minutes, power off and return I:. Forced/uncertain
 termination holds stock until reboot; consumed markers make the next boot
 stock with the permanent UART fix. Results live in
 `retro/render-pressure3/results/run-<boot_id>-<pid>`; archive before rearming.
+
+Installation archive: `device-evidence/a7-pair-before-20261016T041539Z`.
+Before staging, after payload verification and after arming, FAT is clean.
+The only changed prior file is the owned SNES dispatcher. Independent readback
+verifies all9,034 protected prior files, new payloads, exact marker bytes and ROM;
+stock/progress/prior tests and permanent UART correction remain intact.
+[Installation receipt](../evidence/2026-10-15/render-pressure3/installation.json),
+[readback](../evidence/2026-10-15/render-pressure3/live-verification.json).

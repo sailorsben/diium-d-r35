@@ -1,5 +1,13 @@
 # Device findings
 
+**Current I: installation, 2026-10-15:** pressure3 armed once from pushed
+`678643a`. Atomic try-reservation skips only presentation when display credit
+is busy; all rendering/load/audio work retained.77 phases include seven matched
+blocking controls.192 actual board ownership states plus controller/audio busy
+fixtures, oracle/mock/firmware guards pass. Fresh archive/FAT/protected-file/
+payload/marker readback verifies; UART/prior tests preserved. Physical recovery
+and skipped-presentation effects pending. [Details](render-pressure3.md).
+
 **Latest measured budget, 2026-10-15:** pressure2 completes70 phases,58 accepted.
 Light render+8 ms added CPU/frame passes180 quanta at12.036 ms main CPU;
 +12 ms fails at57 completed. Six24 ms bursts pass; first five recover prime

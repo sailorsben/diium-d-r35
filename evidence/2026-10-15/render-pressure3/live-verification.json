@@ -1,0 +1,25 @@
+{
+  "version": "render-pressure3",
+  "archive": "a7-pair-before-20261016T041539Z",
+  "installation_sha256": "a49dbd63b909a9c3b42a5c69555080f12a3c72aa0318c4b210423abf0905d3e1",
+  "archive_sha256": "6ce5c730ef1c047cc05f04859c1f33b4def2a5cacfaa6be3f43782f63cdd9909",
+  "source_sha256": "8da8a8c2a8f9450ccf507e2b860543ff74ae636a2046fbb07d2158d5e32af280",
+  "protected_prior_files": 9034,
+  "all_protected_exact": true,
+  "payloads_exact": true,
+  "markers": [
+    "retro/render-pressure3/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "marker_bytes_exact": true,
+  "ROM_sha256": "f61af2bd9e3f9b6a2bd543fb176af0b81fd9e5ba4ea0fa0f453371ccb45d3911",
+  "UART_fix_preserved": true,
+  "flash_update_absent": true,
+  "clean_FAT_reports": {
+    "before": "5f6b011d6809084ce5f44d1fb824b9a804510d999366f41168cf573426224fea",
+    "payload": "73f0c589a9c39b03cff94a8ce7ca916ca7ba2212db3385b780ea5f333bca4865",
+    "armed": "1893241afdba99c36f62f582f0d641c7a5fed32b56df7048e5205088882498ea"
+  },
+  "card_writes": 0,
+  "physical_result": "PENDING"
+}

@@ -9,6 +9,9 @@ new produced/presented/skipped accounting and unchanged native audio. Actual
 board192 ownership cases and actual-controller/threaded-owner busy fixture,
 oracle/mock/firmware/ABI checks pass. Price the measured11.452 ms wall-wait
 opportunity against added costs on return; no pre-install A7 saving claimed.
+Install/arm from pushed `678643a` after fresh archive, three clean FAT gates
+and independent protected-file/payload/marker readback. UART and prior evidence
+preserved; physical recovery and presentation cost pending.
 [Candidate, validation and physical falsifier](docs/render-pressure3.md).
 
 ## Measure frame budget and burst recovery from pressure2 — 2026-10-15
