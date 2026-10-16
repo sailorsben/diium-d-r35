@@ -1,0 +1,360 @@
+{
+  "version": "multigame1-review",
+  "fixed_emulator_claim_supported": false,
+  "physical": false,
+  "card_access": false,
+  "card_writes": 0,
+  "full_backups_created": 0,
+  "candidate_core_sha256": "1eaf05f36adcbc8286de5777cc47f1cf24a588856a2b0a85e48a9bfa0984e6f8",
+  "reference_core_sha256": "e9c421e4e228a5c91eba112a8fd7ec9e0a3c66cc996ba6a6a86f995622ef8129",
+  "actual_runner_sha256": "a3f1965333ef50bf5e50c08ab07f316233cddb37b914ac527f989c908a4113e9",
+  "strict_full_windows_passed": 4,
+  "strict_full_windows_planned": 5,
+  "strict_full_window_calls": 6000,
+  "strict_state_check_period": 30,
+  "actual_runner_mock_cells_passed": 10,
+  "actual_runner_mock_calls": 6000,
+  "games": [
+    {
+      "name": "Super Mario World (backup PAL copy)",
+      "backup_zip_sha256": "a784510415e95a5c46e90e28faf485f0526eee84cb54654a87bf4533bb8c0704",
+      "ROM_sha256": "b5be1dba3012b6811a5660fbf2981cb23cdd1e48f845a42df00f0f55b19f0392",
+      "ROM_bytes": 524288,
+      "header": {
+        "offset": 32704,
+        "title": "SUPER MARIOWORLD     ",
+        "map_mode": 32,
+        "type": 2,
+        "region": 2
+      },
+      "core_reported_refresh_hz": 50.319739654,
+      "strict_equivalence_passed": true,
+      "recorded_calls": 6000,
+      "adjacent_picture_changes": 2562,
+      "scene_observation": "Title, welcome, Yoshi\u2019s House and overworld; no normal course established.",
+      "playability_accepted": false,
+      "actual_runner_mock_boots": [
+        {
+          "policy": 0,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "dc5a9f7938560c6c85a129b675417a0692f2fb4bfbf92a9f8e3d57981d8521c1"
+        },
+        {
+          "policy": 1,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "5f5150f45b612e7c917d3c926cea5e79481f4c31d60dc8946db3e1870f73810c"
+        }
+      ],
+      "artifacts": {
+        "game-0/frame-00599.ppm": "4a6af1ea8ad8f8a03fb450b2f5dc2c9b3e7b3b867da21586a89fff953c344738",
+        "game-0/frame-01199.ppm": "782eecbc50c1d35ef221092d3ae4791d51d501d8bdc4238e4a3cd97989019eb7",
+        "game-0/frame-01799.ppm": "782eecbc50c1d35ef221092d3ae4791d51d501d8bdc4238e4a3cd97989019eb7",
+        "game-0/frame-02399.ppm": "318e8ab5d3c73741767d1766fa1c14b5a22ad4692393d8a1e158129d78569718",
+        "game-0/frame-02999.ppm": "163f237353596fa4f0290ac00ce8e2c0f177321eb3793df3fae0c9cc8b669c83",
+        "game-0/frame-03599.ppm": "1fbfa14f1476ae28f4c17dcef9a6ccf1d6a15c654ddf5e4e12806df0910a4f55",
+        "game-0/frame-04199.ppm": "116aeec5e66663a875d9e1b996d72aed00c006afdd885416cec8c96e95096b47",
+        "game-0/frame-04799.ppm": "07228f98219321a0d5ab0b9ac8c325d72e160186a92fa208148cd094639d814d",
+        "game-0/frame-05399.ppm": "12c3d941c17a138a04ba6ee427f78b6c3bf63f7ca0e730728afe1c26744d4a7c",
+        "game-0/frame-05999.ppm": "f497133c5eafde8540689caa9327b1220fbd7c01a870edfc9559ef1e1527a984",
+        "game-0/frames.csv": "85aa330290364b1dd7225165e78bcd8524a2ba87ac05c0ec4b66f783cf7ca0e4",
+        "game-0/run.log": "e2aa66894e7cc0a61031164330542c16c16129aa17fc4b98528b983cde75c100"
+      },
+      "last_log_lines": [
+        "CHECK frame=5399 changed=2241 samples=3438154",
+        "CHECK frame=5999 changed=2562 samples=3820191",
+        "PASS calls=6000 exact_pixels_PCM_geometry=1 normalized_state_checks=200 routes=2000,2000,2000 changes=2562 samples=3820191 physical=0"
+      ]
+    },
+    {
+      "name": "Super Metroid (backup labeled Chinese translation)",
+      "backup_zip_sha256": "8772f551d31ab9c457bb7858819a9fee41f6c65c447a30ef6f9c01981767e6f2",
+      "ROM_sha256": "75a77847908cdca2a4256e715a4a2167d1b49ad5ae90eb13e165f92da3b2c616",
+      "ROM_bytes": 3145728,
+      "header": {
+        "offset": 32704,
+        "title": "Super Metroid        ",
+        "map_mode": 48,
+        "type": 2,
+        "region": 0
+      },
+      "core_reported_refresh_hz": 59.922743404,
+      "strict_equivalence_passed": true,
+      "recorded_calls": 6000,
+      "adjacent_picture_changes": 2280,
+      "scene_observation": "Opening narrative and flashback scenes; no player-controlled Ceres/Zebes established.",
+      "playability_accepted": false,
+      "actual_runner_mock_boots": [
+        {
+          "policy": 0,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "dcd4c9bb784549d2fea4343b7794a849c5803ac75df49c9afabedeeb3fc7b5cb"
+        },
+        {
+          "policy": 1,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "bc000d3a66cf18bab2eeac5c62c24a70433d3a65ab878a7867d478425e9d1ba1"
+        }
+      ],
+      "artifacts": {
+        "game-1/frame-00599.ppm": "f59d3deda1cd802b4ba5f7a8bd9790be40826a8baccf0e1e4169dd593790ed9c",
+        "game-1/frame-01199.ppm": "0bed1ceb80b6d20f94736cb8c7fcf4f3eba1b8b5ec054a7af6b8b9de0915c384",
+        "game-1/frame-01799.ppm": "174b91b4303899247e2b507a873e8827a75f4f32e46f04ac521e7938859b4c7d",
+        "game-1/frame-02399.ppm": "bb2254c0c136c882ef05c9fe72954f21b822cd1b547fc49504e7727e07ebaceb",
+        "game-1/frame-02999.ppm": "c04b7e2fefde98e4b66874e5dd0defddf07717a7181e8d790c0e38d81e962402",
+        "game-1/frame-03599.ppm": "6d037eca3533382430d176ae152d1bcd0822ce562238f7d975cad9b812c82450",
+        "game-1/frame-04199.ppm": "8104c4ffff2e28d0b3e275ee5ceb4259d1abc5b91e7472108e81fedf263eab8c",
+        "game-1/frame-04799.ppm": "af37234dac346250dd0e6046870c6da073184a0b12a7bd08c682eceb88e8645f",
+        "game-1/frame-05399.ppm": "396c6e0e2b7c77670c4ec99ad18c7a457084320e7e983ee66ebe00ef30905445",
+        "game-1/frame-05999.ppm": "ff9ae5f2b82d4efdc6453026d86e3a523b6e6033a9bf0a68b57204ef1728accf",
+        "game-1/frames.csv": "2c8e9e66bdfd784a16170aeedb62486734b4a097251aa929f63e9fc0298aed2a",
+        "game-1/run.log": "315791157aa0e1403821ba29aee6b16af6ce19cc118a012579b93e36e845591b"
+      },
+      "last_log_lines": [
+        "CHECK frame=5399 changed=2130 samples=2887241",
+        "CHECK frame=5999 changed=2280 samples=3208054",
+        "PASS calls=6000 exact_pixels_PCM_geometry=1 normalized_state_checks=200 routes=2000,2000,2000 changes=2280 samples=3208054 physical=0"
+      ]
+    },
+    {
+      "name": "F-Zero",
+      "backup_zip_sha256": "fba21b06cd98cf5e8413518a93da99638c0c59b784dde21431dfcc066be5184a",
+      "ROM_sha256": "bf16c3c867c58e2ab061c70de9295b6930d63f29f81cc986f5ecae03e0ad18d2",
+      "ROM_bytes": 524288,
+      "header": {
+        "offset": 32704,
+        "title": "F-ZERO               ",
+        "map_mode": 32,
+        "type": 2,
+        "region": 1
+      },
+      "core_reported_refresh_hz": 59.922743404,
+      "strict_equivalence_passed": true,
+      "recorded_calls": 6000,
+      "adjacent_picture_changes": 4777,
+      "scene_observation": "Menus, race, crash/you-lost screen; no sustained successful racing established.",
+      "playability_accepted": false,
+      "actual_runner_mock_boots": [
+        {
+          "policy": 0,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "f0aa15dcfc97cb8fa9cfbd487a49161bac0c2fbcd32de5e3b3a2aa78e69c14ef"
+        },
+        {
+          "policy": 1,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "23fd4c9c3a0cf5643a7d5063769fb28f2791c7cdc6bc8188702a82e36aacd121"
+        }
+      ],
+      "artifacts": {
+        "game-2/frame-00599.ppm": "1fa49f780774048065407ba5b1065c13e074e75bcea0e71679a177bafdebc398",
+        "game-2/frame-01199.ppm": "9c960bf767dd69b5fba34248098a5b3d193ab0949dca518044765ddd5078b7a8",
+        "game-2/frame-01799.ppm": "1156ed65e5d644926e68c9df63a54b83ad9fa9003976882c6c6c4edbf503624f",
+        "game-2/frame-02399.ppm": "396097124cbf3d2761ee7796dfe1c18465702fcf11b1a22b56dfc3d595785992",
+        "game-2/frame-02999.ppm": "3eec67376bcd5219895a03db96cc86804ade2be91bd97694c28e46298f8ac618",
+        "game-2/frame-03599.ppm": "ac65f1e591b6a0a12129f5a84f969059fd3aa00b43031cd1fc6d1fd28e45f837",
+        "game-2/frame-04199.ppm": "5b4bba5ca3b51f11528b7c48e8146fa07281358fc723ab1996ecc9b175b20a6d",
+        "game-2/frame-04799.ppm": "2da0ecc224a977bf3aed0ddc44423f1d5dd5b9444c1b2a5ed534227d9e3346ee",
+        "game-2/frame-05399.ppm": "a5c4f335b60e593d39dfd8723ca7e49f561fe567b2cea2ba7be045fcc72464d1",
+        "game-2/frame-05999.ppm": "d20259ec91ee27a8ef18d2cd7d47e07fd898441aeb3668c7c5efe7ac94589f5c",
+        "game-2/frames.csv": "dc462785318b68b2b0f0bf9c7f19010a3d01dde0038d3e0f28af8abe42bc6170",
+        "game-2/run.log": "0d81f8036173b03b43733a0108c051a3c552be7f60b2352b4ba3ac8f81546fe5"
+      },
+      "last_log_lines": [
+        "CHECK frame=5399 changed=4177 samples=2887241",
+        "CHECK frame=5999 changed=4777 samples=3208054",
+        "PASS calls=6000 exact_pixels_PCM_geometry=1 normalized_state_checks=200 routes=2000,2000,2000 changes=4777 samples=3208054 physical=0"
+      ]
+    },
+    {
+      "name": "Star Fox",
+      "backup_zip_sha256": "8e7f827c02542f92a53ef59647024b0efd235fcd5ae3d072b262419c77249501",
+      "ROM_sha256": "b7381a951e4a62d44c640bbf189cd9161a3ca80f42b9bc514551393a4de9736c",
+      "ROM_bytes": 1048576,
+      "header": {
+        "offset": 32704,
+        "title": "STAR FOX             ",
+        "map_mode": 32,
+        "type": 19,
+        "region": 0
+      },
+      "core_reported_refresh_hz": 59.922743404,
+      "strict_equivalence_passed": false,
+      "recorded_calls": 150,
+      "adjacent_picture_changes": 0,
+      "scene_observation": "Boot prefix only; strict state comparison stops at frame150.",
+      "playability_accepted": false,
+      "actual_runner_mock_boots": [
+        {
+          "policy": 0,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "6bbec8a6f7c429ca1978ac745ec76b096e560a45ffa35cf6756e8087772155cc"
+        },
+        {
+          "policy": 1,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "e55afeb062e93f039359eade0925417febb92dd91729346c4ff4c90de456f7d4"
+        }
+      ],
+      "artifacts": {
+        "game-3/frames.csv": "2b70de5712faabe9e176067ce3dfbbb6de4361d2c981d5b2c63ad4ab9ec89af5",
+        "game-3/run.log": "030f3dc0deb4d18243ea64387695bff8c8e58a58805b32da238909c6f8b0e596"
+      },
+      "last_log_lines": [
+        "DIFF offset=347957 ref=2a candidate=82",
+        "DIFF offset=347958 ref=28 candidate=3e",
+        "FAIL state frame=150"
+      ]
+    },
+    {
+      "name": "Rendering Ranger R2",
+      "backup_zip_sha256": "80dc9efe4ac7667f548536a390370f7dfa5e654c753ed7af21106e393c464653",
+      "ROM_sha256": "82a9ee11b5640409c67772363f1148517b26127cef13aa2a8ffc2480b487d81f",
+      "ROM_bytes": 2097152,
+      "header": {
+        "offset": 32704,
+        "title": "RENDERING RANGER R2  ",
+        "map_mode": 32,
+        "type": 0,
+        "region": 0
+      },
+      "core_reported_refresh_hz": 59.922743404,
+      "strict_equivalence_passed": true,
+      "recorded_calls": 6000,
+      "adjacent_picture_changes": 30,
+      "scene_observation": "Black by inspected frame599 and remains black at sampled checkpoints through5999; no playable scene.",
+      "playability_accepted": false,
+      "actual_runner_mock_boots": [
+        {
+          "policy": 0,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "b4e3a600219ddaabe5ab2ca66c6b6530f0bfedf19589d51970c7d0f6b619eeb9"
+        },
+        {
+          "policy": 1,
+          "passed": true,
+          "calls": 600,
+          "rendered": 600,
+          "skipped": 0,
+          "remaining_audio_frames": 0,
+          "cleared_audio_frames": 0,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "session_sha256": "f560cf86a82ff849bcf608c4dd2df03a85a7fdd23e61986a9aa83c63576773c8"
+        }
+      ],
+      "artifacts": {
+        "game-4/frame-00599.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-01199.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-01799.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-02399.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-02999.png": "63224a95a750671a4af98903c11e7a9dc8d512a850eb424fe30f8ea2bd660dfd",
+        "game-4/frame-02999.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-03599.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-04199.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-04799.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-05399.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frame-05999.ppm": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4",
+        "game-4/frames.csv": "11511c29da8c7adee807528cf668758217c7e5ff817fc2af65ea1104f2af2a50",
+        "game-4/run.log": "716a2f0aaab6f8bdab76ba954b82b2f410c7788d065c650c94b7e01879531978"
+      },
+      "last_log_lines": [
+        "CHECK frame=5399 changed=30 samples=2887398",
+        "CHECK frame=5999 changed=30 samples=3208211",
+        "PASS calls=6000 exact_pixels_PCM_geometry=1 normalized_state_checks=200 routes=2000,2000,2000 changes=30 samples=3208211 physical=0"
+      ]
+    }
+  ],
+  "followups": {
+    "Star_Fox_same_candidate_two_library_instances": {
+      "result": "Same frame150 state divergence; not established as optimization-specific.",
+      "log_sha256": "ee1904b50dc27bca0ecc3ea0c1bf45267263ad4f2320bc50e729261268af7287",
+      "log_tail": [
+        "AV fps=59.922743404 sample_rate=32040.000",
+        "DIFF offset=347957 ref=ea candidate=82",
+        "DIFF offset=347958 ref=28 candidate=ce",
+        "FAIL state frame=150"
+      ],
+      "serialized_difference_region": "FillRAM offsets0x4325/0x4326 (DMA channel2 transfer-size registers); retain as logical state differences, do not normalize away."
+    },
+    "Rendering_Ranger_older_single_core": {
+      "result": "Older plus-a7 core, cold boot600 calls then600 held-Start calls; inspected final image black.",
+      "core_sha256": "80b36f61971e4e649843ea23dc051cd185ba699c413ff9023c93f548e2c738b8",
+      "log_sha256": "14cb37d034df7fbea237e6f4b19407c637f48512ab6a87612c9841d62a22fadb",
+      "image_sha256": "5cf0819a4ab8702e0f4dab391c3312e25ec9e3f89f5746dc8c58a5867be7ade4"
+    }
+  },
+  "private_result_sha256": "62f10c4b4b7ee261d512c8259bdd27c67e55142de6b5572d7c9a6f27b4cf61a2",
+  "private_runner_result_sha256": "a21ea0af54ef1156bbff0a1ed019764d4349b22788290998bae8c06db55e5e57",
+  "source_hashes": {
+    "build/check-multigame.c": "c85348e04cf92e3d25f72de1b296f83bcff02605aa692733bae9d3bc77746207",
+    "build/check-multigame.py": "24e5be592aeeeda93fe53dbe2c0a2e38447036cc1f1c2613783422d6754e40ca",
+    "build/check-multigame-runner.py": "652a07885bef4b223f4632050f05c95daffb5ffe17d02fc4225ebd49d7c4435b",
+    "build/publish-multigame.py": "69d0794528913ceaad779b707d525435c9143b86645d75b312276abf56f0be6d"
+  },
+  "limits": [
+    "QEMU checks correctness, not handheld throughput or audio reserve.",
+    "Direct/scratch/fallback targets exercise core output paths; display-worker scheduling is covered separately, not simulated here.",
+    "Scenes require screenshot inspection; scripted button counts alone do not establish gameplay coverage.",
+    "Reference core is the earlier common-band candidate, not independent hardware truth.",
+    "Mock board verifies actual frontend/runner/core/PCM software accounting and shutdown; not physical PCM, display credit, A7 costs, or gameplay.",
+    "No scripted input in these 600-call boot cells; gameplay evidence belongs to separately inspected comparator scenes.",
+    "Picture-change counts depend on reached scene and scripted inputs; they are not a game-wide native FPS census or permission to halve emulation ticks.",
+    "Rendering Ranger equivalence passes on matching black output; this is explicitly not a boot/playability pass.",
+    "State differences are not suppressed because identical output so far does not establish future equivalence.",
+    "No A7 throughput, real input, scanout cadence, speaker, or sustained gameplay qualification from these PC tests."
+  ],
+  "recommendation": "Retain UART, diagnostic shutdown and bounded FFVI presentation-recovery fixes. Do not claim the whole emulator fixed. Resolve Rendering Ranger boot and Star Fox state/determinism coverage, establish real gameplay fixtures, then run matched physical sustained tests at each ROM\u2019s reported timing."
+}

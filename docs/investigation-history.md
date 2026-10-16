@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Five-game backup-ROM evaluation — 2026-10-16
+
+Test Super Mario World, Super Metroid, F-Zero, Star Fox and Rendering Ranger
+against the exact returned FFVI candidate. Four6000-call pixel/PCM/state
+windows complete, but Ranger output is black; Star Fox stops at state frame150,
+also reproduced with identical candidate libraries. Ten actual-runner mock
+boot cells pass software PCM accounting. Inspect actual scene coverage, retain
+failures and prohibit a whole-emulator-fixed claim. No emulator/card changes,
+full backups or private ROM/image publication.
+[Results and next acceptance gates](multigame-evaluation.md).
+
 ## Matched FFVI physical return — 2026-10-16
 
 78/80 clean bounded windows. Both48 ms candidates complete all1200 renders and

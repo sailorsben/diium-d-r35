@@ -2,8 +2,8 @@
 
 The subsequent [matched physical package](presentation-ffvi-test.md) now covers
 the same policy in the actual full-frame measurement runner, with80 ABBA/
-reversed epochs and qualified recovery/install guards. Hardware results remain
-pending; the integration-only preparation described below remains preserved.
+reversed epochs and qualified recovery/install guards. [Physical FFVI results](presentation-ffvi-return.md) are now recorded; the
+integration-only preparation described below remains preserved.
 
 An isolated candidate now applies pressure3's presentation policy to the actual
 owned-output emulator runner. This is offline integration and correctness
