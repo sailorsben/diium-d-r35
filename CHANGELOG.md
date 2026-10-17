@@ -1,5 +1,15 @@
 # Changelog
 
+## Collect kernel UART flash return; qualify read-only verification - 2026-10-16
+
+User confirms both Vesper screens and stock launcher. Strict sparse return hashes
+10,826 files, zero new bytes, clean FAT. Only expected init/update/swap differences;
+saves, old evidence and all 636 outside-retro files exact. No fresh SPI or UART
+sample: do not treat stale module logs as corrected-kernel proof. Qualify one
+read-only two-pass/IRQ verification boot: ten groups and nine staging cases.
+Remove only the known update trigger after archive/hash/FAT gates. No full backup.
+[Return and next physical verification](docs/uart-kernel-return.md).
+
 ## Arm final direct kernel UART firmware on I: - 2026-10-16
 
 Final corrected kernel source `70b0b40` pushed before staging. Independent full

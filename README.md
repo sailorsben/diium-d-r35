@@ -6,13 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
-Direct kernel UART correction staged and armed on I: from pushed `70b0b40`.
-26 qualification groups, exact 64-KiB self-decompressor heap and eight staging
-cases pass. Independent readback verifies 10,824 protected existing files,
-original normal init, full update ZIP/image and clean FAT. No runtime module
-or IRQ hook; both Vesper screens/rootfs stay exact, saves/evidence unchanged.
-No full backup or emulator rearm. Physical kernel boot/UART acceptance pending.
-[Direct kernel correction and update instructions](docs/uart-kernel-firmware.md).
+Kernel flash user-accepted: both Vesper screens and stock launcher boot.
+Sparse return hashes 10,826 files, stores zero new bytes and finds clean FAT;
+saves, stock and prior evidence remain exact. No fresh SPI/IRQ measurements
+are present, so exact kernel/UART verification still requires one read-only
+boot. Ten probe checks and nine staging cases pass; no full backup.
+Read-only verification staging pending; no additional firmware update planned.
+[Boot return and read-only verification](docs/uart-kernel-return.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first
 1,200-call blocking window. Select+Start aborts Star Fox's silent cold replay

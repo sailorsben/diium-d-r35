@@ -1,0 +1,35 @@
+{
+  "version": "uart-kernel1-boot-return",
+  "archive": "uart-kernel-return-20261017T015801633471Z",
+  "archive_manifest_sha256": "6d3ab73ef716ab73e685b53178e67569b951dc1502fa99cf49ce045ce951e828",
+  "outside_manifest_sha256": "7ce4d6ca5d5e22e31e2fe7550c8559706cd3fe846ef105ea284cf7718a0490b9",
+  "installation_sha256": "2ad654efede248389fc208476bf69ff9b03bb93cbaea9fb51d7d04ab8cc81c22",
+  "user_observation": "Flash worked; both Vesper screens and stock launcher came up.",
+  "physical_boot_user_accepted": true,
+  "exact_flash_image_verified": false,
+  "fresh_UART_IRQ_measurement_available": false,
+  "all_files_hashed": 10826,
+  "unchanged_preinstall_files": 10823,
+  "expected_changes": {
+    "retro/init": {
+      "before": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+      "after": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7"
+    },
+    "retro/swapfile": {
+      "before": "37ce0b6fa153256542373ae70353dbfc9970738018a05fe6a3bba9f71bd1edf7",
+      "after": "869f8502c6f96eeba404333632d5f049d3165e6305aa9f3aecb53b5a22d79be6"
+    },
+    "retro/update/Code.bkp": {
+      "before": "ed9cd16d43fc2dde0c7792b3dbe32f53b15180804669c56f300697b8d2639425",
+      "after": "b2f8b286095f189ad9d0cad30320212f88a1b59e761ee7120aa9d45bab44dfeb"
+    }
+  },
+  "all_saves_prior_evidence_and_stock_files_exact": true,
+  "outside_files_unchanged": 636,
+  "no_full_backup": true,
+  "new_sparse_content_bytes": 0,
+  "card_writes": 0,
+  "FAT_clean": true,
+  "known_update_trigger_present": true,
+  "next_step": "Remove exact trigger after archive/FAT/hash gates; one read-only two-pass SPI/IRQ verification boot required."
+}

@@ -7911,6 +7911,22 @@
       "published_sha256": "be80fe7f5f0da6d9326dfb11734e60c898cc1f71d3e992ec26028d6310b88d84",
       "bytes": 383,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-kernel-return-20261017T015801633471Z/archive.json",
+      "published": "evidence/2026-10-16/uart-kernel1/boot-return.json",
+      "source_sha256": "6d3ab73ef716ab73e685b53178e67569b951dc1502fa99cf49ce045ce951e828",
+      "published_sha256": "a63fe838aa505051524b878f785d47b1f9f84e7bd987d5598333a7dbf8d33c26",
+      "bytes": 1688,
+      "normalized": true
+    },
+    {
+      "source": "build/uart-kernel-verify-private/qualification.json",
+      "published": "evidence/2026-10-16/uart-kernel-verification/qualification.json",
+      "source_sha256": "e2dc68ba9ff14e839b94da66975f1d27ff581c2f4fad89acef075ed19ba2c4fe",
+      "published_sha256": "e0aecc609a2f5cc77b217e9dd29d58146dd00bad823e63f2710c44c64206f88b",
+      "bytes": 3137,
+      "normalized": true
     }
   ]
 }

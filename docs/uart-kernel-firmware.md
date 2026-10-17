@@ -1,5 +1,10 @@
 # UART correction directly in the kernel — 2026-10-16
 
+**Physical boot user-accepted:** both Vesper screens and stock launcher.
+[Collected return and read-only kernel/IRQ verification](uart-kernel-return.md).
+The original update staging below is historical; exact flash/IRQ proof remains
+pending one verification boot.
+
 The user requested replacing the boot-time module approach with a driver
 correction in the kernel itself, preserving both Vesper screens, saves and
 evidence, and arming I: without a full backup. This candidate supersedes the

@@ -1,0 +1,58 @@
+{
+  "version": "uart-kernel-verify1",
+  "passed": true,
+  "checks": [
+    "Exact qualified/physically used fixed05,9f,03 two-pass reader retained",
+    "ARM observer linked against firmware glibc2.30,32-bit time ABI",
+    "Actual ARM observer copies exact passive snapshots and uses relative kernel-clock wait",
+    "Observer refuses existing result directory",
+    "Missing passive input is explicit failure, not a passing measurement",
+    "Exact firmware shell syntax for wrapper and original init plus one-shot hook",
+    "Consume-first synchronous firmware wrapper, failure/replay guard: normal",
+    "Consume-first synchronous firmware wrapper, failure/replay guard: observer-failure",
+    "Consume-first synchronous firmware wrapper, failure/replay guard: reader-failure",
+    "Consume-first synchronous firmware wrapper, failure/replay guard: after-failure"
+  ],
+  "reader_manifest_sha256": "844438c19fdde387f22a82862daaf01d64bf8f1900718e56b841b62e150fde1c",
+  "sources": {
+    "uart-kernel-observe.c": "3042a969c255034988634ba409b863097c22f562a6cf3708be761bc4b1c38a52",
+    "launch-uart-kernel-verify.sh": "acf8f7a62e999c2739ebbf3af0bebdd81d3a6b3120f413e61952aafafb35c7d3",
+    "prepare-uart-kernel-verify.py": "2474d3628a66984767160018fd1538f86ff410023cec3c3f8da0ec3652528893"
+  },
+  "payload_hashes": {
+    "spi-readback": "b0f47d8742b0ef0c1624fd1d25ae3cb8af7474d5c16f2b941c46ced370749a0b",
+    "uart-observe": "28c9e4674f154e194d67631278f58e1288c688e9c06684b61c334a61cfcf8731",
+    "launch.sh": "acf8f7a62e999c2739ebbf3af0bebdd81d3a6b3120f413e61952aafafb35c7d3",
+    "installation.json": "fa7ecc6287f9bccf7f15e1858892be88a85b33fbe020ae6af9a32b7786001b6d"
+  },
+  "init_sha256": "4a6d37f719a6f1e6a9591467294d15391e10149610f9fa4efefad4336224a508",
+  "marker_sha256": "b9d245289a40f870b20cbb0fc8265e75864c3c14f12762320f2457bd909937db",
+  "flash_writes": false,
+  "physical_result": "PENDING",
+  "staging_transaction": {
+    "passed": true,
+    "cases": [
+      "success",
+      "payload",
+      "init",
+      "marker",
+      "health-payload",
+      "health-armed",
+      "foreign-trigger",
+      "foreign-init",
+      "existing-target"
+    ],
+    "installer_sha256": "3b0ed5e3e12eff20b5d74be91284d4047abadf61b648063de43322fa565d14c5",
+    "checker_sha256": "b1d073442c15d0cfcb34a5e0cb1a044c4f1c5b9ad16bc1f11758949246532c15",
+    "qualification_sha256": "e2dc68ba9ff14e839b94da66975f1d27ff581c2f4fad89acef075ed19ba2c4fe",
+    "card_access": false
+  },
+  "publication_sources": {
+    "collect-uart-kernel-return.py": "c203c4a10fb0e6cb9dab5997dcf4d1678fff7f7ce981f303b3ca4c3947144fc5",
+    "stage-uart-kernel-verify.py": "3b0ed5e3e12eff20b5d74be91284d4047abadf61b648063de43322fa565d14c5",
+    "check-uart-kernel-verify-stage.py": "b1d073442c15d0cfcb34a5e0cb1a044c4f1c5b9ad16bc1f11758949246532c15",
+    "verify-uart-kernel-probe-card.py": "5a13251665f1f6c07352e65c25f3898d513143cfdffb24b7676cabec20be1948",
+    "publish-uart-kernel-return.py": "86f280c01bd8695091c472f9b3b682a26156a92be855ef9b510f7aa803600014"
+  },
+  "archive": "uart-kernel-return-20261017T015801633471Z"
+}
