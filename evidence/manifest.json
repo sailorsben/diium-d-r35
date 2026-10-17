@@ -8031,6 +8031,22 @@
       "published_sha256": "545f3019b735be4925bc1bae54995442fb97ffbe6f21dabf4fb016a70ea98d46",
       "bytes": 3822,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-return-20261017T030857768581Z/battery-rollback-installation.json",
+      "published": "evidence/2026-10-16/battery-rollback/installation.json",
+      "source_sha256": "2437dad7b23e9987c253f9da6317c8e62fbb863a557563d8bf9774aa2e0436b5",
+      "published_sha256": "2437dad7b23e9987c253f9da6317c8e62fbb863a557563d8bf9774aa2e0436b5",
+      "bytes": 1543,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-return-20261017T030857768581Z/battery-rollback-live-verification.json",
+      "published": "evidence/2026-10-16/battery-rollback/live-verification.json",
+      "source_sha256": "2876265da0d49c081df43b75091d86fe7deaeb3e7f270d882841923996826d1f",
+      "published_sha256": "2876265da0d49c081df43b75091d86fe7deaeb3e7f270d882841923996826d1f",
+      "bytes": 583,
+      "normalized": true
     }
   ]
 }

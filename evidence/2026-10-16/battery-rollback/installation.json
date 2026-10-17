@@ -1,0 +1,31 @@
+{
+  "version": "battery-kernel-rollback1",
+  "source_commit": "481415fa0bf25b9033a3f851a319ea2cafb848e2",
+  "archive": "uart-kernel-return-20261017T030857768581Z",
+  "armed_vendor_update": true,
+  "package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "package_bytes": 5797906,
+  "candidate_sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+  "expected_after_vendor_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "restored_kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "card_UART_payloads": {
+    "d35_uart_tx.ko": "009d1a2e726668361b0b41b0fc358f02ba3c9cf08ba1712a690c0f312cf1a1b4",
+    "init": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+    "launch.sh": "43dac415f99f4d2cdad4aa4b1ac04e27444b83d7dcf409d373deec4a033fb71d",
+    "uart-fix-boot": "1d00fa00e3e0815ce8c30cf08132f4f1ee085f7df9a65bb56d542fc3f13731e2"
+  },
+  "prior_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "prior_UART_wrapper_sha256": "3acefdb3f3628efbe4d14d3663f108cefbeb18bc10abb13ea45cbc83e2e42e4c",
+  "changed_existing_files": [
+    "retro/init",
+    "retro/uart-fix1/launch.sh"
+  ],
+  "added_update_file": "retro/update/Code.bkp",
+  "protected_existing_files": 11003,
+  "all_existing_files": 11005,
+  "FAT_clean": true,
+  "no_emulator_test_armed": true,
+  "no_full_backup": true,
+  "physical_rollback": "PENDING",
+  "battery_result": "UNPROVEN"
+}

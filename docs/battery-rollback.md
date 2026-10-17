@@ -1,6 +1,8 @@
 # Battery investigation: pre-kernel rollback — 2026-10-16
 
-Qualified; staging pending. User authorizes preparing I: for a controlled rollback
+**Armed on I:** pushed source `481415f`. Independent final readback verifies all
+11,003 protected files, exact 11,006-file set, complete package CRC/image/original
+kernel, proven card UART payloads and clean FAT. No game test is armed. User authorizes preparing I: for a controlled rollback
 after immediate low-power warning on unplugging despite extended plugged-in time.
 This is a diagnostic rollback, not an established battery repair. No game suite
 is armed. No full-card/retro backup or new rollback-copy collection is made.
@@ -74,3 +76,10 @@ operation. Exact flashed rollback image will require readback if that claim is
 needed; stock observation alone is not whole-image proof.
 
 [Qualification](../evidence/2026-10-16/battery-rollback/qualification.json).
+
+[Installation](../evidence/2026-10-16/battery-rollback/installation.json) and
+[independent readback](../evidence/2026-10-16/battery-rollback/live-verification.json).
+
+Return collector: `python build/collect-battery-rollback-return.py` accepts only
+the exact rollback trigger or its absence, preserving all progress/evidence before
+health checks or cleanup. It makes no full backup and writes nothing to the card.

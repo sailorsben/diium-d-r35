@@ -8,8 +8,10 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 Battery regression investigation: exact pre-kernel Wings2 rollback qualified,
 with both Vesper screens/rootfs preserved and proven card UART hook restored.
-Eleven firmware groups and seven staging cases pass. Staging pending. No game
-test or full backup. Physical rollback and battery outcome remain unproven.
+Eleven firmware groups and seven staging cases pass. Armed from pushed `481415f`;
+independent readback verifies 11,003 protected files, exact file set, full rollback
+package/original kernel/UART payloads and clean FAT. No game test or full backup.
+Physical rollback and battery outcome remain unproven.
 [Current rollback and procedure](docs/battery-rollback.md).
 
 Five-game powered return: Mario, Metroid and F-Zero complete first blocking

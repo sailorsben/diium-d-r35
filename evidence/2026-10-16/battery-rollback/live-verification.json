@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "protected_existing_files_verified": 11003,
+  "exact_file_set_count": 11006,
+  "full_ZIP_CRC_image_original_kernel_verified": true,
+  "proven_card_UART_payloads_verified": true,
+  "no_game_tests_armed": true,
+  "only_expected_firmware_trigger": true,
+  "FAT_clean": true,
+  "no_full_backup": true,
+  "installation_sha256": "2437dad7b23e9987c253f9da6317c8e62fbb863a557563d8bf9774aa2e0436b5",
+  "checker_sha256": "614c931d79c33f83c36077b799c4b6db2c4e04eaf3e693ad0e12fa2640d9bb6f",
+  "physical_rollback": "PENDING",
+  "battery_result": "UNPROVEN"
+}
