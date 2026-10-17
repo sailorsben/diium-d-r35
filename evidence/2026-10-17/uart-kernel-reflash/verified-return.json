@@ -1,0 +1,98 @@
+{
+  "archive": "uart-kernel-return-20261017T101755121139Z",
+  "complete": true,
+  "all_files_hashed": 1643,
+  "new_sparse_content_bytes": 8611,
+  "FAT_clean": true,
+  "wrapper_success": true,
+  "two_pass_flash_exact": true,
+  "flash_sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321",
+  "kernel_sha256": "b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459",
+  "runtime_UART_module_absent": true,
+  "idle_IRQ_flood_acceptance_passed": true,
+  "windows": [
+    {
+      "window": "uart-before",
+      "IRQ19_counts": [
+        1675,
+        2107
+      ],
+      "IRQ19_delta": 432,
+      "IRQ19_per_second_bracket": [
+        85.33294564785187,
+        86.35021046864378
+      ],
+      "kernel_times_ns": {
+        "begin_snapshot_start_ns": 6515633000,
+        "begin_snapshot_end_ns": 6547153000,
+        "end_snapshot_start_ns": 11550036000,
+        "end_snapshot_end_ns": 11578156000,
+        "relative_wait_ns": 5000000000,
+        "failed": 0,
+        "flash_writes": 0,
+        "UART_configuration_writes": 0
+      },
+      "serial_snapshots": [
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:1509 rx:62 brk:62 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n",
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:1941 rx:62 brk:62 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n"
+      ]
+    },
+    {
+      "window": "uart-after",
+      "IRQ19_counts": [
+        11003,
+        11435
+      ],
+      "IRQ19_delta": 432,
+      "IRQ19_per_second_bracket": [
+        85.37409366605252,
+        86.37640196698263
+      ],
+      "kernel_times_ns": {
+        "begin_snapshot_start_ns": 115320941000,
+        "begin_snapshot_end_ns": 115348674000,
+        "end_snapshot_start_ns": 120350040000,
+        "end_snapshot_end_ns": 120381024000,
+        "relative_wait_ns": 5000000000,
+        "failed": 0,
+        "flash_writes": 0,
+        "UART_configuration_writes": 0
+      },
+      "serial_snapshots": [
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:10834 rx:63 brk:63 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n",
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:11266 rx:63 brk:63 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n"
+      ]
+    }
+  ],
+  "readback_elapsed_seconds": 103.714772,
+  "boot_id": "a82f43b5-ab33-49e6-b301-62d24fce2f1c",
+  "limits": [
+    "No electrical UART byte/throughput or CPU savings claim.",
+    "Successful verification does not prove later stock launcher stability or power state."
+  ],
+  "no_full_backup": true,
+  "reflash_verification": true,
+  "fresh_boot_verified": true,
+  "prior_boot_ids_compared": [
+    "4b912504-2797-49fb-bd85-ca0923a86425",
+    "6b4fcb19-3838-4142-9127-2b002b01e88c"
+  ],
+  "verification_installation_sha256": "5ddd2d010ae1b3cc472c6d272810e71289287ae9bb42b529a03ea08698841ae3",
+  "archive_manifest_sha256": "403ccf75f4c2b82560e1e3b101f71f456b97807898520207a0aa1dcc4b9e36d4",
+  "outside_manifest_sha256": "7ce4d6ca5d5e22e31e2fe7550c8559706cd3fe846ef105ea284cf7718a0490b9",
+  "saves_and_prior_evidence_unchanged": true,
+  "protected_staged_files_unchanged": 1604,
+  "expected_card_changes": {
+    "retro/swapfile": "7464216c79712a7e5b8addc65cb650e0143101b613c764eb734b13829c9ca72b",
+    "retro/uart-kernel-verify1/armed": null
+  },
+  "new_run_output_files": 38,
+  "both_Vesper_screens_and_rootfs_exact": true,
+  "user_observation": "Completed plugged in and returned to stock.",
+  "stock_return_on_external_power_user_accepted": true,
+  "battery_boundary": "User reports full charge restored normal behavior; no physical ADC fault demonstrated.",
+  "analyzer_sources": {
+    "analyze-uart-reflash-verification.py": "f9a8673d17728ae7182dea9a31800fac74cd16812ddfa87ac9546a361b613230",
+    "analyze-uart-kernel-verify-return.py": "9dc799fc0c884d79153f362e1474c160cc8ef6c3dc24867297bedf2bc8137130"
+  }
+}

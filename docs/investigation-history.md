@@ -1,5 +1,17 @@
 # Investigation history and negative results
 
+## Verify fresh kernel UART reflash and restore normal boot - 2026-10-17
+
+Fresh powered UART verification passes after reflash: both complete 8-MiB
+reads match the corrected firmware and decompressed kernel, preserving both
+Vesper screens/rootfs. Fresh boot ID; no runtime UART module/patch endpoint.
+IRQ19 is 85.33–86.35/s before and 85.37–86.38/s after readback, passing the idle
+flood gate. User confirms stock return while plugged in. All saves and prior
+evidence unchanged; clean FAT. Sparse return inventories 1,643 files and adds
+only 8,611 content bytes. No full backup or firmware writes. Restore exact normal
+init; leave all returned evidence in place and no update/test armed.
+[Physical return and preservation](uart-kernel-reflash-return.md).
+
 ## Collect UART reflash and qualify fresh read-only verification - 2026-10-17
 
 UART reflash boot accepted by user: both Vesper screens and stock launcher.

@@ -1,5 +1,12 @@
 # UART reflash return and fresh verification — 2026-10-17
 
+**Fresh powered return verified:** two complete flash passes match the exact
+UART-corrected image and decompressed kernel; fresh boot ID and both idle IRQ
+windows pass with no runtime patch module. User confirms return to stock while
+plugged in. [Physical result](../evidence/2026-10-17/uart-kernel-reflash/verified-return.json).
+Normal-init restoration and final unarmed/FAT receipt follow below. Earlier
+staging and pending-state descriptions are historical.
+
 Ben confirms the reflash completed, both Vesper screens appeared and the stock
 launcher started. This accepts the observed boot. It does not independently
 measure the freshly programmed kernel or UART interrupts.
@@ -86,3 +93,48 @@ unchanged against this cleaned card and call its result current. Use this
 installation's exact sparse inventory and payload receipt for return comparison.
 After accepted collection restore exact normal init; the consumed marker already
 makes the following boot stock. No automatic rearm.
+
+## Fresh powered verification result
+
+Return `uart-kernel-return-20261017T101755121139Z` contains a complete wrapper,
+reader result, both 8-MiB passes and both five-second observation windows. It
+hashes 1,643 files and adds only 8,611 content bytes to the sparse object store;
+the identical 16-MiB capture is deduplicated. FAT is clean. The only changes to
+the staged inventory are stock swapfile content and consumption of the one-shot
+marker; all 38 new output paths are exactly the specified probe outputs. No save,
+state, previous evidence, stock binary or returned settings change is detected.
+
+Both full passes equal the expected flash SHA256
+`ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321`,
+and the decompressed kernel equals
+`b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459`.
+Full byte equality checks both Vesper screen payloads and rootfs too. Readback
+completes in 103.714772 seconds. The boot ID is new relative to both earlier
+completed physical runs. All four presence/module snapshots show no runtime
+UART patch module or endpoint.
+
+| Window | IRQ19 delta | IRQ19 per second, time bracket | TX delta | RX/break change |
+|---|---:|---:|---:|---|
+| Before readback | 432 | 85.33295–86.35021 | 432 | 62/62 unchanged |
+| After readback | 432 | 85.37409–86.37640 | 432 | 63/63 unchanged |
+
+Both upper rate brackets pass the existing <500/s gate. This verifies the
+installed corrected kernel and bounded idle UART flood correction. It does not
+measure electrical wire byte accuracy, throughput, A7 savings or gameplay.
+User observation separately confirms completion plugged in and return to stock.
+No physical ADC fault has been demonstrated.
+
+The analyzer now separates unchanged capture/IRQ checks from the historical
+inventory comparison. This return uses its own exact staging receipt and pre-
+staging sparse inventory; the original large-card analysis remains available.
+Historical physical-result regression preserves the original flash/kernel hashes,
+boot ID, time brackets and serial snapshots. Refusal controls reject a changed
+protected file, wrong consumed marker and stale boot.
+The consumed marker is deliberately hash-only under the sparse policy and is
+checked against the qualified marker hash; all measured output bytes are saved
+and hash-checked. No raw evidence was modified.
+
+After source publication, restore only original normal `retro/init`, checking
+all 1,642 other files, exact full file set, absence of update/armed markers and
+clean FAT. Retain every probe result and payload on card as well as the verified
+host evidence. No automatic rearm. [Restoration receipt](../evidence/2026-10-17/uart-kernel-reflash/restoration.json).

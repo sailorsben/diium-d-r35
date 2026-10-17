@@ -5,10 +5,9 @@ import json,sys,zlib
 from attempt_archive import verify_saved,digest
 ROOT=Path(__file__).resolve().parent.parent
 BASE='retro/uart-kernel-verify1'
-def analyze(archive):
+def analyze_probe(archive,install):
  a=json.loads((archive/'archive.json').read_text());o=json.loads((archive/'outside-retro.json').read_text());assert a['fat_clean'];verify_saved(archive,a)
  entries={e['path']:e for e in a['all_retro_files']+o['files']};base=archive/BASE
- install=json.loads((ROOT/'evidence/2026-10-16/uart-kernel-verification/installation.json').read_text());q=ROOT/'build/uart-kernel-verify-private'
  for n,h in install['payload_hashes'].items():assert entries[BASE+'/'+n]['sha256']==h
  assert entries['retro/init']['sha256']==install['init_sha256']
  assert BASE+'/armed' not in entries and entries[BASE+'/consumed']['sha256']==install['marker_sha256']
@@ -36,8 +35,15 @@ def analyze(archive):
   rates=[delta/long,delta/short];assert rates[1]<500
   windows.append({'window':label,'IRQ19_counts':counts,'IRQ19_delta':delta,'IRQ19_per_second_bracket':rates,'kernel_times_ns':t,'serial_snapshots':serial})
  assert len(ids)==1 and next(iter(ids))
+ return {'archive':archive.name,'complete':True,'all_files_hashed':len(entries),'new_sparse_content_bytes':a['new_content_bytes']+o['new_content_bytes'],'FAT_clean':True,'wrapper_success':True,'two_pass_flash_exact':True,'flash_sha256':flash,'kernel_sha256':kernel,'runtime_UART_module_absent':True,'idle_IRQ_flood_acceptance_passed':True,'windows':windows,'readback_elapsed_seconds':r['elapsed_ns']/1e9,'boot_id':next(iter(ids)),'limits':['No electrical UART byte/throughput or CPU savings claim.','Successful verification does not prove later stock launcher stability or power state.'],'no_full_backup':True}
+
+def analyze(archive):
+ install=json.loads((ROOT/'evidence/2026-10-16/uart-kernel-verification/installation.json').read_text())
+ v=analyze_probe(archive,install)
+ a=json.loads((archive/'archive.json').read_text());o=json.loads((archive/'outside-retro.json').read_text());entries={e['path']:e for e in a['all_retro_files']+o['files']}
  before=ROOT/'device-evidence/uart-kernel-return-20261017T015801633471Z';prior=json.loads((before/'archive.json').read_text())['all_retro_files']+json.loads((before/'outside-retro.json').read_text())['files']
  changes={e['path']:entries.get(e['path'],{}).get('sha256') for e in prior if entries.get(e['path'],{}).get('sha256')!=e['sha256']};assert set(changes)=={'retro/init','retro/update/Code.bkp','retro/swapfile'}
- return {'archive':archive.name,'complete':True,'all_files_hashed':len(entries),'new_sparse_content_bytes':a['new_content_bytes']+o['new_content_bytes'],'FAT_clean':True,'saves_and_prior_evidence_unchanged':True,'expected_card_changes':changes,'wrapper_success':True,'two_pass_flash_exact':True,'flash_sha256':flash,'kernel_sha256':kernel,'runtime_UART_module_absent':True,'idle_IRQ_flood_acceptance_passed':True,'windows':windows,'readback_elapsed_seconds':r['elapsed_ns']/1e9,'boot_id':next(iter(ids)),'shutdown_cause':'UNRESOLVED; user reports possible low battery. Probe completes before stock continuation; no retained shutdown telemetry.','limits':['No electrical UART byte/throughput or CPU savings claim.','Successful verification does not prove later stock launcher stability or power state.'],'no_full_backup':True}
+ v.update({'saves_and_prior_evidence_unchanged':True,'expected_card_changes':changes,'shutdown_cause':'UNRESOLVED; user reports possible low battery. Probe completes before stock continuation; no retained shutdown telemetry.'})
+ return v
 if __name__=='__main__':
  p=Path(sys.argv[1]).resolve();assert p.is_relative_to(ROOT/'device-evidence');v=analyze(p);(p/'analysis.json').write_text(json.dumps(v,indent=2)+'\n');print(json.dumps(v,indent=2))
