@@ -48,7 +48,13 @@ consume-first order, failure barriers and replay refusal. Nine temporary-card
 cases cover write/FAT failures and foreign trigger/init/profile refusal. No full
 backup. Independently verify the complete card/payload/marker and clean FAT.
 
-**Status: read-only verification package qualified; staging pending.**
+**Status: read-only verification armed on I: from pushed source `08e4b06`.**
+
+The installer verifies all 10,824 protected existing files, exact probe payloads,
+temporary init and sole one-shot marker with clean FAT. The known firmware update
+trigger is removed. No firmware update is armed. Independent final-card readback
+is recorded in the published verification receipt. Physical measurements remain
+pending; installation checks do not establish the flashed kernel or IRQ result.
 
 After verified staging, safely eject I:, cold boot once and allow about two
 minutes, up to five, for stock to appear. Vesper may animate during readback.
@@ -77,3 +83,6 @@ After successful collection/health/hash checks restore original normal init,
 preserving all private captures and leaving everything unarmed.
 
 [Probe qualification](../evidence/2026-10-16/uart-kernel-verification/qualification.json).
+
+[Installation receipt](../evidence/2026-10-16/uart-kernel-verification/installation.json)
+and [independent final-card verification](../evidence/2026-10-16/uart-kernel-verification/live-verification.json).

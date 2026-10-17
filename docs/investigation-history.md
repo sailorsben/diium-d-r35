@@ -7,7 +7,10 @@ User confirms both Vesper screens and stock launcher. Strict sparse return hashe
 saves, old evidence and all 636 outside-retro files exact. No fresh SPI or UART
 sample: do not treat stale module logs as corrected-kernel proof. Qualify one
 read-only two-pass/IRQ verification boot: ten groups and nine staging cases.
-Remove only the known update trigger after archive/hash/FAT gates. No full backup.
+Known update trigger removed after archive/hash/FAT gates. Read-only verification
+armed from pushed source `08e4b06`; all 10,824 protected files pass installation
+readback. Independent final-card receipt linked below; physical image/IRQ result
+still pending. No full backup.
 [Return and next physical verification](uart-kernel-return.md).
 
 ## Arm final direct kernel UART firmware on I: - 2026-10-16

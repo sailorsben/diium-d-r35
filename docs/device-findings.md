@@ -5,7 +5,10 @@ Sparse return hashes 10,826 files, stores zero new bytes and finds clean FAT;
 saves, stock and prior evidence remain exact. No fresh SPI/IRQ measurements
 are present, so exact kernel/UART verification still requires one read-only
 boot. Ten probe checks and nine staging cases pass; no full backup.
-Read-only verification staging pending; no additional firmware update planned.
+Read-only verification armed from pushed source `08e4b06`; known firmware
+update trigger removed. All 10,824 protected files pass installation readback.
+Independent final-card verification is recorded in the linked receipt.
+Exact flashed image and UART IRQ behavior remain pending the physical return.
 [Boot return and read-only verification](uart-kernel-return.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first

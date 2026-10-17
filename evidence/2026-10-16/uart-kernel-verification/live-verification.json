@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "protected_existing_files_verified": 10824,
+  "payload_and_marker_verified": true,
+  "only_read_only_verification_armed": true,
+  "no_update_trigger": true,
+  "FAT_clean": true,
+  "installation_sha256": "5c400841ecf0130d03cd3ad19ed4f3d70834f5f08ad54ce430be2973bbbea128",
+  "checker_sha256": "5a13251665f1f6c07352e65c25f3898d513143cfdffb24b7676cabec20be1948",
+  "physical_kernel_verification": "PENDING"
+}
