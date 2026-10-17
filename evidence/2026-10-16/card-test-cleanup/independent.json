@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "remaining_files_verified": 1601,
+  "all_save_paths_unchanged": true,
+  "rollback_exact_full_ZIP_CRC_and_image_verified": true,
+  "proven_UART_boot_payloads_exact": true,
+  "no_game_markers": true,
+  "FAT_clean": true,
+  "cleanup_receipt_sha256": "2680578b637e9d81ecec07d9ebb50801069143670d14248dd54df9a116191f31",
+  "checker_sha256": "ff1a639465d63c859890b97b941ead61c4941ab04da3e221da17e8e92eecb411"
+}

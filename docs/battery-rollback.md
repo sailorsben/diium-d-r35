@@ -1,5 +1,12 @@
 # Battery investigation: pre-kernel rollback — 2026-10-16
 
+**Current card after authorized cleanup:** 1,601 files remain; obsolete tests
+were removed only after host byte verification. The exact rollback trigger and
+card UART boot files remain armed/unchanged, all save paths are intact, and
+independent full remaining-file/ZIP/FAT checks pass. The larger staging counts
+below describe the historical pre-cleanup inventory.
+[Cleanup receipts](card-test-cleanup.md).
+
 **Armed on I:** pushed source `481415f`. Independent final readback verifies all
 11,003 protected files, exact 11,006-file set, complete package CRC/image/original
 kernel, proven card UART payloads and clean FAT. No game test is armed. User authorizes preparing I: for a controlled rollback

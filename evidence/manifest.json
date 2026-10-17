@@ -8055,6 +8055,22 @@
       "published_sha256": "38db46e388530463b312fd257d50ddd045aa4df61ed9c38e3e336ba0619b6eb1",
       "bytes": 1804,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/battery-rollback-return-20261017T031941973187Z/cleanup-result.json",
+      "published": "evidence/2026-10-16/card-test-cleanup/result.json",
+      "source_sha256": "2680578b637e9d81ecec07d9ebb50801069143670d14248dd54df9a116191f31",
+      "published_sha256": "2680578b637e9d81ecec07d9ebb50801069143670d14248dd54df9a116191f31",
+      "bytes": 799,
+      "normalized": true
+    },
+    {
+      "source": "device-evidence/battery-rollback-return-20261017T031941973187Z/cleanup-independent.json",
+      "published": "evidence/2026-10-16/card-test-cleanup/independent.json",
+      "source_sha256": "e5328ef26343209155d7dd03ceae47e9e9dd8eee0bbe91ac27ecbc82f84dd25b",
+      "published_sha256": "e5328ef26343209155d7dd03ceae47e9e9dd8eee0bbe91ac27ecbc82f84dd25b",
+      "bytes": 437,
+      "normalized": true
     }
   ]
 }

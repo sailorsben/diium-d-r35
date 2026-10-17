@@ -6,10 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
-Obsolete card test cleanup qualified: 9,405 files / about 1.29 GiB have verified
-host copies. Recover 2,046 previously unretained text logs/metadata sparsely;
-keep 683 save/state files and one unmatched executable on card. Collector gap
-fixed and tests pass. Current rollback/UART preserved; application pending.
+Obsolete card test cleanup complete: 9,405 files removed after host byte/hash
+verification; 1.57 GiB of FAT space reclaimed, 1,601 files remain. Preserve all
+683 save/state files and unique evidence, including 2,046 recovered text records.
+One unmatched executable retained. Collector gap fixed/tests pass. Independent
+remaining hashes/save paths/rollback ZIP/UART hooks/unarmed-game/FAT checks pass.
+The current rollback remains armed.
 No full backup. [Plan and preservation](docs/card-test-cleanup.md).
 
 Battery regression investigation: exact pre-kernel Wings2 rollback qualified,

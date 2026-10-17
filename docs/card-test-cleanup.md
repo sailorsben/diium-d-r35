@@ -59,7 +59,17 @@ readback repeats remaining hashes and validates the complete rollback ZIP/CRC/im
 and proven UART boot payloads. Do not flash or alter the battery test during this
 cleanup. Keep all host archives/object-store generations; no host cleanup is in scope.
 
-**Status: qualified; cleanup not yet applied.**
+**Status: complete and independently verified.** Source `660fa48` was pushed
+before execution. All 9,405 planned files were removed; card file count is now
+1,601. Logical bytes removed: 1,382,325,388. FAT free space increased by
+1,681,129,472 bytes (about 1.57 GiB). All 683 retained save/state paths and every
+remaining file hash verify. One unverified static executable remains in place.
+The normal SNES wrapper is restored, no game markers exist, and the exact current
+rollback package, card UART init/wrapper/module/helper remain unchanged. FAT is
+clean after cleanup and independent verification. No new full backup.
+
+[Completion receipt](../evidence/2026-10-16/card-test-cleanup/result.json) and
+[independent verification](../evidence/2026-10-16/card-test-cleanup/independent.json).
 
 [Qualification](../evidence/2026-10-16/card-test-cleanup/qualification.json).
 The rollback [physical instructions](battery-rollback.md) remain applicable.

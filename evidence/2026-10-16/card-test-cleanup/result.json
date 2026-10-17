@@ -1,0 +1,19 @@
+{
+  "source_commit": "660fa48875391783d7e60ce37022037b6518f048",
+  "archive": "battery-rollback-return-20261017T031941973187Z",
+  "plan_sha256": "0fda118cb3516c513883fe97394a9a6c9f88d8c8a189a12a82839fc687b062f4",
+  "removed_files": 9405,
+  "removed_logical_bytes": 1382325388,
+  "free_bytes_before": 123647655936,
+  "free_bytes_after": 125328785408,
+  "retained_files": 1601,
+  "retained_save_files": 683,
+  "unresolved_files_kept": 1,
+  "every_removed_file_has_verified_host_copy": true,
+  "all_remaining_files_hash_verified": true,
+  "rollback_package_and_UART_init_wrapper_exact": true,
+  "normal_MVP_wrapper_restored_sha256": "35b1c32fa5924e33a0f1da47833b6710e53dadc5ebd832a6b998a86236e2cc13",
+  "no_game_test_armed": true,
+  "FAT_clean": true,
+  "no_new_full_backup": true
+}
