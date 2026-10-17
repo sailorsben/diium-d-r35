@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "exact_final_file_set_verified": 1643,
+  "normal_init_and_stock_ADC_settings_hashes_exact": true,
+  "no_armed_tests": true,
+  "no_update_trigger": true,
+  "restoration_receipt_sha256": "96bcca687e7c8447822740d143b4d049c7269d3eaf3ae7700bc384b7532840c6",
+  "full_protected_content_and_FAT_checks": "Passed before and after restoration; see restoration receipt",
+  "card_writes": 0
+}

@@ -4,7 +4,8 @@
 UART-corrected image and decompressed kernel; fresh boot ID and both idle IRQ
 windows pass with no runtime patch module. User confirms return to stock while
 plugged in. [Physical result](../evidence/2026-10-17/uart-kernel-reflash/verified-return.json).
-Normal-init restoration and final unarmed/FAT receipt follow below. Earlier
+Exact normal init is restored, all 1,642 other files are unchanged, FAT is clean
+and no update/test is armed. Earlier
 staging and pending-state descriptions are historical.
 
 Ben confirms the reflash completed, both Vesper screens appeared and the stock
@@ -138,3 +139,13 @@ After source publication, restore only original normal `retro/init`, checking
 all 1,642 other files, exact full file set, absence of update/armed markers and
 clean FAT. Retain every probe result and payload on card as well as the verified
 host evidence. No automatic rearm. [Restoration receipt](../evidence/2026-10-17/uart-kernel-reflash/restoration.json).
+
+**Restoration complete:** source `716f24f` was pushed before restoring only
+`retro/init` to exact original normal boot. All 1,642 other files and the full
+1,643-file set verify unchanged, with all probe outputs retained and final FAT
+clean. No update trigger or armed marker exists. Independent final file-set,
+normal-init, stock/ADC/settings hash and unarmed-state checks pass.
+[Restoration](../evidence/2026-10-17/uart-kernel-reflash/restoration.json) ·
+[Independent final check](../evidence/2026-10-17/uart-kernel-reflash/restoration-independent.json).
+I: is ready for ordinary stock boot; no further verification boot is required
+for this kernel/idle-UART acceptance. No full backup or firmware write.

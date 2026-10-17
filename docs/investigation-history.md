@@ -8,8 +8,10 @@ Vesper screens/rootfs. Fresh boot ID; no runtime UART module/patch endpoint.
 IRQ19 is 85.33–86.35/s before and 85.37–86.38/s after readback, passing the idle
 flood gate. User confirms stock return while plugged in. All saves and prior
 evidence unchanged; clean FAT. Sparse return inventories 1,643 files and adds
-only 8,611 content bytes. No full backup or firmware writes. Restore exact normal
-init; leave all returned evidence in place and no update/test armed.
+only 8,611 content bytes. Exact normal init restored; all 1,642 other files and
+returned evidence verify unchanged, final FAT clean. Independent final file-set/
+init/stock/ADC/settings/unarmed checks pass. No update/test armed, full backup or
+firmware writes.
 [Physical return and preservation](uart-kernel-reflash-return.md).
 
 ## Collect UART reflash and qualify fresh read-only verification - 2026-10-17
