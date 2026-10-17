@@ -1,5 +1,10 @@
 # UART correction directly in the kernel — 2026-10-16
 
+**Acceptance boundary correction:** user now reports an immediate low-power
+warning after unplugging despite extended charging time. Charging/battery behavior
+was not qualified by the readback/IRQ tests. This remains an unresolved reported
+regression; [current evidence](fivegame-kernel-return.md).
+
 **Physical kernel verification accepted:** both full SPI passes match the exact
 corrected image; two fresh powered idle IRQ windows pass the declared flood
 threshold without a runtime module. Both Vesper screens are preserved and the

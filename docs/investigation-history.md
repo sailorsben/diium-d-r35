@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Collect kernel-UART five-game abort; retain battery regression - 2026-10-16
+
+Five-game powered return: Mario, Metroid and F-Zero complete first blocking
+windows; Star Fox cold replay is aborted after 102.97s while F-Zero remains
+onscreen. Replay call count is missing: slow progress vs stall unresolved.
+Ranger/candidate arms not started; zero matched pairs. UART idle IRQ windows
+remain 85-86/s. Battery warning after extended plugged-in time is a reported
+unresolved regression, not cleared by IRQ/readback success. Saves/evidence exact,
+FAT clean, 6,049,004 sparse bytes; zero card writes, no full backup or rearm.
+
 ## Qualify matched five-game test for kernel UART - 2026-10-16
 
 Exact measured five-game payloads retained; only wrapper/paths adapt to the verified

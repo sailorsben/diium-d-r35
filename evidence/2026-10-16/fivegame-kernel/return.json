@@ -1,0 +1,144 @@
+{
+  "archive": "uart-kernel-return-20261017T030311712597Z",
+  "all_files_hashed": 11005,
+  "new_sparse_content_bytes": 6049004,
+  "FAT_clean": true,
+  "card_writes": 0,
+  "no_full_backup": true,
+  "saves_stock_prior_evidence_normal_init_unchanged": true,
+  "preinstall_files_unchanged": 10903,
+  "expected_prior_changes": {
+    "retro/swapfile": "511cfea77b48b787065b1922922de10b6108530931804a1533c4e6b25aad5eec",
+    "retro/snes-mvp/last-launch-lab": "b946188e787054c67ae1c13b523b74811830779a88f20c8fb984388cd2b946a9",
+    "retro/snes-mvp/launch.sh": "2ad8918978a5d99c4c07c5b24cad9770a5a61ba0aeebaa66230c08051063c98b"
+  },
+  "payload_hashes_verified": 28,
+  "markers_consumed_no_rearm": true,
+  "safe_teardown": true,
+  "suite": {
+    "suite": "fivegame1",
+    "runs": "4",
+    "planned": "20",
+    "failures": "1",
+    "stopped": "1",
+    "board_closed": "1"
+  },
+  "supervisor": {
+    "child": "487",
+    "reaped": "1",
+    "forced": "0",
+    "raw_status": "1280"
+  },
+  "clean_blocking_windows": [
+    {
+      "run": 0,
+      "fixture": 0,
+      "name": "Yoshi Island 2 course",
+      "policy": 0,
+      "repeat": 0,
+      "load_ms": 0,
+      "status": "CLEAN_BOUNDED_WINDOW",
+      "complete": true,
+      "rendered": 1200,
+      "submitted": 1200,
+      "skipped": 0,
+      "PCM_final_exact": true,
+      "trace_complete": true,
+      "minimum_valid_sampled_reserve_frames": 2312,
+      "valid_PCM_prefix_observations": 7328,
+      "invalid_running_sequences": [],
+      "valid_CPU_prefix_calls": 1200,
+      "cold_boot_complete": true,
+      "core_error": "",
+      "headroom": "NOT_MET",
+      "period_ns": "19872917",
+      "end_state_sha256": "ef68d81bb8e5bfa2521eb5881b3d38ac07d3d72126deb8ba855bc675061e574d"
+    },
+    {
+      "run": 1,
+      "fixture": 1,
+      "name": "Ceres station elevator",
+      "policy": 0,
+      "repeat": 0,
+      "load_ms": 0,
+      "status": "CLEAN_BOUNDED_WINDOW",
+      "complete": true,
+      "rendered": 1200,
+      "submitted": 1200,
+      "skipped": 0,
+      "PCM_final_exact": true,
+      "trace_complete": true,
+      "minimum_valid_sampled_reserve_frames": 2199,
+      "valid_PCM_prefix_observations": 7308,
+      "invalid_running_sequences": [],
+      "valid_CPU_prefix_calls": 1200,
+      "cold_boot_complete": true,
+      "core_error": "",
+      "headroom": "NOT_MET",
+      "period_ns": "16688155",
+      "end_state_sha256": "3b1bf08da9beaffe6095db217517ae32c218b9189b4fd55e99e1c20d49bb8636"
+    },
+    {
+      "run": 2,
+      "fixture": 2,
+      "name": "F-Zero starting grid into race",
+      "policy": 0,
+      "repeat": 0,
+      "load_ms": 0,
+      "status": "CLEAN_BOUNDED_WINDOW",
+      "complete": true,
+      "rendered": 1200,
+      "submitted": 1200,
+      "skipped": 0,
+      "PCM_final_exact": true,
+      "trace_complete": true,
+      "minimum_valid_sampled_reserve_frames": 2184,
+      "valid_PCM_prefix_observations": 7304,
+      "invalid_running_sequences": [],
+      "valid_CPU_prefix_calls": 1200,
+      "cold_boot_complete": true,
+      "core_error": "",
+      "headroom": "NOT_MET",
+      "period_ns": "16688155",
+      "end_state_sha256": "d26f56e7327281ddb311f3249a9d4b38c9b4265642bb65ea6e4b26a99a949abc"
+    }
+  ],
+  "matched_policy_pairs": 0,
+  "Star_Fox_replay_elapsed_seconds": 102.97383,
+  "Star_Fox_replay_call_count": "NOT_RECORDED",
+  "Star_Fox_measured_calls": 0,
+  "Rendering_Ranger": "NOT_STARTED",
+  "UART_windows": [
+    {
+      "phase": "before",
+      "counts": [
+        1926,
+        2358
+      ],
+      "IRQ19_per_second_bracket": [
+        85.29038909593964,
+        86.29963352620902
+      ]
+    },
+    {
+      "phase": "after",
+      "counts": [
+        16902,
+        17334
+      ],
+      "IRQ19_per_second_bracket": [
+        85.3853488228681,
+        86.31554886698854
+      ]
+    }
+  ],
+  "runtime_UART_module_absent": true,
+  "battery_regression": "User reports low-power warning immediately after unplugging despite extended plugged-in time. Cause unresolved; no battery/charge telemetry was collected.",
+  "user_observation": "Plugged-in run appeared stopped at F-Zero image; user pressed Start+Select to return to launcher.",
+  "interpretation": "F-Zero completes; Star Fox silent cold replay is aborted. Cannot distinguish slow progress from stall without replay call counts. No native process crash or forced timeout recorded.",
+  "next_gate": "No unchanged rearm. Investigate battery warning and add visible replay progress with durable call/abort evidence before another suite.",
+  "limits": [
+    "Idle IRQ reduction does not qualify charging, electrical UART output, CPU savings or all-game performance.",
+    "Stale input/PCM buffers in failed-before-measurement Star Fox are excluded."
+  ]
+}

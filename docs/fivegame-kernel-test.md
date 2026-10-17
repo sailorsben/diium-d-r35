@@ -1,5 +1,10 @@
 # Matched five-game test on the verified kernel UART — 2026-10-16
 
+**Returned, unarmed:** three first blocking windows complete; Star Fox cold replay
+user-aborted after 102.97s, with F-Zero picture retained. No matched pairs/Ranger.
+Battery warning regression remains unresolved. [Return](fivegame-kernel-return.md).
+The installation below is historical; do not rearm it unchanged.
+
 **Installed and armed on I:** pushed source `831d676`. Independent final readback
 verifies 10,905 protected files, 28 payload files, exact card file set, both markers,
 normal init and clean FAT. Saves/evidence and verified kernel UART preserved. This is a measurement-only test, not emulator

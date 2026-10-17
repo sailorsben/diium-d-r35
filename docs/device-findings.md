@@ -1,11 +1,13 @@
 # Device findings
 
-Matched five-game test qualified for the verified kernel UART. Measured controller,
-core, ROMs, states, inputs, order and windows are unchanged. Kernel-aware wrapper
-and installer guards pass. Armed from pushed `831d676`; independent readback
-verifies 10,905 protected files, 28 payloads, exact markers and clean FAT.
-Kernel fix and normal init preserved; no full backup or firmware update.
-[Current test and boot instructions](fivegame-kernel-test.md).
+Five-game powered return: Mario, Metroid and F-Zero complete first blocking
+windows; Star Fox cold replay is aborted after 102.97s while F-Zero remains
+onscreen. Replay call count is missing: slow progress vs stall unresolved.
+Ranger/candidate arms not started; zero matched pairs. UART idle IRQ windows
+remain 85-86/s. Battery warning after extended plugged-in time is a reported
+unresolved regression, not cleared by IRQ/readback success. Saves/evidence exact,
+FAT clean, 6,049,004 sparse bytes; zero card writes, no full backup or rearm.
+[Current return and battery boundary](fivegame-kernel-return.md).
 
 Powered verification passes on a fresh boot: both 8-MiB flash passes match the
 exact corrected kernel image, with both Vesper screen payloads/rootfs preserved.

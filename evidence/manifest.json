@@ -8015,6 +8015,14 @@
       "published_sha256": "84b84d4e8b4f61ea9e8ff8a8f5e57d96b0dbb3ea3cdfa3aca8e5887e8c576924",
       "bytes": 460,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-return-20261017T030311712597Z/return-evaluation.json",
+      "published": "evidence/2026-10-16/fivegame-kernel/return.json",
+      "source_sha256": "a47985a7670106beddca78238aaf4b484f79fbbd1ededc11855346287ca9f746",
+      "published_sha256": "a47985a7670106beddca78238aaf4b484f79fbbd1ededc11855346287ca9f746",
+      "bytes": 4848,
+      "normalized": true
     }
   ]
 }
