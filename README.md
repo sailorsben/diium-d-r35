@@ -13,8 +13,10 @@ observed on this device. Reuse the exact previously physically verified kernel
 UART image, preserving both Vesper screens/rootfs and battery configuration.
 All original qualification/artifact hashes verify; fresh ARM driver/updater
 checks and 11 unarmed-card staging fixtures pass. Sparse return adds zero content
-bytes. Restore normal init and arm only the exact Code.bkp; preserve all other
-files and the existing host rollback package. No full backup or game test.
+bytes. Normal init is restored and exact Code.bkp is armed from pushed `ec128b3`.
+Independent final file-set/1,599 protected hashes/full ZIP/CRC/init/FAT checks pass.
+Both screens, saves/evidence and host rollback preserved; no full backup/game test.
+Physical reflash pending.
 [Current reflash and procedure](docs/uart-kernel-reflash.md).
 
 Stock battery trace: the exact SD frontend ignores ADC errors and masks the

@@ -1,0 +1,25 @@
+{
+  "version": "uart-kernel1-reflash",
+  "source_commit": "ec128b37591d50f68becd452c62bb1721cc8684b",
+  "archive": "uart-kernel-return-20261017T095232136007Z",
+  "armed_vendor_update": true,
+  "package_sha256": "b2f8b286095f189ad9d0cad30320212f88a1b59e761ee7120aa9d45bab44dfeb",
+  "package_bytes": 5795619,
+  "candidate_sha256": "eddd7444deb1cf0634ab409a595bcfceed3a8ce7072e2af69e71f9f7aa689ef7",
+  "expected_after_vendor_sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321",
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "prior_init_sha256": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+  "changed_existing_files": [
+    "retro/init"
+  ],
+  "added_update_file": "retro/update/Code.bkp",
+  "protected_existing_files": 1599,
+  "all_existing_files": 1600,
+  "FAT_clean": true,
+  "no_emulator_test_armed": true,
+  "runtime_UART_loader_invoked": false,
+  "both_Vesper_screens_and_rootfs_preserved": true,
+  "no_full_backup": true,
+  "battery_observation": "User reports fully charged, green indicator, unplugged behavior now normal; ADC fault not observed",
+  "physical_reflash": "PENDING"
+}

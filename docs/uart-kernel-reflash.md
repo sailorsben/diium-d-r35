@@ -54,6 +54,12 @@ Arming completion is recorded by the [installation receipt](../evidence/2026-10-
 and [independent full card/ZIP/FAT check](../evidence/2026-10-17/uart-kernel-reflash/live-verification.json).
 [Rearm fixture qualification](../evidence/2026-10-17/uart-kernel-reflash/staging-qualification.json).
 
+**Armed and independently verified on I:** source `ec128b3` was pushed before
+staging. The final 1,601-file set, all 1,599 protected existing files, exact normal
+init, complete update ZIP/CRC/candidate image and clean FAT independently pass.
+Only existing init changed and the exact update trigger was added. No emulator
+test is armed; physical reflash remains pending. No full backup was created.
+
 ## Physical procedure
 
 After verified staging, safely eject I:, insert with the handheld off, connect
