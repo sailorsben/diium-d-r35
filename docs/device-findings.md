@@ -1,9 +1,11 @@
 # Device findings
 
-Internal UART firmware qualified: exact existing module/helper built into the
-Wings2 rootfs; both Vesper screens, kernel and normal boot paths preserved.
-35 offline checks and eight staging cases pass. Fresh sparse archive stores
-zero new content bytes; no full backup. Physical flash/boot/attachment pending.
+Internal UART firmware staged and armed on I: from pushed source `726f89c`.
+35 offline checks and eight staging cases pass. Independent readback verifies
+all 10,824 protected existing files, authorized card hook and complete firmware
+ZIP/image; FAT clean, no emulator test armed. Both Vesper screens and kernel
+are exact; normal init, saves and evidence are unchanged. No full backup.
+Physical flash, boot and internal UART attachment remain pending.
 [Qualification and update instructions](uart-firmware.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first

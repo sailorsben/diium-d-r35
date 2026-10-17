@@ -1,5 +1,14 @@
 # Changelog
 
+## Arm verified internal UART firmware on I: - 2026-10-16
+
+Stage the normal vendor update from pushed source `726f89c`. Independent full
+readback verifies 10,824 protected existing files, authorized UART handoff hook,
+complete ZIP/CRC/image, exact file set and clean FAT. Normal init, module/helper,
+saves and evidence stay exact. No full backup or emulator rearm. Both Vesper
+screens are preserved in the image; physical flash/boot/attachment pending.
+[Installed update and boot instructions](docs/uart-firmware.md).
+
 ## Qualify internal UART firmware - 2026-10-16
 
 Build the exact card-proven UART module/helper into the latest Wings2 rootfs.

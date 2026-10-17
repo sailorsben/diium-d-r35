@@ -1,0 +1,14 @@
+{
+  "version": "uart-firmware1",
+  "passed": true,
+  "protected_existing_files_verified": 10824,
+  "all_prior_paths_present": true,
+  "only_expected_changes": true,
+  "package_full_ZIP_CRC_and_image_verified": true,
+  "normal_init_UART_module_helper_saves_evidence_exact": true,
+  "FAT_clean": true,
+  "no_emulator_test_armed": true,
+  "physical_update": "PENDING",
+  "installation_sha256": "1849142f98668a15690f481a67f006c0a2c6bd5792ed7d1ae39370d97d9c549e",
+  "checker_sha256": "2091494919eb7256433c9087344329754c4f1a7f0db6954c3b0504b9b7cc7a88"
+}

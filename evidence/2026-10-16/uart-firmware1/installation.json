@@ -1,0 +1,19 @@
+{
+  "version": "uart-firmware1",
+  "source_commit": "726f89cff0607f81a38c4b1027a8ba2b2899e804",
+  "archive": "a7-pair-before-20261017T005453563011Z",
+  "armed_vendor_update": true,
+  "package_sha256": "ed9cd16d43fc2dde0c7792b3dbe32f53b15180804669c56f300697b8d2639425",
+  "package_bytes": 5804499,
+  "candidate_sha256": "fd775904a792e7a8d0bad63509dec0891c406de6932a0ef909b2f46f7ab2165d",
+  "expected_after_vendor_sha256": "8d0266046f5acf3f82e117447e653ee4e5c68fe70889f15af32936c8a18264d2",
+  "only_changed_existing_file": "retro/uart-fix1/launch.sh",
+  "old_hook_sha256": "43dac415f99f4d2cdad4aa4b1ac04e27444b83d7dcf409d373deec4a033fb71d",
+  "card_hook_sha256": "3acefdb3f3628efbe4d14d3663f108cefbeb18bc10abb13ea45cbc83e2e42e4c",
+  "only_added_file": "retro/update/Code.bkp",
+  "protected_existing_files": 10824,
+  "clean_FAT": true,
+  "no_emulator_test_armed": true,
+  "no_full_backup_created": true,
+  "physical_update": "PENDING"
+}

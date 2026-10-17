@@ -7831,6 +7831,22 @@
       "published_sha256": "118607e49b6b95082023d6ca55f27463902f5785440e5b353e89ac19019e96d9",
       "bytes": 5325,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261017T005453563011Z/uart-firmware-installation.json",
+      "published": "evidence/2026-10-16/uart-firmware1/installation.json",
+      "source_sha256": "1849142f98668a15690f481a67f006c0a2c6bd5792ed7d1ae39370d97d9c549e",
+      "published_sha256": "1849142f98668a15690f481a67f006c0a2c6bd5792ed7d1ae39370d97d9c549e",
+      "bytes": 953,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261017T005453563011Z/uart-firmware-live-verification.json",
+      "published": "evidence/2026-10-16/uart-firmware1/live-verification.json",
+      "source_sha256": "cce44d6aa4f449de5f86de0c8735b4972194f1c35efb84ce8fdc1aba83b2945f",
+      "published_sha256": "cce44d6aa4f449de5f86de0c8735b4972194f1c35efb84ce8fdc1aba83b2945f",
+      "bytes": 562,
+      "normalized": false
     }
   ]
 }

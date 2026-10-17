@@ -71,7 +71,13 @@ hashes and no armed tests or update. Only `retro/uart-fix1/launch.sh` changes;
 only `retro/update/Code.bkp` is added. A separate verifier rehashes all existing
 files, checks the full ZIP CRC/image and exact file set, and checks FAT again.
 
-**Staging status: QUALIFIED; installation receipt pending.**
+**STAGED AND INDEPENDENTLY VERIFIED ON I:** exact source `726f89c` was pushed
+before arming. All 10,824 protected existing files, the authorized wrapper
+change, complete update ZIP/CRC/image and exact file set verify. FAT is clean;
+no emulator test is armed. No full backup or additional saved content was made.
+[Installation receipt](../evidence/2026-10-16/uart-firmware1/installation.json) ·
+[Independent readback](../evidence/2026-10-16/uart-firmware1/live-verification.json).
+Physical flashing, rootfs boot and early UART attachment remain pending.
 
 Safely eject I:, insert with the handheld powered off and sufficient battery,
 then boot normally. Allow the vendor update to finish without interrupting power
