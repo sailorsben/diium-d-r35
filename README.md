@@ -1,5 +1,8 @@
 # DIIUM D-R35: device findings and SNES platform
 
+Replay-aware physical return: all 20 windows attempted; 16 clean bounded windows across Mario, Metroid, F-Zero and Ranger, all below the 20% headroom target. All four Star Fox replays complete, then native PCM fails after four gameplay calls with errno77/SETUP. No stall or forced shutdown. UART85-86 IRQ/sec; saves/evidence preserved, clean FAT, no card writes/full backup. See [return analysis](docs/fivegame-replay-return.md).
+
+
 Source, hardware investigation and a working SNES-only launcher/runtime prototype for one tested D-R35. This device runs **embedded Linux on a single Cortex-A7**, with limited RAM and vendor display/scaler interfaces. It is not an Android/RetroArch port.
 
 The project replaces the launcher/runtime in userspace while retaining the working kernel and display driver. It also preserves the earlier SNES Plus adapter and diagnostic tools, so successful work and failed hypotheses remain reproducible.

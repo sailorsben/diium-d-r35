@@ -1,5 +1,8 @@
 # Device findings
 
+Replay-aware physical return: all 20 windows attempted; 16 clean bounded windows across Mario, Metroid, F-Zero and Ranger, all below the 20% headroom target. All four Star Fox replays complete, then native PCM fails after four gameplay calls with errno77/SETUP. No stall or forced shutdown. UART85-86 IRQ/sec; saves/evidence preserved, clean FAT, no card writes/full backup. See [return analysis](fivegame-replay-return.md).
+
+
 Matched five-game replay-aware test qualified: all 20 ARM oracle windows
 (24,000 measured pixel/PCM/sample-count calls plus 34,624 cold calls) pass with
 unchanged core/plan/ROMs/states/inputs/oracles. Star Fox now has visible progress,

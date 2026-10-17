@@ -1,0 +1,54 @@
+{
+  "archive": "uart-kernel-return-20261017T110843219457Z",
+  "files_hashed": 1881,
+  "new_content_bytes": 32453489,
+  "FAT_clean": true,
+  "card_writes": 0,
+  "no_full_backup": true,
+  "preinstall_changes": {
+    "retro/setting.xml": "3efc3cd193241a2048adec5eb061abe22a1e94ecdb81ff8683b7cf55df136fbb",
+    "retro/swapfile": "46416ee242181db4c8b8f22eb5b449bea7cae2f2ce8d02d807be6045bf222043",
+    "retro/snes-mvp/last-launch-lab": "a2b9c025cedd58de271d5fe9bc0028d208c0b3287d72cf138b93277d2bb14ef7",
+    "retro/snes-mvp/launch.sh": "d09fffc17a50c01e03d3f16ebbe8382168adc1d9ae3fc8fb06e01762eeda9416"
+  },
+  "protected_preinstall_files_unchanged": 1639,
+  "UART_windows": [
+    {
+      "phase": "before",
+      "IRQ19_per_second_bracket": [
+        85.38862299381209,
+        86.38344893118479
+      ]
+    },
+    {
+      "phase": "after",
+      "IRQ19_per_second_bracket": [
+        85.18774806484467,
+        86.15812715020499
+      ]
+    }
+  ],
+  "runtime_UART_module_absent": true,
+  "suite": {
+    "suite": "fivegame1",
+    "runs": "20",
+    "planned": "20",
+    "failures": "4",
+    "stopped": "0",
+    "board_closed": "1"
+  },
+  "supervisor": {
+    "child": "490",
+    "reaped": "1",
+    "forced": "0",
+    "raw_status": "256",
+    "cold_replay_active": "0",
+    "cold_replay_calls": "8656",
+    "cold_replay_epoch": "16",
+    "cold_replay_stall": "0",
+    "stop_reason": "child_exit"
+  },
+  "safe_teardown": true,
+  "clean_windows": 16,
+  "battery_telemetry": "Not collected; red LED during powered test is user observation, not proof of charge failure."
+}
