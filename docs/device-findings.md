@@ -1,11 +1,11 @@
 # Device findings
 
-Direct kernel UART correction qualified: TX-pending, FIFO-bounded service and
-actual character output corrected inside the existing driver. No runtime module
-or IRQ-action hook. 26 groups, including 7,344 queue/FIFO cases, all 256 bytes,
-actual ARM self-decompression and vendor RAM update, plus eight staging cases
-pass. Both Vesper screens/rootfs remain exact. Sparse preservation only; no full
-backup. Replaces the staged module approach; physical kernel boot is pending.
+Direct kernel UART correction staged and armed on I: from pushed `70b0b40`.
+26 qualification groups, exact 64-KiB self-decompressor heap and eight staging
+cases pass. Independent readback verifies 10,824 protected existing files,
+original normal init, full update ZIP/image and clean FAT. No runtime module
+or IRQ hook; both Vesper screens/rootfs stay exact, saves/evidence unchanged.
+No full backup or emulator rearm. Physical kernel boot/UART acceptance pending.
 [Direct kernel correction and update instructions](uart-kernel-firmware.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first

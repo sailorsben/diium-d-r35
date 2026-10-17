@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Arm final direct kernel UART firmware on I: - 2026-10-16
+
+Final corrected kernel source `70b0b40` pushed before staging. Independent full
+readback verifies 10,824 protected files, original normal init without a runtime
+UART hook, complete update ZIP/CRC/image, exact file set and clean FAT. Only
+init and the known prior update are replaced; saves, stock and evidence remain.
+Both Vesper screens/rootfs exact. No full backup or emulator test armed.
+Physical flash, kernel boot, IRQ behavior and wire acceptance remain pending.
+[Verified package and boot instructions](uart-kernel-firmware.md).
+
 ## Qualify synchronous UART wakeup refill before deployment - 2026-10-16
 
 Final call-path review finds a synchronous line-discipline wakeup callback.

@@ -1,0 +1,15 @@
+{
+  "version": "uart-kernel1",
+  "passed": true,
+  "all_existing_paths_present": true,
+  "protected_existing_files_verified": 10824,
+  "only_expected_two_files_changed": true,
+  "full_ZIP_CRC_and_candidate_image_verified": true,
+  "original_normal_init_exact_no_UART_module_hook": true,
+  "saves_evidence_stock_and_old_UART_payloads_preserved": true,
+  "FAT_clean": true,
+  "no_emulator_test_armed": true,
+  "installation_sha256": "2ad654efede248389fc208476bf69ff9b03bb93cbaea9fb51d7d04ab8cc81c22",
+  "checker_sha256": "6bdeced62fb946f5ed5a027b9abd6a8471e3e7fd0b1d3a5d53182b7f93bca3a5",
+  "physical_boot": "PENDING"
+}

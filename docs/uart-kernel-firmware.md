@@ -96,7 +96,14 @@ backup is made. Only the known `retro/update/Code.bkp` and `retro/init` may chan
 All other card files, including saves, previous results, stock programs and old
 UART payloads are protected. No emulator test is armed.
 
-**Status: QUALIFIED; replacement staging/readback pending.**
+**STAGED AND INDEPENDENTLY VERIFIED ON I:** final source `70b0b40` was pushed
+before arming. All 10,824 protected existing files, original normal init,
+complete replacement ZIP/CRC/image, exact file set and FAT verify. Only init
+and the known Code.bkp changed. No emulator test is armed, saves/evidence stay
+exact, and no full backup was created. Physical flash/kernel boot remains pending.
+[Installation](../evidence/2026-10-16/uart-kernel1/installation.json) ·
+[Independent card check](../evidence/2026-10-16/uart-kernel1/live-verification.json) ·
+[Exact 64-KiB boot heap](../evidence/2026-10-16/uart-kernel1/boot-heap-qualification.json).
 
 After verified staging, safely eject I:, insert while powered off with sufficient
 battery, and boot normally. Let the update complete without interrupting power.

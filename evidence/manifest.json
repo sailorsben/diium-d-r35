@@ -7879,6 +7879,38 @@
       "published_sha256": "db720d065c7d0e334d6cd4f520581121e9200b8ba6133073607f11bfc8e70f27",
       "bytes": 6076,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-before-20261017T011353008133Z/uart-kernel-installation.json",
+      "published": "evidence/2026-10-16/uart-kernel1/installation.json",
+      "source_sha256": "2ad654efede248389fc208476bf69ff9b03bb93cbaea9fb51d7d04ab8cc81c22",
+      "published_sha256": "2ad654efede248389fc208476bf69ff9b03bb93cbaea9fb51d7d04ab8cc81c22",
+      "bytes": 976,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-kernel-before-20261017T011353008133Z/uart-kernel-live-verification.json",
+      "published": "evidence/2026-10-16/uart-kernel1/live-verification.json",
+      "source_sha256": "3013763e36d4f99bf7a6b5400fd22cc15e212712fbb35e3bcf467e2fa9decffb",
+      "published_sha256": "3013763e36d4f99bf7a6b5400fd22cc15e212712fbb35e3bcf467e2fa9decffb",
+      "bytes": 633,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-kernel-firmware1/boot-heap-qualification.json",
+      "published": "evidence/2026-10-16/uart-kernel1/boot-heap-qualification.json",
+      "source_sha256": "bdea1ff880b430d52829d67504477c5beafc3b2e08c724dbf9649013f8f04a13",
+      "published_sha256": "bdea1ff880b430d52829d67504477c5beafc3b2e08c724dbf9649013f8f04a13",
+      "bytes": 827,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-kernel-before-20261017T011353008133Z/uart-kernel-staging-withdrawn.json",
+      "published": "evidence/2026-10-16/uart-kernel1/withdrawn-stage.json",
+      "source_sha256": "be80fe7f5f0da6d9326dfb11734e60c898cc1f71d3e992ec26028d6310b88d84",
+      "published_sha256": "be80fe7f5f0da6d9326dfb11734e60c898cc1f71d3e992ec26028d6310b88d84",
+      "bytes": 383,
+      "normalized": false
     }
   ]
 }

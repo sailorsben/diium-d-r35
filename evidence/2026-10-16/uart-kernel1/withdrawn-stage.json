@@ -1,0 +1,8 @@
+{
+  "withdrawn": true,
+  "reason": "Strengthen queue re-read after synchronous TTY wakeup callback before disabling TX",
+  "restored_prior_package_sha256": "ed9cd16d43fc2dde0c7792b3dbe32f53b15180804669c56f300697b8d2639425",
+  "restored_prior_init_sha256": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+  "no_physical_flash": true,
+  "FAT_clean": true
+}

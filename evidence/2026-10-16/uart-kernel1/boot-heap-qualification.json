@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "heap_bytes": 65536,
+  "baseline_and_candidate_full_output_equal": true,
+  "original_source_sha256": "1f8f1804deeb46f5ee5773ab8977ce92305f789c48f6c1132a43324e5ed1c541",
+  "probe_source_sha256": "02fe7f42b61ea8d7902c6dc42cdddafb11a4bc73828a7406240c1e413c815c53",
+  "generated_fixture_sha256": "b1af7c4d1c3ad9590c4c65a35161ad556c174c7e567ec8427e11d5f040daae9e",
+  "zImage_sha256": "07546fa376fc91578ff549c708a537ec016013d6d5be7f884ccf15b9bfd6e722",
+  "stdout": {
+    "baseline": "PASS captured ARM zImage decompressor produces every expected kernel byte; privileged boot/kernel not executed\n",
+    "corrected": "PASS captured ARM zImage decompressor produces every expected kernel byte; privileged boot/kernel not executed\n"
+  },
+  "device_access": false,
+  "kernel_boot_executed": false
+}
