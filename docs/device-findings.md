@@ -2,7 +2,7 @@
 
 Direct kernel UART correction qualified: TX-pending, FIFO-bounded service and
 actual character output corrected inside the existing driver. No runtime module
-or IRQ-action hook. 25 groups, including 7,344 queue/FIFO cases, all 256 bytes,
+or IRQ-action hook. 26 groups, including 7,344 queue/FIFO cases, all 256 bytes,
 actual ARM self-decompression and vendor RAM update, plus eight staging cases
 pass. Both Vesper screens/rootfs remain exact. Sparse preservation only; no full
 backup. Replaces the staged module approach; physical kernel boot is pending.

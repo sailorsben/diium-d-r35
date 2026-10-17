@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Qualify synchronous UART wakeup refill before deployment - 2026-10-16
+
+Final call-path review finds a synchronous line-discipline wakeup callback.
+Withdraw the first staged kernel candidate before physical boot, restoring the
+exact previous package/init on clean FAT. The revised TX body re-reads head/tail
+after wakeup before stop-TX; an independent refill test delivers the new byte.
+All 26 groups, exact 64-KiB decompressor heap and eight staging cases pass.
+Original metadata remains historical; v2 qualification governs deployment.
+[Final kernel contract](uart-kernel-firmware.md).
+
 ## Qualify direct kernel UART driver correction - 2026-10-16
 
 Replace the TX body in the exact kernel, correcting pending service, FIFO safety,

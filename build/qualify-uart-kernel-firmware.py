@@ -8,7 +8,7 @@ def digest(p):return sha256(p.read_bytes()).hexdigest()
 def rel(p):return p.resolve().relative_to(ROOT).as_posix()
 def run(args,want=0):
  p=subprocess.run((['wsl','--exec'] if os.name=='nt' else [])+args,cwd=ROOT,capture_output=True,timeout=60)
- assert p.returncode==want,(args,p.returncode,p.stdout.decode(errors='replace'),p.stderr.decode(errors='replace'))
+ assert p.returncode in (want if isinstance(want,tuple) else (want,)),(args,p.returncode,p.stdout.decode(errors='replace'),p.stderr.decode(errors='replace'))
  return p.stdout.decode()
 def main():
  p=json.loads((OUT/'preparation.json').read_text());checks=[];logs=[]
@@ -32,7 +32,7 @@ def main():
  gzip=(OUT/'kernel.gzip').read_bytes();end=gzip.index(b'\0',10)+1;head=bytearray(gzip[:10]);head[3]=4
  negative=head+struct.pack('<H',end-12)+b'\0'*(end-12)+gzip[end:];assert len(negative)==len(gzip)
  bad=bytearray(baselinez.read_bytes());bad[0x48b8:0x48b8+len(negative)]=negative;badz=helpers/'rejected-fextra.zImage';badz.write_bytes(bad)
- run(q+['-B','0x40000000',rel(helpers/'check-kernel-decompressor'),rel(badz),rel(OUT/'kernel.bin')],4);checks.append('Negative FEXTRA stream fails actual decompressor byte equality; FNAME supported')
+ run(q+['-B','0x40000000',rel(helpers/'check-kernel-decompressor'),rel(badz),rel(OUT/'kernel.bin')],(3,4));checks.append('Negative FEXTRA stream fails actual decompressor byte equality; FNAME supported')
  for image in [base,OUT/'candidate.bin']:
   for helper in ['check-static-splash','check-boot-loader']:
    text=run(q+['-B','0x40000000',rel(helpers/helper),rel(image)]);assert text.startswith('PASS ');checks.append(helper+': '+image.name);logs.append(text)

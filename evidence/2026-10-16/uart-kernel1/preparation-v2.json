@@ -1,0 +1,140 @@
+{
+  "version": "uart-kernel1",
+  "baseline_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "candidate_sha256": "eddd7444deb1cf0634ab409a595bcfceed3a8ce7072e2af69e71f9f7aa689ef7",
+  "expected_after_vendor_sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321",
+  "package_sha256": "b2f8b286095f189ad9d0cad30320212f88a1b59e761ee7120aa9d45bab44dfeb",
+  "kernel_original_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "kernel_corrected_sha256": "b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459",
+  "patches": [
+    {
+      "address": "0xc01178d8",
+      "bytes": 184,
+      "before_sha256": "49e4c22a074ad18805a6df06741a00f088d37757b0f8b23dfd532b85cb10aaf9",
+      "after_sha256": "22819cfc2ee039a9cbae57347925a76e537f43c9e2e025d89aa0b6329d38dc11"
+    },
+    {
+      "address": "0xc0117a00",
+      "bytes": 12,
+      "before_sha256": "0146b9c7a32d91dea6d2c7a7cfefddbee6fcc78a653e250a441a6282511c3a96",
+      "after_sha256": "c1152643eeb592e4dd3a798c2ba221eab96451f8016d9803b6d537be962bd2a8"
+    },
+    {
+      "address": "0xc0117804",
+      "bytes": 4,
+      "before_sha256": "fa4558a30d0027990ffbfe03fb5343258cd1c8d7053805fedccac382e3633bf1",
+      "after_sha256": "1f0099393bab9e486355ad02b45d9cae54a802eeaf5aa1c6fec92725a84c340a"
+    },
+    {
+      "address": "0xc0117308",
+      "bytes": 4,
+      "before_sha256": "cb84597615f8a77c877444f6600efcdbfa744a8f8de5d249a93b18793703a589",
+      "after_sha256": "03311cffdaf4180981742383de5d69831bf0f5dd6ca263b931f11bacbd82e3a8"
+    }
+  ],
+  "kernel_changed_bytes": 170,
+  "gzip_FNAME_bytes": 2372,
+  "zImage_wrapper_and_length_exact": true,
+  "RX_instructions_and_IRQ_registration_exact": true,
+  "rootfs_and_both_Vesper_screens_exact": true,
+  "no_runtime_module_or_patch_hook": true,
+  "vendor_metadata": [
+    3921594614,
+    1565550592
+  ],
+  "expected_erased_blocks": [
+    "000000",
+    "0c0000",
+    "0d0000",
+    "0e0000",
+    "0f0000",
+    "100000",
+    "110000",
+    "120000",
+    "130000",
+    "140000",
+    "150000",
+    "160000",
+    "170000",
+    "180000",
+    "190000",
+    "1a0000",
+    "1b0000",
+    "1c0000",
+    "1d0000",
+    "1e0000",
+    "1f0000",
+    "200000",
+    "210000",
+    "220000",
+    "230000",
+    "240000",
+    "250000",
+    "260000",
+    "270000",
+    "280000",
+    "290000",
+    "2a0000",
+    "2b0000",
+    "2c0000",
+    "2d0000",
+    "2e0000",
+    "2f0000",
+    "300000"
+  ],
+  "expected_erase_count": 38,
+  "expected_page_count": 9728,
+  "files": {
+    "kernel.bin": {
+      "bytes": 7476028,
+      "sha256": "b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459"
+    },
+    "zImage.bin": {
+      "bytes": 2366616,
+      "sha256": "07546fa376fc91578ff549c708a537ec016013d6d5be7f884ccf15b9bfd6e722"
+    },
+    "kernel.gzip": {
+      "bytes": 2347942,
+      "sha256": "b37ac6f7aeacb12e5d8481a27fd79e632b02bed86a2c0c9c287cfc23d94e71f4"
+    },
+    "candidate.bin": {
+      "bytes": 8388608,
+      "sha256": "eddd7444deb1cf0634ab409a595bcfceed3a8ce7072e2af69e71f9f7aa689ef7"
+    },
+    "expected-after-vendor.bin": {
+      "bytes": 8388608,
+      "sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321"
+    },
+    "normal-init": {
+      "bytes": 1807,
+      "sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7"
+    },
+    "fixture-compatible.bkp": {
+      "bytes": 5795619,
+      "sha256": "b2f8b286095f189ad9d0cad30320212f88a1b59e761ee7120aa9d45bab44dfeb"
+    },
+    "fixture-incompatible.bkp": {
+      "bytes": 5795619,
+      "sha256": "dbf2bac3206aa46e4026f3bb100f33761b0152251d4e709ff053fed7a578311b"
+    },
+    "fixture-consistent-bad-crc.bkp": {
+      "bytes": 5795619,
+      "sha256": "f830d09b47344c22abd86ad2f69c6836cfa05ab1c4c87500f0daa51bfbb15dcb"
+    },
+    "fixture-missing-prefix.bkp": {
+      "bytes": 5795616,
+      "sha256": "d525809ed6bdef1070c89e80495242b2fc956b411f1f3691091fea866af38420"
+    },
+    "fixture-already-recorded-baseline.bin": {
+      "bytes": 8388608,
+      "sha256": "ecc00a4d4661d714368079b6ba729f5a8482ca2253e040e40df96c320de6c9c2"
+    }
+  },
+  "card_access": false,
+  "physical_kernel_boot": "PENDING",
+  "limits": [
+    "Exact vendor binary kernel patched in place from owned assembly; not a full vendor-source kernel rebuild.",
+    "Correct data bytes and one-byte FIFO-bounded TX service require physical acceptance; wire output and A7 timing not proved offline.",
+    "Latest Wings2 baseline user accepted; full post-Wings2 SPI readback pending."
+  ]
+}

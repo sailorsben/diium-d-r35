@@ -5,6 +5,8 @@
 #include "check-uart-tx-observer.c"
 #undef main
 static unsigned char *original_image,*corrected_image;
+static unsigned refill;
+static void kernel_wakeup(void){wakeups++;if(refill){unsigned head=word(state,0xb8);ring[head]=0x4b;put(state,0xb8,(head+1)&4095);refill=0;}}
 static void kernel_put(void *base,unsigned value){
  if(model){assert(occupancy<8);model_writes++;fifo[occupancy++]=(unsigned char)value;}
  ((void (*)(void *,unsigned))(REGS+4160))(base,value);
@@ -14,7 +16,7 @@ static void setup(const unsigned char *image){
  memcpy((void *)(REGS+4096),(void *)0xc0117314,20);
  memcpy((void *)(REGS+4160),(void *)0xc01172fc,24);
  jump(0xc0117314,get_status);jump(0xc01172fc,kernel_put);
- jump(0xc0335ca0,insertion);jump(0xc031f418,push);jump(0xc0335f58,wakeup);
+ jump(0xc0335ca0,insertion);jump(0xc031f418,push);jump(0xc0335f58,kernel_wakeup);
  __builtin___clear_cache((void *)KBASE,(void *)(KBASE+KSIZE));__builtin___clear_cache((void *)REGS,(void *)(REGS+8192));
 }
 static void read_image(const char *path,unsigned char **out){
@@ -64,6 +66,10 @@ int main(int argc,char **argv){
  for(unsigned i=0;i<300;i++){if(occupancy)occupancy--;assert(call_checked((void *)ISR,19,(void *)PORT)==1 && occupancy<=8);}
  model=0;assert(model_writes==300 && word(state,0xbc)==300 && !(word((void *)REGS,8)&0x4000) && !(*(unsigned char *)(PORT+0x108)&2));
  puts("PASS full-to-draining retries deliver300 real-valued bytes and stop TX at empty queue");
+ reset_hw(0x531f,2,1);occupancy=0;model_writes=0;model=1;refill=1;
+ assert(call_checked((void *)ISR,19,(void *)PORT)==1 && word(state,0xbc)==1 && word(state,0xb8)==2 && (word((void *)REGS,8)&0x4000));
+ occupancy=0;assert(call_checked((void *)ISR,19,(void *)PORT)==1 && word(state,0xbc)==2 && !(word((void *)REGS,8)&0x4000));model=0;
+ assert(model_writes==2 && word((void *)REGS,0)==0x4b);puts("PASS synchronous wakeup refill keeps TX enabled and delivers newly queued byte");
  reset_hw(0xd31f,2,1);occupancy=7;model_writes=0;model=1;assert(call_checked((void *)ISR,19,(void *)PORT)==1);model=0;assert(inserts==1 && pushes==1 && model_writes==1 && word(state,0xbc)==1);
  puts("PASS mixed RX/TX delivers RX before bounded TX service");
  puts("PASS direct kernel driver checks; no module, IRQ action replacement, hardware timing or wire proof");return 0;

@@ -7863,6 +7863,22 @@
       "published_sha256": "f95d286fa8fcda37db95c3506bb52a2803e01e6e36797ca0bf3a3deb7fd9f240",
       "bytes": 5882,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-firmware1/preparation.json",
+      "published": "evidence/2026-10-16/uart-kernel1/preparation-v2.json",
+      "source_sha256": "e8034d1035518fdc33b1e072a78215e475563f806c9adc88253801158a0d75eb",
+      "published_sha256": "e8034d1035518fdc33b1e072a78215e475563f806c9adc88253801158a0d75eb",
+      "bytes": 4668,
+      "normalized": false
+    },
+    {
+      "source": "device-evidence/uart-kernel-firmware1/qualification.json",
+      "published": "evidence/2026-10-16/uart-kernel1/qualification-v2.json",
+      "source_sha256": "3494c96722d1be7c2dea98c6b4870ef84e939b6d698eaf46a896db59d2de968b",
+      "published_sha256": "db720d065c7d0e334d6cd4f520581121e9200b8ba6133073607f11bfc8e70f27",
+      "bytes": 6076,
+      "normalized": true
     }
   ]
 }

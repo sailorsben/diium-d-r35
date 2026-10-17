@@ -55,16 +55,16 @@ produces every expected kernel byte for original and corrected images.
 
 | Artifact | SHA256 |
 | --- | --- |
-| Candidate | `3b22fe71b6c502cbb921a2dc751cd8d210ddc25e586ece30c9f5bdb168066fb4` |
-| Expected programmed image | `45ef4ea3fbe599bf7cc633c601e7033d6f3a27569b932a8d6697906c31b946ff` |
-| Update package | `bc0bdb689361271d75c522da634006d214ffac4f274700e6e79239016566965f` |
+| Candidate | `eddd7444deb1cf0634ab409a595bcfceed3a8ce7072e2af69e71f9f7aa689ef7` |
+| Expected programmed image | `ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321` |
+| Update package | `b2f8b286095f189ad9d0cad30320212f88a1b59e761ee7120aa9d45bab44dfeb` |
 
 ## Qualification and negative results
 
-25 groups pass: old-code controls reproduce both defects; 24 original/corrected
+26 groups pass: old-code controls reproduce both defects; 24 original/corrected
 RX/no-TX state comparisons; all 256 PutChar values; 7,344 independent FIFO,
 queue, enable, flow, urgent and ring-wrap combinations; 300-byte draining retry;
-mixed RX/TX and callee-register checks. Actual kernel instructions execute
+mixed RX/TX, synchronous wakeup-refill and callee-register checks. Actual kernel instructions execute
 against RAM; peripheral/TTY callbacks remain independent fixtures.
 
 Additional groups cover independent GNU gzip expansion; original ARM zImage
@@ -107,5 +107,17 @@ checks. No automatic retry. Kernel boot, IRQ/error behavior and complete SPI
 readback must be verified from the physical return. External recovery remains
 unqualified, as in the prior authorized firmware updates.
 
-[Preparation](../evidence/2026-10-16/uart-kernel1/preparation.json) ·
-[Qualification](../evidence/2026-10-16/uart-kernel1/qualification.json)
+[Preparation](../evidence/2026-10-16/uart-kernel1/preparation-v2.json) ·
+[Qualification](../evidence/2026-10-16/uart-kernel1/qualification-v2.json)
+
+## Wakeup-refill refinement before physical boot
+
+Final review traced uart_write_wakeup through an indirect callback that can
+reach a line discipline write_wakeup. The first staged candidate was withdrawn
+and the exact previous package/init restored on a clean card. It was never
+physically booted. The final TX body keeps entry status and state in separate
+callee-saved registers, re-reads head/tail after wakeup and only then decides
+whether to disable TX. An independent synchronous refill test verifies the new
+byte is delivered and TX remains enabled until the actual queue empties.
+The full 26 groups, exact 64-KiB boot heap and eight staging cases pass again.
+Original qualification receipts remain as history; v2 receipts govern deployment.

@@ -9,7 +9,7 @@ def digest(p):return sha256(p.read_bytes()).hexdigest()
 def load(n):
  s=importlib.util.spec_from_file_location(n,ROOT/'build'/n);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
 def artifacts():
- p=json.loads((OUT/'preparation.json').read_text());q=json.loads((OUT/'qualification.json').read_text());assert q['passed'] and len(q['checks'])==25 and q['preparation_sha256']==digest(OUT/'preparation.json')
+ p=json.loads((OUT/'preparation.json').read_text());q=json.loads((OUT/'qualification.json').read_text());assert q['passed'] and len(q['checks'])==26 and q['preparation_sha256']==digest(OUT/'preparation.json')
  for n,h in q['sources'].items():assert digest(ROOT/n)==h,n
  for n,v in p['files'].items():assert digest(OUT/n)==v['sha256'],n
  assert digest(OUT/'execution.txt')==q['execution_sha256']
@@ -47,5 +47,9 @@ def main(archive):
   assert (card/'retro/init').read_bytes()==normal and (card/'retro/update/Code.bkp').read_bytes() in (old,package)
  stage(card,package,normal,old,oldinit,fix.atomic,lambda label:fix.health(archive,'kernel1-'+label),verify)
  result={'version':'uart-kernel1','source_commit':commit,'archive':archive.name,'armed_vendor_update':True,'package_sha256':p['package_sha256'],'package_bytes':len(package),'candidate_sha256':p['candidate_sha256'],'expected_after_vendor_sha256':p['expected_after_vendor_sha256'],'normal_init_sha256':digest(OUT/'normal-init'),'superseded_package_sha256':sha256(old).hexdigest(),'only_changed_files':sorted(changed),'protected_existing_files':len(protected),'clean_FAT':True,'no_emulator_test_armed':True,'runtime_UART_loader_invoked':False,'full_backup_created':False,'physical_boot':'PENDING'}
- (archive/'uart-kernel-installation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+ receipt=archive/'uart-kernel-installation.json'
+ if receipt.exists():
+  assert (archive/'uart-kernel-staging-withdrawn.json').exists()
+  previous=archive/'uart-kernel-installation-withdrawn.json';assert not previous.exists();receipt.rename(previous)
+ receipt.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 if __name__=='__main__':main(Path(sys.argv[1]))
