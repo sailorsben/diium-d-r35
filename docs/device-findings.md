@@ -1,5 +1,15 @@
 # Device findings
 
+UART reflash boot accepted by user: both Vesper screens and stock launcher.
+Fresh strict sparse return hashes 1,601 files, adds zero content bytes and passes
+FAT. Saves/states/stock/prior evidence are unchanged; returned stock settings and
+swapfile changes are preserved. No fresh flash/IRQ measurement exists on this
+return. Remove only the exact used firmware trigger and stage the unchanged,
+qualified read-only two-pass SPI/UART verification before stock ownership.
+No firmware writes, UART module loads, emulator test or full backup. Exact
+kernel bytes and idle IRQ acceptance for this reflash remain pending that boot.
+[Current return and verification procedure](uart-kernel-reflash-return.md).
+
 Battery follow-up: user reports charging to the green indicator restored normal
 battery behavior, then authorizes the UART firmware reflash. Actual depletion is
 now the supported explanation; the stock ADC false-low mechanism was never

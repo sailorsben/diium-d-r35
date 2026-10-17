@@ -1,0 +1,30 @@
+{
+  "archive": "uart-kernel-return-20261017T100507473949Z",
+  "all_files_hashed": 1601,
+  "archive_manifest_sha256": "52463fd34165a0620235d10d4f1b53e3fc7e92cdac9ab7aca976f31477518f89",
+  "outside_manifest_sha256": "7ce4d6ca5d5e22e31e2fe7550c8559706cd3fe846ef105ea284cf7718a0490b9",
+  "installation_sha256": "f327d92bda2e6fe6762139ce3043669d25f672d4ae97c601f5ffe24723513b9d",
+  "physical_boot_user_accepted": true,
+  "user_observation": "Flash worked; both Vesper screens and stock launcher came up.",
+  "expected_postboot_changes": {
+    "retro/setting.xml": {
+      "before": "b1b49356d43a18758ee97f81975a20ac2edc1199297fb40dece324a85eb08bd4",
+      "after": "1ddbc87c8b84db45edce4f3dc995bb2de7e8115a2f1dfc866a20551f1ef3fb59"
+    },
+    "retro/swapfile": {
+      "before": "9ac2e618cb8e3a1aea088e0f97f138ad94ad58d330bccba39494a0c1caf5476f",
+      "after": "3fbcacc6b756786d3140ff9d4f7e0c2e7dba7fed4b87658abd8a752bd5dbd125"
+    }
+  },
+  "saves_states_stock_binaries_and_prior_evidence_unchanged": true,
+  "returned_stock_setting_and_swap_hashes_preserved": true,
+  "new_sparse_content_bytes": 0,
+  "FAT_clean": true,
+  "card_writes": 0,
+  "no_full_backup": true,
+  "exact_flash_readback_this_boot_available": false,
+  "fresh_UART_IRQ_observation_this_boot_available": false,
+  "update_trigger_present": true,
+  "next_step": "Remove exact used update trigger; one read-only SPI/IRQ verification boot, no firmware writes or module loads.",
+  "analyzer_sha256": "a4f4f81edb0c760137eb92c7008776876b284d05c1726aa04afe1887118631f0"
+}

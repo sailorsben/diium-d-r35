@@ -1,5 +1,10 @@
 # Rearm the accepted kernel UART fix — 2026-10-17
 
+**Return update:** user confirms both Vesper screens and stock launcher after
+flashing. Sparse return preserved, zero new content bytes, clean FAT. Fresh
+read-only kernel/UART verification is required; earlier staging below is historical.
+[Current return and procedure](uart-kernel-reflash-return.md).
+
 The user reports charging until the indicator turned green, followed by normal
 battery behavior, and explicitly requests flashing the UART fix again. This
 supports a depleted battery as the explanation for the earlier symptom. The

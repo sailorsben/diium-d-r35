@@ -1,5 +1,17 @@
 # Changelog
 
+## Collect UART reflash and qualify fresh read-only verification - 2026-10-17
+
+UART reflash boot accepted by user: both Vesper screens and stock launcher.
+Fresh strict sparse return hashes 1,601 files, adds zero content bytes and passes
+FAT. Saves/states/stock/prior evidence are unchanged; returned stock settings and
+swapfile changes are preserved. No fresh flash/IRQ measurement exists on this
+return. Remove only the exact used firmware trigger and stage the unchanged,
+qualified read-only two-pass SPI/UART verification before stock ownership.
+No firmware writes, UART module loads, emulator test or full backup. Exact
+kernel bytes and idle IRQ acceptance for this reflash remain pending that boot.
+[Return and verification procedure](docs/uart-kernel-reflash-return.md).
+
 ## Rearm exact kernel UART firmware after charge recovery - 2026-10-17
 
 Battery follow-up: user reports charging to the green indicator restored normal
