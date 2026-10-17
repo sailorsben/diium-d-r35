@@ -1,5 +1,16 @@
 # Changelog
 
+## Accept powered physical kernel UART verification - 2026-10-16
+
+Powered verification passes on a fresh boot: both 8-MiB flash passes match the
+exact corrected kernel image, with both Vesper screen payloads/rootfs preserved.
+No runtime UART patch module or endpoint exists. IRQ19 is 85.36-86.36/s and
+85.37-86.37/s, passing the declared idle flood threshold. User confirms stock
+remained on while plugged in. Prior shutdown cause remains unproven; low battery
+is plausible. Saves and all prior evidence unchanged; FAT clean. Sparse return
+hashes 10,906 files and adds only 8,219 evidence bytes. No full backup.
+Normal-init restoration is prepared; no tests or firmware update will remain armed.
+
 ## Verify flashed kernel and preserve completed UART return - 2026-10-16
 
 The first verification return is complete: both 8-MiB passes match the exact

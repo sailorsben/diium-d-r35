@@ -1,11 +1,11 @@
 # UART correction directly in the kernel — 2026-10-16
 
-**Physical boot user-accepted:** both Vesper screens and stock launcher.
-[Collected return and read-only kernel/IRQ verification](uart-kernel-return.md).
-Two-pass physical readback now matches the exact corrected flash/kernel. Both
-idle IRQ windows pass the declared flood threshold with no runtime patch module.
-The original update staging below is historical; later shutdown cause remains
-unresolved, with low battery suggested by the user.
+**Physical kernel verification accepted:** both full SPI passes match the exact
+corrected image; two fresh powered idle IRQ windows pass the declared flood
+threshold without a runtime module. Both Vesper screens are preserved and the
+user confirms stock stays on while plugged in. Prior shutdown cause remains
+unproven. [Completed physical verification](uart-kernel-return.md).
+The original update staging below is historical.
 
 The user requested replacing the boot-time module approach with a driver
 correction in the kernel itself, preserving both Vesper screens, saves and

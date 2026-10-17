@@ -20,6 +20,33 @@ private qualified source package; no extra backup is needed before removal.
 
 [Boot/preservation receipt](../evidence/2026-10-16/uart-kernel1/boot-return.json).
 
+## Powered repeat accepted
+
+Powered verification passes on a fresh boot: both 8-MiB flash passes match the
+exact corrected kernel image, with both Vesper screen payloads/rootfs preserved.
+No runtime UART patch module or endpoint exists. IRQ19 is 85.36-86.36/s and
+85.37-86.37/s, passing the declared idle flood threshold. User confirms stock
+remained on while plugged in. Prior shutdown cause remains unproven; low battery
+is plausible. Saves and all prior evidence unchanged; FAT clean. Sparse return
+hashes 10,906 files and adds only 8,219 evidence bytes. No full backup.
+Normal-init restoration is prepared; no tests or firmware update will remain armed.
+
+Both complete 8-MiB passes match SHA256
+`ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321`;
+decompressed kernel SHA256 is
+`b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459`.
+Readback completes in 103.762641 seconds. The new boot ID differs from the first
+run, and the previous run's retained files match the exact rearm inventory.
+Each new observation window records 432 IRQ19 interrupts over at least five
+kernel-clock seconds; no runtime patch module/proc endpoint is present. Serial
+TX advances 414 then 432; RX/break stay 62 then 63 within the respective windows.
+This accepts corrected image installation and the bounded idle IRQ-flood fix.
+Electrical byte correctness, throughput, CPU savings and all-load behavior are
+not established by this passive test. User observation separately accepts the
+powered return to stock; it does not prove the previous shutdown's cause.
+
+[Powered result](../evidence/2026-10-16/uart-kernel-verification/powered-return.json).
+
 ## Completed first verification and requested plugged-in repeat
 
 Strict return `uart-kernel-return-20261017T022201466502Z` preserves 10,868 files

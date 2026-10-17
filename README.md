@@ -6,13 +6,14 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
-The first verification return is complete: both 8-MiB passes match the exact
-expected flash, and its decompressed kernel is the corrected image. No runtime
-UART module/proc patch exists. IRQ19 brackets are 88.49-89.62/s and 85.37-86.37/s,
-passing the declared idle flood threshold. All saves and prior evidence remain
-exact; FAT clean. Shutdown after successful probe exit is unresolved; user
-suggests low battery. An identical plugged-in repeat is armed; independent verification preserves
-all 10,868 existing files, sole read-only marker and clean FAT. No full backup.
+Powered verification passes on a fresh boot: both 8-MiB flash passes match the
+exact corrected kernel image, with both Vesper screen payloads/rootfs preserved.
+No runtime UART patch module or endpoint exists. IRQ19 is 85.36-86.36/s and
+85.37-86.37/s, passing the declared idle flood threshold. User confirms stock
+remained on while plugged in. Prior shutdown cause remains unproven; low battery
+is plausible. Saves and all prior evidence unchanged; FAT clean. Sparse return
+hashes 10,906 files and adds only 8,219 evidence bytes. No full backup.
+Normal-init restoration is prepared; no tests or firmware update will remain armed.
 [Boot return and read-only verification](docs/uart-kernel-return.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first

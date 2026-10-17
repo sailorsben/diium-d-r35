@@ -7967,6 +7967,14 @@
       "published_sha256": "ef20eecc28ec4ead0c60882c3f004d96455fabed2c5549264b397db0bdbfed60",
       "bytes": 351,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-return-20261017T024017469637Z/powered-analysis.json",
+      "published": "evidence/2026-10-16/uart-kernel-verification/powered-return.json",
+      "source_sha256": "6135d4efb079800048886cc9f28350249e232bac934866356615391d5ade1caf",
+      "published_sha256": "6135d4efb079800048886cc9f28350249e232bac934866356615391d5ade1caf",
+      "bytes": 4070,
+      "normalized": true
     }
   ]
 }
