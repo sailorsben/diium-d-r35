@@ -1,5 +1,10 @@
 # UART correction directly in the kernel — 2026-10-16
 
+**2026-10-17 follow-up:** user reports a complete charge to green restored normal
+battery behavior and authorizes reflashing the accepted kernel UART fix. Actual
+depletion is supported; no physical ADC fault was observed. Prior symptom and
+armed-state descriptions below are historical. [Current reflash](uart-kernel-reflash.md).
+
 **Acceptance boundary correction:** user now reports an immediate low-power
 warning after unplugging despite extended charging time. Charging/battery behavior
 was not qualified by the readback/IRQ tests. This remains an unresolved reported

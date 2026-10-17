@@ -1,5 +1,10 @@
 # Stock ADC and low-battery trace — 2026-10-16
 
+**2026-10-17 follow-up:** user reports a complete charge to green restored normal
+battery behavior and authorizes reflashing the accepted kernel UART fix. Actual
+depletion is supported; no physical ADC fault was observed. Prior symptom and
+armed-state descriptions below are historical. [Current reflash](uart-kernel-reflash.md).
+
 **Finding:** stock software contains a concrete false-low path. Each sample opens
 a fresh ADC client whose saved value starts at zero. Failure to acquire the ADC
 semaphore returns that zero plus `0x8000`; the frontend discards the flag, classifies

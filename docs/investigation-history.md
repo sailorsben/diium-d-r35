@@ -1,5 +1,18 @@
 # Investigation history and negative results
 
+## Rearm exact kernel UART firmware after charge recovery - 2026-10-17
+
+Battery follow-up: user reports charging to the green indicator restored normal
+battery behavior, then authorizes the UART firmware reflash. Actual depletion is
+now the supported explanation; the stock ADC false-low mechanism was never
+observed on this device. Reuse the exact previously physically verified kernel
+UART image, preserving both Vesper screens/rootfs and battery configuration.
+All original qualification/artifact hashes verify; fresh ARM driver/updater
+checks and 11 unarmed-card staging fixtures pass. Sparse return adds zero content
+bytes. Restore normal init and arm only the exact Code.bkp; preserve all other
+files and the existing host rollback package. No full backup or game test.
+[Reflash qualification and procedure](uart-kernel-reflash.md).
+
 ## Trace exact stock ADC false-low and shutdown paths - 2026-10-16
 
 Stock battery trace: the exact SD frontend ignores ADC errors and masks the

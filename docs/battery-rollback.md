@@ -1,5 +1,10 @@
 # Battery investigation: pre-kernel rollback — 2026-10-16
 
+**2026-10-17 follow-up:** user reports a complete charge to green restored normal
+battery behavior and authorizes reflashing the accepted kernel UART fix. Actual
+depletion is supported; no physical ADC fault was observed. Prior symptom and
+armed-state descriptions below are historical. [Current reflash](uart-kernel-reflash.md).
+
 **Return update:** user reports rollback with the same low-battery symptom.
 Sparse return is preserved; the exact used trigger was removed through
 full hash/FAT gates. All 1,600 remaining files verify unchanged. No new flash or diagnostic arming.

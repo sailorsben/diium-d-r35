@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "cases": [
+    "success",
+    "init",
+    "trigger",
+    "health-before",
+    "health-init",
+    "health-armed",
+    "changed-init",
+    "existing-trigger",
+    "armed-test",
+    "verify-init",
+    "verify-trigger"
+  ],
+  "card_access": false,
+  "installer_sha256": "b0f99dda5de7b28b7ae79c69795de075fa222cf5c9ef1d9f4eef3c3e15589b1d",
+  "checker_sha256": "29cad0f7a9f4edd63e9298ea5f88f203e47e0aa15566483bc35f80c400986073",
+  "firmware_qualification_sha256": "3494c96722d1be7c2dea98c6b4870ef84e939b6d698eaf46a896db59d2de968b"
+}
