@@ -1,0 +1,12 @@
+{
+  "version": "fivegame-kernel1",
+  "passed": true,
+  "protected_files_verified": 10905,
+  "payload_files_verified": 28,
+  "only_expected_markers": true,
+  "verified_kernel_UART_and_normal_init_preserved": true,
+  "FAT_clean": true,
+  "physical_result": "PENDING",
+  "installation_sha256": "16f3e4280ea3ad85ee1db95346feb56b946d6e06774fa2b18e942b983b63973c",
+  "checker_sha256": "6270547174e7b8c1bf9bad1d7d45ecf0b104e33b9bf1ffa31efb117f76628f44"
+}

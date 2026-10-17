@@ -8,7 +8,9 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 Matched five-game test qualified for the verified kernel UART. Measured controller,
 core, ROMs, states, inputs, order and windows are unchanged. Kernel-aware wrapper
-and installer guards pass; staging pending. No full backup or firmware update.
+and installer guards pass. Armed from pushed `831d676`; independent readback
+verifies 10,905 protected files, 28 payloads, exact markers and clean FAT.
+Kernel fix and normal init preserved; no full backup or firmware update.
 [Current test and boot instructions](docs/fivegame-kernel-test.md).
 
 Powered verification passes on a fresh boot: both 8-MiB flash passes match the

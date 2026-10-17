@@ -4,7 +4,9 @@
 
 Exact measured five-game payloads retained; only wrapper/paths adapt to the verified
 kernel fix. Nine firmware-shell and seven staging cases pass. Fresh sparse
-archive: 10,906 hashes, zero new bytes, clean FAT. Staging pending; no full backup.
+archive: 10,906 hashes, zero new bytes, clean FAT. Armed from pushed `831d676`;
+independent final readback verifies 10,905 protected files, 28 payloads, exact
+markers/file set, original normal init and clean FAT. No full backup or reflash.
 
 ## Accept powered physical kernel UART verification - 2026-10-16
 

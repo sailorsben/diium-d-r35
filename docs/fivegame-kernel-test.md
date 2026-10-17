@@ -1,6 +1,8 @@
 # Matched five-game test on the verified kernel UART — 2026-10-16
 
-Qualified; staging pending. This is a measurement-only test, not emulator
+**Installed and armed on I:** pushed source `831d676`. Independent final readback
+verifies 10,905 protected files, 28 payload files, exact card file set, both markers,
+normal init and clean FAT. Saves/evidence and verified kernel UART preserved. This is a measurement-only test, not emulator
 promotion. The firmware UART fix is already physically verified. No flash
 package, kernel change, runtime correction module or full backup is needed.
 
@@ -78,3 +80,6 @@ A failed/censored epoch cannot pass. Compare matched policy pairs; do not infer
 performance benefit from both passing. UART IRQ rates and CPU savings are separate.
 
 [Qualification](../evidence/2026-10-16/fivegame-kernel/qualification.json).
+
+[Installation receipt](../evidence/2026-10-16/fivegame-kernel/installation.json) and
+[independent final readback](../evidence/2026-10-16/fivegame-kernel/live-verification.json).
