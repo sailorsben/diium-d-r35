@@ -1,0 +1,19 @@
+{
+  "source_commit": "9db9c0bbd986489e47446ec124d186f272d32699",
+  "archive": "battery-rollback-return-20261017T034512896217Z",
+  "only_removed_path": "retro/update/Code.bkp",
+  "removed_package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "host_package_verified": true,
+  "remaining_files_unchanged": 1600,
+  "all_returned_evidence_preserved": true,
+  "UART_boot_files_unchanged": true,
+  "ADC_config_and_stock_frontend_unchanged": true,
+  "FAT_clean": true,
+  "no_update_trigger": true,
+  "no_test_armed": true,
+  "no_flash": true,
+  "no_full_backup": true,
+  "progress_and_save_directory_files_preserved": 721,
+  "prior_cleanup_protected_save_paths_preserved": 683,
+  "count_policy": "Progress suffix after backup-suffix stripping or saves/states/snapshots directory. Prior cleanup count covers only retired test profiles; all-card count also includes stock states and save-directory sidecars."
+}

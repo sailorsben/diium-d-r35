@@ -127,11 +127,13 @@ No such diagnostic has been installed or armed in this turn.
 ## Preservation and update disarming
 
 Return evidence was archived before any card change using `sparse-attempt-v1`.
-The only planned card mutation is removing the exact already-used
+The only card mutation was removing the exact already-used
 `retro/update/Code.bkp`, after host-package verification, retained-evidence
-readback, clean FAT and complete file/hash checks. Recheck the exact remaining
-file set and hashes and clean FAT afterward. Preserve the card UART init/module/
-wrapper, ADC config, stock executables, every save and all evidence. This prevents
+readback, clean FAT and complete file/hash checks. The exact 1,600 remaining
+files verify unchanged and FAT remains clean. The 683 save paths protected during
+retired-profile cleanup remain exact; the whole card also retains stock states
+and save-directory sidecars. The card UART init/module/wrapper, ADC config, stock
+executables and all returned evidence remain exact. No update or test is armed. This prevents
 an unintended repeat update; it does not flash or repair anything.
 
 The [card preservation receipt](../evidence/2026-10-16/stock-battery-trace/card-preservation.json)

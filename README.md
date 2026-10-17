@@ -14,8 +14,9 @@ sampling and can display the warning then request poweroff after five seconds.
 49,152 exact ARM sampler cases and intercepted menu shutdown pass. Configuration
 and SD frontend match the pre-kernel-flash archive. User reports rollback did not
 clear the symptom; the actual runtime ADC/flags/GPIO cause remains unmeasured.
-Sparse return retained; only the used rollback trigger is to be removed after
-full preservation/FAT gates. No flash, full backup or new diagnostic arming.
+Sparse return retained; only the used rollback trigger was removed after full
+preservation/FAT gates. All 1,600 remaining files, including every save and state,
+verify unchanged. No update/test armed, flash or full backup.
 [Trace, evidence and remaining diagnostic](docs/stock-battery-trace.md).
 
 Obsolete card test cleanup complete: 9,405 files removed after host byte/hash

@@ -22,6 +22,13 @@ def verify(card, expected):
         assert digest(card/name) == h, name
     assert not list((card/'retro').rglob('armed'))
 
+def is_save(name):
+    p = Path(name)
+    base = p.name.lower()
+    while base.endswith(('.bak','.bkp')):
+        base = base.rsplit('.',1)[0]
+    return Path(base).suffix in PROGRESS or bool({'saves','states','snapshots'} & {x.lower() for x in p.parts})
+
 def main(archive):
     archive = archive.resolve()
     assert archive.is_relative_to((ROOT/'device-evidence').resolve())
@@ -54,7 +61,7 @@ def main(archive):
     report = {'source_commit':commit, 'archive':archive.name,
               'only_removed_path':TRIGGER, 'removed_package_sha256':PACKAGE,
               'host_package_verified':True, 'remaining_files_unchanged':len(expected),
-              'save_state_files_preserved':sum(Path(e['path']).suffix.lower() in PROGRESS for e in entries),
+              'progress_and_save_directory_files_preserved':sum(is_save(e['path']) for e in entries),
               'all_returned_evidence_preserved':True, 'UART_boot_files_unchanged':True,
               'ADC_config_and_stock_frontend_unchanged':True,
               'FAT_clean':True, 'no_update_trigger':True, 'no_test_armed':True,

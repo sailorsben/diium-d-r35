@@ -1,8 +1,8 @@
 # Battery investigation: pre-kernel rollback — 2026-10-16
 
 **Return update:** user reports rollback with the same low-battery symptom.
-Sparse return is preserved; the exact used trigger is being removed through
-full hash/FAT gates. No new flash or diagnostic arming.
+Sparse return is preserved; the exact used trigger was removed through
+full hash/FAT gates. All 1,600 remaining files verify unchanged. No new flash or diagnostic arming.
 [Current ADC trace and preservation receipt](stock-battery-trace.md).
 The armed-state descriptions below document the earlier staging.
 
