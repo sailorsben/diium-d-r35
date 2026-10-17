@@ -7991,6 +7991,14 @@
       "published_sha256": "43246fd0ae137041ae8afdaa8119a2c0d2d7b0b0ea6f1f7b87fa8823e64f4165",
       "bytes": 289,
       "normalized": true
+    },
+    {
+      "source": "build/fivegame-kernel-private-v1/qualification.json",
+      "published": "evidence/2026-10-16/fivegame-kernel/qualification.json",
+      "source_sha256": "a29eaad5fef23ffae4c6f6030812e760e748ccd59b27caf64466432683c97dbe",
+      "published_sha256": "c90872a4e12dba0b8dffb132934a9bb7a1c38c1b1dfda3393ac52fb6e552b0f0",
+      "bytes": 12101,
+      "normalized": true
     }
   ]
 }

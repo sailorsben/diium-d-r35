@@ -1,5 +1,11 @@
 # Investigation history and negative results
 
+## Qualify matched five-game test for kernel UART - 2026-10-16
+
+Exact measured five-game payloads retained; only wrapper/paths adapt to the verified
+kernel fix. Nine firmware-shell and seven staging cases pass. Fresh sparse
+archive: 10,906 hashes, zero new bytes, clean FAT. Staging pending; no full backup.
+
 ## Accept powered physical kernel UART verification - 2026-10-16
 
 Powered verification passes on a fresh boot: both 8-MiB flash passes match the

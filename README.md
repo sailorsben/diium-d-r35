@@ -6,6 +6,11 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
+Matched five-game test qualified for the verified kernel UART. Measured controller,
+core, ROMs, states, inputs, order and windows are unchanged. Kernel-aware wrapper
+and installer guards pass; staging pending. No full backup or firmware update.
+[Current test and boot instructions](docs/fivegame-kernel-test.md).
+
 Powered verification passes on a fresh boot: both 8-MiB flash passes match the
 exact corrected kernel image, with both Vesper screen payloads/rootfs preserved.
 No runtime UART patch module or endpoint exists. IRQ19 is 85.36-86.36/s and
