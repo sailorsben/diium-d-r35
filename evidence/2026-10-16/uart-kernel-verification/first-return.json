@@ -1,0 +1,81 @@
+{
+  "archive": "uart-kernel-return-20261017T022201466502Z",
+  "complete": true,
+  "all_files_hashed": 10868,
+  "new_sparse_content_bytes": 16787372,
+  "FAT_clean": true,
+  "saves_and_prior_evidence_unchanged": true,
+  "expected_card_changes": {
+    "retro/init": "4a6d37f719a6f1e6a9591467294d15391e10149610f9fa4efefad4336224a508",
+    "retro/swapfile": "c6d1155f29062212f231173fceebc87c4045ec0d6616fa0aa5572543e4a80a4c",
+    "retro/update/Code.bkp": null
+  },
+  "wrapper_success": true,
+  "two_pass_flash_exact": true,
+  "flash_sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321",
+  "kernel_sha256": "b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459",
+  "runtime_UART_module_absent": true,
+  "idle_IRQ_flood_acceptance_passed": true,
+  "windows": [
+    {
+      "window": "uart-before",
+      "IRQ19_counts": [
+        1676,
+        2125
+      ],
+      "IRQ19_delta": 449,
+      "IRQ19_per_second_bracket": [
+        88.4934299048272,
+        89.62385327876592
+      ],
+      "kernel_times_ns": {
+        "begin_snapshot_start_ns": 6538494000,
+        "begin_snapshot_end_ns": 6570424000,
+        "end_snapshot_start_ns": 11580251000,
+        "end_snapshot_end_ns": 11612317000,
+        "relative_wait_ns": 5000000000,
+        "failed": 0,
+        "flash_writes": 0,
+        "UART_configuration_writes": 0
+      },
+      "serial_snapshots": [
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:1527 rx:62 brk:62 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n",
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:1959 rx:62 brk:62 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n"
+      ]
+    },
+    {
+      "window": "uart-after",
+      "IRQ19_counts": [
+        11021,
+        11453
+      ],
+      "IRQ19_delta": 432,
+      "IRQ19_per_second_bracket": [
+        85.36631634859809,
+        86.37260261045198
+      ],
+      "kernel_times_ns": {
+        "begin_snapshot_start_ns": 115338175000,
+        "begin_snapshot_end_ns": 115368457000,
+        "end_snapshot_start_ns": 120370043000,
+        "end_snapshot_end_ns": 120398719000,
+        "relative_wait_ns": 5000000000,
+        "failed": 0,
+        "flash_writes": 0,
+        "UART_configuration_writes": 0
+      },
+      "serial_snapshots": [
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:10852 rx:63 brk:63 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n",
+        "serinfo:1.0 driver revision:\n0: uart:unknown mmio:0x00000000 irq:19 tx:11284 rx:63 brk:63 RTS|DTR\n1: uart:unknown mmio:0x00000000 irq:18 tx:0 rx:0\n2: uart:unknown mmio:0x00000000 irq:20 tx:0 rx:0\n"
+      ]
+    }
+  ],
+  "readback_elapsed_seconds": 103.701112,
+  "boot_id": "4b912504-2797-49fb-bd85-ca0923a86425",
+  "shutdown_cause": "UNRESOLVED; user reports possible low battery. Probe completes before stock continuation; no retained shutdown telemetry.",
+  "limits": [
+    "No electrical UART byte/throughput or CPU savings claim.",
+    "Successful verification does not prove later stock launcher stability or power state."
+  ],
+  "no_full_backup": true
+}

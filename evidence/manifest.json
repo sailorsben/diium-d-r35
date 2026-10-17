@@ -7943,6 +7943,14 @@
       "published_sha256": "7c1f44f4c94e84609d4d4e64919ddd18455e013373e47524eef60aae7b44bf57",
       "bytes": 438,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/uart-kernel-return-20261017T022201466502Z/analysis.json",
+      "published": "evidence/2026-10-16/uart-kernel-verification/first-return.json",
+      "source_sha256": "b081cfd7832fe1f8dcacdd4f72ae61268587f8d87c7e562681f83cba161af70c",
+      "published_sha256": "b081cfd7832fe1f8dcacdd4f72ae61268587f8d87c7e562681f83cba161af70c",
+      "bytes": 3384,
+      "normalized": true
     }
   ]
 }

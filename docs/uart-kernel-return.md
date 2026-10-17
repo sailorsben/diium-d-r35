@@ -20,6 +20,39 @@ private qualified source package; no extra backup is needed before removal.
 
 [Boot/preservation receipt](../evidence/2026-10-16/uart-kernel1/boot-return.json).
 
+## Completed first verification and requested plugged-in repeat
+
+Strict return `uart-kernel-return-20261017T022201466502Z` preserves 10,868 files
+by hashes, 16,787,372 new sparse evidence bytes and clean FAT. All earlier saves,
+stock files and evidence are unchanged except the expected init/update/swap paths.
+The wrapper completes successfully after 103.701112 seconds of two-pass readback
+and both five-second observation windows. Both full flash passes match expected
+`ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321`, and the
+captured decompressed kernel matches corrected `b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459`.
+Entire flash equality also verifies both screen payloads and rootfs preservation.
+
+IRQ19 increases 449 and 432 across the two windows: 88.49-89.62/s and
+85.37-86.37/s using snapshot-time brackets. Both pass the prior <500/s criterion.
+No runtime UART module or patch endpoint is present. TX increases 432 in each
+window; RX/break stay 62 then 63 within the respective windows. These are idle
+IRQ observations, not CPU savings, electrical byte accuracy or workload coverage.
+
+User reports shutdown and later suggests low battery. The successful reader,
+post-reader observer and wrapper exit establish completion before stock resumes.
+They do not establish later stock stability or a poweroff cause. There is no
+retained battery/shutdown telemetry to distinguish those causes. No shutdown
+command exists in the probe; the watchdog was not disabled.
+
+User requests the same test rearmed for a plugged-in repeat. Preserve outputs
+by renaming logs/results/wrapper/consumed into a unique completed directory on
+card, without copying or deleting them. Reuse the exact qualified helpers,
+wrapper, installation and marker identity; a unique repeat receipt and fresh
+output directories distinguish this repetition. Require a new boot ID on return.
+Hash every existing file before rearm and verify all mapped paths after rename;
+arm only after clean FAT and preservation readback. No reflash or full backup.
+
+[First verification analysis](../evidence/2026-10-16/uart-kernel-verification/first-return.json).
+
 ## Necessary read-only verification boot
 
 Use a separate `retro/uart-kernel-verify1` profile, preserving all older readers
@@ -48,7 +81,7 @@ consume-first order, failure barriers and replay refusal. Nine temporary-card
 cases cover write/FAT failures and foreign trigger/init/profile refusal. No full
 backup. Independently verify the complete card/payload/marker and clean FAT.
 
-**Status: read-only verification armed on I: from pushed source `08e4b06`.**
+**Historical first staging: source `08e4b06`; completed successfully as above.**
 
 The installer verifies all 10,824 protected existing files, exact probe payloads,
 temporary init and sole one-shot marker with clean FAT. The known firmware update

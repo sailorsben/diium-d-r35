@@ -1,14 +1,11 @@
 # Device findings
 
-Kernel flash user-accepted: both Vesper screens and stock launcher boot.
-Sparse return hashes 10,826 files, stores zero new bytes and finds clean FAT;
-saves, stock and prior evidence remain exact. No fresh SPI/IRQ measurements
-are present, so exact kernel/UART verification still requires one read-only
-boot. Ten probe checks and nine staging cases pass; no full backup.
-Read-only verification armed from pushed source `08e4b06`; known firmware
-update trigger removed. All 10,824 protected files pass installation readback.
-Independent final-card verification is recorded in the linked receipt.
-Exact flashed image and UART IRQ behavior remain pending the physical return.
+The first verification return is complete: both 8-MiB passes match the exact
+expected flash, and its decompressed kernel is the corrected image. No runtime
+UART module/proc patch exists. IRQ19 brackets are 88.49-89.62/s and 85.37-86.37/s,
+passing the declared idle flood threshold. All saves and prior evidence remain
+exact; FAT clean. Shutdown after successful probe exit is unresolved; user
+suggests low battery. An identical plugged-in repeat is requested. No full backup.
 [Boot return and read-only verification](uart-kernel-return.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first
