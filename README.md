@@ -6,12 +6,24 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
+Stock battery trace: the exact SD frontend ignores ADC errors and masks the
+ADC driver's timeout flag. Each sample opens a fresh client with saved value zero;
+a semaphore timeout returns 0x8000, which becomes critical zero after masking.
+Both GPIO checks can override this; a critical state blocks further heartbeat
+sampling and can display the warning then request poweroff after five seconds.
+49,152 exact ARM sampler cases and intercepted menu shutdown pass. Configuration
+and SD frontend match the pre-kernel-flash archive. User reports rollback did not
+clear the symptom; the actual runtime ADC/flags/GPIO cause remains unmeasured.
+Sparse return retained; only the used rollback trigger is to be removed after
+full preservation/FAT gates. No flash, full backup or new diagnostic arming.
+[Trace, evidence and remaining diagnostic](docs/stock-battery-trace.md).
+
 Obsolete card test cleanup complete: 9,405 files removed after host byte/hash
 verification; 1.57 GiB of FAT space reclaimed, 1,601 files remain. Preserve all
 683 save/state files and unique evidence, including 2,046 recovered text records.
 One unmatched executable retained. Collector gap fixed/tests pass. Independent
 remaining hashes/save paths/rollback ZIP/UART hooks/unarmed-game/FAT checks pass.
-The current rollback remains armed.
+The rollback was left armed at cleanup; the newer battery trace supersedes that state.
 No full backup. [Plan and preservation](docs/card-test-cleanup.md).
 
 Battery regression investigation: exact pre-kernel Wings2 rollback qualified,
@@ -19,7 +31,7 @@ with both Vesper screens/rootfs preserved and proven card UART hook restored.
 Eleven firmware groups and seven staging cases pass. Armed from pushed `481415f`;
 independent readback verifies 11,003 protected files, exact file set, full rollback
 package/original kernel/UART payloads and clean FAT. No game test or full backup.
-Physical rollback and battery outcome remain unproven.
+At staging, physical rollback and battery outcome were unproven. The user now reports rollback with the same warning; see the newer battery trace.
 [Current rollback and procedure](docs/battery-rollback.md).
 
 Five-game powered return: Mario, Metroid and F-Zero complete first blocking

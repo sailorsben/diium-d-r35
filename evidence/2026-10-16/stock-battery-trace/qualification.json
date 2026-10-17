@@ -1,0 +1,37 @@
+{
+  "offline_checks_passed": true,
+  "raw_state_GPIO_timeout_combinations": 49152,
+  "card_frontend_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "adc_driver_sha256": "d34ddc39546399759d374e60f4a523ddd5a388412ee6a94c9e95feddf4ab46d5",
+  "card_config_sha256": "842e7cb861c6ce2faea7182f22236cb9ac26b34ac7f51e75f79702e47976343f",
+  "card_thresholds": [
+    318,
+    310,
+    300,
+    290,
+    275
+  ],
+  "config_and_frontend_unchanged_since_before_kernel_flash": true,
+  "adc_channel": 2,
+  "successful_driver_read_bytes": 2,
+  "frontend_requests_bytes": 4,
+  "scale": "floor((raw16 & 1023) * 330 / 1024)",
+  "critical_scaled_at_or_below": 275,
+  "critical_raw10_at_or_below": 856,
+  "driver_timeout_per_fresh_handle": "saved_value=0; returned uint16=0x8000; frontend masks to zero",
+  "false_low_reproduced": "failed read after zero sample classified critical; exact stock ARM code",
+  "negative_state_blocks_heartbeat_resampling": true,
+  "external_state_override": "GPIO 0x20b and 0x20e both nonzero -> level 5; pin electrical meaning unverified",
+  "menu_critical_path_executed": "warning.zip/poweroff.raw -> display -> sleep(5) -> backlight off -> intercepted poweroff",
+  "physical_timeout_or_read_failure_observed": false,
+  "physical_battery_voltage_capacity_or_charging_proven": false,
+  "root_cause": "UNRESOLVED: concrete false-low mechanism, missing runtime ADC returns/flags/GPIO",
+  "sources": {
+    "build/check-stock-adc-logic.c": "60a14a0683395aae8ea1bb4ef2e1ec00f661b6faadd1a26faed333e310646ea2",
+    "build/qualify-stock-battery.py": "557a62cdb034320d312108d7b3c8849fde86efeec23ee35f4d8fed88877f6aa2"
+  },
+  "execution_sha256": "b0cc1d949082ff3915a445cb9849d7265ebb7c1fe3291405c614107cca0eccc5",
+  "no_card_access": true,
+  "no_flash": true,
+  "no_full_backup": true
+}

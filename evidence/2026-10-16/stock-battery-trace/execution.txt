@@ -1,0 +1,13 @@
+Config open: /usr/retro/adcset.ini mode=r+b
+PASS exact ARM config path and five parsed card thresholds
+PASS exact ARM stock sampler 49152 raw/timeout-flag/previous-state/GPIO combinations
+Failed read ignored: classified_level=-1 scaled=0 read_return=-1
+PASS failed channel-start ignored despite subsequent successful read
+PASS failed ADC open still proceeds to ioctl/read and classification
+PASS negative low state suppresses subsequent ADC/GPIO resampling even after plug-in
+PASS first 128-call low sample cannot enter critical state
+PASS second 256-call low sample can enter critical state
+PASS HDMI suppresses critical state
+Warning asset: /usr/retro//warning.zip entry=poweroff.raw
+Intercepted stock shutdown command: poweroff
+PASS exact ARM menu critical state -> warning -> five-second delay -> backlight off -> intercepted poweroff; no hardware touched

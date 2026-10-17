@@ -1,5 +1,11 @@
 # Battery investigation: pre-kernel rollback — 2026-10-16
 
+**Return update:** user reports rollback with the same low-battery symptom.
+Sparse return is preserved; the exact used trigger is being removed through
+full hash/FAT gates. No new flash or diagnostic arming.
+[Current ADC trace and preservation receipt](stock-battery-trace.md).
+The armed-state descriptions below document the earlier staging.
+
 **Current card after authorized cleanup:** 1,601 files remain; obsolete tests
 were removed only after host byte verification. The exact rollback trigger and
 card UART boot files remain armed/unchanged, all save paths are intact, and
