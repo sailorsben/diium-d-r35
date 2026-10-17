@@ -1,0 +1,24 @@
+{
+  "version": "uart-kernel-verify1",
+  "source_commit": "d72b89bcd7df7a827e7adc9407afedf5d72366a2",
+  "archive": "uart-kernel-return-20261017T100507473949Z",
+  "one_shot_verification_armed": true,
+  "known_update_trigger_removed": true,
+  "removed_trigger_sha256": "b2f8b286095f189ad9d0cad30320212f88a1b59e761ee7120aa9d45bab44dfeb",
+  "protected_existing_files": 1599,
+  "init_sha256": "4a6d37f719a6f1e6a9591467294d15391e10149610f9fa4efefad4336224a508",
+  "normal_init_restore_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "marker_sha256": "b9d245289a40f870b20cbb0fc8265e75864c3c14f12762320f2457bd909937db",
+  "payload_hashes": {
+    "spi-readback": "b0f47d8742b0ef0c1624fd1d25ae3cb8af7474d5c16f2b941c46ced370749a0b",
+    "uart-observe": "28c9e4674f154e194d67631278f58e1288c688e9c06684b61c334a61cfcf8731",
+    "launch.sh": "acf8f7a62e999c2739ebbf3af0bebdd81d3a6b3120f413e61952aafafb35c7d3",
+    "installation.json": "fa7ecc6287f9bccf7f15e1858892be88a85b33fbe020ae6af9a32b7786001b6d",
+    "qualification.json": "e2dc68ba9ff14e839b94da66975f1d27ff581c2f4fad89acef075ed19ba2c4fe"
+  },
+  "clean_FAT": true,
+  "flash_writes": false,
+  "module_loads": false,
+  "no_full_backup": true,
+  "physical_measurement": "PENDING"
+}

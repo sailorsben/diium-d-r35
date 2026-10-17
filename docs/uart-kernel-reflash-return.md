@@ -56,6 +56,12 @@ record trigger removal and arming completion. At staging, exact kernel/UART
 acceptance for this reflash remains pending. No additional firmware flash,
 full backup or game test.
 
+**Staged and independently verified on I:** source `d72b89b` was pushed before
+installation. The exact used firmware trigger is removed. All 1,599 protected
+existing files, exact full file set, unchanged probe payloads/sole one-shot marker
+and clean FAT pass independent readback. Only read-only verification is armed;
+physical kernel/IRQ measurement remains pending. No full backup or game test.
+
 ## Next physical step and acceptance
 
 Safely eject I:, insert with power off, keep charging power connected and cold

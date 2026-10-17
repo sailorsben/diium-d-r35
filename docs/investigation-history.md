@@ -6,10 +6,11 @@ UART reflash boot accepted by user: both Vesper screens and stock launcher.
 Fresh strict sparse return hashes 1,601 files, adds zero content bytes and passes
 FAT. Saves/states/stock/prior evidence are unchanged; returned stock settings and
 swapfile changes are preserved. No fresh flash/IRQ measurement exists on this
-return. Remove only the exact used firmware trigger and stage the unchanged,
-qualified read-only two-pass SPI/UART verification before stock ownership.
-No firmware writes, UART module loads, emulator test or full backup. Exact
-kernel bytes and idle IRQ acceptance for this reflash remain pending that boot.
+return. Exact used firmware trigger removed; unchanged qualified read-only
+two-pass SPI/UART verification armed from pushed `d72b89b`. Independent complete
+file-set/1,599 protected hashes/payload/marker/FAT checks pass. No firmware writes,
+UART module loads, emulator test or full backup. Exact kernel bytes and idle IRQ
+acceptance for this reflash remain pending one physical verification boot.
 [Return and verification procedure](uart-kernel-reflash-return.md).
 
 ## Rearm exact kernel UART firmware after charge recovery - 2026-10-17
