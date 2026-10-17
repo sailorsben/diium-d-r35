@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checks": [
+    "success",
+    "payload",
+    "dispatcher",
+    "target_marker",
+    "mvp_marker",
+    "health-payload",
+    "health-armed",
+    "foreign-profile",
+    "foreign-marker",
+    "firmware-trigger"
+  ],
+  "card_access": false,
+  "installer_sha256": "8bd9837f966ba31104f4368fee2275e7301e522a40099af864d2bf4c0df4ef5a",
+  "checker_sha256": "d54ae1ae02f11511cb9ce377b6109b3aff1de26de72471ce83d5bbd73c99e0fa",
+  "qualification_sha256": "861a1759254b54e4d56faf417cc19bdb46801068526305cdb0f45d68e4088ece",
+  "replay_checks_sha256": "0c5dd2695fef30a1108268644fd3cf8dfca8bc2ec478ac6c95ecac504ace4a6c"
+}

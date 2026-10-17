@@ -1,5 +1,10 @@
 # Matched five-game test on the verified kernel UART — 2026-10-16
 
+**2026-10-17 update:** full charge restored normal reported battery behavior;
+the kernel UART reflash is freshly readback/IRQ verified. The new matched test
+fixes silent Star Fox replay with visible/durable progress and a stall guard.
+[Current profile](fivegame-replay-test.md). Earlier tests below are historical.
+
 **Returned, unarmed:** three first blocking windows complete; Star Fox cold replay
 user-aborted after 102.97s, with F-Zero picture retained. No matched pairs/Ranger.
 Battery warning regression remains unresolved. [Return](fivegame-kernel-return.md).

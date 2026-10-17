@@ -1,5 +1,10 @@
 # Kernel-UART five-game return and battery regression — 2026-10-16
 
+**2026-10-17 update:** full charge restored normal reported battery behavior;
+the kernel UART reflash is freshly readback/IRQ verified. The new matched test
+fixes silent Star Fox replay with visible/durable progress and a stall guard.
+[Current profile](fivegame-replay-test.md). Earlier tests below are historical.
+
 The plugged-in run repeats the previous boundary: Mario, Metroid and F-Zero each
 complete their first 1,200-call blocking window. F-Zero is not the executing game
 when the user presses Start+Select: Star Fox's silent cold replay is active, with

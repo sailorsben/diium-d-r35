@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checks": [
+    "complete",
+    "menu",
+    "signal",
+    "invalid",
+    "missing",
+    "display",
+    "supervisor-progress",
+    "supervisor-stall",
+    "supervisor-abort"
+  ],
+  "fixture_root": "build/fivegame-kernel-private-v2/replay-check-5276309222c0",
+  "test_stall_ns": 300000000,
+  "production_stall_ns": 60000000000,
+  "card_access": false,
+  "sources": {
+    "check-fivegame-replay.py": "9e90dd1911c5477cc9ffcc2c08e6793f66ec0a9f8c1c29b4e2f72edcffadc6c2",
+    "check-fivegame-warmup.c": "0f46a68fab07f69281a922f9697e2735b9b78ba759a4307b8aed55f648e5d8cd",
+    "check-fivegame-supervisor.c": "9cb97432c2ae5e93b8ce4e6b836271f5a0c928301f5235ddf4c53e3bf2ba8578",
+    "fivegame-warmup-progress.h": "aa653b4c37e7732660e175c35a1eacfc283f4ee8b5bba5bb232d2c3f9276151c",
+    "fivegame-replay-progress.h": "ae737bda044db5f0186f3dd58ae14fdf965a946ee60524d2a7d56881798c8fd8"
+  },
+  "log_sha256": "c562ba24a3481b8d4318bc4c1577156d08b2d17b46c94c929360a9a5db05b09d"
+}

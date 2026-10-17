@@ -1,5 +1,19 @@
 # Changelog
 
+## Qualify five-game test with observable Star Fox replay - 2026-10-17
+
+Matched five-game replay-aware test qualified: all 20 ARM oracle windows
+(24,000 measured pixel/PCM/sample-count calls plus 34,624 cold calls) pass with
+unchanged core/plan/ROMs/states/inputs/oracles. Star Fox now has visible progress,
+bounded durable call/abort records and a 60-second no-progress supervisor guard.
+Display metrics reset before native audio/measurement. Native provider, replay/
+watchdog, kernel-wrapper and installer fixtures pass. Fresh sparse archive hashes
+1,643 files, stores zero content bytes, FAT clean. Stage only the new kernel2
+profile and dispatcher/markers; retain verified kernel UART, normal init, saves,
+all earlier evidence and both Vesper screens. No firmware or full backup.
+Measurement-only; physical results, A7 saving and remaining deficit pending.
+[Qualification and next physical test](docs/fivegame-replay-test.md).
+
 ## Verify fresh kernel UART reflash and restore normal boot - 2026-10-17
 
 Fresh powered UART verification passes after reflash: both complete 8-MiB
