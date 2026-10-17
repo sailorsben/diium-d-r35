@@ -1,5 +1,9 @@
 # Internal UART firmware correction — 2026-10-16
 
+**Superseded by the requested [direct kernel correction](uart-kernel-firmware.md).**
+The module-based image and its receipts below are historical. Use the current
+kernel-update instructions and installation receipt.
+
 The user authorized preparing, qualifying and arming I: for an internal firmware
 update. This moves the exact physically used UART module and finite boot helper
 into the internal rootfs. It does not require card payloads to apply the fix.

@@ -1,0 +1,93 @@
+{
+  "version": "uart-kernel1",
+  "passed": true,
+  "checks": [
+    "All non-kernel flash bytes exact, both screens/rootfs/DT/section table preserved",
+    "Original ISR entry, RX body and RX error/urgent tails exact",
+    "Independent GNU gzip expands all corrected kernel bytes",
+    "PASS old kernel control reproduces ignored TX-pending and literal-zero data",
+    "PASS 24 original-vs-corrected RX/no-TX snapshots including callee registers",
+    "PASS actual corrected PutChar preserves all256 byte values",
+    "PASS 7344 independent FIFO/queue/enable/flow/urgent/wrap cases; one status read and at most one byte",
+    "PASS full-to-draining retries deliver300 real-valued bytes and stop TX at empty queue",
+    "PASS mixed RX/TX delivers RX before bounded TX service",
+    "PASS direct kernel driver checks; no module, IRQ action replacement, hardware timing or wire proof",
+    "Captured ARM self-decompressor complete equality: baseline",
+    "Captured ARM self-decompressor complete equality: corrected",
+    "Negative FEXTRA stream fails actual decompressor byte equality; FNAME supported",
+    "check-static-splash: expected-after-vendor.bin",
+    "check-boot-loader: expected-after-vendor.bin",
+    "check-static-splash: candidate.bin",
+    "check-boot-loader: candidate.bin",
+    "Captured updater RAM-only: compatible Wings2",
+    "Captured updater RAM-only: compatible prior module firmware",
+    "Captured updater RAM-only: incompatible",
+    "Captured updater RAM-only: CRC error",
+    "Captured updater RAM-only: prefix absent",
+    "Captured updater RAM-only: repeated CRC",
+    "Original showlogo ZIP decoder and all18 Wings2 frames",
+    "Exact firmware shell validates original normal card init, no UART hook"
+  ],
+  "preparation_sha256": "f3927ce38dc57917d90ed4449ba0ace76bf070fd5fe0be5e04b80275588b2934",
+  "execution_sha256": "7bad8d9c0eb6f7228ad06e619331e9f89a3cc983afb6d358df31c709ffe0b701",
+  "sources": {
+    "build/uart-kernel-tx.S": "225edf5ae1e978098951e92807c332746906cc20783f1f532ab555b7087bcb64",
+    "build/uart-kernel-tx.ld": "bba036f5a4a78f2214ad9f7bdfdd60b6040a54428bdd82ae595fa591778978ca",
+    "build/prepare-uart-kernel-firmware.py": "deff2cc792ad871fd596a31bdc94ee174864a936d0f2f6bb97caf92e4e0a6b84",
+    "build/qualify-uart-kernel-firmware.py": "04a6385218c08a1cf95423cfbc8812c56e1d726e66815e90787cf9226aa4a528",
+    "build/check-uart-kernel-driver.c": "f599640ed6728123ce069c8a1084b25068063fc13ed8046d9b1e668c977d9ff8",
+    "build/check-uart-tx-observer.c": "b73027fa826a3ae673bf4f548e53ba3b86abe1ead370ad0800a7b9877bcd50d7",
+    "build/check-kernel-decompressor.c": "1f8f1804deeb46f5ee5773ab8977ce92305f789c48f6c1132a43324e5ed1c541",
+    "build/check-static-splash.c": "681a517a19e0f43f337ed0ced48445dfc8ae9d5e1810a587f9ef8f9a56a61d5f",
+    "build/check-boot-loader.c": "2671654d7e1995b3903404401a4db41d42e138c0ff51b9292e77022e9e7127e3",
+    "build/check-vendor-updater.c": "d4a46993a2a059aedf46a76fd092de0cd054c3821ec6aad5774e0199739ba35d",
+    "build/check-stock-boot.c": "607523430b90a9ee11d410608c6ebc80ee16425b7bd83651982c1d75f5a32d11",
+    "build/check-stock-boot.sh": "cfb4132fcdfbfa63fe2706d2b811e53ad975208751e5507eec230a2b3d294181",
+    "build/inspect-spi-boot.py": "ceafe31aacfc4684c4dba1328a7b0e8b201a448159984ce0d5048883b3259fd9"
+  },
+  "candidate_sha256": "3b22fe71b6c502cbb921a2dc751cd8d210ddc25e586ece30c9f5bdb168066fb4",
+  "package_sha256": "bc0bdb689361271d75c522da634006d214ffac4f274700e6e79239016566965f",
+  "expected_after_vendor_sha256": "45ef4ea3fbe599bf7cc633c601e7033d6f3a27569b932a8d6697906c31b946ff",
+  "physical_boot": "PENDING",
+  "runtime_modules_or_IRQ_hooks": false,
+  "external_recovery_qualified": false,
+  "negative_results": [
+    "FEXTRA valid to GNU gzip but unsupported by the exact vendor kernel decompressor; retained negative stream and metadata.",
+    "Initial TX assembly relied on caller-clobbered r3 surviving PutChar; independent wrapper exposed it. Final assembly reloads ring tail and all7344 cases pass."
+  ],
+  "limits": [
+    "Exact vendor binary kernel patched in place from owned assembly; not a full vendor-source kernel rebuild.",
+    "Correct data bytes and one-byte FIFO-bounded TX service require physical acceptance; wire output and A7 timing not proved offline.",
+    "Latest Wings2 baseline user accepted; full post-Wings2 SPI readback pending."
+  ],
+  "staging_transaction": {
+    "passed": true,
+    "cases": [
+      "success",
+      "init",
+      "trigger",
+      "health-init",
+      "health-armed",
+      "changed-trigger",
+      "changed-init",
+      "armed-test"
+    ],
+    "installer_sha256": "330c4814da841d7223c1a510e96ee02ed768e6e174a2fcad889de904a2e489e3",
+    "checker_sha256": "009fb74ef5cef327382cbd8195eb9f0c7f72742e17ed695d550b9aa308a4f50e",
+    "qualification_sha256": "43bd967a08d7dc8e949fd5ad15b125441b690fd1bd56a6ec63879b9cf78e74f2",
+    "card_access": false
+  },
+  "archive": "uart-kernel-before-20261017T011353008133Z",
+  "archive_manifest_sha256": "d61ea2a4e601ce824d5319364eab42d17c4b07b9a51909d208c610d86f9e0c2a",
+  "outside_manifest_sha256": "7ce4d6ca5d5e22e31e2fe7550c8559706cd3fe846ef105ea284cf7718a0490b9",
+  "all_existing_files_hashed": 10826,
+  "new_sparse_content_bytes": 0,
+  "no_full_backup": true,
+  "publication_sources": {
+    "archive-uart-kernel.py": "3be2592036f9e70e433bfad71011ce4130213af95604d3c0caa469f9d2fc3f13",
+    "stage-uart-kernel-firmware.py": "330c4814da841d7223c1a510e96ee02ed768e6e174a2fcad889de904a2e489e3",
+    "check-uart-kernel-stage.py": "009fb74ef5cef327382cbd8195eb9f0c7f72742e17ed695d550b9aa308a4f50e",
+    "verify-uart-kernel-card.py": "6bdeced62fb946f5ed5a027b9abd6a8471e3e7fd0b1d3a5d53182b7f93bca3a5",
+    "publish-uart-kernel-firmware.py": "42fc9157a3474cd9b8dc6e5b8b8338c7f38dfd20142daed449e59bf6866847e5"
+  }
+}

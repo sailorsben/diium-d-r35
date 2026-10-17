@@ -1,12 +1,12 @@
 # Device findings
 
-Internal UART firmware staged and armed on I: from pushed source `726f89c`.
-35 offline checks and eight staging cases pass. Independent readback verifies
-all 10,824 protected existing files, authorized card hook and complete firmware
-ZIP/image; FAT clean, no emulator test armed. Both Vesper screens and kernel
-are exact; normal init, saves and evidence are unchanged. No full backup.
-Physical flash, boot and internal UART attachment remain pending.
-[Qualification and update instructions](uart-firmware.md).
+Direct kernel UART correction qualified: TX-pending, FIFO-bounded service and
+actual character output corrected inside the existing driver. No runtime module
+or IRQ-action hook. 25 groups, including 7,344 queue/FIFO cases, all 256 bytes,
+actual ARM self-decompression and vendor RAM update, plus eight staging cases
+pass. Both Vesper screens/rootfs remain exact. Sparse preservation only; no full
+backup. Replaces the staged module approach; physical kernel boot is pending.
+[Direct kernel correction and update instructions](uart-kernel-firmware.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first
 1,200-call blocking window. Select+Start aborts Star Fox's silent cold replay

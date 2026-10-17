@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Qualify direct kernel UART driver correction - 2026-10-16
+
+Replace the TX body in the exact kernel, correcting pending service, FIFO safety,
+flow/urgent/queue/wakeup behavior and literal-zero PutChar. RX/IRQ registration,
+rootfs and both Vesper screens stay exact. No runtime patch module. 25 groups
+pass: 7,344 queue/FIFO cases, all 256 bytes, actual ARM decompressor, original
+loader/splash/updater RAM checks and eight staging cases. Preserve negative
+FEXTRA and caller-register findings. Restore original SD init; replace only the
+known staged update. No full backup. Physical kernel boot/IRQ/wire pending.
+[Kernel correction and evidence](uart-kernel-firmware.md).
+
 ## Arm verified internal UART firmware on I: - 2026-10-16
 
 Stage the normal vendor update from pushed source `726f89c`. Independent full
