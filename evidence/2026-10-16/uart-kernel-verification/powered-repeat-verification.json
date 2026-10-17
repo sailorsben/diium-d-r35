@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "attempt_id": "fe41d3f8e9fe4172bb6f3f7f3256edb4",
+  "all_existing_files_preserved": 10868,
+  "expected_file_count": 10869,
+  "only_read_only_verification_armed": true,
+  "no_update_trigger": true,
+  "FAT_clean": true,
+  "repeat_installation_sha256": "68f4f66e3452c4626241b6162860b6b1ed995c4a53d507c261c7e8eeb433ce91"
+}

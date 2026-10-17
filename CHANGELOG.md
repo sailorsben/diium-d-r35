@@ -7,7 +7,9 @@ expected flash, and its decompressed kernel is the corrected image. No runtime
 UART module/proc patch exists. IRQ19 brackets are 88.49-89.62/s and 85.37-86.37/s,
 passing the declared idle flood threshold. All saves and prior evidence remain
 exact; FAT clean. Shutdown after successful probe exit is unresolved; user
-suggests low battery. An identical plugged-in repeat is requested. No full backup.
+suggests low battery. Identical plugged-in repeat armed from `a636eb0`; independent final readback
+verifies all 10,868 prior files preserved, sole read-only marker, no firmware
+trigger and clean FAT. No full backup.
 
 ## Collect kernel UART flash return; qualify read-only verification - 2026-10-16
 

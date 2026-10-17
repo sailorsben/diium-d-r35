@@ -5,7 +5,8 @@ expected flash, and its decompressed kernel is the corrected image. No runtime
 UART module/proc patch exists. IRQ19 brackets are 88.49-89.62/s and 85.37-86.37/s,
 passing the declared idle flood threshold. All saves and prior evidence remain
 exact; FAT clean. Shutdown after successful probe exit is unresolved; user
-suggests low battery. An identical plugged-in repeat is requested. No full backup.
+suggests low battery. An identical plugged-in repeat is armed; independent verification preserves
+all 10,868 existing files, sole read-only marker and clean FAT. No full backup.
 [Boot return and read-only verification](uart-kernel-return.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first

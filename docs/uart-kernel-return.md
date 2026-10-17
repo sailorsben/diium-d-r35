@@ -86,8 +86,8 @@ backup. Independently verify the complete card/payload/marker and clean FAT.
 The installer verifies all 10,824 protected existing files, exact probe payloads,
 temporary init and sole one-shot marker with clean FAT. The known firmware update
 trigger is removed. No firmware update is armed. Independent final-card readback
-is recorded in the published verification receipt. Physical measurements remain
-pending; installation checks do not establish the flashed kernel or IRQ result.
+is recorded in the published verification receipt. This paragraph describes
+staging only; the completed physical measurements are reported above.
 
 After verified staging, safely eject I:, cold boot once and allow about two
 minutes, up to five, for stock to appear. Vesper may animate during readback.
@@ -119,3 +119,15 @@ preserving all private captures and leaving everything unarmed.
 
 [Installation receipt](../evidence/2026-10-16/uart-kernel-verification/installation.json)
 and [independent final-card verification](../evidence/2026-10-16/uart-kernel-verification/live-verification.json).
+
+## Powered repeat installation
+
+The plugged-in repeat is armed from pushed source `a636eb0`, attempt
+`fe41d3f8e9fe4172bb6f3f7f3256edb4`. Independent final readback verifies all
+10,868 existing files preserved and the exact 10,869-file resulting set, sole
+read-only marker, no firmware trigger and clean FAT. Previous output is retained
+under `retro/uart-kernel-verify1/completed-fe41d3f8e9fe4172bb6f3f7f3256edb4`.
+No full backup. Cold boot plugged in, allow about two minutes (up to five) for
+stock, observe stock briefly, then power down and return I:. No reflash.
+
+[Repeat installation](../evidence/2026-10-16/uart-kernel-verification/powered-repeat-installation.json) and [independent readback](../evidence/2026-10-16/uart-kernel-verification/powered-repeat-verification.json).
