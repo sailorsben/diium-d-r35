@@ -6,6 +6,12 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
+Battery regression investigation: exact pre-kernel Wings2 rollback qualified,
+with both Vesper screens/rootfs preserved and proven card UART hook restored.
+Eleven firmware groups and seven staging cases pass. Staging pending. No game
+test or full backup. Physical rollback and battery outcome remain unproven.
+[Current rollback and procedure](docs/battery-rollback.md).
+
 Five-game powered return: Mario, Metroid and F-Zero complete first blocking
 windows; Star Fox cold replay is aborted after 102.97s while F-Zero remains
 onscreen. Replay call count is missing: slow progress vs stall unresolved.

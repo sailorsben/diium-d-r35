@@ -1,0 +1,64 @@
+{
+  "version": "battery-kernel-rollback1",
+  "passed": true,
+  "checks": [
+    "Exact original Wings2 WQW/ZIP/candidate/expected image and original qualification hashes",
+    "Only kernel section and vendor CRC/date differ; both screens/rootfs/DT/section table exact",
+    "Restored original kernel matches every proven card module code/ABI guard; qualified module/helper/init/wrapper exact",
+    "Actual ARM vendor updater accepts rollback from current kernel flash and produces exact original Wings2 image in RAM",
+    "Updater refuses incompatible without programming",
+    "Updater refuses CRC error without programming",
+    "Updater refuses prefix absent without programming",
+    "Updater refuses repeat without programming",
+    "Original ARM check-static-splash accepts rollback image",
+    "Original ARM check-boot-loader accepts rollback image",
+    "Exact firmware shell syntax for restored proven init and card UART wrapper"
+  ],
+  "package_path": "device-evidence/vesper-wings-firmware-20261015/fixture-compatible.bkp",
+  "package_sha256": "2b78853155c087cfaf3dab730cabbb2dabc757982626da53ddb04cb9dc7bc389",
+  "candidate_sha256": "7fda151c788d256c9bacbadeddc76d342b631459c5dea072edd6c0885dce8414",
+  "expected_after_vendor_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "restored_kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "current_flash_sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321",
+  "card_UART_payloads": {
+    "d35_uart_tx.ko": "009d1a2e726668361b0b41b0fc358f02ba3c9cf08ba1712a690c0f312cf1a1b4",
+    "init": "24280b658d52702848901df258c9e3e9c4a1c4ba876cdad03534bee67d0343fe",
+    "launch.sh": "43dac415f99f4d2cdad4aa4b1ac04e27444b83d7dcf409d373deec4a033fb71d",
+    "uart-fix-boot": "1d00fa00e3e0815ce8c30cf08132f4f1ee085f7df9a65bb56d542fc3f13731e2"
+  },
+  "module_qualification_sha256": "7a95f24c3111fe61dacb4af300966ea854a075053b1cc6df282ab9f858403086",
+  "original_Wings2_qualification_sha256": "1c6b3d999d36e410f3d47c9bab61c6ddb5fddca106a849b592e77610a4b37078",
+  "execution_sha256": "3fc11bc3c4bb35f34d6e2ca4b6860210a7f95702d4e9321fc8b5b5d86abe8564",
+  "sources": {
+    "build/prepare-battery-rollback.py": "076afc1d95432ac5015a72f21a295c895220591fb4cf82d9b0e1dc00131f9869",
+    "build/check-vendor-updater.c": "d4a46993a2a059aedf46a76fd092de0cd054c3821ec6aad5774e0199739ba35d",
+    "build/check-static-splash.c": "681a517a19e0f43f337ed0ced48445dfc8ae9d5e1810a587f9ef8f9a56a61d5f",
+    "build/check-boot-loader.c": "2671654d7e1995b3903404401a4db41d42e138c0ff51b9292e77022e9e7127e3"
+  },
+  "rootfs_both_screens_preserved": true,
+  "no_full_backup": true,
+  "physical_flash": "PENDING",
+  "battery_cause_or_repair": "UNPROVEN; rollback is a controlled diagnostic, not a confirmed repair",
+  "staging": {
+    "passed": true,
+    "checks": [
+      "none",
+      "launch",
+      "init",
+      "trigger",
+      "health-before",
+      "health-hooks",
+      "health-armed"
+    ],
+    "installer_sha256": "7faa303fa942c75cc00d7006166cfea839c49a793c021cda15a5a8ceb60a5c30",
+    "qualification_sha256": "dde570b2b72f02c3bb3b142f2122aaf6d8a180649423aeaba38216774f79a132",
+    "checker_sha256": "5e8230436dc6b296f8b6ae453b72e6d25059f0a3482ca3924eaeb4a57c97901a",
+    "card_access": false
+  },
+  "publication_sources": {
+    "prepare-battery-rollback.py": "076afc1d95432ac5015a72f21a295c895220591fb4cf82d9b0e1dc00131f9869",
+    "stage-battery-rollback.py": "7faa303fa942c75cc00d7006166cfea839c49a793c021cda15a5a8ceb60a5c30",
+    "check-battery-rollback-stage.py": "5e8230436dc6b296f8b6ae453b72e6d25059f0a3482ca3924eaeb4a57c97901a",
+    "verify-battery-rollback-card.py": "614c931d79c33f83c36077b799c4b6db2c4e04eaf3e693ad0e12fa2640d9bb6f"
+  }
+}

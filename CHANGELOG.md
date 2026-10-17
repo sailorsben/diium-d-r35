@@ -1,5 +1,12 @@
 # Changelog
 
+## Qualify exact pre-kernel battery diagnostic rollback - 2026-10-16
+
+Battery regression investigation: exact pre-kernel Wings2 rollback qualified,
+with both Vesper screens/rootfs preserved and proven card UART hook restored.
+Eleven firmware groups and seven staging cases pass. Staging pending. No game
+test or full backup. Physical rollback and battery outcome remain unproven.
+
 ## Collect kernel-UART five-game abort; retain battery regression - 2026-10-16
 
 Five-game powered return: Mario, Metroid and F-Zero complete first blocking

@@ -8023,6 +8023,14 @@
       "published_sha256": "a47985a7670106beddca78238aaf4b484f79fbbd1ededc11855346287ca9f746",
       "bytes": 4848,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/battery-rollback1/qualification.json",
+      "published": "evidence/2026-10-16/battery-rollback/qualification.json",
+      "source_sha256": "dde570b2b72f02c3bb3b142f2122aaf6d8a180649423aeaba38216774f79a132",
+      "published_sha256": "545f3019b735be4925bc1bae54995442fb97ffbe6f21dabf4fb016a70ea98d46",
+      "bytes": 3822,
+      "normalized": true
     }
   ]
 }
