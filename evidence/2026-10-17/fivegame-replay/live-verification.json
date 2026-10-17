@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "protected_existing_files_verified": 1642,
+  "payload_files_verified": 29,
+  "exact_card_file_count": 1674,
+  "exact_two_markers": true,
+  "normal_init_preserved": true,
+  "kernel_UART_preserved": true,
+  "no_firmware_update": true,
+  "FAT_clean": true,
+  "no_full_backup": true,
+  "installation_sha256": "a317f0c32afba13b2af815ab0045938cb3a7ec678200b5e1130b884972623730",
+  "checker_sha256": "430302ae3626bc4c38a61e4d3cf56b5420bf41edef715560a704f35afb7f8c12",
+  "physical_result": "PENDING"
+}

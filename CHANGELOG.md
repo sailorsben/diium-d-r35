@@ -8,9 +8,10 @@ unchanged core/plan/ROMs/states/inputs/oracles. Star Fox now has visible progres
 bounded durable call/abort records and a 60-second no-progress supervisor guard.
 Display metrics reset before native audio/measurement. Native provider, replay/
 watchdog, kernel-wrapper and installer fixtures pass. Fresh sparse archive hashes
-1,643 files, stores zero content bytes, FAT clean. Stage only the new kernel2
-profile and dispatcher/markers; retain verified kernel UART, normal init, saves,
-all earlier evidence and both Vesper screens. No firmware or full backup.
+1,643 files, stores zero content bytes, FAT clean. Armed on I: from pushed
+`9650e18`; independent full 1,674-file set, 1,642 protected hashes, 29 payloads,
+two markers, normal init and FAT pass. Verified kernel UART, all saves/evidence
+and both Vesper screens preserved; no firmware update or full backup.
 Measurement-only; physical results, A7 saving and remaining deficit pending.
 [Qualification and next physical test](docs/fivegame-replay-test.md).
 

@@ -129,6 +129,12 @@ set, all protected hashes, payloads, both markers, normal init and clean FAT.
 [Independent card check](../evidence/2026-10-17/fivegame-replay/live-verification.json).
 These receipts establish staging completion; physical results remain pending.
 
+**Armed and independently verified on I:** source `9650e18` was pushed before
+installation. The exact final 1,674-file set, all 1,642 protected existing files,
+29 payload files, both one-shot markers, original normal init and clean FAT pass
+independent readback. No firmware trigger or UART module loader is armed.
+All saves and prior evidence are preserved. Physical results remain pending.
+
 ## Physical procedure and return
 
 Safely eject I:, insert with the handheld off, keep charging power connected and
@@ -140,8 +146,8 @@ to record the stall and require a reboot rather than an unsafe immediate stock
 takeover. Do not reflash or repeat the test.
 
 When stock returns, shut down normally and reconnect I:. If stock has not returned
-by 35 minutes or a reboot-required message occurs, power off and return I: for
-partial evidence collection. Consumed markers make the next boot stock.
+by 35 minutes, or the replay counter remains unchanged for two minutes, power
+off and return I: for partial evidence collection. Consumed markers make the next boot stock.
 
 Collect sparsely before changes, then use
 `python build/report-fivegame-replay.py <archive>` for this exact profile. The
