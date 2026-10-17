@@ -44,3 +44,13 @@ Validation: `python build/check-attempt-archive.py` exercises a fake card with
 progress changes, unchanged retries, logs/results, outside-retro saves, static
 hash-only entries, fixture exclusions, corrupt content and hard-link refusal.
 The fixture verifies the source card stays byte-identical during collection.
+
+## Retired card profiles and plain-text diagnostic retention
+
+Direct diagnostic run/pass/epoch .txt/.json outputs and named root reports such
+as pcm-full.txt are retained sparsely even outside results/logs. Fixtures still
+remain hash-only. The previous gap and verified recovery are documented in
+[card test cleanup](card-test-cleanup.md). Hash-only inventory alone is never
+proof sufficient to delete unique card evidence. Retired package deletion needs
+an actual verified host byte copy for each removed file. Preserve all save/state
+paths and leave unmatched static files in place; no full-copy fallback.

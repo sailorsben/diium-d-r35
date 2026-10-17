@@ -8047,6 +8047,14 @@
       "published_sha256": "2876265da0d49c081df43b75091d86fe7deaeb3e7f270d882841923996826d1f",
       "bytes": 583,
       "normalized": true
+    },
+    {
+      "source": "device-evidence/battery-rollback-return-20261017T031941973187Z/cleanup-plan.json",
+      "published": "evidence/2026-10-16/card-test-cleanup/qualification.json",
+      "source_sha256": "0fda118cb3516c513883fe97394a9a6c9f88d8c8a189a12a82839fc687b062f4",
+      "published_sha256": "38db46e388530463b312fd257d50ddd045aa4df61ed9c38e3e336ba0619b6eb1",
+      "bytes": 1804,
+      "normalized": true
     }
   ]
 }

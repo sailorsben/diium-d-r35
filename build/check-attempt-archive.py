@@ -18,6 +18,9 @@ class SparseArchiveTests(unittest.TestCase):
                        'retro/snes-mvp/last-session.txt': b'log-one',
                        'retro/test/results/run-1/pcm-history.txt': b'trace',
                        'retro/test/plan.json': b'{"config":1}',
+                       'retro/snes-ability1/run-085/pcm-full.txt': b'previously missed native history',
+                       'retro/snes-pair1/pass-00-baseline/session.txt': b'previously missed session',
+                       'retro/snes-pair1/runtime-platform.txt': b'platform evidence',
                        'retro/test/cases/000/scene.state': b'frozen-fixture',
                        'retro/test/runner': b'executable',
                        'retro/libs/core.so': b'core',
@@ -65,10 +68,15 @@ class SparseArchiveTests(unittest.TestCase):
 
     def test_classification(self):
         for path in ('retro/states/a.0','retro/game.srm.bak','retro/game.state.bkp',
-                     'retro/uart/latest-boot.log','retro/test/results/run-1/raw.bin'):
+                     'retro/uart/latest-boot.log','retro/test/results/run-1/raw.bin',
+                     'retro/snes-ability1/run-085/pcm-full.txt',
+                     'retro/snes-pair1/pass-00-baseline/session.txt',
+                     'retro/snes-pair1/runtime-platform.txt'):
             self.assertTrue(retain(path),path)
         for path in ('retro/test/expected.bin','retro/test/plan.json','retro/init',
-                     'retro/test/cases/0/scene.state','roms/game.zip','retro/libs/core.so'):
+                     'retro/test/cases/0/scene.state','roms/game.zip','retro/libs/core.so',
+                     'retro/snes-ability1/cases/run-01/pcm-full.txt',
+                     'retro/snes-pair1/TEST-ME.txt','retro/snes-pair1/plan.json'):
             self.assertFalse(retain(path),path)
 
     def test_current_report_accepts_hash_only_payload(self):

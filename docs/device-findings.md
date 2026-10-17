@@ -1,5 +1,11 @@
 # Device findings
 
+Obsolete card test cleanup qualified: 9,405 files / about 1.29 GiB have verified
+host copies. Recover 2,046 previously unretained text logs/metadata sparsely;
+keep 683 save/state files and one unmatched executable on card. Collector gap
+fixed and tests pass. Current rollback/UART preserved; application pending.
+No full backup. [Plan and preservation](card-test-cleanup.md).
+
 Battery regression investigation: exact pre-kernel Wings2 rollback qualified,
 with both Vesper screens/rootfs preserved and proven card UART hook restored.
 Eleven firmware groups and seven staging cases pass. Armed from pushed `481415f`;

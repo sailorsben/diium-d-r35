@@ -35,7 +35,15 @@ def retain(relative):
     suffix = Path(name).suffix
     if parts & {'cases', 'fixtures', 'targeted-cases'} or suffix in {'.so', '.zip', '.sfc', '.smc', '.nes', '.gba', '.rom'}:
         return False
-    return (bool(parts & {'saves', 'states', 'snapshots', 'results', 'logs', 'captures'})
+    diagnostic = (len(p.parts) > 2 and p.parts[0].lower() == 'retro'
+                  and (p.parts[1].lower().startswith(('snes-', 'uart-', 'render-pressure', 'spi-'))
+                       or p.parts[1].lower() in {'platform-lab', 'device-survey'}))
+    run_output = any(part.lower().startswith(('run-', 'pass-', 'epoch-')) for part in p.parts[2:-1])
+    root_report = name in {'pcm-full.txt', 'runtime-platform.txt', 'runtime-platform-latest.txt',
+                          'kernel-tail.txt', 'startup-platform.txt', 'startup-processes.txt',
+                          'suite-identity.json'}
+    return ((diagnostic and ((run_output and suffix in {'.txt', '.json'}) or root_report))
+            or bool(parts & {'saves', 'states', 'snapshots', 'results', 'logs', 'captures'})
             or suffix in PROGRESS or suffix in LOGS
             or name.startswith(('last-', 'latest-', 'fault', 'crash'))
             or name in {'report.txt', 'supervisor.txt', 'suite-result.txt'})

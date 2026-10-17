@@ -1,0 +1,38 @@
+{
+  "archive": "battery-rollback-return-20261017T031941973187Z",
+  "before_file_count": 11006,
+  "planned_removed_files": 9405,
+  "planned_removed_logical_bytes": 1382325388,
+  "save_files_kept_on_card": 683,
+  "unmatched_static_files_kept": 1,
+  "verified_existing_and_sparse_host_proofs": 9405,
+  "missing_text_files_preserved": 2046,
+  "missing_text_new_unique_bytes": 855408318,
+  "plan_sha256": "0fda118cb3516c513883fe97394a9a6c9f88d8c8a189a12a82839fc687b062f4",
+  "qualification": {
+    "passed": true,
+    "checks": [
+      "success",
+      "hash_mismatch",
+      "traversal",
+      "foreign_profile",
+      "save_refusal"
+    ],
+    "executor_sha256": "b0cae922518bdbb18e284e41e70effe1ea127f2a0cdf3b2f987cf3aade2cc6bc",
+    "checker_sha256": "b1517f928cfb1ca39453ba7ba9e328b7e970f620f59f4ec049e1cb2d32e1921f",
+    "plan_sha256": "0fda118cb3516c513883fe97394a9a6c9f88d8c8a189a12a82839fc687b062f4",
+    "no_card_access": true
+  },
+  "rollback_left_armed": true,
+  "no_full_backup": true,
+  "status": "QUALIFIED; APPLY PENDING",
+  "sources": {
+    "plan-card-test-cleanup.py": "9c8e2a82d55e0d90c2d9c0b3024fbef3760f9aaa20d1eef7bc84e8c588331eaf",
+    "archive-missed-test-evidence.py": "e70247ada20ece3a23ef8763c26f0a7d342125962502bb58502cb793de9e54fa",
+    "cleanup-card-test-packages.py": "b0cae922518bdbb18e284e41e70effe1ea127f2a0cdf3b2f987cf3aade2cc6bc",
+    "check-card-test-cleanup.py": "b1517f928cfb1ca39453ba7ba9e328b7e970f620f59f4ec049e1cb2d32e1921f",
+    "verify-card-test-cleanup.py": "ff1a639465d63c859890b97b941ead61c4941ab04da3e221da17e8e92eecb411",
+    "attempt_archive.py": "d5946583a7ed704ebcba7e56c20d26ea32c14440f1536a6a03f52f1e86d242a6",
+    "check-attempt-archive.py": "3a72f1ec3d7f5b42028080c18cdb41704ea53efee8a3232ac57f2a1b97bd273d"
+  }
+}
