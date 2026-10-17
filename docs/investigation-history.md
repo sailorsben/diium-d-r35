@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Collect five-game physical return - 2026-10-16
+
+Three clean blocking windows: Mario, Metroid and F-Zero, 1,200 calls each.
+User confirms Select+Start at retained F-Zero picture; Star Fox cold replay
+records abort before measurement, normal exit 5 and safe teardown. No process
+crash or forced timeout. Ranger and all candidate windows untested; zero pairs.
+Exclude stale F-Zero PCM/input buffers from Star Fox. Reporter distinguishes
+failed-before-measurement from not-started. Sparse collection: 6,065,591 new
+bytes, clean FAT, UART/saves/evidence exact, no full backup, writes or rearm.
+[Return, preservation and next test](fivegame-physical-return.md).
+
 ## Install matched five-game physical test — 2026-10-16
 
 Install and arm `retro/snes-fivegame1` once on I: from pushed source `8ccb0a3`.

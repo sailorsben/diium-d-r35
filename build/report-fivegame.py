@@ -11,7 +11,12 @@ def analyze(base,plan,allow_mock=False):
  supervisor=kv(base/'supervisor.txt');summary=kv(base/'suite-result.txt');safe=supervisor.get('reaped')=='1' and supervisor.get('forced')=='0' and summary.get('board_closed')=='1';reports=[]
  for r in plan['runs']:
   d=base/f"run-{r['run']:03d}";s=kv(d/'last-session.txt');begin=kv(d/'begin.txt');end=kv(d/'result.txt');head=kv(d/'headroom.txt');trace=kv(d/'pcm-full.txt')
-  if not s or not (d/'frames.csv').exists():reports.append({**r,'status':'MISSING'});continue
+  if not s or not (d/'frames.csv').exists():
+   reports.append({**r,'status':'FAILED_BEFORE_MEASUREMENT' if begin and end.get('runner_rc') not in (None,'0') else 'INCOMPLETE' if begin else 'NOT_STARTED',
+    'runner_rc':end.get('runner_rc'),'error':end.get('error'),'rendered':int(s.get('rendered_frames','0')),
+    'aborted_or_stopped':summary.get('stopped')=='1' if begin else False,
+    'audio_opened':int(s.get('pcm_period_frames','0'))>0,
+    'limits':['No measured frame history; retained PCM/input buffers may belong to the preceding epoch and are not evidence for this run.'] if begin else []});continue
   mock=s.get('mock_backend')=='1';assert allow_mock or not mock,'Mock telemetry is not physical proof'
   f=rows(d/'frames.csv');input_rows=rows(d/'input.csv');correct=all(begin.get(k)==str(r[k]) for k in ('fixture','policy','repeat','load_ms'))
   complete=len(f)==1200 and [int(x['frame']) for x in f]==list(range(1200)) and len(input_rows)==1200 and s.get('runs')==s.get('rendered_frames')=='1200' and end.get('runner_rc')=='0' and not s.get('error')

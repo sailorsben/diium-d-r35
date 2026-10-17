@@ -6,13 +6,13 @@ The project replaces the launcher/runtime in userspace while retaining the worki
 
 ## Current status — 2026-10-16
 
-Matched five-game physical test installed and armed once on I: from pushed
-source `8ccb0a3`: 20 ABBA/reversed gameplay epochs. Independent readback verifies
-all 10,758 protected existing files, 27 payload files, both expected markers,
-persistent UART/init and clean FAT. Saves and prior evidence are unchanged.
-Sparse collection stored zero new content bytes; no full backup was created.
-Physical results remain pending the device run.
-[Physical test and boot instructions](docs/fivegame-physical-test.md).
+Five-game physical return: Mario, Metroid and F-Zero each complete their first
+1,200-call blocking window. Select+Start aborts Star Fox's silent cold replay
+while F-Zero remains onscreen; no process crash or forced timeout is recorded.
+Ranger and all candidate windows remain untested; zero matched policy pairs.
+Safe cleanup/stock return, UART, saves and prior evidence verify. FAT clean,
+6,065,591 new sparse evidence bytes, zero card writes, no full backup or rearm.
+[Physical return and limits](docs/fivegame-physical-return.md).
 
 Ranger black screen and Star Fox state divergence are fixed in an isolated
 candidate; a newly exposed SuperFX direct-target pixel failure uses the

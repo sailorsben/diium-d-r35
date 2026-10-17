@@ -1,5 +1,10 @@
 # Matched five-game physical test — 2026-10-16
 
+**Returned, unarmed:** three blocking windows complete; user abort during Star Fox
+replay. No matched candidate pairs or Ranger result. See the
+[physical return](fivegame-physical-return.md). The installation details below
+are historical; do not boot expecting this one-shot to rerun.
+
 **Installed and armed once on I:** source `8ccb0a3`, independently verified
 2026-10-16. All 10,758 protected prior files, 27 payload files, two markers,
 persistent UART/init and clean FAT pass. Saves and existing evidence are

@@ -7807,6 +7807,14 @@
       "published_sha256": "f2324f52370e589bd079f7872a8f32650c72b4aa329acc1873f864554cd2db70",
       "bytes": 445,
       "normalized": false
+    },
+    {
+      "source": "device-evidence/a7-pair-before-20261017T004643653155Z/retro/snes-fivegame1/results/run-6f7aeb97-c8a3-4007-86e0-436172a86fb0-483/fivegame-analysis.json",
+      "published": "evidence/2026-10-16/fivegame/return.json",
+      "source_sha256": "43b2e1c80f7cb6dda6774729c0ff43fd4cf8d837de3fbc3a6fa0640775b1be01",
+      "published_sha256": "d545423c1312b9172df66d9f80da12a3093cfb02ff0e2798821c00f342ccc471",
+      "bytes": 19138,
+      "normalized": true
     }
   ]
 }
