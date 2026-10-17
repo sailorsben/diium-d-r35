@@ -1,5 +1,11 @@
 # Device findings
 
+Internal UART firmware qualified: exact existing module/helper built into the
+Wings2 rootfs; both Vesper screens, kernel and normal boot paths preserved.
+35 offline checks and eight staging cases pass. Fresh sparse archive stores
+zero new content bytes; no full backup. Physical flash/boot/attachment pending.
+[Qualification and update instructions](uart-firmware.md).
+
 Five-game physical return: Mario, Metroid and F-Zero each complete their first
 1,200-call blocking window. Select+Start aborts Star Fox's silent cold replay
 while F-Zero remains onscreen; no process crash or forced timeout is recorded.

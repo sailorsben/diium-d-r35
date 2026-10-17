@@ -1,0 +1,115 @@
+{
+  "version": "uart-firmware1",
+  "baseline_sha256": "5c2f34e6b4451b27fa5e6782f1396d8e6a3bf485e24c0fe209b44854f77660c3",
+  "baseline_path": "device-evidence/vesper-wings-firmware-20261015/expected-after-vendor.bin",
+  "baseline_evidence": "Wings2 user-reported successful flash; post-Wings2 full SPI readback remains pending.",
+  "candidate_sha256": "fd775904a792e7a8d0bad63509dec0891c406de6932a0ef909b2f46f7ab2165d",
+  "expected_after_vendor_sha256": "8d0266046f5acf3f82e117447e653ee4e5c68fe70889f15af32936c8a18264d2",
+  "package_sha256": "ed9cd16d43fc2dde0c7792b3dbe32f53b15180804669c56f300697b8d2639425",
+  "vendor_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+  "module_sha256": "009d1a2e726668361b0b41b0fc358f02ba3c9cf08ba1712a690c0f312cf1a1b4",
+  "helper_sha256": "1d00fa00e3e0815ce8c30cf08132f4f1ee085f7df9a65bb56d542fc3f13731e2",
+  "prior_UART_qualification_sha256": "7a95f24c3111fe61dacb4af300966ea854a075053b1cc6df282ab9f858403086",
+  "rootfs_compressed_bytes": 3388469,
+  "rootfs_slot_bytes": 3406558,
+  "rootfs_margin_bytes": 18089,
+  "rootfs_bytes": 8471552,
+  "existing_cpio_changed": [
+    "init.project.rc"
+  ],
+  "added_cpio": [
+    "d35-uart",
+    "d35-uart/d35_uart_tx.ko",
+    "d35-uart/uart-fix-boot",
+    "d35-uart/launch.sh"
+  ],
+  "showlogo_sha256": "a29bd39e6f023404c0ba037cb101a19cf7aaa5be1787234cffdba853ec98486a",
+  "static_bitmap_sha256": "82616f0a09e5cb91633dc5eacf2eb1a36216de0f70e0af2375d2681482c91946",
+  "kernel_DT_boot_instructions_static_bitmap_showlogo_preserved": true,
+  "other_flash_bytes_exact_except_rootfs_and_length": true,
+  "expected_erased_blocks": [
+    "000000",
+    "0c0000",
+    "520000",
+    "530000",
+    "540000",
+    "550000",
+    "560000",
+    "570000",
+    "580000",
+    "590000",
+    "5a0000",
+    "5b0000",
+    "5c0000",
+    "5d0000",
+    "5e0000",
+    "5f0000",
+    "600000",
+    "610000",
+    "620000",
+    "630000"
+  ],
+  "expected_erase_count": 20,
+  "expected_page_count": 5120,
+  "vendor_metadata": [
+    4054022333,
+    1565548544
+  ],
+  "files": {
+    "candidate.bin": {
+      "bytes": 8388608,
+      "sha256": "fd775904a792e7a8d0bad63509dec0891c406de6932a0ef909b2f46f7ab2165d"
+    },
+    "expected-after-vendor.bin": {
+      "bytes": 8388608,
+      "sha256": "8d0266046f5acf3f82e117447e653ee4e5c68fe70889f15af32936c8a18264d2"
+    },
+    "rootfs.cpio": {
+      "bytes": 8471552,
+      "sha256": "810602847625f83fa9a6a4983aa4ccc78fc33b12b0e085c2acd84df246363dbd"
+    },
+    "rootfs.cpio.gz": {
+      "bytes": 3388469,
+      "sha256": "34c313aad60025e24c1f69c80a5ed5fa5f02e3da9c41c02cb11e4c032d0a130e"
+    },
+    "init.project.rc": {
+      "bytes": 1188,
+      "sha256": "2d3f1022d34484166edb91147153a535f94fe948410eaca5d1add40835a61f5c"
+    },
+    "firmware-launch.sh": {
+      "bytes": 1257,
+      "sha256": "ed43f6d78960eae9b6d516cfd720b5121ee89e14d18dca3ab7d5c77577d8ed85"
+    },
+    "card-launch.sh": {
+      "bytes": 1147,
+      "sha256": "3acefdb3f3628efbe4d14d3663f108cefbeb18bc10abb13ea45cbc83e2e42e4c"
+    },
+    "showlogo": {
+      "bytes": 198408,
+      "sha256": "a29bd39e6f023404c0ba037cb101a19cf7aaa5be1787234cffdba853ec98486a"
+    },
+    "fixture-compatible.bkp": {
+      "bytes": 5804499,
+      "sha256": "ed9cd16d43fc2dde0c7792b3dbe32f53b15180804669c56f300697b8d2639425"
+    },
+    "fixture-incompatible.bkp": {
+      "bytes": 5804499,
+      "sha256": "5e19a2eaff738250e064c2db550c328cfb08093301a880ec464a756cc9f0d9fb"
+    },
+    "fixture-consistent-bad-crc.bkp": {
+      "bytes": 5804499,
+      "sha256": "15fce83f5e0d9684e53c3c6b7b29aac82b0e661ce8079854ec5f69a924f290a4"
+    },
+    "fixture-missing-prefix.bkp": {
+      "bytes": 5804496,
+      "sha256": "f8e2b02baabd8701657af6b420db1d28c38d062ab425210624d811faf3a25e06"
+    },
+    "fixture-already-recorded-baseline.bin": {
+      "bytes": 8388608,
+      "sha256": "77a8c377a7d2a03cd769ae07606d1e44181ad1f240bfa8d64305e09bcbe52adc"
+    }
+  },
+  "card_access": false,
+  "physical_update": "PENDING",
+  "external_recovery_qualified": false
+}

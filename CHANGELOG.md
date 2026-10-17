@@ -1,5 +1,17 @@
 # Changelog
 
+## Qualify internal UART firmware - 2026-10-16
+
+Build the exact card-proven UART module/helper into the latest Wings2 rootfs.
+Preserve both Vesper screens, kernel, DT and boot instructions; only project
+startup changes plus four new cpio entries. 18,089 compressed-slot bytes spare.
+35 offline checks and eight staging cases pass, including original ARM
+loader/updater RAM simulation and exact firmware-shell card/internal boot.
+Card hook verifies firmware ownership without duplicate loading; safe fallback
+and uncertainty barriers remain. Sparse preservation only, no full backup.
+Qualified source awaits authorized staging; physical boot/attachment pending.
+[Image, evidence boundaries and boot](docs/uart-firmware.md).
+
 ## Collect five-game physical return - 2026-10-16
 
 Three clean blocking windows: Mario, Metroid and F-Zero, 1,200 calls each.
