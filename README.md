@@ -13,7 +13,8 @@ No runtime UART patch module or endpoint exists. IRQ19 is 85.36-86.36/s and
 remained on while plugged in. Prior shutdown cause remains unproven; low battery
 is plausible. Saves and all prior evidence unchanged; FAT clean. Sparse return
 hashes 10,906 files and adds only 8,219 evidence bytes. No full backup.
-Normal-init restoration is prepared; no tests or firmware update will remain armed.
+Original normal init restored exactly; all 10,905 other files verify unchanged.
+Independent init/file-set/unarmed/FAT checks pass. No tests or firmware update armed.
 [Boot return and read-only verification](docs/uart-kernel-return.md).
 
 Five-game physical return: Mario, Metroid and F-Zero each complete their first

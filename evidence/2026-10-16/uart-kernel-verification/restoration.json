@@ -1,0 +1,13 @@
+{
+  "source_commit": "7281e9f54f4da0a6b0722c70b6c61a87b5a95ae0",
+  "archive": "uart-kernel-return-20261017T024017469637Z",
+  "normal_init_restored_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "only_changed_path": "retro/init",
+  "protected_files_unchanged": 10905,
+  "all_file_count": 10906,
+  "all_probe_results_retained": true,
+  "no_armed_tests": true,
+  "no_update_trigger": true,
+  "FAT_clean": true,
+  "no_full_backup": true
+}

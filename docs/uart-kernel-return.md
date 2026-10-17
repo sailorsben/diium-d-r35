@@ -29,7 +29,8 @@ No runtime UART patch module or endpoint exists. IRQ19 is 85.36-86.36/s and
 remained on while plugged in. Prior shutdown cause remains unproven; low battery
 is plausible. Saves and all prior evidence unchanged; FAT clean. Sparse return
 hashes 10,906 files and adds only 8,219 evidence bytes. No full backup.
-Normal-init restoration is prepared; no tests or firmware update will remain armed.
+Original normal init restored exactly; all 10,905 other files verify unchanged.
+Independent init/file-set/unarmed/FAT checks pass. No tests or firmware update armed.
 
 Both complete 8-MiB passes match SHA256
 `ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321`;
@@ -158,3 +159,15 @@ No full backup. Cold boot plugged in, allow about two minutes (up to five) for
 stock, observe stock briefly, then power down and return I:. No reflash.
 
 [Repeat installation](../evidence/2026-10-16/uart-kernel-verification/powered-repeat-installation.json) and [independent readback](../evidence/2026-10-16/uart-kernel-verification/powered-repeat-verification.json).
+
+## Final card state after powered return
+
+Only `retro/init` changes during restoration, back to original SHA256
+`b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7`.
+All 10,905 other files match the return inventory; both runs are retained.
+Independent original-init, 10,906-file exact-set, unarmed/update-absent and FAT
+checks pass. No additional test or firmware update is armed. Normal boot uses
+the flashed corrected kernel and needs no card UART hook or runtime patch module.
+
+[Restoration](../evidence/2026-10-16/uart-kernel-verification/restoration.json) and
+[independent final check](../evidence/2026-10-16/uart-kernel-verification/restoration-independent.json).

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "normal_init_exact": true,
+  "exact_file_set_count": 10906,
+  "no_armed_tests": true,
+  "no_update_trigger": true,
+  "FAT_clean": true,
+  "full_protected_hash_verification_receipt_sha256": "7b16830598915f774cb3d3ba1022f1ed2d186aca8509188f00ee9cd0c61a85d7"
+}
