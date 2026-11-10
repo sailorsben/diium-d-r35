@@ -18,6 +18,7 @@ arm-linux-gnueabihf-gcc -std=gnu11 -O2 $flags \
   -Wl,--no-as-needed -l:libdl-2.30.so -l:libz.so.1 -l:libc-2.30.so -l:libgcc_s.so.1 -o "$out/replay"
 for mode do
     case $mode in
+        fx-budget|fx-budget-hot|dsp-table|dsp-neon|hotpaths-combined|fx-compact) prepare=build/prepare-snes-core-hotpaths.py ;;
         apu-*) prepare=build/prepare-snes-scheduler.py ;;
         raster-*) prepare=build/prepare-snes-raster.py ;;
         fx-*) prepare=build/prepare-snes-superfx.py ;;

@@ -1,5 +1,16 @@
 # Investigation history and negative results
 
+## Price Star Fox core, repeated display work and PCM reserve - 2026-11-10
+
+Use both returned A7 timing traces and the exact sample quota. An added
+1 ms per tick fits the mean deadline and produces a 9,410-frame opening
+deficit in the full-window model. Profile-guided compilation beats the
+tested DSP and Super FX dispatch changes in Star Fox ARM/QEMU pairs.
+Rotated and poisoned targets reproduce compact-output corruption despite
+a passing same-address check. The isolated board candidate skips scaler
+work only when every visible RGB565 byte matches.
+[Follow-up](snes-native-throughput-followup.md).
+
 ## Combined Star Fox playback still loses native PCM - 2026-11-10
 
 The full-tile and Super FX build flips 13 frames after the complete

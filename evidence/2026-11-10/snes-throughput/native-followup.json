@@ -1,0 +1,694 @@
+{
+  "physical_new_candidate_runs": 0,
+  "card_writes": 0,
+  "production_gate": false,
+  "pgo": {
+    "cores": {
+      "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "baseline": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+      "pgo": "0974965d71640d391cb5fdbc3f474d5056b72ae834a2fe8c6b8e66600a39cf86"
+    },
+    "pairs": [
+      {
+        "game": 3,
+        "candidate": "pgo",
+        "mode": "both-cold-off",
+        "exact_pixel_pcm_sample_count_and_layout": false,
+        "baseline": {
+          "mean_ns": 5400308,
+          "p95_ns": 10683300,
+          "first_14_mean_ns": 5756021
+        },
+        "candidate_timing": {
+          "mean_ns": 4971274,
+          "p95_ns": 10085200,
+          "first_14_mean_ns": 5287936
+        },
+        "saved_percent": 7.9446,
+        "log_sha256": "642825e517167128c5e7e36b3b70b4e34222761947fff8bef4765f448224237c"
+      },
+      {
+        "game": 3,
+        "candidate": "pgo",
+        "mode": "both-cold-off-device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 5346608,
+          "p95_ns": 10408600,
+          "first_14_mean_ns": 5961679
+        },
+        "candidate_timing": {
+          "mean_ns": 4994314,
+          "p95_ns": 10053400,
+          "first_14_mean_ns": 5728907
+        },
+        "saved_percent": 6.5891,
+        "log_sha256": "8f59b69f5590b90f53c829e6d49148e599eb2c38bb4df9aabbb08705bda8ace4"
+      },
+      {
+        "game": 0,
+        "candidate": "pgo",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 4310072,
+          "p95_ns": 6134100,
+          "first_14_mean_ns": 6759936
+        },
+        "candidate_timing": {
+          "mean_ns": 3999750,
+          "p95_ns": 5824800,
+          "first_14_mean_ns": 6183043
+        },
+        "saved_percent": 7.1999,
+        "log_sha256": "8d9f54a7b188852a8e83cfc0a9366ae994aae3bf3b1ebd84b50de50d6f4e20df"
+      },
+      {
+        "game": 1,
+        "candidate": "pgo",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 3949710,
+          "p95_ns": 5548200,
+          "first_14_mean_ns": 5396943
+        },
+        "candidate_timing": {
+          "mean_ns": 3488105,
+          "p95_ns": 5049700,
+          "first_14_mean_ns": 5457836
+        },
+        "saved_percent": 11.6871,
+        "log_sha256": "a0a916bddeeabd0a4d7bda4a0fc524e6814757b7e9870bea0deff293d65d2dc6"
+      },
+      {
+        "game": 2,
+        "candidate": "pgo",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 4301102,
+          "p95_ns": 6086900,
+          "first_14_mean_ns": 6155564
+        },
+        "candidate_timing": {
+          "mean_ns": 4029910,
+          "p95_ns": 6006900,
+          "first_14_mean_ns": 5107271
+        },
+        "saved_percent": 6.3052,
+        "log_sha256": "43c0119be0686316a083b38c1dbbfbfc26e1753a0ef2ca4adbfb6a330d30c349"
+      },
+      {
+        "game": 4,
+        "candidate": "pgo",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 4543835,
+          "p95_ns": 6711300,
+          "first_14_mean_ns": 5504786
+        },
+        "candidate_timing": {
+          "mean_ns": 4379228,
+          "p95_ns": 6693300,
+          "first_14_mean_ns": 5969500
+        },
+        "saved_percent": 3.6226,
+        "log_sha256": "bc046ff82490356a7c6f3ecfe0ca947ef9c183d85c240454125d45f0fd4d1214"
+      }
+    ],
+    "source_hashes": {
+      "snes-throughput-pair.c": "f6ce6c188cc9d5f2d8e1218997ebf85dcae3aff382e4e3eeea308c1bb21a254b",
+      "snes-throughput-replay.c": "83cf3283af7d21a2c3d9cfacf212234f1351cc313e52f921ad171e357691c6ef",
+      "run-snes-throughput-pair.py": "36e67e319d3f7dc7e04c3747898c2af888ab7c8b6db34d2783b1b607f25a3457"
+    },
+    "pair_sha256": "5cd3d92382a6891294bdcdc251e8b60b192c0414c296bb6fc8b71ee49fae6bb0",
+    "training_games": [
+      0,
+      1,
+      3
+    ],
+    "holdout_games": [
+      2,
+      4
+    ],
+    "baseline_text_bytes": 651556,
+    "pgo_text_bytes": 472148,
+    "glibc_versions": [
+      "GLIBC_2.4",
+      "GLIBC_2.7"
+    ],
+    "compiler": "13.3.0",
+    "training_log_hashes": {
+      "0": "ad18bb4de83c29d3365c8c8c9f722c005d50dfc58ad8a5ed595a4ad2d762641d",
+      "1": "3328350cd3d8d891b3f07f8c2d5d5a878b8e1a80fb649ee077ee41ff651f159e",
+      "3": "1726f64a57233e55042a02d6f9387296387e0b21c75d961b634948c7c428ffc1"
+    },
+    "identical_ELF_control": {
+      "game": 3,
+      "candidate": "same",
+      "mode": "both-cold-off",
+      "exact_pixel_pcm_sample_count_and_layout": false,
+      "baseline": {
+        "mean_ns": 4659679,
+        "p95_ns": 8487100,
+        "first_14_mean_ns": 6358586
+      },
+      "candidate_timing": {
+        "mean_ns": 4683548,
+        "p95_ns": 8513900,
+        "first_14_mean_ns": 6009350
+      },
+      "saved_percent": -0.5122,
+      "log_sha256": "698da070aff8f1cbf781c3757f404da8ccbedd661b0cb5904131c5aae0b8b9d3"
+    },
+    "strict_holdouts": {
+      "core_sha256": "0974965d71640d391cb5fdbc3f474d5056b72ae834a2fe8c6b8e66600a39cf86",
+      "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "tests": [
+        {
+          "scenario": "meteor",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "quasar",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "ranger",
+          "calls": 2400,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+          "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+        }
+      ],
+      "device_executed": false
+    }
+  },
+  "smaller_core_changes": {
+    "cores": {
+      "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "baseline": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+      "fx-budget": "88d47225d3ca4df4e44f39881a66dd5cdd0884d2fac50116c2a716245ca984df",
+      "fx-budget-hot": "c91ba90f9b95f77ecb437cf4e567b2865d67eddb2c7fa8953a6dcc698b445d98",
+      "dsp-table": "4293c7bc40f26cda8a89447eb60e8a9a0204ff4216dacdc8ee74540dc8bcd11c",
+      "dsp-neon": "47817a9920a1026c34eceae2cb6d4fabeec92b360d12aa6e5c11f8683c7688ee",
+      "hotpaths-combined": "d7555da2a4b749bb8bb32957cc1a597ff4aa0114a06959d0dc57d29a5d99deb6"
+    },
+    "pairs": [
+      {
+        "game": 3,
+        "candidate": "fx-budget",
+        "mode": "both-cold-off",
+        "exact_pixel_pcm_sample_count_and_layout": false,
+        "baseline": {
+          "mean_ns": 10357511,
+          "p95_ns": 19487100,
+          "first_14_mean_ns": 11736729
+        },
+        "candidate_timing": {
+          "mean_ns": 10341813,
+          "p95_ns": 19354500,
+          "first_14_mean_ns": 12269293
+        },
+        "saved_percent": 0.1516,
+        "log_sha256": "321545d87c671532f4bee776f12390d756ea595d9f283c4c82ae72a7de733fc2"
+      },
+      {
+        "game": 3,
+        "candidate": "hotpaths-combined",
+        "mode": "both-cold-off",
+        "exact_pixel_pcm_sample_count_and_layout": false,
+        "baseline": {
+          "mean_ns": 8070732,
+          "p95_ns": 15012300,
+          "first_14_mean_ns": 8356786
+        },
+        "candidate_timing": {
+          "mean_ns": 7991898,
+          "p95_ns": 15450700,
+          "first_14_mean_ns": 8279057
+        },
+        "saved_percent": 0.9768,
+        "log_sha256": "597d7e6ad620a0797d7355edff37bd27c09d3d3239615512ac4e0f77aff00cb0"
+      },
+      {
+        "game": 2,
+        "candidate": "dsp-table",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 5649292,
+          "p95_ns": 9012900,
+          "first_14_mean_ns": 10105157
+        },
+        "candidate_timing": {
+          "mean_ns": 5623660,
+          "p95_ns": 9702100,
+          "first_14_mean_ns": 10361893
+        },
+        "saved_percent": 0.4537,
+        "log_sha256": "3287ed313032cb2ac14835f50e3e7c42849d4f3590f4f627b9e11067b3d4b900"
+      },
+      {
+        "game": 3,
+        "candidate": "fx-budget",
+        "mode": "both-cold-off-device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 10355670,
+          "p95_ns": 19537200,
+          "first_14_mean_ns": 12350879
+        },
+        "candidate_timing": {
+          "mean_ns": 10254497,
+          "p95_ns": 19549800,
+          "first_14_mean_ns": 12785264
+        },
+        "saved_percent": 0.977,
+        "log_sha256": "f00abaf2548b6244cd78560ed6da629258fbb9efa9b823409517fef47c69dd48"
+      },
+      {
+        "game": 3,
+        "candidate": "hotpaths-combined",
+        "mode": "both-cold-off-device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 8196884,
+          "p95_ns": 15505900,
+          "first_14_mean_ns": 8589664
+        },
+        "candidate_timing": {
+          "mean_ns": 8094487,
+          "p95_ns": 15541700,
+          "first_14_mean_ns": 8414736
+        },
+        "saved_percent": 1.2492,
+        "log_sha256": "34ba50b3c87bfc953e251b2a6ec6980850201d1b3fefba9526bb32079fa2a662"
+      },
+      {
+        "game": 2,
+        "candidate": "dsp-neon",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 5504006,
+          "p95_ns": 8561500,
+          "first_14_mean_ns": 8733836
+        },
+        "candidate_timing": {
+          "mean_ns": 5542079,
+          "p95_ns": 9130400,
+          "first_14_mean_ns": 9266607
+        },
+        "saved_percent": -0.6917,
+        "log_sha256": "c86e50cb0f798e92463f61d5de8dc36db69936f5bf93262db31f4804753e23e6"
+      },
+      {
+        "game": 3,
+        "candidate": "fx-budget-hot",
+        "mode": "both-cold-off",
+        "exact_pixel_pcm_sample_count_and_layout": false,
+        "baseline": {
+          "mean_ns": 10410202,
+          "p95_ns": 19833400,
+          "first_14_mean_ns": 11927693
+        },
+        "candidate_timing": {
+          "mean_ns": 10408847,
+          "p95_ns": 20053300,
+          "first_14_mean_ns": 11526207
+        },
+        "saved_percent": 0.013,
+        "log_sha256": "a39a0e90d4adff6a847477fa16d2dfabf41b5a67e207a352b7b32cb34d529338"
+      },
+      {
+        "game": 0,
+        "candidate": "dsp-table",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 7846054,
+          "p95_ns": 13390700,
+          "first_14_mean_ns": 8838636
+        },
+        "candidate_timing": {
+          "mean_ns": 7854732,
+          "p95_ns": 13842300,
+          "first_14_mean_ns": 9120343
+        },
+        "saved_percent": -0.1106,
+        "log_sha256": "b57b9ef19704a481f87822206aed71a46034302c122f1415f5aaa367312ebd32"
+      },
+      {
+        "game": 2,
+        "candidate": "hotpaths-combined",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 7332412,
+          "p95_ns": 12490100,
+          "first_14_mean_ns": 11029593
+        },
+        "candidate_timing": {
+          "mean_ns": 7131978,
+          "p95_ns": 12180300,
+          "first_14_mean_ns": 10883971
+        },
+        "saved_percent": 2.7335,
+        "log_sha256": "8eb3b74509fb38e65eaf4746e6678af7db1c3fecef9faa920f8bdc5a5bac1ca4"
+      },
+      {
+        "game": 3,
+        "candidate": "fx-budget-hot",
+        "mode": "both-cold-off-device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 10288381,
+          "p95_ns": 19341200,
+          "first_14_mean_ns": 12004636
+        },
+        "candidate_timing": {
+          "mean_ns": 10380003,
+          "p95_ns": 20009900,
+          "first_14_mean_ns": 12602550
+        },
+        "saved_percent": -0.8905,
+        "log_sha256": "0a7a8616063c24240385e7b809240369216fa3c20a7951d016c5db353d7da53c"
+      },
+      {
+        "game": 0,
+        "candidate": "dsp-neon",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 7766695,
+          "p95_ns": 13686300,
+          "first_14_mean_ns": 9441379
+        },
+        "candidate_timing": {
+          "mean_ns": 7623939,
+          "p95_ns": 13760700,
+          "first_14_mean_ns": 9556921
+        },
+        "saved_percent": 1.8381,
+        "log_sha256": "7d63bc8e72adac798bf935c5bc496853d13fffc0ae1c506e525635e04f668bc9"
+      },
+      {
+        "game": 4,
+        "candidate": "dsp-table",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 8021338,
+          "p95_ns": 13286900,
+          "first_14_mean_ns": 13392664
+        },
+        "candidate_timing": {
+          "mean_ns": 8055275,
+          "p95_ns": 13275800,
+          "first_14_mean_ns": 13626029
+        },
+        "saved_percent": -0.4231,
+        "log_sha256": "ffba7d436e13a020ec8a2ae2c6c82022c25cc3a805559b7ffe8112d2d9f81373"
+      },
+      {
+        "game": 3,
+        "candidate": "dsp-table",
+        "mode": "both-cold-off",
+        "exact_pixel_pcm_sample_count_and_layout": false,
+        "baseline": {
+          "mean_ns": 10237613,
+          "p95_ns": 18402400,
+          "first_14_mean_ns": 11532043
+        },
+        "candidate_timing": {
+          "mean_ns": 10121493,
+          "p95_ns": 18765500,
+          "first_14_mean_ns": 10824414
+        },
+        "saved_percent": 1.1342,
+        "log_sha256": "7ed415132f5a99077300ff76478f561c5fbc79c872c437c63ba062dd714e4f61"
+      },
+      {
+        "game": 0,
+        "candidate": "hotpaths-combined",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 7466964,
+          "p95_ns": 13366700,
+          "first_14_mean_ns": 8648307
+        },
+        "candidate_timing": {
+          "mean_ns": 7186107,
+          "p95_ns": 12790200,
+          "first_14_mean_ns": 8538621
+        },
+        "saved_percent": 3.7613,
+        "log_sha256": "117e6f22f8ef64d037c6cfe1a2b2aad6310fbaabeb1adb96771e429240553b81"
+      },
+      {
+        "game": 4,
+        "candidate": "dsp-neon",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 8401126,
+          "p95_ns": 14085800,
+          "first_14_mean_ns": 11315971
+        },
+        "candidate_timing": {
+          "mean_ns": 8363195,
+          "p95_ns": 14220400,
+          "first_14_mean_ns": 12426971
+        },
+        "saved_percent": 0.4515,
+        "log_sha256": "4a55ff3f7e5084e4209fbd8f1e686e5d169f813d39c2f8d9fe526797368449a2"
+      },
+      {
+        "game": 3,
+        "candidate": "dsp-table",
+        "mode": "both-cold-off-device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 10599374,
+          "p95_ns": 19834400,
+          "first_14_mean_ns": 12084864
+        },
+        "candidate_timing": {
+          "mean_ns": 10696832,
+          "p95_ns": 20705700,
+          "first_14_mean_ns": 11417850
+        },
+        "saved_percent": -0.9195,
+        "log_sha256": "b910c6f812bfcffbdb37c4358609f3689e4441d34ecc2de604fb3138aca59099"
+      },
+      {
+        "game": 1,
+        "candidate": "dsp-table",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 9173334,
+          "p95_ns": 16818100,
+          "first_14_mean_ns": 12519200
+        },
+        "candidate_timing": {
+          "mean_ns": 8909520,
+          "p95_ns": 16592500,
+          "first_14_mean_ns": 14830957
+        },
+        "saved_percent": 2.8759,
+        "log_sha256": "6764c1e56aecb2e0464016210682af4c622454ed9710b3a4da561a35bcc61f40"
+      },
+      {
+        "game": 4,
+        "candidate": "hotpaths-combined",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 7912373,
+          "p95_ns": 14975300,
+          "first_14_mean_ns": 19432850
+        },
+        "candidate_timing": {
+          "mean_ns": 7458381,
+          "p95_ns": 14083900,
+          "first_14_mean_ns": 18537407
+        },
+        "saved_percent": 5.7377,
+        "log_sha256": "9744ddd48fd2fb54e49c7ef2f1b7880d62ba235fde4757ea1471e7f9abb41256"
+      },
+      {
+        "game": 3,
+        "candidate": "dsp-neon",
+        "mode": "both-cold-off",
+        "exact_pixel_pcm_sample_count_and_layout": false,
+        "baseline": {
+          "mean_ns": 11001019,
+          "p95_ns": 21143400,
+          "first_14_mean_ns": 11121536
+        },
+        "candidate_timing": {
+          "mean_ns": 11174288,
+          "p95_ns": 20932600,
+          "first_14_mean_ns": 11689664
+        },
+        "saved_percent": -1.575,
+        "log_sha256": "91eabc25dd404bf0d552fe9ccaed3b552d5f85545b9180f7b9cd007f8e2a7c2f"
+      },
+      {
+        "game": 1,
+        "candidate": "dsp-neon",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 9133889,
+          "p95_ns": 16939500,
+          "first_14_mean_ns": 11817279
+        },
+        "candidate_timing": {
+          "mean_ns": 8913004,
+          "p95_ns": 16589900,
+          "first_14_mean_ns": 10726907
+        },
+        "saved_percent": 2.4183,
+        "log_sha256": "cf258893bef1aa31e250f3af3b2dc1f7f57b70af2bb74eb6997a8b8a4c93d296"
+      },
+      {
+        "game": 3,
+        "candidate": "dsp-neon",
+        "mode": "both-cold-off-device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 10490927,
+          "p95_ns": 19715900,
+          "first_14_mean_ns": 11590707
+        },
+        "candidate_timing": {
+          "mean_ns": 10657286,
+          "p95_ns": 19428500,
+          "first_14_mean_ns": 12354364
+        },
+        "saved_percent": -1.5857,
+        "log_sha256": "a3b96311d87eef72a32cf4e203f6e8d074c3b21aa260a96668d784b3c3bca6c5"
+      },
+      {
+        "game": 1,
+        "candidate": "hotpaths-combined",
+        "mode": "device",
+        "exact_pixel_pcm_sample_count_and_layout": true,
+        "baseline": {
+          "mean_ns": 7502727,
+          "p95_ns": 13417100,
+          "first_14_mean_ns": 7802471
+        },
+        "candidate_timing": {
+          "mean_ns": 7144258,
+          "p95_ns": 12776900,
+          "first_14_mean_ns": 8066857
+        },
+        "saved_percent": 4.7778,
+        "log_sha256": "18694b3f6948ff7dc13200e8e603ad78f9947d7e88baf7a4eb0c1155f3500654"
+      }
+    ],
+    "source_hashes": {
+      "snes-throughput-pair.c": "f6ce6c188cc9d5f2d8e1218997ebf85dcae3aff382e4e3eeea308c1bb21a254b",
+      "snes-throughput-replay.c": "aa921fb1dab51064ffea8ccf41e56fac60e39879d9aa6d6ac00a06be419fb188",
+      "run-snes-throughput-pair.py": "36e67e319d3f7dc7e04c3747898c2af888ab7c8b6db34d2783b1b607f25a3457"
+    },
+    "pair_sha256": "75160b5a87798952338f93d57baa62c46b90ac182889e866d3dd73de3d21a6b4"
+  },
+  "compact": {
+    "single_target_exact": 1200,
+    "rotating_target_mismatch": 300,
+    "poisoned_target_mismatch": 398,
+    "first_three_failed_frames": [
+      2,
+      5,
+      8
+    ],
+    "poison_unchanged_pixels_per_failed_frame": 57344,
+    "ppu_executed_on_failed_frames": true,
+    "comparison_sha256": "87e7d0fd3a93466020ca993199e2cbb10fd2f0f06074cae00ad554a301bb0a08",
+    "profile_sha256": "858d77c7314e06ea66bf795419a0a5e1f1fb9c28c5d576b2b2ecaff45cc69d61"
+  },
+  "display": {
+    "replay": [
+      {
+        "game": 0,
+        "reused": 338,
+        "direct_reused": 338,
+        "repacked": 0,
+        "repacks_avoided": 0,
+        "compare_ns": 49352900,
+        "repack_ns": 0,
+        "avoided_repack_ns": 0,
+        "log_sha256": "c826c5a851eff378ca426174a76b6c1ff91787985a307dcedfb6590cd7c8fb74"
+      },
+      {
+        "game": 1,
+        "reused": 501,
+        "direct_reused": 501,
+        "repacked": 0,
+        "repacks_avoided": 0,
+        "compare_ns": 60087000,
+        "repack_ns": 0,
+        "avoided_repack_ns": 0,
+        "log_sha256": "de68fd60b070d83b85208714cb06fa73acc47999607bef15aaefc02c477854e4"
+      },
+      {
+        "game": 2,
+        "reused": 0,
+        "direct_reused": 0,
+        "repacked": 0,
+        "repacks_avoided": 0,
+        "compare_ns": 11424500,
+        "repack_ns": 0,
+        "avoided_repack_ns": 0,
+        "log_sha256": "6beda3faa5e8ba94fa8b21feb03df419e19f56b28ff2f803c25a2498f315b147"
+      },
+      {
+        "game": 3,
+        "reused": 801,
+        "direct_reused": 0,
+        "repacked": 1200,
+        "repacks_avoided": 801,
+        "compare_ns": 111806200,
+        "repack_ns": 46138600,
+        "avoided_repack_ns": 26197600,
+        "log_sha256": "9f9e716ff15739cba6214ea12200a0d3e4fbd18dad68e51b8f60b41fe302ce62"
+      },
+      {
+        "game": 4,
+        "reused": 0,
+        "direct_reused": 0,
+        "repacked": 0,
+        "repacks_avoided": 0,
+        "compare_ns": 9812900,
+        "repack_ns": 0,
+        "avoided_repack_ns": 0,
+        "log_sha256": "ce4dd981ce4cae41a708fb8ab61093c127a2de512f19cc10ad520d141d721127"
+      }
+    ],
+    "stub_worker_reused": 800,
+    "stub_worker_ordered_flips": 400,
+    "worker_fixture_sha256": "56ed6221be8ef5d3553158ea425b9c92a9650b31d0167a6978dfb0df938dc331",
+    "controller_sha256": "c97318318933356a6c2ee3fd9c4d10e1600baed6fecf388d979fef4e9768e986",
+    "supervised_mock_exact_calls": 1200,
+    "supervised_mock_hardware_output": false,
+    "physical_opening_mean_copy_wall_ns": 863000,
+    "physical_opening_mean_display_worker_cpu_ns": 767462,
+    "measurement_sink_tested": true,
+    "measurement_sink_resampled_frames": 883136
+  },
+  "reserve_sensitivity_sha256": "6d9f4f8b62f3cfd9540aef5714fc2426667caf56aa23a2747db647660d50b9d5"
+}

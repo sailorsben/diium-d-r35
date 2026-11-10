@@ -137,6 +137,22 @@ def superfx(out, build, names):
     run_pairs(out, cores, tasks)
 
 
+def core_hotpaths(out, control, build):
+    names = ('fx-budget', 'fx-budget-hot', 'dsp-table', 'dsp-neon', 'hotpaths-combined')
+    cores = {'physical': FIX/'plus-a7.so', 'baseline': control}
+    cores.update({name: build/name/'snes9x2005_plus_libretro.so' for name in names})
+    tasks = [(3, name, mode) for name in names for mode in ('both-cold-off', 'both-cold-off-device')]
+    tasks.extend((game, name, 'device') for game in (0, 1, 2, 4) for name in names[2:])
+    run_pairs(out, cores, tasks)
+
+
+def core_pgo(out, control, candidate):
+    cores = {'physical': FIX/'plus-a7.so', 'baseline': control, 'pgo': candidate}
+    tasks = [(3, 'pgo', mode) for mode in ('both-cold-off', 'both-cold-off-device')]
+    tasks.extend((game, 'pgo', 'device') for game in (0, 1, 2, 4))
+    run_pairs(out, cores, tasks)
+
+
 if __name__=='__main__':
     if sys.argv[1]=='--raster':
         raster(*(Path(x).resolve() for x in sys.argv[2:5]), sys.argv[5:])
@@ -144,6 +160,10 @@ if __name__=='__main__':
         raster_ablation(*(Path(x).resolve() for x in sys.argv[2:4]), sys.argv[4:])
     elif sys.argv[1]=='--superfx':
         superfx(*(Path(x).resolve() for x in sys.argv[2:4]), sys.argv[4:])
+    elif sys.argv[1]=='--core-hotpaths':
+        core_hotpaths(*(Path(x).resolve() for x in sys.argv[2:]))
+    elif sys.argv[1]=='--core-pgo':
+        core_pgo(*(Path(x).resolve() for x in sys.argv[2:]))
     elif sys.argv[1]=='--scheduler':
         scheduler(*(Path(x).resolve() for x in sys.argv[2:]))
     elif sys.argv[1]=='--scheduler-followup':

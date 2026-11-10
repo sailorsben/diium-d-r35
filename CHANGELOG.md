@@ -1,5 +1,14 @@
 # Changelog
 
+## Prototype profile-guided SNES and exact display reuse - 2026-11-10
+
+Relink the combined core with the actual ARM replay profile. All five
+games and three held-out checks preserve output. The isolated board
+candidate retains ordered changed frames and compares repeated pixels
+before repacking or invoking the scaler. Model audio reserve across the
+full physical core trace to define the next measurement.
+[Throughput follow-up](docs/snes-native-throughput-followup.md).
+
 ## Capture the combined native Star Fox playback failure - 2026-11-10
 
 The complete cold replay reaches 13 LCD flips before native PCM stops

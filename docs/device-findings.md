@@ -1,5 +1,14 @@
 # Device findings
 
+**Throughput follow-up (2026-11-10).** Profile-guided compilation saves
+6.6–7.9% in the paired Star Fox ARM/QEMU replay and 3.6–11.7% in the
+other four games, with exact output. The renderer can return a compact
+target without writing any visible pixels. Retaining the full layout and
+checking byte equality makes 801 of 1,200 Star Fox scaler jobs redundant.
+The native reserve model shows why a viable mean can still empty the PCM
+ring. Physical savings and complete reserve recovery are pending.
+[Measurements and prototypes](snes-native-throughput-followup.md).
+
 **Native combined-core return (2026-11-10).** Star Fox completes the full
 cold replay and 13 LCD flips. Native PCM returns errno 77 in SETUP during
 call 14, with the same 384-frame application-pointer drift as the older

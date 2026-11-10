@@ -16,6 +16,12 @@ static int enable=3, verify, pixels;
 static uint16_t buttons;
 static uint32_t pixel_crc, pcm_crc, samples, videos, callback_layout;
 static uint16_t target[512*240/2+128] __attribute__((aligned(64)));
+static const void *offered_target;
+static unsigned direct_frames;
+static bool direct_frame;
+#ifdef D35_DISPLAY_REUSE_PROBE
+static void display_probe(const void *, unsigned, unsigned, size_t);
+#endif
 
 static bool env(unsigned cmd, void *arg) {
     switch (cmd) {
@@ -32,6 +38,11 @@ static bool env(unsigned cmd, void *arg) {
 static void video(const void *p, unsigned w, unsigned h, size_t pitch) {
     if (!p) return;
     ++videos;
+    direct_frame=p == offered_target;
+    direct_frames += direct_frame;
+#ifdef D35_DISPLAY_REUSE_PROBE
+    if (verify) display_probe(p,w,h,pitch);
+#endif
     if (verify && pixels)
         for (unsigned y=0;y<h;++y) pixel_crc=crc32(pixel_crc,(const uint8_t *)p+y*pitch,2*w);
 }
@@ -75,13 +86,17 @@ static uint64_t cpu(void) {
     struct timespec t; assert(!clock_gettime(CLOCK_THREAD_CPUTIME_ID,&t));
     return (uint64_t)t.tv_sec*1000000000+t.tv_nsec;
 }
+#ifdef D35_DISPLAY_REUSE_PROBE
+#include "snes-display-reuse-probe.h"
+#endif
 
 int main(int argc,char **argv) {
     /* mode = full | cold-off | cold-tail | off | half | no-target | oracle-reuse.
      * off/half are ablations, not proposals for full presentation. */
     assert(argc==6);
     const char *mode=argv[4];
-    int cold_off=!strcmp(mode,"cold-off"), cold_tail=!strcmp(mode,"cold-tail"),
+    int rotate=!strcmp(mode,"cold-rotate"), poison=!strcmp(mode,"cold-poison");
+    int cold_off=!strcmp(mode,"cold-off") || rotate || poison, cold_tail=!strcmp(mode,"cold-tail"),
         off=!strcmp(mode,"off"), half=!strcmp(mode,"half"), no_target=!strcmp(mode,"no-target"),
         oracle_reuse=!strcmp(mode,"oracle-reuse");
     assert(cold_off||cold_tail||off||half||no_target||oracle_reuse||!strcmp(mode,"full"));
@@ -151,12 +166,22 @@ int main(int argc,char **argv) {
     unsigned match=0,mismatch=0,first=1200,published=0,audio_frames=0,previous_crc=0;
     unsigned reuse_eligible=0,reuse_matches=0,reuse_false=0;
     unsigned span[7], span_totals[7]={0}, span_false=0;
+    unsigned direct_mismatches=0;
+    static uint16_t rotating[3][sizeof(target)/sizeof(*target)] __attribute__((aligned(64)));
+    direct_frames=0;
     for(unsigned i=0;i<1200;i++) {
         unsigned reuse=oracle_reuse && i && expected[3*i]==expected[3*(i-1)];
         enable=(off||(half && i%2)||reuse)?2:3;
         pixels=enable&1;
         buttons=gameplay[i]; pixel_crc=pcm_crc=samples=videos=0;
-        if (pixels && !no_target) assert(acquire(target+32,sizeof(target)-64));
+        offered_target=NULL;
+        direct_frame=false;
+        if (pixels && !no_target && (!rotate || i%4 != 3)) {
+            uint16_t *storage=(rotate || poison)?rotating[i%3]:target;
+            if (poison) memset(storage,(int)(i%255+1),sizeof(target));
+            offered_target=storage+32;
+            assert(acquire(storage+32,sizeof(target)-64));
+        }
         uint64_t start=cpu(); run(); block[i]=cpu()-start;
         assert(videos==(unsigned)pixels);
         published+=videos; audio_frames+=samples;
@@ -166,6 +191,7 @@ int main(int argc,char **argv) {
                 if(!mismatch) {first=i;fprintf(stderr,"first mismatch frame=%u pixels=%d pcm=%d sample_count=%d\n",i,
                     (pixels||reuse)&&pixel_crc!=expected[3*i],pcm_crc!=expected[3*i+1],samples!=expected[3*i+2]);}
                 ++mismatch;
+                direct_mismatches+=direct_frame;
             } else ++match;
             previous_crc=pixel_crc;
             const uint32_t boundary=UINT32_MAX;
@@ -237,6 +263,10 @@ int main(int argc,char **argv) {
         printf("port_census accesses=%"PRIu64" empty=%"PRIu64"\n",fx[0],fx[1]);
     }
     if(verify) printf("callback_layout=%08"PRIx32"\n",callback_layout);
+    if (rotate || poison) printf("direct_frames=%u direct_mismatches=%u\n",direct_frames,direct_mismatches);
+#ifdef D35_DISPLAY_REUSE_PROBE
+    display_probe_report();
+#endif
     printf("published=%u audio_frames=%u verified=%u mismatched=%u first_mismatch=%u\n",
            published,audio_frames,match,mismatch,first);
     unload_game();deinit();dlclose(handle);free(rom);free(expected);
