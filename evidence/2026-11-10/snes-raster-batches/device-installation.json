@@ -1,0 +1,36 @@
+{
+  "source_commit": "cb9de9992375c8a170b6fc92821f0909ee7290b3",
+  "target": "retro/snes-raster-test1",
+  "measurement_only": true,
+  "physical_result": "PENDING",
+  "pairs_armed": 12,
+  "candidate_cores_staged": 6,
+  "prior_archive": "uart-kernel-return-20261110T190430538898Z",
+  "prior_files": 1881,
+  "dispatch_sha256": "284966a8004ef67831156deff034ab6a6412fcc8577951add7e52b91f4771401",
+  "marker_sha256": "9d42fe052dea4f2ae22e80839c4f996184b25383278f323ef57f3c387e810d47",
+  "payload_hashes": {
+    "cores/raster-objects-wide.so": "1b5aa12599b6dedf907522b20521c94063a3fcc510513cedff1bf5d427fdd696",
+    "cores/raster-objects.so": "37637a16a6882b972d83400089747129d73b07cf64c5c8fab23281e52663fc28",
+    "cores/raster-offset-full.so": "c5068b07f927b5a634e6edb045ba1f2b1c2b9ae3afb9437d6a200343756ae89f",
+    "cores/raster-offset-neon-isolated.so": "f40fb861c1339809b3720dab9f8192bba758d2429c7581d666e45f838dd90c99",
+    "cores/raster-offset-neon.so": "b3df3ac76d4d542acccff0b0ad9d06ed179437e9aae02971646500736708745e",
+    "cores/raster-offset.so": "31b837c19c188b353e60c808f9ec9f8c32f8aad202e728bb2cfe69e0b7b06747",
+    "pair": "56d4125409e6add48cba16fc8cc4450c1ab09aed1ae7f55fe8d09c36e1d51903",
+    "launch.sh": "3ac0c5671006b04e3352bd4f290ba5dc223f295bd458d512f5366f6275cd1250",
+    "qualification.json": "4c4da50403eee1d32e2f9bcabdf3fdd6a7b456f0622fd797e207a0f7935220b5",
+    "previous-launch.sh": "d09fffc17a50c01e03d3f16ebbe8382168adc1d9ae3fc8fb06e01762eeda9416"
+  },
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "qualification_sha256": "4c4da50403eee1d32e2f9bcabdf3fdd6a7b456f0622fd797e207a0f7935220b5",
+  "new_device_firmware": false,
+  "full_backup_created": false,
+  "exact_card_files": 1893,
+  "protected_existing_files": 1880,
+  "armed_markers": [
+    "retro/snes-mvp/armed",
+    "retro/snes-raster-test1/armed"
+  ],
+  "FAT_clean": true,
+  "one_shot_verified": true
+}

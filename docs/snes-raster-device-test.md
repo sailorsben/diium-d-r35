@@ -1,5 +1,11 @@
 # One-shot A7 raster measurement
 
+Armed and independently verified on I: from source `cb9de99`. Readback
+matched both one-shot markers, all 10 payloads and 1,880 protected files.
+FAT and normal boot init passed. The sparse archive added zero new content
+bytes. Physical execution is pending.
+[Card verification](../evidence/2026-11-10/snes-raster-batches/device-installation.json).
+
 The card profile runs the stock returned core against separate raster
 candidates with the frozen inputs already on the card. The experiment opens
 neither the display API nor native PCM. This lets Star Fox reach the whole

@@ -1,11 +1,13 @@
 # Changelog
 
-## Prepare a one-shot physical raster timing test - 2026-11-10
+## Arm a one-shot physical raster timing test - 2026-11-10
 
 Compare clipped and full-tile raster strips across the five frozen games
 using kernel CPU and wall clocks on the A7. The 12-pair one-shot matrix also
 checks two sprite cases. It verifies emitted pixels and PCM in memory so
 the prior Star Fox native PCM failure cannot end the replay early.
+All six raster builds are staged. Both boot markers, 10 payload files,
+1,880 protected files and clean FAT verify on I:. Physical execution is pending.
 [Card test procedure](docs/snes-raster-device-test.md).
 
 ## Prototype larger raster batches - 2026-11-10
