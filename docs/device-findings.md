@@ -1,5 +1,13 @@
 # Device findings
 
+**Current throughput investigation (2026-11-10):** the exact installed kernel
+has a vendor low-reserve fill path that copies the previous PCM period and
+advances `appl_ptr` three times before a fourth-fill DROP. This accounts for
+the last physical Star Fox signature. The first three valid physical calls
+average 27.48–27.66 ms of core CPU. New savings in the
+[architecture scorecard](snes-throughput-architecture.md) are offline QEMU
+comparisons only, including the qualified hidden-replay raster change.
+
 Replay-aware physical return: all 20 windows attempted; 16 clean bounded windows across Mario, Metroid, F-Zero and Ranger, all below the 20% headroom target. All four Star Fox replays complete, then native PCM fails after four gameplay calls with errno77/SETUP. No stall or forced shutdown. UART85-86 IRQ/sec; saves/evidence preserved, clean FAT, no card writes/full backup. See [return analysis](fivegame-replay-return.md).
 
 

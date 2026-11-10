@@ -1,0 +1,17 @@
+{
+  "candidate_sha256": "4dbcf3269eaa4f02256af6d67c16ca2c1cf4a2f70136215f09b985842d7be767",
+  "core_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+  "script_sha256": "f0e88166c49bec2d1eed23fec84417374064bcb0c7f514bba714a4a0e6a06411",
+  "cold_calls": 8656,
+  "measured_pixel_pcm_count_matches": 1200,
+  "all_measured_frames_submitted": true,
+  "media_write": false,
+  "physical": false,
+  "production_gate": false,
+  "verified_final_audio_accounting": true,
+  "source_hashes": {
+    "runner.c": "7ceba22c2ef07d173870f3299d1edb4f4f49d39a877cd3a0b83dcd423b9ec456",
+    "fivegame-warmup.h": "63b0837afce30465f3c34ef63efce495b2ad1e8bcbccc212331267eaf4da9164",
+    "identity.h": "8b280ab68b664a8aee16c3cf0627f557aad04cdc20994d17635249e9d363f575"
+  }
+}

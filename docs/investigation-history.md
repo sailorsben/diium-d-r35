@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Compare SNES throughput mechanisms against the frozen return - 2026-11-10
+
+Recover exact vendor PCM fill/DROP behavior from the physically verified kernel.
+Measure isolated CPU changes in the same ARM replay process, alternating which
+arm runs first each frame. A broad live equality guard finds zero reusable
+Star Fox or Metroid frames; the span census finds a narrower Metroid lead.
+The wide GSU dispatch switch loses. The actual controller qualifies disabling
+only the hidden Star Fox startup raster. Do not translate host ratios into A7
+milliseconds or stage a performance package. [Results](snes-throughput-architecture.md).
+
 Replay-aware physical return: all 20 windows attempted; 16 clean bounded windows across Mario, Metroid, F-Zero and Ranger, all below the 20% headroom target. All four Star Fox replays complete, then native PCM fails after four gameplay calls with errno77/SETUP. No stall or forced shutdown. UART85-86 IRQ/sec; saves/evidence preserved, clean FAT, no card writes/full backup. See [return analysis](fivegame-replay-return.md).
 
 

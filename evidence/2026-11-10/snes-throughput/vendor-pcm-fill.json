@@ -1,0 +1,45 @@
+{
+  "kernel_sha256": "b1fe94004b84cbf8ee0ec3367466598bc9c8dd1cbfa9f55ae9373bbc6eefa459",
+  "stock_kernel_sha256": "21cc93e3f621c410ebe4174c0ab00aa4f0b21887c1698bbe974ffbeead2f0321",
+  "unchanged_code_ranges": {
+    "dma_prepare": {
+      "start": "0xc03e24f4",
+      "end_exclusive": "0xc03e2550",
+      "sha256": "0f94afb45fa8faf99da87d63c50394fb635f25b27ee7c8976e6a05b1951bff04"
+    },
+    "dma_fill_silence": {
+      "start": "0xc03e25e8",
+      "end_exclusive": "0xc03e2774",
+      "sha256": "e88e28862df70ed3a9b9eaf1d38e149377c08d3ec045893ff9c3d41b30cf5713"
+    },
+    "kernel_ioctl": {
+      "start": "0xc03bdda0",
+      "end_exclusive": "0xc03bdf00",
+      "sha256": "53802269e9f42fa1576f3c39991fb1b1e3f2ee06c4abee370e870d74f607b30e"
+    },
+    "do_pcm_hwsync": {
+      "start": "0xc03bb374",
+      "end_exclusive": "0xc03bb3e8",
+      "sha256": "7c777a1bf9aff08cbc84d15e2c5c5a6c1962fe5326d7e62f1c6e6f9155496a52"
+    },
+    "update_hw_ptr": {
+      "start": "0xc03c2898",
+      "end_exclusive": "0xc03c2c70",
+      "sha256": "eaa6f070e928f1bce953953d4792b62f1e99754d13b75d6edb3a8005c8985bf1"
+    },
+    "playback_silence": {
+      "start": "0xc03c24ac",
+      "end_exclusive": "0xc03c26bc",
+      "sha256": "8ec2f592d380652f5a726057bf9bea93735222737af34142041c63be2867c8fc"
+    }
+  },
+  "source_sha256": "638ac992e183fd1dce599096e7d6c84fdc634a2caf8f397dedf554a41c62d080",
+  "result": "PASS exact ARM vendor fill and ioctl dispatch: three previous-period copies, appl_ptr 5030 -> 5414, fourth DROP request; exact SETUP HWSYNC -77, timed reset and boundary wrap",
+  "device_executed": false,
+  "stubs": [
+    "clock",
+    "memcpy",
+    "low-level DROP",
+    "mutex lock/unlock"
+  ]
+}

@@ -1,5 +1,12 @@
 # DIIUM D-R35: device findings and SNES platform
 
+2026-11-10 throughput study: paired offline tests isolate raster, Super FX,
+DMA and launch costs. The hidden Star Fox replay saves 28.3% replay CPU with
+every later gameplay output preserved in the actual controller fixture.
+The exact vendor PCM fill path explains the 384-frame drift and fourth-fill
+DROP signature. See the [architecture scorecard](docs/snes-throughput-architecture.md).
+No new handheld test or installation.
+
 Replay-aware physical return: all 20 windows attempted; 16 clean bounded windows across Mario, Metroid, F-Zero and Ranger, all below the 20% headroom target. All four Star Fox replays complete, then native PCM fails after four gameplay calls with errno77/SETUP. No stall or forced shutdown. UART85-86 IRQ/sec; saves/evidence preserved, clean FAT, no card writes/full backup. See [return analysis](docs/fivegame-replay-return.md).
 
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## Measure SNES throughput alternatives - 2026-11-10
+
+Compare ARM renderer, frame/span reuse, GSU dispatch and VRAM DMA experiments
+on the frozen five-game suite. Paired host tests find 28.3% less CPU in the
+hidden Star Fox replay; the supervised offline controller retains all 1,200
+gameplay pixels/PCM/count checks. Exact ARM vendor fill code explains three
+128-frame application-pointer advances and the fourth-fill PCM DROP. New A7
+timings and sustained reserve remain unmeasured. No card or firmware writes.
+[Decision and reproduction](docs/snes-throughput-architecture.md).
+
 Replay-aware physical return: all 20 windows attempted; 16 clean bounded windows across Mario, Metroid, F-Zero and Ranger, all below the 20% headroom target. All four Star Fox replays complete, then native PCM fails after four gameplay calls with errno77/SETUP. No stall or forced shutdown. UART85-86 IRQ/sec; saves/evidence preserved, clean FAT, no card writes/full backup. See [return analysis](docs/fivegame-replay-return.md).
 
 
