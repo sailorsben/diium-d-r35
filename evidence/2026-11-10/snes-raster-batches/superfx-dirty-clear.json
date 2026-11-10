@@ -1,0 +1,11 @@
+{
+  "archive": "superfx-return-20261110T214443260020Z",
+  "command": "chkdsk I: /markclean",
+  "dirty_before": true,
+  "dirty_after": false,
+  "files_matched_before_and_after": 1936,
+  "volume_health": "Healthy",
+  "volume_status": "OK",
+  "chkdsk_sha256": "2f0ddd68812a3c5ce4aa6bd4c1aa98188ec6af6e93108e7a09444ca29adaafdb",
+  "dirty_query_sha256": "65f7c6c4fbe3369463b8acdcd6b7ec40d3339e7bdd943df95cc5cb7633ef9a8f"
+}

@@ -55,14 +55,19 @@ match the preceding archive. Among preexisting files, the dispatcher
 and stock swapfile changed. Both boot markers were consumed. The
 collector wrote only to the host archive.
 
-Windows reports the FAT32 volume dirty and gives it a Full Repair
+Windows reported the FAT32 volume dirty and gave it a Full Repair
 Needed status. Read-only CHKDSK completed on the mounted volume and
 reported no filesystem problems. The dirty flag persisted after the
-scan. The Windows system log records an I/O retry and a paired disk
+read-only scan. The Windows system log records an I/O retry and a paired disk
 error at reconnect for the disk holding I:. That trace does not identify
 whether the card, reader or preceding shutdown set the flag.
 [Windows dirty-bit behavior](https://learn.microsoft.com/windows-server/administration/windows-commands/fsutil-dirty) ·
 [CHKDSK behavior](https://learn.microsoft.com/windows-server/administration/windows-commands/chkdsk).
+
+After verifying the return archive, `chkdsk I: /markclean` found no
+filesystem problems and cleared the dirty flag. Windows reports
+Healthy/OK. All 1,936 file hashes matched before and after.
+[Clearance receipt](../evidence/2026-11-10/snes-raster-batches/superfx-dirty-clear.json).
 
 ## Boot and return
 

@@ -3,8 +3,9 @@
 **Physical Super FX test (2026-11-10).** The combined build saves
 3.91% mean Star Fox core CPU against full-tile on the A7. The
 same-binary toggle saves 7.34%. All replay checks pass. The returned
-card remains marked dirty, although read-only CHKDSK reports no
-filesystem errors. Native playback and audio reserve are pending.
+card returned marked dirty. A subsequent FAT32 mark-clean scan
+cleared the flag, and Windows now reports Healthy/OK. Native
+playback and audio reserve are pending.
 [Physical results](snes-superfx-device-test.md).
 
 **Physical raster test (2026-11-10).** Full-tile Mode 2 strips save
