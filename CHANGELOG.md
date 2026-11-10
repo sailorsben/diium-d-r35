@@ -1,5 +1,12 @@
 # Changelog
 
+## Prepare the one-shot Super FX device comparison - 2026-11-10
+
+Use the previous full-tile core as the Star Fox baseline and compare
+the combined Super FX build. A second pair toggles the fast paths
+inside identical binaries. Both pairs verify pixels and PCM in memory.
+[Boot and return procedure](docs/snes-superfx-device-test.md).
+
 ## Batch hot Super FX loops - 2026-11-10
 
 Recognize bounded word fills and four-bit pixel runs inside the interpreter.

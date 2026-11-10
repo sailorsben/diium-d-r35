@@ -31,8 +31,8 @@ def verify_inventory(card, inventory):
         assert digest(card/name) == sha, name
 
 
-def activate(card, payload, dispatch, marker, verify_payload, health, inject=lambda _: None):
-    target, launcher = card/TARGET, card/MVP/'launch.sh'
+def activate(card, payload, dispatch, marker, verify_payload, health, inject=lambda _: None, *, target_path=TARGET):
+    target, launcher = card/target_path, card/MVP/'launch.sh'
     markers = [target/'armed', card/MVP/'armed']
     previous = launcher.read_bytes()
     assert not target.exists() and not list(card.rglob('armed')) and not list(card.rglob('Code.bkp'))

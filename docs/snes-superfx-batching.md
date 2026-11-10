@@ -58,6 +58,7 @@ combined Super FX paths, with particular attention to the opening and
 slow ticks. The new A7 saving, native presentation cost and PCM reserve
 are unmeasured. Use the [physical raster baseline](snes-raster-device-test.md)
 and retain exact pixels, PCM and sample counts during the comparison.
+[Device test procedure](snes-superfx-device-test.md).
 
 To reproduce the offline checks, build the full-tile control and the
 Super FX arms with `build/build-snes-throughput.sh`, run

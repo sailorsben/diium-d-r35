@@ -75,9 +75,11 @@ int main(int argc,char **argv) {
     const char *mode=argv[5];
     bool cold_off=!strcmp(mode,"cold-off"),oracle=!strcmp(mode,"oracle-reuse"),off=!strcmp(mode,"off");
     bool no_target=!strcmp(mode,"no-target"), half=!strcmp(mode,"half");
-    device=!strcmp(mode,"device")||!strcmp(mode,"both-cold-off-device");
+    bool fx_toggle_device=!strcmp(mode,"both-cold-off-fx-toggle-device");
+    bool fx_toggle=fx_toggle_device||!strcmp(mode,"both-cold-off-fx-toggle");
+    device=fx_toggle_device||!strcmp(mode,"device")||!strcmp(mode,"both-cold-off-device");
     bool both_cold_off=!strcmp(mode,"both-cold-off")||!strcmp(mode,"both-cold-off-toggle")||
-                       !strcmp(mode,"both-cold-off-device")||!strcmp(mode,"both-cold-off-fx-toggle");
+                       !strcmp(mode,"both-cold-off-device")||fx_toggle;
     bool toggle=!strcmp(mode,"full-toggle")||!strcmp(mode,"both-cold-off-toggle");
     assert(cold_off||oracle||off||no_target||half||both_cold_off||toggle||device||!strcmp(mode,"full"));
     unsigned cold=(unsigned)atoi(argv[4]);assert(cold==0||cold==8656);
@@ -92,7 +94,6 @@ int main(int argc,char **argv) {
     read_inputs(argv[3],"input.txt",gameplay,1200);
     struct instance c[]={setup(argv[1],argv[3],cold,rom,rn),setup(argv[2],argv[3],cold,rom,rn)};
     assert(c[0].handle!=c[1].handle);
-    bool fx_toggle=!strcmp(mode,"both-cold-off-fx-toggle");
     if(toggle||fx_toggle) {
         for(unsigned k=0;k<2;k++) {
             void (*set_enabled)(bool)=dlsym(c[k].handle,fx_toggle?"d35_fx_set_enabled":"d35_raster_set_enabled");

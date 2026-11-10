@@ -1,9 +1,15 @@
 #!/bin/sh
 # Read-only libretro replays. No native PCM or display owner is started here.
 set -u
-LAB=${D35_RASTER_LAB:-/usr/retro/snes-raster-test1}
+case "${1:-raster}" in
+    raster) PROFILE=raster-core-a7-1; DEFAULT_LAB=/usr/retro/snes-raster-test1;;
+    superfx) PROFILE=superfx-core-a7-1; DEFAULT_LAB=/usr/retro/snes-superfx-test1;;
+    *) exit 2;;
+esac
+LAB=${D35_RASTER_LAB:-$DEFAULT_LAB}
 MVP=${D35_RASTER_MVP:-/usr/retro/snes-mvp}
 FROZEN=${D35_RASTER_FROZEN:-/usr/retro/snes-fivegame-kernel2}
+RASTER=${D35_RASTER_BASELINE:-/usr/retro/snes-raster-test1}
 PROC=${D35_RASTER_PROC:-/proc}
 STOP=${D35_RASTER_SPLASH_STOP:-/tmp/vrtemu.log}
 [ -f "$LAB/armed" ] && [ -f "$MVP/armed" ] || exit 0
@@ -17,7 +23,7 @@ fi
 case "$BOOT" in *[!0-9a-f-]*|'') BOOT=unknown;; esac
 OUT="$LAB/results/run-$BOOT-$$"
 mkdir -p "$LAB/results" && mkdir "$OUT" || exit 1
-printf 'profile=raster-core-a7-1\nnative_pcm=0\nnative_display=0\n' > "$OUT/wrapper.log"
+printf 'profile=%s\nnative_pcm=0\nnative_display=0\n' "$PROFILE" > "$OUT/wrapper.log"
 
 active_splash() {
     for ENTRY in "$PROC"/[0-9]*; do
@@ -61,16 +67,26 @@ run_pair() {
         003) COLD=8656; MODE=both-cold-off-device;;
         *) COLD=0; MODE=device;;
     esac
+    BASELINE=${3:-$FROZEN/plus-a7.so}
+    MODE=${4:-$MODE}
     NAME="$GAME-$VARIANT"
     printf 'begin %s\n' "$NAME" >> "$OUT/wrapper.log"
     sync
-    "$LAB/pair" "$FROZEN/plus-a7.so" "$LAB/cores/$VARIANT.so" "$FROZEN/cases/$GAME" "$COLD" "$MODE" \
+    "$LAB/pair" "$BASELINE" "$LAB/cores/$VARIANT.so" "$FROZEN/cases/$GAME" "$COLD" "$MODE" \
         > "$OUT/$NAME.csv" 2> "$OUT/$NAME.log"
     RESULT=$?
     printf 'end %s rc=%s\n' "$NAME" "$RESULT" >> "$OUT/wrapper.log"
     sync
     return "$RESULT"
 }
+
+if [ "$PROFILE" = superfx-core-a7-1 ]; then
+    run_pair 003 fx-batch "$RASTER/cores/raster-offset-full.so" || exit "$?"
+    run_pair 003 fx-batch-toggle "$LAB/cores/fx-batch-toggle-disabled.so" both-cold-off-fx-toggle-device || exit "$?"
+    printf 'complete pairs=2\n' >> "$OUT/wrapper.log"
+    sync
+    exit
+fi
 
 # Price the two Star Fox contenders first, then check the same binaries on
 # the non-Mode-2 fixtures. The sprite probes cover their two clearest wins.

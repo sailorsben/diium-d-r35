@@ -21,8 +21,9 @@ QEMU = ['qemu-arm', '-cpu', 'cortex-a7', '-L', 'build/sysroot']
 BUSYBOX = [*QEMU, '-0', 'busybox', BUILD/'uart-fix-private/firmware-busybox', 'sh']
 
 
-def wrapper_check(tmp, scenario):
-    lab = tmp/scenario
+def wrapper_check(tmp, scenario, out=OUT, profile='raster'):
+    lab = tmp/f'{profile}-{scenario}'
+    total, first = (2, '003-fx-batch') if profile == 'superfx' else (12, '003-raster-offset')
     mvp, proc = lab/'mvp', lab/'proc'
     mvp.mkdir(parents=True)
     proc.mkdir()
@@ -35,12 +36,14 @@ def wrapper_check(tmp, scenario):
         (p/'comm').write_text('showlogo\n')
         (p/'status').write_text('State: S\n')
     pair = lab/'pair'
-    pair.write_text('#!/bin/sh\nexit '+('3' if scenario == 'mismatch' else '0')+'\n')
+    pair.write_text('#!/bin/sh\nprintf "%s\\n" "$@"\nexit '+('3' if scenario == 'mismatch' else '0')+'\n')
     pair.chmod(0o755)
     env = dict(os.environ, PATH=f"{tmp/'bin'}:{os.environ['PATH']}",
                D35_RASTER_LAB=str(lab), D35_RASTER_MVP=str(mvp),
                D35_RASTER_PROC=str(proc), D35_RASTER_SPLASH_STOP=str(lab/'stop'))
-    args = [*BUSYBOX, OUT/'launch.sh']
+    args = [*BUSYBOX, out/'launch.sh']
+    if profile == 'superfx':
+        args.append(profile)
     rc = subprocess.run(args, cwd=ROOT, env=env, timeout=15).returncode
     assert rc == {'normal': 0, 'mismatch': 3, 'splash-busy': 1, 'unarmed': 0}[scenario]
     assert not (lab/'armed').exists() and not (mvp/'armed').exists()
@@ -49,13 +52,28 @@ def wrapper_check(tmp, scenario):
     if not runs:
         return []
     log = (runs[0]/'wrapper.log').read_text()
-    assert ('complete pairs=12' in log) == (scenario == 'normal')
+    assert (f'complete pairs={total}' in log) == (scenario == 'normal')
     assert ('splash_timeout' in log) == (scenario == 'splash-busy')
-    assert ('end 003-raster-offset rc=3' in log) == (scenario == 'mismatch')
+    assert (f'end {first} rc=3' in log) == (scenario == 'mismatch')
     if scenario == 'normal':
         subprocess.run(args, cwd=ROOT, env=env, timeout=10, check=True)
         assert list((lab/'results').glob('run-*')) == runs
     return re.findall(r'^begin (\d+)-(\S+)$', log, re.M)
+
+
+def check_pair(csv, log, reference):
+    lines = csv.read_text().splitlines()
+    assert len(lines) == 1204 and lines[-3] == 'published,1200,1200'
+    assert log.read_text().splitlines()[-1] == 'gameplay_calls_per_arm=1200'
+    for i, line in enumerate(lines[1:1201]):
+        frame, base, test, wb, wt, ob, ot = map(int, line.split(','))
+        # WSL can report guest thread CPU intervals larger than guest wall.
+        # Host clock agreement is separate from the output qualification.
+        assert frame == i and 0 <= ob < base and 0 <= ot < test and wb > 0 and wt > 0
+    _, left, right, a, b = lines[-1].split(',')
+    assert left == right == '1200' and a == b == reference['callback_layout_crc32']
+    assert lines[-2] == f"audio,{reference['audio_frames']},{reference['audio_frames']}"
+    return dict(calls_per_arm=1200, callback_layout=a, csv_sha256=digest(csv), log_sha256=digest(log))
 
 
 def main(reuse):
@@ -101,23 +119,11 @@ def main(reuse):
         else:
             with csv.open('w') as data, log.open('w') as trace:
                 subprocess.run(args, cwd=ROOT, stdout=data, stderr=trace, timeout=420, check=True)
-        lines = csv.read_text().splitlines()
-        assert len(lines) == 1204 and lines[-3] == 'published,1200,1200'
-        assert log.read_text().splitlines()[-1] == 'gameplay_calls_per_arm=1200'
-        for i, line in enumerate(lines[1:1201]):
-            frame, base, test, wb, wt, ob, ot = map(int, line.split(','))
-            # WSL can report guest thread CPU intervals larger than guest wall.
-            # Host clock agreement is separate from the output qualification.
-            assert frame == i and 0 <= ob < base and 0 <= ot < test and wb > 0 and wt > 0
-        _, left, right, a, b = lines[-1].split(',')
-        assert left == right == '1200' and a == b
         reference, = (r for r in raster['verified_replays']
                       if r['game'] == int(game) and r['core'] == 'physical')
-        assert a == reference['callback_layout_crc32']
-        assert lines[-2] == f"audio,{reference['audio_frames']},{reference['audio_frames']}"
+        checked = check_pair(csv, log, reference)
         print(game, variant, 'verified on both arms', flush=True)
-        return dict(game=int(game), variant=variant, calls_per_arm=1200, callback_layout=a,
-                    csv_sha256=digest(csv), log_sha256=digest(log))
+        return dict(game=int(game), variant=variant, **checked)
 
     with ThreadPoolExecutor(max_workers=6) as pool:
         results = list(pool.map(replay, matrix))
