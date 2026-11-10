@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Measure Super FX batching and capture the drive warning - 2026-11-10
+
+On the A7, the standalone comparison saves 0.622 ms per Star Fox
+tick. The identical-binary comparison saves 1.209 ms per tick and
+2.154 ms on the prior slow tick cohort. The return confirms a Windows
+dirty flag with a clean read-only filesystem scan. Archive evidence
+before any repair. [Physical results](snes-superfx-device-test.md).
+
 ## Batch Super FX fills and pixel runs - 2026-11-10
 
 The Star Fox census identifies hot RAM fill and four-bit plot loops.

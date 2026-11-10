@@ -4,6 +4,7 @@ The private object store owns immutable saved generations. Per-attempt paths are
 hard links to those objects, so existing log readers can use ordinary paths.
 No full-copy fallback is allowed when hard linking is unavailable.
 """
+from errno import EMLINK
 from pathlib import Path
 from hashlib import sha256
 import json
@@ -49,6 +50,41 @@ def retain(relative):
             or name in {'report.txt', 'supervisor.txt', 'suite-result.txt'})
 
 
+def retain_object(source, store, target, sha):
+    """Link to a verified object, opening a new shard only at the link limit."""
+    store.mkdir(parents=True, exist_ok=True)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shard = added = 0
+    while True:
+        obj = store/(sha if shard == 0 else f'{sha}.{shard}')
+        if not obj.exists():
+            temp = store/(sha + '.' + uuid.uuid4().hex + '.tmp')
+            try:
+                shutil.copyfile(source, temp)
+                if digest(temp) != sha or digest(source) != sha:
+                    raise ValueError('Card changed during collection: ' + str(source))
+                try:
+                    os.link(temp, obj)
+                    added += temp.stat().st_size
+                except FileExistsError:
+                    pass
+            finally:
+                temp.unlink(missing_ok=True)
+        if digest(obj) != sha:
+            raise ValueError('Corrupt attempt object: ' + str(obj))
+        try:
+            os.link(obj, target)
+        except OSError as error:
+            at_limit = error.errno == EMLINK or getattr(error, 'winerror', None) == 1142
+            if not at_limit or obj.stat().st_nlink <= 1:
+                raise
+            shard += 1
+        else:
+            if digest(target) != sha:
+                raise ValueError('Archive readback mismatch: ' + str(target))
+            return added
+
+
 def inventory(card, out, outside=False):
     card, out = Path(card).resolve(), Path(out).resolve()
     store = out.parent / 'attempt-objects'
@@ -73,26 +109,7 @@ def inventory(card, out, outside=False):
             entry = {'path': relative.as_posix(), 'bytes': before.st_size,
                      'sha256': h, 'stored': saved, 'new_content_bytes': 0}
             if saved:
-                store.mkdir(parents=True, exist_ok=True)
-                obj = store / h
-                if obj.exists():
-                    if digest(obj) != h:
-                        raise ValueError('Corrupt attempt object: ' + str(obj))
-                else:
-                    temp = store / (h + '.' + uuid.uuid4().hex + '.tmp')
-                    try:
-                        shutil.copyfile(source, temp)
-                        if digest(temp) != h or digest(source) != h:
-                            raise ValueError('Card changed during collection: ' + str(source))
-                        os.replace(temp, obj)
-                    finally:
-                        temp.unlink(missing_ok=True)
-                    entry['new_content_bytes'] = before.st_size
-                target = out / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                os.link(obj, target)
-                if digest(target) != h:
-                    raise ValueError('Archive readback mismatch: ' + str(target))
+                entry['new_content_bytes'] = retain_object(source, store, out/relative, h)
             after = source.stat()
             if (before.st_size, before.st_mtime_ns) != (after.st_size, after.st_mtime_ns):
                 raise ValueError('Card changed during collection: ' + str(source))

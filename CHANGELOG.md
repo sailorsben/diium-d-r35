@@ -1,5 +1,14 @@
 # Changelog
 
+## Measure Super FX batching on the D-R35 - 2026-11-10
+
+Both pairs pass 4,800 exact replay calls. The combined build saves
+0.622 ms per tick against full-tile on the A7. Toggling batching in
+identical binaries saves 1.209 ms per tick. The archived FAT32 return
+has a dirty flag despite a clean read-only CHKDSK scan. Sparse
+collection now handles the NTFS link limit per content digest.
+[Physical results](docs/snes-superfx-device-test.md).
+
 ## Arm the one-shot Super FX device comparison - 2026-11-10
 
 Use the previous full-tile core as the Star Fox baseline and compare

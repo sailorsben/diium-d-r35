@@ -10,20 +10,23 @@ fixtures are hash-only. Progress (including backup save generations), logs,
 results and captures retain content. Unknown static files default to hash-only.
 New diagnostic/progress formats must be added to `build/attempt_archive.py`.
 
-Saved content lives once per SHA256 in private
-`device-evidence/attempt-objects/`. Attempt paths hard-link to those verified
-objects. An unchanged retry adds manifests and directory entries, zero duplicate
-content bytes. Changed progress/logs add only their new content; older generations
-remain recoverable. These are immutable evidence files: never edit retained
-payloads in place. Create new analysis outputs, or unlink an existing output
-before replacing it. Keep the object store when cleaning up individual attempts.
-Hard-link failure aborts; there is no fallback to full copying.
+Saved content uses a verified object per SHA256 in private
+`device-evidence/attempt-objects/`. Attempt paths hard-link to those objects.
+At the filesystem's hard-link limit, the collector creates one more verified
+object for that digest and reuses it for subsequent links. All other hard-link
+errors abort collection. Changed progress and logs keep their earlier
+generations. Treat retained objects and their links as immutable. Create new
+analysis outputs, or unlink an existing output before replacing it. Keep the
+object store when cleaning up individual attempts.
 
 Manifests declare `schema=sparse-attempt-v1`, `stored` per file, and
 `new_content_bytes`. `all_retro_files` remains the complete hash inventory for
 protected-file checks, not a claim that all those bytes were copied. Collection
 errors abort without a successful manifest. The existing read-only FAT check,
 card identity guard, consumed-marker checks and zero-card-write contract remain.
+The Super FX collector records the dirty bit separately from the read-only
+filesystem scan. It retains evidence when the volume reports a warning.
+Only a clean scan with a clear dirty bit qualifies as clean in that manifest.
 The first sparse collection saves each selected content hash once; it does not
 trust the old inventories whose payloads were deleted during cleanup.
 

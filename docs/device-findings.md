@@ -1,5 +1,12 @@
 # Device findings
 
+**Physical Super FX test (2026-11-10).** The combined build saves
+3.91% mean Star Fox core CPU against full-tile on the A7. The
+same-binary toggle saves 7.34%. All replay checks pass. The returned
+card remains marked dirty, although read-only CHKDSK reports no
+filesystem errors. Native playback and audio reserve are pending.
+[Physical results](snes-superfx-device-test.md).
+
 **Physical raster test (2026-11-10).** Full-tile Mode 2 strips save
 30.1% mean and 21.9% p95 Star Fox core CPU on the A7, ahead of clipped
 strips. All 12 pairs match replay pixels and PCM. Full-tile strips

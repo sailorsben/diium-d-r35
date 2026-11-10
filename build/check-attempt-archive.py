@@ -1,5 +1,6 @@
 """Exercise sparse collection on a fake card; never touches D: or I:."""
 from pathlib import Path
+from errno import EMLINK
 import json
 import importlib.util
 import os
@@ -65,6 +66,31 @@ class SparseArchiveTests(unittest.TestCase):
                 with self.assertRaises(OSError):
                     inventory(root/'card',root/'evidence/one')
             self.assertFalse((root/'evidence/one/retro/saves/game.srm').exists())
+
+    def test_link_limit_rolls_to_one_verified_object(self):
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parent) as temp:
+            root = Path(temp)
+            card = root/'card'
+            source = card/'retro/saves/game.srm'
+            source.parent.mkdir(parents=True)
+            source.write_bytes(b'save')
+            evidence = root/'evidence'
+            first, second, third = (evidence/n for n in ('one', 'two', 'three'))
+            inventory(card, first)
+            obj = evidence/'attempt-objects'/digest(source)
+            real_link = os.link
+
+            def link_with_limit(path, target):
+                if path == obj:
+                    raise OSError(EMLINK, 'link limit')
+                return real_link(path, target)
+
+            with patch('attempt_archive.os.link', side_effect=link_with_limit):
+                self.assertEqual(inventory(card, second)[0]['new_content_bytes'], 4)
+                self.assertEqual(inventory(card, third)[0]['new_content_bytes'], 0)
+            self.assertTrue(os.path.samefile(second/'retro/saves/game.srm', third/'retro/saves/game.srm'))
+            self.assertEqual((first/'retro/saves/game.srm').read_bytes(), b'save')
+            self.assertEqual(source.read_bytes(), b'save')
 
     def test_classification(self):
         for path in ('retro/states/a.0','retro/game.srm.bak','retro/game.state.bkp',

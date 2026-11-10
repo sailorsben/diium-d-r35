@@ -1,0 +1,256 @@
+{
+  "archive": "superfx-return-20261110T214443260020Z",
+  "physical_a7": true,
+  "native_pcm_and_panel_measured": false,
+  "source_commit": "d1eede04333eab4f26470a4279878a6c8129ab54",
+  "files_inventoried": 1936,
+  "archive_new_content_bytes": 136160,
+  "preexisting_files_changed": 2,
+  "save_or_state_files_changed": 0,
+  "swapfile_changed": true,
+  "dispatcher_changed": true,
+  "one_shot_consumed": true,
+  "card_writes": 0,
+  "verified_calls_both_arms": 4800,
+  "filesystem": {
+    "fat_clean": false,
+    "filesystem_scan_clean": true,
+    "dirty_bit": true,
+    "chkdsk_exit_code": 0,
+    "scan_volume_in_use": true,
+    "volume_health": "Warning",
+    "volume_status": "Full Repair Needed",
+    "disk_event_ids": [
+      153,
+      51
+    ],
+    "drive_events_sha256": "ade6dae0e076bdcde88aa991a0785fefe3c800aeff4b7610f091516e16c76eba"
+  },
+  "chkdsk_sha256": "59152d366170e89fa3e8cccb060e100794d1de72c97a9979c067f6bb01de40ed",
+  "dirty_query_sha256": "5fdc663cfcca2d7f6e9cfb5dcdc45e0da458f45a136ddcb024cdc6ef1c701cfa",
+  "wrapper_sha256": "f389c94623f172e8acbed88fb108ea737593dd52564d630fd392f00e75c8036d",
+  "pairs": [
+    {
+      "game": "Star Fox",
+      "variant": "fx-batch",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "7a9a7371",
+      "cold_calls_per_arm": 8656,
+      "cold_cpu_ns": [
+        89058108000,
+        86605372000
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 15904363,
+          "p95": 25002000,
+          "p99": 26338000,
+          "max": 33180000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 17645959,
+          "p95": 26754000,
+          "p99": 28066000,
+          "max": 34974000
+        },
+        "wall_including_observer_ns": {
+          "mean": 17715598,
+          "p95": 26838000,
+          "p99": 28208000,
+          "max": 40110000
+        },
+        "observer_cpu_mean_ns": 1741596,
+        "wall_less_observer_mean_ns": 15974002,
+        "core_first_3_mean_ns": 19914000,
+        "core_after_first_120_mean_ns": 15810199,
+        "core_over_period_calls": 398,
+        "core_over_period_on_changed_picture_calls": 0,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 47741500,
+            "final_ns": 0
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 206524095,
+            "final_ns": 2623605
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 432570235,
+            "final_ns": 259450000
+          }
+        ]
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 15282646,
+          "p95": 24147000,
+          "p99": 25970000,
+          "max": 31033000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 17025815,
+          "p95": 25872000,
+          "p99": 27696000,
+          "max": 32767000
+        },
+        "wall_including_observer_ns": {
+          "mean": 17100463,
+          "p95": 26058000,
+          "p99": 27904000,
+          "max": 39327000
+        },
+        "observer_cpu_mean_ns": 1743169,
+        "wall_less_observer_mean_ns": 15357294,
+        "core_first_3_mean_ns": 18783333,
+        "core_after_first_120_mean_ns": 15189812,
+        "core_over_period_calls": 396,
+        "core_over_period_on_changed_picture_calls": 0,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 19398660,
+            "final_ns": 0
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 48752710,
+            "final_ns": 0
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 157901095,
+            "final_ns": 2514070
+          }
+        ]
+      },
+      "core_saving_pct": {
+        "mean": 3.909,
+        "p95": 3.42
+      },
+      "csv_sha256": "938fdeb363d0fcd5629597a59c618b2f11699efa553eddebf588defdca7c684e",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8",
+      "prior_slow_cohort": {
+        "calls": 398,
+        "baseline_mean_ns": 22291128,
+        "candidate_mean_ns": 21558538,
+        "mean_saved_ns": 732590
+      }
+    },
+    {
+      "game": "Star Fox",
+      "variant": "fx-batch-toggle",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "7a9a7371",
+      "cold_calls_per_arm": 8656,
+      "cold_cpu_ns": [
+        94178480000,
+        86965324000
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 16482536,
+          "p95": 26869000,
+          "p99": 28310000,
+          "max": 35624000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 18231448,
+          "p95": 28600000,
+          "p99": 30042000,
+          "max": 37405000
+        },
+        "wall_including_observer_ns": {
+          "mean": 18303112,
+          "p95": 28725000,
+          "p99": 30112000,
+          "max": 43950000
+        },
+        "observer_cpu_mean_ns": 1748912,
+        "wall_less_observer_mean_ns": 16554199,
+        "core_first_3_mean_ns": 20784667,
+        "core_after_first_120_mean_ns": 16379275,
+        "core_over_period_calls": 398,
+        "core_over_period_on_changed_picture_calls": 0,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 280632095,
+            "final_ns": 3029605
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 519583435,
+            "final_ns": 353257000
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 957844310,
+            "final_ns": 953257000
+          }
+        ]
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 15273307,
+          "p95": 24189000,
+          "p99": 26023000,
+          "max": 31214000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 17021235,
+          "p95": 25956000,
+          "p99": 27748000,
+          "max": 32937000
+        },
+        "wall_including_observer_ns": {
+          "mean": 17100066,
+          "p95": 26079000,
+          "p99": 27829000,
+          "max": 43488000
+        },
+        "observer_cpu_mean_ns": 1747928,
+        "wall_less_observer_mean_ns": 15352138,
+        "core_first_3_mean_ns": 18855000,
+        "core_after_first_120_mean_ns": 15179945,
+        "core_over_period_calls": 397,
+        "core_over_period_on_changed_picture_calls": 0,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 20378405,
+            "final_ns": 0
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 50713710,
+            "final_ns": 0
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 158241095,
+            "final_ns": 2811605
+          }
+        ]
+      },
+      "core_saving_pct": {
+        "mean": 7.336,
+        "p95": 9.974
+      },
+      "csv_sha256": "f5d81649c1035199674627f4f0f12613c19c6066b734603e33105e2401345b8a",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8",
+      "prior_slow_cohort": {
+        "calls": 398,
+        "baseline_mean_ns": 23765746,
+        "candidate_mean_ns": 21612103,
+        "mean_saved_ns": 2153643
+      }
+    }
+  ]
+}
