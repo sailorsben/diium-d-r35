@@ -1,0 +1,121 @@
+{
+  "archive": "superfx-return-20261110T225945912391Z",
+  "source_commit": "b4aa130bd28020eb94810cbc95a9697032291386",
+  "core_sha256": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+  "controller_sha256": "4dbcf3269eaa4f02256af6d67c16ca2c1cf4a2f70136215f09b985842d7be767",
+  "files_inventoried": 1998,
+  "archive_new_content_bytes": 46033,
+  "card_writes": 0,
+  "new_full_backup": false,
+  "clean_fat": true,
+  "dirty_bit": false,
+  "changed_relative_to_installation": {
+    "retro/swapfile": "af6919936762fa88abf35d5a24ed2731be44503f6f1850da7a056ad5ca4f66aa",
+    "retro/snes-mvp/last-launch-lab": "ad2e2d2e5ea81fc0feaf46d000cf7ff36f9e0926a0f136b62993371d31aed1f4"
+  },
+  "consumed_markers": [
+    "retro/snes-superfx-native1/last-launch",
+    "retro/snes-mvp/last-launch-lab"
+  ],
+  "warmup": {
+    "completed_calls": 8656,
+    "wall_ns": 86341760000,
+    "cpu_ns": 85816660000
+  },
+  "native_playback": {
+    "attempted_calls": 14,
+    "displayed_frames": 13,
+    "skipped": 0,
+    "active_wall_ns": 289789000,
+    "native_period_ns": 16688155,
+    "first_three_mean_retro_run_cpu_ns": 20208333,
+    "prior_first_three_mean_cpu_ns_range": [
+      27482667,
+      27655667
+    ],
+    "prior_native_star_fox_windows": 4,
+    "prior_native_star_fox_calls_before_exit": 4,
+    "completed_prefix_mean_retro_run_cpu_ns": 19298231,
+    "completed_prefix_mean_step_wall_ns": 20797923,
+    "error": "SYNC_OBSERVE errno=77 state=1 queued=0 avail=3712 appl=12641 hw=12543 prime_written=2823 start_calls=0 epoch=1 xfer=12257 trace_errno=0 trace_synced=0 trace_bytes=0",
+    "safe_teardown": true,
+    "child_exit_code": 1,
+    "supervisor_forced": false,
+    "full_window_passed": false
+  },
+  "pcm": {
+    "rate_hz": 44100,
+    "period_frames": 128,
+    "ring_frames": 3712,
+    "prime_frames": 2823,
+    "trace_operations": 92,
+    "min_observed_queue_before_drift_frames": 291,
+    "pointer_increments": [
+      {
+        "seq": 64,
+        "kernel_ns": 100102319000,
+        "delta_change": 128,
+        "appl_minus_accepted": 128,
+        "state": 3,
+        "reported_queued": 230,
+        "accepted_minus_reported_hw": 102
+      },
+      {
+        "seq": 68,
+        "kernel_ns": 100118616000,
+        "delta_change": 128,
+        "appl_minus_accepted": 256,
+        "state": 3,
+        "reported_queued": 195,
+        "accepted_minus_reported_hw": -61
+      },
+      {
+        "seq": 87,
+        "kernel_ns": 100175240000,
+        "delta_change": 128,
+        "appl_minus_accepted": 384,
+        "state": 1,
+        "reported_queued": 0,
+        "accepted_minus_reported_hw": -286
+      }
+    ],
+    "final": {
+      "seq": 87,
+      "ns": 100175240000,
+      "op": "SYNC_OK",
+      "arg": 6,
+      "result": 0,
+      "state": 1,
+      "queued": 0,
+      "appl": 12641,
+      "hw": 12543,
+      "epoch": 1,
+      "xfer": 12257
+    },
+    "terminal_accepted_minus_hardware_frames": -286,
+    "matched_large_batch_interval": {
+      "first_seq": 20,
+      "last_seq": 76,
+      "anchor_count": 4,
+      "elapsed_ms": 179.813,
+      "accepted_frames": 6623,
+      "accepted_frames_per_second": 36832.70953713024,
+      "negotiated_frames_per_second": 44100,
+      "production_shortfall_fraction": 0.16479116695849794,
+      "mean_large_batch_interval_ms": 59.937666666666665,
+      "min_large_batch_interval_ms": 56.741,
+      "max_large_batch_interval_ms": 63.099,
+      "reported_hw_advance": 7936,
+      "accepted_minus_hw_change": -1313,
+      "limit": "Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement."
+    }
+  },
+  "evidence_sha256": {
+    "wrapper.log": "64cccbb85bace271d913ff01b9fb14bcf75c592cacbfdb04e21a129229f08f6d",
+    "supervisor.txt": "eefb01933a835ad900f870804bedd8d3df94ef7a89909e2059c603f32a3c058a",
+    "run-000/warmup.txt": "387b2e0634101825085e1867728dbca6821bc6fca7c7e630939303d8704ecd4b",
+    "run-000/frames.csv": "cba8e0e616249c5d9580f443d1dd93a4680df508991ec58f34ca98a07d6d74d1",
+    "run-000/last-session.txt": "8b263bfec947bfe70335d039fa7a7df1c0cd5b7f0490de1e7e4478d2dc1baaff",
+    "run-000/pcm-full.txt": "41fb56acfa9a9a715ae555fe3779f5b1dc4750f39199020d27030faa9304ff76"
+  }
+}

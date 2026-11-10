@@ -1,5 +1,13 @@
 # Changelog
 
+## Capture the combined native Star Fox playback failure - 2026-11-10
+
+The complete cold replay reaches 13 LCD flips before native PCM stops
+during call 14. All PCM operations are retained. The trace analyzer
+can select the playback epoch when cleanup advances it. The one-shot
+markers are consumed and FAT32 passes both checks.
+[Physical return](docs/snes-superfx-native-test.md#physical-return).
+
 ## Prepare native Star Fox playback with the combined core - 2026-11-10
 
 Use the exact A7-measured full-tile and Super FX ELF for one 1,200-call

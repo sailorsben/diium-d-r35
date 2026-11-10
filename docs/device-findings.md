@@ -1,18 +1,17 @@
 # Device findings
 
-**Native combined-core test armed (2026-11-10).** A one-shot Star Fox
-window uses the full-tile plus Super FX ELF, native LCD and PCM, blocking
-presentation and the existing audio policy. Exact-output and oracle-disabled
-rehearsals pass. Independent card readback verifies both markers and a clean
-FAT32 volume. Physical playback and complete audio reserve remain pending.
-[Test procedure](snes-superfx-native-test.md).
+**Native combined-core return (2026-11-10).** Star Fox completes the full
+cold replay and 13 LCD flips. Native PCM returns errno 77 in SETUP during
+call 14, with the same 384-frame application-pointer drift as the older
+failure. The runner exits cleanly. Sustained native
+playback and reserve recovery remain unverified. The returned FAT32
+volume is clean and both markers are consumed.
+[Physical return](snes-superfx-native-test.md#physical-return).
 
 **Physical Super FX test (2026-11-10).** The combined build saves
 3.91% mean Star Fox core CPU against full-tile on the A7. The
-same-binary toggle saves 7.34%. All replay checks pass. The returned
-card returned marked dirty. A subsequent FAT32 mark-clean scan
-cleared the flag, and Windows now reports Healthy/OK. Native
-playback and audio reserve are pending.
+same-binary toggle saves 7.34%. All replay checks pass. That return
+had a dirty flag, which a subsequent FAT32 mark-clean scan cleared.
 [Physical results](snes-superfx-device-test.md).
 
 **Physical raster test (2026-11-10).** Full-tile Mode 2 strips save

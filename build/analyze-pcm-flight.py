@@ -7,7 +7,7 @@ matched WRITE_OK anchors, excluding the time spent persisting the fault.
 from pathlib import Path
 import argparse,json,re,statistics
 
-def analyze(path,rate):
+def analyze(path,rate,epoch=None):
     text=path.read_text(encoding='utf-8')
     rows=[]
     for line in text.splitlines():
@@ -15,6 +15,10 @@ def analyze(path,rate):
             row=dict(piece.split('=',1) for piece in line.split())
             rows.append({k:v if k=='op' else int(v) for k,v in row.items()})
     assert rows and all(b['seq']==a['seq']+1 for a,b in zip(rows,rows[1:]))
+    if epoch is not None:
+        rows=[r for r in rows if r['epoch']==epoch]
+        if not rows:
+            raise ValueError(f'No retained operations for PCM epoch {epoch}')
     assert len({r['epoch'] for r in rows})==1,'Analyze one epoch at a time'
     samples=[r for r in rows if r['op']=='SYNC_OK']
     changes=[];previous=None
@@ -44,15 +48,18 @@ def analyze(path,rate):
             'limit':'Large-batch cadence is a workload-specific frame-production proxy, not a per-call CPU measurement.'}
     kernel=re.search(r'kernel_read_all_bytes=(-?\d+) errno=(\d+)',text)
     result={'trace_version':text.splitlines()[0],'retained_operations':len(rows),'epoch':rows[0]['epoch'],
-        'accepted_pointer_difference_first_sample':samples[0]['appl']-samples[0]['xfer'],
+        'accepted_pointer_difference_first_sample':samples[0]['appl']-samples[0]['xfer'] if samples else None,
         'application_pointer_difference_changes':changes,'matched_large_batch_interval':interval,
-        'last_successful_observation':next(r for r in reversed(samples) if r['state']==3),
-        'final_observation':samples[-1],
+        'last_successful_observation':next((r for r in reversed(samples) if r['state']==3),None),
+        'final_observation':samples[-1] if samples else None,
         'kernel_read_result':{'bytes':int(kernel[1]),'errno':int(kernel[2])} if kernel else None,
-        'causal_limit':'Trace shows reserve erosion before pointer divergence. It does not identify who changes appl_ptr, padding contents, or which core subsystem costs time.'}
+        'causal_limit':'Use accepted-minus-hardware accounting before pointer divergence. Attribute driver behavior and core costs with independent kernel and timing evidence.'}
     return result
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('trace',type=Path)
-    parser.add_argument('--rate',type=int,default=44100);args=parser.parse_args()
-    print(json.dumps(analyze(args.trace,args.rate),indent=2))
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('trace',type=Path)
+    parser.add_argument('--rate',type=int,default=44100)
+    parser.add_argument('--epoch',type=int,help='analyze one PCM epoch when cleanup or recovery changes epochs')
+    args=parser.parse_args()
+    print(json.dumps(analyze(args.trace,args.rate,args.epoch),indent=2))

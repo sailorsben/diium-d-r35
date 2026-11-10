@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Combined Star Fox playback still loses native PCM - 2026-11-10
+
+The full-tile and Super FX build flips 13 frames after the complete
+cold replay, then exits on native PCM errno 77 during call 14. The
+older core failed after four calls. The trace captures three 128-frame
+application-pointer advances beyond accepted writes and the transition
+to SETUP. Add explicit epoch selection to the PCM analysis to retain
+the failure before the runner prepares a new stream during cleanup.
+[Native return](snes-superfx-native-test.md#physical-return).
+
 ## Arm native playback with full-tile and Super FX together - 2026-11-10
 
 Stage the exact A7-measured ELF with the isolated single-window controller.

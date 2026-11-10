@@ -1,10 +1,9 @@
 # One-shot native Star Fox playback
 
-Armed and independently verified on I: from `b4aa130`. Readback matches
+Armed and independently verified on I: from `b4aa130`. Readback matched
 both markers, all 11 profile files and 1,935 protected existing files.
-CHKDSK and an explicit dirty-flag query pass before staging, after payload
-copy, after activation and after independent readback. Physical playback
-is pending.
+CHKDSK and an explicit dirty-flag query passed before staging, after payload
+copy, after activation and after independent readback.
 [Installation receipt](../evidence/2026-11-10/snes-throughput/superfx-native-installation.json).
 
 This test runs the measured full-tile plus Super FX core in the native LCD
@@ -23,8 +22,48 @@ normal child reaping. One checked pixels, PCM and sample counts against
 the frozen reference, and one disabled that oracle. Five firmware BusyBox
 cases exercised normal completion, an unarmed reboot, active splash,
 observer refusal and a crashing child. These qualify the controller and
-boot seam. Physical output and timing await the card return.
+boot seam.
 [Qualification receipt](../evidence/2026-11-10/snes-throughput/superfx-native-qualification.json).
+
+## Physical return
+
+The full 8,656-call cold replay completed in 86.342 seconds. The runner
+flipped 13 gameplay frames with no presentation skips and stopped during
+call 14, about 0.29 seconds into active playback. Native ALSA reported
+`SYNC_OBSERVE errno=77 state=1` (SETUP). The audio worker joined, the
+display idled, and the supervisor reaped the process with exit status 1.
+The older core hit the same PCM error after four calls in all four trials.
+[Physical return receipt](../evidence/2026-11-10/snes-throughput/superfx-native-return.json) ·
+[Older native trials](fivegame-replay-return.md).
+
+The 13 completed calls averaged 19.298 ms of `retro_run` CPU, including
+callback work, and 20.798 ms wall time per step against a 16.688 ms deadline.
+The first three averaged 20.208 ms CPU, versus 27.483–27.656 ms
+in the older trials. The comparison spans different builds and boots. The
+short prefix cannot establish sustained native throughput or final reserve.
+
+The trace captured all 92 PCM operations, including two in the cleanup
+epoch. The stream accepted 6,623 frames across a 179.813 ms interval
+between large-write anchors, or 36,833 frames/sec against 44,100 frames/sec
+of demand. The smallest sampled queue before application-pointer drift was
+291 frames. The application pointer advanced by three 128-frame increments
+beyond accepted writes, ending at 12,641 with 12,257 accepted and 12,543
+reported consumed. The trace matches the previous-period fills and fourth
+fill DROP behavior reproduced from the vendor kernel. After the first
+pointer increment, the reported queue includes driver-added frames.
+[Vendor PCM fixture](../evidence/2026-11-10/snes-throughput/vendor-pcm-fill.json).
+
+The sparse archive verifies 1,998 files and retains 46,033 new bytes.
+All installed payloads, normal init and saves match the pre-test hashes.
+Stock swap and the expected boot marker changed. Both armed markers were
+consumed, CHKDSK passed, and the FAT32 dirty flag was clear. Collection
+performed zero card writes.
+
+Reproduce the PCM analysis with `build/analyze-pcm-flight.py <trace> --epoch 1`.
+For the next playback experiment, retain the full native frame and sample
+publication schedule through the 1,200-call window. Use it to calculate
+reserve drawdown, subsequent refill and the saving required across the
+entire opening before sizing any buffer or scheduling change.
 
 ## Timing and audio budget before installation
 
