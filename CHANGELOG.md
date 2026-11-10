@@ -1,5 +1,13 @@
 # Changelog
 
+## Prepare native Star Fox playback with the combined core - 2026-11-10
+
+Use the exact A7-measured full-tile and Super FX ELF for one 1,200-call
+Star Fox window on the handheld LCD and PCM. Keep the native audio policy
+and capture reserve and presentation histories. Rehearse the frozen replay
+with and without the callback oracle.
+[Test procedure and timing budget](docs/snes-superfx-native-test.md).
+
 ## Measure Super FX batching on the D-R35 - 2026-11-10
 
 Both pairs pass 4,800 exact replay calls. The combined build saves
