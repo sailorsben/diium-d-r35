@@ -3,6 +3,40 @@
 #define main d35_single_main
 #include "snes-throughput-replay.c"
 #undef main
+#include <sys/syscall.h>
+#include <unistd.h>
+
+/* Keep the replay parser on the firmware's legacy libc symbols. */
+extern long syscall(long, ...);
+
+static bool device;
+static uint64_t callback_cpu;
+
+static uint64_t kernel_time(clockid_t id) {
+    struct timespec t;
+    assert(!syscall(SYS_clock_gettime,id,&t));
+    return (uint64_t)t.tv_sec*1000000000+t.tv_nsec;
+}
+
+static void device_video(const void *p,unsigned w,unsigned h,size_t pitch) {
+    if(!verify) { video(p,w,h,pitch);return; }
+    uint64_t start=kernel_time(CLOCK_THREAD_CPUTIME_ID);
+    video(p,w,h,pitch);
+    callback_cpu+=kernel_time(CLOCK_THREAD_CPUTIME_ID)-start;
+}
+
+static size_t device_audio(const int16_t *p,size_t n) {
+    if(!verify) return audio(p,n);
+    uint64_t start=kernel_time(CLOCK_THREAD_CPUTIME_ID);
+    size_t result=audio(p,n);
+    callback_cpu+=kernel_time(CLOCK_THREAD_CPUTIME_ID)-start;
+    return result;
+}
+
+static void device_sample(int16_t left,int16_t right) {
+    const int16_t stereo[]={left,right};
+    device_audio(stereo,1);
+}
 
 struct instance {
     void *handle;
@@ -24,7 +58,8 @@ static struct instance setup(const char *path, const char *root, unsigned cold, 
 #undef BIND
     c.run=run;c.unload=unload_game;c.deinit=deinit;
     c.acquire=dlsym(c.handle,"d35_output_acquire");assert(c.acquire);
-    set_environment(env);set_video_refresh(video);set_audio_sample_batch(audio);set_audio_sample(sample);
+    set_environment(env);set_video_refresh(device?device_video:video);
+    set_audio_sample_batch(device?device_audio:audio);set_audio_sample(device?device_sample:sample);
     set_input_state(input);set_input_poll(poll);init();
     struct retro_game_info g={.data=rom,.size=rn}; assert(load_game(&g));
     if(!cold) {
@@ -40,10 +75,16 @@ int main(int argc,char **argv) {
     const char *mode=argv[5];
     bool cold_off=!strcmp(mode,"cold-off"),oracle=!strcmp(mode,"oracle-reuse"),off=!strcmp(mode,"off");
     bool no_target=!strcmp(mode,"no-target"), half=!strcmp(mode,"half");
-    bool both_cold_off=!strcmp(mode,"both-cold-off")||!strcmp(mode,"both-cold-off-toggle");
+    device=!strcmp(mode,"device")||!strcmp(mode,"both-cold-off-device");
+    bool both_cold_off=!strcmp(mode,"both-cold-off")||!strcmp(mode,"both-cold-off-toggle")||
+                       !strcmp(mode,"both-cold-off-device");
     bool toggle=!strcmp(mode,"full-toggle")||!strcmp(mode,"both-cold-off-toggle");
-    assert(cold_off||oracle||off||no_target||half||both_cold_off||toggle||!strcmp(mode,"full"));
+    assert(cold_off||oracle||off||no_target||half||both_cold_off||toggle||device||!strcmp(mode,"full"));
     unsigned cold=(unsigned)atoi(argv[4]);assert(cold==0||cold==8656);
+    if(device) {
+        assert(both_cold_off==!!cold);
+        alarm(cold?420:75);
+    }
     size_t rn,en;unsigned char *rom=read_file(argv[3],"game.sfc",&rn);
     uint32_t *expected=(uint32_t *)read_file(argv[3],"expected.bin",&en);assert(en==1200*12);
     uint16_t warm[8656],gameplay[1200];
@@ -58,15 +99,21 @@ int main(int argc,char **argv) {
         }
     }
     uint64_t boot[2]={0}, times[1200][2];
+    uint64_t wall[1200][2], observer[1200][2];
+    uint32_t layout[2]={0};
     unsigned audio_frames[2]={0}, published[2]={0};
     for(unsigned i=0;i<cold;i++) {
         buttons=warm[i];
         for(unsigned j=0;j<2;j++) {
             unsigned k=(j+i)&1;
             enable=(both_cold_off || (k && cold_off))?2:3;
-            uint64_t t=cpu();c[k].run();boot[k]+=cpu()-t;
+            uint64_t t=device?kernel_time(CLOCK_THREAD_CPUTIME_ID):cpu();
+            c[k].run();
+            boot[k]+=(device?kernel_time(CLOCK_THREAD_CPUTIME_ID):cpu())-t;
         }
+        if(device && (i+1)%1024==0) fprintf(stderr,"cold_calls_per_arm=%u\n",i+1);
     }
+    if(device) { verify=pixels=1;fprintf(stderr,"cold_calls_per_arm=%u gameplay_started\n",cold); }
     for(unsigned i=0;i<1200;i++) {
         buttons=gameplay[i];
         for(unsigned j=0;j<2;j++) {
@@ -74,14 +121,40 @@ int main(int argc,char **argv) {
             bool draw=!(k && (off || (half && i%2) || (oracle && i && expected[3*i]==expected[3*(i-1)])));
             enable=draw?3:2;videos=samples=0;
             if(draw && !(k && no_target))assert(c[k].acquire(target+32,sizeof(target)-64));
-            uint64_t t=cpu();c[k].run();times[i][k]=cpu()-t;
+            if(device) {
+                callback_layout=layout[k];pixel_crc=pcm_crc=0;callback_cpu=0;
+                uint64_t elapsed=kernel_time(CLOCK_MONOTONIC),t=kernel_time(CLOCK_THREAD_CPUTIME_ID);
+                c[k].run();
+                times[i][k]=kernel_time(CLOCK_THREAD_CPUTIME_ID)-t;
+                wall[i][k]=kernel_time(CLOCK_MONOTONIC)-elapsed;
+                observer[i][k]=callback_cpu;
+                if(pixel_crc!=expected[3*i] || pcm_crc!=expected[3*i+1] || samples!=expected[3*i+2]) {
+                    fprintf(stderr,"oracle_mismatch arm=%u frame=%u rgb=%u pcm=%u count=%u\n",k,i,
+                            pixel_crc!=expected[3*i],pcm_crc!=expected[3*i+1],samples!=expected[3*i+2]);
+                    return 3;
+                }
+                const uint32_t boundary=UINT32_MAX;
+                layout[k]=crc32(callback_layout,(const void *)&boundary,sizeof(boundary));
+            } else {
+                uint64_t t=cpu();c[k].run();times[i][k]=cpu()-t;
+            }
             assert(videos==(unsigned)draw && samples==expected[3*i+2]);
             published[k]+=videos;audio_frames[k]+=samples;
         }
+        if(device && (i+1)%300==0) fprintf(stderr,"gameplay_calls_per_arm=%u\n",i+1);
     }
     printf("cold,%"PRIu64",%"PRIu64"\n",boot[0],boot[1]);
-    for(unsigned i=0;i<1200;i++)printf("%u,%"PRIu64",%"PRIu64"\n",i,times[i][0],times[i][1]);
+    for(unsigned i=0;i<1200;i++) {
+        printf("%u,%"PRIu64",%"PRIu64,i,times[i][0],times[i][1]);
+        if(device) printf(",%"PRIu64",%"PRIu64",%"PRIu64",%"PRIu64,
+                          wall[i][0],wall[i][1],observer[i][0],observer[i][1]);
+        putchar('\n');
+    }
     printf("published,%u,%u\naudio,%u,%u\n",published[0],published[1],audio_frames[0],audio_frames[1]);
+    if(device) {
+        assert(layout[0]==layout[1]);
+        printf("oracle,1200,1200,%08"PRIx32",%08"PRIx32"\n",layout[0],layout[1]);
+    }
     for(unsigned k=0;k<2;k++){c[k].unload();c[k].deinit();dlclose(c[k].handle);}
     free(rom);free(expected);return 0;
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+## Prepare a one-shot physical raster timing test - 2026-11-10
+
+Compare clipped and full-tile raster strips across the five frozen games
+using kernel CPU and wall clocks on the A7. The 12-pair one-shot matrix also
+checks two sprite cases. It verifies emitted pixels and PCM in memory so
+the prior Star Fox native PCM failure cannot end the replay early.
+[Card test procedure](docs/snes-raster-device-test.md).
+
 ## Prototype larger raster batches - 2026-11-10
 
 Resolve Mode 2 offset maps once per stable strip and draw up to eight tile
