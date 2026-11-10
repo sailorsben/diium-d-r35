@@ -39,8 +39,8 @@ def main(out, batch):
     if not retry: run_dir.mkdir()
     names = {'reuse-verify':('reuse-census',),'span-verify':('span-census',),'offset-verify':('offset-row','offset-census'),
              'plain-verify':('offset-plain','offset-plain-census')}.get(batch)
-    if batch in ('scheduler-verify', 'raster-verify'):
-        prefix = 'apu' if batch == 'scheduler-verify' else 'raster'
+    if batch in ('scheduler-verify', 'raster-verify', 'fx-verify'):
+        prefix = {'scheduler-verify': 'apu', 'raster-verify': 'raster', 'fx-verify': 'fx'}[batch]
         names = tuple(d.name for d in sorted(out.glob(prefix+'-*')) if (d/'snes9x2005_plus_libretro.so').is_file())
         assert names
     if names is None:
@@ -122,6 +122,11 @@ def main(out, batch):
     elif batch in ('scheduler-verify', 'raster-verify'):
         tasks = [(0,c,g,'cold-off' if g==3 else 'full') for g in [3,0,1,2,4] for c in ('physical',*names)]
         with ThreadPoolExecutor(max_workers=7) as pool:
+            results = list(pool.map(replay,tasks))
+    elif batch == 'fx-verify':
+        tasks = [(0,c,3,'cold-off') for c in names]
+        tasks += [(0,'fx-batch',g,'full') for g in (0,1,2,4)]
+        with ThreadPoolExecutor(max_workers=6) as pool:
             results = list(pool.map(replay,tasks))
     elif batch == 'followup-timing':
         groups = [[(i*2+rep,c,3,'cold-off') for c in (('baseline',candidate) if rep==0 else (candidate,'baseline'))]

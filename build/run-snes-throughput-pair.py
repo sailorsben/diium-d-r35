@@ -126,11 +126,24 @@ def raster_ablation(out, build, names):
     run_pairs(out, cores, tasks)
 
 
+def superfx(out, build, names):
+    file = 'snes9x2005_plus_libretro.so'
+    cores = {'physical': FIX/'plus-a7.so', 'baseline': build/'raster-offset-full'/file}
+    cores.update({n: build/n/file for n in names})
+    for name in names:
+        if name.endswith('-toggle'):
+            add_raster_control(cores, name)
+    tasks = [(3, n, 'both-cold-off-fx-toggle' if n.endswith('-toggle') else 'both-cold-off') for n in names]
+    run_pairs(out, cores, tasks)
+
+
 if __name__=='__main__':
     if sys.argv[1]=='--raster':
         raster(*(Path(x).resolve() for x in sys.argv[2:5]), sys.argv[5:])
     elif sys.argv[1]=='--raster-ablation':
         raster_ablation(*(Path(x).resolve() for x in sys.argv[2:4]), sys.argv[4:])
+    elif sys.argv[1]=='--superfx':
+        superfx(*(Path(x).resolve() for x in sys.argv[2:4]), sys.argv[4:])
     elif sys.argv[1]=='--scheduler':
         scheduler(*(Path(x).resolve() for x in sys.argv[2:]))
     elif sys.argv[1]=='--scheduler-followup':

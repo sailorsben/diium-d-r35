@@ -104,12 +104,16 @@ int main(int argc,char **argv) {
 #undef BIND
     unsigned (*acquire)(void *,size_t)=dlsym(handle,"d35_output_acquire"); assert(acquire);
     void (*census)(uint64_t *)=dlsym(handle,"d35_fx_census");
+    void (*fx_loops)(uint32_t *)=dlsym(handle,"d35_fx_loops");
+    void (*fx_batch_counts)(uint64_t *)=dlsym(handle,"d35_fx_batch_counts");
+    static uint32_t loops[1024][4];
     void (*dma_census)(uint64_t *)=dlsym(handle,"d35_dma_census");
     unsigned (*reuse_read)(void)=dlsym(handle,"d35_reuse_read");
     void (*span_read)(unsigned *)=dlsym(handle,"d35_span_read");
     void (*offset_read)(uint64_t *)=dlsym(handle,"d35_offset_read");
     void (*raster_census)(uint64_t *)=dlsym(handle,"d35_raster_census");
     void (*raster_set_enabled)(bool)=dlsym(handle,"d35_raster_set_enabled");
+    void (*fx_set_enabled)(bool)=dlsym(handle,"d35_fx_set_enabled");
     void (*apu_census)(uint64_t *)=dlsym(handle,"d35_apu_census");
     void (*unity_census)(uint64_t *)=dlsym(handle,"d35_unity_census");
     void (*port_census)(uint64_t *)=dlsym(handle,"d35_port_census");
@@ -124,6 +128,7 @@ int main(int argc,char **argv) {
     }
     unsigned check=verify; verify=0;
     if(raster_set_enabled) raster_set_enabled(true);
+    if(fx_set_enabled) fx_set_enabled(true);
     uint64_t warm_begin=cpu();
     for(unsigned i=0;i<cold;i++) {
         enable=(cold_off || (cold_tail && i+64<cold))?2:3; buttons=warm[i];run();
@@ -133,6 +138,8 @@ int main(int argc,char **argv) {
     if(census) {
         census(fx); printf("cold_gsu ns=%"PRIu64" runs=%"PRIu64"\n",fx[1024],fx[1025]);
     }
+    if(fx_loops) fx_loops(loops[0]);
+    if(fx_batch_counts) fx_batch_counts(fx);
     if(dma_census) dma_census(fx);
     if(offset_read) offset_read(fx);
     if(raster_census) raster_census(fx);
@@ -184,6 +191,17 @@ int main(int argc,char **argv) {
         census(fx);
         printf("game_gsu ns=%"PRIu64" runs=%"PRIu64"\n",fx[1024],fx[1025]);
         for(unsigned i=0;i<1024;i++) if(fx[i])printf("opcode %03x %"PRIu64"\n",i,fx[i]);
+    }
+    if(fx_loops) {
+        fx_loops(loops[0]);
+        for(unsigned i=0;i<1024;i++)
+            if(loops[i][3])printf("loop %06"PRIx32" %04"PRIx32" %08"PRIx32" %"PRIu32"\n",
+                                  loops[i][0],loops[i][1],loops[i][2],loops[i][3]);
+    }
+    if(fx_batch_counts) {
+        fx_batch_counts(fx);
+        printf("fx_batch fill_batches=%"PRIu64" fill_guest_ops=%"PRIu64
+               " plot_batches=%"PRIu64" plot_guest_ops=%"PRIu64"\n",fx[0],fx[1],fx[2],fx[3]);
     }
     if(dma_census) {
         dma_census(fx);

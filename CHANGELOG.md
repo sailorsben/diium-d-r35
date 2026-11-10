@@ -1,5 +1,14 @@
 # Changelog
 
+## Batch hot Super FX loops - 2026-11-10
+
+Recognize bounded word fills and four-bit pixel runs inside the interpreter.
+The combined full-tile build batches 20.82 million guest instructions and
+passes the five exact replays. Paired QEMU timing saves 9.23% mean CPU against
+the full-tile build and 5.76% with identical binaries toggled. Physical A7
+timing and native audio reserve are pending.
+[Super FX results](docs/snes-superfx-batching.md).
+
 ## Measure raster strips on the D-R35 - 2026-11-10
 
 All 12 physical pairs complete with 28,800 exact replay calls. Full-tile

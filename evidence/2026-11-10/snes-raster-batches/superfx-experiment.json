@@ -1,0 +1,618 @@
+{
+  "physical": false,
+  "profile_sha256": "9031902bcd77eeb02fb50ce4ca2fe05b2467a763e45d5d059f2da998c8e8991e",
+  "counted_sha256": "453a92414622e3aab5c22a0416dcb54b93ecc1731cabc2276b35023b4169baa9",
+  "coverage": {
+    "fill_batches": 796,
+    "fill_guest_ops": 17114000,
+    "plot_batches": 153658,
+    "plot_guest_ops": 3701960,
+    "loop_visits": 7436298,
+    "word_fill_loop_visits": 4279296,
+    "plot_loop_visits": 2310415,
+    "guest_ops_total": 81142740
+  },
+  "verification": {
+    "meta": {
+      "results": [
+        {
+          "rep": 0,
+          "core": "fx-batch",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-batch-toggle",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-fill",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-plot",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-batch",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-batch",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-batch",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0
+        },
+        {
+          "rep": 0,
+          "core": "fx-batch",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0
+        }
+      ],
+      "core_sha256": {
+        "fx-batch": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+        "fx-batch-toggle": "4b4e21d3da955221055e24f07de7f61b7164fe6289579a7796a527856bd6d65b",
+        "fx-fill": "901761e03f7b15bd6c063d4c0bc9fc5575f275357b0da783f44de4f159cf3155",
+        "fx-plot": "17cdf1b2a85f2c5c95d804bfe9b1b7c24cb2c3055d4e34620e36d1aa5b57f168",
+        "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+      },
+      "source_sha256": "b83f394476571a40b3b3c262fa0170a56a0c37076592b33dff2c5874a9197f24",
+      "replay_sha256": "e3392d347a5eac09b987f02f55cdabab91433fde8a9483207bb4e245bfe3cebe",
+      "timing_affinity": null,
+      "physical": false
+    },
+    "results": [
+      {
+        "rep": 0,
+        "core": "fx-batch",
+        "game": 3,
+        "mode": "cold-off",
+        "returncode": 0,
+        "cold_cpu_ns": 57772343900,
+        "cold_calls": 8656,
+        "game_cpu_mean_ns": 8111717,
+        "game_cpu_p95_ns": 15212300,
+        "game_cpu_first_four_ns": [
+          26409200,
+          9640400,
+          12832700,
+          23263800
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "db153159542988480cbf9385e8baa85157622b627aa0857d2a756a49de5e562f",
+        "callback_layout_crc32": "7a9a7371"
+      },
+      {
+        "rep": 0,
+        "core": "fx-batch-toggle",
+        "game": 3,
+        "mode": "cold-off",
+        "returncode": 0,
+        "cold_cpu_ns": 57612883900,
+        "cold_calls": 8656,
+        "game_cpu_mean_ns": 8009203,
+        "game_cpu_p95_ns": 14862300,
+        "game_cpu_first_four_ns": [
+          26264900,
+          8467900,
+          6823700,
+          18867400
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "f18efad5ccfa96c3275f949d6615d8b435969b21cffb6188bca5fc3f1043c848",
+        "callback_layout_crc32": "7a9a7371"
+      },
+      {
+        "rep": 0,
+        "core": "fx-fill",
+        "game": 3,
+        "mode": "cold-off",
+        "returncode": 0,
+        "cold_cpu_ns": 59949026500,
+        "cold_calls": 8656,
+        "game_cpu_mean_ns": 7824636,
+        "game_cpu_p95_ns": 14937900,
+        "game_cpu_first_four_ns": [
+          25836400,
+          4304200,
+          2831200,
+          14215200
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "54ac95b55741cd2823ed3ee77cc35c7c8a5b2f40e5423e7772ce380bb70c4b6d",
+        "callback_layout_crc32": "7a9a7371"
+      },
+      {
+        "rep": 0,
+        "core": "fx-plot",
+        "game": 3,
+        "mode": "cold-off",
+        "returncode": 0,
+        "cold_cpu_ns": 61343853500,
+        "cold_calls": 8656,
+        "game_cpu_mean_ns": 7907507,
+        "game_cpu_p95_ns": 15427900,
+        "game_cpu_first_four_ns": [
+          26262600,
+          7843900,
+          6769900,
+          19379900
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "ff88ec8c5ed60edad7b19c6045813a7e799c49c2898e3e7dbf827d1d8dcde9d1",
+        "callback_layout_crc32": "7a9a7371"
+      },
+      {
+        "rep": 0,
+        "core": "fx-batch",
+        "game": 0,
+        "mode": "full",
+        "returncode": 0,
+        "cold_cpu_ns": 33400,
+        "cold_calls": 0,
+        "game_cpu_mean_ns": 5867459,
+        "game_cpu_p95_ns": 7867200,
+        "game_cpu_first_four_ns": [
+          31541300,
+          6092800,
+          5657600,
+          6269900
+        ],
+        "rendered": 1200,
+        "audio_frames": 764073,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "114995ce259471b1a10b0d0ed3da89ffeec727f6db3085420bf224d56e106612",
+        "callback_layout_crc32": "0a92abd5"
+      },
+      {
+        "rep": 0,
+        "core": "fx-batch",
+        "game": 1,
+        "mode": "full",
+        "returncode": 0,
+        "cold_cpu_ns": 50900,
+        "cold_calls": 0,
+        "game_cpu_mean_ns": 5368886,
+        "game_cpu_p95_ns": 6831300,
+        "game_cpu_first_four_ns": [
+          32720700,
+          4916100,
+          4296100,
+          5347100
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "65221958ce44a78b980ebec6d9083ed81f771d21529b40db92fbe3056180b483",
+        "callback_layout_crc32": "553b081d"
+      },
+      {
+        "rep": 0,
+        "core": "fx-batch",
+        "game": 2,
+        "mode": "full",
+        "returncode": 0,
+        "cold_cpu_ns": 65800,
+        "cold_calls": 0,
+        "game_cpu_mean_ns": 7584487,
+        "game_cpu_p95_ns": 14694200,
+        "game_cpu_first_four_ns": [
+          52507700,
+          7095700,
+          7694100,
+          5926200
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "8707eada86ad104aa3ac2b84885d0095d7adf3ec184c26c837f031185337feca",
+        "callback_layout_crc32": "24fe58d4"
+      },
+      {
+        "rep": 0,
+        "core": "fx-batch",
+        "game": 4,
+        "mode": "full",
+        "returncode": 0,
+        "cold_cpu_ns": 52900,
+        "cold_calls": 0,
+        "game_cpu_mean_ns": 8113685,
+        "game_cpu_p95_ns": 12883100,
+        "game_cpu_first_four_ns": [
+          39595300,
+          7000900,
+          4487900,
+          3417800
+        ],
+        "rendered": 1200,
+        "audio_frames": 641626,
+        "verified": 1200,
+        "mismatch": 0,
+        "first_mismatch": 1200,
+        "log_sha256": "e6dd4977c3e7dd79e5cd4e96732a9f514d4b936ae0f2d090efa7ab1e4f61f9c4",
+        "callback_layout_crc32": "c157f1fd"
+      }
+    ]
+  },
+  "paired_qemu": {
+    "meta": {
+      "results": [
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "fx-fill",
+          "mode": "both-cold-off",
+          "host_cpu": 1,
+          "log": "3-fx-fill-both-cold-off.log",
+          "sha256": "dc6135f6ccc3eecb15d80b639f1cf5abd0bb720d21a7f90212a5fcbea26b42a6"
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "fx-plot",
+          "mode": "both-cold-off",
+          "host_cpu": 3,
+          "log": "3-fx-plot-both-cold-off.log",
+          "sha256": "7338215c95d61386eeef80d698b7067035a3e0c84a15933cc10c822fa6547d2a"
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "fx-batch",
+          "mode": "both-cold-off",
+          "host_cpu": 5,
+          "log": "3-fx-batch-both-cold-off.log",
+          "sha256": "1e052f6426f18e4a7f2c2048f883e4a8122a6247f221d556f5d15b041fe3d60b"
+        },
+        {
+          "game": 3,
+          "control": "fx-batch-toggle-disabled",
+          "candidate": "fx-batch-toggle",
+          "mode": "both-cold-off-fx-toggle",
+          "host_cpu": 7,
+          "log": "3-fx-batch-toggle-both-cold-off-fx-toggle.log",
+          "sha256": "d1b5cfa2b21a971814f1d5aa6bf9ff3f7c470a728c3fe51ca5e0f13b1e40a5b0"
+        }
+      ],
+      "physical": false,
+      "core_sha256": {
+        "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+        "baseline": "c5068b07f927b5a634e6edb045ba1f2b1c2b9ae3afb9437d6a200343756ae89f",
+        "fx-fill": "901761e03f7b15bd6c063d4c0bc9fc5575f275357b0da783f44de4f159cf3155",
+        "fx-plot": "17cdf1b2a85f2c5c95d804bfe9b1b7c24cb2c3055d4e34620e36d1aa5b57f168",
+        "fx-batch": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+        "fx-batch-toggle": "4b4e21d3da955221055e24f07de7f61b7164fe6289579a7796a527856bd6d65b",
+        "fx-batch-toggle-disabled": "4b4e21d3da955221055e24f07de7f61b7164fe6289579a7796a527856bd6d65b"
+      },
+      "sources": {
+        "snes-throughput-pair.c": "65f87333af119c0f5d47c79bda082a54bb03622a3d176ddecbba25112d2f4789",
+        "snes-throughput-replay.c": "8d4dc79be65a2dfabc0a553e2706aca233add0520e2890944c4082e5166dcfe2",
+        "run-snes-throughput-pair.py": "36e67e319d3f7dc7e04c3747898c2af888ab7c8b6db34d2783b1b607f25a3457"
+      },
+      "pair_sha256": "948391caf691edd332551821d06928ae2c811ca66280b38f01124e5f2e7a773f"
+    },
+    "results": [
+      {
+        "game": 3,
+        "control": "baseline",
+        "candidate": "fx-fill",
+        "mode": "both-cold-off",
+        "host_cpu": 1,
+        "log": "3-fx-fill-both-cold-off.log",
+        "sha256": "dc6135f6ccc3eecb15d80b639f1cf5abd0bb720d21a7f90212a5fcbea26b42a6",
+        "cold_cpu_ns": [
+          55918374500,
+          52597915600
+        ],
+        "cold_saving_pct": 5.94,
+        "warm_cpu_mean_ns": [
+          7550908,
+          7023767
+        ],
+        "mean_saving_pct": 6.98,
+        "warm_cpu_p95_ns": [
+          14361100,
+          13688400
+        ],
+        "p95_saving_pct": 4.68,
+        "warm_quarter_saving_pct": [
+          8.62,
+          6.8,
+          4.58,
+          8.25
+        ],
+        "first_four_cpu_ns": [
+          [
+            15820800,
+            19588200
+          ],
+          [
+            4861100,
+            7581400
+          ],
+          [
+            4104200,
+            2705600
+          ],
+          [
+            11627500,
+            11682400
+          ]
+        ],
+        "rendered": [
+          1200,
+          1200
+        ],
+        "audio_frames": 641626,
+        "slow_ticks": {
+          "count": 358,
+          "mean_cpu_ns": [
+            11675918,
+            10972877
+          ],
+          "saved_pct": 6.02
+        },
+        "other_ticks": {
+          "count": 722,
+          "mean_cpu_ns": [
+            5505542,
+            5065622
+          ],
+          "saved_pct": 7.99
+        }
+      },
+      {
+        "game": 3,
+        "control": "baseline",
+        "candidate": "fx-plot",
+        "mode": "both-cold-off",
+        "host_cpu": 3,
+        "log": "3-fx-plot-both-cold-off.log",
+        "sha256": "7338215c95d61386eeef80d698b7067035a3e0c84a15933cc10c822fa6547d2a",
+        "cold_cpu_ns": [
+          55724905100,
+          53374496900
+        ],
+        "cold_saving_pct": 4.22,
+        "warm_cpu_mean_ns": [
+          7527794,
+          7339182
+        ],
+        "mean_saving_pct": 2.51,
+        "warm_cpu_p95_ns": [
+          14593300,
+          14254500
+        ],
+        "p95_saving_pct": 2.32,
+        "warm_quarter_saving_pct": [
+          1.77,
+          3.51,
+          0.96,
+          4.11
+        ],
+        "first_four_cpu_ns": [
+          [
+            15698200,
+            19019100
+          ],
+          [
+            4212200,
+            4566400
+          ],
+          [
+            3312400,
+            3266100
+          ],
+          [
+            13194700,
+            11288800
+          ]
+        ],
+        "rendered": [
+          1200,
+          1200
+        ],
+        "audio_frames": 641626,
+        "slow_ticks": {
+          "count": 358,
+          "mean_cpu_ns": [
+            11649243,
+            11315912
+          ],
+          "saved_pct": 2.86
+        },
+        "other_ticks": {
+          "count": 722,
+          "mean_cpu_ns": [
+            5484194,
+            5367342
+          ],
+          "saved_pct": 2.13
+        }
+      },
+      {
+        "game": 3,
+        "control": "baseline",
+        "candidate": "fx-batch",
+        "mode": "both-cold-off",
+        "host_cpu": 5,
+        "log": "3-fx-batch-both-cold-off.log",
+        "sha256": "1e052f6426f18e4a7f2c2048f883e4a8122a6247f221d556f5d15b041fe3d60b",
+        "cold_cpu_ns": [
+          55535122300,
+          51011662200
+        ],
+        "cold_saving_pct": 8.15,
+        "warm_cpu_mean_ns": [
+          7248886,
+          6579980
+        ],
+        "mean_saving_pct": 9.23,
+        "warm_cpu_p95_ns": [
+          14398500,
+          13375300
+        ],
+        "p95_saving_pct": 7.11,
+        "warm_quarter_saving_pct": [
+          8.16,
+          12.59,
+          8.01,
+          8.66
+        ],
+        "first_four_cpu_ns": [
+          [
+            16341600,
+            23146000
+          ],
+          [
+            7256000,
+            7394700
+          ],
+          [
+            5961900,
+            4720500
+          ],
+          [
+            12643400,
+            9956000
+          ]
+        ],
+        "rendered": [
+          1200,
+          1200
+        ],
+        "audio_frames": 641626,
+        "slow_ticks": {
+          "count": 358,
+          "mean_cpu_ns": [
+            11209877,
+            10254175
+          ],
+          "saved_pct": 8.53
+        },
+        "other_ticks": {
+          "count": 722,
+          "mean_cpu_ns": [
+            5284848,
+            4758149
+          ],
+          "saved_pct": 9.97
+        }
+      },
+      {
+        "game": 3,
+        "control": "fx-batch-toggle-disabled",
+        "candidate": "fx-batch-toggle",
+        "mode": "both-cold-off-fx-toggle",
+        "host_cpu": 7,
+        "log": "3-fx-batch-toggle-both-cold-off-fx-toggle.log",
+        "sha256": "d1b5cfa2b21a971814f1d5aa6bf9ff3f7c470a728c3fe51ca5e0f13b1e40a5b0",
+        "cold_cpu_ns": [
+          54247725600,
+          50609109600
+        ],
+        "cold_saving_pct": 6.71,
+        "warm_cpu_mean_ns": [
+          6379614,
+          6012454
+        ],
+        "mean_saving_pct": 5.76,
+        "warm_cpu_p95_ns": [
+          12950800,
+          12037500
+        ],
+        "p95_saving_pct": 7.05,
+        "warm_quarter_saving_pct": [
+          4.45,
+          8.41,
+          5.19,
+          5.06
+        ],
+        "first_four_cpu_ns": [
+          [
+            16493800,
+            17450400
+          ],
+          [
+            5399100,
+            7370400
+          ],
+          [
+            3142400,
+            2653200
+          ],
+          [
+            11660900,
+            10708500
+          ]
+        ],
+        "rendered": [
+          1200,
+          1200
+        ],
+        "audio_frames": 641626,
+        "slow_ticks": {
+          "count": 358,
+          "mean_cpu_ns": [
+            10112803,
+            9425364
+          ],
+          "saved_pct": 6.8
+        },
+        "other_ticks": {
+          "count": 722,
+          "mean_cpu_ns": [
+            4528531,
+            4320181
+          ],
+          "saved_pct": 4.6
+        }
+      }
+    ]
+  }
+}

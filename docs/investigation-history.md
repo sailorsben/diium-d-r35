@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Batch Super FX fills and pixel runs - 2026-11-10
+
+The Star Fox census identifies hot RAM fill and four-bit plot loops.
+Batching them passes the original interpreter and replay checks. The
+same-binary host comparison saves 6.80% mean CPU on the tick IDs that
+exceeded the A7 budget. Price both paths together on the full-tile build
+before applying the playback install gate.
+[Super FX results](snes-superfx-batching.md).
+
 ## Price raster strips on the Cortex-A7 - 2026-11-10
 
 All 12 returned pairs validate. Full-tile strips beat clipped strips on
