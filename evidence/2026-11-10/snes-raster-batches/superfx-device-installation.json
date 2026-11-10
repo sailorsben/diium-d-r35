@@ -1,0 +1,34 @@
+{
+  "source_commit": "d1eede04333eab4f26470a4279878a6c8129ab54",
+  "target": "retro/snes-superfx-test1",
+  "measurement_only": true,
+  "physical_result": "PENDING",
+  "pairs_armed": 2,
+  "prior_archive": "uart-kernel-return-20261110T205431237668Z",
+  "prior_files": 1920,
+  "baseline_path": "retro/snes-raster-test1/cores/raster-offset-full.so",
+  "baseline_sha256": "c5068b07f927b5a634e6edb045ba1f2b1c2b9ae3afb9437d6a200343756ae89f",
+  "dispatch_sha256": "3321067b601a6b0f81667f93a52aa4d66753e3066cc4e986cc95aee456c360bf",
+  "marker_sha256": "ac6f878d858e444515b9b4d6ed3a6f6883bd3f62a727019e266dc7cc1ebf9ba2",
+  "payload_hashes": {
+    "cores/fx-batch.so": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+    "cores/fx-batch-toggle.so": "4b4e21d3da955221055e24f07de7f61b7164fe6289579a7796a527856bd6d65b",
+    "cores/fx-batch-toggle-disabled.so": "4b4e21d3da955221055e24f07de7f61b7164fe6289579a7796a527856bd6d65b",
+    "launch.sh": "658e17669563033031d99f1bee5a68c7bc314128c32e95acd7afd4417555312d",
+    "pair": "c2d169a393c978c990bc3adfec1db2f0101d59b83060ee5b556ac9bf672b7422",
+    "qualification.json": "07dacabf18a32f678afb8904eb9000e22aaa99ae3fea4fad392a01da6487685c",
+    "previous-launch.sh": "284966a8004ef67831156deff034ab6a6412fcc8577951add7e52b91f4771401"
+  },
+  "normal_init_sha256": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+  "qualification_sha256": "07dacabf18a32f678afb8904eb9000e22aaa99ae3fea4fad392a01da6487685c",
+  "new_device_firmware": false,
+  "full_backup_created": false,
+  "exact_card_files": 1929,
+  "protected_existing_files": 1919,
+  "armed_markers": [
+    "retro/snes-mvp/armed",
+    "retro/snes-superfx-test1/armed"
+  ],
+  "FAT_clean": true,
+  "one_shot_verified": true
+}

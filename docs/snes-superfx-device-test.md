@@ -1,5 +1,13 @@
 # One-shot Super FX timing test
 
+Armed and independently verified on I: from `d1eede0`.
+Readback matched both markers, all seven payloads and 1,919 protected
+files. FAT and normal boot init passed. A fresh sparse archive hit the
+NTFS hard-link limit for an old log. A full hash comparison confirmed
+the same 1,920 files as the previous archived return, so staging used
+that verified archive. Physical execution is pending.
+[Installation receipt](../evidence/2026-11-10/snes-raster-batches/superfx-device-installation.json).
+
 The D-R35 runs two paired Star Fox replays. The first compares the
 full-tile raster baseline from the previous physical test with the
 combined Super FX build. The second loads two copies of the same
