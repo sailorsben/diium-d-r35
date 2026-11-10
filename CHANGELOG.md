@@ -1,5 +1,13 @@
 # Changelog
 
+## Verify the current stock-menu SNES loader - 2026-11-10
+
+Match the installed loader bytes, recover the SNES selection and callback
+contract, and execute the exact vendor selector and loader with stubbed
+device boundaries. Confirm the v11 adapter can open the profile-guided
+core through its existing override in ARM/QEMU.
+[Loader audit](docs/stock-snes-loader.md).
+
 ## Prototype profile-guided SNES and exact display reuse - 2026-11-10
 
 Relink the combined core with the actual ARM replay profile. All five

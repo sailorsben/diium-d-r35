@@ -1,0 +1,99 @@
+{
+  "read_only_card": "I:",
+  "card_writes": 0,
+  "hardware_execution": false,
+  "archive_sha256_matches": {
+    "init": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+    "main": "ace334d88d013240e2b93eb8cb691f1f09e4109d6d509648a5518cbae0b25873",
+    "vrtemu": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+    "ldpath_launcher": "a2d36ab840e7defc3e806725a1bdddd10b8f6c6a9e393e992b9367e309aa3a84",
+    "ldpath_launcher.c": "b489b39e60dfb1517bff67f2e3e17835b5c0db134bdeb23fd255ba032b37824f",
+    "ldpath_check.so": "d1b6d338aa61cbbc8c9d38f15bbb5960771167f0ee6c8972e9d4ff7cc40edd96",
+    "libs/emu_sfc.so": "3a0ceb3cfde5148cecec0fb7cf5cf4c57229f9c6040626f79de3a520ae38c00e",
+    "libs/emu_sfc_plus.so": "1812b19b50270c625b43126253f687edc46bb9ba3cf0c4ccaaf3e2c29bef6657",
+    "libs/emu_sfc_orig.so": "702a26d3a48250168f1fa04991ecc910688cb5188acf1297e2c30a523cda4936"
+  },
+  "one_shot_armed": false,
+  "firmware_update_trigger": false,
+  "boot_chain": [
+    "retro/init",
+    "main",
+    "vrtemu",
+    "libs/emu_sfc.so",
+    "libs/emu_sfc_plus.so"
+  ],
+  "one_shot_dispatcher_sha256": "095a00aca6668e6891b51ab3093a92f10699f2557e836006b12b6bf52633cbfe",
+  "functions": {
+    "main.main": "0x106d4",
+    "vrtemu.run_game": "0xa5c68",
+    "vrtemu.GetCoreIndex": "0xa5b28",
+    "vrtemu.Snes_Load": "0xa4f54",
+    "vrtemu.Load_Proc1": "0xa3fb8",
+    "vrtemu.run_process": "0xa3724",
+    "vrtemu.Load_Proc2": "0xa426c",
+    "vrtemu.environment": "0xa2fc8"
+  },
+  "extracted_arm_tests": {
+    "snes_extension_indices": {
+      "SMC": 2,
+      "FIG": 3,
+      "SFC": 4
+    },
+    "other_extension_indices": {
+      "NES": 5,
+      "ZIP": 1,
+      "D35_TEST": -1
+    },
+    "shared_object": "/usr/retro/libs/emu_sfc.so",
+    "dlopen_mode": 2,
+    "callback_order": [
+      "retro_set_video_refresh",
+      "retro_set_audio_sample_batch",
+      "retro_set_input_state",
+      "retro_set_environment",
+      "retro_set_input_poll",
+      "retro_init",
+      "retro_load_game"
+    ],
+    "raw_fixture_reported_size": 8,
+    "predecoded_archive_fixture_reported_size": 5,
+    "raw_fixture_payload_size": 5,
+    "false_load_return_reaches_gameplay": true,
+    "missing_load_symbol_blocks_gameplay": true,
+    "set_geometry_37_write": {
+      "offset": 32,
+      "bytes": 8,
+      "value": 44100,
+      "standard_payload_bytes": 20
+    },
+    "source_sha256": "ae9df7b0e9a997c68c2f11a5539028027b9bd24ce426a192f124cd241fb20fd0",
+    "fixture_sha256": "182f5f73d21c53a7eae14d48a4a8cb7e7edf30e4a37e116bf026784005cf6a30",
+    "result_sha256": "e2869cf0fc361ff49d6275941486de8e091d959b92d466a8fc75c385e5426679"
+  },
+  "installed_adapter_override": {
+    "name": "D35_PLUS_CORE",
+    "calls_per_arm": 1800,
+    "captured_stereo_frames_44100": 1324600,
+    "game": "Final Fantasy VI",
+    "tested": [
+      "installed",
+      "combined",
+      "profile_guided"
+    ],
+    "heap_video_fixture": true,
+    "adaptive_render_disabled": true,
+    "combined_sha256": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+    "pgo_sha256": "0974965d71640d391cb5fdbc3f474d5056b72ae834a2fe8c6b8e66600a39cf86",
+    "fixture_sha256": "0d337d3800a72b8a82f8dfd872ab73169c3acd4bd0f2234d367d72f5f0939cc8",
+    "logs": {
+      "installed": "b0b8dadbe52013a767c753a5cbf6191d8fb278ff87481b2636609ae588c8efda",
+      "combined": "65d23e3daa28b39d0d93b1e0af6a7a9bf0de68b5eddf433e19b7fc2f4ebf509f",
+      "pgo": "65d23e3daa28b39d0d93b1e0af6a7a9bf0de68b5eddf433e19b7fc2f4ebf509f"
+    },
+    "combined_pgo_matching_capture_sha256": {
+      "native.s16le": "7198f4f14f3b4df3997da0a03afa572130db3eb181324b1a61ed995cb8444e9e",
+      "batches.csv": "0080babb30c11d83206c08b518571c91fb32a58316f4a33899fe93e43750b58c",
+      "frame-1799.ppm": "d0e0c81d0c818edbe74cd4c8703ed18eeace789a53211e9c7e99a6d8ee2f365e"
+    }
+  }
+}

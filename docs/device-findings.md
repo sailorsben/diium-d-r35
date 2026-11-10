@@ -1,5 +1,12 @@
 # Device findings
 
+**Current game loader (2026-11-10).** The card's normal SNES route is
+`main` → `vrtemu` → v11 `emu_sfc.so` → `emu_sfc_plus.so`.
+The extracted ARM loader verifies the extension mapping, callback order
+and ROM handoff. The installed adapter accepts the profile-guided core
+through `D35_PLUS_CORE` in the ARM fixture.
+[Current loader audit](stock-snes-loader.md).
+
 **Throughput follow-up (2026-11-10).** Profile-guided compilation saves
 6.6–7.9% in the paired Star Fox ARM/QEMU replay and 3.6–11.7% in the
 other four games, with exact output. The renderer can return a compact
