@@ -1,11 +1,11 @@
 # Device findings
 
-**Raster batching follow-up (2026-11-10).** Mode 2 strips save 34.3% mean
-and 26.8% p95 core CPU in the Star Fox paired QEMU replay, with unchanged
-RGB565 and PCM checks. The other four frozen scenes never enter the Mode 2
-path. The 16.688 ms NTSC deadline and the prior truncated physical Star Fox
-trace still bound the next A7 measurement.
-[Raster variants and results](snes-raster-batches.md).
+**Physical raster test (2026-11-10).** Full-tile Mode 2 strips save
+30.1% mean and 21.9% p95 Star Fox core CPU on the A7, ahead of clipped
+strips. All 12 pairs match replay pixels and PCM. Full-tile strips
+average 15.793 ms against 16.688 ms, with 398 calls over budget. Native
+playback and audio reserve remain unmeasured for this candidate.
+[Physical results](snes-raster-device-test.md).
 
 **Shared core scheduling follow-up (2026-11-10).** Each NTSC replay calls the
 APU at 262 scanline ends per frame. Combining even two of those service

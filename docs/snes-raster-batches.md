@@ -1,5 +1,10 @@
 # Larger SNES raster batches
 
+This document records the offline study. The later A7 return measured
+30.1% mean Star Fox savings for full-tile strips and 24.0% for clipped
+strips. The full-tile build now leads the physical evaluation.
+[Physical results](snes-raster-device-test.md).
+
 The Mode 2 strip walker is the first candidate to price on the Cortex-A7.
 It changes the order of independent draws within a raster flush. It leaves
 CPU, Super FX, PPU event timing, audio production and frontend publication
@@ -103,8 +108,9 @@ If the 34.29% QEMU mean saving transferred to that physical opening, core
 time would be 18.06–18.17 ms, equivalent to about 55 calls/s before host
 work. This sensitivity calculation still leaves 1.37–1.48 ms of core time
 above the deadline. It uses the prior physical opening and an offline
-gameplay ratio. The A7 saving, added host costs, sustained frame delivery
-and remaining cumulative audio deficit are unmeasured.
+gameplay ratio. The later hardware test measured the core savings
+directly. Added host costs, sustained frame delivery and the remaining
+cumulative audio deficit still need the native playback run.
 
 Keep the performance install gate pending. An instrumented A7 comparison
 must measure the net change in core and host time for the same workload.

@@ -1,5 +1,14 @@
 # Changelog
 
+## Measure raster strips on the D-R35 - 2026-11-10
+
+All 12 physical pairs complete with 28,800 exact replay calls. Full-tile
+strips save 30.1% mean Star Fox core CPU and 21.9% at p95, ahead of
+clipped strips. The mean fits the NTSC period, while 398 calls still
+exceed it on core CPU alone. Native playback remains unqualified.
+Card evidence is archived, FAT is clean and both markers are consumed.
+[Physical results](docs/snes-raster-device-test.md).
+
 ## Arm a one-shot physical raster timing test - 2026-11-10
 
 Compare clipped and full-tile raster strips across the five frozen games

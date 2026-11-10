@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Price raster strips on the Cortex-A7 - 2026-11-10
+
+All 12 returned pairs validate. Full-tile strips beat clipped strips on
+both mean and p95 Star Fox CPU, reversing the offline preference for
+clipped strips. Both leave 398 over-budget calls, none on a tick with
+a changed picture. Full-tile mean CPU fits the native period with
+less than 1 ms to spare. The next comparison must measure actual display
+and PCM cost, and capture the entire audio reserve curve.
+[Physical results](snes-raster-device-test.md).
+
 ## Batch raster geometry within a flush - 2026-11-10
 
 Mode 2 strips remove 87.1% of Star Fox's tile draw calls and save 34.3% of

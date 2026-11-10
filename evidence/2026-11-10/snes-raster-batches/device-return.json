@@ -1,0 +1,922 @@
+{
+  "physical_a7": true,
+  "native_pcm_and_panel_measured": false,
+  "archive": "uart-kernel-return-20261110T205431237668Z",
+  "source_commit": "cb9de9992375c8a170b6fc92821f0909ee7290b3",
+  "files_inventoried": 1920,
+  "new_retained_bytes": 809833,
+  "changed_preexisting_paths": [
+    "retro/snes-mvp/launch.sh",
+    "retro/swapfile"
+  ],
+  "fat_clean": true,
+  "one_shot_consumed": true,
+  "wrapper_sha256": "90d6b8c1c4b382a01235c84853266c9a4f71fff4a9236f84650109ae25f6e78c",
+  "cpuinfo_sha256": "1d012e18ada8412e9a617c3e24e7e5c294a5fead6bf914de7fae2595813cf46a",
+  "meminfo_sha256": "1377d910151432a97c68fe8ab3795ff8fb099145b472fc95b849d60858082b57",
+  "verified_pairs": 12,
+  "verified_calls_both_arms": 28800,
+  "star_fox_changed_picture_transitions": 398,
+  "pairs": [
+    {
+      "game": "Star Fox",
+      "variant": "raster-offset",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "7a9a7371",
+      "cold_calls_per_arm": 8656,
+      "cold_cpu_ns": [
+        89541129000,
+        89500966000
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 22596920,
+          "p95": 31775000,
+          "p99": 33268000,
+          "max": 39834000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 24343274,
+          "p95": 33565000,
+          "p99": 35002000,
+          "max": 41608000
+        },
+        "wall_including_observer_ns": {
+          "mean": 24439840,
+          "p95": 33656000,
+          "p99": 35177000,
+          "max": 46849000
+        },
+        "observer_cpu_mean_ns": 1746354,
+        "wall_less_observer_mean_ns": 22693486,
+        "core_first_3_mean_ns": 26875333,
+        "core_after_first_120_mean_ns": 22516837,
+        "core_over_period_calls": 1190,
+        "core_over_period_on_changed_picture_calls": 398,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 7090518000,
+            "final_ns": 7090518000
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 7690518000,
+            "final_ns": 7690518000
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 8290518000,
+            "final_ns": 8290518000
+          }
+        ]
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 17171351,
+          "p95": 26301000,
+          "p99": 27682000,
+          "max": 34702000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 18915712,
+          "p95": 28050000,
+          "p99": 29406000,
+          "max": 36442000
+        },
+        "wall_including_observer_ns": {
+          "mean": 18989524,
+          "p95": 28180000,
+          "p99": 29550000,
+          "max": 42373000
+        },
+        "observer_cpu_mean_ns": 1744361,
+        "wall_less_observer_mean_ns": 17245163,
+        "core_first_3_mean_ns": 21228667,
+        "core_after_first_120_mean_ns": 17076887,
+        "core_over_period_calls": 398,
+        "core_over_period_on_changed_picture_calls": 0,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 650009505,
+            "final_ns": 579835000
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 1183184310,
+            "final_ns": 1179835000
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 1782184310,
+            "final_ns": 1779835000
+          }
+        ]
+      },
+      "core_saving_pct": {
+        "mean": 24.01,
+        "p95": 17.227
+      },
+      "csv_sha256": "feed59fe0d559e13b9a52ca09ec02c35c46bf8536060a04096cfc08386887329",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8"
+    },
+    {
+      "game": "Star Fox",
+      "variant": "raster-offset-full",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "7a9a7371",
+      "cold_calls_per_arm": 8656,
+      "cold_cpu_ns": [
+        89529111000,
+        89138117000
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 22603466,
+          "p95": 31800000,
+          "p99": 33314000,
+          "max": 39812000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 24350742,
+          "p95": 33525000,
+          "p99": 35040000,
+          "max": 41616000
+        },
+        "wall_including_observer_ns": {
+          "mean": 24439963,
+          "p95": 33650000,
+          "p99": 35104000,
+          "max": 41956000
+        },
+        "observer_cpu_mean_ns": 1747277,
+        "wall_less_observer_mean_ns": 22692687,
+        "core_first_3_mean_ns": 27089000,
+        "core_after_first_120_mean_ns": 22523648,
+        "core_over_period_calls": 1190,
+        "core_over_period_on_changed_picture_calls": 398,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 7098373000,
+            "final_ns": 7098373000
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 7698373000,
+            "final_ns": 7698373000
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 8298373000,
+            "final_ns": 8298373000
+          }
+        ]
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 15792589,
+          "p95": 24830000,
+          "p99": 26294000,
+          "max": 34317000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 17540188,
+          "p95": 26604000,
+          "p99": 28033000,
+          "max": 36130000
+        },
+        "wall_including_observer_ns": {
+          "mean": 17624111,
+          "p95": 26669000,
+          "p99": 28128000,
+          "max": 55755000
+        },
+        "observer_cpu_mean_ns": 1747599,
+        "wall_less_observer_mean_ns": 15876512,
+        "core_first_3_mean_ns": 20038667,
+        "core_after_first_120_mean_ns": 15701410,
+        "core_over_period_calls": 398,
+        "core_over_period_on_changed_picture_calls": 0,
+        "serial_backlog_model": [
+          {
+            "extra_per_call_ns": 0,
+            "peak_ns": 38714685,
+            "final_ns": 0
+          },
+          {
+            "extra_per_call_ns": 500000,
+            "peak_ns": 147553095,
+            "final_ns": 1534070
+          },
+          {
+            "extra_per_call_ns": 1000000,
+            "peak_ns": 373053095,
+            "final_ns": 125321000
+          }
+        ]
+      },
+      "core_saving_pct": {
+        "mean": 30.132,
+        "p95": 21.918
+      },
+      "csv_sha256": "e5af933cba163b9a744b08343f68f1c51b5d607f4f0cc6bd4235c9c7b1fdbcc7",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8"
+    },
+    {
+      "game": "Mario",
+      "variant": "raster-offset",
+      "native_period_ns": 19872917,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 764073,
+      "callback_layout_crc32": "0a92abd5",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 9992931,
+          "p95": 10792000,
+          "p99": 11231000,
+          "max": 15788000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 11696210,
+          "p95": 12523000,
+          "p99": 12923000,
+          "max": 17476000
+        },
+        "wall_including_observer_ns": {
+          "mean": 11740687,
+          "p95": 12608000,
+          "p99": 13056000,
+          "max": 17543000
+        },
+        "observer_cpu_mean_ns": 1703279,
+        "wall_less_observer_mean_ns": 10037408,
+        "core_first_3_mean_ns": 11044333,
+        "core_after_first_120_mean_ns": 9950853,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 9966208,
+          "p95": 10751000,
+          "p99": 11267000,
+          "max": 15668000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 11669491,
+          "p95": 12462000,
+          "p99": 13035000,
+          "max": 17360000
+        },
+        "wall_including_observer_ns": {
+          "mean": 11725880,
+          "p95": 12548000,
+          "p99": 13085000,
+          "max": 26249000
+        },
+        "observer_cpu_mean_ns": 1703282,
+        "wall_less_observer_mean_ns": 10022598,
+        "core_first_3_mean_ns": 11049333,
+        "core_after_first_120_mean_ns": 9924651,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": 0.267,
+        "p95": 0.38
+      },
+      "csv_sha256": "63bfef8ce5b1e12e3e964df4be9a515997a0512a65718ee42d9ae2849bfb409f",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "Mario",
+      "variant": "raster-offset-full",
+      "native_period_ns": 19872917,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 764073,
+      "callback_layout_crc32": "0a92abd5",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 9976482,
+          "p95": 10768000,
+          "p99": 11322000,
+          "max": 15737000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 11681295,
+          "p95": 12490000,
+          "p99": 13054000,
+          "max": 17439000
+        },
+        "wall_including_observer_ns": {
+          "mean": 11726908,
+          "p95": 12561000,
+          "p99": 13059000,
+          "max": 17514000
+        },
+        "observer_cpu_mean_ns": 1704813,
+        "wall_less_observer_mean_ns": 10022094,
+        "core_first_3_mean_ns": 10946000,
+        "core_after_first_120_mean_ns": 9934425,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 9920143,
+          "p95": 10716000,
+          "p99": 11168000,
+          "max": 15628000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 11623568,
+          "p95": 12430000,
+          "p99": 12863000,
+          "max": 17318000
+        },
+        "wall_including_observer_ns": {
+          "mean": 11678958,
+          "p95": 12509000,
+          "p99": 12978000,
+          "max": 23223000
+        },
+        "observer_cpu_mean_ns": 1703424,
+        "wall_less_observer_mean_ns": 9975534,
+        "core_first_3_mean_ns": 10991667,
+        "core_after_first_120_mean_ns": 9878102,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": 0.565,
+        "p95": 0.483
+      },
+      "csv_sha256": "68605bcf317e722eacebc92de606d8a7f8a07e017f912ef0a5fc6098b449ef54",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "Metroid",
+      "variant": "raster-offset",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "553b081d",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 11865313,
+          "p95": 11980000,
+          "p99": 12041000,
+          "max": 15022000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13562170,
+          "p95": 13678000,
+          "p99": 13751000,
+          "max": 16975000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13627480,
+          "p95": 13960000,
+          "p99": 14041000,
+          "max": 31672000
+        },
+        "observer_cpu_mean_ns": 1696857,
+        "wall_less_observer_mean_ns": 11930623,
+        "core_first_3_mean_ns": 13142667,
+        "core_after_first_120_mean_ns": 11859356,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 11986042,
+          "p95": 12108000,
+          "p99": 12182000,
+          "max": 15393000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13680628,
+          "p95": 13802000,
+          "p99": 13882000,
+          "max": 17074000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13768987,
+          "p95": 14068000,
+          "p99": 14171000,
+          "max": 59613000
+        },
+        "observer_cpu_mean_ns": 1694586,
+        "wall_less_observer_mean_ns": 12074401,
+        "core_first_3_mean_ns": 13172667,
+        "core_after_first_120_mean_ns": 11979191,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": -1.017,
+        "p95": -1.068
+      },
+      "csv_sha256": "1ebdeb3161c14eba5e11b1dd0dd4802cceef6f1dd54116feecea00978e396996",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "Metroid",
+      "variant": "raster-offset-full",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "553b081d",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 11863565,
+          "p95": 11971000,
+          "p99": 12055000,
+          "max": 15719000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13560797,
+          "p95": 13668000,
+          "p99": 13760000,
+          "max": 17481000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13615765,
+          "p95": 13945000,
+          "p99": 14046000,
+          "max": 19076000
+        },
+        "observer_cpu_mean_ns": 1697232,
+        "wall_less_observer_mean_ns": 11918533,
+        "core_first_3_mean_ns": 13260667,
+        "core_after_first_120_mean_ns": 11856906,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 11970375,
+          "p95": 12091000,
+          "p99": 12167000,
+          "max": 14890000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13666498,
+          "p95": 13785000,
+          "p99": 13859000,
+          "max": 16592000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13733562,
+          "p95": 14047000,
+          "p99": 14157000,
+          "max": 34165000
+        },
+        "observer_cpu_mean_ns": 1696123,
+        "wall_less_observer_mean_ns": 12037439,
+        "core_first_3_mean_ns": 13008333,
+        "core_after_first_120_mean_ns": 11964481,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": -0.9,
+        "p95": -1.002
+      },
+      "csv_sha256": "26d7d547b83830c1a05903db5457d53f270c52ada65d97c4fc32abf4de1706fd",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "F-Zero",
+      "variant": "raster-offset",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "24fe58d4",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 12147796,
+          "p95": 12471000,
+          "p99": 12565000,
+          "max": 14629000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13837315,
+          "p95": 14165000,
+          "p99": 14261000,
+          "max": 16385000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13894278,
+          "p95": 14289000,
+          "p99": 14524000,
+          "max": 21683000
+        },
+        "observer_cpu_mean_ns": 1689519,
+        "wall_less_observer_mean_ns": 12204759,
+        "core_first_3_mean_ns": 12622333,
+        "core_after_first_120_mean_ns": 12199016,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 12178908,
+          "p95": 12520000,
+          "p99": 12598000,
+          "max": 13542000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13869427,
+          "p95": 14221000,
+          "p99": 14293000,
+          "max": 15217000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13922489,
+          "p95": 14327000,
+          "p99": 14564000,
+          "max": 15291000
+        },
+        "observer_cpu_mean_ns": 1690519,
+        "wall_less_observer_mean_ns": 12231970,
+        "core_first_3_mean_ns": 12330000,
+        "core_after_first_120_mean_ns": 12229254,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": -0.256,
+        "p95": -0.393
+      },
+      "csv_sha256": "9df3164ec8697df7521434df9606a6186fb53c430a73100b79fb220cee25efb7",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "F-Zero",
+      "variant": "raster-offset-full",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "24fe58d4",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 12160698,
+          "p95": 12490000,
+          "p99": 12594000,
+          "max": 14007000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13849059,
+          "p95": 14191000,
+          "p99": 14292000,
+          "max": 15752000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13902243,
+          "p95": 14304000,
+          "p99": 14524000,
+          "max": 15792000
+        },
+        "observer_cpu_mean_ns": 1688362,
+        "wall_less_observer_mean_ns": 12213882,
+        "core_first_3_mean_ns": 12433000,
+        "core_after_first_120_mean_ns": 12213174,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 12162721,
+          "p95": 12500000,
+          "p99": 12594000,
+          "max": 13495000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13852667,
+          "p95": 14189000,
+          "p99": 14292000,
+          "max": 15168000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13905778,
+          "p95": 14311000,
+          "p99": 14544000,
+          "max": 15252000
+        },
+        "observer_cpu_mean_ns": 1689946,
+        "wall_less_observer_mean_ns": 12215832,
+        "core_first_3_mean_ns": 12272333,
+        "core_after_first_120_mean_ns": 12211619,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": -0.017,
+        "p95": -0.08
+      },
+      "csv_sha256": "3368616e8aa19e98a00262e2eeae34a383a5ec278b11a6e551f38e3d537b5b5d",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "Rendering Ranger R2",
+      "variant": "raster-offset",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "c157f1fd",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 11706463,
+          "p95": 12561000,
+          "p99": 12765000,
+          "max": 14673000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13512206,
+          "p95": 14366000,
+          "p99": 14563000,
+          "max": 16820000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13579480,
+          "p95": 14447000,
+          "p99": 14644000,
+          "max": 32280000
+        },
+        "observer_cpu_mean_ns": 1805742,
+        "wall_less_observer_mean_ns": 11773738,
+        "core_first_3_mean_ns": 12028333,
+        "core_after_first_120_mean_ns": 11762778,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 11891885,
+          "p95": 12772000,
+          "p99": 12975000,
+          "max": 13750000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13694790,
+          "p95": 14568000,
+          "p99": 14768000,
+          "max": 15541000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13753648,
+          "p95": 14638000,
+          "p99": 14851000,
+          "max": 23070000
+        },
+        "observer_cpu_mean_ns": 1802905,
+        "wall_less_observer_mean_ns": 11950743,
+        "core_first_3_mean_ns": 11821000,
+        "core_after_first_120_mean_ns": 11948332,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": -1.584,
+        "p95": -1.68
+      },
+      "csv_sha256": "4b5097d24ab2e3fa7c5f946113a4f4f38a0cfcd540535efbabd0a91c61adf778",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "Rendering Ranger R2",
+      "variant": "raster-offset-full",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "c157f1fd",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 11772353,
+          "p95": 12638000,
+          "p99": 12875000,
+          "max": 14416000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13575531,
+          "p95": 14446000,
+          "p99": 14681000,
+          "max": 16285000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13629012,
+          "p95": 14513000,
+          "p99": 14769000,
+          "max": 18082000
+        },
+        "observer_cpu_mean_ns": 1803178,
+        "wall_less_observer_mean_ns": 11825834,
+        "core_first_3_mean_ns": 11987000,
+        "core_after_first_120_mean_ns": 11831138,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 11931088,
+          "p95": 12847000,
+          "p99": 13068000,
+          "max": 13823000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13734395,
+          "p95": 14655000,
+          "p99": 14861000,
+          "max": 15638000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13819526,
+          "p95": 14713000,
+          "p99": 14977000,
+          "max": 49909000
+        },
+        "observer_cpu_mean_ns": 1803308,
+        "wall_less_observer_mean_ns": 12016218,
+        "core_first_3_mean_ns": 11812333,
+        "core_after_first_120_mean_ns": 11990834,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": -1.348,
+        "p95": -1.654
+      },
+      "csv_sha256": "2f82d6e3f1c6980fd7d7c61df9a2e3ab6d3ee769f58fb5abce165cc707a1bf1f",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "Mario",
+      "variant": "raster-objects-wide",
+      "native_period_ns": 19872917,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 764073,
+      "callback_layout_crc32": "0a92abd5",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 9978742,
+          "p95": 10777000,
+          "p99": 11260000,
+          "max": 15860000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 11685418,
+          "p95": 12514000,
+          "p99": 12959000,
+          "max": 17562000
+        },
+        "wall_including_observer_ns": {
+          "mean": 11734070,
+          "p95": 12592000,
+          "p99": 13030000,
+          "max": 17902000
+        },
+        "observer_cpu_mean_ns": 1706677,
+        "wall_less_observer_mean_ns": 10027393,
+        "core_first_3_mean_ns": 10869333,
+        "core_after_first_120_mean_ns": 9936631,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 9866715,
+          "p95": 10604000,
+          "p99": 11208000,
+          "max": 15606000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 11571859,
+          "p95": 12316000,
+          "p99": 12895000,
+          "max": 17355000
+        },
+        "wall_including_observer_ns": {
+          "mean": 11620332,
+          "p95": 12407000,
+          "p99": 12900000,
+          "max": 18145000
+        },
+        "observer_cpu_mean_ns": 1705144,
+        "wall_less_observer_mean_ns": 9915188,
+        "core_first_3_mean_ns": 10759000,
+        "core_after_first_120_mean_ns": 9822202,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": 1.123,
+        "p95": 1.605
+      },
+      "csv_sha256": "9a95a17222fe1e9158a4d291ff91a90e81c4597b425aafc5194f68462d91f055",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "F-Zero",
+      "variant": "raster-objects",
+      "native_period_ns": 16688155,
+      "verified_calls_per_arm": 1200,
+      "audio_frames_per_arm": 641626,
+      "callback_layout_crc32": "24fe58d4",
+      "cold_calls_per_arm": 0,
+      "cold_cpu_ns": [
+        0,
+        0
+      ],
+      "baseline": {
+        "core_ns": {
+          "mean": 12167275,
+          "p95": 12496000,
+          "p99": 12579000,
+          "max": 14387000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13857857,
+          "p95": 14183000,
+          "p99": 14260000,
+          "max": 16120000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13913859,
+          "p95": 14300000,
+          "p99": 14465000,
+          "max": 16494000
+        },
+        "observer_cpu_mean_ns": 1690582,
+        "wall_less_observer_mean_ns": 12223278,
+        "core_first_3_mean_ns": 12609667,
+        "core_after_first_120_mean_ns": 12217887,
+        "core_over_period_calls": 0
+      },
+      "candidate": {
+        "core_ns": {
+          "mean": 12040254,
+          "p95": 12345000,
+          "p99": 12435000,
+          "max": 13572000
+        },
+        "cpu_including_observer_ns": {
+          "mean": 13732687,
+          "p95": 14052000,
+          "p99": 14140000,
+          "max": 15252000
+        },
+        "wall_including_observer_ns": {
+          "mean": 13792308,
+          "p95": 14164000,
+          "p99": 14334000,
+          "max": 21493000
+        },
+        "observer_cpu_mean_ns": 1692432,
+        "wall_less_observer_mean_ns": 12099876,
+        "core_first_3_mean_ns": 12144667,
+        "core_after_first_120_mean_ns": 12102365,
+        "core_over_period_calls": 0
+      },
+      "core_saving_pct": {
+        "mean": 1.044,
+        "p95": 1.208
+      },
+      "csv_sha256": "6231c26116ebabadb672bb2d7003653708336f9a03599749a35f082b348a8a93",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    }
+  ]
+}
