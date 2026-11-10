@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 
@@ -14,12 +15,13 @@ FIX=ROOT/'build/fivegame-kernel-private-v2'
 def run_pairs(out, cores, tasks):
     out.mkdir()
     src=ROOT/'build/snes-throughput-pair.c'
+    digest=lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+    sources={p.name:digest(p) for p in (src,src.with_name('snes-throughput-replay.c'),Path(__file__))}
     flags='-DD35_PLUS_A7 -mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard -marm -fno-stack-protector -D_TIME_BITS=32 -D_FILE_OFFSET_BITS=32'.split()
     exe=out/'pair'
     subprocess.run(['arm-linux-gnueabihf-gcc','-std=gnu11','-O2',*flags,'-Wall','-Wextra','-Werror','-no-pie','-nostdlib',
                     '-Ibuild/snes9x2005/libretro-common/include','/usr/arm-linux-gnueabihf/lib/crt1.o',src,'-Lbuild/sysroot/lib',
                     '-Wl,--no-as-needed','-l:libdl-2.30.so','-l:libz.so.1','-l:libc-2.30.so','-l:libgcc_s.so.1','-o',exe],cwd=ROOT,check=True)
-    digest=lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
     q=json.loads((ROOT/'evidence/2026-10-17/fivegame-replay/qualification.json').read_text())['payload_hashes']
     assert digest(cores['physical'])==q['plus-a7.so']
     for name,h in q.items():
@@ -28,6 +30,9 @@ def run_pairs(out, cores, tasks):
                     for i in sorted(os.sched_getaffinity(0))).values())
     def run(task, lane):
         g,c,mode=task; a='physical' if c=='baseline' else 'baseline'
+        if mode.endswith('-toggle'):
+            a=c+'-disabled'
+            assert digest(cores[a]) == digest(cores[c])
         argv=['taskset','-c',str(lane),'qemu-arm','-cpu','cortex-a7','-L','build/sysroot','-E','LD_LIBRARY_PATH=build/sysroot/lib',
               exe,cores[a],cores[c],FIX/'cases'/f'{g:03}',str(8656 if g==3 else 0),mode]
         name=f'{g}-{c}-{mode}.log'
@@ -38,7 +43,7 @@ def run_pairs(out, cores, tasks):
     with ThreadPoolExecutor(max_workers=len(lanes)) as pool:
         results=[r for group in pool.map(work,range(len(lanes))) for r in group]
     (out/'manifest.json').write_text(json.dumps(dict(results=results,physical=False,core_sha256={n:digest(p) for n,p in cores.items()},
-        sources={p.name:digest(p) for p in (src,src.with_name('snes-throughput-replay.c'),Path(__file__))}),indent=2)+'\n')
+        sources=sources,pair_sha256=digest(exe)),indent=2)+'\n')
 
 
 def main(out, first, followup, offset=None):
@@ -91,8 +96,42 @@ def scheduler_candidate(out, first, build, name):
     run_pairs(out, cores, [(g, name, 'both-cold-off' if g==3 else 'full') for g in [3,0,1,2,4]])
 
 
+def raster(out, first, build, names):
+    core_file = 'snes9x2005_plus_libretro.so'
+    cores = {'physical': FIX/'plus-a7.so', 'baseline': first/'baseline'/core_file}
+    cores.update({name: build/name/core_file for name in names if name != 'baseline'})
+    for name in names:
+        if name.endswith('-toggle'):
+            add_raster_control(cores, name)
+    tasks = [(game, name, ('both-cold-off' if game == 3 else 'full') +
+              ('-toggle' if name.endswith('-toggle') else ''))
+             for game in (3, 0, 1, 2, 4) for name in names]
+    run_pairs(out, cores, tasks)
+
+
+def add_raster_control(cores, name):
+    disabled = cores[name].with_name('disabled.so')
+    shutil.copyfile(cores[name], disabled)
+    cores[name+'-disabled'] = disabled
+
+
+def raster_ablation(out, build, names):
+    core_file = 'snes9x2005_plus_libretro.so'
+    cores = {'physical': FIX/'plus-a7.so'}
+    for name in names:
+        cores[name] = build/(name+'-toggle')/core_file
+        add_raster_control(cores, name)
+    tasks = [(game, name, 'both-cold-off-toggle' if game == 3 else 'full-toggle')
+             for game in (3, 0, 1, 2, 4) for name in names]
+    run_pairs(out, cores, tasks)
+
+
 if __name__=='__main__':
-    if sys.argv[1]=='--scheduler':
+    if sys.argv[1]=='--raster':
+        raster(*(Path(x).resolve() for x in sys.argv[2:5]), sys.argv[5:])
+    elif sys.argv[1]=='--raster-ablation':
+        raster_ablation(*(Path(x).resolve() for x in sys.argv[2:4]), sys.argv[4:])
+    elif sys.argv[1]=='--scheduler':
         scheduler(*(Path(x).resolve() for x in sys.argv[2:]))
     elif sys.argv[1]=='--scheduler-followup':
         scheduler_followup(*(Path(x).resolve() for x in sys.argv[2:]))

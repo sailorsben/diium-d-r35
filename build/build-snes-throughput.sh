@@ -19,6 +19,7 @@ arm-linux-gnueabihf-gcc -std=gnu11 -O2 $flags \
 for mode do
     case $mode in
         apu-*) prepare=build/prepare-snes-scheduler.py ;;
+        raster-*) prepare=build/prepare-snes-raster.py ;;
         baseline|counter|dispatch|census|hot|dma-same|dma-delta|dma-census|reuse-census|span-census|offset-row|offset-census|offset-plain|offset-plain-census) prepare=build/prepare-snes-throughput.py ;;
         *) exit 2 ;;
     esac

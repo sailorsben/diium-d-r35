@@ -1,5 +1,15 @@
 # Changelog
 
+## Prototype larger raster batches - 2026-11-10
+
+Resolve Mode 2 offset maps once per stable strip and draw up to eight tile
+rows per call. Compare the original clipped renderer, full-tile and NEON
+paths and two sprite band guards across five frozen games. Matched ARM
+replay measures 34.3% lower mean and 26.8% lower p95 Star Fox core CPU for
+the clipped strip path. RGB565 and PCM checks pass. Physical timing and
+reserve impact remain unmeasured.
+[Raster variants and results](docs/snes-raster-batches.md).
+
 ## Measure core scheduling and PCM staging alternatives - 2026-11-10
 
 Trace per-scanline SPC and DSP work and test shared changes against the frozen

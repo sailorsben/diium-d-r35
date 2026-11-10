@@ -40,8 +40,9 @@ int main(int argc,char **argv) {
     const char *mode=argv[5];
     bool cold_off=!strcmp(mode,"cold-off"),oracle=!strcmp(mode,"oracle-reuse"),off=!strcmp(mode,"off");
     bool no_target=!strcmp(mode,"no-target"), half=!strcmp(mode,"half");
-    bool both_cold_off=!strcmp(mode,"both-cold-off");
-    assert(cold_off||oracle||off||no_target||half||both_cold_off||!strcmp(mode,"full"));
+    bool both_cold_off=!strcmp(mode,"both-cold-off")||!strcmp(mode,"both-cold-off-toggle");
+    bool toggle=!strcmp(mode,"full-toggle")||!strcmp(mode,"both-cold-off-toggle");
+    assert(cold_off||oracle||off||no_target||half||both_cold_off||toggle||!strcmp(mode,"full"));
     unsigned cold=(unsigned)atoi(argv[4]);assert(cold==0||cold==8656);
     size_t rn,en;unsigned char *rom=read_file(argv[3],"game.sfc",&rn);
     uint32_t *expected=(uint32_t *)read_file(argv[3],"expected.bin",&en);assert(en==1200*12);
@@ -50,6 +51,12 @@ int main(int argc,char **argv) {
     read_inputs(argv[3],"input.txt",gameplay,1200);
     struct instance c[]={setup(argv[1],argv[3],cold,rom,rn),setup(argv[2],argv[3],cold,rom,rn)};
     assert(c[0].handle!=c[1].handle);
+    if(toggle) {
+        for(unsigned k=0;k<2;k++) {
+            void (*set_enabled)(bool)=dlsym(c[k].handle,"d35_raster_set_enabled");
+            assert(set_enabled);set_enabled(k==1);
+        }
+    }
     uint64_t boot[2]={0}, times[1200][2];
     unsigned audio_frames[2]={0}, published[2]={0};
     for(unsigned i=0;i<cold;i++) {

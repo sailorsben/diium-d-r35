@@ -1,5 +1,9 @@
 # DIIUM D-R35: device findings and SNES platform
 
+The [raster batching study](docs/snes-raster-batches.md) finds 34.3% lower
+mean Star Fox core CPU in a matched offline comparison, with unchanged
+replay pixels and PCM. It also measures wider sprite bands across five games.
+
 The [core scheduling follow-up](docs/snes-core-boundaries.md) measures which
 work can move out of the guest timing path. Five-game replays reject generic
 APU scanline grouping and qualify an individual PCM staging shortcut offline.

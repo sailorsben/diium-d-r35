@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Batch raster geometry within a flush - 2026-11-10
+
+Mode 2 strips remove 87.1% of Star Fox's tile draw calls and save 34.3% of
+mean core CPU in the same-binary offline test. A separate NEON build changes
+performance in scenes where the new path never runs. Measure its branch
+separately from the linked build. Sprite bands reach more scenes with smaller
+and mixed gains. [Raster experiments](snes-raster-batches.md).
+
 ## Isolate guest timing from host audio staging - 2026-11-10
 
 Two-, four- and eight-line APU grouping changes F-Zero and Star Fox PCM.

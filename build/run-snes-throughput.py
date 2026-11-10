@@ -39,8 +39,9 @@ def main(out, batch):
     if not retry: run_dir.mkdir()
     names = {'reuse-verify':('reuse-census',),'span-verify':('span-census',),'offset-verify':('offset-row','offset-census'),
              'plain-verify':('offset-plain','offset-plain-census')}.get(batch)
-    if batch == 'scheduler-verify':
-        names = tuple(d.name for d in sorted(out.glob('apu-*')) if d.is_dir())
+    if batch in ('scheduler-verify', 'raster-verify'):
+        prefix = 'apu' if batch == 'scheduler-verify' else 'raster'
+        names = tuple(d.name for d in sorted(out.glob(prefix+'-*')) if (d/'snes9x2005_plus_libretro.so').is_file())
         assert names
     if names is None:
         names = ('baseline','hot','dma-same','dma-delta','dma-census') if batch.startswith('followup') else ('baseline','counter','dispatch','census')
@@ -118,7 +119,7 @@ def main(out, batch):
         tasks = [(0,c,g,'cold-off' if g==3 else 'full') for c in names for g in [3,0,1,2,4]]
         with ThreadPoolExecutor(max_workers=5) as pool:
             results = list(pool.map(replay,tasks))
-    elif batch == 'scheduler-verify':
+    elif batch in ('scheduler-verify', 'raster-verify'):
         tasks = [(0,c,g,'cold-off' if g==3 else 'full') for g in [3,0,1,2,4] for c in ('physical',*names)]
         with ThreadPoolExecutor(max_workers=7) as pool:
             results = list(pool.map(replay,tasks))

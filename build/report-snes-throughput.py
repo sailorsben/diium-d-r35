@@ -107,7 +107,7 @@ def replay(directory):
         first_error = re.search(r'first mismatch frame=\d+ pixels=(\d+) pcm=(\d+) sample_count=(\d+)',log)
         if first_error:
             rec['first_mismatch_fields'] = [name for name, flag in zip(('pixels','pcm','sample_count'),first_error.groups()) if flag=='1']
-        for counter_name in ('apu_census','unity_census','port_census'):
+        for counter_name in ('apu_census','unity_census','port_census','raster'):
             counter_line = re.search(r'^'+counter_name+r' (.+)$',log,re.M)
             if counter_line:
                 rec[counter_name] = {key:int(value) for key,value in (item.split('=') for item in counter_line[1].split())}

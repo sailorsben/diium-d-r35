@@ -108,6 +108,8 @@ int main(int argc,char **argv) {
     unsigned (*reuse_read)(void)=dlsym(handle,"d35_reuse_read");
     void (*span_read)(unsigned *)=dlsym(handle,"d35_span_read");
     void (*offset_read)(uint64_t *)=dlsym(handle,"d35_offset_read");
+    void (*raster_census)(uint64_t *)=dlsym(handle,"d35_raster_census");
+    void (*raster_set_enabled)(bool)=dlsym(handle,"d35_raster_set_enabled");
     void (*apu_census)(uint64_t *)=dlsym(handle,"d35_apu_census");
     void (*unity_census)(uint64_t *)=dlsym(handle,"d35_unity_census");
     void (*port_census)(uint64_t *)=dlsym(handle,"d35_port_census");
@@ -121,6 +123,7 @@ int main(int argc,char **argv) {
         assert(unserialize(state+40,sn-40)); free(state);
     }
     unsigned check=verify; verify=0;
+    if(raster_set_enabled) raster_set_enabled(true);
     uint64_t warm_begin=cpu();
     for(unsigned i=0;i<cold;i++) {
         enable=(cold_off || (cold_tail && i+64<cold))?2:3; buttons=warm[i];run();
@@ -132,6 +135,7 @@ int main(int argc,char **argv) {
     }
     if(dma_census) dma_census(fx);
     if(offset_read) offset_read(fx);
+    if(raster_census) raster_census(fx);
     if(apu_census) apu_census(fx);
     if(unity_census) unity_census(fx);
     if(port_census) port_census(fx);
@@ -191,6 +195,14 @@ int main(int argc,char **argv) {
     if(offset_read) {
         offset_read(fx);
         printf("offset_rows calls=%"PRIu64" full=%"PRIu64"\n",fx[0],fx[1]);
+    }
+    if(raster_census) {
+        raster_census(fx);
+        printf("raster offset_rows=%"PRIu64" offset_bands=%"PRIu64" offset_columns=%"PRIu64
+               " offset_row_draws=%"PRIu64" offset_draws=%"PRIu64" offset_batched_rows=%"PRIu64
+               " offset_full_rows=%"PRIu64" obj_rows=%"PRIu64" obj_bands=%"PRIu64
+               " obj_batched_rows=%"PRIu64" obj_saved_visits=%"PRIu64"\n",
+               fx[0],fx[1],fx[2],fx[3],fx[4],fx[5],fx[6],fx[7],fx[8],fx[9],fx[10]);
     }
     if(apu_census) {
         apu_census(fx);

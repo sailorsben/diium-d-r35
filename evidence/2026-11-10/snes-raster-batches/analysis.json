@@ -1,0 +1,5359 @@
+{
+  "new_device_execution": false,
+  "baseline_text_sha256": "4d13f2f5c56532a2e0ff8259d852c4ebdfae71b1ca31b43e7efbe96491ef5e87",
+  "prior_physical_source_sha256": "fd565a62c10492d3cdfdc6450a29a87c88d22cb28e2138d777897c85cea45610",
+  "prior_physical": [
+    {
+      "run": 0,
+      "game": 0,
+      "policy": 0,
+      "period_ns": 19872917,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 13821000,
+      "target_p95_gap_ns": -2077333
+    },
+    {
+      "run": 1,
+      "game": 1,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15399000,
+      "target_p95_gap_ns": 2048476
+    },
+    {
+      "run": 2,
+      "game": 2,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15990000,
+      "target_p95_gap_ns": 2639476
+    },
+    {
+      "run": 3,
+      "game": 3,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 3,
+      "rendered": 4,
+      "first_valid_prefix_core_cpu_mean_ns": 27517667,
+      "first_valid_prefix_core_only_excess_ns": 10829512,
+      "nominal_final_deficit_frames": 3387.3
+    },
+    {
+      "run": 4,
+      "game": 4,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15999000,
+      "target_p95_gap_ns": 2648476
+    },
+    {
+      "run": 5,
+      "game": 4,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15959000,
+      "target_p95_gap_ns": 2608476
+    },
+    {
+      "run": 6,
+      "game": 3,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 3,
+      "rendered": 4,
+      "first_valid_prefix_core_cpu_mean_ns": 27655667,
+      "first_valid_prefix_core_only_excess_ns": 10967512,
+      "nominal_final_deficit_frames": 3415.2
+    },
+    {
+      "run": 7,
+      "game": 2,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15985000,
+      "target_p95_gap_ns": 2634476
+    },
+    {
+      "run": 8,
+      "game": 1,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15417000,
+      "target_p95_gap_ns": 2066476
+    },
+    {
+      "run": 9,
+      "game": 0,
+      "policy": 1,
+      "period_ns": 19872917,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 13823000,
+      "target_p95_gap_ns": -2075333
+    },
+    {
+      "run": 10,
+      "game": 0,
+      "policy": 1,
+      "period_ns": 19872917,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 13769000,
+      "target_p95_gap_ns": -2129333
+    },
+    {
+      "run": 11,
+      "game": 1,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15447000,
+      "target_p95_gap_ns": 2096476
+    },
+    {
+      "run": 12,
+      "game": 2,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15986000,
+      "target_p95_gap_ns": 2635476
+    },
+    {
+      "run": 13,
+      "game": 3,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 3,
+      "rendered": 4,
+      "first_valid_prefix_core_cpu_mean_ns": 27506333,
+      "first_valid_prefix_core_only_excess_ns": 10818178,
+      "nominal_final_deficit_frames": 3390.9
+    },
+    {
+      "run": 14,
+      "game": 4,
+      "policy": 1,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 16092000,
+      "target_p95_gap_ns": 2741476
+    },
+    {
+      "run": 15,
+      "game": 4,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 16051000,
+      "target_p95_gap_ns": 2700476
+    },
+    {
+      "run": 16,
+      "game": 3,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 3,
+      "rendered": 4,
+      "first_valid_prefix_core_cpu_mean_ns": 27482667,
+      "first_valid_prefix_core_only_excess_ns": 10794512,
+      "nominal_final_deficit_frames": 3403.0
+    },
+    {
+      "run": 17,
+      "game": 2,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15975000,
+      "target_p95_gap_ns": 2624476
+    },
+    {
+      "run": 18,
+      "game": 1,
+      "policy": 0,
+      "period_ns": 16688155,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 15457000,
+      "target_p95_gap_ns": 2106476
+    },
+    {
+      "run": 19,
+      "game": 0,
+      "policy": 0,
+      "period_ns": 19872917,
+      "valid_prefix": 1200,
+      "rendered": 1200,
+      "service_p95_ns": 13758000,
+      "target_p95_gap_ns": -2140333
+    }
+  ],
+  "verified_core_sha256": {
+    "raster-count": "5f3996ef88554902f1bb0d5cb80dee27d2509925e384b9558b2b809ad271d897",
+    "raster-count-wide": "5f31f1c44392cd6bbce7515fb334360ad8494849e0f778d94af16ef5d0ba6cdb",
+    "raster-objects": "37637a16a6882b972d83400089747129d73b07cf64c5c8fab23281e52663fc28",
+    "raster-objects-wide": "1b5aa12599b6dedf907522b20521c94063a3fcc510513cedff1bf5d427fdd696",
+    "raster-offset": "31b837c19c188b353e60c808f9ec9f8c32f8aad202e728bb2cfe69e0b7b06747",
+    "raster-offset-neon": "b3df3ac76d4d542acccff0b0ad9d06ed179437e9aae02971646500736708745e",
+    "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+    "raster-objects-toggle": "60a3f787b519c599d71d9baea595491c8c6d6db785b2408c2b5dfd40e5731b0c",
+    "raster-objects-wide-toggle": "5036bafdac081e330f8d478dfd94e9af0d544767105d3b35d0035867582eea82",
+    "raster-offset-full": "c5068b07f927b5a634e6edb045ba1f2b1c2b9ae3afb9437d6a200343756ae89f",
+    "raster-offset-full-toggle": "0f7717f80cd00b8c542517f70230f5446fae459ce9001e08541ebd85d1dd8a8c",
+    "raster-offset-neon-toggle": "356a31d710c0ffd2b9df8921b4163899577b09a6ed23cba658d5dafae83f1c94",
+    "raster-offset-toggle": "54ae5a35a10f8f9b4565855ba1e1efca45b46027b898a6f7a541d4376cce65cb",
+    "raster-offset-neon-isolated": "f40fb861c1339809b3720dab9f8192bba758d2429c7581d666e45f838dd90c99",
+    "raster-offset-neon-isolated-toggle": "f4887b8033983935119e11ca219b282024b49760a7d55be1fd6eb2e34581c46a"
+  },
+  "verified_replays": [
+    {
+      "core": "physical",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "d8ccd054f9ba0531355d6c881f5101c5ff5467b96edf41bf0c1f958bb3b3161f"
+    },
+    {
+      "core": "raster-count",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "4dcf2393a9a31e671ef59881e652819a97e37714a32d886dcfb8b6011cd64b3f",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 244832,
+        "obj_bands": 55971,
+        "obj_batched_rows": 217991,
+        "obj_saved_visits": 100399
+      }
+    },
+    {
+      "core": "raster-count-wide",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "15b0d49af347e459477c257e591e9c7755360931cf9cba89d588f0be27ed5d07",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 244832,
+        "obj_bands": 35968,
+        "obj_batched_rows": 241394,
+        "obj_saved_visits": 117685
+      }
+    },
+    {
+      "core": "raster-objects",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "130532dc8d6921b4da7717eec8de926b415cff1e9673a2d9dce6dfcfa81ad9ab"
+    },
+    {
+      "core": "raster-objects-toggle",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "31905d9106628fbb6a00d6b92a6f9ea30e13d6403a5f2e75c8466b47ad09fb25"
+    },
+    {
+      "core": "raster-objects-wide",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "685fd3ce8ae752cc0098747068910baa270baaf3841ac3c92dde3517656d0105"
+    },
+    {
+      "core": "raster-objects-wide-toggle",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "c3b2a909803b2ef10642f7b366f7bdaf5934f0a9bbdbd8309d675f4a695193de"
+    },
+    {
+      "core": "raster-offset",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "50885d45ad42005c6267f3bb042db1dc40deb1b086fc900fce005db513e445b2"
+    },
+    {
+      "core": "raster-offset-full",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "8df58de8a8e241814a55a895b0b4f5272eda3cc8348807217373ef89432a482f"
+    },
+    {
+      "core": "raster-offset-full-toggle",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "6dcbe8042ff15c9b03f3386201a58306aed52da2cb542b1da9747f7d557d5a5c"
+    },
+    {
+      "core": "raster-offset-neon",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "e352fdedd9b45acfed8db33b7b1ced730d2ce02ebe07641489c3fb0eac45558e"
+    },
+    {
+      "core": "raster-offset-neon-isolated",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "c3479293ee3523974ead0f6ff38c05dd3875687cfceb57211c21cf989faacd99"
+    },
+    {
+      "core": "raster-offset-neon-isolated-toggle",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "fa30fcee33f5ba7542ba32bc0f5669236fa13ede7adde4f4635bb52f082e6e02"
+    },
+    {
+      "core": "raster-offset-neon-toggle",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "20a34091e953a0c117b7009899a867fb938ce97020ce0083fed58e840e2ec54e"
+    },
+    {
+      "core": "raster-offset-toggle",
+      "game": 0,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "0a92abd5",
+      "rendered": 1200,
+      "audio_frames": 764073,
+      "log_sha256": "7ae5d6c95c6c1e7d2168b0abd1d82c4b40e0b6f8b4ad62e6c2b1980f1ebcb942"
+    },
+    {
+      "core": "physical",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "15ff5610d0c3c85b87d4e4656bd7cbec4d28c3a2bf186f71796cc3ed6584188e"
+    },
+    {
+      "core": "raster-count",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "f80b2e7d9556ea5bce92e762de37e8ea3c6b92fccdcf3fb6d2e5d9f6c6b7f745",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 231519,
+        "obj_bands": 231519,
+        "obj_batched_rows": 0,
+        "obj_saved_visits": 0
+      }
+    },
+    {
+      "core": "raster-count-wide",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "75ec2a487faf75ca49b2dcd51dec542674faf0ffc3517f16871679a652bacfe0",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 231519,
+        "obj_bands": 32642,
+        "obj_batched_rows": 230242,
+        "obj_saved_visits": 92274
+      }
+    },
+    {
+      "core": "raster-objects",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "7fc1e6cb119b514b9ddcca66044564129dcf7d99d9a746f1d779c11e6e1a1a34"
+    },
+    {
+      "core": "raster-objects-toggle",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "c61ee3f36d045dc41d42cffdfe7b101c23cfc9afee58bfc7f4a450e355b30fe2"
+    },
+    {
+      "core": "raster-objects-wide",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "71289b93ba29d3eae5c3e9aaa08705b47c901aaa75cd9247fde855c818f8bb60"
+    },
+    {
+      "core": "raster-objects-wide-toggle",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "a479734d795cac774b2b06efb9f4b7eb50d66e25e451c54bd26e882c95302458"
+    },
+    {
+      "core": "raster-offset",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "db82d57b11f6b9c99460dff26d9d212deb716c4c0592735151fc29e374fc6b89"
+    },
+    {
+      "core": "raster-offset-full",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "f8db9a9c158fd7a982cd1d02b1655a072acbc774a0f6b5b92491f190609110f7"
+    },
+    {
+      "core": "raster-offset-full-toggle",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "0217163b8e21ce4edd0156cfcd090d6e6ebe28bbd25abbb878b9c8d50ec80197"
+    },
+    {
+      "core": "raster-offset-neon",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "4519a292dfa52e9c1fe7cb85148519b21c4a929ad674c58faf6f0fb588195479"
+    },
+    {
+      "core": "raster-offset-neon-isolated",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "e3fec3ba23577f2f252bf6a3bdbe73af7b396b210470ac252bb40ffbc17a0b49"
+    },
+    {
+      "core": "raster-offset-neon-isolated-toggle",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "8fd78b4238359e9b2b5b3d7c3f2103738096c235b8b614a24c7d0fa26ec41764"
+    },
+    {
+      "core": "raster-offset-neon-toggle",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "f18f2ab9e344e400624d0ca3179d6cf5bf4ad6cac6b378e9de9526bf5d8598ab"
+    },
+    {
+      "core": "raster-offset-toggle",
+      "game": 1,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "553b081d",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "93a95fd32605b72c943f2a2a370b3f0a02bad5e39679cd101117f225db4c78b6"
+    },
+    {
+      "core": "physical",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "a811d93d44c0f28fd9a4c3e0643a0a2711a074428e409ed0112176c27dd25f8f"
+    },
+    {
+      "core": "raster-count",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "99392d9daa0689122d68bfba70afb83d4a41d0e420741e25115b96637d466717",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 268800,
+        "obj_bands": 78075,
+        "obj_batched_rows": 239350,
+        "obj_saved_visits": 369818
+      }
+    },
+    {
+      "core": "raster-count-wide",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "45678212334bef914216fac39df9f66486e800f56f3d05ea8ec6f0f9c736a1cf",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 268800,
+        "obj_bands": 111422,
+        "obj_batched_rows": 198713,
+        "obj_saved_visits": 368696
+      }
+    },
+    {
+      "core": "raster-objects",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "1b2e2d8001cf23a1729a503dbea623bb2c66974b1434cd1098a716f2a9d927dd"
+    },
+    {
+      "core": "raster-objects-toggle",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "5079dc24eb065299682e7c8fdec1206bc28afd846799244c5559f3591c0f1846"
+    },
+    {
+      "core": "raster-objects-wide",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "7158d8b49cbcfd91b5f6612fab68bf41a8e6d320dab13a6f7e671c3afdc6dedf"
+    },
+    {
+      "core": "raster-objects-wide-toggle",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "9b3b4b5e6a9e11a4e2117b1a2a6ffa25f20a906aa92e93827de01dce5793510d"
+    },
+    {
+      "core": "raster-offset",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "63347f745c9b61c623007b28dfb3574e28e572343fb63d8c11ce75ff520614be"
+    },
+    {
+      "core": "raster-offset-full",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "5d88383243103f79702132ea2d9c065cbe2d93d2e122ebfb78ce660b8c09a689"
+    },
+    {
+      "core": "raster-offset-full-toggle",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "5164f93daa5f1d3425a9d58817c57bff087ff2a32c5241ea87cbb1bbb9f149e6"
+    },
+    {
+      "core": "raster-offset-neon",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "3e736edca81afbbe1ec90e6eccfd63f83d2091d81457e15703eb5f3ce8b9f31a"
+    },
+    {
+      "core": "raster-offset-neon-isolated",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "8c113af1b8411e7493a408667142a40ea62039097ceec9a483275c3d72dd60af"
+    },
+    {
+      "core": "raster-offset-neon-isolated-toggle",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "af3eb66cf54d20348ed853b9c25267950d1255eb674bf15953a2451f1e1dfa1e"
+    },
+    {
+      "core": "raster-offset-neon-toggle",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "f9528f884e063954e638d21bb8370b3b905b73afca471a5530664649ecd808f0"
+    },
+    {
+      "core": "raster-offset-toggle",
+      "game": 2,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "24fe58d4",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "4f008977e1ce7cbe20f31ea587ae864c44a5e94ff6c4af84d7dd56f362f17c7f"
+    },
+    {
+      "core": "physical",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "c7efb8dd4e0b792bcba9c835e36d4779658482acdb6051f2998274513fca38df"
+    },
+    {
+      "core": "raster-count",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "f81d5ca595180a226ffeef05a323b97a3b5517ca0839785e0f40f3740ca75670",
+      "raster": {
+        "offset_rows": 900600,
+        "offset_bands": 16698,
+        "offset_columns": 543924,
+        "offset_row_draws": 29269500,
+        "offset_draws": 3782268,
+        "offset_batched_rows": 29190210,
+        "offset_full_rows": 28368900,
+        "obj_rows": 228000,
+        "obj_bands": 223125,
+        "obj_batched_rows": 5610,
+        "obj_saved_visits": 1845
+      }
+    },
+    {
+      "core": "raster-count-wide",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "9fc38694fd8ce6c68c2b78427ec1de92d1b1677a51c27f1dbddaa02d45e46b3d",
+      "raster": {
+        "offset_rows": 900600,
+        "offset_bands": 16698,
+        "offset_columns": 543924,
+        "offset_row_draws": 29269500,
+        "offset_draws": 3782268,
+        "offset_batched_rows": 29190210,
+        "offset_full_rows": 28368900,
+        "obj_rows": 228000,
+        "obj_bands": 33000,
+        "obj_batched_rows": 224400,
+        "obj_saved_visits": 73800
+      }
+    },
+    {
+      "core": "raster-objects",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "79d80f13c8947f66d98c9132b0634137e6124d9eb50f2f414368194584ec47cf"
+    },
+    {
+      "core": "raster-objects-toggle",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "ed9879cbb1d137ff08d77ab3c406936b376b7f0fd84bee621d187baa63836f36"
+    },
+    {
+      "core": "raster-objects-wide",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "8920c5f222d4a13bf0e60843e795bcc789cc2cb546b0a23a308602c9c882db2c"
+    },
+    {
+      "core": "raster-objects-wide-toggle",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "9c0dda8449b366bb909da60435f2a25c62dd3200d1ec0230a6ea71d00158de0b"
+    },
+    {
+      "core": "raster-offset",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "ab11d88527f5a2e08801f3c8a91b94d74ac5447cb1da18f973b95c369002792e"
+    },
+    {
+      "core": "raster-offset-full",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "27b650fb01e3c1e2ffdb99395f8aa77d6f8a67b64f2d44b2cb8e95fe8e904105"
+    },
+    {
+      "core": "raster-offset-full-toggle",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "4d1a235e33ffe6defa7c527e5f55269f40da5411bbbdbc033b9f38704963eb45"
+    },
+    {
+      "core": "raster-offset-neon",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "1a659d49f1e1c25efad8723a7dcdb718d4ff841a0e93c66e54273cee8c83eb20"
+    },
+    {
+      "core": "raster-offset-neon-isolated",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "bf7e614f50f2a2f0c4f00a147c57cfae91debe85739afec791b8ab40f2d5a99e"
+    },
+    {
+      "core": "raster-offset-neon-isolated-toggle",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "de85a12fbef5241f4ab24956340c629ad298695b1e636ecb8c143784588057d5"
+    },
+    {
+      "core": "raster-offset-neon-toggle",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "2352a59d24d425eb16aede5f0bd1a6c3c7b5a74b0e1e8fd5099a9ef78ed35186"
+    },
+    {
+      "core": "raster-offset-toggle",
+      "game": 3,
+      "mode": "cold-off",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "7a9a7371",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "1a9cde6b0942919e7a48d8d5f501aae0380ea8afa8570be2ab5c79b1c2457e5d"
+    },
+    {
+      "core": "physical",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "460fcf6ac6edb87e91086470e317d8d99413c97777ae212445ff36f093f90377"
+    },
+    {
+      "core": "raster-count",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "cd4f8fea4d5e9dc4d038646a2a9e1f792b0418097c3bb888e5cf722dae1c5f9c",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 276001,
+        "obj_bands": 276001,
+        "obj_batched_rows": 0,
+        "obj_saved_visits": 0
+      }
+    },
+    {
+      "core": "raster-count-wide",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "15e91e38c1b79f5a4db71ccb4dc91084562aa725b994b46afbe82224749544a4",
+      "raster": {
+        "offset_rows": 0,
+        "offset_bands": 0,
+        "offset_columns": 0,
+        "offset_row_draws": 0,
+        "offset_draws": 0,
+        "offset_batched_rows": 0,
+        "offset_full_rows": 0,
+        "obj_rows": 276001,
+        "obj_bands": 125077,
+        "obj_batched_rows": 220044,
+        "obj_saved_visits": 401598
+      }
+    },
+    {
+      "core": "raster-objects",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "f58fc1026e8c9d1604e8ee13ab08cb8001a5f018988d222a19b66760558bf3e1"
+    },
+    {
+      "core": "raster-objects-toggle",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "6476c3e6750eb68ec8b8cd4a343e18bede9a847985cd87446f3a88a781b88fbd"
+    },
+    {
+      "core": "raster-objects-wide",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "e8736ea96984bced0063e3942d2a85797eb9a76fecbd80c2ef54434f5cc865a1"
+    },
+    {
+      "core": "raster-objects-wide-toggle",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "03e91ac7fb8972cd28fa74fb9e6a3c0481bebf386604383a08eafce4f911e9c2"
+    },
+    {
+      "core": "raster-offset",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "a9a7ed0f9625a339aeebd73bbf5ef973e3f448859b00c249fbb5dafab5346fbd"
+    },
+    {
+      "core": "raster-offset-full",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "52736408ece327c0a9fb1b6ffc7dcf41534720ede7a23dba4a93691c08273c75"
+    },
+    {
+      "core": "raster-offset-full-toggle",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "ebdfed987c7a18b97b567213734c2b937ce4cf4007dfe5fd068a10fddc3a9f83"
+    },
+    {
+      "core": "raster-offset-neon",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "4865ddaeedeaa7aa4fce439f3199c0ca65517d86f4e47d0c2bc3382ac6c41c65"
+    },
+    {
+      "core": "raster-offset-neon-isolated",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "9def125454e63df8bb3f702fe12f188efc7519cb69856012dff4e74155adeacf"
+    },
+    {
+      "core": "raster-offset-neon-isolated-toggle",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "5e697a4590367dc3083bdecb64e43f94d8b0ac2cf94ce8b4e12f4409b24e374b"
+    },
+    {
+      "core": "raster-offset-neon-toggle",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "4accc067d4eb2f15ac342de288f7ea848e0f190e5ec6bc8a4328a98a2485ea8a"
+    },
+    {
+      "core": "raster-offset-toggle",
+      "game": 4,
+      "mode": "full",
+      "verified": 1200,
+      "mismatch": 0,
+      "callback_layout_crc32": "c157f1fd",
+      "rendered": 1200,
+      "audio_frames": 641626,
+      "log_sha256": "bd6860b15c63fdfc3162bab3c7facf4b6364d907ed95af46c7c37f9f730a2e5a"
+    }
+  ],
+  "mode2_geometry_check": "Mode 2 geometry matched in 2048 generated raster ranges",
+  "paired_qemu": {
+    "builds": {
+      "meta": {
+        "results": [
+          {
+            "game": 3,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "both-cold-off",
+            "host_cpu": 1,
+            "log": "3-baseline-both-cold-off.log",
+            "sha256": "341aed671083727bec65cd14b103b7637cba654e10f6f685609a26c411459210"
+          },
+          {
+            "game": 0,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 1,
+            "log": "0-baseline-full.log",
+            "sha256": "b51188fc50744b672d0fbd31fb3e34e54e756a2e01ec79828304302875163caa"
+          },
+          {
+            "game": 1,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 1,
+            "log": "1-baseline-full.log",
+            "sha256": "8305ef5389d942f31035cd2a0bf91586703433123e841408347090b44adb02ef"
+          },
+          {
+            "game": 2,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 1,
+            "log": "2-baseline-full.log",
+            "sha256": "87f17b8b9c3291fe7a400709cc56b010368aeadad0776842c4bfafd483fd3504"
+          },
+          {
+            "game": 4,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 1,
+            "log": "4-baseline-full.log",
+            "sha256": "bcc08266aece29748eb2321a36f30717a81474acc4966de1aba52ca19121d6e8"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "raster-offset",
+            "mode": "both-cold-off",
+            "host_cpu": 3,
+            "log": "3-raster-offset-both-cold-off.log",
+            "sha256": "c8d7a196c1a95fda3aa98cef96a9065ac83f3a93c1471f21097b26879bf153ad"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "raster-offset",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "0-raster-offset-full.log",
+            "sha256": "f836331afa1107d4232d8d624c5aa24f17e6b99c197595691cccd22899dbe4a8"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "raster-offset",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "1-raster-offset-full.log",
+            "sha256": "20d8f4a3c3b2d22154449961225a14ca1cc9c4711c5e37b5acbb7ac7bbdb00f9"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "raster-offset",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "2-raster-offset-full.log",
+            "sha256": "c8d72ceb1699e8da76d9f61abcad16ee4fc1dda3011ad18ace19dcc20a6cdd59"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "raster-offset",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "4-raster-offset-full.log",
+            "sha256": "3e301bfe2e0a4289760b6a7fa63f07f056d2f897e6b185b482e5c36957dc8a41"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "raster-offset-full",
+            "mode": "both-cold-off",
+            "host_cpu": 5,
+            "log": "3-raster-offset-full-both-cold-off.log",
+            "sha256": "2dcc77aa2284b5313f444ae897105518f745034d4f4eff763b04c161b01918f4"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "raster-offset-full",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "0-raster-offset-full-full.log",
+            "sha256": "37e18f05a00c3511cb7b584ce03dffd68a3c7e93684ccbe37dab8dcd408c57aa"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "raster-offset-full",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "1-raster-offset-full-full.log",
+            "sha256": "40ecf63cdbe567b2bb208ead511a1a4170bb1c7690e71f522d896fc95775285e"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "raster-offset-full",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "2-raster-offset-full-full.log",
+            "sha256": "ad96a070cf10e28fb811395c8c1b0389dd70989a70d18b91559392e7f0c3f33e"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "raster-offset-full",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "4-raster-offset-full-full.log",
+            "sha256": "adee39bfb7bf64c5225fc1afedb7dacfb27bfde152efdc66b40078ef8fc84038"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "raster-offset-neon",
+            "mode": "both-cold-off",
+            "host_cpu": 7,
+            "log": "3-raster-offset-neon-both-cold-off.log",
+            "sha256": "d29d510ff37857723942dac8adc1855eae9e5804d712a614c57975e4834d87ef"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "raster-offset-neon",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "0-raster-offset-neon-full.log",
+            "sha256": "9e825d272f981ca5bb4690f5a5bc34c6b7d20f4429bf72b2cc4ad6bb90a6a1fc"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "raster-offset-neon",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "1-raster-offset-neon-full.log",
+            "sha256": "39f9863980e6ed9f39f189cf0f956f248e7c3c3d7976ae123b46eb3d602ccfd0"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "raster-offset-neon",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "2-raster-offset-neon-full.log",
+            "sha256": "ec2aef90e26b74652baaf6d7d6a1821399ea6bf6d644085bf80654f123efa06b"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "raster-offset-neon",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "4-raster-offset-neon-full.log",
+            "sha256": "388dd4295f16086b00dc7e8d747ed27e51a97b8cc35ccb62a8ddea2530ad8a74"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "raster-offset-neon-isolated",
+            "mode": "both-cold-off",
+            "host_cpu": 9,
+            "log": "3-raster-offset-neon-isolated-both-cold-off.log",
+            "sha256": "514b26c74470e0164df713bf9282c6ffc19cec0910ae117d97b960fecacae2c9"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "raster-offset-neon-isolated",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "0-raster-offset-neon-isolated-full.log",
+            "sha256": "6f85b0ee5d0ef1cc41b9ac6b9725040b20f7d961fc5de4a40a3256d6c5a40eaa"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "raster-offset-neon-isolated",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "1-raster-offset-neon-isolated-full.log",
+            "sha256": "0e649beefa07f53c4c0a1320cdea4948cb0f51a521d447f7ad466be02658b5fa"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "raster-offset-neon-isolated",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "2-raster-offset-neon-isolated-full.log",
+            "sha256": "591a0ca7c4e342aaae0d717421dd4c3ef5953133a8ab5061561aa6e66819397b"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "raster-offset-neon-isolated",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "4-raster-offset-neon-isolated-full.log",
+            "sha256": "f72b60d99c52267b6c194745aa2f2ea17454ab6c2da07539939636188ec257fb"
+          },
+          {
+            "game": 3,
+            "control": "raster-offset-neon-isolated-toggle-disabled",
+            "candidate": "raster-offset-neon-isolated-toggle",
+            "mode": "both-cold-off-toggle",
+            "host_cpu": 11,
+            "log": "3-raster-offset-neon-isolated-toggle-both-cold-off-toggle.log",
+            "sha256": "baaf53bc295be77ccd2be077b55347e29cee0ba1257ce6cf1828c45450bbf065"
+          },
+          {
+            "game": 0,
+            "control": "raster-offset-neon-isolated-toggle-disabled",
+            "candidate": "raster-offset-neon-isolated-toggle",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "0-raster-offset-neon-isolated-toggle-full-toggle.log",
+            "sha256": "0a8b0a5db558e6ce4a55c896a3f3ccef978c79b90e735559589ec9913300ffa0"
+          },
+          {
+            "game": 1,
+            "control": "raster-offset-neon-isolated-toggle-disabled",
+            "candidate": "raster-offset-neon-isolated-toggle",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "1-raster-offset-neon-isolated-toggle-full-toggle.log",
+            "sha256": "b814569cd7b7499d0a7f389773ffd27f9d8c9bea9a07d46ceb816d6be103205e"
+          },
+          {
+            "game": 2,
+            "control": "raster-offset-neon-isolated-toggle-disabled",
+            "candidate": "raster-offset-neon-isolated-toggle",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "2-raster-offset-neon-isolated-toggle-full-toggle.log",
+            "sha256": "c11ccaa43c7ffbda383289d1fddb0b922825f3349fe4842490daa7536b9b758b"
+          },
+          {
+            "game": 4,
+            "control": "raster-offset-neon-isolated-toggle-disabled",
+            "candidate": "raster-offset-neon-isolated-toggle",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "4-raster-offset-neon-isolated-toggle-full-toggle.log",
+            "sha256": "3c6b2a49ca9c5390076b5757fdaf9397cfc85ffa6ba24673abccea056c341d98"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "raster-objects",
+            "mode": "both-cold-off",
+            "host_cpu": 13,
+            "log": "3-raster-objects-both-cold-off.log",
+            "sha256": "08bee9fec152044027fef6da993fc533002769a34210f7d24a6ecfa72ce43f10"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "raster-objects",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "0-raster-objects-full.log",
+            "sha256": "800757fd6d0e166ebd7b689925fd70ba87b5f92ed523974113193b4aab6e154e"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "raster-objects",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "1-raster-objects-full.log",
+            "sha256": "8d4cf7eb8440a8207a3eed0165da4530e19701dd3bc0bdd0886e31363fecbf71"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "raster-objects",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "2-raster-objects-full.log",
+            "sha256": "b89b2f0f933024072af2362650d85c47bd07fea11aff5b75999254066a75b9ad"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "raster-objects",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "4-raster-objects-full.log",
+            "sha256": "eac23cb65d197ecdca6a81dda8d53b708dbb869be1d19cf84c2712ce057694fa"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "raster-objects-wide",
+            "mode": "both-cold-off",
+            "host_cpu": 15,
+            "log": "3-raster-objects-wide-both-cold-off.log",
+            "sha256": "ae31d10a1595d0e4c887972aae470a200b6b338422c67df15d6bee1d0e47b752"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "raster-objects-wide",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "0-raster-objects-wide-full.log",
+            "sha256": "5ba3225c5e23e9f121c19c4c00919074dca9775cfa2471b1967fdfbad90f4dbc"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "raster-objects-wide",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "1-raster-objects-wide-full.log",
+            "sha256": "714e39d7110f46602f50aea530c62c85019c4e54510487adb151d4603efb4a8c"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "raster-objects-wide",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "2-raster-objects-wide-full.log",
+            "sha256": "3759b58be7e11ea8d5200c94fd992e81bdd6398013327180e012da72e00e6ef6"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "raster-objects-wide",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "4-raster-objects-wide-full.log",
+            "sha256": "326e2baecf5b7cfa1c56b666822bd2c580eaf321f10580fffeee0aa6f8ca2fb4"
+          }
+        ],
+        "physical": false,
+        "core_sha256": {
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+          "baseline": "fb896772ed1ee9d4bf71c38cefb72b51632f6ea6003f552275c2cde643493de1",
+          "raster-offset": "31b837c19c188b353e60c808f9ec9f8c32f8aad202e728bb2cfe69e0b7b06747",
+          "raster-offset-full": "c5068b07f927b5a634e6edb045ba1f2b1c2b9ae3afb9437d6a200343756ae89f",
+          "raster-offset-neon": "b3df3ac76d4d542acccff0b0ad9d06ed179437e9aae02971646500736708745e",
+          "raster-offset-neon-isolated": "f40fb861c1339809b3720dab9f8192bba758d2429c7581d666e45f838dd90c99",
+          "raster-offset-neon-isolated-toggle": "f4887b8033983935119e11ca219b282024b49760a7d55be1fd6eb2e34581c46a",
+          "raster-objects": "37637a16a6882b972d83400089747129d73b07cf64c5c8fab23281e52663fc28",
+          "raster-objects-wide": "1b5aa12599b6dedf907522b20521c94063a3fcc510513cedff1bf5d427fdd696",
+          "raster-offset-neon-isolated-toggle-disabled": "f4887b8033983935119e11ca219b282024b49760a7d55be1fd6eb2e34581c46a"
+        },
+        "sources": {
+          "snes-throughput-pair.c": "71552b9c27cb64de0518ce241acde66e002e67d974ff444aba34f34e3535ea89",
+          "snes-throughput-replay.c": "e9e6f421b792c07069b91877b1df2f7c84a7799619a7d97c149ef1420d105f0d",
+          "run-snes-throughput-pair.py": "0136066ece888ac44be3abef398fda7ba2bce7fb75edf05ecb247d55ef84b1c9"
+        },
+        "pair_sha256": "9e0156a6bac5a0455f3def34563cc356f7396b8acbc3873e351fd30898b39d5d"
+      },
+      "results": [
+        {
+          "game": 0,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 1,
+          "log": "0-baseline-full.log",
+          "sha256": "b51188fc50744b672d0fbd31fb3e34e54e756a2e01ec79828304302875163caa",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5435505,
+            5396217
+          ],
+          "mean_saving_pct": 0.72,
+          "warm_cpu_p95_ns": [
+            6984600,
+            7012600
+          ],
+          "p95_saving_pct": -0.4,
+          "warm_quarter_saving_pct": [
+            1.93,
+            2.13,
+            0.17,
+            -1.47
+          ],
+          "first_four_cpu_ns": [
+            [
+              34764900,
+              21784700
+            ],
+            [
+              3577000,
+              3331300
+            ],
+            [
+              3298600,
+              4127800
+            ],
+            [
+              3955100,
+              3855500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "raster-objects",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "0-raster-objects-full.log",
+          "sha256": "800757fd6d0e166ebd7b689925fd70ba87b5f92ed523974113193b4aab6e154e",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5478927,
+            5323248
+          ],
+          "mean_saving_pct": 2.84,
+          "warm_cpu_p95_ns": [
+            7017100,
+            6702300
+          ],
+          "p95_saving_pct": 4.49,
+          "warm_quarter_saving_pct": [
+            3.71,
+            1.85,
+            1.86,
+            3.86
+          ],
+          "first_four_cpu_ns": [
+            [
+              35516400,
+              36825500
+            ],
+            [
+              5402300,
+              4440000
+            ],
+            [
+              5849100,
+              5697900
+            ],
+            [
+              5945100,
+              5200600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "raster-objects-wide",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "0-raster-objects-wide-full.log",
+          "sha256": "5ba3225c5e23e9f121c19c4c00919074dca9775cfa2471b1967fdfbad90f4dbc",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5485765,
+            5344625
+          ],
+          "mean_saving_pct": 2.57,
+          "warm_cpu_p95_ns": [
+            6958900,
+            6898700
+          ],
+          "p95_saving_pct": 0.87,
+          "warm_quarter_saving_pct": [
+            2.75,
+            2.76,
+            2.73,
+            2.06
+          ],
+          "first_four_cpu_ns": [
+            [
+              24391500,
+              19697400
+            ],
+            [
+              5779600,
+              4606400
+            ],
+            [
+              5882100,
+              6146600
+            ],
+            [
+              6551600,
+              6239800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "raster-offset",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "0-raster-offset-full.log",
+          "sha256": "f836331afa1107d4232d8d624c5aa24f17e6b99c197595691cccd22899dbe4a8",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4976852,
+            4832612
+          ],
+          "mean_saving_pct": 2.9,
+          "warm_cpu_p95_ns": [
+            6475800,
+            6229600
+          ],
+          "p95_saving_pct": 3.8,
+          "warm_quarter_saving_pct": [
+            1.9,
+            3.17,
+            2.63,
+            3.89
+          ],
+          "first_four_cpu_ns": [
+            [
+              41544700,
+              32058000
+            ],
+            [
+              6662800,
+              5907200
+            ],
+            [
+              5935000,
+              5783100
+            ],
+            [
+              6216600,
+              6457700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "raster-offset-full",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "0-raster-offset-full-full.log",
+          "sha256": "37e18f05a00c3511cb7b584ce03dffd68a3c7e93684ccbe37dab8dcd408c57aa",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5105559,
+            4886517
+          ],
+          "mean_saving_pct": 4.29,
+          "warm_cpu_p95_ns": [
+            6626800,
+            6290500
+          ],
+          "p95_saving_pct": 5.07,
+          "warm_quarter_saving_pct": [
+            5.15,
+            3.27,
+            3.66,
+            4.9
+          ],
+          "first_four_cpu_ns": [
+            [
+              34632400,
+              33286300
+            ],
+            [
+              5787200,
+              5734200
+            ],
+            [
+              5642200,
+              5372900
+            ],
+            [
+              5729700,
+              5570700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "raster-offset-neon",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "0-raster-offset-neon-full.log",
+          "sha256": "9e825d272f981ca5bb4690f5a5bc34c6b7d20f4429bf72b2cc4ad6bb90a6a1fc",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5534836,
+            5403956
+          ],
+          "mean_saving_pct": 2.36,
+          "warm_cpu_p95_ns": [
+            6994700,
+            6804000
+          ],
+          "p95_saving_pct": 2.73,
+          "warm_quarter_saving_pct": [
+            3.13,
+            3.16,
+            0.33,
+            3.19
+          ],
+          "first_four_cpu_ns": [
+            [
+              34594600,
+              29492200
+            ],
+            [
+              3488300,
+              3322100
+            ],
+            [
+              3349500,
+              4386500
+            ],
+            [
+              3476900,
+              3386200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "raster-offset-neon-isolated",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "0-raster-offset-neon-isolated-full.log",
+          "sha256": "6f85b0ee5d0ef1cc41b9ac6b9725040b20f7d961fc5de4a40a3256d6c5a40eaa",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5536497,
+            5274683
+          ],
+          "mean_saving_pct": 4.73,
+          "warm_cpu_p95_ns": [
+            7069900,
+            6912400
+          ],
+          "p95_saving_pct": 2.23,
+          "warm_quarter_saving_pct": [
+            5.62,
+            4.19,
+            3.84,
+            5.31
+          ],
+          "first_four_cpu_ns": [
+            [
+              29691600,
+              30686900
+            ],
+            [
+              4824700,
+              5704600
+            ],
+            [
+              3432000,
+              3266000
+            ],
+            [
+              6394000,
+              4279500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "raster-offset-neon-isolated-toggle-disabled",
+          "candidate": "raster-offset-neon-isolated-toggle",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "0-raster-offset-neon-isolated-toggle-full-toggle.log",
+          "sha256": "0a8b0a5db558e6ce4a55c896a3f3ccef978c79b90e735559589ec9913300ffa0",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5242144,
+            5210115
+          ],
+          "mean_saving_pct": 0.61,
+          "warm_cpu_p95_ns": [
+            6612200,
+            6716600
+          ],
+          "p95_saving_pct": -1.58,
+          "warm_quarter_saving_pct": [
+            0.46,
+            -0.13,
+            1.46,
+            0.54
+          ],
+          "first_four_cpu_ns": [
+            [
+              33384000,
+              33427100
+            ],
+            [
+              5465800,
+              5899600
+            ],
+            [
+              5846500,
+              5579900
+            ],
+            [
+              5924200,
+              5979500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 1,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 1,
+          "log": "1-baseline-full.log",
+          "sha256": "8305ef5389d942f31035cd2a0bf91586703433123e841408347090b44adb02ef",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4759992,
+            4733763
+          ],
+          "mean_saving_pct": 0.55,
+          "warm_cpu_p95_ns": [
+            5841600,
+            5805500
+          ],
+          "p95_saving_pct": 0.62,
+          "warm_quarter_saving_pct": [
+            0.65,
+            -0.01,
+            0.11,
+            1.51
+          ],
+          "first_four_cpu_ns": [
+            [
+              27776100,
+              20088700
+            ],
+            [
+              4773700,
+              3773400
+            ],
+            [
+              5555900,
+              5508700
+            ],
+            [
+              3087400,
+              4512900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "raster-objects",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "1-raster-objects-full.log",
+          "sha256": "8d4cf7eb8440a8207a3eed0165da4530e19701dd3bc0bdd0886e31363fecbf71",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4734512,
+            4662400
+          ],
+          "mean_saving_pct": 1.52,
+          "warm_cpu_p95_ns": [
+            5790900,
+            5693800
+          ],
+          "p95_saving_pct": 1.68,
+          "warm_quarter_saving_pct": [
+            1.55,
+            1.78,
+            1.7,
+            1.05
+          ],
+          "first_four_cpu_ns": [
+            [
+              32008600,
+              39206500
+            ],
+            [
+              7183800,
+              6362800
+            ],
+            [
+              6041600,
+              5563400
+            ],
+            [
+              5299100,
+              5112800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "raster-objects-wide",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "1-raster-objects-wide-full.log",
+          "sha256": "714e39d7110f46602f50aea530c62c85019c4e54510487adb151d4603efb4a8c",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4817060,
+            4743317
+          ],
+          "mean_saving_pct": 1.53,
+          "warm_cpu_p95_ns": [
+            5882400,
+            5756800
+          ],
+          "p95_saving_pct": 2.14,
+          "warm_quarter_saving_pct": [
+            2.13,
+            0.94,
+            1.52,
+            1.53
+          ],
+          "first_four_cpu_ns": [
+            [
+              22036500,
+              21403400
+            ],
+            [
+              6218900,
+              4257900
+            ],
+            [
+              5260800,
+              5299800
+            ],
+            [
+              4503900,
+              5163500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "raster-offset",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "1-raster-offset-full.log",
+          "sha256": "20d8f4a3c3b2d22154449961225a14ca1cc9c4711c5e37b5acbb7ac7bbdb00f9",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5164622,
+            5010627
+          ],
+          "mean_saving_pct": 2.98,
+          "warm_cpu_p95_ns": [
+            6577100,
+            6411000
+          ],
+          "p95_saving_pct": 2.53,
+          "warm_quarter_saving_pct": [
+            3.98,
+            3.05,
+            2.75,
+            1.97
+          ],
+          "first_four_cpu_ns": [
+            [
+              33566500,
+              25929600
+            ],
+            [
+              4275100,
+              4495200
+            ],
+            [
+              5050700,
+              5373400
+            ],
+            [
+              5276700,
+              4055000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "raster-offset-full",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "1-raster-offset-full-full.log",
+          "sha256": "40ecf63cdbe567b2bb208ead511a1a4170bb1c7690e71f522d896fc95775285e",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4970172,
+            4802579
+          ],
+          "mean_saving_pct": 3.37,
+          "warm_cpu_p95_ns": [
+            6183800,
+            6058400
+          ],
+          "p95_saving_pct": 2.03,
+          "warm_quarter_saving_pct": [
+            2.79,
+            2.42,
+            5.65,
+            2.73
+          ],
+          "first_four_cpu_ns": [
+            [
+              34112500,
+              32363500
+            ],
+            [
+              6863300,
+              7352800
+            ],
+            [
+              5506400,
+              5736900
+            ],
+            [
+              6185900,
+              6443300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "raster-offset-neon",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "1-raster-offset-neon-full.log",
+          "sha256": "39f9863980e6ed9f39f189cf0f956f248e7c3c3d7976ae123b46eb3d602ccfd0",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5020296,
+            6018836
+          ],
+          "mean_saving_pct": -19.89,
+          "warm_cpu_p95_ns": [
+            5903000,
+            7062400
+          ],
+          "p95_saving_pct": -19.64,
+          "warm_quarter_saving_pct": [
+            -21.74,
+            -19.35,
+            -19.63,
+            -18.81
+          ],
+          "first_four_cpu_ns": [
+            [
+              32539800,
+              34687800
+            ],
+            [
+              6977400,
+              8843500
+            ],
+            [
+              4590700,
+              6326500
+            ],
+            [
+              5608100,
+              7703300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "raster-offset-neon-isolated",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "1-raster-offset-neon-isolated-full.log",
+          "sha256": "0e649beefa07f53c4c0a1320cdea4948cb0f51a521d447f7ad466be02658b5fa",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4949897,
+            4789459
+          ],
+          "mean_saving_pct": 3.24,
+          "warm_cpu_p95_ns": [
+            5905500,
+            5722300
+          ],
+          "p95_saving_pct": 3.1,
+          "warm_quarter_saving_pct": [
+            3.99,
+            3.22,
+            2.06,
+            3.66
+          ],
+          "first_four_cpu_ns": [
+            [
+              32615200,
+              30468000
+            ],
+            [
+              6605100,
+              5509200
+            ],
+            [
+              5779200,
+              5399200
+            ],
+            [
+              5793600,
+              5288400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "raster-offset-neon-isolated-toggle-disabled",
+          "candidate": "raster-offset-neon-isolated-toggle",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "1-raster-offset-neon-isolated-toggle-full-toggle.log",
+          "sha256": "b814569cd7b7499d0a7f389773ffd27f9d8c9bea9a07d46ceb816d6be103205e",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4936082,
+            5007848
+          ],
+          "mean_saving_pct": -1.45,
+          "warm_cpu_p95_ns": [
+            5850400,
+            6077400
+          ],
+          "p95_saving_pct": -3.88,
+          "warm_quarter_saving_pct": [
+            -0.92,
+            -0.16,
+            -3.05,
+            -1.71
+          ],
+          "first_four_cpu_ns": [
+            [
+              34378300,
+              33221500
+            ],
+            [
+              5147000,
+              5799500
+            ],
+            [
+              5398900,
+              3350800
+            ],
+            [
+              3042900,
+              2877600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 1,
+          "log": "2-baseline-full.log",
+          "sha256": "87f17b8b9c3291fe7a400709cc56b010368aeadad0776842c4bfafd483fd3504",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5612875,
+            5570875
+          ],
+          "mean_saving_pct": 0.75,
+          "warm_cpu_p95_ns": [
+            7593400,
+            7157700
+          ],
+          "p95_saving_pct": 5.74,
+          "warm_quarter_saving_pct": [
+            0.63,
+            0.24,
+            1.11,
+            0.95
+          ],
+          "first_four_cpu_ns": [
+            [
+              27072500,
+              21554000
+            ],
+            [
+              3687800,
+              3643700
+            ],
+            [
+              3135200,
+              4421300
+            ],
+            [
+              4163300,
+              4611900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "raster-objects",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "2-raster-objects-full.log",
+          "sha256": "b89b2f0f933024072af2362650d85c47bd07fea11aff5b75999254066a75b9ad",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5482106,
+            5390288
+          ],
+          "mean_saving_pct": 1.67,
+          "warm_cpu_p95_ns": [
+            7237600,
+            7309400
+          ],
+          "p95_saving_pct": -0.99,
+          "warm_quarter_saving_pct": [
+            1.6,
+            2.21,
+            1.44,
+            1.44
+          ],
+          "first_four_cpu_ns": [
+            [
+              34758000,
+              33250100
+            ],
+            [
+              6209100,
+              6345800
+            ],
+            [
+              5996800,
+              5429100
+            ],
+            [
+              5600300,
+              5303800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "raster-objects-wide",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "2-raster-objects-wide-full.log",
+          "sha256": "3759b58be7e11ea8d5200c94fd992e81bdd6398013327180e012da72e00e6ef6",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5604174,
+            5487991
+          ],
+          "mean_saving_pct": 2.07,
+          "warm_cpu_p95_ns": [
+            7477600,
+            7090000
+          ],
+          "p95_saving_pct": 5.18,
+          "warm_quarter_saving_pct": [
+            3.21,
+            1.31,
+            0.77,
+            2.93
+          ],
+          "first_four_cpu_ns": [
+            [
+              34230500,
+              33381300
+            ],
+            [
+              6527600,
+              5889200
+            ],
+            [
+              5760300,
+              5493300
+            ],
+            [
+              3633900,
+              5647100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "raster-offset",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "2-raster-offset-full.log",
+          "sha256": "c8d72ceb1699e8da76d9f61abcad16ee4fc1dda3011ad18ace19dcc20a6cdd59",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4728352,
+            4833576
+          ],
+          "mean_saving_pct": -2.23,
+          "warm_cpu_p95_ns": [
+            6226900,
+            6256000
+          ],
+          "p95_saving_pct": -0.47,
+          "warm_quarter_saving_pct": [
+            -2.82,
+            -1.95,
+            -2.37,
+            -1.75
+          ],
+          "first_four_cpu_ns": [
+            [
+              32764300,
+              23643100
+            ],
+            [
+              5695400,
+              5420700
+            ],
+            [
+              3090100,
+              3202800
+            ],
+            [
+              3073900,
+              3133100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "raster-offset-full",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "2-raster-offset-full-full.log",
+          "sha256": "ad96a070cf10e28fb811395c8c1b0389dd70989a70d18b91559392e7f0c3f33e",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5046999,
+            4967914
+          ],
+          "mean_saving_pct": 1.57,
+          "warm_cpu_p95_ns": [
+            6359700,
+            6373200
+          ],
+          "p95_saving_pct": -0.21,
+          "warm_quarter_saving_pct": [
+            3.09,
+            1.4,
+            1.97,
+            0.04
+          ],
+          "first_four_cpu_ns": [
+            [
+              38313500,
+              31888600
+            ],
+            [
+              5420800,
+              5649800
+            ],
+            [
+              4982800,
+              5395700
+            ],
+            [
+              7370700,
+              4904400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "raster-offset-neon",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "2-raster-offset-neon-full.log",
+          "sha256": "ec2aef90e26b74652baaf6d7d6a1821399ea6bf6d644085bf80654f123efa06b",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5639908,
+            5862746
+          ],
+          "mean_saving_pct": -3.95,
+          "warm_cpu_p95_ns": [
+            7291000,
+            7580600
+          ],
+          "p95_saving_pct": -3.97,
+          "warm_quarter_saving_pct": [
+            -3.64,
+            -3.47,
+            -4.55,
+            -4.07
+          ],
+          "first_four_cpu_ns": [
+            [
+              33331800,
+              34353000
+            ],
+            [
+              6209400,
+              6077100
+            ],
+            [
+              5988800,
+              5927200
+            ],
+            [
+              4867100,
+              5494600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "raster-offset-neon-isolated",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "2-raster-offset-neon-isolated-full.log",
+          "sha256": "591a0ca7c4e342aaae0d717421dd4c3ef5953133a8ab5061561aa6e66819397b",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5509233,
+            5489201
+          ],
+          "mean_saving_pct": 0.36,
+          "warm_cpu_p95_ns": [
+            7049900,
+            7121400
+          ],
+          "p95_saving_pct": -1.01,
+          "warm_quarter_saving_pct": [
+            -0.53,
+            2.21,
+            -0.29,
+            -0.04
+          ],
+          "first_four_cpu_ns": [
+            [
+              31932500,
+              33693000
+            ],
+            [
+              6222900,
+              5697900
+            ],
+            [
+              5949700,
+              3985200
+            ],
+            [
+              3315200,
+              2965500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "raster-offset-neon-isolated-toggle-disabled",
+          "candidate": "raster-offset-neon-isolated-toggle",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "2-raster-offset-neon-isolated-toggle-full-toggle.log",
+          "sha256": "c11ccaa43c7ffbda383289d1fddb0b922825f3349fe4842490daa7536b9b758b",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5188466,
+            5194696
+          ],
+          "mean_saving_pct": -0.12,
+          "warm_cpu_p95_ns": [
+            6319700,
+            6310600
+          ],
+          "p95_saving_pct": 0.14,
+          "warm_quarter_saving_pct": [
+            0.01,
+            0.63,
+            -0.69,
+            -0.42
+          ],
+          "first_four_cpu_ns": [
+            [
+              32822500,
+              20267400
+            ],
+            [
+              3336900,
+              3255400
+            ],
+            [
+              4066500,
+              3151000
+            ],
+            [
+              3360900,
+              3153100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "both-cold-off",
+          "host_cpu": 1,
+          "log": "3-baseline-both-cold-off.log",
+          "sha256": "341aed671083727bec65cd14b103b7637cba654e10f6f685609a26c411459210",
+          "cold_cpu_ns": [
+            51314884100,
+            51292502800
+          ],
+          "cold_saving_pct": 0.04,
+          "warm_cpu_mean_ns": [
+            13176344,
+            13203388
+          ],
+          "mean_saving_pct": -0.21,
+          "warm_cpu_p95_ns": [
+            21340300,
+            21127700
+          ],
+          "p95_saving_pct": 1.0,
+          "warm_quarter_saving_pct": [
+            -1.67,
+            -1.35,
+            3.36,
+            -1.65
+          ],
+          "first_four_cpu_ns": [
+            [
+              32846400,
+              24887300
+            ],
+            [
+              13273800,
+              14042700
+            ],
+            [
+              11581300,
+              11388100
+            ],
+            [
+              24298000,
+              24781900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "raster-objects",
+          "mode": "both-cold-off",
+          "host_cpu": 13,
+          "log": "3-raster-objects-both-cold-off.log",
+          "sha256": "08bee9fec152044027fef6da993fc533002769a34210f7d24a6ecfa72ce43f10",
+          "cold_cpu_ns": [
+            52405440900,
+            51513324200
+          ],
+          "cold_saving_pct": 1.7,
+          "warm_cpu_mean_ns": [
+            13436012,
+            13327896
+          ],
+          "mean_saving_pct": 0.8,
+          "warm_cpu_p95_ns": [
+            21565900,
+            21583900
+          ],
+          "p95_saving_pct": -0.08,
+          "warm_quarter_saving_pct": [
+            1.19,
+            -0.04,
+            0.91,
+            1.08
+          ],
+          "first_four_cpu_ns": [
+            [
+              33904200,
+              29965200
+            ],
+            [
+              12733000,
+              13716100
+            ],
+            [
+              11076500,
+              11670000
+            ],
+            [
+              26010900,
+              24322800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "raster-objects-wide",
+          "mode": "both-cold-off",
+          "host_cpu": 15,
+          "log": "3-raster-objects-wide-both-cold-off.log",
+          "sha256": "ae31d10a1595d0e4c887972aae470a200b6b338422c67df15d6bee1d0e47b752",
+          "cold_cpu_ns": [
+            51387777500,
+            51240670100
+          ],
+          "cold_saving_pct": 0.29,
+          "warm_cpu_mean_ns": [
+            13043121,
+            12884155
+          ],
+          "mean_saving_pct": 1.22,
+          "warm_cpu_p95_ns": [
+            21187000,
+            20915400
+          ],
+          "p95_saving_pct": 1.28,
+          "warm_quarter_saving_pct": [
+            1.79,
+            1.22,
+            -0.28,
+            2.25
+          ],
+          "first_four_cpu_ns": [
+            [
+              28674600,
+              30788300
+            ],
+            [
+              13874400,
+              13327800
+            ],
+            [
+              9668500,
+              11983100
+            ],
+            [
+              26085500,
+              24417800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "raster-offset",
+          "mode": "both-cold-off",
+          "host_cpu": 3,
+          "log": "3-raster-offset-both-cold-off.log",
+          "sha256": "c8d7a196c1a95fda3aa98cef96a9065ac83f3a93c1471f21097b26879bf153ad",
+          "cold_cpu_ns": [
+            50162421900,
+            50211948700
+          ],
+          "cold_saving_pct": -0.1,
+          "warm_cpu_mean_ns": [
+            12618086,
+            8115694
+          ],
+          "mean_saving_pct": 35.68,
+          "warm_cpu_p95_ns": [
+            20992100,
+            15479400
+          ],
+          "p95_saving_pct": 26.26,
+          "warm_quarter_saving_pct": [
+            32.72,
+            36.51,
+            35.9,
+            37.34
+          ],
+          "first_four_cpu_ns": [
+            [
+              26039400,
+              27070300
+            ],
+            [
+              7681400,
+              6865500
+            ],
+            [
+              7572800,
+              3736300
+            ],
+            [
+              26944500,
+              16174800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "raster-offset-full",
+          "mode": "both-cold-off",
+          "host_cpu": 5,
+          "log": "3-raster-offset-full-both-cold-off.log",
+          "sha256": "2dcc77aa2284b5313f444ae897105518f745034d4f4eff763b04c161b01918f4",
+          "cold_cpu_ns": [
+            50480759300,
+            51761099200
+          ],
+          "cold_saving_pct": -2.54,
+          "warm_cpu_mean_ns": [
+            12586047,
+            7885779
+          ],
+          "mean_saving_pct": 37.35,
+          "warm_cpu_p95_ns": [
+            20690900,
+            14875300
+          ],
+          "p95_saving_pct": 28.11,
+          "warm_quarter_saving_pct": [
+            35.31,
+            38.48,
+            37.51,
+            37.87
+          ],
+          "first_four_cpu_ns": [
+            [
+              31315000,
+              21889800
+            ],
+            [
+              9402100,
+              7596100
+            ],
+            [
+              10599000,
+              5427800
+            ],
+            [
+              26484500,
+              17696100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "raster-offset-neon",
+          "mode": "both-cold-off",
+          "host_cpu": 7,
+          "log": "3-raster-offset-neon-both-cold-off.log",
+          "sha256": "d29d510ff37857723942dac8adc1855eae9e5804d712a614c57975e4834d87ef",
+          "cold_cpu_ns": [
+            53006418100,
+            52481518300
+          ],
+          "cold_saving_pct": 0.99,
+          "warm_cpu_mean_ns": [
+            13646971,
+            8237132
+          ],
+          "mean_saving_pct": 39.64,
+          "warm_cpu_p95_ns": [
+            21848000,
+            16030600
+          ],
+          "p95_saving_pct": 26.63,
+          "warm_quarter_saving_pct": [
+            38.99,
+            41.69,
+            37.96,
+            40.16
+          ],
+          "first_four_cpu_ns": [
+            [
+              25505000,
+              16765500
+            ],
+            [
+              7514200,
+              4517800
+            ],
+            [
+              6348900,
+              4796800
+            ],
+            [
+              21971400,
+              11694700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "raster-offset-neon-isolated",
+          "mode": "both-cold-off",
+          "host_cpu": 9,
+          "log": "3-raster-offset-neon-isolated-both-cold-off.log",
+          "sha256": "514b26c74470e0164df713bf9282c6ffc19cec0910ae117d97b960fecacae2c9",
+          "cold_cpu_ns": [
+            53185067200,
+            52860275700
+          ],
+          "cold_saving_pct": 0.61,
+          "warm_cpu_mean_ns": [
+            13590788,
+            8447967
+          ],
+          "mean_saving_pct": 37.84,
+          "warm_cpu_p95_ns": [
+            21965800,
+            16159200
+          ],
+          "p95_saving_pct": 26.43,
+          "warm_quarter_saving_pct": [
+            36.23,
+            38.05,
+            38.27,
+            38.74
+          ],
+          "first_four_cpu_ns": [
+            [
+              28041800,
+              27856400
+            ],
+            [
+              7490200,
+              4186500
+            ],
+            [
+              9457400,
+              5304700
+            ],
+            [
+              15796500,
+              13636900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "raster-offset-neon-isolated-toggle-disabled",
+          "candidate": "raster-offset-neon-isolated-toggle",
+          "mode": "both-cold-off-toggle",
+          "host_cpu": 11,
+          "log": "3-raster-offset-neon-isolated-toggle-both-cold-off-toggle.log",
+          "sha256": "baaf53bc295be77ccd2be077b55347e29cee0ba1257ce6cf1828c45450bbf065",
+          "cold_cpu_ns": [
+            51677325800,
+            51753695400
+          ],
+          "cold_saving_pct": -0.15,
+          "warm_cpu_mean_ns": [
+            12291220,
+            8332686
+          ],
+          "mean_saving_pct": 32.21,
+          "warm_cpu_p95_ns": [
+            19735500,
+            15586300
+          ],
+          "p95_saving_pct": 21.02,
+          "warm_quarter_saving_pct": [
+            32.27,
+            32.96,
+            30.68,
+            32.86
+          ],
+          "first_four_cpu_ns": [
+            [
+              31092800,
+              25030700
+            ],
+            [
+              12117300,
+              7171600
+            ],
+            [
+              11900700,
+              6597600
+            ],
+            [
+              23166700,
+              20626200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 1,
+          "log": "4-baseline-full.log",
+          "sha256": "bcc08266aece29748eb2321a36f30717a81474acc4966de1aba52ca19121d6e8",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4645560,
+            4579909
+          ],
+          "mean_saving_pct": 1.41,
+          "warm_cpu_p95_ns": [
+            7068100,
+            6952000
+          ],
+          "p95_saving_pct": 1.64,
+          "warm_quarter_saving_pct": [
+            2.52,
+            1.33,
+            0.95,
+            0.33
+          ],
+          "first_four_cpu_ns": [
+            [
+              35130800,
+              21453100
+            ],
+            [
+              4955200,
+              3722900
+            ],
+            [
+              6333000,
+              7540100
+            ],
+            [
+              6101300,
+              6021900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "raster-objects",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "4-raster-objects-full.log",
+          "sha256": "eac23cb65d197ecdca6a81dda8d53b708dbb869be1d19cf84c2712ce057694fa",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4426323,
+            4267372
+          ],
+          "mean_saving_pct": 3.59,
+          "warm_cpu_p95_ns": [
+            6929400,
+            6764200
+          ],
+          "p95_saving_pct": 2.38,
+          "warm_quarter_saving_pct": [
+            5.27,
+            2.35,
+            4.1,
+            1.86
+          ],
+          "first_four_cpu_ns": [
+            [
+              31919500,
+              22270700
+            ],
+            [
+              4222000,
+              4374700
+            ],
+            [
+              4503700,
+              4882300
+            ],
+            [
+              5734700,
+              3155300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "raster-objects-wide",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "4-raster-objects-wide-full.log",
+          "sha256": "326e2baecf5b7cfa1c56b666822bd2c580eaf321f10580fffeee0aa6f8ca2fb4",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4881141,
+            4772390
+          ],
+          "mean_saving_pct": 2.23,
+          "warm_cpu_p95_ns": [
+            7168700,
+            6917700
+          ],
+          "p95_saving_pct": 3.5,
+          "warm_quarter_saving_pct": [
+            2.01,
+            1.51,
+            1.17,
+            4.49
+          ],
+          "first_four_cpu_ns": [
+            [
+              37943900,
+              34602000
+            ],
+            [
+              4786300,
+              6534100
+            ],
+            [
+              4750200,
+              6964700
+            ],
+            [
+              6280000,
+              5644000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "raster-offset",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "4-raster-offset-full.log",
+          "sha256": "3e301bfe2e0a4289760b6a7fa63f07f056d2f897e6b185b482e5c36957dc8a41",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            6019385,
+            5913820
+          ],
+          "mean_saving_pct": 1.75,
+          "warm_cpu_p95_ns": [
+            8079800,
+            8197300
+          ],
+          "p95_saving_pct": -1.45,
+          "warm_quarter_saving_pct": [
+            2.44,
+            0.97,
+            1.73,
+            1.98
+          ],
+          "first_four_cpu_ns": [
+            [
+              34333600,
+              37404200
+            ],
+            [
+              6978200,
+              6946300
+            ],
+            [
+              7800000,
+              8237600
+            ],
+            [
+              6154000,
+              6381100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "raster-offset-full",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "4-raster-offset-full-full.log",
+          "sha256": "adee39bfb7bf64c5225fc1afedb7dacfb27bfde152efdc66b40078ef8fc84038",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            6065081,
+            5821690
+          ],
+          "mean_saving_pct": 4.01,
+          "warm_cpu_p95_ns": [
+            8378100,
+            7974800
+          ],
+          "p95_saving_pct": 4.81,
+          "warm_quarter_saving_pct": [
+            2.14,
+            4.66,
+            3.24,
+            6.25
+          ],
+          "first_four_cpu_ns": [
+            [
+              34404900,
+              23696500
+            ],
+            [
+              3691300,
+              3577500
+            ],
+            [
+              3804600,
+              4364400
+            ],
+            [
+              3187900,
+              3357900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "raster-offset-neon",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "4-raster-offset-neon-full.log",
+          "sha256": "388dd4295f16086b00dc7e8d747ed27e51a97b8cc35ccb62a8ddea2530ad8a74",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4988213,
+            4831097
+          ],
+          "mean_saving_pct": 3.15,
+          "warm_cpu_p95_ns": [
+            7232200,
+            7015000
+          ],
+          "p95_saving_pct": 3.0,
+          "warm_quarter_saving_pct": [
+            2.88,
+            1.92,
+            3.59,
+            4.59
+          ],
+          "first_four_cpu_ns": [
+            [
+              27394200,
+              35341200
+            ],
+            [
+              6243400,
+              6409200
+            ],
+            [
+              7052200,
+              6510800
+            ],
+            [
+              3392700,
+              4581100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "raster-offset-neon-isolated",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "4-raster-offset-neon-isolated-full.log",
+          "sha256": "f72b60d99c52267b6c194745aa2f2ea17454ab6c2da07539939636188ec257fb",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5104486,
+            4883503
+          ],
+          "mean_saving_pct": 4.33,
+          "warm_cpu_p95_ns": [
+            7395900,
+            7041300
+          ],
+          "p95_saving_pct": 4.79,
+          "warm_quarter_saving_pct": [
+            4.9,
+            3.3,
+            5.5,
+            3.66
+          ],
+          "first_four_cpu_ns": [
+            [
+              29741300,
+              44128800
+            ],
+            [
+              7311800,
+              7823700
+            ],
+            [
+              7620600,
+              8052900
+            ],
+            [
+              6684800,
+              6014900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "raster-offset-neon-isolated-toggle-disabled",
+          "candidate": "raster-offset-neon-isolated-toggle",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "4-raster-offset-neon-isolated-toggle-full-toggle.log",
+          "sha256": "3c6b2a49ca9c5390076b5757fdaf9397cfc85ffa6ba24673abccea056c341d98",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5783659,
+            5679001
+          ],
+          "mean_saving_pct": 1.81,
+          "warm_cpu_p95_ns": [
+            7657200,
+            7531500
+          ],
+          "p95_saving_pct": 1.64,
+          "warm_quarter_saving_pct": [
+            3.91,
+            1.37,
+            0.71,
+            0.81
+          ],
+          "first_four_cpu_ns": [
+            [
+              33082600,
+              34323300
+            ],
+            [
+              3558400,
+              3488400
+            ],
+            [
+              3710400,
+              4395300
+            ],
+            [
+              3099700,
+              3155600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        }
+      ]
+    },
+    "ablation": {
+      "meta": {
+        "results": [
+          {
+            "game": 3,
+            "control": "raster-offset-disabled",
+            "candidate": "raster-offset",
+            "mode": "both-cold-off-toggle",
+            "host_cpu": 1,
+            "log": "3-raster-offset-both-cold-off-toggle.log",
+            "sha256": "f95a66a72c537b7839405fafeda8dbef5e4cbe3c6b7dc0e7f4f5ef7a30cd95c7"
+          },
+          {
+            "game": 0,
+            "control": "raster-objects-disabled",
+            "candidate": "raster-objects",
+            "mode": "full-toggle",
+            "host_cpu": 1,
+            "log": "0-raster-objects-full-toggle.log",
+            "sha256": "ad70a78492a495095f3b6410540fc5844f61bbdb4e50952084a6145ef16813aa"
+          },
+          {
+            "game": 2,
+            "control": "raster-offset-full-disabled",
+            "candidate": "raster-offset-full",
+            "mode": "full-toggle",
+            "host_cpu": 1,
+            "log": "2-raster-offset-full-full-toggle.log",
+            "sha256": "a3a21e507eb6ad76e8439bceb34ffc5309d9e725dbff5de187fe9817e471bcb5"
+          },
+          {
+            "game": 4,
+            "control": "raster-objects-wide-disabled",
+            "candidate": "raster-objects-wide",
+            "mode": "full-toggle",
+            "host_cpu": 1,
+            "log": "4-raster-objects-wide-full-toggle.log",
+            "sha256": "08f8ee1a821dffce8b5256b1c97f8d9a8b9b0143bca4b98532ba350b11cd7fc8"
+          },
+          {
+            "game": 3,
+            "control": "raster-offset-full-disabled",
+            "candidate": "raster-offset-full",
+            "mode": "both-cold-off-toggle",
+            "host_cpu": 3,
+            "log": "3-raster-offset-full-both-cold-off-toggle.log",
+            "sha256": "17781afb43dc28437ce12ca4431606b17e7d808a642165a53eb06ec4211c4063"
+          },
+          {
+            "game": 0,
+            "control": "raster-objects-wide-disabled",
+            "candidate": "raster-objects-wide",
+            "mode": "full-toggle",
+            "host_cpu": 3,
+            "log": "0-raster-objects-wide-full-toggle.log",
+            "sha256": "394e02ffc14878699f232b1a5b85da473f17236dbb5331597c28784bde2ca8fb"
+          },
+          {
+            "game": 2,
+            "control": "raster-offset-neon-disabled",
+            "candidate": "raster-offset-neon",
+            "mode": "full-toggle",
+            "host_cpu": 3,
+            "log": "2-raster-offset-neon-full-toggle.log",
+            "sha256": "72752348bbfa7b460987ebee909fe84d94eb082f52ba7eaddd26d7e3f9613f05"
+          },
+          {
+            "game": 3,
+            "control": "raster-offset-neon-disabled",
+            "candidate": "raster-offset-neon",
+            "mode": "both-cold-off-toggle",
+            "host_cpu": 5,
+            "log": "3-raster-offset-neon-both-cold-off-toggle.log",
+            "sha256": "6949850a06c1e4471ea08ca0e2c55105b12cb81bc0d401696ea426f7d3e47043"
+          },
+          {
+            "game": 1,
+            "control": "raster-offset-disabled",
+            "candidate": "raster-offset",
+            "mode": "full-toggle",
+            "host_cpu": 5,
+            "log": "1-raster-offset-full-toggle.log",
+            "sha256": "3cc0e7834d9f8327f90a3578d1a15a11709595e5685c2ea917428c2c6b9ac592"
+          },
+          {
+            "game": 2,
+            "control": "raster-objects-disabled",
+            "candidate": "raster-objects",
+            "mode": "full-toggle",
+            "host_cpu": 5,
+            "log": "2-raster-objects-full-toggle.log",
+            "sha256": "8e89f47da2b9707c8955e4e36dc2a80f0895734ddf234321c5a3ae8f6eae4e03"
+          },
+          {
+            "game": 3,
+            "control": "raster-objects-disabled",
+            "candidate": "raster-objects",
+            "mode": "both-cold-off-toggle",
+            "host_cpu": 7,
+            "log": "3-raster-objects-both-cold-off-toggle.log",
+            "sha256": "1a6d0451d166b563648f02bd39067338e928fc7c9a6ee87be6ce9947f08376ae"
+          },
+          {
+            "game": 1,
+            "control": "raster-offset-full-disabled",
+            "candidate": "raster-offset-full",
+            "mode": "full-toggle",
+            "host_cpu": 7,
+            "log": "1-raster-offset-full-full-toggle.log",
+            "sha256": "075e38ea47113504b4346780a25be3e53c9675d4b935e1fd3aafd1618e3e584c"
+          },
+          {
+            "game": 2,
+            "control": "raster-objects-wide-disabled",
+            "candidate": "raster-objects-wide",
+            "mode": "full-toggle",
+            "host_cpu": 7,
+            "log": "2-raster-objects-wide-full-toggle.log",
+            "sha256": "a9a6e9f15601bb096556ce00deb9cd9475481eb706c01bad3513ef3478c227bf"
+          },
+          {
+            "game": 3,
+            "control": "raster-objects-wide-disabled",
+            "candidate": "raster-objects-wide",
+            "mode": "both-cold-off-toggle",
+            "host_cpu": 9,
+            "log": "3-raster-objects-wide-both-cold-off-toggle.log",
+            "sha256": "d2d1d15cede60cf3e37c0e87babb928ee6b23ef8bf5c7ddead4f48412a1a6333"
+          },
+          {
+            "game": 1,
+            "control": "raster-offset-neon-disabled",
+            "candidate": "raster-offset-neon",
+            "mode": "full-toggle",
+            "host_cpu": 9,
+            "log": "1-raster-offset-neon-full-toggle.log",
+            "sha256": "c514454586f331d780051812be5385cba17140ef6bed4ea17764dd739dfc8c7d"
+          },
+          {
+            "game": 4,
+            "control": "raster-offset-disabled",
+            "candidate": "raster-offset",
+            "mode": "full-toggle",
+            "host_cpu": 9,
+            "log": "4-raster-offset-full-toggle.log",
+            "sha256": "7413281fee0c7ebbfa731955e2df0cc5d7ea590408183108e9942264e0a7eb53"
+          },
+          {
+            "game": 0,
+            "control": "raster-offset-disabled",
+            "candidate": "raster-offset",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "0-raster-offset-full-toggle.log",
+            "sha256": "9df8dac057fe23927f5840f1c623b3e6ca913a5d7b97dd15d267b5fce7d8bde3"
+          },
+          {
+            "game": 1,
+            "control": "raster-objects-disabled",
+            "candidate": "raster-objects",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "1-raster-objects-full-toggle.log",
+            "sha256": "99ded8d92ee1e45b0f70ad7bbf4c9fb113f0286d92000cd4c67034cb578b5349"
+          },
+          {
+            "game": 4,
+            "control": "raster-offset-full-disabled",
+            "candidate": "raster-offset-full",
+            "mode": "full-toggle",
+            "host_cpu": 11,
+            "log": "4-raster-offset-full-full-toggle.log",
+            "sha256": "53582ef1e0bd91eb4d0147132d700d0bd0b7c3e28c2eb46dbef9f15b0780f663"
+          },
+          {
+            "game": 0,
+            "control": "raster-offset-full-disabled",
+            "candidate": "raster-offset-full",
+            "mode": "full-toggle",
+            "host_cpu": 13,
+            "log": "0-raster-offset-full-full-toggle.log",
+            "sha256": "6a37a18cd8d3ddfaf526af5ab82f18e16e5c05ef426878a75aa7a8218c17151c"
+          },
+          {
+            "game": 1,
+            "control": "raster-objects-wide-disabled",
+            "candidate": "raster-objects-wide",
+            "mode": "full-toggle",
+            "host_cpu": 13,
+            "log": "1-raster-objects-wide-full-toggle.log",
+            "sha256": "e2b5b77786f1f940657b8f101742ee7ee47ba5724b72368e01ee6ce9809bc855"
+          },
+          {
+            "game": 4,
+            "control": "raster-offset-neon-disabled",
+            "candidate": "raster-offset-neon",
+            "mode": "full-toggle",
+            "host_cpu": 13,
+            "log": "4-raster-offset-neon-full-toggle.log",
+            "sha256": "80c9f1d20d2b5c722d12fefe1fcbe3bc558c29662574e456887babee52534857"
+          },
+          {
+            "game": 0,
+            "control": "raster-offset-neon-disabled",
+            "candidate": "raster-offset-neon",
+            "mode": "full-toggle",
+            "host_cpu": 15,
+            "log": "0-raster-offset-neon-full-toggle.log",
+            "sha256": "d557ac87a94457cd3cf4832438f3691b7407db8f7b62c4903924cb98728b364f"
+          },
+          {
+            "game": 2,
+            "control": "raster-offset-disabled",
+            "candidate": "raster-offset",
+            "mode": "full-toggle",
+            "host_cpu": 15,
+            "log": "2-raster-offset-full-toggle.log",
+            "sha256": "e7d7c23763d8f052b0c862d366fa52d009b1c98bef79418dfd023024678d57df"
+          },
+          {
+            "game": 4,
+            "control": "raster-objects-disabled",
+            "candidate": "raster-objects",
+            "mode": "full-toggle",
+            "host_cpu": 15,
+            "log": "4-raster-objects-full-toggle.log",
+            "sha256": "72146d4c17deb5b7a38622639f7e7acbcb37b3e492f9cf4f505f36e845bd0903"
+          }
+        ],
+        "physical": false,
+        "core_sha256": {
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+          "raster-offset": "54ae5a35a10f8f9b4565855ba1e1efca45b46027b898a6f7a541d4376cce65cb",
+          "raster-offset-disabled": "54ae5a35a10f8f9b4565855ba1e1efca45b46027b898a6f7a541d4376cce65cb",
+          "raster-offset-full": "0f7717f80cd00b8c542517f70230f5446fae459ce9001e08541ebd85d1dd8a8c",
+          "raster-offset-full-disabled": "0f7717f80cd00b8c542517f70230f5446fae459ce9001e08541ebd85d1dd8a8c",
+          "raster-offset-neon": "356a31d710c0ffd2b9df8921b4163899577b09a6ed23cba658d5dafae83f1c94",
+          "raster-offset-neon-disabled": "356a31d710c0ffd2b9df8921b4163899577b09a6ed23cba658d5dafae83f1c94",
+          "raster-objects": "60a3f787b519c599d71d9baea595491c8c6d6db785b2408c2b5dfd40e5731b0c",
+          "raster-objects-disabled": "60a3f787b519c599d71d9baea595491c8c6d6db785b2408c2b5dfd40e5731b0c",
+          "raster-objects-wide": "5036bafdac081e330f8d478dfd94e9af0d544767105d3b35d0035867582eea82",
+          "raster-objects-wide-disabled": "5036bafdac081e330f8d478dfd94e9af0d544767105d3b35d0035867582eea82"
+        },
+        "sources": {
+          "snes-throughput-pair.c": "71552b9c27cb64de0518ce241acde66e002e67d974ff444aba34f34e3535ea89",
+          "snes-throughput-replay.c": "e9e6f421b792c07069b91877b1df2f7c84a7799619a7d97c149ef1420d105f0d",
+          "run-snes-throughput-pair.py": "20a9c4cbcb8ccd746e133b29f28c3220810da3b95bb2dcba680faf0b6eabaed7"
+        },
+        "pair_sha256": "9e0156a6bac5a0455f3def34563cc356f7396b8acbc3873e351fd30898b39d5d"
+      },
+      "results": [
+        {
+          "game": 0,
+          "control": "raster-objects-disabled",
+          "candidate": "raster-objects",
+          "mode": "full-toggle",
+          "host_cpu": 1,
+          "log": "0-raster-objects-full-toggle.log",
+          "sha256": "ad70a78492a495095f3b6410540fc5844f61bbdb4e50952084a6145ef16813aa",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3629424,
+            3556023
+          ],
+          "mean_saving_pct": 2.02,
+          "warm_cpu_p95_ns": [
+            5733900,
+            5631000
+          ],
+          "p95_saving_pct": 1.79,
+          "warm_quarter_saving_pct": [
+            1.46,
+            2.06,
+            3.03,
+            1.43
+          ],
+          "first_four_cpu_ns": [
+            [
+              20319200,
+              18751800
+            ],
+            [
+              3534500,
+              3168900
+            ],
+            [
+              3211800,
+              3125400
+            ],
+            [
+              3522000,
+              3203300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "raster-objects-wide-disabled",
+          "candidate": "raster-objects-wide",
+          "mode": "full-toggle",
+          "host_cpu": 3,
+          "log": "0-raster-objects-wide-full-toggle.log",
+          "sha256": "394e02ffc14878699f232b1a5b85da473f17236dbb5331597c28784bde2ca8fb",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3689085,
+            3609407
+          ],
+          "mean_saving_pct": 2.16,
+          "warm_cpu_p95_ns": [
+            5829000,
+            5724900
+          ],
+          "p95_saving_pct": 1.79,
+          "warm_quarter_saving_pct": [
+            1.82,
+            3.4,
+            2.24,
+            1.33
+          ],
+          "first_four_cpu_ns": [
+            [
+              20284100,
+              18685400
+            ],
+            [
+              3328100,
+              3245600
+            ],
+            [
+              3446400,
+              3248500
+            ],
+            [
+              3419000,
+              3445200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "raster-offset-disabled",
+          "candidate": "raster-offset",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "0-raster-offset-full-toggle.log",
+          "sha256": "9df8dac057fe23927f5840f1c623b3e6ca913a5d7b97dd15d267b5fce7d8bde3",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5509634,
+            5589429
+          ],
+          "mean_saving_pct": -1.45,
+          "warm_cpu_p95_ns": [
+            7165900,
+            7208300
+          ],
+          "p95_saving_pct": -0.59,
+          "warm_quarter_saving_pct": [
+            -2.22,
+            -1.12,
+            -1.53,
+            -0.77
+          ],
+          "first_four_cpu_ns": [
+            [
+              33931800,
+              33886700
+            ],
+            [
+              5920600,
+              6109900
+            ],
+            [
+              6381500,
+              5870600
+            ],
+            [
+              6131500,
+              6046800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "raster-offset-full-disabled",
+          "candidate": "raster-offset-full",
+          "mode": "full-toggle",
+          "host_cpu": 13,
+          "log": "0-raster-offset-full-full-toggle.log",
+          "sha256": "6a37a18cd8d3ddfaf526af5ab82f18e16e5c05ef426878a75aa7a8218c17151c",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5695288,
+            5659871
+          ],
+          "mean_saving_pct": 0.62,
+          "warm_cpu_p95_ns": [
+            7343400,
+            7176100
+          ],
+          "p95_saving_pct": 2.28,
+          "warm_quarter_saving_pct": [
+            -1.23,
+            0.58,
+            2.14,
+            1.09
+          ],
+          "first_four_cpu_ns": [
+            [
+              35276500,
+              28992600
+            ],
+            [
+              6288400,
+              6279600
+            ],
+            [
+              5521700,
+              6347100
+            ],
+            [
+              6154100,
+              6981700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "raster-offset-neon-disabled",
+          "candidate": "raster-offset-neon",
+          "mode": "full-toggle",
+          "host_cpu": 15,
+          "log": "0-raster-offset-neon-full-toggle.log",
+          "sha256": "d557ac87a94457cd3cf4832438f3691b7407db8f7b62c4903924cb98728b364f",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5536237,
+            5499606
+          ],
+          "mean_saving_pct": 0.66,
+          "warm_cpu_p95_ns": [
+            7151700,
+            7267200
+          ],
+          "p95_saving_pct": -1.62,
+          "warm_quarter_saving_pct": [
+            1.83,
+            0.32,
+            1.38,
+            -1.16
+          ],
+          "first_four_cpu_ns": [
+            [
+              33906400,
+              32380100
+            ],
+            [
+              6517100,
+              5697600
+            ],
+            [
+              5788900,
+              5615700
+            ],
+            [
+              5945600,
+              5747800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 1,
+          "control": "raster-objects-disabled",
+          "candidate": "raster-objects",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "1-raster-objects-full-toggle.log",
+          "sha256": "99ded8d92ee1e45b0f70ad7bbf4c9fb113f0286d92000cd4c67034cb578b5349",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5465374,
+            5487599
+          ],
+          "mean_saving_pct": -0.41,
+          "warm_cpu_p95_ns": [
+            6575000,
+            6880000
+          ],
+          "p95_saving_pct": -4.64,
+          "warm_quarter_saving_pct": [
+            -0.23,
+            -0.4,
+            -1.52,
+            0.58
+          ],
+          "first_four_cpu_ns": [
+            [
+              30310900,
+              21024100
+            ],
+            [
+              6358700,
+              4540400
+            ],
+            [
+              5512900,
+              5570900
+            ],
+            [
+              5452900,
+              5198800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "raster-objects-wide-disabled",
+          "candidate": "raster-objects-wide",
+          "mode": "full-toggle",
+          "host_cpu": 13,
+          "log": "1-raster-objects-wide-full-toggle.log",
+          "sha256": "e2b5b77786f1f940657b8f101742ee7ee47ba5724b72368e01ee6ce9809bc855",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5544984,
+            5498899
+          ],
+          "mean_saving_pct": 0.83,
+          "warm_cpu_p95_ns": [
+            6935100,
+            6920600
+          ],
+          "p95_saving_pct": 0.21,
+          "warm_quarter_saving_pct": [
+            0.03,
+            1.28,
+            1.87,
+            0.1
+          ],
+          "first_four_cpu_ns": [
+            [
+              31764100,
+              30821300
+            ],
+            [
+              6421100,
+              6454400
+            ],
+            [
+              5865600,
+              5631100
+            ],
+            [
+              5364900,
+              5180800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "raster-offset-disabled",
+          "candidate": "raster-offset",
+          "mode": "full-toggle",
+          "host_cpu": 5,
+          "log": "1-raster-offset-full-toggle.log",
+          "sha256": "3cc0e7834d9f8327f90a3578d1a15a11709595e5685c2ea917428c2c6b9ac592",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3384070,
+            3369895
+          ],
+          "mean_saving_pct": 0.42,
+          "warm_cpu_p95_ns": [
+            5117000,
+            5132900
+          ],
+          "p95_saving_pct": -0.31,
+          "warm_quarter_saving_pct": [
+            0.39,
+            0.72,
+            0.16,
+            0.39
+          ],
+          "first_four_cpu_ns": [
+            [
+              28924800,
+              28522800
+            ],
+            [
+              6720100,
+              6161400
+            ],
+            [
+              5370500,
+              4816200
+            ],
+            [
+              5428500,
+              4500100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "raster-offset-full-disabled",
+          "candidate": "raster-offset-full",
+          "mode": "full-toggle",
+          "host_cpu": 7,
+          "log": "1-raster-offset-full-full-toggle.log",
+          "sha256": "075e38ea47113504b4346780a25be3e53c9675d4b935e1fd3aafd1618e3e584c",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3535796,
+            3509118
+          ],
+          "mean_saving_pct": 0.75,
+          "warm_cpu_p95_ns": [
+            5277800,
+            5286500
+          ],
+          "p95_saving_pct": -0.16,
+          "warm_quarter_saving_pct": [
+            0.8,
+            1.34,
+            0.78,
+            0.09
+          ],
+          "first_four_cpu_ns": [
+            [
+              23810300,
+              23431100
+            ],
+            [
+              3825600,
+              3689600
+            ],
+            [
+              3260000,
+              3095100
+            ],
+            [
+              2851500,
+              2768400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "raster-offset-neon-disabled",
+          "candidate": "raster-offset-neon",
+          "mode": "full-toggle",
+          "host_cpu": 9,
+          "log": "1-raster-offset-neon-full-toggle.log",
+          "sha256": "c514454586f331d780051812be5385cba17140ef6bed4ea17764dd739dfc8c7d",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4201016,
+            4205962
+          ],
+          "mean_saving_pct": -0.12,
+          "warm_cpu_p95_ns": [
+            6432300,
+            6507500
+          ],
+          "p95_saving_pct": -1.17,
+          "warm_quarter_saving_pct": [
+            -0.28,
+            0.77,
+            -1.3,
+            0.28
+          ],
+          "first_four_cpu_ns": [
+            [
+              19821100,
+              19007000
+            ],
+            [
+              7595200,
+              5486200
+            ],
+            [
+              6332700,
+              3760100
+            ],
+            [
+              3523300,
+              3586000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "raster-objects-disabled",
+          "candidate": "raster-objects",
+          "mode": "full-toggle",
+          "host_cpu": 5,
+          "log": "2-raster-objects-full-toggle.log",
+          "sha256": "8e89f47da2b9707c8955e4e36dc2a80f0895734ddf234321c5a3ae8f6eae4e03",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3918328,
+            3807690
+          ],
+          "mean_saving_pct": 2.82,
+          "warm_cpu_p95_ns": [
+            5799100,
+            5644600
+          ],
+          "p95_saving_pct": 2.66,
+          "warm_quarter_saving_pct": [
+            3.87,
+            3.94,
+            2.12,
+            1.32
+          ],
+          "first_four_cpu_ns": [
+            [
+              28668600,
+              29816900
+            ],
+            [
+              3779000,
+              5701000
+            ],
+            [
+              3212200,
+              3009700
+            ],
+            [
+              3488700,
+              2858300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "raster-objects-wide-disabled",
+          "candidate": "raster-objects-wide",
+          "mode": "full-toggle",
+          "host_cpu": 7,
+          "log": "2-raster-objects-wide-full-toggle.log",
+          "sha256": "a9a6e9f15601bb096556ce00deb9cd9475481eb706c01bad3513ef3478c227bf",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3859345,
+            3833061
+          ],
+          "mean_saving_pct": 0.68,
+          "warm_cpu_p95_ns": [
+            5835900,
+            5785400
+          ],
+          "p95_saving_pct": 0.87,
+          "warm_quarter_saving_pct": [
+            1.51,
+            -0.15,
+            -0.14,
+            1.36
+          ],
+          "first_four_cpu_ns": [
+            [
+              20282200,
+              19847400
+            ],
+            [
+              4851800,
+              3447900
+            ],
+            [
+              5515100,
+              3991000
+            ],
+            [
+              3013200,
+              3184100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "raster-offset-disabled",
+          "candidate": "raster-offset",
+          "mode": "full-toggle",
+          "host_cpu": 15,
+          "log": "2-raster-offset-full-toggle.log",
+          "sha256": "e7d7c23763d8f052b0c862d366fa52d009b1c98bef79418dfd023024678d57df",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5881636,
+            5873706
+          ],
+          "mean_saving_pct": 0.13,
+          "warm_cpu_p95_ns": [
+            7405900,
+            7364600
+          ],
+          "p95_saving_pct": 0.56,
+          "warm_quarter_saving_pct": [
+            1.25,
+            0.14,
+            -1.09,
+            0.15
+          ],
+          "first_four_cpu_ns": [
+            [
+              32843400,
+              36232600
+            ],
+            [
+              3923300,
+              3659500
+            ],
+            [
+              3239800,
+              4988900
+            ],
+            [
+              5627000,
+              5412500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "raster-offset-full-disabled",
+          "candidate": "raster-offset-full",
+          "mode": "full-toggle",
+          "host_cpu": 1,
+          "log": "2-raster-offset-full-full-toggle.log",
+          "sha256": "a3a21e507eb6ad76e8439bceb34ffc5309d9e725dbff5de187fe9817e471bcb5",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3783346,
+            3761117
+          ],
+          "mean_saving_pct": 0.59,
+          "warm_cpu_p95_ns": [
+            5741700,
+            5721300
+          ],
+          "p95_saving_pct": 0.36,
+          "warm_quarter_saving_pct": [
+            -0.84,
+            2.56,
+            -1.07,
+            1.49
+          ],
+          "first_four_cpu_ns": [
+            [
+              28026200,
+              29912800
+            ],
+            [
+              3264200,
+              3223500
+            ],
+            [
+              3060000,
+              2984300
+            ],
+            [
+              2931600,
+              3282000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "raster-offset-neon-disabled",
+          "candidate": "raster-offset-neon",
+          "mode": "full-toggle",
+          "host_cpu": 3,
+          "log": "2-raster-offset-neon-full-toggle.log",
+          "sha256": "72752348bbfa7b460987ebee909fe84d94eb082f52ba7eaddd26d7e3f9613f05",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3918947,
+            3908923
+          ],
+          "mean_saving_pct": 0.26,
+          "warm_cpu_p95_ns": [
+            5901000,
+            5932900
+          ],
+          "p95_saving_pct": -0.54,
+          "warm_quarter_saving_pct": [
+            -0.74,
+            0.31,
+            0.28,
+            1.07
+          ],
+          "first_four_cpu_ns": [
+            [
+              29413700,
+              20127700
+            ],
+            [
+              3496500,
+              3259100
+            ],
+            [
+              3179100,
+              3194700
+            ],
+            [
+              3105000,
+              3200000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "raster-objects-disabled",
+          "candidate": "raster-objects",
+          "mode": "both-cold-off-toggle",
+          "host_cpu": 7,
+          "log": "3-raster-objects-both-cold-off-toggle.log",
+          "sha256": "1a6d0451d166b563648f02bd39067338e928fc7c9a6ee87be6ce9947f08376ae",
+          "cold_cpu_ns": [
+            48028694100,
+            48101083100
+          ],
+          "cold_saving_pct": -0.15,
+          "warm_cpu_mean_ns": [
+            10048976,
+            9993159
+          ],
+          "mean_saving_pct": 0.56,
+          "warm_cpu_p95_ns": [
+            17463800,
+            17060800
+          ],
+          "p95_saving_pct": 2.31,
+          "warm_quarter_saving_pct": [
+            1.07,
+            1.63,
+            0.08,
+            -0.78
+          ],
+          "first_four_cpu_ns": [
+            [
+              18646200,
+              19591100
+            ],
+            [
+              12153200,
+              10029400
+            ],
+            [
+              6250200,
+              6166800
+            ],
+            [
+              15328100,
+              14293100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "raster-objects-wide-disabled",
+          "candidate": "raster-objects-wide",
+          "mode": "both-cold-off-toggle",
+          "host_cpu": 9,
+          "log": "3-raster-objects-wide-both-cold-off-toggle.log",
+          "sha256": "d2d1d15cede60cf3e37c0e87babb928ee6b23ef8bf5c7ddead4f48412a1a6333",
+          "cold_cpu_ns": [
+            47970191600,
+            48010730400
+          ],
+          "cold_saving_pct": -0.08,
+          "warm_cpu_mean_ns": [
+            10090041,
+            10125471
+          ],
+          "mean_saving_pct": -0.35,
+          "warm_cpu_p95_ns": [
+            17433800,
+            16906400
+          ],
+          "p95_saving_pct": 3.03,
+          "warm_quarter_saving_pct": [
+            0.85,
+            1.64,
+            -0.54,
+            -3.75
+          ],
+          "first_four_cpu_ns": [
+            [
+              26538400,
+              22554500
+            ],
+            [
+              8171700,
+              13691200
+            ],
+            [
+              7163900,
+              6876700
+            ],
+            [
+              15301500,
+              18433400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "raster-offset-disabled",
+          "candidate": "raster-offset",
+          "mode": "both-cold-off-toggle",
+          "host_cpu": 1,
+          "log": "3-raster-offset-both-cold-off-toggle.log",
+          "sha256": "f95a66a72c537b7839405fafeda8dbef5e4cbe3c6b7dc0e7f4f5ef7a30cd95c7",
+          "cold_cpu_ns": [
+            46648523500,
+            46980322100
+          ],
+          "cold_saving_pct": -0.71,
+          "warm_cpu_mean_ns": [
+            10068744,
+            6615833
+          ],
+          "mean_saving_pct": 34.29,
+          "warm_cpu_p95_ns": [
+            17195800,
+            12584600
+          ],
+          "p95_saving_pct": 26.82,
+          "warm_quarter_saving_pct": [
+            32.76,
+            36.15,
+            33.96,
+            34.26
+          ],
+          "first_four_cpu_ns": [
+            [
+              18917000,
+              15317300
+            ],
+            [
+              11181300,
+              8317200
+            ],
+            [
+              6309400,
+              3761500
+            ],
+            [
+              21395100,
+              12189700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "raster-offset-full-disabled",
+          "candidate": "raster-offset-full",
+          "mode": "both-cold-off-toggle",
+          "host_cpu": 3,
+          "log": "3-raster-offset-full-both-cold-off-toggle.log",
+          "sha256": "17781afb43dc28437ce12ca4431606b17e7d808a642165a53eb06ec4211c4063",
+          "cold_cpu_ns": [
+            46842677500,
+            47199568700
+          ],
+          "cold_saving_pct": -0.76,
+          "warm_cpu_mean_ns": [
+            9535373,
+            6200054
+          ],
+          "mean_saving_pct": 34.98,
+          "warm_cpu_p95_ns": [
+            15931700,
+            12029700
+          ],
+          "p95_saving_pct": 24.49,
+          "warm_quarter_saving_pct": [
+            34.32,
+            36.5,
+            34.64,
+            34.44
+          ],
+          "first_four_cpu_ns": [
+            [
+              18572200,
+              15041900
+            ],
+            [
+              7278800,
+              4245300
+            ],
+            [
+              6326700,
+              3149300
+            ],
+            [
+              16571100,
+              11699400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "raster-offset-neon-disabled",
+          "candidate": "raster-offset-neon",
+          "mode": "both-cold-off-toggle",
+          "host_cpu": 5,
+          "log": "3-raster-offset-neon-both-cold-off-toggle.log",
+          "sha256": "6949850a06c1e4471ea08ca0e2c55105b12cb81bc0d401696ea426f7d3e47043",
+          "cold_cpu_ns": [
+            46283098400,
+            46288715500
+          ],
+          "cold_saving_pct": -0.01,
+          "warm_cpu_mean_ns": [
+            8341030,
+            6121488
+          ],
+          "mean_saving_pct": 26.61,
+          "warm_cpu_p95_ns": [
+            15170200,
+            12315900
+          ],
+          "p95_saving_pct": 18.82,
+          "warm_quarter_saving_pct": [
+            25.12,
+            29.64,
+            25.77,
+            26.05
+          ],
+          "first_four_cpu_ns": [
+            [
+              15824600,
+              18049300
+            ],
+            [
+              8448400,
+              6249200
+            ],
+            [
+              6049300,
+              2981600
+            ],
+            [
+              14284800,
+              11611300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "raster-objects-disabled",
+          "candidate": "raster-objects",
+          "mode": "full-toggle",
+          "host_cpu": 15,
+          "log": "4-raster-objects-full-toggle.log",
+          "sha256": "72146d4c17deb5b7a38622639f7e7acbcb37b3e492f9cf4f505f36e845bd0903",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5019646,
+            5129657
+          ],
+          "mean_saving_pct": -2.19,
+          "warm_cpu_p95_ns": [
+            6813300,
+            6865900
+          ],
+          "p95_saving_pct": -0.77,
+          "warm_quarter_saving_pct": [
+            -1.96,
+            -2.33,
+            -1.82,
+            -2.68
+          ],
+          "first_four_cpu_ns": [
+            [
+              34586000,
+              35219600
+            ],
+            [
+              6817900,
+              6506000
+            ],
+            [
+              6874600,
+              7428200
+            ],
+            [
+              5922000,
+              5873200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "raster-objects-wide-disabled",
+          "candidate": "raster-objects-wide",
+          "mode": "full-toggle",
+          "host_cpu": 1,
+          "log": "4-raster-objects-wide-full-toggle.log",
+          "sha256": "08f8ee1a821dffce8b5256b1c97f8d9a8b9b0143bca4b98532ba350b11cd7fc8",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3684400,
+            3654656
+          ],
+          "mean_saving_pct": 0.81,
+          "warm_cpu_p95_ns": [
+            5850400,
+            5916900
+          ],
+          "p95_saving_pct": -1.14,
+          "warm_quarter_saving_pct": [
+            0.98,
+            1.25,
+            -0.41,
+            1.4
+          ],
+          "first_four_cpu_ns": [
+            [
+              21117500,
+              27651500
+            ],
+            [
+              4134000,
+              3845300
+            ],
+            [
+              5646100,
+              4857800
+            ],
+            [
+              3988000,
+              3319900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "raster-offset-disabled",
+          "candidate": "raster-offset",
+          "mode": "full-toggle",
+          "host_cpu": 9,
+          "log": "4-raster-offset-full-toggle.log",
+          "sha256": "7413281fee0c7ebbfa731955e2df0cc5d7ea590408183108e9942264e0a7eb53",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3731107,
+            3763766
+          ],
+          "mean_saving_pct": -0.88,
+          "warm_cpu_p95_ns": [
+            5954600,
+            6156800
+          ],
+          "p95_saving_pct": -3.4,
+          "warm_quarter_saving_pct": [
+            -2.46,
+            -1.85,
+            -0.97,
+            1.95
+          ],
+          "first_four_cpu_ns": [
+            [
+              30274900,
+              23455500
+            ],
+            [
+              6593600,
+              6528900
+            ],
+            [
+              4755900,
+              4749600
+            ],
+            [
+              6084400,
+              4517400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "raster-offset-full-disabled",
+          "candidate": "raster-offset-full",
+          "mode": "full-toggle",
+          "host_cpu": 11,
+          "log": "4-raster-offset-full-full-toggle.log",
+          "sha256": "53582ef1e0bd91eb4d0147132d700d0bd0b7c3e28c2eb46dbef9f15b0780f663",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5197818,
+            5146531
+          ],
+          "mean_saving_pct": 0.99,
+          "warm_cpu_p95_ns": [
+            6936400,
+            6925900
+          ],
+          "p95_saving_pct": 0.15,
+          "warm_quarter_saving_pct": [
+            1.38,
+            0.74,
+            1.4,
+            0.49
+          ],
+          "first_four_cpu_ns": [
+            [
+              32251200,
+              32179900
+            ],
+            [
+              6666800,
+              6298100
+            ],
+            [
+              8437000,
+              8105100
+            ],
+            [
+              5742200,
+              6502000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "raster-offset-neon-disabled",
+          "candidate": "raster-offset-neon",
+          "mode": "full-toggle",
+          "host_cpu": 13,
+          "log": "4-raster-offset-neon-full-toggle.log",
+          "sha256": "80c9f1d20d2b5c722d12fefe1fcbe3bc558c29662574e456887babee52534857",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4944703,
+            4924578
+          ],
+          "mean_saving_pct": 0.41,
+          "warm_cpu_p95_ns": [
+            6618000,
+            6662600
+          ],
+          "p95_saving_pct": -0.67,
+          "warm_quarter_saving_pct": [
+            0.44,
+            -0.5,
+            1.45,
+            0.33
+          ],
+          "first_four_cpu_ns": [
+            [
+              29677200,
+              34862500
+            ],
+            [
+              6456200,
+              5961600
+            ],
+            [
+              3953800,
+              5150500
+            ],
+            [
+              5385000,
+              5816600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        }
+      ]
+    }
+  },
+  "held_out_strict": [
+    {
+      "core_sha256": "31b837c19c188b353e60c808f9ec9f8c32f8aad202e728bb2cfe69e0b7b06747",
+      "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "tests": [
+        {
+          "scenario": "meteor",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "quasar",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "ranger",
+          "calls": 2400,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+          "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+        }
+      ],
+      "device_executed": false
+    },
+    {
+      "core_sha256": "b3df3ac76d4d542acccff0b0ad9d06ed179437e9aae02971646500736708745e",
+      "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "tests": [
+        {
+          "scenario": "meteor",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "quasar",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "ranger",
+          "calls": 2400,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+          "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+        }
+      ],
+      "device_executed": false
+    },
+    {
+      "core_sha256": "f40fb861c1339809b3720dab9f8192bba758d2429c7581d666e45f838dd90c99",
+      "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "tests": [
+        {
+          "scenario": "meteor",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "quasar",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "ranger",
+          "calls": 2400,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+          "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+        }
+      ],
+      "device_executed": false
+    }
+  ]
+}
