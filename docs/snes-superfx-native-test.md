@@ -1,5 +1,12 @@
 # One-shot native Star Fox playback
 
+Armed and independently verified on I: from `b4aa130`. Readback matches
+both markers, all 11 profile files and 1,935 protected existing files.
+CHKDSK and an explicit dirty-flag query pass before staging, after payload
+copy, after activation and after independent readback. Physical playback
+is pending.
+[Installation receipt](../evidence/2026-11-10/snes-throughput/superfx-native-installation.json).
+
 This test runs the measured full-tile plus Super FX core in the native LCD
 and ALSA runner. It reuses the single-window controller from the
 [cold replay qualification](../evidence/2026-11-10/snes-throughput/cold-raster-runner.json)
@@ -9,6 +16,15 @@ and the same Star Fox ROM, inputs and expected-output fixture as the
 ticks with full raster, native PCM and blocking presentation (policy 0).
 The script drives the game. Test output and any generated progress stay
 inside the isolated test directory.
+
+Both supervised QEMU rehearsals completed the 8,656-tick warmup and all
+1,200 gameplay calls, with exact final software audio accounting and
+normal child reaping. One checked pixels, PCM and sample counts against
+the frozen reference, and one disabled that oracle. Five firmware BusyBox
+cases exercised normal completion, an unarmed reboot, active splash,
+observer refusal and a crashing child. These qualify the controller and
+boot seam. Physical output and timing await the card return.
+[Qualification receipt](../evidence/2026-11-10/snes-throughput/superfx-native-qualification.json).
 
 ## Timing and audio budget before installation
 

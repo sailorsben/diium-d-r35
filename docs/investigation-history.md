@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Arm native playback with full-tile and Super FX together - 2026-11-10
+
+Stage the exact A7-measured ELF with the isolated single-window controller.
+Two rehearsals complete cold replay and all 1,200 calls. Five exact firmware
+BusyBox wrapper cases pass. Verify all 1,949 card files, both markers and the
+clean dirty flag. The physical run keeps the existing audio policy and omits
+the costly callback CRC oracle. Measure added critical-path cost and the
+complete PCM reserve against the remaining 1.406 ms average budget.
+[Native test](snes-superfx-native-test.md).
+
 ## Measure Super FX batching and capture the drive warning - 2026-11-10
 
 On the A7, the standalone comparison saves 0.622 ms per Star Fox

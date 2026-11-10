@@ -1,5 +1,12 @@
 # Device findings
 
+**Native combined-core test armed (2026-11-10).** A one-shot Star Fox
+window uses the full-tile plus Super FX ELF, native LCD and PCM, blocking
+presentation and the existing audio policy. Exact-output and oracle-disabled
+rehearsals pass. Independent card readback verifies both markers and a clean
+FAT32 volume. Physical playback and complete audio reserve remain pending.
+[Test procedure](snes-superfx-native-test.md).
+
 **Physical Super FX test (2026-11-10).** The combined build saves
 3.91% mean Star Fox core CPU against full-tile on the A7. The
 same-binary toggle saves 7.34%. All replay checks pass. The returned

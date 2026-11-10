@@ -1,0 +1,29 @@
+{
+  "source_sha256": "74450702c0c5b095c166f8f9b914a50b9cb77193efc41d9996997d15e862d39d",
+  "cold_calls": 8656,
+  "exact_calls": 1200,
+  "oracle_disabled_mock_calls": 1200,
+  "physical": false,
+  "policy": 0,
+  "wrapper_cases": [
+    "normal",
+    "unarmed",
+    "active-splash",
+    "observer-before",
+    "child-crash"
+  ],
+  "firmware_busybox_sha256": "6f974778b29d96a7e825b04c526b0e2948ec4f8497ac5558cb5b4d713f058e2f",
+  "payload_hashes": {
+    "fivegame-suite": "4dbcf3269eaa4f02256af6d67c16ca2c1cf4a2f70136215f09b985842d7be767",
+    "plus-a7.so": "54d70443b397e537063593af57a3d0553399c8a5c1c7aa98e9fb85d8155f0ad6",
+    "uart-observe": "28c9e4674f154e194d67631278f58e1288c688e9c06684b61c334a61cfcf8731",
+    "ROM-PATH.txt": "68a4a47a46ac2f1b7a88c78dc2650fda779dc218780c7eb8f2837ca0433f42f3",
+    "launch.sh": "acbc9171716cfa196e0f0d6fa352c1e5a797ffa412f366bc91de765514e8e5f8"
+  },
+  "fixture_hashes": {
+    "cases/003/game.sfc": "b7381a951e4a62d44c640bbf189cd9161a3ca80f42b9bc514551393a4de9736c",
+    "cases/003/input.txt": "b9e73e15aa057e449b246ef61abeaced2207398af6624b48f2f4ab9af46f95e8",
+    "cases/003/warmup.txt": "50178ab5c41ae59519c2ddf92857831c02fa712e1c340387875213aa4fc17a77",
+    "cases/003/expected.bin": "61652c2e9c04f8be4ffa187166bfcb9c4b2c945818488e7158ff179855ca96ca"
+  }
+}
