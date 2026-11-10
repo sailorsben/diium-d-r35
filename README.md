@@ -1,5 +1,9 @@
 # DIIUM D-R35: device findings and SNES platform
 
+The [core scheduling follow-up](docs/snes-core-boundaries.md) measures which
+work can move out of the guest timing path. Five-game replays reject generic
+APU scanline grouping and qualify an individual PCM staging shortcut offline.
+
 2026-11-10 throughput study: paired offline tests isolate raster, Super FX,
 DMA and launch costs. The hidden Star Fox replay saves 28.3% replay CPU with
 every later gameplay output preserved in the actual controller fixture.

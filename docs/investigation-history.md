@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Isolate guest timing from host audio staging - 2026-11-10
+
+Two-, four- and eight-line APU grouping changes F-Zero and Star Fox PCM.
+Making Ranger's SPC port completion global also changes those two games.
+Isolated clock, spill and PCM staging changes preserve the oracle. The
+combined build initially drops DSP carry, then passes the output and state
+checks after correction and loses CPU time in four scenes. Preserve the
+individual comparisons for the next device measurement.
+[Core boundaries and results](snes-core-boundaries.md).
+
 ## Compare SNES throughput mechanisms against the frozen return - 2026-11-10
 
 Recover exact vendor PCM fill/DROP behavior from the physically verified kernel.

@@ -17,10 +17,14 @@ arm-linux-gnueabihf-gcc -std=gnu11 -O2 $flags \
   /usr/arm-linux-gnueabihf/lib/crt1.o build/snes-throughput-replay.c -Lbuild/sysroot/lib \
   -Wl,--no-as-needed -l:libdl-2.30.so -l:libz.so.1 -l:libc-2.30.so -l:libgcc_s.so.1 -o "$out/replay"
 for mode do
-    case $mode in baseline|counter|dispatch|census|hot|dma-same|dma-delta|dma-census|reuse-census|span-census|offset-row|offset-census|offset-plain|offset-plain-census) ;; *) exit 2 ;; esac
+    case $mode in
+        apu-*) prepare=build/prepare-snes-scheduler.py ;;
+        baseline|counter|dispatch|census|hot|dma-same|dma-delta|dma-census|reuse-census|span-census|offset-row|offset-census|offset-plain|offset-plain-census) prepare=build/prepare-snes-throughput.py ;;
+        *) exit 2 ;;
+    esac
     mkdir "$out/$mode"
     cp -r "$src/source" "$src/libretro-common" "$src/jni" "$src"/*.c "$src"/*.h "$src"/Makefile* "$src/link.T" "$src/copyright" "$out/$mode/"
-    python3 build/prepare-snes-throughput.py "$out/$mode" "$mode"
+    python3 "$prepare" "$out/$mode" "$mode"
 done
 build_one() {
     mode=$1

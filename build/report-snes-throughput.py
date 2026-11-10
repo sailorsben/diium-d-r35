@@ -101,6 +101,16 @@ def replay(directory):
         rec = dict(**row, cold_cpu_ns=ns,cold_calls=calls,game_cpu_mean_ns=round(mean(warm)),
                    game_cpu_p95_ns=quantile(warm,95),game_cpu_first_four_ns=data[:4],
                    rendered=rendered,audio_frames=audio,verified=verified,mismatch=mismatch,first_mismatch=first,log_sha256=sha(p))
+        callback_layout = re.search(r'^callback_layout=([0-9a-f]{8})$',log,re.M)
+        if callback_layout:
+            rec['callback_layout_crc32'] = callback_layout[1]
+        first_error = re.search(r'first mismatch frame=\d+ pixels=(\d+) pcm=(\d+) sample_count=(\d+)',log)
+        if first_error:
+            rec['first_mismatch_fields'] = [name for name, flag in zip(('pixels','pcm','sample_count'),first_error.groups()) if flag=='1']
+        for counter_name in ('apu_census','unity_census','port_census'):
+            counter_line = re.search(r'^'+counter_name+r' (.+)$',log,re.M)
+            if counter_line:
+                rec[counter_name] = {key:int(value) for key,value in (item.split('=') for item in counter_line[1].split())}
         if row['core']=='census':
             ops = [(int(n,16),int(c)) for n,c in re.findall(r'^opcode ([0-9a-f]+) (\d+)$',log,re.M)]
             fx = re.search(r'game_gsu ns=(\d+) runs=(\d+)',log)

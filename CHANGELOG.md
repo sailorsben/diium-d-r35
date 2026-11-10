@@ -1,5 +1,13 @@
 # Changelog
 
+## Measure core scheduling and PCM staging alternatives - 2026-11-10
+
+Trace per-scanline SPC and DSP work and test shared changes against the frozen
+five-game replay. Two-line APU grouping changes F-Zero and Star Fox PCM. The
+unity-rate PCM copy bypass preserves every tested output and uses less CPU in
+paired host replay. The exact combined build regresses in four scenes. No
+new handheld timings. [Core boundaries and results](docs/snes-core-boundaries.md).
+
 ## Measure SNES throughput alternatives - 2026-11-10
 
 Compare ARM renderer, frame/span reuse, GSU dispatch and VRAM DMA experiments

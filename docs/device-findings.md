@@ -1,5 +1,12 @@
 # Device findings
 
+**Shared core scheduling follow-up (2026-11-10).** Each NTSC replay calls the
+APU at 262 scanline ends per frame. Combining even two of those service
+intervals changes F-Zero and Star Fox PCM in offline replay. Separate clock
+and unity-rate PCM staging changes preserve the frozen output. Their
+individual A7 cost and reserve impact still need the physical comparison.
+[Core boundaries and results](snes-core-boundaries.md).
+
 **Current throughput investigation (2026-11-10):** the exact installed kernel
 has a vendor low-reserve fill path that copies the previous PCM period and
 advances `appl_ptr` three times before a fourth-fill DROP. This accounts for

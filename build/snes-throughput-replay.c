@@ -14,7 +14,7 @@
 
 static int enable=3, verify, pixels;
 static uint16_t buttons;
-static uint32_t pixel_crc, pcm_crc, samples, videos;
+static uint32_t pixel_crc, pcm_crc, samples, videos, callback_layout;
 static uint16_t target[512*240/2+128] __attribute__((aligned(64)));
 
 static bool env(unsigned cmd, void *arg) {
@@ -36,7 +36,11 @@ static void video(const void *p, unsigned w, unsigned h, size_t pitch) {
         for (unsigned y=0;y<h;++y) pixel_crc=crc32(pixel_crc,(const uint8_t *)p+y*pitch,2*w);
 }
 static size_t audio(const int16_t *p,size_t n) {
-    if (verify) pcm_crc=crc32(pcm_crc,(const void *)p,4*n);
+    if (verify) {
+        uint32_t size=(uint32_t)n;
+        pcm_crc=crc32(pcm_crc,(const void *)p,4*n);
+        callback_layout=crc32(callback_layout,(const void *)&size,sizeof(size));
+    }
     samples+=n;
     return n;
 }
@@ -104,6 +108,9 @@ int main(int argc,char **argv) {
     unsigned (*reuse_read)(void)=dlsym(handle,"d35_reuse_read");
     void (*span_read)(unsigned *)=dlsym(handle,"d35_span_read");
     void (*offset_read)(uint64_t *)=dlsym(handle,"d35_offset_read");
+    void (*apu_census)(uint64_t *)=dlsym(handle,"d35_apu_census");
+    void (*unity_census)(uint64_t *)=dlsym(handle,"d35_unity_census");
+    void (*port_census)(uint64_t *)=dlsym(handle,"d35_port_census");
     uint64_t fx[1026];
     set_environment(env);set_video_refresh(video);set_audio_sample_batch(audio);set_audio_sample(sample);
     set_input_state(input);set_input_poll(poll);init();
@@ -125,6 +132,9 @@ int main(int argc,char **argv) {
     }
     if(dma_census) dma_census(fx);
     if(offset_read) offset_read(fx);
+    if(apu_census) apu_census(fx);
+    if(unity_census) unity_census(fx);
+    if(port_census) port_census(fx);
     printf("cold_cpu_ns=%"PRIu64" cold_calls=%u\n",warm_ns,cold);
     uint64_t block[1200];
     unsigned match=0,mismatch=0,first=1200,published=0,audio_frames=0,previous_crc=0;
@@ -147,6 +157,8 @@ int main(int argc,char **argv) {
                 ++mismatch;
             } else ++match;
             previous_crc=pixel_crc;
+            const uint32_t boundary=UINT32_MAX;
+            callback_layout=crc32(callback_layout,(const void *)&boundary,sizeof(boundary));
         }
         if(reuse_read) {
             unsigned flags=reuse_read();
@@ -180,6 +192,21 @@ int main(int argc,char **argv) {
         offset_read(fx);
         printf("offset_rows calls=%"PRIu64" full=%"PRIu64"\n",fx[0],fx[1]);
     }
+    if(apu_census) {
+        apu_census(fx);
+        printf("apu_census hblank=%"PRIu64" interpreter=%"PRIu64" empty=%"PRIu64
+               " retire=%"PRIu64" read=%"PRIu64" write=%"PRIu64" publish=%"PRIu64"\n",
+               fx[0],fx[1],fx[2],fx[3],fx[4],fx[5],fx[6]);
+    }
+    if(unity_census) {
+        unity_census(fx);
+        printf("unity_census callbacks=%"PRIu64" eligible=%"PRIu64" scalar_samples=%"PRIu64"\n",fx[0],fx[1],fx[2]);
+    }
+    if(port_census) {
+        port_census(fx);
+        printf("port_census accesses=%"PRIu64" empty=%"PRIu64"\n",fx[0],fx[1]);
+    }
+    if(verify) printf("callback_layout=%08"PRIx32"\n",callback_layout);
     printf("published=%u audio_frames=%u verified=%u mismatched=%u first_mismatch=%u\n",
            published,audio_frames,match,mismatch,first);
     unload_game();deinit();dlclose(handle);free(rom);free(expected);

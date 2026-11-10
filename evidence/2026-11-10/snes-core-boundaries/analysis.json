@@ -1,0 +1,5100 @@
+{
+  "physical": false,
+  "core_qualification": {
+    "isolated": {
+      "meta": {
+        "results": [
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-census",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-clock",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-noop",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice2",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice4",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice8",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-census",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-clock",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-noop",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice2",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice4",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice8",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-census",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-clock",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-noop",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice2",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice4",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice8",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-census",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-clock",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-noop",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice2",
+            "game": 2,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice4",
+            "game": 2,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice8",
+            "game": 2,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-census",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-clock",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-noop",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice2",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice4",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-slice8",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          }
+        ],
+        "core_sha256": {
+          "apu-census": "900dabfef92169a79d90004e1d3c0b9a2a530619fd2b1f3af8c8172db398de4c",
+          "apu-clock": "201917874137f9a9fdb5642fcccfa79d90c0e6635ef27eb762f7e4b54bc66591",
+          "apu-noop": "3af558f6fb96d0fdb34a083fd37e70cbf8db47ac3b45b933768aae3007ba857c",
+          "apu-slice2": "474ede4cde38ba261c4bfa618b0f30534908703713e65b3f11782cef00b39346",
+          "apu-slice4": "3f9202abc50ea8bcc793a75d33c5076938fad7708b52a10392bbb61afd6ecbf4",
+          "apu-slice8": "12f22b543f6455a22af8352e3263aec7e5f2fae54036eace92928cf93b1525a7",
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+        },
+        "source_sha256": "bdb2a8adda24e644c390111ed393269cb26efb12f56cd0de84e7610b1e90784b",
+        "replay_sha256": "ac8da90c84cc178ae72d3015cc152b3ab6025996123614a08d1d6008f029278c",
+        "timing_affinity": null,
+        "physical": false
+      },
+      "results": [
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "07ec61dd00390256f8af3907386adefdabfcbbe436184cd56d4e6b1fc83d6ecf",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-census",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "8b6994dc9a99249f2cc76425b74eb3c15160a215a015245e3ae6eba6f4b1ebed",
+          "callback_layout_crc32": "7a9a7371",
+          "apu_census": {
+            "hblank": 314400,
+            "interpreter": 307663,
+            "empty": 29911,
+            "retire": 314400,
+            "read": 43,
+            "write": 881,
+            "publish": 802
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-clock",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "6269d2524beba9f850ca3686e52662417d31e33863b36255d841f9bff1042774",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-noop",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "b53a22e3450ec529ff45fdfcc408e7e88646cfdc3baad8b5183550b86728d3e6",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice2",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 3,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1085,
+          "mismatch": 115,
+          "first_mismatch": 19,
+          "log_sha256": "328824cc069e861fb64b25ee369f4b3d56a77cfc7889c5ec99c437d28a7cf839",
+          "callback_layout_crc32": "7a9a7371",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice4",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 3,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 893,
+          "mismatch": 307,
+          "first_mismatch": 10,
+          "log_sha256": "70bae9918c9e3fe7d2dfb15440de98ea2629d3c89a3012b44b496245b7bba7e8",
+          "callback_layout_crc32": "7a9a7371",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice8",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 3,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 664,
+          "mismatch": 536,
+          "first_mismatch": 0,
+          "log_sha256": "619885136105a51d9c6ad0202b98e9c302ac245dfe132a443fc5aeac278da014",
+          "callback_layout_crc32": "7a9a7371",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "2529b64ae73537078ae35b79d7107569cb9f016f8cd4f1b92ee2df3ee2c38564",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-census",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "f8ac0be542f5c308c3b81b572f4cabaf4b6d6ce5a7d653694fddb214f4a15b47",
+          "callback_layout_crc32": "0a92abd5",
+          "apu_census": {
+            "hblank": 374400,
+            "interpreter": 597871,
+            "empty": 114889,
+            "retire": 374400,
+            "read": 176638,
+            "write": 48390,
+            "publish": 1200
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-clock",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "10a80da2c476bd46c1407e7a202411482306cb31e4a5babb1638eedf5df79480",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-noop",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d15cee849011fc5f3ce4ab90c1d4113d9896eac6426a88cef5f0adc05ce5f4ed",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice2",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "a3cb5b107ff3faffad19e19769e36e0966889b94989ae59ea7f297bb2dc83e87",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice4",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "6ba2914846988e26091e00a42e6d1ec2dc737b4bb084782fefea529025d824a4",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice8",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "62f2d8be8bfffcf6dc2675f54765fbc1eceddfca26bd81fc3210e2837dda0e62",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "ca3f05044372958794b221c4ecf785492c383d46e18b350bf8f207bbec86598b",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-census",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "8c3d3134b5bcdde4f7cb62c2e9539fa84011667eb81e490892a7a71e2f46d0d6",
+          "callback_layout_crc32": "553b081d",
+          "apu_census": {
+            "hblank": 314400,
+            "interpreter": 313046,
+            "empty": 4618,
+            "retire": 314400,
+            "read": 8,
+            "write": 8,
+            "publish": 1200
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-clock",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "7e5f7b73f7ceeffb9a0ab08346eb1266325b1cb89020164d149dbf38eb3d6941",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-noop",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "651fbcc9511f8e31ae919557e7416b0df1df2340d43ce753dec9b514e8c55427",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice2",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "e116d29156659929aa4bbf173a9933f34750102873b01aee9e764160c58e8eac",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice4",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "506ac8dcd4aacc33664f67110a8813a7a30fb30c5ddd0bf72e46094246cad3b4",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice8",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "733995305cf5792bcae7a694c79e365a099bc4c002f5323d215f75d7aa66334d",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "bba8f7b64220bcfdd1001c0e95c5e6a4e61b53981c996c860eaff85d0682333a",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-census",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "174da8d35c5d06d433a2a41bcf7f78decd59cddc34fb9e1d4fb4427ea4dd2c08",
+          "callback_layout_crc32": "24fe58d4",
+          "apu_census": {
+            "hblank": 314400,
+            "interpreter": 318377,
+            "empty": 3448,
+            "retire": 314400,
+            "read": 0,
+            "write": 4800,
+            "publish": 1200
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-clock",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "4a7cd2229b080046700414ef1d93632d6e7c92810943560921d281b2cd1d38ac",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-noop",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "99ed907d75ef2955a028bf4978c1f33b94286e98cc2e60e2d8097765d1c268b4",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice2",
+          "game": 2,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1081,
+          "mismatch": 119,
+          "first_mismatch": 7,
+          "log_sha256": "6fc45bae5f50d0752ba295a01c60eafb84d47e2a79a52d309155b3a31b15e44d",
+          "callback_layout_crc32": "24fe58d4",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice4",
+          "game": 2,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 920,
+          "mismatch": 280,
+          "first_mismatch": 6,
+          "log_sha256": "47aec9b8b563f420f36b4027bb573c7fbd7893ffb1c3a62bf0e3536173a41347",
+          "callback_layout_crc32": "24fe58d4",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice8",
+          "game": 2,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 687,
+          "mismatch": 513,
+          "first_mismatch": 6,
+          "log_sha256": "c5d2f30b9a20c32f50c26e9a9c6ccfd93d7969d3af79b71498b470668809110a",
+          "callback_layout_crc32": "24fe58d4",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "43fa304ea325324b328994f417328f25d0e13c9061973642ace33cac955f613d",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-census",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d24880bb14bae4f8c2c73fad9cf7e2de55a46d2e9f6ccb39251afa7beba1dfb0",
+          "callback_layout_crc32": "c157f1fd",
+          "apu_census": {
+            "hblank": 314400,
+            "interpreter": 357304,
+            "empty": 17796,
+            "retire": 314400,
+            "read": 36543,
+            "write": 7260,
+            "publish": 1200
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-clock",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "518932c38ab86dc32c00c55bed49bd9ef3e9aa3bba81c79129d0d859487aef17",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-noop",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "232878316389b0b8d9e8db54c3effb8adbe1d566ab391fc2db1c3fd5fb45ad6b",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice2",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "770eaf061af2732cda2c173e6db24c2fd8495c9026992e9fc305ca6353219bc1",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice4",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "53832e8468d932f71c3cabce0253eff75444dbc687a849806aac7f1c7ec27145",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-slice8",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d9918f084a207210cb6ffeb6569a9cc95027c71f3d7c1b8732f6397ce288aa08",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        }
+      ]
+    },
+    "carry": {
+      "meta": {
+        "results": [
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-carry",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-carry",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-carry",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-carry",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-carry",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          }
+        ],
+        "core_sha256": {
+          "apu-carry": "2023048f86de144486f3e417d5e3d1ec98aaf90decb611217955139ca9d540ca",
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+        },
+        "source_sha256": "bdb2a8adda24e644c390111ed393269cb26efb12f56cd0de84e7610b1e90784b",
+        "replay_sha256": "ac8da90c84cc178ae72d3015cc152b3ab6025996123614a08d1d6008f029278c",
+        "timing_affinity": null,
+        "physical": false
+      },
+      "results": [
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "bf247160b0723929764b94bd3099b3eda87ffb41a9adf67f09485fe5b6c3c8da",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-carry",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "c5a7cc47b19b43dac5e80e24f732c27cbedee7aebf7b82007d76abfe20633ed9",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d909990446fd068bb00e1b8de906308a39e3bd2003e1cb758a4e332f2d6bf135",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-carry",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "ac7df08cf972bb3b323c718794e055633d163c73acd4783e86ca6907b594ea82",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d1c6dba924c2ffd9829611eff43b2185845537f939c6b12006cd983325a17978",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-carry",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "69accee1c1baf5ac35b744d6e8626913f5bf6ef524f8d668d289b6533c5016df",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "87524b2146c56442d234d23b489b29ef8c29e1e0ca9b915c07c5db37aff9feb6",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-carry",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "5b777a9e28f77078f8e1302a4f78844ec99bb6d2e8ae86e646ace3e4eccd6a6b",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "639a4834321ff670e7bef534ad89d9b45f6b19d125b29a2d36043cb758b3931f",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-carry",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d4b77a48dfc07ea956544951e3f162b3ccc75ae1a8a23914fd83b05e23b8b713",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        }
+      ]
+    },
+    "unity": {
+      "meta": {
+        "results": [
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          }
+        ],
+        "core_sha256": {
+          "apu-unity": "8ee2f97e7c0fbe731a6dfab59ac5db3082acdd6e1e2227cdd79f0f898e41c6cf",
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+        },
+        "source_sha256": "bdb2a8adda24e644c390111ed393269cb26efb12f56cd0de84e7610b1e90784b",
+        "replay_sha256": "ac8da90c84cc178ae72d3015cc152b3ab6025996123614a08d1d6008f029278c",
+        "timing_affinity": null,
+        "physical": false
+      },
+      "results": [
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "82eace86fc85c787dea97f0cec0e390acfaa95d0b79f3ec4decf7caa237e1110",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "0d695f0e06b177444f693413b9f205a12cf6e0efdfded3e89e1057b9d924c7ef",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d3e00415025acc121331991492d1337ca1574eacf878d76a94547a994d834f00",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "e125af0bef20a9b6d7b72ae6ec20957e3be71dbf3a8e2d4833c64f6238d24603",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "7917c7d719a0f3297d948f3c94ab562aebcc3185c336c83710ba6a951354db13",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "2e8823b09044c0fa3b957d39dd4d16e27a11c21de6004b5db540f34371a4dfb9",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "842e479453f3c5f8aeb2ada48b7585c77ad610e2500e280069145c0ffba5fd24",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "44e8db41de9b2ceec94225c6636c36c0f7586b1522a77152f3e39f201a80c6db",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "2a8893d8288647f635607a677ba3d4d0b128ea0b708b79c7878695973a13949d",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "bbf164c7798bc99a3483c10fa00be179a149ac2afd1321773580f43f2635c5b9",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        }
+      ]
+    },
+    "timing_ablations_and_first_combination": {
+      "meta": {
+        "results": [
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-all",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity-census",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-all",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 0,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity-census",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-all",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 1,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity-census",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-all",
+            "game": 2,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 2,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity-census",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-all",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 4,
+            "mode": "full",
+            "returncode": 3
+          },
+          {
+            "rep": 0,
+            "core": "apu-unity-census",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          }
+        ],
+        "core_sha256": {
+          "apu-port-all": "baa311705286a2fd84ca8f04ab0cf0969f6d688befe3bbcb5e31b9f2bde3d682",
+          "apu-service": "9a3b7368ce0f2e84e3832647d3c8b6f857d4994a2d0c33644054e70568435926",
+          "apu-unity-census": "56ff7ad300911cf6a0653f6e8b7fd38838975607ce771fe1e84ecc4056992cdd",
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+        },
+        "source_sha256": "bdb2a8adda24e644c390111ed393269cb26efb12f56cd0de84e7610b1e90784b",
+        "replay_sha256": "522098aad39963c1e782855e687435381eea723135a35acc5ce8f8961deeea0d",
+        "timing_affinity": null,
+        "physical": false
+      },
+      "results": [
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "3704993f4330e872c390bbc3a9192339c8cd80f103f51909b24b5f9564266207",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-all",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 3,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 0,
+          "mismatch": 1200,
+          "first_mismatch": 0,
+          "log_sha256": "34503a271945e68d24c59eb3b7a86428588417a1ac1389c345b871a065b26bb4",
+          "callback_layout_crc32": "7a9a7371",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 3,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 0,
+          "mismatch": 1200,
+          "first_mismatch": 0,
+          "log_sha256": "099d9de007f96a86aa9af869a02e958fb05dd6f22a206955408a3754eefeaa68",
+          "callback_layout_crc32": "7a9a7371",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity-census",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "f7da643f00f10ef8907fc70e4458f6802787d697ad081e649bc6c4ccaa9813d1",
+          "callback_layout_crc32": "7a9a7371",
+          "unity_census": {
+            "callbacks": 2002,
+            "eligible": 2002,
+            "scalar_samples": 1283252
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "c7f2c02857582bd36c05c24ae569242e26d44905fdf5119a8dd2f076d5ba340c",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-all",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "74e8c07e2c261e0e724fd25828437cd44b8dcf168d9a719d6588953d38536f88",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 0,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 205,
+          "mismatch": 995,
+          "first_mismatch": 0,
+          "log_sha256": "9e5b60586f415552cd3a22152d70ae3c4cabc526c66930c7e9537f2b81fc051e",
+          "callback_layout_crc32": "0a92abd5",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity-census",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "06191f0d92c40b0124d5bc2a58d9c423d83e36a15595865fee9e820319cadc97",
+          "callback_layout_crc32": "0a92abd5",
+          "unity_census": {
+            "callbacks": 2400,
+            "eligible": 2400,
+            "scalar_samples": 1528146
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "72276d1796eac09d9f48256ed2c68d4a76ea02ad8431bb5554058cbf860f7be8",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-all",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "92320c936efd6dba34ddd716a4dae08d8cd4e2b1a655662f314dd897438a0934",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 1,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 0,
+          "mismatch": 1200,
+          "first_mismatch": 0,
+          "log_sha256": "1f34ad2648b67962ab0fe0ad72b9ec991efece3ba253eaebfd0bcdbfc8264ad4",
+          "callback_layout_crc32": "553b081d",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity-census",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "b38dc98aefa15772278ed3ee67cf8ca9cc95218732198a45fa9204a91453957f",
+          "callback_layout_crc32": "553b081d",
+          "unity_census": {
+            "callbacks": 2400,
+            "eligible": 2400,
+            "scalar_samples": 1283252
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "d807433e994f02995a10683ab2d3075981409c6d8d1762e21324508ab000af82",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-all",
+          "game": 2,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 863,
+          "mismatch": 337,
+          "first_mismatch": 863,
+          "log_sha256": "4c55866215399f45dd0d745380d1f8723b2da3ded79f56ee61b4775beea5b49d",
+          "callback_layout_crc32": "24fe58d4",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 2,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 0,
+          "mismatch": 1200,
+          "first_mismatch": 0,
+          "log_sha256": "b92b6bfc74f659ea0ea3359b7c9c32b19cbd93b8ad5f933f37836079e7eb959f",
+          "callback_layout_crc32": "24fe58d4",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity-census",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "a896dbc7d58776eca38ea650eb925e1c968b2478762c5a9daef0a3be85c44983",
+          "callback_layout_crc32": "24fe58d4",
+          "unity_census": {
+            "callbacks": 2400,
+            "eligible": 2400,
+            "scalar_samples": 1283252
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "268eb6d79d71743176c4837d888ca32ccac9401bb28bb2761fa3d9f3571dae86",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-all",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "325563471a428692d4eadc4f294957d56b6c389bbf835d15dde6b66d1e5ae12c",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 4,
+          "mode": "full",
+          "returncode": 3,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 0,
+          "mismatch": 1200,
+          "first_mismatch": 0,
+          "log_sha256": "a91c125cc27b0b5bd0ad0bae46d70e1ff5c2a1eaf417dd7459722a32a7805dd6",
+          "callback_layout_crc32": "c157f1fd",
+          "first_mismatch_fields": [
+            "pcm"
+          ],
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-unity-census",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "dbe8af10de7e21e38e61fffd8d45944d0c0d1167573d35752d4bf5e45226b7f8",
+          "callback_layout_crc32": "c157f1fd",
+          "unity_census": {
+            "callbacks": 2400,
+            "eligible": 2400,
+            "scalar_samples": 1283252
+          },
+          "callback_layout_matches": true
+        }
+      ]
+    },
+    "final_combination": {
+      "meta": {
+        "results": [
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-service",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          }
+        ],
+        "core_sha256": {
+          "apu-service": "4b36f90be829b82c40ed2bcb9d331e14acdb04f97f94914ef51363fb0adab6be",
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+        },
+        "source_sha256": "bdb2a8adda24e644c390111ed393269cb26efb12f56cd0de84e7610b1e90784b",
+        "replay_sha256": "522098aad39963c1e782855e687435381eea723135a35acc5ce8f8961deeea0d",
+        "timing_affinity": null,
+        "physical": false
+      },
+      "results": [
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "af49c2932c89472e0bf04c1774c135f50e3f08b8f976aa2753b4090b0b7a619c",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "0f8ff9358a00dd1467beb1631be6b177161cd0272b2b9aefdbfbacb2dfa73d58",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "43b67936c002af2c06f342989185b8b70a0d80dcecdc4b8a93172c489cc47b17",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "a43ccdf11d5a4e0f0563b1c2f3c41a2dd91465f1e0aad2f9195ae93e5b832b81",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "0c2078b49a1f8d980d964a01235a036c2f7eae6cb4adb0324cc1dd77b45e4f35",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "f3e82768c1569982d9f1c165e1491fafa4e5ebc7dbdeeb7fab5db919e2e12632",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "f55138c91dc7cc86e2b4cf6275ed50e3711b98aca93c1e64efd78fd4dfa63b05",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "fb0db4c09d9fe85c722f04262c2b14ef05c938af90b43312adf8283cae028ae0",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "30849a5f49ec73f4129d71db3d0c4b3e9fb1e97f13b4b674f19fda9667ffd51c",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-service",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "ef380fff8c857150e6a77f7ef1a6f024f803c1b5993e0678af6c3d2927ed78e9",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        }
+      ]
+    },
+    "port_only": {
+      "meta": {
+        "results": [
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop-census",
+            "game": 3,
+            "mode": "cold-off",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop-census",
+            "game": 0,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop-census",
+            "game": 1,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop-census",
+            "game": 2,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "physical",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          },
+          {
+            "rep": 0,
+            "core": "apu-port-noop-census",
+            "game": 4,
+            "mode": "full",
+            "returncode": 0
+          }
+        ],
+        "core_sha256": {
+          "apu-port-noop": "c804a6916ce873c99373304bb55027948bf15fdc9c5ed0fbb6a6ac63802250e6",
+          "apu-port-noop-census": "51c3a483538079aac9e25215b844f34f9219e55ff8a8e51cb5e747824e78d097",
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a"
+        },
+        "source_sha256": "bdb2a8adda24e644c390111ed393269cb26efb12f56cd0de84e7610b1e90784b",
+        "replay_sha256": "449a62f169273a0d4167f2747256758384ae14790d8f2bb07da7a0fd625e7bd5",
+        "timing_affinity": null,
+        "physical": false
+      },
+      "results": [
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "3b7e94accb2a36738ccf587c37d28dd85ba7cead501044f1820acca68adb96df",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "1e130a684b4a1e2fc64f57c2a5c941207f4ffac900ca729bd2d7ef646706a04d",
+          "callback_layout_crc32": "7a9a7371",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop-census",
+          "game": 3,
+          "mode": "cold-off",
+          "returncode": 0,
+          "cold_calls": 8656,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "5162586ba0084821124da19f6300a78e784d5ce7a23f36c459c1209ba26e97c8",
+          "callback_layout_crc32": "7a9a7371",
+          "port_census": {
+            "accesses": 924,
+            "empty": 37
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "33bd5785faebc5cd13ca6b232b6c67e69ecfb2a6f36272619aec0e7edbc31044",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "91889dfbb9cd9d775eec2bd98f82e1ef1914ce333b4e647639b59aaf00d3842d",
+          "callback_layout_crc32": "0a92abd5",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop-census",
+          "game": 0,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 764073,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "1ee6216e2f682634d026a0bfbb999d0a3c6170bf734af0d8c1323adf59f31c5b",
+          "callback_layout_crc32": "0a92abd5",
+          "port_census": {
+            "accesses": 225028,
+            "empty": 106178
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "b39d33a37f909e9985549b7b63570a28285c4dd08b5eb4147cd32e5318dfc3dc",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "a4a8b0f3f4e3d4c0cb2f38d4173cd98168a6685911abdf25dc6f7263d7ee448a",
+          "callback_layout_crc32": "553b081d",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop-census",
+          "game": 1,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "dd1eed36606e02256944ecd84a0e98f1ae835b43bf9bd7c493df39cb6db57b45",
+          "callback_layout_crc32": "553b081d",
+          "port_census": {
+            "accesses": 16,
+            "empty": 1
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "8526c71cf5dd60e53ce656f84eb34b1929fcee8e6fbd051695a61145bf63b55e",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "6f80fd7d092b92a5ee752a2e6caa4db70f2b7f3a72c834edc0da3a1f59d436db",
+          "callback_layout_crc32": "24fe58d4",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop-census",
+          "game": 2,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "6e7112ba6e64e3f3240ce47f1e2928266f529e970d3f3cdf76ede4d458b560cd",
+          "callback_layout_crc32": "24fe58d4",
+          "port_census": {
+            "accesses": 4800,
+            "empty": 809
+          },
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "physical",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "2cca39a50070016520dfab61e8c7fd815849b93f1b65753ac23b908183f0e9f9",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "41b3b1ab177fccb2eeb1ebf0dc72415cf6353f8e49dac305f61d0e9fbb43cc91",
+          "callback_layout_crc32": "c157f1fd",
+          "callback_layout_matches": true
+        },
+        {
+          "rep": 0,
+          "core": "apu-port-noop-census",
+          "game": 4,
+          "mode": "full",
+          "returncode": 0,
+          "cold_calls": 0,
+          "rendered": 1200,
+          "audio_frames": 641626,
+          "verified": 1200,
+          "mismatch": 0,
+          "first_mismatch": 1200,
+          "log_sha256": "da35a99a68b0c041d8c27725b481266e7e90b31d42607dcbe8fb01075f392044",
+          "callback_layout_crc32": "c157f1fd",
+          "port_census": {
+            "accesses": 43803,
+            "empty": 14920
+          },
+          "callback_layout_matches": true
+        }
+      ]
+    }
+  },
+  "paired_cpu_time": {
+    "isolated": {
+      "meta": {
+        "results": [
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-clock",
+            "mode": "both-cold-off",
+            "host_cpu": 1,
+            "log": "3-apu-clock-both-cold-off.log",
+            "sha256": "7707a74498e1524d8c857a8315da62b9ca62fb81503177d4bfadb85130731234"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-carry",
+            "mode": "full",
+            "host_cpu": 1,
+            "log": "1-apu-carry-full.log",
+            "sha256": "cfa427c5e2bab54951babd3455279e3883a652f1e5af5aad7bc062e33caaa6c9"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-slice4",
+            "mode": "full",
+            "host_cpu": 1,
+            "log": "1-apu-slice4-full.log",
+            "sha256": "6c6b40592c7b8f14d5a91f42603cde7bef08a1efb3cec15af0987626741081b4"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-noop",
+            "mode": "both-cold-off",
+            "host_cpu": 3,
+            "log": "3-apu-noop-both-cold-off.log",
+            "sha256": "e9606cd036a86aa4c9598419d956529e2942fc56a38e7195479f2d78c28a7960"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "apu-clock",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "2-apu-clock-full.log",
+            "sha256": "aef82bd7857f1d66841ff0a2e7dbcdbf78be3decbf27cfbcbb7d0a78c6e4c894"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-slice8",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "1-apu-slice8-full.log",
+            "sha256": "0b3baf95c63967b8cc2398387abce1a7735ea5a8e74dbcb5436bdb3b13cc7de2"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-carry",
+            "mode": "both-cold-off",
+            "host_cpu": 5,
+            "log": "3-apu-carry-both-cold-off.log",
+            "sha256": "395c30e8470d889662cd6e3b6070b18f68e1ba2952b6e5526ec3f8eba80d01b2"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "apu-noop",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "2-apu-noop-full.log",
+            "sha256": "5318111a89f53b88968d637ac5117f9700da1e2995f1f22d74ca62a387cf6e0b"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "apu-clock",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "0-apu-clock-full.log",
+            "sha256": "12aeb33a4e0cbdb1025d4cdd633ffde76367277b36cceb0edb9ad0e8a507a009"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "apu-carry",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "2-apu-carry-full.log",
+            "sha256": "e94d5f92f067d3f7a7f97318a4c8fc08a7d1e173a9895fa11b39b79f21ea8169"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "apu-noop",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "0-apu-noop-full.log",
+            "sha256": "d491076bbcb9c3bdbfef673aebc24f0a690da03984b60875d1f8b24050928af0"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "apu-clock",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "4-apu-clock-full.log",
+            "sha256": "13f6ba7a31b04c396ce6573e7f02a6968165d521896acb9353d144f66ee1b732"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "apu-carry",
+            "mode": "full",
+            "host_cpu": 11,
+            "log": "0-apu-carry-full.log",
+            "sha256": "efd0031ec7e380b5d18bf6952def1c58f8f9977d31f3b31fae0b4899750e22d3"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "apu-noop",
+            "mode": "full",
+            "host_cpu": 11,
+            "log": "4-apu-noop-full.log",
+            "sha256": "db02f523f141022f9b0e4423f46152bfc763f8c2ae989c07bc0ddd874cf18a6c"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-clock",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "1-apu-clock-full.log",
+            "sha256": "7a7299dec82090a89a556f6ef2a8ca408eb6e731ef468ec99b2c1a55ac255cc1"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "apu-carry",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "4-apu-carry-full.log",
+            "sha256": "71a84480208f60ae80b4c3b9cfdec7c252613a02c06519d0b9aead4c8b5ebfa9"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-noop",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "1-apu-noop-full.log",
+            "sha256": "e866ce6fa709b7e464a238645ed61adc6593a3c1cc95d92ecbff2b4015c93225"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-slice2",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "1-apu-slice2-full.log",
+            "sha256": "17fea5fa5456d000e8f2d65038fa307cfcd888d79b8a23b0ee350338096f181b"
+          }
+        ],
+        "physical": false,
+        "core_sha256": {
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+          "baseline": "fb896772ed1ee9d4bf71c38cefb72b51632f6ea6003f552275c2cde643493de1",
+          "apu-clock": "201917874137f9a9fdb5642fcccfa79d90c0e6635ef27eb762f7e4b54bc66591",
+          "apu-noop": "3af558f6fb96d0fdb34a083fd37e70cbf8db47ac3b45b933768aae3007ba857c",
+          "apu-carry": "2023048f86de144486f3e417d5e3d1ec98aaf90decb611217955139ca9d540ca",
+          "apu-slice2": "474ede4cde38ba261c4bfa618b0f30534908703713e65b3f11782cef00b39346",
+          "apu-slice4": "3f9202abc50ea8bcc793a75d33c5076938fad7708b52a10392bbb61afd6ecbf4",
+          "apu-slice8": "12f22b543f6455a22af8352e3263aec7e5f2fae54036eace92928cf93b1525a7"
+        },
+        "sources": {
+          "snes-throughput-pair.c": "bdaa4303a9416b2a93cdeeff61cc67bfe286773e6bf2df3fd02f06023840df5f",
+          "snes-throughput-replay.c": "d2e74e411bd082906ec5e3c4f1306afc3507d4b8ba2a70a7170717818b7ba703",
+          "run-snes-throughput-pair.py": "b7253e041061731edc40bf8269e6896e657723f094a4fb1489b9422ad4c7d8fb"
+        }
+      },
+      "results": [
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-clock",
+          "mode": "both-cold-off",
+          "host_cpu": 1,
+          "log": "3-apu-clock-both-cold-off.log",
+          "sha256": "7707a74498e1524d8c857a8315da62b9ca62fb81503177d4bfadb85130731234",
+          "cold_cpu_ns": [
+            40723329500,
+            40699056800
+          ],
+          "cold_saving_pct": 0.06,
+          "warm_cpu_mean_ns": [
+            10902148,
+            10531121
+          ],
+          "mean_saving_pct": 3.4,
+          "warm_cpu_p95_ns": [
+            19563200,
+            19005700
+          ],
+          "p95_saving_pct": 2.85,
+          "warm_quarter_saving_pct": [
+            2.59,
+            4.34,
+            4.45,
+            2.1
+          ],
+          "first_four_cpu_ns": [
+            [
+              27024800,
+              26756000
+            ],
+            [
+              9045100,
+              10069100
+            ],
+            [
+              6734600,
+              6657700
+            ],
+            [
+              14266100,
+              14633800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-carry",
+          "mode": "full",
+          "host_cpu": 1,
+          "log": "1-apu-carry-full.log",
+          "sha256": "cfa427c5e2bab54951babd3455279e3883a652f1e5af5aad7bc062e33caaa6c9",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3600692,
+            3504868
+          ],
+          "mean_saving_pct": 2.66,
+          "warm_cpu_p95_ns": [
+            5259500,
+            5119400
+          ],
+          "p95_saving_pct": 2.66,
+          "warm_quarter_saving_pct": [
+            4.4,
+            1.74,
+            2.52,
+            1.96
+          ],
+          "first_four_cpu_ns": [
+            [
+              24298500,
+              24644600
+            ],
+            [
+              4309300,
+              4844700
+            ],
+            [
+              5240400,
+              5990000
+            ],
+            [
+              4947300,
+              4965400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-slice4",
+          "mode": "full",
+          "host_cpu": 1,
+          "log": "1-apu-slice4-full.log",
+          "sha256": "6c6b40592c7b8f14d5a91f42603cde7bef08a1efb3cec15af0987626741081b4",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3841162,
+            3658733
+          ],
+          "mean_saving_pct": 4.75,
+          "warm_cpu_p95_ns": [
+            5741700,
+            5312900
+          ],
+          "p95_saving_pct": 7.47,
+          "warm_quarter_saving_pct": [
+            5.08,
+            5.19,
+            4.53,
+            4.32
+          ],
+          "first_four_cpu_ns": [
+            [
+              20167500,
+              19588800
+            ],
+            [
+              4365800,
+              4413600
+            ],
+            [
+              3449300,
+              3222400
+            ],
+            [
+              5103200,
+              4376400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-noop",
+          "mode": "both-cold-off",
+          "host_cpu": 3,
+          "log": "3-apu-noop-both-cold-off.log",
+          "sha256": "e9606cd036a86aa4c9598419d956529e2942fc56a38e7195479f2d78c28a7960",
+          "cold_cpu_ns": [
+            41454290100,
+            51698786500
+          ],
+          "cold_saving_pct": -24.71,
+          "warm_cpu_mean_ns": [
+            9606752,
+            10447252
+          ],
+          "mean_saving_pct": -8.75,
+          "warm_cpu_p95_ns": [
+            16218600,
+            19661700
+          ],
+          "p95_saving_pct": -21.23,
+          "warm_quarter_saving_pct": [
+            -9.98,
+            -7.02,
+            -9.39,
+            -8.45
+          ],
+          "first_four_cpu_ns": [
+            [
+              23080900,
+              31699000
+            ],
+            [
+              7317400,
+              8919300
+            ],
+            [
+              6949000,
+              6859500
+            ],
+            [
+              15035600,
+              18576200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "apu-clock",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "2-apu-clock-full.log",
+          "sha256": "aef82bd7857f1d66841ff0a2e7dbcdbf78be3decbf27cfbcbb7d0a78c6e4c894",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4017802,
+            3987723
+          ],
+          "mean_saving_pct": 0.75,
+          "warm_cpu_p95_ns": [
+            5956700,
+            6159800
+          ],
+          "p95_saving_pct": -3.41,
+          "warm_quarter_saving_pct": [
+            1.84,
+            -0.94,
+            0.29,
+            2.11
+          ],
+          "first_four_cpu_ns": [
+            [
+              19476500,
+              19453000
+            ],
+            [
+              3479000,
+              4838100
+            ],
+            [
+              3139500,
+              3521000
+            ],
+            [
+              5185900,
+              5271400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-slice8",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "1-apu-slice8-full.log",
+          "sha256": "0b3baf95c63967b8cc2398387abce1a7735ea5a8e74dbcb5436bdb3b13cc7de2",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3174016,
+            2986025
+          ],
+          "mean_saving_pct": 5.92,
+          "warm_cpu_p95_ns": [
+            4937300,
+            4631900
+          ],
+          "p95_saving_pct": 6.19,
+          "warm_quarter_saving_pct": [
+            5.74,
+            5.24,
+            7.09,
+            5.57
+          ],
+          "first_four_cpu_ns": [
+            [
+              19180800,
+              19069600
+            ],
+            [
+              4303400,
+              3769100
+            ],
+            [
+              3023800,
+              2819100
+            ],
+            [
+              3245400,
+              2834500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-carry",
+          "mode": "both-cold-off",
+          "host_cpu": 5,
+          "log": "3-apu-carry-both-cold-off.log",
+          "sha256": "395c30e8470d889662cd6e3b6070b18f68e1ba2952b6e5526ec3f8eba80d01b2",
+          "cold_cpu_ns": [
+            40700544300,
+            40172387900
+          ],
+          "cold_saving_pct": 1.3,
+          "warm_cpu_mean_ns": [
+            11020876,
+            10608103
+          ],
+          "mean_saving_pct": 3.75,
+          "warm_cpu_p95_ns": [
+            19739300,
+            19140300
+          ],
+          "p95_saving_pct": 3.03,
+          "warm_quarter_saving_pct": [
+            3.75,
+            2.54,
+            6.15,
+            2.57
+          ],
+          "first_four_cpu_ns": [
+            [
+              19123200,
+              19746000
+            ],
+            [
+              13879300,
+              12435300
+            ],
+            [
+              6579200,
+              5982200
+            ],
+            [
+              15204100,
+              14680400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "apu-noop",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "2-apu-noop-full.log",
+          "sha256": "5318111a89f53b88968d637ac5117f9700da1e2995f1f22d74ca62a387cf6e0b",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3814516,
+            3738479
+          ],
+          "mean_saving_pct": 1.99,
+          "warm_cpu_p95_ns": [
+            5598000,
+            5479600
+          ],
+          "p95_saving_pct": 2.12,
+          "warm_quarter_saving_pct": [
+            1.76,
+            0.77,
+            1.83,
+            3.64
+          ],
+          "first_four_cpu_ns": [
+            [
+              30138600,
+              29005800
+            ],
+            [
+              4789400,
+              3882300
+            ],
+            [
+              4888700,
+              4159100
+            ],
+            [
+              5411700,
+              4617800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "apu-clock",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "0-apu-clock-full.log",
+          "sha256": "12aeb33a4e0cbdb1025d4cdd633ffde76367277b36cceb0edb9ad0e8a507a009",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4227485,
+            4095387
+          ],
+          "mean_saving_pct": 3.12,
+          "warm_cpu_p95_ns": [
+            5995800,
+            5899200
+          ],
+          "p95_saving_pct": 1.61,
+          "warm_quarter_saving_pct": [
+            4.19,
+            1.56,
+            3.9,
+            2.58
+          ],
+          "first_four_cpu_ns": [
+            [
+              34526800,
+              30223600
+            ],
+            [
+              5952900,
+              5705500
+            ],
+            [
+              5895800,
+              3212900
+            ],
+            [
+              3427100,
+              3290000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "apu-carry",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "2-apu-carry-full.log",
+          "sha256": "e94d5f92f067d3f7a7f97318a4c8fc08a7d1e173a9895fa11b39b79f21ea8169",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4553461,
+            4497064
+          ],
+          "mean_saving_pct": 1.24,
+          "warm_cpu_p95_ns": [
+            6090000,
+            6012900
+          ],
+          "p95_saving_pct": 1.27,
+          "warm_quarter_saving_pct": [
+            0.72,
+            -0.54,
+            2.73,
+            2.1
+          ],
+          "first_four_cpu_ns": [
+            [
+              28169800,
+              21659600
+            ],
+            [
+              3778700,
+              3364600
+            ],
+            [
+              3841600,
+              3529700
+            ],
+            [
+              3833300,
+              3324200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "apu-noop",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "0-apu-noop-full.log",
+          "sha256": "d491076bbcb9c3bdbfef673aebc24f0a690da03984b60875d1f8b24050928af0",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4429418,
+            4326385
+          ],
+          "mean_saving_pct": 2.33,
+          "warm_cpu_p95_ns": [
+            6098800,
+            5933700
+          ],
+          "p95_saving_pct": 2.71,
+          "warm_quarter_saving_pct": [
+            -0.02,
+            3.31,
+            3.41,
+            2.56
+          ],
+          "first_four_cpu_ns": [
+            [
+              32218500,
+              28974900
+            ],
+            [
+              5938500,
+              5683400
+            ],
+            [
+              5764600,
+              5606500
+            ],
+            [
+              5226100,
+              5935900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "apu-clock",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "4-apu-clock-full.log",
+          "sha256": "13f6ba7a31b04c396ce6573e7f02a6968165d521896acb9353d144f66ee1b732",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5310151,
+            5262226
+          ],
+          "mean_saving_pct": 0.9,
+          "warm_cpu_p95_ns": [
+            6973800,
+            6918200
+          ],
+          "p95_saving_pct": 0.8,
+          "warm_quarter_saving_pct": [
+            0.07,
+            0.62,
+            1.64,
+            1.38
+          ],
+          "first_four_cpu_ns": [
+            [
+              34048900,
+              33633100
+            ],
+            [
+              6859100,
+              6267500
+            ],
+            [
+              7052800,
+              7189900
+            ],
+            [
+              5583300,
+              5912700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "apu-carry",
+          "mode": "full",
+          "host_cpu": 11,
+          "log": "0-apu-carry-full.log",
+          "sha256": "efd0031ec7e380b5d18bf6952def1c58f8f9977d31f3b31fae0b4899750e22d3",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4437572,
+            4413645
+          ],
+          "mean_saving_pct": 0.54,
+          "warm_cpu_p95_ns": [
+            6029300,
+            5960700
+          ],
+          "p95_saving_pct": 1.14,
+          "warm_quarter_saving_pct": [
+            -1.2,
+            1.95,
+            2.53,
+            -1.01
+          ],
+          "first_four_cpu_ns": [
+            [
+              32208700,
+              30954900
+            ],
+            [
+              5976600,
+              6234100
+            ],
+            [
+              6187100,
+              5704200
+            ],
+            [
+              6062000,
+              5888000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "apu-noop",
+          "mode": "full",
+          "host_cpu": 11,
+          "log": "4-apu-noop-full.log",
+          "sha256": "db02f523f141022f9b0e4423f46152bfc763f8c2ae989c07bc0ddd874cf18a6c",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5255566,
+            5179125
+          ],
+          "mean_saving_pct": 1.45,
+          "warm_cpu_p95_ns": [
+            7004200,
+            6878900
+          ],
+          "p95_saving_pct": 1.79,
+          "warm_quarter_saving_pct": [
+            4.4,
+            1.69,
+            -1.2,
+            0.73
+          ],
+          "first_four_cpu_ns": [
+            [
+              21670800,
+              33224600
+            ],
+            [
+              6864800,
+              6298300
+            ],
+            [
+              6686900,
+              6543700
+            ],
+            [
+              5612000,
+              5757500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-clock",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "1-apu-clock-full.log",
+          "sha256": "7a7299dec82090a89a556f6ef2a8ca408eb6e731ef468ec99b2c1a55ac255cc1",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4290740,
+            4204588
+          ],
+          "mean_saving_pct": 2.01,
+          "warm_cpu_p95_ns": [
+            5538000,
+            5449300
+          ],
+          "p95_saving_pct": 1.6,
+          "warm_quarter_saving_pct": [
+            2.26,
+            2.15,
+            2.74,
+            0.79
+          ],
+          "first_four_cpu_ns": [
+            [
+              31947400,
+              31115500
+            ],
+            [
+              6272300,
+              6341800
+            ],
+            [
+              5514600,
+              5041700
+            ],
+            [
+              5787300,
+              5088900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "apu-carry",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "4-apu-carry-full.log",
+          "sha256": "71a84480208f60ae80b4c3b9cfdec7c252613a02c06519d0b9aead4c8b5ebfa9",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5071601,
+            4942716
+          ],
+          "mean_saving_pct": 2.54,
+          "warm_cpu_p95_ns": [
+            7046900,
+            6873800
+          ],
+          "p95_saving_pct": 2.46,
+          "warm_quarter_saving_pct": [
+            1.31,
+            1.68,
+            2.25,
+            4.67
+          ],
+          "first_four_cpu_ns": [
+            [
+              34623200,
+              23428900
+            ],
+            [
+              6547300,
+              5218500
+            ],
+            [
+              6682100,
+              6227200
+            ],
+            [
+              5631700,
+              5434000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-noop",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "1-apu-noop-full.log",
+          "sha256": "e866ce6fa709b7e464a238645ed61adc6593a3c1cc95d92ecbff2b4015c93225",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4156925,
+            4107272
+          ],
+          "mean_saving_pct": 1.19,
+          "warm_cpu_p95_ns": [
+            5533000,
+            5393500
+          ],
+          "p95_saving_pct": 2.52,
+          "warm_quarter_saving_pct": [
+            -0.3,
+            2.63,
+            1.1,
+            1.41
+          ],
+          "first_four_cpu_ns": [
+            [
+              27005900,
+              18427300
+            ],
+            [
+              3710200,
+              4547000
+            ],
+            [
+              3014100,
+              2946500
+            ],
+            [
+              4981400,
+              3389600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-slice2",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "1-apu-slice2-full.log",
+          "sha256": "17fea5fa5456d000e8f2d65038fa307cfcd888d79b8a23b0ee350338096f181b",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4311393,
+            4181612
+          ],
+          "mean_saving_pct": 3.01,
+          "warm_cpu_p95_ns": [
+            5613900,
+            5462900
+          ],
+          "p95_saving_pct": 2.69,
+          "warm_quarter_saving_pct": [
+            3.03,
+            3.04,
+            2.86,
+            3.11
+          ],
+          "first_four_cpu_ns": [
+            [
+              21980500,
+              30588900
+            ],
+            [
+              3842900,
+              5298400
+            ],
+            [
+              3123000,
+              2963700
+            ],
+            [
+              5305000,
+              3159800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        }
+      ]
+    },
+    "unity_and_controls": {
+      "meta": {
+        "results": [
+          {
+            "game": 3,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "both-cold-off",
+            "host_cpu": 1,
+            "log": "3-baseline-both-cold-off.log",
+            "sha256": "3d2d9b369d0c462a27120083c35fcf64392a32faed8664bb65468d2fbbe758bb"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-unity",
+            "mode": "both-cold-off",
+            "host_cpu": 3,
+            "log": "3-apu-unity-both-cold-off.log",
+            "sha256": "804baf61be9cc3dcf06e08e4a2a5e3d664c230934832e25c0083097d49b99501"
+          },
+          {
+            "game": 2,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "2-baseline-full.log",
+            "sha256": "a63686cb2c76772f43fd813c57c47a2d1fedf5851d3a4607b3779a6ae204b673"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "apu-unity",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "2-apu-unity-full.log",
+            "sha256": "5a873cff11179bd40f264bc5a338d49fd942ff7c7c18eefa96f87f609f72d0d2"
+          },
+          {
+            "game": 0,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "0-baseline-full.log",
+            "sha256": "4d27a997d43591ce93b557af0c1e18ef17330cfeccd097c6c71f90f08849a0ab"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "apu-unity",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "0-apu-unity-full.log",
+            "sha256": "959d4aaebbfec2da7c3f51802f4055ed4b3d2dcf3fc19147a61f0d80198f66d4"
+          },
+          {
+            "game": 4,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "4-baseline-full.log",
+            "sha256": "5ba96088aa98be0994a046cc69e0905f8e475d36a8e72a1f28bd0bccd0c5f216"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "apu-unity",
+            "mode": "full",
+            "host_cpu": 11,
+            "log": "4-apu-unity-full.log",
+            "sha256": "e37898b52514a0ac1f0e4cdcb90ca0768819002c3190d9ce367c98c4c6240ccf"
+          },
+          {
+            "game": 1,
+            "control": "physical",
+            "candidate": "baseline",
+            "mode": "full",
+            "host_cpu": 13,
+            "log": "1-baseline-full.log",
+            "sha256": "dd1aa4cca5a6f6dac16e5ac57e7037c33f6453cc8eebda18d8e0656be76b88bb"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-unity",
+            "mode": "full",
+            "host_cpu": 15,
+            "log": "1-apu-unity-full.log",
+            "sha256": "7e2a6bf144490e9d69f9cf97c228bfc6d9e78194b113680def3e323a6e9fb03a"
+          },
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-noop",
+            "mode": "both-cold-off",
+            "host_cpu": 15,
+            "log": "3-apu-noop-both-cold-off.log",
+            "sha256": "697b91d8ea2af15a905b84e0d7174aaf03c9947cfd392c73c371759400bf7bbc"
+          }
+        ],
+        "physical": false,
+        "core_sha256": {
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+          "baseline": "fb896772ed1ee9d4bf71c38cefb72b51632f6ea6003f552275c2cde643493de1",
+          "apu-noop": "3af558f6fb96d0fdb34a083fd37e70cbf8db47ac3b45b933768aae3007ba857c",
+          "apu-unity": "8ee2f97e7c0fbe731a6dfab59ac5db3082acdd6e1e2227cdd79f0f898e41c6cf",
+          "apu-service": "9a3b7368ce0f2e84e3832647d3c8b6f857d4994a2d0c33644054e70568435926"
+        },
+        "sources": {
+          "snes-throughput-pair.c": "bdaa4303a9416b2a93cdeeff61cc67bfe286773e6bf2df3fd02f06023840df5f",
+          "snes-throughput-replay.c": "24ba13366238cacabf3ed2496967daee3546c2fff33a7b178eca31101825ed70",
+          "run-snes-throughput-pair.py": "d935aab99837c908500f382c61b2a4d6c069cb79cb6c39d15b6bfcc40800ca81"
+        }
+      },
+      "results": [
+        {
+          "game": 3,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "both-cold-off",
+          "host_cpu": 1,
+          "log": "3-baseline-both-cold-off.log",
+          "sha256": "3d2d9b369d0c462a27120083c35fcf64392a32faed8664bb65468d2fbbe758bb",
+          "cold_cpu_ns": [
+            47097648500,
+            46973129900
+          ],
+          "cold_saving_pct": 0.26,
+          "warm_cpu_mean_ns": [
+            11527482,
+            11665214
+          ],
+          "mean_saving_pct": -1.19,
+          "warm_cpu_p95_ns": [
+            20328500,
+            20550600
+          ],
+          "p95_saving_pct": -1.09,
+          "warm_quarter_saving_pct": [
+            -2.88,
+            -1.14,
+            -0.28,
+            0.0
+          ],
+          "first_four_cpu_ns": [
+            [
+              31485200,
+              31891100
+            ],
+            [
+              14604700,
+              14137700
+            ],
+            [
+              6395300,
+              11188100
+            ],
+            [
+              19736600,
+              27395900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-unity",
+          "mode": "both-cold-off",
+          "host_cpu": 3,
+          "log": "3-apu-unity-both-cold-off.log",
+          "sha256": "804baf61be9cc3dcf06e08e4a2a5e3d664c230934832e25c0083097d49b99501",
+          "cold_cpu_ns": [
+            46531523800,
+            46287839800
+          ],
+          "cold_saving_pct": 0.52,
+          "warm_cpu_mean_ns": [
+            11752311,
+            11333485
+          ],
+          "mean_saving_pct": 3.56,
+          "warm_cpu_p95_ns": [
+            20488900,
+            19953400
+          ],
+          "p95_saving_pct": 2.61,
+          "warm_quarter_saving_pct": [
+            4.54,
+            5.28,
+            -1.03,
+            4.74
+          ],
+          "first_four_cpu_ns": [
+            [
+              39192800,
+              36351100
+            ],
+            [
+              15007800,
+              15250500
+            ],
+            [
+              13099700,
+              11749400
+            ],
+            [
+              29835300,
+              26704200
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "2-baseline-full.log",
+          "sha256": "a63686cb2c76772f43fd813c57c47a2d1fedf5851d3a4607b3779a6ae204b673",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3993348,
+            3973679
+          ],
+          "mean_saving_pct": 0.49,
+          "warm_cpu_p95_ns": [
+            5737000,
+            5704900
+          ],
+          "p95_saving_pct": 0.56,
+          "warm_quarter_saving_pct": [
+            2.01,
+            -0.95,
+            -0.23,
+            1.12
+          ],
+          "first_four_cpu_ns": [
+            [
+              21021500,
+              22398900
+            ],
+            [
+              3544400,
+              3722200
+            ],
+            [
+              3117000,
+              3074300
+            ],
+            [
+              3529700,
+              2981000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "apu-unity",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "2-apu-unity-full.log",
+          "sha256": "5a873cff11179bd40f264bc5a338d49fd942ff7c7c18eefa96f87f609f72d0d2",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            3838882,
+            3776126
+          ],
+          "mean_saving_pct": 1.63,
+          "warm_cpu_p95_ns": [
+            5707300,
+            5599400
+          ],
+          "p95_saving_pct": 1.89,
+          "warm_quarter_saving_pct": [
+            -0.27,
+            2.89,
+            2.83,
+            1.08
+          ],
+          "first_four_cpu_ns": [
+            [
+              23733300,
+              19663600
+            ],
+            [
+              3402600,
+              3311000
+            ],
+            [
+              3047500,
+              3256400
+            ],
+            [
+              3046200,
+              3005400
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 0,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "0-baseline-full.log",
+          "sha256": "4d27a997d43591ce93b557af0c1e18ef17330cfeccd097c6c71f90f08849a0ab",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5634125,
+            5629281
+          ],
+          "mean_saving_pct": 0.09,
+          "warm_cpu_p95_ns": [
+            7037200,
+            6956000
+          ],
+          "p95_saving_pct": 1.15,
+          "warm_quarter_saving_pct": [
+            1.5,
+            -1.07,
+            -0.21,
+            -0.07
+          ],
+          "first_four_cpu_ns": [
+            [
+              36485600,
+              34192200
+            ],
+            [
+              6059900,
+              5862600
+            ],
+            [
+              6548500,
+              5892300
+            ],
+            [
+              6443800,
+              6539600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "apu-unity",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "0-apu-unity-full.log",
+          "sha256": "959d4aaebbfec2da7c3f51802f4055ed4b3d2dcf3fc19147a61f0d80198f66d4",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5764835,
+            5645028
+          ],
+          "mean_saving_pct": 2.08,
+          "warm_cpu_p95_ns": [
+            6763100,
+            6639000
+          ],
+          "p95_saving_pct": 1.83,
+          "warm_quarter_saving_pct": [
+            3.46,
+            0.75,
+            2.01,
+            1.92
+          ],
+          "first_four_cpu_ns": [
+            [
+              37831700,
+              33503500
+            ],
+            [
+              6077900,
+              4550000
+            ],
+            [
+              5753300,
+              6779600
+            ],
+            [
+              6716000,
+              6106700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 4,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "4-baseline-full.log",
+          "sha256": "5ba96088aa98be0994a046cc69e0905f8e475d36a8e72a1f28bd0bccd0c5f216",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            6441409,
+            6440854
+          ],
+          "mean_saving_pct": 0.01,
+          "warm_cpu_p95_ns": [
+            7464500,
+            7537400
+          ],
+          "p95_saving_pct": -0.98,
+          "warm_quarter_saving_pct": [
+            -0.52,
+            0.25,
+            -0.42,
+            0.72
+          ],
+          "first_four_cpu_ns": [
+            [
+              33107200,
+              34146700
+            ],
+            [
+              6619100,
+              6204600
+            ],
+            [
+              6610100,
+              6577800
+            ],
+            [
+              6103000,
+              5762600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "apu-unity",
+          "mode": "full",
+          "host_cpu": 11,
+          "log": "4-apu-unity-full.log",
+          "sha256": "e37898b52514a0ac1f0e4cdcb90ca0768819002c3190d9ce367c98c4c6240ccf",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            6369000,
+            6260528
+          ],
+          "mean_saving_pct": 1.7,
+          "warm_cpu_p95_ns": [
+            7393900,
+            7402600
+          ],
+          "p95_saving_pct": -0.12,
+          "warm_quarter_saving_pct": [
+            1.73,
+            1.01,
+            0.67,
+            3.37
+          ],
+          "first_four_cpu_ns": [
+            [
+              32090800,
+              35354300
+            ],
+            [
+              6876700,
+              6989600
+            ],
+            [
+              9355200,
+              7082600
+            ],
+            [
+              6191700,
+              6403000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "physical",
+          "candidate": "baseline",
+          "mode": "full",
+          "host_cpu": 13,
+          "log": "1-baseline-full.log",
+          "sha256": "dd1aa4cca5a6f6dac16e5ac57e7037c33f6453cc8eebda18d8e0656be76b88bb",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5387438,
+            5352946
+          ],
+          "mean_saving_pct": 0.64,
+          "warm_cpu_p95_ns": [
+            6408100,
+            6308500
+          ],
+          "p95_saving_pct": 1.55,
+          "warm_quarter_saving_pct": [
+            1.4,
+            0.34,
+            0.29,
+            0.49
+          ],
+          "first_four_cpu_ns": [
+            [
+              34555700,
+              30586000
+            ],
+            [
+              7241800,
+              6265100
+            ],
+            [
+              5658200,
+              6271800
+            ],
+            [
+              5571300,
+              5524500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-unity",
+          "mode": "full",
+          "host_cpu": 15,
+          "log": "1-apu-unity-full.log",
+          "sha256": "7e2a6bf144490e9d69f9cf97c228bfc6d9e78194b113680def3e323a6e9fb03a",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5365518,
+            5240305
+          ],
+          "mean_saving_pct": 2.33,
+          "warm_cpu_p95_ns": [
+            6375800,
+            6059800
+          ],
+          "p95_saving_pct": 4.96,
+          "warm_quarter_saving_pct": [
+            2.86,
+            2.52,
+            1.48,
+            2.36
+          ],
+          "first_four_cpu_ns": [
+            [
+              34429000,
+              31584900
+            ],
+            [
+              6735100,
+              6448300
+            ],
+            [
+              5859800,
+              5415000
+            ],
+            [
+              5678800,
+              5131100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-noop",
+          "mode": "both-cold-off",
+          "host_cpu": 15,
+          "log": "3-apu-noop-both-cold-off.log",
+          "sha256": "697b91d8ea2af15a905b84e0d7174aaf03c9947cfd392c73c371759400bf7bbc",
+          "cold_cpu_ns": [
+            47692349800,
+            60003832500
+          ],
+          "cold_saving_pct": -25.81,
+          "warm_cpu_mean_ns": [
+            9963663,
+            10822253
+          ],
+          "mean_saving_pct": -8.62,
+          "warm_cpu_p95_ns": [
+            17788600,
+            20790500
+          ],
+          "p95_saving_pct": -16.88,
+          "warm_quarter_saving_pct": [
+            -9.47,
+            -9.3,
+            -8.0,
+            -7.58
+          ],
+          "first_four_cpu_ns": [
+            [
+              28515100,
+              29099800
+            ],
+            [
+              14095400,
+              11541600
+            ],
+            [
+              12371400,
+              8790600
+            ],
+            [
+              14887700,
+              18371300
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        }
+      ]
+    },
+    "final_combination": {
+      "meta": {
+        "results": [
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-service",
+            "mode": "both-cold-off",
+            "host_cpu": 1,
+            "log": "3-apu-service-both-cold-off.log",
+            "sha256": "055fe3c2d1cf752aa743d0921d89f11dd3f2abbe1bde69bb5c15b7f7d8105444"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "apu-service",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "0-apu-service-full.log",
+            "sha256": "26acfbd825679ce6c0f72dcfcfd312647b0937c35ff1022a282f0295e33622d5"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-service",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "1-apu-service-full.log",
+            "sha256": "2b6d5d07bbcf97fde5119b06257d4c409f56e58ec5923f11a0c58d7b2eb5ad97"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "apu-service",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "2-apu-service-full.log",
+            "sha256": "80c27009ab83055efca541873a68b54078757134c06c93ad18f982754aa9c15b"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "apu-service",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "4-apu-service-full.log",
+            "sha256": "c0139bec8a3081d389cf15d8b5d8fd64e481ff823c3eb13d15eddb91061b5070"
+          }
+        ],
+        "physical": false,
+        "core_sha256": {
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+          "baseline": "fb896772ed1ee9d4bf71c38cefb72b51632f6ea6003f552275c2cde643493de1",
+          "apu-service": "4b36f90be829b82c40ed2bcb9d331e14acdb04f97f94914ef51363fb0adab6be"
+        },
+        "sources": {
+          "snes-throughput-pair.c": "bdaa4303a9416b2a93cdeeff61cc67bfe286773e6bf2df3fd02f06023840df5f",
+          "snes-throughput-replay.c": "24ba13366238cacabf3ed2496967daee3546c2fff33a7b178eca31101825ed70",
+          "run-snes-throughput-pair.py": "d935aab99837c908500f382c61b2a4d6c069cb79cb6c39d15b6bfcc40800ca81"
+        }
+      },
+      "results": [
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-service",
+          "mode": "both-cold-off",
+          "host_cpu": 1,
+          "log": "3-apu-service-both-cold-off.log",
+          "sha256": "055fe3c2d1cf752aa743d0921d89f11dd3f2abbe1bde69bb5c15b7f7d8105444",
+          "cold_cpu_ns": [
+            36749341400,
+            38088149800
+          ],
+          "cold_saving_pct": -3.64,
+          "warm_cpu_mean_ns": [
+            7880726,
+            7775825
+          ],
+          "mean_saving_pct": 1.33,
+          "warm_cpu_p95_ns": [
+            11947500,
+            11857200
+          ],
+          "p95_saving_pct": 0.76,
+          "warm_quarter_saving_pct": [
+            0.96,
+            1.65,
+            1.22,
+            1.51
+          ],
+          "first_four_cpu_ns": [
+            [
+              17053300,
+              17642600
+            ],
+            [
+              7458800,
+              6714700
+            ],
+            [
+              5864800,
+              5990500
+            ],
+            [
+              14118400,
+              13774500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "apu-service",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "0-apu-service-full.log",
+          "sha256": "26acfbd825679ce6c0f72dcfcfd312647b0937c35ff1022a282f0295e33622d5",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4698469,
+            5004096
+          ],
+          "mean_saving_pct": -6.5,
+          "warm_cpu_p95_ns": [
+            6342900,
+            6695400
+          ],
+          "p95_saving_pct": -5.56,
+          "warm_quarter_saving_pct": [
+            -6.3,
+            -8.58,
+            -5.8,
+            -5.11
+          ],
+          "first_four_cpu_ns": [
+            [
+              33707800,
+              32007900
+            ],
+            [
+              6491900,
+              6503400
+            ],
+            [
+              6302600,
+              6448700
+            ],
+            [
+              6205000,
+              6955700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-service",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "1-apu-service-full.log",
+          "sha256": "2b6d5d07bbcf97fde5119b06257d4c409f56e58ec5923f11a0c58d7b2eb5ad97",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4380762,
+            4652892
+          ],
+          "mean_saving_pct": -6.21,
+          "warm_cpu_p95_ns": [
+            5915700,
+            6285400
+          ],
+          "p95_saving_pct": -6.25,
+          "warm_quarter_saving_pct": [
+            -6.62,
+            -7.11,
+            -4.71,
+            -5.93
+          ],
+          "first_four_cpu_ns": [
+            [
+              29684200,
+              30939600
+            ],
+            [
+              6731500,
+              6898400
+            ],
+            [
+              5122100,
+              5749400
+            ],
+            [
+              5454400,
+              5359800
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "apu-service",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "2-apu-service-full.log",
+          "sha256": "80c27009ab83055efca541873a68b54078757134c06c93ad18f982754aa9c15b",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5480034,
+            5729454
+          ],
+          "mean_saving_pct": -4.55,
+          "warm_cpu_p95_ns": [
+            6435800,
+            6815600
+          ],
+          "p95_saving_pct": -5.9,
+          "warm_quarter_saving_pct": [
+            -5.76,
+            -2.63,
+            -3.62,
+            -6.64
+          ],
+          "first_four_cpu_ns": [
+            [
+              35069800,
+              34010700
+            ],
+            [
+              6288600,
+              6440900
+            ],
+            [
+              3610000,
+              4617200
+            ],
+            [
+              5434200,
+              5283100
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "apu-service",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "4-apu-service-full.log",
+          "sha256": "c0139bec8a3081d389cf15d8b5d8fd64e481ff823c3eb13d15eddb91061b5070",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            6086655,
+            6353419
+          ],
+          "mean_saving_pct": -4.38,
+          "warm_cpu_p95_ns": [
+            7183500,
+            7465400
+          ],
+          "p95_saving_pct": -3.92,
+          "warm_quarter_saving_pct": [
+            -3.26,
+            -6.25,
+            -4.37,
+            -3.52
+          ],
+          "first_four_cpu_ns": [
+            [
+              35632500,
+              33211500
+            ],
+            [
+              6685400,
+              6818900
+            ],
+            [
+              7072000,
+              7363000
+            ],
+            [
+              6239200,
+              5447600
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        }
+      ]
+    },
+    "port_only": {
+      "meta": {
+        "results": [
+          {
+            "game": 3,
+            "control": "baseline",
+            "candidate": "apu-port-noop",
+            "mode": "both-cold-off",
+            "host_cpu": 1,
+            "log": "3-apu-port-noop-both-cold-off.log",
+            "sha256": "449c7e04deace520abc6092471481ac4b8cec647fa821c9a584d437fe58a7a6d"
+          },
+          {
+            "game": 0,
+            "control": "baseline",
+            "candidate": "apu-port-noop",
+            "mode": "full",
+            "host_cpu": 3,
+            "log": "0-apu-port-noop-full.log",
+            "sha256": "3637f0f6d84140aa7c64ec7f69a22108dc23ae71cdd91d1e54adadba52d00466"
+          },
+          {
+            "game": 1,
+            "control": "baseline",
+            "candidate": "apu-port-noop",
+            "mode": "full",
+            "host_cpu": 5,
+            "log": "1-apu-port-noop-full.log",
+            "sha256": "c50ffa665b82380a52bb4cd326e90c0b21d247bca93cf0550c8805be1cfb0545"
+          },
+          {
+            "game": 2,
+            "control": "baseline",
+            "candidate": "apu-port-noop",
+            "mode": "full",
+            "host_cpu": 7,
+            "log": "2-apu-port-noop-full.log",
+            "sha256": "92f798460ef9c10f6268cd865ceac406e22e22b83efd29cfe9c5ab7c7c711b56"
+          },
+          {
+            "game": 4,
+            "control": "baseline",
+            "candidate": "apu-port-noop",
+            "mode": "full",
+            "host_cpu": 9,
+            "log": "4-apu-port-noop-full.log",
+            "sha256": "8d3b7be9b8c56578bdfc3700a2b2b696906952ff119d9580ffbcf5c2f79c5f9a"
+          }
+        ],
+        "physical": false,
+        "core_sha256": {
+          "physical": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+          "baseline": "fb896772ed1ee9d4bf71c38cefb72b51632f6ea6003f552275c2cde643493de1",
+          "apu-port-noop": "c804a6916ce873c99373304bb55027948bf15fdc9c5ed0fbb6a6ac63802250e6"
+        },
+        "sources": {
+          "snes-throughput-pair.c": "bdaa4303a9416b2a93cdeeff61cc67bfe286773e6bf2df3fd02f06023840df5f",
+          "snes-throughput-replay.c": "7d346be52c5a76c680ed26cb3c42184a86f93f691334b8fc9c911461a4d814c8",
+          "run-snes-throughput-pair.py": "aaa59179639c88b054a82eb2cf99686567acfca2566f5c15c2ef5eb36fbb1a04"
+        }
+      },
+      "results": [
+        {
+          "game": 3,
+          "control": "baseline",
+          "candidate": "apu-port-noop",
+          "mode": "both-cold-off",
+          "host_cpu": 1,
+          "log": "3-apu-port-noop-both-cold-off.log",
+          "sha256": "449c7e04deace520abc6092471481ac4b8cec647fa821c9a584d437fe58a7a6d",
+          "cold_cpu_ns": [
+            38197760500,
+            38201488100
+          ],
+          "cold_saving_pct": -0.01,
+          "warm_cpu_mean_ns": [
+            7972100,
+            8094649
+          ],
+          "mean_saving_pct": -1.54,
+          "warm_cpu_p95_ns": [
+            11942000,
+            12153400
+          ],
+          "p95_saving_pct": -1.77,
+          "warm_quarter_saving_pct": [
+            -1.4,
+            -0.92,
+            -2.31,
+            -1.52
+          ],
+          "first_four_cpu_ns": [
+            [
+              22975400,
+              21801000
+            ],
+            [
+              7995600,
+              7293600
+            ],
+            [
+              6028500,
+              6434200
+            ],
+            [
+              14140000,
+              15079900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 0,
+          "control": "baseline",
+          "candidate": "apu-port-noop",
+          "mode": "full",
+          "host_cpu": 3,
+          "log": "0-apu-port-noop-full.log",
+          "sha256": "3637f0f6d84140aa7c64ec7f69a22108dc23ae71cdd91d1e54adadba52d00466",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4807736,
+            4779524
+          ],
+          "mean_saving_pct": 0.59,
+          "warm_cpu_p95_ns": [
+            6675900,
+            6692900
+          ],
+          "p95_saving_pct": -0.25,
+          "warm_quarter_saving_pct": [
+            1.41,
+            -1.04,
+            0.72,
+            1.18
+          ],
+          "first_four_cpu_ns": [
+            [
+              22969300,
+              21401300
+            ],
+            [
+              3231300,
+              3597300
+            ],
+            [
+              3172400,
+              3165500
+            ],
+            [
+              3354800,
+              3518900
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 764073
+        },
+        {
+          "game": 1,
+          "control": "baseline",
+          "candidate": "apu-port-noop",
+          "mode": "full",
+          "host_cpu": 5,
+          "log": "1-apu-port-noop-full.log",
+          "sha256": "c50ffa665b82380a52bb4cd326e90c0b21d247bca93cf0550c8805be1cfb0545",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4584968,
+            4621945
+          ],
+          "mean_saving_pct": -0.81,
+          "warm_cpu_p95_ns": [
+            6142600,
+            6059100
+          ],
+          "p95_saving_pct": 1.36,
+          "warm_quarter_saving_pct": [
+            -0.44,
+            -1.93,
+            0.72,
+            -1.43
+          ],
+          "first_four_cpu_ns": [
+            [
+              26944500,
+              19181200
+            ],
+            [
+              3757700,
+              4136800
+            ],
+            [
+              3390400,
+              3026200
+            ],
+            [
+              3106500,
+              3247000
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 2,
+          "control": "baseline",
+          "candidate": "apu-port-noop",
+          "mode": "full",
+          "host_cpu": 7,
+          "log": "2-apu-port-noop-full.log",
+          "sha256": "92f798460ef9c10f6268cd865ceac406e22e22b83efd29cfe9c5ab7c7c711b56",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            4892079,
+            4933481
+          ],
+          "mean_saving_pct": -0.85,
+          "warm_cpu_p95_ns": [
+            6472300,
+            6643400
+          ],
+          "p95_saving_pct": -2.64,
+          "warm_quarter_saving_pct": [
+            -0.55,
+            -0.66,
+            -1.78,
+            -0.48
+          ],
+          "first_four_cpu_ns": [
+            [
+              34271800,
+              27185200
+            ],
+            [
+              5860900,
+              5440200
+            ],
+            [
+              5478000,
+              3734700
+            ],
+            [
+              2972300,
+              3096500
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        },
+        {
+          "game": 4,
+          "control": "baseline",
+          "candidate": "apu-port-noop",
+          "mode": "full",
+          "host_cpu": 9,
+          "log": "4-apu-port-noop-full.log",
+          "sha256": "8d3b7be9b8c56578bdfc3700a2b2b696906952ff119d9580ffbcf5c2f79c5f9a",
+          "cold_cpu_ns": [
+            0,
+            0
+          ],
+          "cold_saving_pct": null,
+          "warm_cpu_mean_ns": [
+            5639924,
+            5575915
+          ],
+          "mean_saving_pct": 1.13,
+          "warm_cpu_p95_ns": [
+            7679100,
+            7351200
+          ],
+          "p95_saving_pct": 4.27,
+          "warm_quarter_saving_pct": [
+            0.92,
+            1.94,
+            0.99,
+            0.55
+          ],
+          "first_four_cpu_ns": [
+            [
+              22466300,
+              26974500
+            ],
+            [
+              3646800,
+              3583300
+            ],
+            [
+              3992100,
+              4217200
+            ],
+            [
+              3196500,
+              3163700
+            ]
+          ],
+          "rendered": [
+            1200,
+            1200
+          ],
+          "audio_frames": 641626
+        }
+      ]
+    }
+  },
+  "held_out_state_checks": {
+    "apu-service": {
+      "core_sha256": "4b36f90be829b82c40ed2bcb9d331e14acdb04f97f94914ef51363fb0adab6be",
+      "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "tests": [
+        {
+          "scenario": "meteor",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "quasar",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "ranger",
+          "calls": 2400,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+          "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+        }
+      ],
+      "device_executed": false
+    },
+    "apu-unity": {
+      "core_sha256": "8ee2f97e7c0fbe731a6dfab59ac5db3082acdd6e1e2227cdd79f0f898e41c6cf",
+      "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+      "tests": [
+        {
+          "scenario": "meteor",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "quasar",
+          "calls": 1200,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+          "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+        },
+        {
+          "scenario": "ranger",
+          "calls": 2400,
+          "normalized_state_and_output_match": true,
+          "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+          "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+        }
+      ],
+      "device_executed": false
+    }
+  },
+  "baseline_executable_text_matches_returned_core": true
+}
