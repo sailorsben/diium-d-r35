@@ -20,7 +20,9 @@ Each frame records kernel thread CPU and wall intervals, plus CPU spent
 checking the callbacks. Subtract the recorded observer CPU to estimate
 core cost, and retain the raw inclusive and wall timings for comparison.
 The observer's cache effects and clock-call cost can still affect the
-result. Both arms check frozen RGB565, PCM and sample-count hashes per call
+result. QEMU under WSL sometimes reports CPU intervals longer than wall
+intervals. The host rehearsal qualifies the output path and CSV format.
+Both arms check frozen RGB565, PCM and sample-count hashes per call
 and their callback layout. The test stops on a mismatch and records the
 game, arm, frame and mismatched field. This comparison supplies a matched
 A7 core saving. Native display and audio costs and the complete reserve
