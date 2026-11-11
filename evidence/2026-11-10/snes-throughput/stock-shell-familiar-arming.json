@@ -1,0 +1,65 @@
+{
+  "payload_commit": "e4c75e7ed57f103362ec732fa8e753cc21b91da5",
+  "returned_boot": {
+    "payload": "ca9c0f2ca5dff018d1776b27b70bcb96c6226ab1",
+    "frontend_bound": true,
+    "english_art_bound": true,
+    "markers_consumed": true,
+    "private_return_inventory_paths": 2160
+  },
+  "locale": "English",
+  "armed": [
+    "retro/d35-launcher1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "marker_text": "d35-launcher1 e4c75e7ed57f103362ec732fa8e753cc21b91da5",
+  "marker_sha256": "4751b59452926c42892732753de9a7ee6a37b2a7d4339647a47bec857f54f237",
+  "modified_payload": {
+    "retro/d35-launcher1/vrtemu": {
+      "bytes": 1716390,
+      "sha256": "b62168e3c9ddab789a2d1001d7ba9b499929de8a0f1a490e863b167150945d12"
+    },
+    "retro/d35-launcher1/ui_en.bkp": {
+      "bytes": 5438795,
+      "sha256": "348be73426cb3f40df8bf235d6cbb3ecfb8ce68e2d6c8becfa2f5bf2ed778ca0"
+    }
+  },
+  "guarded_hashes": {
+    "retro/init": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+    "retro/vrtemu": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+    "retro/ui_en.bkp": "802e099e0cb67309d96a4e7da2efcc6b7d5ad07d3833bf4c80f5d658a5fbf30e",
+    "retro/snes-mvp/launch.sh": "f8d3acb00e8a5506a2f885b57d63010f35cd8983668a41ae5c274eeaf2bd8244",
+    "retro/d35-launcher1/launch.sh": "2a1f59f5eab45b0628b5f02e900bf6482eb5b17e1acfe4ef6b3d6dcb97cab3bd",
+    "retro/d35-launcher1/d35-menu.pcm": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0",
+    "retro/d35-launcher1/libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "002/Star Fox.sfc": "b7381a951e4a62d44c640bbf189cd9161a3ca80f42b9bc514551393a4de9736c"
+  },
+  "previous_files_verified_unchanged": 2158,
+  "fat_clean_before_and_after": true,
+  "new_full_card_backup": false,
+  "physical_test": "pending",
+  "assets": {
+    "nes_character": "Raccoon Mario, Nintendo's Super Mario Bros. 3 key art",
+    "nes_art_source": "https://www.nintendo.com/jp/famicom/software/smb3/index.html",
+    "snes_logo_source": "https://www.nintendo.com/us/store/products/super-nintendo-entertainment-system-nintendo-classics-switch/",
+    "snes_console_source": "https://commons.wikimedia.org/wiki/File:SNES-Mod1-Console-Set.png",
+    "portraits": "ImageGen portraits of Terra, Jin, Chun-Li, Ryu, Guan Yu, and Terry",
+    "local_input_sha256": {
+      "snes.png": "f8d1dabb41caa1e66f6c4c335eec326a920ea03e8b792a8acb2d583f100afe7b",
+      "snes-logo.png": "48887ca2ef34323810b7b617fff214c563bb816f8d97b8e8c7d5dc667c8874b4",
+      "snes-console.png": "da047bbb84338499b8260ba5d9caa08da18c90dded49fbbad80dba5bf95d2267",
+      "nes.png": "a89aa356379adcd1b7e9a85d57cb6732de5c45e3105ba252ded3e9e58937b9c0",
+      "playstation.png": "4744b528f6d0c9d32692e3e09f2fc2ab5777ae4b663855cd0788f9c3feb7630b",
+      "cps1.png": "d653893972d49273a3674d90c97015dcada8a2a244efc1d60facc0f679cb4131",
+      "cps2.png": "436dacaec771adacf3b6bd9168d939c79edb07f758a3f94444eb80d0e4472289",
+      "igs.png": "acf39ba8557a2ded131cfb0c58ab701e120860412471ea9431bf50a6e24c93c7",
+      "neogeo.png": "71881755997e2e6660abfa75bebdb2582180da83271d668567f3853057953a99"
+    }
+  },
+  "arm_fixtures": [
+    "Stock ZIP reader and UI load sites",
+    "Search and Settings",
+    "Pause controls coordinates and all six slot rims",
+    "Menu mixer and state paths"
+  ]
+}

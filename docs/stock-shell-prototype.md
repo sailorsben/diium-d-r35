@@ -305,3 +305,10 @@ Use `--platform-portraits <reviewed-input-directory>` with
 `make-stock-shell-art.py` to reproduce the character panels. Supply
 the seven portrait PNGs and the Super Nintendo wordmark and console
 PNG. Keep the external artwork and the assembled pack local.
+
+I: is armed with `e4c75e7` for one boot. Verify the Super Nintendo and
+NES carousel panels, open Save State in a running game to see the current
+preview and slot grid, then open Controls to check the live mapping
+labels and the footer. The readback verified both payload files, both
+markers and all 2,158 other card files. The volume was clean.
+[Arming receipt](../evidence/2026-11-10/snes-throughput/stock-shell-familiar-arming.json).
