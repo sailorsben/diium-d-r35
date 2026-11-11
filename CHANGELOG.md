@@ -1,5 +1,10 @@
 # Changelog
 
+## Arm the Star Fox full-screen LCD test - 2026-11-10
+
+Verify the one-shot payload, both markers and the clean FAT32 readback.
+[Installation](docs/starfox-fullscreen.md#installation).
+
 ## Prototype Star Fox full-screen LCD playback - 2026-11-10
 
 Crop the Corneria border before the existing hardware scaler and retain

@@ -55,6 +55,16 @@ SETUP and clean teardown. Then the next boot goes to stock. This scope
 covers one gameplay sequence. Title screens, menus and other stages need
 their own picture checks before using the crop in regular gameplay.
 
-The payload is built locally. I: has its FAT dirty flag set, and its
-read-only filesystem scan found no errors. The prototype has not been
-installed or armed.
+## Installation
+
+I: is armed for one boot from `6516e13`. The pre-install archive retained
+the logs and private progress, and the FAT32 mark-clean scan found no
+filesystem errors. Readback matched all 2,114 expected files, including
+both markers and the stock binaries and saves. The launcher dispatcher
+was the only preexisting file changed.
+[Installation receipt](../evidence/2026-11-10/snes-throughput/starfox-fullscreen-installation.json).
+
+Safely eject I: and boot the handheld once. The previous cold warmup took
+about 83 seconds. The full-screen Corneria window starts after that
+warmup and runs for about 20 seconds with sound. Reconnect I: to collect
+the LCD and PCM traces.
