@@ -1,5 +1,11 @@
 # Changelog
 
+## Arm the corrected Star Fox full-screen test - 2026-11-10
+
+Stage the one-boot replay using the established 256×224 scaler input.
+Verify the card, payload and markers against the crash archive.
+[Installation](docs/starfox-fullscreen.md#installation).
+
 ## Keep the proven scaler input for Star Fox zoom - 2026-11-10
 
 Archive the direct crop's 3.267-second scaler call and resulting audio

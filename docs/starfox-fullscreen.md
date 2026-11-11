@@ -101,3 +101,10 @@ Both markers were consumed. The return archive verified the payloads,
 stock binaries and all prior progress. The read-only FAT32 scan found no
 filesystem errors. The dirty flag was set. The replacement build was not
 installed or armed during collection.
+
+The replacement from `0751cb1` is now armed on I: for one boot. All
+2,129 preexisting files matched the crash archive before installation.
+Readback matched all 2,136 expected files, including both boot markers,
+and the FAT32 dirty flag was clear. The test still runs the 1,200-tick
+Corneria sequence with sound and submits 256×224 frames to the scaler.
+[Replacement installation receipt](../evidence/2026-11-10/snes-throughput/starfox-fullscreen2-installation.json).

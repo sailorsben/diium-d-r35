@@ -1,0 +1,43 @@
+{
+  "commit": "0751cb11810be50a2c2b98071c87c386428b2ba0",
+  "target": "retro/snes-starfox-fullscreen2",
+  "physical_result": "pending",
+  "measurement_only": true,
+  "window": "pcm-fullscreen",
+  "ticks": 1200,
+  "viewport": [
+    16,
+    16,
+    226,
+    190
+  ],
+  "scaler_input": [
+    256,
+    224
+  ],
+  "cache_entries": 16,
+  "reserve_ms": 150,
+  "frameskip": 0,
+  "original_files": 2129,
+  "verified_files": 2136,
+  "preexisting_files_changed": [
+    "retro/snes-mvp/launch.sh"
+  ],
+  "payload_hashes": {
+    "display-runner": "466d9c2c69cffe5cefdd4823c292e4535b510a32ebbac567da211116f3699e35",
+    "plus-a7.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "launch.sh": "456851b56258bb1b08c5828e41fdc4bc6b2613f29f1f3785ac23031357a6c8e0",
+    "qualification.json": "8eb8f91751dea0562f4fed243e8b457147b5cd250c5069acb141de6eb1b9d70f",
+    "previous-launch.sh": "104ed124fceda90f4a2aa32ac6236d5c39f902c37dee9ec2bf2e279931de574b"
+  },
+  "dispatcher_sha256": "a73eeabe4ae099608a263be515e0d5ae7d3ff29606c3018e9e8fe0c27b29f052",
+  "previous_dispatcher_sha256": "104ed124fceda90f4a2aa32ac6236d5c39f902c37dee9ec2bf2e279931de574b",
+  "marker_sha256": "a2f92ecac8ffb29cd0fd405e7dfb3443208ce9d3136abc0330620ed72d0a8373",
+  "armed": [
+    "retro/snes-starfox-fullscreen2/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "clean_fat": true,
+  "markclean_after_sparse_archive": true,
+  "new_full_card_backup": false
+}
