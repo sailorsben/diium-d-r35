@@ -1,5 +1,11 @@
 # One-boot Star Fox LCD and audio measurement
 
+Armed on I: from `7e3e014`. Independent readback verified all 2,005 files,
+both markers and a clean FAT32 volume. The card arrived dirty and passed
+the read-only filesystem scan. The dirty flag was cleared after sparse
+archiving, and every original file hash matched before staging.
+[Installation receipt](../evidence/2026-11-10/snes-throughput/stock-shell-display-installation.json).
+
 This is the handheld measurement that precedes the stock-shell prototype.
 The controller runs the same pinned PGO core in four windows. Each window
 replays 8,656 scripted warmup ticks and then 1,200 gameplay ticks. Both LCD

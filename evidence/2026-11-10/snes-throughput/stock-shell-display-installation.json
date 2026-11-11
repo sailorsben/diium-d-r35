@@ -1,0 +1,25 @@
+{
+  "commit": "7e3e0145ed3961a11386f5469b8d2d607099619d",
+  "target": "retro/snes-shell-display1",
+  "physical_result": "pending",
+  "measurement_only": true,
+  "production_gate": false,
+  "prototype_installed": false,
+  "core_sha256": "0974965d71640d391cb5fdbc3f474d5056b72ae834a2fe8c6b8e66600a39cf86",
+  "payload_hashes": {
+    "display-runner": "d52858957778640326be24e232a0ec14bdc69dadd582a7a89d13d49aa84d1d76",
+    "plus-a7.so": "0974965d71640d391cb5fdbc3f474d5056b72ae834a2fe8c6b8e66600a39cf86",
+    "launch.sh": "97de037ea6bf439825641153bda239c6a9d9f577a682f170dd3e36b8cbd24878",
+    "previous-launch.sh": "095a00aca6668e6891b51ab3093a92f10699f2557e836006b12b6bf52633cbfe",
+    "qualification.json": "273de94e88739ad72d03d1c5f3ae52b25c475561caa4bd34f59f66b8e544827a"
+  },
+  "original_files": 1998,
+  "dispatcher_sha256": "7162a6817d08c1b65c70e3c3c8519f19f0231b711a22329110bc24fbc8c812ef",
+  "marker_sha256": "a1d9f49f1f712d644486344909fd76f6781925a9b775316799b06822f2e2f777",
+  "verified_files": 2005,
+  "clean_fat": true,
+  "armed": [
+    "retro/snes-shell-display1/armed",
+    "retro/snes-mvp/armed"
+  ]
+}
