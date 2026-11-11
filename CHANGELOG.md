@@ -1,5 +1,12 @@
 # Changelog
 
+## Trace the stock menu artwork and settings - 2026-11-10
+
+Match the menu code to the card's eleven locale packs, decode their
+archive format, and recover the English settings background and its
+row overlays. Trace how stock saves language, brightness and volume.
+[Stock menu audit](docs/stock-snes-loader.md#stock-menu-artwork-and-settings).
+
 ## Verify the current stock-menu SNES loader - 2026-11-10
 
 Match the installed loader bytes, recover the SNES selection and callback

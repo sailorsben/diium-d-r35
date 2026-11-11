@@ -92,3 +92,45 @@ ARM/QEMU process, intercepting core opens, symbol resolution, initial
 device hooks, ROM I/O and gameplay entry. The separate SPI bootloader
 has its own verified parser and section-loader analysis.
 [Firmware loader analysis](firmware-offline-qualification.md).
+
+## Stock menu artwork and settings
+
+The menu is part of `vrtemu`. `mui_LoadSetting` (`0x81da0`) reads
+`retro/setting.xml`: its `config` element provides language, volume and
+brightness, and its `ui` elements provide the locale package filenames.
+The current card lists eleven `ui_*.bkp` files, all present. `mui_LoadConfig`
+(`0x83c14`) loads `ui.cfg` from the selected package. The executable has
+keys for list layout, font colors and thumbnail placement; the actual
+English pack's `ui.cfg` only supplies a short restore-prompt section.
+
+`mui_LoadUIResource` (`0x82aa8`) opens a named entry in a package,
+decompresses it and returns a buffer. `main_menu` (`0x98124`) loads
+`menu.raw`; the locale pack also supplies `type.raw`, `search.raw`,
+`game.raw` and `setting.raw`. These are 640×480 canvases with a table
+of 16-byte records (pixel offset, canvas dimensions, destination
+rectangle) followed by 16-bit pixels. `mui_DispBlock` (`0x803a8`)
+copies a selected record row by row. `setting.raw` has a full background
+and four row highlight images; the base already contains the English
+title, labels and button legend. `mui_setting` (`0x8dfe4`) copies the
+base, draws the highlighted row, cursor and runtime text, and also
+loads `img_language1.raw` and `img_language2.raw` for language selection.
+The game-list thumbnail thread (`0x9c49c`) uses a separate PNG path
+under the game's `images` directory.
+
+Brightness and volume go through `SetLEDLevel` and `SetSoundVol`.
+Language changes reload locale resources. Each branch edits its own
+attribute on `config` and saves, flushes and syncs `setting.xml`.
+The actions, joystick handling and restore confirmation are in the
+executable; changing a label or drawing another row does not add an
+action. The shared `retro/resource` archive is a separate pack. It
+contains `bg.raw` and the two font entries that `main_menu` explicitly
+loads; `setting.raw` comes from the locale pack.
+
+The read-only `build/inspect-stock-menu.py I:/retro` checks the on-card
+formats independently: WQW replaces the three ZIP header signatures,
+member filenames are XORed with `0x5a`, and the ZIP payloads and CRCs
+are unchanged. The shared pack and all eleven locale packs passed;
+all five English canvas tables were within bounds. The optional
+`--settings-preview <new-local-png>` decodes the base RGB565 artwork
+without drawing runtime overlays. This verifies the files and the
+code paths, with no repacked image installed or tested on the panel.
