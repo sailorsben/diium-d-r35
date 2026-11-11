@@ -238,8 +238,7 @@ Under QEMU, the stock ARM ZIP code opened and decoded all eleven members of
 both English packs. The search worker and both Settings load sites passed.
 A shell fixture covered marker handling, bind order and rollback. The
 stage readback on I: verified the payload and the stock pack, binaries and
-private progress hashes. Both one-shot markers are absent. Handheld
-appearance and audio for the refresh await a physical boot.
+private progress hashes. Both one-shot markers were absent when staged.
 [Return and stage receipt](../evidence/2026-11-10/snes-throughput/stock-shell-refresh-stage.json).
 
 To rebuild the artwork, use the pinned English pack, the locally saved
@@ -252,3 +251,22 @@ The renderer requires Pillow and NumPy.
 python build/make-stock-shell-art.py <stock-ui_en.bkp> <scenes.json> <font.ttf> <new-art-output>
 python build/make-stock-menu-music.py <new-music-output>
 ```
+
+### Handheld test
+
+With the refreshed launcher armed, safely eject the card and start the
+handheld from power-off. On the first boot, check the illustrated carousel,
+open Settings and check its underline, listen to the new menu loop, and
+search for `FOX` to launch Star Fox. Note any clicking during gameplay.
+The interactive launcher uses the same stock game audio path as the
+previous launcher test.
+
+After shutdown, the returned log should report
+`frontend_bound_for_this_boot=1` and `english_art_bound_for_this_boot=1`.
+Both consumed markers should identify the refresh payload commit. A
+subsequent boot uses the stock launcher.
+
+The refresh was armed on I: from `ca9c0f2`. Readback verified both markers,
+all 2,160 existing files and a clean FAT volume. The only card writes were
+the one-shot markers.
+[Arming receipt](../evidence/2026-11-10/snes-throughput/stock-shell-refresh-arming.json).

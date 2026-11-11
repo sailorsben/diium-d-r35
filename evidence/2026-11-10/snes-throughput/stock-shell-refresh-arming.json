@@ -1,0 +1,32 @@
+{
+  "payload_commit": "ca9c0f2ca5dff018d1776b27b70bcb96c6226ab1",
+  "target": "retro/d35-launcher1",
+  "armed": [
+    "retro/d35-launcher1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "marker_text": "d35-launcher1 ca9c0f2ca5dff018d1776b27b70bcb96c6226ab1",
+  "marker_sha256": "2fa628b6d899ae8dcf62c205bf18c446747f4c467c3ca838ca9c7f9d125831ea",
+  "verified_payload_sha256": {
+    "retro/d35-launcher1/vrtemu": "e4db2bb20b0b88d54fbf2d751f066ebd050491b5bf39c33b7367826dbf3c7781",
+    "retro/d35-launcher1/ui_en.bkp": "a5af723298028ab54d83952af9ba8e6bce9c52d987ef993e4478e4557945c0e1",
+    "retro/d35-launcher1/d35-menu.pcm": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0",
+    "retro/d35-launcher1/launch.sh": "2a1f59f5eab45b0628b5f02e900bf6482eb5b17e1acfe4ef6b3d6dcb97cab3bd",
+    "retro/d35-launcher1/libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "retro/vrtemu": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+    "retro/ui_en.bkp": "802e099e0cb67309d96a4e7da2efcc6b7d5ad07d3833bf4c80f5d658a5fbf30e",
+    "retro/init": "b89d080e324a518a516f12c470f790e8967626be0cca5db7149846b68319dce7",
+    "retro/snes-mvp/launch.sh": "f8d3acb00e8a5506a2f885b57d63010f35cd8983668a41ae5c274eeaf2bd8244",
+    "002/Star Fox.sfc": "b7381a951e4a62d44c640bbf189cd9161a3ca80f42b9bc514551393a4de9736c"
+  },
+  "previous_files_verified_unchanged": 2160,
+  "file_count_after_arming": 2162,
+  "card_writes": [
+    "retro/d35-launcher1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "fat_clean_before_and_after": true,
+  "new_full_card_backup": false,
+  "locale": "English",
+  "physical_test": "pending"
+}
