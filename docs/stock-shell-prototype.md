@@ -1,0 +1,138 @@
+# Stock menu with an owned SNES loader
+
+The prototype preserves the vendor's menu code and assets, and uses an owned
+libretro launch path for SNES. The device menu, games list, artwork, language
+packs, brightness, volume, controller mapping, and non-SNES launchers stay
+with the same stock shell. This is a stock-derived prototype, not a source
+reimplementation of the entire menu.
+
+The builder accepts only the pinned stock ELF and the qualified profile-guided
+SNES core. It adds one read/execute segment of owned ARM code and reserves
+zero-filled session storage. It checks the original word at each of 24 patch
+sites. No vendor binary or music is published with this repository. The local
+prototype was assembled off the card; the card is untouched and unarmed.
+
+## What the prototype changes
+
+- Selecting SNES opens `retro/libs/d35-snes.so` directly. There is no v11
+  proxy library between `vrtemu` and the core. The stock supervisor, watchdog
+  and device driver are kept. The candidate doesn't remove the boot-time
+  `ldpath_launcher` diagnostic or claim that removing it would save gameplay CPU.
+- The owned launch path reads the exact raw ROM length or consumes the
+  stock archive decoder's owned result. It checks the core's load result and
+  rejects unsupported audio or pixel formats. Its environment callback
+  avoids the stock `SET_GEOMETRY` out-of-bounds write.
+- The 32,040 Hz core audio is converted to the stock 44,100 Hz sink using the
+  same continuous interpolation as v11. Reducing the ratio to 178:245 keeps
+  signed rounding exact. The stock output backend is still responsible for
+  hardware playback. This work doesn't qualify native PCM recovery.
+- An unchanged image stays on the screen after a full visible-byte comparison.
+  A few byte samples only reject changed pictures early. Changed pictures
+  still use ordered stock submission and two chunk-backed buffers. Reusing a
+  buffer and freeing the pool fence the driver's display work.
+- The language chooser retains all eleven locale packs. English is the default
+  for missing or invalid language values; valid existing language preferences
+  take priority. In Settings, **Select** toggles SNES **Frame Skip Off / Auto**.
+  Off is the default. Auto uses the existing stock lateness signal and leaves
+  at least two rendered ticks between skips. The core still runs CPU, input,
+  and audio for every tick. The added footer is in English in this prototype.
+- The original **Blue Circuit** loop is stereo, 16-bit, 44.1 kHz PCM. It
+  replaces the menu's 22.05 kHz MP3 during menu playback, with no live MP3
+  decode for the replacement. It uses the stock mixer/volume path and leaves
+  menu sound effects alone. The PCM is 2,822,400 bytes in RAM; the stock MP3
+  and its fallback remain available. No changes are made to game music.
+- SNES state filenames have a core-specific suffix. The pause slot's preview
+  and thumbnail append use that same private path. The normal autosnapshot
+  thumbnail is suppressed for the prototype's SNES route. Older v11 states
+  are not automatically imported. The previous stock state stays available
+  on stock boot. Physical save/restore and stock return remain to be checked.
+
+## Offline qualification
+
+Run the patched ELF against the same profile-guided core behind the exact
+installed v11 adapter, with simulated display/audio sinks. Each game contributes
+1,200 checked ticks. With Auto off, visible RGB565, 44.1 kHz PCM, callback batch
+boundaries and the final normalized state match. With forced periods of stock
+lateness, Auto matches audio and the normalized state. Intentional render drops
+can change the visible sequence, even when an identical image would have been
+suppressed later by the display comparison.
+
+| Game | Stock submits | Direct, Off | Direct, Auto |
+| --- | ---: | ---: | ---: |
+| Super Mario World (PAL) | 1,200 | 862 | 779 |
+| Super Metroid | 1,200 | 699 | 677 |
+| F-Zero | 1,200 | 1,200 | 1,084 |
+| Star Fox | 1,200 | 398 | 398 |
+| Rendering Ranger R2 | 1,200 | 1,200 | 1,084 |
+
+The stock and patched dispatch fixtures match on NES, SNES, GBA, GB/GBC,
+Mega Drive and PS1 formats, and on the stock arcade GMA and ZIP routes.
+The archive dispatch fixture stubs archive I/O; the SNES playback fixture
+also checks raw versus predecoded ZIP handoff and closes a core that rejects a
+ROM without entering gameplay. These are loader checks, not full-system
+compatibility runs for every other emulator.
+
+The stock ARM mixer emits 735 frames per fill, exactly matching the new PCM
+after its normal gain adjustment across the 16-second loop boundary. Its
+offline mixer runs take less CPU with PCM than with the stock MP3. The
+settings fixture verifies locale validation, held Select behavior, file
+persistence, display submission, and the isolated state preview/append path.
+
+In three 1,800-fill ARM/QEMU mixer runs per format, median thread CPU was
+278.70 ms for the stock MP3 and 182.21 ms for the PCM replacement, a 34.6%
+reduction in that fixture. There is no device output call in the timing sink.
+The first stock/direct launch pairs saved 1.8–6.3 ms in four fixtures and
+lost 7.1 ms in the fifth. Gameplay CPU changed sign in repeated pairs for
+four titles. These measurements do not establish a general launch or game
+CPU gain; the display work counts are the more useful result for the device
+experiment.
+
+Alternating calls within one ARM/QEMU process with two identical core
+instances put the direct path 0.2–1.0% slower in the four shorter fixtures
+with the display worker omitted. The adapter removal therefore has no
+demonstrated steady-state CPU advantage by itself. The count of jobs saved
+still tells us which real device work to measure.
+[Qualification results](../evidence/2026-11-10/snes-throughput/stock-shell-prototype.json).
+
+## Device measurement gate
+
+The exact repeat check removes 802 of 1,200 Star Fox repacks and scaler jobs in
+this replay. A prior physical return put a repack at 0.863 ms of wall time and
+the display worker at 0.767 ms CPU per submitted picture in a short opening
+window. These clocks overlap and cannot be added as a savings prediction. The
+QEMU fixture omits that display worker and runs the exact same core on both
+sides. Its launch/steady-state measurements cannot establish A7 savings.
+
+At a repeat fraction `r`, the display change breaks even on CPU only if
+`r × (repack CPU + scaler/flip worker CPU) > compare CPU + added fence CPU`.
+Measured A7 comparison and fence cost, a candidate's total A7 saving, and the
+remaining audio deficit are pending. The existing
+[complete-window reserve model](snes-native-throughput-followup.md#audio-reserve-is-a-second-deadline)
+defines the 16.688 ms Star Fox target and audio reserve constraint. The
+prototype does not yet pass the device installation performance gate.
+
+The next physical experiment should use the exact same PGO core and inputs
+on both paths, Auto off. Record complete PCM quota/acceptance/reserve, board
+fence and worker cost, launch time, visible image identity and progress hashes.
+Check stock return and a non-SNES game. Only then repeat with Auto enabled and
+compare the actual dropped pictures and reserve improvement. Boot must wait
+for `showlogo` to exit before either path owns display.
+
+## Reproduce locally
+
+Run from the workspace under WSL. Supply privately retained originals and
+replay fixtures. Use a fresh workspace or Linux scratch output.
+
+```sh
+python3 build/assemble-stock-shell.py <vrtemu> <pgo-core> <new-out>
+python3 build/make-stock-menu-music.py <new-music-out>
+python3 build/check-stock-shell.py <out> <vrtemu> <v11-adapter> <fixture-root>
+```
+
+The additional ARM fixtures are `build/check-stock-shell-menu.c` and
+`build/check-stock-shell-routes.c`. Compile both with the Cortex-A7 hard-float
+GCC toolchain and run under QEMU; the menu fixture takes the patched ELF,
+stock BGM, a scratch directory with `d35-menu.pcm`, and `pcm` or `mp3` mode.
+The route fixture takes the stock or patched ELF. The local preview WAV is
+generated from the same PCM bytes as the candidate music. No install command
+or SD copy is part of this build.

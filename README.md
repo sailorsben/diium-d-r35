@@ -1,5 +1,11 @@
 # DIIUM D-R35: device findings and SNES platform
 
+The [stock-shell prototype](docs/stock-shell-prototype.md) preserves the
+vendor menu and other emulator routes while launching the profile-guided
+SNES core directly. English is the fallback, frame drop defaults to off,
+and new 44.1 kHz stereo PCM replaces the menu MP3 during playback. The
+prototype is qualified offline; I: has not been changed.
+
 The [physical raster test](docs/snes-raster-device-test.md) completed all
 12 pairs. Full-tile strips cut Star Fox mean core CPU by 30.1%, from
 22.603 to 15.793 ms per emulated tick. Replay pixels and PCM matched.

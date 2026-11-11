@@ -1,5 +1,12 @@
 # Changelog
 
+## Prototype the stock menu with an owned SNES loader - 2026-11-10
+
+Retain the stock shell and non-SNES routes. Load the profile-guided SNES
+core directly, reuse identical pictures, and offer an opt-in frame drop
+setting. Add a 44.1 kHz stereo menu track and isolate direct-core states.
+[Prototype and qualification](docs/stock-shell-prototype.md).
+
 ## Trace the stock menu artwork and settings - 2026-11-10
 
 Match the menu code to the card's eleven locale packs, decode their

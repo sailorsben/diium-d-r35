@@ -1,5 +1,12 @@
 # Device findings
 
+**Stock-shell prototype (2026-11-10).** The local stock-derived ELF opens the
+PGO SNES core directly. The stock menu/locale packs and other system dispatch
+remain. All five offline replays preserve visible output and PCM with frame
+drop off. Star Fox avoids 802 identical submissions. New stereo PCM menu
+music and the optional frame-drop control are offline only. I: is unchanged.
+[Prototype and measurement gate](stock-shell-prototype.md).
+
 **Current game loader (2026-11-10).** The card's normal SNES route is
 `main` → `vrtemu` → v11 `emu_sfc.so` → `emu_sfc_plus.so`.
 The extracted ARM loader verifies the extension mapping, callback order

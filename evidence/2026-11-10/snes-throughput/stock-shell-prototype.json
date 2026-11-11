@@ -1,0 +1,139 @@
+{
+  "physical": false,
+  "card_writes": 0,
+  "patched_elf_sha256": "8fa8cdc69e1833d75ce22c2dc35142f93d0f2c479be9970ad31c5e5773d6d8c6",
+  "core_sha256": "0974965d71640d391cb5fdbc3f474d5056b72ae834a2fe8c6b8e66600a39cf86",
+  "patch_sites": 24,
+  "submissions_order": [
+    "stock adapter",
+    "direct Off",
+    "direct Auto"
+  ],
+  "games": [
+    {
+      "game": "Super Mario World (PAL)",
+      "ticks": 1200,
+      "submissions": [
+        1200,
+        862,
+        779
+      ],
+      "off_visible_crc32": "37fc9e6a",
+      "pcm_crc32": "7d1886cd",
+      "pcm_frames": 1051673,
+      "callback_layout_crc32": "4cf9896f",
+      "normalized_state_crc32": "500111b9",
+      "initial_launch_saved_ns": 3930100.0,
+      "initial_game_cpu_saved_ns": -136928300.0
+    },
+    {
+      "game": "Super Metroid",
+      "ticks": 1200,
+      "submissions": [
+        1200,
+        699,
+        677
+      ],
+      "off_visible_crc32": "c31756d9",
+      "pcm_crc32": "ef0943cc",
+      "pcm_frames": 883136,
+      "callback_layout_crc32": "34f39f0a",
+      "normalized_state_crc32": "d89b6517",
+      "initial_launch_saved_ns": 6334850.0,
+      "initial_game_cpu_saved_ns": 215709300.0
+    },
+    {
+      "game": "F-Zero",
+      "ticks": 1200,
+      "submissions": [
+        1200,
+        1200,
+        1084
+      ],
+      "off_visible_crc32": "924d3213",
+      "pcm_crc32": "ffead52c",
+      "pcm_frames": 883136,
+      "callback_layout_crc32": "263a130c",
+      "normalized_state_crc32": "de985d6f",
+      "initial_launch_saved_ns": 1775600.0,
+      "initial_game_cpu_saved_ns": -256469100.0
+    },
+    {
+      "game": "Star Fox",
+      "ticks": 1200,
+      "submissions": [
+        1200,
+        398,
+        398
+      ],
+      "off_visible_crc32": "f76c1d8a",
+      "pcm_crc32": "b347f92a",
+      "pcm_frames": 883137,
+      "callback_layout_crc32": "5a14b614",
+      "normalized_state_crc32": "ff9c4c91",
+      "initial_launch_saved_ns": 2492800.0,
+      "initial_game_cpu_saved_ns": 481307550.0
+    },
+    {
+      "game": "Rendering Ranger R2",
+      "ticks": 1200,
+      "submissions": [
+        1200,
+        1200,
+        1084
+      ],
+      "off_visible_crc32": "3c653100",
+      "pcm_crc32": "bd6fee50",
+      "pcm_frames": 883136,
+      "callback_layout_crc32": "2a08d174",
+      "normalized_state_crc32": "27285078",
+      "initial_launch_saved_ns": -7063800.0,
+      "initial_game_cpu_saved_ns": -123867350.0
+    }
+  ],
+  "archive_and_raw_match": true,
+  "rejected_rom_gameplay_ticks": 0,
+  "in_process_timings": [
+    {
+      "game": "Super Mario World (PAL)",
+      "baseline_cpu_ns": 5109563400,
+      "direct_cpu_ns": 5138847500
+    },
+    {
+      "game": "Super Metroid",
+      "baseline_cpu_ns": 5029159900,
+      "direct_cpu_ns": 5047708400
+    },
+    {
+      "game": "F-Zero",
+      "baseline_cpu_ns": 5815619500,
+      "direct_cpu_ns": 5871592500
+    },
+    {
+      "game": "Rendering Ranger R2",
+      "baseline_cpu_ns": 6528033000,
+      "direct_cpu_ns": 6542382300
+    }
+  ],
+  "mixer": {
+    "pcm_sha256": "112be780d8d84957629748b33026f5c3a49d98c7594821635f0d0b49b024bb17",
+    "pcm_cpu_ns": [
+      162677400,
+      184851600,
+      182212900
+    ],
+    "stock_mp3_cpu_ns": [
+      233428300,
+      278704400,
+      308050800
+    ],
+    "fills_per_run": 1800
+  },
+  "settings": [
+    "English fallback and valid locale IDs",
+    "held Select toggles once",
+    "persistent option",
+    "private state preview and thumbnail append"
+  ],
+  "equal_stock_route_count": 15
+}

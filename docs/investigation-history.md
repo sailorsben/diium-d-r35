@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Keep the stock shell and own the SNES launch - 2026-11-10
+
+Use the exact stock menu and a direct PGO core route so the performance
+comparison separates the frontend from emulation. Six thousand offline
+calls retain visible output and PCM with Auto off. Reuse avoids 802 Star Fox
+submissions. Bypass menu MP3 decode with a 44.1 kHz stereo loop. No handheld
+performance or new boot acceptance yet.
+[Stock shell prototype](stock-shell-prototype.md).
+
 ## Price Star Fox core, repeated display work and PCM reserve - 2026-11-10
 
 Use both returned A7 timing traces and the exact sample quota. An added
