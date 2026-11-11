@@ -1,5 +1,26 @@
 # Stock menu with an owned SNES loader
 
+## Search and Settings test
+
+The search worker reads the filename, display title and alternate names.
+It matches ASCII letters without regard to case and ignores spaces and
+punctuation. It keeps the localized initials behavior. The firmware
+worker now terminates each full results page before parsing it. The
+original code left the page unterminated and could read into old results.
+The ARM fixture runs the vendor worker and its list parser against the
+card index, including paging, clearing the query and zero matches.
+
+The main Settings tile uses the matching beveled letter from Favorites.
+The English settings heading also reads Settings. The artwork hook
+changes the two labels in the loaded sprites. The stock assets on the
+card supply the same backgrounds and the localized headings.
+
+The installed Star Fox cartridge is the same revision as the successful
+Corneria replay. Its SNES list row and global search row point to
+`002/Star Fox.sfc`. A first boot should show the Settings tile and
+heading, return Star Fox for `FOX` and `STARFOX`, and start the game
+from either list. The one-boot test still uses the stock game audio path.
+
 ## Playable launcher preparation
 
 The interactive build uses the same 16-entry core that completed the
@@ -27,15 +48,14 @@ private Linux mount namespace. It covers an absent marker and a failed
 mount as well as successful binding. Handheld menu startup, in-game
 audio, live controls and returning to the menu remain to be exercised.
 
-The card's normal SNES list currently contains Final Fantasy VI and
-Chrono Trigger entries. The Star Fox ROM used for the tests resides in
-the replay fixtures. A menu entry is needed for an interactive Star Fox
-test.
+At the first preparation, the normal SNES list contained Final Fantasy
+VI and Chrono Trigger. The Star Fox cartridge was available in the
+replay fixtures.
 
 The four payload files are staged on I: in `retro/d35-launcher1`.
 The preparation verified all 2,155 expected files and cleared the FAT32
-dirty flag after archiving the returned logs and saves. The one-boot
-test still needs to be armed.
+dirty flag after archiving the returned logs and saves. The initial
+preparation left the one-boot markers unset.
 [Preparation receipt](../evidence/2026-11-10/snes-throughput/stock-shell-live-preparation.json).
 
 ## First prototype

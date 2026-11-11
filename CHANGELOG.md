@@ -1,5 +1,11 @@
 # Changelog
 
+## Add Star Fox to the launcher and fix search and Settings - 2026-11-10
+
+Use the tested Star Fox revision in the SNES and search indexes. Match
+display titles and aliases, terminate full result pages, and update the
+two Settings artwork labels. [Launcher test](docs/stock-shell-prototype.md#search-and-settings-test).
+
 ## Prepare the interactive stock-shell launcher - 2026-11-10
 
 Package the latest tested SNES core, stock menu, PCM menu music and

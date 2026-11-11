@@ -22,6 +22,7 @@
 #define FREE FN(0x11b6c, void, void *)
 #define COPY FN(0x11ecc, void *, void *, const void *, size_t)
 #define CMP FN(0x11fc8, int, const void *, const void *, size_t)
+#define STRCMP FN(0x11f74, int, const char *, const char *)
 #define ZERO FN(0x11c8c, void *, void *, int, size_t)
 #define DISP FN(0xa6658, void, const void *, unsigned, unsigned, size_t)
 #define STOCK_HANDLE VAR(0x1bd5dc, void *)
@@ -381,6 +382,147 @@ ENTRY FILE *stock_state_fopen(const char *original,const char *mode)
 
 ENTRY void stock_save_snap(void)
 { if(!S.game.core) FN(0x9c9c8,void,void)(); }
+
+static unsigned char search_character(unsigned char c)
+{
+    if(c>='A' && c<='Z') return c+('a'-'A');
+    if((c>='a' && c<='z') || (c>='0' && c<='9') || c>=128) return c;
+    return 0;
+}
+
+static bool search_field(const char *begin, const char *end,
+                         const unsigned char *query, size_t length)
+{
+    for(const char *start=begin; start<end; ++start) {
+        if(search_character(*start)!=query[0]) continue;
+        size_t matched=1;
+        for(const char *p=start+1; p<end && matched<length; ++p) {
+            unsigned char c=search_character(*p);
+            if(c && c!=query[matched]) break;
+            if(c) ++matched;
+        }
+        if(matched==length) return true;
+    }
+    return false;
+}
+
+ENTRY int stock_search_row(const char *original_field, const char *query, const char *row)
+{
+    unsigned char normalized[128];
+    size_t length=0;
+    for(size_t i=0; i<sizeof(normalized) && query[i]; ++i) {
+        unsigned char c=search_character(query[i]);
+        if(c) normalized[length++]=c;
+    }
+    if(!length) return 1;
+    /* Index rows hold the path, display title and three alternate names.
+     * The basename can match without exposing the system directory or suffix. */
+    for(unsigned field=0; field<5; ++field) {
+        const char *end=row;
+        while(*end && *end!=';' && *end!='\r' && *end!='\n') ++end;
+        const char *begin=row, *last=end;
+        if(!field) {
+            for(const char *p=row; p<end; ++p) {
+                if(*p=='/' || *p=='\\') { begin=p+1; last=end; }
+                else if(*p=='.') last=p;
+            }
+        }
+        if(search_field(begin,last,normalized,length)) return 1;
+        if(*end!=';') break;
+        row=end+1;
+    }
+    /* Preserve the vendor's subsequence matching for localized initials. */
+    if(VAR(0x1998d8, unsigned)!=1)
+        return FN(0x80acc, int, const char *, const char *)(original_field,query)!=0;
+    return 0;
+}
+
+/* At the pinned call in mui_SearchThread, r11 holds the current index row.
+ * r0 and r1 carry the vendor-selected field and the query. */
+__attribute__((naked)) ENTRY void stock_search_match(void)
+{
+    __asm__ volatile("mov r2, r11\n\tb stock_search_row");
+}
+
+ENTRY int stock_parse_search_page(unsigned offset, char *end)
+{
+    *end='\0';
+    return FN(0x8181c, int, unsigned)(offset);
+}
+
+/* The full-page path must terminate the last copied row before parsing.
+ * r10 points at the next unused result byte at this call site. */
+__attribute__((naked)) ENTRY void stock_search_finish_page(void)
+{
+    __asm__ volatile("mov r1, r10\n\tb stock_parse_search_page");
+}
+
+struct art_block {
+    uint32_t offset;
+    uint16_t width, height, left, top, right, bottom;
+};
+
+static uint16_t *full_art_block(struct art_block *art, unsigned size, unsigned index)
+{
+    const unsigned frame_bytes=640u*480u*2u;
+    if(size<sizeof(*art) || art[0].offset<(index+1)*sizeof(*art) ||
+       art[0].offset>size || size<frame_bytes) return NULL;
+    const struct art_block *b=&art[index];
+    if(b->width!=640 || b->height!=480 || b->left || b->top ||
+       b->right!=640 || b->bottom!=480 || b->offset<art[0].offset ||
+       (b->offset&1) || b->offset>size-frame_bytes) return NULL;
+    return (uint16_t *)((uint8_t *)art+b->offset);
+}
+
+static void settings_heading(uint16_t *frame)
+{
+    /* Lowercase s at the original title's size and baseline. */
+    static const char glyph_s[17][16]={
+        "....+######+...", "...########+...", "..####++.+#+...",
+        "..###..........", "..###..........", "..###+.........",
+        "..+###++.......", "...######+.....", "....+######....",
+        "......+#####...", "........+###+..", ".........###+..",
+        ".........+##+..", "..#++...+###+..", ".+#########+...",
+        "..########+....", "....++++......."
+    };
+    for(unsigned y=0; y<17; ++y)
+        for(unsigned x=0; x<15; ++x) {
+            char shade=glyph_s[y][x];
+            if(shade!='.') frame[(20+y)*640+144+x]=shade=='#'?0xffff:0xa534;
+        }
+}
+
+static void settings_tile(uint16_t *frame, const uint16_t *favorites)
+{
+    /* Reuse the beveled final S from the matching Favorites tile. The
+     * surrounding colored pixels belong to its background. */
+    for(unsigned y=0; y<40; ++y)
+        for(unsigned x=0; x<32; ++x) {
+            uint16_t p=favorites[(114+y)*640+312+x];
+            unsigned r=(p>>11)*2, g=(p>>5)&63, b=(p&31)*2;
+            if(r>=30 && g>=30 && b>=30 && r+8>=g && g+8>=r &&
+               b+8>=g && g+8>=b && r+8>=b && b+8>=r)
+                frame[(103+y)*640+293+x]=p;
+        }
+    for(unsigned y=147; y<=150; ++y)
+        for(unsigned x=291; x<=326; ++x) frame[y*640+x]=frame[y*640+283];
+}
+
+ENTRY int stock_load_art(struct art_block **art, const char *name)
+{
+    int loaded=FN(0x82aa8, int, struct art_block **, const char *)(art,name);
+    if(!loaded || !*art) return loaded;
+    unsigned size=VAR(0x19bc0c, unsigned);
+    if(!STRCMP(name,"type.raw")) {
+        uint16_t *tile=full_art_block(*art,size,17);
+        const uint16_t *favorites=full_art_block(*art,size,13);
+        if(tile && favorites) settings_tile(tile,favorites);
+    } else if(VAR(0x1998d8, unsigned)==1 && !STRCMP(name,"setting.raw")) {
+        uint16_t *frame=full_art_block(*art,size,0);
+        if(frame) settings_heading(frame);
+    }
+    return loaded;
+}
 
 /* The locale list and its on-device chooser remain stock. English is
  * index one; honor all explicit valid language selections. */

@@ -35,6 +35,11 @@ PATCHES = {
     0x9AA70: (0xEB00234E, "stock_save_state"),
     0x9B3D8: (0xEB002159, "stock_load_state"),
     0xA47A4: (0xEBFFE087, "stock_save_snap"),
+    0x83504: (0xEBFFF570, "stock_search_match"),
+    0x835C0: (0xEBFFF895, "stock_search_finish_page"),
+    0x8A79C: (0xEBFFE0C1, "stock_load_art"),
+    0x8E3A0: (0xEBFFD1C0, "stock_load_art"),
+    0x8F48C: (0xEBFFCD85, "stock_load_art"),
 }
 
 
