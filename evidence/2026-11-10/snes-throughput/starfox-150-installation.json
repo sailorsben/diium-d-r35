@@ -1,0 +1,31 @@
+{
+  "commit": "8cf7306198dc8a62d5c57cf3dc4f22d3d841e365",
+  "target": "retro/snes-starfox-150",
+  "physical_result": "pending",
+  "measurement_only": true,
+  "production_gate": false,
+  "original_files": 2058,
+  "windows": [
+    "pcm-cache",
+    "lcd-control",
+    "lcd-cache"
+  ],
+  "entries": 16,
+  "reserve_ms": 150,
+  "prime_frames": 6615,
+  "payload_hashes": {
+    "display-runner": "885d9f66379f6cb76174ce65e27923ddb30b8f9a48cae61bca066ffdd0679474",
+    "plus-a7.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "launch.sh": "b5108af186c5ea5c5efa6cd1839c941824f64d4f49a238d384a6aa9f3b61405e",
+    "previous-launch.sh": "7162a6817d08c1b65c70e3c3c8519f19f0231b711a22329110bc24fbc8c812ef",
+    "qualification.json": "bb06839c27fc6dd373bd5a7124839a2e75c9d38f534f9be2a96f2e8a46425d22"
+  },
+  "dispatcher_sha256": "6c81da45d6b9df9fefd846e9faaff682f08829648c0d4a2fd859c97a76bb3461",
+  "marker_sha256": "9d549a5cad21dff4aeeecf1d7d2d460cfe7cf7401f896b5ee5b2ef540b53bf78",
+  "verified_files": 2065,
+  "clean_fat": true,
+  "armed": [
+    "retro/snes-starfox-150/armed",
+    "retro/snes-mvp/armed"
+  ]
+}

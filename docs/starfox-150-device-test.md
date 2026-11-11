@@ -1,5 +1,10 @@
 # One-boot Star Fox test with a 150 ms audio reserve
 
+I: is armed. Independent readback verified 2,065 file hashes, both boot
+markers, and clean FAT32. The previous logs and private progress were
+archived before staging.
+[Installation readback](../evidence/2026-11-10/snes-throughput/starfox-150-installation.json).
+
 The first window plays the Corneria replay on the real LCD and native
 44.1 kHz PCM. It uses the 16-entry Mode 2 cache, exact duplicate LCD
 reuse and explicit PCM start after 6,615 stereo frames have been accepted.
@@ -43,6 +48,9 @@ and shows no XRUN, premature SETUP or advance of the application pointer
 beyond accepted writes. Check the queue at the end and across the slow
 opening so the startup reserve cannot hide a sustained throughput deficit.
 The real sound and picture can also be checked while the test is running.
+The frozen replay generates 641,626 source frames. With 44.1 kHz conversion
+and the 6,615-frame startup prime, the software queue should accept 888,976
+frames in total.
 
 ## Preparation and readback
 
