@@ -7,6 +7,12 @@
 #ifdef __ARM_NEON
 #include <arm_neon.h>
 #endif
+#ifndef D35_VIEWPORT_COPY
+#define D35_VIEWPORT_COPY memcpy
+#endif
+#ifndef D35_VIEWPORT_COMPARE
+#define D35_VIEWPORT_COMPARE memcmp
+#endif
 
 enum {
     D35_STARFOX_WIDTH = 256, D35_STARFOX_HEIGHT = 224,
@@ -35,8 +41,9 @@ static inline bool d35_starfox_border_is_black(const void *pixels, size_t pitch)
     for (unsigned y = 0; y < D35_STARFOX_HEIGHT; ++y) {
         const uint8_t *row = (const uint8_t *)pixels + y * pitch;
         if (y < D35_STARFOX_TOP || y >= D35_STARFOX_TOP + D35_STARFOX_VIEW_HEIGHT) {
-            if (memcmp(row, black, sizeof(black))) return false;
-        } else if (memcmp(row, black, left) || memcmp(row + right, black, sizeof(black) - right)) {
+            if (D35_VIEWPORT_COMPARE(row, black, sizeof(black))) return false;
+        } else if (D35_VIEWPORT_COMPARE(row, black, left) ||
+                   D35_VIEWPORT_COMPARE(row + right, black, sizeof(black) - right)) {
             return false;
         }
     }
@@ -45,7 +52,8 @@ static inline bool d35_starfox_border_is_black(const void *pixels, size_t pitch)
 
 /* Keep the scaler on its validated 256x224 RGB565 input. Center sampling
  * retains every source pixel when expanding the packed viewport. */
-static inline void d35_starfox_expand(uint16_t *output, const uint16_t *view)
+static inline void d35_starfox_expand_strided(uint16_t *output, const uint16_t *view,
+                                              size_t source_stride)
 {
 #ifdef __ARM_NEON
     struct {
@@ -74,9 +82,9 @@ static inline void d35_starfox_expand(uint16_t *output, const uint16_t *view)
     for (unsigned y = 0; y < D35_STARFOX_HEIGHT; ++y) {
         unsigned row = (2u * y + 1u) * D35_STARFOX_VIEW_HEIGHT / (2u * D35_STARFOX_HEIGHT);
         if (row == previous) {
-            memcpy(output, output - D35_STARFOX_WIDTH, D35_STARFOX_WIDTH * sizeof(*output));
+            D35_VIEWPORT_COPY(output, output - D35_STARFOX_WIDTH, D35_STARFOX_WIDTH * sizeof(*output));
         } else {
-            const uint16_t *source = view + row * D35_STARFOX_VIEW_WIDTH;
+            const uint16_t *source = view + row * source_stride;
 #ifdef __ARM_NEON
             for (unsigned i = 0; i < D35_STARFOX_WIDTH / 8u; ++i) {
                 uint8x16_t pixels = vld1q_u8((const uint8_t *)(source + spans[i].first));
@@ -94,5 +102,10 @@ static inline void d35_starfox_expand(uint16_t *output, const uint16_t *view)
         previous = row;
         output += D35_STARFOX_WIDTH;
     }
+}
+
+static inline void d35_starfox_expand(uint16_t *output, const uint16_t *view)
+{
+    d35_starfox_expand_strided(output, view, D35_STARFOX_VIEW_WIDTH);
 }
 #endif

@@ -23,8 +23,10 @@ static uint16_t input_mask, inputs[1200], cold[8656];
 static const void *last_picture;
 static unsigned last_width,last_height;
 static uint64_t total_frames;
-static bool paired, baseline_active;
+static bool paired, baseline_active, starfox;
 static uint64_t baseline_ns;
+static retro_video_refresh_t owned_video;
+static void (*install_core_video)(retro_video_refresh_t);
 
 static void normalize_pointers(unsigned char *bytes)
 {
@@ -56,7 +58,7 @@ static const char *work_path(void) { return work; }
 static void *open_actual_core(const char *path,int mode)
 {
     assert(mode==RTLD_NOW);
-    assert(!strcmp(path,patched?"fixture/libs/d35-snes.so":"/usr/retro/libs/emu_sfc.so"));
+    assert(!strcmp(path,patched?"fixture/d35-launcher1/libs/d35-snes.so":"/usr/retro/libs/emu_sfc.so"));
     ++ncore;
     char direct[4096];
     assert(snprintf(direct,sizeof(direct),"%s/libs/d35-snes.so",work)<(int)sizeof(direct));
@@ -75,10 +77,21 @@ static int16_t replay_input(unsigned port,unsigned dev,unsigned idx,unsigned id)
     return id<16?(input_mask>>id)&1:0;
 }
 static int reject(const struct retro_game_info *g) { assert(g->size>=32768); return 0; }
+static void record_video_callback(retro_video_refresh_t callback)
+{
+    owned_video=callback;
+    install_core_video(callback);
+}
+
 static void *resolve_actual(void *h,const char *s)
 {
     if(h==&driver_token) { assert(!strcmp(s,"WaitDisp")); return wait_display; }
     if(fail_load && !strcmp(s,"retro_load_game")) return reject;
+    if(patched && starfox && !strcmp(s,"retro_set_video_refresh")) {
+        install_core_video=dlsym(h,s);
+        assert(install_core_video);
+        return record_video_callback;
+    }
     return dlsym(h,s);
 }
 static size_t sink_audio(const int16_t *p,size_t n)
@@ -123,6 +136,56 @@ static void read_input(const char *name,uint16_t *table,unsigned len)
         while(repeat--) table[i++]=(uint16_t)mask;
     }
     assert(i==len && !fclose(f));
+}
+/* The expected display comes from the untouched stock renderer. The
+ * scalar projection checks every presented pixel independently. */
+static uint32_t presented_crc(void)
+{
+    const uint16_t *p=last_picture;
+    if(!patched && starfox && last_width==256 && last_height==224) {
+        for(unsigned y=0;y<224;++y)
+            for(unsigned x=0;x<256;++x)
+                if((x<16 || x>=242 || y<16 || y>=206) && p[y*256+x])
+                    goto full_frame;
+        uint16_t projected[256*224];
+        for(unsigned y=0;y<224;++y)
+            for(unsigned x=0;x<256;++x) {
+                unsigned row=16+(unsigned)((y+0.5)*190.0/224.0);
+                unsigned column=16+(unsigned)((x+0.5)*226.0/256.0);
+                projected[y*256+x]=p[row*256+column];
+            }
+        return crc32(0,(const uint8_t *)projected,sizeof(projected));
+    }
+full_frame:
+    return crc32(0,(const uint8_t *)p,last_width*last_height*2);
+}
+
+static void check_live_border(void)
+{
+    assert(owned_video);
+    static uint16_t picture[224][512];
+    for(unsigned y=16;y<206;++y)
+        for(unsigned x=16;x<242;++x) picture[y][x]=0x7bef;
+    unsigned before=copies;
+    owned_video(picture,256,224,sizeof(picture[0]));
+    const uint16_t *output=last_picture;
+    assert(copies==before+1 && last_width==256 && last_height==224);
+    assert(output[0]==0x7bef && output[256*224-1]==0x7bef);
+    picture[0][400]=0xffff; /* Padding is outside the visible source. */
+    owned_video(picture,256,224,sizeof(picture[0]));
+    assert(copies==before+1);
+    picture[0][0]=0xf800; /* A new HUD pixel at the edge must be shown. */
+    owned_video(picture,256,224,sizeof(picture[0]));
+    output=last_picture;
+    assert(copies==before+2 && last_width==256 && last_height==224);
+    assert(output[0]==0xf800 && output[256*224-1]==0);
+    owned_video(picture,256,224,sizeof(picture[0]));
+    assert(copies==before+2);
+    picture[0][0]=0;
+    owned_video(picture,256,224,sizeof(picture[0]));
+    output=last_picture;
+    assert(copies==before+3 && output[0]==0x7bef && output[256*224-1]==0x7bef);
+    puts("PASS live border transitions, unchanged frames and padded source pitch");
 }
 static uintptr_t branch_target(uintptr_t pc)
 {
@@ -216,7 +279,7 @@ static void play_fixture(void)
         if(verify) {
             assert(last_picture && last_width && last_height);
             if(copies!=before || !i)
-                visible_crc=crc32(0,last_picture,last_width*last_height*2);
+                visible_crc=presented_crc();
             video_crc=crc32(video_crc,(const uint8_t *)&visible_crc,4);
             uint32_t end=UINT32_MAX;
             layout_crc=crc32(layout_crc,(const uint8_t *)&end,4);
@@ -230,12 +293,13 @@ static void play_fixture(void)
     size_t header=patched?0:16;
     normalize_pointers(data+header);
     state_crc=crc32(0,data+header,size-header); free(data);
+    if(starfox && patched && !force_auto) check_live_border();
     if(paired) { base_unload(); base_deinit(); assert(!dlclose(adapter)); }
     unload(); deinit(); assert(!close_actual_core(h));
 }
 static void *alias_open(const char *p,int mode)
 {
-    if(!strcmp(p,"fixture/libs/d35-snes.so")) {
+    if(!strcmp(p,"fixture/d35-launcher1/libs/d35-snes.so")) {
         assert(mode==2 && patched);
         ++ncore;
         const char *path=getenv("D35_PLUS_CORE");
@@ -262,6 +326,12 @@ int main(int argc,char **argv)
     char path[4096];
     assert(snprintf(path,sizeof(path),"%s/game.sfc",fixture_dir)<(int)sizeof(path));
     rom=path;
+    if(verify) {
+        size_t length;
+        unsigned char *data=read_binary(rom,&length);
+        starfox=length==1048576 && crc32(0,data,length)==UINT32_C(0x41a60b3f);
+        free(data);
+    }
     /* Stock copies its filename into a 256-byte global. */
     assert(strlen(rom)<256);
     assert(!setenv("D35_PLUS_CORE",argv[2],1) && !setenv("D35_TEST_HEAP_VIDEO","1",1));
@@ -290,7 +360,8 @@ int main(int argc,char **argv)
      * used on the device. Only the hardware-dependent stock settings body is stubbed. */
     if(patched) {
         assert(!mkdir("fixture",0755) || errno==EEXIST);
-        FILE *f=fopen("fixture/d35-loader.cfg","wb"); assert(f);
+        assert(!mkdir("fixture/d35-launcher1",0755) || errno==EEXIST);
+        FILE *f=fopen("fixture/d35-launcher1/d35-loader.cfg","wb"); assert(f);
         assert(fputc(force_auto?'1':'0',f)!=EOF && !fclose(f));
         patch(0x81da0,(uintptr_t)frame_flash);
         ((void (*)(void))branch_target(0x98174))();

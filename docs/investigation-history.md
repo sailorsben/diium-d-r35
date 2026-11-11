@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Prepare the interactive stock-shell launcher - 2026-11-10
+
+The pinned menu opens the 16-entry SNES core directly. Star Fox checks
+the full border before expanding a changed picture. The exact firmware
+BusyBox applies the one-boot frontend mount in the Linux fixture.
+The I: payload is staged and verified.
+[Preparation](stock-shell-prototype.md#playable-launcher-preparation).
+
 ## Verify the original scaler geometry with Star Fox zoom - 2026-11-10
 
 Expanding changed pictures into 256×224 completes all 1,200 ticks with

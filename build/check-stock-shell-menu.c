@@ -90,7 +90,7 @@ static void exercise_state_paths(void)
 {
     char stock[4096], direct[4096];
     assert(snprintf(stock,sizeof(stock),"%s/fixture.state",work)<(int)sizeof(stock));
-    assert(snprintf(direct,sizeof(direct),"%s.d35-0974965",stock)<(int)sizeof(direct));
+    assert(snprintf(direct,sizeof(direct),"%s.d35-70d8851",stock)<(int)sizeof(direct));
     FILE *f=fopen(stock,"wb"); assert(f && fputc('S',f)=='S' && !fclose(f));
     f=fopen(direct,"wb"); assert(f && fputc('D',f)=='D' && !fclose(f));
     int (*slot_exists)(const char *,int)=(void *)target(0x91a24);
@@ -139,7 +139,7 @@ int main(int argc,char **argv)
     assert(player->type==(pcm?2u:1u));
     if(pcm) {
         char expected_path[4096];
-        assert(snprintf(expected_path,sizeof(expected_path),"%s/d35-menu.pcm",work)<(int)sizeof(expected_path));
+        assert(snprintf(expected_path,sizeof(expected_path),"%s/d35-launcher1/d35-menu.pcm",work)<(int)sizeof(expected_path));
         expected=(int16_t *)read_data(expected_path,&total);
         total/=2;
         verify=true;

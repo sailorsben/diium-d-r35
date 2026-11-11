@@ -28,6 +28,13 @@
 #define WORK FN(0x80bec, const char *, void)
 #define SLOT (512u * 512u * 2u)
 #define ROM_MAX (8u * 1024u * 1024u)
+#define LAUNCHER "/d35-launcher1"
+
+#define D35_VIEWPORT_COPY COPY
+#define D35_VIEWPORT_COMPARE CMP
+#include "starfox-viewport.h"
+
+_Static_assert(2u * D35_STARFOX_FRAME_BYTES <= SLOT, "Star Fox display and reference fit in a slot");
 
 struct session {
     void *core, *pool;
@@ -36,7 +43,7 @@ struct session {
     bool (*load)(const struct retro_game_info *);
     void (*av)(struct retro_system_av_info *);
     unsigned phase, w, h, shown, next, skip, recovery, auto_skip;
-    bool previous, rgb565;
+    bool previous, rgb565, starfox, zoomed;
     int16_t last[2];
     unsigned ticks, skipped, copies, repeats;
 };
@@ -75,6 +82,31 @@ static void *read_bytes(const char *path, size_t max, size_t *size)
     }
     FCLOSE(f);
     return data;
+}
+
+static bool is_tested_starfox(const uint8_t *rom, size_t bytes)
+{
+    enum { CART_BYTES = 1048576, COPIER_HEADER = 512, TITLE = 0x7fc0 };
+    if(bytes == CART_BYTES + COPIER_HEADER) {
+        rom += COPIER_HEADER;
+        bytes -= COPIER_HEADER;
+    }
+    if(bytes != CART_BYTES || CMP(rom + TITLE, "STAR FOX             ", 21)) return false;
+    /* Hash decoded content once at launch. The display crop is qualified for
+     * this specific cartridge image, including copies with a copier header. */
+    static const uint32_t crc_nibble[16] = {
+        0x00000000, 0x1db71064, 0x3b6e20c8, 0x26d930ac,
+        0x76dc4190, 0x6b6b51f4, 0x4db26158, 0x5005713c,
+        0xedb88320, 0xf00f9344, 0xd6d6a3e8, 0xcb61b38c,
+        0x9b64c2b0, 0x86d3d2d4, 0xa00ae278, 0xbdbdf21c
+    };
+    uint32_t crc = UINT32_MAX;
+    while(bytes--) {
+        crc ^= *rom++;
+        crc = (crc >> 4) ^ crc_nibble[crc & 15];
+        crc = (crc >> 4) ^ crc_nibble[crc & 15];
+    }
+    return (crc ^ UINT32_MAX) == UINT32_C(0x41a60b3f);
 }
 
 /* 32040 -> 44100 is 178 -> 245. Dividing all weights and the denominator
@@ -116,6 +148,7 @@ static void snes_video(const void *data, unsigned w, unsigned h, size_t pitch)
     uint8_t *dst=(uint8_t *)s->pool+s->next*SLOT;
     if(s->shown && s->w==w && s->h==h) {
         const uint8_t *old=(uint8_t *)s->pool+(s->next^1)*SLOT;
+        if(s->zoomed) old+=D35_STARFOX_FRAME_BYTES;
         unsigned y=0;
         /* Reject ordinary changed pictures before walking every scanline.
          * Samples are rejection-only; reuse still requires every byte. */
@@ -131,8 +164,18 @@ static void snes_video(const void *data, unsigned w, unsigned h, size_t pitch)
     }
     /* Before reusing a submitted slot, fence the stock display worker. */
     if(s->copies>=2) s->wait_display();
-    if(pitch==bytes) COPY(dst,src,h*bytes);
-    else for(unsigned y=0;y<h;++y) COPY(dst+y*bytes,src+y*pitch,bytes);
+    s->zoomed=s->starfox && w==D35_STARFOX_WIDTH && h==D35_STARFOX_HEIGHT &&
+        d35_starfox_border_is_black(src,pitch);
+    /* Keep a copy of the original picture when presenting its expansion.
+     * Duplicate detection must include the border as it can change in menus. */
+    uint8_t *raw=s->zoomed?dst+D35_STARFOX_FRAME_BYTES:dst;
+    if(pitch==bytes) COPY(raw,src,h*bytes);
+    else for(unsigned y=0;y<h;++y) COPY(raw+y*bytes,src+y*pitch,bytes);
+    if(s->zoomed) {
+        unsigned view_width=w,view_height=h;
+        const uint16_t *view=d35_starfox_viewport(raw,bytes,&view_width,&view_height);
+        d35_starfox_expand_strided((uint16_t *)dst,view,w);
+    }
     FN(0xa3438, void, const void *, unsigned, unsigned, size_t)(dst,w,h,bytes);
     s->w=w; s->h=h; s->shown=1; s->next^=1; ++s->copies;
 }
@@ -214,7 +257,7 @@ ENTRY int open_snes(const char *unused)
     (void)unused;
     struct session *s=&S.game;
     char path[384];
-    if(!suffix(path,sizeof(path),WORK(),"/libs/d35-snes.so")) return 0;
+    if(!suffix(path,sizeof(path),WORK(),LAUNCHER "/libs/d35-snes.so")) return 0;
     s->core=OPEN(path,2);
     if(!s->core) goto failed;
     void *driver=VAR(0x1b81a8, void *);
@@ -273,12 +316,17 @@ ENTRY int run_snes(const char *path, unsigned kind)
         return -1;
     }
     if(!open_snes(NULL)) { FREE(rom); return -1; }
+    s->starfox=is_tested_starfox(rom,bytes);
     {
         const struct retro_game_info game={name,rom,bytes,NULL};
         loaded=s->load(&game);
     }
     if(rom) FREE(rom); /* This exact core consumes memory during load_game. */
     if(loaded) {
+        if(s->starfox) {
+            void (*enable_cache)(bool)=SYM(s->core,"d35_raster_set_enabled");
+            if(enable_cache) enable_cache(true);
+        }
         s->av(&av);
         if(s->rgb565 && av.timing.sample_rate==32040.0) {
             FN(0xa426c, void, void)(); /* Stock loop owns unload/deinit/dlclose. */
@@ -298,7 +346,7 @@ ENTRY int run_snes(const char *path, unsigned kind)
 /* Direct-core states are private to this core identity. All other systems
  * retain their original state paths. */
 static bool state_path(char path[1024],const char *old)
-{ return suffix(path,1024,old,".d35-0974965"); }
+{ return suffix(path,1024,old,".d35-70d8851"); }
 
 ENTRY int stock_save_state(const char *original)
 {
@@ -348,7 +396,7 @@ ENTRY long stock_language(const char *value, char **end, int base)
 ENTRY void stock_load_settings(void)
 {
     char path[384];
-    if(suffix(path,sizeof(path),WORK(),"/d35-loader.cfg")) {
+    if(suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg")) {
         FILE *f=FOPEN(path,"rb");
         char setting=0;
         if(f) { S.auto_skip=FREAD(&setting,1,1,f)==1 && setting=='1'; FCLOSE(f); }
@@ -361,7 +409,7 @@ static bool save_skip(bool value)
 {
     char path[384],tmp[384];
     int (*replace)(const char *,const char *)=SYM(NULL,"rename");
-    if(!replace || !suffix(path,sizeof(path),WORK(),"/d35-loader.cfg") ||
+    if(!replace || !suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg") ||
        !suffix(tmp,sizeof(tmp),path,".tmp")) return false;
     FILE *f=FOPEN(tmp,"wb");
     if(!f) return false;
@@ -437,7 +485,7 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
 {
     if(channel==0 && original && original->type==1 && original->data) {
         char path[384];
-        if(!S.music && suffix(path,sizeof(path),WORK(),"/d35-menu.pcm")) {
+        if(!S.music && suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-menu.pcm")) {
             S.music=read_bytes(path,4u*1024u*1024u,&S.music_bytes);
             if(S.music && (S.music_bytes%4 || S.music_bytes<735*4)) {
                 FREE(S.music); S.music=NULL; S.music_bytes=0;

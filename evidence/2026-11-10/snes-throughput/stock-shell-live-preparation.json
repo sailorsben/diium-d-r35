@@ -1,0 +1,54 @@
+{
+  "target": "retro/d35-launcher1",
+  "armed": false,
+  "physical_menu_test": "pending",
+  "game_audio_backend": "stock",
+  "original_files": 2151,
+  "verified_files": 2155,
+  "original_file_hashes_preserved": true,
+  "payload_sha256": {
+    "vrtemu": "7bf039c1119ac311861e28f0cc58d283319177501e4a4b15ef5e27c6d7e6cb3e",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "d35-menu.pcm": "112be780d8d84957629748b33026f5c3a49d98c7594821635f0d0b49b024bb17",
+    "launch.sh": "76409c605e483303e4c8b223cd10c08977a90eedc0753435aae3222767e6b6b8"
+  },
+  "boot_dispatcher_sha256": "a73eeabe4ae099608a263be515e0d5ae7d3ff29606c3018e9e8fe0c27b29f052",
+  "starfox_rom_revision_crc32": "41a60b3f",
+  "starfox_menu_entry_present": false,
+  "snes_replay_ticks_per_game": 1200,
+  "snes_games": 5,
+  "game_display_jobs": [
+    [
+      1200,
+      862,
+      779
+    ],
+    [
+      1200,
+      699,
+      677
+    ],
+    [
+      1200,
+      1200,
+      1084
+    ],
+    [
+      1200,
+      398,
+      398
+    ],
+    [
+      1200,
+      1200,
+      1084
+    ]
+  ],
+  "firmware_mount_fixture_passed": true,
+  "stock_route_fixture_passed": true,
+  "menu_locale_frameskip_pcm_fixture_passed": true,
+  "live_border_fixture_passed": true,
+  "clean_fat": true,
+  "markclean_after_sparse_archive": true,
+  "new_full_card_backup": false
+}

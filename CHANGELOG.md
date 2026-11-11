@@ -1,5 +1,12 @@
 # Changelog
 
+## Prepare the interactive stock-shell launcher - 2026-11-10
+
+Package the latest tested SNES core, stock menu, PCM menu music and
+Star Fox zoom for a one-boot test. Verify five replay fixtures, exact
+firmware mount behavior under Linux and the staged files on I:.
+[Preparation](docs/stock-shell-prototype.md#playable-launcher-preparation).
+
 ## Record the corrected full-screen Star Fox return - 2026-11-10
 
 The 256×224 scaler path completes all 1,200 ticks with native sound and

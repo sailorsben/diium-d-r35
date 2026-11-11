@@ -8,11 +8,10 @@ The [corrected Star Fox full-screen test](docs/starfox-fullscreen.md#corrected-h
 completed the Corneria replay on the handheld in 19.975 seconds with zero
 audio underruns. It keeps the original scaler input size.
 
-The [stock-shell prototype](docs/stock-shell-prototype.md) preserves the
-vendor menu and other emulator routes while launching the profile-guided
-SNES core directly. English is the fallback, frame drop defaults to off,
-and new 44.1 kHz stereo PCM replaces the menu MP3 during playback. The
-prototype is qualified offline; I: has not been changed.
+The [interactive stock-shell launcher](docs/stock-shell-prototype.md#playable-launcher-preparation)
+is staged on I: and awaits a one-boot test. It keeps the vendor menu and
+other emulator routes, launches the latest tested SNES core directly, and
+expands the tested Star Fox viewport whenever its borders are black.
 
 The [physical raster test](docs/snes-raster-device-test.md) completed all
 12 pairs. Full-tile strips cut Star Fox mean core CPU by 30.1%, from

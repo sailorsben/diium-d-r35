@@ -1,5 +1,45 @@
 # Stock menu with an owned SNES loader
 
+## Playable launcher preparation
+
+The interactive build uses the same 16-entry core that completed the
+handheld Corneria test. It keeps the vendor game list, menu artwork,
+locale packs, volume and brightness settings, and the existing routes
+for other systems. The stock supervisor opens the launcher at the
+usual frontend path. The one-boot hook waits for the splash process to
+exit and bind-mounts the candidate over that path for the current boot.
+The mount vanishes on reboot.
+
+Star Fox activates the renderer cache and the zoom only for the tested
+cartridge revision. Before expanding a changed picture, the launcher
+checks that every pixel outside the 226×190 viewport is black. It uses
+the full frame when a scene draws into that border. The scaler receives
+256×224 in either case. Duplicate detection includes the original
+border, so a new HUD pixel triggers a display update. The SNES game
+audio uses the stock mixer and output path. The earlier 150 ms native
+PCM result came from the separate replay runner.
+
+Offline checks cover five SNES replays, raw and predecoded ROM loading,
+stock routes, locale selection, the frame-skip setting, the PCM menu
+music loop, and pause-slot file isolation. The firmware shell fixture
+executes the one-boot hook with the actual BusyBox mount applet in a
+private Linux mount namespace. It covers an absent marker and a failed
+mount as well as successful binding. Handheld menu startup, in-game
+audio, live controls and returning to the menu remain to be exercised.
+
+The card's normal SNES list currently contains Final Fantasy VI and
+Chrono Trigger entries. The Star Fox ROM used for the tests resides in
+the replay fixtures. A menu entry is needed for an interactive Star Fox
+test.
+
+The four payload files are staged on I: in `retro/d35-launcher1`.
+The preparation verified all 2,155 expected files and cleared the FAT32
+dirty flag after archiving the returned logs and saves. The one-boot
+test still needs to be armed.
+[Preparation receipt](../evidence/2026-11-10/snes-throughput/stock-shell-live-preparation.json).
+
+## First prototype
+
 The prototype preserves the vendor's menu code and assets, and uses an owned
 libretro launch path for SNES. The device menu, games list, artwork, language
 packs, brightness, volume, controller mapping, and non-SNES launchers stay
@@ -120,13 +160,14 @@ for `showlogo` to exit before either path owns display.
 
 ## Reproduce locally
 
-Run from the workspace under WSL. Supply privately retained originals and
-replay fixtures. Use a fresh workspace or Linux scratch output.
+Run from the workspace under WSL. Supply the pinned original frontend,
+the core from the corrected full-screen test and the local replay fixtures.
+Use a fresh output directory.
 
 ```sh
-python3 build/assemble-stock-shell.py <vrtemu> <pgo-core> <new-out>
+python3 build/assemble-stock-shell.py <vrtemu> <16-entry-core> <new-out>
 python3 build/make-stock-menu-music.py <new-music-out>
-python3 build/check-stock-shell.py <out> <vrtemu> <v11-adapter> <fixture-root>
+python3 build/check-stock-shell.py <out> <vrtemu> <v11-adapter> <fixture-root> --pairs 0
 ```
 
 The additional ARM fixtures are `build/check-stock-shell-menu.c` and
@@ -134,5 +175,7 @@ The additional ARM fixtures are `build/check-stock-shell-menu.c` and
 GCC toolchain and run under QEMU; the menu fixture takes the patched ELF,
 stock BGM, a scratch directory with `d35-menu.pcm`, and `pcm` or `mp3` mode.
 The route fixture takes the stock or patched ELF. The local preview WAV is
-generated from the same PCM bytes as the candidate music. No install command
-or SD copy is part of this build.
+generated from the same PCM bytes as the candidate music. The card payload
+contains the assembled `vrtemu`, `libs/d35-snes.so`, `d35-menu.pcm`
+and `build/launch-stock-shell-live.sh` as `launch.sh`. The package directory
+on the card is `retro/d35-launcher1`.

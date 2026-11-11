@@ -1,5 +1,11 @@
 # Device findings
 
+**Interactive stock-shell launcher preparation (2026-11-10).** Offline
+checks cover five games, the Star Fox border transition, stock emulator
+routes, settings and menu audio. The launcher is staged on I: with the
+test markers unset. Live menu and game audio remain to be checked.
+[Preparation](stock-shell-prototype.md#playable-launcher-preparation).
+
 **Corrected Star Fox full-screen return (2026-11-10).** The handheld
 completes all 1,200 Corneria ticks in 19.975 seconds with zero PCM
 underruns. The longest 256×224 scaler call is 2.529 ms. The visual result
