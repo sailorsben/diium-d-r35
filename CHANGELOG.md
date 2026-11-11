@@ -1,5 +1,11 @@
 # Changelog
 
+## Keep the proven scaler input for Star Fox zoom - 2026-11-10
+
+Archive the direct crop's 3.267-second scaler call and resulting audio
+underrun. Expand changed pictures into the proven 256×224 scaler input.
+[Handheld return and replacement](docs/starfox-fullscreen.md).
+
 ## Arm the Star Fox full-screen LCD test - 2026-11-10
 
 Verify the one-shot payload, both markers and the clean FAT32 readback.

@@ -1,0 +1,50 @@
+{
+  "installation_commit": "6516e13668e5571d3fa1a669ffc9201aa7bf5cbc",
+  "result": "display_reservation_stall_followed_by_native_pcm_underrun",
+  "cold_replay": {
+    "calls": 8656,
+    "wall_ns": 82544643000,
+    "completed": true
+  },
+  "window": {
+    "ticks_started": 6,
+    "rendered_crop_callbacks": 5,
+    "submitted": 3,
+    "flipped": 3,
+    "repeated_pictures": 2,
+    "scaler_input": [226, 190],
+    "scaler_max_ns": 3267341000,
+    "prior_256x224_scaler_max_ns": 2477000,
+    "display_queue_high": 2,
+    "failed_tick_reservation_ns": 3162093000,
+    "scaler_ioctl_status_recorded": false,
+    "native_pcm": {
+      "rate_hz": 44100,
+      "prime_frames": 6615,
+      "last_running_queue_frames": 5942,
+      "last_running_appl": 10293,
+      "last_running_hw": 4351,
+      "last_running_to_xrun_observation_ns": 509105000,
+      "accepted_frames": 10293,
+      "xrun_appl": 10293,
+      "xrun_hw": 10367,
+      "error": "EPIPE",
+      "alsa_state": "XRUN"
+    },
+    "child_exit": 1,
+    "child_reaped": true,
+    "forced_stop": false,
+    "audio_worker_joined": true,
+    "display_idle": true
+  },
+  "archive": {
+    "verified_files": 2129,
+    "new_retained_bytes": 31813,
+    "marker_files_consumed": 2,
+    "preexisting_files_changed_since_install": ["retro/swapfile"],
+    "stock_binaries_and_prior_saves_verified": true,
+    "read_only_fat_scan_clean": true,
+    "fat_dirty_flag_set": true,
+    "card_writes": 0
+  }
+}

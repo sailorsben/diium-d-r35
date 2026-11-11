@@ -1,5 +1,12 @@
 # Investigation history and negative results
 
+## Preserve the scaler geometry for Star Fox zoom - 2026-11-10
+
+Direct 226×190 input stalled the real display worker for 3.267 seconds.
+The saturated queue blocked the core and native PCM underrun followed.
+The replacement expands the cropped viewport only for changed pictures
+and submits the established 256×224 geometry. [Return](starfox-fullscreen.md).
+
 ## Prototype Star Fox full-screen presentation - 2026-11-10
 
 The 226×190 viewport contains every visible pixel in the 1,200-tick

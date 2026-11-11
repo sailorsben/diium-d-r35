@@ -18,12 +18,21 @@ static uint16_t pattern(unsigned x, unsigned y)
 
 static void draw(uint16_t *pixels, int width, int height)
 {
-    assert(width == 226 && height == 190);
-    for (unsigned y = 0; y < 190; ++y)
-        for (unsigned x = 0; x < 226; ++x) {
-            unsigned change = draws == 1 && x == 225 && y == 189;
-            assert(pixels[y * 226 + x] == pattern(x + 16, y + 16) + change);
+    assert(width == 256 && height == 224);
+    bool seen_x[226] = {false}, seen_y[190] = {false};
+    for (unsigned y = 0; y < 224; ++y) {
+        unsigned sy = (unsigned)((y + 0.5) * (190.0 / 224));
+        seen_y[sy] = true;
+        for (unsigned x = 0; x < 256; ++x) {
+            unsigned sx = (unsigned)((x + 0.5) * (226.0 / 256));
+            seen_x[sx] = true;
+            unsigned change = draws == 1 && sx == 225 && sy == 189;
+            uint16_t expected = draws < 2 ? pattern(sx + 16, sy + 16) + change : source[y][x];
+            assert(pixels[y * 256 + x] == expected);
         }
+    }
+    for (unsigned x = 0; x < 226; ++x) assert(seen_x[x]);
+    for (unsigned y = 0; y < 190; ++y) assert(seen_y[y]);
     ++draws;
 }
 
@@ -37,7 +46,8 @@ static int submit(void)
     unsigned width = 256, height = 224;
     const void *pixels = d35_starfox_viewport(source, sizeof(source[0]), &width, &height);
     assert(pixels == &source[16][16]);
-    return board_video_submit(pixels, width, height, sizeof(source[0]));
+    assert(width == 226 && height == 190);
+    return board_video_submit_starfox(pixels, sizeof(source[0]));
 }
 
 int main(void)
@@ -72,17 +82,20 @@ int main(void)
     ++source[205][241];
     assert(submit() == 0);
     board_wait_display();
+    assert(board_video_submit(source, 256, 224, sizeof(source[0])) == 0);
+    assert(board_video_submit(source, 256, 224, sizeof(source[0])) == 1);
+    board_wait_display();
 
     struct board_video_metrics metrics;
     board_video_metrics(&metrics, 0);
-    assert(draws == 2 && flips == 2 && metrics.reused_identical == 1);
-    assert(metrics.copied_payload_bytes == 2u * 226u * 190u * 2u);
+    assert(draws == 3 && flips == 3 && metrics.reused_identical == 2);
+    assert(metrics.copied_payload_bytes == 2u * 226u * 190u * 2u + 256u * 224u * 2u);
     pthread_mutex_lock(&display_lock);
     b.stopping = 1;
     pthread_cond_broadcast(&display_condition);
     pthread_mutex_unlock(&display_lock);
     assert(!pthread_join(b.worker, NULL));
     free(b.pixels);
-    puts("PASS exact crop packing, boundary pixels, duplicate reuse and worker ownership");
+    puts("PASS full-size scaler input, every crop pixel, duplicate reuse and worker ownership");
     return 0;
 }

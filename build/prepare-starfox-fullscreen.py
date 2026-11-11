@@ -9,9 +9,60 @@ from tempfile import TemporaryDirectory
 
 base = import_module('install-starfox-150-test')
 ROOT = base.ROOT
-OUT = ROOT / 'build/starfox-fullscreen-private-v1'
+OUT = ROOT / 'build/starfox-fullscreen-private-v2'
 CORE = '70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936'
 replace = base.probe.replace_once
+
+
+def prepare_board(runner):
+    path = runner / 'board.c'
+    s = replace(path.read_text(), '#include "snes-rgb565-reuse.h"',
+                '#include "snes-rgb565-reuse.h"\n#include "starfox-viewport.h"')
+    s = replace(s, 'unsigned width, height; } slots[SOURCE_SLOTS];',
+                'unsigned width, height; bool expanded; } slots[SOURCE_SLOTS];')
+    s = replace(s, 'int board_video_submit(const void *rgb565,unsigned width,unsigned height,size_t pitch)',
+                'static int submit_frame(const void *rgb565,unsigned width,unsigned height,size_t pitch,bool expanded)')
+    s = replace(s, '    int previous=b.previous;\n    uint64_t comparison=0;', '''    /* The scaler reads the front of the owned slot. Retain the exact raw
+     * crop after it so repeat pictures can skip expansion and scaler work. */
+    unsigned out_width=expanded?D35_STARFOX_WIDTH:width;
+    unsigned out_height=expanded?D35_STARFOX_HEIGHT:height;
+    size_t raw_offset=expanded?D35_STARFOX_FRAME_BYTES:0;
+    int previous=b.previous;
+    uint64_t comparison=0;''')
+    s = replace(s, '    if(previous>=0 && b.slots[previous].width==width && b.slots[previous].height==height) {',
+                '''    if(previous>=0 && b.slots[previous].width==out_width &&
+       b.slots[previous].height==out_height && b.slots[previous].expanded==expanded) {''')
+    s = replace(s, 'b.pixels+(unsigned)previous*SLOT_BYTES+32,width,height',
+                'b.pixels+(unsigned)previous*SLOT_BYTES+32+raw_offset,width,height')
+    s = replace(s, '    unsigned direct=rgb565==target&&pitch==(size_t)width*2u;\n'
+                '    if(!direct)for(y=0;y<height;++y)\n'
+                '        memcpy(target+(size_t)y*width*2u,(const uint8_t *)rgb565+(size_t)y*pitch,(size_t)width*2u);',
+                '''    uint8_t *raw=target+raw_offset;
+    unsigned direct=!expanded&&rgb565==target&&pitch==(size_t)width*2u;
+    if(!direct)for(y=0;y<height;++y)
+        memcpy(raw+(size_t)y*width*2u,(const uint8_t *)rgb565+(size_t)y*pitch,(size_t)width*2u);
+    if(expanded) d35_starfox_expand((uint16_t *)target,(const uint16_t *)raw);''')
+    s = replace(s, '    b.slots[slot].width=width; b.slots[slot].height=height;',
+                '    b.slots[slot].width=out_width; b.slots[slot].height=out_height;\n'
+                '    b.slots[slot].expanded=expanded;')
+    s = replace(s, 'uint32_t board_poll_input(void)', '''int board_video_submit(const void *rgb565,unsigned width,unsigned height,size_t pitch)
+{
+    return submit_frame(rgb565,width,height,pitch,false);
+}
+
+int board_video_submit_starfox(const void *view,size_t pitch)
+{
+    _Static_assert(D35_STARFOX_FRAME_BYTES + D35_STARFOX_VIEW_WIDTH * D35_STARFOX_VIEW_HEIGHT * 2u
+                   <= SLOT_BYTES - 64u, "Star Fox crop and output must fit in one slot");
+    return submit_frame(view,D35_STARFOX_VIEW_WIDTH,D35_STARFOX_VIEW_HEIGHT,pitch,true);
+}
+
+uint32_t board_poll_input(void)''')
+    path.write_text(s, newline='\n')
+    path = runner / 'board.h'
+    s = replace(path.read_text(), 'int board_video_reserve(void);',
+                'int board_video_submit_starfox(const void *view, size_t pitch);\nint board_video_reserve(void);')
+    path.write_text(s, newline='\n')
 
 
 def prepare():
@@ -19,27 +70,28 @@ def prepare():
     base.probe.prepare(ROOT / 'build/stock-shell-display-private-v2', payload)
     runner = payload / 'runner'
     shutil.copyfile(ROOT / 'build/starfox-viewport.h', runner / 'starfox-viewport.h')
+    prepare_board(runner)
     path = runner / 'runner.c'
     s = replace(path.read_text(), '#include "board.h"', '#include "board.h"\n#include "starfox-viewport.h"')
     s = replace(s, '    unsigned presentation_policy, skip_presentation;',
                 '    unsigned presentation_policy, skip_presentation;\n'
                 '    bool starfox_fullscreen, starfox_verify_border;\n    unsigned starfox_cropped;')
-    s = replace(s, '    int submitted=board_video_submit(data,w,h,pitch);', '''    if (s.starfox_fullscreen) {
-        const void *view=d35_starfox_viewport(data,pitch,&w,&h);
+    s = replace(s, '    int submitted=board_video_submit(data,w,h,pitch);', '''    const void *view=data;
+    if (s.starfox_fullscreen) {
+        view=d35_starfox_viewport(data,pitch,&w,&h);
         if (s.starfox_verify_border && (view==data || !d35_starfox_border_is_black(data,pitch))) {
             board_video_cancel();
             fail("Star Fox viewport would remove visible pixels or received unexpected geometry");
             return;
         }
         if (view!=data) ++s.starfox_cropped;
-        data=view;
     }
-    int submitted=board_video_submit(data,w,h,pitch);''')
+    int submitted=view!=data ? board_video_submit_starfox(view,pitch) : board_video_submit(data,w,h,pitch);''')
     s = replace(s, '    value=getenv("D35_IDENTICAL_VIDEO_REUSE");', '''    value=getenv("D35_STARFOX_FULLSCREEN");
     s.starfox_fullscreen=value && !strcmp(value,"1");
     s.starfox_verify_border=getenv("D35_FIVE_ORACLE")!=NULL;
     if (s.starfox_fullscreen)
-        fprintf(stderr,"Star Fox viewport source=%ux%u left=%u top=%u size=%ux%u\\n",
+        fprintf(stderr,"Star Fox viewport source=%ux%u left=%u top=%u size=%ux%u scaler=256x224\\n",
                 D35_STARFOX_WIDTH,D35_STARFOX_HEIGHT,D35_STARFOX_LEFT,D35_STARFOX_TOP,
                 D35_STARFOX_VIEW_WIDTH,D35_STARFOX_VIEW_HEIGHT);
     value=getenv("D35_IDENTICAL_VIDEO_REUSE");''')
@@ -61,7 +113,7 @@ def prepare():
     main.write_text(replace(main.read_text(), point, point + '''
   if(r->fixture!=3 && getenv("D35_STARFOX_FULLSCREEN")) {failed++;break;}'''), newline='\n')
 
-    launch = base.wrapper().replace('starfox-150', 'starfox-fullscreen')
+    launch = base.wrapper().replace('starfox-150', 'starfox-fullscreen2')
     launch = replace(launch, 'D35_IDENTICAL_VIDEO_REUSE=1',
                      'D35_STARFOX_FULLSCREEN=1 D35_IDENTICAL_VIDEO_REUSE=1')
     start = launch.index('run_window pcm-cache')
@@ -137,7 +189,7 @@ def verify_replay(payload):
     assert 'Star Fox cropped callbacks=1200 rendered=1200' in log.read_text()
     base.previous.write_json(payload / 'qualification.json', {
         'hardware_runs': 0, 'frameskip': 0, 'replay_oracle_calls': 1200,
-        'viewport': [16, 16, 226, 190], 'reserve_ms': 150, 'cache_entries': 16,
+        'viewport': [16, 16, 226, 190], 'scaler_input': [256, 224], 'reserve_ms': 150, 'cache_entries': 16,
         'fixtures': {name: pinned[name] for name in base.previous.FIXTURE_FILES},
         'payloads': {name: base.previous.digest(payload / name) for name in base.FILES},
     })
