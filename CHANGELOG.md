@@ -1,5 +1,11 @@
 # Changelog
 
+## Prepare the Star Fox LCD and PCM comparison - 2026-11-10
+
+Use the same PGO core with identical-picture reuse off and on. The one-shot
+controller measures the real LCD in two complete windows and repeats the
+comparison on native PCM. [Test and timing budget](docs/stock-shell-display-test.md).
+
 ## Prototype the stock menu with an owned SNES loader - 2026-11-10
 
 Retain the stock shell and non-SNES routes. Load the profile-guided SNES
