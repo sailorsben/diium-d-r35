@@ -17,8 +17,8 @@ the uninstrumented control saves whole-core mean CPU 4.97% in Mario, 4.46%
 in Metroid and 1.89% in F-Zero; Ranger regresses 2.88%. These are one host
 timing pair per game, not A7 measurements. The probe retains diagnostic
 overhead and uses the bounded-renderer development build, not a newly trained
-production PGO binary. Four shortcut replays already pass all 1,200 frozen
-picture, PCM and sample-count observations; Star Fox verification runs separately.
+production PGO binary. All five shortcut replays pass all 1,200 frozen
+picture, PCM and sample-count observations, including Star Fox.
 The original-decoder key test passes one million varied pairs on both host
 and ARM/QEMU, including address wrap and unrelated buffer contents.
 
