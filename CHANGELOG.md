@@ -1,5 +1,12 @@
 # Changelog
 
+## Record the physical Star Fox reuse and PCM results - 2026-11-10
+
+Archive both full silent display windows and both native PCM failures.
+Reuse avoids 801 scaler jobs and saves 1.022 seconds across 1,200 ticks.
+Both audio traces retain the driver pointer drift and SETUP transition.
+[Handheld return](docs/stock-shell-display-test.md#handheld-return).
+
 ## Prepare the Star Fox LCD and PCM comparison - 2026-11-10
 
 Use the same PGO core with identical-picture reuse off and on. The one-shot

@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Measure identical-picture reuse on the handheld - 2026-11-10
+
+Star Fox saves 0.852 ms wall per tick across the complete silent LCD
+window. Native PCM drops after 421 ms with reuse off and 724 ms with
+reuse on. Both traces show the same previous-period fill signature.
+The full silent timing curve still predicts a reserve shortfall despite
+an average below the tick deadline.
+[Handheld return](stock-shell-display-test.md#handheld-return).
+
 ## Keep the stock shell and own the SNES launch - 2026-11-10
 
 Use the exact stock menu and a direct PGO core route so the performance

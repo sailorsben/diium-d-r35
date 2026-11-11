@@ -1,5 +1,12 @@
 # Device findings
 
+**Star Fox LCD and PCM return (2026-11-10).** Both silent windows complete
+1,200 ticks. Identical-picture reuse avoids 801 scaler jobs and reduces
+elapsed time from 20.835 to 19.813 seconds. Native PCM stops at 22 versus
+40 ticks. Both runs show 384 frames of application-pointer drift and
+`SYNC_OBSERVE errno=77` in `SETUP`. Both markers were consumed and FAT32
+is clean. [Handheld return](stock-shell-display-test.md#handheld-return).
+
 **Stock-shell prototype (2026-11-10).** The local stock-derived ELF opens the
 PGO SNES core directly. The stock menu/locale packs and other system dispatch
 remain. All five offline replays preserve visible output and PCM with frame
