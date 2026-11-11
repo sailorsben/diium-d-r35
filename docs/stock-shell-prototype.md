@@ -21,6 +21,10 @@ Corneria replay. Its SNES list row and global search row point to
 heading, return Star Fox for `FOX` and `STARFOX`, and start the game
 from either list. The one-boot test still uses the stock game audio path.
 
+I: is armed for that test. The readback verified all 2,158 files, both
+boot markers, the clean FAT32 volume and the existing saves.
+[Installation receipt](../evidence/2026-11-10/snes-throughput/stock-shell-search-installation.json).
+
 ## Playable launcher preparation
 
 The interactive build uses the same 16-entry core that completed the

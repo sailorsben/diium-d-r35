@@ -1,5 +1,11 @@
 # Device findings
 
+**Launcher search and Settings test (2026-11-10).** The exact ARM worker
+passes the card's updated index through search and paging. Both Settings
+labels pass the artwork fixture. I: is armed for one boot with the tested
+Star Fox revision in both game indexes.
+[Launcher test](stock-shell-prototype.md#search-and-settings-test).
+
 **Interactive stock-shell launcher preparation (2026-11-10).** Offline
 checks cover five games, the Star Fox border transition, stock emulator
 routes, settings and menu audio. The launcher is staged on I: with the

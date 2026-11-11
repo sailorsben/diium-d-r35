@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Qualify and arm the launcher search update - 2026-11-10
+
+The firmware search worker passes the full result page to its parser
+without a terminating byte. The new call site terminates the page and
+the matcher checks each index row's display title and alternate names.
+The exact ARM worker verifies paging and result selection paths. I: is
+armed with the Star Fox entry and both Settings artwork changes.
+[Launcher test](stock-shell-prototype.md#search-and-settings-test).
+
 ## Prepare the interactive stock-shell launcher - 2026-11-10
 
 The pinned menu opens the 16-entry SNES core directly. Star Fox checks

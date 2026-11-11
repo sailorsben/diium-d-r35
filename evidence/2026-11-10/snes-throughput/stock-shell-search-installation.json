@@ -1,0 +1,36 @@
+{
+  "commit": "b5aa8ea162ced5eb68866afe39f55261af49fa65",
+  "target": "retro/d35-launcher1",
+  "physical_menu_test": "pending",
+  "armed": [
+    "retro/d35-launcher1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "original_files": 2155,
+  "verified_files": 2158,
+  "preexisting_files_changed": [
+    "002/filelist.txt",
+    "retro/fileinfo.txt",
+    "retro/d35-launcher1/vrtemu",
+    "retro/snes-mvp/launch.sh"
+  ],
+  "written_sha256": {
+    "002/Star Fox.sfc": "b7381a951e4a62d44c640bbf189cd9161a3ca80f42b9bc514551393a4de9736c",
+    "002/filelist.txt": "57d11e3e6317fdf6f8d665f68a2546a9a387d5fe90bf94dd67eddd05f8f10a98",
+    "retro/fileinfo.txt": "70341193585593a7047548cc734d67a3b5b7f7ad17e41c4d1cf2a01aae91da47",
+    "retro/d35-launcher1/vrtemu": "096bc325f0977e5b2c8fa34c1329760f81ed84f1e2bb42fa393ed3ab9fe4e356",
+    "retro/snes-mvp/launch.sh": "f8d3acb00e8a5506a2f885b57d63010f35cd8983668a41ae5c274eeaf2bd8244",
+    "retro/d35-launcher1/armed": "80b573e56d333b79a28717277bab0ff6b5f415943d17a320d3c79aacf7e9e4ad",
+    "retro/snes-mvp/armed": "80b573e56d333b79a28717277bab0ff6b5f415943d17a320d3c79aacf7e9e4ad"
+  },
+  "prior_dispatcher_sha256": "a73eeabe4ae099608a263be515e0d5ae7d3ff29606c3018e9e8fe0c27b29f052",
+  "stock_binaries_and_prior_saves_verified": true,
+  "clean_fat": true,
+  "new_full_card_backup": false,
+  "search_worker_and_paging_fixture_passed": true,
+  "settings_artwork_fixture_passed": true,
+  "final_frontend_starfox_replay_ticks": 1200,
+  "game_audio_backend": "stock",
+  "starfox_menu_entry_present": true,
+  "starfox_rom_revision_crc32": "41a60b3f"
+}
