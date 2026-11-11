@@ -2,6 +2,7 @@
 #define main stock_audit_main
 #include "check-stock-snes-loader.c"
 #undef main
+#include <unistd.h>
 
 enum {
     LANGUAGE=0x1998d8, SEARCH_FLAGS=0x19bab8, SEARCH_QUERY=0x19bab4,
@@ -102,9 +103,45 @@ static void verify_art(uintptr_t call, const char *member, unsigned index,
     free(reference);
 }
 
+static void verify_pack(const char *path)
+{
+    void *(*open_zip)(const char *, unsigned, unsigned)=(void *)0xa2730;
+    unsigned (*find_item)(void *, const char *, int, int *, void *)=(void *)0xa29b8;
+    unsigned (*extract)(void *, int, void *, size_t, unsigned)=(void *)0xa2b5c;
+    unsigned (*close_zip)(void *)=(void *)0xa2bec;
+    void *zip=open_zip(path,0,2);
+    assert(zip);
+    const char *members[]={"game.raw","menu.raw","search.raw","setting.raw","type.raw",
+                          "img_filetype0.raw","img_filetype6.raw","img_language1.raw",
+                          "img_language2.raw","img_language3.raw","ui.cfg"};
+    for(unsigned i=0;i<sizeof(members)/sizeof(*members);++i) {
+        size_t size;
+        void *expected=read_art(members[i],&size), *pixels=malloc(size);
+        uint32_t metadata[256]={0};
+        int index=-1;
+        assert(pixels && !find_item(zip,members[i],1,&index,metadata) && index>=0);
+        assert(!extract(zip,index,pixels,size,3));
+        assert(!memcmp(expected,pixels,size));
+        free(pixels);
+        free(expected);
+    }
+    assert(!close_zip(zip));
+}
+
+static void verify_refreshed_art(uintptr_t call, const char *member)
+{
+    size_t size;
+    void *reference=read_art(member,&size), *rendered=NULL;
+    int (*load)(void **,const char *)=(void *)branch_target(call);
+    assert(load(&rendered,member)==1 && *(unsigned *)RESOURCE_SIZE==size);
+    assert(!memcmp(reference,rendered,size));
+    free(rendered);
+    free(reference);
+}
+
 int main(int argc,char **argv)
 {
-    assert(argc==4);
+    assert(argc==4 || argc==7);
     art_dir=argv[2];
     size_t bytes;
     unsigned char *file=read_art(argv[3],&bytes);
@@ -133,11 +170,37 @@ int main(int argc,char **argv)
     verify_search(index,"sfc",0,9,0,NULL);
     verify_search(index,"",0,9,6,"002/Final Fantasy VI.zip");
     puts("PASS actual firmware search worker, displayed paths, paging and empty results");
-    patch(0x82aa8,(uintptr_t)load_art);
     patch(0x11f74,(uintptr_t)strcmp);
+    if(argc==7) {
+        patch(0x11b6c,(uintptr_t)free);
+        patch(0x11b84,(uintptr_t)fseek);
+        patch(0x11be4,(uintptr_t)quiet);
+        patch(0x11c8c,(uintptr_t)memset);
+        patch(0x11ce0,(uintptr_t)fopen);
+        patch(0x11ddc,(uintptr_t)fread);
+        patch(0x11e78,(uintptr_t)calloc);
+        patch(0x11e84,(uintptr_t)ftell);
+        patch(0x11eb4,(uintptr_t)fwrite);
+        patch(0x11ed8,(uintptr_t)malloc);
+        patch(0x11ee4,(uintptr_t)strlen);
+        patch(0x11f08,(uintptr_t)usleep);
+        patch(0x11f20,(uintptr_t)fclose);
+        verify_pack(argv[4]);
+        art_dir=argv[5];
+        verify_pack(argv[6]);
+        puts("PASS actual firmware opens and decodes all stock and refreshed pack entries");
+        art_dir=argv[2];
+    }
+    patch(0x82aa8,(uintptr_t)load_art);
     verify_art(0x8a79c,"type.raw",17,291,103,327,151);
     verify_art(0x8e3a0,"setting.raw",0,144,20,159,37);
     puts("PASS Settings artwork at both firmware load sites");
+    if(argc==7) {
+        art_dir=argv[5];
+        verify_refreshed_art(0x8a79c,"type.raw");
+        verify_refreshed_art(0x8e3a0,"setting.raw");
+        puts("PASS refreshed Settings assets are preserved at both firmware load sites");
+    }
     free(index);
     return 0;
 }

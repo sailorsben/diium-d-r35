@@ -203,3 +203,52 @@ generated from the same PCM bytes as the candidate music. The card payload
 contains the assembled `vrtemu`, `libs/d35-snes.so`, `d35-menu.pcm`
 and `build/launch-stock-shell-live.sh` as `launch.sh`. The package directory
 on the card is `retro/d35-launcher1`.
+
+## Launcher return and refresh
+
+The November 11 return confirms the interactive frontend was bound for one
+boot after a one-second splash wait. Both markers were consumed. Star Fox
+was the first recent entry and the installed direct SNES core was
+`70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936`.
+That is the exact core from the corrected full-screen replay. The live
+launcher resamples the core's stereo output and calls the stock writer
+at `0xa2cc4`. The corrected replay used the native ALSA worker with a
+150 ms reserve and recorded zero underruns. The launcher log has no
+in-game PCM telemetry to attribute the reported clicks. Both the
+`boot.log` and the `ldpath.err` diagnostic match the pre-test inventory.
+
+The English refresh replaces 88 RGB565 sprites, including 18 illustrated
+carousel panels and the library, search keyboard, Settings and in-game
+pause screens. The artwork uses original scenes generated with ImageGen in
+the stock launcher's dramatic game-cover style. Source-size review excluded
+ambiguous hand poses, and the selected scenes were checked again at launcher
+size. Both Settings headings have a straight underline. The sprite table,
+coordinates, menu actions, language-picker glyphs and file-type badges use
+the stock layout. Other locale packs use their stock artwork.
+
+The alternate English pack is 6,195,096 bytes. The stock pack is 6,243,494
+bytes. The one-shot hook binds the English pack before the frontend and
+unmounts it if the frontend mount fails. The original pack stays at its
+stock path on the card. The refreshed PCM is the original **Bonus Round**
+loop at 144 BPM, 44.1 kHz stereo, signed 16-bit. It occupies 2,352,000
+bytes and the exact stock ARM mixer matches the expected samples across the
+loop boundary. Menu music and SNES gameplay use separate audio paths.
+
+Under QEMU, the stock ARM ZIP code opened and decoded all eleven members of
+both English packs. The search worker and both Settings load sites passed.
+A shell fixture covered marker handling, bind order and rollback. The
+stage readback on I: verified the payload and the stock pack, binaries and
+private progress hashes. Both one-shot markers are absent. Handheld
+appearance and audio for the refresh await a physical boot.
+[Return and stage receipt](../evidence/2026-11-10/snes-throughput/stock-shell-refresh-stage.json).
+
+To rebuild the artwork, use the pinned English pack, the locally saved
+ImageGen sheets and their reviewed `scenes.json` manifest, and the local
+Bahnschrift font. The manifest is a list of pairs containing the sheet
+filename and the zero-based row-major cell index for each carousel entry.
+The renderer requires Pillow and NumPy.
+
+```sh
+python build/make-stock-shell-art.py <stock-ui_en.bkp> <scenes.json> <font.ttf> <new-art-output>
+python build/make-stock-menu-music.py <new-music-output>
+```

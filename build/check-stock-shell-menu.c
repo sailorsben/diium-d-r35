@@ -143,7 +143,7 @@ int main(int argc,char **argv)
         expected=(int16_t *)read_data(expected_path,&total);
         total/=2;
         verify=true;
-        for(unsigned i=0;i<970;++i) mix(); /* crosses the 16-second loop seam */
+        for(size_t i=0;i<=total/1470;++i) mix(); /* check samples across the loop seam */
         verify=false;
     } else {
         for(unsigned i=0;i<90;++i) mix();

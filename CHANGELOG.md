@@ -1,5 +1,12 @@
 # Changelog
 
+## Rebuild the English launcher artwork and music - 2026-11-11
+
+Redraw the 18 carousel scenes and the English menu, search, Settings and
+pause artwork. Add the original 144 BPM stereo loop. Verify both menu packs
+with the stock ARM decoder and stage the refresh on I: for a future one-boot
+test. [Launcher return and refresh](docs/stock-shell-prototype.md#launcher-return-and-refresh).
+
 ## Add Star Fox to the launcher and fix search and Settings - 2026-11-10
 
 Use the tested Star Fox revision in the SNES and search indexes. Match

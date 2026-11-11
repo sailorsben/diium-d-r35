@@ -1,0 +1,137 @@
+{
+  "prior_launcher_return": {
+    "commit": "b5aa8ea162ced5eb68866afe39f55261af49fa65",
+    "boot_bound": true,
+    "splash_wait_seconds": 1,
+    "markers_consumed": true,
+    "starfox_most_recent": true,
+    "starfox_crc32": "41a60b3f",
+    "optimized_core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "game_audio_path": "stock frontend writer at 0xa2cc4",
+    "audio_clicks": "user reported; no in-game PCM telemetry",
+    "prior_boot_log_and_ldpath_error_unchanged": true,
+    "unchanged_progress_files": 725,
+    "read_only_fat_scan_clean": true
+  },
+  "refresh_stage": {
+    "card": "I:",
+    "armed": false,
+    "english_only": true,
+    "updated_sprites": 88,
+    "carousel_scenes": 18,
+    "stock_english_pack_bytes": 6243494,
+    "verified_protected_files": 792,
+    "written": {
+      "retro/d35-launcher1/vrtemu": {
+        "bytes": 1716390,
+        "sha256": "e4db2bb20b0b88d54fbf2d751f066ebd050491b5bf39c33b7367826dbf3c7781"
+      },
+      "retro/d35-launcher1/ui_en.bkp": {
+        "bytes": 6195096,
+        "sha256": "a5af723298028ab54d83952af9ba8e6bce9c52d987ef993e4478e4557945c0e1"
+      },
+      "retro/d35-launcher1/d35-menu.pcm": {
+        "bytes": 2352000,
+        "sha256": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0"
+      },
+      "retro/d35-launcher1/launch.sh": {
+        "bytes": 2090,
+        "sha256": "2a1f59f5eab45b0628b5f02e900bf6482eb5b17e1acfe4ef6b3d6dcb97cab3bd"
+      }
+    },
+    "stock_frontend_sha256": "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72",
+    "stock_english_pack_sha256": "802e099e0cb67309d96a4e7da2efcc6b7d5ad07d3833bf4c80f5d658a5fbf30e",
+    "new_full_card_backup": false,
+    "verification": [
+      "Review selected ImageGen scenes at source and launcher size",
+      "Real ARM archive reader matches all eleven members of both packs",
+      "ARM search worker, stock and refreshed Settings hooks, mixer and state path fixtures",
+      "One-shot mount ordering, missing pack and rollback with a mount stub"
+    ],
+    "handheld_refresh_test": "pending",
+    "artwork_inputs": {
+      "generator": "built-in ImageGen",
+      "direction": "Original dramatic painted game-cover scenes in the style of the stock menu, with subjects on the right and space for labels on the left. Replacement scenes use simpler poses and concealed hands.",
+      "sheets_sha256": {
+        "cinematic-0.png": "703788f62c9000cb73c4735fb5f2197566913722971d5d867a45a0f6ed50698e",
+        "cinematic-1.png": "929fdf750503d1f1d7668bf5f71e286696bd3e2c064178b44c9b4f2e6fe91ecc",
+        "cinematic-2.png": "7683f8c6760f1b46392f08f741b4eb7206cfabe16ac42a5cfca19636434eb956"
+      },
+      "scene_order": [
+        [
+          "cinematic-2.png",
+          5
+        ],
+        [
+          "cinematic-0.png",
+          1
+        ],
+        [
+          "cinematic-2.png",
+          2
+        ],
+        [
+          "cinematic-2.png",
+          1
+        ],
+        [
+          "cinematic-1.png",
+          1
+        ],
+        [
+          "cinematic-2.png",
+          7
+        ],
+        [
+          "cinematic-1.png",
+          7
+        ],
+        [
+          "cinematic-0.png",
+          7
+        ],
+        [
+          "cinematic-2.png",
+          0
+        ],
+        [
+          "cinematic-0.png",
+          0
+        ],
+        [
+          "cinematic-2.png",
+          8
+        ],
+        [
+          "cinematic-0.png",
+          6
+        ],
+        [
+          "cinematic-0.png",
+          8
+        ],
+        [
+          "cinematic-1.png",
+          8
+        ],
+        [
+          "cinematic-1.png",
+          3
+        ],
+        [
+          "cinematic-2.png",
+          3
+        ],
+        [
+          "cinematic-2.png",
+          4
+        ],
+        [
+          "cinematic-2.png",
+          6
+        ]
+      ]
+    },
+    "fat_dirty_after_stage": false
+  }
+}

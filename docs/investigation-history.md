@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Read the interactive launcher return - 2026-11-11
+
+The one-boot launcher ran and Star Fox became the newest recent entry. The
+optimized core hash matches the earlier clean replay. The interactive
+launcher sends gameplay samples through the stock audio writer. The clean
+replay used the native ALSA worker with 150 ms of reserve. The returned boot
+log contains no gameplay audio counters for the reported clicks.
+[Launcher return](stock-shell-prototype.md#launcher-return-and-refresh).
+
 ## Qualify and arm the launcher search update - 2026-11-10
 
 The firmware search worker passes the full result page to its parser

@@ -516,10 +516,13 @@ ENTRY int stock_load_art(struct art_block **art, const char *name)
     if(!STRCMP(name,"type.raw")) {
         uint16_t *tile=full_art_block(*art,size,17);
         const uint16_t *favorites=full_art_block(*art,size,13);
-        if(tile && favorites) settings_tile(tile,favorites);
+        /* Apply the stock artwork correction only to the original frame. */
+        if(tile && favorites && tile[0]==0x0821 && tile[1]==0x0021 &&
+           tile[2]==0x0821 && tile[3]==0x0001) settings_tile(tile,favorites);
     } else if(VAR(0x1998d8, unsigned)==1 && !STRCMP(name,"setting.raw")) {
         uint16_t *frame=full_art_block(*art,size,0);
-        if(frame) settings_heading(frame);
+        if(frame && frame[0]==0x39e9 && frame[1]==0x31ea &&
+           frame[2]==0x3a09 && frame[3]==0x31ea) settings_heading(frame);
     }
     return loaded;
 }
