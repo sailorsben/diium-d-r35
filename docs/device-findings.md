@@ -1,5 +1,10 @@
 # Device findings
 
+**Star Fox full-screen prototype (2026-11-10).** A fixed 226×190 viewport
+keeps every visible Corneria pixel in the 1,200-tick offline replay.
+The hardware scaler still targets 640×480. Handheld picture and sound
+with this viewport are pending. [Viewport and qualification](starfox-fullscreen.md).
+
 **Star Fox LCD and PCM return (2026-11-10).** Both silent windows complete
 1,200 ticks. Identical-picture reuse avoids 801 scaler jobs and reduces
 elapsed time from 20.835 to 19.813 seconds. Native PCM stops at 22 versus

@@ -1,5 +1,12 @@
 # Investigation history and negative results
 
+## Prototype Star Fox full-screen presentation - 2026-11-10
+
+The 226×190 viewport contains every visible pixel in the 1,200-tick
+Corneria fixture. A 216×190 crop better matches the current aspect ratio
+but cuts into the lives icon. Send the larger viewport through the existing
+LCD queue and scaler. [Scope and acceptance](starfox-fullscreen.md).
+
 ## Retain exact Mode 2 spans before drawing - 2026-11-10
 
 Visible VRAM dependencies admit repeat work where the whole-VRAM key failed.

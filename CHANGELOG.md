@@ -1,5 +1,11 @@
 # Changelog
 
+## Prototype Star Fox full-screen LCD playback - 2026-11-10
+
+Crop the Corneria border before the existing hardware scaler and retain
+the 16-entry cache and 150 ms audio probe.
+[Viewport and handheld acceptance](docs/starfox-fullscreen.md).
+
 ## Record the Star Fox handheld audio pass and cache savings - 2026-11-10
 
 The 150 ms native audio run completes all 1,200 ticks in 19.974 seconds
