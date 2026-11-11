@@ -132,6 +132,8 @@ int main(int argc,char **argv) {
     void (*offset_read)(uint64_t *)=dlsym(handle,"d35_offset_read");
     void (*raster_census)(uint64_t *)=dlsym(handle,"d35_raster_census");
     void (*raster_set_enabled)(bool)=dlsym(handle,"d35_raster_set_enabled");
+    void (*brr_set_enabled)(bool)=dlsym(handle,"d35_brr_set_enabled");
+    void (*brr_read)(uint64_t *)=dlsym(handle,"d35_brr_read");
     void (*fx_set_enabled)(bool)=dlsym(handle,"d35_fx_set_enabled");
     void (*apu_census)(uint64_t *)=dlsym(handle,"d35_apu_census");
     void (*unity_census)(uint64_t *)=dlsym(handle,"d35_unity_census");
@@ -147,6 +149,7 @@ int main(int argc,char **argv) {
     }
     unsigned check=verify; verify=0;
     if(raster_set_enabled) raster_set_enabled(!getenv("D35_AUDIT_CONTROL"));
+    if(brr_set_enabled && getenv("D35_BRR_CONTROL")) brr_set_enabled(false);
     bool train_both=raster_set_enabled && getenv("D35_AUDIT_TRAIN_BOTH");
     if(fx_set_enabled) fx_set_enabled(true);
     uint64_t warm_begin=cpu();
@@ -310,6 +313,13 @@ int main(int argc,char **argv) {
         printf("port_census accesses=%"PRIu64" empty=%"PRIu64"\n",fx[0],fx[1]);
     }
     if(verify) printf("callback_layout=%08"PRIx32"\n",callback_layout);
+    if(brr_read) {
+        uint64_t brr[6];
+        brr_read(brr);
+        printf("brr probes=%"PRIu64" passes=%"PRIu64" active_ticks=%"PRIu64
+               " last_hits=%"PRIu64" profile_cpu_ns=%"PRIu64" max_probe_cpu_ns=%"PRIu64"\n",
+               brr[0],brr[1],brr[2],brr[3],brr[4],brr[5]);
+    }
     if (rotate || poison) printf("direct_frames=%u direct_mismatches=%u\n",direct_frames,direct_mismatches);
 #ifdef D35_DISPLAY_REUSE_PROBE
     display_probe_report();

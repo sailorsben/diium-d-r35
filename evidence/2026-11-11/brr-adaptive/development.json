@@ -1,0 +1,465 @@
+{
+  "physical": false,
+  "variant": "Cortex-A7 O3/LTO development build, no GCC PGO",
+  "core_sha256": "488b62223d8da2375a7fde970e1909b0050d655e21486c83df93d6c679a85dd3",
+  "reference_sha256": "bfa76d06937dbb22754a48fbeebbd5fe20d95d593776fa167c4af8cdffe78ac1",
+  "exact": [
+    {
+      "game": "Super Mario World",
+      "ticks": 1200,
+      "matched_records": 42,
+      "log_sha256": "98d3dd66c65a5db5aad34a74d101f20705dfcacdb647b82fa3020ce7ac58803c"
+    },
+    {
+      "game": "Super Metroid",
+      "ticks": 1200,
+      "matched_records": 42,
+      "log_sha256": "75483259bc6288ca4921026809b381c315c0783065acc02cf3fa12e1f8674d65"
+    },
+    {
+      "game": "F-Zero",
+      "ticks": 1200,
+      "matched_records": 42,
+      "log_sha256": "9cea540eae0f6ed89f93e76d04f97543bcd2f36c59b2d02b65681a381d198098"
+    },
+    {
+      "game": "Star Fox",
+      "ticks": 1200,
+      "matched_records": 42,
+      "log_sha256": "031550afc3e84e2a9c90f9fdff0a57a154ebc7c055e9071abeb5fdd3a0102a73"
+    },
+    {
+      "game": "Rendering Ranger",
+      "ticks": 1200,
+      "matched_records": 42,
+      "log_sha256": "b2a981e407a56c2fd3c56fb6554aabeb3593685ba6305b42ab74f7fd15bc3189"
+    }
+  ],
+  "heldout_star_fox": {
+    "ticks": 1200,
+    "matched_records": 1242,
+    "reloads": 2
+  },
+  "additional_strict": {
+    "core_sha256": "488b62223d8da2375a7fde970e1909b0050d655e21486c83df93d6c679a85dd3",
+    "baseline_sha256": "d7988b2861500eb923b827ad412c14ae841c03dd44e4099f2616a637bf88f62a",
+    "tests": [
+      {
+        "scenario": "meteor",
+        "calls": 1200,
+        "normalized_state_and_output_match": true,
+        "log_sha256": "eeada4886bd23deaa5e3c1ea152b51057e7d75209242a8e343e2400d0691a613",
+        "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+      },
+      {
+        "scenario": "quasar",
+        "calls": 1200,
+        "normalized_state_and_output_match": true,
+        "log_sha256": "cc21856e281bd3e352728188ecb221fa8526e4f8368fc1d19cf12467e379eb97",
+        "comparator_sha256": "ffafd5379ab7d9b14db539fbc364de4b08be298e3228491b5184b5e3c7dd4316"
+      },
+      {
+        "scenario": "ranger",
+        "calls": 2400,
+        "normalized_state_and_output_match": true,
+        "log_sha256": "4410dae4690d9b6cfc115b6920f06e2b74bfea03ca2b4353227a65d29790924c",
+        "comparator_sha256": "e3f96aa172975e7297adff32ec4409bfca0bec6c76d15106867bbf259333558b"
+      }
+    ],
+    "device_executed": false
+  },
+  "timings": [
+    {
+      "game": "Super Mario World",
+      "comparison": "toggle",
+      "pairs": [
+        {
+          "control_ns": 3896897,
+          "adaptive_ns": 3944765.5,
+          "saving_percent": -1.228374781268271,
+          "profile": {
+            "probes": 8,
+            "passes": 5,
+            "active_ticks": 610,
+            "last_hits": 622,
+            "profile_cpu_ns": 3624800,
+            "max_probe_cpu_ns": 1622100
+          },
+          "log_sha256": "75e0bbc97750d9539d4afa061a30f4aed803780c5c9f0254ed9bb99a0e18e740"
+        },
+        {
+          "control_ns": 3853416.6666666665,
+          "adaptive_ns": 3885675.1666666665,
+          "saving_percent": -0.837140200255182,
+          "profile": {
+            "probes": 7,
+            "passes": 4,
+            "active_ticks": 488,
+            "last_hits": 532,
+            "profile_cpu_ns": 3457500,
+            "max_probe_cpu_ns": 1658700
+          },
+          "log_sha256": "4371f039024ac7541422377deb20fde264eb814e7d648998ba1e3afe286abd7c"
+        },
+        {
+          "control_ns": 4398227.666666667,
+          "adaptive_ns": 4338493.5,
+          "saving_percent": 1.358141760586451,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 732,
+            "last_hits": 273,
+            "profile_cpu_ns": 3799200,
+            "max_probe_cpu_ns": 1776700
+          },
+          "log_sha256": "4b45d8005749c9f4e40f13f64a1f5633e3c21e37e7adfe9f02086885a78ecb1d"
+        }
+      ],
+      "median_saving_percent": -0.837140200255182
+    },
+    {
+      "game": "Super Mario World",
+      "comparison": "compare",
+      "pairs": [
+        {
+          "control_ns": 4262038.666666667,
+          "adaptive_ns": 4062169.1666666665,
+          "saving_percent": 4.689528078737915,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 715,
+            "last_hits": 622,
+            "profile_cpu_ns": 3566200,
+            "max_probe_cpu_ns": 1664200
+          },
+          "log_sha256": "517dcd86f9e323cd290705c4ae679712588a61c075be5a2bce5f0c06e85c7244"
+        },
+        {
+          "control_ns": 4337595.083333333,
+          "adaptive_ns": 4127225,
+          "saving_percent": 4.849924423366625,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 732,
+            "last_hits": 273,
+            "profile_cpu_ns": 5039700,
+            "max_probe_cpu_ns": 2653400
+          },
+          "log_sha256": "de87d4e41e99c4ebd447c5590e6207926d0deb15dbe979ad0d7ec1eef54012da"
+        },
+        {
+          "control_ns": 3818357.0833333335,
+          "adaptive_ns": 3667638.6666666665,
+          "saving_percent": 3.947205915458629,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 732,
+            "last_hits": 273,
+            "profile_cpu_ns": 3401600,
+            "max_probe_cpu_ns": 1677200
+          },
+          "log_sha256": "096415bf0279daf473f9c22d144f3f4898424cb37bce390ee87ea68d850d8931"
+        }
+      ],
+      "median_saving_percent": 4.689528078737915
+    },
+    {
+      "game": "Super Metroid",
+      "comparison": "toggle",
+      "pairs": [
+        {
+          "control_ns": 4513169.916666667,
+          "adaptive_ns": 4510595.666666667,
+          "saving_percent": 0.05703862357350209,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 738,
+            "last_hits": 734,
+            "profile_cpu_ns": 3609000,
+            "max_probe_cpu_ns": 1806700
+          },
+          "log_sha256": "8e42f9fd2732c786471158f0b2a839c424d1914b362d7776809c5dfca4c40dd8"
+        },
+        {
+          "control_ns": 4400203.166666667,
+          "adaptive_ns": 4384654.833333333,
+          "saving_percent": 0.35335489622658756,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 712,
+            "last_hits": 753,
+            "profile_cpu_ns": 4559100,
+            "max_probe_cpu_ns": 2951200
+          },
+          "log_sha256": "d8ac8a5a2a4e6a76d8c536a89ca19d2c1675ba9f0121be0e2ad73937ac67b72e"
+        },
+        {
+          "control_ns": 5284842.666666667,
+          "adaptive_ns": 5297292.25,
+          "saving_percent": -0.2355715036108208,
+          "profile": {
+            "probes": 9,
+            "passes": 7,
+            "active_ticks": 861,
+            "last_hits": 752,
+            "profile_cpu_ns": 3903600,
+            "max_probe_cpu_ns": 1677200
+          },
+          "log_sha256": "2db75f1ca409b1e84a26cfcab51e646fdcbacf1f5f0d74d52d6a06cdb274a95a"
+        }
+      ],
+      "median_saving_percent": 0.05703862357350209
+    },
+    {
+      "game": "Super Metroid",
+      "comparison": "compare",
+      "pairs": [
+        {
+          "control_ns": 3963743.0833333335,
+          "adaptive_ns": 4514786,
+          "saving_percent": -13.90208459735145,
+          "profile": {
+            "probes": 9,
+            "passes": 8,
+            "active_ticks": 955,
+            "last_hits": 752,
+            "profile_cpu_ns": 3561200,
+            "max_probe_cpu_ns": 1682900
+          },
+          "log_sha256": "e82e85fee0231ea310c59ff3e7b761c45a9f84ca7fe8ba5ea6018f99d62ed287"
+        },
+        {
+          "control_ns": 3994706.5833333335,
+          "adaptive_ns": 4473258.166666667,
+          "saving_percent": -11.97964289367186,
+          "profile": {
+            "probes": 10,
+            "passes": 10,
+            "active_ticks": 1198,
+            "last_hits": 738,
+            "profile_cpu_ns": 4057000,
+            "max_probe_cpu_ns": 1808600
+          },
+          "log_sha256": "5d3feec00f494998a4e83cb40d5526a2ee170bae5fcaf3c60e86d4074087ca05"
+        },
+        {
+          "control_ns": 3600287.9166666665,
+          "adaptive_ns": 4048320.3333333335,
+          "saving_percent": -12.444349647499276,
+          "profile": {
+            "probes": 10,
+            "passes": 10,
+            "active_ticks": 1198,
+            "last_hits": 738,
+            "profile_cpu_ns": 3891700,
+            "max_probe_cpu_ns": 1709800
+          },
+          "log_sha256": "9208291e2965aebe9f7736409f1bd071d56880e897099fb84e9246ef77b11387"
+        }
+      ],
+      "median_saving_percent": -12.444349647499276
+    },
+    {
+      "game": "F-Zero",
+      "comparison": "toggle",
+      "pairs": [
+        {
+          "control_ns": 4305403.583333333,
+          "adaptive_ns": 4321597.583333333,
+          "saving_percent": -0.3761319859231893,
+          "profile": {
+            "probes": 5,
+            "passes": 2,
+            "active_ticks": 246,
+            "last_hits": 297,
+            "profile_cpu_ns": 2867000,
+            "max_probe_cpu_ns": 1699000
+          },
+          "log_sha256": "08f5f46123866c6bd97a9d62747f2187dd138a2ed1b1bd9ddaa156edac7bf18f"
+        },
+        {
+          "control_ns": 4280351.583333333,
+          "adaptive_ns": 4265042.333333333,
+          "saving_percent": 0.3576633765228654,
+          "profile": {
+            "probes": 5,
+            "passes": 2,
+            "active_ticks": 246,
+            "last_hits": 297,
+            "profile_cpu_ns": 3593600,
+            "max_probe_cpu_ns": 2269700
+          },
+          "log_sha256": "fffb69a85c1417a422d78b4192c0b3b38ca21d5c47d8ae6ed6914841e6478a91"
+        },
+        {
+          "control_ns": 4910073.583333333,
+          "adaptive_ns": 4906503.25,
+          "saving_percent": 0.07271445677416999,
+          "profile": {
+            "probes": 5,
+            "passes": 2,
+            "active_ticks": 246,
+            "last_hits": 297,
+            "profile_cpu_ns": 2981000,
+            "max_probe_cpu_ns": 1658500
+          },
+          "log_sha256": "d6a9a877ae4859ae4e26a20c760af9766e8825fb7ea1130bd90784c7fc37c2dc"
+        }
+      ],
+      "median_saving_percent": 0.07271445677416999
+    },
+    {
+      "game": "F-Zero",
+      "comparison": "compare",
+      "pairs": [
+        {
+          "control_ns": 4373531.25,
+          "adaptive_ns": 4444345.333333333,
+          "saving_percent": -1.6191511912332368,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 250,
+            "profile_cpu_ns": 3199200,
+            "max_probe_cpu_ns": 2381400
+          },
+          "log_sha256": "4c3a97081859c3efe962327091144cb4fa43e2da0e73214e079e74022edd0e76"
+        },
+        {
+          "control_ns": 4448176.833333333,
+          "adaptive_ns": 4478726.416666667,
+          "saving_percent": -0.6867888682932755,
+          "profile": {
+            "probes": 6,
+            "passes": 3,
+            "active_ticks": 369,
+            "last_hits": 331,
+            "profile_cpu_ns": 4009400,
+            "max_probe_cpu_ns": 2360000
+          },
+          "log_sha256": "76671d48f475ca343444d33f7a62097e992f28e0a9410fa71dd4f28fd6e9dd57"
+        },
+        {
+          "control_ns": 3943117,
+          "adaptive_ns": 3989955.5,
+          "saving_percent": -1.1878546845046634,
+          "profile": {
+            "probes": 4,
+            "passes": 1,
+            "active_ticks": 123,
+            "last_hits": 151,
+            "profile_cpu_ns": 2688900,
+            "max_probe_cpu_ns": 1602000
+          },
+          "log_sha256": "aa26cb3c64f260da48055b5f2b33ceb56ddeb31816bf0f3e937e10c8ddd17cf1"
+        }
+      ],
+      "median_saving_percent": -1.1878546845046634
+    },
+    {
+      "game": "Rendering Ranger",
+      "comparison": "toggle",
+      "pairs": [
+        {
+          "control_ns": 4315405.416666667,
+          "adaptive_ns": 4347820.666666667,
+          "saving_percent": -0.7511519050981352,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 3540800,
+            "max_probe_cpu_ns": 2871400
+          },
+          "log_sha256": "69f31a374851581ba330a1d89031678952c44c960bf9ebb517ca068fadab8e56"
+        },
+        {
+          "control_ns": 4327318.916666667,
+          "adaptive_ns": 4376349.333333333,
+          "saving_percent": -1.1330437532076854,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 3520400,
+            "max_probe_cpu_ns": 2867600
+          },
+          "log_sha256": "3fc47e53b215e0fc2fde870f1cac345c17ce155dc68de92aa85ff2a434ee91df"
+        },
+        {
+          "control_ns": 5240023.166666667,
+          "adaptive_ns": 5324309.916666667,
+          "saving_percent": -1.608518651905455,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 3564300,
+            "max_probe_cpu_ns": 2906100
+          },
+          "log_sha256": "95de4236a53a81f2e9058549fbb97a7304a5c26f8fba5ac693211ca216434938"
+        }
+      ],
+      "median_saving_percent": -1.1330437532076854
+    },
+    {
+      "game": "Rendering Ranger",
+      "comparison": "compare",
+      "pairs": [
+        {
+          "control_ns": 4621367.583333333,
+          "adaptive_ns": 4463264.916666667,
+          "saving_percent": 3.4211229428460332,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 3044300,
+            "max_probe_cpu_ns": 2390800
+          },
+          "log_sha256": "ca4451622eca82b9cc43fc44511ab015c2afdd64654109d873487d4dac6c5fe2"
+        },
+        {
+          "control_ns": 4601699.833333333,
+          "adaptive_ns": 4541526.416666667,
+          "saving_percent": 1.307634544756442,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 2302100,
+            "max_probe_cpu_ns": 1747900
+          },
+          "log_sha256": "974614bd777a46ff5e52cc8254cf1a15f0a09afc60fe0c79eb2d5cdee6373587"
+        },
+        {
+          "control_ns": 4086006.5833333335,
+          "adaptive_ns": 3971775.5833333335,
+          "saving_percent": 2.7956636307426397,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 2590000,
+            "max_probe_cpu_ns": 1938400
+          },
+          "log_sha256": "28f0df10c706a2d855240f095376a71096234813222d5f802d7fb0fc1ff7f8f6"
+        }
+      ],
+      "median_saving_percent": 2.7956636307426397
+    }
+  ]
+}

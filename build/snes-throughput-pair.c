@@ -77,11 +77,16 @@ int main(int argc,char **argv) {
     bool no_target=!strcmp(mode,"no-target"), half=!strcmp(mode,"half");
     bool fx_toggle_device=!strcmp(mode,"both-cold-off-fx-toggle-device");
     bool fx_toggle=fx_toggle_device||!strcmp(mode,"both-cold-off-fx-toggle");
+    bool brr_cold=!strcmp(mode,"both-cold-off-brr-toggle");
+    bool brr_toggle=brr_cold||!strcmp(mode,"full-brr-toggle");
+    bool brr_compare=!strcmp(mode,"both-cold-off-brr-compare")||!strcmp(mode,"full-brr-compare");
     device=fx_toggle_device||!strcmp(mode,"device")||!strcmp(mode,"both-cold-off-device");
     bool both_cold_off=!strcmp(mode,"both-cold-off")||!strcmp(mode,"both-cold-off-toggle")||
-                       !strcmp(mode,"both-cold-off-device")||fx_toggle;
+                       !strcmp(mode,"both-cold-off-device")||fx_toggle||brr_cold||
+                       !strcmp(mode,"both-cold-off-brr-compare");
     bool toggle=!strcmp(mode,"full-toggle")||!strcmp(mode,"both-cold-off-toggle");
-    assert(cold_off||oracle||off||no_target||half||both_cold_off||toggle||device||!strcmp(mode,"full"));
+    assert(cold_off||oracle||off||no_target||half||both_cold_off||toggle||device||
+           brr_toggle||brr_compare||!strcmp(mode,"full"));
     unsigned cold=(unsigned)atoi(argv[4]);assert(cold==0||cold==8656);
     if(device) {
         assert(both_cold_off==!!cold);
@@ -100,6 +105,20 @@ int main(int argc,char **argv) {
             assert(set_enabled);set_enabled(k==1);
         }
     }
+    if(brr_toggle||brr_compare) {
+        for(unsigned k=0;k<2;k++) {
+            void (*set_raster)(bool)=dlsym(c[k].handle,"d35_raster_set_enabled");
+            assert(set_raster);
+            set_raster(true);
+            if(brr_toggle) {
+                void (*set_brr)(bool)=dlsym(c[k].handle,"d35_brr_set_enabled");
+                assert(set_brr);
+                set_brr(k==1);
+            }
+        }
+    }
+    void (*brr_read)(uint64_t *)=dlsym(c[1].handle,"d35_brr_read");
+    uint64_t brr_before[6]={0},brr_after[6]={0};
     uint64_t boot[2]={0}, times[1200][2];
     uint64_t wall[1200][2], observer[1200][2];
     uint32_t layout[2]={0};
@@ -115,6 +134,7 @@ int main(int argc,char **argv) {
         }
         if(device && (i+1)%1024==0) fprintf(stderr,"cold_calls_per_arm=%u\n",i+1);
     }
+    if(brr_read) brr_read(brr_before);
     if(device) { verify=pixels=1;fprintf(stderr,"cold_calls_per_arm=%u gameplay_started\n",cold); }
     for(unsigned i=0;i<1200;i++) {
         buttons=gameplay[i];
@@ -153,6 +173,14 @@ int main(int argc,char **argv) {
         putchar('\n');
     }
     printf("published,%u,%u\naudio,%u,%u\n",published[0],published[1],audio_frames[0],audio_frames[1]);
+    if(brr_read) {
+        brr_read(brr_after);
+        printf("brr probes=%"PRIu64" passes=%"PRIu64" active_ticks=%"PRIu64
+               " last_hits=%"PRIu64" profile_cpu_ns=%"PRIu64" max_probe_cpu_ns=%"PRIu64"\n",
+               brr_after[0]-brr_before[0],brr_after[1]-brr_before[1],
+               brr_after[2]-brr_before[2],brr_after[3],
+               brr_after[4]-brr_before[4],brr_after[5]);
+    }
     if(device) {
         assert(layout[0]==layout[1]);
         printf("oracle,1200,1200,%08"PRIx32",%08"PRIx32"\n",layout[0],layout[1]);
