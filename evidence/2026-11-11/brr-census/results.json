@@ -1,0 +1,31 @@
+{
+  "physical": false,
+  "qualification": "One paired ARM/QEMU run per game; no A7 speed measurement; census always decodes, reuse shortcut separately oracle checked",
+  "timing": [
+    {
+      "game": "Mario",
+      "mean_control_ms": 3.9941058333333337,
+      "mean_candidate_ms": 3.79574375,
+      "saving_percent": 4.96637023680937
+    },
+    {
+      "game": "Metroid",
+      "mean_control_ms": 3.8832695,
+      "mean_candidate_ms": 3.7100560833333334,
+      "saving_percent": 4.4605046512137925
+    },
+    {
+      "game": "F-Zero",
+      "mean_control_ms": 4.06872925,
+      "mean_candidate_ms": 3.9918094166666664,
+      "saving_percent": 1.8905124575033683
+    },
+    {
+      "game": "Rendering Ranger",
+      "mean_control_ms": 4.247691083333333,
+      "mean_candidate_ms": 4.369897166666667,
+      "saving_percent": -2.8770002558056396
+    }
+  ],
+  "core_sha256": "a79d25abfb10eb963f2db9612a482212b41bc0598eba55de3c311fac9d0a17ef"
+}
