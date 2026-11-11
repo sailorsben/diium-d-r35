@@ -10,7 +10,7 @@ replace_once = import_module('prepare-snes-throughput').replace_once
 
 def prepare(source, destination):
     shutil.copytree(source, destination, ignore=shutil.ignore_patterns(
-        '*.o', '*.log', 'mock', 'candidate', 'cases', 'plus-a7.so', 'display-check'))
+        '*.o', '*.log', 'mock', 'candidate', 'cases', 'plus-a7.so', 'display-check', 'control', 'reuse'))
     runner = destination / 'runner'
     path = runner / 'native-pcm.c'
     text = path.read_text()
@@ -65,15 +65,30 @@ int pcm_open(unsigned requested)
                         'static const int16_t silence[24576*2]={0};')
     text = replace_once(text, '!frames || frames>4096 || audio_pipe_start()',
                         '!frames || frames>sizeof(silence)/sizeof(silence[0])/2 || audio_pipe_start()')
+    point = '    uint64_t deadline=0,period=0,limit=0; double fraction=0,remainder=0;'
+    text = replace_once(text, point, '    void (*read_memo)(unsigned *) = NULL;\n' + point)
     anchor = '    if(!p_retro_load_game(&game)) { fail("Core rejected game"); goto done; }\n    s.loaded=true;'
     text = replace_once(text, anchor, anchor + '''
     const char *memo_mode = getenv("D35_AUDIT_MODE2_MEMO");
     if (memo_mode && !strcmp(memo_mode, "1")) {
         void (*set_memo)(bool) = NULL;
         *(void **)(&set_memo) = dlsym(s.core, "d35_raster_set_enabled");
-        if (!set_memo) { fail("Core lacks audit raster toggle"); goto done; }
+        *(void **)(&read_memo) = dlsym(s.core, "d35_mode2_read");
+        if (!set_memo || !read_memo) { fail("Core lacks audit raster interface"); goto done; }
         set_memo(true);
     }''')
+    text = replace_once(text, '    game_final_state(s.save_dir);', '''    if (read_memo && s.save_dir[0]) {
+        unsigned counts[7];
+        char path[1300], report[256];
+        read_memo(counts);
+        int size = snprintf(report,sizeof(report),
+            "calls=%u\\neligible=%u\\nrows=%u\\nhits=%u\\nreused_rows=%u\\nmetadata_matches=%u\\nrejected=%u\\n",
+            counts[0],counts[1],counts[2],counts[3],counts[4],counts[5],counts[6]);
+        snprintf(path,sizeof(path),"%s/mode2-cache.txt",s.save_dir);
+        if (size < 0 || (size_t)size >= sizeof(report) || !save_file(path,report,(size_t)size))
+            fail("Could not record raster cache counters");
+    }
+    game_final_state(s.save_dir);''')
     control.write_text(text, newline='\n')
 
 

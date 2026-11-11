@@ -1,5 +1,11 @@
 # Changelog
 
+## Prepare the one-boot Star Fox 150 ms audio test - 2026-11-10
+
+Play the native audio window first with the 16-entry Mode 2 cache, then
+measure the same core on the real LCD with the cache off and on.
+[Test and acceptance criteria](docs/starfox-150-device-test.md).
+
 ## Reuse verified Mode 2 raster spans and audit PCM startup - 2026-11-10
 
 Record the exact VRAM regions a draw depends on and retain matching output
