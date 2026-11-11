@@ -11,6 +11,9 @@
 #include <time.h>
 #include <zlib.h>
 #include "libretro.h"
+#ifdef D35_AUDIT_STATE
+#include "snes-state-normalize.h"
+#endif
 
 static int enable=3, verify, pixels;
 static uint16_t buttons;
@@ -125,6 +128,7 @@ int main(int argc,char **argv) {
     void (*dma_census)(uint64_t *)=dlsym(handle,"d35_dma_census");
     unsigned (*reuse_read)(void)=dlsym(handle,"d35_reuse_read");
     void (*span_read)(unsigned *)=dlsym(handle,"d35_span_read");
+    void (*mode2_read)(unsigned *)=dlsym(handle,"d35_mode2_read");
     void (*offset_read)(uint64_t *)=dlsym(handle,"d35_offset_read");
     void (*raster_census)(uint64_t *)=dlsym(handle,"d35_raster_census");
     void (*raster_set_enabled)(bool)=dlsym(handle,"d35_raster_set_enabled");
@@ -142,7 +146,8 @@ int main(int argc,char **argv) {
         assert(unserialize(state+40,sn-40)); free(state);
     }
     unsigned check=verify; verify=0;
-    if(raster_set_enabled) raster_set_enabled(true);
+    if(raster_set_enabled) raster_set_enabled(!getenv("D35_AUDIT_CONTROL"));
+    bool train_both=raster_set_enabled && getenv("D35_AUDIT_TRAIN_BOTH");
     if(fx_set_enabled) fx_set_enabled(true);
     uint64_t warm_begin=cpu();
     for(unsigned i=0;i<cold;i++) {
@@ -150,6 +155,14 @@ int main(int argc,char **argv) {
     }
     uint64_t warm_ns=cpu()-warm_begin;
     verify=check;
+#ifdef D35_AUDIT_STATE
+    bool state_audit = verify && getenv("D35_AUDIT_STATE");
+    bool heldout = state_audit && getenv("D35_AUDIT_HELDOUT");
+    bool (*serialize)(void *,size_t)=dlsym(handle,"retro_serialize");
+    size_t state_size=state_audit ? serialize_size() : 0;
+    unsigned char *state_copy=state_audit ? calloc(1,state_size) : NULL;
+    assert(!state_audit || (serialize && state_copy));
+#endif
     if(census) {
         census(fx); printf("cold_gsu ns=%"PRIu64" runs=%"PRIu64"\n",fx[1024],fx[1025]);
     }
@@ -166,14 +179,28 @@ int main(int argc,char **argv) {
     unsigned match=0,mismatch=0,first=1200,published=0,audio_frames=0,previous_crc=0;
     unsigned reuse_eligible=0,reuse_matches=0,reuse_false=0;
     unsigned span[7], span_totals[7]={0}, span_false=0;
+    unsigned mode2_totals[7]={0};
     unsigned direct_mismatches=0;
     static uint16_t rotating[3][sizeof(target)/sizeof(*target)] __attribute__((aligned(64)));
     direct_frames=0;
     for(unsigned i=0;i<1200;i++) {
+        if(train_both && i==600) raster_set_enabled(false);
         unsigned reuse=oracle_reuse && i && expected[3*i]==expected[3*(i-1)];
         enable=(off||(half && i%2)||reuse)?2:3;
         pixels=enable&1;
         buttons=gameplay[i]; pixel_crc=pcm_crc=samples=videos=0;
+#ifdef D35_AUDIT_STATE
+        if(heldout) {
+            unsigned left = 1u << RETRO_DEVICE_ID_JOYPAD_LEFT;
+            unsigned right = 1u << RETRO_DEVICE_ID_JOYPAD_RIGHT;
+            unsigned fire = 1u << RETRO_DEVICE_ID_JOYPAD_B;
+            if(i >= 90) buttons = ((i/41)%2 ? left : right) | (i%23 < 13 ? fire : 0);
+            if(i == 300 || i == 721) {
+                assert(serialize(state_copy,state_size));
+                assert(unserialize(state_copy,state_size));
+            }
+        }
+#endif
         offered_target=NULL;
         direct_frame=false;
         if (pixels && !no_target && (!rotate || i%4 != 3)) {
@@ -187,6 +214,10 @@ int main(int argc,char **argv) {
         published+=videos; audio_frames+=samples;
         if(verify) {
             if(reuse) pixel_crc=previous_crc;
+#ifdef D35_AUDIT_STATE
+            if(heldout) printf("audit_output %u %08"PRIx32" %08"PRIx32" %u\n",i,pixel_crc,pcm_crc,samples);
+            else
+#endif
             if(((pixels||reuse) && pixel_crc!=expected[3*i]) || pcm_crc!=expected[3*i+1] || samples!=expected[3*i+2]) {
                 if(!mismatch) {first=i;fprintf(stderr,"first mismatch frame=%u pixels=%d pcm=%d sample_count=%d\n",i,
                     (pixels||reuse)&&pixel_crc!=expected[3*i],pcm_crc!=expected[3*i+1],samples!=expected[3*i+2]);}
@@ -211,7 +242,21 @@ int main(int argc,char **argv) {
             span_totals[5]|=span[5];span_totals[6]+=span[6];
             if(span[6] && (!i || expected[3*i]!=expected[3*(i-1)]))++span_false;
         }
+        if(mode2_read) {
+            mode2_read(span);
+            for(unsigned j=0;j<7;++j) mode2_totals[j]+=span[j];
+        }
+#ifdef D35_AUDIT_STATE
+        if(state_audit && (i%30==29 || !i)) {
+            assert(serialize(state_copy,state_size));
+            normalize_pointers(state_copy);
+            printf("audit_state %u %08"PRIx32"\n",i,(uint32_t)crc32(0,state_copy,state_size));
+        }
+#endif
     }
+#ifdef D35_AUDIT_STATE
+    free(state_copy);
+#endif
     for(unsigned i=0;i<1200;i++)printf("%u,%"PRIu64"\n",i,block[i]);
     if(census) {
         census(fx);
@@ -236,6 +281,8 @@ int main(int argc,char **argv) {
     if(reuse_read) printf("reuse_key eligible=%u hits=%u false=%u\n",reuse_eligible,reuse_matches,reuse_false);
     if(span_read) printf("span_key calls=%u eligible=%u rows=%u hits=%u hit_rows=%u modes=%u complete=%u false=%u\n",
         span_totals[0],span_totals[1],span_totals[2],span_totals[3],span_totals[4],span_totals[5],span_totals[6],span_false);
+    if(mode2_read) printf("mode2_key calls=%u eligible=%u rows=%u hits=%u hit_rows=%u metadata_matches=%u rejected=%u\n",
+        mode2_totals[0],mode2_totals[1],mode2_totals[2],mode2_totals[3],mode2_totals[4],mode2_totals[5],mode2_totals[6]);
     if(offset_read) {
         offset_read(fx);
         printf("offset_rows calls=%"PRIu64" full=%"PRIu64"\n",fx[0],fx[1]);

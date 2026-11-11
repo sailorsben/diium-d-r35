@@ -1,5 +1,9 @@
 # DIIUM D-R35: device findings and SNES platform
 
+The [Star Fox stack audit](docs/snes-stack-audit.md) adds byte-exact raster
+span reuse and an explicit-start PCM diagnostic. The first paired replay
+saves 11.3% mean CPU in ARM/QEMU. Handheld timing and native audio are pending.
+
 The [stock-shell prototype](docs/stock-shell-prototype.md) preserves the
 vendor menu and other emulator routes while launching the profile-guided
 SNES core directly. English is the fallback, frame drop defaults to off,

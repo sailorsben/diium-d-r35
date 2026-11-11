@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Retain exact Mode 2 spans before drawing - 2026-11-10
+
+Visible VRAM dependencies admit repeat work where the whole-VRAM key failed.
+The first same-binary Star Fox pair reduces mean ARM/QEMU CPU time by 11.3%.
+The Super FX register-pair fold is slower. Vendor PCM limits allow a larger
+explicit-start diagnostic, but the measured burst still requires a core
+saving to refill at low latency. [Stack audit](snes-stack-audit.md).
+
 ## Measure identical-picture reuse on the handheld - 2026-11-10
 
 Star Fox saves 0.852 ms wall per tick across the complete silent LCD

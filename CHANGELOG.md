@@ -1,5 +1,12 @@
 # Changelog
 
+## Reuse verified Mode 2 raster spans and audit PCM startup - 2026-11-10
+
+Record the exact VRAM regions a draw depends on and retain matching output
+spans in the owned renderer. Compare the result across five games and
+independent Star Fox inputs. Decode the vendor PCM capacity and qualify an
+explicit-start diagnostic in ARM/QEMU. [Stack audit](docs/snes-stack-audit.md).
+
 ## Record the physical Star Fox reuse and PCM results - 2026-11-10
 
 Archive both full silent display windows and both native PCM failures.
