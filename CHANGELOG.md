@@ -1,5 +1,11 @@
 # Changelog
 
+## Record the Star Fox handheld audio pass and cache savings - 2026-11-10
+
+The 150 ms native audio run completes all 1,200 ticks in 19.974 seconds
+with zero underruns. The matched silent cache pair saves 17.0% core CPU.
+[Handheld return](docs/starfox-150-device-test.md#handheld-return).
+
 ## Prepare the one-boot Star Fox 150 ms audio test - 2026-11-10
 
 Play the native audio window first with the 16-entry Mode 2 cache, then

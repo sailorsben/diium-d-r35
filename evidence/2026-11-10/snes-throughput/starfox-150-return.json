@@ -1,0 +1,147 @@
+{
+  "physical_result": "complete_native_playback_at_nominal_speed_in_one_corneria_replay",
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "nominal_gameplay_ns": 20025786000,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "installation_commit": "8cf7306198dc8a62d5c57cf3dc4f22d3d841e365",
+  "windows": {
+    "pcm-cache": {
+      "ticks": 1200,
+      "active_wall_ns": 19974124000,
+      "ticks_per_second": 60.077729,
+      "core_thread_cpu_ns": 16088562000,
+      "core_wall_ns": 16812549000,
+      "step_p95_ns": 26540000,
+      "core_thread_cpu_p95_ns": 20267000,
+      "audio_worker_cpu_ns": 504013000,
+      "display_worker_cpu_ns": 303395000,
+      "flips": 399,
+      "repeated_pictures": 801,
+      "rendered": 1200,
+      "frameskip": 0,
+      "backend": "native_alsa",
+      "native_frames": 641626,
+      "resampled_frames": 883136,
+      "prime_frames": 6615,
+      "accepted_frames": 889751,
+      "cache": {
+        "calls": 8792,
+        "eligible": 8792,
+        "rows": 268800,
+        "hits": 4005,
+        "reused_rows": 165006,
+        "metadata_matches": 4005,
+        "rejected": 0
+      },
+      "hardware_pointer_samples": 1200,
+      "cleanup_verified": true,
+      "trace_sha256": "b38e771ef2c9caa6fe8297e8d17e39eb6b7f57aa640924ff1b07ad5045cd7025"
+    },
+    "lcd-control": {
+      "ticks": 1200,
+      "active_wall_ns": 20078143000,
+      "ticks_per_second": 59.766483,
+      "core_thread_cpu_ns": 19114165000,
+      "core_wall_ns": 19758657000,
+      "step_p95_ns": 25222000,
+      "core_thread_cpu_p95_ns": 24692000,
+      "audio_worker_cpu_ns": 293123000,
+      "display_worker_cpu_ns": 316613000,
+      "flips": 399,
+      "repeated_pictures": 801,
+      "rendered": 1200,
+      "frameskip": 0,
+      "backend": "measurement_sink",
+      "native_frames": 641626,
+      "resampled_frames": 883136,
+      "prime_frames": 2048,
+      "accepted_frames": 885184,
+      "cache": null,
+      "hardware_pointer_samples": 0,
+      "cleanup_verified": true,
+      "trace_sha256": "7fc26ddb77885c8395bd311d159183c198fa19a3177d91a65098b840d1f74126"
+    },
+    "lcd-cache": {
+      "ticks": 1200,
+      "active_wall_ns": 16794615000,
+      "ticks_per_second": 71.451474,
+      "core_thread_cpu_ns": 15861495000,
+      "core_wall_ns": 16476930000,
+      "step_p95_ns": 20598000,
+      "core_thread_cpu_p95_ns": 20016000,
+      "audio_worker_cpu_ns": 293371000,
+      "display_worker_cpu_ns": 308712000,
+      "flips": 399,
+      "repeated_pictures": 801,
+      "rendered": 1200,
+      "frameskip": 0,
+      "backend": "measurement_sink",
+      "native_frames": 641626,
+      "resampled_frames": 883136,
+      "prime_frames": 2048,
+      "accepted_frames": 885184,
+      "cache": {
+        "calls": 8792,
+        "eligible": 8792,
+        "rows": 268800,
+        "hits": 4005,
+        "reused_rows": 165006,
+        "metadata_matches": 4005,
+        "rejected": 0
+      },
+      "hardware_pointer_samples": 0,
+      "cleanup_verified": true,
+      "trace_sha256": "b455e67645c3a6a9cce2b540efcd8732bbe6a39b5ac15957d05a260f336282c1"
+    }
+  },
+  "native_pcm": {
+    "rate_hz": 44100,
+    "period_frames": 128,
+    "buffer_frames": 7552,
+    "explicit_starts": 1,
+    "xruns": 0,
+    "write_count": 2030,
+    "running_pointer_checks": 5758,
+    "appl_ahead_of_accepted_frames": 0,
+    "min_running_frames": 5042,
+    "min_running_ms": 114.331,
+    "before_drain_frames": 6808,
+    "before_drain_ms": 154.376,
+    "drain_to_reset_ns": 154598000,
+    "trace_sha256": "707a938300771546caed4f48d1fdb8899b4d56dc709ce02c601290426318b389",
+    "audio_verified_by": "hardware PCM counters and completed driver drain"
+  },
+  "silent_pair_saving": {
+    "active_wall_ns": {
+      "difference_ns": 3283528000,
+      "reduction_pct": 16.3537
+    },
+    "core_thread_cpu_ns": {
+      "difference_ns": 3252670000,
+      "reduction_pct": 17.0171
+    },
+    "step_p95_ns": {
+      "difference_ns": 4624000,
+      "reduction_pct": 18.3332
+    }
+  },
+  "counter_correction": {
+    "previously_documented_total": 888976,
+    "resampled_frames": 883136,
+    "prime_frames": 6615,
+    "correct_total": 889751
+  },
+  "return_integrity": {
+    "files_hashed": 2107,
+    "prior_files_missing": 0,
+    "changed_preinstallation_files": [
+      "retro/snes-mvp/launch.sh",
+      "retro/swapfile"
+    ],
+    "both_markers_consumed": true,
+    "fat_read_only_check_clean": true,
+    "dirty_on_return": true,
+    "card_writes": 0
+  }
+}
