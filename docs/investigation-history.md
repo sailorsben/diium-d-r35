@@ -1,5 +1,12 @@
 # Investigation history and negative results
 
+## Verify the original scaler geometry with Star Fox zoom - 2026-11-10
+
+Expanding changed pictures into 256×224 completes all 1,200 ticks with
+sound in 19.975 seconds. Comparing the smaller crop saves more time than
+the expansion adds in this replay. The 20% headroom target remains unmet.
+[Corrected return](starfox-fullscreen.md#corrected-handheld-return).
+
 ## Preserve the scaler geometry for Star Fox zoom - 2026-11-10
 
 Direct 226×190 input stalled the real display worker for 3.267 seconds.

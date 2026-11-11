@@ -1,5 +1,11 @@
 # Changelog
 
+## Record the corrected full-screen Star Fox return - 2026-11-10
+
+The 256×224 scaler path completes all 1,200 ticks with native sound and
+zero underruns. The longest scaler call is 2.529 ms.
+[Handheld return](docs/starfox-fullscreen.md#corrected-handheld-return).
+
 ## Arm the corrected Star Fox full-screen test - 2026-11-10
 
 Stage the one-boot replay using the established 256×224 scaler input.

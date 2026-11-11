@@ -1,0 +1,90 @@
+{
+  "installation_commit": "0751cb11810be50a2c2b98071c87c386428b2ba0",
+  "physical_result": "complete_fullscreen_corneria_replay_with_native_pcm_at_nominal_speed",
+  "measurement_only": true,
+  "production_gate_passed": false,
+  "warmup": {
+    "ticks": 8656,
+    "wall_ns": 82552338000
+  },
+  "ticks": 1200,
+  "nominal_gameplay_ns": 20025786000,
+  "frameskip": 0,
+  "viewport": [
+    16,
+    16,
+    226,
+    190
+  ],
+  "scaler_input": [
+    256,
+    224
+  ],
+  "lcd_size": [
+    640,
+    480
+  ],
+  "flips": 399,
+  "repeated_pictures": 801,
+  "visible_picture_reviewed": false,
+  "pcm": {
+    "rate_hz": 44100,
+    "prime_frames": 6615,
+    "native_frames": 641626,
+    "resampled_frames": 883136,
+    "accepted_frames": 889751,
+    "write_errors": 0,
+    "xruns": 0,
+    "running_sync_checks": 5756,
+    "frame_pointer_samples": 1200,
+    "running_min_frames": 5042,
+    "queued_before_drain_frames": 6808,
+    "drain_completed": true,
+    "trace_sha256": "1ab30b20be460a9a22522b459aa9652cc32a51e8937f57e8bb0c24e7ee520c30"
+  },
+  "fullscreen_timing": {
+    "active_wall_ns": 19974832000,
+    "core_thread_cpu_ns": 16042108000,
+    "video_callback_ns": 1180675000,
+    "display_copy_ns": 434133000,
+    "display_worker_cpu_ns": 308713000,
+    "max_scaler_ns": 2529000,
+    "display_reserve_wait_ns": 5071000,
+    "pcm_playable_min_running_frames": 5042,
+    "compare_ns": 510172000
+  },
+  "bordered_control_timing": {
+    "active_wall_ns": 19974124000,
+    "core_thread_cpu_ns": 16088562000,
+    "video_callback_ns": 1220351000,
+    "display_copy_ns": 310926000,
+    "display_worker_cpu_ns": 303395000,
+    "max_scaler_ns": 2477000,
+    "display_reserve_wait_ns": 5490000,
+    "pcm_playable_min_running_frames": 5042,
+    "compare_ns": 678389000
+  },
+  "timing_delta_ns": {
+    "active_wall_ns": 708000,
+    "core_thread_cpu_ns": -46454000,
+    "video_callback_ns": -39676000,
+    "display_copy_ns": 123207000,
+    "display_worker_cpu_ns": 5318000,
+    "max_scaler_ns": 52000,
+    "display_reserve_wait_ns": -419000,
+    "compare_ns": -168217000
+  },
+  "matched_window_headroom_20_percent": "not_met",
+  "archive": {
+    "verified_files": 2151,
+    "new_retained_bytes": 1721776,
+    "marker_files_consumed": 2,
+    "stock_binaries_and_prior_saves_verified": true,
+    "preexisting_files_changed_since_install": [
+      "retro/swapfile"
+    ],
+    "read_only_fat_scan_clean": true,
+    "fat_dirty_flag_set": true,
+    "card_writes": 0
+  }
+}

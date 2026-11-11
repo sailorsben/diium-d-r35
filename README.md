@@ -4,9 +4,9 @@ The 16-entry Star Fox renderer cache saves 17.0% core CPU in the paired
 handheld replay. The 150 ms native audio run completes all 1,200 ticks
 at nominal speed with zero underruns. [Handheld return](docs/starfox-150-device-test.md#handheld-return).
 
-The [Star Fox full-screen test](docs/starfox-fullscreen.md) found a
-multi-second scaler stall with the direct crop. The replacement keeps
-the original scaler input size and expands the Corneria viewport first.
+The [corrected Star Fox full-screen test](docs/starfox-fullscreen.md#corrected-handheld-return)
+completed the Corneria replay on the handheld in 19.975 seconds with zero
+audio underruns. It keeps the original scaler input size.
 
 The [stock-shell prototype](docs/stock-shell-prototype.md) preserves the
 vendor menu and other emulator routes while launching the profile-guided

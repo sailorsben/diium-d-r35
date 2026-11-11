@@ -1,5 +1,35 @@
 # Star Fox full-screen LCD prototype
 
+## Corrected handheld return
+
+The replacement completed the 1,200-tick Corneria replay in **19.975
+seconds** with native 44.1 kHz sound and no frame skipping. It flipped 399
+pictures and reused 801 identical ones. The longest scaler call was
+**2.529 ms**. The PCM driver accepted all 889,751 frames, including the
+prime, and drained without an underrun or write error. The running audio
+queue bottomed out at 5,042 frames, about 114 ms. The launcher and both
+workers exited cleanly. [Return measurements](../evidence/2026-11-10/snes-throughput/starfox-fullscreen2-return.json).
+
+| Same Corneria replay on separate boots | Bordered | Full-screen |
+| --- | ---: | ---: |
+| Gameplay elapsed | 19.974 s | 19.975 s |
+| Source comparison, total | 678.389 ms | 510.172 ms |
+| Packing and any expansion, total | 310.926 ms | 434.133 ms |
+| Combined comparison and packing, total | 989.315 ms | 944.305 ms |
+| Longest scaler call | 2.477 ms | 2.529 ms |
+
+Comparing the smaller viewport saved 168 ms in this replay. Expanding
+changed pictures added 123 ms to packing, leaving a measured 45 ms
+reduction in those two stages. The gameplay clock was within 1 ms of the
+bordered run. This window still missed the 20% headroom target. The logs
+verify display jobs and audio delivery. A direct look at the LCD is needed
+to judge edges, tearing and HUD appearance.
+
+The return archive verified 2,151 files. Both markers were consumed.
+Among preexisting files only the swapfile hash changed. The card retained
+the dirty flag, and the read-only FAT32 scan found no errors. Collection
+made no card writes.
+
 ## Handheld failure and replacement
 
 The direct-crop test completed all 8,656 warmup ticks. After five gameplay
@@ -21,8 +51,7 @@ viewport in the unused portion of each owned chunk slot and compares it
 before expansion. Every source pixel survives the nearest-neighbor
 expansion, and identical pictures still bypass the scaler entirely. The
 ARM display-worker fixture verifies the full-size input, all viewport
-pixels, repeated pictures and mode transitions. Handheld acceptance remains
-pending.
+pixels, repeated pictures and mode transitions.
 
 `wsl -e python3 build/prepare-starfox-fullscreen.py` built the replacement.
 The full supervised replay matched all 1,200 original video and PCM checks.
@@ -76,7 +105,8 @@ available at that low point. The replacement's added cost is the expansion
 on changed frames only. It keeps the control's scaler payload size. The
 native acceptance measurement compares the cost of copying and expanding a
 changed frame against the former copy cost plus the time saved by comparing
-smaller viewports. A7 cost and remaining audio deficit are still unmeasured.
+smaller viewports. The corrected handheld return measures those costs and
+the actual remaining audio queue.
 In a synthetic ARM/QEMU loop the median costs were 18 µs for the old copy,
 182 µs for scalar crop and expansion, and 178 µs for NEON crop and expansion.
 These numbers price the software on the host only.
@@ -102,7 +132,7 @@ stock binaries and all prior progress. The read-only FAT32 scan found no
 filesystem errors. The dirty flag was set. The replacement build was not
 installed or armed during collection.
 
-The replacement from `0751cb1` is now armed on I: for one boot. All
+The replacement from `0751cb1` was armed on I: for one boot. All
 2,129 preexisting files matched the crash archive before installation.
 Readback matched all 2,136 expected files, including both boot markers,
 and the FAT32 dirty flag was clear. The test still runs the 1,200-tick

@@ -1,5 +1,10 @@
 # Device findings
 
+**Corrected Star Fox full-screen return (2026-11-10).** The handheld
+completes all 1,200 Corneria ticks in 19.975 seconds with zero PCM
+underruns. The longest 256×224 scaler call is 2.529 ms. The visual result
+still needs direct review. [Handheld return](starfox-fullscreen.md#corrected-handheld-return).
+
 **Star Fox full-screen return (2026-11-10).** The first 226×190 viewport
 produced a 3.267-second scaler call, filled the display queue and caused an
 audio underrun. Warmup and worker cleanup completed. The replacement feeds
