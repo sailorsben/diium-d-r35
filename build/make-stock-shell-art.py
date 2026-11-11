@@ -9,7 +9,7 @@ import struct
 import zipfile
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 
 STOCK = runpy.run_path(str(Path(__file__).with_name("inspect-stock-menu.py")))
@@ -29,6 +29,22 @@ TITLES = (
 SETTINGS = ("Language", "Volume", "Brightness", "Restore factory settings")
 PAUSE = ("Resume", "Exit", "Save state", "Load state", "Controls")
 KEYS = tuple("1234567890QWERTYUIOPASDFGHJKL") + ("×",) + tuple("ZXCVBNM") + ("-", ".", "‹")
+# Pixel bounds in the pinned stock carousel. Preserve the original logos and
+# hardware artwork when painting the replacement character panels.
+PLATFORM_ART = {
+    2: ("snes", None, None),
+    3: ("nes", (33, 82, 354, 231), None),
+    7: ("playstation", (82, 24, 290, 214), None),
+    8: ("cps1", (47, 85, 312, 172), (96, 211, 254, 418)),
+    9: ("cps2", (48, 85, 320, 172), (96, 206, 298, 408)),
+    10: ("igs", (79, 78, 245, 151), (54, 204, 233, 419)),
+    11: ("neogeo", (24, 11, 357, 169), (58, 197, 258, 449)),
+}
+NES_HARDWARE_OUTLINES = (
+    ((147, 281), (183, 243), (207, 240), (298, 258), (308, 275), (303, 291),
+     (270, 339), (258, 353), (240, 351), (213, 330), (172, 321), (147, 313)),
+    ((66, 334), (77, 307), (211, 336), (215, 346), (206, 396), (194, 410), (62, 382)),
+)
 
 
 def write_pack(path, stock, replacements):
@@ -67,6 +83,60 @@ def sprites(original, images):
         raw = encoded.astype("<u2").tobytes()
         data[offset:offset + len(raw)] = raw
     return data
+
+
+def read_sprite(data, record):
+    offset, _, _, left, top, right, bottom = record
+    width, height = right - left, bottom - top
+    pixel = np.frombuffer(data, "<u2", width * height, offset).reshape(height, width)
+    red, green, blue = pixel >> 11, (pixel >> 5) & 63, pixel & 31
+    rgb = np.stack(((red << 3) | (red >> 2), (green << 2) | (green >> 4),
+                    (blue << 3) | (blue >> 2)), axis=-1).astype("uint8")
+    return Image.fromarray(rgb, "RGB")
+
+
+def stock_patch(target, stock, box, feather=28):
+    """Keep original RGB pixels inside the box and fade only outside it."""
+    x = np.arange(SIZE[0])[None, :]
+    y = np.arange(SIZE[1])[:, None]
+    left, top, right, bottom = box
+    dx = np.maximum(0, np.maximum(left - x, x - right + 1))
+    dy = np.maximum(0, np.maximum(top - y, y - bottom + 1))
+    opacity = np.maximum(0, 1 - np.hypot(dx, dy) / feather)
+    target.paste(stock, mask=Image.fromarray((255 * opacity).round().astype("uint8"), "L"))
+
+
+def stock_nes_hardware(target, stock):
+    mask = Image.new("L", SIZE)
+    draw = ImageDraw.Draw(mask)
+    for outline in NES_HARDWARE_OUTLINES:
+        draw.polygon(outline, fill=255)
+    target.paste(stock, mask=mask.filter(ImageFilter.GaussianBlur(.65)))
+
+
+def stock_nes_badge(target, stock):
+    # The gray Nintendo badge is a pill. The lower wordmark uses only
+    # red and white. Neither mask needs the old character behind the logo.
+    mask = Image.new("L", SIZE)
+    ImageDraw.Draw(mask).rounded_rectangle((34, 82, 351, 176), radius=47, fill=255)
+    box = (52, 178, 339, 232)
+    red, green, blue = np.moveaxis(np.asarray(stock.crop(box)), -1, 0)
+    wordmark = ((red > 135) & (green < 70) & (blue < 90)) | ((red > 174) & (green > 174) & (blue > 174))
+    letters = Image.fromarray(wordmark.astype("uint8") * 255, "L").filter(ImageFilter.MaxFilter(3))
+    mask.paste(letters, box[:2])
+    target.paste(stock, mask=mask)
+
+
+def super_nintendo_branding(canvas, portraits):
+    with Image.open(portraits / "snes-logo.png") as image:
+        badge = image.convert("RGB")
+        badge.thumbnail((310, 104), Image.Resampling.LANCZOS)
+        canvas.paste(badge, (23, 99))
+    with Image.open(portraits / "snes-console.png") as image:
+        console = image.convert("RGBA")
+        console = console.crop(console.getbbox())
+        console.thumbnail((278, 176), Image.Resampling.LANCZOS)
+        canvas.paste(console, (37, 226), console)
 
 
 def illustrated_background(source, carousel=False, vertical=.23):
@@ -116,6 +186,33 @@ class LauncherArt:
             draw.rectangle((39, 176, 38 + round(self.type(size).getlength(title)), 180), fill=GOLD)
             pages.append(image)
         return pages
+
+    def familiar_carousel(self, original, portraits):
+        frames = self.carousel()
+        stock = STOCK["sprite_records"](original)
+        for index in range(12):
+            reference = read_sprite(original, stock[index])
+            if index not in PLATFORM_ART:
+                frames[index] = reference
+                continue
+            name, logo, hardware = PLATFORM_ART[index]
+            with Image.open(portraits / f"{name}.png") as source:
+                portrait = source.convert("RGB")
+            canvas = Image.new("RGB", SIZE, HEADER)
+            character = ImageOps.fit(portrait, (350, 480), Image.Resampling.LANCZOS, centering=(.5, .32))
+            mask = np.minimum(255, np.arange(350) * 255 // 52).astype("uint8")
+            canvas.paste(character, (290, 0), Image.fromarray(np.tile(mask, (480, 1)), "L"))
+            if hardware:
+                stock_patch(canvas, reference, hardware)
+            if index == 2:
+                super_nintendo_branding(canvas, portraits)
+            elif index == 3:
+                stock_nes_hardware(canvas, reference)
+                stock_nes_badge(canvas, reference)
+            else:
+                stock_patch(canvas, reference, logo, feather=10 if index == 7 else 28)
+            frames[index] = canvas
+        return frames
 
     def controls(self, draw, x, y, spacing, controls):
         for index, (key, action) in enumerate(controls):
@@ -228,10 +325,10 @@ class LauncherArt:
         return variants
 
     def pause(self, original):
-        base = illustrated_background(self.scenes[12])
+        base = Image.new("RGB", SIZE, HEADER)
         draw = self.heading(base, "Game Settings")
-        draw.rectangle((344, 89, 540, 235), outline=EDGE, width=2)
-        draw.rounded_rectangle((286, 263, 615, 445), radius=8, outline=EDGE, width=2)
+        draw.rectangle((344, 89, 540, 235), fill=PANEL, outline=EDGE, width=2)
+        draw.rounded_rectangle((284, 263, 624, 475), radius=8, fill=PANEL, outline=EDGE, width=2)
         records = STOCK["sprite_records"](original)
         for (_, _, _, left, top, right, bottom), title in zip(records[1:6], PAUSE):
             draw.rounded_rectangle((left + 4, top + 5, right - 5, bottom - 6),
@@ -247,20 +344,24 @@ class LauncherArt:
             variants.append(selected)
         slots = base.copy()
         painter = ImageDraw.Draw(slots)
+        # The stock save/load routines paint 86x60 thumbnails from block 6's
+        # origin at (+4,+3), with 104x75 spacing and a separate selection rim.
+        _, _, _, left, top, _, _ = records[6]
         for row in range(2):
             for column in range(3):
-                x, y = 295 + column * 101, 291 + row * 70
-                painter.rounded_rectangle((x, y, x + 91, y + 59), radius=5, fill=PANEL, outline=EDGE)
-                painter.line((x + 40, y + 30, x + 50, y + 30), fill=INK, width=2)
+                x, y = left + 4 + column * 104, top + 3 + row * 75
+                painter.rectangle((x, y, x + 85, y + 59), fill=HEADER, outline=EDGE)
+                painter.line((x + 38, y + 29, x + 47, y + 29), fill=INK, width=2)
         controls = base.copy()
         painter = ImageDraw.Draw(controls)
-        painter.ellipse((293, 318, 375, 400), fill=PANEL, outline=GOLD, width=2)
-        self.label(painter, (334, 359), "D-pad", 17, GOLD, "mm")
+        # Leave the P1 circle blank. The frontend prints the player and
+        # mapping names at positions from its original m_joysticktab.
+        painter.ellipse((293, 318, 375, 400), fill=HEADER, outline=GOLD, width=2)
         for row, pair in enumerate((("L1", "R1"), ("X", "Y"), ("A", "B"))):
             for column, key in enumerate(pair):
-                x, y = 395 + 99 * column, 284 + 47 * row
-                painter.rounded_rectangle((x, y, x + 89, y + 41), radius=13, fill=PANEL, outline=EDGE)
-                self.label(painter, (x + 15, y + 21), key, 16, GOLD)
+                x, y = 388 + 112 * column, 281 + 54 * row
+                painter.rounded_rectangle((x, y, x + 94, y + 43), radius=7, fill=HEADER, outline=EDGE)
+                self.label(painter, (x + 12, y + 22), key, 16, GOLD)
         return variants + [slots, controls]
 
 
@@ -287,6 +388,7 @@ def main():
     parser.add_argument("scene_manifest", type=Path)
     parser.add_argument("font", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--platform-portraits", type=Path, help="reviewed PNGs named for the replacement platforms")
     args = parser.parse_args()
     art = LauncherArt(args.font, scenes_from_manifest(args.scene_manifest))
     args.output.mkdir()
@@ -294,8 +396,9 @@ def main():
     with STOCK["open_pack"](args.stock_english) as stock:
         raw = {name: stock.read(name) for name in ("type.raw", "menu.raw", "setting.raw", "search.raw", "game.raw")}
         library = art.library(raw["menu.raw"])
+        carousel = art.familiar_carousel(raw["type.raw"], args.platform_portraits) if args.platform_portraits else art.carousel()
         images = {
-            "type.raw": art.carousel(), "menu.raw": library, "setting.raw": art.settings(),
+            "type.raw": carousel, "menu.raw": library, "setting.raw": art.settings(),
             "search.raw": art.search(raw["search.raw"], library[0]), "game.raw": art.pause(raw["game.raw"]),
         }
         updated = {name: sprites(raw[name], frames) for name, frames in images.items()}
@@ -307,11 +410,18 @@ def main():
                 expected = updated[name] if name in updated else stock.read(name)
                 if result.read(name) != expected:
                     raise ValueError(f"launcher pack round trip differs at {name}")
-    for name, index, preview in (("type.raw", 2, "snes"), ("type.raw", 17, "settings-tile"),
+    for name, index, preview in (("type.raw", 2, "snes"), ("type.raw", 3, "nes"), ("type.raw", 17, "settings-tile"),
                                  ("setting.raw", 0, "settings"), ("search.raw", 0, "search"),
                                  ("game.raw", 0, "pause")):
         STOCK["preview_png"](updated[name], STOCK["sprite_records"](updated[name])[index],
                              args.output / f"{preview}.png")
+    for index, preview in ((6, "save-slots"), (7, "controls")):
+        records = STOCK["sprite_records"](updated["game.raw"])
+        frame = read_sprite(updated["game.raw"], records[0])
+        selected = 3 if index == 6 else 5
+        for block in (selected, index):
+            frame.paste(read_sprite(updated["game.raw"], records[block]), records[block][3:5])
+        frame.save(args.output / f"{preview}.png")
     overview = Image.new("RGB", (960, 900))
     for index, frame in enumerate(images["type.raw"]):
         row, column = divmod(index, 4)

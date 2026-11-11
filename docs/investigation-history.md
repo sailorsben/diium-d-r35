@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Read the English refresh return and trace pause layout - 2026-11-11
+
+The handheld log confirms both the English art and launcher mounts. The
+save and control graphics had been placed independently of the firmware's
+thumbnail grid and live text positions. The static D-pad label occupied
+the firmware's P1 text area. The rebuilt art uses the actual coordinates,
+and the ARM fixture exercises both the live text calls and slot selection.
+[Platform art and pause screens](stock-shell-prototype.md#familiar-platform-art-and-pause-screens).
+
 ## Read the interactive launcher return - 2026-11-11
 
 The one-boot launcher ran and Star Fox became the newest recent entry. The

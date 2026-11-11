@@ -270,3 +270,38 @@ The refresh was armed on I: from `ca9c0f2`. Readback verified both markers,
 all 2,160 existing files and a clean FAT volume. The only card writes were
 the one-shot markers.
 [Arming receipt](../evidence/2026-11-10/snes-throughput/stock-shell-refresh-arming.json).
+
+## Familiar platform art and pause screens
+
+The first English refresh boot reported both mounts active and consumed
+both markers. The returned inventory differs only in the three launcher
+log and marker files and the swap file. The owner reported overlap on
+the pause controls.
+
+The replacement English pack keeps the original MAME, Mega Drive and
+three Game Boy platform frames. New portraits depict Terra Branford
+from Final Fantasy VI, Jin Kazama from Tekken, Chun-Li and Ryu from
+Street Fighter, Guan Yu from Knights of Valour, and Terry Bogard from
+Fatal Fury. Nintendo's original Super Mario Bros. 3 illustration
+supplies Raccoon Mario for the NES frame. The SNES frame uses Nintendo's
+North American Super Nintendo Entertainment System wordmark and a
+photo of the North American console and controller. The other rebuilt
+platform frames use the logos from the stock pack.
+[Nintendo's Mario artwork](https://www.nintendo.com/jp/famicom/software/smb3/index.html),
+[Nintendo's Super NES artwork](https://www.nintendo.com/us/store/products/super-nintendo-entertainment-system-nintendo-classics-switch/),
+[Evan-Amos console photograph](https://commons.wikimedia.org/wiki/File:SNES-Mod1-Console-Set.png).
+
+The pause screens have a plain backdrop. The firmware still paints
+the current game preview and any saved thumbnails. The six slot
+placeholders now follow the firmware's 86×60 thumbnail rectangles.
+The firmware draws P1 and the six live mappings over reserved areas.
+The two English help lines sit on baselines at y=452 and y=470, giving
+them room at the stock font size. The exact ARM compositor fixture
+exercises the controls text positions, all six selection rims and the
+thumbnail interiors. The ARM ZIP, search, Settings, state path and
+menu mixer checks also pass. The pause changes await handheld testing.
+
+Use `--platform-portraits <reviewed-input-directory>` with
+`make-stock-shell-art.py` to reproduce the character panels. Supply
+the seven portrait PNGs and the Super Nintendo wordmark and console
+PNG. Keep the external artwork and the assembled pack local.

@@ -1,5 +1,14 @@
 # Changelog
 
+## Use familiar platform art and clean up the pause screens - 2026-11-11
+
+Use Terra on the North American Super Nintendo panel, Nintendo's Raccoon
+Mario on NES, and recognizable fighting game characters on their respective
+systems. Keep the original platform marks. Align the save thumbnails,
+control mappings and help text with the firmware's compositor, and use a
+plain backdrop for the current game preview and save thumbnails.
+[Platform art and pause screens](docs/stock-shell-prototype.md#familiar-platform-art-and-pause-screens).
+
 ## Rebuild the English launcher artwork and music - 2026-11-11
 
 Redraw the 18 carousel scenes and the English menu, search, Settings and
