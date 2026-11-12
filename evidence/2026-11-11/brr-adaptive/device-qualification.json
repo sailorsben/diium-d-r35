@@ -1,0 +1,195 @@
+{
+  "measurement_only": true,
+  "device_execution": false,
+  "previous_core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "candidate_core_sha256": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff",
+  "frozen_receipt_sha256": "861a1759254b54e4d56faf417cc19bdb46801068526305cdb0f45d68e4088ece",
+  "wrapper_cases": [
+    "normal",
+    "mismatch",
+    "splash-busy",
+    "unarmed"
+  ],
+  "pairs": [
+    {
+      "game": "003",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "7a9a7371",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "78824b54452016902636ac80c302af91dbb562950c74305889d7872efdef71cf",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8"
+    },
+    {
+      "game": "003",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "7a9a7371",
+      "profile": {
+        "probes": 1,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 368,
+        "profile_cpu_ns": 289300,
+        "max_probe_cpu_ns": 740300
+      },
+      "csv_sha256": "842cb2423a87ebfa66f3a5f3ccf2f94138100b29044ccf57afbc38e0d5f7b863",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8"
+    },
+    {
+      "game": "004",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "c157f1fd",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "bfd5d5cf5040b0828bc109e87227aba702f896746cbb4e688d3323206b614549",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "004",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "c157f1fd",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 20,
+        "profile_cpu_ns": 1746500,
+        "max_probe_cpu_ns": 836300
+      },
+      "csv_sha256": "951b5d9ce96b8e127fdfe1ad5faea418d88d2fb7bfc1788b2bc5221214b192bf",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "002",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "24fe58d4",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "381a9f6e1df8bd97999a628fab5e3a9849caa2591a723964e3f88696330afc70",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "002",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "24fe58d4",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 250,
+        "profile_cpu_ns": 1668000,
+        "max_probe_cpu_ns": 758800
+      },
+      "csv_sha256": "0fd4a4c2b5e2ec1f50923042add5cfef04f3272ff5cb7510b4012e1a649a9083",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "001",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "553b081d",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "97de7db34ee6f7dffcfc236c6861ffb01a7fa11e9738e035cc4af20722a444b9",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "001",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "553b081d",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 742,
+        "profile_cpu_ns": 1252300,
+        "max_probe_cpu_ns": 453600
+      },
+      "csv_sha256": "940a97f8a44d3dc8b3e45b91bdcadd94891bcdde983f42a203a8cada4a40fdd1",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "000",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "0a92abd5",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "54bcdca568142d538f275d6aea6bb901a57d5b0d2670af5e3185452bc0e94422",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    },
+    {
+      "game": "000",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "0a92abd5",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 672,
+        "profile_cpu_ns": 1156200,
+        "max_probe_cpu_ns": 456100
+      },
+      "csv_sha256": "3e695818c3bb9d60008a2a1e4b23ddbcf04a5c7cc8669c14d7cc851ea1814fbf",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6"
+    }
+  ],
+  "payloads": {
+    "pair": "d968e22d044acb820953812c7c6df5fc18db31f2cce4151aa58c10c56094ce22",
+    "launch.sh": "b5d0dc3ebb4d120e9e080be4073e9842d351ad8e1dc735161725870210096f19",
+    "cores/current.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "cores/auto.so": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff",
+    "cores/off.so": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff"
+  },
+  "sources": {
+    "build-snes-core-pgo.sh": "3e5ed4f60e16ce468832543009bf21ee75430ef66e14eb33d8c2b98da3d0249e",
+    "snes-brr-adaptive.h": "a43b252536717e42b7ed69751e9b13bb8509a9ce173347ed1617af8c6d092f00",
+    "prepare-snes-brr-adaptive.py": "76f2efd7886758c618023104e20a779a7bfe5e807d2567d1b72712c540ff7bb0",
+    "snes-throughput-pair.c": "1c3986e148dd34e96c56b46530f115bf7cac37c52c07c5e47f68eb012b1346e5",
+    "snes-throughput-replay.c": "c573ff59f1790b103c09ff2f8f7e49138e94a34fbc641470c6d44e73b9f954db",
+    "build-snes-raster-device.sh": "c0a12d6d9b8b93a6205e593f81e64fa5c3e50de9fed1b5e050aa1ab3812f4c08",
+    "snes-raster-device-launch.sh": "b5d0dc3ebb4d120e9e080be4073e9842d351ad8e1dc735161725870210096f19",
+    "check-snes-raster-device.py": "e46a3281c4962375a4908488c420dbf970cb30c26786ecfc9b08e4cc97d0f883",
+    "install-snes-raster-device.py": "6befbd1de44eb5387b9b63dc23b7fd638f1155643e7e5ed21c8a0b1559012cb8",
+    "attempt_archive.py": "964c72b22c05cabb84bbb9f7ebd7a78229b63e95eedbafa22037db534f68b5af",
+    "install-snes-brr-device.py": "5b01d92f7ed5432861cc881ffeff3478667d17eedb4f81d550dca51eff71ed72"
+  }
+}

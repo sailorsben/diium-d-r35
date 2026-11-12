@@ -4,6 +4,7 @@ set -u
 case "${1:-raster}" in
     raster) PROFILE=raster-core-a7-1; DEFAULT_LAB=/usr/retro/snes-raster-test1;;
     superfx) PROFILE=superfx-core-a7-1; DEFAULT_LAB=/usr/retro/snes-superfx-test1;;
+    brr) PROFILE=brr-core-a7-1; DEFAULT_LAB=/usr/retro/snes-brr-test1;;
     *) exit 2;;
 esac
 LAB=${D35_RASTER_LAB:-$DEFAULT_LAB}
@@ -84,6 +85,31 @@ if [ "$PROFILE" = superfx-core-a7-1 ]; then
     run_pair 003 fx-batch "$RASTER/cores/raster-offset-full.so" || exit "$?"
     run_pair 003 fx-batch-toggle "$LAB/cores/fx-batch-toggle-disabled.so" both-cold-off-fx-toggle-device || exit "$?"
     printf 'complete pairs=2\n' >> "$OUT/wrapper.log"
+    sync
+    exit
+fi
+
+if [ "$PROFILE" = brr-core-a7-1 ]; then
+    # The two copies of the adaptive ELF are byte-identical. The runner
+    # selects auto/off explicitly. The previous core is the live launcher ELF.
+    brr_conditions() {
+        for NODE in /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq \
+                    /sys/class/thermal/thermal_zone0/temp; do
+            if [ -r "$NODE" ] && IFS= read -r VALUE < "$NODE"; then
+                printf '%s %s=%s\n' "$1" "${NODE##*/}" "$VALUE" >> "$OUT/wrapper.log"
+            fi
+        done
+    }
+    for GAME_ID in 000 001 002 004 003; do
+        PREFIX=
+        [ "$GAME_ID" != 003 ] || PREFIX=both-cold-off-
+        brr_conditions "$GAME_ID-auto-before"
+        run_pair "$GAME_ID" auto "$LAB/cores/off.so" "${PREFIX}brr-toggle-device" || exit "$?"
+        brr_conditions "$GAME_ID-off-before"
+        run_pair "$GAME_ID" off "$LAB/cores/current.so" "${PREFIX}brr-disabled-device" || exit "$?"
+        brr_conditions "$GAME_ID-off-after"
+    done
+    printf 'complete pairs=10\n' >> "$OUT/wrapper.log"
     sync
     exit
 fi

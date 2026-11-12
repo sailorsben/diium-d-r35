@@ -23,7 +23,8 @@ BUSYBOX = [*QEMU, '-0', 'busybox', BUILD/'uart-fix-private/firmware-busybox', 's
 
 def wrapper_check(tmp, scenario, out=OUT, profile='raster'):
     lab = tmp/f'{profile}-{scenario}'
-    total, first = (2, '003-fx-batch') if profile == 'superfx' else (12, '003-raster-offset')
+    total, first = {'superfx': (2, '003-fx-batch'), 'brr': (10, '000-auto'),
+                    'raster': (12, '003-raster-offset')}[profile]
     mvp, proc = lab/'mvp', lab/'proc'
     mvp.mkdir(parents=True)
     proc.mkdir()
@@ -42,7 +43,7 @@ def wrapper_check(tmp, scenario, out=OUT, profile='raster'):
                D35_RASTER_LAB=str(lab), D35_RASTER_MVP=str(mvp),
                D35_RASTER_PROC=str(proc), D35_RASTER_SPLASH_STOP=str(lab/'stop'))
     args = [*BUSYBOX, out/'launch.sh']
-    if profile == 'superfx':
+    if profile != 'raster':
         args.append(profile)
     rc = subprocess.run(args, cwd=ROOT, env=env, timeout=15).returncode
     assert rc == {'normal': 0, 'mismatch': 3, 'splash-busy': 1, 'unarmed': 0}[scenario]

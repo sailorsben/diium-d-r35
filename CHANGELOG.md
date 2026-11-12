@@ -1,5 +1,12 @@
 # Changelog
 
+## Prepare the five-game BRR handheld measurement - 2026-11-11
+
+Replay each game against the adaptive PGO core and compare its disabled
+path with the current launcher core. Verify picture and PCM while recording
+callback-adjusted CPU and runtime cache decisions.
+[Handheld procedure](docs/snes-brr-device-test.md).
+
 ## Profile BRR audio decode reuse during gameplay - 2026-11-11
 
 Time the original and cached decoders on the same recent sound blocks.
