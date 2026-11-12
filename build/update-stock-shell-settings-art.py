@@ -8,7 +8,7 @@ import struct
 import zipfile
 
 import numpy as np
-from PIL import ImageDraw
+from PIL import Image, ImageDraw
 
 
 ART = runpy.run_path(str(Path(__file__).with_name('make-stock-shell-art.py')))
@@ -16,6 +16,38 @@ STOCK = ART['STOCK']
 ROW_BOXES = ((90, 339, 550, 378), (90, 382, 550, 421))
 VALUES = (('Off', 'Auto'), ('New', 'Classic'))
 LABELS = ('Frame Skip', 'Theme')
+
+
+def extend_classic_panel(canvas, art):
+    """Use the original panel, bezel and button art for the taller layout."""
+    stock = canvas.copy()
+    art.label(ImageDraw.Draw(canvas), (141, 24), 's', 30, '#ffffff')
+    panel = stock.crop((31, 328, 609, 343))
+    canvas.paste(panel.resize((578, 86), Image.Resampling.NEAREST), (31, 328))
+    canvas.paste(stock.crop((30, 343, 610, 365)), (30, 414))
+
+    # Remove the old control legend from the metal using adjacent pixels on
+    # the same scanlines. Reuse its bezel and move the buttons below the rows.
+    metal = np.asarray(stock.crop((30, 365, 610, 445))).copy()
+    for left, top, right, bottom in ((80, 389, 120, 419), (167, 367, 222, 432),
+                                     (293, 367, 348, 432), (419, 367, 475, 432),
+                                     (525, 389, 565, 419)):
+        l, t, r, b = left-30, top-365, right-30, bottom-365
+        fraction = (np.arange(1, r-l+1) / (r-l+1))[None, :, None]
+        metal[t:b, l:r] = (metal[t:b, l-1:l]*(1-fraction) + metal[t:b, r:r+1]*fraction).round()
+    mask = Image.new('L', (580, 80))
+    ImageDraw.Draw(mask).polygon(((1, 0), (578, 0), (578, 51), (558, 78),
+                                  (26, 78), (1, 51)), fill=255)
+    canvas.paste(Image.fromarray(metal).resize((580, 42), Image.Resampling.LANCZOS), (30, 436),
+                 mask.resize((580, 42), Image.Resampling.NEAREST))
+
+    circle = Image.new('L', (42, 42))
+    ImageDraw.Draw(circle).ellipse((0, 0, 41, 41), fill=255)
+    circle = circle.resize((31, 31), Image.Resampling.LANCZOS)
+    for x, center, label in ((108, 193, 'Select'), (245, 320, 'Change'), (382, 447, 'Back')):
+        button = stock.crop((center-21, 368, center+21, 410))
+        canvas.paste(button.resize((31, 31), Image.Resampling.LANCZOS), (x, 441), circle)
+        art.label(ImageDraw.Draw(canvas), (x+39, 456), label, 19, '#ffffff')
 
 
 def settings_art(original, font, classic):
@@ -27,21 +59,13 @@ def settings_art(original, font, classic):
     art = ART['LauncherArt'](font, [])
     canvas = ART['read_sprite'](original, records[0])
     draw = ImageDraw.Draw(canvas)
-    accent = '#83f8ff' if classic else ART['GOLD']
-    panel = '#101e32' if classic else ART['PANEL']
-    edge = '#55818f' if classic else ART['EDGE']
-    focused = '#204761' if classic else ART['SELECTED']
-    ink = ART['INK']
+    accent = '#ffffff' if classic else ART['GOLD']
+    panel = ART['PANEL']
+    edge = ART['EDGE']
+    focused = '#163739' if classic else ART['SELECTED']
+    ink = '#ffffff' if classic else ART['INK']
     if classic:
-        # Retain the original gradients and outer shell. The controls now
-        # share one panel inside it, extending over the old button legend.
-        for y in range(46):
-            draw.line((0, y, 639, y), fill=canvas.getpixel((320, y)))
-        art.label(draw, (32, 26), 'Settings', 30, ink)
-        draw.polygon(((61, 116), (81, 99), (558, 99), (579, 118),
-                      (579, 427), (561, 445), (80, 445), (61, 426)), fill=panel,
-                     outline=accent, width=2)
-        draw.rectangle((77, 356, 563, 435), fill=panel)
+        extend_classic_panel(canvas, art)
     else:
         draw.rectangle((62, 106, 577, 445), fill=panel)
         draw.rounded_rectangle((62, 94, 577, 452), radius=10, fill=panel, outline=edge, width=2)
@@ -59,34 +83,46 @@ def settings_art(original, font, classic):
         left, top, right, bottom = ROW_BOXES[index]
         y = (top + bottom) // 2
         background = focused if selected else panel
-        painter.rounded_rectangle((left+6, top+1, right-6, bottom-2), radius=6,
-                                  fill=background,
-                                  outline=accent if selected else edge, width=2 if selected else 1)
+        if classic:
+            if selected:
+                painter.rounded_rectangle((left+8, top+2, right-8, bottom-3), radius=5,
+                                          fill=focused, outline='#afc8ca', width=2)
+        else:
+            painter.rounded_rectangle((left+6, top+1, right-6, bottom-2), radius=6,
+                                      fill=background,
+                                      outline=accent if selected else edge, width=2 if selected else 1)
         if index == 0:
             for x in (124, 133):
                 painter.line(((x, y-7), (x+8, y), (x, y+7)), fill=accent, width=2)
         else:
             painter.rounded_rectangle((129, y-9, 144, y+5), radius=2, outline=accent, width=2)
-            painter.rounded_rectangle((123, y-4, 138, y+10), radius=2, fill=background,
+            fill=target.getpixel((124,y)) if classic and not selected else background
+            painter.rounded_rectangle((123, y-4, 138, y+10), radius=2, fill=fill,
                                       outline=accent, width=2)
         art.label(painter, (178, y), LABELS[index], 23, ink)
         art.label(painter, (516, y), VALUES[index][value], 22, accent, anchor='rm')
 
-    for index in range(4):
-        main_row(canvas, index)
+    if not classic:
+        for index in range(4):
+            main_row(canvas, index)
     for index, value in enumerate((0, int(classic))):
         option_row(canvas, index, value)
-    draw = ImageDraw.Draw(canvas)
-    for x, key, text in ((105, 'D-pad', 'Select'), (255, 'A', 'Change'), (399, 'B', 'Back / apply theme')):
-        art.label(draw, (x, 435), key, 16, accent)
-        advance = art.type(16).getlength(key) + 10
-        art.label(draw, (x + advance, 435), text, 16, ink)
+    if not classic:
+        draw = ImageDraw.Draw(canvas)
+        for x, key, text in ((105, 'D-pad', 'Select'), (255, 'A', 'Change'), (399, 'B', 'Back / apply theme')):
+            art.label(draw, (x, 435), key, 16, accent)
+            advance = art.type(16).getlength(key) + 10
+            art.label(draw, (x + advance, 435), text, 16, ink)
 
     frames = [(records[0][3:], canvas)]
     for index in range(4):
         frame = canvas.copy()
-        main_row(frame, index, selected=True)
-        frames.append((records[index+1][3:], frame))
+        record = records[index+1]
+        if classic:
+            frame.paste(ART['read_sprite'](original, record), record[3:5])
+        else:
+            main_row(frame, index, selected=True)
+        frames.append((record[3:], frame))
     for index in range(2):
         for selected in (False, True):
             for value in (0, 1):

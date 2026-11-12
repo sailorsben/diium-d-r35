@@ -352,6 +352,11 @@ Frame Skip uses double chevrons. Theme uses overlapping panels. The icons
 align with the original rows and are included in each selected and unselected
 sprite in both themes. [Icon qualification](../evidence/2026-11-12/stock-shell-settings-icons.json).
 
+Classic retains the original settings background, first four rows, and
+their highlight sprites. The extended panel uses the stock gradient and
+bezel. The original yellow, blue, and red buttons sit in a separate footer
+with labels beside them. [Classic artwork qualification](../evidence/2026-11-12/stock-shell-settings-classic.json).
+
 `update-stock-shell-settings-art.py NEW_PACK STOCK_ENGLISH FONT OUTPUT`
 builds the revised `ui_en.bkp` and a small `ui_classic.bkp` that contains
 only `setting.raw`. The New pack's other members match the prior pack byte
