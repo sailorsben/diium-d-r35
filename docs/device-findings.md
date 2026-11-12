@@ -1,5 +1,10 @@
 # Device findings
 
+**Adaptive BRR handheld return (2026-11-11).** All ten pairs complete with
+exact output and zero sustained cache ticks. The disabled new core misses
+the 1% mean CPU tolerance in Mario and Ranger. Both markers are consumed.
+[Handheld return](snes-brr-device-test.md#handheld-return).
+
 **Launcher search and Settings test (2026-11-10).** The exact ARM worker
 passes the card's updated index through search and paging. Both Settings
 labels pass the artwork fixture. I: is armed for one boot with the tested

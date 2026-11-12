@@ -1,0 +1,791 @@
+{
+  "run": "run-75ec230c-c79b-4d6d-805c-c5527df40d72-476",
+  "measurement": "hardware core CPU, no native PCM or LCD",
+  "native_reserve_verified": false,
+  "pairs": [
+    {
+      "game": "000",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "0a92abd5",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 664,
+        "profile_cpu_ns": 1868000,
+        "max_probe_cpu_ns": 649000
+      },
+      "csv_sha256": "d5117e7e4441b52e2dd2d565d38be3355ea764e34444da096a7f0c457439e9fe",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 9.610443333333334,
+        "candidate_mean_ms": 9.609420833333333,
+        "saved_mean_ms": 0.0010225,
+        "saved_percent": 0.010639467551443182,
+        "control_p95_ms": 10.549,
+        "candidate_p95_ms": 10.573
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 9.610443333333334,
+        "candidate_mean_ms": 9.609420833333333,
+        "saved_mean_ms": 0.0010225,
+        "saved_percent": 0.010639467551443182,
+        "control_p95_ms": 10.549,
+        "candidate_p95_ms": 10.573
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 9.96759,
+          "candidate_mean_ms": 9.96756,
+          "saved_mean_ms": 3e-05,
+          "saved_percent": 0.00030097546147578313,
+          "control_p95_ms": 10.603,
+          "candidate_p95_ms": 10.645
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 8.90468,
+          "candidate_mean_ms": 8.911266666666666,
+          "saved_mean_ms": -0.006586666666666046,
+          "saved_percent": -0.07396859479134044,
+          "control_p95_ms": 9.994,
+          "candidate_p95_ms": 10.05
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 9.554436666666666,
+          "candidate_mean_ms": 9.550616666666667,
+          "saved_mean_ms": 0.00382,
+          "saved_percent": 0.03998142573206076,
+          "control_p95_ms": 10.654,
+          "candidate_p95_ms": 10.644
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 10.015066666666666,
+          "candidate_mean_ms": 10.00824,
+          "saved_mean_ms": 0.006826666666666046,
+          "saved_percent": 0.06816396629077959,
+          "control_p95_ms": 10.335,
+          "candidate_p95_ms": 10.329
+        }
+      ]
+    },
+    {
+      "game": "000",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "0a92abd5",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "b5d678d95804e867a78299194c7c2dcd4f7355b708e39e5f3ee212832f5cd0d6",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 9.461745,
+        "candidate_mean_ms": 9.623084166666667,
+        "saved_mean_ms": -0.16133916666666603,
+        "saved_percent": -1.70517348191761,
+        "control_p95_ms": 10.379,
+        "candidate_p95_ms": 10.58
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 9.461745,
+        "candidate_mean_ms": 9.623084166666667,
+        "saved_mean_ms": -0.16133916666666603,
+        "saved_percent": -1.70517348191761,
+        "control_p95_ms": 10.379,
+        "candidate_p95_ms": 10.58
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 9.82768,
+          "candidate_mean_ms": 9.97884,
+          "saved_mean_ms": -0.15116,
+          "saved_percent": -1.538104618791003,
+          "control_p95_ms": 10.443,
+          "candidate_p95_ms": 10.623
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 8.768363333333333,
+          "candidate_mean_ms": 8.918173333333334,
+          "saved_mean_ms": -0.14981,
+          "saved_percent": -1.708528653579977,
+          "control_p95_ms": 9.868,
+          "candidate_p95_ms": 10.054
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 9.40111,
+          "candidate_mean_ms": 9.565963333333334,
+          "saved_mean_ms": -0.16485333333333396,
+          "saved_percent": -1.7535517968977565,
+          "control_p95_ms": 10.473,
+          "candidate_p95_ms": 10.672
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 9.849826666666665,
+          "candidate_mean_ms": 10.02936,
+          "saved_mean_ms": -0.17953333333333396,
+          "saved_percent": -1.8227055095385802,
+          "control_p95_ms": 10.13,
+          "candidate_p95_ms": 10.35
+        }
+      ]
+    },
+    {
+      "game": "001",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "553b081d",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 739,
+        "profile_cpu_ns": 1879000,
+        "max_probe_cpu_ns": 671000
+      },
+      "csv_sha256": "fcd0b3c4f11c7c85d8ade89437eb9f0ed792fffae3b456b8ab310f6346d5c55b",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 11.633301666666666,
+        "candidate_mean_ms": 11.6171925,
+        "saved_mean_ms": 0.016109166666666046,
+        "saved_percent": 0.13847458897093823,
+        "control_p95_ms": 11.742,
+        "candidate_p95_ms": 11.747
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 11.633301666666666,
+        "candidate_mean_ms": 11.6171925,
+        "saved_mean_ms": 0.016109166666666046,
+        "saved_percent": 0.13847458897093823,
+        "control_p95_ms": 11.742,
+        "candidate_p95_ms": 11.747
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.650576666666666,
+          "candidate_mean_ms": 11.645316666666666,
+          "saved_mean_ms": 0.00526,
+          "saved_percent": 0.04514797979956464,
+          "control_p95_ms": 11.781,
+          "candidate_p95_ms": 11.794
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.626813333333335,
+          "candidate_mean_ms": 11.604113333333334,
+          "saved_mean_ms": 0.0227,
+          "saved_percent": 0.195238362818817,
+          "control_p95_ms": 11.736,
+          "candidate_p95_ms": 11.716
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.629123333333334,
+          "candidate_mean_ms": 11.612626666666666,
+          "saved_mean_ms": 0.01649666666666791,
+          "saved_percent": 0.14185649419834467,
+          "control_p95_ms": 11.734,
+          "candidate_p95_ms": 11.718
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.626693333333334,
+          "candidate_mean_ms": 11.606713333333333,
+          "saved_mean_ms": 0.01998,
+          "saved_percent": 0.17184593613317478,
+          "control_p95_ms": 11.729,
+          "candidate_p95_ms": 11.714
+        }
+      ]
+    },
+    {
+      "game": "001",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "553b081d",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "73253e386f0db9c1df274245bbe1d0ccd2d8cae7063b29f49d17269e89b9374d",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 11.556214166666667,
+        "candidate_mean_ms": 11.619394166666666,
+        "saved_mean_ms": -0.06318,
+        "saved_percent": -0.546718839654603,
+        "control_p95_ms": 11.669,
+        "candidate_p95_ms": 11.739
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 11.556214166666667,
+        "candidate_mean_ms": 11.619394166666666,
+        "saved_mean_ms": -0.06318,
+        "saved_percent": -0.546718839654603,
+        "control_p95_ms": 11.669,
+        "candidate_p95_ms": 11.739
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.57185,
+          "candidate_mean_ms": 11.63421,
+          "saved_mean_ms": -0.06236,
+          "saved_percent": -0.538893953862174,
+          "control_p95_ms": 11.685,
+          "candidate_p95_ms": 11.769
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.55279,
+          "candidate_mean_ms": 11.615856666666666,
+          "saved_mean_ms": -0.06306666666666605,
+          "saved_percent": -0.545899879307643,
+          "control_p95_ms": 11.659,
+          "candidate_p95_ms": 11.737
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.55142,
+          "candidate_mean_ms": 11.61589,
+          "saved_mean_ms": -0.06447,
+          "saved_percent": -0.5581132016669876,
+          "control_p95_ms": 11.666,
+          "candidate_p95_ms": 11.727
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.548796666666666,
+          "candidate_mean_ms": 11.61162,
+          "saved_mean_ms": -0.06282333333333395,
+          "saved_percent": -0.5439816384910534,
+          "control_p95_ms": 11.651,
+          "candidate_p95_ms": 11.729
+        }
+      ]
+    },
+    {
+      "game": "002",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "24fe58d4",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 269,
+        "profile_cpu_ns": 1940000,
+        "max_probe_cpu_ns": 699000
+      },
+      "csv_sha256": "13be3f69f453c34eaed447a7a12187ee2c84fe27319e90f6d916b5c3137ed47a",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 12.3296625,
+        "candidate_mean_ms": 12.32381,
+        "saved_mean_ms": 0.0058525,
+        "saved_percent": 0.047466830499209856,
+        "control_p95_ms": 12.716,
+        "candidate_p95_ms": 12.715
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 12.3296625,
+        "candidate_mean_ms": 12.32381,
+        "saved_mean_ms": 0.0058525,
+        "saved_percent": 0.047466830499209856,
+        "control_p95_ms": 12.716,
+        "candidate_p95_ms": 12.715
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.02575,
+          "candidate_mean_ms": 12.01827,
+          "saved_mean_ms": 0.00748,
+          "saved_percent": 0.06219986279442091,
+          "control_p95_ms": 12.721,
+          "candidate_p95_ms": 12.747
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.573043333333334,
+          "candidate_mean_ms": 12.56736,
+          "saved_mean_ms": 0.005683333333333954,
+          "saved_percent": 0.04520252720570106,
+          "control_p95_ms": 12.764,
+          "candidate_p95_ms": 12.764
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.38814,
+          "candidate_mean_ms": 12.384453333333333,
+          "saved_mean_ms": 0.0036866666666660456,
+          "saved_percent": 0.029759646457550026,
+          "control_p95_ms": 12.632,
+          "candidate_p95_ms": 12.62
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.331716666666667,
+          "candidate_mean_ms": 12.325156666666667,
+          "saved_mean_ms": 0.00656,
+          "saved_percent": 0.053196162199642405,
+          "control_p95_ms": 12.548,
+          "candidate_p95_ms": 12.546
+        }
+      ]
+    },
+    {
+      "game": "002",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "24fe58d4",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "665d5121453947203cc5f6f408255187f7156ce07c376610dae6bd053effcce6",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 12.252115833333335,
+        "candidate_mean_ms": 12.307368333333335,
+        "saved_mean_ms": -0.0552525,
+        "saved_percent": -0.4509629255191827,
+        "control_p95_ms": 12.641,
+        "candidate_p95_ms": 12.704
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 12.252115833333335,
+        "candidate_mean_ms": 12.307368333333335,
+        "saved_mean_ms": -0.0552525,
+        "saved_percent": -0.4509629255191827,
+        "control_p95_ms": 12.641,
+        "candidate_p95_ms": 12.704
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.984023333333335,
+          "candidate_mean_ms": 12.008293333333334,
+          "saved_mean_ms": -0.02427,
+          "saved_percent": -0.2025196323883538,
+          "control_p95_ms": 12.679,
+          "candidate_p95_ms": 12.732
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.488246666666665,
+          "candidate_mean_ms": 12.555433333333333,
+          "saved_mean_ms": -0.06718666666666791,
+          "saved_percent": -0.53799919604407,
+          "control_p95_ms": 12.701,
+          "candidate_p95_ms": 12.747
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.291743333333335,
+          "candidate_mean_ms": 12.361663333333334,
+          "saved_mean_ms": -0.06992,
+          "saved_percent": -0.5688371299650274,
+          "control_p95_ms": 12.531,
+          "candidate_p95_ms": 12.602
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.24445,
+          "candidate_mean_ms": 12.304083333333335,
+          "saved_mean_ms": -0.059633333333333954,
+          "saved_percent": -0.48702337249393324,
+          "control_p95_ms": 12.448,
+          "candidate_p95_ms": 12.507
+        }
+      ]
+    },
+    {
+      "game": "004",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "c157f1fd",
+      "profile": {
+        "probes": 3,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 20,
+        "profile_cpu_ns": 2276000,
+        "max_probe_cpu_ns": 765000
+      },
+      "csv_sha256": "1dcc0016443496ff366db29a6635742406fbb9f215d3c2c288ad115ccaf951a6",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 12.430455833333333,
+        "candidate_mean_ms": 12.407548333333335,
+        "saved_mean_ms": 0.0229075,
+        "saved_percent": 0.1842852772830028,
+        "control_p95_ms": 13.337,
+        "candidate_p95_ms": 13.328
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 12.430455833333333,
+        "candidate_mean_ms": 12.407548333333335,
+        "saved_mean_ms": 0.0229075,
+        "saved_percent": 0.1842852772830028,
+        "control_p95_ms": 13.337,
+        "candidate_p95_ms": 13.328
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.364353333333334,
+          "candidate_mean_ms": 12.337456666666666,
+          "saved_mean_ms": 0.026896666666667908,
+          "saved_percent": 0.21753395379082718,
+          "control_p95_ms": 13.143,
+          "candidate_p95_ms": 13.13
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.756453333333335,
+          "candidate_mean_ms": 12.740136666666666,
+          "saved_mean_ms": 0.01631666666666791,
+          "saved_percent": 0.12790911580440323,
+          "control_p95_ms": 13.475,
+          "candidate_p95_ms": 13.495
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.985416666666666,
+          "candidate_mean_ms": 11.96883,
+          "saved_mean_ms": 0.016586666666666045,
+          "saved_percent": 0.13839040500608357,
+          "control_p95_ms": 12.563,
+          "candidate_p95_ms": 12.54
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.6156,
+          "candidate_mean_ms": 12.58377,
+          "saved_mean_ms": 0.03183,
+          "saved_percent": 0.25230666793494283,
+          "control_p95_ms": 13.234,
+          "candidate_p95_ms": 13.27
+        }
+      ]
+    },
+    {
+      "game": "004",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "c157f1fd",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "cace5210946072615346148e70e978842d859fe625499432ba5ee3ecd61feb90",
+      "log_sha256": "569573073036fa4f1b252f9935d7778f9ea0c0cac4fdc56c465832df162541d6",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 12.3503375,
+        "candidate_mean_ms": 12.489103333333334,
+        "saved_mean_ms": -0.13876583333333395,
+        "saved_percent": -1.1235792814028978,
+        "control_p95_ms": 13.219,
+        "candidate_p95_ms": 13.439
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 12.3503375,
+        "candidate_mean_ms": 12.489103333333334,
+        "saved_mean_ms": -0.13876583333333395,
+        "saved_percent": -1.1235792814028978,
+        "control_p95_ms": 13.219,
+        "candidate_p95_ms": 13.439
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.282473333333334,
+          "candidate_mean_ms": 12.41913,
+          "saved_mean_ms": -0.13665666666666604,
+          "saved_percent": -1.1126152115941812,
+          "control_p95_ms": 13.04,
+          "candidate_p95_ms": 13.222
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.65972,
+          "candidate_mean_ms": 12.821933333333334,
+          "saved_mean_ms": -0.16221333333333396,
+          "saved_percent": -1.2813342896472735,
+          "control_p95_ms": 13.362,
+          "candidate_p95_ms": 13.588
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.9042,
+          "candidate_mean_ms": 12.03783,
+          "saved_mean_ms": -0.13363,
+          "saved_percent": -1.1225449841232527,
+          "control_p95_ms": 12.485,
+          "candidate_p95_ms": 12.623
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.554956666666666,
+          "candidate_mean_ms": 12.67752,
+          "saved_mean_ms": -0.12256333333333395,
+          "saved_percent": -0.9762147061705084,
+          "control_p95_ms": 13.161,
+          "candidate_p95_ms": 13.345
+        }
+      ]
+    },
+    {
+      "game": "003",
+      "arm": "auto",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "7a9a7371",
+      "profile": {
+        "probes": 1,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 457,
+        "profile_cpu_ns": 661000,
+        "max_probe_cpu_ns": 877000
+      },
+      "csv_sha256": "4052b7885f7f96fc355a5d14f00da37189079c214a1fc14c048efa345b4e3e27",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 12.039633333333335,
+        "candidate_mean_ms": 12.0245125,
+        "saved_mean_ms": 0.015120833333333954,
+        "saved_percent": 0.1255921415104,
+        "control_p95_ms": 18.888,
+        "candidate_p95_ms": 18.883
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 12.039633333333335,
+        "candidate_mean_ms": 12.0245125,
+        "saved_mean_ms": 0.015120833333333954,
+        "saved_percent": 0.1255921415104,
+        "control_p95_ms": 18.888,
+        "candidate_p95_ms": 18.883
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.85865,
+          "candidate_mean_ms": 12.834383333333333,
+          "saved_mean_ms": 0.024266666666666045,
+          "saved_percent": 0.18871861872487017,
+          "control_p95_ms": 20.392,
+          "candidate_p95_ms": 20.282
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.75406,
+          "candidate_mean_ms": 11.753366666666667,
+          "saved_mean_ms": 0.0006933333333339543,
+          "saved_percent": 0.0058986710407604726,
+          "control_p95_ms": 17.836,
+          "candidate_p95_ms": 17.863
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.942656666666666,
+          "candidate_mean_ms": 11.931916666666666,
+          "saved_mean_ms": 0.01074,
+          "saved_percent": 0.0899297392512044,
+          "control_p95_ms": 18.705,
+          "candidate_p95_ms": 18.694
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.603166666666667,
+          "candidate_mean_ms": 11.578383333333335,
+          "saved_mean_ms": 0.024783333333332092,
+          "saved_percent": 0.21359111736737324,
+          "control_p95_ms": 16.73,
+          "candidate_p95_ms": 16.591
+        }
+      ]
+    },
+    {
+      "game": "003",
+      "arm": "off",
+      "oracle_ticks_per_arm": 1200,
+      "callback_layout": "7a9a7371",
+      "profile": {
+        "probes": 0,
+        "passes": 0,
+        "active_ticks": 0,
+        "last_hits": 0,
+        "profile_cpu_ns": 0,
+        "max_probe_cpu_ns": 0
+      },
+      "csv_sha256": "0cc992cc5d53c8e667fab59b3dbf00201885040611dd10669ea620c403358f0b",
+      "log_sha256": "0cf94ece2b22f0f51cb6a7966685b2e48a612073db872c64b7087cc6e1efcca8",
+      "main_cpu": {
+        "ticks": 1200,
+        "control_mean_ms": 12.092029166666666,
+        "candidate_mean_ms": 12.014541666666666,
+        "saved_mean_ms": 0.0774875,
+        "saved_percent": 0.640814696458103,
+        "control_p95_ms": 19.127,
+        "candidate_p95_ms": 18.867
+      },
+      "sustained_cache_ticks": null,
+      "other_ticks": {
+        "ticks": 1200,
+        "control_mean_ms": 12.092029166666666,
+        "candidate_mean_ms": 12.014541666666666,
+        "saved_mean_ms": 0.0774875,
+        "saved_percent": 0.640814696458103,
+        "control_p95_ms": 19.127,
+        "candidate_p95_ms": 18.867
+      },
+      "quarters": [
+        {
+          "ticks": 300,
+          "control_mean_ms": 12.911003333333333,
+          "candidate_mean_ms": 12.836403333333333,
+          "saved_mean_ms": 0.0746,
+          "saved_percent": 0.5778017251951262,
+          "control_p95_ms": 20.48,
+          "candidate_p95_ms": 20.277
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.817673333333333,
+          "candidate_mean_ms": 11.72666,
+          "saved_mean_ms": 0.09101333333333396,
+          "saved_percent": 0.7701459565362945,
+          "control_p95_ms": 18.037,
+          "candidate_p95_ms": 17.75
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.997176666666666,
+          "candidate_mean_ms": 11.91735,
+          "saved_mean_ms": 0.07982666666666605,
+          "saved_percent": 0.6653787710608539,
+          "control_p95_ms": 18.902,
+          "candidate_p95_ms": 18.665
+        },
+        {
+          "ticks": 300,
+          "control_mean_ms": 11.642263333333334,
+          "candidate_mean_ms": 11.577753333333334,
+          "saved_mean_ms": 0.06451,
+          "saved_percent": 0.554101879960911,
+          "control_p95_ms": 16.811,
+          "candidate_p95_ms": 16.618
+        }
+      ]
+    }
+  ],
+  "source_commit": "48bd5f3a8292f4c4df9328591d7f1be18f0ca307",
+  "card_archive": "brr-device-return-20261112T010418959968Z",
+  "payload_sha256": {
+    "pair": "d968e22d044acb820953812c7c6df5fc18db31f2cce4151aa58c10c56094ce22",
+    "launch.sh": "b5d0dc3ebb4d120e9e080be4073e9842d351ad8e1dc735161725870210096f19",
+    "cores/current.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "cores/auto.so": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff",
+    "cores/off.so": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff",
+    "qualification.json": "c0eac01b2c9428b5203219acdc7c31aa6333be900b3ccae6a738835b07db5d70",
+    "previous-launch.sh": "f8d3acb00e8a5506a2f885b57d63010f35cd8983668a41ae5c274eeaf2bd8244"
+  },
+  "verified_card_files": 2192,
+  "removed": [
+    "retro/snes-brr-test1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "changed": [
+    "retro/swapfile"
+  ],
+  "added": [
+    "retro/snes-brr-test1/last-boot-marker",
+    "retro/snes-brr-test1/last-launch",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/000-auto.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/000-auto.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/000-off.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/000-off.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/001-auto.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/001-auto.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/001-off.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/001-off.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/002-auto.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/002-auto.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/002-off.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/002-off.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/003-auto.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/003-auto.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/003-off.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/003-off.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/004-auto.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/004-auto.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/004-off.csv",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/004-off.log",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/cpuinfo.txt",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/meminfo.txt",
+    "retro/snes-brr-test1/results/run-75ec230c-c79b-4d6d-805c-c5527df40d72-476/wrapper.log"
+  ],
+  "unchanged_card_files": 2166,
+  "card_writes": 0,
+  "full_backup_created": false,
+  "fat_dirty": true,
+  "measured_core_calls": 24000,
+  "star_fox_warmup_calls": 34624,
+  "fat_readonly_scan_found_problems": false,
+  "volume_serial": "11EB-1465"
+}

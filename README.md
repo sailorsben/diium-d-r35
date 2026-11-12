@@ -8,9 +8,10 @@ The [corrected Star Fox full-screen test](docs/starfox-fullscreen.md#corrected-h
 completed the Corneria replay on the handheld in 19.975 seconds with zero
 audio underruns. It keeps the original scaler input size.
 
-The [five-game BRR handheld measurement](docs/snes-brr-device-test.md) is
-armed on I: for one boot. It compares adaptive PGO with the identical build
-forced off, then compares the disabled build with the current launcher core.
+The [five-game BRR handheld measurement](docs/snes-brr-device-test.md#handheld-return)
+completed all ten pairs. No scene sustained caching. The rebuilt core with
+BRR forced off used 1.71% more CPU in Mario and 1.12% more in Ranger than
+the current launcher core. The test markers were consumed.
 The [launcher artwork and pause update](docs/stock-shell-prototype.md#familiar-platform-art-and-pause-screens)
 remains staged. Its pending one-shot markers were archived and superseded.
 

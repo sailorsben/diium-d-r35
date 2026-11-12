@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Measure adaptive BRR on the handheld - 2026-11-11
+
+All ten physical pairs match the exact replay outputs. All five adaptive
+windows keep sustained caching off. The same-binary mean changes are under
+0.19%. The rebuilt PGO core with adaptation forced off uses 1.71% more CPU
+in Mario and 1.12% more in Ranger than the current launcher core. It misses
+the mean parity gate. [Handheld return](snes-brr-device-test.md#handheld-return).
+
 ## Select BRR decode caching from live audio - 2026-11-11
 
 The first timing probe sometimes approved the cache while whole-core replay

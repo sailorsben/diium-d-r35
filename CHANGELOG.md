@@ -1,5 +1,11 @@
 # Changelog
 
+## Record the five-game BRR handheld return - 2026-11-11
+
+All ten physical pairs match picture and PCM. No scene retains the cache.
+The rebuilt core misses the mean CPU parity tolerance in Mario and Ranger
+with BRR forced off. [Handheld results](docs/snes-brr-device-test.md#handheld-return).
+
 ## Prepare the five-game BRR handheld measurement - 2026-11-11
 
 Replay each game against the adaptive PGO core and compare its disabled

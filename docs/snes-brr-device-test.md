@@ -33,9 +33,8 @@ physical pair before it supports a claim of equivalence. Frequency and
 thermal snapshots are collected where the kernel exposes them. Oracle or
 accounting mismatches invalidate a pair.
 
-This is the measurement for the installation gate. The final candidate's
-net A7 saving and the cost of its probes, cache misses and disabled path
-are unmeasured. Mean break-even is `net saving > baseline service time −
+This is the measurement for the installation gate. Mean break-even is
+`net saving > baseline service time −
 emulated tick period`. The exact source period is about 16.688 ms for the
 NTSC fixtures and about 19.87 ms for the PAL Mario fixture. A production
 claim would also need full native PCM acceptance, drawdown and reserve
@@ -72,8 +71,42 @@ The PGO core passed all ten exact ARM replay pairs, or 24,000 measured
 core calls across both arms. It also passed the independent FFVI Meteor,
 Quasar and Ranger state checks. [Replay qualification](../evidence/2026-11-11/brr-adaptive/device-qualification.json).
 
-I: is armed from source `48bd5f3`. Independent readback verifies both
+I: was armed from source `48bd5f3`. Independent readback verified both
 one-shot markers, all 2,169 card files, 2,159 unchanged prior file hashes
 and clean FAT32. The QEMU arms completed with no sustained caching in these
 windows. The handheld will make its own timing decisions.
 [Card readback](../evidence/2026-11-11/brr-adaptive/device-arming.json).
+
+## Handheld return
+
+All ten pairs completed on the Cortex-A7. The 24,000 measured core calls
+match the frozen pixels, PCM, sample counts and callback layout. Both
+Star Fox pairs completed their cold replay. None of the five adaptive
+windows recorded a successful admission or sustained cache tick. Thirteen
+decode probes used 8.624 ms of thread CPU in total. The logs do not price
+cache hits in sustained use because no gameplay window reached that state.
+
+The table shows change in callback-adjusted core CPU. A positive number
+means the candidate used more CPU.
+
+| Game | Auto vs. same build forced off, mean | New build forced off vs. prior core, mean | New build forced off vs. prior core, p95 |
+| --- | ---: | ---: | ---: |
+| Super Mario World | −0.01% | +1.71% | +1.94% |
+| Super Metroid | −0.14% | +0.55% | +0.60% |
+| F-Zero | −0.05% | +0.45% | +0.50% |
+| Star Fox | −0.13% | −0.64% | −1.36% |
+| Rendering Ranger | −0.18% | +1.12% | +1.66% |
+
+The adaptive checks were within 0.19% of the identical build forced off
+on mean CPU in all five scenes. The larger disabled-core comparison missed
+the 1% mean tolerance in Mario and Ranger. Their extra cost was 0.161 ms and
+0.139 ms per tick, respectively, with higher CPU in every quarter. All five
+passed the 2% p95 tolerance. This run shows no sustained cache savings and
+does not qualify the new core to replace the existing launcher core. The
+diagnostic measured core CPU and left native audio reserve unmeasured.
+
+Both one-shot markers were consumed. The sparse archive contains the logs,
+private progress and hashes for all 2,192 returned files. Only the swapfile
+changed among the retained pre-test files. FAT32 returned dirty and the
+read-only CHKDSK found no filesystem problems. No writes or repair were
+made on return. [Measured return](../evidence/2026-11-11/brr-adaptive/device-return.json).
