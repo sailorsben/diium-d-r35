@@ -1,0 +1,21 @@
+{
+  "physical": false,
+  "local_package": "build/stock-shell-refresh-private/launcher-settings-icons-v1",
+  "changed_pixels": "Only the two icon regions in each base frame and all eight option sprites per theme.",
+  "checks": [
+    "PASS exact baked Settings sprites, held A, failed save, old config migration, theme persistence and locale fallback",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file"
+  ],
+  "payload_sha256": {
+    "vrtemu": "4179c570260aacbccc49ac780a5c274d372d83f21f5b20d6971530b07b667b80",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "d35-menu.pcm": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0",
+    "ui_en.bkp": "9090c6e43dd37462a800af6c34d484bdf64ca1269272fd6b2212e1d8b043f870",
+    "ui_classic.bkp": "1c9cb6301e19311d9d9658ccfaac65d38ee5df2b64fda3cbf84d70ef4cb957e5",
+    "launch.sh": "441917faee91fd9401b80e55f4a837bec9da72d3cbde220ce674d35f54ef1f65"
+  },
+  "preview_sha256": {
+    "new": "0421ed0f86f82b5cb17b54fb0bf3f6c58d85e1d2a3233f5307f49bfb47cb53d1",
+    "classic": "2a70c000c19eb30135b2bf09b5ca354a45b46978133b060d92b82d94ae6ca2b0"
+  }
+}

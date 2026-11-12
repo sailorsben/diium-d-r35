@@ -58,9 +58,17 @@ def settings_art(original, font, classic):
         painter = ImageDraw.Draw(target)
         left, top, right, bottom = ROW_BOXES[index]
         y = (top + bottom) // 2
+        background = focused if selected else panel
         painter.rounded_rectangle((left+6, top+1, right-6, bottom-2), radius=6,
-                                  fill=focused if selected else panel,
+                                  fill=background,
                                   outline=accent if selected else edge, width=2 if selected else 1)
+        if index == 0:
+            for x in (124, 133):
+                painter.line(((x, y-7), (x+8, y), (x, y+7)), fill=accent, width=2)
+        else:
+            painter.rounded_rectangle((129, y-9, 144, y+5), radius=2, outline=accent, width=2)
+            painter.rounded_rectangle((123, y-4, 138, y+10), radius=2, fill=background,
+                                      outline=accent, width=2)
         art.label(painter, (178, y), LABELS[index], 23, ink)
         art.label(painter, (516, y), VALUES[index][value], 22, accent, anchor='rm')
 

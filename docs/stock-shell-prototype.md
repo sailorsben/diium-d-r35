@@ -348,6 +348,10 @@ the matching sprite as the user moves or changes a value. The page fits
 without scrolling. Older or localized packs use the compatibility drawing
 path for the two added options.
 
+Frame Skip uses double chevrons. Theme uses overlapping panels. The icons
+align with the original rows and are included in each selected and unselected
+sprite in both themes. [Icon qualification](../evidence/2026-11-12/stock-shell-settings-icons.json).
+
 `update-stock-shell-settings-art.py NEW_PACK STOCK_ENGLISH FONT OUTPUT`
 builds the revised `ui_en.bkp` and a small `ui_classic.bkp` that contains
 only `setting.raw`. The New pack's other members match the prior pack byte
