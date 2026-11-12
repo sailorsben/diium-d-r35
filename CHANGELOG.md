@@ -3,8 +3,9 @@
 ## Profile BRR audio decode reuse during gameplay - 2026-11-11
 
 Time the original and cached decoders on the same recent sound blocks.
-Use the cache only when its measured decode cost clears a margin, and
-resample as the workload changes. [Adaptive BRR decoder](docs/snes-brr-reuse.md#runtime-profiling).
+Follow promising decode results with a balanced trial of live frames.
+Keep caching when the full trial wins and resample as the workload changes.
+[Adaptive BRR decoder](docs/snes-brr-reuse.md#runtime-profiling).
 
 ## Use familiar platform art and clean up the pause screens - 2026-11-11
 

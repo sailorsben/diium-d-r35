@@ -50,8 +50,11 @@ def apply(core):
 
     libretro = core / 'libretro.c'
     text = replace_once(libretro.read_text(), 'void retro_run(void)\n{',
-                        'void d35_brr_frame(void);\nvoid d35_brr_reset(void);\n\n'
+                        'void d35_brr_frame(void);\nvoid d35_brr_reset(void);\n'
+                        'void d35_brr_begin_run(void);\nvoid d35_brr_end_run(void);\n\n'
                         'void retro_run(void)\n{\n   d35_brr_frame();')
+    text = replace_once(text, '   S9xMainLoop();',
+                        '   d35_brr_begin_run();\n   S9xMainLoop();\n   d35_brr_end_run();')
     for signature in ('void retro_reset(void)',
                       'bool retro_load_game(const struct retro_game_info* game)',
                       'void retro_unload_game(void)'):

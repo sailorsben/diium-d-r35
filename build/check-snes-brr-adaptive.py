@@ -16,14 +16,14 @@ QEMU = ['qemu-arm', '-cpu', 'cortex-a7', '-L', 'build/sysroot',
 GAMES = ('Super Mario World', 'Super Metroid', 'F-Zero', 'Star Fox', 'Rendering Ranger')
 
 
-def compile_replay(name, output):
+def compile_check(source, output):
     subprocess.run([
         'arm-linux-gnueabihf-gcc', '-std=gnu11', '-O2', '-mcpu=cortex-a7',
         '-mfpu=neon-vfpv4', '-mfloat-abi=hard', '-marm', '-fno-stack-protector',
         '-D_TIME_BITS=32', '-D_FILE_OFFSET_BITS=32', '-DD35_AUDIT_STATE', '-DUSE_BLARGG_APU',
         '-Wall', '-Wextra', '-Werror', '-no-pie', '-nostdlib',
         '-Ibuild/snes9x2005/libretro-common/include', '/usr/arm-linux-gnueabihf/lib/crt1.o',
-        f'build/snes-throughput-{name}.c', '-Lbuild/sysroot/lib', '-Wl,--no-as-needed',
+        source, '-Lbuild/sysroot/lib', '-Wl,--no-as-needed',
         '-l:libdl-2.30.so', '-l:libz.so.1', '-l:libc-2.30.so', '-l:libgcc_s.so.1',
         '-o', output,
     ], cwd=ROOT, check=True)
@@ -44,8 +44,11 @@ def main(out, reference, core, repeats):
     out.mkdir()
     same = out / 'disabled.so'
     same.write_bytes(core.read_bytes())
-    compile_replay('pair', out / 'pair')
-    compile_replay('replay', out / 'replay')
+    compile_check('build/snes-throughput-pair.c', out / 'pair')
+    compile_check('build/snes-throughput-replay.c', out / 'replay')
+    compile_check('build/check-brr-adaptive-policy.c', out / 'policy')
+    policy = run([*QEMU, out / 'policy'], out / 'policy.log')
+    assert policy[-1].startswith('PASS balanced trials'), policy
     # Spread simultaneous pairs over distinct physical host cores where possible.
     lanes = list(dict((Path(f'/sys/devices/system/cpu/cpu{cpu}/topology/thread_siblings_list').read_text(), cpu)
                       for cpu in sorted(os.sched_getaffinity(0))).values())
@@ -102,7 +105,7 @@ def main(out, reference, core, repeats):
             print(GAMES[index], 'held-out input and reloads passed' if heldout else 'exact replay passed', flush=True)
         timings = list(pool.map(time_game, range(len(GAMES))))
     result = dict(physical=False, reference_sha256=digest(reference), core_sha256=digest(core),
-                  exact=exact, timings=timings)
+                  policy=policy[-1], exact=exact, timings=timings)
     (out / 'results.json').write_text(json.dumps(result, indent=2) + '\n')
 
 

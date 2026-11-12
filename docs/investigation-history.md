@@ -7,7 +7,9 @@ got slower. The revised probe calls the same ARM cache helper as gameplay,
 checks two timing orders and requires a minimum hit rate. The revised core
 preserves frozen output and held-out save-state behavior. Ranger rejects the
 cache in all repeated development timing pairs. The earlier prototype's
-speedup does not reproduce in same-binary adaptive comparisons.
+speedup does not reproduce in same-binary adaptive comparisons. The PGO
+decoder probe still approved a slower Metroid replay, so the final selector
+also requires a win across a balanced trial of actual gameplay frames.
 [Runtime policy and results](snes-brr-reuse.md#runtime-profiling).
 
 ## Read the English refresh return and trace pause layout - 2026-11-11

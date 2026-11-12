@@ -37,8 +37,14 @@ runs those same requests through both paths twice in opposite order, using
 the kernel thread CPU clock. The cached path uses the same ARM helper in the
 probe and gameplay. Each cache timing starts with an empty 256-entry table.
 Both pairs must favor the cache by more than 12.5%, and at least a quarter of
-the requests must hit. These margins allow for timing noise and work outside
-the probe. An unavailable clock or sparse decode leaves the scalar path active.
+the requests must hit before the core tries it on live frames. An unavailable
+clock or sparse decode leaves the scalar path active.
+
+The live trial alternates the two paths over 32 frames. It times the main
+emulation loop, including work outside the sound decoder. The cache must win
+in each of four groups and by more than 2% overall to stay on. The balanced
+order gives each path the same number of odd and even frames. Each trial
+frame runs once and publishes its regular picture and audio.
 
 An enabled cache resamples after about 120 ticks. A failed timing probe waits
 240 ticks before retrying, doubling up to 960 on repeated failures. A new
@@ -62,7 +68,7 @@ a pair with the previous core. No physical test is run by these tools.
 
 ## Validation and cost
 
-The Cortex-A7 development build passed all five 1,200-tick picture, PCM,
+The decoder-probe-only Cortex-A7 development build passed all five 1,200-tick picture, PCM,
 sample-count, callback-layout and normalized-state comparisons. Star Fox
 also matched 1,200 calls with different inputs, poisoned output buffers and
 two reloads. The independent Final Fantasy VI and Ranger comparators passed
@@ -72,8 +78,32 @@ In three same-binary QEMU timing pairs per shorter scene, median savings
 were −0.84% for Mario, +0.06% for Metroid, +0.07% for F-Zero and −1.13% for
 Ranger. The Ranger cache stayed off in all three pairs. These values include
 probe cost and measurement variation. Comparing complete development ELFs
-produced larger differences, including a Metroid regression. The earlier
-always-on prototype's gains do not transfer to this adaptive build.
+produced larger differences, including a Metroid regression. The PGO build
+with only the decoder probe passed the exact comparisons, but the probe
+approved caching in a Metroid pair that used 2.55% more whole-core CPU.
+That false positive motivated the live trial. The earlier always-on
+prototype's gains do not transfer to the adaptive build.
+[Decoder-only PGO comparison](../evidence/2026-11-11/brr-adaptive/decoder-probe-only-pgo.json).
+
+The final live gate passed the same exactness and held-out checks in the
+Cortex-A7 O3/LTO development build. Its ARM policy fixture confirms that
+balanced trials accept a clear win and reject a weak, uneven or invalid one.
+In the same-binary timing pair, Mario sustained caching for 244 of 1,200
+ticks. The other four scenes kept it off outside their bounded trials.
+
+| Replay | Same-binary mean CPU saved | Mean CPU saved vs. previous development ELF |
+| --- | ---: | ---: |
+| Mario | +0.58% | −1.58% |
+| Metroid | +0.38% | +0.21% |
+| F-Zero | +0.37% | −1.45% |
+| Star Fox | −0.09% | +0.80% |
+| Ranger | −1.27% | −6.73% |
+
+These single paired QEMU results establish selective operation, but do not
+establish a net speedup. The complete development ELF can regress with the
+cache inactive. The live gate has not been retimed after GCC profile-guided
+compilation. Keep it opt-in for candidate builds.
+[Final live-gate results](../evidence/2026-11-11/brr-adaptive/live-frame-gate.json).
 
 Physical net A7 savings, probe cost and remaining native audio reserve are
 unmeasured. A paired handheld run must show lower net core time in enabled

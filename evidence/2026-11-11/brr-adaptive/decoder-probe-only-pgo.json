@@ -1,0 +1,230 @@
+{
+  "physical": false,
+  "reference_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "core_sha256": "3f3842b7718a2228158188e18ed64ba3483f761485c05f0d5edd7777e9cde232",
+  "exact": [
+    {
+      "game": "Star Fox",
+      "heldout": true,
+      "ticks": 1200,
+      "matched_records": 1242
+    },
+    {
+      "game": "Star Fox",
+      "heldout": false,
+      "ticks": 1200,
+      "matched_records": 42
+    },
+    {
+      "game": "Super Mario World",
+      "heldout": false,
+      "ticks": 1200,
+      "matched_records": 42
+    },
+    {
+      "game": "Super Metroid",
+      "heldout": false,
+      "ticks": 1200,
+      "matched_records": 42
+    },
+    {
+      "game": "F-Zero",
+      "heldout": false,
+      "ticks": 1200,
+      "matched_records": 42
+    },
+    {
+      "game": "Rendering Ranger",
+      "heldout": false,
+      "ticks": 1200,
+      "matched_records": 42
+    }
+  ],
+  "timings": [
+    {
+      "game": "Super Mario World",
+      "measurements": [
+        {
+          "comparison": "toggle",
+          "repeat": 0,
+          "control_ns": 3290798,
+          "auto_ns": 3304415.5833333335,
+          "saving_percent": -0.4138079375681336,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 672,
+            "profile_cpu_ns": 1421100,
+            "max_probe_cpu_ns": 723400
+          },
+          "log_sha256": "def0380fc0feace17c448a82d7a78ccb71f704872209cb841a24abf1fb8b3815"
+        },
+        {
+          "comparison": "compare",
+          "repeat": 0,
+          "control_ns": 3324269.5,
+          "auto_ns": 3338104.5833333335,
+          "saving_percent": -0.41618416717819073,
+          "profile": {
+            "probes": 6,
+            "passes": 3,
+            "active_ticks": 366,
+            "last_hits": 433,
+            "profile_cpu_ns": 1780600,
+            "max_probe_cpu_ns": 487100
+          },
+          "log_sha256": "e0ace08c47733f26cf3455a45dcb76f23fe05ac10c96695cbd174fa41acc731b"
+        }
+      ]
+    },
+    {
+      "game": "Super Metroid",
+      "measurements": [
+        {
+          "comparison": "toggle",
+          "repeat": 0,
+          "control_ns": 2981236.25,
+          "auto_ns": 3057115.5,
+          "saving_percent": -2.545227671909589,
+          "profile": {
+            "probes": 7,
+            "passes": 4,
+            "active_ticks": 492,
+            "last_hits": 742,
+            "profile_cpu_ns": 2138900,
+            "max_probe_cpu_ns": 616000
+          },
+          "log_sha256": "c0fb9101c09ca72a5fbf89449645e14aded4b98976ed1737271d2fdaaf176992"
+        },
+        {
+          "comparison": "compare",
+          "repeat": 0,
+          "control_ns": 3028822.0833333335,
+          "auto_ns": 3115770,
+          "saving_percent": -2.8706841892468304,
+          "profile": {
+            "probes": 8,
+            "passes": 6,
+            "active_ticks": 712,
+            "last_hits": 753,
+            "profile_cpu_ns": 2268100,
+            "max_probe_cpu_ns": 438000
+          },
+          "log_sha256": "f5e64b610f5186646715d2cd523b77bc2d80112f11c133906fa5e6d0e48952ad"
+        }
+      ]
+    },
+    {
+      "game": "F-Zero",
+      "measurements": [
+        {
+          "comparison": "toggle",
+          "repeat": 0,
+          "control_ns": 3426811.5833333335,
+          "auto_ns": 3502663.5833333335,
+          "saving_percent": -2.213486156312605,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 250,
+            "profile_cpu_ns": 967400,
+            "max_probe_cpu_ns": 384400
+          },
+          "log_sha256": "5e9bdbfa91669f812ad533753cf77e46c1f307ae85e1c9825e46e833134cf4be"
+        },
+        {
+          "comparison": "compare",
+          "repeat": 0,
+          "control_ns": 3516365.1666666665,
+          "auto_ns": 3599148.0833333335,
+          "saving_percent": -2.3542184256460708,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 250,
+            "profile_cpu_ns": 1275200,
+            "max_probe_cpu_ns": 465000
+          },
+          "log_sha256": "d35a77510a66c87f76b58c05fb80870c367cb48455072647bc55ec90f029f3a4"
+        }
+      ]
+    },
+    {
+      "game": "Star Fox",
+      "measurements": [
+        {
+          "comparison": "toggle",
+          "repeat": 0,
+          "control_ns": 3716007.0833333335,
+          "auto_ns": 3768852.25,
+          "saving_percent": -1.4220954234366978,
+          "profile": {
+            "probes": 1,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 296,
+            "profile_cpu_ns": 342100,
+            "max_probe_cpu_ns": 571400
+          },
+          "log_sha256": "32a1dec04fd88f4613b685a12fba72808cf65fe2119a135ef4df8f7d6869e80e"
+        },
+        {
+          "comparison": "compare",
+          "repeat": 0,
+          "control_ns": 4068836.9166666665,
+          "auto_ns": 4099548.8333333335,
+          "saving_percent": -0.7548082485406393,
+          "profile": {
+            "probes": 1,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 296,
+            "profile_cpu_ns": 299000,
+            "max_probe_cpu_ns": 327600
+          },
+          "log_sha256": "2a7b6b6241bdfd90098a82f9fab7fcecdf8fc409dc6ff63a32e8816863e79c49"
+        }
+      ]
+    },
+    {
+      "game": "Rendering Ranger",
+      "measurements": [
+        {
+          "comparison": "toggle",
+          "repeat": 0,
+          "control_ns": 3878614.25,
+          "auto_ns": 3845325.3333333335,
+          "saving_percent": 0.8582683020531445,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 1211900,
+            "max_probe_cpu_ns": 507100
+          },
+          "log_sha256": "934b9f64cd79c12dc1454c559f7f23685763795aa42e04be9fd1673c689ce11c"
+        },
+        {
+          "comparison": "compare",
+          "repeat": 0,
+          "control_ns": 3782217.5,
+          "auto_ns": 3719099.3333333335,
+          "saving_percent": 1.6688137756928678,
+          "profile": {
+            "probes": 3,
+            "passes": 0,
+            "active_ticks": 0,
+            "last_hits": 20,
+            "profile_cpu_ns": 1643000,
+            "max_probe_cpu_ns": 856400
+          },
+          "log_sha256": "7686cf84c335dfedf01d408598d21846411e1721da890503f61f200f992f8021"
+        }
+      ]
+    }
+  ]
+}

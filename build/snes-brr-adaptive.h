@@ -9,6 +9,9 @@ enum {
    BRR_CACHE_ENTRIES = 256,
    BRR_PROFILE_BLOCKS = 1024,
    BRR_CAPTURE_FRAMES = 8,
+   BRR_TRIAL_GROUPS = 4,
+   BRR_TRIAL_GROUP_TICKS = 8,
+   BRR_TRIAL_TICKS = BRR_TRIAL_GROUPS * BRR_TRIAL_GROUP_TICKS,
    BRR_ACTIVE_INTERVAL = 120,
    BRR_FIRST_RETRY = 240,
    BRR_MAX_RETRY = 960
@@ -32,6 +35,9 @@ static unsigned brr_samples, brr_capture_left, brr_wait, brr_retry;
 static unsigned brr_probes, brr_passes, brr_active_frames, brr_last_hits;
 static uint64_t brr_probe_cpu, brr_max_probe_cpu;
 static volatile uint32_t brr_profile_output;
+static bool brr_trial_active, brr_trial_valid;
+static unsigned brr_trial_tick;
+static uint64_t brr_trial_start, brr_trial_cpu[BRR_TRIAL_GROUPS][2];
 
 static INLINE struct brr_input brr_read_input(const int32_t *pos, unsigned word, unsigned header)
 {
@@ -149,15 +155,69 @@ static bool brr_profile_pass(void)
       if (cost > brr_max_probe_cpu)
          brr_max_probe_cpu = cost;
    }
-   /* Demand a margin in both orders. This covers dispatch and real cache
-    * pressure omitted by the scratch replay and rejects noisy ties. */
+   /* Screen out weak candidates before trying the cache on live frames. */
    return brr_last_hits >= BRR_PROFILE_BLOCKS / 4 && plain1 && plain2 && cached1 && cached2 &&
       cached1 < plain1 - plain1 / 8 && cached2 < plain2 - plain2 / 8;
+}
+
+static void brr_finish_probe(bool faster)
+{
+   brr_enabled = faster;
+   brr_trial_active = false;
+   if (faster)
+   {
+      ++brr_passes;
+      brr_wait = BRR_ACTIVE_INTERVAL;
+      brr_retry = BRR_FIRST_RETRY;
+   }
+   else
+   {
+      brr_wait = brr_retry;
+      if (brr_retry < BRR_MAX_RETRY)
+         brr_retry *= 2;
+   }
+}
+
+static bool brr_trial_pass(void)
+{
+   uint64_t scalar = 0, cached = 0;
+   unsigned i;
+   if (!brr_trial_valid)
+      return false;
+   for (i = 0; i < BRR_TRIAL_GROUPS; ++i)
+   {
+      /* A phase change or an unstable sample must not qualify the cache. */
+      if (brr_trial_cpu[i][1] >= brr_trial_cpu[i][0])
+         return false;
+      scalar += brr_trial_cpu[i][0];
+      cached += brr_trial_cpu[i][1];
+   }
+   return cached < scalar - scalar / 50;
+}
+
+void d35_brr_begin_run(void)
+{
+   if (brr_trial_active)
+      brr_trial_start = brr_thread_cpu();
+}
+
+void d35_brr_end_run(void)
+{
+   if (brr_trial_active)
+   {
+      uint64_t end = brr_thread_cpu();
+      if (brr_trial_start && end > brr_trial_start)
+         brr_trial_cpu[brr_trial_tick / BRR_TRIAL_GROUP_TICKS][brr_enabled] += end - brr_trial_start;
+      else
+         brr_trial_valid = false;
+      ++brr_trial_tick;
+   }
 }
 
 void d35_brr_reset(void)
 {
    brr_enabled = brr_intercept = false;
+   brr_trial_active = false;
    brr_samples = brr_capture_left = brr_wait = 0;
    brr_retry = BRR_FIRST_RETRY;
    brr_probes = brr_passes = brr_active_frames = brr_last_hits = 0;
@@ -170,22 +230,22 @@ void d35_brr_frame(void)
 {
    if (!brr_allowed)
       return;
-   if (brr_samples == BRR_PROFILE_BLOCKS)
+   if (brr_trial_active)
    {
-      brr_enabled = brr_profile_pass();
-      brr_samples = brr_capture_left = 0;
-      if (brr_enabled)
+      if (brr_trial_tick == BRR_TRIAL_TICKS)
+         brr_finish_probe(brr_trial_pass());
+   }
+   else if (brr_samples == BRR_PROFILE_BLOCKS)
+   {
+      if (brr_profile_pass())
       {
-         ++brr_passes;
-         brr_wait = BRR_ACTIVE_INTERVAL;
-         brr_retry = BRR_FIRST_RETRY;
+         brr_trial_active = brr_trial_valid = true;
+         brr_trial_tick = 0;
+         memset(brr_trial_cpu, 0, sizeof(brr_trial_cpu));
       }
       else
-      {
-         brr_wait = brr_retry;
-         if (brr_retry < BRR_MAX_RETRY)
-            brr_retry *= 2;
-      }
+         brr_finish_probe(false);
+      brr_samples = brr_capture_left = 0;
    }
    else if (brr_capture_left)
    {
@@ -202,8 +262,16 @@ void d35_brr_frame(void)
    else
       brr_capture_left = BRR_CAPTURE_FRAMES;
 
+   if (brr_trial_active)
+   {
+      /* Off/on/on/off balances adjacent workloads. Invert alternate sets so
+       * a persistent odd/even rendering cost cannot favor either path. */
+      unsigned tick = brr_trial_tick;
+      brr_enabled = (tick ^ (tick >> 1) ^ (tick >> 2)) & 1u;
+   }
+   else
+      brr_active_frames += brr_enabled;
    brr_intercept = brr_enabled || brr_capture_left;
-   brr_active_frames += brr_enabled;
 }
 
 /* The offline replay pair uses these exports to compare identical ELFs. */
