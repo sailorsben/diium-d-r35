@@ -71,3 +71,9 @@ for normal, oracle failure, active splash and unarmed cases.
 The PGO core passed all ten exact ARM replay pairs, or 24,000 measured
 core calls across both arms. It also passed the independent FFVI Meteor,
 Quasar and Ranger state checks. [Replay qualification](../evidence/2026-11-11/brr-adaptive/device-qualification.json).
+
+I: is armed from source `48bd5f3`. Independent readback verifies both
+one-shot markers, all 2,169 card files, 2,159 unchanged prior file hashes
+and clean FAT32. The QEMU arms completed with no sustained caching in these
+windows. The handheld will make its own timing decisions.
+[Card readback](../evidence/2026-11-11/brr-adaptive/device-arming.json).

@@ -8,10 +8,11 @@ The [corrected Star Fox full-screen test](docs/starfox-fullscreen.md#corrected-h
 completed the Corneria replay on the handheld in 19.975 seconds with zero
 audio underruns. It keeps the original scaler input size.
 
-The [familiar platform artwork and pause update](docs/stock-shell-prototype.md#familiar-platform-art-and-pause-screens)
-is armed on I: for one boot. The test includes the North American Super
-Nintendo and NES artwork, the updated save and control layouts, the
-Bonus Round menu loop and the optimized SNES core.
+The [five-game BRR handheld measurement](docs/snes-brr-device-test.md) is
+armed on I: for one boot. It compares adaptive PGO with the identical build
+forced off, then compares the disabled build with the current launcher core.
+The [launcher artwork and pause update](docs/stock-shell-prototype.md#familiar-platform-art-and-pause-screens)
+remains staged. Its pending one-shot markers were archived and superseded.
 
 The [physical raster test](docs/snes-raster-device-test.md) completed all
 12 pairs. Full-tile strips cut Star Fox mean core CPU by 30.1%, from

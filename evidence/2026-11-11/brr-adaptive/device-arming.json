@@ -1,0 +1,32 @@
+{
+  "source_commit": "48bd5f3a8292f4c4df9328591d7f1be18f0ca307",
+  "target": "retro/snes-brr-test1",
+  "measurement_only": true,
+  "physical_result": "pending",
+  "pairs_armed": 10,
+  "prior_archive": "brr-device-before-20261112T004457630295Z",
+  "prior_files": 2162,
+  "superseded_markers": [
+    "retro/d35-launcher1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "payload_hashes": {
+    "pair": "d968e22d044acb820953812c7c6df5fc18db31f2cce4151aa58c10c56094ce22",
+    "launch.sh": "b5d0dc3ebb4d120e9e080be4073e9842d351ad8e1dc735161725870210096f19",
+    "cores/current.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "cores/auto.so": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff",
+    "cores/off.so": "62315c973d0b32bda5643ac60203c1afe57255a4808c09cd3408fa1e93ba35ff",
+    "qualification.json": "c0eac01b2c9428b5203219acdc7c31aa6333be900b3ccae6a738835b07db5d70",
+    "previous-launch.sh": "f8d3acb00e8a5506a2f885b57d63010f35cd8983668a41ae5c274eeaf2bd8244"
+  },
+  "dispatch_sha256": "cf5335d27dc7e5d89d681d4cd4b42c889db92a76190844b357059cb1bbf7c8c8",
+  "marker_sha256": "65348f8a10850d13c46ce27ae46a7b521356c0510d2bb9d91d2cde03530bcadc",
+  "full_backup_created": false,
+  "exact_card_files": 2169,
+  "FAT_clean": true,
+  "armed_markers": [
+    "retro/snes-mvp/armed",
+    "retro/snes-brr-test1/armed"
+  ],
+  "verified_unchanged_prior_files": 2159
+}
