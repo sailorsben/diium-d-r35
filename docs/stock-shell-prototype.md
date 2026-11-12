@@ -306,6 +306,39 @@ Use `--platform-portraits <reviewed-input-directory>` with
 the seven portrait PNGs and the Super Nintendo wordmark and console
 PNG. Keep the external artwork and the assembled pack local.
 
+## Settings and theme selection
+
+Press Down past **Restore factory settings** to reach **Frame Skip** and
+**Theme**. Press **A** to change the selected value. Frame Skip offers Off
+and Auto for SNES. Theme offers New for the refreshed English artwork and
+Classic for the stock artwork. Press **B** to apply the theme and return to
+the carousel. The choice is saved for the next launcher boot. New and Off
+are the defaults. The existing Select shortcut still changes Frame Skip.
+
+The New artwork is available in English. Other language selections use their
+original localized packs, and the selected theme takes effect when English
+is selected again. A missing New pack falls back to Classic.
+
+The settings hooks read the stock row index at both joystick poll sites.
+The two launcher rows use their own selection state and keep the vendor's
+row index within its four original rows. The launcher reads older one-byte
+frame skip preferences and saves both preferences using a flushed temporary
+file and rename. The saved preference changes only after the rename succeeds.
+
+The firmware's locale artwork loader chooses the alternate English pack.
+On return from Settings, the launcher waits for display work, then releases
+the affected art buffers. The existing lazy-load paths fetch the new theme
+as the carousel, lists, search, Settings and pause screens are needed. The
+one-boot wrapper binds the frontend and leaves both artwork packs available.
+
+The local package was checked against the exact ARM artwork loader, both
+packs, both directions of theme selection, persisted settings, legacy config,
+a failed save, held A, the missing-pack fallback and the locale fallback.
+Search, pause controls, save-slot drawing, emulator routing and the one-shot
+BusyBox wrapper also passed their fixtures. The Settings previews come from
+the ARM fixture's actual RGB565 output. Physical display and controls are
+pending. [Local qualification](../evidence/2026-11-12/stock-shell-settings-theme.json).
+
 I: is armed with `e4c75e7` for one boot. Verify the Super Nintendo and
 NES carousel panels, open Save State in a running game to see the current
 preview and slot grid, then open Controls to check the live mapping

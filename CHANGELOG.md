@@ -1,5 +1,11 @@
 # Changelog
 
+## Add theme and frame skip controls to launcher Settings - 2026-11-12
+
+Use the D-pad to reach Frame Skip and Theme. The saved New or Classic theme
+applies on Back. The launcher selects its English artwork pack at runtime.
+[Settings and theme selection](docs/stock-shell-prototype.md#settings-and-theme-selection).
+
 ## Record the five-game BRR handheld return - 2026-11-11
 
 All ten physical pairs match picture and PCM. No scene retains the cache.

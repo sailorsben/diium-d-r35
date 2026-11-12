@@ -49,26 +49,12 @@ while active_splash; do
     waited=$((waited+1))
 done
 
-ART="$BASE/ui_en.bkp"
-STOCK_ART="$RETRO/ui_en.bkp"
-art_bound=0
-if [ -f "$ART" ]; then
-    if ! "$BUSYBOX" mount -o bind "$ART" "$STOCK_ART" >> "$LOG" 2>&1; then
-        printf 'english_art_mount_failed\n' >> "$LOG"
-        sync
-        exit 1
-    fi
-    art_bound=1
-fi
-
+# The frontend selects the English artwork pack from Settings. Both packs
+# must remain addressable for switching themes during the same boot.
 if "$BUSYBOX" mount -o bind "$BASE/vrtemu" "$RETRO/vrtemu" >> "$LOG" 2>&1; then
     printf 'frontend_bound_for_this_boot=1 splash_wait_seconds=%s\n' "$waited" >> "$LOG"
-    printf 'english_art_bound_for_this_boot=%s\n' "$art_bound" >> "$LOG"
     sync
     exit 0
-fi
-if [ "$art_bound" = 1 ]; then
-    "$BUSYBOX" umount "$STOCK_ART" >> "$LOG" 2>&1
 fi
 printf 'frontend_mount_failed\n' >> "$LOG"
 sync

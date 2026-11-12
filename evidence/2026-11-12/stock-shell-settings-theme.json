@@ -1,0 +1,26 @@
+{
+  "physical": false,
+  "checks": [
+    "PASS selectable Settings rows, held A, failed save, old config migration, both artwork packs, theme persistence and locale fallback",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS actual firmware search worker, displayed paths, paging and empty results",
+    "PASS actual firmware opens and decodes all stock and refreshed pack entries",
+    "PASS Settings artwork at both firmware load sites",
+    "PASS refreshed Settings assets are preserved at both firmware load sites",
+    "PASS stock controls screen draws P1, six live mappings and both help lines in reserved areas",
+    "PASS stock slot compositor and selection rim leave all six thumbnail interiors and gutters intact",
+    "PASS exact stock run_game dispatch to emulator entry points",
+    "PASS exact firmware BusyBox consumes both markers and mounts only the frontend"
+  ],
+  "artwork_scope": "English New pack, stock artwork for other locales",
+  "local_package": "build/stock-shell-refresh-private/launcher-theme-v2",
+  "sha256": {
+    "vrtemu": "9d556681589cea2f1bc35453fc0487fa4c3f393a8a302fe6074bc10207a83304",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "d35-menu.pcm": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0",
+    "ui_en.bkp": "348be73426cb3f40df8bf235d6cbb3ecfb8ce68e2d6c8becfa2f5bf2ed778ca0",
+    "launch.sh": "441917faee91fd9401b80e55f4a837bec9da72d3cbde220ce674d35f54ef1f65",
+    "settings-new.png": "9bdb35361947e2eda67f0efd3515f2cc3e47c0638d9619bdfbdfda93935ae08e",
+    "settings-classic.png": "22d189bf9514721e6bbc454e11ad528688099ecf11e8a7673d22ba3722cf3826"
+  }
+}

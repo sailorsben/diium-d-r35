@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Switch launcher themes in Settings - 2026-11-12
+
+The firmware polls the selected row through two call sites. Both pass the
+stock row index to the new input handler, which tracks the extra selections
+separately. Move English artwork selection into the existing archive-open
+path so the boot wrapper no longer covers the stock pack. Release cached
+art at the Settings return and let the firmware reload it on demand.
+[Settings validation](stock-shell-prototype.md#settings-and-theme-selection).
+
 ## Measure adaptive BRR on the handheld - 2026-11-11
 
 All ten physical pairs match the exact replay outputs. All five adaptive

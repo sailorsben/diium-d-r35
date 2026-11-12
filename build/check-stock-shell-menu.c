@@ -17,27 +17,34 @@ struct sound {
 };
 static const int16_t *expected;
 static size_t total, output, calls;
-static bool verify, select_held;
+static bool verify, select_held, accept_held, rename_fails;
 static unsigned active_key, flips, driver;
 static uint16_t settings[640*480];
 static const char *work;
+static unsigned locale=1;
 
 static uintptr_t target(uintptr_t at)
 { return at+8+((int32_t)(*(uint32_t *)at<<8)>>6); }
 static const char *path(void) { return work; }
 static void wait_display(void) {}
+static int replace(const char *from,const char *to)
+{ return rename_fails?-1:rename(from,to); }
 static void *find(void *h, const char *name)
 {
     if(h==&driver && !strcmp(name,"WaitDisp")) return wait_display;
     assert(!h && !strcmp(name,"rename"));
-    return rename;
+    return replace;
 }
-static int gpio(unsigned pin) { assert(pin==0x30f); return !select_held; }
+static int gpio(unsigned pin)
+{
+    assert(pin==0x30f || pin==0x204);
+    return !(pin==0x30f?select_held:accept_held);
+}
 static unsigned joy(void) { return active_key; }
 static void display(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(pixels==settings && w==640 && h==480 && pitch==1280);
-    assert(settings[354*640+141]==0x18c6 && settings[353*640+141]==0x7bef);
+    assert(settings[340*640+62]!=settings[339*640+62]);
     ++flips;
 }
 static int fixed_time(struct timeval *tv,void *tz)
@@ -65,25 +72,142 @@ static unsigned char *read_data(const char *name,size_t *length)
     unsigned char *p=malloc(n); assert(p && fread(p,1,n,f)==(size_t)n && !fclose(f));
     *length=n; return p;
 }
+
+static __attribute__((naked)) unsigned call_settings_key(unsigned row __attribute__((unused)),
+                                                         uintptr_t hook __attribute__((unused)))
+{
+    __asm__ volatile("push {r11, lr}\n\tmov r11, r0\n\tblx r1\n\tpop {r11, pc}");
+}
+
+static unsigned settings_key(unsigned row,unsigned key,bool pressed)
+{
+    active_key=key;
+    accept_held=pressed;
+    return call_settings_key(row,target(flips%2?0x8e30c:0x8ea00));
+}
+
+static void settings_file(const char *expected_value)
+{
+    char name[1024];
+    assert(snprintf(name,sizeof(name),"%s/d35-launcher1/d35-loader.cfg",work)<(int)sizeof(name));
+    FILE *f=fopen(name,"rb");
+    char actual[4]={0};
+    assert(f && fread(actual,1,sizeof(actual)-1,f)==strlen(expected_value) && !fclose(f));
+    assert(!strcmp(actual,expected_value));
+}
+
+static void settings_snapshot(const char *file)
+{
+    char name[1024];
+    assert(snprintf(name,sizeof(name),"%s/%s",work,file)<(int)sizeof(name));
+    FILE *f=fopen(name,"wb");
+    assert(f && fwrite(settings,1,sizeof(settings),f)==sizeof(settings) && !fclose(f));
+}
+
+static void load_stock_settings(void)
+{
+    assert(*(unsigned *)0x1998d8==1);
+    *(unsigned *)0x1998d8=locale;
+}
+
+static void check_menu_art(const char *expected_file)
+{
+    char name[1024];
+    assert(snprintf(name,sizeof(name),"%s/%s",work,expected_file)<(int)sizeof(name));
+    size_t size;
+    void *expected_art=read_data(name,&size), *actual=NULL;
+    int (*load)(void **,const char *)=(void *)0x82aa8;
+    assert(load(&actual,"menu.raw") && *(unsigned *)0x19bc0c==size);
+    assert(!memcmp(actual,expected_art,size));
+    free(actual);
+    free(expected_art);
+}
+
+static void settings_background(void)
+{
+    void **art=(void **)0x199908;
+    int (*load)(void **,const char *)=(void *)target(0x8f48c);
+    assert(load(art,"setting.raw"));
+    memcpy(settings,(uint8_t *)*art+*(uint32_t *)*art,sizeof(settings));
+    ((void (*)(void *,size_t,void *,unsigned))0x803a8)(settings,1280,*art,4);
+    void (*frame)(void *,unsigned,unsigned,size_t)=(void *)target(0x8e2c8);
+    frame(settings,640,480,1280);
+}
+
+static void settings_dialog(void)
+{
+    settings_background();
+    assert(settings_key(2,0x40,false)==0x40);
+    assert(settings_key(3,0x40,false)==0); /* Restore -> Frame Skip */
+    assert(settings[346*640+90]==0xfe49 && settings[382*640+90]!=0xfe49);
+    assert(settings_key(3,0x2000,true)==0);
+    settings_file("0N"); /* migrated from the one-byte Auto setting */
+    unsigned before=flips;
+    assert(settings_key(3,0x2000,true)==0 && flips==before);
+    assert(settings_key(3,0x40,false)==0); /* Frame Skip -> Theme */
+    assert(settings[382*640+90]==0xfe49 && settings[346*640+90]!=0xfe49);
+    settings_snapshot("settings-new.rgb565");
+    rename_fails=true;
+    assert(settings_key(3,0x2000,true)==0);
+    settings_file("0N");
+    rename_fails=false;
+    assert(settings_key(3,0,false)==0);
+    assert(settings_key(3,0x2000,true)==0);
+    settings_file("0C");
+    check_menu_art("menu-new.raw"); /* change is pending until Back */
+    assert(settings_key(3,0x10,false)==0 && settings_key(3,0x10,false)==0);
+    assert(settings[346*640+90]!=0xfe49 && settings[382*640+90]!=0xfe49);
+    assert(settings_key(3,0x4000,false)==0x4000);
+}
+
+static void settings_classic_dialog(void)
+{
+    settings_background();
+    assert(settings_key(3,0x40,false)==0 && settings_key(3,0x40,false)==0);
+    assert(settings[382*640+90]==0x5fdf);
+    settings_snapshot("settings-classic.rgb565");
+    assert(settings_key(3,0x2000,true)==0);
+    settings_file("0N");
+    assert(settings_key(3,0x4000,false)==0x4000);
+}
+
 static void exercise_settings(void)
 {
     long (*language)(const char *,char **,int)=(void *)target(0x81e6c);
     assert(language(NULL,NULL,10)==1 && language("",NULL,10)==1 && language("11",NULL,10)==1);
     assert(language("abc",NULL,10)==1 && language("0",NULL,10)==0 && language("10",NULL,10)==10);
-    unsigned (*keys)(void)=(void *)target(0x8e30c);
-    void (*frame)(void *,unsigned,unsigned,size_t)=(void *)target(0x8e2c8);
-    for(unsigned i=0;i<640*480;++i) settings[i]=0x7bef;
-    frame(settings,640,480,1280);
-    assert(flips==1);
-    select_held=true; active_key=1;
-    assert(keys()==0 && flips==2);
-    assert(keys()==0 && flips==2);
-    select_held=false; active_key=0;
-    assert(keys()==0 && flips==2);
-    active_key=0x40; assert(keys()==0x40);
-    select_held=true; active_key=1;
-    assert(keys()==0 && flips==3);
-    puts("PASS English fallback, valid locale IDs, stock keys, settings redraw, held Select, persistent toggle");
+    void (*load_options)(void)=(void *)target(0x98174);
+    void (*open_settings)(void)=(void *)target(0x984dc);
+    static char locale_def[64];
+    memcpy(locale_def+32,"ui_en.bkp",10);
+    *(void **)0x19993c=locale_def;
+    *(void **)0x199940=locale_def;
+    patch(0x81da0,(uintptr_t)load_stock_settings);
+    load_options();
+    check_menu_art("menu-new.raw");
+    const unsigned caches[]={0x199900,0x199904,0x199908,0x19990c,0x199934};
+    for(unsigned i=0;i<5;++i) *(void **)caches[i]=malloc(16);
+    patch(0x8dfe4,(uintptr_t)settings_dialog);
+    open_settings();
+    for(unsigned i=0;i<5;++i) assert(!*(void **)caches[i]);
+    check_menu_art("menu-classic.raw");
+    load_options(); /* re-open persisted Classic */
+    check_menu_art("menu-classic.raw");
+    patch(0x8dfe4,(uintptr_t)settings_classic_dialog);
+    open_settings();
+    check_menu_art("menu-new.raw");
+    locale=2;
+    load_options();
+    check_menu_art("menu-classic.raw");
+    char themed[1024], unavailable[1024];
+    assert(snprintf(themed,sizeof(themed),"%s/d35-launcher1/ui_en.bkp",work)<(int)sizeof(themed));
+    assert(snprintf(unavailable,sizeof(unavailable),"%s/new-pack-unavailable.bkp",work)<(int)sizeof(unavailable));
+    assert(!rename(themed,unavailable));
+    locale=1;
+    load_options();
+    check_menu_art("menu-classic.raw");
+    assert(!rename(unavailable,themed));
+    puts("PASS selectable Settings rows, held A, failed save, old config migration, both artwork packs, theme persistence and locale fallback");
 }
 
 static void exercise_state_paths(void)
@@ -125,6 +249,10 @@ int main(int argc,char **argv)
     patch(0x11b60,(uintptr_t)strtol); patch(0x11eb4,(uintptr_t)fwrite);
     patch(0x11fb0,(uintptr_t)fflush); patch(0x11b18,(uintptr_t)fsync); patch(0x11df4,(uintptr_t)fileno);
     patch(0x11e0c,(uintptr_t)access);
+    patch(0x11f74,(uintptr_t)strcmp); patch(0x11fc8,(uintptr_t)memcmp);
+    patch(0x11d64,(uintptr_t)strcpy);
+    patch(0x11e78,(uintptr_t)calloc); patch(0x11ee4,(uintptr_t)strlen);
+    patch(0x11f08,(uintptr_t)usleep); patch(0x11f38,(uintptr_t)sprintf);
     patch(0xa6658,(uintptr_t)display);
     *(void **)0x1b81a8=&driver;
     bool pcm=!strcmp(argv[4],"pcm");

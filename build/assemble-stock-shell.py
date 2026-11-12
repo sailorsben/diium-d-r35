@@ -17,7 +17,8 @@ PATCHES = {
     0x98174: (0xEBFFA709, "stock_load_settings"),
     0x81E6C: (0xEBFE3F3B, "stock_language"),
     0x984DC: (0xEBFFD6C0, "stock_settings"),
-    0x8E30C: (0xEBFFE015, "stock_settings_input"),
+    0x8E30C: (0xEBFFE015, "stock_settings_key"),
+    0x8EA00: (0xEBFFDE58, "stock_settings_key"),
     0x8E2C8: (0xEB0060E2, "stock_settings_frame"),
     0x8E9F8: (0xEB005F16, "stock_settings_frame"),
     0x98360: (0xEBFFBC69, "stock_menu_music"),
@@ -40,6 +41,7 @@ PATCHES = {
     0x8A79C: (0xEBFFE0C1, "stock_load_art"),
     0x8E3A0: (0xEBFFD1C0, "stock_load_art"),
     0x8F48C: (0xEBFFCD85, "stock_load_art"),
+    0x82B08: (0xEB007F08, "stock_theme_zip"),
     # The text renderer adds 29 pixels to these y positions for the baseline.
     0x8F860: (0xE30021B2, 0xE30021A7),  # first help baseline at 452
     0x8F884: (0xE30021BE, 0xE30021B9),  # second help baseline at 470

@@ -30,6 +30,8 @@
 #define SLOT (512u * 512u * 2u)
 #define ROM_MAX (8u * 1024u * 1024u)
 #define LAUNCHER "/d35-launcher1"
+#define LOCALE VAR(0x1998d8, unsigned)
+#define THEME_PACK LAUNCHER "/ui_en.bkp"
 
 #define D35_VIEWPORT_COPY COPY
 #define D35_VIEWPORT_COMPARE CMP
@@ -50,7 +52,9 @@ struct session {
 };
 struct overlay {
     struct session game;
-    bool auto_skip, select_held;
+    bool auto_skip, select_held, accept_held;
+    bool classic, applied_classic, new_art, save_failed, restore_highlight;
+    unsigned extra_row;
     uint16_t *settings_pixels;
     void *music;
     size_t music_bytes;
@@ -462,6 +466,25 @@ struct art_block {
     uint16_t width, height, left, top, right, bottom;
 };
 
+#define SETTINGS_ART VAR(0x199908, struct art_block *)
+
+/* Only mui_LoadUIResource's locale archive open is redirected. Shared
+ * fonts, language metadata, game files and stock packs keep their paths. */
+ENTRY void *stock_theme_zip(const char *path,unsigned size,unsigned mode)
+{
+    void *(*open_zip)(const char *,unsigned,unsigned)=FN(0xa2730,void *,const char *,unsigned,unsigned);
+    if(path && !size && mode==2 && LOCALE==1 && !S.applied_classic && S.new_art) {
+        char stock[384], themed[384];
+        const char *work=WORK();
+        if(suffix(stock,sizeof(stock),work,"/ui_en.bkp") && !STRCMP(path,stock) &&
+           suffix(themed,sizeof(themed),work,THEME_PACK)) {
+            void *zip=open_zip(themed,size,mode);
+            if(zip) return zip;
+        }
+    }
+    return open_zip(path,size,mode);
+}
+
 static uint16_t *full_art_block(struct art_block *art, unsigned size, unsigned index)
 {
     const unsigned frame_bytes=640u*480u*2u;
@@ -541,16 +564,33 @@ ENTRY long stock_language(const char *value, char **end, int base)
 ENTRY void stock_load_settings(void)
 {
     char path[384];
+    S.auto_skip=false;
+    S.classic=false;
+    S.new_art=false;
     if(suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg")) {
         FILE *f=FOPEN(path,"rb");
-        char setting=0;
-        if(f) { S.auto_skip=FREAD(&setting,1,1,f)==1 && setting=='1'; FCLOSE(f); }
+        char settings[2]={0};
+        if(f) {
+            size_t bytes=FREAD(settings,1,sizeof(settings),f);
+            S.auto_skip=bytes && settings[0]=='1';
+            S.classic=bytes==2 && settings[1]=='C';
+            FCLOSE(f);
+        }
     }
-    VAR(0x1998d8,unsigned)=1;
+    if(suffix(path,sizeof(path),WORK(),THEME_PACK)) {
+        FILE *f=FOPEN(path,"rb");
+        char magic[4];
+        if(f) {
+            S.new_art=FREAD(magic,1,sizeof(magic),f)==sizeof(magic) && !CMP(magic,"WQW\003",4);
+            FCLOSE(f);
+        }
+    }
+    S.applied_classic=S.classic;
+    LOCALE=1;
     FN(0x81da0,void,void)();
 }
 
-static bool save_skip(bool value)
+static bool save_options(bool auto_skip,bool classic)
 {
     char path[384],tmp[384];
     int (*replace)(const char *,const char *)=SYM(NULL,"rename");
@@ -558,21 +598,63 @@ static bool save_skip(bool value)
        !suffix(tmp,sizeof(tmp),path,".tmp")) return false;
     FILE *f=FOPEN(tmp,"wb");
     if(!f) return false;
-    const char setting=value?'1':'0';
-    bool ok=FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(&setting,1,1,f)==1 &&
+    const char settings[]={auto_skip?'1':'0',classic?'C':'N'};
+    bool ok=FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(settings,1,sizeof(settings),f)==sizeof(settings) &&
         !FN(0x11fb0,int,FILE *)(f) && !FN(0x11b18,int,int)(FN(0x11df4,int,FILE *)(f));
     if(FCLOSE(f)) ok=false;
     return ok && !replace(tmp,path);
 }
 
-/* Compact glyphs for the new settings footer; keep the stock artwork intact. */
+/* Compact glyphs for the two launcher settings rows and the footer. */
 static const uint8_t glyph[26][7]={
- {14,17,17,31,17,17,17}, {}, {14,17,16,16,16,17,14}, {}, {31,16,16,30,16,16,31},
- {31,16,16,30,16,16,16}, {}, {}, {14,4,4,4,4,4,14}, {}, {17,18,20,24,20,18,17},
- {16,16,16,16,16,16,31}, {17,27,21,21,17,17,17}, {}, {14,17,17,17,17,17,14},
- {30,17,17,30,16,16,16}, {}, {30,17,17,30,20,18,17}, {15,16,16,14,1,1,30},
- {31,4,4,4,4,4,4}, {17,17,17,17,17,17,14}
+    {14,17,17,31,17,17,17}, {30,17,17,30,17,17,30}, {14,17,16,16,16,17,14},
+    {30,17,17,17,17,17,30}, {31,16,16,30,16,16,31}, {31,16,16,30,16,16,16},
+    {14,17,16,23,17,17,15}, {17,17,17,31,17,17,17}, {14,4,4,4,4,4,14},
+    {7,2,2,2,18,18,12}, {17,18,20,24,20,18,17}, {16,16,16,16,16,16,31},
+    {17,27,21,21,17,17,17}, {17,25,21,19,17,17,17}, {14,17,17,17,17,17,14},
+    {30,17,17,30,16,16,16}, {14,17,17,17,21,18,13}, {30,17,17,30,20,18,17},
+    {15,16,16,14,1,1,30}, {31,4,4,4,4,4,4}, {17,17,17,17,17,17,14},
+    {17,17,17,17,17,10,4}, {17,17,17,21,21,21,10}, {17,17,10,4,10,17,17},
+    {17,17,10,4,4,4,4}, {31,1,2,4,8,16,31}
 };
+
+static void settings_text(uint16_t *p,unsigned left,unsigned top,const char *text,
+                          unsigned scale,uint16_t color)
+{
+    for(unsigned i=0;text[i];++i) {
+        if(text[i]<'A' || text[i]>'Z') continue;
+        for(unsigned y=0;y<7;++y) for(unsigned x=0;x<5;++x)
+            if(glyph[text[i]-'A'][y]&(16u>>x))
+                for(unsigned dy=0;dy<scale;++dy) for(unsigned dx=0;dx<scale;++dx)
+                    p[(top+scale*y+dy)*640+left+scale*(6*i+x)+dx]=color;
+    }
+}
+
+static void settings_box(uint16_t *p,unsigned x0,unsigned y0,unsigned x1,unsigned y1,uint16_t color)
+{
+    for(unsigned y=y0;y<y1;++y) for(unsigned x=x0;x<x1;++x) p[y*640+x]=color;
+}
+
+static void settings_options(uint16_t *p)
+{
+    bool classic=S.applied_classic || LOCALE!=1 || !S.new_art;
+    uint16_t accent=classic?0x5fdf:0xfe49;
+    settings_box(p,62,340,578,445,classic?0x1149:0x08a3);
+    const char *labels[]={"FRAME SKIP", "THEME"};
+    const char *values[]={S.auto_skip?"AUTO":"OFF", S.classic || !S.new_art?"CLASSIC":"NEW"};
+    for(unsigned i=0;i<2;++i) {
+        unsigned top=346+36*i;
+        bool selected=S.extra_row==i+1;
+        settings_box(p,90,top,550,top+32,selected?accent:0x326b);
+        settings_box(p,91,top+1,549,top+31,selected?0x31ec:0x1106);
+        settings_text(p,124,top+9,labels[i],2,0xffff);
+        settings_text(p,405,top+9,values[i],2,accent);
+    }
+    settings_text(p,111,423,"A CHANGE  B BACK",2,0xffff);
+    const char *hint=S.save_failed?"SAVE FAILED":!S.new_art?"NEW ART MISSING":
+        LOCALE!=1?"NEW ART IN ENGLISH":"BACK TO APPLY";
+    settings_text(p,338,423,hint,2,accent);
+}
 
 ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
 {
@@ -581,42 +663,93 @@ ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
         void (*wait)(void)=driver?SYM(driver,"WaitDisp"):NULL;
         if(wait) {
             wait();
-            for(unsigned y=354;y<376;++y) for(unsigned x=141;x<499;++x) p[y*640+x]=0x18c6;
-            const char *text=S.auto_skip?"SELECT  FRAME SKIP  AUTO":"SELECT  FRAME SKIP  OFF";
-            for(unsigned i=0;text[i];++i) if(text[i]!=' ')
-                for(unsigned y=0;y<7;++y) for(unsigned x=0;x<5;++x)
-                    if(glyph[text[i]-'A'][y]&(16u>>x))
-                        for(unsigned dy=0;dy<2;++dy) for(unsigned dx=0;dx<2;++dx)
-                            p[(358+2*y+dy)*640+175+12*i+2*x+dx]=0xffff;
+            if(SETTINGS_ART && S.extra_row)
+                FN(0x80424,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,4);
+            else if(SETTINGS_ART && S.restore_highlight)
+                FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,4);
+            S.restore_highlight=false;
+            settings_options(p);
             S.settings_pixels=p;
         }
     }
     DISP(p,w,h,pitch);
 }
 
-static bool select_down(void)
-{ return FN(0x157c8,int,unsigned)(0x30f)==0; }
+static bool button_down(unsigned pin)
+{ return FN(0x157c8,int,unsigned)(pin)==0; }
 
-ENTRY unsigned stock_settings_input(void)
+static void change_option(unsigned row)
+{
+    bool auto_skip=row==1?!S.auto_skip:S.auto_skip;
+    bool classic=row==2?!S.classic:S.classic;
+    if(row==2 && !S.new_art) return;
+    S.save_failed=!save_options(auto_skip,classic);
+    if(!S.save_failed) {
+        S.auto_skip=auto_skip;
+        S.classic=classic;
+    }
+}
+
+ENTRY unsigned stock_settings_input(unsigned stock_row)
 {
     unsigned keys=FN(0x86368,unsigned,void)();
-    if(!select_down()) S.select_held=false;
+    if(!button_down(0x30f)) S.select_held=false;
+    if(!button_down(0x204)) S.accept_held=false;
     if(keys==1) {
-        if(!S.select_held && save_skip(!S.auto_skip)) {
-            S.auto_skip=!S.auto_skip;
+        if(!S.select_held) {
+            change_option(1);
             if(S.settings_pixels) stock_settings_frame(S.settings_pixels,640,480,1280);
         }
         S.select_held=true;
         return 0;
     }
+    if(S.settings_pixels && (S.extra_row || (stock_row==3 && keys==0x40))) {
+        if(keys==0x40) {
+            if(S.extra_row<2) ++S.extra_row;
+        } else if(keys==0x10 && S.extra_row) {
+            S.restore_highlight=--S.extra_row==0;
+        } else if(keys==0x2000 && S.extra_row) {
+            if(S.accept_held) return 0;
+            S.accept_held=true;
+            change_option(S.extra_row);
+        } else return keys;
+        stock_settings_frame(S.settings_pixels,640,480,1280);
+        return 0;
+    }
     return keys;
+}
+
+/* The pinned settings loop holds its row index in r11 at both poll sites. */
+__attribute__((naked)) ENTRY void stock_settings_key(void)
+{
+    __asm__ volatile("mov r0, r11\n\tb stock_settings_input");
 }
 
 ENTRY void stock_settings(void)
 {
-    S.select_held=select_down();
+    unsigned locale=LOCALE;
+    S.extra_row=0;
+    S.select_held=button_down(0x30f);
+    S.accept_held=button_down(0x204);
+    S.save_failed=S.restore_highlight=false;
     FN(0x8dfe4,void,void)();
     S.settings_pixels=NULL;
+    if(S.applied_classic!=S.classic || locale!=LOCALE) {
+        S.applied_classic=S.classic;
+        /* The stock menu and pause entry points reload these slots on a
+         * miss. Drop the old pack one canvas at a time after display use. */
+        void *driver=VAR(0x1b81a8,void *);
+        void (*wait)(void)=driver?SYM(driver,"WaitDisp"):NULL;
+        if(wait) {
+            wait();
+            static const unsigned slots[]={0x199900,0x199904,0x199908,0x19990c,0x199934};
+            for(unsigned i=0;i<sizeof(slots)/sizeof(*slots);++i) {
+                void *old=VAR(slots[i],void *);
+                VAR(slots[i],void *)=NULL;
+                if(old) FREE(old);
+            }
+        }
+    }
 }
 
 struct sound {
