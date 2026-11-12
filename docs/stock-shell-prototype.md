@@ -357,6 +357,11 @@ their highlight sprites. The extended panel uses the stock gradient and
 bezel. The original yellow, blue, and red buttons sit in a separate footer
 with labels beside them. [Classic artwork qualification](../evidence/2026-11-12/stock-shell-settings-classic.json).
 
+The Classic panel, six rows, and controller guide sit 18 pixels higher under
+the fixed title bar. The packed row rectangles move by the same amount, so
+the firmware's live values and selection blits track the artwork. The New
+pack is byte-identical. [Raised Classic qualification](../evidence/2026-11-12/stock-shell-settings-classic-raised.json).
+
 `update-stock-shell-settings-art.py NEW_PACK STOCK_ENGLISH FONT OUTPUT`
 builds the revised `ui_en.bkp` and a small `ui_classic.bkp` that contains
 only `setting.raw`. The New pack's other members match the prior pack byte

@@ -514,11 +514,13 @@ static bool baked_settings_rows(struct art_block *art,unsigned size)
 {
     const unsigned records=13;
     if(!full_art_block(art,size,0) || art[0].offset!=records*sizeof(*art)) return false;
-    for(unsigned i=5;i<records;++i) {
+    unsigned shift=art[1].top==116?18:0;
+    for(unsigned i=1;i<records;++i) {
         const struct art_block *row=&art[i];
-        unsigned y=i<9?339:382, bytes=2u*460u*39u;
+        unsigned y=(i<5?134+50*(i-1):i<9?339:382)-shift;
+        unsigned height=i<5?54:39, bytes=2u*460u*height;
         if(row->width!=640 || row->height!=480 || row->left!=90 || row->right!=550 ||
-           row->top!=y || row->bottom!=y+39 || (row->offset&1) ||
+           row->top!=y || row->bottom!=y+height || (row->offset&1) ||
            row->offset<art[0].offset || row->offset>size-bytes) return false;
     }
     return true;

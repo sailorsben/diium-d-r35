@@ -1,0 +1,20 @@
+{
+  "physical": false,
+  "local_package": "build/stock-shell-refresh-private/launcher-settings-classic-raised-v1",
+  "classic_upward_shift_px": 18,
+  "classic_row_payloads_unchanged": 12,
+  "new_pack_byte_exact": true,
+  "checks": [
+    "PASS exact baked Settings sprites, held A, failed save, old config migration, theme persistence and locale fallback",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file"
+  ],
+  "payload_sha256": {
+    "vrtemu": "a5f2d4ba50c85e4b177bb96c93a0dfbbec26516cc8f52ee4d4fcda9799b1a18a",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "d35-menu.pcm": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0",
+    "ui_en.bkp": "9090c6e43dd37462a800af6c34d484bdf64ca1269272fd6b2212e1d8b043f870",
+    "ui_classic.bkp": "e81eef220065bd1d3a8287bc953874f2157436025a747057af083361d1ae3a67",
+    "launch.sh": "441917faee91fd9401b80e55f4a837bec9da72d3cbde220ce674d35f54ef1f65"
+  },
+  "classic_preview_sha256": "8f7179863d3d8bb2388e4e7e251f85c63a62357685bd2e533d4c7e8de7296405"
+}

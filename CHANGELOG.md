@@ -6,6 +6,7 @@ Bake Frame Skip, Theme, their values and the button guide into the New and
 Classic English Settings artwork. All six rows fit on the handheld canvas.
 Add matching icons for Frame Skip and Theme in both packs.
 Keep the original Classic colors and give its controller guide a separate band.
+Raise the Classic panel and its selection regions by 18 pixels.
 [Settings artwork](docs/stock-shell-prototype.md#six-row-settings-artwork).
 
 ## Add theme and frame skip controls to launcher Settings - 2026-11-12

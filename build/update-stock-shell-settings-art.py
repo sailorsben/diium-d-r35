@@ -14,6 +14,7 @@ from PIL import Image, ImageDraw
 ART = runpy.run_path(str(Path(__file__).with_name('make-stock-shell-art.py')))
 STOCK = ART['STOCK']
 ROW_BOXES = ((90, 339, 550, 378), (90, 382, 550, 421))
+CLASSIC_SHIFT = 18
 VALUES = (('Off', 'Auto'), ('New', 'Classic'))
 LABELS = ('Frame Skip', 'Theme')
 
@@ -130,13 +131,30 @@ def settings_art(original, font, classic):
                 option_row(frame, index, value, selected=selected)
                 frames.append((ROW_BOXES[index], frame))
 
+    if classic:
+        # Move the panel and footer together beneath the fixed title bar.
+        shifted = canvas.copy()
+        shifted.paste(canvas.crop((0, 52+CLASSIC_SHIFT, 640, 480)), (0, 52))
+        # Blend back into the original background below the raised bezel.
+        stock = ART['read_sprite'](original, records[0])
+        band = np.asarray(stock.crop((0, 480-CLASSIC_SHIFT, 640, 480)), dtype=float)
+        fade = np.minimum(1, np.arange(CLASSIC_SHIFT)/6)[:, None, None]
+        bottom = (band[-1]*(1-fade) + band*fade).round().astype('uint8')
+        shifted.paste(Image.fromarray(bottom), (0, 480-CLASSIC_SHIFT))
+        frames[0] = (records[0][3:], shifted)
+
     headers, pixels = bytearray(), bytearray()
-    for box, frame in frames:
-        headers.extend(struct.pack('<I6H', len(frames)*16 + len(pixels), 640, 480, *box))
+    destinations = []
+    for index, (box, frame) in enumerate(frames):
+        left, top, right, bottom = box
+        offset = CLASSIC_SHIFT if classic and index else 0
+        dest = (left, top-offset, right, bottom-offset)
+        destinations.append(dest)
+        headers.extend(struct.pack('<I6H', len(frames)*16 + len(pixels), 640, 480, *dest))
         red, green, blue = np.moveaxis(np.asarray(frame.crop(box), dtype=np.uint16), -1, 0)
         pixels.extend((((red >> 3) << 11) | ((green >> 2) << 5) | (blue >> 3)).astype('<u2').tobytes())
     result = bytes(headers + pixels)
-    assert [r[3:] for r in STOCK['sprite_records'](result)] == [box for box, _ in frames]
+    assert [r[3:] for r in STOCK['sprite_records'](result)] == destinations
     return result
 
 
