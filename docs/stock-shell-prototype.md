@@ -375,9 +375,17 @@ fixtures. The images were also reviewed at 640×480. The local launcher build
 includes both packs. Physical Settings verification is pending.
 [Local qualification](../evidence/2026-11-12/stock-shell-settings-artwork.json).
 
-I: is armed with `e4c75e7` for one boot. Verify the Super Nintendo and
-NES carousel panels, open Save State in a running game to see the current
-preview and slot grid, then open Controls to check the live mapping
-labels and the footer. The readback verified both payload files, both
-markers and all 2,158 other card files. The volume was clean.
-[Arming receipt](../evidence/2026-11-10/snes-throughput/stock-shell-familiar-arming.json).
+## One-boot theme test
+
+I: is armed with the launcher from `1c02c10`, including the raised Classic
+Settings panel and the matching New theme. The card's language is English.
+Safely eject the card and boot the handheld once. Open **Settings**, press
+Down past **Restore factory settings**, and select **Theme**. Press **A** to
+switch and **B** to apply it. Reopen Settings and switch back to check both
+themes in the same boot. The following reboot takes the stock path.
+
+The sparse archive retained the logs and private progress and hashed all
+2,192 pre-test files. The read-only scan found no errors and FAT32 mark-clean
+cleared the dirty flag. Independent readback verified all 2,195 card files,
+including 2,188 unchanged prior files, both markers and clean FAT32. Physical
+theme switching remains to be verified. [Arming receipt](../evidence/2026-11-12/stock-shell-settings-theme-arming.json).

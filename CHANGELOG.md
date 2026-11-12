@@ -1,5 +1,11 @@
 # Changelog
 
+## Arm the New and Classic Settings test - 2026-11-12
+
+Stage the qualified launcher and both Settings packs for one boot on I:.
+Verify both markers, all card files and clean FAT32.
+[Handheld procedure](docs/stock-shell-prototype.md#one-boot-theme-test).
+
 ## Rebuild the Settings images as six-row panels - 2026-11-12
 
 Bake Frame Skip, Theme, their values and the button guide into the New and

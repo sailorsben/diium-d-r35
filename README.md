@@ -12,8 +12,10 @@ The [five-game BRR handheld measurement](docs/snes-brr-device-test.md#handheld-r
 completed all ten pairs. No scene sustained caching. The rebuilt core with
 BRR forced off used 1.71% more CPU in Mario and 1.12% more in Ranger than
 the current launcher core. The test markers were consumed.
-The [launcher artwork and pause update](docs/stock-shell-prototype.md#familiar-platform-art-and-pause-screens)
-remains staged. Its pending one-shot markers were archived and superseded.
+
+The [New and Classic Settings launcher](docs/stock-shell-prototype.md#one-boot-theme-test)
+is armed on I: for one boot. The card passed independent payload, marker,
+protected-file and FAT32 readback.
 
 The [physical raster test](docs/snes-raster-device-test.md) completed all
 12 pairs. Full-tile strips cut Star Fox mean core CPU by 30.1%, from
