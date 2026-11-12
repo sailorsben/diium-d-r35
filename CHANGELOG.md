@@ -1,5 +1,11 @@
 # Changelog
 
+## Rebuild the Settings images as six-row panels - 2026-11-12
+
+Bake Frame Skip, Theme, their values and the button guide into the New and
+Classic English Settings artwork. All six rows fit on the handheld canvas.
+[Settings artwork](docs/stock-shell-prototype.md#six-row-settings-artwork).
+
 ## Add theme and frame skip controls to launcher Settings - 2026-11-12
 
 Use the D-pad to reach Frame Skip and Theme. The saved New or Classic theme

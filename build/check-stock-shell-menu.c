@@ -44,7 +44,6 @@ static unsigned joy(void) { return active_key; }
 static void display(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(pixels==settings && w==640 && h==480 && pitch==1280);
-    assert(settings[340*640+62]!=settings[339*640+62]);
     ++flips;
 }
 static int fixed_time(struct timeval *tv,void *tz)
@@ -123,48 +122,74 @@ static void check_menu_art(const char *expected_file)
     free(expected_art);
 }
 
-static void settings_background(void)
+static void settings_background(const char *expected_file)
 {
     void **art=(void **)0x199908;
     int (*load)(void **,const char *)=(void *)target(0x8f48c);
     assert(load(art,"setting.raw"));
+    char name[1024];
+    assert(snprintf(name,sizeof(name),"%s/%s",work,expected_file)<(int)sizeof(name));
+    size_t bytes;
+    void *expected=read_data(name,&bytes);
+    assert(*(unsigned *)0x19bc0c==bytes && !memcmp(expected,*art,bytes));
+    free(expected);
     memcpy(settings,(uint8_t *)*art+*(uint32_t *)*art,sizeof(settings));
     ((void (*)(void *,size_t,void *,unsigned))0x803a8)(settings,1280,*art,4);
     void (*frame)(void *,unsigned,unsigned,size_t)=(void *)target(0x8e2c8);
     frame(settings,640,480,1280);
 }
 
+static void expect_option_sprite(unsigned index)
+{
+    const uint8_t *art=*(void **)0x199908;
+    const uint16_t *rect=(const uint16_t *)(art+16*index+8);
+    unsigned left=rect[0],top=rect[1],right=rect[2],bottom=rect[3];
+    const uint16_t *source=(const uint16_t *)(art+((const uint32_t *)art)[4*index]);
+    assert(index>=5 && index<=12 && left==90 && right==550 && bottom-top==39);
+    for(unsigned y=top;y<bottom;++y) {
+        assert(!memcmp(settings+y*640+left,source,(right-left)*2));
+        source+=right-left;
+    }
+}
+
 static void settings_dialog(void)
 {
-    settings_background();
+    settings_background("setting-new.raw");
+    expect_option_sprite(6); /* Existing one-byte preference is Auto. */
+    expect_option_sprite(9);
     assert(settings_key(2,0x40,false)==0x40);
     assert(settings_key(3,0x40,false)==0); /* Restore -> Frame Skip */
-    assert(settings[346*640+90]==0xfe49 && settings[382*640+90]!=0xfe49);
+    expect_option_sprite(8);
     assert(settings_key(3,0x2000,true)==0);
+    expect_option_sprite(7);
     settings_file("0N"); /* migrated from the one-byte Auto setting */
     unsigned before=flips;
     assert(settings_key(3,0x2000,true)==0 && flips==before);
     assert(settings_key(3,0x40,false)==0); /* Frame Skip -> Theme */
-    assert(settings[382*640+90]==0xfe49 && settings[346*640+90]!=0xfe49);
+    expect_option_sprite(5);
+    expect_option_sprite(11);
     settings_snapshot("settings-new.rgb565");
     rename_fails=true;
     assert(settings_key(3,0x2000,true)==0);
     settings_file("0N");
+    expect_option_sprite(11);
     rename_fails=false;
     assert(settings_key(3,0,false)==0);
     assert(settings_key(3,0x2000,true)==0);
     settings_file("0C");
+    expect_option_sprite(12);
     check_menu_art("menu-new.raw"); /* change is pending until Back */
     assert(settings_key(3,0x10,false)==0 && settings_key(3,0x10,false)==0);
-    assert(settings[346*640+90]!=0xfe49 && settings[382*640+90]!=0xfe49);
+    expect_option_sprite(5);
+    expect_option_sprite(10);
     assert(settings_key(3,0x4000,false)==0x4000);
 }
 
 static void settings_classic_dialog(void)
 {
-    settings_background();
+    settings_background("setting-classic.raw");
     assert(settings_key(3,0x40,false)==0 && settings_key(3,0x40,false)==0);
-    assert(settings[382*640+90]==0x5fdf);
+    expect_option_sprite(12);
     settings_snapshot("settings-classic.rgb565");
     assert(settings_key(3,0x2000,true)==0);
     settings_file("0N");
@@ -207,7 +232,7 @@ static void exercise_settings(void)
     load_options();
     check_menu_art("menu-classic.raw");
     assert(!rename(unavailable,themed));
-    puts("PASS selectable Settings rows, held A, failed save, old config migration, both artwork packs, theme persistence and locale fallback");
+    puts("PASS exact baked Settings sprites, held A, failed save, old config migration, theme persistence and locale fallback");
 }
 
 static void exercise_state_paths(void)

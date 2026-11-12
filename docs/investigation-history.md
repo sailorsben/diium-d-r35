@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Put all six Settings rows in the artwork - 2026-11-12
+
+The first Settings build drew the two new rows over the lower part of the
+old image. The revised 640×480 asset contains six rows and the button guide.
+Append the new highlight and value sprites after the four firmware records.
+The exact ARM loader draws those sprites in both themes without scrolling.
+[Six-row Settings artwork](stock-shell-prototype.md#six-row-settings-artwork).
+
 ## Switch launcher themes in Settings - 2026-11-12
 
 The firmware polls the selected row through two call sites. Both pass the

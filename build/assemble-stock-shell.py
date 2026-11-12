@@ -41,7 +41,7 @@ PATCHES = {
     0x8A79C: (0xEBFFE0C1, "stock_load_art"),
     0x8E3A0: (0xEBFFD1C0, "stock_load_art"),
     0x8F48C: (0xEBFFCD85, "stock_load_art"),
-    0x82B08: (0xEB007F08, "stock_theme_zip"),
+    0x82B08: (0xEB007F08, "stock_theme_resource"),
     # The text renderer adds 29 pixels to these y positions for the baseline.
     0x8F860: (0xE30021B2, 0xE30021A7),  # first help baseline at 452
     0x8F884: (0xE30021BE, 0xE30021B9),  # second help baseline at 470

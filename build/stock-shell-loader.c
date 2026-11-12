@@ -32,6 +32,7 @@
 #define LAUNCHER "/d35-launcher1"
 #define LOCALE VAR(0x1998d8, unsigned)
 #define THEME_PACK LAUNCHER "/ui_en.bkp"
+#define CLASSIC_SETTINGS_PACK LAUNCHER "/ui_classic.bkp"
 
 #define D35_VIEWPORT_COPY COPY
 #define D35_VIEWPORT_COMPARE CMP
@@ -55,6 +56,7 @@ struct overlay {
     bool auto_skip, select_held, accept_held;
     bool classic, applied_classic, new_art, save_failed, restore_highlight;
     unsigned extra_row;
+    const void *baked_settings;
     uint16_t *settings_pixels;
     void *music;
     size_t music_bytes;
@@ -470,19 +472,30 @@ struct art_block {
 
 /* Only mui_LoadUIResource's locale archive open is redirected. Shared
  * fonts, language metadata, game files and stock packs keep their paths. */
-ENTRY void *stock_theme_zip(const char *path,unsigned size,unsigned mode)
+ENTRY void *stock_theme_zip(const char *path,unsigned size,unsigned mode,const char *member)
 {
     void *(*open_zip)(const char *,unsigned,unsigned)=FN(0xa2730,void *,const char *,unsigned,unsigned);
-    if(path && !size && mode==2 && LOCALE==1 && !S.applied_classic && S.new_art) {
+    const char *alternate=NULL;
+    if(LOCALE==1) {
+        if(!S.applied_classic && S.new_art) alternate=THEME_PACK;
+        else if(member && !STRCMP(member,"setting.raw")) alternate=CLASSIC_SETTINGS_PACK;
+    }
+    if(path && !size && mode==2 && alternate) {
         char stock[384], themed[384];
         const char *work=WORK();
         if(suffix(stock,sizeof(stock),work,"/ui_en.bkp") && !STRCMP(path,stock) &&
-           suffix(themed,sizeof(themed),work,THEME_PACK)) {
+           suffix(themed,sizeof(themed),work,alternate)) {
             void *zip=open_zip(themed,size,mode);
             if(zip) return zip;
         }
     }
     return open_zip(path,size,mode);
+}
+
+/* mui_LoadUIResource keeps the member name in r6 at its OpenZipU call. */
+__attribute__((naked)) ENTRY void stock_theme_resource(void)
+{
+    __asm__ volatile("mov r3, r6\n\tb stock_theme_zip");
 }
 
 static uint16_t *full_art_block(struct art_block *art, unsigned size, unsigned index)
@@ -495,6 +508,20 @@ static uint16_t *full_art_block(struct art_block *art, unsigned size, unsigned i
        b->right!=640 || b->bottom!=480 || b->offset<art[0].offset ||
        (b->offset&1) || b->offset>size-frame_bytes) return NULL;
     return (uint16_t *)((uint8_t *)art+b->offset);
+}
+
+static bool baked_settings_rows(struct art_block *art,unsigned size)
+{
+    const unsigned records=13;
+    if(!full_art_block(art,size,0) || art[0].offset!=records*sizeof(*art)) return false;
+    for(unsigned i=5;i<records;++i) {
+        const struct art_block *row=&art[i];
+        unsigned y=i<9?339:382, bytes=2u*460u*39u;
+        if(row->width!=640 || row->height!=480 || row->left!=90 || row->right!=550 ||
+           row->top!=y || row->bottom!=y+39 || (row->offset&1) ||
+           row->offset<art[0].offset || row->offset>size-bytes) return false;
+    }
+    return true;
 }
 
 static void settings_heading(uint16_t *frame)
@@ -542,9 +569,10 @@ ENTRY int stock_load_art(struct art_block **art, const char *name)
         /* Apply the stock artwork correction only to the original frame. */
         if(tile && favorites && tile[0]==0x0821 && tile[1]==0x0021 &&
            tile[2]==0x0821 && tile[3]==0x0001) settings_tile(tile,favorites);
-    } else if(VAR(0x1998d8, unsigned)==1 && !STRCMP(name,"setting.raw")) {
+    } else if(!STRCMP(name,"setting.raw")) {
+        S.baked_settings=baked_settings_rows(*art,size)?*art:NULL;
         uint16_t *frame=full_art_block(*art,size,0);
-        if(frame && frame[0]==0x39e9 && frame[1]==0x31ea &&
+        if(LOCALE==1 && !S.baked_settings && frame && frame[0]==0x39e9 && frame[1]==0x31ea &&
            frame[2]==0x3a09 && frame[3]==0x31ea) settings_heading(frame);
     }
     return loaded;
@@ -656,6 +684,17 @@ static void settings_options(uint16_t *p)
     settings_text(p,338,423,hint,2,accent);
 }
 
+static void baked_options(uint16_t *p,struct art_block *art)
+{
+    void (*blit)(void *,size_t,struct art_block *,unsigned)=FN(0x803a8,void,void *,size_t,struct art_block *,unsigned);
+    blit(p,1280,art,5+2*(S.extra_row==1)+S.auto_skip);
+    blit(p,1280,art,9+2*(S.extra_row==2)+(S.classic || !S.new_art));
+    const uint16_t *base=(const uint16_t *)((const uint8_t *)art+art[0].offset);
+    for(unsigned y=69;y<86;++y) COPY(p+y*640+105,base+y*640+105,430u*2u);
+    if(S.save_failed) settings_text(p,105,70,"SAVE FAILED",2,0xfe49);
+    else if(!S.new_art) settings_text(p,105,70,"NEW ART MISSING",2,0xfe49);
+}
+
 ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
 {
     if(p && w==640 && h==480 && pitch==1280) {
@@ -668,7 +707,8 @@ ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
             else if(SETTINGS_ART && S.restore_highlight)
                 FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,4);
             S.restore_highlight=false;
-            settings_options(p);
+            if(SETTINGS_ART && S.baked_settings==SETTINGS_ART) baked_options(p,SETTINGS_ART);
+            else settings_options(p);
             S.settings_pixels=p;
         }
     }
@@ -742,6 +782,7 @@ ENTRY void stock_settings(void)
         void (*wait)(void)=driver?SYM(driver,"WaitDisp"):NULL;
         if(wait) {
             wait();
+            S.baked_settings=NULL;
             static const unsigned slots[]={0x199900,0x199904,0x199908,0x19990c,0x199934};
             for(unsigned i=0;i<sizeof(slots)/sizeof(*slots);++i) {
                 void *old=VAR(slots[i],void *);

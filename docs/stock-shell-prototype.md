@@ -339,6 +339,28 @@ BusyBox wrapper also passed their fixtures. The Settings previews come from
 the ARM fixture's actual RGB565 output. Physical display and controls are
 pending. [Local qualification](../evidence/2026-11-12/stock-shell-settings-theme.json).
 
+## Six-row Settings artwork
+
+The New and Classic English Settings images each contain all six rows and
+the controller guide on the 640×480 canvas. The pack includes selected and
+unselected artwork for each Frame Skip and Theme value. The launcher picks
+the matching sprite as the user moves or changes a value. The page fits
+without scrolling. Older or localized packs use the compatibility drawing
+path for the two added options.
+
+`update-stock-shell-settings-art.py NEW_PACK STOCK_ENGLISH FONT OUTPUT`
+builds the revised `ui_en.bkp` and a small `ui_classic.bkp` that contains
+only `setting.raw`. The New pack's other members match the prior pack byte
+for byte. Classic selects the supplemental artwork only for Settings, so
+the other Classic screens continue to load from the original pack.
+
+The pinned ARM launcher decoded both updated assets and drew the expected
+row sprites byte for byte for focus changes, saved values and a failed save.
+Search, pause layout, slot drawing and emulator routing passed their existing
+fixtures. The images were also reviewed at 640×480. The local launcher build
+includes both packs. Physical Settings verification is pending.
+[Local qualification](../evidence/2026-11-12/stock-shell-settings-artwork.json).
+
 I: is armed with `e4c75e7` for one boot. Verify the Super Nintendo and
 NES carousel panels, open Save State in a running game to see the current
 preview and slot grid, then open Controls to check the live mapping
