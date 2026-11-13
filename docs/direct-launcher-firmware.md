@@ -1,9 +1,11 @@
 # Permanent direct SNES launcher
 
-I: has the direct launcher installed and `retro/update/Code.bkp` staged.
-The complete card readback verifies 2,198 files, 2,194 protected prior
-files, the sole firmware trigger and clean FAT32.
+The handheld booted the direct launcher firmware. The returned boot log
+records `direct-launcher-v1` and `/usr/retro/vrtemu`. The card frontend
+matches the staged executable. The consumed `retro/update/Code.bkp` was
+archived and removed, and Windows reported clean FAT32 after the return.
 [Arming receipt](../evidence/2026-11-13/direct-launcher-firmware-arming.json).
+[Return receipt](../evidence/2026-11-13/direct-launcher-firmware-return.json).
 
 The D-R35 boots Linux and the Vesper animation from internal SPI. It then
 mounts the card's `retro` directory and starts `retro/init`. The normal
@@ -19,10 +21,15 @@ core is `70d8851`. This package uses the established stock gameplay audio
 writer. The interactive 150 ms trial stopped twice on tick 195 and remains
 a separate experiment. [Audio return](starfox-launcher-audio-test.md#handheld-return).
 
-Existing game progress is preserved. SNES states made through the direct
-launcher continue to use their core-specific names. Older v11 states are
-kept for rollback and require a separate compatibility check before use
-with the direct core. [State behavior](stock-shell-prototype.md#what-the-prototype-changes).
+SNES states made through the direct launcher use core-specific names.
+The five existing Final Fantasy VI slots still had their original hashes
+on return. They use the v11 adapter's 16-byte header and the vendor's zlib
+container and thumbnail. Copies with that header removed and the original
+thumbnails intact passed the production save-load path in the ARM fixture.
+The old and direct paths matched video, PCM and final serialized state
+over 120 ticks for each slot with the same ROM. The verified copies are on
+I: alongside the five originals. Handheld resume remains to be checked.
+[State behavior](stock-shell-prototype.md#what-the-prototype-changes).
 
 ## Internal flash change
 
@@ -54,10 +61,19 @@ menu, and reboot once to confirm the launcher remains the default. The
 firmware handoff log distinguishes a board that took the new image from
 one that only ran the new card frontend.
 
-After powering down normally, reconnect I: for archival and exact trigger
-removal. A separate read-only SPI capture can verify the full internal image.
-The card staging receipt establishes what was copied and armed. Physical
-programming and launch behavior are pending the handheld boot.
+On return, archive the card logs and progress before exact trigger removal.
+A separate read-only SPI capture can verify the full internal image. The
+returned firmware tag establishes that the new board boot script ran.
+
+## Firmware progress display
+
+The update interface runs from the card frontend. The original ARM updater
+computes a percentage from the offset of each 64 KiB sector and presents
+its 640×480 RGB565 buffer through `DispFrame`. The sector offset advances
+after comparison confirms the sector matches the requested image. A
+separate success frame precedes the sync and shutdown calls. These are the
+display events for a Vesper progress bar. The Vesper design is a visual
+prototype. The live updater still draws the original interface.
 
 The original card frontend and init are preserved by hash in the private
 staging archive, along with the previous one-shot launcher. The verified

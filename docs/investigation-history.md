@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Verify the direct boot and recover FF6 state slots - 2026-11-13
+
+The returned firmware log confirms the direct boot. Archive the consumed
+update before removing its trigger. Five FF6 slots use the v11 wrapper.
+Repack them for the direct core while keeping the thumbnails. The ARM
+save-load fixture produces matching video, PCM and game state for each
+slot. Install the copies alongside the originals.
+[Return and save behavior](direct-launcher-firmware.md).
+
 ## Make the direct launcher the default - 2026-11-13
 
 The normal game frontend is the supervisor's sibling executable on the

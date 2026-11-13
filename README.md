@@ -1,8 +1,10 @@
 # DIIUM D-R35: device findings and SNES platform
 
 The [permanent direct SNES launcher](docs/direct-launcher-firmware.md)
-is installed on I: and the internal firmware update is staged for the next
-handheld boot. The default SNES route opens the optimized core directly.
+is installed on I: and the returned boot log confirms the new internal
+firmware started it. The default SNES route opens the optimized core
+directly. Five original FF6 states were preserved and verified compatible
+copies are on the card for the direct core.
 
 The [interactive Star Fox audio test](docs/starfox-launcher-audio-test.md)
 started native playback twice. Both attempts exhausted the 150 ms reserve

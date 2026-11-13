@@ -1,0 +1,20 @@
+{
+  "firmware_boot_tag": "direct-launcher-v1",
+  "frontend": "/usr/retro/vrtemu",
+  "frontend_sha256": "a5f2d4ba50c85e4b177bb96c93a0dfbbec26516cc8f52ee4d4fcda9799b1a18a",
+  "consumed_update_archived_and_removed": true,
+  "fat_scan_found_no_problems": true,
+  "fat_dirty_after_restore": false,
+  "full_internal_spi_readback": false,
+  "ff6": {
+    "slots": 5,
+    "legacy_slots_match_pre_flash": true,
+    "direct_slots_verified_on_card": 5,
+    "thumbnails_preserved": true,
+    "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "replay": "stock frontend and v11 adapter versus installed direct launcher save-load entry",
+    "ticks_per_slot": 120,
+    "matching_video_pcm_layout_and_final_state": true,
+    "physical_resume": "pending"
+  }
+}

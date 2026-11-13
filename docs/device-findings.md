@@ -1,10 +1,11 @@
 # Device findings
 
-**Permanent direct SNES launcher (2026-11-13).** The card has the direct
-frontend at the stock supervisor's executable path and the verified board
-update for splash handoff. The firmware updater simulation programs
-20 of 128 flash blocks. Physical flashing and cold-boot persistence are
-pending. [Firmware and boot procedure](direct-launcher-firmware.md).
+**Permanent direct SNES launcher (2026-11-13).** The returned boot log
+confirms the new internal firmware started the direct launcher. The
+consumed update was removed after archival. The five original FF6 slots
+match their pre-flash hashes. Copies for the direct core loaded through
+the ARM launcher fixture and are on I: for handheld resume.
+[Firmware and boot procedure](direct-launcher-firmware.md).
 
 **Interactive Star Fox audio return (2026-11-12).** The launcher reaches
 44.1 kHz native PCM with the full 6,615-frame prime. Both sessions underrun

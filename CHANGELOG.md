@@ -1,5 +1,11 @@
 # Changelog
 
+## Verify direct boot and restore FF6 save slots - 2026-11-13
+
+Archive and remove the consumed firmware update after the new boot is
+confirmed. Keep the five legacy FF6 saves and add verified copies for the
+direct core. [Return and save behavior](docs/direct-launcher-firmware.md).
+
 ## Prepare permanent direct SNES startup - 2026-11-13
 
 Use the supervisor's native frontend path with the optimized core.
