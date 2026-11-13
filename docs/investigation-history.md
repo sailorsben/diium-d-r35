@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Trace the handheld theme test and Star Fox clicks - 2026-11-12
+
+The settings preference was created during the test and records New with
+Frame Skip Off. The boot log confirms the frontend bind. Saving either
+setting writes both values, so the final file cannot identify which options
+changed. The returned core matches the zero-underrun Corneria replay by hash.
+Interactive gameplay still calls the stock writer, bypassing the standalone
+runner's native audio delivery. [Handheld return](stock-shell-prototype.md#theme-test-handheld-return).
+
 ## Put all six Settings rows in the artwork - 2026-11-12
 
 The first Settings build drew the two new rows over the lower part of the

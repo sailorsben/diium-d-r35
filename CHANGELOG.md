@@ -1,5 +1,14 @@
 # Changelog
 
+## Read the one-boot theme and Star Fox return - 2026-11-12
+
+The test launcher ran and saved New with Frame Skip Off. The boot log
+does not record artwork transitions. The Star Fox recent entry was rewritten.
+The optimized core hash matches the successful Corneria replay. The interactive
+launcher uses the stock audio writer. It still lacks the replay's native PCM
+reserve and the FFVI presentation policy.
+[Handheld return](docs/stock-shell-prototype.md#theme-test-handheld-return).
+
 ## Arm the New and Classic Settings test - 2026-11-12
 
 Stage the qualified launcher and both Settings packs for one boot on I:.

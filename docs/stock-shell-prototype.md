@@ -377,7 +377,7 @@ includes both packs. Physical Settings verification is pending.
 
 ## One-boot theme test
 
-I: is armed with the launcher from `1c02c10`, including the raised Classic
+I: was armed with the launcher from `1c02c10`, including the raised Classic
 Settings panel and the matching New theme. The card's language is English.
 Safely eject the card and boot the handheld once. Open **Settings**, press
 Down past **Restore factory settings**, and select **Theme**. Press **A** to
@@ -387,5 +387,37 @@ themes in the same boot. The following reboot takes the stock path.
 The sparse archive retained the logs and private progress and hashed all
 2,192 pre-test files. The read-only scan found no errors and FAT32 mark-clean
 cleared the dirty flag. Independent readback verified all 2,195 card files,
-including 2,188 unchanged prior files, both markers and clean FAT32. Physical
-theme switching remains to be verified. [Arming receipt](../evidence/2026-11-12/stock-shell-settings-theme-arming.json).
+including 2,188 unchanged prior files, both markers and clean FAT32.
+[Arming receipt](../evidence/2026-11-12/stock-shell-settings-theme-arming.json).
+
+### Theme test handheld return
+
+Both one-shot markers were consumed with the expected source revision, and
+the wrapper logged a successful frontend bind. A settings file absent before
+the test now contains `0N`, meaning Frame Skip Off and Theme New. Settings
+writes both values whenever either option changes, and the wrapper logs only
+the boot. The file confirms a settings save and the final choice. The sequence
+of theme choices and the artwork actually shown remain unobserved in the log.
+
+Star Fox was already first in Recents, and the handheld rewrote that row.
+The owner reports clicks during gameplay. The launcher payload opens the same
+optimized SNES core, SHA256 prefix `70d8851`, as the successful full-screen
+Corneria replay. It sends resampled game audio to the stock writer at
+`0xa2cc4`, and its changed-picture path can wait for display completion.
+It has neither the standalone runner's native PCM owner and 150 ms prime nor
+the FFVI test's nonblocking display-credit policy. The FFVI test preserved
+all renders and audio while skipping presentation when display credit ran out.
+Both 48 ms burst candidates completed, while both blocking controls failed.
+The Corneria replay ran 1,200 ticks with zero recorded underruns. The
+interactive return contains no game audio telemetry to locate the clicks.
+[FFVI return](presentation-ffvi-return.md),
+[Corneria return](starfox-fullscreen.md#corrected-handheld-return).
+
+The next physical audio comparison should hold the Star Fox core, content,
+display geometry and Frame Skip Off fixed. Compare the existing interactive
+writer against a port of the native PCM path and record accepted samples,
+playable reserve and display waits through gameplay and pause/resume.
+
+Read-only collection verified 2,194 files, including all previous saves.
+Both markers remain consumed and FAT32 is clean.
+[Return receipt](../evidence/2026-11-12/stock-shell-settings-theme-return.json).

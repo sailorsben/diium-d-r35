@@ -1,5 +1,11 @@
 # Device findings
 
+**Theme test handheld return (2026-11-12).** Both markers were consumed and
+the launcher saved New with Frame Skip Off. The boot log cannot establish
+both visual transitions. Star Fox used the qualified core through the
+stock audio writer. The reported clicks have no live PCM trace.
+[Handheld return](stock-shell-prototype.md#theme-test-handheld-return).
+
 **Adaptive BRR handheld return (2026-11-11).** All ten pairs complete with
 exact output and zero sustained cache ticks. The disabled new core misses
 the 1% mean CPU tolerance in Mario and Ranger. Both markers are consumed.

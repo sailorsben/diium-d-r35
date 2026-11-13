@@ -1,0 +1,32 @@
+{
+  "source_commit": "1c02c10946ba8f8e50658284a80653025d0fbb96",
+  "archive": "launcher-themes-return-20261113T041542355810Z",
+  "retro_inventory_sha256": "47e9239865d6a3e1a06e03c78e4ba0ea3f21297f19ab20aaeda6a38ab332eca0",
+  "outside_retro_inventory_sha256": "208c2cae92f776b9f7f9ee15515d5691245d77711384e7b7f2cffa922e089c05",
+  "card_writes": 0,
+  "verified_files": 2194,
+  "unchanged_files": 2188,
+  "new_sparse_content_bytes": 131,
+  "fat_clean": true,
+  "both_boot_markers_consumed": true,
+  "frontend_bound_for_this_boot": true,
+  "splash_wait_seconds": 0,
+  "settings": {
+    "pretest_preference_file_present": false,
+    "returned_preference": "0N",
+    "frame_skip": "Off",
+    "theme": "New",
+    "visual_transitions_observed_in_logs": false
+  },
+  "star_fox": {
+    "first_recent_entry_before_and_after": true,
+    "recent_entry_rewritten": true,
+    "reported_clicking": true,
+    "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "matches_successful_corneria_replay_core": true,
+    "game_audio_path": "stock writer at 0xa2cc4",
+    "native_pcm_150_ms_prime_active": false,
+    "ffvi_nonblocking_display_credit_policy_active": false,
+    "interactive_pcm_telemetry_available": false
+  }
+}

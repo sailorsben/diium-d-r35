@@ -14,8 +14,9 @@ BRR forced off used 1.71% more CPU in Mario and 1.12% more in Ranger than
 the current launcher core. The test markers were consumed.
 
 The [New and Classic Settings launcher](docs/stock-shell-prototype.md#one-boot-theme-test)
-is armed on I: for one boot. The card passed independent payload, marker,
-protected-file and FAT32 readback.
+ran on the handheld and saved New as its final theme. The logs do not record
+individual theme transitions. Star Fox clicked during gameplay with the stock
+audio writer. Both one-shot markers were consumed and FAT32 is clean.
 
 The [physical raster test](docs/snes-raster-device-test.md) completed all
 12 pairs. Full-tile strips cut Star Fox mean core CPU by 30.1%, from
