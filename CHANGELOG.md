@@ -1,5 +1,12 @@
 # Changelog
 
+## Measure the interactive Star Fox audio underrun - 2026-11-12
+
+Both launches reach explicit native PCM start and run for about 3.4 seconds.
+They run out of playable samples on tick 195, with zero display-credit
+skips and no application-pointer drift. Preserve both complete traces
+and the returned card inventory. [Handheld return](docs/starfox-launcher-audio-test.md#handheld-return).
+
 ## Port native audio and display credit handling to the Star Fox launcher test - 2026-11-12
 
 The matched cartridge uses the 150 ms native PCM reserve and skips a

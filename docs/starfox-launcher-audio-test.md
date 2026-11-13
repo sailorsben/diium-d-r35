@@ -1,6 +1,6 @@
 # Interactive Star Fox native audio test
 
-I: is armed for one boot from `019704d`. The full readback checked 2,197
+I: was armed for one boot from `019704d`. The full readback checked 2,197
 files, both markers and clean FAT32. All 2,193 protected prior files
 match their baseline hashes.
 [Arming receipt](../evidence/2026-11-12/starfox-launcher-audio-arming.json).
@@ -10,6 +10,52 @@ The one-boot launcher runs the same Star Fox cartridge and optimized core
 cartridge activates native PCM and display backpressure handling. New and
 Classic artwork, menu audio, controls, private state paths and other games
 retain their existing routes.
+
+## Handheld return
+
+The test launcher bound successfully and consumed both one-shot markers.
+It wrote two complete timing logs. Both native streams negotiated
+44,100 Hz, a 128-frame period and a 7,552-frame buffer. Each started
+once after accepting 6,615 priming frames.
+
+| Handheld metric | First attempt | Second attempt |
+| --- | ---: | ---: |
+| Open to fault tick | 3.405 s | 3.409 s |
+| Fault tick | 195 | 195 |
+| Driver underruns | 1 | 1 |
+| Application-pointer mismatches | 0 | 0 |
+| Longest gap between accepted writes | 50.579 ms | 50.300 ms |
+| Lowest running reserve, sampled by the worker | 100 frames | 100 frames |
+| Presented / repeated / busy-skipped pictures | 7 / 188 / 0 | 7 / 188 / 0 |
+
+The last 54 completed intervals before the failing call, from the end of
+tick 140 to the end of tick 194, averaged 19.245 and 19.241 ms against the
+16.688 ms target. The core-call wall time averaged 18.844 and 18.850 ms,
+including about 0.94 ms per tick in the video callback. Audio production
+fell to 38,244 and 38,251 stereo frames/s against a 44,100 frames/s sink.
+That leaves a roughly 13.3% production deficit in that interval and needs
+about 2.55 ms saved per tick to sustain real time if the workload persists.
+These are elapsed timings. The log does not attribute the cost to individual
+core phases or measure whole-system CPU.
+
+At tick 140 the playable queue held 7,017 frames in both traces. It fell to
+937 frames at tick 194 and emptied during the following 28.2 ms core call.
+Both logs end in ALSA XRUN (`SYNC_OBSERVE`, errno 32, state 4). The
+driver accepted 149,416 frames including prime. The last 603 generated
+frames were still in the software queue. No game segment reached a clean
+drain or a pause/resume. Audio continuity failed before the requested
+gameplay window. The trace does not record audible clicks.
+
+The FFVI fix had no opportunity to save a display wait in this window.
+The successful standalone Corneria replay opened PCM after 8,656 warmup
+ticks. This cold run covers the opening the replay excluded. A matched
+follow-up should profile the same cold 195 ticks, retain audio and input,
+and account for reserve recovery after the opening workload.
+
+The read-only archive verified 2,197 files, including the installed
+payload and unchanged saves. The FAT32 scan found no errors. Windows
+reported the dirty flag, which remains set. The card is unarmed.
+[Return receipt](../evidence/2026-11-12/starfox-launcher-audio-return.json).
 
 ## Handheld procedure
 

@@ -1,5 +1,11 @@
 # Device findings
 
+**Interactive Star Fox audio return (2026-11-12).** The launcher reaches
+44.1 kHz native PCM with the full 6,615-frame prime. Both sessions underrun
+on tick 195. The preceding 54 intervals produce about 38.25k frames/s
+against the 44.1 kHz sink. Both runs report zero display-credit skips.
+[Handheld return](starfox-launcher-audio-test.md#handheld-return).
+
 **Theme test handheld return (2026-11-12).** Both markers were consumed and
 the launcher saved New with Frame Skip Off. The boot log cannot establish
 both visual transitions. Star Fox used the qualified core through the

@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Read the interactive Star Fox native PCM return - 2026-11-12
+
+Two attempts on the one-shot boot start after the exact 150 ms prime.
+Both lose the same 6,080 playable frames between tick 140 and 194 and
+underrun on tick 195. The display-credit check never skips a presentation.
+The previous zero-underrun Corneria run opened audio after its 8,656-tick
+warmup. The cold interactive startup is a separate workload.
+[Handheld return](starfox-launcher-audio-test.md#handheld-return).
+
 ## Trace the handheld theme test and Star Fox clicks - 2026-11-12
 
 The settings preference was created during the test and records New with
