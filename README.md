@@ -1,5 +1,10 @@
 # DIIUM D-R35: device findings and SNES platform
 
+The [interactive Star Fox audio test](docs/starfox-launcher-audio-test.md)
+is armed on I:. It uses the native 150 ms PCM reserve and defers
+presentation when the scaler is busy. Handheld audio timing and listening
+results are pending.
+
 The 16-entry Star Fox renderer cache saves 17.0% core CPU in the paired
 handheld replay. The 150 ms native audio run completes all 1,200 ticks
 at nominal speed with zero underruns. [Handheld return](docs/starfox-150-device-test.md#handheld-return).

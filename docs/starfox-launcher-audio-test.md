@@ -1,5 +1,10 @@
 # Interactive Star Fox native audio test
 
+I: is armed for one boot from `019704d`. The full readback checked 2,197
+files, both markers and clean FAT32. All 2,193 protected prior files
+match their baseline hashes.
+[Arming receipt](../evidence/2026-11-12/starfox-launcher-audio-arming.json).
+
 The one-boot launcher runs the same Star Fox cartridge and optimized core
 (`70d8851`) as the previous interactive test. Only the matched Star Fox
 cartridge activates native PCM and display backpressure handling. New and

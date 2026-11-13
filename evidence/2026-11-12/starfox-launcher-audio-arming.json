@@ -1,0 +1,21 @@
+{
+  "source_commit": "019704da17f78549ff4bc95a1ce118a7b40a8f35",
+  "archive": "starfox-launcher-before-20261113T043003180207Z",
+  "fat_clean": true,
+  "verified_card_files": 2197,
+  "unchanged_prior_files": 2193,
+  "payload_sha256": {
+    "retro/d35-launcher1/vrtemu": "37c9337f124c8c91106c8686810a272394f87124f26c4793bca2c51ce59e2ebb",
+    "retro/d35-launcher1/libs/d35-starfox-audio.so": "12215f146d5e34d369fd6fbcf03ed369d2fcd99ed4328a1ede64a47814dbf533",
+    "retro/d35-launcher1/armed": "d5dc6c43b0a30c0f1c893397f3e327d2e9eff94b8fdb93d02f33117eedf546fd",
+    "retro/snes-mvp/armed": "d5dc6c43b0a30c0f1c893397f3e327d2e9eff94b8fdb93d02f33117eedf546fd"
+  },
+  "boot_markers": [
+    "retro/d35-launcher1/armed",
+    "retro/snes-mvp/armed"
+  ],
+  "physical_result": "pending",
+  "qualification_sha256": "8fc005c0070eb1a591de1653a10b1a9c681dde802c2a45c4ce72460819b3ba7c",
+  "independent_readback": true,
+  "new_full_backup": false
+}
