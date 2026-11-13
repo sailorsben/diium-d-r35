@@ -68,6 +68,10 @@ struct overlay {
     uint16_t *settings_pixels;
     void *music;
     size_t music_bytes;
+#ifdef D35_VESPER_LAUNCHER
+    uint16_t *power_frame;
+    bool start_held;
+#endif
 };
 /* Reserved by extending the pinned RW LOAD's zero-filled tail. */
 #define S VAR(0x1c4100, struct overlay)
@@ -807,6 +811,13 @@ static void settings_box(uint16_t *p,unsigned x0,unsigned y0,unsigned x1,unsigne
     for(unsigned y=y0;y<y1;++y) for(unsigned x=x0;x<x1;++x) p[y*640+x]=color;
 }
 
+static bool button_down(unsigned pin)
+{ return FN(0x157c8,int,unsigned)(pin)==0; }
+
+#ifdef D35_VESPER_LAUNCHER
+#include "stock-shell-power.h"
+#endif
+
 static void settings_options(uint16_t *p)
 {
     bool classic=S.applied_classic || LOCALE!=1 || !S.new_art;
@@ -854,13 +865,17 @@ ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
             if(SETTINGS_ART && S.baked_settings==SETTINGS_ART) baked_options(p,SETTINGS_ART);
             else settings_options(p);
             S.settings_pixels=p;
+#ifdef D35_VESPER_LAUNCHER
+            if(shutdown_available()) {
+                settings_box(p,407,10,622,45,0x08a3);
+                settings_text(p,419,20,"START POWER OFF",2,0xaf9e);
+            }
+            if(S.power_frame) return;
+#endif
         }
     }
     DISP(p,w,h,pitch);
 }
-
-static bool button_down(unsigned pin)
-{ return FN(0x157c8,int,unsigned)(pin)==0; }
 
 static void change_option(unsigned row)
 {
@@ -879,6 +894,22 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
     unsigned keys=FN(0x86368,unsigned,void)();
     if(!button_down(0x30f)) S.select_held=false;
     if(!button_down(0x204)) S.accept_held=false;
+#ifdef D35_VESPER_LAUNCHER
+    if(!button_down(0x30c)) S.start_held=false;
+    if(S.power_frame) {
+        if(keys==0x4000) shutdown_cancel();
+        else if(keys==0x2000 && !S.accept_held) {
+            S.accept_held=true;
+            shutdown_confirm();
+        }
+        return 0;
+    }
+    if(keys==8 && S.settings_pixels && shutdown_available()) {
+        if(!S.start_held) shutdown_open();
+        S.start_held=true;
+        return 0;
+    }
+#endif
     if(keys==1) {
         if(!S.select_held) {
             change_option(1);
@@ -915,8 +946,14 @@ ENTRY void stock_settings(void)
     S.extra_row=0;
     S.select_held=button_down(0x30f);
     S.accept_held=button_down(0x204);
+#ifdef D35_VESPER_LAUNCHER
+    S.start_held=button_down(0x30c);
+#endif
     S.save_failed=S.restore_highlight=false;
     FN(0x8dfe4,void,void)();
+#ifdef D35_VESPER_LAUNCHER
+    if(S.power_frame) shutdown_cancel();
+#endif
     S.settings_pixels=NULL;
     if(S.applied_classic!=S.classic || locale!=LOCALE) {
         S.applied_classic=S.classic;

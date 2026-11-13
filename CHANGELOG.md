@@ -1,5 +1,11 @@
 # Changelog
 
+## Add Power Off to launcher Settings - 2026-11-13
+
+Confirm the action, flush the card and verify that FAT is read-only before
+requesting Linux poweroff. Keep the Vesper preview armed for the same test.
+[Shutdown test](docs/direct-launcher-firmware.md#power-off-from-settings).
+
 ## Add Vesper update progress and selected menu sounds - 2026-11-13
 
 Draw update progress from the vendor sector counter and show a one-boot

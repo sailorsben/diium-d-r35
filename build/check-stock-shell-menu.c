@@ -18,6 +18,10 @@ struct sound {
 static const int16_t *expected;
 static size_t total, output, calls;
 static bool verify, select_held, accept_held, rename_fails;
+static bool shutdown_fixture;
+static unsigned shutdown_display, shutdown_calls;
+static int shutdown_result;
+static uint16_t *shutdown_pixels;
 static unsigned active_key, flips, driver;
 static uint16_t settings[640*480];
 static const char *work;
@@ -37,14 +41,50 @@ static void *find(void *h, const char *name)
 }
 static int gpio(unsigned pin)
 {
-    assert(pin==0x30f || pin==0x204);
-    return !(pin==0x30f?select_held:accept_held);
+    assert(pin==0x30f || pin==0x204 || pin==0x30c);
+    return !(pin==0x30f?select_held:pin==0x204?accept_held:active_key==8);
 }
 static unsigned joy(void) { return active_key; }
 static void display(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
-    assert(pixels==settings && w==640 && h==480 && pitch==1280);
+    assert(w==640 && h==480 && pitch==1280);
+    if(pixels!=settings) {
+        assert(shutdown_fixture && pixels==shutdown_pixels);
+        ++shutdown_display;
+    }
     ++flips;
+}
+
+static int file_access(const char *name,int mode)
+{
+    if(!strcmp(name,"/usr/retro/d35-launcher1/power-off.sh"))
+        return shutdown_fixture?0:-1;
+    return access(name,mode);
+}
+
+static void *power_alloc(size_t bytes)
+{
+    assert(shutdown_fixture && bytes==614400 && !shutdown_pixels);
+    return shutdown_pixels=malloc(bytes);
+}
+
+static void power_free(void *pixels)
+{
+    assert(pixels && pixels==shutdown_pixels);
+    free(pixels);
+    shutdown_pixels=NULL;
+}
+
+static int power_command(const char *command)
+{
+    assert(shutdown_fixture && shutdown_pixels);
+    if(!strcmp(command,"/bin/sh /usr/retro/d35-launcher1/power-off.sh")) {
+        ++shutdown_calls;
+        return shutdown_result;
+    }
+    assert(!strcmp(command,"/sbin/poweroff") && !shutdown_result);
+    puts("PASS confirmed shutdown requests Linux poweroff only after card preparation");
+    exit(0);
 }
 static int fixed_time(struct timeval *tv,void *tz)
 { (void)tz; tv->tv_sec=0; tv->tv_usec=0; return 0; }
@@ -257,12 +297,29 @@ static void exercise_state_paths(void)
     puts("PASS SNES pause-slot preview and thumbnail append use the private state file");
 }
 
+static void shutdown_dialog(void)
+{
+    settings_background("setting-new.raw");
+    assert(settings_key(0,8,false)==0 && shutdown_display==1);
+    assert(settings_key(0,8,false)==0 && shutdown_display==1 && !shutdown_calls);
+    assert(settings_key(0,0x4000,false)==0 && !shutdown_pixels && !shutdown_calls);
+    assert(settings_key(0,8,false)==0 && shutdown_display==2);
+    shutdown_result=1<<8;
+    assert(settings_key(0,0x2000,true)==0 && shutdown_calls==1 && shutdown_display==4);
+    assert(settings_key(0,0x2000,true)==0 && shutdown_calls==1);
+    assert(settings_key(0,0x4000,false)==0 && !shutdown_pixels);
+    assert(settings_key(0,8,false)==0 && shutdown_display==5);
+    shutdown_result=0;
+    settings_key(0,0x2000,true);
+    abort();
+}
+
 #ifndef D35_STOCK_MENU_ENTRY
 #define D35_STOCK_MENU_ENTRY main
 #endif
 int D35_STOCK_MENU_ENTRY(int argc,char **argv)
 {
-    assert(argc==5);
+    assert(argc==5 || argc==6);
     work=argv[3];
     map_vendor(argv[1]);
     patch(0x11ce0,(uintptr_t)fopen); patch(0x11f20,(uintptr_t)fclose);
@@ -276,7 +333,7 @@ int D35_STOCK_MENU_ENTRY(int argc,char **argv)
     patch(0x157c8,(uintptr_t)gpio); patch(0x86368,(uintptr_t)joy);
     patch(0x11b60,(uintptr_t)strtol); patch(0x11eb4,(uintptr_t)fwrite);
     patch(0x11fb0,(uintptr_t)fflush); patch(0x11b18,(uintptr_t)fsync); patch(0x11df4,(uintptr_t)fileno);
-    patch(0x11e0c,(uintptr_t)access);
+    patch(0x11e0c,(uintptr_t)file_access);
     patch(0x11f74,(uintptr_t)strcmp); patch(0x11fc8,(uintptr_t)memcmp);
     patch(0x11d64,(uintptr_t)strcpy);
     patch(0x11e78,(uintptr_t)calloc); patch(0x11ee4,(uintptr_t)strlen);
@@ -314,5 +371,17 @@ int D35_STOCK_MENU_ENTRY(int argc,char **argv)
     printf("music=%s fills=%zu mixer_ns=%"PRIu64"\n",argv[4],calls-before,elapsed);
     if(pcm) { exercise_settings(); exercise_state_paths(); }
     free(old); free((void *)expected);
+    if(argc==6) {
+        assert(!strcmp(argv[5],"shutdown"));
+        shutdown_fixture=true;
+        patch(0x164abc,(uintptr_t)power_alloc);
+        patch(0x164d58,(uintptr_t)power_free);
+        patch(0x11d4c,(uintptr_t)power_command);
+        patch(0x8dfe4,(uintptr_t)shutdown_dialog);
+        locale=1;
+        ((void (*)(void))target(0x98174))();
+        ((void (*)(void))target(0x984dc))();
+        abort();
+    }
     return 0;
 }

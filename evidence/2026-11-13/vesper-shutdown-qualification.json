@@ -1,0 +1,22 @@
+{
+  "arm_and_shell_passed": true,
+  "physical": false,
+  "source_sha256": {
+    "build/stock-shell-loader.c": "c5d8d4cdee6d560830f1362c32a8d39e0c5e9b3cfd0a17d4fc5f5e0bfb2faf08",
+    "build/stock-shell-power.h": "2a4bf7c60b1cb501362ad9c30aa304b602e7b1fa8d4ec7c5f86b2d20e62b9303",
+    "build/launcher-power-off.sh": "6036b341df41c3264e2732fe0ab39e1a0376e4378f750ccf7c484c6a836ce1db",
+    "build/check-launcher-power-off.sh": "52692e503d48b31fac16dccac152ec80bb35314b013fbbcc82ac95388a14f372",
+    "build/check-stock-shell-menu.c": "88763f3c7c37357d1769df3557384cc6e84fbda866747b8551fd285653b29393",
+    "build/check-vesper-launcher.c": "b07d62d4dd082430cd34757d3ccc4f467c6ff9dcaf200df98c1b46573c23cbd0",
+    "build/assemble-stock-shell.py": "9910f5967e39d2d77f7fda2bb586b9138b99f70c3861b1e2bb0bcbe4a8ffc081",
+    "build/stage-vesper-shutdown.py": "0340bb252fcb0d72bd106d3ac8e3824b976b9e5c968ba90fcec067637bda7c8a"
+  },
+  "build_sha256": {
+    "vrtemu": "fdde200c86ef066201212724d1a41f6c1bb7bf9dc40957a4e06cc4070e80beda",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "menu.log": "50e13975f41a4c4656d599b44afa64d94c41939de1c9e67356c18549b2c3facf",
+    "preview.log": "9dd30923d628e5c6b3535beeb33596c7b399a0bf6c9399458d47f605504114fe",
+    "shutdown.log": "03e65990f6be84723ea4cd6ef0bd29dba6b681de2a51b59575bda7d03a07cf57"
+  },
+  "helper_on_card_sha256": "6036b341df41c3264e2732fe0ab39e1a0376e4378f750ccf7c484c6a836ce1db"
+}

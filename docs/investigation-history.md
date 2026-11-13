@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Add a confirmed launcher poweroff - 2026-11-13
+
+The installed BusyBox inittab omits the fallback table's unmount and swapoff
+actions. Add a Settings action that flushes and makes FAT read-only before
+asking Linux to power down. Qualify the menu and card preparation paths
+offline. Physical power removal and FAT return remain open.
+[Shutdown behavior](direct-launcher-firmware.md#power-off-from-settings).
+
 ## Exercise the Vesper firmware progress screen - 2026-11-13
 
 Drive the real update screen from the stock sector count. In the ARM

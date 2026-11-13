@@ -96,6 +96,31 @@ menu fixture compares Start Line PCM across the loop boundary and exercises
 theme switching and save paths. Handheld display and listening remain
 the acceptance tests. [Installation receipt](../evidence/2026-11-13/vesper-launcher-arming.json).
 
+## Power off from Settings
+
+Return to the launcher after exiting a game, open Settings, and press Start.
+Press A to confirm or B to cancel. The launcher stops the card's active swap
+file if present, logs the request, flushes writes and remounts the underlying
+FAT filesystem read-only. It checks the actual media mount before requesting
+the normal Linux poweroff. If card preparation fails before the remount, the
+confirmation screen offers Retry or Cancel. If the remount cannot be verified,
+it stops in a visible error state.
+
+The factory button helper polls every 200 ms and requires 11 asserted samples
+before asking for poweroff. The installed rootfs has an explicit BusyBox init
+table with no shutdown entries. The shipped BusyBox includes unmount and
+swapoff actions in its fallback table for a missing inittab. Those are absent
+from this installed configuration. The Settings action handles the SD card
+before delegating poweroff to BusyBox. The exact point at which the board
+removes power remains to be verified on the handheld.
+
+The ARM fixture checks the confirmation, cancel, failed preparation and
+request order. The shell fixture checks the card and swap path, remount
+command, read-only verification and error handling. After the physical test,
+collect `power-off.log`, check the FAT dirty bit and read-only filesystem
+scan separately, and confirm the save files still load.
+[Shutdown installation receipt](../evidence/2026-11-13/vesper-shutdown-arming.json).
+
 The original card frontend and init are preserved by hash in the private
 staging archive, along with the previous one-shot launcher. The verified
 prior firmware and its update package remain available for a board rollback.

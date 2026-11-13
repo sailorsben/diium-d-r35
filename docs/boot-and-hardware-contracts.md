@@ -223,6 +223,11 @@ GPIO0x108 backlight-off and `poweroff`. The1.8 user confirms whole-device
 power-off, but no retained late sample or shutdown message establishes that
 this path fired. Recovered MMIO code is not a qualified live probing contract.
 
+The installed BusyBox inittab has no explicit shutdown actions. The launcher
+can secure the SD card before asking BusyBox to power off. Use the full FAT
+mount under /media, since /usr/retro is a bind mount of a directory on that
+filesystem. See [Power Off](direct-launcher-firmware.md#power-off-from-settings).
+
 ## PCM observation and resume correction in 1.11
 
 Do not pace the next core call before its requested worker observation is
