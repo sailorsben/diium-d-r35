@@ -4,8 +4,9 @@
 
 The installed BusyBox inittab omits the fallback table's unmount and swapoff
 actions. Add a Settings action that flushes and makes FAT read-only before
-asking Linux to power down. Qualify the menu and card preparation paths
-offline. Physical power removal and FAT return remain open.
+asking Linux to power down. The user confirmed the handheld turned off by
+itself. The returned card had a clear dirty bit, passed CHKDSK and preserved
+all ten FF6 files. The Vesper preview completed all 14 frames.
 [Shutdown behavior](direct-launcher-firmware.md#power-off-from-settings).
 
 ## Exercise the Vesper firmware progress screen - 2026-11-13

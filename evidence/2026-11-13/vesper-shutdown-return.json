@@ -1,0 +1,20 @@
+{
+  "preview": {
+    "completed": true,
+    "frames": 14,
+    "marker_consumed": true,
+    "spi_used": false
+  },
+  "power_off": {
+    "card_log": "poweroff=requested mount=/dev/sdcardb1",
+    "log_stage": "before sync and remount",
+    "handheld_observation": "User confirms the handheld turned off by itself after confirming Power Off",
+    "independent_electrical_measurement": false
+  },
+  "fat32": {
+    "dirty": false,
+    "read_only_chkdsk_found_no_problems": true
+  },
+  "ff6_original_and_direct_slots_unchanged": 10,
+  "card_writes_during_collection": 0
+}

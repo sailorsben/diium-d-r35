@@ -111,15 +111,20 @@ before asking for poweroff. The installed rootfs has an explicit BusyBox init
 table with no shutdown entries. The shipped BusyBox includes unmount and
 swapoff actions in its fallback table for a missing inittab. Those are absent
 from this installed configuration. The Settings action handles the SD card
-before delegating poweroff to BusyBox. The exact point at which the board
-removes power remains to be verified on the handheld.
+before delegating poweroff to BusyBox.
 
 The ARM fixture checks the confirmation, cancel, failed preparation and
 request order. The shell fixture checks the card and swap path, remount
-command, read-only verification and error handling. After the physical test,
-collect `power-off.log`, check the FAT dirty bit and read-only filesystem
-scan separately, and confirm the save files still load.
+command, read-only verification and error handling.
 [Shutdown installation receipt](../evidence/2026-11-13/vesper-shutdown-arming.json).
+
+On the handheld, the Vesper preview completed all 14 frames, consumed its
+marker, and reported no SPI use. The card log records the Settings shutdown
+request before the sync and remount. The user confirmed the handheld turned
+off by itself. On return, Windows reported a clear FAT32 dirty flag and
+read-only CHKDSK found no problems. All five original FF6 slots and all five
+direct-core copies match their pretest hashes.
+[Physical return](../evidence/2026-11-13/vesper-shutdown-return.json).
 
 The original card frontend and init are preserved by hash in the private
 staging archive, along with the previous one-shot launcher. The verified
