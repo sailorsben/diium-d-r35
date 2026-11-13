@@ -1,5 +1,11 @@
 # Device findings
 
+**Permanent direct SNES launcher (2026-11-13).** The card has the direct
+frontend at the stock supervisor's executable path and the verified board
+update for splash handoff. The firmware updater simulation programs
+20 of 128 flash blocks. Physical flashing and cold-boot persistence are
+pending. [Firmware and boot procedure](direct-launcher-firmware.md).
+
 **Interactive Star Fox audio return (2026-11-12).** The launcher reaches
 44.1 kHz native PCM with the full 6,615-frame prime. Both sessions underrun
 on tick 195. The preceding 54 intervals produce about 38.25k frames/s

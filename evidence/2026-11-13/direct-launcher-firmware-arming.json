@@ -1,0 +1,43 @@
+{
+  "source_commit": "b29ccdfa48376f98aa6b30e6428aa340aa59fd39",
+  "archive": "persistent-launcher-before-20261113T214545111833Z",
+  "payload_sha256": {
+    "retro/vrtemu": "a5f2d4ba50c85e4b177bb96c93a0dfbbec26516cc8f52ee4d4fcda9799b1a18a",
+    "retro/d35-launcher1/vrtemu": "a5f2d4ba50c85e4b177bb96c93a0dfbbec26516cc8f52ee4d4fcda9799b1a18a",
+    "retro/init": "fc4f4939bde880ab904241fff23eaa7dd73df6fa4dc2eaa6ec72a54f3074e069",
+    "retro/update/Code.bkp": "282f175f0053a4e20f594093722e94515e644d2b2cd3120ff873acff759a8896"
+  },
+  "unchanged_prior_files": 2194,
+  "verified_card_files": 2198,
+  "expected_programmed_firmware_sha256": "c0969f5a0d171957a604ed32e7cc03bb6ea8544227ebe093df3b8884bd4b92cb",
+  "expected_erased_blocks": [
+    "000000",
+    "0c0000",
+    "520000",
+    "530000",
+    "540000",
+    "550000",
+    "560000",
+    "570000",
+    "580000",
+    "590000",
+    "5a0000",
+    "5b0000",
+    "5c0000",
+    "5d0000",
+    "5e0000",
+    "5f0000",
+    "600000",
+    "610000",
+    "620000",
+    "630000"
+  ],
+  "fat_clean": true,
+  "persistent_launcher": true,
+  "one_shot_markers": false,
+  "physical_flash": "pending",
+  "independent_readback": true,
+  "dirty_flag_cleared": true,
+  "archive_inventory_sha256": "11afca347ee6e5fa4ee277ff317a6b4ead3e234d977ca5571ce616741258b5b3",
+  "no_full_card_backup": true
+}

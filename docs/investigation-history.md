@@ -1,5 +1,13 @@
 # Investigation history and negative results
 
+## Make the direct launcher the default - 2026-11-13
+
+The normal game frontend is the supervisor's sibling executable on the
+card. Install the direct SNES launcher there and put the splash handoff
+in the internal boot script. The original no-card fallback stays intact.
+The exact vendor updater programs only changed blocks in the simulated
+full-image update. [Firmware and boot procedure](direct-launcher-firmware.md).
+
 ## Read the interactive Star Fox native PCM return - 2026-11-12
 
 Two attempts on the one-shot boot start after the exact 150 ms prime.

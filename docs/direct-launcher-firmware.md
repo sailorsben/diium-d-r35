@@ -1,5 +1,10 @@
 # Permanent direct SNES launcher
 
+I: has the direct launcher installed and `retro/update/Code.bkp` staged.
+The complete card readback verifies 2,198 files, 2,194 protected prior
+files, the sole firmware trigger and clean FAT32.
+[Arming receipt](../evidence/2026-11-13/direct-launcher-firmware-arming.json).
+
 The D-R35 boots Linux and the Vesper animation from internal SPI. It then
 mounts the card's `retro` directory and starts `retro/init`. The normal
 supervisor executes its sibling `vrtemu` and restarts it on a watchdog timeout.
@@ -17,7 +22,7 @@ a separate experiment. [Audio return](starfox-launcher-audio-test.md#handheld-re
 Existing game progress is preserved. SNES states made through the direct
 launcher continue to use their core-specific names. Older v11 states are
 kept for rollback and require a separate compatibility check before use
-with the direct core. [State behavior](stock-shell-prototype.md:108).
+with the direct core. [State behavior](stock-shell-prototype.md#what-the-prototype-changes).
 
 ## Internal flash change
 
