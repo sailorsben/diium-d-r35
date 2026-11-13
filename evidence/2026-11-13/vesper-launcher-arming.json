@@ -1,0 +1,19 @@
+{
+  "source_commit": "96e99c6db5d7e11ad48d5708214c757522848de7",
+  "payload_sha256": {
+    "retro/d35-launcher1/vesper-update.rgb565": "4fc09f9fe14fe79c93bf14beaf7f2cf9b6b8bd9b80c244f18e0b3f9f47c18d1f",
+    "retro/d35-launcher1/d35-transition.pcm": "100e1fc30d04c420c6f78a08713db116c618a0aefae80cbaf2694cdba5889b38",
+    "retro/d35-launcher1/d35-menu.pcm": "f956f6729e65fa6dd4a88bac1d254b356da4ee4873a0ce1ddccf090a20e8324f",
+    "retro/d35-launcher1/vrtemu": "3b68f611560b1dbc4f257d63afa43ea9e5f671caf774ccfda7e3ab8e69e761de",
+    "retro/vrtemu": "3b68f611560b1dbc4f257d63afa43ea9e5f671caf774ccfda7e3ab8e69e761de",
+    "retro/d35-launcher1/vesper-preview.once": "0522f725034d8221addf060c733e4087bd72ce47ce907d253873628414ca4881"
+  },
+  "protected_files_verified": 2200,
+  "card_files_verified": 2206,
+  "music": "M06 Start Line",
+  "effect": "S07 Leaf Brush",
+  "one_boot_preview": true,
+  "firmware_update_armed": false,
+  "fat32_clean": true,
+  "physical": "pending"
+}
