@@ -1,0 +1,13 @@
+{
+  "source_commit": "fc8708d7957389fc8a84cee7469534144c8ccc2e",
+  "changed_sha256": {
+    "retro/d35-launcher1/power-off.sh": "6036b341df41c3264e2732fe0ab39e1a0376e4378f750ccf7c484c6a836ce1db",
+    "retro/d35-launcher1/vrtemu": "fdde200c86ef066201212724d1a41f6c1bb7bf9dc40957a4e06cc4070e80beda",
+    "retro/vrtemu": "fdde200c86ef066201212724d1a41f6c1bb7bf9dc40957a4e06cc4070e80beda"
+  },
+  "verified_files": 2207,
+  "vesper_preview_armed": true,
+  "firmware_update_armed": false,
+  "fat32_clean_before_test": true,
+  "physical_shutdown": "pending"
+}
