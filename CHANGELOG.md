@@ -1,5 +1,11 @@
 # Changelog
 
+## Add Vesper update progress and selected menu sounds - 2026-11-13
+
+Draw update progress from the vendor sector counter and show a one-boot
+preview that runs without a firmware package. Use Start Line and Leaf
+Brush for the launcher. [Test procedure](docs/direct-launcher-firmware.md#firmware-progress-display).
+
 ## Verify direct boot and restore FF6 save slots - 2026-11-13
 
 Archive and remove the consumed firmware update after the new boot is

@@ -1,0 +1,24 @@
+{
+  "arm_passed": true,
+  "physical": false,
+  "sources": {
+    "build/assemble-stock-shell.py": "9910f5967e39d2d77f7fda2bb586b9138b99f70c3861b1e2bb0bcbe4a8ffc081",
+    "build/stock-shell-loader.c": "32c3b3b29b02d077e1c636cf4a34eb3b593161133946b6daf0f2ccf2d4a3d016",
+    "build/stock-shell-vesper.h": "28d5c58dd8c95d831de1c78be79788029e098fa399da066bc485ab346ce8caa8",
+    "build/check-vesper-launcher.c": "b07d62d4dd082430cd34757d3ccc4f467c6ff9dcaf200df98c1b46573c23cbd0",
+    "build/check-stock-shell-menu.c": "df7a00a07f2f50e3c2125502149676cef3febd6abdd0d1a6e0b55148031b78e5",
+    "build/stage-vesper-launcher.py": "a183583df0079a728dfff7406091d97794fc10f9282c8484d1e7394db97277bb"
+  },
+  "build": {
+    "vrtemu": "3b68f611560b1dbc4f257d63afa43ea9e5f671caf774ccfda7e3ab8e69e761de",
+    "vesper-update.rgb565": "4fc09f9fe14fe79c93bf14beaf7f2cf9b6b8bd9b80c244f18e0b3f9f47c18d1f",
+    "arm-checks.log": "9dd30923d628e5c6b3535beeb33596c7b399a0bf6c9399458d47f605504114fe",
+    "menu-checks.log": "d0d26f4f5d40b356d3d3a30d10d44efad16624f4f2cf1fdb3702f3139e5d682d",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936"
+  },
+  "assets": {
+    "vesper-update.png": "7a88121862764a45b66a6acb26a437a3dde6c543e0ad2fd7c37e4fe19ab43429",
+    "d35-menu.pcm": "f956f6729e65fa6dd4a88bac1d254b356da4ee4873a0ce1ddccf090a20e8324f",
+    "d35-transition.pcm": "100e1fc30d04c420c6f78a08713db116c618a0aefae80cbaf2694cdba5889b38"
+  }
+}

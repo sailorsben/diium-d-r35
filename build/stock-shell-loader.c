@@ -963,3 +963,7 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
     }
     FN(0x8750c,void,unsigned,const struct sound *)(channel,original);
 }
+
+#ifdef D35_VESPER_LAUNCHER
+#include "stock-shell-vesper.h"
+#endif

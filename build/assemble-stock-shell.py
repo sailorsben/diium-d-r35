@@ -51,6 +51,17 @@ NATIVE_AUDIO_PATCHES = {
     0xA4660: (0xEBFFDCE3, "stock_pause_audio"),
     0xA4580: (0xEBFDBE93, "stock_audio_heartbeat"),
 }
+VESPER_PATCHES = {
+    0x1231C: (0xEB000436, "vesper_update"),
+    0x135C0: (0xEB024C24, "vesper_update_prepare"),
+    0x13178: (0xEBFFFFA7, "vesper_update_percent"),
+    0x131A0: (0xEB024D2C, "vesper_update_progress"),
+    0x13280: (0xEB024CF4, "vesper_update_complete"),
+    0x132AC: (0xEB024CE9, "vesper_update_detail"),
+    0x13318: (0xEB024CCE, "vesper_update_detail"),
+    0x13950: (0xEBFFFDD2, "vesper_update_program"),
+    0x13984: (0xEB024B33, "vesper_update_detail"),
+}
 
 
 def sha(data):
@@ -61,7 +72,7 @@ def command(*argv):
     return subprocess.check_output(argv, text=True)
 
 
-def assemble(vendor, core, out, native_audio=False):
+def assemble(vendor, core, out, native_audio=False, vesper=False):
     repo = Path(__file__).resolve().parent.parent
     if not any(out.is_relative_to(parent) for parent in
                (repo/"build", Path.home().resolve(), Path(tempfile.gettempdir()).resolve())):
@@ -83,6 +94,8 @@ def assemble(vendor, core, out, native_audio=False):
     here = Path(__file__).resolve().parent
     prefix = "arm-linux-gnueabihf-"
     options = ["-DD35_STARFOX_NATIVE_AUDIO"] if native_audio else []
+    if vesper:
+        options.append("-DD35_VESPER_LAUNCHER")
     command(prefix+"gcc", "-std=gnu11", "-O3", "-Wall", "-Wextra", "-Werror", "-ffreestanding",
             "-fno-builtin", "-fno-pic", "-fno-pie", "-fno-stack-protector",
             "-fno-unwind-tables", "-fno-asynchronous-unwind-tables", "-marm", "-mcpu=cortex-a7",
@@ -111,7 +124,16 @@ def assemble(vendor, core, out, native_audio=False):
     at = (len(data)+0xFFFF)&~0xFFFF
     ph.pack_into(data, note, 1, at, TEXT, TEXT, len(text), len(text), 5, 65536)
 
-    patches = {**PATCHES, **NATIVE_AUDIO_PATCHES} if native_audio else PATCHES
+    patches = dict(PATCHES)
+    if native_audio:
+        patches.update(NATIVE_AUDIO_PATCHES)
+    if vesper:
+        patches.update(VESPER_PATCHES)
+        # Only calls from the menu and list routines, before the game pause UI.
+        for address in range(0x88358, 0x9a358, 4):
+            expected = 0xEB000000 | (((0x8750C - address - 8) >> 2) & 0xFFFFFF)
+            if address not in patches and struct.unpack_from("<I", data, address-0x10000)[0] == expected:
+                patches[address] = expected, "vesper_menu_effect"
     for address, (expected, target) in patches.items():
         old, = struct.unpack_from("<I", data, address-0x10000)
         if old != expected:
@@ -152,9 +174,10 @@ def main():
     parser.add_argument("optimized_core", type=Path)
     parser.add_argument("new_local_output", type=Path)
     parser.add_argument("--starfox-native-audio", action="store_true")
+    parser.add_argument("--vesper-launcher", action="store_true")
     args = parser.parse_args()
     assemble(args.stock.resolve(), args.optimized_core.resolve(), args.new_local_output.resolve(),
-             args.starfox_native_audio)
+             args.starfox_native_audio, args.vesper_launcher)
 
 
 if __name__ == "__main__":

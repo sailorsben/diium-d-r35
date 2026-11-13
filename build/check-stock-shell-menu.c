@@ -257,7 +257,10 @@ static void exercise_state_paths(void)
     puts("PASS SNES pause-slot preview and thumbnail append use the private state file");
 }
 
-int main(int argc,char **argv)
+#ifndef D35_STOCK_MENU_ENTRY
+#define D35_STOCK_MENU_ENTRY main
+#endif
+int D35_STOCK_MENU_ENTRY(int argc,char **argv)
 {
     assert(argc==5);
     work=argv[3];

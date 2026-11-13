@@ -71,9 +71,30 @@ The update interface runs from the card frontend. The original ARM updater
 computes a percentage from the offset of each 64 KiB sector and presents
 its 640×480 RGB565 buffer through `DispFrame`. The sector offset advances
 after comparison confirms the sector matches the requested image. A
-separate success frame precedes the sync and shutdown calls. These are the
-display events for a Vesper progress bar. The Vesper design is a visual
-prototype. The live updater still draws the original interface.
+separate success frame precedes the sync and shutdown calls. The Vesper
+launcher uses these events to drive its progress bar. It gives the screen
+its own chunk allocation, waits for display completion before drawing
+again, and shows a failure message if programming fails. The vendor
+validation, compare, erase, write, retry, and shutdown paths still run.
+
+The one-boot preview uses that same renderer and a simulated sector count
+before the menu opens. It renames and syncs the preview marker before the
+first frame. It runs only when the firmware package is absent and it never
+calls the SPI updater. It shows 14 frames over about three seconds, then
+continues into the launcher. The preview log is
+`retro/d35-launcher1/vesper-preview.log`.
+
+The selected menu sounds are M06 Start Line and S07 Leaf Brush. The
+former loops through stock mixer channel 0. The latter replaces the two
+stock navigation effects at frontend menu call sites on channel 1. Game
+audio and the pause menu use their existing paths.
+
+The ARM fixture runs the patched launcher preview entry and the vendor
+sector loop against RAM. It checks the successful image, monotonic bar,
+failure display and no false 100%, and the Leaf Brush mixer output. The
+menu fixture compares Start Line PCM across the loop boundary and exercises
+theme switching and save paths. Handheld display and listening remain
+the acceptance tests. [Installation receipt](../evidence/2026-11-13/vesper-launcher-arming.json).
 
 The original card frontend and init are preserved by hash in the private
 staging archive, along with the previous one-shot launcher. The verified

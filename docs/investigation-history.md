@@ -1,5 +1,14 @@
 # Investigation history and negative results
 
+## Exercise the Vesper firmware progress screen - 2026-11-13
+
+Drive the real update screen from the stock sector count. In the ARM
+fixture, the successful RAM image matches byte for byte and an injected
+write failure never displays 100%. A separate one-boot preview exercises
+the same drawing path with zero SPI calls. Test Start Line and Leaf Brush
+through the existing menu mixer.
+[Progress and preview](direct-launcher-firmware.md#firmware-progress-display).
+
 ## Verify the direct boot and recover FF6 state slots - 2026-11-13
 
 The returned firmware log confirms the direct boot. Archive the consumed
