@@ -1,5 +1,11 @@
 # Changelog
 
+## Prepare permanent direct SNES startup - 2026-11-13
+
+Use the supervisor's native frontend path with the optimized core.
+Qualify the internal splash handoff and preserve both boot screens and the
+UART-corrected kernel. [Firmware and boot procedure](docs/direct-launcher-firmware.md).
+
 ## Measure the interactive Star Fox audio underrun - 2026-11-12
 
 Both launches reach explicit native PCM start and run for about 3.4 seconds.

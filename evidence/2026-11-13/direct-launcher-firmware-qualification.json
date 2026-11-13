@@ -1,0 +1,61 @@
+{
+  "baseline_sha256": "ef69753afb56c84e4daaf78aa3fad5551d26b7438e49f4f1dbc7312b11e07321",
+  "artifact_sha256": {
+    "candidate.bin": "ab5c1d268759d86645327c15550e63922327f152cdef77d4100dbd8c39b7d8a6",
+    "expected-after-vendor.bin": "c0969f5a0d171957a604ed32e7cc03bb6ea8544227ebe093df3b8884bd4b92cb",
+    "Code.bkp": "282f175f0053a4e20f594093722e94515e644d2b2cd3120ff873acff759a8896",
+    "rootfs.cpio.gz": "3329232cca1ceeaaec251a1965c10eee8b7e3a9e09db5668a1b30f4cee276c72",
+    "init.project.rc": "4454ab74a2dc3891913090eb55b46c42af2a575f55408d10d99153e4cede7dfd",
+    "sd-init": "fc4f4939bde880ab904241fff23eaa7dd73df6fa4dc2eaa6ec72a54f3074e069"
+  },
+  "changed_rootfs_files": [
+    "init.project.rc"
+  ],
+  "rootfs_bytes": 3382932,
+  "rootfs_slot_bytes": 3406558,
+  "vendor_metadata": [
+    1161006539,
+    1567449088
+  ],
+  "expected_erased_blocks": [
+    "000000",
+    "0c0000",
+    "520000",
+    "530000",
+    "540000",
+    "550000",
+    "560000",
+    "570000",
+    "580000",
+    "590000",
+    "5a0000",
+    "5b0000",
+    "5c0000",
+    "5d0000",
+    "5e0000",
+    "5f0000",
+    "600000",
+    "610000",
+    "620000",
+    "630000"
+  ],
+  "expected_page_programs": 5120,
+  "arm_checks_passed": true,
+  "physical": false,
+  "source_sha256": {
+    "build/prepare-direct-launcher-firmware.py": "be30a7efd9f4e56957e3329616ba822a01d18feface37c0768e6467d73f1c591",
+    "build/check-direct-launcher-boot.py": "d0844cf38bd728197715755638a6e586db76630016d1be9d291248f8385fa42c",
+    "build/install-direct-launcher-firmware.py": "9181823125a425625985e781a622264d2ee7d351dc22a525b0d23725ae759d91",
+    "build/check-vendor-updater.c": "d4a46993a2a059aedf46a76fd092de0cd054c3821ec6aad5774e0199739ba35d",
+    "build/check-static-splash.c": "681a517a19e0f43f337ed0ced48445dfc8ae9d5e1810a587f9ef8f9a56a61d5f",
+    "build/check-boot-loader.c": "2671654d7e1995b3903404401a4db41d42e138c0ff51b9292e77022e9e7127e3",
+    "build/inspect-spi-boot.py": "ceafe31aacfc4684c4dba1328a7b0e8b201a448159984ce0d5048883b3259fd9"
+  },
+  "checks": [
+    "Original Thumb bootloader and static splash",
+    "Original ARM updater programs 20 blocks in RAM",
+    "Repeated CRC causes zero erases",
+    "Exact BusyBox boot handoff and no-card fallback",
+    "Original emulator dispatch with direct SNES frontend"
+  ]
+}
