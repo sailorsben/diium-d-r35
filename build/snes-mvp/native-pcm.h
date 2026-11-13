@@ -2,6 +2,7 @@
 #define D35_NATIVE_PCM_H
 #include "board.h"
 int pcm_open(unsigned requested);
+int pcm_open_150(void);
 ssize_t pcm_write(const int16_t *data,size_t frames);
 int pcm_observe(struct board_audio_state *out);
 int pcm_avail_min(unsigned frames);

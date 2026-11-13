@@ -1,0 +1,44 @@
+{
+  "physical": false,
+  "arm_checks_passed": true,
+  "source_sha256": {
+    "build/assemble-stock-shell.py": "199cf2b5d3c694b8e32944ddfb0f2e7bf0ed48f73ebe9dde25a9e05368a6a01b",
+    "build/stock-shell-loader.c": "4e14946f16e01ff7a1cf9d56017d13cc4e4da667f4c7e1d8a46ad63955b7499e",
+    "build/stock-shell-audio.c": "3d975b146a1a583bc52e4ea400436456a448f5429543f483bb25996ec31ecbec",
+    "build/stock-shell-audio.h": "03a1ccf465b23afc9daf25307f8cf08f6e1066b718e279d1312b4dcc7c99a179",
+    "build/snes-mvp/native-pcm.c": "967d5e38b8f3834001005d7df833708481983fe14fadd5e2b745eb51c23d4c13",
+    "build/snes-mvp/native-pcm.h": "dabc06a3f9f91b2eb3bdcdbaab4fe5d1c5345439808e25903f6b48f712711282",
+    "build/snes-mvp/audio-owner.c": "1b6f16f11f7756912e1fab1792d66720a8799a5dac5bb35a56ef0c1e5bcda99b",
+    "build/snes-mvp/audio-pipe.h": "7a182882d56194300e1e724a6bbe72e0ea140bc39428d5473e26e2ac7f29b145",
+    "build/snes-mvp/native-pcm-check.c": "a2d7432067be431fd1699181b69ec7fb47ffbb8928aa80dfbd87736d5cb73576",
+    "build/check-stock-shell.c": "90e24f32e353299bf7fc7637484ccd7e485959547026738a731de8d25ccd344a",
+    "build/launch-stock-shell-live.sh": "441917faee91fd9401b80e55f4a837bec9da72d3cbde220ce674d35f54ef1f65",
+    "build/install-starfox-launcher-audio.py": "e9928d23f6402bacf20a9c756005b3acf5c7a5c00078032033b032bc43078f35"
+  },
+  "payload_sha256": {
+    "vrtemu": "37c9337f124c8c91106c8686810a272394f87124f26c4793bca2c51ce59e2ebb",
+    "launch.sh": "441917faee91fd9401b80e55f4a837bec9da72d3cbde220ce674d35f54ef1f65",
+    "ui_en.bkp": "9090c6e43dd37462a800af6c34d484bdf64ca1269272fd6b2212e1d8b043f870",
+    "ui_classic.bkp": "e81eef220065bd1d3a8287bc953874f2157436025a747057af083361d1ae3a67",
+    "d35-menu.pcm": "11870e646e5648cb0bfe1ed0e87e94e65a4a9aae490b21ac7ea1b9d016d223d0",
+    "libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "libs/d35-starfox-audio.so": "12215f146d5e34d369fd6fbcf03ed369d2fcd99ed4328a1ede64a47814dbf533"
+  },
+  "pcm": {
+    "rate_hz": 44100,
+    "period_frames": 128,
+    "buffer_frames": 7552,
+    "prime_frames": 6615
+  },
+  "starfox_fixture": {
+    "cold_ticks": 8656,
+    "measured_ticks": 1200,
+    "simulated_busy_ticks": 240,
+    "pcm_frames": 883137,
+    "pcm_crc32": "b347f92a",
+    "pcm_layout_crc32": "5a14b614",
+    "normalized_state_crc32": "ff9c4c91"
+  },
+  "device_glibc_requirement": "2.7",
+  "device_cpu_saving_measured": false
+}

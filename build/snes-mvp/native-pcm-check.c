@@ -16,12 +16,13 @@
 static unsigned buffer,queued,starts,writes,accepted,minimum,prepares;
 static int stream_state,start_error,manual_start,start_race,early_start,bad_sw;
 static int write_error,hwsync_fault,pointer_override;
+static int reserve_150, sw_after_prepare;
 static unsigned boundary,pointer_appl,pointer_hw;
 static unsigned capture_syncs;
 static int capture_sync_error;
 static int provider_fsync(int fd)
 { ++capture_syncs; if(capture_sync_error) { errno=capture_sync_error; return -1; } return fsync(fd); }
-static int16_t expected[4096*2];
+static int16_t expected[7552*2];
 static int provider_open(const char *name,int flags,...)
 { assert(!strcmp(name,"/dev/snd/pcmC0D0p") && flags&O_NONBLOCK); return 42; }
 static int provider_close(int fd) { assert(fd==42); return 0; }
@@ -47,21 +48,25 @@ static int provider_ioctl(int fd,unsigned long command,...)
         assert(h->flags&SNDRV_PCM_HW_PARAMS_NORESAMPLE);
         if(rate!=44100 || period!=128) { errno=EINVAL; return -1; }
         buffer=h->intervals[SNDRV_PCM_HW_PARAM_BUFFER_SIZE-SNDRV_PCM_HW_PARAM_FIRST_INTERVAL].min;
-        assert(buffer==3712); return 0;
+        assert(buffer==(reserve_150?7552u:3712u)); return 0;
     }
     case SNDRV_PCM_IOCTL_SW_PARAMS: {
         struct snd_pcm_sw_params *s=arg;
-        assert(s->avail_min==128 && s->start_threshold==2823 && s->stop_threshold==buffer);
+        assert(s->avail_min==128 && s->start_threshold==(reserve_150?s->boundary:2823u) &&
+               s->stop_threshold==buffer);
+        if(reserve_150) assert(sw_after_prepare && !s->silence_threshold);
         assert(s->tstamp_type==SNDRV_PCM_TSTAMP_TYPE_MONOTONIC && !s->silence_size);
         if(bad_sw) s->start_threshold=1;
         boundary=(unsigned)s->boundary;
         return 0;
     }
-    case SNDRV_PCM_IOCTL_PREPARE: queued=accepted=0; ++prepares; stream_state=SNDRV_PCM_STATE_PREPARED; return 0;
+    case SNDRV_PCM_IOCTL_PREPARE:
+        queued=accepted=0; ++prepares; stream_state=SNDRV_PCM_STATE_PREPARED;
+        sw_after_prepare=1; return 0;
     case SNDRV_PCM_IOCTL_START:
         ++starts;
         if(stream_state!=SNDRV_PCM_STATE_PREPARED) { errno=EBADFD; return -1; }
-        assert(queued>=2823);
+        assert(queued>=(reserve_150?6615u:2823u));
         if(start_race) { stream_state=SNDRV_PCM_STATE_RUNNING; errno=EBADFD; return -1; }
         if(start_error) { errno=start_error; return -1; }
         stream_state=SNDRV_PCM_STATE_RUNNING; return 0;
@@ -70,10 +75,11 @@ static int provider_ioctl(int fd,unsigned long command,...)
         if(write_error) { stream_state=SNDRV_PCM_STATE_SETUP; errno=write_error; return -1; }
         if(!(++writes%7)) { errno=EAGAIN; return -1; }
         if(n>137) n=137;
-        assert(accepted+n<=4096 && !memcmp(x->buf,expected+accepted*2,n*4));
+        assert(accepted+n<=(reserve_150?7552u:4096u) && !memcmp(x->buf,expected+accepted*2,n*4));
         queued+=n; accepted+=n; x->result=n;
         /* Linux can START inside WRITEI; a second START is EBADFD. */
-        if((!manual_start && queued>=2823) || early_start) stream_state=SNDRV_PCM_STATE_RUNNING;
+        if((!reserve_150 && !manual_start && queued>=2823) || early_start)
+            stream_state=SNDRV_PCM_STATE_RUNNING;
         return 0;
     }
     case SNDRV_PCM_IOCTL_STATUS: {
@@ -212,5 +218,21 @@ int main(void)
     bad_sw=1;
     assert(pcm_open(32040)<0 && errno==EPROTO && strstr(pcm_error(),"SW_PARAMS_READBACK"));
     puts("PASS: actual ARM32 PCM ABI, device-shaped 44100/128/3712 fallback, exact partial/EAGAIN frames, kernel WRITEI auto-start without duplicate START, prepared-only explicit START, verified EBADFD race, rejected early start/nonrunning EBADFD/software-threshold mismatch, post-HWSYNC state/pointers, boundary wrap, GET flags preserve control, fresh WRITEI fault state, DRAIN threshold reset, asynchronous DRAIN, accepted START-failure state/pointer accounting and visible XRUN without restart");
+    bad_sw=0; reserve_150=1; sw_after_prepare=0; starts=0;
+    assert(pcm_open_150()==44100);
+    assert(!pcm_observe(&state) && state.period==128 && state.buffer==7552 &&
+           state.prime==6615 && state.start_threshold==state.boundary && !state.started);
+    offset=0;
+    while(offset<6615) {
+        ssize_t n=pcm_write(expected+offset*2,6615-offset);
+        if(n<0) assert(errno==EAGAIN);
+        else offset+=(unsigned)n;
+        if(offset<6615) assert(!starts);
+    }
+    assert(!pcm_observe(&state) && state.started && starts==1 &&
+           state.appl_ptr==6615 && state.epoch_transferred==6615 && state.queued==6615);
+    assert(!pcm_finish());
+    pcm_close();
+    puts("PASS: 150 ms at 44100/128/7552, PREPARE before SW_PARAMS, 6615 accepted before the sole START, completed drain");
     return 0;
 }

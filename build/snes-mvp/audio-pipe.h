@@ -14,6 +14,7 @@ struct audio_pipe_stats {
     unsigned avail,appl_ptr,hw_ptr,start_threshold,prime_transferred,start_calls,start_races;
     unsigned boundary,epoch;
     uint64_t epoch_transferred;
+    uint64_t pointer_mismatches;
     char error_detail[512];
     int error;
 };

@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <zlib.h>
+#include "stock-shell-audio.h"
 #include "snes9x2005/source/sa1.h"
 #include "snes9x2005/source/apu_blargg.h"
 
@@ -24,9 +25,16 @@ static const void *last_picture;
 static unsigned last_width,last_height;
 static uint64_t total_frames;
 static bool paired, baseline_active, starfox;
+static bool native_audio, busy_credit;
+static bool native_fault;
+static unsigned display_flags=1, audio_token, audio_starts, audio_stops, audio_ticks, busy_ticks;
+static unsigned heartbeats, fault_branches;
+static int dsp=42;
 static uint64_t baseline_ns;
 static retro_video_refresh_t owned_video;
 static void (*install_core_video)(retro_video_refresh_t);
+static const struct d35_live_audio audio_fixture;
+static uintptr_t branch_target(uintptr_t pc);
 
 static void normalize_pointers(unsigned char *bytes)
 {
@@ -67,8 +75,14 @@ static void *open_actual_core(const char *path,int mode)
     assert(h);
     return h;
 }
-static int close_actual_core(void *h) { ++nclose; return dlclose(h); }
+static int close_actual_core(void *h)
+{
+    if(h==&audio_token) { assert(audio_starts==audio_stops && dsp==-1); return 0; }
+    ++nclose; return dlclose(h);
+}
 static void wait_display(void) { ++wait_calls; drained=1; }
+static int release_oss(void) { assert(dsp==42); return 0; }
+static void restore_oss(void) { assert(dsp==-1); dsp=42; }
 static void *alloc_chunk(size_t n) { assert(!pool && n==2*512*512*2); return pool=malloc(n); }
 static void free_chunk(void *p) { assert(p==pool && (!copies||drained)); free(p); pool=NULL; ++chunk_frees; }
 static int16_t replay_input(unsigned port,unsigned dev,unsigned idx,unsigned id)
@@ -85,7 +99,14 @@ static void record_video_callback(retro_video_refresh_t callback)
 
 static void *resolve_actual(void *h,const char *s)
 {
-    if(h==&driver_token) { assert(!strcmp(s,"WaitDisp")); return wait_display; }
+    if(h==&driver_token) {
+        if(!strcmp(s,"WaitDisp")) return wait_display;
+        assert(native_audio);
+        if(!strcmp(s,"DisplayThreadflag")) return &display_flags;
+        if(!strcmp(s,"DSP")) return &dsp;
+        assert(!strcmp(s,"sound_driver_deinit")); return release_oss;
+    }
+    if(h==&audio_token) { assert(!strcmp(s,"d35_starfox_audio")); return (void *)&audio_fixture; }
     if(fail_load && !strcmp(s,"retro_load_game")) return reject;
     if(patched && starfox && !strcmp(s,"retro_set_video_refresh")) {
         install_core_video=dlsym(h,s);
@@ -106,6 +127,33 @@ static size_t sink_audio(const int16_t *p,size_t n)
     }
     return 0; /* exact stock sink convention */
 }
+static int test_audio_start(const char *directory)
+{
+    assert(!strcmp(directory,"fixture/d35-launcher1") && dsp==-1 && audio_starts==audio_stops);
+    int (*game_sleep)(unsigned)=(void *)branch_target(0xa4704);
+    assert(!game_sleep(20000));
+    ++audio_starts; return 0;
+}
+static int test_audio_admit(void) { assert(audio_starts==audio_stops+1); return 0; }
+static int test_audio_push(const int16_t *p,size_t n) { sink_audio(p,n); return 0; }
+static int test_audio_tick(enum d35_presentation picture,unsigned display_ns)
+{
+    (void)display_ns;
+    if(picture==D35_BUSY_DISPLAY) { assert(display_flags==3); ++busy_ticks; }
+    ++audio_ticks; return native_fault && audio_ticks==8656+ticks?-1:0;
+}
+static int test_audio_stop(const char *reason)
+{
+    assert(!strcmp(reason,"pause") || !strcmp(reason,native_fault?"audio_fault":"exit"));
+    assert(audio_starts==audio_stops+1);
+    ++audio_stops; return 0;
+}
+static const struct d35_live_audio audio_fixture={
+    cpu_time,test_audio_start,test_audio_admit,test_audio_push,test_audio_tick,test_audio_stop
+};
+static int resume_from_pause(void) { assert(dsp==-1 && audio_starts==audio_stops); return 0; }
+static void heartbeat(void) { ++heartbeats; }
+static void fault_cleanup(void) { ++fault_branches; }
 static void sink_video(const void *p,unsigned w,unsigned h,size_t pitch)
 {
     if(!p) return;
@@ -114,7 +162,8 @@ static void sink_video(const void *p,unsigned w,unsigned h,size_t pitch)
     if(patched) {
         assert(p==pool || p==(uint8_t *)pool+512*512*2);
         assert(p!=last_picture);
-        assert(copies<2 || drained);
+        if(native_audio) assert(display_flags==1);
+        else assert(copies<2 || drained);
     }
     last_picture=p; last_width=w; last_height=h; drained=0;
     ++copies;
@@ -201,7 +250,7 @@ static void play_fixture(void)
     if(patched) {
         void *(*resolve_run)(void *,const char *)=(void *)branch_target(0xa42e8);
         void (*effective)(void)=resolve_run(h,"retro_run");
-        assert((run!=effective)==force_auto);
+        assert((run!=effective)==(force_auto || native_audio));
         run=effective;
     }
     size_t (*state_size)(void)=dlsym(h,"retro_serialize_size");
@@ -263,6 +312,7 @@ static void play_fixture(void)
     unsigned start_copies=copies;
     for(unsigned i=0;i<ticks;++i) {
         unsigned before=copies;
+        unsigned before_wait=wait_calls;
         input_mask=inputs[i];
         *(int *)0x1bd620=i>=12 && i%60<18;
         if(paired && !(i%2)) {
@@ -270,7 +320,14 @@ static void play_fixture(void)
             uint64_t t=cpu_time(); base_run(); baseline_ns+=cpu_time()-t;
             baseline_active=false;
         }
+        if(native_audio && i==ticks/2 && i) {
+            int (*pause_audio)(void)=(void *)branch_target(0xa4660);
+            assert(!pause_audio());
+            before_wait=wait_calls;
+        }
+        display_flags=busy_credit && i && i%5<2 ? 3 : 1;
         uint64_t t=cpu_time(); run(); game_ns+=cpu_time()-t;
+        if(native_audio) assert(wait_calls==before_wait && (display_flags==1 || copies==before));
         if(paired && i%2) {
             baseline_active=true;
             uint64_t base_time=cpu_time(); base_run(); baseline_ns+=cpu_time()-base_time;
@@ -287,18 +344,25 @@ static void play_fixture(void)
         ++completed;
     }
     sampled=0;
+    if(native_audio) {
+        ((void (*)(void))branch_target(0xa4580))();
+        assert(heartbeats==1 && fault_branches==native_fault);
+    }
     assert(pictures==copies-start_copies);
     size_t size=state_size(); unsigned char *data=malloc(size);
     assert(data && serialize(data,size));
     size_t header=patched?0:16;
     normalize_pointers(data+header);
     state_crc=crc32(0,data+header,size-header); free(data);
-    if(starfox && patched && !force_auto) check_live_border();
+    if(starfox && patched && !force_auto && !native_audio) check_live_border();
     if(paired) { base_unload(); base_deinit(); assert(!dlclose(adapter)); }
     unload(); deinit(); assert(!close_actual_core(h));
 }
 static void *alias_open(const char *p,int mode)
 {
+    if(!strcmp(p,"fixture/d35-launcher1/libs/d35-starfox-audio.so")) {
+        assert(native_audio && mode==RTLD_NOW); return &audio_token;
+    }
     if(!strcmp(p,"fixture/d35-launcher1/libs/d35-snes.so")) {
         assert(mode==2 && patched);
         ++ncore;
@@ -320,6 +384,9 @@ int main(int argc,char **argv)
     force_auto=!strcmp(argv[5],"auto");
     predecoded=!strcmp(argv[5],"zip");
     fail_load=!strcmp(argv[5],"reject");
+    busy_credit=!strcmp(argv[5],"native-busy");
+    native_fault=!strcmp(argv[5],"native-fault");
+    native_audio=busy_credit || native_fault || !strcmp(argv[5],"native");
     verify=!strcmp(argv[6],"verify");
     ticks=strtoul(argv[7],NULL,10); assert(ticks && ticks<=1200);
     work="fixture"; reference=argv[4]; fixture_dir=argv[3];
@@ -353,6 +420,12 @@ int main(int argc,char **argv)
     patch(0xa3438,(uintptr_t)sink_video); patch(0xa2f0c,(uintptr_t)replay_input);
     patch(FRAME_FLASH,(uintptr_t)frame_flash); patch(KEY_MAPPING,(uintptr_t)key_mapping);
     patch(LOAD_PROC2,(uintptr_t)play_fixture);
+    if(native_audio) {
+        patch(0xa6844,(uintptr_t)restore_oss);
+        patch(0x9b9f4,(uintptr_t)resume_from_pause);
+        patch(0x13fd4,(uintptr_t)heartbeat);
+        patch(0xa4820,(uintptr_t)fault_cleanup);
+    }
     strcpy((char *)*(uint32_t *)(GOT+0x274),"/usr/");
     *(void **)0x1b81a8=&driver_token;
     *(uint8_t *)0x1c4100=0; /* mapping and zero-fill present */
@@ -378,6 +451,12 @@ int main(int argc,char **argv)
     else assert(rc==0 && entered==1 && completed==ticks);
     assert(ncore==1 && nclose==1);
     assert(!patched || (!pool && chunk_frees==1 && (!copies||wait_calls) && !*(void **)0x1bd5dc));
+    if(native_audio) {
+        assert(dsp==42 && audio_starts==2 && audio_stops==2 && audio_ticks==8656+ticks);
+        assert(busy_credit ? busy_ticks>0 : busy_ticks==0);
+        printf("native_audio_starts=%u stops=%u full_ticks=%u busy_display_ticks=%u\n",
+               audio_starts,audio_stops,audio_ticks,busy_ticks);
+    }
     printf("mode=%s ticks=%u pictures=%u pcm_frames=%"PRIu64" video=%08x pcm=%08x layout=%08x state=%08x launch_ns=%"PRIu64" game_ns=%"PRIu64" warm_ns=%"PRIu64" baseline_ns=%"PRIu64"\n",
            argv[5],completed,pictures,total_frames,video_crc,pcm_crc,layout_crc,state_crc,launch_ns,game_ns,warm_ns,baseline_ns);
     return 0;

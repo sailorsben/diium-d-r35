@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "stock-shell-audio.h"
 
 #define FN(at, ret, ...) ((ret (*)(__VA_ARGS__))(uintptr_t)(at))
 #define VAR(at, type) (*(type *)(uintptr_t)(at))
@@ -42,6 +43,10 @@ _Static_assert(2u * D35_STARFOX_FRAME_BYTES <= SLOT, "Star Fox display and refer
 
 struct session {
     void *core, *pool;
+    void *audio_module;
+    const struct d35_live_audio *audio;
+    const unsigned *display_flags;
+    int *stock_dsp;
     void (*wait_display)(void);
     void (*run)(void), (*unload)(void), (*deinit)(void);
     bool (*load)(const struct retro_game_info *);
@@ -50,6 +55,9 @@ struct session {
     bool previous, rgb565, starfox, zoomed;
     int16_t last[2];
     unsigned ticks, skipped, copies, repeats;
+    unsigned display_ns;
+    enum d35_presentation presentation;
+    bool audio_running, audio_failed;
 };
 struct overlay {
     struct session game;
@@ -125,7 +133,7 @@ static size_t snes_audio(const int16_t *in, size_t n)
     unsigned used=0, phase=s->phase;
     int l=s->last[0], r=s->last[1];
     size_t accepted=n;
-    if(!in || !n) return 0;
+    if(!in || !n || s->audio_failed) return 0;
     if(!s->previous) { l=*in++; r=*in++; s->previous=true; --n; }
     while(n--) {
         int a=*in++, b=*in++;
@@ -133,13 +141,22 @@ static size_t snes_audio(const int16_t *in, size_t n)
             out[2*used]=(int16_t)((l*245+(a-l)*(int)phase)/245);
             out[2*used+1]=(int16_t)((r*245+(b-r)*(int)phase)/245);
             phase+=178;
-            if(++used==2048) { FN(0xa2cc4, size_t, const int16_t *, size_t)(out,used); used=0; }
+            if(++used==2048) {
+                if(s->audio) {
+                    if(s->audio->push(out,used)<0) { s->audio_failed=true; return 0; }
+                } else FN(0xa2cc4, size_t, const int16_t *, size_t)(out,used);
+                used=0;
+            }
         } while(phase<245);
         phase-=245;
         l=a; r=b;
     }
     s->phase=phase; s->last[0]=(int16_t)l; s->last[1]=(int16_t)r;
-    if(used) FN(0xa2cc4, size_t, const int16_t *, size_t)(out,used);
+    if(used) {
+        if(s->audio) {
+            if(s->audio->push(out,used)<0) { s->audio_failed=true; return 0; }
+        } else FN(0xa2cc4, size_t, const int16_t *, size_t)(out,used);
+    }
     return accepted;
 }
 
@@ -151,6 +168,7 @@ static void snes_video(const void *data, unsigned w, unsigned h, size_t pitch)
     struct session *s=&S.game;
     size_t bytes=2*w;
     if(!data || !w || !h || w>512 || h>512 || pitch<bytes || !s->pool) return;
+    uint64_t began=s->audio?s->audio->now():0;
     const uint8_t *src=data;
     uint8_t *dst=(uint8_t *)s->pool+s->next*SLOT;
     if(s->shown && s->w==w && s->h==h) {
@@ -167,10 +185,21 @@ static void snes_video(const void *data, unsigned w, unsigned h, size_t pitch)
                 if(a[x]!=b[x]) { possible=false; break; }
         }
         if(possible) while(y<h && !CMP(src+y*pitch,old+y*bytes,bytes)) ++y;
-        if(y==h) { ++s->repeats; return; }
+        if(y==h) {
+            ++s->repeats;
+            s->presentation=D35_REPEATED_PICTURE;
+            goto measured;
+        }
     }
-    /* Before reusing a submitted slot, fence the stock display worker. */
-    if(s->copies>=2) s->wait_display();
+    if(s->audio) {
+        /* The stock scaler has one source credit. The menu, thumbnail and
+         * gameplay paths share this producer thread during the game. The
+         * scaler can only release the credit between this load and DrawFrame. */
+        if((__atomic_load_n(s->display_flags,__ATOMIC_ACQUIRE)&3u)!=1u) {
+            s->presentation=D35_BUSY_DISPLAY;
+            goto measured;
+        }
+    } else if(s->copies>=2) s->wait_display();
     s->zoomed=s->starfox && w==D35_STARFOX_WIDTH && h==D35_STARFOX_HEIGHT &&
         d35_starfox_border_is_black(src,pitch);
     /* Keep a copy of the original picture when presenting its expansion.
@@ -185,6 +214,9 @@ static void snes_video(const void *data, unsigned w, unsigned h, size_t pitch)
     }
     FN(0xa3438, void, const void *, unsigned, unsigned, size_t)(dst,w,h,bytes);
     s->w=w; s->h=h; s->shown=1; s->next^=1; ++s->copies;
+    s->presentation=D35_SUBMITTED_PICTURE;
+measured:
+    if(s->audio) s->display_ns=(unsigned)(s->audio->now()-began);
 }
 
 static bool snes_environment(unsigned cmd, void *data)
@@ -228,6 +260,21 @@ static bool snes_environment(unsigned cmd, void *data)
 static void snes_tick(void)
 {
     struct session *s=&S.game;
+    if(s->audio) {
+        if(!s->audio_running) {
+            char directory[384];
+            if(!suffix(directory,sizeof(directory),WORK(),LAUNCHER) ||
+               s->audio->start(directory)<0) { s->audio_failed=true; return; }
+            s->audio_running=true;
+        }
+        s->skip=0;
+        s->presentation=D35_NO_PICTURE;
+        s->display_ns=0;
+        if(s->audio->admit()<0) { s->audio_failed=true; return; }
+        s->run();
+        if(s->audio->tick(s->presentation,s->display_ns)<0) s->audio_failed=true;
+        return;
+    }
     /* The stock loop already computed lateness for this tick. Keep two
      * rendered ticks between drops. Never suppress CPU, APU or input. */
     s->skip=s->shown && !s->recovery && VAR(0x1bd620, const int)>0;
@@ -240,13 +287,97 @@ static void snes_tick(void)
 
 ENTRY void *stock_resolve_run(void *core, const char *symbol)
 {
-    if(core==S.game.core && S.game.auto_skip) return snes_tick;
+    if(core==S.game.core && (S.game.auto_skip || S.game.audio)) return snes_tick;
     return SYM(core,symbol);
 }
+
+/* With an audio owner, its playable reserve gates production. The vendor
+ * loop still handles input, watchdog, pause and core lifecycle. */
+ENTRY int stock_game_sleep(unsigned microseconds)
+{
+    return S.game.audio?0:FN(0x11f08,int,unsigned)(microseconds);
+}
+
+ENTRY int stock_pause_audio(void)
+{
+    struct session *s=&S.game;
+    if(s->audio_running) {
+        int result=s->audio->stop("pause");
+        s->audio_running=false;
+        if(result<0) { s->audio_failed=true; return 1; }
+    }
+    if(s->audio && s->copies) s->wait_display();
+    int result=FN(0x9b9f4,int,void)();
+    if(s->audio) s->shown=0; /* The pause UI replaced the last picture. */
+    return result;
+}
+
+ENTRY bool stock_audio_fault(void)
+{
+    FN(0x13fd4,void,void)();
+    return S.game.audio_failed;
+}
+
+/* Load_Proc2's existing cleanup handles unload/deinit and returns to the
+ * library. Preserve its frame and callee-saved registers on both paths. */
+__attribute__((naked)) ENTRY void stock_audio_heartbeat(void)
+{
+    __asm__ volatile(
+        "push {r4,lr}\n\tbl stock_audio_fault\n\tpop {r4,lr}\n\t"
+        "cmp r0,#0\n\tbxeq lr\n\t"
+        "movw ip,#0x4820\n\tmovt ip,#0xa\n\tbx ip");
+}
+
+#ifdef D35_STARFOX_NATIVE_AUDIO
+static bool starfox_audio_unavailable(const char *reason)
+{
+    char path[384];
+    if(suffix(path,sizeof(path),WORK(),LAUNCHER "/starfox-audio-handoff.log")) {
+        FILE *file=FOPEN(path,"a");
+        if(file) {
+            size_t length=0;
+            while(reason[length]) ++length;
+            FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(reason,1,length,file);
+            FN(0x11fb0,int,FILE *)(file);
+            FN(0x11b18,int,int)(FN(0x11df4,int,FILE *)(file));
+            FCLOSE(file);
+        }
+    }
+    return false;
+}
+
+static bool open_starfox_audio(void)
+{
+    struct session *s=&S.game;
+    char path[384];
+    void *driver=VAR(0x1b81a8,void *);
+    if(!suffix(path,sizeof(path),WORK(),LAUNCHER "/libs/d35-starfox-audio.so")) return false;
+    s->audio_module=OPEN(path,2);
+    if(!s->audio_module) return starfox_audio_unavailable("audio_module_open_failed\n");
+    const struct d35_live_audio *audio=SYM(s->audio_module,"d35_starfox_audio");
+    s->display_flags=SYM(driver,"DisplayThreadflag");
+    int *dsp=SYM(driver,"DSP");
+    int (*release_oss)(void)=SYM(driver,"sound_driver_deinit");
+    /* mui_run_game already waits for the menu sound thread to go idle. */
+    if(!audio || !s->display_flags || !dsp || !release_oss)
+        return starfox_audio_unavailable("audio_or_driver_symbol_missing\n");
+    if(VAR(0x19cb7c,const volatile unsigned))
+        return starfox_audio_unavailable("menu_audio_thread_still_active\n");
+    if(*dsp>=0) {
+        if(release_oss()<0) return starfox_audio_unavailable("stock_pcm_close_failed\n");
+        *dsp=-1; /* Stock StopSound can still be called during pause. */
+        s->stock_dsp=dsp;
+    }
+    s->audio=audio;
+    return true;
+}
+#endif
 
 static void release_snes(bool close_core)
 {
     struct session *s=&S.game;
+    if(s->audio_running && s->audio->stop(s->audio_failed?"audio_fault":"exit")<0)
+        PUTS("D35: Star Fox native audio test failed. See the audio timing log.");
     if(s->pool) {
         if(s->copies) s->wait_display();
         /* DrawFrame retains the pointer for pause and previews. Clear it only
@@ -254,6 +385,8 @@ static void release_snes(bool close_core)
         VAR(0x1bd5f8, const void *)=NULL;
         FN(0x164d58, void, void *)(s->pool);
     }
+    if(s->audio_module) CLOSE(s->audio_module);
+    if(s->stock_dsp) FN(0xa6844,void,void)();
     if(close_core && s->core) CLOSE(s->core);
     STOCK_HANDLE=NULL;
     ZERO(s,0,sizeof(*s));
@@ -336,12 +469,21 @@ ENTRY int run_snes(const char *path, unsigned kind)
         }
         s->av(&av);
         if(s->rgb565 && av.timing.sample_rate==32040.0) {
+#ifdef D35_STARFOX_NATIVE_AUDIO
+            if(s->starfox && !open_starfox_audio()) {
+                PUTS("D35: Star Fox native audio or stock device handoff unavailable");
+                goto rejected;
+            }
+#endif
             FN(0xa426c, void, void)(); /* Stock loop owns unload/deinit/dlclose. */
             FN(0x11be4, int, const char *, ...)("D35 direct: copies=%u equal=%u auto_ticks=%u dropped=%u\n",
                                               s->copies,s->repeats,s->ticks,s->skipped);
             release_snes(false);
             return 0;
         }
+#ifdef D35_STARFOX_NATIVE_AUDIO
+rejected:
+#endif
         s->unload();
     }
     s->deinit();

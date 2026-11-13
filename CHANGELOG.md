@@ -1,5 +1,13 @@
 # Changelog
 
+## Port native audio and display credit handling to the Star Fox launcher test - 2026-11-12
+
+The matched cartridge uses the 150 ms native PCM reserve and skips a
+presentation when the stock scaler has no credit. Gameplay ticks still
+render and produce PCM. Collect hardware pointers, queue depth and timing
+through interactive play and pause/resume.
+[Test procedure](docs/starfox-launcher-audio-test.md).
+
 ## Read the one-boot theme and Star Fox return - 2026-11-12
 
 The test launcher ran and saved New with Frame Skip Off. The boot log

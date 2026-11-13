@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <poll.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -123,7 +124,7 @@ static void params(struct snd_pcm_hw_params *p,unsigned rate,unsigned period,uns
     interval(p,SNDRV_PCM_HW_PARAM_PERIOD_SIZE,period);
     interval(p,SNDRV_PCM_HW_PARAM_BUFFER_SIZE,buffer);
 }
-int pcm_open(unsigned requested)
+static int pcm_open_config(unsigned requested, bool reserve_150)
 {
     static const unsigned periods[]={128,256,512,1024};
     unsigned rates[]={requested,44100,48000},r,p,b;
@@ -142,7 +143,8 @@ int pcm_open(unsigned requested)
     fprintf(stderr,"native PCM protocol=%x card=%d device=%u subdevice=%u id=%.64s\n",
             version,info.card,info.device,info.subdevice,info.id);
     for(r=0;r<3;r++) for(p=0;p<4;p++) {
-        unsigned prime=(rates[r]*64u+999u)/1000u;
+        if(reserve_150 && periods[p]!=128) continue;
+        unsigned prime=(rates[r]*(reserve_150?150u:64u)+999u)/1000u;
         unsigned need=prime+(rates[r]*20u+999u)/1000u;
         unsigned choices[2],power=1;
         choices[0]=(need+periods[p]-1)/periods[p]*periods[p];
@@ -153,29 +155,38 @@ int pcm_open(unsigned requested)
             struct snd_pcm_sw_params sw;
             unsigned size=choices[b];
             if(b && size==choices[0]) continue;
+            if(reserve_150 && (r || size!=7552)) continue;
             params(&hw,rates[r],periods[p],size);
             if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_HW_REFINE,&hw)<0 ||
                ioctl(pcm.fd,SNDRV_PCM_IOCTL_HW_PARAMS,&hw)<0) { last=errno; continue; }
             /* The exact constraints must survive negotiation; no rate guess. */
             if(hw.intervals[SNDRV_PCM_HW_PARAM_RATE-SNDRV_PCM_HW_PARAM_FIRST_INTERVAL].min!=rates[r] ||
+               (reserve_150 && hw.intervals[SNDRV_PCM_HW_PARAM_PERIOD_SIZE-SNDRV_PCM_HW_PARAM_FIRST_INTERVAL].min!=periods[p]) ||
                hw.intervals[SNDRV_PCM_HW_PARAM_BUFFER_SIZE-SNDRV_PCM_HW_PARAM_FIRST_INTERVAL].min!=size) {
                 last=EPROTO; ioctl(pcm.fd,SNDRV_PCM_IOCTL_HW_FREE,0); continue;
             }
             memset(&sw,0,sizeof(sw)); sw.period_step=1; sw.avail_min=periods[p];
             sw.xfer_align=1; sw.stop_threshold=size; sw.boundary=size;
             while(sw.boundary*2u <= (unsigned long)LONG_MAX-size) sw.boundary*=2u;
-            sw.start_threshold=prime; /* kernel may START inside WRITEI at this reserve */
+            sw.start_threshold=reserve_150?sw.boundary:prime;
             sw.tstamp_mode=SNDRV_PCM_TSTAMP_ENABLE;
             sw.tstamp_type=SNDRV_PCM_TSTAMP_TYPE_MONOTONIC;
             sw.proto=(unsigned)version;
+            /* The vendor PREPARE resets threshold and silence settings. */
+            if(reserve_150) {
+                operation="PREPARE";
+                if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0)<0) goto failed;
+            }
             operation="SW_PARAMS";
             if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_SW_PARAMS,&sw)<0) goto failed;
-            if(sw.start_threshold!=prime || sw.stop_threshold!=size || sw.avail_min!=periods[p] ||
+            if(sw.start_threshold!=(reserve_150?sw.boundary:prime) ||
+               (reserve_150 && (sw.silence_threshold || sw.silence_size)) ||
+               sw.stop_threshold!=size || sw.avail_min!=periods[p] ||
                sw.boundary<=size || sw.boundary>LONG_MAX) {
                 operation="SW_PARAMS_READBACK"; errno=EPROTO; goto failed;
             }
             operation="PREPARE";
-            if(ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0)<0) goto failed;
+            if(!reserve_150 && ioctl(pcm.fd,SNDRV_PCM_IOCTL_PREPARE,0)<0) goto failed;
             pcm.config.rate=rates[r]; pcm.config.period=periods[p];
             pcm.config.buffer=size; pcm.config.prime=prime; pcm.started=0;
             pcm.config.boundary=(unsigned)sw.boundary; pcm.config.epoch=1;
@@ -192,6 +203,8 @@ failed:
       last=errno; pcm_fail(operation,last); memcpy(failure,pcm.failure,sizeof(failure));
       pcm_close(); memcpy(pcm.failure,failure,sizeof(failure)); errno=last; return -1; }
 }
+int pcm_open(unsigned requested) { return pcm_open_config(requested,false); }
+int pcm_open_150(void) { return pcm_open_config(44100,true); }
 static int pcm_snapshot(struct board_audio_state *out,unsigned flags)
 {
     struct snd_pcm_sync_ptr sync;

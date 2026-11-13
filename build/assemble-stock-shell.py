@@ -46,6 +46,11 @@ PATCHES = {
     0x8F860: (0xE30021B2, 0xE30021A7),  # first help baseline at 452
     0x8F884: (0xE30021BE, 0xE30021B9),  # second help baseline at 470
 }
+NATIVE_AUDIO_PATCHES = {
+    0xA4704: (0xEBFDB5FF, "stock_game_sleep"),
+    0xA4660: (0xEBFFDCE3, "stock_pause_audio"),
+    0xA4580: (0xEBFDBE93, "stock_audio_heartbeat"),
+}
 
 
 def sha(data):
@@ -56,7 +61,7 @@ def command(*argv):
     return subprocess.check_output(argv, text=True)
 
 
-def assemble(vendor, core, out):
+def assemble(vendor, core, out, native_audio=False):
     repo = Path(__file__).resolve().parent.parent
     if not any(out.is_relative_to(parent) for parent in
                (repo/"build", Path.home().resolve(), Path(tempfile.gettempdir()).resolve())):
@@ -77,13 +82,14 @@ def assemble(vendor, core, out):
     }\n""")
     here = Path(__file__).resolve().parent
     prefix = "arm-linux-gnueabihf-"
+    options = ["-DD35_STARFOX_NATIVE_AUDIO"] if native_audio else []
     command(prefix+"gcc", "-std=gnu11", "-O3", "-Wall", "-Wextra", "-Werror", "-ffreestanding",
             "-fno-builtin", "-fno-pic", "-fno-pie", "-fno-stack-protector",
             "-fno-unwind-tables", "-fno-asynchronous-unwind-tables", "-marm", "-mcpu=cortex-a7",
             "-mfpu=neon-vfpv4", "-mfloat-abi=hard", "-nostdlib", "-static", "-no-pie",
             "-Wl,--build-id=none", "-Wl,-T,"+str(linker),
             "-I"+str(here / "snes9x2005/libretro-common/include"),
-            str(here / "stock-shell-loader.c"), "-o", str(code))
+            *options, str(here / "stock-shell-loader.c"), "-o", str(code))
     if command(prefix+"nm", "-u", str(code)).strip():
         raise ValueError("owned code contains unresolved imports")
     symbols = {name: int(addr, 16) for line in command(prefix+"nm", "--defined-only", str(code)).splitlines()
@@ -105,7 +111,8 @@ def assemble(vendor, core, out):
     at = (len(data)+0xFFFF)&~0xFFFF
     ph.pack_into(data, note, 1, at, TEXT, TEXT, len(text), len(text), 5, 65536)
 
-    for address, (expected, target) in PATCHES.items():
+    patches = {**PATCHES, **NATIVE_AUDIO_PATCHES} if native_audio else PATCHES
+    for address, (expected, target) in patches.items():
         old, = struct.unpack_from("<I", data, address-0x10000)
         if old != expected:
             raise ValueError(f"unexpected instruction at {address:#x}")
@@ -122,7 +129,19 @@ def assemble(vendor, core, out):
     result.chmod(0o755)
     (out / "libs").mkdir()
     (out / "libs/d35-snes.so").write_bytes(payload)
-    print(f"Patched {len(PATCHES)} instruction sites; added {len(text)} bytes of owned code")
+    if native_audio:
+        library = out / "libs/d35-starfox-audio.so"
+        sysroot = here / "sysroot/lib"
+        command(prefix+"gcc", "-std=gnu11", "-O3", "-Wall", "-Wextra", "-Werror",
+                "-fPIC", "-fvisibility=hidden", "-fno-stack-protector",
+                "-D_TIME_BITS=32", "-D_FILE_OFFSET_BITS=32", "-mcpu=cortex-a7",
+                "-mfpu=neon-vfpv4", "-marm", "-mfloat-abi=hard", "-shared", "-nostdlib",
+                "-Wl,-z,defs", "-L"+str(sysroot),
+                str(here/"stock-shell-audio.c"), str(here/"snes-mvp/audio-owner.c"),
+                str(here/"snes-mvp/native-pcm.c"), "-l:libpthread-2.30.so",
+                "-l:libc-2.30.so", "-l:libgcc_s.so.1", "-l:ld-2.30.so", "-o", str(library))
+        print(f"{sha(library.read_bytes())}  {library}")
+    print(f"Patched {len(patches)} instruction sites; added {len(text)} bytes of owned code")
     print(f"{sha(data)}  {result}")
     print(f"{CORE_PIN}  {out / 'libs/d35-snes.so'}")
 
@@ -132,8 +151,10 @@ def main():
     parser.add_argument("stock", type=Path)
     parser.add_argument("optimized_core", type=Path)
     parser.add_argument("new_local_output", type=Path)
+    parser.add_argument("--starfox-native-audio", action="store_true")
     args = parser.parse_args()
-    assemble(args.stock.resolve(), args.optimized_core.resolve(), args.new_local_output.resolve())
+    assemble(args.stock.resolve(), args.optimized_core.resolve(), args.new_local_output.resolve(),
+             args.starfox_native_audio)
 
 
 if __name__ == "__main__":

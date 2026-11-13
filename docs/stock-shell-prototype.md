@@ -421,3 +421,6 @@ playable reserve and display waits through gameplay and pause/resume.
 Read-only collection verified 2,194 files, including all previous saves.
 Both markers remain consumed and FAT32 is clean.
 [Return receipt](../evidence/2026-11-12/stock-shell-settings-theme-return.json).
+
+The [next one-boot test](starfox-launcher-audio-test.md) ports the native PCM
+owner and the FFVI presentation policy to the interactive Star Fox route.

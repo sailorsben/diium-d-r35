@@ -69,6 +69,10 @@ static int observe(void)
     if(rc<0) { error(saved); return -1; }
     pipe_state.refresh_done=pipe_state.refresh_request;
     if(d->started) {
+        uint64_t accepted=d->epoch_transferred;
+        if(d->boundary && accepted>=d->boundary) accepted%=d->boundary;
+        if(d->boundary && d->appl_ptr!=accepted)
+            ++pipe_state.stats.pointer_mismatches;
         if(d->queued<pipe_state.stats.playable_min) pipe_state.stats.playable_min=d->queued;
         if(d->queued>pipe_state.stats.playable_max) pipe_state.stats.playable_max=d->queued;
     }
