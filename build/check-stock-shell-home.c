@@ -34,8 +34,9 @@ static void check_battery(const uint16_t *frame,int band,bool with_percentage)
     bool numbered=(with_percentage || solid_case) && band<5;
     if(solid_case) {
         uint16_t rim=frame[16*W+592];
-        assert(frame[27*W+568]==rim && frame[27*W+620]==rim);
-        assert(frame[19*W+620]!=rim && frame[34*W+620]!=rim);
+        assert(frame[27*W+568]==rim && frame[27*W+618]==rim);
+        assert(frame[22*W+618]==rim && frame[31*W+618]==rim);
+        assert(frame[21*W+618]!=rim && frame[32*W+618]!=rim && frame[27*W+619]!=rim);
         if(numbered) assert(frame[18*W+572]!=frame[18*W+614]);
     } else {
         assert(frame[26*W+618]==ink);
