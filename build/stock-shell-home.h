@@ -1,15 +1,17 @@
 /* Stock main_menu remains the owner of lists, language and game dispatch. */
 enum { HOME_WIDTH=640, HOME_HEIGHT=480, HOME_BYTES=640*480*2,
-       HOME_LABEL_X=302, HOME_LABEL_Y=11, HOME_LABEL_W=320, HOME_LABEL_H=30,
+       HOME_LABEL_X=232, HOME_LABEL_Y=11, HOME_LABEL_W=320, HOME_LABEL_H=30,
        HOME_TILES=12, HOME_SHORTCUTS=6, HOME_STAY=9 };
 #define HOME_ART LAUNCHER "/home-grid.rgb565"
 #define HOME_MODE VAR(0x1998e0,unsigned)
 #define HOME_TYPE VAR(0x199990,int)
 #define HOME_PAD VAR(0x1b9b50,const volatile unsigned)
+#define HOME_BATTERY VAR(0x1b9b28,const volatile int)
 
 struct home_overlay {
     unsigned selected;
     bool type_open, inject_open;
+    bool own_battery;
 };
 #define HOME VAR(0x1c4300,struct home_overlay)
 _Static_assert(sizeof(struct home_overlay)<=0x100, "home overlay reservation");
@@ -18,9 +20,31 @@ _Static_assert(offsetof(struct home_overlay,type_open)==4 &&
 
 /* Native carousel indices and main_menu dispatch modes, independently
  * verified against the pinned vendor ELF. */
-static const uint8_t home_types[]={2,3,1,7,4,6,5,0,8,9,10,11};
+static const uint8_t home_types[]={3,2,1,7,5,6,4,0,8,9,10,11};
 static const uint8_t home_shortcuts[]={5,3,4,2,0,6};
 static const unsigned home_shortcut_keys[]={8,1,0x1000,0x8000,0x400,0x800};
+
+ENTRY void stock_home_adc_overlay(uint16_t *frame,unsigned width)
+{
+    if(!HOME.own_battery) FN(0x13e30,void,uint16_t *,unsigned)(frame,width);
+}
+
+static void home_battery(uint16_t *frame,int state)
+{
+    uint16_t ink=state<0 || state==4?0xfb69:S.applied_classic?0x8f5e:0xb69a;
+    settings_box(frame,581,18,617,20,ink);
+    settings_box(frame,581,33,617,35,ink);
+    settings_box(frame,581,20,583,33,ink);
+    settings_box(frame,615,20,617,33,ink);
+    settings_box(frame,618,24,621,29,ink);
+    unsigned bars=state<0 || state>5?0:state==5?4:4-(unsigned)state;
+    for(unsigned i=0;i<bars;++i)
+        settings_box(frame,585+i*7,22,590+i*7,31,ink);
+    if(state==5) {
+        settings_box(frame,598,16,600,37,0xff8d);
+        settings_box(frame,594,25,604,28,0xff8d);
+    }
+}
 
 /* The same read-only status bit used by the stock power helper. Keep the
  * long-press helper and use a single mapping only while Home owns the UI. */
@@ -35,7 +59,7 @@ static volatile uint32_t *home_power_map(void)
     return address==-1?NULL:(volatile uint32_t *)address;
 }
 
-static void home_draw(uint16_t *frame,const uint16_t *base,unsigned cursor)
+static void home_compose(uint16_t *frame,const uint16_t *base,unsigned cursor,int battery)
 {
     COPY(frame,base,HOME_BYTES);
     unsigned x,y,w,h;
@@ -54,7 +78,7 @@ static void home_draw(uint16_t *frame,const uint16_t *base,unsigned cursor)
     settings_box(frame,x-2,y+h,x+w+2,y+h+2,accent);
     settings_box(frame,x-2,y,x,y+h,accent);
     settings_box(frame,x+w,y,x+w+2,y+h,accent);
-    DISP(frame,HOME_WIDTH,HOME_HEIGHT,HOME_WIDTH*2);
+    home_battery(frame,battery);
 }
 
 static unsigned home_move(unsigned cursor,unsigned key)
@@ -68,7 +92,7 @@ static unsigned home_move(unsigned cursor,unsigned key)
 
 ENTRY unsigned stock_home(void)
 {
-    const unsigned expected=HOME_BYTES+HOME_TILES*HOME_LABEL_W*HOME_LABEL_H*2;
+    const unsigned expected=HOME_BYTES+HOME_TILES*HOME_LABEL_W*HOME_LABEL_H*2+4;
     HOME.type_open=HOME.inject_open=false;
     char path[384];
     void (*wait)(void)=shutdown_wait();
@@ -77,7 +101,7 @@ ENTRY unsigned stock_home(void)
         return HOME_MODE;
     size_t bytes;
     uint16_t *base=read_bytes(path,expected,&bytes);
-    if(!base || bytes!=expected) {
+    if(!base || bytes!=expected || CMP((const char *)base+expected-4,"D353",4)) {
         if(base) FREE(base);
         return HOME_MODE;
     }
@@ -87,27 +111,33 @@ ENTRY unsigned stock_home(void)
     volatile uint32_t *power=shutdown_available()?home_power_map():NULL;
     bool previous_power=power && (power[0x68/4]&8);
     unsigned cursor=HOME.selected, mode=HOME_STAY;
+    int battery=HOME_BATTERY;
+    HOME.own_battery=true;
     unsigned (*joy)(void)=FN(0x86368,unsigned,void);
     /* Drain the key that closed a list before allowing another dispatch. */
     unsigned held=HOME_PAD&0xffffu;
     joy();
     wait();
-    home_draw(frame,base,cursor);
+    home_compose(frame,base,cursor,battery);
+    DISP(frame,HOME_WIDTH,HOME_HEIGHT,HOME_WIDTH*2);
     while(mode==HOME_STAY) {
         unsigned key=joy();
         held &= HOME_PAD;
         if(key&held) key=0;
         bool down=power && (power[0x68/4]&8);
-        if(down && !previous_power && !S.power_frame) {
+        bool esc=launcher_escape(key);
+        bool redraw=false;
+        if(((down && !previous_power) || esc) && !S.power_frame && shutdown_available()) {
             S.power_frame=frame;
             S.accept_held=(HOME_PAD&0x2000)!=0;
-            shutdown_message("POWER OFF","SAVE DATA WILL BE FLUSHED","A POWER OFF     B CANCEL");
+            shutdown_prepare_art();
+            shutdown_message(POWER_CONFIRM,"POWER OFF","SAVE DATA WILL BE FLUSHED","A POWER OFF     B CANCEL");
         } else if(S.power_frame) {
             if(!(HOME_PAD&0x2000)) S.accept_held=false;
-            if(key==0x4000) {
+            if(key==0x4000 || esc) {
                 S.power_frame=NULL;
-                wait();
-                home_draw(frame,base,cursor);
+                shutdown_release_art();
+                redraw=true;
             } else if(key==0x2000 && !S.accept_held) {
                 S.accept_held=true;
                 shutdown_confirm();
@@ -124,10 +154,22 @@ ENTRY unsigned stock_home(void)
             unsigned next=home_move(cursor,key);
             if(next!=cursor) {
                 cursor=next;
-                vesper_menu_effect(1,(const struct sound *)0x1b9d18);
-                wait();
-                home_draw(frame,base,cursor);
+                vesper_transition(1);
+                redraw=true;
             }
+        }
+        int charge=HOME_BATTERY;
+        if(charge<0) {
+            wait();
+            HOME.own_battery=false;
+            FN(0x836b4,void,void)();
+            HOME.own_battery=true;
+        }
+        if(!S.power_frame && (redraw || charge!=battery)) {
+            battery=charge;
+            wait();
+            home_compose(frame,base,cursor,battery);
+            DISP(frame,HOME_WIDTH,HOME_HEIGHT,HOME_WIDTH*2);
         }
         previous_power=down;
         if(mode==HOME_STAY) FN(0x11f08,int,unsigned)(20000);
@@ -135,6 +177,7 @@ ENTRY unsigned stock_home(void)
     HOME.selected=cursor;
     if(power) FN(0x11efc,int,void *,size_t)((void *)power,4096);
     wait();
+    HOME.own_battery=false;
     FN(0x164d58,void,void *)(frame);
     FREE(base);
     return mode;
@@ -150,7 +193,7 @@ __attribute__((naked)) ENTRY void stock_home_dispatch(void)
 ENTRY unsigned stock_home_type_key(void)
 {
     if(HOME.inject_open) { HOME.inject_open=false; return 0x2000; }
-    return FN(0x86368,unsigned,void)();
+    return launcher_menu_key();
 }
 
 ENTRY void stock_home_type_frame(void *frame,unsigned w,unsigned h,size_t pitch)

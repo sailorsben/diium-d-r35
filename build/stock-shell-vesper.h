@@ -15,27 +15,29 @@ _Static_assert(sizeof(struct vesper_overlay)<=0x100, "Vesper overlay reservation
 #define PREVIEW_MARKER LAUNCHER "/vesper-preview.once"
 #define PREVIEW_USED LAUNCHER "/vesper-preview.used"
 
+static bool vesper_transition(unsigned channel)
+{
+    if(!VESPER.effect_checked) {
+        char path[384];
+        VESPER.effect_checked=true;
+        if(suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-transition.pcm"))
+            VESPER.effect=read_bytes(path,44100,&VESPER.effect_bytes);
+        if(VESPER.effect_bytes%4) {
+            FREE(VESPER.effect);
+            VESPER.effect=NULL;
+        }
+    }
+    if(!VESPER.effect) return false;
+    const struct sound cue={VESPER.effect,2,1,1,44100,0,VESPER.effect,
+                            (uint8_t *)VESPER.effect+VESPER.effect_bytes,0};
+    FN(0x8750c,void,unsigned,const struct sound *)(channel,&cue);
+    return true;
+}
+
 ENTRY void vesper_menu_effect(unsigned channel,const struct sound *original)
 {
     if(channel==1 && (original==(void *)0x1b9d18 || original==(void *)0x1b9d44) &&
-       original->data) {
-        if(!VESPER.effect_checked) {
-            char path[384];
-            VESPER.effect_checked=true;
-            if(suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-transition.pcm"))
-                VESPER.effect=read_bytes(path,44100,&VESPER.effect_bytes);
-            if(VESPER.effect_bytes%4) {
-                FREE(VESPER.effect);
-                VESPER.effect=NULL;
-            }
-        }
-        if(VESPER.effect) {
-            const struct sound cue={VESPER.effect,2,1,1,44100,0,VESPER.effect,
-                                    (uint8_t *)VESPER.effect+VESPER.effect_bytes,0};
-            FN(0x8750c,void,unsigned,const struct sound *)(channel,&cue);
-            return;
-        }
-    }
+       original->data && vesper_transition(channel)) return;
     FN(0x8750c,void,unsigned,const struct sound *)(channel,original);
 }
 

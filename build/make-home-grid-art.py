@@ -15,11 +15,14 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 ART = runpy.run_path(str(Path(__file__).with_name("make-stock-shell-art.py")))
 STOCK = ART["STOCK"]
-LABELS = (
+PREVIEW_LABELS = (
     "Super Nintendo", "Nintendo Entertainment System", "Sega Genesis", "PlayStation",
     "Game Boy Advance", "Game Boy Color", "Game Boy", "MAME",
     "Capcom Arcade · CPS-1", "Capcom Arcade · CPS-2", "IGS Arcade", "Neo Geo",
 )
+# The reviewed mockup puts SNES and GBA first. Preserve those artwork assets
+# while laying out the physical launcher in Nintendo release order.
+TILE_ORDER = (1, 0, 2, 3, 6, 5, 4, 7, 8, 9, 10, 11)
 SHORTCUTS = (
     ("START", "Settings"), ("SELECT", "Favorites"), ("X", "Search"), ("Y", "Last Played"),
     ("L", "All Games"), ("R", "Browse Files"), ("D-pad", "Move"), ("A", "Open"),
@@ -34,14 +37,15 @@ def rgb565(image):
 def build_home(preview, font, output):
     match = re.search(r"^  const art = (.*);$", preview.read_text(encoding="utf-8"), re.M)
     images = json.loads(match[1])["tiles"]
-    assert len(images) == len(LABELS)
+    assert len(images) == len(PREVIEW_LABELS) == len(TILE_ORDER)
     bg, bar, ink, accent = "#0a1421", "#111c2d", "#f2f3f4", "#ffd083"
     canvas = Image.new("RGB", (640, 480), bg)
     draw = ImageDraw.Draw(canvas)
     text = lambda size: ImageFont.truetype(str(font), size)
     draw.text((20, 28), "Game Library", font=text(26), fill=ink, anchor="lm")
     draw.line((0, 51, 639, 51), fill="#35465e")
-    for i, uri in enumerate(images):
+    for i, source_index in enumerate(TILE_ORDER):
+        uri = images[source_index]
         prefix, data = uri.split(",", 1)
         assert prefix == "data:image/webp;base64"
         with Image.open(io.BytesIO(base64.b64decode(data, validate=True))) as asset:
@@ -62,12 +66,77 @@ def build_home(preview, font, output):
         draw.text((x+5, y+10), key, font=text(12), fill=accent, anchor="lm")
         draw.text((x+width+7, y+10), label, font=text(15), fill=ink, anchor="lm")
     labels = bytearray()
-    for name in LABELS:
+    for source_index in TILE_ORDER:
+        name = PREVIEW_LABELS[source_index]
         image = Image.new("RGB", (320, 30), bg)
         ImageDraw.Draw(image).text((319, 15), name, font=text(16), fill=accent, anchor="rm")
         labels.extend(rgb565(image))
-    (output/"home-grid.rgb565").write_bytes(rgb565(canvas)+labels)
+    (output/"home-grid.rgb565").write_bytes(rgb565(canvas)+labels+b"D353")
     canvas.save(output/"home-grid.png")
+
+
+POWER_MESSAGES = (
+    ("Turn off the handheld?", "The launcher will finish writing to the SD card.",
+     (("A", "Turn off"), ("B", "Cancel"))),
+    ("Powering off", "Securing the SD card. Please wait.", ()),
+    ("Shutdown paused", "Check the SD card on your computer.",
+     (("", "Use the power button"),)),
+    ("Couldn’t secure the SD card", "Shutdown could not start.",
+     (("A", "Retry"), ("B", "Cancel"))),
+    ("SD card secured", "Requesting power off…", ()),
+    ("Power off request failed", "The SD card is safe to remove.",
+     (("", "Use the power button"),)),
+)
+POWER_BOX = (77, 153, 486, 174)
+
+
+def build_power(font, output):
+    x, y, width, height = POWER_BOX
+    scale = 3
+    size = (width*scale, height*scale)
+    face = lambda points: ImageFont.truetype(str(font), points*scale)
+    data = bytearray()
+    for classic in (False, True):
+        bg, button, edge, accent = (
+            ("#122c3e", "#193a4b", "#5e899b", "#8eeaf4") if classic else
+            ("#111c2d", "#162337", "#556780", "#ffd083")
+        )
+        for i, (title, detail, buttons) in enumerate(POWER_MESSAGES):
+            panel = Image.new("RGBA", size)
+            draw = ImageDraw.Draw(panel)
+            def box(left, top, right, bottom, radius, fill, outline=None):
+                draw.rounded_rectangle(
+                    (left*scale, top*scale, right*scale-1, bottom*scale-1),
+                    radius=radius*scale, fill=fill, outline=outline, width=scale,
+                )
+            def text(left, top, label, points, color):
+                draw.text((left*scale, top*scale), label, font=face(points), fill=color, anchor="lm")
+            box(0, 0, width, height, 10, bg, accent)
+            text(24, 39, title, 27, "#f2f3f4")
+            text(24, 80, detail, 18, "#d3deea")
+            left = 24
+            for key, label in buttons:
+                if not key:
+                    text(left, 132, label, 17, accent)
+                    continue
+                w = round(draw.textlength(label, font=face(17))/scale)+59
+                box(left, 114, left+w, 151, 5, button, edge)
+                box(left+9, 121, left+31, 144, 4, bg, edge)
+                text(left+14, 132, key, 14, accent)
+                text(left+40, 132, label, 17, "#f2f3f4")
+                left += w+12
+            panel = panel.resize((width,height),Image.Resampling.LANCZOS)
+            # Zero encodes the rounded transparent corners in the RGB565 panel.
+            opaque = panel.getchannel("A").point(lambda a: 255 if a>=128 else 0)
+            frame = Image.new("RGB", panel.size)
+            frame.paste(panel, (0, 0), opaque)
+            data.extend(rgb565(frame))
+            if i==0:
+                with Image.open(output/"home-grid.png") as home:
+                    preview = home.point(lambda v: v//2)
+                preview.paste(frame, (x,y), opaque)
+                preview.save(output/("power-classic.png" if classic else "power-new.png"))
+    (output/"power-dialog.rgb565").write_bytes(data)
 
 
 def build_settings(pack, font, destination, classic):
@@ -136,5 +205,6 @@ if __name__ == "__main__":
     a = p.parse_args()
     a.output.mkdir(exist_ok=True)
     build_home(a.preview, a.font, a.output)
+    build_power(a.font, a.output)
     for pack, classic in ((a.new, False), (a.classic, True)):
         build_settings(pack, a.font, a.output/pack.name, classic)

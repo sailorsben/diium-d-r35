@@ -1,5 +1,13 @@
 # Changelog
 
+## Refine the launcher grid and shutdown controls - 2026-11-13
+
+Show NES before Super Nintendo and the Game Boy family in release order.
+Use the launcher font, button prompts and theme colors for every shutdown
+dialog state. Reserve battery space in the Home header, play Leaf Brush
+when the selection moves, and use Esc for Back or for Power Off on Home.
+[Build and verification](docs/direct-launcher-firmware.md#launcher-order-and-shutdown-art).
+
 ## Add the illustrated launcher grid - 2026-11-13
 
 Open platform lists from a four-column home grid, with direct shortcuts

@@ -1,0 +1,71 @@
+{
+  "physical": false,
+  "arm_checks_passed": true,
+  "spi_update_required": false,
+  "tile_order": [
+    "Nintendo Entertainment System",
+    "Super Nintendo",
+    "Sega Genesis",
+    "PlayStation",
+    "Game Boy",
+    "Game Boy Color",
+    "Game Boy Advance",
+    "MAME",
+    "Capcom Arcade \u00b7 CPS-1",
+    "Capcom Arcade \u00b7 CPS-2",
+    "IGS Arcade",
+    "Neo Geo"
+  ],
+  "source_sha256": {
+    "build/assemble-stock-shell.py": "3d53dee29eb78ada41455ef5673f94ad49b89c7372d0e67208a9adf58569042e",
+    "build/stock-shell-home.h": "c59faf21fb788fdd5ab187206e34de9a78357f3723b53ee50d9472c598b2f1a7",
+    "build/stock-shell-power.h": "72db84afbb719a1bda0d6b4c340e77d7776179f4e790e077611bd5d583928721",
+    "build/stock-shell-loader.c": "7bdc676074d1392b45dcc4f618b953de0f7a278ca878170d2ddee6d8c88ad360",
+    "build/stock-shell-vesper.h": "77667fe22cd98be1c20d4b6795554805d98847a579c8fc982cfda2966ca6d984",
+    "build/make-home-grid-art.py": "975dbdf6d9ec039d53709076a9fc1f7231c232b0e7ad8954a5ab8eaa0940e627",
+    "build/check-stock-shell-home.c": "06fffd6d706e70fd62beab9d721101db86a8749edbfc7635bbda7b433c4e0f51",
+    "build/stage-home-grid-order-power.py": "7bab316c572622012e2c071618459f8b630da17969e4f989f56543673995b09f"
+  },
+  "payload_sha256": {
+    "vrtemu": "8fa53a4813f4ca8e35943bbec1d08d82da76606d600e15b0a17e5fee25601447",
+    "home-grid.rgb565": "1f35c5ea6e3e708031e92ff2b05d403ee7a019f0ea77f440a7f2ba28f1db57fe",
+    "power-dialog.rgb565": "199003478fef0d8673cc2c47b4b7cf24e067c3744ff812d38407560c50b59adc"
+  },
+  "unchanged_core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "checks": [
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six shortcuts, arrows and locale fallback",
+    "PASS physical-key cancel/confirm and New RGB565 confirmation, working and secured frames",
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six shortcuts, arrows and locale fallback",
+    "PASS physical-key cancel/confirm and Classic RGB565 confirmation, working and secured frames",
+    "music=pcm fills=1800 mixer_ns=219289000",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS Settings navigation places Frame Skip, Theme and Power Off before factory reset",
+    "nes index=5 route=1",
+    "sfc index=4 route=2",
+    "smc index=2 route=2",
+    "fig index=3 route=2",
+    "gba index=8 route=3",
+    "gb index=10 route=4",
+    "gbc index=9 route=4",
+    "bin index=11 route=5",
+    "smd index=13 route=5",
+    "md index=12 route=5",
+    "iso index=15 route=6",
+    "img index=16 route=6",
+    "pbp index=17 route=6",
+    "Exit back to here... 2",
+    "gma route=8",
+    "Open ZIP file ok",
+    "Exit back to here... 5",
+    "arcade zip route=8 (archive boundary stubbed)",
+    "PASS exact stock run_game dispatch to emulator entry points",
+    "PASS one-shot renderer from launcher entry, 14 frames, zero SPI calls",
+    "PASS real sector loop against RAM, monotonic progress, and injected SPI write failure",
+    "PASS Leaf Brush through stock channel and mixer with one-shot end"
+  ],
+  "additional_home_fixture_assertions": [
+    "four selection moves submit the cue on channel 1",
+    "Home owns battery paint and stock overlay resumes after Home exits",
+    "Esc cancels the Home power dialog and maps to Back in menus; Start plus Select does not"
+  ]
+}

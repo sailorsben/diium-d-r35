@@ -160,3 +160,37 @@ needed and check Home, the platform and shortcut routes, Settings, and
 shutdown. Archive the boot log and progress before removing the consumed
 update. A fresh boot tag verifies the handoff script executed, and full SPI
 readback is needed for byte-for-byte physical verification.
+
+### Launcher order and shutdown art
+
+The first row starts with Nintendo Entertainment System and Super Nintendo.
+The second row starts with Game Boy, Game Boy Color and Game Boy Advance.
+The builder reuses the approved art and updates the tile labels. The ARM
+fixture exercises the stock dispatch ID for each position. The revised grid
+asset carries a version marker so the new frontend rejects a mismatched tile
+order and falls back to the stock menu.
+
+Home and Settings share six antialiased shutdown panels in each theme.
+The launcher loads one theme when the dialog opens and releases it on
+Cancel. The existing card flush, read-only check, retry, and Linux shutdown
+sequence still run. The ARM fixture checks actual RGB565 pixels for the
+confirmation, in-progress and secured frames alongside the input and
+shutdown call sequence.
+
+The stock display extension drew its battery icon over the selected
+system. Home now reserves header space and draws the current ADC band
+there. It bypasses only the stock battery paint while Home is active.
+The ordinary display extension and low-battery warning path still run
+outside that drawing scope. The indicator uses bars for the measured
+bands. The existing ADC value cannot support a calibrated percentage.
+
+Esc uses the dedicated physical pin and opens the Power Off dialog on
+Home. In the stock launcher menus, it sends the same Back event as B.
+The input hook checks the pin because the vendor mask is also shared with
+Start plus Select. Movement on Home submits Leaf Brush directly to the
+stock mixer, without relying on the presence of a vendor effect buffer.
+
+The card update consists of both copies of `vrtemu`, the versioned
+`home-grid.rgb565`, and `power-dialog.rgb565`. These changes require no
+additional SPI flash. Preserve the status of the previously staged
+`Code.bkp` until the handheld boot log has been collected.

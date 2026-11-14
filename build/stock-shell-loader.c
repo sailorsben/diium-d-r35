@@ -71,6 +71,9 @@ struct overlay {
 #ifdef D35_VESPER_LAUNCHER
     uint16_t *power_frame;
     bool start_held;
+#ifdef D35_HOME_GRID
+    const uint16_t *power_art;
+#endif
 #endif
 };
 /* Reserved by extending the pinned RW LOAD's zero-filled tail. */
@@ -838,6 +841,17 @@ static void settings_box(uint16_t *p,unsigned x0,unsigned y0,unsigned x1,unsigne
 static bool button_down(unsigned pin)
 { return FN(0x157c8,int,unsigned)(pin)==0; }
 
+#ifdef D35_HOME_GRID
+static bool launcher_escape(unsigned keys)
+{ return keys==9 && button_down(0x206); }
+
+ENTRY unsigned launcher_menu_key(void)
+{
+    unsigned keys=FN(0x86368,unsigned,void)();
+    return launcher_escape(keys)?0x4000:keys;
+}
+#endif
+
 #ifdef D35_VESPER_LAUNCHER
 #include "stock-shell-power.h"
 #endif
@@ -934,7 +948,11 @@ static void change_option(unsigned row)
 
 ENTRY unsigned stock_settings_input(unsigned stock_row)
 {
+#ifdef D35_HOME_GRID
+    unsigned keys=launcher_menu_key();
+#else
     unsigned keys=FN(0x86368,unsigned,void)();
+#endif
     if(!button_down(0x30f)) S.select_held=false;
     if(!button_down(0x204)) S.accept_held=false;
 #ifdef D35_VESPER_LAUNCHER

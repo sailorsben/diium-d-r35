@@ -63,6 +63,7 @@ VESPER_PATCHES = {
     0x13984: (0xEB024B33, "vesper_update_detail"),
 }
 GRID_PATCHES = {
+    0x13FC0: (0xEBFFFF9A, "stock_home_adc_overlay"),
     # Home enters immediately before the original main-menu dispatch.
     0x9846C: (0xE5974008, "stock_home_dispatch"),
     # Enter a specific platform through the stock type browser and return
@@ -71,6 +72,27 @@ GRID_PATCHES = {
     0x8A008: (0xEBFFF0D6, "stock_home_type_key"),
     0x8A5C0: (0xE59D300C, "stock_home_type_back"),
     0x8A6D0: (0xEB006FE0, "stock_home_type_frame"),
+    0x986F4: (0xEBFFB71B, "launcher_menu_key"),
+    0x98818: (0xEBFFB6D2, "launcher_menu_key"),
+    0x98ACC: (0xEBFFB625, "launcher_menu_key"),
+    0x98C0C: (0xEBFFB5D5, "launcher_menu_key"),
+    0x884EC: (0xEBFFF79D, "launcher_menu_key"),
+    0x8862C: (0xEBFFF74D, "launcher_menu_key"),
+    0x8B754: (0xEBFFEB03, "launcher_menu_key"),
+    0x8B884: (0xEBFFEAB7, "launcher_menu_key"),
+    0x8BABC: (0xEBFFEA29, "launcher_menu_key"),
+    0x8BAE0: (0xEBFFEA20, "launcher_menu_key"),
+    0x8C200: (0xEBFFE858, "launcher_menu_key"),
+    0x8C224: (0xEBFFE84F, "launcher_menu_key"),
+    0x8CB6C: (0xEBFFE5FD, "launcher_menu_key"),
+    0x8CDFC: (0xEBFFE559, "launcher_menu_key"),
+    0x8CE20: (0xEBFFE550, "launcher_menu_key"),
+    0x8D07C: (0xEBFFE4B9, "launcher_menu_key"),
+    0x8D4C0: (0xEBFFE3A8, "launcher_menu_key"),
+    0x8D4E4: (0xEBFFE39F, "launcher_menu_key"),
+    0x8DCA0: (0xEBFFE1B0, "launcher_menu_key"),
+    0x8DD10: (0xEBFFE194, "launcher_menu_key"),
+    0x8F0EC: (0xEBFFDC9D, "launcher_menu_key"),
 }
 
 
