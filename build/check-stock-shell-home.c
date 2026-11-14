@@ -5,7 +5,7 @@
 
 enum { W=640,H=480,PIXELS=W*H };
 static uint16_t *grid_frame;
-static unsigned draws, waits, confirms, unmaps, cue_calls, adc_calls;
+static unsigned draws, waits, confirms, unmaps, cue_calls, confirm_cues;
 static unsigned events[40], count, next_event;
 static uint32_t power_regs[4096/4];
 static bool power_case;
@@ -13,7 +13,7 @@ static jmp_buf powered_off;
 static uint16_t *power_asset;
 static unsigned power_views, phase_mask, theme, next_view;
 static bool esc_pressed;
-static bool percent_case;
+static bool percent_case, solid_case;
 static bool stock_case;
 static const uint16_t *stock_overlay_frame;
 
@@ -28,13 +28,12 @@ static void capture(const char *name,const uint16_t *frame)
 static void check_battery(const uint16_t *frame,int band,bool with_percentage)
 {
     uint16_t ink=band==4?0xfb69:theme?0x8f5e:0xb69a;
-    bool estimate=with_percentage && band<5;
-    unsigned x=estimate?529:581;
-    assert(frame[18*W+x]==ink && frame[34*W+x+35]==ink);
-    assert((frame[25*W+576]==ink)==estimate);
-    if(estimate) assert(frame[19*W+610]==ink);
-    if(band==4) assert(frame[23*W+x+6]==ink);
-    if(band==5) assert(frame[23*W+599]==0xff8d);
+    bool numbered=with_percentage && band<5;
+    unsigned x=solid_case || numbered?533:581, width=solid_case?84:36;
+    assert(frame[19*W+x]==ink && frame[19*W+x+width-1]==ink);
+    if(numbered && !solid_case) assert(frame[20*W+610]==ink);
+    if(band==4 && !solid_case) assert(frame[23*W+x+6]==ink);
+    if(band==5) assert(frame[23*W+x+width/2]==0xff8d);
 }
 
 static void grid_wait(void) { ++waits; }
@@ -59,9 +58,10 @@ static void grid_draw(const void *pixels,unsigned w,unsigned h,size_t pitch)
     assert(w==W && h==H && pitch==W*2 && pixels==grid_frame && waits>draws);
     ++draws;
     if(!power_case) check_battery(grid_frame,*(int *)0x1b9b28,percent_case);
-    if(draws==1) capture(percent_case?"home-percent":"home-icon",grid_frame);
+    if(draws==1) capture(solid_case?"home-solid":percent_case?"home-percent":"home-icon",grid_frame);
+    ((void (*)(uint16_t *,unsigned))0x13e30)(grid_frame,W);
     ((void (*)(uint16_t *,unsigned))target(0x13fc0))(grid_frame,W);
-    assert(!adc_calls);
+    if(!power_case) check_battery(grid_frame,*(int *)0x1b9b28,percent_case);
     if(next_view) {
         enum { X=77,Y=153,PANEL_W=486,PANEL_H=174 };
         const unsigned view=next_view-1;
@@ -90,10 +90,9 @@ static void grid_cue(unsigned channel,const struct sound *cue)
 {
     assert(channel==1 && cue->data && cue->type==2 && cue->rate==44100 &&
            !cue->loop && (const char *)cue->end>(const char *)cue->begin);
-    ++cue_calls;
+    if((const char *)cue->end-(const char *)cue->begin==3308*4) ++confirm_cues;
+    else ++cue_calls;
 }
-static void grid_adc(uint16_t *frame,unsigned width)
-{ assert((frame==grid_frame || frame==stock_overlay_frame) && width==W); ++adc_calls; }
 static void stock_submit(const void *frame,unsigned w,unsigned h,size_t pitch)
 {
     assert(frame==stock_overlay_frame && w==W && h==H && pitch==W*2);
@@ -144,6 +143,7 @@ int main(int argc,char **argv)
     assert(argc==3 || argc==4 || argc==5);
     theme=argc>=4 && !strcmp(argv[3],"classic");
     percent_case=argc==5 && !strcmp(argv[4],"percent");
+    solid_case=argc==5 && !strcmp(argv[4],"solid");
     stock_case=theme;
     work=argv[2];
     map_vendor(argv[1]);
@@ -155,7 +155,7 @@ int main(int argc,char **argv)
     patch(0x80bec,(uintptr_t)path); patch(0x12010,(uintptr_t)grid_find);
     patch(0x86368,(uintptr_t)grid_joy); patch(0x11f08,(uintptr_t)grid_delay);
     patch(0x11e0c,(uintptr_t)grid_access); patch(0x8750c,(uintptr_t)grid_cue);
-    patch(0x157c8,(uintptr_t)grid_gpio); patch(0x13e30,(uintptr_t)grid_adc);
+    patch(0x157c8,(uintptr_t)grid_gpio);
     patch(0x164abc,(uintptr_t)grid_alloc); patch(0x164d58,(uintptr_t)grid_free);
     *(uintptr_t *)0x1be388=(uintptr_t)(stock_case?stock_submit:grid_draw);
     patch(0x11da0,(uintptr_t)grid_open);
@@ -186,7 +186,7 @@ int main(int argc,char **argv)
             *(int *)0x1b9b28=band;
             present(frame,W,H,W*2);
             overlay(frame,W);
-            assert(*(int *)0x1b9b24==band && !adc_calls);
+            assert(*(int *)0x1b9b24==band);
             check_battery(frame,band,percent_case);
         }
         assert(draws==6);
@@ -246,7 +246,7 @@ int main(int argc,char **argv)
     *(unsigned *)0x1c4300=0;
     sequence(navigation,6);
     assert(dispatch(target(0x9846c))==1 && *(unsigned *)0x199990==3 && draws==23);
-    assert(cue_calls==4);
+    assert(cue_calls==4 && confirm_cues>=19);
     // Pressing down on the last row keeps the platform selected. The footer
     // is a key legend; the shoulder buttons still dispatch directly above.
     unsigned bottom[]={0,0x40,0x2000};
@@ -261,13 +261,20 @@ int main(int argc,char **argv)
     esc_pressed=true;
     assert(menu_key()==0x4000);
     esc_pressed=false;
-    ((void (*)(uint16_t *,unsigned))target(0x13fc0))(NULL,W);
-    assert(adc_calls==1);
-    adc_calls=0;
     *(unsigned *)0x1998d8=3;
-    *(unsigned *)0x1998e0=7;
-    assert(dispatch(target(0x9846c))==7 && next_event==2);
+    const unsigned locale_keys[]={0,8};
+    sequence(locale_keys,2);
+    assert(dispatch(target(0x9846c))==5 && next_event==2);
     *(unsigned *)0x1998d8=1;
+    char home_path[1024], backup_path[1024];
+    assert(snprintf(home_path,sizeof(home_path),"%s/d35-launcher1/home-grid.rgb565",work)<(int)sizeof(home_path));
+    assert(snprintf(backup_path,sizeof(backup_path),"%s/d35-launcher1/home-grid.fixture-backup",work)<(int)sizeof(backup_path));
+    assert(!rename(home_path,backup_path));
+    sequence(locale_keys,2);
+    unsigned result=dispatch(target(0x9846c));
+    assert(!rename(backup_path,home_path));
+    assert(result==5 && next_event==2);
+    puts("PASS missing grid art keeps New usable and reaches launcher Settings");
 
     power_case=true;
     unsigned cancel[]={0,0x10000,0x20000,0x4000,8};
@@ -288,7 +295,7 @@ int main(int argc,char **argv)
     assert(power_views==4 && phase_mask==((1u<<0)|(1u<<1)|(1u<<4)));
     free(grid_frame);
     free(power_asset);
-    puts("PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback");
+    puts("PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and New with a non-English locale");
     printf("PASS physical-key cancel/confirm and %s RGB565 confirmation, working and secured frames\n",
            theme?"Classic":"New");
     return 0;

@@ -1,5 +1,12 @@
 # Changelog
 
+## Launcher navigation and artwork review - 2026-11-14
+
+- New Home keeps its platform grid when the language changes, and displays a usable text grid when its artwork is missing. Classic alone intentionally opens the original carousel and Settings, with a visible shortcut to launcher options.
+- Settings now offers bars, bars with a percentage, and a solid meter with the percentage inside it. The display hooks keep the stock overlay from drawing a second badge. Language opens a scrolling picker and Power Off is last.
+- Game Settings leaves Load State on the left until confirmed, and puts Exit last. Controls has a separate, fully repainted canvas. The centered Exit dialog routes Cancel, Save & Exit, and Exit through the original game exit handler.
+- A separate confirmation sound and updated button symbols make it easier to distinguish movement from selection. Game list previews for Star Fox and Chrono Trigger were staged locally for review.
+
 ## Restore the original Classic launcher - 2026-11-14
 
 Classic opens the factory carousel, game lists, and Settings artwork.

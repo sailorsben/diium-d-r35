@@ -10,43 +10,43 @@ enum { UI=0x1998d8, WIDTH=640, HEIGHT=480, STRIDE=1280 };
 static uint16_t frame[HEIGHT][WIDTH];
 static void *game_art;
 static jmp_buf first_frame;
-static unsigned texts;
+static unsigned labels;
 static uint16_t *preview;
+static uint16_t *controls;
 static uint32_t keymap[128];
 static bool checking_load, accept_held;
 static unsigned load_case, load_frames, key_index, loaded_slot;
 static const char *fixture_dir;
 
 static void no_preview(void) {}
+static void *allocate_controls(size_t bytes)
+{
+    assert(bytes==sizeof(frame));
+    return controls=malloc(bytes);
+}
+static void no_wait(void) {}
+static void *wait_symbol(void *driver,const char *name)
+{
+    assert(driver==frame && !strcmp(name,"WaitDisp"));
+    return no_wait;
+}
 
 static void text_run(void *target, int x, int y, int height, unsigned color, const char *text)
 {
-    (void)target;
-    (void)color;
     assert(text && *text);
-    if (texts==2) {
-        assert(x==265 && y==210 && height==42 && !strcmp(text,"P1"));
-        /* The stock renderer owns this area. The underlying art is solid. */
-        for(int py=211; py<245; ++py)
-            for(int px=265; px<309; ++px) assert(frame[py][px]==frame[211][265]);
-    } else if (texts>2) {
-        unsigned key=texts-3;
-        assert(x==400+114*(int)(key%2) && y==124+78*(int)(key/2) && height==24);
-        for(int py=y+11; py<y+29; ++py)
-            for(int px=x; px<x+28; ++px) assert(frame[py][px]==frame[y+11][x]);
-    } else {
-        assert(x==254 && height==18);
-        assert(y==(texts==0?352:375)); /* real baselines are y+29 */
-        for(int py=y+17; py<y+33; ++py)
-            for(int px=x; px<612; ++px) assert(frame[py][px]==frame[y+17][x]);
-    }
-    ++texts;
+    if(!controls || target!=controls) return;
+    assert(x>=0 && x<640 && y>=0 && y+29<480 && height>=16);
+    controls[(y+29)*640+x]=(uint16_t)color;
+    if(!strcmp(text,"Player 1")) labels|=1;
+    if(!strcmp(text,"Save as default for this system")) labels|=2;
+    if(!strcmp(text,"L2 + R2")) labels|=4;
 }
 
 static void display(void *buffer, unsigned width, unsigned height, unsigned stride)
 {
-    assert(buffer==frame && width==WIDTH && height==HEIGHT && stride==STRIDE);
+    assert(width==WIDTH && height==HEIGHT && stride==STRIDE);
     if(checking_load) {
+        assert(buffer==frame);
         unsigned slot=load_case==0?2:load_case==1?1:6;
         if(load_case==0 && load_frames) slot=load_frames==1?5:4;
         assert(frame[92][350]==(slot==2?0xf800:slot==4?0x07e0:0x10a4));
@@ -57,7 +57,8 @@ static void display(void *buffer, unsigned width, unsigned height, unsigned stri
         ++load_frames;
         return;
     }
-    assert(texts==9);
+    assert(buffer==controls && labels==7);
+    assert(controls[380*640+25]==0xfe49 && controls[68*640+4]==0x08a4);
     longjmp(first_frame,1);
 }
 
@@ -86,8 +87,8 @@ static unsigned read_joy(void)
 {
     const unsigned browse[]={0,0x2000,0,0x40,0x80,0x2000};
     const unsigned load_now[]={0,0x2000,0,0x2000};
-    const unsigned no_saves[]={0,0x10};
-    const unsigned *keys=load_case==0?browse:load_case==1?load_now:no_saves;
+    const unsigned cancel[]={0,0x4000};
+    const unsigned *keys=load_case==0?browse:load_case==1?load_now:cancel;
     unsigned count=load_case==0?6:load_case==1?4:2;
     assert(key_index<count);
     unsigned event=keys[key_index++];
@@ -199,7 +200,7 @@ static void verify_load_slots(void)
         assert(result==(load_case==2) && loaded_slot==(load_case==0?4:load_case==1?1:6));
         assert(load_frames==(load_case==0?3:1));
     }
-    puts("PASS Load State selects the first save, ignores held A, refreshes preview and handles empty or corrupt thumbnails");
+    puts("PASS Load State selects the first save, ignores held A, refreshes preview and lets B cancel an empty grid");
 }
 
 int main(int argc, char **argv)
@@ -218,6 +219,9 @@ int main(int argc, char **argv)
     patch(0x8f538,(uintptr_t)no_preview);
     patch(0x85c94,(uintptr_t)text_run);
     patch(0xa6658,(uintptr_t)display);
+    patch(0x12010,(uintptr_t)wait_symbol);
+    patch(0x164abc,(uintptr_t)allocate_controls);
+    *(void **)0x1b81a8=frame;
     static uint8_t english[80];
     *(unsigned *)UI=1;
     *(void **)(UI+25*4)=english;
@@ -228,8 +232,10 @@ int main(int argc, char **argv)
     *(void **)(GOT+0x304)=keymap;
     *(void **)(GOT+0x39c)=&preview;
     if(!setjmp(first_frame)) ((void (*)(void))0x8f5c0)();
-    assert(texts==9);
-    puts("PASS Controls draws P1, six live mappings and both shortcut lines in separate areas");
+    free(controls);
+    controls=NULL;
+    *(void **)0x1c4430=NULL;
+    puts("PASS stock Controls entry displays the new canvas with player info and the separated shortcut");
     verify_save_slots();
     verify_load_slots();
     free(game_art);

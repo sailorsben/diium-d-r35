@@ -1,0 +1,30 @@
+{
+  "kind": "local review and Cortex-A7 QEMU qualification",
+  "card_writes": 0,
+  "handheld_tested": false,
+  "artifacts_sha256": {
+    "verified/vrtemu": "5706d3613a321f55db92d28ed66e73db8f87f750413ef5bd8a37a6a3fafd2cf1",
+    "verified/libs/d35-snes.so": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+    "verified/libs/d35-starfox-audio.so": "12215f146d5e34d369fd6fbcf03ed369d2fcd99ed4328a1ede64a47814dbf533",
+    "payload/retro/d35-launcher1/ui_en.bkp": "a2cbf9597523c84c09b48742cbedfcc839c2da07d61f1059b752c99b3df6e1cd",
+    "payload/002/images/Star Fox.png": "ca18a5a3c56048184f7a28b77614888c29d78d731e7757d2b9559355db416d9a",
+    "payload/002/images/Chrono Trigger.png": "67a8a063a9682f5e0e7b4e0814f3a1030165c6ebabe14f6f117fb49edd844187"
+  },
+  "checks": [
+    "missing grid art keeps New usable and reaches launcher Settings",
+    "ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and New with a non-English locale",
+    "physical-key cancel/confirm and New RGB565 confirmation, working and secured frames",
+    "New Home shows an icon beside each estimate and a charging icon when powered",
+    "Classic hands off to the stock carousel and uses one icon with an optional estimate",
+    "Classic loads the original Settings member and START opens the launcher options with a route back to New",
+    "stock Controls entry displays the new canvas with player info and the separated shortcut",
+    "stock slot compositor and selection rim leave all six thumbnail interiors and gutters intact",
+    "Load State selects the first save, ignores held A, refreshes preview and lets B cancel an empty grid",
+    "review frames: Settings battery modes, Language picker, five pause options, centered Exit actions and clean Controls focus",
+    "brightness updates timer0 with checked duty and saves only successful settings",
+    "Sound volume uses its own setting and leaves the backlight alone",
+    "five full-size rows scroll to factory reset and B cancels",
+    "custom MP3 picker, invalid file, loop, game close/resume, Off and bundled playback",
+    "search caret draws within the six-pixel blink strip"
+  ]
+}

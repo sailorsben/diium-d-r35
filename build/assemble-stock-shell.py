@@ -11,6 +11,7 @@ import tempfile
 PIN = "8e5c3185244b3a1ca50f377728a0af6ad5e808c09db9d1749d1183014b8ade72"
 CORE_PIN = "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936"
 TEXT = 0x1D0000
+TEXT_LIMIT = 0x20000
 PATCHES = {
     0xA5014: (0xEBFFFBE7, 0xE3A00001),  # defer open until the ROM has been read
     0xA502C: (0xEAFFFE67, "run_snes"),
@@ -65,6 +66,7 @@ VESPER_PATCHES = {
 }
 GRID_PATCHES = {
     0x13FC0: (0xEBFFFF9A, "stock_home_adc_overlay"),
+    0x13E30: (0xE59F215C, "launcher_display_adc"),
     0xA6658: (0xE59FC024, "launcher_display_frame"),
     # Home enters immediately before the original main-menu dispatch.
     0x9846C: (0xE5974008, "stock_home_dispatch"),
@@ -97,6 +99,13 @@ GRID_PATCHES = {
     0x8F0EC: (0xEBFFDC9D, "launcher_menu_key"),
 }
 PAUSE_PATCHES = {
+    0x9BBEC: (0xEB002A99, "launcher_pause_frame"),
+    0x9BC08: (0xEBFFA9D6, "launcher_pause_key"),
+    0x9BC20: (0xEBFFA9D0, "launcher_pause_key"),
+    0x9BC2C: (0xEBFFDA07, "launcher_pause_exit"),
+    0x92574: (0xEB005037, "launcher_exit_frame"),
+    0x92590: (0xEBFFCF74, "launcher_exit_key"),
+    0x925B0: (0xEBFFCF6C, "launcher_exit_key"),
     # Replace function entries so the pause menu's dispatch table also uses
     # the wrappers. The wrappers replay the first PC-relative load.
     0x91050: (0xE59F2764, "load_menu"),
@@ -104,8 +113,11 @@ PAUSE_PATCHES = {
     0x91268: (0xEBFE029C, "load_slot_probe"),
     0x91434: (0xEB005487, "load_first_frame"),
     0x914A8: (0xEBFFD3AE, "load_slot_key"),
+    0x914AC: (0xE3500040, "load_slot_cancel"),
     0x915A0: (0xEB00542C, "load_next_frame"),
     0x8F5C0: (0xE59FCE34, "controls_menu"),
+    0x8F8D0: (0xEB005B60, "controls_first"),
+    0x8FA50: (0xEB005B00, "controls_next"),
     0x8F69C: (0xEBFFC341, "controls_panel"),
     0x90034: (0xEBFFC0DB, "controls_panel"),
     0x8F708: (0xEBFFFF8A, "controls_preview"),
@@ -114,6 +126,8 @@ PAUSE_PATCHES = {
     0x903C8: (0xEBFFD631, "controls_help_first"),
 }
 SETTINGS_PATCHES = {
+    0x8EA4C: (0xEBFFFC07, "launcher_language_picker"),
+    0x96F48: (0xEBFFDAC8, "launcher_language_picker"),
     0x8918C: (0xEBFFFF33, "launcher_menu_mix"),
     0x87754: (0xEBFFFF26, "launcher_menu_sound_close"),
     0x99B2C: (0xEBFFB058, "search_caret"),
@@ -121,8 +135,6 @@ SETTINGS_PATCHES = {
     0x8E794: (0xEBFE199B, "launcher_apply_saved_brightness"),
     0x8F0EC: (0xEBFFDC9D, "launcher_reset_key"),
     0x8EEFC: (0xEB005DD5, "launcher_reset_frame"),
-    0x8DCA0: (0xEBFFE1B0, "launcher_language_key"),
-    0x8DD10: (0xEBFFE194, "launcher_language_key"),
 }
 
 
@@ -186,7 +198,7 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
     rw_header = list(ph.unpack_from(data, rw))
     if ph.unpack_from(data, note)[0] != 4 or rw_header[:3] != [1, 0x178470, 0x198470]:
         raise ValueError("unexpected loadable segments")
-    if rw_header[2]+rw_header[5] > 0x1C4100 or len(text) > 65536:
+    if rw_header[2]+rw_header[5] > 0x1C4100 or len(text) > TEXT_LIMIT:
         raise ValueError("loader or data reservation exceeds the mapped area")
     rw_header[5] = 0x1C5000-rw_header[2]
     ph.pack_into(data, rw, *rw_header)
@@ -215,8 +227,8 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
             delta = symbols[target] - address - 8
             if delta % 4 or not -(1 << 25) <= delta < 1 << 25:
                 raise ValueError(f"branch out of range: {target}")
-            branch = (0xEA000000 if address in (0x91050, 0x8F5C0, 0xA6658) else
-                      0xEB000000 if address in GRID_PATCHES else old & 0xFF000000)
+            branch = (0xEA000000 if address in (0x13E30, 0x91050, 0x8F5C0, 0xA6658) else
+                      0xEB000000 if address in GRID_PATCHES or address==0x914AC else old & 0xFF000000)
             target = branch | ((delta >> 2) & 0xFFFFFF)
         struct.pack_into("<I", data, address-0x10000, target)
     data.extend(bytes(at-len(data)))

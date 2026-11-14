@@ -14,13 +14,16 @@ static bool timer_fail, brightness, reset_seen, picker_seen, scroll_seen, factor
 static bool brightness_error, corrupt_seen;
 static bool real_font;
 static bool classic_case, stock_options, classic_changing;
-static unsigned vendor_overlays, stock_settings_visits;
-
-static void vendor_overlay(uint16_t *frame,unsigned width)
+static unsigned stock_settings_visits;
+static bool review;
+static const char *capture_base="settings";
+static void capture_pause_review(void);
+static unsigned simulated_exit;
+static int stock_exit_fixture(void)
 {
-    assert(frame==settings && width==640);
-    ++vendor_overlays;
-    frame[2*640+602]=0xf81f;
+    /* Stock Save State clears pause_ret before returning success. */
+    *(unsigned *)0x1b9ce8=0;
+    return (int)simulated_exit;
 }
 
 static void classic_dialog(void)
@@ -63,15 +66,14 @@ static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const
 static void test_frame(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(w==640 && h==480 && pitch==1280 && pixels==settings);
+    uint16_t header[640*53];
+    memcpy(header,settings,sizeof(header));
+    ((void (*)(uint16_t *,unsigned))0x13e30)(settings,640);
     ((void (*)(uint16_t *,unsigned))target(0x13fc0))(settings,640);
-    assert(!vendor_overlays && settings[2*640+602]!=0xf81f);
-    if(real_font) {
-        unsigned expected=classic_case?0x8f5e:0xb69a;
-        assert(settings[18*640+529]==expected && settings[25*640+576]==expected);
-    }
+    assert(!memcmp(header,settings,sizeof(header)));
     if(real_font) {
         char path[1024];
-        assert(snprintf(path,sizeof(path),"%s/settings-%02u.rgb565",work,frames)<(int)sizeof(path));
+        assert(snprintf(path,sizeof(path),"%s/%s-%02u.rgb565",work,capture_base,frames)<(int)sizeof(path));
         FILE *f=fopen(path,"wb");
         assert(f && fwrite(settings,sizeof(settings),1,f)==1 && !fclose(f));
     }
@@ -158,7 +160,7 @@ static void route(void)
     assert(applied_volume==8 && *(int *)0x1998dc==8 && backlight_calls==3);
     file_contents("setting.xml","volume=\"8\"");
     puts("PASS Sound volume uses its own setting and leaves the backlight alone");
-    const unsigned scroll[]={0,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,A,0,B,B};
+    const unsigned scroll[]={0,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,A,0,B,B};
     drive(scroll,sizeof(scroll)/sizeof(*scroll));
     assert(scroll_seen && reset_seen && factory_seen);
     puts("PASS five full-size rows scroll to factory reset and B cancels");
@@ -196,6 +198,7 @@ int main(int argc,char **argv)
 {
     assert(argc==3 || argc==4);
     classic_case=argc==4 && !strcmp(argv[3],"classic");
+    review=argc==4 && !strcmp(argv[3],"review");
     real_font=argc==4;
     work=argv[2];
     map_vendor(argv[1]);
@@ -231,7 +234,6 @@ int main(int argc,char **argv)
     patch(0x157c8,(uintptr_t)gpio); patch(0x86368,(uintptr_t)test_joy);
     if(!real_font) patch(0x85c94,(uintptr_t)test_text);
     *(uintptr_t *)0x1be388=(uintptr_t)test_frame;
-    patch(0x13e30,(uintptr_t)vendor_overlay);
     patch(0x11da0,(uintptr_t)timer_open); patch(0x11d40,(uintptr_t)pwm);
     patch(0x1258c,(uintptr_t)volume);
     patch(0xa695c,(uintptr_t)capture_audio);
@@ -244,10 +246,12 @@ int main(int argc,char **argv)
     *(unsigned *)0x1998d8=1;
     if(real_font) {
         patch(0x81da0,(uintptr_t)load_stock_settings);
-        static char locale_def[64];
-        memcpy(locale_def+32,"ui_en.bkp",10);
-        *(void **)0x19993c=locale_def;
-        *(void **)0x199940=locale_def;
+        static char locale_def[11][64];
+        const char *const suffixes[]={"cn","en","de","es","fr","il","jp","ko","pt","br","ru"};
+        for(unsigned i=0;i<11;++i) {
+            snprintf(locale_def[i]+32,32,"ui_%s.bkp",suffixes[i]);
+            *(void **)(0x199938+4*i)=locale_def[i];
+        }
         ((void (*)(void))target(0x98174))();
         ((void (*)(void))0x85a88)();
         assert(*(void **)0x1b9d14);
@@ -265,8 +269,17 @@ int main(int argc,char **argv)
             puts("PASS Classic loads the original Settings member and START opens the launcher options with a route back to New");
             return 0;
         }
+        if(review) {
+            const unsigned paint[]={0,DOWN,DOWN,A,0,A,0,A,0,DOWN,DOWN,DOWN,DOWN,A,0,
+                                    DOWN,DOWN,B,0,DOWN,DOWN,B};
+            drive(paint,sizeof(paint)/sizeof(*paint));
+            capture_base="pause";
+            frames=0;
+            capture_pause_review();
+            return 0;
+        }
         const unsigned paint[]={0,DOWN,DOWN,DOWN,DOWN,A,0,DOWN,DOWN,DOWN,DOWN,B,0,
-                                DOWN,DOWN,DOWN,DOWN,A,0,B,B};
+                                DOWN,DOWN,DOWN,A,0,B,B};
         drive(paint,sizeof(paint)/sizeof(*paint));
         puts("PASS Settings, music picker and reset draw one icon plus estimate with the stock overlay suppressed");
         return 0;
@@ -279,4 +292,61 @@ int main(int argc,char **argv)
         assert(settings[i]==((i%640==240 && i/640>=82 && i/640<102)?0xffff:0));
     puts("PASS search caret draws within the six-pixel blink strip");
     return 0;
+}
+
+static void capture_pause_review(void)
+{
+    uint16_t *pause=(uint16_t *)settings;
+    char source[1024];
+    snprintf(source,sizeof(source),"%s/game.raw",work);
+    size_t bytes;
+    unsigned char *art=read_data(source,&bytes);
+    unsigned offset=*(unsigned *)art;
+    assert(bytes>=offset+sizeof(settings));
+    memcpy(pause,art+offset,sizeof(settings));
+    free(art);
+    void (*draw)(uint16_t *,unsigned,unsigned,size_t)=(void *)target(0x9bbec);
+    draw(pause,640,480,1280);
+    keys=(const unsigned[]){DOWN,DOWN,DOWN,DOWN,A};
+    key_count=5; key_index=0;
+    unsigned (*poll)(void)=(void *)target(0x9bc08);
+    for(unsigned i=0;i<4;++i) assert(poll()==0);
+    assert(poll()==DOWN);
+    /* Exercise the actual modal frame and input hooks. Stop outside the
+     * stock game teardown because this fixture has no live emulator. */
+    uint16_t backup[640*480];
+    memcpy(backup,pause,sizeof(backup));
+    *(void **)0x1c442c=backup;
+    capture_base="exit";
+    frames=0;
+    draw=(void *)target(0x92574);
+    draw(pause,640,480,1280);
+    keys=(const unsigned[]){RIGHT,A,0,RIGHT,B};
+    key_count=5; key_index=0;
+    poll=(void *)target(0x92590);
+    assert(poll()==0 && poll()==DOWN && poll()==0 && poll()==0 && poll()==UP);
+    *(void **)0x1c442c=NULL;
+    patch(0x92450,(uintptr_t)stock_exit_fixture);
+    int (*exit_game)(void)=(void *)target(0x9bc2c);
+    simulated_exit=1;
+    assert(exit_game()==1 && *(unsigned *)0x1b9ce8==0);
+    simulated_exit=0;
+    assert(exit_game()==0 && *(unsigned *)0x1b9ce8==1);
+    capture_base="controls";
+    frames=0;
+    *(void **)0x1c4430=pause;
+    draw=(void *)target(0x8f8d0);
+    unsigned *mapping=(unsigned *)0x1bb770;
+    const unsigned bindings[]={10,11,9,8,0,1};
+    memcpy(mapping,bindings,sizeof(bindings));
+    *(int *)0x1998f0=3;
+    draw(pause,640,480,1280);
+    memcpy(backup,pause,sizeof(backup));
+    *(int *)0x1998f0=5;
+    draw(pause,640,480,1280);
+    assert(memcmp(backup,pause,sizeof(backup)));
+    *(int *)0x1998f0=3;
+    draw(pause,640,480,1280);
+    assert(!memcmp(backup,pause,sizeof(backup)));
+    puts("PASS review frames: Settings battery modes, Language picker, five pause options, centered Exit actions and clean Controls focus");
 }

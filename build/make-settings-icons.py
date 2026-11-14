@@ -189,6 +189,17 @@ def write_header(destination):
             draw(mask)
             masks.append((draw.__name__, mask))
         array("settings_masks", masks, SIZE)
+        # 75 ms, rising two-note confirmation. The move sound remains separate.
+        out.write("static const int16_t settings_confirm_pcm[][2]={\n")
+        for i in range(3308):
+            t=i/44100
+            j=i if i<1433 else i-1433
+            end=1433 if i<1433 else 1875
+            envelope=min(1,j/110,(end-j)/375)*(1-j/end)**2
+            frequency=659.255 if i<1433 else 880
+            sample=round(5200*envelope*(sin(6.283185307*frequency*t)+.17*sin(12.566370614*frequency*t)))
+            out.write(f"    {{{sample},{sample}}},\n")
+        out.write("};\n")
 
 
 if __name__ == "__main__":

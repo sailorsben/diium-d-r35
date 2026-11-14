@@ -305,3 +305,36 @@ The ARM checks cover both battery settings, the original Classic Settings
 resource, the carousel dispatch, the return to New, and the existing
 launcher routes. The revised build is pending handheld review.
 [Qualification](../evidence/2026-11-14/launcher-classic-battery-qualification.json).
+
+### Navigation and artwork review (local)
+
+New and Classic are separate navigation choices. New retains its grid when
+the selected language changes; missing grid art shows a text grid with the
+same shortcuts. Missing New art can still expose stock artwork *inside*
+lists, and the firmware still has its independent no-card recovery route.
+The original carousel and Settings are entered by deliberately choosing
+Classic. Both Settings entry points use the scrolling language picker.
+The new launcher screens use English labels; the locale setting still
+applies to the vendor text it controls.
+
+The battery options are Bars, Bars + %, and Solid + %. Percentages are the
+existing coarse readings from the device, displayed without an approximation
+symbol. The ARM fixture checks that invoking either vendor overlay entry
+leaves the already rendered Settings header unchanged.
+
+Down on the Game Settings list moves only the left highlight. A opens Load
+State on the first occupied slot; B returns. The centered Exit dialog has
+Cancel selected first, and maps its other actions onto the original save
+and exit code. Controls repaints a separate display buffer on every update
+while retaining vendor mapping and save behavior. The fixture captured
+640×480 RGB565 screens and checked that returning focus to a previously
+selected control restores exactly the same pixels.
+
+The two locally staged game thumbnails are 300×280 RGB PNGs at the stock
+`002/images/<game basename>.png` paths. Star Fox uses Fox McCloud cropped
+from page 4 of [the original Nintendo manual](https://www.nintendo.co.jp/clvs/manuals/common/pdf/CLV-P-SADGE.pdf).
+Chrono Trigger uses new art depicting Crono with his sword, in front of a
+teal time gate and Guardia. Both were inspected at preview size. Vendor art
+and the converted game thumbnails stay out of Git. No card writes or
+physical handheld verification were performed for this review.
+[ARM checks and artifact hashes](../evidence/2026-11-14/launcher-navigation-review.json).

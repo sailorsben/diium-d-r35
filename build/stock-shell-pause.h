@@ -10,6 +10,10 @@ enum { PAUSE_SLOTS=6, STOCK_THUMB_BYTES=153600 };
 struct pause_ui {
     uint16_t *thumb[PAUSE_SLOTS];
     bool replacement, accept_ready;
+    int row;
+    bool menu, redraw_only;
+    unsigned exit_choice, exit_held;
+    uint16_t *exit_background, *controls_frame;
 };
 #define PAUSE VAR(0x1c4400,struct pause_ui)
 _Static_assert(sizeof(struct pause_ui)<=0x100, "pause UI reservation");
@@ -18,6 +22,208 @@ static void pause_wait(void)
 {
     void (*wait)(void)=shutdown_wait();
     if(wait) wait();
+}
+
+static void settings_confirm_sound(void);
+static int pause_label(uint16_t *frame,int x,int y,int size,uint16_t color,const char *label);
+static void pause_button_prompts(uint16_t *frame,int x,int y)
+{
+    menu_button(frame,x,y,BUTTON_DPAD);
+    pause_label(frame,x+37,y-12,22,0xffff,"Move");
+    menu_button(frame,x+143,y,BUTTON_A);
+    pause_label(frame,x+180,y-12,22,0xffff,"Open");
+    menu_button(frame,x+489,y,BUTTON_B);
+    pause_label(frame,x+526,y-12,22,0xffff,"Back");
+}
+
+static int pause_label(uint16_t *frame,int x,int y,int size,uint16_t color,const char *label)
+{
+    return FN(0x85c94,int,void *,int,int,int,unsigned,const char *)(frame,x,y,size,color,label);
+}
+
+static bool pause_layout(void)
+{
+    return PAUSE_WIDTH==640 && PAUSE_HEIGHT==480 && shutdown_wait();
+}
+
+static void pause_list(uint16_t *frame,unsigned row)
+{
+    static const char *const labels[]={"Resume","Save State","Load State","Controls","Exit"};
+    uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
+    settings_reset_text_clip();
+    settings_box(frame,0,53,237,432,0x08a4);
+    for(unsigned i=0;i<5;++i) {
+        unsigned y=81+65*i;
+        settings_box(frame,20,y,218,y+50,i==row?0x21ab:0x1127);
+        if(i==row) settings_box(frame,20,y,24,y+50,accent);
+        pause_label(frame,37,y+6,24,0xffff,labels[i]);
+    }
+}
+
+ENTRY void launcher_pause_frame(uint16_t *frame,unsigned w,unsigned h,size_t pitch)
+{
+    if(pause_layout() && frame && w==640 && h==480 && pitch==1280) {
+        pause_wait();
+        if(!PAUSE.menu) PAUSE.row=0;
+        PAUSE.menu=true;
+        pause_list(frame,(unsigned)PAUSE.row);
+        static const char *const help[][2]={
+            {"Resume","Go back to the game."},
+            {"Save State","Choose a slot to save your progress."},
+            {"Load State","Open the save slots to pick a state."},
+            {"Controls","View or change your button mapping."},
+            {"Exit","Return to the library with or without saving."}
+        };
+        settings_box(frame,250,250,640,432,0x08a4);
+        settings_box(frame,284,276,614,381,0x320c);
+        settings_box(frame,285,277,613,380,0x1127);
+        pause_label(frame,303,282,24,0xffff,help[PAUSE.row][0]);
+        pause_label(frame,303,319,17,0xa638,help[PAUSE.row][1]);
+        settings_box(frame,0,432,640,480,0x10e6);
+        pause_button_prompts(frame,25,441);
+    }
+    DISP(frame,w,h,pitch);
+}
+
+/* The outer stock loop owns game pause setup and teardown. It only needs
+ * to see Resume or a confirmed Exit. Submenus keep their original handlers. */
+ENTRY unsigned launcher_pause_key(void)
+{
+    if(!PAUSE.menu || !pause_layout()) return FN(0x86368,unsigned,void)();
+    uint16_t *frame=STOCK_UI_FRAME;
+    unsigned key=launcher_menu_key();
+    if(key==0x4000 || (key==0x2000 && PAUSE.row==0)) {
+        if(key==0x2000) settings_confirm_sound();
+        PAUSE.menu=false;
+        return 0x2000;
+    }
+    if((key==0x10 && PAUSE.row>0) || (key==0x40 && PAUSE.row<4)) {
+        PAUSE.row+=key==0x10?-1:1;
+        vesper_transition(1);
+    } else if(key==0x2000) {
+        settings_confirm_sound();
+        int result=1;
+        switch(PAUSE.row) {
+        case 1: result=FN(0x91818,int,void)(); break;
+        case 2: result=FN(0x91050,int,void)(); break;
+        case 3: result=FN(0x8f5c0,int,void)(); break;
+        case 4: return 0x40; /* preserve the stock exit and cleanup path */
+        }
+        if(!result) {
+            PAUSE.menu=false;
+            return 0x2000;
+        }
+        /* Returning from a submenu leaves its picture on the shared frame.
+         * The stock loop's redraw entry rebuilds the original game preview. */
+        PAUSE.redraw_only=true;
+        return 0x40;
+    } else return 0;
+    launcher_pause_frame(frame,640,480,1280);
+    return 0;
+}
+
+static int pause_measure(uint16_t *frame,int size,const char *label)
+{
+    /* The stock function returns the right edge. An empty vertical clip
+     * lets it measure without touching a pixel or needing another canvas. */
+    unsigned *clip=(unsigned *)0x19bac4;
+    unsigned top=clip[1];
+    clip[1]=480;
+    int width=pause_label(frame,0,0,size,0xffff,label);
+    clip[1]=top;
+    return width;
+}
+
+static void pause_center(uint16_t *frame,int y,int size,uint16_t ink,const char *label)
+{
+    int width=pause_measure(frame,size,label);
+    if(width<0 || width>640) return;
+    pause_label(frame,(640-width)/2,y,size,ink,label);
+}
+
+ENTRY void launcher_exit_frame(uint16_t *frame,unsigned w,unsigned h,size_t pitch)
+{
+    if(PAUSE.menu && pause_layout() && frame && w==640 && h==480 && pitch==1280) {
+        pause_wait();
+        if(PAUSE.exit_background)
+            for(unsigned i=0;i<640u*480;++i) frame[i]=(PAUSE.exit_background[i]&0xe79c)>>2;
+        else settings_box(frame,0,0,640,480,0x0842);
+        settings_reset_text_clip();
+        const uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
+        settings_box(frame,90,128,550,354,0x31cb);
+        settings_box(frame,91,129,549,353,0x1127);
+        settings_box(frame,302,153,338,155,accent);
+        pause_center(frame,156,34,0xffff,"Exit game?");
+        pause_center(frame,207,23,0xc618,"Return to the game library.");
+        static const char *const actions[]={"Cancel","Save & Exit","Exit"};
+        for(unsigned i=0;i<3;++i) {
+            unsigned x=109+143*i;
+            bool active=i==PAUSE.exit_choice;
+            settings_box(frame,x,267,x+136,315,active?accent:0x31cb);
+            settings_box(frame,x+1,268,x+135,314,active?0x21ab:0x08a4);
+            int width=pause_measure(frame,21,actions[i]);
+            if(width>0 && width<136)
+                pause_label(frame,(int)(x+68)-width/2,265,21,0xffff,actions[i]);
+        }
+        int width=pause_measure(frame,20,"Confirm");
+        unsigned x=(640u-36u-(unsigned)(width>0 && width<300?width:68))/2;
+        menu_button(frame,x,322,BUTTON_A);
+        pause_label(frame,x+36,313,20,0xc618,"Confirm");
+    }
+    bool owned=HOME.own_battery;
+    if(PAUSE.menu && pause_layout()) own_menu_battery(true);
+    DISP(frame,w,h,pitch);
+    own_menu_battery(owned);
+}
+
+ENTRY unsigned launcher_exit_key(void)
+{
+    if(!PAUSE.menu || !pause_layout()) return FN(0x86368,unsigned,void)();
+    unsigned key=settings_key_poll(&PAUSE.exit_held);
+    if(key==0x4000) return 0x10;
+    if(key==0x2000) {
+        PAUSE.exit_held|=key;
+        settings_confirm_sound();
+        static const unsigned native[]={0x10,0x40,0x2000};
+        return native[PAUSE.exit_choice];
+    }
+    if((key==0x80 && PAUSE.exit_choice) || (key==0x20 && PAUSE.exit_choice<2)) {
+        PAUSE.exit_choice+=key==0x80?-1:1;
+        vesper_transition(1);
+        launcher_exit_frame(STOCK_UI_FRAME,640,480,1280);
+    }
+    return 0;
+}
+
+ENTRY int launcher_pause_exit(void)
+{
+    if(PAUSE.redraw_only) {
+        PAUSE.redraw_only=false;
+        return 1;
+    }
+    bool owned=PAUSE.menu && pause_layout();
+    if(owned) {
+        PAUSE.exit_choice=0;
+        PAUSE.exit_held=HOME_PAD|0x2000;
+        PAUSE.exit_background=ALLOC(HOME_BYTES);
+        if(PAUSE.exit_background && STOCK_UI_FRAME) {
+            pause_wait();
+            COPY(PAUSE.exit_background,STOCK_UI_FRAME,HOME_BYTES);
+        } else {
+            FREE(PAUSE.exit_background);
+            PAUSE.exit_background=NULL;
+        }
+    }
+    int result=FN(0x92450,int,void)();
+    if(PAUSE.exit_background) {
+        FREE(PAUSE.exit_background);
+        PAUSE.exit_background=NULL;
+    }
+    if(!result) {
+        if(owned) VAR(0x1b9ce8,unsigned)=1; /* save success clears the stock pause result */
+        PAUSE.menu=false;
+    }
+    return result;
 }
 
 static void release_thumbnails(void)
@@ -127,6 +333,7 @@ static __attribute__((used)) void load_slot_frame(uint16_t *frame,unsigned w,uns
     if(PAUSE.replacement && w==640 && h==480 && pitch==1280 && frame && preview_rect()) {
         unsigned x=PAUSE_RECT[0], y=PAUSE_RECT[1], pw=PAUSE_RECT[2], ph=PAUSE_RECT[3];
         pause_wait();
+        if(PAUSE.menu) pause_list(frame,2);
         if(slot>=0 && slot<PAUSE_SLOTS && PAUSE.thumb[slot]) {
             for(unsigned row=0;row<ph;++row)
                 COPY(frame+(y+row)*640+x,PAUSE.thumb[slot]+row*pw,pw*2);
@@ -191,8 +398,16 @@ ENTRY unsigned load_slot_key(void)
     return key;
 }
 
+/* Both vanilla branches remain unchanged. B leaves the stock function
+ * through its own epilogue with the same return value as a cancel. */
+__attribute__((naked)) ENTRY void load_slot_cancel(void)
+{
+    __asm__ volatile("cmp r0, #0x4000\n\tmoveq r0, #1\n\tldreq pc, 1f\n\t"
+                     "cmp r0, #64\n\tbx lr\n\t1: .word 0x91550");
+}
+
 static bool controls_layout(void)
-{ return LOCALE==1 && PAUSE_WIDTH==640 && PAUSE_HEIGHT==480; }
+{ return pause_layout(); }
 
 static __attribute__((naked,noinline)) int stock_controls_body(void)
 {
@@ -201,6 +416,15 @@ static __attribute__((naked,noinline)) int stock_controls_body(void)
 
 ENTRY int controls_menu(void)
 {
+    if(controls_layout())
+        PAUSE.controls_frame=FN(0x164abc,void *,size_t)(HOME_BYTES);
+    if(PAUSE.controls_frame) {
+        int result=stock_controls_body();
+        pause_wait();
+        FN(0x164d58,void,void *)(PAUSE.controls_frame);
+        PAUSE.controls_frame=NULL;
+        return result;
+    }
     if(!controls_layout()) return stock_controls_body();
     const unsigned origin[7][2]={{261,206},{398,128},{512,128},{398,206},
                                  {512,206},{398,284},{512,284}};
@@ -219,8 +443,79 @@ ENTRY int controls_menu(void)
     return result;
 }
 
+static __attribute__((used)) void controls_paint(uint16_t *original,unsigned w,unsigned h,
+                                                size_t pitch,unsigned player)
+{
+    uint16_t *frame=PAUSE.controls_frame;
+    if(!frame || w!=640 || h!=480 || pitch!=1280) {
+        DISP(original,w,h,pitch);
+        return;
+    }
+    if(player>3) player=0;
+    pause_wait();
+    settings_reset_text_clip();
+    const uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
+    const char *const player_names[]={"Player 1","Player 2","Player 3","Player 4"};
+    const char *const buttons[]={"L1","R1","X","Y","A","B"};
+    /* Low bits index the pinned vendor's table at 0x198564; B is zero. */
+    const char *const mapped[]={"B","Y","Select","Start","Up","Down",
+        "Left","Right","A","X","L1","R1"};
+    const unsigned order[]={0,1,2,5,3,4};
+    int focus=VAR(0x1998f0,int);
+    settings_box(frame,0,0,640,480,0x08a4);
+    settings_box(frame,0,0,640,68,0x1127);
+    settings_box(frame,0,67,640,68,0x320c);
+    pause_label(frame,24,2,32,0xffff,"Controls");
+    settings_box(frame,385,14,504,45,focus==0?accent:0x320c);
+    settings_box(frame,386,15,503,44,focus==0?0x21ab:0x1127);
+    pause_label(frame,402,5,21,0xffff,player_names[player]);
+    home_battery(frame,HOME_BATTERY);
+    pause_label(frame,29,65,20,0x9d17,"BUTTON MAPPING");
+    for(unsigned i=0;i<6;++i) {
+        unsigned x=25+296*(i%2), y=104+91*(i/2);
+        unsigned mapping=((const unsigned *)0x1bb770)[player*6+order[i]];
+        unsigned binding=mapping&0xffff;
+        bool active=focus==(int)i+1;
+        settings_box(frame,x,y,x+288,y+76,active?accent:0x320c);
+        settings_box(frame,x+1,y+1,x+287,y+75,active?0x21ab:0x1127);
+        settings_box(frame,x+13,y+19,x+65,y+58,0x08a4);
+        pause_label(frame,x+27,y+12,23,accent,buttons[i]);
+        pause_label(frame,x+81,y+2,17,0x9d17,"IN GAME");
+        pause_label(frame,x+81,y+25,27,0xffff,binding<12?mapped[binding]:"Custom");
+        if(mapping>>16) pause_label(frame,x+211,y+34,16,accent,"TURBO");
+    }
+    settings_box(frame,25,380,615,430,0x1127);
+    settings_box(frame,25,380,27,430,accent);
+    pause_label(frame,39,383,21,accent,"L2 + R2");
+    pause_label(frame,143,383,21,0xffff,"Save as default for this system");
+    settings_box(frame,0,432,640,480,0x10e6);
+    menu_button(frame,25,442,BUTTON_DPAD);
+    pause_label(frame,62,430,22,0xffff,"Move / change");
+    menu_button(frame,254,442,BUTTON_A);
+    pause_label(frame,291,430,22,0xffff,"Edit / apply");
+    menu_button(frame,514,442,BUTTON_B);
+    pause_label(frame,551,430,22,0xffff,"Back");
+    bool owned=HOME.own_battery;
+    own_menu_battery(true);
+    DISP(frame,w,h,pitch);
+    own_menu_battery(owned);
+}
+
+ENTRY void controls_first(uint16_t *frame,unsigned w,unsigned h,size_t pitch)
+{ controls_paint(frame,w,h,pitch,0); }
+
+__attribute__((naked)) ENTRY void controls_next(void)
+{
+    __asm__ volatile("push {r4, lr}\n\tldr r4, [sp,#16]\n\tsub sp, sp, #8\n\t"
+                     "str r4, [sp]\n\tbl controls_paint\n\tadd sp, sp, #8\n\tpop {r4, pc}");
+}
+
 ENTRY void controls_panel(uint16_t *frame,size_t pitch,struct art_block *art,unsigned block)
 {
+    if(PAUSE.controls_frame) {
+        FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(frame,pitch,art,block);
+        return;
+    }
     if(!controls_layout() || !frame || pitch!=1280) {
         FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(frame,pitch,art,block);
         return;

@@ -36,6 +36,8 @@
 #define THEME_PACK LAUNCHER "/ui_en.bkp"
 #define CLASSIC_SETTINGS_PACK LAUNCHER "/ui_classic.bkp"
 
+enum battery_style { BATTERY_BARS, BATTERY_BARS_PERCENT, BATTERY_SOLID, BATTERY_STYLE_COUNT };
+
 #define D35_VIEWPORT_COPY COPY
 #define D35_VIEWPORT_COMPARE CMP
 #include "starfox-viewport.h"
@@ -74,7 +76,7 @@ struct overlay {
     bool start_held;
 #ifdef D35_HOME_GRID
     const uint16_t *power_art;
-    bool battery_percent;
+    uint8_t battery_style;
 #endif
 #endif
 };
@@ -86,8 +88,11 @@ _Static_assert(sizeof(struct overlay) <= 0x100, "overlay must fit reserved stora
 static bool launcher_settings(bool from_classic);
 static bool launcher_settings_available(void);
 static void settings_reset_text_clip(void);
+static void menu_button(uint16_t *frame,unsigned x,unsigned y,unsigned button);
+enum { BUTTON_DPAD, BUTTON_ADJUST, BUTTON_A, BUTTON_B, BUTTON_START, BUTTON_SELECT };
 static unsigned launcher_factory_navigation(unsigned row, unsigned key);
 static bool launcher_factory_active(void);
+static unsigned settings_key_poll(unsigned *held);
 static bool menu_music_override(void);
 static void menu_audio_lock(void);
 static void menu_audio_unlock(void);
@@ -638,14 +643,26 @@ struct art_block {
 ENTRY void *stock_theme_zip(const char *path,unsigned size,unsigned mode,const char *member)
 {
     void *(*open_zip)(const char *,unsigned,unsigned)=FN(0xa2730,void *,const char *,unsigned,unsigned);
+#ifdef D35_HOME_GRID
+    if(path && !size && mode==2 && !S.applied_classic && S.new_art) {
+        char stock[384], themed[384], filename[16];
+        const char *locale=LOCALE<11?VAR(0x199938+4*LOCALE,const char *):NULL;
+        if(locale && !CMP(locale+32,"ui_",3) && !CMP(locale+37,".bkp",5)) {
+            filename[0]='/';
+            COPY(filename+1,locale+32,10);
+        } else COPY(filename,"/ui_en.bkp",11);
+        if(suffix(stock,sizeof(stock),WORK(),filename) && !STRCMP(path,stock) &&
+           suffix(themed,sizeof(themed),WORK(),THEME_PACK)) {
+            void *zip=open_zip(themed,size,mode);
+            if(zip) return zip;
+        }
+    }
+    (void)member;
+#else
     const char *alternate=NULL;
     if(LOCALE==1) {
         if(!S.applied_classic && S.new_art) alternate=THEME_PACK;
-#ifndef D35_HOME_GRID
         else if(member && !STRCMP(member,"setting.raw")) alternate=CLASSIC_SETTINGS_PACK;
-#else
-        (void)member;
-#endif
     }
     if(path && !size && mode==2 && alternate) {
         char stock[384], themed[384];
@@ -656,6 +673,7 @@ ENTRY void *stock_theme_zip(const char *path,unsigned size,unsigned mode,const c
             if(zip) return zip;
         }
     }
+#endif
     return open_zip(path,size,mode);
 }
 
@@ -796,7 +814,7 @@ ENTRY void stock_load_settings(void)
     S.classic=false;
     S.new_art=false;
 #ifdef D35_HOME_GRID
-    S.battery_percent=false;
+    S.battery_style=BATTERY_BARS;
 #endif
     if(suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg")) {
         FILE *f=FOPEN(path,"rb");
@@ -806,7 +824,8 @@ ENTRY void stock_load_settings(void)
             S.auto_skip=bytes && settings[0]=='1';
             S.classic=bytes>=2 && settings[1]=='C';
 #ifdef D35_HOME_GRID
-            S.battery_percent=bytes==3 && settings[2]=='P';
+            if(bytes==3 && settings[2]=='P') S.battery_style=BATTERY_BARS_PERCENT;
+            if(bytes==3 && settings[2]=='S') S.battery_style=BATTERY_SOLID;
 #endif
             FCLOSE(f);
         }
@@ -838,12 +857,12 @@ static bool save_config_bytes(const char *path,const void *data,size_t bytes)
     return ok && !replace(tmp,path);
 }
 
-static bool save_options(bool auto_skip,bool classic,bool battery_percent)
+static bool save_options(bool auto_skip,bool classic,unsigned battery_style)
 {
     char path[384];
-    const char settings[]={auto_skip?'1':'0',classic?'C':'N','P'};
+    const char settings[]={auto_skip?'1':'0',classic?'C':'N',battery_style==BATTERY_SOLID?'S':'P'};
     return suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg") &&
-        save_config_bytes(path,settings,battery_percent?3:2);
+        save_config_bytes(path,settings,battery_style==BATTERY_BARS?2:3);
 }
 
 /* Compact glyphs for the two launcher settings rows and the footer. */
@@ -923,7 +942,7 @@ static void baked_options(uint16_t *p,struct art_block *art)
 #ifdef D35_HOME_GRID
     if(battery_settings(art)) {
         blit(p,1280,art,13+(S.extra_row==4));
-        blit(p,1280,art,15+2*(S.extra_row==3)+S.battery_percent);
+        blit(p,1280,art,15+2*(S.extra_row==3)+(S.battery_style!=BATTERY_BARS));
     } else if(ordered_settings(art)) blit(p,1280,art,13+(S.extra_row==3));
 #endif
     const uint16_t *base=(const uint16_t *)((const uint8_t *)art+art[0].offset);
@@ -936,12 +955,13 @@ ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
 {
 #ifdef D35_HOME_GRID
     if(launcher_factory_active()) return;
-    if(S.applied_classic && LOCALE==1 && launcher_settings_available()) {
+    if(S.applied_classic && launcher_settings_available()) {
         if(p && w==640 && h==480 && pitch==1280) {
             shutdown_wait()();
             settings_reset_text_clip();
+            menu_button(p,298,13,BUTTON_START);
             FN(0x85c94,int,void *,int,int,int,unsigned,const char *)(
-                p,301,-2,20,0xffff,"START  Launcher options");
+                p,335,-2,20,0xffff,"Launcher options");
         }
         DISP(p,w,h,pitch);
         return;
@@ -992,17 +1012,20 @@ static void change_option(unsigned row)
 {
     bool auto_skip=row==1?!S.auto_skip:S.auto_skip;
     bool classic=row==2?!S.classic:S.classic;
-    bool battery_percent=false;
+    unsigned battery_style=BATTERY_BARS;
 #ifdef D35_HOME_GRID
-    battery_percent=row==3?!S.battery_percent:S.battery_percent;
+    battery_style=S.battery_style;
+    if(row==3) battery_style=(battery_style+1==BATTERY_STYLE_COUNT)?BATTERY_BARS:battery_style+1;
 #endif
+#ifndef D35_HOME_GRID
     if(row==2 && !S.new_art) return;
-    S.save_failed=!save_options(auto_skip,classic,battery_percent);
+#endif
+    S.save_failed=!save_options(auto_skip,classic,battery_style);
     if(!S.save_failed) {
         S.auto_skip=auto_skip;
         S.classic=classic;
 #ifdef D35_HOME_GRID
-        S.battery_percent=battery_percent;
+        S.battery_style=battery_style;
 #endif
     }
 }
@@ -1012,7 +1035,7 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
 #ifdef D35_HOME_GRID
     unsigned keys=launcher_menu_key();
     if(launcher_factory_active()) return launcher_factory_navigation(stock_row,keys);
-    if(S.applied_classic && LOCALE==1 && launcher_settings_available()) {
+    if(S.applied_classic && launcher_settings_available()) {
         if(!button_down(0x30c)) S.start_held=false;
         if(keys==8 && !S.start_held) {
             S.start_held=true;
@@ -1108,15 +1131,17 @@ ENTRY void stock_settings(void)
 #endif
     S.save_failed=S.restore_highlight=false;
 #ifdef D35_HOME_GRID
-    bool classic=S.applied_classic && LOCALE==1;
-    if(classic || !launcher_settings(false))
-#endif
+    bool classic=S.applied_classic;
+    if(classic)
         FN(0x8dfe4,void,void)();
-#ifdef D35_HOME_GRID
+    else
+        launcher_settings(false);
     if(classic && S.extra_row==1) {
         S.extra_row=0;
         launcher_settings(true);
     }
+#else
+    FN(0x8dfe4,void,void)();
 #endif
 #ifdef D35_VESPER_LAUNCHER
     if(S.power_frame) shutdown_cancel();

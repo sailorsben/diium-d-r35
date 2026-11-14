@@ -217,13 +217,16 @@ class LauncherArt:
     def controls(self, draw, x, y, spacing, controls):
         for index, (key, action) in enumerate(controls):
             center = x + index * spacing
-            draw.ellipse((center - 17, y - 17, center + 17, y + 17), fill=HEADER, outline=GOLD, width=2)
             if key == "D-pad":
-                draw.line((center - 7, y, center + 7, y), fill=GOLD, width=3)
-                draw.line((center, y - 7, center, y + 7), fill=GOLD, width=3)
+                cross = ((-5,-15),(5,-15),(5,-5),(15,-5),(15,5),(5,5),
+                         (5,15),(-5,15),(-5,5),(-15,5),(-15,-5),(-5,-5))
+                draw.polygon([(center+dx,y+dy) for dx,dy in cross], fill=HEADER, outline=GOLD, width=2)
+                draw.rounded_rectangle((center-2,y-2,center+2,y+2),2,fill=GOLD)
             else:
+                draw.ellipse((center - 17, y - 17, center + 17, y + 17), fill=HEADER, outline=GOLD, width=2)
                 self.label(draw, (center, y), key, 16, GOLD, "mm")
             self.label(draw, (center, y + 34), action, 15, INK, "mm")
+
 
     def list_surface(self, image, original):
         draw = ImageDraw.Draw(image)
@@ -239,7 +242,7 @@ class LauncherArt:
         rows = self.list_surface(base, original)
         draw.rectangle((324, 66, 627, 353), outline=EDGE, width=2)
         draw.rounded_rectangle((324, 370, 627, 465), radius=8, fill=PANEL, outline=EDGE)
-        self.controls(draw, 365, 405, 73, (("D-pad", "Select"), ("A", "Enter"), ("B", "Back"), ("L2", "Favorites")))
+        self.controls(draw, 365, 405, 73, (("D-pad", "Move"), ("A", "Enter"), ("B", "Back"), ("L2", "Favorites")))
         variants = [base]
         for _, _, _, left, top, right, bottom in rows:
             highlighted = base.copy()
@@ -267,7 +270,7 @@ class LauncherArt:
             y = 161 + index * 50
             self.settings_row(draw, title, index, y)
             rows.append(y)
-        self.controls(draw, 193, 405, 127, (("D-pad", "Select"), ("A", "Enter"), ("B", "Back")))
+        self.controls(draw, 193, 405, 127, (("D-pad", "Move"), ("A", "Enter"), ("B", "Back")))
         variants = [base]
         for index, (title, y) in enumerate(zip(SETTINGS, rows)):
             selected = base.copy()
@@ -311,7 +314,7 @@ class LauncherArt:
         draw.rounded_rectangle((324, 65, 627, 107), radius=6, fill="#fcfbf2", outline=GOLD)
         draw.rounded_rectangle((324, 122, 627, 349), radius=7, fill=PANEL, outline=EDGE)
         draw.rounded_rectangle((324, 370, 627, 465), radius=8, fill=PANEL, outline=EDGE)
-        self.controls(draw, 365, 405, 73, (("D-pad", "Select"), ("A", "Enter"), ("B", "Back"), ("L2", "Favorites")))
+        self.controls(draw, 365, 405, 73, (("D-pad", "Move"), ("A", "Enter"), ("B", "Back"), ("L2", "Favorites")))
         keys = STOCK["sprite_records"](original)[1:]
         for (_, _, _, left, top, right, bottom), value in zip(keys, KEYS + ("Enter",)):
             self.label(draw, ((left + right) / 2, (top + bottom) / 2), value, 16, INK, "mm")
@@ -363,6 +366,34 @@ class LauncherArt:
                 painter.rounded_rectangle((x, y, x + 94, y + 43), radius=7, fill=HEADER, outline=EDGE)
                 self.label(painter, (x + 12, y + 22), key, 16, GOLD)
         return variants + [slots, controls]
+
+
+def update_list_controls(pack_path, font, output_path):
+    """Update only the two existing list footers in a deployed New art pack."""
+    art = LauncherArt(font, ())
+    replacements = {}
+    with STOCK["open_pack"](pack_path) as pack:
+        for member in ("menu.raw", "search.raw"):
+            raw = bytearray(pack.read(member))
+            record = STOCK["sprite_records"](raw)[0]
+            if record[1:] != (640, 480, 0, 0, 640, 480):
+                raise ValueError(f"unexpected canvas in {member}")
+            base = read_sprite(raw, record)
+            if base.getpixel((335, 385)) != base.getpixel((613, 449)):
+                raise ValueError(f"missing expected Vesper controls panel in {member}")
+            draw = ImageDraw.Draw(base)
+            draw.rectangle((341, 383, 618, 454), fill=PANEL)
+            art.controls(draw, 365, 405, 73, (("D-pad", "Move"), ("A", "Open"), ("B", "Back"),
+                                             ("L2", "Favorites")))
+            off = record[0]
+            pixels = np.asarray(base.crop((341,383,619,455)), dtype=np.uint16)
+            r,g,b = np.moveaxis(pixels,-1,0)
+            encoded = (((r>>3)<<11)|((g>>2)<<5)|(b>>3)).astype("<u2")
+            for y, row in enumerate(encoded, 383):
+                start = off+2*(y*640+341)
+                raw[start:start+2*len(row)] = row.tobytes()
+            replacements[member] = raw
+        write_pack(output_path, pack, replacements)
 
 
 def scenes_from_manifest(path):
