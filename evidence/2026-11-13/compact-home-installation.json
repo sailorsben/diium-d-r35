@@ -1,0 +1,23 @@
+{
+  "archive": "compact-home-before-20261114T035727055021Z",
+  "source_commit": "a3c4345f528163a76bcfb713d611b9d7ff486c58",
+  "payload_sha256": {
+    "retro/d35-launcher1/power-dialog.rgb565": "199003478fef0d8673cc2c47b4b7cf24e067c3744ff812d38407560c50b59adc",
+    "retro/d35-launcher1/home-grid.rgb565": "2533d6044cea2149264edd43b178447d2d26a286e94a36980938b7c3ee90bd74",
+    "retro/d35-launcher1/vrtemu": "3944f47ed9590e9d21149abd13560d0e9f2adc4e77c83aaca54264c4c113aa95",
+    "retro/vrtemu": "3944f47ed9590e9d21149abd13560d0e9f2adc4e77c83aaca54264c4c113aa95"
+  },
+  "verified_card_files": 2211,
+  "unchanged_card_files": 2207,
+  "retained_progress_and_log_files": 589,
+  "new_private_archive_bytes": 117,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "board_handoff": "direct-launcher-grid-v2",
+  "returned_boot_id": "906487f7-2462-40ec-b229-cb8a1138735d",
+  "consumed_firmware_package_archived_sha256": "a958fa04333ee81806e22531457fa911e28c0bfc5581bcae3fdad422c74f0848",
+  "spi_update_armed": false,
+  "one_boot_test_armed": false,
+  "fat32_clean": true,
+  "persistent_card_launcher": true,
+  "new_grid_physical_boot": "pending"
+}
