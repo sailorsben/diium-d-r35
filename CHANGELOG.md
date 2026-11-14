@@ -1,5 +1,11 @@
 # Changelog
 
+## Center the Power Off dialog - 2026-11-14
+
+The shutdown prompt has centered text and equal action buttons. Cancel
+sits on the left, and the gold A button identifies Turn off on the right.
+The progress and error panels use the same layout.
+
 ## Restyle launcher button prompts - 2026-11-14
 
 Home, Game List, and Controls use button shapes that match the handheld.

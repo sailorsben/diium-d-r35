@@ -15,6 +15,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 ART = runpy.run_path(str(Path(__file__).with_name("make-stock-shell-art.py")))
 STOCK = ART["STOCK"]
+FOOTER_ART = runpy.run_path(str(Path(__file__).with_name("launcher-footer-art.py")))
 PREVIEW_LABELS = (
     "Super Nintendo", "Nintendo Entertainment System", "Sega Genesis", "PlayStation",
     "Game Boy Advance", "Game Boy Color", "Game Boy", "MAME",
@@ -82,7 +83,7 @@ def build_home(preview, font, output):
 
 
 POWER_MESSAGES = (
-    ("Turn off the handheld?", "The launcher will finish writing to the SD card.",
+    ("Turn off the handheld?", "The launcher will finish saving first.",
      (("A", "Turn off"), ("B", "Cancel"))),
     ("Powering off", "Securing the SD card. Please wait.", ()),
     ("Shutdown paused", "Check the SD card on your computer.",
@@ -96,44 +97,56 @@ POWER_MESSAGES = (
 POWER_BOX = (77, 153, 486, 174)
 
 
-def build_power(font, output):
+def build_power(font, output, bold=None):
     x, y, width, height = POWER_BOX
-    scale = 3
+    scale = FOOTER_ART["SCALE"]
     size = (width*scale, height*scale)
-    face = lambda points: ImageFont.truetype(str(font), points*scale)
+    footer = FOOTER_ART["Footer"](font, bold or font)
     data = bytearray()
     for classic in (False, True):
         bg, button, edge, accent = (
-            ("#122c3e", "#193a4b", "#5e899b", "#8eeaf4") if classic else
-            ("#111c2d", "#162337", "#556780", "#ffd083")
+            ("#122c3e", "#173446", "#5e899b", "#8eeaf4") if classic else
+            ("#111f30", "#182a3d", "#415c74", "#ffd083")
         )
         for i, (title, detail, buttons) in enumerate(POWER_MESSAGES):
             panel = Image.new("RGBA", size)
             draw = ImageDraw.Draw(panel)
+
             def box(left, top, right, bottom, radius, fill, outline=None):
                 draw.rounded_rectangle(
                     (left*scale, top*scale, right*scale-1, bottom*scale-1),
                     radius=radius*scale, fill=fill, outline=outline, width=scale,
                 )
-            def text(left, top, label, points, color):
-                draw.text((left*scale, top*scale), label, font=face(points), fill=color, anchor="lm")
-            box(0, 0, width, height, 10, bg, accent)
-            text(24, 39, title, 27, "#f2f3f4")
-            text(24, 80, detail, 18, "#d3deea")
-            left = 24
-            for key, label in buttons:
-                if not key:
-                    text(left, 132, label, 17, accent)
-                    continue
-                w = round(draw.textlength(label, font=face(17))/scale)+59
-                box(left, 114, left+w, 151, 5, button, edge)
-                box(left+9, 121, left+31, 144, 4, bg, edge)
-                key_face = face(14)
-                l, t, r, b = draw.textbbox((0, 0), key, font=key_face)
-                draw.text((round((left+20)*scale-(l+r)/2), round(132.5*scale-(t+b)/2)),
-                          key, font=key_face, fill=accent)
-                text(left+40, 132, label, 17, "#f2f3f4")
-                left += w+12
+
+            def text(center, top, label, points, color, strong=False):
+                face = footer.lettering(points,strong)
+                left, ascender, right, descender = draw.textbbox((0,0),label,font=face)
+                draw.text((center*scale-(left+right)/2,top*scale-(ascender+descender)/2),
+                          label,font=face,fill=color)
+
+            center = width//2
+            box(0,0,width,height,12,bg,edge)
+            if i in (0,3):
+                # The power mark uses the same warm accent as the primary action.
+                c = center*scale
+                draw.arc((c-9*scale,12*scale,c+9*scale,30*scale),-49,229,
+                         fill=accent,width=2*scale)
+                draw.rounded_rectangle((c-scale,9*scale,c+scale,20*scale),scale,fill=accent)
+                text(center,54,title,28,"#f2f5fa",True)
+                text(center,87,detail,18,"#c2d3e0")
+                actions = buttons[::-1]
+                for left, (key,label) in zip((61,251),actions):
+                    box(left,111,left+174,153,8,button,accent if key=="A" else edge)
+                    label_w = round(footer.lettering(18,True).getlength(label)/scale)
+                    start = left+(174-28-10-label_w)//2
+                    footer.cap(panel,start,118,key,28)
+                    text(start+38+label_w/2,132,label,18,"#f2f5fa",True)
+            else:
+                box(center-19,25,center+19,28,1,accent)
+                text(center,64,title,27,"#f2f5fa",True)
+                text(center,99,detail,18,"#c2d3e0")
+                if buttons:
+                    text(center,135,buttons[0][1],18,accent)
             panel = panel.resize((width,height),Image.Resampling.LANCZOS)
             # Zero encodes the rounded transparent corners in the RGB565 panel.
             opaque = panel.getchannel("A").point(lambda a: 255 if a>=128 else 0)
@@ -219,9 +232,10 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("preview", "new", "classic", "font", "output"):
         p.add_argument(name, type=Path)
+    p.add_argument("--bold-font",type=Path)
     a = p.parse_args()
     a.output.mkdir(exist_ok=True)
     build_home(a.preview, a.font, a.output)
-    build_power(a.font, a.output)
+    build_power(a.font, a.output, a.bold_font)
     for pack, classic in ((a.new, False), (a.classic, True)):
         build_settings(pack, a.font, a.output/pack.name, classic)

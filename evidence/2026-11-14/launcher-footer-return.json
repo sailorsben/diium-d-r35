@@ -1,0 +1,20 @@
+{
+  "archive": "launcher-footer-return-20261114T171909970887Z",
+  "archive_sha256": "d2748b3d869e9ad738fbc3f21b8efc3aee61f549f9f6a823dbedd4d8db63a3b9",
+  "boot": {
+    "firmware": "direct-launcher-grid-v2",
+    "boot_id": "3f18cc6e-9ad8-4936-a47b-1f6dc6315ff6",
+    "frontend": "/usr/retro/vrtemu",
+    "layout": "grid"
+  },
+  "prior_boot_id": "3371d910-48e2-4fcc-b7c8-856e98efaa9c",
+  "all_installed_hashes_match": true,
+  "verified_card_files": 2214,
+  "changed_files": [
+    "retro/d35-launcher1/direct-boot.log",
+    "retro/swapfile"
+  ],
+  "card_writes": 0,
+  "fat32_clean": true,
+  "proof": "Firmware handoff log and returned payload hashes. No process checksum or screenshots in the boot log."
+}

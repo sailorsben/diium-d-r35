@@ -357,3 +357,14 @@ The footer update uses the same controller button shapes on Home, the
 New game list and search screens, and Controls. The Home grid asset and
 the game list pack change only in their footer regions. Controls draws
 its prompts in the running launcher, including its remap state.
+
+The next card return contains a fresh `direct-launcher-grid-v2` boot record
+for `/usr/retro/vrtemu`. Both launcher copies and both footer assets match
+the installation hashes. The firmware writes the entry path at handoff.
+It does not record individual screens or a process hash.
+[Footer return](../evidence/2026-11-14/launcher-footer-return.json).
+
+The next Power Off artwork centers the title and status text, gives Cancel
+and Turn off equal width, and uses the controller button style from the
+launcher footer. The asset retains the existing six status frames and two
+palettes. The launcher keeps its existing shutdown procedure.

@@ -70,6 +70,9 @@ static void grid_draw(const void *pixels,unsigned w,unsigned h,size_t pitch)
             for(unsigned x=0;x<PANEL_W;++x)
                 if(panel[y*PANEL_W+x])
                     assert(grid_frame[(Y+y)*W+X+x]==panel[y*PANEL_W+x]);
+        static const char *const names[]={"power-confirm","power-working","power-paused",
+                                          "power-retry","power-secured","power-failed"};
+        capture(names[view],grid_frame);
         phase_mask|=1u<<view;
         ++power_views;
         next_view=0;
