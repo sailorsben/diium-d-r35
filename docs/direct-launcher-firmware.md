@@ -272,3 +272,10 @@ ellipsis. New and Classic were rendered at 640×480 from the assembled
 launcher using the vendor font. The candidate preserves the installed
 SNES core hash. The card still carries the preceding Settings build.
 [Qualification](../evidence/2026-11-14/launcher-grouped-settings-qualification.json).
+
+The redesigned icons are rasterized at build time from the shapes in
+`build/make-settings-icons.py`. Each 36-pixel tile uses a coverage mask
+to blend its edges directly into RGB565. The New and Classic palettes
+highlight the selected icon and are shared by the list, music picker and
+reset confirmation.
+[Icon build and checks](../evidence/2026-11-14/launcher-settings-icons-qualification.json).

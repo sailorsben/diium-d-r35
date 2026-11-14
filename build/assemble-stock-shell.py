@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 import struct
 import subprocess
+import sys
 import tempfile
 
 
@@ -160,6 +161,9 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
         if not vesper:
             raise ValueError("The home grid uses the Vesper menu and shutdown functions")
         options.append("-DD35_HOME_GRID")
+        command(sys.executable, str(here/"make-settings-icons.py"),
+                str(out/"stock-shell-settings-icons.h"))
+        options.extend(("-I", str(out)))
     command(prefix+"gcc", "-std=gnu11", "-O3", "-Wall", "-Wextra", "-Werror", "-ffreestanding",
             "-fno-builtin", "-fno-pic", "-fno-pie", "-fno-stack-protector",
             "-fno-unwind-tables", "-fno-asynchronous-unwind-tables", "-marm", "-mcpu=cortex-a7",

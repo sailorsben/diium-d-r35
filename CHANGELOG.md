@@ -1,5 +1,11 @@
 # Changelog
 
+## Redraw the launcher Settings icons - 2026-11-14
+
+Use larger, antialiased symbols for Display, Sound and System. The
+selected icon uses the theme accent. The music picker and factory reset
+confirmation use the same icon set.
+
 ## Redesign launcher Settings - 2026-11-14
 
 Group the scrolling list into Display, Sound and System. Give each setting

@@ -96,28 +96,57 @@ static int settings_label(uint16_t *frame,unsigned x,unsigned y,unsigned size,ui
 
 static uint16_t settings_accent(void) { return S.classic?0x8f5e:0xfe49; }
 
-enum { ICON_SUN, ICON_THEME, ICON_BATTERY, ICON_VOLUME, ICON_NOTE,
-       ICON_FRAMES, ICON_LANGUAGE, ICON_POWER, ICON_RESET, ICON_MUTE };
-static const uint16_t settings_icons[][11]={
-    {0x020,0x222,0x09c,0x102,0x102,0x501,0x102,0x102,0x09c,0x222,0x020},
-    {0,0x3fe,0x202,0x23a,0x22a,0x23a,0x202,0x3fe,0x020,0x0f8,0},
-    {0,0,0x3fc,0x204,0x3b6,0x3b6,0x3b6,0x204,0x3fc,0,0},
-    {0,0x020,0x064,0x0a2,0x322,0x32a,0x322,0x0a2,0x064,0x020,0},
-    {0x01e,0x01e,0x010,0x010,0x010,0x010,0x0f0,0x1f0,0x1f0,0x0e0,0},
-    {0,0x7ff,0x401,0x67f,0x641,0x641,0x641,0x67f,0x400,0x7fe,0},
-    {0x0f8,0x154,0x222,0x222,0x222,0x7ff,0x222,0x222,0x222,0x154,0x0f8},
-    {0x020,0x020,0x124,0x222,0x222,0x222,0x202,0x202,0x104,0x088,0x070},
-    {0x010,0x030,0x0f8,0x134,0x012,0x002,0x202,0x202,0x104,0x088,0x070},
-    {0,0x020,0x060,0x0aa,0x324,0x32a,0x320,0x0a0,0x060,0x020,0},
-};
-_Static_assert(ICON_RESET+1==ROW_COUNT, "one icon per Settings row");
+#include "stock-shell-settings-icons.h"
 
-static void settings_icon(uint16_t *frame,unsigned x,unsigned y,unsigned icon,uint16_t color)
+static const uint8_t settings_row_icon[ROW_COUNT]={
+    [ROW_BRIGHTNESS]=SETTINGS_MASK_BRIGHTNESS, [ROW_THEME]=SETTINGS_MASK_THEME,
+    [ROW_BATTERY]=SETTINGS_MASK_BATTERY, [ROW_VOLUME]=SETTINGS_MASK_VOLUME,
+    [ROW_MUSIC]=SETTINGS_MASK_MUSIC, [ROW_FRAME_SKIP]=SETTINGS_MASK_FRAME_SKIP,
+    [ROW_LANGUAGE]=SETTINGS_MASK_LANGUAGE, [ROW_POWER]=SETTINGS_MASK_POWER,
+    [ROW_RESET]=SETTINGS_MASK_RESET,
+};
+
+static void settings_blend_pixel(uint16_t *pixel,uint16_t ink,unsigned alpha)
 {
-    for(unsigned j=0;j<11;++j)
-        for(unsigned i=0;i<11;++i)
-            if(settings_icons[icon][j]&(0x400u>>i))
-                settings_box(frame,x+2*i,y+2*j,x+2*i+2,y+2*j+2,color);
+    if(!alpha) return;
+    if(alpha==3) { *pixel=ink; return; }
+    unsigned bg=*pixel, weight=3-alpha;
+    unsigned r=((ink>>11)*alpha+(bg>>11)*weight+1)/3;
+    unsigned g=(((ink>>5)&63)*alpha+((bg>>5)&63)*weight+1)/3;
+    unsigned b=((ink&31)*alpha+(bg&31)*weight+1)/3;
+    *pixel=(uint16_t)((r<<11)|(g<<5)|b);
+}
+
+static void settings_mask(uint16_t *frame,unsigned x,unsigned y,
+                          const uint8_t mask[][SETTINGS_ICON_SIZE/4],bool mirrored,uint16_t color)
+{
+    for(unsigned j=0;j<SETTINGS_ICON_SIZE;++j) {
+        uint16_t *pixel=frame+(y+j)*640+x;
+        unsigned row=mirrored && j>=SETTINGS_ICON_SIZE/2?SETTINGS_ICON_SIZE-1-j:j;
+        for(unsigned i=0;i<SETTINGS_ICON_SIZE/4;++i) {
+            unsigned coverage=mask[row][i];
+            if(coverage)
+                for(unsigned k=0;k<4;++k)
+                    settings_blend_pixel(pixel+4*i+k,color,(coverage>>(6-2*k))&3);
+        }
+    }
+}
+
+static void settings_icon(uint16_t *frame,unsigned x,unsigned y,unsigned icon,bool selected)
+{
+    uint16_t rim, fill, ink;
+    if(S.classic) {
+        rim=selected?0x5557:0x3b8f;
+        fill=selected?0x1a4a:0x11c8;
+        ink=selected?0x9f3e:0xb6fc;
+    } else {
+        rim=selected?0x9326:0x322c;
+        fill=selected?0x4189:0x1148;
+        ink=selected?0xfe8c:0xb67c;
+    }
+    settings_mask(frame,x,y,settings_tiles[0],true,rim);
+    settings_mask(frame,x,y,settings_tiles[1],true,fill);
+    settings_mask(frame,x,y,settings_masks[icon],false,ink);
 }
 
 static void screen_header(uint16_t *frame,const char *title)
@@ -147,9 +176,9 @@ static void screen_row(uint16_t *frame,unsigned y,bool selected,unsigned icon,co
         settings_box(frame,24,y,598,y+ROW_HEIGHT-1,S.classic?0x1a49:0x21ab);
         settings_box(frame,24,y+1,28,y+ROW_HEIGHT-2,settings_accent());
     }
-    settings_box(frame,76,y+ROW_HEIGHT-1,598,y+ROW_HEIGHT,0x222a);
-    settings_icon(frame,41,y+14,icon,selected?settings_accent():0x96b8);
-    settings_label(frame,77,y+5,26,0xffff,name);
+    settings_box(frame,88,y+ROW_HEIGHT-1,598,y+ROW_HEIGHT,0x222a);
+    settings_icon(frame,36,y+(ROW_HEIGHT-SETTINGS_ICON_SIZE)/2,icon,selected);
+    settings_label(frame,88,y+5,26,0xffff,name);
 }
 
 static void settings_chevron(uint16_t *frame,unsigned x,unsigned y,bool right,uint16_t tint)
@@ -228,7 +257,7 @@ static void draw_settings(void)
             settings_group(frame,y,row<ROW_VOLUME?"DISPLAY":row<ROW_FRAME_SKIP?"SOUND":"SYSTEM");
             y+=GROUP_HEIGHT;
         }
-        screen_row(frame,y,selected,row,names[row]);
+        screen_row(frame,y,selected,settings_row_icon[row],names[row]);
         uint16_t ink=selected?settings_accent():0xbdf7;
         const char *value=NULL;
         if(row==ROW_BRIGHTNESS || row==ROW_VOLUME) {
@@ -355,13 +384,13 @@ static void music_picker(void)
         settings_group(SETTINGS.frame,SETTINGS_TOP,"CHOOSE A TRACK");
         for(unsigned i=top;i<total && i<top+VISIBLE_ROWS;++i) {
             unsigned y=SETTINGS_TOP+GROUP_HEIGHT+(i-top)*ROW_HEIGHT;
-            screen_row(SETTINGS.frame,y,i==row,i==1?ICON_MUTE:ICON_NOTE,
+            screen_row(SETTINGS.frame,y,i==row,i==1?SETTINGS_MASK_MUTE:SETTINGS_MASK_MUSIC,
                        i==0?"Start Line":i==1?"Off":"");
             bool active=i==0?MUSIC.mode==MUSIC_BUILTIN:i==1?MUSIC.mode==MUSIC_OFF:
                 MUSIC.mode==MUSIC_MP3 && !STRCMP(SETTINGS.tracks[i-2],MUSIC.name);
             if(active) settings_label(SETTINGS.frame,494,y+8,20,settings_accent(),"Selected");
             else if(i==0) settings_label(SETTINGS.frame,494,y+8,20,0xbdf7,"Built-in");
-            if(i>=2) settings_filename(SETTINGS.frame,77,y+5,26,active?405:506,
+            if(i>=2) settings_filename(SETTINGS.frame,88,y+5,26,active?394:495,
                                        0xffff,SETTINGS.tracks[i-2]);
         }
         screen_scroll(SETTINGS.frame,top,total);
@@ -451,10 +480,10 @@ static bool confirm_factory(void)
     shutdown_wait()();
     screen_header(SETTINGS.frame,"Restore factory settings");
     settings_box(SETTINGS.frame,24,126,616,306,S.classic?0x1a49:0x21ab);
-    settings_icon(SETTINGS.frame,45,153,ICON_RESET,settings_accent());
-    settings_label(SETTINGS.frame,81,142,27,0xffff,"Reset launcher preferences?");
-    settings_label(SETTINGS.frame,81,193,22,0xd69a,"This also clears favorites and recent games.");
-    settings_label(SETTINGS.frame,81,228,22,0xd69a,"A confirms. B returns to Settings.");
+    settings_icon(SETTINGS.frame,41,148,SETTINGS_MASK_RESET,true);
+    settings_label(SETTINGS.frame,92,142,27,0xffff,"Reset launcher preferences?");
+    settings_label(SETTINGS.frame,92,193,22,0xd69a,"This also clears favorites and recent games.");
+    settings_label(SETTINGS.frame,92,228,22,0xd69a,"A confirms. B returns to Settings.");
     settings_key(SETTINGS.frame,24,25,"A");
     settings_label(SETTINGS.frame,59,430,22,0xffff,"Restore");
     settings_key(SETTINGS.frame,510,25,"B");
