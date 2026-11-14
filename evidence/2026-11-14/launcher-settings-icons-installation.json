@@ -1,0 +1,18 @@
+{
+  "archive": "launcher-settings-icons-before-20261114T075827500406Z",
+  "source_commit": "d51c545f792969b15d0d7f04df13a7e267a0e272",
+  "payload_sha256": {
+    "retro/d35-launcher1/vrtemu": "0ed23b74500561a6faf70f267bc31b8b1192a0ab8dacf2a64e0f2d5830ae765c",
+    "retro/vrtemu": "0ed23b74500561a6faf70f267bc31b8b1192a0ab8dacf2a64e0f2d5830ae765c"
+  },
+  "verified_card_files": 2212,
+  "unchanged_card_files": 2210,
+  "retained_progress_and_log_files": 590,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "returned_boot_id": "f35787a4-adca-42d2-bc63-964d163626de",
+  "spi_update_armed": false,
+  "one_boot_test_armed": false,
+  "fat32_clean": true,
+  "persistent_card_launcher": true,
+  "new_launcher_physical_boot": "pending"
+}

@@ -18,22 +18,31 @@ BOOT_LOG = BASE + "direct-boot.log"
 MARKERS = {"armed", "code.bkp", "vesper-preview.once"}
 
 
-def install_launcher_update(card, payload, *, scrolling=False):
-    update = "launcher-scroll-settings" if scrolling else "launcher-pause-battery"
-    baseline = "launcher-pause-battery" if scrolling else "compact-home"
+def install_launcher_update(card, payload, update):
+    baseline, art_names = {
+        "launcher-pause-battery": ("compact-home", ("ui_en.bkp", "ui_classic.bkp")),
+        "launcher-scroll-settings": ("launcher-pause-battery", ("power-dialog.rgb565",)),
+        "launcher-settings-icons": ("launcher-scroll-settings", ()),
+    }[update]
+    scrolling = update == "launcher-scroll-settings"
+    icons = update == "launcher-settings-icons"
+    qualification_dir = EVIDENCE.parent / "2026-11-14" if icons else EVIDENCE
     prior = direct.read(EVIDENCE / (baseline + "-installation.json"))
     grid = direct.read(EVIDENCE / "home-grid-arming.json")
-    qualified = direct.read(EVIDENCE / (update + "-qualification.json"))
+    qualified = direct.read(qualification_dir / (update + "-qualification.json"))
     boot = direct.read(EVIDENCE / "direct-launcher-firmware-qualification.json")
     assert qualified["arm_checks_passed"] and not qualified["physical"]
     for name, expected in qualified["source_sha256"].items():
         assert digest(ROOT / name) == expected, name
 
-    art = (BASE + "power-dialog.rgb565",) if scrolling else (BASE + "ui_en.bkp", BASE + "ui_classic.bkp")
+    art = tuple(BASE + name for name in art_names)
     targets = (*art, BASE + "vrtemu", direct.FRONTEND)
     data = {name: (payload / Path(name).name).read_bytes() for name in targets}
     hashes = {name: sha256(blob).hexdigest() for name, blob in data.items()}
-    assert all(hashes[name] == qualified["payload_sha256"][Path(name).name] for name in targets)
+    qualified_hashes = {"vrtemu": qualified["launcher_sha256"]} if icons else qualified["payload_sha256"]
+    assert all(hashes[name] == qualified_hashes[Path(name).name] for name in targets)
+    if icons:
+        assert qualified["unchanged_core_sha256"] == prior["core_sha256"]
 
     archive = ROOT / "device-evidence" / (
         update + "-before-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
@@ -51,10 +60,16 @@ def install_launcher_update(card, payload, *, scrolling=False):
         direct.INIT: boot["artifact_sha256"]["sd-init"],
         "retro/main": direct.SUPERVISOR, "retro/driver.so": direct.DRIVER,
     }
-    if scrolling:
+    if scrolling or icons:
         compact = direct.read(EVIDENCE / "compact-home-installation.json")
-        for asset in ("power-dialog.rgb565", "home-grid.rgb565"):
-            pins[BASE + asset] = compact["payload_sha256"][BASE + asset]
+        pins[BASE + "home-grid.rgb565"] = compact["payload_sha256"][BASE + "home-grid.rgb565"]
+        if scrolling:
+            pins[BASE + "power-dialog.rgb565"] = compact["payload_sha256"][BASE + "power-dialog.rgb565"]
+    if icons:
+        # The pause update refreshed both theme packs after Home was installed.
+        pause = direct.read(EVIDENCE / "launcher-pause-battery-installation.json")
+        for asset in ("ui_en.bkp", "ui_classic.bkp"):
+            pins[BASE + asset] = pause["payload_sha256"][BASE + asset]
     for name, expected in pins.items():
         assert before.get(name) == expected, name
     assert not any(Path(n).name.lower() in MARKERS or n.lower().endswith(".armed") for n in before)
@@ -202,10 +217,15 @@ if __name__ == "__main__":
     update = parser.add_mutually_exclusive_group()
     update.add_argument("--pause-battery", action="store_true")
     update.add_argument("--scroll-settings", action="store_true")
+    update.add_argument("--settings-icons", action="store_true")
     args = parser.parse_args()
     card = Path("I:/").resolve()
     assert str(card).lower() in ("i:/", "i:\\") and args.payload.is_relative_to(ROOT / "build")
-    if args.pause_battery or args.scroll_settings:
-        install_launcher_update(card, args.payload, scrolling=args.scroll_settings)
+    if args.settings_icons:
+        install_launcher_update(card, args.payload, "launcher-settings-icons")
+    elif args.scroll_settings:
+        install_launcher_update(card, args.payload, "launcher-scroll-settings")
+    elif args.pause_battery:
+        install_launcher_update(card, args.payload, "launcher-pause-battery")
     else:
         install(card, args.payload)

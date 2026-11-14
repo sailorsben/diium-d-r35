@@ -269,8 +269,7 @@ themes. Brightness and volume use separate segments for the available steps.
 The music picker shows the saved choice independently from the focused row
 and measures filenames against the available width before adding an
 ellipsis. New and Classic were rendered at 640×480 from the assembled
-launcher using the vendor font. The candidate preserves the installed
-SNES core hash. The card still carries the preceding Settings build.
+launcher using the vendor font.
 [Qualification](../evidence/2026-11-14/launcher-grouped-settings-qualification.json).
 
 The redesigned icons are rasterized at build time from the shapes in
@@ -279,3 +278,9 @@ to blend its edges directly into RGB565. The New and Classic palettes
 highlight the selected icon and are shared by the list, music picker and
 reset confirmation.
 [Icon build and checks](../evidence/2026-11-14/launcher-settings-icons-qualification.json).
+
+Both permanent launcher copies on I: now run the grouped Settings build
+with the updated icons. The card readback verified 2,212 files. Only the
+two launcher copies changed, and FAT32 passed the scan with a clear
+dirty bit. The next handheld boot is pending.
+[Installation receipt](../evidence/2026-11-14/launcher-settings-icons-installation.json).
