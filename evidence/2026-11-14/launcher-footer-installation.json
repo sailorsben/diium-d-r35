@@ -1,0 +1,19 @@
+{
+  "archive": "launcher-footer-before-20261114T163801915402Z",
+  "source_commit": "69c3d3c42ca266bf4d5bd190e02a06f0e366475d",
+  "payload_sha256": {
+    "retro/d35-launcher1/vrtemu": "3927d97c080eb2e5f7278f700c97e1c7f91e4666a1f369de5ae23a119d2dce1d",
+    "retro/d35-launcher1/ui_en.bkp": "20169b0271e7f69e876a8ad28ce6d6e1ba7affd0d4a3c4c67a61102064832b8f",
+    "retro/d35-launcher1/home-grid.rgb565": "cd7621e3981b19260cd166393b1fcb57c78fbc134c0602bdd8b1a7bb58e5dabe",
+    "retro/vrtemu": "3927d97c080eb2e5f7278f700c97e1c7f91e4666a1f369de5ae23a119d2dce1d"
+  },
+  "verified_card_files": 2214,
+  "unchanged_card_files": 2210,
+  "retained_progress_and_log_files": 590,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "fat32_clean": true,
+  "one_boot_test_armed": false,
+  "spi_update_armed": false,
+  "persistent_card_launcher": true,
+  "physical_boot": "pending"
+}
