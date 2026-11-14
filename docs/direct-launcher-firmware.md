@@ -256,3 +256,19 @@ Language and factory reset use the stock handlers. Factory reset remains
 last in the list. Search draws a vertical caret inside the stock blink
 rectangle. Power Off centers the visible letter inside each button box.
 [Qualification](../evidence/2026-11-13/launcher-scroll-settings-qualification.json).
+
+### Grouped Settings layout
+
+Display groups Brightness, Theme and Battery display. Sound groups Volume
+and Menu music. System ends with Language, Power Off and Restore factory
+settings, with Frame skip first in that group. All three groups share the
+same D-pad scroll. The selected row has a solid highlight, an icon and a
+footer prompt for its action. The battery shares the header in both
+themes. Brightness and volume use separate segments for the available steps.
+
+The music picker shows the saved choice independently from the focused row
+and measures filenames against the available width before adding an
+ellipsis. New and Classic were rendered at 640×480 from the assembled
+launcher using the vendor font. The candidate preserves the installed
+SNES core hash. The card still carries the preceding Settings build.
+[Qualification](../evidence/2026-11-14/launcher-grouped-settings-qualification.json).

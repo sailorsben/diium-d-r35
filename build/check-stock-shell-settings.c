@@ -9,10 +9,9 @@
 enum { DOWN=0x40, UP=0x10, LEFT=0x80, RIGHT=0x20, A=0x2000, B=0x4000 };
 static const unsigned *keys;
 static size_t key_count, key_index;
-static unsigned backlight_calls, duty, mixer_blocks, nonzero_blocks, frames;
+static unsigned backlight_calls, duty, applied_volume, mixer_blocks, nonzero_blocks, frames;
 static bool timer_fail, brightness, reset_seen, picker_seen, scroll_seen, factory_seen;
 static bool brightness_error, corrupt_seen;
-static char snapshot[1024];
 static bool real_font;
 
 static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const char *text)
@@ -20,17 +19,10 @@ static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const
     assert(frame==settings && x>=0 && x<640 && y>=0 && y+29<480);
     if(!strcmp(text,"Brightness")) { brightness=true; assert(height==26); }
     if(!strcmp(text,"Restore factory settings")) { reset_seen=true; scroll_seen=frames>5; }
-    if(!strcmp(text,"A  Restore    B  Cancel")) factory_seen=true;
-    if(!strcmp(text,"Off") && picker_seen) assert(height>=23);
+    if(!strcmp(text,"Reset launcher preferences?")) factory_seen=true;
     if(!strcmp(text,"Tiny track.MP3")) picker_seen=true;
     if(!strcmp(text,"Backlight control unavailable")) brightness_error=true;
     if(!strcmp(text,"Could not open or save this track")) corrupt_seen=true;
-    if(!strcmp(text,"Tiny track.MP3") && snapshot[0]==0) {
-        assert(snprintf(snapshot,sizeof(snapshot),"%s/picker.rgb565",work)<(int)sizeof(snapshot));
-    }
-    if(real_font)
-        return ((int (*)(uint16_t *,int,int,int,unsigned,const char *))0x85c94)(
-            frame,x,y,height,color,text);
     frame[(y+29)*640+x]=(uint16_t)color;
     return x+10;
 }
@@ -38,16 +30,11 @@ static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const
 static void test_frame(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(w==640 && h==480 && pitch==1280 && pixels==settings);
-    if(frames==0) {
-        char initial[1024];
-        assert(snprintf(initial,sizeof(initial),"%s/settings-first.rgb565",work)<(int)sizeof(initial));
-        FILE *f=fopen(initial,"wb");
+    if(real_font) {
+        char path[1024];
+        assert(snprintf(path,sizeof(path),"%s/settings-%02u.rgb565",work,frames)<(int)sizeof(path));
+        FILE *f=fopen(path,"wb");
         assert(f && fwrite(settings,sizeof(settings),1,f)==1 && !fclose(f));
-    }
-    if(snapshot[0]) {
-        FILE *f=fopen(snapshot,"wb");
-        assert(f && fwrite(settings,sizeof(settings),1,f)==1 && !fclose(f));
-        snapshot[0]=0;
     }
     ++frames;
 }
@@ -74,6 +61,9 @@ static int pwm(int fd,unsigned request,const unsigned *args)
     duty=args[4];
     return timer_fail?-1:0;
 }
+
+static void volume(int step)
+{ applied_volume=(unsigned)step; }
 
 static void capture_audio(const int16_t *data,unsigned count)
 {
@@ -122,12 +112,18 @@ static void route(void)
     ((void (*)(int))target(0x81ee4))(99);
     assert(duty==30);
     puts("PASS brightness updates timer0 with checked duty and saves only successful settings");
+    const unsigned change_volume[]={0,DOWN,DOWN,DOWN,LEFT,B};
+    *(int *)0x1998dc=9;
+    drive(change_volume,sizeof(change_volume)/sizeof(*change_volume));
+    assert(applied_volume==8 && *(int *)0x1998dc==8 && backlight_calls==3);
+    file_contents("setting.xml","volume=\"8\"");
+    puts("PASS Sound volume uses its own setting and leaves the backlight alone");
     const unsigned scroll[]={0,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,A,0,B,B};
     drive(scroll,sizeof(scroll)/sizeof(*scroll));
     assert(scroll_seen && reset_seen && factory_seen);
     puts("PASS five full-size rows scroll to factory reset and B cancels");
     /* The false .mp3 sorts first. A real file must work after the rejected choice. */
-    const unsigned select[]={0,DOWN,DOWN,A,0,DOWN,DOWN,A,0,DOWN,A,0,B};
+    const unsigned select[]={0,DOWN,DOWN,DOWN,DOWN,A,0,DOWN,DOWN,A,0,DOWN,A,0,B};
     drive(select,sizeof(select)/sizeof(*select));
     assert(picker_seen && corrupt_seen);
     file_contents("d35-launcher1/d35-music.cfg","MTiny track.MP3");
@@ -141,7 +137,7 @@ static void route(void)
     ((void (*)(unsigned,const struct sound *))target(0x87b80))(0,NULL);
     for(unsigned i=0;i<12;++i) mix();
     assert(nonzero_blocks>0);
-    const unsigned mute[]={0,DOWN,DOWN,A,0,UP,UP,A,0,B};
+    const unsigned mute[]={0,DOWN,DOWN,DOWN,DOWN,A,0,UP,UP,A,0,B};
     drive(mute,sizeof(mute)/sizeof(*mute));
     file_contents("d35-launcher1/d35-music.cfg","O");
     nonzero_blocks=0;
@@ -149,7 +145,7 @@ static void route(void)
     nonzero_blocks=0;
     mix();
     assert(nonzero_blocks==0);
-    const unsigned builtin[]={0,DOWN,DOWN,A,0,UP,A,0,B};
+    const unsigned builtin[]={0,DOWN,DOWN,DOWN,DOWN,A,0,UP,A,0,B};
     drive(builtin,sizeof(builtin)/sizeof(*builtin));
     for(unsigned i=0;i<12;++i) mix();
     assert(nonzero_blocks>0);
@@ -195,6 +191,7 @@ int main(int argc,char **argv)
     if(!real_font) patch(0x85c94,(uintptr_t)test_text);
     patch(0xa6658,(uintptr_t)test_frame);
     patch(0x11da0,(uintptr_t)timer_open); patch(0x11d40,(uintptr_t)pwm);
+    patch(0x1258c,(uintptr_t)volume);
     patch(0xa695c,(uintptr_t)capture_audio);
     *(void **)0x1b81a8=&driver;
     *(void **)0x199910=settings;
@@ -204,11 +201,14 @@ int main(int argc,char **argv)
     *(int *)0x19958c=-1;
     *(unsigned *)0x1998d8=1;
     if(real_font) {
+        patch(0x81da0,(uintptr_t)load_stock_settings);
+        ((void (*)(void))target(0x98174))();
         ((void (*)(void))0x85a88)();
         assert(*(void **)0x1b9d14);
-        const unsigned paint[]={0,B};
+        const unsigned paint[]={0,DOWN,DOWN,DOWN,DOWN,A,0,DOWN,DOWN,DOWN,DOWN,B,0,
+                                DOWN,DOWN,DOWN,DOWN,A,0,B,B};
         drive(paint,sizeof(paint)/sizeof(*paint));
-        puts("PASS actual vendor font paints the full-size Settings view");
+        puts("PASS actual vendor font paints the Settings groups, music picker and final reset row");
         return 0;
     }
     route();

@@ -9,9 +9,10 @@
 #define TIMER_HANDLE VAR(0x19958c,int)
 #define UI_WORKERS VAR(0x19bc18,volatile unsigned)
 
-enum { ROW_BRIGHTNESS, ROW_VOLUME, ROW_MUSIC, ROW_THEME, ROW_BATTERY,
+enum { ROW_BRIGHTNESS, ROW_THEME, ROW_BATTERY, ROW_VOLUME, ROW_MUSIC,
        ROW_FRAME_SKIP, ROW_LANGUAGE, ROW_POWER, ROW_RESET, ROW_COUNT,
-       VISIBLE_ROWS=5, MUSIC_FILES_MAX=64 };
+       VISIBLE_ROWS=5, MUSIC_FILES_MAX=64, SETTINGS_TOP=70,
+       SETTINGS_BOTTOM=420, ROW_HEIGHT=52, GROUP_HEIGHT=28 };
 
 struct settings_screen {
     uint16_t *frame;
@@ -95,37 +96,116 @@ static int settings_label(uint16_t *frame,unsigned x,unsigned y,unsigned size,ui
 
 static uint16_t settings_accent(void) { return S.classic?0x8f5e:0xfe49; }
 
+enum { ICON_SUN, ICON_THEME, ICON_BATTERY, ICON_VOLUME, ICON_NOTE,
+       ICON_FRAMES, ICON_LANGUAGE, ICON_POWER, ICON_RESET, ICON_MUTE };
+static const uint16_t settings_icons[][11]={
+    {0x020,0x222,0x09c,0x102,0x102,0x501,0x102,0x102,0x09c,0x222,0x020},
+    {0,0x3fe,0x202,0x23a,0x22a,0x23a,0x202,0x3fe,0x020,0x0f8,0},
+    {0,0,0x3fc,0x204,0x3b6,0x3b6,0x3b6,0x204,0x3fc,0,0},
+    {0,0x020,0x064,0x0a2,0x322,0x32a,0x322,0x0a2,0x064,0x020,0},
+    {0x01e,0x01e,0x010,0x010,0x010,0x010,0x0f0,0x1f0,0x1f0,0x0e0,0},
+    {0,0x7ff,0x401,0x67f,0x641,0x641,0x641,0x67f,0x400,0x7fe,0},
+    {0x0f8,0x154,0x222,0x222,0x222,0x7ff,0x222,0x222,0x222,0x154,0x0f8},
+    {0x020,0x020,0x124,0x222,0x222,0x222,0x202,0x202,0x104,0x088,0x070},
+    {0x010,0x030,0x0f8,0x134,0x012,0x002,0x202,0x202,0x104,0x088,0x070},
+    {0,0x020,0x060,0x0aa,0x324,0x32a,0x320,0x0a0,0x060,0x020,0},
+};
+_Static_assert(ICON_RESET+1==ROW_COUNT, "one icon per Settings row");
+
+static void settings_icon(uint16_t *frame,unsigned x,unsigned y,unsigned icon,uint16_t color)
+{
+    for(unsigned j=0;j<11;++j)
+        for(unsigned i=0;i<11;++i)
+            if(settings_icons[icon][j]&(0x400u>>i))
+                settings_box(frame,x+2*i,y+2*j,x+2*i+2,y+2*j+2,color);
+}
+
 static void screen_header(uint16_t *frame,const char *title)
 {
     /* The stock font uses a shared clip rectangle left by the last screen. */
     unsigned *clip=(unsigned *)0x19bac4;
     clip[0]=0; clip[1]=0; clip[2]=640; clip[3]=480;
     settings_box(frame,0,0,640,480,S.classic?0x09c9:0x08a4);
-    settings_box(frame,0,0,640,66,S.classic?0x12ab:0x10e6);
-    settings_label(frame,26,12,32,0xffff,title);
-    settings_box(frame,26,61,116,64,settings_accent());
-    settings_box(frame,0,432,640,480,S.classic?0x12ab:0x10e6);
+    uint16_t chrome=S.classic?0x12ab:0x10e6;
+    settings_box(frame,0,0,640,56,chrome);
+    settings_box(frame,0,55,640,56,0x328b);
+    settings_label(frame,24,8,32,0xffff,title);
+    home_battery(frame,HOME_BATTERY);
+    settings_box(frame,0,430,640,480,chrome);
+    settings_box(frame,0,430,640,431,0x328b);
 }
 
-static void screen_row(uint16_t *frame,unsigned index,bool selected,const char *name,
-                       const char *value)
+static void settings_group(uint16_t *frame,unsigned y,const char *label)
 {
-    unsigned y=81+68*index;
-    uint16_t accent=settings_accent(), line=selected?accent:0x328b;
-    settings_box(frame,24,y,601,y+58,line);
-    settings_box(frame,26,y+2,599,y+56,
-                 selected?(S.classic?0x1a49:0x29ab):(S.classic?0x0a6a:0x1127));
-    settings_label(frame,43,y+11,26,0xffff,name);
-    if(value) settings_label(frame,397,y+13,23,selected?accent:0xbdf7,value);
+    settings_label(frame,24,y-7,19,S.classic?0x96b8:0x8db7,label);
+    settings_box(frame,24,y+23,598,y+24,0x328b);
+}
+
+static void screen_row(uint16_t *frame,unsigned y,bool selected,unsigned icon,const char *name)
+{
+    if(selected) {
+        settings_box(frame,24,y,598,y+ROW_HEIGHT-1,S.classic?0x1a49:0x21ab);
+        settings_box(frame,24,y+1,28,y+ROW_HEIGHT-2,settings_accent());
+    }
+    settings_box(frame,76,y+ROW_HEIGHT-1,598,y+ROW_HEIGHT,0x222a);
+    settings_icon(frame,41,y+14,icon,selected?settings_accent():0x96b8);
+    settings_label(frame,77,y+5,26,0xffff,name);
+}
+
+static void settings_chevron(uint16_t *frame,unsigned x,unsigned y,bool right,uint16_t tint)
+{
+    for(unsigned i=0;i<7;++i) {
+        unsigned dx=right?i:6-i;
+        settings_box(frame,x+dx,y+i,x+dx+2,y+i+2,tint);
+        settings_box(frame,x+dx,y+12-i,x+dx+2,y+14-i,tint);
+    }
+}
+
+static void settings_key(uint16_t *frame,unsigned x,unsigned w,const char *key)
+{
+    settings_box(frame,x,442,x+w,468,0x4b71);
+    settings_box(frame,x+1,443,x+w-1,467,0x1127);
+    settings_label(frame,x+7,430,18,settings_accent(),key);
+}
+
+static void settings_arrows_key(uint16_t *frame)
+{
+    settings_box(frame,185,442,241,468,0x4b71);
+    settings_box(frame,186,443,240,467,0x1127);
+    settings_chevron(frame,196,448,false,settings_accent());
+    settings_chevron(frame,222,448,true,settings_accent());
+}
+
+static void settings_footer(uint16_t *frame,const char *action,bool adjust,const char *message)
+{
+    settings_key(frame,541,25,"B");
+    settings_label(frame,574,430,22,0xffff,"Back");
+    if(message) {
+        settings_label(frame,24,430,20,settings_accent(),message);
+        return;
+    }
+    settings_key(frame,24,56,"D-pad");
+    settings_label(frame,89,430,22,0xffff,"Move");
+    if(adjust) {
+        settings_arrows_key(frame);
+        settings_label(frame,250,430,22,0xffff,action);
+    } else if(action) {
+        settings_key(frame,185,25,"A");
+        settings_label(frame,219,430,22,0xffff,action);
+    }
 }
 
 static void screen_scroll(uint16_t *frame,unsigned top,unsigned count)
 {
     if(count<=VISIBLE_ROWS) return;
-    unsigned size=320*VISIBLE_ROWS/count, y=81+320*top/count;
-    settings_box(frame,611,81,615,401,0x328b);
-    settings_box(frame,611,y,615,y+size,settings_accent());
+    unsigned height=SETTINGS_BOTTOM-SETTINGS_TOP, size=height*VISIBLE_ROWS/count;
+    unsigned y=SETTINGS_TOP+(height-size)*top/(count-VISIBLE_ROWS);
+    settings_box(frame,614,SETTINGS_TOP,617,SETTINGS_BOTTOM,0x328b);
+    settings_box(frame,613,y,618,y+size,settings_accent());
 }
+
+static void settings_filename(uint16_t *frame,unsigned x,unsigned y,unsigned size,unsigned width,
+                              uint16_t color,const char *name);
 
 static const char *music_value(void)
 {
@@ -138,38 +218,56 @@ static void draw_settings(void)
     uint16_t *frame=SETTINGS.frame;
     shutdown_wait()();
     screen_header(frame,"Settings");
-    const char *const names[]={"Brightness","Volume","Menu music","Theme","Battery display",
+    const char *const names[]={"Brightness","Theme","Battery display","Volume","Menu music",
         "Frame skip","Language","Power off","Restore factory settings"};
+    unsigned y=SETTINGS_TOP;
     for(unsigned i=0;i<VISIBLE_ROWS && SETTINGS.top+i<ROW_COUNT;++i) {
         unsigned row=SETTINGS.top+i;
+        bool selected=row==SETTINGS.row;
+        if(i==0 || row==ROW_VOLUME || row==ROW_FRAME_SKIP) {
+            settings_group(frame,y,row<ROW_VOLUME?"DISPLAY":row<ROW_FRAME_SKIP?"SOUND":"SYSTEM");
+            y+=GROUP_HEIGHT;
+        }
+        screen_row(frame,y,selected,row,names[row]);
+        uint16_t ink=selected?settings_accent():0xbdf7;
         const char *value=NULL;
-        char level[12];
         if(row==ROW_BRIGHTNESS || row==ROW_VOLUME) {
             unsigned n=row==ROW_BRIGHTNESS?bounded_level(LED_STEP,3)+1:bounded_level(VOLUME_STEP,9);
-            if(row==ROW_BRIGHTNESS) {
-                level[0]='0'+n; level[1]='/'; level[2]='4'; level[3]=0;
-            } else {
-                level[0]='0'+n; level[1]='/'; level[2]='9'; level[3]=0;
+            unsigned max=row==ROW_BRIGHTNESS?4:9;
+            char level[]={'0'+n,'/','0'+max,0};
+            settings_label(frame,531,y+6,22,ink,level);
+            for(unsigned j=0;j<max;++j) {
+                unsigned x=405+112*j/max, next=405+112*(j+1)/max;
+                settings_box(frame,x,y+22,next-3,y+30,j<n?ink:0x3aaf);
             }
-            value=level;
-        } else if(row==ROW_MUSIC) value=music_value();
+            if(selected) {
+                settings_chevron(frame,383,y+19,false,ink);
+                settings_chevron(frame,577,y+19,true,ink);
+            }
+        } else if(row==ROW_MUSIC) {
+            if(MUSIC.mode==MUSIC_MP3 && !MUSIC.unavailable) {
+                settings_filename(frame,387,y+7,23,181,ink,MUSIC.name);
+            } else value=music_value();
+        }
         else if(row==ROW_THEME) value=S.classic?"Classic":"New";
         else if(row==ROW_BATTERY) value=S.battery_percent?"Est. %":"Bars";
         else if(row==ROW_FRAME_SKIP) value=S.auto_skip?"Auto":"Off";
         else if(row==ROW_LANGUAGE) value="English";
-        screen_row(frame,i,row==SETTINGS.row,names[row],value);
-        if(row==ROW_BRIGHTNESS || row==ROW_VOLUME) {
-            unsigned y=81+68*i+43, n=row==ROW_BRIGHTNESS?bounded_level(LED_STEP,3)+1:bounded_level(VOLUME_STEP,9);
-            unsigned max=row==ROW_BRIGHTNESS?4:9;
-            settings_box(frame,397,y,577,y+4,0x328b);
-            if(n) settings_box(frame,397,y,397+180*n/max,y+4,settings_accent());
+        if(value) {
+            unsigned *clip=(unsigned *)0x19bac4;
+            clip[2]=569;
+            settings_label(frame,387,y+7,23,ink,value);
+            clip[2]=640;
         }
+        if(row!=ROW_BRIGHTNESS && row!=ROW_VOLUME)
+            settings_chevron(frame,577,y+19,true,selected?ink:0x5bf2);
+        y+=ROW_HEIGHT;
     }
     screen_scroll(frame,SETTINGS.top,ROW_COUNT);
-    const char *hint=(SETTINGS.row==ROW_BRIGHTNESS || SETTINGS.row==ROW_VOLUME)?
-        "Left / Right  Adjust     B  Back":"A  Select    B  Back    Start  Power off";
-    settings_label(frame,26,435,22,SETTINGS.message?settings_accent():0xd69a,
-                   SETTINGS.message?SETTINGS.message:hint);
+    const char *const actions[]={"Adjust brightness","Switch theme","Switch display","Adjust volume",
+        "Choose music","Switch mode","Choose language","Power off","Review reset"};
+    settings_footer(frame,actions[SETTINGS.row],SETTINGS.row==ROW_BRIGHTNESS ||
+                   SETTINGS.row==ROW_VOLUME,SETTINGS.message);
     DISP(frame,640,480,1280);
 }
 
@@ -214,17 +312,31 @@ static void scan_music_files(void)
     }
 }
 
-static void filename_label(char label[39],const char *name)
+static void settings_filename(uint16_t *frame,unsigned x,unsigned y,unsigned size,unsigned width,
+                              uint16_t color,const char *name)
 {
-    unsigned i=0;
-    unsigned at=0;
-    while(i<22 && name[at]) {
+    char label[47];
+    unsigned i=0, at=0;
+    while(i<sizeof(label)-4 && name[at]) {
         unsigned char c=name[at++];
         label[i++]=c<128?(char)c:'?';
         while(((unsigned char)name[at]&0xc0)==0x80) ++at;
     }
-    if(name[at]) { label[i++]='.'; label[i++]='.'; label[i++]='.'; }
     label[i]=0;
+    /* The stock font reports the right edge. An empty vertical clip measures
+     * without writing pixels; only file labels need measurement. */
+    unsigned *clip=(unsigned *)0x19bac4;
+    clip[1]=480;
+    if(name[at] || settings_label(frame,0,y,size,color,label)>(int)width) {
+        do {
+            if(i) --i;
+            label[i]='.'; label[i+1]='.'; label[i+2]='.'; label[i+3]=0;
+        } while(i && settings_label(frame,0,y,size,color,label)>(int)width);
+    }
+    clip[1]=0;
+    clip[2]=x+width;
+    settings_label(frame,x,y,size,color,label);
+    clip[2]=640;
 }
 
 static void music_picker(void)
@@ -240,14 +352,22 @@ static void music_picker(void)
         if(row<top) top=row;
         shutdown_wait()();
         screen_header(SETTINGS.frame,"Menu music");
+        settings_group(SETTINGS.frame,SETTINGS_TOP,"CHOOSE A TRACK");
         for(unsigned i=top;i<total && i<top+VISIBLE_ROWS;++i) {
-            char label[39];
-            if(i>=2) filename_label(label,SETTINGS.tracks[i-2]);
-            screen_row(SETTINGS.frame,i-top,i==row,i==0?"Start Line (built-in)":i==1?"Off":label,NULL);
+            unsigned y=SETTINGS_TOP+GROUP_HEIGHT+(i-top)*ROW_HEIGHT;
+            screen_row(SETTINGS.frame,y,i==row,i==1?ICON_MUTE:ICON_NOTE,
+                       i==0?"Start Line":i==1?"Off":"");
+            bool active=i==0?MUSIC.mode==MUSIC_BUILTIN:i==1?MUSIC.mode==MUSIC_OFF:
+                MUSIC.mode==MUSIC_MP3 && !STRCMP(SETTINGS.tracks[i-2],MUSIC.name);
+            if(active) settings_label(SETTINGS.frame,494,y+8,20,settings_accent(),"Selected");
+            else if(i==0) settings_label(SETTINGS.frame,494,y+8,20,0xbdf7,"Built-in");
+            if(i>=2) settings_filename(SETTINGS.frame,77,y+5,26,active?405:506,
+                                       0xffff,SETTINGS.tracks[i-2]);
         }
         screen_scroll(SETTINGS.frame,top,total);
-        settings_label(SETTINGS.frame,26,435,21,0xd69a,error?error:
-            SETTINGS.track_count?"A  Play and select    B  Back":"Add MP3 files to retro/d35-launcher1/music");
+        if(!SETTINGS.track_count)
+            settings_label(SETTINGS.frame,29,233,19,0xbdf7,"Add MP3s to retro/d35-launcher1/music");
+        settings_footer(SETTINGS.frame,row==1?"Turn music off":"Play this track",false,error);
         DISP(SETTINGS.frame,640,480,1280);
         unsigned key;
         do { settings_idle(); key=settings_key_poll(&held); } while(!key);
@@ -330,9 +450,15 @@ static bool confirm_factory(void)
 {
     shutdown_wait()();
     screen_header(SETTINGS.frame,"Restore factory settings");
-    settings_label(SETTINGS.frame,28,131,25,0xffff,"Reset settings and clear your");
-    settings_label(SETTINGS.frame,28,164,25,0xffff,"favorites and recent games?");
-    settings_label(SETTINGS.frame,28,435,22,0xd69a,"A  Restore    B  Cancel");
+    settings_box(SETTINGS.frame,24,126,616,306,S.classic?0x1a49:0x21ab);
+    settings_icon(SETTINGS.frame,45,153,ICON_RESET,settings_accent());
+    settings_label(SETTINGS.frame,81,142,27,0xffff,"Reset launcher preferences?");
+    settings_label(SETTINGS.frame,81,193,22,0xd69a,"This also clears favorites and recent games.");
+    settings_label(SETTINGS.frame,81,228,22,0xd69a,"A confirms. B returns to Settings.");
+    settings_key(SETTINGS.frame,24,25,"A");
+    settings_label(SETTINGS.frame,59,430,22,0xffff,"Restore");
+    settings_key(SETTINGS.frame,510,25,"B");
+    settings_label(SETTINGS.frame,544,430,22,0xffff,"Cancel");
     DISP(SETTINGS.frame,640,480,1280);
     unsigned held=HOME_PAD|0x2000;
     for(;;) {
@@ -374,7 +500,8 @@ static bool launcher_settings(void)
         if(key==0x10 && SETTINGS.row) { --SETTINGS.row; vesper_transition(1); }
         else if(key==0x40 && SETTINGS.row+1<ROW_COUNT) { ++SETTINGS.row; vesper_transition(1); }
         else if(key==0x80 || key==0x20) {
-            if(SETTINGS.row<=ROW_VOLUME) adjust_level(SETTINGS.row,key==0x20?1:-1);
+            if(SETTINGS.row==ROW_BRIGHTNESS || SETTINGS.row==ROW_VOLUME)
+                adjust_level(SETTINGS.row,key==0x20?1:-1);
         } else if(key==0x2000 || key==8) {
             held|=key;
             unsigned row=SETTINGS.row;

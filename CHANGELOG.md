@@ -1,5 +1,12 @@
 # Changelog
 
+## Redesign launcher Settings - 2026-11-14
+
+Group the scrolling list into Display, Sound and System. Give each setting
+an icon, show the available brightness and volume steps, and put the
+selected action in the footer. The music picker marks the current track
+and fits long filenames without shrinking the text.
+
 ## Make launcher Settings scroll - 2026-11-13
 
 Five full-height rows stay visible while the list scrolls. Brightness and

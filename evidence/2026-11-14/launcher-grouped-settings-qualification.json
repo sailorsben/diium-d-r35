@@ -1,0 +1,62 @@
+{
+  "arm_checks_passed": true,
+  "physical": false,
+  "installed": false,
+  "source_sha256": {
+    "build/assemble-stock-shell.py": "4cef9fd57d922d4452d1c76d48d0e820701451f4776804cf1ee604b20d8c878f",
+    "build/stock-shell-loader.c": "a080979e2629400fde26111ed64e08f9253454a7e74dac7508b3ab00e73e710b",
+    "build/stock-shell-settings.h": "2d2ea3982d9c4de62bf52f9dd95c833e123afbdc220c9c407d27e756eab8a4b9",
+    "build/stock-shell-music.h": "8461c88fe6a35cfe45b89d34ec4f23360c57a7a4bca6ec243d64d47b1d9dbd1e",
+    "build/stock-shell-home.h": "8349fcd3c38755074b07f4271edb52bdbb92e4a0413bf989a771e4dc2c84b7c4",
+    "build/stock-shell-power.h": "72db84afbb719a1bda0d6b4c340e77d7776179f4e790e077611bd5d583928721",
+    "build/stock-shell-pause.h": "38f9550adecc2003af2ddd96848e7d3662da3c3213ffa56db5199c383d6e5ac6",
+    "build/stock-shell-vesper.h": "77667fe22cd98be1c20d4b6795554805d98847a579c8fc982cfda2966ca6d984",
+    "build/make-home-grid-art.py": "0112cad37c9c0da65e6d7aabb1d9d938d4314b28b14cef76d69942da06d0f401",
+    "build/check-stock-shell-settings.c": "6f7e5feb7600e54644585816ac503bb9b5f925608b1affdc62c4e4ed21d22af0",
+    "build/check-stock-shell-menu.c": "f56c2dd7ba3a5d9b4f66b67b5240418805140360c0f0b46c55212ce1c2bb1033",
+    "build/check-stock-shell-home.c": "7333fb7a8b1e376d46ecc6fc152dcb147b2826061743d2d7b7e200c0bf8172a7",
+    "build/check-stock-shell-pause.c": "211a242f52f9ef03764cbafe62f5f3f8b80b1ef17130cbfd080ed29717265152",
+    "build/check-stock-shell-routes.c": "253cb8c0455175e6f9d03529e6606b1bf1b9157e7a61cf970b2898109df82537",
+    "build/check-vesper-launcher.c": "b07d62d4dd082430cd34757d3ccc4f467c6ff9dcaf200df98c1b46573c23cbd0"
+  },
+  "launcher_sha256": "eb28bb498d47d97c9b9ded64f2158be8968078b29f407d7ffd7c5a3041e4bced",
+  "unchanged_core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "native_resolution": [
+    640,
+    480
+  ],
+  "visible_rows": 5,
+  "real_font_review": [
+    "New Display and Sound",
+    "New System and reset confirmation",
+    "New music picker and long filename",
+    "Classic Display and Sound with battery percentage"
+  ],
+  "checks": [
+    "PASS brightness updates timer0 with checked duty and saves only successful settings",
+    "PASS Sound volume uses its own setting and leaves the backlight alone",
+    "PASS five full-size rows scroll to factory reset and B cancels",
+    "PASS custom MP3 picker, invalid file, loop, game close/resume, Off and bundled playback",
+    "PASS search caret draws within the six-pixel blink strip",
+    "PASS actual vendor font paints the Settings groups, music picker and final reset row",
+    "PASS actual vendor font paints the Settings groups, music picker and final reset row",
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback",
+    "PASS physical-key cancel/confirm and New RGB565 confirmation, working and secured frames",
+    "PASS Home renders estimated percent for each band and the charging icon when powered",
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback",
+    "PASS physical-key cancel/confirm and Classic RGB565 confirmation, working and secured frames",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS Battery display toggles, survives reload and keeps existing preferences",
+    "PASS Settings navigation places launcher options and Power Off before factory reset",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS Battery display toggles, survives reload and keeps existing preferences",
+    "PASS Settings navigation places launcher options and Power Off before factory reset",
+    "PASS Controls draws P1, six live mappings and both shortcut lines in separate areas",
+    "PASS stock slot compositor and selection rim leave all six thumbnail interiors and gutters intact",
+    "PASS Load State selects the first save, ignores held A, refreshes preview and handles empty or corrupt thumbnails",
+    "PASS exact stock run_game dispatch to emulator entry points",
+    "PASS one-shot renderer from launcher entry, 14 frames, zero SPI calls",
+    "PASS real sector loop against RAM, monotonic progress, and injected SPI write failure",
+    "PASS Leaf Brush through stock channel and mixer with one-shot end"
+  ]
+}
