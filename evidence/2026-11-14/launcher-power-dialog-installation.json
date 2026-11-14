@@ -1,0 +1,12 @@
+{
+  "archive": "launcher-footer-return-20261114T171909970887Z",
+  "source_commit": "8ab79932ffce70357ed92391e3dafabd175b8b26",
+  "payload_sha256": {
+    "retro/d35-launcher1/power-dialog.rgb565": "68d4bfbcc7f09301e61309c8acc7be60f12bb7e675432807b0032365f2096935"
+  },
+  "previous_sha256": "b8362deb4b71597570330651fa40bf5450da1ccd38bcd68a7959bc1eeee401f1",
+  "verified_card_files": 2214,
+  "unchanged_card_files": 2213,
+  "fat32_clean": true,
+  "physical_boot": "pending"
+}
