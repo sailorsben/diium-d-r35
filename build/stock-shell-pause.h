@@ -165,10 +165,10 @@ ENTRY void launcher_exit_frame(uint16_t *frame,unsigned w,unsigned h,size_t pitc
             if(width>0 && width<136)
                 pause_label(frame,(int)(x+68)-width/2,265,21,0xffff,actions[i]);
         }
-        int width=pause_measure(frame,20,"Confirm");
-        unsigned x=(640u-36u-(unsigned)(width>0 && width<300?width:68))/2;
-        menu_button(frame,x,322,BUTTON_A);
-        pause_label(frame,x+36,313,20,0xc618,"Confirm");
+        menu_button(frame,214,322,BUTTON_ADJUST);
+        pause_label(frame,250,313,20,0xc618,"Choose");
+        menu_button(frame,335,322,BUTTON_A);
+        pause_label(frame,371,313,20,0xc618,"Confirm");
     }
     bool owned=HOME.own_battery;
     if(PAUSE.menu && pause_layout()) own_menu_battery(true);

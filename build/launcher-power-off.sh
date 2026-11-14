@@ -6,6 +6,7 @@ prepare_card() {
     mounts=$1
     swaps=$2
     log=$3
+    boot_id=$4
     device=
     media=
     while read -r source target type options rest; do
@@ -29,7 +30,7 @@ prepare_card() {
         esac
     done < "$swaps"
 
-    printf 'poweroff=requested mount=%s\n' "$device" > "$log" || return 1
+    printf 'poweroff=requested mount=%s boot_id=%s\n' "$device" "$boot_id" > "$log" || return 1
     sync || return 1
     # Use the full FAT mount. A read-only bind remount alone would leave
     # the same card writable through /media.
@@ -48,4 +49,5 @@ prepare_card() {
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export PATH
 cd / || exit 1
-prepare_card /proc/mounts /proc/swaps /usr/retro/d35-launcher1/power-off.log
+IFS= read -r boot_id < /proc/sys/kernel/random/boot_id || boot_id=unknown
+prepare_card /proc/mounts /proc/swaps /usr/retro/d35-launcher1/power-off.log "$boot_id"

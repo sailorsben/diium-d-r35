@@ -77,6 +77,8 @@ struct overlay {
 #ifdef D35_HOME_GRID
     const uint16_t *power_art;
     uint8_t battery_style;
+    uint8_t power_view;
+    bool power_choice, power_dimmed;
 #endif
 #endif
 };
@@ -89,6 +91,7 @@ static bool launcher_settings(bool from_classic);
 static bool launcher_settings_available(void);
 static void settings_reset_text_clip(void);
 static void menu_button(uint16_t *frame,unsigned x,unsigned y,unsigned button);
+static void settings_blend_pixel(uint16_t *pixel,uint16_t ink,unsigned alpha);
 enum { BUTTON_DPAD, BUTTON_ADJUST, BUTTON_A, BUTTON_B, BUTTON_START, BUTTON_SELECT };
 static unsigned launcher_factory_navigation(unsigned row, unsigned key);
 static bool launcher_factory_active(void);
@@ -1053,11 +1056,15 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
 #ifdef D35_VESPER_LAUNCHER
     if(!button_down(0x30c)) S.start_held=false;
     if(S.power_frame) {
+#ifdef D35_HOME_GRID
+        if(shutdown_input(keys)) shutdown_cancel();
+#else
         if(keys==0x4000) shutdown_cancel();
         else if(keys==0x2000 && !S.accept_held) {
             S.accept_held=true;
             shutdown_confirm();
         }
+#endif
         return 0;
     }
     if(keys==8 && S.settings_pixels && shutdown_available()) {
@@ -1212,6 +1219,7 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
 #endif
 
 #ifdef D35_HOME_GRID
+#include "stock-shell-settings-icons.h"
 #include "stock-shell-home.h"
 #include "stock-shell-pause.h"
 #include "stock-shell-music.h"

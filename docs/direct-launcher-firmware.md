@@ -368,3 +368,28 @@ The next Power Off artwork centers the title and status text, gives Cancel
 and Turn off equal width, and uses the controller button style from the
 launcher footer. The asset retains the existing six status frames and two
 palettes. The launcher keeps its existing shutdown procedure.
+
+The returned card contains that artwork and a fresh direct-launcher
+handoff. CHKDSK found no FAT32 errors and Windows reported a clear dirty
+flag. `power-off.log` matches the previous return byte for byte and has
+the same FAT timestamp. That receipt cannot place the shutdown request
+in the new boot. [Power Off return](../evidence/2026-11-14/launcher-power-dialog-return.json).
+
+### Compact battery and Power Off navigation
+
+The candidate narrows Bars + % to 64 pixels and Solid + % to 64 pixels,
+using antialiased digits. Home and Settings open Power Off on Cancel.
+Left and Right choose an action, A confirms it, and B or Esc dismisses
+the prompt. The in-game Exit dialog now shows the existing arrow and A
+controls. The new Power Off art is versioned. If it is missing or belongs
+to the earlier dialog, the launcher draws a selectable fallback.
+
+The shutdown receipt includes the boot ID from `/proc`. Match it to
+`direct-boot.log` to identify a request from the same boot, then verify
+the filesystem on return. The receipt is written before the sync and
+read-only remount, so it records the request only.
+
+The ARM/QEMU checks exercise the battery styles, Home dialog focus,
+confirmation and cancellation, Settings, and the in-game Exit controls.
+The shutdown-script fixture checks the boot receipt and card-preparation
+failure paths. The candidate is staged locally for handheld review.

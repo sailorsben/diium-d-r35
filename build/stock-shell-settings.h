@@ -98,8 +98,6 @@ static int settings_label(uint16_t *frame,unsigned x,unsigned y,unsigned size,ui
 
 static uint16_t settings_accent(void) { return S.classic?0x8f5e:0xfe49; }
 
-#include "stock-shell-settings-icons.h"
-
 static void settings_confirm_sound(void)
 {
     const struct sound cue={(void *)settings_confirm_pcm,2,1,1,44100,0,
@@ -639,8 +637,9 @@ static bool launcher_settings(bool from_classic)
         settings_idle();
         unsigned key=settings_key_poll(&held);
         if(S.power_frame) {
-            if(key==0x4000) shutdown_cancel();
-            else if(key==0x2000) { held|=0x2000; shutdown_confirm(); }
+            if(!(HOME_PAD&0x2000)) S.accept_held=false;
+            if(key==0x2000 || key==0x4000) held|=key;
+            if(shutdown_input(key)) shutdown_cancel();
             continue;
         }
         if(!key) {

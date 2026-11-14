@@ -34,8 +34,8 @@ static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int sta
     unsigned style=S.battery_style;
     bool numbered=style!=BATTERY_BARS && state>=0 && state<=4;
     bool solid=style==BATTERY_SOLID;
-    unsigned width=solid?84:36;
-    unsigned x=(solid || numbered)?533:581;
+    unsigned width=solid?60:30;
+    unsigned x=solid?557:numbered?552:587;
     unsigned right=x+width;
     for(unsigned y=18;y<35;++y) {
         unsigned inset=y==18 || y==34;
@@ -44,35 +44,23 @@ static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int sta
     settings_box(frame,x+2,20,right-2,33,0x1127);
     settings_box(frame,right+1,23,right+4,30,ink);
     unsigned bars=state<0?0:state==5?4:state>=3?1:4-state;
-    unsigned filled=x+4;
-    if(solid && state>=0 && state<=5) {
-        unsigned percentage=state==5?100:90-20*state;
-        filled+=(width-8)*percentage/100;
-        settings_box(frame,x+4,21,filled,32,ink);
-    } else if(!solid) {
+    if(solid) {
+        unsigned percentage=state==5?100:state<0 || state>4?0:90-20*state;
+        unsigned filled=x+3+(width-6)*percentage/100;
+        uint16_t fill=S.applied_classic?0x2b93:0x3b34;
+        settings_box(frame,x+3,21,filled,32,fill);
+    } else {
         for(unsigned i=0;i<bars;++i)
-            settings_box(frame,x+4+i*7,22,x+9+i*7,31,ink);
+            settings_box(frame,x+4+i*6,22,x+8+i*6,31,ink);
     }
     if(numbered) {
-        static const uint8_t marks[][7]={
-            {14,17,17,17,17,17,14}, /* 0 */
-            {4,12,4,4,4,4,14}, /* 1 */
-            {30,1,1,14,1,1,30}, /* 3 */
-            {31,16,16,30,1,1,30}, /* 5 */
-            {31,1,2,4,8,8,8}, /* 7 */
-            {14,17,17,15,1,1,14}, /* 9 */
-            {25,26,4,4,8,11,19}, /* % */
-        };
         const unsigned chars[]={5-(unsigned)state,0,6};
-        unsigned origin=solid?x+25:586;
+        unsigned origin=solid?x+17:right+8;
         for(unsigned i=0;i<3;++i)
-            for(unsigned y=0;y<7;++y)
-                for(unsigned column=0;column<5;++column)
-                    if(marks[chars[i]][y]&(16u>>column)) {
-                        unsigned left=origin+12*i+2*column, top=20+2*y;
-                        uint16_t color=solid && left<filled?0x1127:solid?0xffff:ink;
-                        settings_box(frame,left,top,left+2,top+2,color);
-                    }
+            for(unsigned y=0;y<12;++y)
+                for(unsigned column=0;column<10;++column)
+                    settings_blend_pixel(frame+(21+y)*640+origin+8*i+column,
+                                         0xf7bf,battery_text[chars[i]][y][column]);
     }
     if(state==5) {
         unsigned center=x+width/2;
@@ -118,7 +106,7 @@ ENTRY void launcher_display_frame(const void *frame,unsigned w,unsigned h,size_t
         uint16_t *canvas=STOCK_UI_FRAME;
         int battery=HOME_BATTERY;
         /* Clear the whole previous badge before changing display modes. */
-        unsigned left=518;
+        unsigned left=544;
         settings_box(canvas,left,14,630,39,0x08a4);
         settings_box(canvas,left+4,10,626,43,0x08a4);
         home_battery(canvas,battery);
@@ -238,13 +226,11 @@ ENTRY unsigned stock_home(void)
             shutdown_message(POWER_CONFIRM,"POWER OFF","SAVE DATA WILL BE FLUSHED","A POWER OFF     B CANCEL");
         } else if(S.power_frame) {
             if(!(HOME_PAD&0x2000)) S.accept_held=false;
-            if(key==0x4000 || esc) {
+            if(shutdown_input(esc?0x4000:key)) {
+                if(key==0x2000) held|=key;
                 S.power_frame=NULL;
                 shutdown_release_art();
                 redraw=true;
-            } else if(key==0x2000 && !S.accept_held) {
-                S.accept_held=true;
-                shutdown_confirm();
             }
         } else if(key==0x2000) {
             settings_confirm_sound();

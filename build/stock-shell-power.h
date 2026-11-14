@@ -18,15 +18,20 @@ enum power_view { POWER_CONFIRM, POWER_WORKING, POWER_PAUSED, POWER_RETRY,
 #ifdef D35_HOME_GRID
 enum { POWER_X=77, POWER_Y=153, POWER_W=486, POWER_H=174,
        POWER_PANEL_PIXELS=POWER_W*POWER_H };
+static void shutdown_confirm(void);
 
 static void shutdown_prepare_art(void)
 {
+    S.power_choice=false;
+    S.power_dimmed=false;
     char path[384];
     const size_t theme_bytes=POWER_VIEW_COUNT*POWER_PANEL_PIXELS*sizeof(uint16_t);
     if(!suffix(path,sizeof(path),WORK(),LAUNCHER "/power-dialog.rgb565")) return;
     FILE *file=FOPEN(path,"rb");
     if(!file) return;
-    if(!FSEEK(file,0,SEEK_END) && FTELL(file)==(long)(2*theme_bytes) &&
+    char version[4];
+    if(!FSEEK(file,0,SEEK_END) && FTELL(file)==(long)(2*theme_bytes+4) &&
+       !FSEEK(file,-4,SEEK_END) && FREAD(version,1,4,file)==4 && !CMP(version,"D35P",4) &&
        !FSEEK(file,S.applied_classic?(long)theme_bytes:0,SEEK_SET)) {
         uint16_t *art=ALLOC(theme_bytes);
         if(art && FREAD(art,1,theme_bytes,file)==theme_bytes) S.power_art=art;
@@ -40,6 +45,23 @@ static void shutdown_release_art(void)
     FREE((void *)S.power_art);
     S.power_art=NULL;
 }
+
+static void shutdown_highlight(uint16_t *frame,unsigned x,unsigned y,unsigned width,unsigned height)
+{
+    const uint16_t ink=S.applied_classic?0x8f5e:0xfeb0;
+    /* Follow the rounded action edge. The unselected card comes from the asset. */
+    for(unsigned row=0;row<height;++row) {
+        static const uint8_t inset[]={7,5,3,2,2,1,1,0};
+        unsigned cap=row<height/2?row:height-1-row;
+        unsigned edge=cap<8?inset[cap]:0;
+        if(!cap) {
+            settings_box(frame,x+edge,y+row,x+width-edge,y+row+1,ink);
+        } else {
+            settings_box(frame,x+edge,y+row,x+edge+1,y+row+1,ink);
+            settings_box(frame,x+width-edge-1,y+row,x+width-edge,y+row+1,ink);
+        }
+    }
+}
 #endif
 
 static void shutdown_message(enum power_view view,const char *title,const char *detail,const char *keys)
@@ -49,15 +71,21 @@ static void shutdown_message(enum power_view view,const char *title,const char *
     wait();
     uint16_t *frame=S.power_frame;
 #ifdef D35_HOME_GRID
+    S.power_view=view;
+    bool choices=view==POWER_CONFIRM || view==POWER_RETRY;
+    if(!S.power_dimmed) {
+        for(unsigned i=0;i<640*480;++i) frame[i]=(frame[i]>>1)&0x7bef;
+        S.power_dimmed=true;
+    }
     if(S.power_art) {
-        if(view==POWER_CONFIRM)
-            for(unsigned i=0;i<640*480;++i) frame[i]=(frame[i]>>1)&0x7bef;
         const uint16_t *panel=S.power_art+view*POWER_PANEL_PIXELS;
         for(unsigned y=0;y<POWER_H;++y)
             for(unsigned x=0;x<POWER_W;++x) {
                 uint16_t pixel=panel[y*POWER_W+x];
                 if(pixel) frame[(POWER_Y+y)*640+POWER_X+x]=pixel;
             }
+        if(choices)
+            shutdown_highlight(frame,POWER_X+(S.power_choice?251:61),POWER_Y+111,174,37);
         DISP(frame,640,480,1280);
         return;
     }
@@ -68,6 +96,17 @@ static void shutdown_message(enum power_view view,const char *title,const char *
     settings_box(frame,72,160,568,319,0x08a3);
     settings_text(frame,102,184,title,3,0xffff);
     settings_text(frame,102,237,detail,2,0xd6da);
+#ifdef D35_HOME_GRID
+    if(choices) {
+        unsigned left=137, right=328;
+        settings_box(frame,left,264,left+175,294,0x1127);
+        settings_box(frame,right,264,right+175,294,0x1127);
+        shutdown_highlight(frame,S.power_choice?right:left,264,175,30);
+        settings_text(frame,188,272,"CANCEL",2,0xffff);
+        settings_text(frame,364,272,view==POWER_RETRY?"RETRY":"TURN OFF",2,0xffff);
+        settings_text(frame,139,301,"LEFT RIGHT CHOOSE   A CONFIRM",2,0xaf9e);
+    } else
+#endif
     settings_text(frame,102,283,keys,2,0xaf9e);
     DISP(frame,640,480,1280);
 }
@@ -110,6 +149,9 @@ static void shutdown_confirm(void)
         for(;;) FN(0x11f08,int,unsigned)(200000);
     }
     if(status) {
+#ifdef D35_HOME_GRID
+        S.power_choice=false;
+#endif
         shutdown_message(POWER_RETRY,"CARD NOT SECURED","SHUTDOWN COULD NOT START","A RETRY     B CANCEL");
         return;
     }
@@ -121,3 +163,26 @@ static void shutdown_confirm(void)
      * request fails, returning to normal UI would allow writes to a RO card. */
     for(;;) FN(0x11f08,int,unsigned)(200000);
 }
+
+#ifdef D35_HOME_GRID
+/* True means dismiss; Home and Settings restore their own backgrounds. */
+static bool shutdown_input(unsigned key)
+{
+    if(key==0x4000) return true;
+    if(key==0x80 || key==0x20) {
+        bool turn_off=key==0x20;
+        if(S.power_choice!=turn_off) {
+            S.power_choice=turn_off;
+            if(S.power_view==POWER_RETRY)
+                shutdown_message(POWER_RETRY,"CARD NOT SECURED","SHUTDOWN COULD NOT START","");
+            else
+                shutdown_message(POWER_CONFIRM,"POWER OFF","SAVE DATA WILL BE FLUSHED","");
+        }
+    } else if(key==0x2000 && !S.accept_held) {
+        S.accept_held=true;
+        if(!S.power_choice) return true;
+        shutdown_confirm();
+    }
+    return false;
+}
+#endif

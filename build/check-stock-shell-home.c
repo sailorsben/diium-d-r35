@@ -12,6 +12,9 @@ static bool power_case;
 static jmp_buf powered_off;
 static uint16_t *power_asset;
 static unsigned power_views, phase_mask, theme, next_view;
+static unsigned power_focus_frames;
+static bool power_right;
+static uint16_t power_background;
 static bool esc_pressed;
 static bool percent_case, solid_case;
 static bool stock_case;
@@ -29,9 +32,19 @@ static void check_battery(const uint16_t *frame,int band,bool with_percentage)
 {
     uint16_t ink=band==4?0xfb69:theme?0x8f5e:0xb69a;
     bool numbered=with_percentage && band<5;
-    unsigned x=solid_case || numbered?533:581, width=solid_case?84:36;
+    unsigned x=solid_case?557:numbered?552:587, width=solid_case?60:30;
     assert(frame[19*W+x]==ink && frame[19*W+x+width-1]==ink);
-    if(numbered && !solid_case) assert(frame[20*W+610]==ink);
+    if(numbered) {
+        unsigned light=0,blended=0;
+        unsigned origin=solid_case?574:590;
+        for(unsigned y=21;y<33;++y)
+            for(unsigned px=origin;px<origin+26;++px) {
+                unsigned value=frame[y*W+px];
+                if(value==0xf7bf) ++light;
+                else if((value>>11)>=13 && ((value>>5)&63)>=28) ++blended;
+            }
+        assert(light>6 && blended>6);
+    }
     if(band==4 && !solid_case) assert(frame[23*W+x+6]==ink);
     if(band==5) assert(frame[23*W+x+width/2]==0xff8d);
 }
@@ -66,13 +79,23 @@ static void grid_draw(const void *pixels,unsigned w,unsigned h,size_t pitch)
         enum { X=77,Y=153,PANEL_W=486,PANEL_H=174 };
         const unsigned view=next_view-1;
         const uint16_t *panel=power_asset+(theme*6+view)*PANEL_W*PANEL_H;
+        if(view==0 || view==3) {
+            const uint16_t focus=0xfeb0;
+            assert((grid_frame[(Y+111)*W+X+90]==focus)==!power_right);
+            assert((grid_frame[(Y+111)*W+X+280]==focus)==power_right);
+            if(power_focus_frames==0) power_background=grid_frame[61*W+99];
+            else assert(power_background==grid_frame[61*W+99]);
+            ++power_focus_frames;
+        }
         for(unsigned y=0;y<PANEL_H;++y)
             for(unsigned x=0;x<PANEL_W;++x)
-                if(panel[y*PANEL_W+x])
+                if(panel[y*PANEL_W+x] &&
+                   !((view==0 || view==3) && y>=111 && y<148 &&
+                     x>=(power_right?251u:61u) && x<(power_right?425u:235u)))
                     assert(grid_frame[(Y+y)*W+X+x]==panel[y*PANEL_W+x]);
         static const char *const names[]={"power-confirm","power-working","power-paused",
                                           "power-retry","power-secured","power-failed"};
-        capture(names[view],grid_frame);
+        capture(view==0 && power_right?"power-confirm-focused":names[view],grid_frame);
         phase_mask|=1u<<view;
         ++power_views;
         next_view=0;
@@ -82,9 +105,13 @@ static unsigned grid_joy(void)
 {
     assert(next_event<count);
     unsigned event=events[next_event++];
-    if(event==0x10000) { power_regs[0x68/4]=8; next_view=1; event=0; }
+    if(event==0x10000) { power_regs[0x68/4]=8; power_right=false; next_view=1; event=0; }
     if(event==0x20000) { power_regs[0x68/4]=0; event=0; }
-    if(power_case && event==0x2000) next_view=2;
+    if(power_case && (event==0x20 || event==0x80)) {
+        power_right=event==0x20;
+        next_view=1;
+    }
+    if(power_case && event==0x2000 && power_right) next_view=2;
     return event;
 }
 static int grid_gpio(unsigned pin)
@@ -216,7 +243,8 @@ int main(int argc,char **argv)
            <(int)sizeof(asset_path));
     size_t asset_bytes;
     power_asset=(uint16_t *)read_data(asset_path,&asset_bytes);
-    assert(asset_bytes==2*6*486*174*2);
+    assert(asset_bytes==2*6*486*174*2+4);
+    assert(!memcmp((const uint8_t *)power_asset+asset_bytes-4,"D35P",4));
 
     const unsigned shortcuts[]={8,1,0x1000,0x8000,0x400,0x800};
     const unsigned modes[]={5,3,4,2,0,6};
@@ -280,26 +308,27 @@ int main(int argc,char **argv)
     puts("PASS missing grid art keeps New usable and reaches launcher Settings");
 
     power_case=true;
-    unsigned cancel[]={0,0x10000,0x20000,0x4000,8};
-    sequence(cancel,5);
+    unsigned cancel[]={0,0x10000,0x20000,0x20,0x80,0x2000,8};
+    sequence(cancel,7);
     assert(dispatch(target(0x9846c))==5 && !confirms && unmaps==1 && !grid_frame);
     unsigned esc_cancel[]={0,9,0,9,8};
     esc_pressed=true;
     sequence(esc_cancel,5);
     assert(dispatch(target(0x9846c))==5 && !confirms && unmaps==2 && !grid_frame);
     esc_pressed=false;
-    unsigned confirm[]={0,0x10000,0x20000,0x2000};
-    sequence(confirm,4);
+    unsigned confirm[]={0,0x10000,0x20000,0x20,0x2000};
+    sequence(confirm,5);
     if(!setjmp(powered_off)) {
         dispatch(target(0x9846c));
         abort();
     }
-    assert(confirms==1 && next_event==4);
-    assert(power_views==4 && phase_mask==((1u<<0)|(1u<<1)|(1u<<4)));
+    assert(confirms==1 && next_event==5);
+    assert(power_focus_frames==5 && power_views==7 &&
+           phase_mask==((1u<<0)|(1u<<1)|(1u<<4)));
     free(grid_frame);
     free(power_asset);
     puts("PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and New with a non-English locale");
-    printf("PASS physical-key cancel/confirm and %s RGB565 confirmation, working and secured frames\n",
+    printf("PASS arrow focus, A cancel/confirm and %s RGB565 confirmation, working and secured frames\n",
            theme?"Classic":"New");
     return 0;
 }

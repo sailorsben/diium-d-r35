@@ -127,20 +127,18 @@ def build_power(font, output, bold=None):
             center = width//2
             box(0,0,width,height,12,bg,edge)
             if i in (0,3):
-                # The power mark uses the same warm accent as the primary action.
                 c = center*scale
                 draw.arc((c-9*scale,12*scale,c+9*scale,30*scale),-49,229,
                          fill=accent,width=2*scale)
                 draw.rounded_rectangle((c-scale,9*scale,c+scale,20*scale),scale,fill=accent)
                 text(center,54,title,28,"#f2f5fa",True)
                 text(center,87,detail,18,"#c2d3e0")
-                actions = buttons[::-1]
-                for left, (key,label) in zip((61,251),actions):
-                    box(left,111,left+174,153,8,button,accent if key=="A" else edge)
+                for left, (_,label) in zip((61,251),reversed(buttons)):
+                    box(left,111,left+174,148,8,button,edge)
                     label_w = round(footer.lettering(18,True).getlength(label)/scale)
-                    start = left+(174-28-10-label_w)//2
-                    footer.cap(panel,start,118,key,28)
-                    text(start+38+label_w/2,132,label,18,"#f2f5fa",True)
+                    start = left+(174-label_w)//2
+                    text(start+label_w/2,129,label,18,"#f2f5fa",True)
+                text(center,160,"←  →  Choose     A  Confirm",14,"#c2d3e0")
             else:
                 box(center-19,25,center+19,28,1,accent)
                 text(center,64,title,27,"#f2f5fa",True)
@@ -158,7 +156,7 @@ def build_power(font, output, bold=None):
                     preview = home.point(lambda v: v//2)
                 preview.paste(frame, (x,y), opaque)
                 preview.save(output/("power-classic.png" if classic else "power-new.png"))
-    (output/"power-dialog.rgb565").write_bytes(data)
+    (output/"power-dialog.rgb565").write_bytes(data+b"D35P")
 
 
 def build_settings(pack, font, destination, classic):

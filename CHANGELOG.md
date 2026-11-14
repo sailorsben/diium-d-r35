@@ -1,5 +1,12 @@
 # Changelog
 
+## Compact battery badges and selectable shutdown actions - 2026-11-14
+
+Battery percentages use antialiased digits on a narrower badge. Power Off
+opens with Cancel selected. Left and Right change the choice, and A
+confirms it. The in-game Exit prompt displays its arrow controls. Shutdown
+receipts include the boot ID so a returned card can identify the request.
+
 ## Center the Power Off dialog - 2026-11-14
 
 The shutdown prompt has centered text and equal action buttons. Cancel
