@@ -1,4 +1,4 @@
-"""Install the reviewed launcher and covers to the D-R35 card on Windows."""
+"""Install a reviewed launcher update to the D-R35 card on Windows."""
 import argparse
 import json
 import os
@@ -18,6 +18,13 @@ FALLBACK = "retro/d35-launcher1/vrtemu"
 OLD_LAUNCHER = "0ed23b74500561a6faf70f267bc31b8b1192a0ab8dacf2a64e0f2d5830ae765c"
 ART = "retro/d35-launcher1/ui_en.bkp"
 TARGETS = {LAUNCHER, FALLBACK, ART, "002/images/Star Fox.png", "002/images/Chrono Trigger.png"}
+FOOTER_TARGETS = {LAUNCHER, FALLBACK, ART, "retro/d35-launcher1/home-grid.rgb565"}
+FOOTER_BASELINE = {
+    LAUNCHER: "360deea8f3797d6c2bd8fb62fae2f83148a45a16d13c1d18bb550798ffc4c9d3",
+    FALLBACK: "360deea8f3797d6c2bd8fb62fae2f83148a45a16d13c1d18bb550798ffc4c9d3",
+    ART: "a2cbf9597523c84c09b48742cbedfcc839c2da07d61f1059b752c99b3df6e1cd",
+    "retro/d35-launcher1/home-grid.rgb565": "2533d6044cea2149264edd43b178447d2d26a286e94a36980938b7c3ee90bd74",
+}
 
 
 def inventory_hashes(root):
@@ -63,11 +70,13 @@ def stage(source, target, expected):
     return temporary
 
 
-def install(payload, qualification, archive, output):
+def install(payload, qualification, archive, output, footer=False):
     candidate = json.loads(qualification.read_text(encoding="utf-8"))
     manifest = json.loads((archive/"archive.json").read_text(encoding="utf-8"))
     desired = candidate["payload_sha256"]
-    if set(desired) != TARGETS or desired[LAUNCHER] != desired[FALLBACK]:
+    targets = FOOTER_TARGETS if footer else TARGETS
+    baseline = FOOTER_BASELINE if footer else {LAUNCHER: OLD_LAUNCHER, FALLBACK: OLD_LAUNCHER}
+    if set(desired) != targets or desired[LAUNCHER] != desired[FALLBACK]:
         raise ValueError("Unexpected launcher install targets")
     if not candidate["arm_checks_passed"] or candidate["core_sha256"] != CORE_SHA:
         raise ValueError("Missing launcher qualification")
@@ -80,7 +89,7 @@ def install(payload, qualification, archive, output):
             raise ValueError(f"Source or pending install mismatch: {relative}")
     require_clean_card(output, "preflight")
     before = {e["path"]:e["sha256"] for e in manifest["all_retro_files"]+manifest["outside_retro_files"]}
-    if inventory_hashes(CARD) != before or any(before.get(p) != OLD_LAUNCHER for p in (LAUNCHER,FALLBACK)):
+    if inventory_hashes(CARD) != before or any(before.get(p) != sha for p,sha in baseline.items()):
         raise ValueError("Card changed since collection")
     if before.get(CORE) != CORE_SHA or "retro/update/Code.bkp" in before:
         raise ValueError("Unexpected core or armed firmware update")
@@ -121,7 +130,7 @@ def install(payload, qualification, archive, output):
         raise
 
     receipt = dict(archive=archive.name, source_commit=candidate["source_commit"], payload_sha256=desired,
-                   verified_card_files=len(after), unchanged_card_files=len(set(after)-TARGETS),
+                   verified_card_files=len(after), unchanged_card_files=len(set(after)-targets),
                    retained_progress_and_log_files=sum(e["stored"] for e in manifest["all_retro_files"]+manifest["outside_retro_files"]),
                    core_sha256=CORE_SHA, fat32_clean=True, one_boot_test_armed=False,
                    spi_update_armed=False, persistent_card_launcher=True, physical_boot="pending")
@@ -133,6 +142,7 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     for argument in ("payload","qualification","archive","output"):
         parser.add_argument(argument,type=Path)
+    parser.add_argument("--footer",action="store_true",help="install the four-file footer update")
     args = parser.parse_args()
     args.output.mkdir()
-    install(args.payload,args.qualification,args.archive,args.output)
+    install(args.payload,args.qualification,args.archive,args.output,args.footer)

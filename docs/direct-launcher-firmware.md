@@ -352,3 +352,8 @@ The approved Star Fox and Chrono Trigger thumbnails include their U.S.
 SNES logos. The permanent card package updates both launcher copies,
 the New theme list art, and those two thumbnails. It uses the installed
 optimized core and the established stock gameplay audio route.
+
+The footer update uses the same controller button shapes on Home, the
+New game list and search screens, and Controls. The Home grid asset and
+the game list pack change only in their footer regions. Controls draws
+its prompts in the running launcher, including its remap state.

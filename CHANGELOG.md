@@ -1,5 +1,11 @@
 # Changelog
 
+## Restyle launcher button prompts - 2026-11-14
+
+Home, Game List, and Controls use button shapes that match the handheld.
+Gold marks the primary action. The Home shortcuts fit on one line, and
+Controls updates the prompts when a mapping is being edited.
+
 ## Controller diagram and SNES covers - 2026-11-14
 
 Controls follows the handheld's physical button layout. The selected

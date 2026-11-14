@@ -527,6 +527,41 @@ static void controls_keycap(uint16_t *frame,unsigned x,unsigned y,unsigned w,uns
                     size,active?accent:0xffff,label);
 }
 
+static void controls_footer_button(uint16_t *frame,unsigned x,unsigned y,unsigned button)
+{
+    if(button==BUTTON_DPAD) {
+        const uint16_t rim=0x84f6;
+        controls_round(frame,x+9,y,12,30,2,rim);
+        controls_round(frame,x,y+9,30,12,2,rim);
+        controls_round(frame,x+10,y+1,10,28,2,0x42ce);
+        controls_round(frame,x+1,y+10,28,10,2,0x2a0b);
+        controls_round(frame,x+11,y+11,8,8,4,rim);
+        controls_round(frame,x+12,y+12,6,6,3,0x1947);
+        return;
+    }
+
+    bool primary=button==BUTTON_A;
+    static const uint16_t gold[]={0xff34,0xfed0,0xf66e,0xf5ca,0xe548,0xd4c7,0xbbc4};
+    static const uint16_t blue[]={0x42ce,0x3a8d,0x324c,0x2a0b,0x29ca,0x21a9,0x1947};
+    const uint16_t *gradient=primary?gold:blue;
+    uint16_t edge=primary?0xfeb0:0x7494;
+    for(unsigned row=0;row<30;++row) {
+        int rise=(int)row-14;
+        if(rise>0) --rise;
+        int inset=0;
+        while((14-inset)*(14-inset)+rise*rise>14*14) ++inset;
+        settings_box(frame,x+inset,y+row,x+30-inset,y+row+1,edge);
+        if(row && row<29) {
+            unsigned shade=row*6/28;
+            settings_box(frame,x+inset+1,y+row,x+29-inset,y+row+1,gradient[shade]);
+        }
+    }
+    const char *glyph=primary?"A":"B";
+    int width=pause_measure(frame,21,glyph);
+    if(width>0 && width<30)
+        pause_label(frame,x+(30-width)/2,(int)y-8,21,primary?0x20c1:0xf7bf,glyph);
+}
+
 static void controls_draw(uint16_t *frame,unsigned player,unsigned focus,bool editing,
                           unsigned selected,unsigned current)
 {
@@ -610,14 +645,19 @@ static void controls_draw(uint16_t *frame,unsigned player,unsigned focus,bool ed
     pause_label(frame,79,375,20,soft,"+");
     controls_keycap(frame,97,380,36,30,"R2",false,accent);
     pause_label(frame,150,373,22,0xffff,"Save as default for this system");
-    settings_box(frame,0,432,640,480,0x1127);
-    settings_box(frame,0,432,640,433,0x320c);
-    menu_button(frame,25,442,BUTTON_DPAD);
-    pause_label(frame,62,430,22,0xffff,editing?"Change":"Move");
-    menu_button(frame,233,442,BUTTON_A);
-    pause_label(frame,270,430,22,0xffff,editing?"Apply":focus?"Remap":"Next player");
-    menu_button(frame,509,442,BUTTON_B);
-    pause_label(frame,546,430,22,0xffff,editing?"Cancel":"Back");
+    settings_box(frame,0,432,640,480,0x10e5);
+    settings_box(frame,0,432,640,433,0x324c);
+    const char *move=editing?"Change":"Move";
+    const char *action=editing?"Apply":focus?"Remap":"Next player";
+    const char *back=editing?"Cancel":"Back";
+    unsigned middle=(640-38-pause_measure(frame,22,action))/2;
+    unsigned end=616-38-pause_measure(frame,22,back);
+    controls_footer_button(frame,24,441,BUTTON_DPAD);
+    pause_label(frame,62,430,22,0xf7bf,move);
+    controls_footer_button(frame,middle,441,BUTTON_A);
+    pause_label(frame,middle+38,430,22,0xf7bf,action);
+    controls_footer_button(frame,end,441,BUTTON_B);
+    pause_label(frame,end+38,430,22,0xf7bf,back);
     bool owned=HOME.own_battery;
     own_menu_battery(true);
     DISP(frame,640,480,1280);

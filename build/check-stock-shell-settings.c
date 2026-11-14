@@ -18,6 +18,21 @@ static unsigned stock_settings_visits;
 static bool review;
 static const char *capture_base="settings";
 static void capture_pause_review(void);
+static void capture_list_review(void)
+{
+    const char *const names[]={"menu.raw","search.raw"};
+    int (*load)(void **,const char *)=(void *)0x82aa8;
+    for(unsigned i=0;i<2;++i) {
+        void *art=NULL;
+        assert(load(&art,names[i]) && art);
+        unsigned offset=*(unsigned *)art;
+        assert(*(unsigned *)0x19bc0c>=offset+sizeof(settings));
+        memcpy(settings,(const unsigned char *)art+offset,sizeof(settings));
+        free(art);
+        settings_snapshot(i==0?"game-list.rgb565":"search-list.rgb565");
+    }
+    puts("PASS launcher resource loader displays the New game list and search artwork");
+}
 static unsigned simulated_exit;
 static uint16_t *controls_canvas;
 static unsigned controls_updates,controls_saves;
@@ -304,6 +319,7 @@ int main(int argc,char **argv)
             capture_base="pause";
             frames=0;
             capture_pause_review();
+            capture_list_review();
             return 0;
         }
         const unsigned paint[]={0,DOWN,DOWN,DOWN,DOWN,A,0,DOWN,DOWN,DOWN,DOWN,B,0,
