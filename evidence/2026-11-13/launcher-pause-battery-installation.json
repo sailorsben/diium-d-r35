@@ -1,0 +1,20 @@
+{
+  "archive": "launcher-pause-battery-before-20261114T042744400955Z",
+  "source_commit": "4bb90cf8a6fd6bcad1868c8a46d8fac15e0fef20",
+  "payload_sha256": {
+    "retro/d35-launcher1/ui_en.bkp": "13f956481d4003ca7d242a86f803388cfc057bd5f9fb3603dc3cd455855d2cea",
+    "retro/d35-launcher1/ui_classic.bkp": "0b0eeee19a1bb4a2299766481afaf7964f57df5360edd5727a3ef13abb1a6047",
+    "retro/d35-launcher1/vrtemu": "983d4c36332386dc20878ab0147f811b7eb1a1017cb9e76ac6672a72485d7b66",
+    "retro/vrtemu": "983d4c36332386dc20878ab0147f811b7eb1a1017cb9e76ac6672a72485d7b66"
+  },
+  "verified_card_files": 2212,
+  "unchanged_card_files": 2208,
+  "retained_progress_and_log_files": 590,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "returned_boot_id": "3bb61d2c-4e55-451f-91df-3408b2c1083a",
+  "spi_update_armed": false,
+  "one_boot_test_armed": false,
+  "fat32_clean": true,
+  "persistent_card_launcher": true,
+  "new_launcher_physical_boot": "pending"
+}
