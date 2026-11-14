@@ -58,7 +58,7 @@ static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int sta
         const uint16_t track=S.applied_classic?0x1a8b:0x1949;
         const uint16_t fill=state==4?0x6a66:S.applied_classic?0x2b74:0x3351;
         static const uint8_t corner[]={3,1,1};
-        settings_box(frame,right,22,right+3,32,rim);
+        settings_box(frame,right,21,right+3,33,rim);
         for(unsigned row=0;row<22;++row) {
             unsigned cap=row<11?row:21-row;
             unsigned inset=cap<3?corner[cap]:0;

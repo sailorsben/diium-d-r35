@@ -409,7 +409,7 @@ captures come from the ARM frame buffer at 640×480. Physical review is
 pending.
 
 The follow-up changes Solid + % to a 48 × 22 px outlined battery case
-with a flat terminal that projects 3 px. The charge fill stays inside the case and the
-18 px label stays centered at every level. The low-charge case turns
+with a flat terminal 12 px tall that projects 3 px. The charge fill stays
+inside the case and the 18 px label stays centered. The low-charge case turns
 amber, and the charging state shows a bolt. Check the icon in the
 header on the handheld at the next card update.
