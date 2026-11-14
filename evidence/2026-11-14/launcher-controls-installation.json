@@ -1,0 +1,20 @@
+{
+  "archive": "launcher-controls-before-20261114T160622704233Z",
+  "source_commit": "bf28ff95f7ee26f9e1efe3381bc9e7e6b2dde450",
+  "payload_sha256": {
+    "retro/d35-launcher1/vrtemu": "360deea8f3797d6c2bd8fb62fae2f83148a45a16d13c1d18bb550798ffc4c9d3",
+    "retro/d35-launcher1/ui_en.bkp": "a2cbf9597523c84c09b48742cbedfcc839c2da07d61f1059b752c99b3df6e1cd",
+    "002/images/Star Fox.png": "7800069adce392b492c5c9f59e58b2370b62aad5dd5228b4c23dde5cf1713537",
+    "002/images/Chrono Trigger.png": "e35e3733cb3cb44c09c81d1b73f08402aa212ea025c1bb81dd0d7a66b1303118",
+    "retro/vrtemu": "360deea8f3797d6c2bd8fb62fae2f83148a45a16d13c1d18bb550798ffc4c9d3"
+  },
+  "verified_card_files": 2214,
+  "unchanged_card_files": 2209,
+  "retained_progress_and_log_files": 590,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "fat32_clean": true,
+  "one_boot_test_armed": false,
+  "spi_update_armed": false,
+  "persistent_card_launcher": true,
+  "physical_boot": "pending"
+}
