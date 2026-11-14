@@ -411,5 +411,13 @@ pending.
 The follow-up changes Solid + % to a 48 × 22 px outlined battery case
 with a flat terminal 12 px tall that projects 3 px. The charge fill stays
 inside the case and the 18 px label stays centered. The low-charge case turns
-amber, and the charging state shows a bolt. Check the icon in the
-header on the handheld at the next card update.
+amber, and the charging state shows a bolt.
+
+The approved icon and Power Off navigation are installed in the permanent
+SD launcher. Both launcher copies, the Power Off panels, and the shutdown
+script match the staged package. Readback verified 2,214 files, including
+2,210 with their original hashes. The card kept its Solid + % preference.
+CHKDSK found no errors and the dirty flag was clear after installation.
+On the next handheld boot, check the icon and use Left and Right in Power Off.
+The shutdown receipt can then be matched to that boot ID.
+[Installation receipt](../evidence/2026-11-14/launcher-battery-power-installation.json).

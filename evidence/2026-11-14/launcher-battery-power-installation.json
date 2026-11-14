@@ -1,0 +1,22 @@
+{
+  "source_commit": "8a27b624450de007f9c5392d8bb0b32084612690",
+  "archive": "launcher-battery-power-before-20261114T185409706936Z",
+  "archive_sha256": "ecdbec9dbfdd95c44692f2d4a74bdb484bdc4b51245325870bb2bd162b33e3fe",
+  "payload_sha256": {
+    "retro/vrtemu": "4575af08eda0243f35573c833c8faa3b4b9e7c8783738b4b11bf9344819718ab",
+    "retro/d35-launcher1/vrtemu": "4575af08eda0243f35573c833c8faa3b4b9e7c8783738b4b11bf9344819718ab",
+    "retro/d35-launcher1/power-dialog.rgb565": "781f782f94ff6372fa88b60c124d9ecbe0423871e7cf5a974a3fcb69a2d3476c",
+    "retro/d35-launcher1/power-off.sh": "d3232ab2d0947d8aa63dca66ac4a90842ee308741cf16db46a2a6721975bb630"
+  },
+  "verified_card_files": 2214,
+  "unchanged_card_files": 2210,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "battery_preference": "0NS",
+  "boot_id_before_update": "29e321a5-611b-487b-b890-3368decffb2e",
+  "fat32_clean": true,
+  "dirty_flag": false,
+  "persistent_card_launcher": true,
+  "one_boot_test_armed": false,
+  "spi_update_armed": false,
+  "physical_boot": "pending"
+}
