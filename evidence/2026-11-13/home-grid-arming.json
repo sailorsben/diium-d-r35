@@ -1,0 +1,41 @@
+{
+  "archive": "launcher-grid-before-20261114T011452837097Z",
+  "source_commit": "8d4aeb3146125d4981d5051ea1e808560ce63943",
+  "payload_sha256": {
+    "retro/d35-launcher1/home-grid.rgb565": "5b2c9f3d8e38b772b62c94b5d54f2b60341214cae0b71246a4d27a8707cc835e",
+    "retro/d35-launcher1/ui_en.bkp": "ae8e827980462d53c6105a953653ff5f5d2f3c67c308cc0100b9f3c3886f0a7d",
+    "retro/d35-launcher1/ui_classic.bkp": "98aad3eef9a29fbb97b46938c6c198f0cb8350dd4c9bf03e693fe46b36f1c3f7",
+    "retro/d35-launcher1/vrtemu": "f3eef55a9733b1c2d3707c5d46fec4abf5018c6f22626e3dd2c73645896bb23c",
+    "retro/vrtemu": "f3eef55a9733b1c2d3707c5d46fec4abf5018c6f22626e3dd2c73645896bb23c",
+    "retro/update/Code.bkp": "a958fa04333ee81806e22531457fa911e28c0bfc5581bcae3fdad422c74f0848"
+  },
+  "verified_card_files": 2211,
+  "unchanged_card_files": 2205,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "fat32_clean": true,
+  "persistent_card_launcher": true,
+  "expected_erased_blocks": [
+    "000000",
+    "0c0000",
+    "520000",
+    "530000",
+    "540000",
+    "550000",
+    "560000",
+    "570000",
+    "580000",
+    "590000",
+    "5a0000",
+    "5b0000",
+    "5c0000",
+    "5d0000",
+    "5e0000",
+    "5f0000",
+    "600000",
+    "610000",
+    "620000",
+    "630000"
+  ],
+  "expected_programmed_firmware_sha256": "6ba41fe7166a241cd9174e06d133d386aafc8d46915563422467798f27f86340",
+  "physical_flash": "pending"
+}
