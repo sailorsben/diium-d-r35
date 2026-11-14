@@ -194,3 +194,22 @@ The card update consists of both copies of `vrtemu`, the versioned
 `home-grid.rgb565`, and `power-dialog.rgb565`. These changes require no
 additional SPI flash. Preserve the status of the previously staged
 `Code.bkp` until the handheld boot log has been collected.
+
+### Single-row compact Home
+
+The 640×480 Home keeps the 12 illustrated platforms, makes each tile
+11 px taller, and reduces the footer from 78 to 45 px while increasing
+the label font from 15 to 18 px. Start opens Settings, Select opens
+Favorites, X opens Search, Y opens Recent, A opens the selected platform,
+and Esc brings up the confirmed Power Off dialog. The D-pad stays on
+the tiles. L and R still open All Games and Browse Files.
+
+The D354 grid and both launcher copies replace the card frontend for
+ordinary boots. The returned `direct-launcher-grid-v2` record establishes
+that the board already runs this handoff. The installer archives the
+returned logs, saves, and exact used `Code.bkp` before removing that
+trigger, and verifies the full card inventory after updating. The
+internal image, direct SNES core, Settings packs, and menu sounds are
+unchanged. The ARM fixtures verify tile navigation, direct shortcuts,
+both shutdown themes, audio cue routing, and existing emulator dispatch.
+[Qualification](../evidence/2026-11-13/compact-home-qualification.json).

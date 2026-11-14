@@ -62,17 +62,11 @@ static volatile uint32_t *home_power_map(void)
 static void home_compose(uint16_t *frame,const uint16_t *base,unsigned cursor,int battery)
 {
     COPY(frame,base,HOME_BYTES);
-    unsigned x,y,w,h;
-    if(cursor<HOME_TILES) {
-        x=20+152*(cursor%4); y=62+112*(cursor/4); w=144; h=104;
-        const uint16_t *label=base+HOME_WIDTH*HOME_HEIGHT+cursor*HOME_LABEL_W*HOME_LABEL_H;
-        for(unsigned row=0;row<HOME_LABEL_H;++row)
-            COPY(frame+(HOME_LABEL_Y+row)*HOME_WIDTH+HOME_LABEL_X,
-                 label+row*HOME_LABEL_W,HOME_LABEL_W*2);
-    } else {
-        unsigned shortcut=cursor-HOME_TILES;
-        x=19+152*(shortcut%4); y=409+30*(shortcut/4); w=145; h=26;
-    }
+    const unsigned x=20+152*(cursor%4), y=64+123*(cursor/4), w=144, h=115;
+    const uint16_t *label=base+HOME_WIDTH*HOME_HEIGHT+cursor*HOME_LABEL_W*HOME_LABEL_H;
+    for(unsigned row=0;row<HOME_LABEL_H;++row)
+        COPY(frame+(HOME_LABEL_Y+row)*HOME_WIDTH+HOME_LABEL_X,
+             label+row*HOME_LABEL_W,HOME_LABEL_W*2);
     uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
     settings_box(frame,x-2,y-2,x+w+2,y,accent);
     settings_box(frame,x-2,y+h,x+w+2,y+h+2,accent);
@@ -84,9 +78,9 @@ static void home_compose(uint16_t *frame,const uint16_t *base,unsigned cursor,in
 static unsigned home_move(unsigned cursor,unsigned key)
 {
     if(key==0x80 && cursor%4) return cursor-1;
-    if(key==0x20 && cursor%4<3 && cursor<HOME_TILES+HOME_SHORTCUTS-1) return cursor+1;
+    if(key==0x20 && cursor%4<3) return cursor+1;
     if(key==0x10 && cursor>=4) return cursor-4;
-    if(key==0x40 && cursor+4<HOME_TILES+HOME_SHORTCUTS) return cursor+4;
+    if(key==0x40 && cursor+4<HOME_TILES) return cursor+4;
     return cursor;
 }
 
@@ -101,7 +95,7 @@ ENTRY unsigned stock_home(void)
         return HOME_MODE;
     size_t bytes;
     uint16_t *base=read_bytes(path,expected,&bytes);
-    if(!base || bytes!=expected || CMP((const char *)base+expected-4,"D353",4)) {
+    if(!base || bytes!=expected || CMP((const char *)base+expected-4,"D354",4)) {
         if(base) FREE(base);
         return HOME_MODE;
     }
@@ -110,7 +104,7 @@ ENTRY unsigned stock_home(void)
 
     volatile uint32_t *power=shutdown_available()?home_power_map():NULL;
     bool previous_power=power && (power[0x68/4]&8);
-    unsigned cursor=HOME.selected, mode=HOME_STAY;
+    unsigned cursor=HOME.selected<HOME_TILES?HOME.selected:0, mode=HOME_STAY;
     int battery=HOME_BATTERY;
     HOME.own_battery=true;
     unsigned (*joy)(void)=FN(0x86368,unsigned,void);
@@ -143,11 +137,9 @@ ENTRY unsigned stock_home(void)
                 shutdown_confirm();
             }
         } else if(key==0x2000) {
-            if(cursor<HOME_TILES) {
-                HOME_TYPE=home_types[cursor];
-                HOME.type_open=HOME.inject_open=true;
-                mode=1;
-            } else mode=home_shortcuts[cursor-HOME_TILES];
+            HOME_TYPE=home_types[cursor];
+            HOME.type_open=HOME.inject_open=true;
+            mode=1;
         } else {
             for(unsigned i=0;i<HOME_SHORTCUTS;++i)
                 if(key==home_shortcut_keys[i]) mode=home_shortcuts[i];

@@ -164,6 +164,13 @@ int main(int argc,char **argv)
     sequence(navigation,6);
     assert(dispatch(target(0x9846c))==1 && *(unsigned *)0x199990==3 && draws==23);
     assert(cue_calls==4);
+    // Pressing down on the last row keeps the platform selected. The footer
+    // is a key legend; the shoulder buttons still dispatch directly above.
+    unsigned bottom[]={0,0x40,0x2000};
+    *(unsigned *)0x1c4300=8;
+    sequence(bottom,3);
+    assert(dispatch(target(0x9846c))==1 && *(unsigned *)0x199990==8 && draws==24);
+    assert(cue_calls==4);
     unsigned (*menu_key)(void)=(void *)target(0x884ec);
     unsigned chord[]={9,9};
     sequence(chord,2);
@@ -198,7 +205,7 @@ int main(int argc,char **argv)
     assert(power_views==4 && phase_mask==((1u<<0)|(1u<<1)|(1u<<4)));
     free(grid_frame);
     free(power_asset);
-    puts("PASS ARM home dispatch, 12 ordered stock type IDs, six shortcuts, arrows and locale fallback");
+    puts("PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback");
     printf("PASS physical-key cancel/confirm and %s RGB565 confirmation, working and secured frames\n",
            theme?"Classic":"New");
     return 0;

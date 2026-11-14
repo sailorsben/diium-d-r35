@@ -1,5 +1,12 @@
 # Changelog
 
+## Give the compact home grid a single footer row - 2026-11-13
+
+Keep all 12 platforms visible and enlarge their art. Show six shortcuts
+in one row at 18 px, including Esc for the Power Off dialog. The D-pad
+stays on the platform grid; L and R still open All Games and Browse
+Files directly. [Installation](docs/direct-launcher-firmware.md#single-row-compact-home).
+
 ## Refine the launcher grid and shutdown controls - 2026-11-13
 
 Show NES before Super Nintendo and the Game Boy family in release order.

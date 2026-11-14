@@ -24,8 +24,8 @@ PREVIEW_LABELS = (
 # while laying out the physical launcher in Nintendo release order.
 TILE_ORDER = (1, 0, 2, 3, 6, 5, 4, 7, 8, 9, 10, 11)
 SHORTCUTS = (
-    ("START", "Settings"), ("SELECT", "Favorites"), ("X", "Search"), ("Y", "Last Played"),
-    ("L", "All Games"), ("R", "Browse Files"), ("D-pad", "Move"), ("A", "Open"),
+    ("START", "Settings"), ("SELECT", "Favorites"), ("X", "Search"),
+    ("Y", "Recent"), ("A", "Open"), ("ESC", "Power"),
 )
 
 
@@ -49,29 +49,35 @@ def build_home(preview, font, output):
         prefix, data = uri.split(",", 1)
         assert prefix == "data:image/webp;base64"
         with Image.open(io.BytesIO(base64.b64decode(data, validate=True))) as asset:
-            tile = ImageOps.fit(asset.convert("RGB"), (144, 104), Image.Resampling.LANCZOS)
-        pos = (20+152*(i%4), 62+112*(i//4))
+            tile = ImageOps.fit(asset.convert("RGB"), (144, 115), Image.Resampling.LANCZOS)
+        pos = (20+152*(i%4), 64+123*(i//4))
         mask = Image.new("L", tile.size)
-        ImageDraw.Draw(mask).rounded_rectangle((0, 0, 143, 103), radius=5, fill=255)
+        ImageDraw.Draw(mask).rounded_rectangle((0, 0, 143, 114), radius=5, fill=255)
         canvas.paste(tile, pos, mask)
         x, y = pos
-        draw.rounded_rectangle((x, y, x+143, y+103), radius=5, outline="#35465e")
+        draw.rounded_rectangle((x, y, x+143, y+114), radius=5, outline="#35465e")
 
-    draw.rectangle((0, 402, 639, 479), fill=bar)
-    draw.line((0, 402, 639, 402), fill="#35465e")
-    for i, (key, label) in enumerate(SHORTCUTS):
-        x, y = 25+152*(i%4), 413+30*(i//4)
-        width = int(draw.textlength(key, font=text(12)))+10
+    draw.rectangle((0, 435, 639, 479), fill=bar)
+    draw.line((0, 435, 639, 435), fill="#35465e")
+    key_font, label_font = text(12), text(18)
+    key_widths = [round(draw.textlength(key, font=key_font))+9 for key, _ in SHORTCUTS]
+    widths = [chip+6+round(draw.textlength(label, font=label_font))
+              for chip, (_, label) in zip(key_widths, SHORTCUTS)]
+    spare = 600-sum(widths)
+    assert spare >= 5*5, "footer prompts need at least 5 px between labels"
+    x, y = 20, 448
+    for i, ((key, label), width) in enumerate(zip(SHORTCUTS, key_widths)):
         draw.rounded_rectangle((x, y, x+width, y+19), radius=3, fill=bg, outline="#35465e")
-        draw.text((x+5, y+10), key, font=text(12), fill=accent, anchor="lm")
-        draw.text((x+width+7, y+10), label, font=text(15), fill=ink, anchor="lm")
+        draw.text((x+4, y+10), key, font=key_font, fill=accent, anchor="lm")
+        draw.text((x+width+6, y+10), label, font=label_font, fill=ink, anchor="lm")
+        x += widths[i]+round((i+1)*spare/5)-round(i*spare/5)
     labels = bytearray()
     for source_index in TILE_ORDER:
         name = PREVIEW_LABELS[source_index]
         image = Image.new("RGB", (320, 30), bg)
         ImageDraw.Draw(image).text((319, 15), name, font=text(16), fill=accent, anchor="rm")
         labels.extend(rgb565(image))
-    (output/"home-grid.rgb565").write_bytes(rgb565(canvas)+labels+b"D353")
+    (output/"home-grid.rgb565").write_bytes(rgb565(canvas)+labels+b"D354")
     canvas.save(output/"home-grid.png")
 
 
