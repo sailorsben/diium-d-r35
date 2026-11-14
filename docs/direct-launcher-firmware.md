@@ -407,3 +407,9 @@ The ARM fixture checks all five percentages and the charging state in
 both New percentage modes, and the Classic carousel's header. Review
 captures come from the ARM frame buffer at 640×480. Physical review is
 pending.
+
+The follow-up changes Solid + % to a 48 × 22 px outlined battery case
+with a 5 px terminal. The charge fill stays inside the case and the
+18 px label stays centered at every level. The low-charge case turns
+amber, and the charging state shows a bolt. Check the icon in the
+header on the handheld at the next card update.

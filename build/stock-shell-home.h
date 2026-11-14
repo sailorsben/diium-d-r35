@@ -49,23 +49,31 @@ static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int sta
     const uint16_t ink=state<0 || state==4?0xfe11:S.applied_classic?0x8ddd:0x9dba;
     const bool numbered=S.battery_style!=BATTERY_BARS && state>=0 && state<=4;
     const bool solid=S.battery_style==BATTERY_SOLID;
-    const unsigned right=617, x=solid?560:593;
+    const unsigned right=solid?616:617, x=solid?568:593;
 
     if(solid) {
         const unsigned percentage=state==5?100:numbered?90-20*state:0;
-        const unsigned charge=x+(right-x)*percentage/100;
+        const unsigned charge=x+1+(right-x-2)*percentage/100;
+        const uint16_t rim=state==4?0xd54b:S.applied_classic?0x7cdc:0x7c91;
         const uint16_t track=S.applied_classic?0x1a8b:0x1949;
         const uint16_t fill=state==4?0x6a66:S.applied_classic?0x2b74:0x3351;
-        static const uint8_t corner[]={7,5,3,2,2,1,1};
-        for(unsigned row=0;row<24;++row) {
-            unsigned cap=row<12?row:23-row;
-            unsigned inset=cap<sizeof(corner)?corner[cap]:0;
-            unsigned start=x+inset, end=right-inset, y=15+row;
-            settings_box(frame,start,y,end,y+1,track);
-            settings_box(frame,start,y,charge<end?charge:end,y+1,fill);
+        static const uint8_t corner[]={3,1,1};
+        settings_box(frame,right,23,right+4,31,rim);
+        settings_box(frame,right+4,24,right+5,30,rim);
+        for(unsigned row=0;row<22;++row) {
+            unsigned cap=row<11?row:21-row;
+            unsigned inset=cap<3?corner[cap]:0;
+            unsigned start=x+inset, end=right-inset, y=16+row;
+            settings_box(frame,start,y,end,y+1,rim);
             if(inset) {
-                menu_blend_pixel(frame+y*640+start-1,charge>=start?fill:track,6);
-                menu_blend_pixel(frame+y*640+end,charge>end?fill:track,6);
+                menu_blend_pixel(frame+y*640+start-1,rim,6);
+                menu_blend_pixel(frame+y*640+end,rim,6);
+            }
+            if(cap) {
+                ++start;
+                --end;
+                settings_box(frame,start,y,end,y+1,track);
+                settings_box(frame,start,y,charge<end?charge:end,y+1,fill);
             }
         }
     } else {

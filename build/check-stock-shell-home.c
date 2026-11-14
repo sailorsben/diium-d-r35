@@ -16,7 +16,7 @@ static unsigned power_focus_frames;
 static bool power_right;
 static uint16_t power_background;
 static bool esc_pressed;
-static bool percent_case, solid_case;
+static bool percent_case, solid_case, battery_sweep;
 static bool stock_case;
 static const uint16_t *stock_overlay_frame;
 
@@ -32,10 +32,17 @@ static void check_battery(const uint16_t *frame,int band,bool with_percentage)
 {
     uint16_t ink=band==4?0xfe11:theme?0x8ddd:0x9dba;
     bool numbered=(with_percentage || solid_case) && band<5;
-    if(!solid_case) assert(frame[26*W+618]==ink);
+    if(solid_case) {
+        uint16_t rim=frame[16*W+592];
+        assert(frame[27*W+568]==rim && frame[27*W+620]==rim);
+        assert(frame[19*W+620]!=rim && frame[34*W+620]!=rim);
+        if(numbered) assert(frame[18*W+572]!=frame[18*W+614]);
+    } else {
+        assert(frame[26*W+618]==ink);
+    }
     if(numbered) {
         unsigned light=0,blended=0;
-        unsigned origin=solid_case?570:551;
+        unsigned origin=solid_case?574:551;
         for(unsigned y=19;y<35;++y)
             for(unsigned px=origin;px<origin+36;++px) {
                 unsigned value=frame[y*W+px];
@@ -45,7 +52,7 @@ static void check_battery(const uint16_t *frame,int band,bool with_percentage)
         assert(light>18 && blended>18);
     }
     if(band==4 && !solid_case) assert(frame[24*W+596]==ink);
-    if(band==5) assert(frame[26*W+(solid_case?588:605)]==0xff8d);
+    if(band==5) assert(frame[26*W+(solid_case?592:605)]==0xff8d);
 }
 
 static void grid_wait(void) { ++waits; }
@@ -71,6 +78,10 @@ static void grid_draw(const void *pixels,unsigned w,unsigned h,size_t pitch)
     ++draws;
     if(!power_case) check_battery(grid_frame,*(int *)0x1b9b28,percent_case);
     if(draws==1) capture(solid_case?"home-solid":percent_case?"home-percent":"home-icon",grid_frame);
+    if(solid_case && battery_sweep) {
+        static const char *const captures[]={"solid-90","solid-70","solid-50","solid-30","solid-10","solid-charging"};
+        capture(captures[*(int *)0x1b9b28],grid_frame);
+    }
     ((void (*)(uint16_t *,unsigned))0x13e30)(grid_frame,W);
     ((void (*)(uint16_t *,unsigned))target(0x13fc0))(grid_frame,W);
     if(!power_case) check_battery(grid_frame,*(int *)0x1b9b28,percent_case);
@@ -254,11 +265,13 @@ int main(int argc,char **argv)
     }
     if(percent_case || solid_case) {
         unsigned keys[]={0,8};
+        battery_sweep=true;
         for(int band=0;band<=5;++band) {
             *(int *)0x1b9b28=band;
             sequence(keys,2);
             assert(dispatch(target(0x9846c))==5);
         }
+        battery_sweep=false;
         *(int *)0x1b9b28=1;
         draws-=6;
         puts("PASS New Home renders all five battery percentages and the charging indicator");

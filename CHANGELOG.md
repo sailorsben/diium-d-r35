@@ -1,5 +1,10 @@
 # Changelog
 
+## Put the percentage inside a battery icon - 2026-11-14
+
+Solid + % uses a compact battery case and a visible terminal. The fill
+shows the charge level behind the centered percentage.
+
 ## Refine the battery indicator typography - 2026-11-14
 
 The percentage uses the Home footer typeface at 18 pixels. Bars + % puts
