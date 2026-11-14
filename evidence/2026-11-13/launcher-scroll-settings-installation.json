@@ -1,0 +1,19 @@
+{
+  "archive": "launcher-scroll-settings-before-20261114T051324885296Z",
+  "source_commit": "5d5369139d80edc9ce9e8f5a3f42c91b96858f08",
+  "payload_sha256": {
+    "retro/d35-launcher1/power-dialog.rgb565": "b8362deb4b71597570330651fa40bf5450da1ccd38bcd68a7959bc1eeee401f1",
+    "retro/d35-launcher1/vrtemu": "6d2392397880fb1bd9205f13e90ad5b18d1e0d6e3dd6b26670e59ba2abc4445a",
+    "retro/vrtemu": "6d2392397880fb1bd9205f13e90ad5b18d1e0d6e3dd6b26670e59ba2abc4445a"
+  },
+  "verified_card_files": 2212,
+  "unchanged_card_files": 2209,
+  "retained_progress_and_log_files": 590,
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "returned_boot_id": "f35787a4-adca-42d2-bc63-964d163626de",
+  "spi_update_armed": false,
+  "one_boot_test_armed": false,
+  "fat32_clean": true,
+  "persistent_card_launcher": true,
+  "new_launcher_physical_boot": "pending"
+}
