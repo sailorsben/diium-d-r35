@@ -2,44 +2,23 @@
 #define main stock_audit_main
 #include "check-stock-snes-loader.c"
 #undef main
-#include <setjmp.h>
 #include <stdbool.h>
 #include <zlib.h>
 
 enum { UI=0x1998d8, WIDTH=640, HEIGHT=480, STRIDE=1280 };
 static uint16_t frame[HEIGHT][WIDTH];
 static void *game_art;
-static jmp_buf first_frame;
-static unsigned labels;
 static uint16_t *preview;
-static uint16_t *controls;
 static uint32_t keymap[128];
 static bool checking_load, accept_held;
 static unsigned load_case, load_frames, key_index, loaded_slot;
 static const char *fixture_dir;
 
 static void no_preview(void) {}
-static void *allocate_controls(size_t bytes)
-{
-    assert(bytes==sizeof(frame));
-    return controls=malloc(bytes);
-}
-static void no_wait(void) {}
-static void *wait_symbol(void *driver,const char *name)
-{
-    assert(driver==frame && !strcmp(name,"WaitDisp"));
-    return no_wait;
-}
-
 static void text_run(void *target, int x, int y, int height, unsigned color, const char *text)
 {
     assert(text && *text);
-    if(!controls || target!=controls) return;
-    assert(x>=0 && x<640 && y>=0 && y+29<480 && height>=16);
-    controls[(y+29)*640+x]=(uint16_t)color;
-    if(!strcmp(text,"Player 1")) labels|=1;
-    if(!strcmp(text,"Save as default for this system")) labels|=2;
-    if(!strcmp(text,"L2 + R2")) labels|=4;
+    (void)target; (void)x; (void)y; (void)height; (void)color;
 }
 
 static void display(void *buffer, unsigned width, unsigned height, unsigned stride)
@@ -57,9 +36,7 @@ static void display(void *buffer, unsigned width, unsigned height, unsigned stri
         ++load_frames;
         return;
     }
-    assert(buffer==controls && labels==7);
-    assert(controls[380*640+25]==0xfe49 && controls[68*640+4]==0x08a4);
-    longjmp(first_frame,1);
+    assert(!"unexpected display outside save-slot fixture");
 }
 
 static void verify_save_slots(void)
@@ -219,8 +196,6 @@ int main(int argc, char **argv)
     patch(0x8f538,(uintptr_t)no_preview);
     patch(0x85c94,(uintptr_t)text_run);
     patch(0xa6658,(uintptr_t)display);
-    patch(0x12010,(uintptr_t)wait_symbol);
-    patch(0x164abc,(uintptr_t)allocate_controls);
     *(void **)0x1b81a8=frame;
     static uint8_t english[80];
     *(unsigned *)UI=1;
@@ -231,11 +206,6 @@ int main(int argc, char **argv)
     *(void **)(UI+0x5c)=game_art;
     *(void **)(GOT+0x304)=keymap;
     *(void **)(GOT+0x39c)=&preview;
-    if(!setjmp(first_frame)) ((void (*)(void))0x8f5c0)();
-    free(controls);
-    controls=NULL;
-    *(void **)0x1c4430=NULL;
-    puts("PASS stock Controls entry displays the new canvas with player info and the separated shortcut");
     verify_save_slots();
     verify_load_slots();
     free(game_art);

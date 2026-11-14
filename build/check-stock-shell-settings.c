@@ -19,6 +19,33 @@ static bool review;
 static const char *capture_base="settings";
 static void capture_pause_review(void);
 static unsigned simulated_exit;
+static uint16_t *controls_canvas;
+static unsigned controls_updates,controls_saves;
+
+static void *controls_alloc(size_t bytes)
+{
+    assert(!controls_canvas && bytes==sizeof(settings));
+    return controls_canvas=malloc(bytes);
+}
+
+static void controls_free(void *pixels)
+{
+    assert(controls_canvas && controls_canvas==pixels);
+    free(pixels);
+    controls_canvas=NULL;
+}
+
+static void controls_update(const unsigned *mapping,unsigned bits)
+{
+    assert(mapping==(const unsigned *)0x1bb770 && mapping[2]==0x10008 && bits==8);
+    ++controls_updates;
+}
+
+static void controls_save(const char *name)
+{
+    assert(!strcmp(name,"default") && *(unsigned *)0x1bb778==0x10008);
+    ++controls_saves;
+}
 static int stock_exit_fixture(void)
 {
     /* Stock Save State clears pause_ret before returning success. */
@@ -65,17 +92,18 @@ static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const
 
 static void test_frame(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
-    assert(w==640 && h==480 && pitch==1280 && pixels==settings);
+    assert(w==640 && h==480 && pitch==1280 && (pixels==settings || pixels==controls_canvas));
+    uint16_t *canvas=(uint16_t *)pixels;
     uint16_t header[640*53];
-    memcpy(header,settings,sizeof(header));
-    ((void (*)(uint16_t *,unsigned))0x13e30)(settings,640);
-    ((void (*)(uint16_t *,unsigned))target(0x13fc0))(settings,640);
-    assert(!memcmp(header,settings,sizeof(header)));
+    memcpy(header,pixels,sizeof(header));
+    ((void (*)(uint16_t *,unsigned))0x13e30)(canvas,640);
+    ((void (*)(uint16_t *,unsigned))target(0x13fc0))(canvas,640);
+    assert(!memcmp(header,pixels,sizeof(header)));
     if(real_font) {
         char path[1024];
         assert(snprintf(path,sizeof(path),"%s/%s-%02u.rgb565",work,capture_base,frames)<(int)sizeof(path));
         FILE *f=fopen(path,"wb");
-        assert(f && fwrite(settings,sizeof(settings),1,f)==1 && !fclose(f));
+        assert(f && fwrite(pixels,sizeof(settings),1,f)==1 && !fclose(f));
     }
     ++frames;
 }
@@ -334,19 +362,20 @@ static void capture_pause_review(void)
     assert(exit_game()==0 && *(unsigned *)0x1b9ce8==1);
     capture_base="controls";
     frames=0;
-    *(void **)0x1c4430=pause;
-    draw=(void *)target(0x8f8d0);
+    patch(0x164abc,(uintptr_t)controls_alloc);
+    patch(0x164d58,(uintptr_t)controls_free);
+    patch(0xa34c0,(uintptr_t)controls_update);
+    patch(0x896ac,(uintptr_t)controls_save);
     unsigned *mapping=(unsigned *)0x1bb770;
     const unsigned bindings[]={10,11,9,8,0,1};
-    memcpy(mapping,bindings,sizeof(bindings));
-    *(int *)0x1998f0=3;
-    draw(pause,640,480,1280);
-    memcpy(backup,pause,sizeof(backup));
-    *(int *)0x1998f0=5;
-    draw(pause,640,480,1280);
-    assert(memcmp(backup,pause,sizeof(backup)));
-    *(int *)0x1998f0=3;
-    draw(pause,640,480,1280);
-    assert(!memcmp(backup,pause,sizeof(backup)));
-    puts("PASS review frames: Settings battery modes, Language picker, five pause options, centered Exit actions and clean Controls focus");
+    for(unsigned player=0;player<4;++player) memcpy(mapping+player*6,bindings,sizeof(bindings));
+    *(unsigned *)0x1b9c74=30;
+    keys=(const unsigned[]){0,A,0,LEFT,B,A,0,LEFT,0x1000,A,0,0x300,UP,UP,RIGHT,DOWN,B};
+    key_count=17; key_index=0;
+    int (*controls_entry)(void)=(void *)0x8f5c0;
+    assert(controls_entry()==1 && key_index==key_count && !controls_canvas);
+    assert(controls_updates==1 && controls_saves==1 && mapping[2]==0x10008 && mapping[8]==9);
+    assert(*(unsigned *)0x1bb7d0==1);
+    puts("PASS real Controls entry: cancel, apply, turbo, default save, and player navigation");
+    puts("PASS review frames: Settings battery modes, Language picker, five pause options and centered Exit actions");
 }

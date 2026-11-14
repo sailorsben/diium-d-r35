@@ -13,7 +13,7 @@ struct pause_ui {
     int row;
     bool menu, redraw_only;
     unsigned exit_choice, exit_held;
-    uint16_t *exit_background, *controls_frame;
+    uint16_t *exit_background;
 };
 #define PAUSE VAR(0x1c4400,struct pause_ui)
 _Static_assert(sizeof(struct pause_ui)<=0x100, "pause UI reservation");
@@ -409,152 +409,217 @@ __attribute__((naked)) ENTRY void load_slot_cancel(void)
 static bool controls_layout(void)
 { return pause_layout(); }
 
+static bool controls_turbo(void)
+{ return VAR(0x1b9c74,int)>29; }
+
+enum controls_focus { CONTROL_PLAYER, CONTROL_L1, CONTROL_R1, CONTROL_X,
+                      CONTROL_Y, CONTROL_A, CONTROL_B };
+
 static __attribute__((naked,noinline)) int stock_controls_body(void)
 {
     __asm__ volatile("ldr ip, 1f\n\tldr pc, 2f\n\t1: .word 0x000d88e0\n\t2: .word 0x8f5c4");
 }
 
+static void controls_draw(uint16_t *frame,unsigned player,unsigned focus,bool editing,
+                          unsigned selected,unsigned current);
+
 ENTRY int controls_menu(void)
 {
-    if(controls_layout())
-        PAUSE.controls_frame=FN(0x164abc,void *,size_t)(HOME_BYTES);
-    if(PAUSE.controls_frame) {
-        int result=stock_controls_body();
-        pause_wait();
-        FN(0x164d58,void,void *)(PAUSE.controls_frame);
-        PAUSE.controls_frame=NULL;
-        return result;
-    }
     if(!controls_layout()) return stock_controls_body();
-    const unsigned origin[7][2]={{261,206},{398,128},{512,128},{398,206},
-                                 {512,206},{398,284},{512,284}};
-    unsigned old[7][4];
-    /* The stock selector and text renderer share these seven rectangles. */
-    for(unsigned i=0;i<7;++i) {
-        unsigned *rect=(unsigned *)(0x19a2e4+132*i);
-        COPY(old[i],rect,sizeof(old[i]));
-        rect[2]=origin[i][0]+old[i][2]-old[i][0];
-        rect[3]=origin[i][1]+old[i][3]-old[i][1];
-        rect[0]=origin[i][0];
-        rect[1]=origin[i][1];
-    }
-    int result=stock_controls_body();
-    for(unsigned i=0;i<7;++i) COPY((void *)(0x19a2e4+132*i),old[i],sizeof(old[i]));
-    return result;
-}
-
-static __attribute__((used)) void controls_paint(uint16_t *original,unsigned w,unsigned h,
-                                                size_t pitch,unsigned player)
-{
-    uint16_t *frame=PAUSE.controls_frame;
-    if(!frame || w!=640 || h!=480 || pitch!=1280) {
-        DISP(original,w,h,pitch);
-        return;
-    }
-    if(player>3) player=0;
-    pause_wait();
-    settings_reset_text_clip();
-    const uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
-    const char *const player_names[]={"Player 1","Player 2","Player 3","Player 4"};
-    const char *const buttons[]={"L1","R1","X","Y","A","B"};
-    /* Low bits index the pinned vendor's table at 0x198564; B is zero. */
-    const char *const mapped[]={"B","Y","Select","Start","Up","Down",
-        "Left","Right","A","X","L1","R1"};
-    const unsigned order[]={0,1,2,5,3,4};
-    int focus=VAR(0x1998f0,int);
-    settings_box(frame,0,0,640,480,0x08a4);
-    settings_box(frame,0,0,640,68,0x1127);
-    settings_box(frame,0,67,640,68,0x320c);
-    pause_label(frame,24,2,32,0xffff,"Controls");
-    settings_box(frame,385,14,504,45,focus==0?accent:0x320c);
-    settings_box(frame,386,15,503,44,focus==0?0x21ab:0x1127);
-    pause_label(frame,402,5,21,0xffff,player_names[player]);
-    home_battery(frame,HOME_BATTERY);
-    pause_label(frame,29,65,20,0x9d17,"BUTTON MAPPING");
-    for(unsigned i=0;i<6;++i) {
-        unsigned x=25+296*(i%2), y=104+91*(i/2);
-        unsigned mapping=((const unsigned *)0x1bb770)[player*6+order[i]];
-        unsigned binding=mapping&0xffff;
-        bool active=focus==(int)i+1;
-        settings_box(frame,x,y,x+288,y+76,active?accent:0x320c);
-        settings_box(frame,x+1,y+1,x+287,y+75,active?0x21ab:0x1127);
-        settings_box(frame,x+13,y+19,x+65,y+58,0x08a4);
-        pause_label(frame,x+27,y+12,23,accent,buttons[i]);
-        pause_label(frame,x+81,y+2,17,0x9d17,"IN GAME");
-        pause_label(frame,x+81,y+25,27,0xffff,binding<12?mapped[binding]:"Custom");
-        if(mapping>>16) pause_label(frame,x+211,y+34,16,accent,"TURBO");
-    }
-    settings_box(frame,25,380,615,430,0x1127);
-    settings_box(frame,25,380,27,430,accent);
-    pause_label(frame,39,383,21,accent,"L2 + R2");
-    pause_label(frame,143,383,21,0xffff,"Save as default for this system");
-    settings_box(frame,0,432,640,480,0x10e6);
-    menu_button(frame,25,442,BUTTON_DPAD);
-    pause_label(frame,62,430,22,0xffff,"Move / change");
-    menu_button(frame,254,442,BUTTON_A);
-    pause_label(frame,291,430,22,0xffff,"Edit / apply");
-    menu_button(frame,514,442,BUTTON_B);
-    pause_label(frame,551,430,22,0xffff,"Back");
-    bool owned=HOME.own_battery;
-    own_menu_battery(true);
-    DISP(frame,w,h,pitch);
-    own_menu_battery(owned);
-}
-
-ENTRY void controls_first(uint16_t *frame,unsigned w,unsigned h,size_t pitch)
-{ controls_paint(frame,w,h,pitch,0); }
-
-__attribute__((naked)) ENTRY void controls_next(void)
-{
-    __asm__ volatile("push {r4, lr}\n\tldr r4, [sp,#16]\n\tsub sp, sp, #8\n\t"
-                     "str r4, [sp]\n\tbl controls_paint\n\tadd sp, sp, #8\n\tpop {r4, pc}");
-}
-
-ENTRY void controls_panel(uint16_t *frame,size_t pitch,struct art_block *art,unsigned block)
-{
-    if(PAUSE.controls_frame) {
-        FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(frame,pitch,art,block);
-        return;
-    }
-    if(!controls_layout() || !frame || pitch!=1280) {
-        FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(frame,pitch,art,block);
-        return;
-    }
-    pause_wait();
-    const uint16_t accent=S.applied_classic?0x8f5e:0xfe49, panel=0x10e6, edge=0x3a8d;
-    settings_box(frame,230,56,640,480,0x08a4);
-    settings_box(frame,235,74,623,453,edge);
-    settings_box(frame,236,75,622,452,panel);
-    settings_text(frame,254,93,"CONTROLS",2,accent);
-    settings_box(frame,254,111,603,112,edge);
-    settings_box(frame,252,199,358,254,edge);
-    settings_box(frame,253,200,357,253,0x08a4);
-    const char *keys[]={"L1","R1","X","Y","A","B"};
-    for(unsigned i=0;i<6;++i) {
-        unsigned x=369+114*(i%2), y=118+78*(i/2);
-        settings_box(frame,x,y,x+106,y+58,edge);
-        settings_box(frame,x+1,y+1,x+105,y+57,0x08a4);
-        /* settings_text only has letters. Paint the shoulder's 1 here. */
-        settings_text(frame,x+10,y+18,keys[i],2,accent);
-        if(i<2) {
-            settings_box(frame,x+26,y+18,x+28,y+32,accent);
-            settings_box(frame,x+24,y+20,x+26,y+22,accent);
+    uint16_t *frame=FN(0x164abc,void *,size_t)(HOME_BYTES);
+    if(!frame) return 1;
+    static const uint8_t up[]={CONTROL_PLAYER,CONTROL_PLAYER,CONTROL_PLAYER,
+                               CONTROL_R1,CONTROL_L1,CONTROL_R1,CONTROL_X};
+    static const uint8_t down[]={CONTROL_X,CONTROL_Y,CONTROL_X,CONTROL_B,
+                                 CONTROL_B,CONTROL_B,CONTROL_B};
+    static const uint8_t left[]={CONTROL_PLAYER,CONTROL_L1,CONTROL_L1,
+                                 CONTROL_Y,CONTROL_Y,CONTROL_X,CONTROL_Y};
+    static const uint8_t right[]={CONTROL_PLAYER,CONTROL_R1,CONTROL_R1,
+                                  CONTROL_A,CONTROL_X,CONTROL_A,CONTROL_A};
+    static const uint8_t order[]={0,0,1,2,5,3,4};
+    unsigned *map=(unsigned *)0x1bb770;
+    unsigned focus=CONTROL_X, player=0, selected=0, held=HOME_PAD|0x2000;
+    bool editing=false;
+    for(;;) {
+        unsigned *entry=map+player*6+order[focus];
+        controls_draw(frame,player,focus,editing,selected,*entry);
+        int battery=HOME_BATTERY;
+        unsigned key;
+        do {
+            if(battery<0) FN(0x836b4,void,void)();
+            FN(0x11f08,int,unsigned)(16000);
+            key=settings_key_poll(&held);
+        } while(!key && battery==HOME_BATTERY);
+        if(!key) continue;
+        if(key==0x4000) {
+            if(!editing) break;
+            editing=false;
+        } else if(key==0x2000) {
+            held|=key;
+            if(editing) {
+                if(*entry!=selected) {
+                    *entry=selected;
+                    VAR(0x1bb7d0,unsigned)=1;
+                    FN(0xa34c0,void,const unsigned *,unsigned)(map,8);
+                }
+                editing=false;
+            } else if(focus==CONTROL_PLAYER) player=(player+1)%4;
+            else {
+                selected=*entry;
+                editing=true;
+            }
+            settings_confirm_sound();
+        } else if(key==0x300 && !editing) {
+            held|=key;
+            FN(0x896ac,void,const char *)("default");
+            settings_confirm_sound();
+        } else if(key==0x10 || key==0x40 || key==0x80 || key==0x20) {
+            if(editing) {
+                unsigned input=selected&0xffff;
+                input=input>=12?0:(input+(key==0x80 || key==0x10?11:1))%12;
+                selected=(selected&0xffff0000)|input;
+            } else if(focus==CONTROL_PLAYER && (key==0x80 || key==0x20))
+                player=(player+(key==0x80?3:1))%4;
+            else
+                focus=key==0x10?up[focus]:key==0x40?down[focus]:key==0x80?left[focus]:right[focus];
+            vesper_transition(1);
+        } else if(editing && key==0x1000 && controls_turbo()) {
+            held|=key;
+            selected^=0x10000;
+            vesper_transition(1);
         }
     }
-    settings_box(frame,254,354,603,355,edge);
-    FN(0x85c94,void,void *,int,int,int,unsigned,const char *)(
-        frame,254,352,18,accent,"L2 + R2  Save these controls");
-    FN(0x85c94,void,void *,int,int,int,unsigned,const char *)(
-        frame,254,375,18,accent,"as the default for this system.");
+    pause_wait();
+    FN(0x164d58,void,void *)(frame);
+    return 1;
 }
 
-ENTRY void controls_preview(void *dest,const void *source)
+static void controls_round(uint16_t *frame,unsigned x,unsigned y,unsigned w,unsigned h,
+                           unsigned radius,uint16_t ink)
 {
-    if(!controls_layout()) FN(0x8f538,void,void *,const void *)(dest,source);
+    for(unsigned row=0;row<h;++row) {
+        unsigned distance=row<h/2?row:h-1-row, inset=0;
+        if(distance<radius) {
+            unsigned rise=radius-distance-1;
+            while((radius-inset)*(radius-inset)+rise*rise>radius*radius) ++inset;
+        }
+        settings_box(frame,x+inset,y+row,x+w-inset,y+row+1,ink);
+    }
 }
 
-ENTRY void controls_help_first(void *frame,int x,int y,int height,unsigned color,const char *text)
+static void controls_shape(uint16_t *frame,unsigned x,unsigned y,unsigned w,unsigned h,
+                            unsigned rounding,uint16_t edge,uint16_t fill)
 {
-    if(!controls_layout())
-        FN(0x85c94,void,void *,int,int,int,unsigned,const char *)(frame,x,y,height,color,text);
+    controls_round(frame,x,y,w,h,rounding,edge);
+    controls_round(frame,x+1,y+1,w-2,h-2,rounding-1,fill);
+}
+
+static void controls_keycap(uint16_t *frame,unsigned x,unsigned y,unsigned w,unsigned h,
+                            const char *label,bool active,uint16_t accent)
+{
+    unsigned rounding=(w==h)?w/2:8;
+    controls_shape(frame,x,y,w,h,rounding,active?accent:0x6c13,active?0x49a3:0x1948);
+    if(active) controls_round(frame,x+3,y+3,w-6,h-6,rounding-3,0x49a3);
+    unsigned size=w>=40?23:18;
+    int width=pause_measure(frame,(int)size,label);
+    if(width>0 && width<=(int)w)
+        pause_label(frame,x+(w-width)/2,(int)y+((int)h+(int)size)/2-31,
+                    size,active?accent:0xffff,label);
+}
+
+static void controls_draw(uint16_t *frame,unsigned player,unsigned focus,bool editing,
+                          unsigned selected,unsigned current)
+{
+    static const char *const players[]={"Player 1","Player 2","Player 3","Player 4"};
+    static const char *const buttons[]={"","L1","R1","X","Y","A","B"};
+    /* Low bits index the pinned vendor table at 0x198564. B is zero. */
+    static const char *const mapped[]={"B","Y","Select","Start","Up","Down",
+                                      "Left","Right","A","X","L1","R1"};
+    static const uint8_t defaults[]={0,10,11,9,1,8,0};
+    static const uint16_t x[]={0,73,247,253,212,286,253};
+    static const uint16_t y[]={0,100,100,153,194,194,234};
+    const uint16_t accent=S.applied_classic?0x8f5e:0xfe49, soft=0xa5f9;
+    unsigned binding=current&0xffff, draft=(editing?selected:current)&0xffff;
+    const char *actual=binding<12?mapped[binding]:"Custom";
+    const char *target=draft<12?mapped[draft]:"Custom";
+    pause_wait();
+    settings_reset_text_clip();
+    settings_box(frame,0,0,640,480,0x08a4);
+    settings_box(frame,0,0,640,59,0x1127);
+    settings_box(frame,0,58,640,59,0x320c);
+    pause_label(frame,25,7,32,0xffff,"Controls");
+    controls_shape(frame,388,13,115,32,16,focus==0?accent:0x3aad,0x08c4);
+    pause_label(frame,410,5,22,0xffff,players[player]);
+    home_battery(frame,HOME_BATTERY);
+
+    controls_shape(frame,25,80,328,272,17,0x29ea,0x1106);
+    controls_shape(frame,58,116,263,214,24,0x326c,0x1127);
+    controls_shape(frame,67,125,245,194,19,0x32ad,0x1148);
+    controls_shape(frame,65,170,95,95,47,0x296a,0x1127);
+    controls_shape(frame,225,170,95,95,47,0x296a,0x1127);
+    controls_shape(frame,75,207,74,24,6,0x530c,0x21cb);
+    controls_shape(frame,100,182,24,74,6,0x530c,0x21cb);
+    settings_box(frame,101,208,123,230,0x21cb);
+    controls_shape(frame,105,211,14,15,7,0x3aad,0x1948);
+    controls_shape(frame,145,276,39,10,5,0x3aad,0x21cb);
+    controls_shape(frame,192,276,39,10,5,0x3aad,0x21cb);
+    for(unsigned stick=126;stick<=254;stick+=128) {
+        controls_shape(frame,stick-19,298,38,38,19,0x32ac,0x1127);
+        controls_shape(frame,stick-12,305,24,24,12,0x530c,0x21cb);
+    }
+    pause_label(frame,40,317,15,soft,"HANDHELD");
+    for(unsigned i=1;i<=6;++i)
+        controls_keycap(frame,x[i],y[i],i<=2?61:40,i<=2?34:40,buttons[i],focus==i,accent);
+
+    controls_shape(frame,372,80,243,272,17,0x32ac,0x1127);
+    if(!focus) {
+        pause_label(frame,392,86,19,accent,"PLAYER");
+        pause_label(frame,392,139,27,0xffff,players[player]);
+        pause_label(frame,392,205,19,soft,"Change with Left / Right.");
+    } else {
+        if(editing) controls_shape(frame,386,94,95,29,14,0x9465,0x49a3);
+        pause_label(frame,editing?396:392,86,19,editing?accent:soft,
+                    editing?"EDITING":"SELECTED BUTTON");
+        controls_keycap(frame,396,142,46,46,buttons[focus],true,accent);
+        settings_box(frame,459,165,488,167,soft);
+        for(unsigned i=0;i<7;++i) {
+            settings_box(frame,482+i,158+i,484+i,160+i,soft);
+            settings_box(frame,482+i,172-i,484+i,174-i,soft);
+        }
+        unsigned width=(draft>=2 && draft<=7) || draft>=12?94:46;
+        controls_keycap(frame,(width>46?549:532)-width/2,142,width,46,target,false,accent);
+        pause_label(frame,388,183,17,soft,"Handheld");
+        pause_label(frame,502,183,17,soft,"In game");
+        settings_box(frame,391,224,596,225,0x320c);
+        if(editing) {
+            pause_label(frame,392,234,24,0xffff,"Choose a game input");
+            pause_label(frame,392,266,18,soft,"Current mapping:");
+            pause_label(frame,530,266,18,0xffff,actual);
+            if(controls_turbo())
+                pause_label(frame,392,299,17,selected>>16?accent:soft,
+                            selected>>16?"X  Turbo on":"X  Turbo off");
+        } else {
+            bool standard=current==defaults[focus];
+            pause_label(frame,392,235,25,0xffff,standard?"Default mapping":"Button mapping");
+            if(current>>16) pause_label(frame,392,265,18,accent,"Turbo enabled");
+        }
+    }
+
+    controls_shape(frame,25,370,590,51,10,0x29ea,0x1127);
+    controls_keycap(frame,38,380,36,30,"L2",false,accent);
+    pause_label(frame,79,375,20,soft,"+");
+    controls_keycap(frame,97,380,36,30,"R2",false,accent);
+    pause_label(frame,150,373,22,0xffff,"Save as default for this system");
+    settings_box(frame,0,432,640,480,0x1127);
+    settings_box(frame,0,432,640,433,0x320c);
+    menu_button(frame,25,442,BUTTON_DPAD);
+    pause_label(frame,62,430,22,0xffff,editing?"Change":"Move");
+    menu_button(frame,233,442,BUTTON_A);
+    pause_label(frame,270,430,22,0xffff,editing?"Apply":focus?"Remap":"Next player");
+    menu_button(frame,509,442,BUTTON_B);
+    pause_label(frame,546,430,22,0xffff,editing?"Cancel":"Back");
+    bool owned=HOME.own_battery;
+    own_menu_battery(true);
+    DISP(frame,640,480,1280);
+    own_menu_battery(owned);
 }

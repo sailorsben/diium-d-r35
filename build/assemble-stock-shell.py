@@ -116,14 +116,6 @@ PAUSE_PATCHES = {
     0x914AC: (0xE3500040, "load_slot_cancel"),
     0x915A0: (0xEB00542C, "load_next_frame"),
     0x8F5C0: (0xE59FCE34, "controls_menu"),
-    0x8F8D0: (0xEB005B60, "controls_first"),
-    0x8FA50: (0xEB005B00, "controls_next"),
-    0x8F69C: (0xEBFFC341, "controls_panel"),
-    0x90034: (0xEBFFC0DB, "controls_panel"),
-    0x8F708: (0xEBFFFF8A, "controls_preview"),
-    0x8F874: (0xEBFFD906, "controls_help_first"),
-    0x8F898: (0xEBFFD8FD, "controls_help_first"),
-    0x903C8: (0xEBFFD631, "controls_help_first"),
 }
 SETTINGS_PATCHES = {
     0x8EA4C: (0xEBFFFC07, "launcher_language_picker"),

@@ -338,3 +338,17 @@ teal time gate and Guardia. Both were inspected at preview size. Vendor art
 and the converted game thumbnails stay out of Git. No card writes or
 physical handheld verification were performed for this review.
 [ARM checks and artifact hashes](../evidence/2026-11-14/launcher-navigation-review.json).
+
+### Controller diagram and cover update
+
+The 640×480 Controls screen shows the selected button on a diagram of the
+handheld. A opens a draft mapping, the D-pad changes the assigned input,
+and A applies or B cancels the draft. Player selection and the existing
+turbo setting are available. L2 + R2 still uses the vendor's system-default
+save path. The ARM fixture exercises navigation from the Controls entry
+point, switching players, cancel, apply, turbo, and saving defaults.
+
+The approved Star Fox and Chrono Trigger thumbnails include their U.S.
+SNES logos. The permanent card package updates both launcher copies,
+the New theme list art, and those two thumbnails. It uses the installed
+optimized core and the established stock gameplay audio route.

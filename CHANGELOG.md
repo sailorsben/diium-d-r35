@@ -1,5 +1,13 @@
 # Changelog
 
+## Controller diagram and SNES covers - 2026-11-14
+
+Controls follows the handheld's physical button layout. The selected
+button and its game input appear side by side. Changes preview in the
+editor until A applies them, and B cancels. L2 + R2 saves the mappings as
+the system default. The Star Fox and Chrono Trigger game previews use
+their U.S. SNES logos.
+
 ## Launcher navigation and artwork review - 2026-11-14
 
 - New Home keeps its platform grid when the language changes, and displays a usable text grid when its artwork is missing. Classic alone intentionally opens the original carousel and Settings, with a visible shortcut to launcher options.
