@@ -18,6 +18,7 @@ struct settings_screen {
     uint16_t *frame;
     char (*tracks)[MUSIC_NAME_MAX+1];
     unsigned row, top, track_count;
+    int battery;
     bool factory, reset_confirmed, language, language_opened;
     unsigned factory_steps, language_held;
     const char *message;
@@ -149,17 +150,22 @@ static void settings_icon(uint16_t *frame,unsigned x,unsigned y,unsigned icon,bo
     settings_mask(frame,x,y,settings_masks[icon],false,ink);
 }
 
-static void screen_header(uint16_t *frame,const char *title)
+static void settings_reset_text_clip(void)
 {
     /* The stock font uses a shared clip rectangle left by the last screen. */
     unsigned *clip=(unsigned *)0x19bac4;
     clip[0]=0; clip[1]=0; clip[2]=640; clip[3]=480;
+}
+
+static void screen_header(uint16_t *frame,const char *title,int battery)
+{
+    settings_reset_text_clip();
     settings_box(frame,0,0,640,480,S.classic?0x09c9:0x08a4);
     uint16_t chrome=S.classic?0x12ab:0x10e6;
     settings_box(frame,0,0,640,56,chrome);
     settings_box(frame,0,55,640,56,0x328b);
     settings_label(frame,24,8,32,0xffff,title);
-    home_battery(frame,HOME_BATTERY);
+    home_battery(frame,battery);
     settings_box(frame,0,430,640,480,chrome);
     settings_box(frame,0,430,640,431,0x328b);
 }
@@ -246,7 +252,8 @@ static void draw_settings(void)
 {
     uint16_t *frame=SETTINGS.frame;
     shutdown_wait()();
-    screen_header(frame,"Settings");
+    SETTINGS.battery=HOME_BATTERY;
+    screen_header(frame,"Settings",SETTINGS.battery);
     const char *const names[]={"Brightness","Theme","Battery display","Volume","Menu music",
         "Frame skip","Language","Power off","Restore factory settings"};
     unsigned y=SETTINGS_TOP;
@@ -279,7 +286,7 @@ static void draw_settings(void)
             } else value=music_value();
         }
         else if(row==ROW_THEME) value=S.classic?"Classic":"New";
-        else if(row==ROW_BATTERY) value=S.battery_percent?"Est. %":"Bars";
+        else if(row==ROW_BATTERY) value=S.battery_percent?"Icon + est. %":"Icon only";
         else if(row==ROW_FRAME_SKIP) value=S.auto_skip?"Auto":"Off";
         else if(row==ROW_LANGUAGE) value="English";
         if(value) {
@@ -380,7 +387,8 @@ static void music_picker(void)
         if(row>=top+VISIBLE_ROWS) top=row+1-VISIBLE_ROWS;
         if(row<top) top=row;
         shutdown_wait()();
-        screen_header(SETTINGS.frame,"Menu music");
+        int battery=HOME_BATTERY;
+        screen_header(SETTINGS.frame,"Menu music",battery);
         settings_group(SETTINGS.frame,SETTINGS_TOP,"CHOOSE A TRACK");
         for(unsigned i=top;i<total && i<top+VISIBLE_ROWS;++i) {
             unsigned y=SETTINGS_TOP+GROUP_HEIGHT+(i-top)*ROW_HEIGHT;
@@ -399,7 +407,9 @@ static void music_picker(void)
         settings_footer(SETTINGS.frame,row==1?"Turn music off":"Play this track",false,error);
         DISP(SETTINGS.frame,640,480,1280);
         unsigned key;
-        do { settings_idle(); key=settings_key_poll(&held); } while(!key);
+        do { settings_idle(); key=settings_key_poll(&held); }
+        while(!key && battery==HOME_BATTERY);
+        if(!key) continue;
         error=NULL;
         if(key==0x4000) break;
         if(key==0x10 && row) { --row; vesper_transition(1); }
@@ -478,7 +488,7 @@ ENTRY void launcher_reset_frame(const void *frame,unsigned width,unsigned height
 static bool confirm_factory(void)
 {
     shutdown_wait()();
-    screen_header(SETTINGS.frame,"Restore factory settings");
+    screen_header(SETTINGS.frame,"Restore factory settings",HOME_BATTERY);
     settings_box(SETTINGS.frame,24,126,616,306,S.classic?0x1a49:0x21ab);
     settings_icon(SETTINGS.frame,41,148,SETTINGS_MASK_RESET,true);
     settings_label(SETTINGS.frame,92,142,27,0xffff,"Reset launcher preferences?");
@@ -498,20 +508,27 @@ static bool confirm_factory(void)
     }
 }
 
-static bool launcher_settings(void)
+static bool launcher_settings_available(void)
 {
-    if(LOCALE!=1 || UI_WIDTH!=640 || UI_HEIGHT!=480 || !UI_FRAME || !shutdown_wait()) return false;
+    return LOCALE==1 && UI_WIDTH==640 && UI_HEIGHT==480 && UI_FRAME && shutdown_wait();
+}
+
+static bool launcher_settings(bool from_classic)
+{
+    if(!launcher_settings_available()) return false;
     /* Stock Settings waits for the preview worker to release the canvas. */
     while(UI_WORKERS&8u) FN(0x11f08,int,unsigned)(1000);
     UI_WORKERS=1;
     shutdown_wait()();
     SETTINGS.frame=UI_FRAME;
     S.settings_pixels=UI_FRAME;
-    SETTINGS.row=SETTINGS.top=0;
+    SETTINGS.row=from_classic?ROW_THEME:ROW_BRIGHTNESS;
+    SETTINGS.top=0;
     SETTINGS.message=NULL;
     read_music_setting();
-    unsigned held=HOME_PAD, locale=LOCALE;
+    unsigned held=HOME_PAD|(from_classic?8:0), locale=LOCALE;
     launcher_menu_key();
+    own_menu_battery(true);
     draw_settings();
     for(;;) {
         settings_idle();
@@ -521,7 +538,10 @@ static bool launcher_settings(void)
             else if(key==0x2000) { held|=0x2000; shutdown_confirm(); }
             continue;
         }
-        if(!key) continue;
+        if(!key) {
+            if(SETTINGS.battery!=HOME_BATTERY) draw_settings();
+            continue;
+        }
         if(key!=0x10 && key!=0x40 && key!=0x80 && key!=0x20 &&
            key!=0x2000 && key!=0x4000 && key!=8) continue;
         SETTINGS.message=NULL;
@@ -547,7 +567,9 @@ static bool launcher_settings(void)
                 SETTINGS.language=true;
                 SETTINGS.language_opened=false;
                 SETTINGS.language_held=HOME_PAD|0x2000;
+                own_menu_battery(false);
                 FN(0x8dfe4,void,void)();
+                own_menu_battery(true);
                 SETTINGS.language=false;
                 S.settings_pixels=SETTINGS.frame;
                 held=HOME_PAD;
@@ -572,6 +594,7 @@ static bool launcher_settings(void)
         draw_settings();
     }
     shutdown_wait()();
+    own_menu_battery(false);
     return true;
 }
 

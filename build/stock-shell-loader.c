@@ -83,7 +83,9 @@ struct overlay {
 _Static_assert(sizeof(struct overlay) <= 0x100, "overlay must fit reserved storage");
 
 #ifdef D35_HOME_GRID
-static bool launcher_settings(void);
+static bool launcher_settings(bool from_classic);
+static bool launcher_settings_available(void);
+static void settings_reset_text_clip(void);
 static unsigned launcher_factory_navigation(unsigned row, unsigned key);
 static bool launcher_factory_active(void);
 static bool menu_music_override(void);
@@ -639,7 +641,11 @@ ENTRY void *stock_theme_zip(const char *path,unsigned size,unsigned mode,const c
     const char *alternate=NULL;
     if(LOCALE==1) {
         if(!S.applied_classic && S.new_art) alternate=THEME_PACK;
+#ifndef D35_HOME_GRID
         else if(member && !STRCMP(member,"setting.raw")) alternate=CLASSIC_SETTINGS_PACK;
+#else
+        (void)member;
+#endif
     }
     if(path && !size && mode==2 && alternate) {
         char stock[384], themed[384];
@@ -930,6 +936,16 @@ ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
 {
 #ifdef D35_HOME_GRID
     if(launcher_factory_active()) return;
+    if(S.applied_classic && LOCALE==1 && launcher_settings_available()) {
+        if(p && w==640 && h==480 && pitch==1280) {
+            shutdown_wait()();
+            settings_reset_text_clip();
+            FN(0x85c94,int,void *,int,int,int,unsigned,const char *)(
+                p,301,-2,20,0xffff,"START  Launcher options");
+        }
+        DISP(p,w,h,pitch);
+        return;
+    }
 #endif
     if(p && w==640 && h==480 && pitch==1280) {
         void *driver=VAR(0x1b81a8,void *);
@@ -996,6 +1012,16 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
 #ifdef D35_HOME_GRID
     unsigned keys=launcher_menu_key();
     if(launcher_factory_active()) return launcher_factory_navigation(stock_row,keys);
+    if(S.applied_classic && LOCALE==1 && launcher_settings_available()) {
+        if(!button_down(0x30c)) S.start_held=false;
+        if(keys==8 && !S.start_held) {
+            S.start_held=true;
+            /* The stock B path releases its locals before we open our list. */
+            S.extra_row=1;
+            return 0x4000;
+        }
+        return keys;
+    }
 #else
     unsigned keys=FN(0x86368,unsigned,void)();
 #endif
@@ -1082,9 +1108,16 @@ ENTRY void stock_settings(void)
 #endif
     S.save_failed=S.restore_highlight=false;
 #ifdef D35_HOME_GRID
-    if(!launcher_settings())
+    bool classic=S.applied_classic && LOCALE==1;
+    if(classic || !launcher_settings(false))
 #endif
         FN(0x8dfe4,void,void)();
+#ifdef D35_HOME_GRID
+    if(classic && S.extra_row==1) {
+        S.extra_row=0;
+        launcher_settings(true);
+    }
+#endif
 #ifdef D35_VESPER_LAUNCHER
     if(S.power_frame) shutdown_cancel();
 #endif

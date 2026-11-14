@@ -284,3 +284,24 @@ with the updated icons. The card readback verified 2,212 files. Only the
 two launcher copies changed, and FAT32 passed the scan with a clear
 dirty bit. The next handheld boot is pending.
 [Installation receipt](../evidence/2026-11-14/launcher-settings-icons-installation.json).
+
+### Original Classic theme and battery indicator
+
+The installed icon build still routes Classic through the compact grid.
+It also replaces the battery icon with text in estimate mode. The revised
+build returns Classic to the original carousel, menus, and Settings
+artwork. **START** in Classic Settings opens Launcher options with
+Theme selected. Change it to New and press **B** to return to the grid.
+
+**Battery display** offers **Icon only** or **Icon + est. %**. Both use
+the same battery icon. The number comes from the existing ADC bands,
+and the charging state shows a charging symbol. The compact grid gives
+the platform title and battery separate space. Owned menu screens draw
+their own header. Stock menu frames get the same battery indicator before
+submission to the display driver. The legacy callback is suppressed for
+those 640-pixel frames.
+
+The ARM checks cover both battery settings, the original Classic Settings
+resource, the carousel dispatch, the return to New, and the existing
+launcher routes. The revised build is pending handheld review.
+[Qualification](../evidence/2026-11-14/launcher-classic-battery-qualification.json).

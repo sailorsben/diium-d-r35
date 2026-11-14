@@ -1,5 +1,12 @@
 # Changelog
 
+## Restore the original Classic launcher - 2026-11-14
+
+Classic opens the factory carousel, game lists, and Settings artwork.
+Press START in Classic Settings to reach the launcher options and switch
+back to New. Battery display offers an icon alone or an icon with the
+estimated percentage. The launcher draws the indicator once per menu frame.
+
 ## Redraw the launcher Settings icons - 2026-11-14
 
 Use larger, antialiased symbols for Display, Sound and System. The

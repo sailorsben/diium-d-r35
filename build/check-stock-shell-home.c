@@ -14,6 +14,28 @@ static uint16_t *power_asset;
 static unsigned power_views, phase_mask, theme, next_view;
 static bool esc_pressed;
 static bool percent_case;
+static bool stock_case;
+static const uint16_t *stock_overlay_frame;
+
+static void capture(const char *name,const uint16_t *frame)
+{
+    char file[1024];
+    assert(snprintf(file,sizeof(file),"%s/%s.rgb565",work,name)<(int)sizeof(file));
+    FILE *out=fopen(file,"wb");
+    assert(out && fwrite(frame,PIXELS*2,1,out)==1 && !fclose(out));
+}
+
+static void check_battery(const uint16_t *frame,int band,bool with_percentage)
+{
+    uint16_t ink=band==4?0xfb69:theme?0x8f5e:0xb69a;
+    bool estimate=with_percentage && band<5;
+    unsigned x=estimate?529:581;
+    assert(frame[18*W+x]==ink && frame[34*W+x+35]==ink);
+    assert((frame[25*W+576]==ink)==estimate);
+    if(estimate) assert(frame[19*W+610]==ink);
+    if(band==4) assert(frame[23*W+x+6]==ink);
+    if(band==5) assert(frame[23*W+599]==0xff8d);
+}
 
 static void grid_wait(void) { ++waits; }
 static void *grid_find(void *handle,const char *name)
@@ -36,14 +58,8 @@ static void grid_draw(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(w==W && h==H && pitch==W*2 && pixels==grid_frame && waits>draws);
     ++draws;
-    if(percent_case && !power_case && *(int *)0x1b9b28<=4) {
-        uint16_t ink=*(int *)0x1b9b28==4?0xfb69:theme?0x8f5e:0xb69a;
-        assert(grid_frame[25*W+578]==ink); /* ~ */
-        assert(grid_frame[19*W+612]==ink); /* % */
-        assert(grid_frame[18*W+581]!=ink); /* no bar outline */
-    } else if(!percent_case || *(int *)0x1b9b28==5) {
-        assert(grid_frame[18*W+581]!=0 && grid_frame[18*W+581]==grid_frame[34*W+616]);
-    }
+    if(!power_case) check_battery(grid_frame,*(int *)0x1b9b28,percent_case);
+    if(draws==1) capture(percent_case?"home-percent":"home-icon",grid_frame);
     ((void (*)(uint16_t *,unsigned))target(0x13fc0))(grid_frame,W);
     assert(!adc_calls);
     if(next_view) {
@@ -77,7 +93,12 @@ static void grid_cue(unsigned channel,const struct sound *cue)
     ++cue_calls;
 }
 static void grid_adc(uint16_t *frame,unsigned width)
-{ assert(frame==grid_frame && width==W); ++adc_calls; }
+{ assert((frame==grid_frame || frame==stock_overlay_frame) && width==W); ++adc_calls; }
+static void stock_submit(const void *frame,unsigned w,unsigned h,size_t pitch)
+{
+    assert(frame==stock_overlay_frame && w==W && h==H && pitch==W*2);
+    ++draws;
+}
 static int grid_delay(unsigned us) { assert(us==20000); return 0; }
 static int grid_access(const char *path,int mode)
 {
@@ -123,6 +144,7 @@ int main(int argc,char **argv)
     assert(argc==3 || argc==4 || argc==5);
     theme=argc>=4 && !strcmp(argv[3],"classic");
     percent_case=argc==5 && !strcmp(argv[4],"percent");
+    stock_case=theme;
     work=argv[2];
     map_vendor(argv[1]);
     patch(0x11ce0,(uintptr_t)fopen); patch(0x11f20,(uintptr_t)fclose);
@@ -135,7 +157,8 @@ int main(int argc,char **argv)
     patch(0x11e0c,(uintptr_t)grid_access); patch(0x8750c,(uintptr_t)grid_cue);
     patch(0x157c8,(uintptr_t)grid_gpio); patch(0x13e30,(uintptr_t)grid_adc);
     patch(0x164abc,(uintptr_t)grid_alloc); patch(0x164d58,(uintptr_t)grid_free);
-    patch(0xa6658,(uintptr_t)grid_draw); patch(0x11da0,(uintptr_t)grid_open);
+    *(uintptr_t *)0x1be388=(uintptr_t)(stock_case?stock_submit:grid_draw);
+    patch(0x11da0,(uintptr_t)grid_open);
     patch(0x11d70,(uintptr_t)grid_map); patch(0x11cd4,(uintptr_t)grid_close);
     patch(0x11efc,(uintptr_t)grid_unmap); patch(0x11d4c,(uintptr_t)grid_command);
     patch(0x81da0,(uintptr_t)load_stock_settings);
@@ -145,6 +168,46 @@ int main(int argc,char **argv)
     *(unsigned *)0x199918=H;
     *(int *)0x1b9b28=1;
     ((void (*)(void))target(0x98174))();
+    if(stock_case) {
+        unsigned (*key)(void)=(void *)target(0x89dc8);
+        unsigned sequence_for_stock[]={0x20};
+        sequence(sequence_for_stock,1);
+        *(unsigned *)0x1998e0=5;
+        assert(dispatch(target(0x9846c))==1 && next_event==0 && !draws);
+        assert(key()==0x20);
+        assert(dispatch(target(0x9846c))==5 && !draws);
+        uint16_t *frame=calloc(PIXELS,sizeof(*frame));
+        assert(frame);
+        stock_overlay_frame=frame;
+        *(void **)0x199910=frame;
+        void (*overlay)(uint16_t *,unsigned)=(void *)target(0x13fc0);
+        void (*present)(const void *,unsigned,unsigned,size_t)=(void *)0xa6658;
+        for(int band=0;band<=5;++band) {
+            *(int *)0x1b9b28=band;
+            present(frame,W,H,W*2);
+            overlay(frame,W);
+            assert(*(int *)0x1b9b24==band && !adc_calls);
+            check_battery(frame,band,percent_case);
+        }
+        assert(draws==6);
+        assert(frame[10*W+515]==0 && frame[43*W+580]==0);
+        char art_path[1024];
+        assert(snprintf(art_path,sizeof(art_path),"%s/type.raw",work)<(int)sizeof(art_path));
+        size_t art_bytes;
+        unsigned char *art=read_data(art_path,&art_bytes);
+        unsigned offset;
+        memcpy(&offset,art+3*16,sizeof(offset)); /* Original NES carousel panel. */
+        assert(offset+PIXELS*2<=art_bytes);
+        memcpy(frame,art+offset,PIXELS*2);
+        *(int *)0x1b9b28=1;
+        present(frame,W,H,W*2);
+        check_battery(frame,1,percent_case);
+        capture("classic-carousel",frame);
+        free(art);
+        free(frame);
+        puts("PASS Classic hands off to the stock carousel and uses one icon with an optional estimate");
+        return 0;
+    }
     char asset_path[4096];
     assert(snprintf(asset_path,sizeof(asset_path),"%s/d35-launcher1/power-dialog.rgb565",work)
            <(int)sizeof(asset_path));
@@ -168,7 +231,7 @@ int main(int argc,char **argv)
         }
         *(int *)0x1b9b28=1;
         draws-=6;
-        puts("PASS Home renders estimated percent for each band and the charging icon when powered");
+        puts("PASS New Home shows an icon beside each estimate and a charging icon when powered");
     }
     const unsigned types[]={3,2,1,7,5,6,4,0,8,9,10,11};
     unsigned (*type_key)(void)=(void *)target(0x89dc8);

@@ -65,6 +65,7 @@ VESPER_PATCHES = {
 }
 GRID_PATCHES = {
     0x13FC0: (0xEBFFFF9A, "stock_home_adc_overlay"),
+    0xA6658: (0xE59FC024, "launcher_display_frame"),
     # Home enters immediately before the original main-menu dispatch.
     0x9846C: (0xE5974008, "stock_home_dispatch"),
     # Enter a specific platform through the stock type browser and return
@@ -214,7 +215,7 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
             delta = symbols[target] - address - 8
             if delta % 4 or not -(1 << 25) <= delta < 1 << 25:
                 raise ValueError(f"branch out of range: {target}")
-            branch = (0xEA000000 if address in (0x91050, 0x8F5C0) else
+            branch = (0xEA000000 if address in (0x91050, 0x8F5C0, 0xA6658) else
                       0xEB000000 if address in GRID_PATCHES else old & 0xFF000000)
             target = branch | ((delta >> 2) & 0xFFFFFF)
         struct.pack_into("<I", data, address-0x10000, target)

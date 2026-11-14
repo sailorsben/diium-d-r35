@@ -13,6 +13,39 @@ static unsigned backlight_calls, duty, applied_volume, mixer_blocks, nonzero_blo
 static bool timer_fail, brightness, reset_seen, picker_seen, scroll_seen, factory_seen;
 static bool brightness_error, corrupt_seen;
 static bool real_font;
+static bool classic_case, stock_options, classic_changing;
+static unsigned vendor_overlays, stock_settings_visits;
+
+static void vendor_overlay(uint16_t *frame,unsigned width)
+{
+    assert(frame==settings && width==640);
+    ++vendor_overlays;
+    frame[2*640+602]=0xf81f;
+}
+
+static void classic_dialog(void)
+{
+    ++stock_settings_visits;
+    void *art=NULL;
+    int (*load)(void **,const char *)=(void *)0x82aa8;
+    assert(load(&art,"setting.raw") && art);
+    size_t bytes;
+    char path[1024];
+    assert(snprintf(path,sizeof(path),"%s/factory-setting.raw",work)<(int)sizeof(path));
+    void *original=read_data(path,&bytes);
+    assert(*(unsigned *)0x19bc0c==bytes && !memcmp(art,original,bytes));
+    unsigned offset=*(unsigned *)art;
+    assert(offset+sizeof(settings)<=bytes);
+    memcpy(settings,(unsigned char *)art+offset,sizeof(settings));
+    free(original);
+    free(art);
+    void (*present)(uint16_t *,unsigned,unsigned,size_t)=(void *)target(0x8e2c8);
+    present(settings,640,480,1280);
+    if(stock_options) {
+        unsigned (*poll)(void)=(void *)target(0x8e30c);
+        assert(poll()==B);
+    }
+}
 
 static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const char *text)
 {
@@ -30,6 +63,12 @@ static int test_text(uint16_t *frame,int x,int y,int height,unsigned color,const
 static void test_frame(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(w==640 && h==480 && pitch==1280 && pixels==settings);
+    ((void (*)(uint16_t *,unsigned))target(0x13fc0))(settings,640);
+    assert(!vendor_overlays && settings[2*640+602]!=0xf81f);
+    if(real_font) {
+        unsigned expected=classic_case?0x8f5e:0xb69a;
+        assert(settings[18*640+529]==expected && settings[25*640+576]==expected);
+    }
     if(real_font) {
         char path[1024];
         assert(snprintf(path,sizeof(path),"%s/settings-%02u.rgb565",work,frames)<(int)sizeof(path));
@@ -41,6 +80,7 @@ static void test_frame(const void *pixels,unsigned w,unsigned h,size_t pitch)
 
 static unsigned test_joy(void)
 {
+    if(classic_changing) { classic_changing=false; return 8; }
     assert(key_index<key_count);
     unsigned key=keys[key_index++];
     *(unsigned *)0x1b9b50=key;
@@ -155,7 +195,8 @@ static void route(void)
 int main(int argc,char **argv)
 {
     assert(argc==3 || argc==4);
-    real_font=argc==4 && !strcmp(argv[3],"font");
+    classic_case=argc==4 && !strcmp(argv[3],"classic");
+    real_font=argc==4;
     work=argv[2];
     map_vendor(argv[1]);
     patch(0x11ce0,(uintptr_t)fopen); patch(0x11f20,(uintptr_t)fclose);
@@ -189,7 +230,8 @@ int main(int argc,char **argv)
     patch(0x80bec,(uintptr_t)path); patch(0x12010,(uintptr_t)find);
     patch(0x157c8,(uintptr_t)gpio); patch(0x86368,(uintptr_t)test_joy);
     if(!real_font) patch(0x85c94,(uintptr_t)test_text);
-    patch(0xa6658,(uintptr_t)test_frame);
+    *(uintptr_t *)0x1be388=(uintptr_t)test_frame;
+    patch(0x13e30,(uintptr_t)vendor_overlay);
     patch(0x11da0,(uintptr_t)timer_open); patch(0x11d40,(uintptr_t)pwm);
     patch(0x1258c,(uintptr_t)volume);
     patch(0xa695c,(uintptr_t)capture_audio);
@@ -202,13 +244,31 @@ int main(int argc,char **argv)
     *(unsigned *)0x1998d8=1;
     if(real_font) {
         patch(0x81da0,(uintptr_t)load_stock_settings);
+        static char locale_def[64];
+        memcpy(locale_def+32,"ui_en.bkp",10);
+        *(void **)0x19993c=locale_def;
+        *(void **)0x199940=locale_def;
         ((void (*)(void))target(0x98174))();
         ((void (*)(void))0x85a88)();
         assert(*(void **)0x1b9d14);
+        *(int *)0x1b9b28=1;
+        if(classic_case) {
+            patch(0x8dfe4,(uintptr_t)classic_dialog);
+            ((void (*)(void))target(0x984dc))();
+            assert(stock_settings_visits==1 && frames==1);
+            stock_options=true;
+            classic_changing=true;
+            const unsigned open[]={8,0,A,0,B};
+            drive(open,sizeof(open)/sizeof(*open));
+            assert(stock_settings_visits==2 && frames>=2);
+            file_contents("d35-launcher1/d35-loader.cfg","0NP");
+            puts("PASS Classic loads the original Settings member and START opens the launcher options with a route back to New");
+            return 0;
+        }
         const unsigned paint[]={0,DOWN,DOWN,DOWN,DOWN,A,0,DOWN,DOWN,DOWN,DOWN,B,0,
                                 DOWN,DOWN,DOWN,DOWN,A,0,B,B};
         drive(paint,sizeof(paint)/sizeof(*paint));
-        puts("PASS actual vendor font paints the Settings groups, music picker and final reset row");
+        puts("PASS Settings, music picker and reset draw one icon plus estimate with the stock overlay suppressed");
         return 0;
     }
     route();
