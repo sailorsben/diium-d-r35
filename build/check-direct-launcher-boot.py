@@ -60,8 +60,16 @@ def check(prepared):
         assert not ready.exists() and not log.exists() and not events.exists()
         status.write_text("State:\tZ (zombie)\n")
         invoke(board)
-        assert ready.read_text()=="firmware=direct-launcher-v1\n"
-        assert "boot_id=boot-fixture-1" in log.read_text() and events.read_text()=="card\n"
+        grid = "firmware=direct-launcher-grid-v2" in board
+        tag = "direct-launcher-grid-v2" if grid else "direct-launcher-v1"
+        assert ready.read_text()==f"firmware={tag}\n"
+        assert "boot_id=boot-fixture-1\n" in log.read_text() and events.read_text()=="card\n"
+        if grid:
+            assert "layout=stock\n" in log.read_text()
+            (retro/"d35-launcher1/home-grid.rgb565").touch()
+            events.unlink()
+            invoke(board)
+            assert "layout=grid\n" in log.read_text() and events.read_text()=="card\n"
         stop.unlink()
         invoke(card)
         assert not stop.exists() and events.read_text()=="card\nsupervisor\n"

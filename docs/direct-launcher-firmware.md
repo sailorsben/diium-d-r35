@@ -129,3 +129,34 @@ direct-core copies match their pretest hashes.
 The original card frontend and init are preserved by hash in the private
 staging archive, along with the previous one-shot launcher. The verified
 prior firmware and its update package remain available for a board rollback.
+
+## Illustrated home grid
+
+The English launcher uses the approved 12-tile artwork at 640×480. Start
+opens Settings, Select opens Favorites, X opens Search, Y opens Last
+Played, L opens All Games, and R opens the local file browser. The same
+shortcuts are reachable with the D-pad. A short Power press on Home opens
+the existing confirmed shutdown action. The vendor long-press path
+remains available. Both English Settings themes place factory reset last.
+Other locales and alternate display modes use the stock home path.
+
+The grid delegates to the original menu dispatch. Platform tiles enter the
+stock list for the selected platform. The SNES route still loads the pinned
+direct core. The installer preserves other emulators, private saves, menu
+sounds, splash assets, and the Vesper updater artwork. The vendor frontend
+fallback is available if the grid asset is unavailable.
+
+The board update changes `init.project.rc` and the compressed initrd length
+in the loader table. The boot script logs `direct-launcher-grid-v2` and the
+presence of the SD grid asset. The original Thumb loader and ARM updater
+pass offline, with 20 changed blocks and 5,120 programmed pages in RAM.
+The original BusyBox passes the splash handoff and no-card fallback cases.
+ARM checks cover all grid platform IDs and shortcuts, Settings order,
+shutdown confirmation, emulator dispatch and the direct save-slot path.
+
+Boot the handheld with the card installed and charging power connected.
+The Vesper progress bar reports the update. After completion, power on if
+needed and check Home, the platform and shortcut routes, Settings, and
+shutdown. Archive the boot log and progress before removing the consumed
+update. A fresh boot tag verifies the handoff script executed, and full SPI
+readback is needed for byte-for-byte physical verification.

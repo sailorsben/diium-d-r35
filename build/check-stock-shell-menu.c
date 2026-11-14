@@ -185,7 +185,8 @@ static void expect_option_sprite(unsigned index)
     const uint16_t *rect=(const uint16_t *)(art+16*index+8);
     unsigned left=rect[0],top=rect[1],right=rect[2],bottom=rect[3];
     const uint16_t *source=(const uint16_t *)(art+((const uint32_t *)art)[4*index]);
-    assert(index>=5 && index<=12 && left==90 && right==550 && bottom-top==39);
+    assert(index>=5 && index<=14 && left==90 && right==550 &&
+           bottom-top==(*(const uint32_t *)art==240?37:39));
     for(unsigned y=top;y<bottom;++y) {
         assert(!memcmp(settings+y*640+left,source,(right-left)*2));
         source+=right-left;
@@ -314,12 +315,29 @@ static void shutdown_dialog(void)
     abort();
 }
 
+static void ordered_settings_dialog(void)
+{
+    settings_background("setting-new.raw");
+    for(unsigned i=0;i<3;++i) assert(settings_key(2,0x40,false)==0);
+    expect_option_sprite(14);
+    assert(settings_key(2,0x40,false)==0x40);
+    assert(settings_key(3,0x10,false)==0x10);
+    assert(settings_key(2,0x2000,true)==0 && shutdown_display==1);
+    assert(settings_key(2,0x4000,false)==0 && !shutdown_pixels && !shutdown_calls);
+    assert(settings_key(2,0x10,false)==0);
+    assert(settings_key(2,0x10,false)==0);
+    assert(settings_key(2,0x10,false)==0);
+    assert(settings_key(2,0x10,false)==0x10);
+    puts("PASS Settings navigation places Frame Skip, Theme and Power Off before factory reset");
+}
+
 #ifndef D35_STOCK_MENU_ENTRY
 #define D35_STOCK_MENU_ENTRY main
 #endif
 int D35_STOCK_MENU_ENTRY(int argc,char **argv)
 {
     assert(argc==5 || argc==6);
+    bool ordered=argc==6 && !strcmp(argv[5],"ordered");
     work=argv[3];
     map_vendor(argv[1]);
     patch(0x11ce0,(uintptr_t)fopen); patch(0x11f20,(uintptr_t)fclose);
@@ -369,19 +387,27 @@ int D35_STOCK_MENU_ENTRY(int argc,char **argv)
     ((void (*)(unsigned))0x873f4)(0);
     assert(!player->data);
     printf("music=%s fills=%zu mixer_ns=%"PRIu64"\n",argv[4],calls-before,elapsed);
-    if(pcm) { exercise_settings(); exercise_state_paths(); }
+    if(pcm && !ordered) exercise_settings();
+    if(pcm) exercise_state_paths();
     free(old); free((void *)expected);
     if(argc==6) {
-        assert(!strcmp(argv[5],"shutdown"));
+        assert(ordered || !strcmp(argv[5],"shutdown"));
+        if(ordered) {
+            static char locale_def[64];
+            memcpy(locale_def+32,"ui_en.bkp",10);
+            *(void **)0x19993c=locale_def;
+            *(void **)0x199940=locale_def;
+            patch(0x81da0,(uintptr_t)load_stock_settings);
+        }
         shutdown_fixture=true;
         patch(0x164abc,(uintptr_t)power_alloc);
         patch(0x164d58,(uintptr_t)power_free);
         patch(0x11d4c,(uintptr_t)power_command);
-        patch(0x8dfe4,(uintptr_t)shutdown_dialog);
+        patch(0x8dfe4,(uintptr_t)(ordered?ordered_settings_dialog:shutdown_dialog));
         locale=1;
         ((void (*)(void))target(0x98174))();
         ((void (*)(void))target(0x984dc))();
-        abort();
+        assert(ordered);
     }
     return 0;
 }

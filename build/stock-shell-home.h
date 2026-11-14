@@ -1,0 +1,169 @@
+/* Stock main_menu remains the owner of lists, language and game dispatch. */
+enum { HOME_WIDTH=640, HOME_HEIGHT=480, HOME_BYTES=640*480*2,
+       HOME_LABEL_X=302, HOME_LABEL_Y=11, HOME_LABEL_W=320, HOME_LABEL_H=30,
+       HOME_TILES=12, HOME_SHORTCUTS=6, HOME_STAY=9 };
+#define HOME_ART LAUNCHER "/home-grid.rgb565"
+#define HOME_MODE VAR(0x1998e0,unsigned)
+#define HOME_TYPE VAR(0x199990,int)
+#define HOME_PAD VAR(0x1b9b50,const volatile unsigned)
+
+struct home_overlay {
+    unsigned selected;
+    bool type_open, inject_open;
+};
+#define HOME VAR(0x1c4300,struct home_overlay)
+_Static_assert(sizeof(struct home_overlay)<=0x100, "home overlay reservation");
+_Static_assert(offsetof(struct home_overlay,type_open)==4 &&
+               offsetof(struct home_overlay,inject_open)==5, "ARM back hook layout");
+
+/* Native carousel indices and main_menu dispatch modes, independently
+ * verified against the pinned vendor ELF. */
+static const uint8_t home_types[]={2,3,1,7,4,6,5,0,8,9,10,11};
+static const uint8_t home_shortcuts[]={5,3,4,2,0,6};
+static const unsigned home_shortcut_keys[]={8,1,0x1000,0x8000,0x400,0x800};
+
+/* The same read-only status bit used by the stock power helper. Keep the
+ * long-press helper and use a single mapping only while Home owns the UI. */
+static volatile uint32_t *home_power_map(void)
+{
+    int (*open)(const char *,int,...)=FN(0x11da0,int,const char *,int,...);
+    long (*map)(void *,size_t,int,int,int,long)=FN(0x11d70,long,void *,size_t,int,int,int,long);
+    int fd=open("/dev/mem",0);
+    if(fd<0) return NULL;
+    long address=map(NULL,4096,1,1,fd,0xd0000000);
+    FN(0x11cd4,int,int)(fd);
+    return address==-1?NULL:(volatile uint32_t *)address;
+}
+
+static void home_draw(uint16_t *frame,const uint16_t *base,unsigned cursor)
+{
+    COPY(frame,base,HOME_BYTES);
+    unsigned x,y,w,h;
+    if(cursor<HOME_TILES) {
+        x=20+152*(cursor%4); y=62+112*(cursor/4); w=144; h=104;
+        const uint16_t *label=base+HOME_WIDTH*HOME_HEIGHT+cursor*HOME_LABEL_W*HOME_LABEL_H;
+        for(unsigned row=0;row<HOME_LABEL_H;++row)
+            COPY(frame+(HOME_LABEL_Y+row)*HOME_WIDTH+HOME_LABEL_X,
+                 label+row*HOME_LABEL_W,HOME_LABEL_W*2);
+    } else {
+        unsigned shortcut=cursor-HOME_TILES;
+        x=19+152*(shortcut%4); y=409+30*(shortcut/4); w=145; h=26;
+    }
+    uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
+    settings_box(frame,x-2,y-2,x+w+2,y,accent);
+    settings_box(frame,x-2,y+h,x+w+2,y+h+2,accent);
+    settings_box(frame,x-2,y,x,y+h,accent);
+    settings_box(frame,x+w,y,x+w+2,y+h,accent);
+    DISP(frame,HOME_WIDTH,HOME_HEIGHT,HOME_WIDTH*2);
+}
+
+static unsigned home_move(unsigned cursor,unsigned key)
+{
+    if(key==0x80 && cursor%4) return cursor-1;
+    if(key==0x20 && cursor%4<3 && cursor<HOME_TILES+HOME_SHORTCUTS-1) return cursor+1;
+    if(key==0x10 && cursor>=4) return cursor-4;
+    if(key==0x40 && cursor+4<HOME_TILES+HOME_SHORTCUTS) return cursor+4;
+    return cursor;
+}
+
+ENTRY unsigned stock_home(void)
+{
+    const unsigned expected=HOME_BYTES+HOME_TILES*HOME_LABEL_W*HOME_LABEL_H*2;
+    HOME.type_open=HOME.inject_open=false;
+    char path[384];
+    void (*wait)(void)=shutdown_wait();
+    if(LOCALE!=1 || !wait || VAR(0x199914,unsigned)!=HOME_WIDTH ||
+       VAR(0x199918,unsigned)!=HOME_HEIGHT || !suffix(path,sizeof(path),WORK(),HOME_ART))
+        return HOME_MODE;
+    size_t bytes;
+    uint16_t *base=read_bytes(path,expected,&bytes);
+    if(!base || bytes!=expected) {
+        if(base) FREE(base);
+        return HOME_MODE;
+    }
+    uint16_t *frame=FN(0x164abc,void *,size_t)(HOME_BYTES);
+    if(!frame) { FREE(base); return HOME_MODE; }
+
+    volatile uint32_t *power=shutdown_available()?home_power_map():NULL;
+    bool previous_power=power && (power[0x68/4]&8);
+    unsigned cursor=HOME.selected, mode=HOME_STAY;
+    unsigned (*joy)(void)=FN(0x86368,unsigned,void);
+    /* Drain the key that closed a list before allowing another dispatch. */
+    unsigned held=HOME_PAD&0xffffu;
+    joy();
+    wait();
+    home_draw(frame,base,cursor);
+    while(mode==HOME_STAY) {
+        unsigned key=joy();
+        held &= HOME_PAD;
+        if(key&held) key=0;
+        bool down=power && (power[0x68/4]&8);
+        if(down && !previous_power && !S.power_frame) {
+            S.power_frame=frame;
+            S.accept_held=(HOME_PAD&0x2000)!=0;
+            shutdown_message("POWER OFF","SAVE DATA WILL BE FLUSHED","A POWER OFF     B CANCEL");
+        } else if(S.power_frame) {
+            if(!(HOME_PAD&0x2000)) S.accept_held=false;
+            if(key==0x4000) {
+                S.power_frame=NULL;
+                wait();
+                home_draw(frame,base,cursor);
+            } else if(key==0x2000 && !S.accept_held) {
+                S.accept_held=true;
+                shutdown_confirm();
+            }
+        } else if(key==0x2000) {
+            if(cursor<HOME_TILES) {
+                HOME_TYPE=home_types[cursor];
+                HOME.type_open=HOME.inject_open=true;
+                mode=1;
+            } else mode=home_shortcuts[cursor-HOME_TILES];
+        } else {
+            for(unsigned i=0;i<HOME_SHORTCUTS;++i)
+                if(key==home_shortcut_keys[i]) mode=home_shortcuts[i];
+            unsigned next=home_move(cursor,key);
+            if(next!=cursor) {
+                cursor=next;
+                vesper_menu_effect(1,(const struct sound *)0x1b9d18);
+                wait();
+                home_draw(frame,base,cursor);
+            }
+        }
+        previous_power=down;
+        if(mode==HOME_STAY) FN(0x11f08,int,unsigned)(20000);
+    }
+    HOME.selected=cursor;
+    if(power) FN(0x11efc,int,void *,size_t)((void *)power,4096);
+    wait();
+    FN(0x164d58,void,void *)(frame);
+    FREE(base);
+    return mode;
+}
+
+/* r4 is the stock dispatch mode; preserve the containing function's stack
+ * and callee-saved state. The following instructions still set menu flags. */
+__attribute__((naked)) ENTRY void stock_home_dispatch(void)
+{
+    __asm__ volatile("push {r3, lr}\n\tbl stock_home\n\tmov r4, r0\n\tpop {r3, pc}");
+}
+
+ENTRY unsigned stock_home_type_key(void)
+{
+    if(HOME.inject_open) { HOME.inject_open=false; return 0x2000; }
+    return FN(0x86368,unsigned,void)();
+}
+
+ENTRY void stock_home_type_frame(void *frame,unsigned w,unsigned h,size_t pitch)
+{
+    if(!HOME.inject_open) DISP(frame,w,h,pitch);
+}
+
+/* A direct platform visit uses the stock Back key but skips its intermediate
+ * carousel. The stock epilogue still restores the caller's stack/registers. */
+__attribute__((naked)) ENTRY void stock_home_type_back(void)
+{
+    __asm__ volatile(
+        "movw r3, #0x4304\n\tmovt r3, #0x1c\n\tldrb r2, [r3]\n\tcmp r2, #0\n\t"
+        "movne r2, #0\n\tstrneb r2, [r3]\n\tstrneb r2, [r3, #1]\n\t"
+        "ldrne pc, =0x89ed4\n\tldr r3, [sp, #12]\n\tbx lr");
+}

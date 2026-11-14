@@ -672,6 +672,26 @@ static bool baked_settings_rows(struct art_block *art,unsigned size)
     return true;
 }
 
+#ifdef D35_HOME_GRID
+static bool ordered_settings(const struct art_block *art)
+{ return art && art[0].offset==15*sizeof(*art); }
+
+static bool grid_settings_rows(struct art_block *art,unsigned size)
+{
+    if(!ordered_settings(art) || !full_art_block(art,size,0)) return false;
+    unsigned shift=art[1].top==116?18:0;
+    for(unsigned i=1;i<15;++i) {
+        const struct art_block *row=&art[i];
+        unsigned y=(i<4?134+50*(i-1):i==4?404:i<9?288:i<13?326:365)-shift;
+        unsigned height=i<4?54:37, bytes=2u*460u*height;
+        if(row->width!=640 || row->height!=480 || row->left!=90 || row->right!=550 ||
+           row->top!=y || row->bottom!=y+height || (row->offset&1) ||
+           row->offset<art[0].offset || size<bytes || row->offset>size-bytes) return false;
+    }
+    return true;
+}
+#endif
+
 static void settings_heading(uint16_t *frame)
 {
     /* Lowercase s at the original title's size and baseline. */
@@ -718,7 +738,11 @@ ENTRY int stock_load_art(struct art_block **art, const char *name)
         if(tile && favorites && tile[0]==0x0821 && tile[1]==0x0021 &&
            tile[2]==0x0821 && tile[3]==0x0001) settings_tile(tile,favorites);
     } else if(!STRCMP(name,"setting.raw")) {
-        S.baked_settings=baked_settings_rows(*art,size)?*art:NULL;
+        bool baked=baked_settings_rows(*art,size);
+#ifdef D35_HOME_GRID
+        baked=baked || grid_settings_rows(*art,size);
+#endif
+        S.baked_settings=baked?*art:NULL;
         uint16_t *frame=full_art_block(*art,size,0);
         if(LOCALE==1 && !S.baked_settings && frame && frame[0]==0x39e9 && frame[1]==0x31ea &&
            frame[2]==0x3a09 && frame[3]==0x31ea) settings_heading(frame);
@@ -844,6 +868,9 @@ static void baked_options(uint16_t *p,struct art_block *art)
     void (*blit)(void *,size_t,struct art_block *,unsigned)=FN(0x803a8,void,void *,size_t,struct art_block *,unsigned);
     blit(p,1280,art,5+2*(S.extra_row==1)+S.auto_skip);
     blit(p,1280,art,9+2*(S.extra_row==2)+(S.classic || !S.new_art));
+#ifdef D35_HOME_GRID
+    if(ordered_settings(art)) blit(p,1280,art,13+(S.extra_row==3));
+#endif
     const uint16_t *base=(const uint16_t *)((const uint8_t *)art+art[0].offset);
     for(unsigned y=69;y<86;++y) COPY(p+y*640+105,base+y*640+105,430u*2u);
     if(S.save_failed) settings_text(p,105,70,"SAVE FAILED",2,0xfe49);
@@ -857,16 +884,32 @@ ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
         void (*wait)(void)=driver?SYM(driver,"WaitDisp"):NULL;
         if(wait) {
             wait();
-            if(SETTINGS_ART && S.extra_row)
+            if(SETTINGS_ART && S.extra_row
+#ifdef D35_HOME_GRID
+               && !ordered_settings(S.baked_settings)
+#endif
+            )
                 FN(0x80424,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,4);
             else if(SETTINGS_ART && S.restore_highlight)
-                FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,4);
+                FN(0x803a8,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,
+#ifdef D35_HOME_GRID
+                    ordered_settings(S.baked_settings)?3:
+#endif
+                    4);
+#ifdef D35_HOME_GRID
+            if(ordered_settings(S.baked_settings) && S.extra_row)
+                FN(0x80424,void,void *,size_t,struct art_block *,unsigned)(p,pitch,SETTINGS_ART,3);
+#endif
             S.restore_highlight=false;
             if(SETTINGS_ART && S.baked_settings==SETTINGS_ART) baked_options(p,SETTINGS_ART);
             else settings_options(p);
             S.settings_pixels=p;
 #ifdef D35_VESPER_LAUNCHER
-            if(shutdown_available()) {
+            if(shutdown_available()
+#ifdef D35_HOME_GRID
+               && !ordered_settings(S.baked_settings)
+#endif
+            ) {
                 settings_box(p,407,10,622,45,0x08a3);
                 settings_text(p,419,20,"START POWER OFF",2,0xaf9e);
             }
@@ -918,6 +961,29 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
         S.select_held=true;
         return 0;
     }
+#ifdef D35_HOME_GRID
+    if(S.settings_pixels && ordered_settings(S.baked_settings)) {
+        if(keys==0x40 && stock_row==2) {
+            if(S.extra_row==3) { S.extra_row=0; return keys; }
+            ++S.extra_row;
+        } else if(keys==0x10 && stock_row==3) {
+            S.extra_row=3;
+            return keys;
+        } else if(keys==0x10 && S.extra_row) {
+            S.restore_highlight=--S.extra_row==0;
+        } else if(keys==0x2000 && S.extra_row) {
+            if(S.accept_held) return 0;
+            S.accept_held=true;
+            if(S.extra_row==3) {
+                if(shutdown_available()) shutdown_open();
+                return 0;
+            }
+            change_option(S.extra_row);
+        } else return keys;
+        stock_settings_frame(S.settings_pixels,640,480,1280);
+        return 0;
+    }
+#endif
     if(S.settings_pixels && (S.extra_row || (stock_row==3 && keys==0x40))) {
         if(keys==0x40) {
             if(S.extra_row<2) ++S.extra_row;
@@ -1003,4 +1069,8 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
 
 #ifdef D35_VESPER_LAUNCHER
 #include "stock-shell-vesper.h"
+#endif
+
+#ifdef D35_HOME_GRID
+#include "stock-shell-home.h"
 #endif

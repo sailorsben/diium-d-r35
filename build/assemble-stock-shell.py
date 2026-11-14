@@ -62,6 +62,16 @@ VESPER_PATCHES = {
     0x13950: (0xEBFFFDD2, "vesper_update_program"),
     0x13984: (0xEB024B33, "vesper_update_detail"),
 }
+GRID_PATCHES = {
+    # Home enters immediately before the original main-menu dispatch.
+    0x9846C: (0xE5974008, "stock_home_dispatch"),
+    # Enter a specific platform through the stock type browser and return
+    # directly to Home on Back.
+    0x89DC8: (0xEBFFF166, "stock_home_type_key"),
+    0x8A008: (0xEBFFF0D6, "stock_home_type_key"),
+    0x8A5C0: (0xE59D300C, "stock_home_type_back"),
+    0x8A6D0: (0xEB006FE0, "stock_home_type_frame"),
+}
 
 
 def sha(data):
@@ -72,7 +82,7 @@ def command(*argv):
     return subprocess.check_output(argv, text=True)
 
 
-def assemble(vendor, core, out, native_audio=False, vesper=False):
+def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
     repo = Path(__file__).resolve().parent.parent
     if not any(out.is_relative_to(parent) for parent in
                (repo/"build", Path.home().resolve(), Path(tempfile.gettempdir()).resolve())):
@@ -96,6 +106,10 @@ def assemble(vendor, core, out, native_audio=False, vesper=False):
     options = ["-DD35_STARFOX_NATIVE_AUDIO"] if native_audio else []
     if vesper:
         options.append("-DD35_VESPER_LAUNCHER")
+    if grid:
+        if not vesper:
+            raise ValueError("The home grid uses the Vesper menu and shutdown functions")
+        options.append("-DD35_HOME_GRID")
     command(prefix+"gcc", "-std=gnu11", "-O3", "-Wall", "-Wextra", "-Werror", "-ffreestanding",
             "-fno-builtin", "-fno-pic", "-fno-pie", "-fno-stack-protector",
             "-fno-unwind-tables", "-fno-asynchronous-unwind-tables", "-marm", "-mcpu=cortex-a7",
@@ -134,6 +148,8 @@ def assemble(vendor, core, out, native_audio=False, vesper=False):
             expected = 0xEB000000 | (((0x8750C - address - 8) >> 2) & 0xFFFFFF)
             if address not in patches and struct.unpack_from("<I", data, address-0x10000)[0] == expected:
                 patches[address] = expected, "vesper_menu_effect"
+    if grid:
+        patches.update(GRID_PATCHES)
     for address, (expected, target) in patches.items():
         old, = struct.unpack_from("<I", data, address-0x10000)
         if old != expected:
@@ -142,7 +158,8 @@ def assemble(vendor, core, out, native_audio=False, vesper=False):
             delta = symbols[target] - address - 8
             if delta % 4 or not -(1 << 25) <= delta < 1 << 25:
                 raise ValueError(f"branch out of range: {target}")
-            target = (old & 0xFF000000) | ((delta >> 2) & 0xFFFFFF)
+            branch = 0xEB000000 if address in GRID_PATCHES else old & 0xFF000000
+            target = branch | ((delta >> 2) & 0xFFFFFF)
         struct.pack_into("<I", data, address-0x10000, target)
     data.extend(bytes(at-len(data)))
     data.extend(text)
@@ -175,9 +192,10 @@ def main():
     parser.add_argument("new_local_output", type=Path)
     parser.add_argument("--starfox-native-audio", action="store_true")
     parser.add_argument("--vesper-launcher", action="store_true")
+    parser.add_argument("--home-grid", action="store_true")
     args = parser.parse_args()
     assemble(args.stock.resolve(), args.optimized_core.resolve(), args.new_local_output.resolve(),
-             args.starfox_native_audio, args.vesper_launcher)
+             args.starfox_native_audio, args.vesper_launcher, args.home_grid)
 
 
 if __name__ == "__main__":

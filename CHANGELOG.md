@@ -1,5 +1,13 @@
 # Changelog
 
+## Add the illustrated launcher grid - 2026-11-13
+
+Open platform lists from a four-column home grid, with direct shortcuts
+to the existing menus. Put factory reset last in English Settings and
+open the shutdown confirmation from a short press of Power on Home.
+The internal update records the new handoff to the SD launcher.
+[Installation and checks](docs/direct-launcher-firmware.md#illustrated-home-grid).
+
 ## Add Power Off to launcher Settings - 2026-11-13
 
 Confirm the action, flush the card and verify that FAT is read-only before

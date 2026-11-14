@@ -1,0 +1,82 @@
+{
+  "arm_checks_passed": true,
+  "physical": false,
+  "reviewed_preview_sha256": "ccc7826fcc0ef290f539027e7e1e6010457b1047e6420dac30757502f4a81d87",
+  "core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "payload_sha256": {
+    "vrtemu": "f3eef55a9733b1c2d3707c5d46fec4abf5018c6f22626e3dd2c73645896bb23c",
+    "home-grid.rgb565": "5b2c9f3d8e38b772b62c94b5d54f2b60341214cae0b71246a4d27a8707cc835e",
+    "ui_en.bkp": "ae8e827980462d53c6105a953653ff5f5d2f3c67c308cc0100b9f3c3886f0a7d",
+    "ui_classic.bkp": "98aad3eef9a29fbb97b46938c6c198f0cb8350dd4c9bf03e693fe46b36f1c3f7",
+    "Code.bkp": "a958fa04333ee81806e22531457fa911e28c0bfc5581bcae3fdad422c74f0848"
+  },
+  "checks": [
+    "PASS ARM home dispatch, all 12 stock type IDs, six shortcuts, arrows, locale fallback and physical-key cancel/confirm",
+    "music=pcm fills=1800 mixer_ns=126869400",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS Settings navigation places Frame Skip, Theme and Power Off before factory reset",
+    "nes index=5 route=1",
+    "sfc index=4 route=2",
+    "smc index=2 route=2",
+    "fig index=3 route=2",
+    "gba index=8 route=3",
+    "gb index=10 route=4",
+    "gbc index=9 route=4",
+    "bin index=11 route=5",
+    "smd index=13 route=5",
+    "md index=12 route=5",
+    "iso index=15 route=6",
+    "img index=16 route=6",
+    "pbp index=17 route=6",
+    "Exit back to here... 2",
+    "gma route=8",
+    "Open ZIP file ok",
+    "Exit back to here... 5",
+    "arcade zip route=8 (archive boundary stubbed)",
+    "PASS exact stock run_game dispatch to emulator entry points",
+    "PASS exact Thumb bitmap pointer/dimension stores and all 614400 referenced bytes; MMIO is RAM, boot ROM and panel not executed",
+    "PASS exact Thumb table parser/getter, GPAP selection, three-section load and DT initrd bounds with intercepted SPI; kernel not executed",
+    "reads=3 kernel=000c0078/2366616 rootfs=00301d10/3382969 dt=006417ee/10490 entry=02000000",
+    "PASS updater container/validation and RAM-only programming: accepted=1 config_calls=6 reads=18945 erases=20 pages=5120 metadata=80d2d4ed/5d6d9bc0",
+    "erased_blocks=000000,0c0000,520000,530000,540000,550000,560000,570000,580000,590000,5a0000,5b0000,5c0000,5d0000,5e0000,5f0000,600000,610000,620000,630000",
+    "PASS updater container/validation and RAM-only programming: accepted=0 config_calls=6 reads=1 erases=0 pages=0 metadata=00000000/00000000",
+    "erased_blocks=",
+    "PASS original BusyBox startup with grid asset present and missing, splash exclusion and no-card fallback"
+  ],
+  "firmware": {
+    "baseline_sha256": "c0969f5a0d171957a604ed32e7cc03bb6ea8544227ebe093df3b8884bd4b92cb",
+    "artifact_sha256": {
+      "candidate.bin": "a5c4f7eb4bcec389eefb04170b2192a4df57f3d3e39cfc0cc1d0e47e8580884d",
+      "expected-after-vendor.bin": "6ba41fe7166a241cd9174e06d133d386aafc8d46915563422467798f27f86340",
+      "Code.bkp": "a958fa04333ee81806e22531457fa911e28c0bfc5581bcae3fdad422c74f0848",
+      "init.project.rc": "ae4c657b22d38ade48da74d21ff41405dfc890dba4a0adf05801a80ff5f50d61"
+    },
+    "changed_rootfs_files": [
+      "init.project.rc"
+    ],
+    "rootfs_bytes": 3382969,
+    "expected_erased_blocks": [
+      "000000",
+      "0c0000",
+      "520000",
+      "530000",
+      "540000",
+      "550000",
+      "560000",
+      "570000",
+      "580000",
+      "590000",
+      "5a0000",
+      "5b0000",
+      "5c0000",
+      "5d0000",
+      "5e0000",
+      "5f0000",
+      "600000",
+      "610000",
+      "620000",
+      "630000"
+    ],
+    "expected_page_programs": 5120
+  }
+}
