@@ -30,23 +30,22 @@ static void capture(const char *name,const uint16_t *frame)
 
 static void check_battery(const uint16_t *frame,int band,bool with_percentage)
 {
-    uint16_t ink=band==4?0xfb69:theme?0x8f5e:0xb69a;
-    bool numbered=with_percentage && band<5;
-    unsigned x=solid_case?557:numbered?552:587, width=solid_case?60:30;
-    assert(frame[19*W+x]==ink && frame[19*W+x+width-1]==ink);
+    uint16_t ink=band==4?0xfe11:theme?0x8ddd:0x9dba;
+    bool numbered=(with_percentage || solid_case) && band<5;
+    if(!solid_case) assert(frame[26*W+618]==ink);
     if(numbered) {
         unsigned light=0,blended=0;
-        unsigned origin=solid_case?574:590;
-        for(unsigned y=21;y<33;++y)
-            for(unsigned px=origin;px<origin+26;++px) {
+        unsigned origin=solid_case?570:551;
+        for(unsigned y=19;y<35;++y)
+            for(unsigned px=origin;px<origin+36;++px) {
                 unsigned value=frame[y*W+px];
                 if(value==0xf7bf) ++light;
-                else if((value>>11)>=13 && ((value>>5)&63)>=28) ++blended;
+                else if((value>>11)>=13 && value>0x6a66) ++blended;
             }
-        assert(light>6 && blended>6);
+        assert(light>18 && blended>18);
     }
-    if(band==4 && !solid_case) assert(frame[23*W+x+6]==ink);
-    if(band==5) assert(frame[23*W+x+width/2]==0xff8d);
+    if(band==4 && !solid_case) assert(frame[24*W+596]==ink);
+    if(band==5) assert(frame[26*W+(solid_case?588:605)]==0xff8d);
 }
 
 static void grid_wait(void) { ++waits; }
@@ -253,7 +252,7 @@ int main(int argc,char **argv)
         sequence(keys,2);
         assert(dispatch(target(0x9846c))==modes[i] && next_event==2 && !grid_frame);
     }
-    if(percent_case) {
+    if(percent_case || solid_case) {
         unsigned keys[]={0,8};
         for(int band=0;band<=5;++band) {
             *(int *)0x1b9b28=band;
@@ -262,7 +261,7 @@ int main(int argc,char **argv)
         }
         *(int *)0x1b9b28=1;
         draws-=6;
-        puts("PASS New Home shows an icon beside each estimate and a charging icon when powered");
+        puts("PASS New Home renders all five battery percentages and the charging indicator");
     }
     const unsigned types[]={3,2,1,7,5,6,4,0,8,9,10,11};
     unsigned (*type_key)(void)=(void *)target(0x89dc8);

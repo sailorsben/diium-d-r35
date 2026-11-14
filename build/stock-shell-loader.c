@@ -91,7 +91,16 @@ static bool launcher_settings(bool from_classic);
 static bool launcher_settings_available(void);
 static void settings_reset_text_clip(void);
 static void menu_button(uint16_t *frame,unsigned x,unsigned y,unsigned button);
-static void settings_blend_pixel(uint16_t *pixel,uint16_t ink,unsigned alpha);
+static void menu_blend_pixel(uint16_t *pixel,uint16_t ink,unsigned alpha)
+{
+    if(!alpha) return;
+    if(alpha==15) { *pixel=ink; return; }
+    unsigned bg=*pixel, weight=15-alpha;
+    unsigned r=((ink>>11)*alpha+(bg>>11)*weight+7)/15;
+    unsigned g=(((ink>>5)&63)*alpha+((bg>>5)&63)*weight+7)/15;
+    unsigned b=((ink&31)*alpha+(bg&31)*weight+7)/15;
+    *pixel=(uint16_t)((r<<11)|(g<<5)|b);
+}
 enum { BUTTON_DPAD, BUTTON_ADJUST, BUTTON_A, BUTTON_B, BUTTON_START, BUTTON_SELECT };
 static unsigned launcher_factory_navigation(unsigned row, unsigned key);
 static bool launcher_factory_active(void);

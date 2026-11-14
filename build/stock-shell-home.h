@@ -1,4 +1,6 @@
 /* Stock main_menu remains the owner of lists, language and game dispatch. */
+#include "stock-shell-battery-text.h"
+
 enum { HOME_WIDTH=640, HOME_HEIGHT=480, HOME_BYTES=640*480*2,
        HOME_LABEL_X=194, HOME_LABEL_Y=11, HOME_LABEL_W=320, HOME_LABEL_H=30,
        HOME_TILES=12, HOME_SHORTCUTS=6, HOME_STAY=9 };
@@ -28,44 +30,68 @@ static const uint8_t home_types[]={3,2,1,7,5,6,4,0,8,9,10,11};
 static const uint8_t home_shortcuts[]={5,3,4,2,0,6};
 static const unsigned home_shortcut_keys[]={8,1,0x1000,0x8000,0x400,0x800};
 
+static void home_battery_text(uint16_t *frame,unsigned x,unsigned y,int state)
+{
+    for(unsigned row=0;row<BATTERY_TEXT_H;++row) {
+        uint16_t *pixel=frame+(y+row)*640+x;
+        for(unsigned column=0;column<BATTERY_TEXT_W/2;++column) {
+            unsigned coverage=battery_text[state][row][column];
+            if(coverage) {
+                menu_blend_pixel(pixel+column*2,0xf7bf,coverage>>4);
+                menu_blend_pixel(pixel+column*2+1,0xf7bf,coverage&15);
+            }
+        }
+    }
+}
+
 static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int state)
 {
-    uint16_t ink=state<0 || state==4?0xfb69:S.applied_classic?0x8f5e:0xb69a;
-    unsigned style=S.battery_style;
-    bool numbered=style!=BATTERY_BARS && state>=0 && state<=4;
-    bool solid=style==BATTERY_SOLID;
-    unsigned width=solid?60:30;
-    unsigned x=solid?557:numbered?552:587;
-    unsigned right=x+width;
-    for(unsigned y=18;y<35;++y) {
-        unsigned inset=y==18 || y==34;
-        settings_box(frame,x+inset,y,right-inset,y+1,ink);
-    }
-    settings_box(frame,x+2,20,right-2,33,0x1127);
-    settings_box(frame,right+1,23,right+4,30,ink);
-    unsigned bars=state<0?0:state==5?4:state>=3?1:4-state;
+    const uint16_t ink=state<0 || state==4?0xfe11:S.applied_classic?0x8ddd:0x9dba;
+    const bool numbered=S.battery_style!=BATTERY_BARS && state>=0 && state<=4;
+    const bool solid=S.battery_style==BATTERY_SOLID;
+    const unsigned right=617, x=solid?560:593;
+
     if(solid) {
-        unsigned percentage=state==5?100:state<0 || state>4?0:90-20*state;
-        unsigned filled=x+3+(width-6)*percentage/100;
-        uint16_t fill=S.applied_classic?0x2b93:0x3b34;
-        settings_box(frame,x+3,21,filled,32,fill);
+        const unsigned percentage=state==5?100:numbered?90-20*state:0;
+        const unsigned charge=x+(right-x)*percentage/100;
+        const uint16_t track=S.applied_classic?0x1a8b:0x1949;
+        const uint16_t fill=state==4?0x6a66:S.applied_classic?0x2b74:0x3351;
+        static const uint8_t corner[]={7,5,3,2,2,1,1};
+        for(unsigned row=0;row<24;++row) {
+            unsigned cap=row<12?row:23-row;
+            unsigned inset=cap<sizeof(corner)?corner[cap]:0;
+            unsigned start=x+inset, end=right-inset, y=15+row;
+            settings_box(frame,start,y,end,y+1,track);
+            settings_box(frame,start,y,charge<end?charge:end,y+1,fill);
+            if(inset) {
+                menu_blend_pixel(frame+y*640+start-1,charge>=start?fill:track,6);
+                menu_blend_pixel(frame+y*640+end,charge>end?fill:track,6);
+            }
+        }
     } else {
+        const uint16_t inner=0x10c6;
+        settings_box(frame,right+1,24,right+3,29,ink);
+        settings_box(frame,x+2,20,right-2,33,ink);
+        settings_box(frame,x,22,x+2,31,ink);
+        settings_box(frame,right-2,22,right,31,ink);
+        settings_box(frame,x+1,21,right-1,32,inner);
+        menu_blend_pixel(frame+21*640+x+1,ink,12);
+        menu_blend_pixel(frame+21*640+right-2,ink,12);
+        menu_blend_pixel(frame+31*640+x+1,ink,12);
+        menu_blend_pixel(frame+31*640+right-2,ink,12);
+        const unsigned bars=state<0?0:state==5?4:state>=3?1:4-state;
         for(unsigned i=0;i<bars;++i)
-            settings_box(frame,x+4+i*6,22,x+8+i*6,31,ink);
+            settings_box(frame,x+3+i*5,23,x+6+i*5,30,ink);
     }
-    if(numbered) {
-        const unsigned chars[]={5-(unsigned)state,0,6};
-        unsigned origin=solid?x+17:right+8;
-        for(unsigned i=0;i<3;++i)
-            for(unsigned y=0;y<12;++y)
-                for(unsigned column=0;column<10;++column)
-                    settings_blend_pixel(frame+(21+y)*640+origin+8*i+column,
-                                         0xf7bf,battery_text[chars[i]][y][column]);
-    }
+    if(numbered) home_battery_text(frame,solid?(x+right-BATTERY_TEXT_W)/2:551,19,state);
     if(state==5) {
-        unsigned center=x+width/2;
-        settings_box(frame,center-1,16,center+1,37,0xff8d);
-        settings_box(frame,center-5,25,center+5,28,0xff8d);
+        unsigned center=(x+right)/2;
+        static const int8_t bolt[][2]={
+            {1,3},{0,2},{-1,2},{-2,1},{-3,3},{-1,2},{-2,1},{-2,0},{-3,-1}
+        };
+        for(unsigned row=0;row<sizeof(bolt)/sizeof(*bolt);++row)
+            settings_box(frame,center+bolt[row][0],22+row,
+                         center+bolt[row][1],23+row,0xff8d);
     }
 }
 

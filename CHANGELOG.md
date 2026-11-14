@@ -1,5 +1,11 @@
 # Changelog
 
+## Refine the battery indicator typography - 2026-11-14
+
+The percentage uses the Home footer typeface at 18 pixels. Bars + % puts
+the number beside a small icon, and Solid + % centers it on a rounded
+charge meter. The three choices share the right edge of the Home header.
+
 ## Compact battery badges and selectable shutdown actions - 2026-11-14
 
 Battery percentages use antialiased digits on a narrower badge. Power Off

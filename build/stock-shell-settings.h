@@ -116,17 +116,6 @@ static const uint8_t settings_row_icon[ROW_COUNT]={
     [ROW_RESET]=SETTINGS_MASK_RESET,
 };
 
-static void settings_blend_pixel(uint16_t *pixel,uint16_t ink,unsigned alpha)
-{
-    if(!alpha) return;
-    if(alpha==3) { *pixel=ink; return; }
-    unsigned bg=*pixel, weight=3-alpha;
-    unsigned r=((ink>>11)*alpha+(bg>>11)*weight+1)/3;
-    unsigned g=(((ink>>5)&63)*alpha+((bg>>5)&63)*weight+1)/3;
-    unsigned b=((ink&31)*alpha+(bg&31)*weight+1)/3;
-    *pixel=(uint16_t)((r<<11)|(g<<5)|b);
-}
-
 static void settings_mask(uint16_t *frame,unsigned x,unsigned y,
                           const uint8_t mask[][SETTINGS_ICON_SIZE/4],bool mirrored,uint16_t color)
 {
@@ -137,7 +126,7 @@ static void settings_mask(uint16_t *frame,unsigned x,unsigned y,
             unsigned coverage=mask[row][i];
             if(coverage)
                 for(unsigned k=0;k<4;++k)
-                    settings_blend_pixel(pixel+4*i+k,color,(coverage>>(6-2*k))&3);
+                    menu_blend_pixel(pixel+4*i+k,color,5*((coverage>>(6-2*k))&3));
         }
     }
 }

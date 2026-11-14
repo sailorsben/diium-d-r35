@@ -393,3 +393,17 @@ The ARM/QEMU checks exercise the battery styles, Home dialog focus,
 confirmation and cancellation, Settings, and the in-game Exit controls.
 The shutdown-script fixture checks the boot receipt and card-preparation
 failure paths. The candidate is staged locally for handheld review.
+
+### Battery typography revision
+
+The custom stroke digits looked pixelated at the device's native size.
+The revised launcher uses five 18 px Segoe UI Semibold labels with 16
+coverage levels. The existing Home artwork uses the same Segoe UI family.
+`write_battery_text()` in `build/launcher-footer-art.py` generates the
+small mask table compiled into the launcher. Bars + % uses a 24 px icon
+beside the text. Solid + % puts the text inside a 57 px fill meter.
+
+The ARM fixture checks all five percentages and the charging state in
+both New percentage modes, and the Classic carousel's header. Review
+captures come from the ARM frame buffer at 640×480. Physical review is
+pending.
