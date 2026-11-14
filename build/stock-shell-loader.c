@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <dirent.h>
 #include "stock-shell-audio.h"
 
 #define FN(at, ret, ...) ((ret (*)(__VA_ARGS__))(uintptr_t)(at))
@@ -80,6 +81,16 @@ struct overlay {
 /* Reserved by extending the pinned RW LOAD's zero-filled tail. */
 #define S VAR(0x1c4100, struct overlay)
 _Static_assert(sizeof(struct overlay) <= 0x100, "overlay must fit reserved storage");
+
+#ifdef D35_HOME_GRID
+static bool launcher_settings(void);
+static unsigned launcher_factory_navigation(unsigned row, unsigned key);
+static bool launcher_factory_active(void);
+static bool menu_music_override(void);
+static void menu_audio_lock(void);
+static void menu_audio_unlock(void);
+static bool start_builtin_music(void);
+#endif
 
 static bool suffix(char *out, size_t cap, const char *prefix, const char *tail)
 {
@@ -807,20 +818,26 @@ ENTRY void stock_load_settings(void)
     FN(0x81da0,void,void)();
 }
 
-static bool save_options(bool auto_skip,bool classic,bool battery_percent)
+/* Publish settings only after the complete new file is flushed. */
+static bool save_config_bytes(const char *path,const void *data,size_t bytes)
 {
-    char path[384],tmp[384];
+    char tmp[400];
     int (*replace)(const char *,const char *)=SYM(NULL,"rename");
-    if(!replace || !suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg") ||
-       !suffix(tmp,sizeof(tmp),path,".tmp")) return false;
+    if(!replace || !suffix(tmp,sizeof(tmp),path,".tmp")) return false;
     FILE *f=FOPEN(tmp,"wb");
     if(!f) return false;
-    const char settings[]={auto_skip?'1':'0',classic?'C':'N','P'};
-    size_t bytes=battery_percent?3:2;
-    bool ok=FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(settings,1,bytes,f)==bytes &&
+    bool ok=FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(data,1,bytes,f)==bytes &&
         !FN(0x11fb0,int,FILE *)(f) && !FN(0x11b18,int,int)(FN(0x11df4,int,FILE *)(f));
     if(FCLOSE(f)) ok=false;
     return ok && !replace(tmp,path);
+}
+
+static bool save_options(bool auto_skip,bool classic,bool battery_percent)
+{
+    char path[384];
+    const char settings[]={auto_skip?'1':'0',classic?'C':'N','P'};
+    return suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg") &&
+        save_config_bytes(path,settings,battery_percent?3:2);
 }
 
 /* Compact glyphs for the two launcher settings rows and the footer. */
@@ -911,6 +928,9 @@ static void baked_options(uint16_t *p,struct art_block *art)
 
 ENTRY void stock_settings_frame(uint16_t *p,unsigned w,unsigned h,size_t pitch)
 {
+#ifdef D35_HOME_GRID
+    if(launcher_factory_active()) return;
+#endif
     if(p && w==640 && h==480 && pitch==1280) {
         void *driver=VAR(0x1b81a8,void *);
         void (*wait)(void)=driver?SYM(driver,"WaitDisp"):NULL;
@@ -975,6 +995,7 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
 {
 #ifdef D35_HOME_GRID
     unsigned keys=launcher_menu_key();
+    if(launcher_factory_active()) return launcher_factory_navigation(stock_row,keys);
 #else
     unsigned keys=FN(0x86368,unsigned,void)();
 #endif
@@ -1060,7 +1081,10 @@ ENTRY void stock_settings(void)
     S.start_held=button_down(0x30c);
 #endif
     S.save_failed=S.restore_highlight=false;
-    FN(0x8dfe4,void,void)();
+#ifdef D35_HOME_GRID
+    if(!launcher_settings())
+#endif
+        FN(0x8dfe4,void,void)();
 #ifdef D35_VESPER_LAUNCHER
     if(S.power_frame) shutdown_cancel();
 #endif
@@ -1091,7 +1115,7 @@ struct sound {
     unsigned phase;
 };
 
-ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
+static void play_builtin_music(unsigned channel,const struct sound *original)
 {
     if(channel==0 && original && original->type==1 && original->data) {
         char path[384];
@@ -1111,6 +1135,20 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
     FN(0x8750c,void,unsigned,const struct sound *)(channel,original);
 }
 
+ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
+{
+#ifdef D35_HOME_GRID
+    if(channel==0) {
+        if(menu_music_override()) return;
+        menu_audio_lock();
+        if(!start_builtin_music() && original) play_builtin_music(channel,original);
+        menu_audio_unlock();
+        return;
+    }
+#endif
+    play_builtin_music(channel,original);
+}
+
 #ifdef D35_VESPER_LAUNCHER
 #include "stock-shell-vesper.h"
 #endif
@@ -1118,4 +1156,6 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
 #ifdef D35_HOME_GRID
 #include "stock-shell-home.h"
 #include "stock-shell-pause.h"
+#include "stock-shell-music.h"
+#include "stock-shell-settings.h"
 #endif

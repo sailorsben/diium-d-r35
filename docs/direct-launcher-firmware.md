@@ -235,3 +235,24 @@ English Controls uses the right side of the pause menu for the player and
 mapping selector. L2 + R2 has a text area below the A/B mappings. The
 stock joystick editor still owns mapping changes and saving defaults.
 [Qualification](../evidence/2026-11-13/launcher-pause-battery-qualification.json).
+
+### Scrolling Settings and custom music
+
+The English launcher displays five full-size Settings rows. Press Up or
+Down to scroll. Use Left or Right on Brightness and Volume. Brightness
+uses the board's four timer0 levels and saves a change after the driver
+accepts it. Settings reports a backlight error if the driver rejects the
+request. The previous stock brightness call skipped timer0 entirely
+when the executable's `retro_version` flag was zero.
+
+Open **Menu music** to choose **Start Line (built-in)**, **Off**, or an MP3.
+Copy MP3s into `retro/d35-launcher1/music` on the card. The picker lists up
+to 64 tracks. Each MP3 can be up to 8 MiB. The launcher decodes the selected
+file in the menu mixer, loops it, and releases it when a game starts.
+The picker checks the file before saving the choice. An unavailable
+selected track is shown in Settings. Off applies to the music channel.
+
+Language and factory reset use the stock handlers. Factory reset remains
+last in the list. Search draws a vertical caret inside the stock blink
+rectangle. Power Off centers the visible letter inside each button box.
+[Qualification](../evidence/2026-11-13/launcher-scroll-settings-qualification.json).

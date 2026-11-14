@@ -111,6 +111,17 @@ PAUSE_PATCHES = {
     0x8F898: (0xEBFFD8FD, "controls_help_first"),
     0x903C8: (0xEBFFD631, "controls_help_first"),
 }
+SETTINGS_PATCHES = {
+    0x8918C: (0xEBFFFF33, "launcher_menu_mix"),
+    0x87754: (0xEBFFFF26, "launcher_menu_sound_close"),
+    0x99B2C: (0xEBFFB058, "search_caret"),
+    0x81EE4: (0xEBFE4BC7, "launcher_apply_saved_brightness"),
+    0x8E794: (0xEBFE199B, "launcher_apply_saved_brightness"),
+    0x8F0EC: (0xEBFFDC9D, "launcher_reset_key"),
+    0x8EEFC: (0xEB005DD5, "launcher_reset_frame"),
+    0x8DCA0: (0xEBFFE1B0, "launcher_language_key"),
+    0x8DD10: (0xEBFFE194, "launcher_language_key"),
+}
 
 
 def sha(data):
@@ -190,6 +201,7 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
     if grid:
         patches.update(GRID_PATCHES)
         patches.update(PAUSE_PATCHES)
+        patches.update(SETTINGS_PATCHES)
     for address, (expected, target) in patches.items():
         old, = struct.unpack_from("<I", data, address-0x10000)
         if old != expected:

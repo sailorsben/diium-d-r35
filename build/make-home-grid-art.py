@@ -128,7 +128,10 @@ def build_power(font, output):
                 w = round(draw.textlength(label, font=face(17))/scale)+59
                 box(left, 114, left+w, 151, 5, button, edge)
                 box(left+9, 121, left+31, 144, 4, bg, edge)
-                text(left+14, 132, key, 14, accent)
+                key_face = face(14)
+                l, t, r, b = draw.textbbox((0, 0), key, font=key_face)
+                draw.text((round((left+20)*scale-(l+r)/2), round(132.5*scale-(t+b)/2)),
+                          key, font=key_face, fill=accent)
                 text(left+40, 132, label, 17, "#f2f3f4")
                 left += w+12
             panel = panel.resize((width,height),Image.Resampling.LANCZOS)

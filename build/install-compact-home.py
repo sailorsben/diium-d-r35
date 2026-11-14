@@ -18,22 +18,25 @@ BOOT_LOG = BASE + "direct-boot.log"
 MARKERS = {"armed", "code.bkp", "vesper-preview.once"}
 
 
-def install_pause_update(card, payload):
-    prior = direct.read(EVIDENCE / "compact-home-installation.json")
+def install_launcher_update(card, payload, *, scrolling=False):
+    update = "launcher-scroll-settings" if scrolling else "launcher-pause-battery"
+    baseline = "launcher-pause-battery" if scrolling else "compact-home"
+    prior = direct.read(EVIDENCE / (baseline + "-installation.json"))
     grid = direct.read(EVIDENCE / "home-grid-arming.json")
-    qualified = direct.read(EVIDENCE / "launcher-pause-battery-qualification.json")
+    qualified = direct.read(EVIDENCE / (update + "-qualification.json"))
     boot = direct.read(EVIDENCE / "direct-launcher-firmware-qualification.json")
     assert qualified["arm_checks_passed"] and not qualified["physical"]
     for name, expected in qualified["source_sha256"].items():
         assert digest(ROOT / name) == expected, name
 
-    targets = (BASE + "ui_en.bkp", BASE + "ui_classic.bkp", BASE + "vrtemu", direct.FRONTEND)
+    art = (BASE + "power-dialog.rgb565",) if scrolling else (BASE + "ui_en.bkp", BASE + "ui_classic.bkp")
+    targets = (*art, BASE + "vrtemu", direct.FRONTEND)
     data = {name: (payload / Path(name).name).read_bytes() for name in targets}
     hashes = {name: sha256(blob).hexdigest() for name, blob in data.items()}
     assert all(hashes[name] == qualified["payload_sha256"][Path(name).name] for name in targets)
 
     archive = ROOT / "device-evidence" / (
-        "launcher-pause-battery-before-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
+        update + "-before-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
     archive.mkdir()
     entries = inventory(card, archive)
     outside = inventory(card, archive, outside=True)
@@ -42,12 +45,16 @@ def install_pause_update(card, payload):
     verify_saved(archive, {"schema": "sparse-attempt-v1", "all_retro_files": entries + outside})
     before = {entry["path"]: entry["sha256"] for entry in entries + outside}
     pins = {
-        **prior["payload_sha256"], BASE + "libs/d35-snes.so": prior["core_sha256"],
         BASE + "ui_en.bkp": grid["payload_sha256"][BASE + "ui_en.bkp"],
         BASE + "ui_classic.bkp": grid["payload_sha256"][BASE + "ui_classic.bkp"],
+        **prior["payload_sha256"], BASE + "libs/d35-snes.so": prior["core_sha256"],
         direct.INIT: boot["artifact_sha256"]["sd-init"],
         "retro/main": direct.SUPERVISOR, "retro/driver.so": direct.DRIVER,
     }
+    if scrolling:
+        compact = direct.read(EVIDENCE / "compact-home-installation.json")
+        for asset in ("power-dialog.rgb565", "home-grid.rgb565"):
+            pins[BASE + asset] = compact["payload_sha256"][BASE + asset]
     for name, expected in pins.items():
         assert before.get(name) == expected, name
     assert not any(Path(n).name.lower() in MARKERS or n.lower().endswith(".armed") for n in before)
@@ -56,7 +63,7 @@ def install_pause_update(card, payload):
     assert log.get("frontend") == "/usr/retro/vrtemu"
     assert re.fullmatch(r"[0-9a-f-]{36}", log.get("boot_id", ""))
     verify = direct.installer.verify_inventory
-    direct.clean(card, archive, "pause-battery-before")
+    direct.clean(card, archive, update + "-before")
 
     rollback = archive / "changed-payload-rollback"
     for name in targets:
@@ -67,13 +74,22 @@ def install_pause_update(card, payload):
 
     atomic = direct.installer.fix.atomic
     touched = []
+    music_dir = card / (BASE + "music")
+    created_music_dir = False
     try:
         for name, blob in data.items():
             touched.append(name)
             atomic(card / name, blob)
+        if scrolling and not music_dir.exists():
+            music_dir.mkdir()
+            created_music_dir = True
+        if scrolling:
+            assert music_dir.is_dir()
         verify(card, {**before, **hashes})
-        direct.clean(card, archive, "pause-battery-after")
+        direct.clean(card, archive, update + "-after")
     except BaseException:
+        if created_music_dir:
+            music_dir.rmdir()
         for name in reversed(touched):
             target = card / name
             if not target.exists() or digest(target) != before[name]:
@@ -90,7 +106,7 @@ def install_pause_update(card, payload):
         "persistent_card_launcher": True, "new_launcher_physical_boot": "pending",
     }
     body = json.dumps(receipt, indent=2) + "\n"
-    (archive / "launcher-pause-battery-installation.json").write_text(body, encoding="utf-8")
+    (archive / (update + "-installation.json")).write_text(body, encoding="utf-8")
     print(body, end="")
 
 
@@ -183,11 +199,13 @@ def install(card, payload):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("payload", type=lambda p: Path(p).resolve())
-    parser.add_argument("--pause-battery", action="store_true")
+    update = parser.add_mutually_exclusive_group()
+    update.add_argument("--pause-battery", action="store_true")
+    update.add_argument("--scroll-settings", action="store_true")
     args = parser.parse_args()
     card = Path("I:/").resolve()
     assert str(card).lower() in ("i:/", "i:\\") and args.payload.is_relative_to(ROOT / "build")
-    if args.pause_battery:
-        install_pause_update(card, args.payload)
+    if args.pause_battery or args.scroll_settings:
+        install_launcher_update(card, args.payload, scrolling=args.scroll_settings)
     else:
         install(card, args.payload)

@@ -1,5 +1,12 @@
 # Changelog
 
+## Make launcher Settings scroll - 2026-11-13
+
+Five full-height rows stay visible while the list scrolls. Brightness and
+volume respond to Left and Right. Choose Start Line, Off, or an MP3 from
+the card under Menu music. Search uses a thin caret and Power Off centers
+its button letters.
+
 ## Add a battery display setting and improve the pause menu - 2026-11-13
 
 Settings offers battery bars or an estimated percentage on Home. Load
