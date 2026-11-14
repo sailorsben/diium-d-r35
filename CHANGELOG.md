@@ -1,5 +1,12 @@
 # Changelog
 
+## Add a battery display setting and improve the pause menu - 2026-11-13
+
+Settings offers battery bars or an estimated percentage on Home. Load
+State highlights the first occupied slot and shows that slot's screenshot
+above the grid. Controls uses the former preview area and gives the
+L2 + R2 shortcut its own space below the mappings.
+
 ## Give the compact home grid a single footer row - 2026-11-13
 
 Keep all 12 platforms visible and enlarge their art. Show six shortcuts

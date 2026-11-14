@@ -13,6 +13,7 @@ static jmp_buf powered_off;
 static uint16_t *power_asset;
 static unsigned power_views, phase_mask, theme, next_view;
 static bool esc_pressed;
+static bool percent_case;
 
 static void grid_wait(void) { ++waits; }
 static void *grid_find(void *handle,const char *name)
@@ -35,7 +36,14 @@ static void grid_draw(const void *pixels,unsigned w,unsigned h,size_t pitch)
 {
     assert(w==W && h==H && pitch==W*2 && pixels==grid_frame && waits>draws);
     ++draws;
-    assert(grid_frame[18*W+581]!=0 && grid_frame[18*W+581]==grid_frame[34*W+616]);
+    if(percent_case && !power_case && *(int *)0x1b9b28<=4) {
+        uint16_t ink=*(int *)0x1b9b28==4?0xfb69:theme?0x8f5e:0xb69a;
+        assert(grid_frame[25*W+578]==ink); /* ~ */
+        assert(grid_frame[19*W+612]==ink); /* % */
+        assert(grid_frame[18*W+581]!=ink); /* no bar outline */
+    } else if(!percent_case || *(int *)0x1b9b28==5) {
+        assert(grid_frame[18*W+581]!=0 && grid_frame[18*W+581]==grid_frame[34*W+616]);
+    }
     ((void (*)(uint16_t *,unsigned))target(0x13fc0))(grid_frame,W);
     assert(!adc_calls);
     if(next_view) {
@@ -112,8 +120,9 @@ static void sequence(const unsigned *keys,unsigned n)
 
 int main(int argc,char **argv)
 {
-    assert(argc==3 || (argc==4 && !strcmp(argv[3],"classic")));
-    theme=argc==4;
+    assert(argc==3 || argc==4 || argc==5);
+    theme=argc>=4 && !strcmp(argv[3],"classic");
+    percent_case=argc==5 && !strcmp(argv[4],"percent");
     work=argv[2];
     map_vendor(argv[1]);
     patch(0x11ce0,(uintptr_t)fopen); patch(0x11f20,(uintptr_t)fclose);
@@ -149,6 +158,17 @@ int main(int argc,char **argv)
         unsigned keys[]={0,shortcuts[i]};
         sequence(keys,2);
         assert(dispatch(target(0x9846c))==modes[i] && next_event==2 && !grid_frame);
+    }
+    if(percent_case) {
+        unsigned keys[]={0,8};
+        for(int band=0;band<=5;++band) {
+            *(int *)0x1b9b28=band;
+            sequence(keys,2);
+            assert(dispatch(target(0x9846c))==5);
+        }
+        *(int *)0x1b9b28=1;
+        draws-=6;
+        puts("PASS Home renders estimated percent for each band and the charging icon when powered");
     }
     const unsigned types[]={3,2,1,7,5,6,4,0,8,9,10,11};
     unsigned (*type_key)(void)=(void *)target(0x89dc8);

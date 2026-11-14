@@ -32,6 +32,28 @@ ENTRY void stock_home_adc_overlay(uint16_t *frame,unsigned width)
 static void home_battery(uint16_t *frame,int state)
 {
     uint16_t ink=state<0 || state==4?0xfb69:S.applied_classic?0x8f5e:0xb69a;
+    if(S.battery_percent && state>=0 && state<=4) {
+        /* Midpoints of the five vendor bands, shown as an estimate. */
+        static const uint8_t marks[8][7]={
+            {0,0,0,10,21,0,0}, /* ~ */
+            {14,17,17,17,17,17,14}, /* 0 */
+            {4,12,4,4,4,4,14}, /* 1 */
+            {30,1,1,14,1,1,30}, /* 3 */
+            {31,16,16,30,1,1,30}, /* 5 */
+            {31,1,2,4,8,8,8}, /* 7 */
+            {14,17,17,15,1,1,14}, /* 9 */
+            {25,26,4,4,8,11,19}, /* % */
+        };
+        const unsigned chars[]={0,6-(unsigned)state,1,7};
+        for(unsigned i=0;i<4;++i)
+            for(unsigned y=0;y<7;++y)
+                for(unsigned x=0;x<5;++x)
+                    if(marks[chars[i]][y]&(16u>>x)) {
+                        unsigned left=576+12*i+2*x, top=19+2*y;
+                        settings_box(frame,left,top,left+2,top+2,ink);
+                    }
+        return;
+    }
     settings_box(frame,581,18,617,20,ink);
     settings_box(frame,581,33,617,35,ink);
     settings_box(frame,581,20,583,33,ink);
@@ -200,5 +222,5 @@ __attribute__((naked)) ENTRY void stock_home_type_back(void)
     __asm__ volatile(
         "movw r3, #0x4304\n\tmovt r3, #0x1c\n\tldrb r2, [r3]\n\tcmp r2, #0\n\t"
         "movne r2, #0\n\tstrneb r2, [r3]\n\tstrneb r2, [r3, #1]\n\t"
-        "ldrne pc, =0x89ed4\n\tldr r3, [sp, #12]\n\tbx lr");
+        "ldrne pc, 1f\n\tldr r3, [sp, #12]\n\tbx lr\n\t1: .word 0x89ed4");
 }

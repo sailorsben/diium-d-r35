@@ -94,6 +94,23 @@ GRID_PATCHES = {
     0x8DD10: (0xEBFFE194, "launcher_menu_key"),
     0x8F0EC: (0xEBFFDC9D, "launcher_menu_key"),
 }
+PAUSE_PATCHES = {
+    # Replace function entries so the pause menu's dispatch table also uses
+    # the wrappers. The wrappers replay the first PC-relative load.
+    0x91050: (0xE59F2764, "load_menu"),
+    0x91140: (0xEBFE0361, "load_menu_copy"),
+    0x91268: (0xEBFE029C, "load_slot_probe"),
+    0x91434: (0xEB005487, "load_first_frame"),
+    0x914A8: (0xEBFFD3AE, "load_slot_key"),
+    0x915A0: (0xEB00542C, "load_next_frame"),
+    0x8F5C0: (0xE59FCE34, "controls_menu"),
+    0x8F69C: (0xEBFFC341, "controls_panel"),
+    0x90034: (0xEBFFC0DB, "controls_panel"),
+    0x8F708: (0xEBFFFF8A, "controls_preview"),
+    0x8F874: (0xEBFFD906, "controls_help_first"),
+    0x8F898: (0xEBFFD8FD, "controls_help_first"),
+    0x903C8: (0xEBFFD631, "controls_help_first"),
+}
 
 
 def sha(data):
@@ -172,6 +189,7 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
                 patches[address] = expected, "vesper_menu_effect"
     if grid:
         patches.update(GRID_PATCHES)
+        patches.update(PAUSE_PATCHES)
     for address, (expected, target) in patches.items():
         old, = struct.unpack_from("<I", data, address-0x10000)
         if old != expected:
@@ -180,7 +198,8 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
             delta = symbols[target] - address - 8
             if delta % 4 or not -(1 << 25) <= delta < 1 << 25:
                 raise ValueError(f"branch out of range: {target}")
-            branch = 0xEB000000 if address in GRID_PATCHES else old & 0xFF000000
+            branch = (0xEA000000 if address in (0x91050, 0x8F5C0) else
+                      0xEB000000 if address in GRID_PATCHES else old & 0xFF000000)
             target = branch | ((delta >> 2) & 0xFFFFFF)
         struct.pack_into("<I", data, address-0x10000, target)
     data.extend(bytes(at-len(data)))

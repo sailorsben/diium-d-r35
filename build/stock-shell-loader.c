@@ -73,6 +73,7 @@ struct overlay {
     bool start_held;
 #ifdef D35_HOME_GRID
     const uint16_t *power_art;
+    bool battery_percent;
 #endif
 #endif
 };
@@ -676,17 +677,24 @@ static bool baked_settings_rows(struct art_block *art,unsigned size)
 }
 
 #ifdef D35_HOME_GRID
+static bool battery_settings(const struct art_block *art)
+{ return art && art[0].offset==19*sizeof(*art); }
+
 static bool ordered_settings(const struct art_block *art)
-{ return art && art[0].offset==15*sizeof(*art); }
+{ return battery_settings(art) || (art && art[0].offset==15*sizeof(*art)); }
 
 static bool grid_settings_rows(struct art_block *art,unsigned size)
 {
     if(!ordered_settings(art) || !full_art_block(art,size,0)) return false;
     unsigned shift=art[1].top==116?18:0;
-    for(unsigned i=1;i<15;++i) {
+    bool battery=battery_settings(art);
+    for(unsigned i=1;i<(battery?19u:15u);++i) {
         const struct art_block *row=&art[i];
-        unsigned y=(i<4?134+50*(i-1):i==4?404:i<9?288:i<13?326:365)-shift;
-        unsigned height=i<4?54:37, bytes=2u*460u*height;
+        unsigned y=i<4?134+50*(i-1):battery?
+            (i==4?411:i<9?287:i<13?318:i<15?380:349):
+            (i==4?404:i<9?288:i<13?326:365);
+        y-=shift;
+        unsigned height=i<4?54:battery?31:37, bytes=2u*460u*height;
         if(row->width!=640 || row->height!=480 || row->left!=90 || row->right!=550 ||
            row->top!=y || row->bottom!=y+height || (row->offset&1) ||
            row->offset<art[0].offset || size<bytes || row->offset>size-bytes) return false;
@@ -770,13 +778,19 @@ ENTRY void stock_load_settings(void)
     S.auto_skip=false;
     S.classic=false;
     S.new_art=false;
+#ifdef D35_HOME_GRID
+    S.battery_percent=false;
+#endif
     if(suffix(path,sizeof(path),WORK(),LAUNCHER "/d35-loader.cfg")) {
         FILE *f=FOPEN(path,"rb");
-        char settings[2]={0};
+        char settings[3]={0};
         if(f) {
             size_t bytes=FREAD(settings,1,sizeof(settings),f);
             S.auto_skip=bytes && settings[0]=='1';
-            S.classic=bytes==2 && settings[1]=='C';
+            S.classic=bytes>=2 && settings[1]=='C';
+#ifdef D35_HOME_GRID
+            S.battery_percent=bytes==3 && settings[2]=='P';
+#endif
             FCLOSE(f);
         }
     }
@@ -793,7 +807,7 @@ ENTRY void stock_load_settings(void)
     FN(0x81da0,void,void)();
 }
 
-static bool save_options(bool auto_skip,bool classic)
+static bool save_options(bool auto_skip,bool classic,bool battery_percent)
 {
     char path[384],tmp[384];
     int (*replace)(const char *,const char *)=SYM(NULL,"rename");
@@ -801,8 +815,9 @@ static bool save_options(bool auto_skip,bool classic)
        !suffix(tmp,sizeof(tmp),path,".tmp")) return false;
     FILE *f=FOPEN(tmp,"wb");
     if(!f) return false;
-    const char settings[]={auto_skip?'1':'0',classic?'C':'N'};
-    bool ok=FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(settings,1,sizeof(settings),f)==sizeof(settings) &&
+    const char settings[]={auto_skip?'1':'0',classic?'C':'N','P'};
+    size_t bytes=battery_percent?3:2;
+    bool ok=FN(0x11eb4,size_t,const void *,size_t,size_t,FILE *)(settings,1,bytes,f)==bytes &&
         !FN(0x11fb0,int,FILE *)(f) && !FN(0x11b18,int,int)(FN(0x11df4,int,FILE *)(f));
     if(FCLOSE(f)) ok=false;
     return ok && !replace(tmp,path);
@@ -883,7 +898,10 @@ static void baked_options(uint16_t *p,struct art_block *art)
     blit(p,1280,art,5+2*(S.extra_row==1)+S.auto_skip);
     blit(p,1280,art,9+2*(S.extra_row==2)+(S.classic || !S.new_art));
 #ifdef D35_HOME_GRID
-    if(ordered_settings(art)) blit(p,1280,art,13+(S.extra_row==3));
+    if(battery_settings(art)) {
+        blit(p,1280,art,13+(S.extra_row==4));
+        blit(p,1280,art,15+2*(S.extra_row==3)+S.battery_percent);
+    } else if(ordered_settings(art)) blit(p,1280,art,13+(S.extra_row==3));
 #endif
     const uint16_t *base=(const uint16_t *)((const uint8_t *)art+art[0].offset);
     for(unsigned y=69;y<86;++y) COPY(p+y*640+105,base+y*640+105,430u*2u);
@@ -938,11 +956,18 @@ static void change_option(unsigned row)
 {
     bool auto_skip=row==1?!S.auto_skip:S.auto_skip;
     bool classic=row==2?!S.classic:S.classic;
+    bool battery_percent=false;
+#ifdef D35_HOME_GRID
+    battery_percent=row==3?!S.battery_percent:S.battery_percent;
+#endif
     if(row==2 && !S.new_art) return;
-    S.save_failed=!save_options(auto_skip,classic);
+    S.save_failed=!save_options(auto_skip,classic,battery_percent);
     if(!S.save_failed) {
         S.auto_skip=auto_skip;
         S.classic=classic;
+#ifdef D35_HOME_GRID
+        S.battery_percent=battery_percent;
+#endif
     }
 }
 
@@ -981,18 +1006,19 @@ ENTRY unsigned stock_settings_input(unsigned stock_row)
     }
 #ifdef D35_HOME_GRID
     if(S.settings_pixels && ordered_settings(S.baked_settings)) {
+        unsigned power_row=battery_settings(S.baked_settings)?4:3;
         if(keys==0x40 && stock_row==2) {
-            if(S.extra_row==3) { S.extra_row=0; return keys; }
+            if(S.extra_row==power_row) { S.extra_row=0; return keys; }
             ++S.extra_row;
         } else if(keys==0x10 && stock_row==3) {
-            S.extra_row=3;
+            S.extra_row=power_row;
             return keys;
         } else if(keys==0x10 && S.extra_row) {
             S.restore_highlight=--S.extra_row==0;
         } else if(keys==0x2000 && S.extra_row) {
             if(S.accept_held) return 0;
             S.accept_held=true;
-            if(S.extra_row==3) {
+            if(S.extra_row==power_row) {
                 if(shutdown_available()) shutdown_open();
                 return 0;
             }
@@ -1091,4 +1117,5 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
 
 #ifdef D35_HOME_GRID
 #include "stock-shell-home.h"
+#include "stock-shell-pause.h"
 #endif

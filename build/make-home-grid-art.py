@@ -155,42 +155,50 @@ def build_settings(pack, font, destination, classic):
         draw = ImageDraw.Draw(base)
         art = ART["LauncherArt"](font, [])
         panel = base.getpixel((100, 350-shift))
-        draw.rectangle((90, 288-shift, 549, 441-shift), fill=panel)
+        draw.rectangle((90, 287-shift, 549, 441-shift), fill=panel)
         accent = "#afc8ca" if classic else ART["GOLD"]
         focus = "#163739" if classic else ART["SELECTED"]
 
-        def simple_row(y, label, selected, power_icon):
-            row = Image.new("RGB", (460, 37), panel)
+        def simple_row(y, label, selected, icon, value=None):
+            row = Image.new("RGB", (460, 31), panel)
             p = ImageDraw.Draw(row)
-            p.rounded_rectangle((6, 1, 454, 35), radius=5,
+            p.rounded_rectangle((6, 1, 454, 29), radius=5,
                                 fill=focus if selected else panel,
                                 outline=accent if selected else ART["EDGE"],
                                 width=2 if selected else 1)
-            if power_icon:
-                p.arc((29, 10, 45, 26), -51, 231, fill=accent, width=2)
-                p.line((37, 8, 37, 17), fill=accent, width=2)
+            if icon == "power":
+                p.arc((29, 7, 45, 23), -51, 231, fill=accent, width=2)
+                p.line((37, 5, 37, 14), fill=accent, width=2)
+            elif icon == "battery":
+                p.rounded_rectangle((27, 9, 45, 21), radius=2, outline=accent)
+                p.rectangle((46, 12, 47, 18), fill=accent)
+                p.rectangle((30, 12, 38, 18), fill=accent)
             else:
-                p.arc((29, 10, 45, 26), 22, 308, fill=accent, width=2)
-                p.line(((38, 14), (45, 14), (45, 8)), fill=accent, width=2)
-            art.label(p, (88, 18), label, 22, "#ffffff")
-            return (90, y-shift, 550, y-shift+37), row
+                p.arc((29, 7, 45, 23), 22, 308, fill=accent, width=2)
+                p.line(((38, 11), (45, 11), (45, 5)), fill=accent, width=2)
+            art.label(p, (88, 15), label, 21, "#ffffff")
+            if value:
+                art.label(p, (426, 15), value, 19, accent, "rm")
+            return (90, y-shift, 550, y-shift+31), row
 
-        reset = simple_row(404, "Restore factory settings", False, False)
-        power = simple_row(365, "Power Off", False, True)
-        for box, row in (reset, power):
+        reset = simple_row(411, "Restore factory settings", False, "reset")
+        power = simple_row(380, "Power Off", False, "power")
+        battery = [simple_row(349, "Battery display", selected, "battery", value)
+                   for selected in (False, True) for value in ("Bars", "Est. %")]
+        for box, row in (reset, power, battery[0]):
             base.paste(row, box[:2])
         if not classic:
             draw.rectangle((90, 442, 549, 451), fill=panel)
         frames = [(records[0][3:], base)]
         frames.extend((row[3:], ART["read_sprite"](raw, row)) for row in records[1:4])
-        frames.append(simple_row(404, "Restore factory settings", True, False))
+        frames.append(simple_row(411, "Restore factory settings", True, "reset"))
         for index, row in enumerate(records[5:13]):
-            y = (288 if index<4 else 326)-shift
-            scene = ART["read_sprite"](raw, row).resize((460, 37), Image.Resampling.LANCZOS)
-            frames.append(((90, y, 550, y+37), scene))
+            y = (287 if index<4 else 318)-shift
+            scene = ART["read_sprite"](raw, row).resize((460, 31), Image.Resampling.LANCZOS)
+            frames.append(((90, y, 550, y+31), scene))
             if index in (0, 4+int(classic)):
                 base.paste(scene, (90, y))
-        frames.extend((power, simple_row(365, "Power Off", True, True)))
+        frames.extend((power, simple_row(380, "Power Off", True, "power"), *battery))
         pixels, headers = bytearray(), bytearray()
         for box, image in frames:
             headers.extend(struct.pack("<I6H", len(frames)*16+len(pixels), 640, 480, *box))

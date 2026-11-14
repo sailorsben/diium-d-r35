@@ -1,5 +1,15 @@
 # Investigation history and negative results
 
+## Decode the existing save previews - 2026-11-13
+
+The vendor Load State loop begins with no active slot. It also seeks four
+bytes before the thumbnail stream and ignores zlib's return status. Five
+returned direct SNES saves decode at the stored compressed-state length
+plus four. The RGB565 preview is at the start of a larger decompressed
+buffer. The launcher validates the stream, selects the first occupied slot,
+and redraws the top preview when the selection moves.
+[Pause menu behavior](direct-launcher-firmware.md#battery-display-and-pause-menu).
+
 ## Add a confirmed launcher poweroff - 2026-11-13
 
 The installed BusyBox inittab omits the fallback table's unmount and swapoff

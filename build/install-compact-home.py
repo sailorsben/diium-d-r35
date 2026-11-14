@@ -18,6 +18,82 @@ BOOT_LOG = BASE + "direct-boot.log"
 MARKERS = {"armed", "code.bkp", "vesper-preview.once"}
 
 
+def install_pause_update(card, payload):
+    prior = direct.read(EVIDENCE / "compact-home-installation.json")
+    grid = direct.read(EVIDENCE / "home-grid-arming.json")
+    qualified = direct.read(EVIDENCE / "launcher-pause-battery-qualification.json")
+    boot = direct.read(EVIDENCE / "direct-launcher-firmware-qualification.json")
+    assert qualified["arm_checks_passed"] and not qualified["physical"]
+    for name, expected in qualified["source_sha256"].items():
+        assert digest(ROOT / name) == expected, name
+
+    targets = (BASE + "ui_en.bkp", BASE + "ui_classic.bkp", BASE + "vrtemu", direct.FRONTEND)
+    data = {name: (payload / Path(name).name).read_bytes() for name in targets}
+    hashes = {name: sha256(blob).hexdigest() for name, blob in data.items()}
+    assert all(hashes[name] == qualified["payload_sha256"][Path(name).name] for name in targets)
+
+    archive = ROOT / "device-evidence" / (
+        "launcher-pause-battery-before-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
+    archive.mkdir()
+    entries = inventory(card, archive)
+    outside = inventory(card, archive, outside=True)
+    write_manifest(archive / "archive.json", entries, all_retro_files=entries, card_writes=0)
+    write_manifest(archive / "outside-retro.json", outside, files=outside, card_writes=0)
+    verify_saved(archive, {"schema": "sparse-attempt-v1", "all_retro_files": entries + outside})
+    before = {entry["path"]: entry["sha256"] for entry in entries + outside}
+    pins = {
+        **prior["payload_sha256"], BASE + "libs/d35-snes.so": prior["core_sha256"],
+        BASE + "ui_en.bkp": grid["payload_sha256"][BASE + "ui_en.bkp"],
+        BASE + "ui_classic.bkp": grid["payload_sha256"][BASE + "ui_classic.bkp"],
+        direct.INIT: boot["artifact_sha256"]["sd-init"],
+        "retro/main": direct.SUPERVISOR, "retro/driver.so": direct.DRIVER,
+    }
+    for name, expected in pins.items():
+        assert before.get(name) == expected, name
+    assert not any(Path(n).name.lower() in MARKERS or n.lower().endswith(".armed") for n in before)
+    log = dict(line.split("=", 1) for line in (archive / BOOT_LOG).read_text().splitlines())
+    assert log.get("firmware") == "direct-launcher-grid-v2" and log.get("layout") == "grid"
+    assert log.get("frontend") == "/usr/retro/vrtemu"
+    assert re.fullmatch(r"[0-9a-f-]{36}", log.get("boot_id", ""))
+    verify = direct.installer.verify_inventory
+    direct.clean(card, archive, "pause-battery-before")
+
+    rollback = archive / "changed-payload-rollback"
+    for name in targets:
+        path = rollback / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes((card / name).read_bytes())
+        assert digest(path) == before[name], name
+
+    atomic = direct.installer.fix.atomic
+    touched = []
+    try:
+        for name, blob in data.items():
+            touched.append(name)
+            atomic(card / name, blob)
+        verify(card, {**before, **hashes})
+        direct.clean(card, archive, "pause-battery-after")
+    except BaseException:
+        for name in reversed(touched):
+            target = card / name
+            if not target.exists() or digest(target) != before[name]:
+                atomic(target, (rollback / name).read_bytes())
+        raise
+
+    receipt = {
+        "archive": archive.name, "source_commit": direct.installer.fix.git("rev-parse", "HEAD"),
+        "payload_sha256": hashes, "verified_card_files": len(before),
+        "unchanged_card_files": len(before) - len(targets),
+        "retained_progress_and_log_files": sum(e["stored"] for e in entries + outside),
+        "core_sha256": prior["core_sha256"], "returned_boot_id": log["boot_id"],
+        "spi_update_armed": False, "one_boot_test_armed": False, "fat32_clean": True,
+        "persistent_card_launcher": True, "new_launcher_physical_boot": "pending",
+    }
+    body = json.dumps(receipt, indent=2) + "\n"
+    (archive / "launcher-pause-battery-installation.json").write_text(body, encoding="utf-8")
+    print(body, end="")
+
+
 def install(card, payload):
     prior = direct.read(EVIDENCE / "home-grid-arming.json")
     qualified = direct.read(EVIDENCE / "compact-home-qualification.json")
@@ -107,7 +183,11 @@ def install(card, payload):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("payload", type=lambda p: Path(p).resolve())
+    parser.add_argument("--pause-battery", action="store_true")
     args = parser.parse_args()
     card = Path("I:/").resolve()
     assert str(card).lower() in ("i:/", "i:\\") and args.payload.is_relative_to(ROOT / "build")
-    install(card, args.payload)
+    if args.pause_battery:
+        install_pause_update(card, args.payload)
+    else:
+        install(card, args.payload)

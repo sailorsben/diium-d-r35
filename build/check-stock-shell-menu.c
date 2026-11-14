@@ -26,6 +26,7 @@ static unsigned active_key, flips, driver;
 static uint16_t settings[640*480];
 static const char *work;
 static unsigned locale=1;
+static bool ordered_classic;
 
 static uintptr_t target(uintptr_t at)
 { return at+8+((int32_t)(*(uint32_t *)at<<8)>>6); }
@@ -185,8 +186,9 @@ static void expect_option_sprite(unsigned index)
     const uint16_t *rect=(const uint16_t *)(art+16*index+8);
     unsigned left=rect[0],top=rect[1],right=rect[2],bottom=rect[3];
     const uint16_t *source=(const uint16_t *)(art+((const uint32_t *)art)[4*index]);
-    assert(index>=5 && index<=14 && left==90 && right==550 &&
-           bottom-top==(*(const uint32_t *)art==240?37:39));
+    unsigned headers=*(const uint32_t *)art;
+    assert(index>=5 && index<headers/16 && left==90 && right==550 &&
+           bottom-top==(headers==304?31:headers==240?37:39));
     for(unsigned y=top;y<bottom;++y) {
         assert(!memcmp(settings+y*640+left,source,(right-left)*2));
         source+=right-left;
@@ -317,18 +319,32 @@ static void shutdown_dialog(void)
 
 static void ordered_settings_dialog(void)
 {
-    settings_background("setting-new.raw");
+    settings_background(ordered_classic?"setting-classic.raw":"setting-new.raw");
+    const uint32_t *art=*(void **)0x199908;
+    bool battery=*art==304;
+    unsigned extra=battery?4:3;
     for(unsigned i=0;i<3;++i) assert(settings_key(2,0x40,false)==0);
+    if(battery) {
+        expect_option_sprite(17);
+        assert(settings_key(2,0x2000,true)==0);
+        settings_file(ordered_classic?"0CP":"0NP");
+        expect_option_sprite(18);
+        ((void (*)(void))target(0x98174))();
+        assert(settings_key(2,0,false)==0);
+        assert(settings_key(2,0x2000,true)==0);
+        settings_file(ordered_classic?"0C":"0N");
+        expect_option_sprite(17);
+        assert(settings_key(2,0x40,false)==0);
+        puts("PASS Battery display toggles, survives reload and keeps existing preferences");
+    }
     expect_option_sprite(14);
     assert(settings_key(2,0x40,false)==0x40);
     assert(settings_key(3,0x10,false)==0x10);
     assert(settings_key(2,0x2000,true)==0 && shutdown_display==1);
     assert(settings_key(2,0x4000,false)==0 && !shutdown_pixels && !shutdown_calls);
-    assert(settings_key(2,0x10,false)==0);
-    assert(settings_key(2,0x10,false)==0);
-    assert(settings_key(2,0x10,false)==0);
+    for(unsigned i=0;i<extra;++i) assert(settings_key(2,0x10,false)==0);
     assert(settings_key(2,0x10,false)==0x10);
-    puts("PASS Settings navigation places Frame Skip, Theme and Power Off before factory reset");
+    puts("PASS Settings navigation places launcher options and Power Off before factory reset");
 }
 
 #ifndef D35_STOCK_MENU_ENTRY
@@ -337,7 +353,8 @@ static void ordered_settings_dialog(void)
 int D35_STOCK_MENU_ENTRY(int argc,char **argv)
 {
     assert(argc==5 || argc==6);
-    bool ordered=argc==6 && !strcmp(argv[5],"ordered");
+    ordered_classic=argc==6 && !strcmp(argv[5],"ordered-classic");
+    bool ordered=ordered_classic || (argc==6 && !strcmp(argv[5],"ordered"));
     work=argv[3];
     map_vendor(argv[1]);
     patch(0x11ce0,(uintptr_t)fopen); patch(0x11f20,(uintptr_t)fclose);

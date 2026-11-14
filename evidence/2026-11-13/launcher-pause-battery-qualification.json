@@ -1,0 +1,65 @@
+{
+  "physical": false,
+  "arm_checks_passed": true,
+  "source_sha256": {
+    "build/assemble-stock-shell.py": "4925746b7c0b7f6a243ec8067bdea1d38a506dca7bfd2419e30a81c26c70ea3e",
+    "build/stock-shell-loader.c": "84f2d79468a94946b7b1bd225225d53d619e1ce783c0c094691d9fc6fcfbd0b5",
+    "build/stock-shell-home.h": "8349fcd3c38755074b07f4271edb52bdbb92e4a0413bf989a771e4dc2c84b7c4",
+    "build/stock-shell-pause.h": "38f9550adecc2003af2ddd96848e7d3662da3c3213ffa56db5199c383d6e5ac6",
+    "build/stock-shell-power.h": "72db84afbb719a1bda0d6b4c340e77d7776179f4e790e077611bd5d583928721",
+    "build/stock-shell-vesper.h": "77667fe22cd98be1c20d4b6795554805d98847a579c8fc982cfda2966ca6d984",
+    "build/make-home-grid-art.py": "25120b58c75c420184ff216f8bfd8b2f5830d67419ef2fa6af3f25b043d9733c",
+    "build/check-stock-shell-home.c": "7333fb7a8b1e376d46ecc6fc152dcb147b2826061743d2d7b7e200c0bf8172a7",
+    "build/check-stock-shell-menu.c": "f56c2dd7ba3a5d9b4f66b67b5240418805140360c0f0b46c55212ce1c2bb1033",
+    "build/check-stock-shell-pause.c": "211a242f52f9ef03764cbafe62f5f3f8b80b1ef17130cbfd080ed29717265152",
+    "build/check-stock-shell-routes.c": "253cb8c0455175e6f9d03529e6606b1bf1b9157e7a61cf970b2898109df82537",
+    "build/check-vesper-launcher.c": "b07d62d4dd082430cd34757d3ccc4f467c6ff9dcaf200df98c1b46573c23cbd0",
+    "build/install-compact-home.py": "4dd6d7d6b0afcf89d0bf30ace81c4b43b5105304c7c2f39cdad0051e509861a2"
+  },
+  "payload_sha256": {
+    "ui_classic.bkp": "0b0eeee19a1bb4a2299766481afaf7964f57df5360edd5727a3ef13abb1a6047",
+    "ui_en.bkp": "13f956481d4003ca7d242a86f803388cfc057bd5f9fb3603dc3cd455855d2cea",
+    "vrtemu": "983d4c36332386dc20878ab0147f811b7eb1a1017cb9e76ac6672a72485d7b66"
+  },
+  "unchanged_core_sha256": "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936",
+  "returned_direct_thumbnails": 5,
+  "thumbnail_offset": "4 + compressed state length",
+  "returned_decompressed_thumbnail_bytes": 153600,
+  "preview_dimensions": [
+    190,
+    142
+  ],
+  "battery_mode_default": "Bars",
+  "battery_estimate_bands": [
+    90,
+    70,
+    50,
+    30,
+    10
+  ],
+  "checks": [
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback",
+    "PASS physical-key cancel/confirm and New RGB565 confirmation, working and secured frames",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS Battery display toggles, survives reload and keeps existing preferences",
+    "PASS Settings navigation places launcher options and Power Off before factory reset",
+    "PASS Home renders estimated percent for each band and the charging icon when powered",
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback",
+    "PASS physical-key cancel/confirm and New RGB565 confirmation, working and secured frames",
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback",
+    "PASS physical-key cancel/confirm and Classic RGB565 confirmation, working and secured frames",
+    "PASS SNES pause-slot preview and thumbnail append use the private state file",
+    "PASS Battery display toggles, survives reload and keeps existing preferences",
+    "PASS Settings navigation places launcher options and Power Off before factory reset",
+    "PASS Home renders estimated percent for each band and the charging icon when powered",
+    "PASS ARM home dispatch, 12 ordered stock type IDs, six direct shortcuts, tile-only arrows and locale fallback",
+    "PASS physical-key cancel/confirm and Classic RGB565 confirmation, working and secured frames",
+    "PASS Controls draws P1, six live mappings and both shortcut lines in separate areas",
+    "PASS stock slot compositor and selection rim leave all six thumbnail interiors and gutters intact",
+    "PASS Load State selects the first save, ignores held A, refreshes preview and handles empty or corrupt thumbnails",
+    "PASS exact stock run_game dispatch to emulator entry points",
+    "PASS one-shot renderer from launcher entry, 14 frames, zero SPI calls",
+    "PASS real sector loop against RAM, monotonic progress, and injected SPI write failure",
+    "PASS Leaf Brush through stock channel and mixer with one-shot end"
+  ]
+}

@@ -213,3 +213,25 @@ internal image, direct SNES core, Settings packs, and menu sounds are
 unchanged. The ARM fixtures verify tile navigation, direct shortcuts,
 both shutdown themes, audio cue routing, and existing emulator dispatch.
 [Qualification](../evidence/2026-11-13/compact-home-qualification.json).
+
+### Battery display and pause menu
+
+Use **Settings → Battery display** to switch between **Bars** and **Est. %**.
+Bars is the default. The Home header shows one of five approximate
+levels, `~90%`, `~70%`, `~50%`, `~30%`, or `~10%`, from the existing ADC
+bands. It uses the lightning icon when the stock charging flag is set.
+The percentage is a display preference for the English launcher. See the
+[ADC measurements](stock-battery-trace.md) for the limits of the readings.
+
+Load State enters the first occupied slot in slot order. Release A after
+opening the menu, then press it again to load. The top preview shows the
+selected save's screenshot or a placeholder when the thumbnail is
+missing or unreadable. The vendor file begins with a four-byte compressed
+state length, followed by that many state bytes and then the thumbnail
+stream. Five returned direct-core saves confirm the offset and contain
+153,600 decompressed bytes, with the 190×142 preview at the start.
+
+English Controls uses the right side of the pause menu for the player and
+mapping selector. L2 + R2 has a text area below the A/B mappings. The
+stock joystick editor still owns mapping changes and saving defaults.
+[Qualification](../evidence/2026-11-13/launcher-pause-battery-qualification.json).
