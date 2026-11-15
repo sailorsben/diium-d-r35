@@ -431,7 +431,8 @@ Shorter divider rules stop before its right edge, and the scrollbar uses
 a separate muted color. Section headings have brighter text and a gap
 before the rule.
 
-The Search caret uses the stock input font's baseline and size. It spans
-above and below the letters and stays within the six-column blink strip.
+The Search caret uses the stock input font's baseline and size. It sits
+two pixels higher to leave more room above the letters and stays within
+the six-column blink strip.
 The ARM review compares the caret against letters drawn by the vendor font
 renderer. The candidate is staged locally for visual review.

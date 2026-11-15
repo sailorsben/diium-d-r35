@@ -713,11 +713,12 @@ ENTRY int search_caret(uint16_t *frame,int x,int y,int height,unsigned color,con
     unsigned font_size=VAR(0x199d58,const uint8_t);
     unsigned pixels=font_size>4?font_size-4:20;
     unsigned ascent=(pixels*9+5)/10;
-    unsigned baseline=(unsigned)y+29;
-    unsigned top=ascent<29?baseline-ascent:(unsigned)y;
+    const unsigned anchor_offset=29-2; /* Favor space above the letters. */
+    unsigned anchor=(unsigned)y+anchor_offset;
+    unsigned top=ascent<anchor_offset?anchor-ascent:(unsigned)y;
     /* The blink loop copies six columns starting at x - 2, clipped to the field height. */
     unsigned field_bottom=VAR(0x19bad0,const unsigned);
-    unsigned bottom=baseline+(pixels+3)/4;
+    unsigned bottom=anchor+(pixels+3)/4;
     if(bottom>field_bottom) bottom=field_bottom;
     if(bottom>480) bottom=480;
     settings_box(frame,(unsigned)x,top,(unsigned)x+1,bottom,(uint16_t)color);

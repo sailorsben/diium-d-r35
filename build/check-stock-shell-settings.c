@@ -57,7 +57,8 @@ static void capture_search_caret(void)
                 caret_bottom=row;
             }
     assert(caret_top<text_top && caret_bottom>text_bottom);
-    assert(text_top-caret_top<=5 && caret_bottom-text_bottom<=6);
+    unsigned above=text_top-caret_top, below=caret_bottom-text_bottom;
+    assert(above>below && above<=7 && below<=4);
     settings_snapshot("search-caret.rgb565");
     memcpy(clip,saved_clip,sizeof(saved_clip));
     puts("PASS search caret extends above and below the vendor text within the blink strip");
