@@ -56,11 +56,11 @@ static void capture_search_caret(void)
                 if(row<caret_top) caret_top=row;
                 caret_bottom=row;
             }
-    assert(abs((int)caret_top-(int)text_top)<=1);
-    assert(abs((int)caret_bottom-(int)text_bottom)<=1);
+    assert(caret_top<text_top && caret_bottom>text_bottom);
+    assert(text_top-caret_top<=5 && caret_bottom-text_bottom<=6);
     settings_snapshot("search-caret.rgb565");
     memcpy(clip,saved_clip,sizeof(saved_clip));
-    puts("PASS search caret aligns with the vendor font in its six-column blink strip");
+    puts("PASS search caret extends above and below the vendor text within the blink strip");
 }
 
 static void capture_list_review(void)

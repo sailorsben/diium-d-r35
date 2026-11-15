@@ -1,5 +1,7 @@
 /* The launcher owns Settings and its pickers. The factory reset still
  * runs the stock reset handler after confirmation. */
+#include "stock-shell-settings-keycaps.h"
+
 #define UI_FRAME VAR(0x199910,uint16_t *)
 #define UI_WIDTH VAR(0x199914,unsigned)
 #define UI_HEIGHT VAR(0x199918,unsigned)
@@ -229,21 +231,31 @@ static void menu_button(uint16_t *frame,unsigned x,unsigned y,unsigned button)
     }
 }
 
+static void settings_keycap(uint16_t *frame,unsigned x,
+                            const uint32_t cap[SETTINGS_CAP_SIZE][SETTINGS_CAP_SIZE])
+{
+    for(unsigned row=0;row<SETTINGS_CAP_SIZE;++row)
+        for(unsigned col=0;col<SETTINGS_CAP_SIZE;++col) {
+            uint32_t pixel=cap[row][col];
+            menu_blend_pixel(frame+(443+row)*640+x+col,(uint16_t)pixel,pixel>>16);
+        }
+}
+
 static void settings_footer(uint16_t *frame,const char *action,bool adjust,const char *message)
 {
-    controls_footer_button(frame,538,440,BUTTON_B);
+    settings_keycap(frame,541,settings_cap_b);
     settings_label(frame,574,433,22,0xffff,"Back");
     if(message) {
         settings_label(frame,24,434,20,settings_accent(),message);
         return;
     }
-    menu_button(frame,24,442,BUTTON_DPAD);
+    settings_keycap(frame,26,settings_cap_dpad);
     settings_label(frame,60,433,22,0xffff,"Move");
     if(adjust) {
         menu_button(frame,166,442,BUTTON_ADJUST);
         settings_label(frame,202,433,22,0xffff,action);
     } else if(action) {
-        controls_footer_button(frame,166,440,BUTTON_A);
+        settings_keycap(frame,168,settings_cap_a);
         settings_label(frame,202,433,22,0xffff,action);
     }
 }
@@ -589,9 +601,9 @@ static bool confirm_factory(void)
     settings_label(SETTINGS.frame,92,142,27,0xffff,"Reset launcher preferences?");
     settings_label(SETTINGS.frame,92,193,22,0xd69a,"This also clears favorites and recent games.");
     settings_label(SETTINGS.frame,92,228,22,0xd69a,"A confirms. B returns to Settings.");
-    controls_footer_button(SETTINGS.frame,23,440,BUTTON_A);
+    settings_keycap(SETTINGS.frame,26,settings_cap_a);
     settings_label(SETTINGS.frame,59,433,22,0xffff,"Restore");
-    controls_footer_button(SETTINGS.frame,508,440,BUTTON_B);
+    settings_keycap(SETTINGS.frame,510,settings_cap_b);
     settings_label(SETTINGS.frame,544,433,22,0xffff,"Cancel");
     DISP(SETTINGS.frame,640,480,1280);
     unsigned held=HOME_PAD|0x2000;
@@ -699,12 +711,14 @@ ENTRY int search_caret(uint16_t *frame,int x,int y,int height,unsigned color,con
     /* mui_outputxy_t uses y + 29 as the baseline and renders at size - 4.
      * Use the input font size, since the legacy bracket has its own size. */
     unsigned font_size=VAR(0x199d58,const uint8_t);
-    unsigned cap_height=font_size>4?((font_size-4)*3+2)/4:15;
+    unsigned pixels=font_size>4?font_size-4:20;
+    unsigned ascent=(pixels*9+5)/10;
     unsigned baseline=(unsigned)y+29;
-    unsigned top=cap_height<29?baseline-cap_height:(unsigned)y;
+    unsigned top=ascent<29?baseline-ascent:(unsigned)y;
     /* The blink loop copies six columns starting at x - 2, clipped to the field height. */
     unsigned field_bottom=VAR(0x19bad0,const unsigned);
-    unsigned bottom=baseline<field_bottom?baseline:field_bottom;
+    unsigned bottom=baseline+(pixels+3)/4;
+    if(bottom>field_bottom) bottom=field_bottom;
     if(bottom>480) bottom=480;
     settings_box(frame,(unsigned)x,top,(unsigned)x+1,bottom,(uint16_t)color);
     return x+1;

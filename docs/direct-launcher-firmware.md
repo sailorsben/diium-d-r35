@@ -424,13 +424,14 @@ The shutdown receipt can then be matched to that boot ID.
 
 ### Settings and Search layout review
 
-Settings uses the circular button style from Home, with footer labels
-centered against the button faces. The selected row has a two-pixel outline.
+Settings renders A, B and D-pad using the antialiased artwork generator
+used for the Home and game list footers. The footer labels are centered
+against the button faces. The selected row has a two-pixel outline.
 Shorter divider rules stop before its right edge, and the scrollbar uses
 a separate muted color. Section headings have brighter text and a gap
 before the rule.
 
-The Search caret follows the stock input font's baseline and stays within
-the six-column blink strip. The ARM review compares the caret against
-letters drawn by the vendor font renderer. The candidate is staged locally
-for visual review.
+The Search caret uses the stock input font's baseline and size. It spans
+above and below the letters and stays within the six-column blink strip.
+The ARM review compares the caret against letters drawn by the vendor font
+renderer. The candidate is staged locally for visual review.
