@@ -170,17 +170,19 @@ static void screen_header(uint16_t *frame,const char *title,int battery)
 
 static void settings_group(uint16_t *frame,unsigned y,const char *label)
 {
-    settings_label(frame,24,y-7,19,S.classic?0x96b8:0x8db7,label);
-    settings_box(frame,24,y+23,598,y+24,0x328b);
+    int end=settings_label(frame,24,y-12,21,S.classic?0xc6fc:0xc69b,label);
+    if(end>24 && end+14<582)
+        settings_box(frame,(unsigned)end+14,y+10,582,y+11,0x328b);
 }
 
-static void screen_row(uint16_t *frame,unsigned y,bool selected,unsigned icon,const char *name)
+static void screen_row(uint16_t *frame,unsigned y,bool selected,bool divider,unsigned icon,const char *name)
 {
     if(selected) {
-        settings_box(frame,24,y,598,y+ROW_HEIGHT-1,S.classic?0x1a49:0x21ab);
-        settings_box(frame,24,y+1,28,y+ROW_HEIGHT-2,settings_accent());
+        settings_box(frame,24,y+2,598,y+ROW_HEIGHT-2,settings_accent());
+        settings_box(frame,26,y+4,596,y+ROW_HEIGHT-4,S.classic?0x1a49:0x21ab);
+    } else if(divider) {
+        settings_box(frame,88,y+ROW_HEIGHT-1,582,y+ROW_HEIGHT,0x222a);
     }
-    settings_box(frame,88,y+ROW_HEIGHT-1,598,y+ROW_HEIGHT,0x222a);
     settings_icon(frame,36,y+(ROW_HEIGHT-SETTINGS_ICON_SIZE)/2,icon,selected);
     settings_label(frame,88,y+5,26,0xffff,name);
 }
@@ -229,20 +231,20 @@ static void menu_button(uint16_t *frame,unsigned x,unsigned y,unsigned button)
 
 static void settings_footer(uint16_t *frame,const char *action,bool adjust,const char *message)
 {
-    menu_button(frame,541,442,BUTTON_B);
-    settings_label(frame,574,430,22,0xffff,"Back");
+    controls_footer_button(frame,538,440,BUTTON_B);
+    settings_label(frame,574,433,22,0xffff,"Back");
     if(message) {
-        settings_label(frame,24,430,20,settings_accent(),message);
+        settings_label(frame,24,434,20,settings_accent(),message);
         return;
     }
     menu_button(frame,24,442,BUTTON_DPAD);
-    settings_label(frame,60,430,22,0xffff,"Move");
+    settings_label(frame,60,433,22,0xffff,"Move");
     if(adjust) {
         menu_button(frame,166,442,BUTTON_ADJUST);
-        settings_label(frame,202,430,22,0xffff,action);
+        settings_label(frame,202,433,22,0xffff,action);
     } else if(action) {
-        menu_button(frame,166,442,BUTTON_A);
-        settings_label(frame,202,430,22,0xffff,action);
+        controls_footer_button(frame,166,440,BUTTON_A);
+        settings_label(frame,202,433,22,0xffff,action);
     }
 }
 
@@ -251,8 +253,8 @@ static void screen_scroll(uint16_t *frame,unsigned top,unsigned count)
     if(count<=VISIBLE_ROWS) return;
     unsigned height=SETTINGS_BOTTOM-SETTINGS_TOP, size=height*VISIBLE_ROWS/count;
     unsigned y=SETTINGS_TOP+(height-size)*top/(count-VISIBLE_ROWS);
-    settings_box(frame,614,SETTINGS_TOP,617,SETTINGS_BOTTOM,0x328b);
-    settings_box(frame,613,y,618,y+size,settings_accent());
+    settings_box(frame,615,SETTINGS_TOP,617,SETTINGS_BOTTOM,0x2a0a);
+    settings_box(frame,614,y,618,y+size,0x5b91);
 }
 
 static void settings_filename(uint16_t *frame,unsigned x,unsigned y,unsigned size,unsigned width,
@@ -296,7 +298,8 @@ static void draw_settings(void)
             settings_group(frame,y,row<ROW_VOLUME?"DISPLAY":row<ROW_FRAME_SKIP?"SOUND":"SYSTEM");
             y+=GROUP_HEIGHT;
         }
-        screen_row(frame,y,selected,settings_row_icon[row],names[row]);
+        bool divider=row+1!=ROW_VOLUME && row+1!=ROW_FRAME_SKIP;
+        screen_row(frame,y,selected,divider,settings_row_icon[row],names[row]);
         uint16_t ink=selected?settings_accent():0xbdf7;
         const char *value=NULL;
         if(row==ROW_BRIGHTNESS || row==ROW_VOLUME) {
@@ -424,7 +427,7 @@ static void music_picker(void)
         settings_group(SETTINGS.frame,SETTINGS_TOP,"CHOOSE A TRACK");
         for(unsigned i=top;i<total && i<top+VISIBLE_ROWS;++i) {
             unsigned y=SETTINGS_TOP+GROUP_HEIGHT+(i-top)*ROW_HEIGHT;
-            screen_row(SETTINGS.frame,y,i==row,i==1?SETTINGS_MASK_MUTE:SETTINGS_MASK_MUSIC,
+            screen_row(SETTINGS.frame,y,i==row,true,i==1?SETTINGS_MASK_MUTE:SETTINGS_MASK_MUSIC,
                        i==0?"Start Line":i==1?"Off":"");
             bool active=i==0?MUSIC.mode==MUSIC_BUILTIN:i==1?MUSIC.mode==MUSIC_OFF:
                 MUSIC.mode==MUSIC_MP3 && !STRCMP(SETTINGS.tracks[i-2],MUSIC.name);
@@ -481,7 +484,7 @@ static void language_picker(bool reload)
         settings_group(SETTINGS.frame,SETTINGS_TOP,"CHOOSE A LANGUAGE");
         for(unsigned i=top;i<count && i<top+VISIBLE_ROWS;++i) {
             unsigned y=SETTINGS_TOP+GROUP_HEIGHT+(i-top)*ROW_HEIGHT;
-            screen_row(SETTINGS.frame,y,i==row,SETTINGS_MASK_LANGUAGE,language_label(choices[i]));
+            screen_row(SETTINGS.frame,y,i==row,true,SETTINGS_MASK_LANGUAGE,language_label(choices[i]));
             if(choices[i]==LOCALE)
                 settings_label(SETTINGS.frame,494,y+8,20,settings_accent(),"Selected");
         }
@@ -586,10 +589,10 @@ static bool confirm_factory(void)
     settings_label(SETTINGS.frame,92,142,27,0xffff,"Reset launcher preferences?");
     settings_label(SETTINGS.frame,92,193,22,0xd69a,"This also clears favorites and recent games.");
     settings_label(SETTINGS.frame,92,228,22,0xd69a,"A confirms. B returns to Settings.");
-    menu_button(SETTINGS.frame,24,442,BUTTON_A);
-    settings_label(SETTINGS.frame,59,430,22,0xffff,"Restore");
-    menu_button(SETTINGS.frame,510,442,BUTTON_B);
-    settings_label(SETTINGS.frame,544,430,22,0xffff,"Cancel");
+    controls_footer_button(SETTINGS.frame,23,440,BUTTON_A);
+    settings_label(SETTINGS.frame,59,433,22,0xffff,"Restore");
+    controls_footer_button(SETTINGS.frame,508,440,BUTTON_B);
+    settings_label(SETTINGS.frame,544,433,22,0xffff,"Cancel");
     DISP(SETTINGS.frame,640,480,1280);
     unsigned held=HOME_PAD|0x2000;
     for(;;) {
@@ -693,8 +696,15 @@ ENTRY int search_caret(uint16_t *frame,int x,int y,int height,unsigned color,con
 {
     if(UI_WIDTH!=640 || UI_HEIGHT!=480 || x<2 || x>=640 || y<0 || y>=460 || !frame)
         return FN(0x85c94,int,void *,int,int,int,unsigned,const char *)(frame,x,y,height,color,text);
-    /* The blink loop saves and restores six pixels starting at x - 2. */
-    unsigned top=(unsigned)y+6, bottom=(unsigned)y+26;
+    /* mui_outputxy_t uses y + 29 as the baseline and renders at size - 4.
+     * Use the input font size, since the legacy bracket has its own size. */
+    unsigned font_size=VAR(0x199d58,const uint8_t);
+    unsigned cap_height=font_size>4?((font_size-4)*3+2)/4:15;
+    unsigned baseline=(unsigned)y+29;
+    unsigned top=cap_height<29?baseline-cap_height:(unsigned)y;
+    /* The blink loop copies six columns starting at x - 2, clipped to the field height. */
+    unsigned field_bottom=VAR(0x19bad0,const unsigned);
+    unsigned bottom=baseline<field_bottom?baseline:field_bottom;
     if(bottom>480) bottom=480;
     settings_box(frame,(unsigned)x,top,(unsigned)x+1,bottom,(uint16_t)color);
     return x+1;

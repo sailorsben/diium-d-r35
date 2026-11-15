@@ -1,5 +1,11 @@
 # Changelog
 
+## Align the Search caret and refine Settings - 2026-11-14
+
+The Search caret meets the text baseline. Settings uses circular A and B
+buttons with centered labels and gives the selected row an even outline.
+Brighter section headings have space between their text and rules.
+
 ## Put the percentage inside a battery icon - 2026-11-14
 
 Solid + % uses a compact battery case and a short, flat terminal. The fill

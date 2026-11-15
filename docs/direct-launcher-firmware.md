@@ -421,3 +421,16 @@ CHKDSK found no errors and the dirty flag was clear after installation.
 On the next handheld boot, check the icon and use Left and Right in Power Off.
 The shutdown receipt can then be matched to that boot ID.
 [Installation receipt](../evidence/2026-11-14/launcher-battery-power-installation.json).
+
+### Settings and Search layout review
+
+Settings uses the circular button style from Home, with footer labels
+centered against the button faces. The selected row has a two-pixel outline.
+Shorter divider rules stop before its right edge, and the scrollbar uses
+a separate muted color. Section headings have brighter text and a gap
+before the rule.
+
+The Search caret follows the stock input font's baseline and stays within
+the six-column blink strip. The ARM review compares the caret against
+letters drawn by the vendor font renderer. The candidate is staged locally
+for visual review.

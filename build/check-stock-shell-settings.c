@@ -18,6 +18,51 @@ static unsigned stock_settings_visits;
 static bool review;
 static const char *capture_base="settings";
 static void capture_pause_review(void);
+
+static void capture_search_caret(void)
+{
+    /* The stock search config uses (328,68)-(608,104), with the letters at size 24. */
+    enum { X=330, Y=68, FIELD_BOTTOM=104, FONT_SIZE=24, WIDTH=640 };
+    unsigned *clip=(unsigned *)0x19bac4;
+    unsigned saved_clip[4];
+    memcpy(saved_clip,clip,sizeof(saved_clip));
+    clip[0]=328; clip[1]=Y; clip[2]=608; clip[3]=FIELD_BOTTOM;
+    *(uint8_t *)0x199d58=FONT_SIZE;
+    uint16_t before[(FIELD_BOTTOM-Y)*WIDTH];
+    memcpy(before,settings+Y*WIDTH,sizeof(before));
+
+    typedef int (*draw_label)(uint16_t *,int,int,int,unsigned,const char *);
+    draw_label label=(void *)0x85c94, caret=(void *)target(0x99b2c);
+    int end=label(settings,X,Y,FONT_SIZE,0x630c,"STAR FOX");
+    assert(end>X && end+6<608);
+    unsigned text_top=FIELD_BOTTOM, text_bottom=Y;
+    for(unsigned row=Y;row<FIELD_BOTTOM;++row)
+        for(int x=X;x<end;++x)
+            if(settings[row*WIDTH+x]!=before[(row-Y)*WIDTH+x]) {
+                if(row<text_top) text_top=row;
+                text_bottom=row;
+            }
+    assert(text_bottom>text_top);
+    memcpy(before,settings+Y*WIDTH,sizeof(before));
+
+    /* The stock loop sets a six-column clip beginning at the text's right edge. */
+    clip[0]=end; clip[2]=end+6;
+    assert(caret(settings,end+2,Y,26,0x421f,"]")==end+3);
+    unsigned caret_top=FIELD_BOTTOM, caret_bottom=Y;
+    for(unsigned row=Y;row<FIELD_BOTTOM;++row)
+        for(int x=end;x<end+6;++x)
+            if(settings[row*WIDTH+x]!=before[(row-Y)*WIDTH+x]) {
+                assert(x==end+2);
+                if(row<caret_top) caret_top=row;
+                caret_bottom=row;
+            }
+    assert(abs((int)caret_top-(int)text_top)<=1);
+    assert(abs((int)caret_bottom-(int)text_bottom)<=1);
+    settings_snapshot("search-caret.rgb565");
+    memcpy(clip,saved_clip,sizeof(saved_clip));
+    puts("PASS search caret aligns with the vendor font in its six-column blink strip");
+}
+
 static void capture_list_review(void)
 {
     const char *const names[]={"menu.raw","search.raw"};
@@ -31,6 +76,7 @@ static void capture_list_review(void)
         free(art);
         settings_snapshot(i==0?"game-list.rgb565":"search-list.rgb565");
     }
+    capture_search_caret();
     puts("PASS launcher resource loader displays the New game list and search artwork");
 }
 static unsigned simulated_exit;
@@ -329,12 +375,6 @@ int main(int argc,char **argv)
         return 0;
     }
     route();
-    int (*caret)(uint16_t *,int,int,int,unsigned,const char *)=(void *)target(0x99b2c);
-    memset(settings,0,sizeof(settings));
-    assert(caret(settings,240,76,20,0xffff,"]")==241);
-    for(unsigned i=0;i<640*480;++i)
-        assert(settings[i]==((i%640==240 && i/640>=82 && i/640<102)?0xffff:0));
-    puts("PASS search caret draws within the six-pixel blink strip");
     return 0;
 }
 
