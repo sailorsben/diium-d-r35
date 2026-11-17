@@ -7,7 +7,15 @@ crop and 256×240 with `fceumm_overscan=disabled`, using identical ROM bytes.
 The compiled launcher now supplies that option and passes an ARM callback
 check. Its NES label, ROM-counter/battery separation and confirmed reset pass
 focused stock-derived ARM checks. These are offline findings; a physical boot
-and FF2 battle screenshot still need checking.
+and FF2 battle screenshot still need checking. Installer archive
+`nes-ui-before-20261117T150138017649Z` captured the pre-install state.
+Both `retro/vrtemu` and `retro/d35-launcher1/vrtemu` changed from SHA-256
+`4575af08eda0243f35573c833c8faa3b4b9e7c8783738b4b11bf9344819718ab`
+to `83c4229403df0e11ba4dd7fa8f2b824b3af38b7d50faef9d69dc0f43f39928ae`.
+The receipt verified all 2,216 card files, unchanged cores and ROMs, and a
+clean FAT32 volume. Translation and full-name work is tracked in the separate
+private [FF2 Famicom English](https://github.com/sailorsben/ff2-famicom-english)
+repository; it is not a playable release yet.
 
 **Permanent direct SNES launcher (2026-11-13).** The returned boot log
 confirms the new internal firmware started the direct launcher. The

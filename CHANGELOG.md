@@ -7,7 +7,9 @@ identity. Its battery badge moves left of the ROM count. The Esc game menu adds
 a confirmed Reset Game action. The launcher asks the installed FCEUmm core to
 disable its 8-pixel-per-edge overscan crop, exposing the full 256×240 picture.
 Stock-derived ARM fixtures passed for these paths; handheld visual and input
-verification is pending.
+verification is pending. The candidate was installed on I: in both launcher
+locations after archiving the card; the installer verified 2,216 card files,
+unchanged cores and ROMs, and a clean FAT32 volume.
 
 ## Align the Search caret and refine Settings - 2026-11-14
 
