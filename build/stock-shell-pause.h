@@ -11,7 +11,7 @@ struct pause_ui {
     uint16_t *thumb[PAUSE_SLOTS];
     bool replacement, accept_ready;
     int row;
-    bool menu, redraw_only;
+    bool menu, redraw_only, reset_confirm, reset_unavailable;
     unsigned exit_choice, exit_held;
     uint16_t *exit_background;
 };
@@ -48,15 +48,15 @@ static bool pause_layout(void)
 
 static void pause_list(uint16_t *frame,unsigned row)
 {
-    static const char *const labels[]={"Resume","Save State","Load State","Controls","Exit"};
+    static const char *const labels[]={"Resume","Save State","Load State","Controls","Reset Game","Exit"};
     uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
     settings_reset_text_clip();
     settings_box(frame,0,53,237,432,0x08a4);
-    for(unsigned i=0;i<5;++i) {
-        unsigned y=81+65*i;
-        settings_box(frame,20,y,218,y+50,i==row?0x21ab:0x1127);
-        if(i==row) settings_box(frame,20,y,24,y+50,accent);
-        pause_label(frame,37,y+6,24,0xffff,labels[i]);
+    for(unsigned i=0;i<6;++i) {
+        unsigned y=76+57*i;
+        settings_box(frame,20,y,218,y+48,i==row?0x21ab:0x1127);
+        if(i==row) settings_box(frame,20,y,24,y+48,accent);
+        pause_label(frame,37,y+5,24,0xffff,labels[i]);
     }
 }
 
@@ -64,7 +64,10 @@ ENTRY void launcher_pause_frame(uint16_t *frame,unsigned w,unsigned h,size_t pit
 {
     if(pause_layout() && frame && w==640 && h==480 && pitch==1280) {
         pause_wait();
-        if(!PAUSE.menu) PAUSE.row=0;
+        if(!PAUSE.menu) {
+            PAUSE.row=0;
+            PAUSE.reset_confirm=PAUSE.reset_unavailable=false;
+        }
         PAUSE.menu=true;
         pause_list(frame,(unsigned)PAUSE.row);
         static const char *const help[][2]={
@@ -72,13 +75,18 @@ ENTRY void launcher_pause_frame(uint16_t *frame,unsigned w,unsigned h,size_t pit
             {"Save State","Choose a slot to save your progress."},
             {"Load State","Open the save slots to pick a state."},
             {"Controls","View or change your button mapping."},
+            {"Reset Game","Restart this game from the beginning."},
             {"Exit","Return to the library with or without saving."}
         };
         settings_box(frame,250,250,640,432,0x08a4);
         settings_box(frame,284,276,614,381,0x320c);
         settings_box(frame,285,277,613,380,0x1127);
-        pause_label(frame,303,282,24,0xffff,help[PAUSE.row][0]);
-        pause_label(frame,303,319,17,0xa638,help[PAUSE.row][1]);
+        const char *title=PAUSE.reset_confirm?"Reset this game?":
+                          PAUSE.reset_unavailable?"Reset unavailable":help[PAUSE.row][0];
+        const char *detail=PAUSE.reset_confirm?"A Reset     B Cancel":
+                           PAUSE.reset_unavailable?"The active core has no reset.":help[PAUSE.row][1];
+        pause_label(frame,303,282,24,0xffff,title);
+        pause_label(frame,303,319,17,0xa638,detail);
         settings_box(frame,0,432,640,480,0x10e6);
         pause_button_prompts(frame,25,441);
     }
@@ -92,13 +100,38 @@ ENTRY unsigned launcher_pause_key(void)
     if(!PAUSE.menu || !pause_layout()) return FN(0x86368,unsigned,void)();
     uint16_t *frame=STOCK_UI_FRAME;
     unsigned key=launcher_menu_key();
+    if(PAUSE.reset_confirm) {
+        if(!(HOME_PAD&0x2000)) PAUSE.accept_ready=true;
+        if(key==0x4000) {
+            PAUSE.reset_confirm=false;
+        } else if(key==0x2000 && PAUSE.accept_ready) {
+            void *core=STOCK_HANDLE;
+            void (*reset)(void)=core?SYM(core,"retro_reset"):NULL;
+            PAUSE.reset_confirm=false;
+            if(reset) {
+                settings_confirm_sound();
+                reset();
+                if(S.game.core==core) {
+                    S.game.phase=0;
+                    S.game.last[0]=S.game.last[1]=0;
+                    S.game.shown=0;
+                }
+                PAUSE.menu=false;
+                return 0x2000;
+            }
+            PAUSE.reset_unavailable=true;
+        } else return 0;
+        launcher_pause_frame(frame,640,480,1280);
+        return 0;
+    }
     if(key==0x4000 || (key==0x2000 && PAUSE.row==0)) {
         if(key==0x2000) settings_confirm_sound();
         PAUSE.menu=false;
         return 0x2000;
     }
-    if((key==0x10 && PAUSE.row>0) || (key==0x40 && PAUSE.row<4)) {
+    if((key==0x10 && PAUSE.row>0) || (key==0x40 && PAUSE.row<5)) {
         PAUSE.row+=key==0x10?-1:1;
+        PAUSE.reset_unavailable=false;
         vesper_transition(1);
     } else if(key==0x2000) {
         settings_confirm_sound();
@@ -107,7 +140,11 @@ ENTRY unsigned launcher_pause_key(void)
         case 1: result=FN(0x91818,int,void)(); break;
         case 2: result=FN(0x91050,int,void)(); break;
         case 3: result=FN(0x8f5c0,int,void)(); break;
-        case 4: return 0x40; /* preserve the stock exit and cleanup path */
+        case 4:
+            PAUSE.reset_confirm=true;
+            PAUSE.accept_ready=false;
+            break;
+        case 5: return 0x40; /* preserve the stock exit and cleanup path */
         }
         if(!result) {
             PAUSE.menu=false;

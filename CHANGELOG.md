@@ -1,5 +1,14 @@
 # Changelog
 
+## Show the full NES frame and repair ROM selection controls - 2026-11-17
+
+The NES game list displays NES while retaining the stock FC directory and save
+identity. Its battery badge moves left of the ROM count. The Esc game menu adds
+a confirmed Reset Game action. The launcher asks the installed FCEUmm core to
+disable its 8-pixel-per-edge overscan crop, exposing the full 256×240 picture.
+Stock-derived ARM fixtures passed for these paths; handheld visual and input
+verification is pending.
+
 ## Align the Search caret and refine Settings - 2026-11-14
 
 The Search caret extends above and below the query text. Settings uses

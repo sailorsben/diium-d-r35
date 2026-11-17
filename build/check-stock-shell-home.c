@@ -32,18 +32,19 @@ static void check_battery(const uint16_t *frame,int band,bool with_percentage)
 {
     uint16_t ink=band==4?0xfe11:theme?0x8ddd:0x9dba;
     bool numbered=(with_percentage || solid_case) && band<5;
+    unsigned shift=stock_case?180:0;
     if(solid_case) {
-        uint16_t rim=frame[16*W+592];
-        assert(frame[27*W+568]==rim && frame[27*W+618]==rim);
-        assert(frame[21*W+618]==rim && frame[32*W+618]==rim);
-        assert(frame[20*W+618]!=rim && frame[33*W+618]!=rim && frame[27*W+619]!=rim);
-        if(numbered) assert(frame[18*W+572]!=frame[18*W+614]);
+        uint16_t rim=frame[16*W+592-shift];
+        assert(frame[27*W+568-shift]==rim && frame[27*W+618-shift]==rim);
+        assert(frame[21*W+618-shift]==rim && frame[32*W+618-shift]==rim);
+        assert(frame[20*W+618-shift]!=rim && frame[33*W+618-shift]!=rim && frame[27*W+619-shift]!=rim);
+        if(numbered) assert(frame[18*W+572-shift]!=frame[18*W+614-shift]);
     } else {
-        assert(frame[26*W+618]==ink);
+        assert(frame[26*W+618-shift]==ink);
     }
     if(numbered) {
         unsigned light=0,blended=0;
-        unsigned origin=solid_case?574:551;
+        unsigned origin=(solid_case?574:551)-shift;
         for(unsigned y=19;y<35;++y)
             for(unsigned px=origin;px<origin+36;++px) {
                 unsigned value=frame[y*W+px];
@@ -52,8 +53,8 @@ static void check_battery(const uint16_t *frame,int band,bool with_percentage)
             }
         assert(light>18 && blended>18);
     }
-    if(band==4 && !solid_case) assert(frame[24*W+596]==ink);
-    if(band==5) assert(frame[26*W+(solid_case?592:605)]==0xff8d);
+    if(band==4 && !solid_case) assert(frame[24*W+596-shift]==ink);
+    if(band==5) assert(frame[26*W+(solid_case?592:605)-shift]==0xff8d);
 }
 
 static void grid_wait(void) { ++waits; }
@@ -219,6 +220,7 @@ int main(int argc,char **argv)
         assert(dispatch(target(0x9846c))==5 && !draws);
         uint16_t *frame=calloc(PIXELS,sizeof(*frame));
         assert(frame);
+        frame[26*W+560]=0x1234; /* a stock ROM-counter pixel outside our badge */
         stock_overlay_frame=frame;
         *(void **)0x199910=frame;
         void (*overlay)(uint16_t *,unsigned)=(void *)target(0x13fc0);
@@ -229,6 +231,7 @@ int main(int argc,char **argv)
             overlay(frame,W);
             assert(*(int *)0x1b9b24==band);
             check_battery(frame,band,percent_case);
+            assert(frame[26*W+560]==0x1234);
         }
         assert(draws==6);
         assert(frame[10*W+515]==0 && frame[43*W+580]==0);

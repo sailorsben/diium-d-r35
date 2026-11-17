@@ -65,6 +65,10 @@ VESPER_PATCHES = {
     0x13984: (0xEB024B33, "vesper_update_detail"),
 }
 GRID_PATCHES = {
+    # Intercept visible platform text without changing FC save/directory names.
+    0x85C94: (0xE92D4FF0, "launcher_text"),
+    # Keep the full NES picture, including FF2's rightmost battle columns.
+    0xA2FC8: (0xE92D4070, "launcher_environment"),
     0x13FC0: (0xEBFFFF9A, "stock_home_adc_overlay"),
     0x13E30: (0xE59F215C, "launcher_display_adc"),
     0xA6658: (0xE59FC024, "launcher_display_frame"),
@@ -219,7 +223,7 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
             delta = symbols[target] - address - 8
             if delta % 4 or not -(1 << 25) <= delta < 1 << 25:
                 raise ValueError(f"branch out of range: {target}")
-            branch = (0xEA000000 if address in (0x13E30, 0x91050, 0x8F5C0, 0xA6658) else
+            branch = (0xEA000000 if address in (0x13E30, 0x85C94, 0x91050, 0x8F5C0, 0xA2FC8, 0xA6658) else
                       0xEB000000 if address in GRID_PATCHES or address==0x914AC else old & 0xFF000000)
             target = branch | ((delta >> 2) & 0xFFFFFF)
         struct.pack_into("<I", data, address-0x10000, target)

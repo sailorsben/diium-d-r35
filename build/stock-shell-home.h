@@ -44,12 +44,12 @@ static void home_battery_text(uint16_t *frame,unsigned x,unsigned y,int state)
     }
 }
 
-static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int state)
+static __attribute__((optimize("Os"))) void home_battery_at(uint16_t *frame,int state,int shift)
 {
     const uint16_t ink=state<0 || state==4?0xfe11:S.applied_classic?0x8ddd:0x9dba;
     const bool numbered=S.battery_style!=BATTERY_BARS && state>=0 && state<=4;
     const bool solid=S.battery_style==BATTERY_SOLID;
-    const unsigned right=solid?616:617, x=solid?568:593;
+    const unsigned right=(solid?616:617)+shift, x=(solid?568:593)+shift;
 
     if(solid) {
         const unsigned percentage=state==5?100:numbered?90-20*state:0;
@@ -90,7 +90,8 @@ static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int sta
         for(unsigned i=0;i<bars;++i)
             settings_box(frame,x+3+i*5,23,x+6+i*5,30,ink);
     }
-    if(numbered) home_battery_text(frame,solid?(x+right-BATTERY_TEXT_W)/2:551,19,state);
+    if(numbered) home_battery_text(frame,solid?(x+right-BATTERY_TEXT_W)/2:
+                                  (unsigned)(551+shift),19,state);
     if(state==5) {
         unsigned center=(x+right)/2;
         static const int8_t bolt[][2]={
@@ -100,6 +101,49 @@ static __attribute__((optimize("Os"))) void home_battery(uint16_t *frame,int sta
             settings_box(frame,center+bolt[row][0],22+row,
                          center+bolt[row][1],23+row,0xff8d);
     }
+}
+
+static void home_battery(uint16_t *frame,int state)
+{ home_battery_at(frame,state,0); }
+
+/* Keep the vendor's FC directory/state identity. Only its visible NES title
+ * changes; replacing the shared platform string would redirect save paths. */
+__attribute__((naked)) static int stock_launcher_text(void *frame __attribute__((unused)),
+                                                       int x __attribute__((unused)),
+                                                       int y __attribute__((unused)),
+                                                       int size __attribute__((unused)),
+                                                       unsigned ink __attribute__((unused)),
+                                                       const char *label __attribute__((unused)))
+{
+    __asm__ volatile("push {r4-r11, lr}\n\tldr pc, 1f\n\t1: .word 0x85c98");
+}
+
+ENTRY int launcher_text(void *frame,int x,int y,int size,unsigned ink,
+                        const char *label)
+{
+    if(HOME.type_open && HOME_TYPE==7 && label &&
+       label[0]=='F' && label[1]=='C' && !label[2]) label="NES";
+    return stock_launcher_text(frame,x,y,size,ink,label);
+}
+
+/* FCEUmm defaults to a 240x224 overscan crop on this frontend. FF2's
+ * battle status window uses the outer NES columns, so expose 256x240. */
+__attribute__((naked)) static bool stock_environment(unsigned cmd __attribute__((unused)),
+                                                      void *data __attribute__((unused)))
+{
+    __asm__ volatile("push {r4-r6, lr}\n\tldr pc, 1f\n\t1: .word 0xa2fcc");
+}
+
+ENTRY bool launcher_environment(unsigned cmd,void *data)
+{
+    if(cmd==RETRO_ENVIRONMENT_GET_VARIABLE && data) {
+        struct retro_variable *var=data;
+        if(var->key && !STRCMP(var->key,"fceumm_overscan")) {
+            var->value="disabled";
+            return true;
+        }
+    }
+    return stock_environment(cmd,data);
 }
 
 ENTRY void stock_home_adc_overlay(uint16_t *frame,unsigned width)
@@ -138,11 +182,9 @@ ENTRY void launcher_display_frame(const void *frame,unsigned w,unsigned h,size_t
        !HOME.own_battery && !S.game.core) {
         uint16_t *canvas=STOCK_UI_FRAME;
         int battery=HOME_BATTERY;
-        /* Clear the whole previous badge before changing display modes. */
-        unsigned left=544;
-        settings_box(canvas,left,14,630,39,0x08a4);
-        settings_box(canvas,left+4,10,626,43,0x08a4);
-        home_battery(canvas,battery);
+        /* Stock lists put their ROM count at the right edge of this header. */
+        settings_box(canvas,358,10,448,43,0x08a4);
+        home_battery_at(canvas,battery,-180);
         HOME_PRESENTED_BATTERY=battery;
     }
     typedef void (*submit_frame_fn)(const void *,unsigned,unsigned,size_t);

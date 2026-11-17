@@ -1,5 +1,14 @@
 # Device findings
 
+**FF2 NES edge crop and launcher fixes (2026-11-17).** The user's Chaos Rush
+2.2b ROM shows the same battle-window cutoff in a browser emulator and on the
+D-R35. A copied D-R35 FCEUmm core reports 240×224 with its default overscan
+crop and 256×240 with `fceumm_overscan=disabled`, using identical ROM bytes.
+The compiled launcher now supplies that option and passes an ARM callback
+check. Its NES label, ROM-counter/battery separation and confirmed reset pass
+focused stock-derived ARM checks. These are offline findings; a physical boot
+and FF2 battle screenshot still need checking.
+
 **Permanent direct SNES launcher (2026-11-13).** The returned boot log
 confirms the new internal firmware started the direct launcher. The
 consumed update was removed after archival. The five original FF6 slots
