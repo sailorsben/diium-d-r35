@@ -16,6 +16,16 @@ The receipt verified all 2,216 card files, unchanged cores and ROMs, and a
 clean FAT32 volume. Translation and full-name work is tracked in the separate
 private [FF2 Famicom English](https://github.com/sailorsben/ff2-famicom-english)
 repository; it is not a playable release yet.
+The clean Japanese FF2 ROM in `E:\R35\003\Final Fantasy II (Japan).zip`
+matches the translation author's published CRC32 `B7327510`, MD5
+`74669F264DF775499830F9E6FB60A1E7`, and SHA-1
+`1A9E01A29472F1161BD16E1B4D76994346A505F6`. The current English ROM
+retains the original battle window position bytes at ROM offsets `0x31153`
+and `0x31193`. Some menu windows were widened to 32 tiles, making the core's
+8-pixel overscan crop particularly visible. An exact clean-versus-English
+audit in the FF2 repo found 23 selected gameplay regions byte-identical,
+including encounter tables, equipment and monster properties, battle core,
+and the original movement path. Remaining translated code requires review.
 
 **Permanent direct SNES launcher (2026-11-13).** The returned boot log
 confirms the new internal firmware started the direct launcher. The
