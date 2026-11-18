@@ -26,6 +26,12 @@ and `0x31193`. Some menu windows were widened to 32 tiles, making the core's
 audit in the FF2 repo found 23 selected gameplay regions byte-identical,
 including encounter tables, equipment and monster properties, battle core,
 and the original movement path. Remaining translated code requires review.
+The official Chaos Rush 2.2b download contains separate translation and
+B-button dash IPS files. Applying only the translation IPS to the verified
+Japanese ROM reproduced the user's current English ROM byte for byte (SHA-256
+`46c85354b62df28726e338c3cbd1286474db646cc5bf453f15485303db633fc8`).
+The FF2 repository now contains a source-only, hash-pinned baseline builder;
+the requested complete-name ROM still needs text-layout work.
 
 **Permanent direct SNES launcher (2026-11-13).** The returned boot log
 confirms the new internal firmware started the direct launcher. The
