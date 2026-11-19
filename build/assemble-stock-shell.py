@@ -68,9 +68,12 @@ GRID_PATCHES = {
     0x15A74: (0xEBFFFF53, "input_escape_read"),
     0x15AA4: (0xEBFFFE34, "input_usb_read"),
     0xA4554: (0xEBFFFC3E, "input_game_frame"),
-    0x91C30: (0xEBFFD1CC, "input_slot_key"),
-    0x91C94: (0xEBFFD1B3, "input_slot_key"),
-    0x92270: (0xEBFFD03C, "input_slot_key"),
+    0x91C18: (0xEB00528E, "save_first_frame"),
+    0x91C30: (0xEBFFD1CC, "save_slot_prime"),
+    0x91C94: (0xEBFFD1B3, "save_slot_key"),
+    0x91C98: (0xE3500040, "save_slot_cancel"),
+    0x9224C: (0xEBFFD045, "save_slot_prime"),
+    0x92270: (0xEBFFD03C, "save_slot_key"),
     0x91D9C: (0xEB004683, "input_save_slot"),
     0x892A4: (0xEB006941, "input_save_slot"),  # default-slot shortcut
     # Intercept visible platform text without changing FC save/directory names.

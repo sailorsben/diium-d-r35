@@ -13,6 +13,8 @@ static uint32_t keymap[128];
 static bool checking_load, accept_held;
 static unsigned load_case, load_frames, key_index, loaded_slot;
 static const char *fixture_dir;
+static const unsigned *save_keys;
+static unsigned save_count, save_frames, occupied, overwrite_prompts;
 
 static void no_preview(void) {}
 static void text_run(void *target, int x, int y, int height, unsigned color, const char *text)
@@ -24,6 +26,23 @@ static void text_run(void *target, int x, int y, int height, unsigned color, con
 static void display(void *buffer, unsigned width, unsigned height, unsigned stride)
 {
     assert(width==WIDTH && height==HEIGHT && stride==STRIDE);
+    if(save_keys) {
+        assert(buffer==frame);
+        if(!save_frames) {
+            assert(key_index==0);
+            const int (*origins)[6]=(void *)0x19a61c;
+            for(unsigned slot=0;slot<6;++slot) {
+                uint16_t rim=frame[286+origins[slot][1]+20][292+origins[slot][0]+1];
+                assert((rim==0xffff)==(slot==0));
+            }
+            if(getenv("D35_SAVE_FRAME")) {
+                FILE *out=fopen(getenv("D35_SAVE_FRAME"),"wb");
+                assert(out && fwrite(frame,sizeof(frame),1,out)==1 && !fclose(out));
+            }
+        }
+        ++save_frames;
+        return;
+    }
     if(checking_load) {
         assert(buffer==frame);
         unsigned slot=load_case==0?2:load_case==1?1:6;
@@ -62,6 +81,12 @@ static void verify_save_slots(void)
 static const char *work_path(void) { return fixture_dir; }
 static unsigned read_joy(void)
 {
+    if(save_keys) {
+        assert(save_frames && key_index<save_count);
+        unsigned key=save_keys[key_index++];
+        *(unsigned *)0x1b9b50=key;
+        return key;
+    }
     const unsigned browse[]={0,0x2000,0,0x40,0x80,0x2000};
     const unsigned load_now[]={0,0x2000,0,0x2000};
     const unsigned cancel[]={0,0x4000};
@@ -88,7 +113,7 @@ static void wait_menu(void) {}
 static int slot_path(char *out,const char *format,const char *work,const char *system,
                      const char *title,unsigned slot)
 {
-    (void)format;
+    if(!strstr(format,".sv")) return sprintf(out,"%s/dir",work);
     (void)system;
     (void)title;
     return sprintf(out,"%s/slot%u",work,slot);
@@ -120,20 +145,59 @@ static void write_slot(unsigned slot,uint16_t pixel,bool corrupt)
 
 static int state_access(const char *path,int mode)
 {
+    if(save_keys && strstr(path,"/dir")) return 0;
     size_t n=strlen(path);
     assert(n && path[n-1]>='0' && path[n-1]<='5' && mode==0);
     unsigned slot=(unsigned)(path[n-1]-'0');
+    if(save_keys) return occupied&(1u<<slot)?0:-1;
     return (load_case==0 && (slot==2 || slot==4)) ||
            (load_case==1 && slot==1)?0:-1;
 }
 
 static FILE *open_state(const char *path,const char *mode)
 {
+    if(!strcmp(mode,"ab")) return NULL; /* test observes serialization only */
     size_t n=strlen(path);
     char fixture[1024];
     assert(n && snprintf(fixture,sizeof(fixture),"%s/slot%c",fixture_dir,path[n-1])
             <(int)sizeof(fixture));
     return fopen(fixture,mode);
+}
+
+static void popup(void) { ++overwrite_prompts; }
+
+static void save_sequence(unsigned present,const unsigned *keys,unsigned count,
+                          unsigned expected_slot,unsigned prompts)
+{
+    occupied=present; save_keys=keys; save_count=count;
+    key_index=save_frames=overwrite_prompts=0; loaded_slot=6;
+    int result=((int (*)(void))0x91818)();
+    assert(key_index==count && result==(expected_slot==6));
+    assert(loaded_slot==expected_slot && overwrite_prompts==prompts);
+    save_keys=NULL;
+}
+
+static void verify_save_focus(void)
+{
+    enum { A=0x2000, B=0x4000, RIGHT=0x20 };
+    static uint16_t sample[153600/2];
+    preview=sample;
+    *(void **)(GOT+0x39c)=&preview;
+    patch(0x8af08,(uintptr_t)popup); patch(0x8b23c,(uintptr_t)no_preview);
+    patch(0xa37b0,(uintptr_t)visit_slot); patch(0x11be4,(uintptr_t)quiet);
+    const unsigned direct[]={A,A,0,A};
+    const unsigned move[]={A,0,RIGHT,A};
+    const unsigned back[]={A,A,B};
+    const unsigned overwrite[]={A,A,0,A,A,A,0,A};
+    const unsigned cancel_overwrite[]={A,0,A,A,0,B,B};
+    write_slot(0,0x4210,false);
+    save_sequence(0, direct,4,0,0);
+    save_sequence(4, direct,4,0,0);
+    save_sequence(1, move,4,1,0);
+    save_sequence(0, back,3,6,0);
+    save_sequence(1, overwrite,8,0,1);
+    save_sequence(1, cancel_overwrite,7,6,1);
+    puts("PASS Save State focuses the first slot before input, immediate save, navigation, cancel and overwrite guard");
 }
 
 static void verify_load_slots(void)
@@ -177,6 +241,7 @@ static void verify_load_slots(void)
         assert(result==(load_case==2) && loaded_slot==(load_case==0?4:load_case==1?1:6));
         assert(load_frames==(load_case==0?3:1));
     }
+    checking_load=false;
     puts("PASS Load State selects the first save, ignores held A, refreshes preview and lets B cancel an empty grid");
 }
 
@@ -208,6 +273,7 @@ int main(int argc, char **argv)
     *(void **)(GOT+0x39c)=&preview;
     verify_save_slots();
     verify_load_slots();
+    verify_save_focus();
     free(game_art);
     return 0;
 }

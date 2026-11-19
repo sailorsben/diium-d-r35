@@ -223,6 +223,10 @@ bands. It uses the lightning icon when the stock charging flag is set.
 The percentage is a display preference for the English launcher. See the
 [ADC measurements](stock-battery-trace.md) for the limits of the readings.
 
+Save State opens with the upper-left slot selected. Release A after opening
+the menu, then press A to save there or use the D-pad to choose another slot.
+An occupied slot asks for a separate A press to overwrite. B cancels.
+
 Load State enters the first occupied slot in slot order. Release A after
 opening the menu, then press it again to load. The top preview shows the
 selected save's screenshot or a placeholder when the thumbnail is

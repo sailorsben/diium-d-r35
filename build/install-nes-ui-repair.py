@@ -23,6 +23,8 @@ EXIT_BUILD = ROOT / "build/exit-dialog-private"
 EXIT_SHA = "05f087418b34d571101295c71ff55e35c13d6e1a5cfafd2e04787dcaa8b2c47a"
 EXIT_ART = "retro/d35-launcher1/exit-dialog.rgb565"
 EXIT_ART_SHA = "4003f2547ef182e057d9f5dd5b942195cb157a2f9cbb0db7b455c3d25e63f546"
+SAVE_FOCUS_PAYLOAD = ROOT / "build/save-focus-private/arm/vrtemu"
+SAVE_FOCUS_SHA = "442c893f9d797098e9e1076caecef7608d59cdc1ce762b2655d2b398a847979b"
 TRACE = "retro/d35-launcher1/ff2-controls.log"
 PREVIOUS_TRACE = "retro/d35-launcher1/ff2-controls.previous.log"
 NES = "d8a9a87a8aabc6c290c887545247b907e2e48bd0a70f788c5f1a41db06d51fa6"
@@ -131,6 +133,7 @@ if __name__ == "__main__":
     builds.add_argument("--chaos-rush-edges", action="store_true")
     builds.add_argument("--controls-monitor", action="store_true")
     builds.add_argument("--exit-dialog", action="store_true")
+    builds.add_argument("--save-focus", action="store_true")
     parser.add_argument("--rearm-controls", action="store_true",
                         help="Retain the collected FF2 trace under a new name and enable the next capture")
     parser.add_argument("--return-archive", type=Path, help="Previously collected card return for input monitoring")
@@ -139,7 +142,9 @@ if __name__ == "__main__":
         parser.error("--return-archive requires --controls-monitor or --exit-dialog")
     if args.rearm_controls and not args.exit_dialog:
         parser.error("--rearm-controls requires --exit-dialog")
-    if args.exit_dialog:
+    if args.save_focus:
+        install(SAVE_FOCUS_PAYLOAD, EXIT_SHA, SAVE_FOCUS_SHA, "save-focus")
+    elif args.exit_dialog:
         install(EXIT_BUILD / "arm/vrtemu", CONTROLS_SHA, EXIT_SHA, "exit-dialog", args.return_archive,
                 exit_art=EXIT_BUILD / "exit-dialog.rgb565", rearm=args.rearm_controls)
     elif args.controls_monitor:

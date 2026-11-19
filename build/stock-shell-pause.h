@@ -14,6 +14,7 @@ struct pause_ui {
     bool menu, redraw_only, reset_confirm, reset_unavailable;
     unsigned exit_choice, exit_held;
     uint16_t *exit_background, *exit_art;
+    bool save_wait_release;
 };
 #define PAUSE VAR(0x1c4400,struct pause_ui)
 _Static_assert(sizeof(struct pause_ui)<=0x100, "pause UI reservation");
@@ -373,6 +374,56 @@ static __attribute__((used)) int first_load_slot(const unsigned *present)
     return -1;
 }
 
+static bool draw_slot_focus(unsigned slot)
+{
+    if(!PAUSE_ART || PAUSE_ART[0].offset<7*sizeof(*PAUSE_ART) || slot>=PAUSE_SLOTS) return false;
+    unsigned x=PAUSE_ART[6].left+PAUSE_SLOT_MAP[slot][0];
+    unsigned y=PAUSE_ART[6].top+PAUSE_SLOT_MAP[slot][1];
+    if(x>=640-96 || y>=480-66) return false;
+    FN(0x90f40,void,unsigned,unsigned,unsigned)(x,y,0xffff);
+    return true;
+}
+
+static __attribute__((used)) bool save_open_frame(uint16_t *frame,unsigned w,unsigned h,size_t pitch)
+{
+    bool focused=false;
+    if(frame && frame==STOCK_UI_FRAME && w==640 && h==480 && pitch==1280 && pause_layout()) {
+        pause_wait();
+        focused=draw_slot_focus(0);
+    }
+    DISP(frame,w,h,pitch);
+    return focused;
+}
+
+/* The native save picker keeps grid focus in r5 and the slot index in r10.
+ * These are live across the first DispFrame and all subsequent key reads. */
+__attribute__((naked)) ENTRY void save_first_frame(void)
+{
+    __asm__ volatile("push {r4,lr}\n\tbl save_open_frame\n\tcmp r0,#0\n\t"
+                     "movne r5,#1\n\tmovne r10,#0\n\tpop {r4,pc}");
+}
+
+/* Stock discards one input poll on entry to the grid and again on entry to
+ * its overwrite prompt. A held across either boundary must be released. */
+ENTRY void save_slot_prime(void)
+{
+    input_slot_key();
+    PAUSE.save_wait_release=(HOME_PAD&0x2000)!=0;
+}
+
+ENTRY unsigned save_slot_key(void)
+{
+    unsigned key=input_slot_key();
+    if(!(HOME_PAD&0x2000)) PAUSE.save_wait_release=false;
+    return key==0x2000 && PAUSE.save_wait_release?0:key;
+}
+
+__attribute__((naked)) ENTRY void save_slot_cancel(void)
+{
+    __asm__ volatile("cmp r0,#0x4000\n\tldreq pc,1f\n\t"
+                     "cmp r0,#64\n\tbx lr\n\t1: .word 0x92314");
+}
+
 static __attribute__((used)) void load_slot_frame(uint16_t *frame,unsigned w,unsigned h,
                                                  size_t pitch,int slot,bool first)
 {
@@ -390,12 +441,7 @@ static __attribute__((used)) void load_slot_frame(uint16_t *frame,unsigned w,uns
             unsigned scale=pw>=12*chars?2:1;
             settings_text(frame,x+(pw-6*scale*chars)/2,y+(ph-7*scale)/2,label,scale,0xad96);
         }
-        if(first && slot>=0 && slot<PAUSE_SLOTS && PAUSE_ART) {
-            unsigned rx=PAUSE_ART[6].left+PAUSE_SLOT_MAP[slot][0];
-            unsigned ry=PAUSE_ART[6].top+PAUSE_SLOT_MAP[slot][1];
-            if(rx+96<640 && ry+66<480)
-                FN(0x90f40,void,unsigned,unsigned,unsigned)(rx,ry,0xffff);
-        }
+        if(first && slot>=0) draw_slot_focus((unsigned)slot);
     }
     DISP(frame,w,h,pitch);
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## Focus the first slot when Save State opens
+
+The first Save State frame highlights the upper-left slot, whether it is
+empty or occupied. A fresh press of A selects it. An occupied slot still
+asks before overwriting, and B returns from the grid.
+
 ## Match the Exit dialog to Power Off and check FF2 D-pad movement - 2026-11-18
 
 The Exit dialog uses the Power Off panel and three evenly spaced, centered
