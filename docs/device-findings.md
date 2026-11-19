@@ -18,6 +18,10 @@ previous build through the ARM launcher. The battle's left border remains,
 and the other NES path still submits 256×240. The test checks alternating
 chunk ownership, source completion before release, and the stock driver's
 scaler request. The user-visible result and physical timing need a cold boot.
+Both launcher copies on I: now match build `7a9bd7b7…` from `1e78ca5`.
+Readback verified all 2,217 card files and clean FAT32. The pre-install
+sparse archive `ff2-vertical-edges-before-20261119T041444610345Z`
+records the previous build and preserves the returned progress and logs.
 
 **FF2 left-edge follow-up (2026-11-18).** Ben still sees the cutoff on the
 handheld. The archived installed launcher (`83c42294…`), the card's
