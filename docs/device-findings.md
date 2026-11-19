@@ -1,5 +1,27 @@
 # Device findings
 
+**FF2 left-edge follow-up (2026-11-18).** Ben still sees the cutoff on the
+handheld. The archived installed launcher (`83c42294…`), the card's
+FCEUmm core (`d8a9a87a…`), and its display driver (`2c0134b3…`) were
+exercised together under ARM/QEMU with the margin-patched ROM from the
+installation receipt. The vendor NES loader passes the patched environment
+callback to the real core. At replay frame 3,722, FF2's enemy and action box
+borders are intact. The driver queues 256×240 RGB565 at pitch 512 and
+requests a 256×240 source at (0,0) for the 640×480 LCD. The stock-launcher
+control requests 240×224. Its entire frame is the exact central crop of the
+full frame, including the missing left edge.
+
+Both launcher copies, the NES core, driver and ROM on I: match the tested
+hashes. The live card's boot and shutdown records are byte-identical to
+the November 18 archive. That archive retains the same boot ID as the
+November 17 archive taken before the launcher install. A fresh cold boot
+with this card is needed to tie the reported clipping to these binaries.
+If that boot used the patched binary and matching driver,
+verify the actual scaler/scanout and reproduce the exact clipped scene
+before changing the renderer. The ARM fixture supplies chunk memory and
+intercepts the scaler calls. It does not measure the panel.
+[ARM fixture](../build/check-stock-shell-nes-viewport.c).
+
 **FF2 NES edge crop and launcher fixes (2026-11-17).** The user's Chaos Rush
 2.2b ROM shows the same battle-window cutoff in a browser emulator and on the
 D-R35. A copied D-R35 FCEUmm core reports 240×224 with its default overscan

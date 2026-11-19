@@ -1,20 +1,268 @@
-/* Execute the patched ARM environment callback against the pinned launcher. */
+/* Execute the vendor NES launch and frame callbacks with the actual card core. */
 #define main stock_audit_main
 #include "check-stock-snes-loader.c"
 #undef main
+#include <dlfcn.h>
 #include <stdbool.h>
+#include <stdarg.h>
 
-struct variable { const char *key, *value; };
+#include "libretro.h"
+
+enum {
+    NES_LOAD=0xa5058, PLAY_FRAME=0xa2cc4, INPUT_STATE=0xa2f0c,
+    WORK_PATH=0x1b8a00, DISPLAY_CALLBACK=0x1be388,
+    CORE_VIDEO_OUTPUT=0x89b74,
+};
+
+static const char *core_path, *rom_path;
+static void *nes_core;
+static const char *const device_rom="/usr/003/fixture.nes";
+static unsigned frames, width, height, pitch;
+static uint16_t last_frame[256*240];
+static uint16_t device_chunk[256*240];
+static uint16_t **core_output;
+static unsigned capture_frame, input_button;
+static retro_environment_t frontend_environment;
+static bool (*core_load)(const struct retro_game_info *);
+static void (*core_set_environment)(retro_environment_t);
+static const char *overscan_value="default";
+static uint32_t scaler_input[5];
+static const void *scaler_source;
+static uint16_t display_canvas[640*480];
+
+static int open_scaler(const char *path,int flags)
+{
+    assert(!strcmp(path,"/dev/pscaler_a") && flags==2);
+    return 17;
+}
+
+static int ioctl_scaler(int fd,unsigned long request,...)
+{
+    assert(fd==17);
+    va_list args;
+    va_start(args,request);
+    switch(request) {
+    case 0x40e45000: {
+        const uint32_t *config=va_arg(args,const uint32_t *);
+        memcpy(scaler_input,config,sizeof(scaler_input));
+        assert(config[6]==640 && config[7]==480);
+        scaler_source=(const void *)(uintptr_t)config[14];
+        assert(config[16]==(uintptr_t)display_canvas);
+        break;
+    }
+    case 0x80045005:
+        *va_arg(args,unsigned *)=2;
+        break;
+    default:
+        assert(request==0x5003 || request==0x80045001 || request==0x80045004);
+    }
+    va_end(args);
+    return 0;
+}
+
+static int close_scaler(int fd)
+{
+    assert(fd==17);
+    return 0;
+}
+
+static void verify_scaler(const char *path)
+{
+    void *driver=dlopen(path,RTLD_NOW);
+    assert(driver);
+    void (*submit)(const void *,unsigned,unsigned,size_t)=dlsym(driver,"video_driver_disp_frame");
+    void (*draw)(const void *,unsigned,unsigned)=dlsym(driver,"DrawVFB");
+    assert(submit && draw);
+    Dl_info mapping;
+    assert(dladdr(draw,&mapping));
+    uintptr_t code=(uintptr_t)mapping.dli_fbase;
+    assert(!mprotect((void *)(code+0x1000),4096,PROT_READ|PROT_WRITE|PROT_EXEC));
+    patch(code+0x1294,(uintptr_t)open_scaler);
+    patch(code+0x1234,(uintptr_t)ioctl_scaler);
+    patch(code+0x1354,(uintptr_t)close_scaler);
+
+    /* One synthetic LCD output buffer. The driver's mode-zero queue and
+     * source rectangle are real. Only the worker and scaler syscalls are mocked. */
+    static uint32_t lcd[27];
+    lcd[2]=(480u<<16)|640;
+    lcd[6]=(uintptr_t)display_canvas;
+    void **handle=dlsym(driver,"hDisp");
+    const void *const *pending_frame=dlsym(driver,"Frame_data");
+    const unsigned *pending_width=dlsym(driver,"Frame_width");
+    const unsigned *pending_height=dlsym(driver,"Frame_height");
+    assert(handle && pending_frame && pending_width && pending_height);
+    *handle=lcd;
+    submit(last_frame,width,height,pitch);
+    assert(*pending_frame==last_frame && *pending_width==width && *pending_height==height);
+    draw(*pending_frame,*pending_width,*pending_height);
+    assert(scaler_source==last_frame && scaler_input[0]==0 &&
+           scaler_input[1]==width && scaler_input[2]==height &&
+           scaler_input[3]==0 && scaler_input[4]==0);
+    printf("scaler source=%ux%u start=(%u,%u) output=640x480\n",
+           scaler_input[1],scaler_input[2],scaler_input[3],scaler_input[4]);
+    assert(!dlclose(driver));
+}
+
+static FILE *open_nes_rom(const char *path,const char *mode)
+{
+    assert(!strcmp(path,device_rom) && !strcmp(mode,"rb"));
+    return fopen(rom_path,mode);
+}
+
+static void *open_nes_core(const char *path,int mode)
+{
+    assert(!strcmp(path,"/usr/retro/libs/emu_nes.so") && mode==RTLD_NOW);
+    nes_core=dlopen(core_path,mode);
+    if(!nes_core) fprintf(stderr,"%s\n",dlerror());
+    assert(nes_core);
+    return nes_core;
+}
+
+static void capture_video(const void *frame,unsigned w,unsigned h,size_t stride)
+{
+    assert(frame && w<=256 && h<=240 && stride>=2*w);
+    width=w; height=h; pitch=stride;
+    ++frames;
+    if(!capture_frame) return;
+    const uint8_t *row=frame;
+    for(unsigned y=0;y<h;++y,row+=stride)
+        memcpy(last_frame+y*w,row,2*w);
+}
+
+static size_t accept_audio(const int16_t *audio,size_t count)
+{
+    (void)audio;
+    return count;
+}
+
+static int16_t read_button(unsigned port,unsigned device,unsigned index,unsigned id)
+{
+    return !port && device==RETRO_DEVICE_JOYPAD && !index && input_button==id;
+}
+
+static bool observe_environment(unsigned command,void *data)
+{
+    bool result=frontend_environment(command,data);
+    if(command==RETRO_ENVIRONMENT_GET_VARIABLE) {
+        const struct retro_variable *var=data;
+        if(!strcmp(var->key,"fceumm_overscan"))
+            overscan_value=result && var->value ? var->value : "default";
+    }
+    return result;
+}
+
+static void connect_environment(retro_environment_t environment)
+{
+    assert((uintptr_t)environment==ENVIRONMENT);
+    frontend_environment=environment;
+    core_set_environment(observe_environment);
+}
+
+static bool load_nes_rom(const struct retro_game_info *game)
+{
+    assert(!strcmp(game->path,device_rom) && game->data && game->size);
+    assert(core_load(game));
+    Dl_info core_info;
+    assert(dladdr(core_load,&core_info));
+    /* fceu_video_out in the card's core is null without /dev/chunkmem. */
+    core_output=(uint16_t **)((uintptr_t)core_info.dli_fbase+CORE_VIDEO_OUTPUT);
+    assert(!*core_output);
+    *core_output=device_chunk;
+    return true;
+}
+
+static void *resolve_nes(void *handle,const char *name)
+{
+    assert(handle==nes_core);
+    if(!strcmp(name,"retro_set_environment")) {
+        core_set_environment=dlsym(handle,name);
+        assert(core_set_environment);
+        return connect_environment;
+    }
+    if(!strcmp(name,"retro_load_game")) {
+        core_load=dlsym(handle,name);
+        assert(core_load);
+        return load_nes_rom;
+    }
+    return dlsym(handle,name);
+}
+
+static void step(void (*run)(void),unsigned button,unsigned count)
+{
+    input_button=button;
+    while(count--) run();
+}
+
+static void replay_nes(void)
+{
+    void (*run)(void)=dlsym(nes_core,"retro_run");
+    void (*av_info)(struct retro_system_av_info *)=dlsym(nes_core,"retro_get_system_av_info");
+    assert(run && av_info);
+    struct retro_system_av_info av;
+    av_info(&av);
+    printf("option=%s reported=%ux%u ",overscan_value,
+           av.geometry.base_width,av.geometry.base_height);
+
+    const unsigned idle=~0u, a=RETRO_DEVICE_ID_JOYPAD_A, right=RETRO_DEVICE_ID_JOYPAD_RIGHT;
+    step(run,idle,2518);
+    for(unsigned i=0;i<2;++i) { step(run,a,8); step(run,idle,55); }
+    for(unsigned character=0;character<4;++character) {
+        if(character) { step(run,right,6); step(run,idle,8); }
+        for(unsigned i=0;i<7;++i) { step(run,a,8); step(run,idle,16); }
+    }
+    step(run,idle,160);
+    capture_frame=1;
+    for(unsigned i=0;i<3;++i) { step(run,a,8); step(run,idle,60); }
+    printf("submitted=%ux%u pitch=%u frames=%u\n",width,height,pitch,frames);
+    assert(frames==3722 && width==av.geometry.base_width && height==av.geometry.base_height);
+    if(width==256) {
+        /* The opening battle's left border uses column 1. */
+        bool left_border=false;
+        for(unsigned y=152;y<231;++y)
+            left_border |= last_frame[y*width+1]!=last_frame[y*width];
+        assert(left_border);
+    }
+    void (*unload)(void)=dlsym(nes_core,"retro_unload_game");
+    void (*deinit)(void)=dlsym(nes_core,"retro_deinit");
+    assert(unload && deinit);
+    *core_output=NULL;
+    unload();
+    deinit();
+}
 
 int main(int argc, char **argv)
 {
-    assert(argc==2);
+    assert(argc==7);
+    core_path=argv[2];
+    rom_path=argv[3];
     map_vendor(argv[1]);
+    patch(FRAME_FLASH,(uintptr_t)frame_flash);
+    patch(KEY_MAPPING,(uintptr_t)key_mapping);
+    patch(LOAD_PROC2,(uintptr_t)replay_nes);
+    patch(PLAY_FRAME,(uintptr_t)accept_audio);
+    patch(INPUT_STATE,(uintptr_t)read_button);
+    patch(0x11be4,(uintptr_t)quiet);
+    patch(0x11d34,(uintptr_t)open_nes_core);
+    patch(0x12010,(uintptr_t)resolve_nes);
+    patch(0x11ce0,(uintptr_t)open_nes_rom);
+    patch(0x11f38,(uintptr_t)sprintf);
+    patch(0x11d64,(uintptr_t)strcpy);
     patch(0x11f74,(uintptr_t)strcmp);
-    bool (*environment)(unsigned,void *)=(void *)0xa2fc8;
-    struct variable overscan={"fceumm_overscan",NULL};
-    assert(environment(15,&overscan)); /* libretro GET_VARIABLE */
-    assert(overscan.value && !strcmp(overscan.value,"disabled"));
-    puts("PASS NES core receives full-frame overscan setting");
+    patch(0x11e3c,(uintptr_t)strstr);
+    patch(0x11b84,(uintptr_t)fseek);
+    patch(0x11e84,(uintptr_t)ftell);
+    patch(0x11ed8,(uintptr_t)malloc);
+    patch(0x11ddc,(uintptr_t)fread);
+    patch(0x11f20,(uintptr_t)fclose);
+    patch(0x11b6c,(uintptr_t)free);
+    strcpy((char *)WORK_PATH,"/usr/retro");
+    strcpy((char *)*(uint32_t *)(GOT+0x274),"/usr/");
+    *(retro_video_refresh_t *)DISPLAY_CALLBACK=capture_video;
+    ((int (*)(const char *,unsigned))NES_LOAD)(device_rom,5);
+    assert(width==(unsigned)atoi(argv[5]) && pitch==2*width);
+    verify_scaler(argv[4]);
+    FILE *output=fopen(argv[6],"wb");
+    assert(output && fwrite(last_frame,sizeof(*last_frame),width*height,output)==width*height);
+    assert(!fclose(output) && !dlclose(nes_core));
     return 0;
 }
