@@ -1,5 +1,12 @@
 # Changelog
 
+## Hide vertical scroll wrap in Chaos Rush FF2 - 2026-11-18
+
+The Chaos Rush launch displays the central 224 rows while retaining all
+256 columns for the battle boxes. The ARM replay confirms the edge trim
+through the opening cutscene and battle. The original dialogue sprite
+priority is preserved.
+
 ## Record the NES display handoff - 2026-11-18
 
 After a NES game exits, the launcher records its boot ID, overscan response,

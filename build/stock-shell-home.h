@@ -13,17 +13,24 @@ enum { HOME_WIDTH=640, HOME_HEIGHT=480, HOME_BYTES=640*480*2,
 #define STOCK_UI_FRAME VAR(0x199910,uint16_t *)
 static void settings_confirm_sound(void);
 
-struct nes_viewport_receipt {
+struct nes_viewport {
     bool active, overscan_disabled;
     unsigned width, height, pitch;
+    uint16_t *trim_buffers;
+    void (*wait_display)(void);
+    unsigned trim_slot;
 };
+
+enum { NES_WIDTH=256, NES_FULL_HEIGHT=240, NES_EDGE_ROWS=8,
+       NES_VISIBLE_HEIGHT=NES_FULL_HEIGHT-2*NES_EDGE_ROWS,
+       NES_TRIM_PIXELS=NES_WIDTH*NES_VISIBLE_HEIGHT };
 
 struct home_overlay {
     unsigned selected;
     bool type_open, inject_open;
     volatile bool own_battery;
     bool classic_home;
-    struct nes_viewport_receipt nes;
+    struct nes_viewport nes;
 };
 #define HOME VAR(0x1c4300,struct home_overlay)
 _Static_assert(sizeof(struct home_overlay)<=0x100, "home overlay reservation");
@@ -159,14 +166,32 @@ __attribute__((naked)) static int stock_nes_load(const char *path __attribute__(
     __asm__ volatile("push {r4-r6, lr}\n\tldr pc, 1f\n\t1: .word 0xa505c");
 }
 
+static void open_chaos_rush_viewport(const char *path)
+{
+    const char *name=path;
+    for(const char *p=path;*p;++p)
+        if(*p=='/') name=p+1;
+    if(STRCMP(name,"Final Fantasy II - Chaos Rush 2.2b.nes")) return;
+    void *driver=VAR(0x1b81a8,void *);
+    if(driver) HOME.nes.wait_display=SYM(driver,"WaitDisp");
+    if(HOME.nes.wait_display)
+        HOME.nes.trim_buffers=FN(0x164abc,void *,size_t)(2*NES_TRIM_PIXELS*sizeof(uint16_t));
+}
+
 /* Keep the latest NES session's display handoff in a small atomic receipt.
  * Perform card I/O after gameplay so this cannot block a frame or audio. */
 ENTRY int launcher_nes_load(const char *path,unsigned type)
 {
     ZERO(&HOME.nes,0,sizeof(HOME.nes));
     HOME.nes.active=true;
+    open_chaos_rush_viewport(path);
     int result=stock_nes_load(path,type);
     HOME.nes.active=false;
+    if(HOME.nes.trim_buffers) {
+        HOME.nes.wait_display();
+        FN(0x164d58,void,void *)(HOME.nes.trim_buffers);
+        HOME.nes.trim_buffers=NULL;
+    }
 
     char file[384], boot_id[37]={0}, record[160];
     if(!suffix(file,sizeof(file),WORK(),LAUNCHER "/nes-viewport.log")) return result;
@@ -227,10 +252,23 @@ ENTRY void launcher_display_frame(const void *frame,unsigned w,unsigned h,size_t
     typedef void (*submit_frame_fn)(const void *,unsigned,unsigned,size_t);
     submit_frame_fn submit=VAR(0x1be388,submit_frame_fn);
     if(submit) {
-        if(HOME.nes.active && !HOME.nes.width && frame && w && h && frame!=STOCK_UI_FRAME) {
-            HOME.nes.width=w;
-            HOME.nes.height=h;
-            HOME.nes.pitch=pitch;
+        if(HOME.nes.active && frame && w && h && frame!=STOCK_UI_FRAME) {
+            if(HOME.nes.trim_buffers && w==NES_WIDTH && h==NES_FULL_HEIGHT &&
+               pitch==NES_WIDTH*sizeof(uint16_t)) {
+                /* The driver has at most one queued source. The other slot
+                 * is safe to fill before handing the next picture over. */
+                uint16_t *slot=HOME.nes.trim_buffers+HOME.nes.trim_slot*NES_TRIM_PIXELS;
+                COPY(slot,(const uint8_t *)frame+NES_EDGE_ROWS*pitch,
+                     NES_TRIM_PIXELS*sizeof(*slot));
+                HOME.nes.trim_slot^=1;
+                frame=slot;
+                h=NES_VISIBLE_HEIGHT;
+            }
+            if(!HOME.nes.width) {
+                HOME.nes.width=w;
+                HOME.nes.height=h;
+                HOME.nes.pitch=pitch;
+            }
         }
         submit(frame,w,h,pitch);
     }

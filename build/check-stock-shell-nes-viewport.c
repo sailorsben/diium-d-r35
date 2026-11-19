@@ -17,7 +17,12 @@ enum {
 
 static const char *core_path, *rom_path;
 static void *nes_core;
-static const char *const device_rom="/usr/003/fixture.nes";
+static const char *device_rom="/usr/003/fixture.nes";
+static bool trim_edges;
+static uint16_t trim_buffer[2][256*224];
+static char driver_token;
+static unsigned trim_waits;
+static bool trim_live;
 static unsigned frames, width, height, pitch;
 static uint16_t last_frame[256*240];
 static uint16_t device_chunk[256*240];
@@ -159,12 +164,35 @@ static void *open_nes_core(const char *path,int mode)
 static void capture_video(const void *frame,unsigned w,unsigned h,size_t stride)
 {
     assert(frame && w<=256 && h<=240 && stride>=2*w);
+    if(trim_edges) {
+        assert(h==224 && trim_live);
+        assert(frame==trim_buffer[frames%2]);
+    }
     width=w; height=h; pitch=stride;
     ++frames;
     if(!capture_frame) return;
     const uint8_t *row=frame;
     for(unsigned y=0;y<h;++y,row+=stride)
         memcpy(last_frame+y*w,row,2*w);
+}
+
+static void *allocate_trim(size_t bytes)
+{
+    assert(trim_edges && !trim_live && bytes==sizeof(trim_buffer));
+    trim_live=true;
+    return trim_buffer;
+}
+
+static void wait_for_trim(void)
+{
+    assert(trim_live);
+    ++trim_waits;
+}
+
+static void release_trim(void *pointer)
+{
+    assert(pointer==trim_buffer && trim_live && trim_waits==1);
+    trim_live=false;
 }
 
 static size_t accept_audio(const int16_t *audio,size_t count)
@@ -215,6 +243,10 @@ static void *resolve_nes(void *handle,const char *name)
         assert(!strcmp(name,"rename"));
         return publish_receipt;
     }
+    if(handle==&driver_token) {
+        assert(trim_edges && !strcmp(name,"WaitDisp"));
+        return wait_for_trim;
+    }
     assert(handle==nes_core);
     if(!strcmp(name,"retro_set_environment")) {
         core_set_environment=dlsym(handle,name);
@@ -256,11 +288,12 @@ static void replay_nes(void)
     capture_frame=1;
     for(unsigned i=0;i<3;++i) { step(run,a,8); step(run,idle,60); }
     printf("submitted=%ux%u pitch=%u frames=%u\n",width,height,pitch,frames);
-    assert(frames==3722 && width==av.geometry.base_width && height==av.geometry.base_height);
+    assert(frames==3722 && width==av.geometry.base_width);
+    assert(height==av.geometry.base_height-(trim_edges?16:0));
     if(width==256) {
         /* The opening battle's left border uses column 1. */
         bool left_border=false;
-        for(unsigned y=152;y<231;++y)
+        for(unsigned y=152-(trim_edges?8:0);y<231-(trim_edges?8:0);++y)
             left_border |= last_frame[y*width+1]!=last_frame[y*width];
         assert(left_border);
     }
@@ -274,7 +307,10 @@ static void replay_nes(void)
 
 int main(int argc, char **argv)
 {
-    assert(argc==7 || (argc==8 && !strcmp(argv[7],"receipt")));
+    assert(argc>=7 && argc<=9 && (argc==7 || !strcmp(argv[7],"receipt")));
+    trim_edges=argc==9 && !strcmp(argv[8],"trim");
+    if(argc==9) assert(trim_edges);
+    if(trim_edges) device_rom="/usr/003/Final Fantasy II - Chaos Rush 2.2b.nes";
     core_path=argv[2];
     rom_path=argv[3];
     map_vendor(argv[1]);
@@ -302,12 +338,17 @@ int main(int argc, char **argv)
     patch(0x11fb0,(uintptr_t)fflush);
     patch(0x11df4,(uintptr_t)fileno);
     patch(0x11b18,(uintptr_t)fsync);
+    patch(0x11ecc,(uintptr_t)memcpy);
+    patch(0x164abc,(uintptr_t)allocate_trim);
+    patch(0x164d58,(uintptr_t)release_trim);
+    if(trim_edges) *(void **)0x1b81a8=&driver_token;
     strcpy((char *)WORK_PATH,"/usr/retro");
     strcpy((char *)*(uint32_t *)(GOT+0x274),"/usr/");
     *(retro_video_refresh_t *)DISPLAY_CALLBACK=capture_video;
     ((int (*)(const char *,unsigned))NES_LOAD)(device_rom,5);
     assert(width==(unsigned)atoi(argv[5]) && pitch==2*width);
-    assert(receipt_published==(argc==8));
+    assert(receipt_published==(argc>=8));
+    assert(!trim_live && trim_waits==(unsigned)trim_edges);
     if(receipt_published) {
         char expected[160];
         snprintf(expected,sizeof(expected),"boot_id=%s\noverscan=disabled\nsubmitted=%ux%u pitch=%u\n",

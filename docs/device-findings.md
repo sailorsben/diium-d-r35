@@ -1,5 +1,24 @@
 # Device findings
 
+**FF2 cutscene edges (2026-11-18).** A returned handheld boot has matching
+boot, NES and orderly shutdown receipts with `overscan=disabled` and
+`submitted=256x240 pitch=512`. The earlier horizontal-crop fix was live.
+In a separate replay of the opening scripted movement, the unmasked bottom
+eight rows briefly repeat the throne-room carpet while the rows above are
+black. The clean Japanese ROM shows the same wrap. The installed Chaos Rush
+ROM and the Japanese ROM also have byte-identical dialogue dimensions and
+sprite-priority routines. In the reproduced Minwu and Hilda dialogue, the
+bottom border of the opening box can cover the tops of the sprites. Sprite
+colors did not appear inside the fully opened box in the tested frames.
+
+The Chaos Rush list entry now submits 256×224 from the 256×240 core image,
+trimming eight rows at each vertical edge. Every pixel of the 219 sampled
+cutscene frames and the opening battle matches the central rows of the
+previous build through the ARM launcher. The battle's left border remains,
+and the other NES path still submits 256×240. The test checks alternating
+chunk ownership, source completion before release, and the stock driver's
+scaler request. The user-visible result and physical timing need a cold boot.
+
 **FF2 left-edge follow-up (2026-11-18).** Ben still sees the cutoff on the
 handheld. The archived installed launcher (`83c42294…`), the card's
 FCEUmm core (`d8a9a87a…`), and its display driver (`2c0134b3…`) were

@@ -15,6 +15,8 @@ OLD = "4575af08eda0243f35573c833c8faa3b4b9e7c8783738b4b11bf9344819718ab"
 NEW = "83c4229403df0e11ba4dd7fa8f2b824b3af38b7d50faef9d69dc0f43f39928ae"
 RECEIPT_PAYLOAD = ROOT / "build/nes-receipt-private/vrtemu"
 RECEIPT_SHA = "014e04d6c718652125d51a21c6ed57013003cf3f10ef3b91b11a9bb268766896"
+FF2_EDGE_PAYLOAD = ROOT / "build/ff2-edge-private/vrtemu"
+FF2_EDGE_SHA = "7a9bd7b76d5c57bfb065bbdef2f051b8b83282cda00fc4413d6cf29bb34f9fab"
 NES = "d8a9a87a8aabc6c290c887545247b907e2e48bd0a70f788c5f1a41db06d51fa6"
 SNES = "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936"
 TARGETS = ("retro/vrtemu", "retro/d35-launcher1/vrtemu")
@@ -79,8 +81,13 @@ def install(payload=PAYLOAD, old=OLD, new=NEW, phase="nes-ui"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--viewport-receipt", action="store_true")
-    if parser.parse_args().viewport_receipt:
+    builds = parser.add_mutually_exclusive_group()
+    builds.add_argument("--viewport-receipt", action="store_true")
+    builds.add_argument("--chaos-rush-edges", action="store_true")
+    args = parser.parse_args()
+    if args.chaos_rush_edges:
+        install(FF2_EDGE_PAYLOAD, RECEIPT_SHA, FF2_EDGE_SHA, "ff2-vertical-edges")
+    elif args.viewport_receipt:
         install(RECEIPT_PAYLOAD, NEW, RECEIPT_SHA, "nes-viewport")
     else:
         install()
