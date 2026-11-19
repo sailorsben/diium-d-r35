@@ -41,6 +41,12 @@ Start and Select bits. `native` is the stock menu word. During gameplay,
 and `retro` is the logical button mask after remapping. This test can show
 stuck or repeated digital inputs at the handheld's scan rate.
 
+Both launcher copies on I: now match `fa19a18c…` from `e29dd5d`. The
+installer verified all 2,219 card files and a clean FAT32 volume after
+installation. The sparse return retained both FF2 states and the returned
+logs. A physical save with the new launcher and collection of its button
+trace are pending.
+
 **FF2 cutscene edges (2026-11-18).** A returned handheld boot has matching
 boot, NES and orderly shutdown receipts with `overscan=disabled` and
 `submitted=256x240 pitch=512`. The earlier horizontal-crop fix was live.
