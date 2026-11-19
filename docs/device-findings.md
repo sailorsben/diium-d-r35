@@ -22,7 +22,7 @@ before changing the renderer. The ARM fixture supplies chunk memory and
 intercepts the scaler calls. It does not measure the panel.
 [ARM fixture](../build/check-stock-shell-nes-viewport.c).
 
-The next launcher build adds an on-device receipt at
+Launcher build `014e04d6…` adds an on-device receipt at
 `retro/d35-launcher1/nes-viewport.log`. After quitting a NES game, it
 atomically writes the boot ID, the overscan response, and the first game
 frame dimensions and pitch passed to the display driver. For FF2 the
@@ -31,6 +31,13 @@ The check runs as part of the stock NES loader lifecycle and writes after
 gameplay. In ARM/QEMU the receipt passes and the FF2 battle frame matches
 the previous full-frame build byte for byte. The stock crop control still
 reproduces the missing border.
+
+Installed on I: in both launcher locations from `b8dca45`. The installer
+verified all 2,216 card files and clean FAT32, and independent readback
+matched both launcher hashes and the FF2 ROM hash. The sparse archive
+`nes-viewport-before-20261119T034100687730Z` retained the previous launcher
+and added zero new progress or log bytes to the archive store. A cold
+boot, FF2 action-box check and normal game exit are pending.
 
 **FF2 NES edge crop and launcher fixes (2026-11-17).** The user's Chaos Rush
 2.2b ROM shows the same battle-window cutoff in a browser emulator and on the
