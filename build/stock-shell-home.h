@@ -13,11 +13,17 @@ enum { HOME_WIDTH=640, HOME_HEIGHT=480, HOME_BYTES=640*480*2,
 #define STOCK_UI_FRAME VAR(0x199910,uint16_t *)
 static void settings_confirm_sound(void);
 
+struct nes_viewport_receipt {
+    bool active, overscan_disabled;
+    unsigned width, height, pitch;
+};
+
 struct home_overlay {
     unsigned selected;
     bool type_open, inject_open;
     volatile bool own_battery;
     bool classic_home;
+    struct nes_viewport_receipt nes;
 };
 #define HOME VAR(0x1c4300,struct home_overlay)
 _Static_assert(sizeof(struct home_overlay)<=0x100, "home overlay reservation");
@@ -139,11 +145,42 @@ ENTRY bool launcher_environment(unsigned cmd,void *data)
     if(cmd==RETRO_ENVIRONMENT_GET_VARIABLE && data) {
         struct retro_variable *var=data;
         if(var->key && !STRCMP(var->key,"fceumm_overscan")) {
+            if(HOME.nes.active) HOME.nes.overscan_disabled=true;
             var->value="disabled";
             return true;
         }
     }
     return stock_environment(cmd,data);
+}
+
+__attribute__((naked)) static int stock_nes_load(const char *path __attribute__((unused)),
+                                                 unsigned type __attribute__((unused)))
+{
+    __asm__ volatile("push {r4-r6, lr}\n\tldr pc, 1f\n\t1: .word 0xa505c");
+}
+
+/* Keep the latest NES session's display handoff in a small atomic receipt.
+ * Perform card I/O after gameplay so this cannot block a frame or audio. */
+ENTRY int launcher_nes_load(const char *path,unsigned type)
+{
+    ZERO(&HOME.nes,0,sizeof(HOME.nes));
+    HOME.nes.active=true;
+    int result=stock_nes_load(path,type);
+    HOME.nes.active=false;
+
+    char file[384], boot_id[37]={0}, record[160];
+    if(!suffix(file,sizeof(file),WORK(),LAUNCHER "/nes-viewport.log")) return result;
+    FILE *id=FOPEN("/proc/sys/kernel/random/boot_id","rb");
+    if(id) {
+        FREAD(boot_id,1,sizeof(boot_id)-1,id);
+        FCLOSE(id);
+    }
+    int bytes=FN(0x11f38,int,char *,const char *,...)(record,
+        "boot_id=%s\noverscan=%s\nsubmitted=%ux%u pitch=%u\n",
+        boot_id,HOME.nes.overscan_disabled?"disabled":"unconfirmed",
+        HOME.nes.width,HOME.nes.height,HOME.nes.pitch);
+    if(bytes>0) save_config_bytes(file,record,(size_t)bytes);
+    return result;
 }
 
 ENTRY void stock_home_adc_overlay(uint16_t *frame,unsigned width)
@@ -189,7 +226,14 @@ ENTRY void launcher_display_frame(const void *frame,unsigned w,unsigned h,size_t
     }
     typedef void (*submit_frame_fn)(const void *,unsigned,unsigned,size_t);
     submit_frame_fn submit=VAR(0x1be388,submit_frame_fn);
-    if(submit) submit(frame,w,h,pitch);
+    if(submit) {
+        if(HOME.nes.active && !HOME.nes.width && frame && w && h && frame!=STOCK_UI_FRAME) {
+            HOME.nes.width=w;
+            HOME.nes.height=h;
+            HOME.nes.pitch=pitch;
+        }
+        submit(frame,w,h,pitch);
+    }
 }
 
 static void own_menu_battery(bool owned)

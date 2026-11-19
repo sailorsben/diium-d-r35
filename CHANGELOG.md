@@ -1,5 +1,11 @@
 # Changelog
 
+## Record the NES display handoff - 2026-11-18
+
+After a NES game exits, the launcher records its boot ID, overscan response,
+and first displayed game frame size and pitch. The ARM replay verifies the
+receipt and matches the previous FF2 frame byte for byte.
+
 ## Show the full NES frame and repair ROM selection controls - 2026-11-17
 
 The NES game list displays NES while retaining the stock FC directory and save

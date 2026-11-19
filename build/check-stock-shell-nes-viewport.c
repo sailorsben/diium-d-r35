@@ -5,6 +5,7 @@
 #include <dlfcn.h>
 #include <stdbool.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 #include "libretro.h"
 
@@ -26,6 +27,12 @@ static retro_environment_t frontend_environment;
 static bool (*core_load)(const struct retro_game_info *);
 static void (*core_set_environment)(retro_environment_t);
 static const char *overscan_value="default";
+static const char receipt_path[]="/usr/retro/d35-launcher1/nes-viewport.log";
+static const char receipt_temp[]="/usr/retro/d35-launcher1/nes-viewport.log.tmp";
+static const char boot_id[]="12345678-1234-5678-abcd-123456789012";
+static FILE *receipt_file;
+static char receipt[160];
+static bool receipt_published;
 static uint32_t scaler_input[5];
 static const void *scaler_source;
 static uint16_t display_canvas[640*480];
@@ -105,8 +112,39 @@ static void verify_scaler(const char *path)
 
 static FILE *open_nes_rom(const char *path,const char *mode)
 {
-    assert(!strcmp(path,device_rom) && !strcmp(mode,"rb"));
-    return fopen(rom_path,mode);
+    if(!strcmp(path,device_rom)) {
+        assert(!strcmp(mode,"rb"));
+        return fopen(rom_path,mode);
+    }
+    FILE *file=tmpfile();
+    assert(file);
+    if(!strcmp(path,"/proc/sys/kernel/random/boot_id")) {
+        assert(!strcmp(mode,"rb") && fputs(boot_id,file)>=0);
+        rewind(file);
+    } else {
+        assert(!strcmp(path,receipt_temp) && !strcmp(mode,"wb"));
+        receipt_file=file;
+    }
+    return file;
+}
+
+static int close_nes_file(FILE *file)
+{
+    if(file==receipt_file) {
+        rewind(file);
+        size_t n=fread(receipt,1,sizeof(receipt)-1,file);
+        assert(n && !ferror(file));
+        receipt[n]=0;
+        receipt_file=NULL;
+    }
+    return fclose(file);
+}
+
+static int publish_receipt(const char *old,const char *new)
+{
+    assert(!strcmp(old,receipt_temp) && !strcmp(new,receipt_path) && receipt[0]);
+    receipt_published=true;
+    return 0;
 }
 
 static void *open_nes_core(const char *path,int mode)
@@ -173,6 +211,10 @@ static bool load_nes_rom(const struct retro_game_info *game)
 
 static void *resolve_nes(void *handle,const char *name)
 {
+    if(!handle) {
+        assert(!strcmp(name,"rename"));
+        return publish_receipt;
+    }
     assert(handle==nes_core);
     if(!strcmp(name,"retro_set_environment")) {
         core_set_environment=dlsym(handle,name);
@@ -232,7 +274,7 @@ static void replay_nes(void)
 
 int main(int argc, char **argv)
 {
-    assert(argc==7);
+    assert(argc==7 || (argc==8 && !strcmp(argv[7],"receipt")));
     core_path=argv[2];
     rom_path=argv[3];
     map_vendor(argv[1]);
@@ -253,13 +295,26 @@ int main(int argc, char **argv)
     patch(0x11e84,(uintptr_t)ftell);
     patch(0x11ed8,(uintptr_t)malloc);
     patch(0x11ddc,(uintptr_t)fread);
-    patch(0x11f20,(uintptr_t)fclose);
+    patch(0x11f20,(uintptr_t)close_nes_file);
     patch(0x11b6c,(uintptr_t)free);
+    patch(0x11c8c,(uintptr_t)memset);
+    patch(0x11eb4,(uintptr_t)fwrite);
+    patch(0x11fb0,(uintptr_t)fflush);
+    patch(0x11df4,(uintptr_t)fileno);
+    patch(0x11b18,(uintptr_t)fsync);
     strcpy((char *)WORK_PATH,"/usr/retro");
     strcpy((char *)*(uint32_t *)(GOT+0x274),"/usr/");
     *(retro_video_refresh_t *)DISPLAY_CALLBACK=capture_video;
     ((int (*)(const char *,unsigned))NES_LOAD)(device_rom,5);
     assert(width==(unsigned)atoi(argv[5]) && pitch==2*width);
+    assert(receipt_published==(argc==8));
+    if(receipt_published) {
+        char expected[160];
+        snprintf(expected,sizeof(expected),"boot_id=%s\noverscan=disabled\nsubmitted=%ux%u pitch=%u\n",
+                 boot_id,width,height,pitch);
+        assert(!strcmp(receipt,expected));
+        printf("%s",receipt);
+    }
     verify_scaler(argv[4]);
     FILE *output=fopen(argv[6],"wb");
     assert(output && fwrite(last_frame,sizeof(*last_frame),width*height,output)==width*height);
