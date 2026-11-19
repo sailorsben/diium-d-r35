@@ -1,5 +1,46 @@
 # Device findings
 
+**FF2 opens its party menu after Save State (2026-11-18).** The returned
+card has two FF2 states. The second state's thumbnail shows the world map,
+but its FCEUmm controller latch contains `0c` (Select and Start). Replaying
+that state with no buttons opens the party menu. The first state's latch is
+zero and its field scene stays open. Neither state identifies which physical
+contacts caused the input.
+
+The vendor's GPIO scan at `0x15a74` merges the dedicated Esc pin (0x206)
+into native mask 9. Start (0x30c) and Select (0x30f) also make that mask
+together. The frontend checks for 9 before the frame runs. Its input thread
+can publish a new sample between that check and the subsequent
+`TurboKeyProcess` call at `0xa4554`. The resumed path also reaches the frame
+without a second menu check. In the reproduced timing window, Esc alone
+produces the same FF2 party-menu pixels as a physical Start press.
+
+The launcher now retains the separately sampled physical and USB Start
+and Select bits when it prepares player one's game input. The menu still
+sees its usual chord. The stock ARM scan and libretro callback passed all
+32,768 combinations of the 15 built-in controls, along with USB, rotation
+and remap cases. On the actual card core under QEMU, from the first returned
+state, corrected Esc is pixel-identical to idle. A separate Start press
+opens the party menu on both builds. The second state already contains the
+press when restored. The opening battle still matches all 256 × 224 pixels.
+
+**Physical control capture.** Start the Chaos Rush FF2 entry, tap the
+directions and any suspect buttons individually, then use Esc → Save State
+and confirm a spare slot. Exit to the launcher normally. The first session
+that saves and exits writes `retro/d35-launcher1/ff2-controls.log` with the
+boot ID. Later launches leave the capture available for collection. The
+handheld's contact transitions and the launcher/game observations each keep
+their last 256 changes. Both sections use kernel monotonic milliseconds and
+report dropped history. An edge shorter than the vendor's hardware scan can
+go unobserved.
+
+`gpio` uses the native masks in the [board input table](boot-and-hardware-contracts.md#gpio-abi-and-complete-direction-translation),
+with Esc alone represented as `10000`. `usb_pair` records USB player one's
+Start and Select bits. `native` is the stock menu word. During gameplay,
+`before` and `after` are the native word on either side of the filter,
+and `retro` is the logical button mask after remapping. This test can show
+stuck or repeated digital inputs at the handheld's scan rate.
+
 **FF2 cutscene edges (2026-11-18).** A returned handheld boot has matching
 boot, NES and orderly shutdown receipts with `overscan=disabled` and
 `submitted=256x240 pitch=512`. The earlier horizontal-crop fix was live.

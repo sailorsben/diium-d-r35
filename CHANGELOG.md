@@ -1,5 +1,13 @@
 # Changelog
 
+## Keep the Esc button out of gameplay - 2026-11-18
+
+Esc still opens the handheld's pause menu. Its synthetic Start and Select
+bits are filtered before the emulator runs. A single FF2 save session can
+now record physical button transitions, save-menu activity and game input.
+The card's NES core reproduced the unwanted party menu with the prior launcher.
+The same Esc input leaves the player on the field with this build.
+
 ## Hide vertical scroll wrap in Chaos Rush FF2 - 2026-11-18
 
 The Chaos Rush launch displays the central 224 rows while retaining all

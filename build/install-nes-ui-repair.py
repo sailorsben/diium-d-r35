@@ -17,12 +17,14 @@ RECEIPT_PAYLOAD = ROOT / "build/nes-receipt-private/vrtemu"
 RECEIPT_SHA = "014e04d6c718652125d51a21c6ed57013003cf3f10ef3b91b11a9bb268766896"
 FF2_EDGE_PAYLOAD = ROOT / "build/ff2-edge-private/vrtemu"
 FF2_EDGE_SHA = "7a9bd7b76d5c57bfb065bbdef2f051b8b83282cda00fc4413d6cf29bb34f9fab"
+CONTROLS_PAYLOAD = ROOT / "build/controls-monitor-private/vrtemu"
+CONTROLS_SHA = "fa19a18c3a421f9a6df5b082624652697372b054ec2dd2eecb30bb8197ef507f"
 NES = "d8a9a87a8aabc6c290c887545247b907e2e48bd0a70f788c5f1a41db06d51fa6"
 SNES = "70d885151b7d3cac05ae69fc9653974c420b49d5cb20f95b09af547f319a8936"
 TARGETS = ("retro/vrtemu", "retro/d35-launcher1/vrtemu")
 
 
-def install(payload=PAYLOAD, old=OLD, new=NEW, phase="nes-ui"):
+def install(payload=PAYLOAD, old=OLD, new=NEW, phase="nes-ui", archive=None):
     assert str(CARD).lower() in ("i:/", "i:\\")
     assert digest(payload) == new
     assert not list((CARD / "retro").rglob("armed"))
@@ -35,13 +37,19 @@ def install(payload=PAYLOAD, old=OLD, new=NEW, phase="nes-ui"):
     assert digest(CARD / "retro/driver.so") == direct.DRIVER
     assert all(digest(CARD / name) == old for name in TARGETS)
 
-    archive = ROOT / "device-evidence" / (
-        phase + "-before-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
-    archive.mkdir()
-    retro = inventory(CARD, archive)
-    outside = inventory(CARD, archive, outside=True)
-    write_manifest(archive / "archive.json", retro, all_retro_files=retro, card_writes=0)
-    write_manifest(archive / "outside-retro.json", outside, files=outside, card_writes=0)
+    if archive is None:
+        archive = ROOT / "device-evidence" / (
+            phase + "-before-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
+        archive.mkdir()
+        retro = inventory(CARD, archive)
+        outside = inventory(CARD, archive, outside=True)
+        write_manifest(archive / "archive.json", retro, all_retro_files=retro, card_writes=0)
+        write_manifest(archive / "outside-retro.json", outside, files=outside, card_writes=0)
+    else:
+        archive = archive.resolve()
+        assert archive.parent == ROOT / "device-evidence"
+        retro = json.loads((archive / "archive.json").read_text())["all_retro_files"]
+        outside = json.loads((archive / "outside-retro.json").read_text())["files"]
     verify_saved(archive, {"schema": "sparse-attempt-v1", "all_retro_files": retro+outside})
     before = {e["path"]: e["sha256"] for e in retro+outside}
     direct.installer.verify_inventory(CARD, before)
@@ -84,8 +92,14 @@ if __name__ == "__main__":
     builds = parser.add_mutually_exclusive_group()
     builds.add_argument("--viewport-receipt", action="store_true")
     builds.add_argument("--chaos-rush-edges", action="store_true")
+    builds.add_argument("--controls-monitor", action="store_true")
+    parser.add_argument("--return-archive", type=Path, help="Previously collected card return for input monitoring")
     args = parser.parse_args()
-    if args.chaos_rush_edges:
+    if args.return_archive and not args.controls_monitor:
+        parser.error("--return-archive requires --controls-monitor")
+    if args.controls_monitor:
+        install(CONTROLS_PAYLOAD, FF2_EDGE_SHA, CONTROLS_SHA, "controls", args.return_archive)
+    elif args.chaos_rush_edges:
         install(FF2_EDGE_PAYLOAD, RECEIPT_SHA, FF2_EDGE_SHA, "ff2-vertical-edges")
     elif args.viewport_receipt:
         install(RECEIPT_PAYLOAD, NEW, RECEIPT_SHA, "nes-viewport")

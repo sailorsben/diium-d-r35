@@ -41,6 +41,11 @@ static bool receipt_published;
 static uint32_t scaler_input[5];
 static const void *scaler_source;
 static uint16_t display_canvas[640*480];
+static const char *input_replay;
+static unsigned active_pin;
+
+static int button_level(unsigned pin) { return pin!=active_pin; }
+static unsigned no_usb(unsigned port) { (void)port; return 0; }
 
 static int open_scaler(const char *path,int flags)
 {
@@ -267,16 +272,40 @@ static void step(void (*run)(void),unsigned button,unsigned count)
     while(count--) run();
 }
 
-static void replay_nes(void)
+/* Restore an owner's local FCEUmm state and inject one GPIO scan in the
+ * interval between the pause-chord check and the next emulated frame. */
+static void replay_state_input(void (*run)(void))
 {
-    void (*run)(void)=dlsym(nes_core,"retro_run");
-    void (*av_info)(struct retro_system_av_info *)=dlsym(nes_core,"retro_get_system_av_info");
-    assert(run && av_info);
-    struct retro_system_av_info av;
-    av_info(&av);
-    printf("option=%s reported=%ux%u ",overscan_value,
-           av.geometry.base_width,av.geometry.base_height);
+    FILE *state=fopen(input_replay,"rb");
+    assert(state && !fseek(state,0,SEEK_END));
+    long length=ftell(state);
+    assert(length>0);
+    rewind(state);
+    void *bytes=malloc((size_t)length);
+    assert(bytes && fread(bytes,1,(size_t)length,state)==(size_t)length && !fclose(state));
+    bool (*restore)(const void *,size_t)=dlsym(nes_core,"retro_unserialize");
+    assert(restore && restore(bytes,(size_t)length));
+    free(bytes);
+    unsigned pin=0;
+    const char *action=getenv("D35_INPUT_BUTTON");
+    if(action && !strcmp(action,"esc")) pin=0x206;
+    else if(action && !strcmp(action,"start")) pin=0x30c;
+    else assert(action && !strcmp(action,"none"));
+    unsigned instruction=*(unsigned *)0xa4554;
+    assert((instruction>>24)==0xeb);
+    int32_t displacement=(int32_t)(instruction<<8)>>6;
+    void (*prepare)(void)=(void *)(uintptr_t)(0xa455c+displacement);
+    for(unsigned i=0;i<80;++i) {
+        active_pin=i==12?pin:0;
+        ((void (*)(void))0x1599c)();
+        prepare();
+        capture_frame=i==79;
+        run();
+    }
+}
 
+static void replay_opening_battle(void (*run)(void),const struct retro_system_av_info *av)
+{
     const unsigned idle=~0u, a=RETRO_DEVICE_ID_JOYPAD_A, right=RETRO_DEVICE_ID_JOYPAD_RIGHT;
     step(run,idle,2518);
     for(unsigned i=0;i<2;++i) { step(run,a,8); step(run,idle,55); }
@@ -288,8 +317,8 @@ static void replay_nes(void)
     capture_frame=1;
     for(unsigned i=0;i<3;++i) { step(run,a,8); step(run,idle,60); }
     printf("submitted=%ux%u pitch=%u frames=%u\n",width,height,pitch,frames);
-    assert(frames==3722 && width==av.geometry.base_width);
-    assert(height==av.geometry.base_height-(trim_edges?16:0));
+    assert(frames==3722 && width==av->geometry.base_width);
+    assert(height==av->geometry.base_height-(trim_edges?16:0));
     if(width==256) {
         /* The opening battle's left border uses column 1. */
         bool left_border=false;
@@ -297,6 +326,20 @@ static void replay_nes(void)
             left_border |= last_frame[y*width+1]!=last_frame[y*width];
         assert(left_border);
     }
+}
+
+static void replay_nes(void)
+{
+    void (*run)(void)=dlsym(nes_core,"retro_run");
+    void (*av_info)(struct retro_system_av_info *)=dlsym(nes_core,"retro_get_system_av_info");
+    assert(run && av_info);
+    struct retro_system_av_info av;
+    av_info(&av);
+    printf("option=%s reported=%ux%u ",overscan_value,
+           av.geometry.base_width,av.geometry.base_height);
+
+    if(input_replay) replay_state_input(run);
+    else replay_opening_battle(run,&av);
     void (*unload)(void)=dlsym(nes_core,"retro_unload_game");
     void (*deinit)(void)=dlsym(nes_core,"retro_deinit");
     assert(unload && deinit);
@@ -313,16 +356,22 @@ int main(int argc, char **argv)
     if(trim_edges) device_rom="/usr/003/Final Fantasy II - Chaos Rush 2.2b.nes";
     core_path=argv[2];
     rom_path=argv[3];
+    input_replay=getenv("D35_INPUT_REPLAY");
     map_vendor(argv[1]);
     patch(FRAME_FLASH,(uintptr_t)frame_flash);
     patch(KEY_MAPPING,(uintptr_t)key_mapping);
     patch(LOAD_PROC2,(uintptr_t)replay_nes);
     patch(PLAY_FRAME,(uintptr_t)accept_audio);
-    patch(INPUT_STATE,(uintptr_t)read_button);
+    if(input_replay) {
+        patch(0x157c8,(uintptr_t)button_level);
+        patch(0x1537c,(uintptr_t)no_usb);
+        memcpy((void *)0x19b8bc,(void *)0x16b254,16*sizeof(unsigned));
+    } else patch(INPUT_STATE,(uintptr_t)read_button);
     patch(0x11be4,(uintptr_t)quiet);
     patch(0x11d34,(uintptr_t)open_nes_core);
     patch(0x12010,(uintptr_t)resolve_nes);
     patch(0x11ce0,(uintptr_t)open_nes_rom);
+    patch(0x11e0c,(uintptr_t)access);
     patch(0x11f38,(uintptr_t)sprintf);
     patch(0x11d64,(uintptr_t)strcpy);
     patch(0x11f74,(uintptr_t)strcmp);

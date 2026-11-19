@@ -100,6 +100,7 @@ ENTRY unsigned launcher_pause_key(void)
     if(!PAUSE.menu || !pause_layout()) return FN(0x86368,unsigned,void)();
     uint16_t *frame=STOCK_UI_FRAME;
     unsigned key=launcher_menu_key();
+    input_menu_note(PAUSE_INPUT);
     if(PAUSE.reset_confirm) {
         if(!(HOME_PAD&0x2000)) PAUSE.accept_ready=true;
         if(key==0x4000) {
@@ -137,7 +138,11 @@ ENTRY unsigned launcher_pause_key(void)
         settings_confirm_sound();
         int result=1;
         switch(PAUSE.row) {
-        case 1: result=FN(0x91818,int,void)(); break;
+        case 1:
+            input_menu_note(OPEN_SLOTS);
+            result=FN(0x91818,int,void)();
+            input_menu_note(CLOSE_SLOTS);
+            break;
         case 2: result=FN(0x91050,int,void)(); break;
         case 3: result=FN(0x8f5c0,int,void)(); break;
         case 4:

@@ -1229,6 +1229,7 @@ ENTRY void stock_menu_music(unsigned channel,const struct sound *original)
 
 #ifdef D35_HOME_GRID
 #include "stock-shell-settings-icons.h"
+#include "stock-shell-input.h"
 #include "stock-shell-home.h"
 #include "stock-shell-pause.h"
 #include "stock-shell-music.h"

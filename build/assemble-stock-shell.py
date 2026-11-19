@@ -65,6 +65,14 @@ VESPER_PATCHES = {
     0x13984: (0xEB024B33, "vesper_update_detail"),
 }
 GRID_PATCHES = {
+    0x15A74: (0xEBFFFF53, "input_escape_read"),
+    0x15AA4: (0xEBFFFE34, "input_usb_read"),
+    0xA4554: (0xEBFFFC3E, "input_game_frame"),
+    0x91C30: (0xEBFFD1CC, "input_slot_key"),
+    0x91C94: (0xEBFFD1B3, "input_slot_key"),
+    0x92270: (0xEBFFD03C, "input_slot_key"),
+    0x91D9C: (0xEB004683, "input_save_slot"),
+    0x892A4: (0xEB006941, "input_save_slot"),  # default-slot shortcut
     # Intercept visible platform text without changing FC save/directory names.
     0x85C94: (0xE92D4FF0, "launcher_text"),
     # Keep the full NES picture, including FF2's rightmost battle columns.
@@ -197,7 +205,7 @@ def assemble(vendor, core, out, native_audio=False, vesper=False, grid=False):
         raise ValueError("unexpected loadable segments")
     if rw_header[2]+rw_header[5] > 0x1C4100 or len(text) > TEXT_LIMIT:
         raise ValueError("loader or data reservation exceeds the mapped area")
-    rw_header[5] = 0x1C5000-rw_header[2]
+    rw_header[5] = (0x1C8000 if grid else 0x1C5000)-rw_header[2]
     ph.pack_into(data, rw, *rw_header)
     at = (len(data)+0xFFFF)&~0xFFFF
     ph.pack_into(data, note, 1, at, TEXT, TEXT, len(text), len(text), 5, 65536)

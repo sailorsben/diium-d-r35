@@ -172,6 +172,7 @@ static void open_chaos_rush_viewport(const char *path)
     for(const char *p=path;*p;++p)
         if(*p=='/') name=p+1;
     if(STRCMP(name,"Final Fantasy II - Chaos Rush 2.2b.nes")) return;
+    input_begin();
     void *driver=VAR(0x1b81a8,void *);
     if(driver) HOME.nes.wait_display=SYM(driver,"WaitDisp");
     if(HOME.nes.wait_display)
@@ -200,6 +201,7 @@ ENTRY int launcher_nes_load(const char *path,unsigned type)
         FREAD(boot_id,1,sizeof(boot_id)-1,id);
         FCLOSE(id);
     }
+    input_finish(boot_id);
     int bytes=FN(0x11f38,int,char *,const char *,...)(record,
         "boot_id=%s\noverscan=%s\nsubmitted=%ux%u pitch=%u\n",
         boot_id,HOME.nes.overscan_disabled?"disabled":"unconfirmed",
