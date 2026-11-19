@@ -83,6 +83,14 @@ panels pixel for pixel. Display on the handheld still awaits a boot.
 The returned trace is preserved as `ff2-controls.previous.log`; the next
 FF2 session that saves a state and exits normally can write a fresh trace.
 
+**Initial Save State selection.** Both launcher copies on I: match build
+`442c893f…`. An ARM replay using the installed executable, the card artwork
+and copies of the two FF2 states shows the slot 1 border on the first frame.
+All 640 × 480 pixels match the previous launcher's frame after pressing Right.
+The native picker passed empty and occupied slot tests, held A at entry and
+at overwrite confirmation, navigation, and B to cancel. The installer verified
+2,221 card files and a clean FAT32 volume. Handheld confirmation is pending.
+
 **FF2 cutscene edges (2026-11-18).** A returned handheld boot has matching
 boot, NES and orderly shutdown receipts with `overscan=disabled` and
 `submitted=256x240 pitch=512`. The earlier horizontal-crop fix was live.
