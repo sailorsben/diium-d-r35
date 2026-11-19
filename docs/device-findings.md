@@ -41,11 +41,36 @@ Start and Select bits. `native` is the stock menu word. During gameplay,
 and `retro` is the logical button mask after remapping. This test can show
 stuck or repeated digital inputs at the handheld's scan rate.
 
-Both launcher copies on I: now match `fa19a18c…` from `e29dd5d`. The
-installer verified all 2,219 card files and a clean FAT32 volume after
-installation. The sparse return retained both FF2 states and the returned
-logs. A physical save with the new launcher and collection of its button
-trace are pending.
+**Returned D-pad and save trace (2026-11-18).** The handheld booted both
+the FF2 input fix and the 256 × 224 viewport. The raw trace retains the
+last 256 of 783 contact transitions, covering about 162 seconds. Its
+225 gameplay records agree with the board-to-libretro mapping. Both Esc
+presses delivered zero to the game. The slot write succeeded and gameplay
+resumed at neutral. The following input was Down 1.67 seconds later.
+
+The D-pad reported five Down + Right holds (20–1,680 ms) and four Down +
+Left holds (40–120 ms). All nine reached FF2. At 239.610 seconds the pad
+reported Down. Left joined 20 ms later and released after 40 ms while Down
+stayed pressed for a further 1.24 seconds. The longest overlap began and
+ended on Right. No opposing directions appeared in the retained trace.
+
+Using the returned ROM and both saves, an ARM replay drove independent
+GPIO pins through the launcher and the card's NES core. For each of the
+101 held frames, Down + Left followed Left's map coordinates and Down +
+Right followed Right's. In the first save, Right and Down + Right both
+traveled six tiles right, while Down traveled six tiles down. In the
+second, a blocked horizontal direction also blocked the combined input.
+The physical trace has no thumb position or game coordinates, so it cannot
+identify a faulty switch or assign a particular on-screen step to one event.
+For a targeted follow-up, press and release Down several times with a pause
+between presses, then repeat with Left and Right. Save in a spare slot and
+exit normally while the recorder is armed.
+
+**Exit dialog.** The pause menu uses the Power Off artwork generator and
+focus outline for Cancel, Save & Exit and Exit. Cancel has initial focus.
+ARM captures of all three choices in New and Classic have centered text
+(at most half a pixel of horizontal offset) and match the Power Off
+background dimming. The menu remains usable if the artwork is missing.
 
 **FF2 cutscene edges (2026-11-18).** A returned handheld boot has matching
 boot, NES and orderly shutdown receipts with `overscan=disabled` and

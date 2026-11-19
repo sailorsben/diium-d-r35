@@ -20,24 +20,30 @@ enum { POWER_X=77, POWER_Y=153, POWER_W=486, POWER_H=174,
        POWER_PANEL_PIXELS=POWER_W*POWER_H };
 static void shutdown_confirm(void);
 
+static uint16_t *read_dialog_art(const char *name,const char *signature,size_t theme_bytes)
+{
+    char path[384];
+    if(!suffix(path,sizeof(path),WORK(),name)) return NULL;
+    FILE *file=FOPEN(path,"rb");
+    if(!file) return NULL;
+    char version[4];
+    uint16_t *art=NULL;
+    if(!FSEEK(file,0,SEEK_END) && FTELL(file)==(long)(2*theme_bytes+4) &&
+       !FSEEK(file,-4,SEEK_END) && FREAD(version,1,4,file)==4 && !CMP(version,signature,4) &&
+       !FSEEK(file,S.applied_classic?(long)theme_bytes:0,SEEK_SET)) {
+        art=ALLOC(theme_bytes);
+        if(art && FREAD(art,1,theme_bytes,file)!=theme_bytes) { FREE(art); art=NULL; }
+    }
+    FCLOSE(file);
+    return art;
+}
+
 static void shutdown_prepare_art(void)
 {
     S.power_choice=false;
     S.power_dimmed=false;
-    char path[384];
-    const size_t theme_bytes=POWER_VIEW_COUNT*POWER_PANEL_PIXELS*sizeof(uint16_t);
-    if(!suffix(path,sizeof(path),WORK(),LAUNCHER "/power-dialog.rgb565")) return;
-    FILE *file=FOPEN(path,"rb");
-    if(!file) return;
-    char version[4];
-    if(!FSEEK(file,0,SEEK_END) && FTELL(file)==(long)(2*theme_bytes+4) &&
-       !FSEEK(file,-4,SEEK_END) && FREAD(version,1,4,file)==4 && !CMP(version,"D35P",4) &&
-       !FSEEK(file,S.applied_classic?(long)theme_bytes:0,SEEK_SET)) {
-        uint16_t *art=ALLOC(theme_bytes);
-        if(art && FREAD(art,1,theme_bytes,file)==theme_bytes) S.power_art=art;
-        else if(art) FREE(art);
-    }
-    FCLOSE(file);
+    S.power_art=read_dialog_art(LAUNCHER "/power-dialog.rgb565","D35P",
+                                POWER_VIEW_COUNT*POWER_PANEL_PIXELS*sizeof(uint16_t));
 }
 
 static void shutdown_release_art(void)
@@ -46,7 +52,16 @@ static void shutdown_release_art(void)
     S.power_art=NULL;
 }
 
-static void shutdown_highlight(uint16_t *frame,unsigned x,unsigned y,unsigned width,unsigned height)
+static void dialog_panel(uint16_t *frame,const uint16_t *panel)
+{
+    for(unsigned y=0;y<POWER_H;++y)
+        for(unsigned x=0;x<POWER_W;++x) {
+            uint16_t pixel=panel[y*POWER_W+x];
+            if(pixel) frame[(POWER_Y+y)*640+POWER_X+x]=pixel;
+        }
+}
+
+static void dialog_highlight(uint16_t *frame,unsigned x,unsigned y,unsigned width,unsigned height)
 {
     const uint16_t ink=S.applied_classic?0x8f5e:0xfeb0;
     /* Follow the rounded action edge. The unselected card comes from the asset. */
@@ -79,13 +94,9 @@ static void shutdown_message(enum power_view view,const char *title,const char *
     }
     if(S.power_art) {
         const uint16_t *panel=S.power_art+view*POWER_PANEL_PIXELS;
-        for(unsigned y=0;y<POWER_H;++y)
-            for(unsigned x=0;x<POWER_W;++x) {
-                uint16_t pixel=panel[y*POWER_W+x];
-                if(pixel) frame[(POWER_Y+y)*640+POWER_X+x]=pixel;
-            }
+        dialog_panel(frame,panel);
         if(choices)
-            shutdown_highlight(frame,POWER_X+(S.power_choice?251:61),POWER_Y+111,174,37);
+            dialog_highlight(frame,POWER_X+(S.power_choice?251:61),POWER_Y+111,174,37);
         DISP(frame,640,480,1280);
         return;
     }
@@ -101,7 +112,7 @@ static void shutdown_message(enum power_view view,const char *title,const char *
         unsigned left=137, right=328;
         settings_box(frame,left,264,left+175,294,0x1127);
         settings_box(frame,right,264,right+175,294,0x1127);
-        shutdown_highlight(frame,S.power_choice?right:left,264,175,30);
+        dialog_highlight(frame,S.power_choice?right:left,264,175,30);
         settings_text(frame,188,272,"CANCEL",2,0xffff);
         settings_text(frame,364,272,view==POWER_RETRY?"RETRY":"TURN OFF",2,0xffff);
         settings_text(frame,139,301,"LEFT RIGHT CHOOSE   A CONFIRM",2,0xaf9e);

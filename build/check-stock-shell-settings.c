@@ -18,6 +18,7 @@ static unsigned stock_settings_visits;
 static bool review;
 static const char *capture_base="settings";
 static void capture_pause_review(void);
+static void capture_exit_review(void);
 
 static void capture_search_caret(void)
 {
@@ -113,6 +114,20 @@ static int stock_exit_fixture(void)
     /* Stock Save State clears pause_ret before returning success. */
     *(unsigned *)0x1b9ce8=0;
     return (int)simulated_exit;
+}
+
+static int exercise_exit_actions(void)
+{
+    void (*draw)(uint16_t *,unsigned,unsigned,size_t)=(void *)target(0x92574);
+    unsigned (*poll)(void)=(void *)target(0x92590);
+    draw(settings,640,480,1280);
+    /* The A used to open Exit stays down for the first poll. */
+    static const unsigned presses[]={A,0,LEFT,A,0,RIGHT,A,0,RIGHT,RIGHT,A,0,LEFT,B};
+    keys=presses;
+    const unsigned expected[]={0,0,0,UP,0,0,DOWN,0,0,0,A,0,0,UP};
+    key_count=sizeof(expected)/sizeof(*expected); key_index=0;
+    for(unsigned i=0;i<key_count;++i) assert(poll()==expected[i]);
+    return stock_exit_fixture();
 }
 
 static void classic_dialog(void)
@@ -346,6 +361,10 @@ int main(int argc,char **argv)
         ((void (*)(void))0x85a88)();
         assert(*(void **)0x1b9d14);
         *(int *)0x1b9b28=1;
+        if(!strcmp(argv[3],"exit-review")) {
+            capture_exit_review();
+            return 0;
+        }
         if(classic_case) {
             patch(0x8dfe4,(uintptr_t)classic_dialog);
             ((void (*)(void))target(0x984dc))();
@@ -379,8 +398,10 @@ int main(int argc,char **argv)
     return 0;
 }
 
-static void capture_pause_review(void)
+static void capture_exit_review(void)
 {
+    capture_base="pause";
+    frames=0;
     uint16_t *pause=(uint16_t *)settings;
     char source[1024];
     snprintf(source,sizeof(source),"%s/game.raw",work);
@@ -392,31 +413,31 @@ static void capture_pause_review(void)
     free(art);
     void (*draw)(uint16_t *,unsigned,unsigned,size_t)=(void *)target(0x9bbec);
     draw(pause,640,480,1280);
-    keys=(const unsigned[]){DOWN,DOWN,DOWN,DOWN,A};
-    key_count=5; key_index=0;
+    keys=(const unsigned[]){DOWN,DOWN,DOWN,DOWN,DOWN,A};
+    key_count=6; key_index=0;
     unsigned (*poll)(void)=(void *)target(0x9bc08);
-    for(unsigned i=0;i<4;++i) assert(poll()==0);
+    for(unsigned i=0;i<5;++i) assert(poll()==0);
     assert(poll()==DOWN);
-    /* Exercise the actual modal frame and input hooks. Stop outside the
-     * stock game teardown because this fixture has no live emulator. */
-    uint16_t backup[640*480];
-    memcpy(backup,pause,sizeof(backup));
-    *(void **)0x1c442c=backup;
     capture_base="exit";
     frames=0;
-    draw=(void *)target(0x92574);
-    draw(pause,640,480,1280);
-    keys=(const unsigned[]){RIGHT,A,0,RIGHT,B};
-    key_count=5; key_index=0;
-    poll=(void *)target(0x92590);
-    assert(poll()==0 && poll()==DOWN && poll()==0 && poll()==0 && poll()==UP);
-    *(void **)0x1c442c=NULL;
-    patch(0x92450,(uintptr_t)stock_exit_fixture);
+    /* Enter through the stock pause call site so art loading, dimming and
+     * cleanup run before and after the modal input and display hooks. */
+    patch(0x92450,(uintptr_t)exercise_exit_actions);
     int (*exit_game)(void)=(void *)target(0x9bc2c);
     simulated_exit=1;
     assert(exit_game()==1 && *(unsigned *)0x1b9ce8==0);
+    /* Stock redraws the pause UI on cancel before opening Exit again. */
+    capture_base="pause";
+    draw(pause,640,480,1280);
+    capture_base="reopen";
     simulated_exit=0;
     assert(exit_game()==0 && *(unsigned *)0x1b9ce8==1);
+    puts("PASS six pause options, held-A guard, three Exit actions, back and reopen");
+}
+
+static void capture_pause_review(void)
+{
+    capture_exit_review();
     capture_base="controls";
     frames=0;
     patch(0x164abc,(uintptr_t)controls_alloc);
@@ -434,5 +455,5 @@ static void capture_pause_review(void)
     assert(controls_updates==1 && controls_saves==1 && mapping[2]==0x10008 && mapping[8]==9);
     assert(*(unsigned *)0x1bb7d0==1);
     puts("PASS real Controls entry: cancel, apply, turbo, default save, and player navigation");
-    puts("PASS review frames: Settings battery modes, Language picker, five pause options and centered Exit actions");
+    puts("PASS review frames: Settings battery modes, Language picker, pause and Exit");
 }

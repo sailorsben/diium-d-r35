@@ -13,7 +13,7 @@ struct pause_ui {
     int row;
     bool menu, redraw_only, reset_confirm, reset_unavailable;
     unsigned exit_choice, exit_held;
-    uint16_t *exit_background;
+    uint16_t *exit_background, *exit_art;
 };
 #define PAUSE VAR(0x1c4400,struct pause_ui)
 _Static_assert(sizeof(struct pause_ui)<=0x100, "pause UI reservation");
@@ -183,34 +183,35 @@ static void pause_center(uint16_t *frame,int y,int size,uint16_t ink,const char 
     pause_label(frame,(640-width)/2,y,size,ink,label);
 }
 
+static void controls_shape(uint16_t *frame,unsigned x,unsigned y,unsigned w,unsigned h,
+                           unsigned rounding,uint16_t edge,uint16_t fill);
+
+static void exit_fallback(uint16_t *frame)
+{
+    settings_reset_text_clip();
+    controls_shape(frame,POWER_X,POWER_Y,POWER_W,POWER_H,12,0x42ee,0x1106);
+    pause_center(frame,187,28,0xffff,"Exit game?");
+    pause_center(frame,219,18,0xc618,"Return to the game library.");
+    const char *const actions[]={"Cancel","Save & Exit","Exit"};
+    for(unsigned i=0;i<3;++i) {
+        int x=POWER_X+36+142*(int)i;
+        controls_shape(frame,x,POWER_Y+111,130,37,8,0x42ee,0x1948);
+        int width=pause_measure(frame,18,actions[i]);
+        if(width>0 && width<130) pause_label(frame,x+(130-width)/2,260,18,0xffff,actions[i]);
+    }
+    pause_center(frame,290,14,0xc618,"Left / Right  Choose     A  Confirm");
+}
+
 ENTRY void launcher_exit_frame(uint16_t *frame,unsigned w,unsigned h,size_t pitch)
 {
     if(PAUSE.menu && pause_layout() && frame && w==640 && h==480 && pitch==1280) {
         pause_wait();
         if(PAUSE.exit_background)
-            for(unsigned i=0;i<640u*480;++i) frame[i]=(PAUSE.exit_background[i]&0xe79c)>>2;
+            for(unsigned i=0;i<640u*480;++i) frame[i]=(PAUSE.exit_background[i]>>1)&0x7bef;
         else settings_box(frame,0,0,640,480,0x0842);
-        settings_reset_text_clip();
-        const uint16_t accent=S.applied_classic?0x8f5e:0xfe49;
-        settings_box(frame,90,128,550,354,0x31cb);
-        settings_box(frame,91,129,549,353,0x1127);
-        settings_box(frame,302,153,338,155,accent);
-        pause_center(frame,156,34,0xffff,"Exit game?");
-        pause_center(frame,207,23,0xc618,"Return to the game library.");
-        static const char *const actions[]={"Cancel","Save & Exit","Exit"};
-        for(unsigned i=0;i<3;++i) {
-            unsigned x=109+143*i;
-            bool active=i==PAUSE.exit_choice;
-            settings_box(frame,x,267,x+136,315,active?accent:0x31cb);
-            settings_box(frame,x+1,268,x+135,314,active?0x21ab:0x08a4);
-            int width=pause_measure(frame,21,actions[i]);
-            if(width>0 && width<136)
-                pause_label(frame,(int)(x+68)-width/2,265,21,0xffff,actions[i]);
-        }
-        menu_button(frame,214,322,BUTTON_ADJUST);
-        pause_label(frame,250,313,20,0xc618,"Choose");
-        menu_button(frame,335,322,BUTTON_A);
-        pause_label(frame,371,313,20,0xc618,"Confirm");
+        if(PAUSE.exit_art) dialog_panel(frame,PAUSE.exit_art);
+        else exit_fallback(frame);
+        dialog_highlight(frame,POWER_X+36+142*PAUSE.exit_choice,POWER_Y+111,130,37);
     }
     bool owned=HOME.own_battery;
     if(PAUSE.menu && pause_layout()) own_menu_battery(true);
@@ -247,6 +248,8 @@ ENTRY int launcher_pause_exit(void)
     if(owned) {
         PAUSE.exit_choice=0;
         PAUSE.exit_held=HOME_PAD|0x2000;
+        PAUSE.exit_art=read_dialog_art(LAUNCHER "/exit-dialog.rgb565","D35E",
+                                       POWER_PANEL_PIXELS*sizeof(uint16_t));
         PAUSE.exit_background=ALLOC(HOME_BYTES);
         if(PAUSE.exit_background && STOCK_UI_FRAME) {
             pause_wait();
@@ -257,6 +260,7 @@ ENTRY int launcher_pause_exit(void)
         }
     }
     int result=FN(0x92450,int,void)();
+    if(PAUSE.exit_art) { FREE(PAUSE.exit_art); PAUSE.exit_art=NULL; }
     if(PAUSE.exit_background) {
         FREE(PAUSE.exit_background);
         PAUSE.exit_background=NULL;

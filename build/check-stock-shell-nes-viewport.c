@@ -42,9 +42,9 @@ static uint32_t scaler_input[5];
 static const void *scaler_source;
 static uint16_t display_canvas[640*480];
 static const char *input_replay;
-static unsigned active_pin;
+static unsigned active_pin, second_pin;
 
-static int button_level(unsigned pin) { return pin!=active_pin; }
+static int button_level(unsigned pin) { return pin!=active_pin && pin!=second_pin; }
 static unsigned no_usb(unsigned port) { (void)port; return 0; }
 
 static int open_scaler(const char *path,int flags)
@@ -272,8 +272,41 @@ static void step(void (*run)(void),unsigned button,unsigned count)
     while(count--) run();
 }
 
-/* Restore an owner's local FCEUmm state and inject one GPIO scan in the
- * interval between the pause-chord check and the next emulated frame. */
+/* Compare map scroll coordinates for every frame from the same FF2 save.
+ * Each trial settles at neutral and then holds one or two physical pins. */
+static void replay_dpad(void (*run)(void),void (*prepare)(void),
+                        bool (*restore)(const void *,size_t),const void *state,size_t bytes)
+{
+    void *(*memory)(unsigned)=dlsym(nes_core,"retro_get_memory_data");
+    assert(memory);
+    uint8_t *ram=memory(RETRO_MEMORY_SYSTEM_RAM);
+    assert(ram);
+    enum { IDLE, DOWN, LEFT, DOWN_LEFT, RIGHT, DOWN_RIGHT, CASES };
+    const unsigned pins[CASES][2]={{0,0},{0x201,0},{0x202,0},{0x202,0x201},
+                                   {0x203,0},{0x203,0x201}};
+    const uint8_t nes_directions[CASES]={0,4,2,6,1,5};
+    uint8_t paths[CASES][101][4];
+    for(unsigned trial=0;trial<CASES;++trial) {
+        assert(restore(state,bytes));
+        for(unsigned frame=0;frame<131;++frame) {
+            active_pin=frame<30?0:pins[trial][0];
+            second_pin=frame<30?0:pins[trial][1];
+            ((void (*)(void))0x1599c)();
+            prepare();
+            capture_frame=frame==130;
+            run();
+            if(frame>=30) memcpy(paths[trial][frame-30],ram+0x27,4);
+        }
+        assert(ram[0x20]==nes_directions[trial]);
+    }
+    assert(!memcmp(paths[LEFT],paths[DOWN_LEFT],sizeof(paths[LEFT])));
+    assert(!memcmp(paths[RIGHT],paths[DOWN_RIGHT],sizeof(paths[RIGHT])));
+    assert(memcmp(paths[IDLE],paths[DOWN],sizeof(paths[DOWN])));
+    puts("PASS FF2 field movement with overlapping physical D-pad directions");
+}
+
+/* Restore an owner's local FCEUmm state and inject a GPIO scan between
+ * the pause-chord check and the next emulated frame. */
 static void replay_state_input(void (*run)(void))
 {
     FILE *state=fopen(input_replay,"rb");
@@ -285,16 +318,21 @@ static void replay_state_input(void (*run)(void))
     assert(bytes && fread(bytes,1,(size_t)length,state)==(size_t)length && !fclose(state));
     bool (*restore)(const void *,size_t)=dlsym(nes_core,"retro_unserialize");
     assert(restore && restore(bytes,(size_t)length));
-    free(bytes);
     unsigned pin=0;
     const char *action=getenv("D35_INPUT_BUTTON");
-    if(action && !strcmp(action,"esc")) pin=0x206;
-    else if(action && !strcmp(action,"start")) pin=0x30c;
-    else assert(action && !strcmp(action,"none"));
     unsigned instruction=*(unsigned *)0xa4554;
     assert((instruction>>24)==0xeb);
     int32_t displacement=(int32_t)(instruction<<8)>>6;
     void (*prepare)(void)=(void *)(uintptr_t)(0xa455c+displacement);
+    if(action && !strcmp(action,"dpad")) {
+        replay_dpad(run,prepare,restore,bytes,(size_t)length);
+        free(bytes);
+        return;
+    }
+    free(bytes);
+    if(action && !strcmp(action,"esc")) pin=0x206;
+    else if(action && !strcmp(action,"start")) pin=0x30c;
+    else assert(action && !strcmp(action,"none"));
     for(unsigned i=0;i<80;++i) {
         active_pin=i==12?pin:0;
         ((void (*)(void))0x1599c)();

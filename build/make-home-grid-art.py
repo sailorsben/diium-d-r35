@@ -95,6 +95,8 @@ POWER_MESSAGES = (
      (("", "Use the power button"),)),
 )
 POWER_BOX = (77, 153, 486, 174)
+EXIT_MESSAGE = ("Exit game?", "Return to the game library.",
+                (("", "Cancel"), ("", "Save & Exit"), ("", "Exit")))
 
 
 def build_power(font, output, bold=None):
@@ -103,12 +105,14 @@ def build_power(font, output, bold=None):
     size = (width*scale, height*scale)
     footer = FOOTER_ART["Footer"](font, bold or font)
     data = bytearray()
+    exit_data = bytearray()
     for classic in (False, True):
         bg, button, edge, accent = (
             ("#122c3e", "#173446", "#5e899b", "#8eeaf4") if classic else
             ("#111f30", "#182a3d", "#415c74", "#ffd083")
         )
-        for i, (title, detail, buttons) in enumerate(POWER_MESSAGES):
+        for i, (title, detail, buttons) in enumerate((*POWER_MESSAGES, EXIT_MESSAGE)):
+            exiting = i == len(POWER_MESSAGES)
             panel = Image.new("RGBA", size)
             draw = ImageDraw.Draw(panel)
 
@@ -126,18 +130,30 @@ def build_power(font, output, bold=None):
 
             center = width//2
             box(0,0,width,height,12,bg,edge)
-            if i in (0,3):
+            if i in (0,3) or exiting:
                 c = center*scale
-                draw.arc((c-9*scale,12*scale,c+9*scale,30*scale),-49,229,
-                         fill=accent,width=2*scale)
-                draw.rounded_rectangle((c-scale,9*scale,c+scale,20*scale),scale,fill=accent)
+                if exiting:
+                    def stroke(points):
+                        draw.line([(c+dx*scale,dy*scale) for dx,dy in points],
+                                  fill=accent,width=2*scale,joint="curve")
+                    stroke([(-1,11),(-9,11),(-9,28),(-1,28)])
+                    stroke([(-3,20),(9,20)])
+                    stroke([(4,15),(9,20),(4,25)])
+                else:
+                    draw.arc((c-9*scale,12*scale,c+9*scale,30*scale),-49,229,
+                             fill=accent,width=2*scale)
+                    draw.rounded_rectangle((c-scale,9*scale,c+scale,20*scale),scale,fill=accent)
                 text(center,54,title,28,"#f2f5fa",True)
                 text(center,87,detail,18,"#c2d3e0")
-                for left, (_,label) in zip((61,251),reversed(buttons)):
-                    box(left,111,left+174,148,8,button,edge)
-                    label_w = round(footer.lettering(18,True).getlength(label)/scale)
-                    start = left+(174-label_w)//2
-                    text(start+label_w/2,129,label,18,"#f2f5fa",True)
+                starts, button_width = ((36,178,320),130) if exiting else ((61,251),174)
+                for left, (_,label) in zip(starts, buttons if exiting else reversed(buttons)):
+                    box(left,111,left+button_width,148,8,button,edge)
+                    if exiting:
+                        text(left+button_width/2,129.5,label,18,"#f2f5fa",True)
+                    else:
+                        label_w = round(footer.lettering(18,True).getlength(label)/scale)
+                        start = left+(button_width-label_w)//2
+                        text(start+label_w/2,129,label,18,"#f2f5fa",True)
                 text(center,160,"←  →  Choose     A  Confirm",14,"#c2d3e0")
             else:
                 box(center-19,25,center+19,28,1,accent)
@@ -150,13 +166,14 @@ def build_power(font, output, bold=None):
             opaque = panel.getchannel("A").point(lambda a: 255 if a>=128 else 0)
             frame = Image.new("RGB", panel.size)
             frame.paste(panel, (0, 0), opaque)
-            data.extend(rgb565(frame))
+            (exit_data if exiting else data).extend(rgb565(frame))
             if i==0:
                 with Image.open(output/"home-grid.png") as home:
                     preview = home.point(lambda v: v//2)
                 preview.paste(frame, (x,y), opaque)
                 preview.save(output/("power-classic.png" if classic else "power-new.png"))
     (output/"power-dialog.rgb565").write_bytes(data+b"D35P")
+    (output/"exit-dialog.rgb565").write_bytes(exit_data+b"D35E")
 
 
 def build_settings(pack, font, destination, classic):

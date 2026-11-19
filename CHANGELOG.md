@@ -1,5 +1,13 @@
 # Changelog
 
+## Match the Exit dialog to Power Off and check FF2 D-pad movement - 2026-11-18
+
+The Exit dialog uses the Power Off panel and three evenly spaced, centered
+actions in both launcher themes. Cancel has initial focus. The returned
+handheld trace shows nine D-pad overlaps involving Down. Replaying both
+FF2 saves with the card's core reproduced horizontal priority during those
+overlaps. The recorded Save State resumed at neutral.
+
 ## Keep the Esc button out of gameplay - 2026-11-18
 
 Esc still opens the handheld's pause menu. Its synthetic Start and Select
