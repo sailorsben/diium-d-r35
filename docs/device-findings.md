@@ -76,6 +76,13 @@ ARM captures of all three choices in New and Classic have centered text
 (at most half a pixel of horizontal offset) and match the Power Off
 background dimming. The menu remains usable if the artwork is missing.
 
+The approved panel is installed on I:. The installer verified all 2,221
+card files and a clean FAT32 volume. An ARM replay using the launcher,
+artwork and theme read back from the card matched all three reviewed
+panels pixel for pixel. Display on the handheld still awaits a boot.
+The returned trace is preserved as `ff2-controls.previous.log`; the next
+FF2 session that saves a state and exits normally can write a fresh trace.
+
 **FF2 cutscene edges (2026-11-18).** A returned handheld boot has matching
 boot, NES and orderly shutdown receipts with `overscan=disabled` and
 `submitted=256x240 pitch=512`. The earlier horizontal-crop fix was live.
