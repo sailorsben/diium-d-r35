@@ -60,6 +60,10 @@ GPIO pins through the launcher and the card's NES core. For each of the
 Right followed Right's. In the first save, Right and Down + Right both
 traveled six tiles right, while Down traveled six tiles down. In the
 second, a blocked horizontal direction also blocked the combined input.
+In a separate desktop FCEUmm replay of the first save, adding Left for two
+frames during a Down hold produced a one-tile sidestep when the overlap
+began on held frame 16 or 17. Starting it in the first few frames produced
+the same path as Down alone. The game's position within a step matters.
 The physical trace has no thumb position or game coordinates, so it cannot
 identify a faulty switch or assign a particular on-screen step to one event.
 For a targeted follow-up, press and release Down several times with a pause
